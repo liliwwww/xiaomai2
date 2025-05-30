@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textSize="@dimen/margin_11dp"
+    android:textColor="#c6c6c6"
+    android:gravity="center_horizontal"
+    android:id="@+id/mine_loadmore_footer"
+    android:background="@color/transparent"
+    android:paddingTop="@dimen/margin_30dp"
+    android:paddingBottom="35dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="上滑加载更多"/>

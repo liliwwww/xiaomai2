@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <View
+        android:layout_gravity="center"
+        android:id="@+id/order_result_popwindow_up_arrow"
+        android:background="@drawable/price_up_arrow"
+        android:visibility="gone"
+        android:layout_width="15dp"
+        android:layout_height="8dp"/>
+    <TextView
+        android:textSize="13dp"
+        android:textColor="@color/white"
+        android:gravity="left"
+        android:id="@+id/order_result_popwindow_msg"
+        android:background="@drawable/order_result_zero_popwindow_bg"
+        android:paddingLeft="@dimen/margin_9"
+        android:paddingTop="8dp"
+        android:paddingRight="@dimen/margin_9"
+        android:paddingBottom="8dp"
+        android:layout_width="244dp"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="4dp"/>
+    <View
+        android:layout_gravity="right"
+        android:id="@+id/order_result_popwindow_down_arrow"
+        android:background="@drawable/price_down_arrow"
+        android:layout_width="15dp"
+        android:layout_height="8dp"
+        android:layout_marginRight="105dp"/>
+</LinearLayout>

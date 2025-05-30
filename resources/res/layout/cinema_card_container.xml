@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/cinema_list_page_hor_spacing"
+    android:layout_marginRight="@dimen/cinema_list_page_hor_spacing">
+    <ViewFlipper
+        android:id="@+id/equity_card_container"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inAnimation="@anim/roll_in"
+        android:outAnimation="@anim/roll_out"
+        android:flipInterval="3000"
+        android:autoStart="true"/>
+    <View
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+</FrameLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.alibaba.pictures.moimage.MoImageView
+        android:id="@+id/discover_want_flip_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:failureImage="@drawable/bricks_image_bg_pioneer_r9"
+        app:placeholderImage="@drawable/bricks_image_bg_pioneer_r9"/>
+    <com.alibaba.pictures.moimage.MoImageView
+        android:id="@+id/discover_want_flip_want_icon"
+        android:layout_width="10dp"
+        android:layout_height="9dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/project_item_want_tag_heart"/>
+</FrameLayout>

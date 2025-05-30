@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.alibaba.pictures.bricks.view.PioneerPullToRefreshHeaderView
+        android:id="@+id/header_view"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="@dimen/resource_size_10"
+        android:layout_centerHorizontal="true"/>
+    <com.alibaba.pictures.bricks.view.PuHuiTiTextView
+        android:textSize="@dimen/resource_size_11"
+        android:textColor="#171717"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:layout_below="@+id/header_view"
+        android:layout_centerHorizontal="true"/>
+</merge>

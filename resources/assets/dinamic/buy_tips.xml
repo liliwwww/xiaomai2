@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DFrameLayout xmlns:dinamic="http://schemas.android.com/apk/res-auto"
+    dinamic:dWidth="375ap"
+    dinamic:dHeight="match_content"
+    dinamic:dAccessibilityTextHidden="false">
+    <DFrameLayout
+        dinamic:dMarginLeft="12np"
+        dinamic:dMarginRight="12np"
+        dinamic:dWidth="match_parent"
+        dinamic:dHeight="match_content"
+        dinamic:dBackgroundColor="@data{fields.bgColor};@const{&apos;#ffffff&apos;}"
+        dinamic:dAccessibilityTextHidden="false"
+        dinamic:dClipTopRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @const{&apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipTopLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @const{&apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipBottomRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @const{&apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipBottomLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @const{&apos;12np&apos;},  @const{&apos;0np&apos;}}">
+        <DLinearLayout
+            dinamic:dOrientation="horizontal"
+            dinamic:dMarginTop="13np"
+            dinamic:dMarginBottom="13np"
+            dinamic:dWidth="match_parent"
+            dinamic:dHeight="match_content">
+            <DImageView
+                dinamic:dScaleType="fitCenter"
+                dinamic:dImageUrl="@data{fields.iconUrl}"
+                dinamic:dMarginLeft="12np"
+                dinamic:dMarginRight="12np"
+                dinamic:dWidth="match_content"
+                dinamic:dHeight="18np"
+                dinamic:onComplete="@imageRefresh{}"/>
+            <DTextView
+                dinamic:dText="@data{fields.title}"
+                dinamic:dTextSize="13np"
+                dinamic:dTextColor="@data{fields.titleColor};@const{&apos;#333333&apos;}"
+                dinamic:dMaxLines="0"
+                dinamic:dMarginRight="12np"
+                dinamic:dWidth="0np"
+                dinamic:dHeight="match_content"
+                dinamic:dAccessibilityTextHidden="false"
+                dinamic:dFocusable="false"
+                dinamic:dWeight="1"/>
+            <DTextView
+                dinamic:dText="@data{fields.value}"
+                dinamic:dTextSize="13np"
+                dinamic:dTextColor="@data{fields.valueColor};@const{&apos;#333333&apos;}"
+                dinamic:dTextAlignment="right"
+                dinamic:dMaxLines="0"
+                dinamic:dMarginRight="12np"
+                dinamic:dWidth="match_content"
+                dinamic:dHeight="match_content"
+                dinamic:dAccessibilityTextHidden="false"
+                dinamic:dFocusable="false"
+                dinamic:dRelayout="1"/>
+        </DLinearLayout>
+    </DFrameLayout>
+</DFrameLayout>

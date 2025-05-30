@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/relate_project_city_list_ui"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:background="#1a000000"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <FrameLayout
+        android:id="@+id/relate_project_city_list_layout"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/relate_project_city_list"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginTop="8dp"/>
+        <View
+            android:layout_gravity="right"
+            android:background="@drawable/bg_card_edge_mask"
+            android:layout_width="39dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"/>
+    </FrameLayout>
+</LinearLayout>

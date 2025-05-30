@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.alibaba.pictures.moimage.MoImageView
+        android:id="@+id/iv_banner"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:scaleType="centerCrop"
+        app:actualImageScaleType="centerCrop"
+        app:failureImage="@drawable/uikit_default_image_bg_gradient"
+        app:placeholderImage="@drawable/uikit_default_image_bg_gradient"
+        app:roundBottomLeft="true"
+        app:roundBottomRight="true"
+        app:roundTopLeft="true"
+        app:roundTopRight="true"
+        app:roundedCornerRadius="9dp"/>
+</LinearLayout>

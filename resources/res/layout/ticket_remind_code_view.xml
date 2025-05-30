@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.taobao.movie.android.commonui.widget.SimpleDraweeView
+        android:gravity="center"
+        android:id="@+id/qr_code"
+        android:layout_width="132dp"
+        android:layout_height="132dp"
+        android:scaleType="fitXY"
+        app:actualImageScaleType="fitXY"/>
+    <TextView
+        android:textSize="13dp"
+        android:textColor="@color/color_tpp_primary_assist"
+        android:gravity="center_horizontal"
+        android:id="@+id/tips"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:lineSpacingExtra="2dp"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/qr_code_org"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"/>
+</LinearLayout>

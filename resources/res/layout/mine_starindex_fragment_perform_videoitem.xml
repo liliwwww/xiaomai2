@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <View
+        android:id="@+id/layout_left"
+        android:visibility="gone"
+        android:layout_width="15dp"
+        android:layout_height="match_parent"/>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <cn.damai.uikit.view.RoundImageView
+            android:id="@+id/image_video"
+            android:layout_width="210dp"
+            android:layout_height="118dp"
+            android:src="@drawable/uikit_default_image_bg_gradient"
+            android:scaleType="fitXY"
+            app:borderRadius="6dp"
+            app:type="radial"/>
+        <View
+            android:layout_gravity="bottom"
+            android:background="@drawable/mine_starindex_video_yinying_bg"
+            android:layout_width="210dp"
+            android:layout_height="65dp"/>
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/icon_video"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/dm_poster_video_icon"/>
+    </FrameLayout>
+    <View
+        android:id="@+id/layout_right"
+        android:visibility="gone"
+        android:layout_width="12dp"
+        android:layout_height="match_parent"/>
+</LinearLayout>

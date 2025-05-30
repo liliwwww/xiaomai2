@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.alibaba.pictures.bricks.view.EqualLinearView
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/indicator"
+        android:background="#ffffff"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"/>
+    <View
+        android:background="#eeeeee"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:flipInterval="30"/>
+</LinearLayout>

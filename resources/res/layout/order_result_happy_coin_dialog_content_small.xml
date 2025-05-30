@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="242dp">
+    <View
+        android:id="@+id/image_bg"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"/>
+    <com.taobao.movie.android.app.order.ui.widget.HappyCoinDialogContain
+        android:id="@+id/happy_coin_dialog_contain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+    <View
+        android:id="@+id/close"
+        android:background="@drawable/happy_coin_dialog_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="285dp"
+        android:layout_marginTop="30dp"
+        android:layout_alignLeft="@+id/image_bg"/>
+</RelativeLayout>

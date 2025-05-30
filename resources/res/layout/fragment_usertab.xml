@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <cn.damai.uikit.irecycler.IRecyclerView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:id="@+id/user_empty_view"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="330dp">
+        <ImageView
+            android:id="@+id/user_empty_img"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_marginTop="66dp"
+            android:src="@drawable/empty_tip"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:textSize="14dp"
+            android:textColor="@color/color_aaaaaa"
+            android:gravity="center"
+            android:id="@+id/user_empty_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginRight="18dp"
+            android:text="这里好安静啊，快来说点啥吧～"
+            android:maxLines="1"
+            android:layout_below="@+id/user_empty_img"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+</FrameLayout>

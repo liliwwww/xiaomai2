@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/bricks_4D4D56"
+        android:gravity="center"
+        android:id="@+id/bricks_component_project_tips"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"/>
+    <com.alibaba.pictures.bricks.view.FakeBoldTextView
+        android:textSize="16dp"
+        android:textColor="@color/color_bricks_primary_main_title"
+        android:id="@+id/bricks_component_project_nearby_title"
+        android:paddingLeft="9dp"
+        android:paddingRight="9dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

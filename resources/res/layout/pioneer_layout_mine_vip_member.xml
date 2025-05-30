@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pioneer_mine_vip_member_container"
+    android:background="@color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+    <com.alibaba.pictures.moimage.MoImageView
+        android:layout_gravity="center_vertical"
+        android:id="@+id/pioneer_iv_mine_vip_member_bg"
+        android:layout_width="60dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="@dimen/margin_2dp"
+        android:src="@drawable/bg_pioneer_mine_head_user_info_left_vip"
+        android:scaleType="fitXY"/>
+    <cn.damai.mine.view.banner.Banner
+        android:id="@+id/pioneer_mine_user_vip_banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="50dp"/>
+    <TextView
+        android:textSize="10dp"
+        android:textColor="#1c1c1c"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/pioneer_tv_vip_limit_fail_tip"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:text="前方网络拥堵，请下拉页面刷新试试～"/>
+</FrameLayout>

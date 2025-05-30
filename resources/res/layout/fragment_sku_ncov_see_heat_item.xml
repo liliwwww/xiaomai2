@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="65dp">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="16dp"
+                android:textColor="@color/color_FF2869"
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_gravity="bottom|right"
+                android:id="@+id/image_xin"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/see_followed"/>
+        </FrameLayout>
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp">
+            <include layout="@layout/fragment_sku_ncov_see_heat_icon"/>
+            <TextView
+                android:textSize="12dp"
+                android:textColor="@color/color_9C9CA5"
+                android:id="@+id/tv_people_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:id="@+id/view_line"
+        android:background="@drawable/sku_heat_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+</LinearLayout>

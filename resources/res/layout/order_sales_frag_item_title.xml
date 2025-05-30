@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:id="@+id/block_sale_select_area"
+    android:background="@drawable/order_item_round_bg"
+    android:paddingLeft="12dp"
+    android:paddingTop="12dp"
+    android:paddingRight="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/CommonListItemContainerWhiteGoodHeader">
+    <TextView
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:id="@+id/tv_title"
+        android:text="@string/ordering_selector_block_sale_select"
+        style="@style/CommonListItemOrderTitle"/>
+    <TextView
+        android:textSize="13dp"
+        android:textColor="@color/color_tpp_primary_assist"
+        android:ellipsize="end"
+        android:id="@+id/tv_hint"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text=""
+        android:maxLines="1"
+        android:lines="1"
+        android:singleLine="true"/>
+</LinearLayout>

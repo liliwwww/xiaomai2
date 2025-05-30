@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:ratingbar="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:id="@+id/evaluate_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <TextView
+        android:textSize="15dp"
+        android:textColor="@color/color_333333"
+        android:id="@+id/tv_circle_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="不关联"
+        android:layout_weight="1"/>
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textColor="#c8c8c8"
+        android:id="@+id/iv_circle_check"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:text="@string/iconfont_yuangouxuanweixuanzhong"/>
+</LinearLayout>

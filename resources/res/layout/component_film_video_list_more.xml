@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/film_video_list_more_bg"
+    android:layout_width="100dp"
+    android:layout_height="120dp">
+    <TextView
+        android:textSize="@dimen/font_Subhead2_R"
+        android:textColor="@color/cg_3"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <View
+        android:id="@+id/divider"
+        android:background="@color/cg_5"
+        android:layout_width="45dp"
+        android:layout_height="@dimen/space_line_height"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"/>
+    <TextView
+        android:textSize="@dimen/font_Subhead2_R"
+        android:textColor="@color/cg_3"
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

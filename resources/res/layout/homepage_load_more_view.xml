@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="74dp">
+    <cn.damai.uikit.irecycler.widget.LoadingView
+        android:layout_gravity="center"
+        android:id="@+id/loadingView"
+        android:layout_width="40dp"
+        android:layout_height="30dp"/>
+    <TextView
+        android:textSize="14dp"
+        android:textColor="@color/color_666666"
+        android:id="@+id/load_more_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"/>
+</LinearLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#f5f6f8"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:background="@drawable/bg_show_calendar_top"
+        android:layout_width="match_parent"
+        android:layout_height="145dp">
+        <cn.damai.uikit.view.SimpleTitleLayout
+            android:id="@+id/channel_id_stl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="58dp"
+            android:layout_marginBottom="27dp"
+            android:src="@drawable/ic_show_calendar_top"
+            android:scaleType="centerInside"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+    <com.alibaba.pictures.bricks.view.TopRoundLinearLayout
+        android:id="@+id/channel_fragment_container"
+        android:background="#f5f6f7"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-12dp"
+        app:trl_top_radius="12dp"/>
+</LinearLayout>

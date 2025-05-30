@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/category_title_view"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <View
+        android:id="@+id/status_bar_space"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="44dp">
+        <View
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"/>
+        <cn.damai.uikit.snake.EqualLinearView
+            android:id="@+id/scroll_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <cn.damai.uikit.iconfont.DMIconFontTextView
+            android:textSize="24dp"
+            android:textColor="@color/color_3c3f44"
+            android:gravity="center"
+            android:id="@+id/btn_search"
+            android:paddingRight="21dp"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:text="@string/iconfont_sousuo_"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/ll_order_banner"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:background="@color/color_f8f8f8"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_12dp"/>
+        <ImageView
+            android:id="@+id/iv_order_banner"
+            android:background="@drawable/uikit_default_image_bg_grey"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:scaleType="centerCrop"/>
+    </LinearLayout>
+</LinearLayout>

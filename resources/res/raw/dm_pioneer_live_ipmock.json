@@ -1,0 +1,459 @@
+{
+  "ret": [
+    "SUCCESS::调用成功"
+  ],
+  "data": {
+    "nodes": [
+      {
+        "nodes": [
+          {
+            "nodes": [
+              {
+                "nodes": [
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=896501988228",
+                      "showTag": "陈奕迅",
+                      "bottomRight": {
+                        "tag": "视频icon",
+                        "type": "401"
+                      },
+                      "showTime": "2025.05.03 周六 18:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "演唱会",
+                        "type": "201"
+                      },
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "K-ARENA YOKOHAMA",
+                      "priceStr": "980-1980",
+                      "priceLow": "980",
+                      "cityName": "东京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "陈奕迅FEAR and DREAMS世界巡回演唱会 – 日本·东京站",
+                      "priceShowText": "980",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i1/2251059038/O1CN01e4Of9G2GdSgBeJDqd_!!2251059038.jpg",
+                      "id": "896501988228"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7879"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=896501988228",
+                      "showTag": "陈奕迅",
+                      "bottomRight": {
+                        "tag": "视频icon",
+                        "type": "401"
+                      },
+                      "showTime": "2025.05.03 周六 18:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "演唱会",
+                        "type": "201"
+                      },
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "K-ARENA YOKOHAMA",
+                      "priceStr": "980-1980",
+                      "priceLow": "980",
+                      "cityName": "东京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "22 陈奕迅FEAR and DREAMS世界巡回演唱会 – 日本·东京站",
+                      "priceShowText": "980",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i1/2251059038/O1CN01e4Of9G2GdSgBeJDqd_!!2251059038.jpg",
+                      "id": "896501988228"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=902922608895",
+                      "showTag": "郭富城",
+                      "bottomRight": {
+                        "tag": "视频icon",
+                        "type": "401"
+                      },
+                      "showTime": "2025.07.12-07.27",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "演唱会",
+                        "type": "201"
+                      },
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "澳门新濠影汇综艺馆",
+                      "priceStr": "498-8072",
+                      "priceLow": "498",
+                      "cityName": "中国澳门",
+                      "tagModel": {
+                        "marketPromotionTags": [
+                          {
+                            "prefix": "",
+                            "shortTag": "9.3折起",
+                            "tag": "套票9.3折起",
+                            "type": "COMBINE",
+                            "value": "930.4"
+                          }
+                        ]
+                      },
+                      "name": "新濠风尚呈献：「新濠尊属系列演唱会」郭富城梦幻舞林演唱会2025-澳门压轴篇",
+                      "priceShowText": "498",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i1/2251059038/O1CN013lRFAT2GdSgbWfvdp_!!2251059038.jpg",
+                      "id": "902922608895"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=895857564846",
+                      "showTag": "罗志祥",
+                      "showTime": "2025.05.31 周六 20:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "演唱会",
+                        "type": "201"
+                      },
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "银河综艺馆",
+                      "priceStr": "588-1288",
+                      "priceLow": "588",
+                      "cityName": "中国澳门",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "2025罗志祥 30巡回演唱会 澳门站",
+                      "priceShowText": "588",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i2/2251059038/O1CN01OtIxc72GdSgHZvqvI_!!2251059038.jpg",
+                      "id": "895857564846"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=892646824242",
+                      "showTag": "陈粒;重塑雕像的权利;DOUDOU;郭顶;梅卡德尔;文雀乐队;Phum Viphurit;赞多;赵雷;山冈晃",
+                      "bottomRight": {
+                        "tag": "视频icon",
+                        "type": "401"
+                      },
+                      "showTime": "2025.06.07-06.08",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "音乐节",
+                        "type": "201"
+                      },
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "横滨·红砖仓库公园",
+                      "priceStr": "680-2720",
+                      "priceLow": "680",
+                      "cityName": "东京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "2025东京草莓音乐节",
+                      "priceShowText": "680",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i1/2251059038/O1CN01pcqCmx2GdSgbhKx8e_!!2251059038.jpg",
+                      "id": "892646824242"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=900686194197",
+                      "showTime": "2025.04.19 周六 20:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "演唱会",
+                        "type": "201"
+                      },
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "(澳门葡京人) - H853 娱乐馆",
+                      "priceStr": "550-1570",
+                      "priceLow": "550",
+                      "cityName": "中国澳门",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "Wild Wild 韩国猛男秀",
+                      "priceShowText": "550",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i4/2251059038/O1CN01jIFvzY2GdSgXVko8u_!!2251059038.jpg",
+                      "id": "900686194197"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=902647269107",
+                      "showTag": "LADY GAGA",
+                      "showTime": "2025.05.18-05.24",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "演唱会",
+                        "type": "201"
+                      },
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "新加坡国家体育场 National Stadium, Singapore",
+                      "priceStr": "928-3908",
+                      "priceLow": "928",
+                      "cityName": "新加坡",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "Lady Gaga in Singapore",
+                      "priceShowText": "928",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i4/2251059038/O1CN014E4fQW2GdSgZwPJbh_!!2251059038.jpg",
+                      "id": "902647269107"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=862363785744",
+                      "showTag": "NCT 127",
+                      "bottomRight": {
+                        "tag": "视频icon",
+                        "type": "401"
+                      },
+                      "showTime": "2025.04.26-04.27",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "演唱会",
+                        "type": "201"
+                      },
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "银河综艺馆",
+                      "priceStr": "639-1999",
+                      "priceLow": "639",
+                      "cityName": "中国澳门",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "[NCT 127 4TH TOUR 'NEO CITY : MACAU - THE MOMENTUM']",
+                      "priceShowText": "639",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i1/2251059038/O1CN01KTp8yw2GdSf5L0dPm_!!2251059038.jpg",
+                      "id": "862363785744"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=901137300980",
+                      "showTag": "伍佰",
+                      "bottomRight": {
+                        "tag": "视频icon",
+                        "type": "401"
+                      },
+                      "showTime": "2025.07.12 周六 20:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "演唱会",
+                        "type": "201"
+                      },
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "吉隆坡武吉加里尔亚通体育馆 (Axiata Arena Bukit Jalil)",
+                      "priceStr": "488-1488",
+                      "priceLow": "488",
+                      "cityName": "吉隆坡",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "伍佰 & China Blue Rock Star 2 世界巡回演唱会2025 - 吉隆坡站",
+                      "priceShowText": "488",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i3/2251059038/O1CN01V00gNN2GdSgUAXeru_!!2251059038.jpg",
+                      "id": "901137300980"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=896159580797",
+                      "showTag": "周华健",
+                      "bottomRight": {
+                        "tag": "视频icon",
+                        "type": "401"
+                      },
+                      "showTime": "2025.05.03 周六 20:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "演唱会",
+                        "type": "201"
+                      },
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "银河综艺馆",
+                      "priceStr": "468-1288",
+                      "priceLow": "468",
+                      "cityName": "中国澳门",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "「澳門銀河™」荣誉呈献－周华健【少年侠客】巡回演唱会五一限定篇－澳门站",
+                      "priceShowText": "468",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i4/2251059038/O1CN01baHnKU2GdSgJoB3Hv_!!2251059038.jpg",
+                      "id": "896159580797"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=863799198311",
+                      "showTag": "CNBLUE",
+                      "showTime": "2025.05.17 周六 19:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "演唱会",
+                        "type": "201"
+                      },
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "安盛 x 竹翠公园, 西九 AXA x WONDERLAND, West Kowloon",
+                      "priceStr": "880-1680",
+                      "priceLow": "880",
+                      "cityName": "中国香港",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "2025 CNBLUE LIVE - VOYAGE into X IN HONG KONG",
+                      "priceShowText": "880",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i1/2251059038/O1CN01C4p9Mi2GdSg34kQNY_!!2251059038.jpg",
+                      "id": "863799198311"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  }
+                ],
+                "data": {
+                  "action": {
+                    "item": {
+                      "trackInfo": {
+                        "spmc": "bottom"
+                      }
+                    }
+                  },
+                  "tabType": "abroad",
+                  "cityId": "9999,850,848",
+                  "isFilterEmpty": "false",
+                  "title": "全球演出",
+                  "nodeId": "f677f05b-1040-496d-bcb0-24a0a698d13a",
+                  "selected": "true"
+                },
+                "level": "2",
+                "more": "true",
+                "type": "7879",
+                "cr": {
+                  "c": {
+                    "7880": {
+                      "item": {
+                        "acu": "damai://V1/ProjectPage?id=${id}",
+                        "act": "1",
+                        "d": "item_",
+                        "ag": {
+                          "item_id": "${${id}}"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "data": {
+              "componentId": "dm_pioneer_discover_project_list",
+              "action": {
+                "item": {
+                  "trackInfo": {
+                    "spmc": "bottom"
+                  }
+                }
+              },
+              "isFilterEmpty": "true",
+              "nodeId": "0ada73c4-8e6a-49b5-8154-5a5855bff3fb"
+            },
+            "level": "2",
+            "more": "false",
+            "style": {},
+            "type": "7878"
+          }
+        ],
+        "data": {
+          "nodeId": "dde033fb-cf92-4bc0-a648-c4b8f29bba56"
+        },
+        "level": "1",
+        "more": "false"
+      }
+    ],
+    "data": {
+      "spmab": "a2o4t.pioneer_discovery",
+      "serverTime": "1743409510945",
+      "pageName": "pioneer_discovery"
+    },
+    "level": "0",
+    "more": "false"
+  },
+  "v": "3.0",
+  "api": "mtop.damai.mec.aristotle.get"
+}

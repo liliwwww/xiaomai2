@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingLeft="30dp"
+    android:paddingTop="21dp"
+    android:paddingRight="30dp"
+    android:paddingBottom="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textSize="13dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:id="@+id/id_boot_action_agree"
+        android:background="@drawable/bg_color_ff2869_ff3299"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="同意"/>
+    <TextView
+        android:textSize="14dp"
+        android:textColor="#636363"
+        android:gravity="center"
+        android:id="@+id/id_boot_action_un_agree"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="不同意"/>
+</LinearLayout>

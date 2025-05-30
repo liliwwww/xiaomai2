@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:background="?attr/bgFilmDetailAll"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.alibaba.pictures.moimage.MoImageView
+        android:id="@+id/film_detail_souvenir_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:scaleType="fitXY"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/color_tpp_primary_subtitle"
+        android:ellipsize="end"
+        android:id="@+id/film_detail_souvenir_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:layout_weight="1"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="11dp"/>
+    <com.taobao.movie.android.commonui.widget.IconFontTextView
+        android:id="@+id/film_detail_souvenir_item_arrow"
+        style="@style/film_detail_item_arrow_style"/>
+</LinearLayout>

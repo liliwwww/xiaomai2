@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:paddingLeft="21dp"
+        android:paddingRight="21dp"
+        android:paddingBottom="@dimen/default_component_content_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/item_card_title_layout"/>
+    </FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ip_future_city_rl"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_12dp"
+        android:layout_marginBottom="@dimen/margin_12dp"
+        android:layout_marginStart="@dimen/margin_21dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginVertical="@dimen/margin_12dp"
+        app:layoutManager="GridLayoutManager"
+        app:spanCount="4"/>
+</LinearLayout>

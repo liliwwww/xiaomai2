@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/project_artists_list_item_layout"
+    android:layout_width="87dp"
+    android:layout_height="wrap_content">
+    <View
+        android:id="@+id/project_artists_list_item_gap"
+        android:layout_width="12dp"
+        android:layout_height="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <com.alibaba.pictures.bricks.view.RoundRadiusImageView
+        android:id="@+id/project_artists_list_item_poster"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toRightOf="@+id/project_artists_list_item_gap"
+        app:layout_constraintTop_toTopOf="parent"
+        app:r_round_radius="6dp"
+        app:r_stroke_color="#1a000000"
+        app:r_stroke_width="1px"/>
+    <com.alibaba.pictures.bricks.view.FakeBoldTextView
+        android:textSize="12dp"
+        android:textColor="@color/color_bricks_primary_main_title"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:id="@+id/project_artists_list_item_name"
+        android:layout_width="63dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:maxLines="1"
+        android:lines="1"
+        android:singleLine="true"
+        app:layout_constraintLeft_toLeftOf="@+id/project_artists_list_item_poster"
+        app:layout_constraintRight_toRightOf="@+id/project_artists_list_item_poster"
+        app:layout_constraintTop_toBottomOf="@+id/project_artists_list_item_poster"/>
+    <ImageView
+        android:layout_width="22.5dp"
+        android:layout_height="22.5dp"
+        android:layout_marginBottom="-2dp"
+        android:src="@drawable/bricks_artist_v_tag"
+        android:layout_marginEnd="-8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/project_artists_list_item_poster"
+        app:layout_constraintRight_toRightOf="@+id/project_artists_list_item_poster"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/id_bricks_cor_rule_img"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:scaleType="fitXY"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/bricks_4D4D56"
+        android:id="@+id/id_bricks_cor_rule_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"/>
+</LinearLayout>

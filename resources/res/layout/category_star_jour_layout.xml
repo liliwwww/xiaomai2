@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:id="@+id/layout_container"
+        android:background="@drawable/rank_jour_bg"
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:layout_marginTop="9dp">
+        <TextView
+            android:textSize="12dp"
+            android:textColor="#8890a0"
+            android:gravity="center_vertical"
+            android:id="@+id/tv_city_num"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_marginLeft="15dp"/>
+        <TextView
+            android:textSize="12dp"
+            android:textColor="#2a2a2a"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:id="@+id/tv_city"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:singleLine="true"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DFrameLayout xmlns:dinamic="http://schemas.android.com/apk/res-auto"
+    dinamic:dWidth="375ap"
+    dinamic:dHeight="match_content"
+    dinamic:dAccessibilityTextHidden="false">
+    <DImageView
+        dinamic:dScaleType="fitCenter"
+        dinamic:dImageUrl="@data{fields.imageUrl}"
+        dinamic:dMarginRight="32.5np"
+        dinamic:dMarginTop="4.5np"
+        dinamic:dMarginBottom="4.5np"
+        dinamic:dWidth="match_content"
+        dinamic:dHeight="25.5ap"
+        dinamic:dGravity="rightCenter"
+        dinamic:onComplete="@imageRefresh{}"/>
+</DFrameLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="25dp">
+    <ViewFlipper
+        android:id="@+id/live_remind_vertical_flipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inAnimation="@anim/roll_in"
+        android:outAnimation="@anim/roll_out"
+        android:flipInterval="10000"/>
+</FrameLayout>

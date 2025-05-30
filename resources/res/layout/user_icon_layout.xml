@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/user_icon_container"
+    android:layout_width="50dp"
+    android:layout_height="53dp">
+    <com.taobao.movie.android.commonui.widget.SimpleDraweeView
+        android:id="@+id/user_icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="3dp"
+        app:fadeDuration="0"
+        app:failureImage="@drawable/header_place_holder"
+        app:placeholderImage="@drawable/header_place_holder"
+        app:roundAsCircle="true"
+        app:roundingBorderColor="@color/common_divider_color"
+        app:roundingBorderWidth="1px"/>
+    <ImageView
+        android:layout_gravity="bottom|right"
+        android:id="@+id/user_level"
+        android:background="@drawable/ic_member_level"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

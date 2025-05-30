@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/homepage_grab_ticket_label"
+        android:layout_width="92dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_home_grab_ticket_logo"/>
+    <cn.damai.commonbusiness.dynamicx.customwidget.temp.DMUpMarqueeView
+        android:id="@+id/homepage_grab_ticket_cntainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"/>
+</LinearLayout>

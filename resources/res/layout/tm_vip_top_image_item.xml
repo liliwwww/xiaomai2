@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/tm_vip_top_layout"
+    android:background="@drawable/pic_discount_vip_no_characters_bg"
+    android:layout_width="match_parent"
+    android:layout_height="157dp"
+    android:layout_marginTop="@dimen/margin_9dp"
+    android:layout_marginBottom="-120dp">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_6dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:src="@drawable/pic_discount_vip_characters_icon"/>
+</FrameLayout>

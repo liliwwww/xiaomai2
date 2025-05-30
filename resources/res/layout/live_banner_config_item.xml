@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <View
+        android:id="@+id/layout_left"
+        android:visibility="gone"
+        android:layout_width="15dp"
+        android:layout_height="match_parent"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="79dp"
+        android:layout_height="wrap_content">
+        <cn.damai.baseview.RCRelativeLayoutView
+            android:layout_width="79dp"
+            android:layout_height="79dp"
+            app:round_corner="6dp">
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="79dp"
+                android:layout_height="79dp"
+                android:src="@drawable/uikit_default_banner_item_bg"
+                android:scaleType="centerCrop"/>
+        </cn.damai.baseview.RCRelativeLayoutView>
+        <TextView
+            android:textSize="12dp"
+            android:textColor="@color/color_000000"
+            android:ellipsize="end"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:maxLines="2"
+            android:lineSpacingExtra="3dp"/>
+    </LinearLayout>
+    <View
+        android:id="@+id/layout_right"
+        android:visibility="gone"
+        android:layout_width="15dp"
+        android:layout_height="match_parent"/>
+</LinearLayout>

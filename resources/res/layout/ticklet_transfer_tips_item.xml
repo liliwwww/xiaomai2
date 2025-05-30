@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:background="#ffeaf1"
+    android:paddingLeft="@dimen/margin_15dp"
+    android:paddingTop="@dimen/margin_9dp"
+    android:paddingRight="@dimen/margin_16dp"
+    android:paddingBottom="@dimen/margin_9dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:ellipsize="end"
+        android:id="@+id/ticklet_transfer_tip_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_weight="1"
+        style="@style/ticklet_ff2d79_12dp"/>
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/ticklet_transfer_tip_right_arrow"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_13dp"
+        android:text="@string/iconfont_youjiantou12"
+        style="@style/ticklet_ff2d79_13dp"/>
+</LinearLayout>

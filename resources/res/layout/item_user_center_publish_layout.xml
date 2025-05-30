@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <include layout="@layout/item_discover_feed_time_line"/>
+    <cn.damai.uikit.view.StrokeLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:sl_corners_radius="8dp">
+        <RelativeLayout
+            android:background="@drawable/bg_publish_gradient"
+            android:layout_width="match_parent"
+            android:layout_height="76dp">
+            <TextView
+                android:textSize="16dp"
+                android:textColor="#af8cfc"
+                android:id="@+id/id_user_publish_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="18dp"
+                android:maxWidth="200dp"
+                android:lines="1"/>
+            <TextView
+                android:textSize="14dp"
+                android:textColor="@color/color_9c9ca5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="40dp"
+                android:text="发布新鲜现场，记录精彩生活"/>
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:id="@+id/id_user_publish_btn"
+                android:background="@drawable/bg_publish_btn"
+                android:paddingBottom="5dp"
+                android:layout_width="84dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginRight="7dp"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </cn.damai.uikit.view.StrokeLinearLayout>
+</LinearLayout>

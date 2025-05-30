@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="@dimen/margin_15dp"
+    android:paddingBottom="@dimen/margin_21dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textSize="15dp"
+        android:textColor="@color/bricks_9c9ca5"
+        android:gravity="center"
+        android:id="@+id/history_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/historical_orders"/>
+</FrameLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.taobao.movie.android.commonui.widget.IconFontTextView
+        android:textSize="24dp"
+        android:textColor="@color/white"
+        android:id="@+id/community_back_buton"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="10.5dp"
+        android:text="@string/icon_font_titlebar_back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <include
+        android:id="@+id/layout_aiyi_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/community_back_buton"
+        app:layout_constraintTop_toTopOf="parent"
+        layout="@layout/layout_aiyi_title"/>
+    <com.alibaba.pictures.bricks.view.PuHuiTiTextView
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:ellipsize="end"
+        android:id="@+id/tv_add_aiyi_community"
+        android:paddingLeft="12dp"
+        android:paddingTop="6dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_aiyi_title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/layout_aiyi_title"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

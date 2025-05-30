@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:id="@+id/ipinfo_descinfo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textSize="12dp"
+        android:textColor="@color/mask_white_80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/iconfont_huabian"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/mask_white_80"
+        android:gravity="center"
+        android:id="@+id/brand_header_desc_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="41.5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:text="这是一个|和高效的|这是"
+        android:maxLines="1"/>
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textSize="12dp"
+        android:textColor="@color/mask_white_80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/iconfont_huabianfan"/>
+</LinearLayout>

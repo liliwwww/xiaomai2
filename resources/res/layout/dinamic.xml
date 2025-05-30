@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:attr="http://schemas.android.com/apk/res-auto"
+    android:visibility="visible"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        attr:dTextColor="#00ff0001"/>
+    <DLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        attr:dLineBreakMode="start"
+        attr:dMarginBottom="11"
+        attr:dMarginLeft="10"
+        attr:dMarginRight="10"
+        attr:dMarginTop="10"
+        attr:dOrientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </DLinearLayout>
+</LinearLayout>

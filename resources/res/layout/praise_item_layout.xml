@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:ratingbar="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:id="@+id/evaluate_item_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:gravity="center"
+        android:id="@+id/praise_item_iconimg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/uikit_zan_unselected"
+        android:layout_centerVertical="true"/>
+    <com.airbnb.lottie.LottieAnimationView
+        android:gravity="center"
+        android:id="@+id/praise_item_anim"
+        android:paddingBottom="2dp"
+        android:layout_width="30dp"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        ratingbar:lottie_autoPlay="false"
+        ratingbar:lottie_rawRes="@raw/anim_first_like"
+        ratingbar:lottie_repeatCount="0"/>
+    <TextView
+        android:gravity="center"
+        android:id="@+id/praise_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-1dp"
+        android:layout_toRightOf="@+id/praise_item_anim"
+        android:layout_centerVertical="true"/>
+</RelativeLayout>

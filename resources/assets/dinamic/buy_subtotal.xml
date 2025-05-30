@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DFrameLayout xmlns:dinamic="http://schemas.android.com/apk/res-auto"
+    dinamic:dWidth="375ap"
+    dinamic:dHeight="48np"
+    dinamic:dAccessibilityTextHidden="false">
+    <DFrameLayout
+        dinamic:dMarginLeft="12np"
+        dinamic:dMarginRight="12np"
+        dinamic:dWidth="match_parent"
+        dinamic:dHeight="48np"
+        dinamic:dBackgroundColor="#ffffff"
+        dinamic:dAccessibilityTextHidden="false"
+        dinamic:dClipTopRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipTopLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipBottomRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipBottomLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}">
+        <DLinearLayout
+            dinamic:dOrientation="horizontal"
+            dinamic:dWidth="match_parent"
+            dinamic:dHeight="match_content"
+            dinamic:dGravity="rightCenter">
+            <DTextView
+                dinamic:dText="@data{fields.desc}"
+                dinamic:dTextSize="12np"
+                dinamic:dTextColor="#999999"
+                dinamic:dTextAlignment="right"
+                dinamic:dMaxLines="1"
+                dinamic:dLineBreakMode="end"
+                dinamic:dMarginLeft="10np"
+                dinamic:dMarginRight="3np"
+                dinamic:dWidth="0np"
+                dinamic:dHeight="match_content"
+                dinamic:dAccessibilityTextHidden="false"
+                dinamic:dFocusable="false"
+                dinamic:dGravity="rightCenter"
+                dinamic:dWeight="1.0"/>
+            <DLinearLayout
+                dinamic:dOrientation="horizontal"
+                dinamic:dWidth="match_content"
+                dinamic:dHeight="match_content">
+                <DTextView
+                    dinamic:dText="@data{fields.title}"
+                    dinamic:dTextSize="12np"
+                    dinamic:dTextColor="#151515"
+                    dinamic:dMaxLines="1"
+                    dinamic:dLineBreakMode="end"
+                    dinamic:dWidth="match_content"
+                    dinamic:dHeight="match_content"
+                    dinamic:dAccessibilityTextHidden="false"
+                    dinamic:dFocusable="false"
+                    dinamic:dGravity="rightCenter"/>
+                <TradePriceView
+                    dinamic:dTextSize="14np"
+                    dinamic:dTextColor="@theme{&apos;color&apos;,&apos;themeColor&apos;,&apos;#FF5000&apos;}"
+                    dinamic:dMaxLines="1"
+                    dinamic:dLineBreakMode="end"
+                    dinamic:dMarginRight="10np"
+                    dinamic:dWidth="match_content"
+                    dinamic:dHeight="match_content"
+                    dinamic:dAccessibilityTextHidden="false"
+                    dinamic:dFocusable="false"
+                    dinamic:dGravity="rightCenter"
+                    dinamic:dPrice="@data{fields.price}"
+                    dinamic:dSymbolScale="0.8"
+                    dinamic:dDecimalScale="0.8"/>
+            </DLinearLayout>
+        </DLinearLayout>
+    </DFrameLayout>
+</DFrameLayout>

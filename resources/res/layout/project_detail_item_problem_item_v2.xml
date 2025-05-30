@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textSize="12dp"
+    android:textColor="@color/color_2E333E"
+    android:ellipsize="end"
+    android:gravity="center_vertical"
+    android:id="@+id/problem_name_tv"
+    android:background="?attr/bgCommonProblem"
+    android:paddingLeft="@dimen/margin_12dp"
+    android:paddingRight="@dimen/margin_12dp"
+    android:layout_width="wrap_content"
+    android:layout_height="28dp"
+    android:layout_marginBottom="9dp"
+    android:singleLine="true"
+    android:includeFontPadding="false"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="4dp"/>

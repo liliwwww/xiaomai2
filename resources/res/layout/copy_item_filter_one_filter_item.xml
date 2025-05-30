@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_filter_one_item_id"
+    android:padding="4.5dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/color_333333"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:id="@+id/item_filter_text"
+        android:background="@drawable/copy_bg_filter_fast_btn_selector"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:lines="1"/>
+</FrameLayout>

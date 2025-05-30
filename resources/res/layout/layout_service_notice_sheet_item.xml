@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/sheet_container"
+    android:background="@drawable/service_notice_dialog_bg"
+    android:paddingLeft="12dp"
+    android:paddingTop="@dimen/margin_12dp"
+    android:paddingRight="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.alibaba.pictures.bricks.view.FakeBoldTextView
+        android:textSize="15dp"
+        android:textColor="@color/color_2E333E"
+        android:gravity="center_vertical"
+        android:id="@+id/sheet_title"
+        android:background="@drawable/service_notice_dialog_title_bg"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:paddingStart="12dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sheet_content"
+        android:background="@drawable/service_notice_dialog_content_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        android:id="@+id/last_padding"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+</LinearLayout>

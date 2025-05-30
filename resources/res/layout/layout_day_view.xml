@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingBottom="5dp"
+    android:layout_width="wrap_content"
+    android:layout_height="50dp">
+    <cn.damai.uikit.calendar.DayView
+        android:textSize="14dp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/day_view"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"/>
+    <cn.damai.uikit.calendar.LabelView
+        android:textSize="9sp"
+        android:textColor="@color/color_000000"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/tv_day_view_label"
+        android:paddingLeft="2dp"
+        android:paddingTop="0.5dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="0.5dp"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</FrameLayout>

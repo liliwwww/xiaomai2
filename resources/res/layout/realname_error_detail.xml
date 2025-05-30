@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.taobao.windvane.webview.WVWebView
+        android:layout_gravity="bottom"
+        android:id="@+id/realname_error_wv"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/margin_18dp"
+        android:paddingRight="@dimen/margin_18dp"
+        android:layout_width="match_parent"
+        android:layout_height="578dp"/>
+</FrameLayout>

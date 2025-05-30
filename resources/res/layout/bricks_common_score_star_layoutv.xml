@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:id="@+id/layout_see_heat"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <View
+        android:id="@+id/icon1"
+        android:background="@drawable/bricks_score_yellow_star1"
+        android:layout_width="9dp"
+        android:layout_height="9dp"/>
+    <View
+        android:id="@+id/icon2"
+        android:background="@drawable/bricks_score_yellow_star1"
+        android:layout_width="9dp"
+        android:layout_height="9dp"
+        android:layout_marginLeft="1dp"/>
+    <View
+        android:id="@+id/icon3"
+        android:background="@drawable/bricks_score_yellow_star1"
+        android:layout_width="9dp"
+        android:layout_height="9dp"
+        android:layout_marginLeft="1dp"/>
+    <View
+        android:id="@+id/icon4"
+        android:background="@drawable/bricks_score_yellow_star1"
+        android:layout_width="9dp"
+        android:layout_height="9dp"
+        android:layout_marginLeft="1dp"/>
+    <View
+        android:id="@+id/icon5"
+        android:background="@drawable/bricks_score_yellow_star1"
+        android:layout_width="9dp"
+        android:layout_height="9dp"
+        android:layout_marginLeft="1dp"/>
+</LinearLayout>

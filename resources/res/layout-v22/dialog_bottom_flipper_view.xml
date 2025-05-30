@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="24dp">
+    <com.alibaba.pictures.moimage.MoImageView
+        android:id="@+id/artist_picture"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="2dp"
+        app:failureImage="@drawable/uikit_default_image_bg_grey"
+        app:placeholderImage="@drawable/uikit_default_image_bg_grey"
+        app:roundedCornerRadius="4dp"/>
+    <cn.damai.uikit.number.DMDigitTextView
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:textColor="@color/color_471c0e"
+        android:ellipsize="end"
+        android:id="@+id/artist_performance_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:maxLines="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="6dp"/>
+</LinearLayout>

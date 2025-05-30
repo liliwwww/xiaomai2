@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+    <EditText
+        android:textSize="14sp"
+        android:textColor="#2e2e2e"
+        android:id="@+id/dx_multi_line_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="12dp"/>
+    <TextView
+        android:textSize="13sp"
+        android:textColor="#111111"
+        android:id="@+id/tv_word_total"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+    <TextView
+        android:textSize="13sp"
+        android:textColor="#cccccc"
+        android:id="@+id/tv_word_count"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_toLeftOf="@+id/tv_word_total"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

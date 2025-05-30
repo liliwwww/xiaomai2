@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_notice"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@drawable/bricks_shape_rect_corners_6_solid_ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
+        <com.alibaba.pictures.bricks.view.FakeBoldTextView
+            android:textSize="16dp"
+            android:textColor="#333333"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="购买须知"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="11dp"
+            android:layout_height="11dp"
+            android:layout_marginLeft="3dp"
+            android:src="@drawable/bricks_icon_right_black_arrow"
+            android:scaleType="fitXY"/>
+    </LinearLayout>
+</FrameLayout>

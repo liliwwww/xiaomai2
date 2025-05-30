@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/color_tpp_primary_bg"
+    android:layout_width="match_parent"
+    android:layout_height="55dp">
+    <TextView
+        android:textSize="17dp"
+        android:textColor="#2e333e"
+        android:id="@+id/common_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="确认订单"
+        android:layout_centerInParent="true"/>
+    <com.taobao.movie.android.commonui.widget.IconFontTextView
+        android:textSize="17.5dp"
+        android:textColor="@color/color_tpp_primary_gray_c8"
+        android:id="@+id/btn_close"
+        android:padding="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:text="@string/icon_font_close"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+    <com.taobao.movie.android.commonui.widget.IconFontTextView
+        android:textSize="18dp"
+        android:textColor="@color/color_tpp_primary_black"
+        android:id="@+id/btn_back"
+        android:padding="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="@string/icon_font_titlebar_back"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+</RelativeLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cinema_item_favorite_cover"
+    android:background="@color/color_bricks_primary_60_black"
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.taobao.movie.android.commonui.widget.IconFontTextView
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:id="@+id/close_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/icon_font_close_line"/>
+    <com.alibaba.pictures.bricks.view.PuHuiTiTextView
+        android:textSize="12dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/cinema_item_favorite_view"
+        android:background="@drawable/cinema_item_favorite_btn_favorited_bg"
+        android:padding="10dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:text="已收藏"/>
+</FrameLayout>

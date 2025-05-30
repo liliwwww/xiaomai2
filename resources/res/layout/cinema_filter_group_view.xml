@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.taobao.movie.android.app.oscar.ui.cinema.widget.cinemafilter.CinemaFilterType
+        android:id="@+id/filter_mall_subway"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginRight="6dp"
+        android:minWidth="55dp"
+        app:alignItems="center"/>
+    <com.taobao.movie.android.app.oscar.ui.cinema.widget.cinemafilter.CinemaFilterType
+        android:id="@+id/filter_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginRight="6dp"
+        android:minWidth="55dp"
+        app:alignItems="center"/>
+    <com.taobao.movie.android.app.oscar.ui.cinema.widget.cinemafilter.CinemaFilterType
+        android:id="@+id/filter_all"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginRight="6dp"
+        android:minWidth="55dp"
+        app:alignItems="center"/>
+    <View
+        android:id="@+id/empty"
+        android:layout_width="0dp"
+        android:layout_height="1px"
+        android:layout_weight="1"/>
+    <com.taobao.movie.android.app.oscar.ui.cinema.widget.cinemafilter.CinemaFilterType
+        android:id="@+id/filter_order"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        app:alignItems="center"/>
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <cn.damai.uikit.view.DMPosterView
+        android:id="@+id/poster"
+        android:layout_width="93dp"
+        android:layout_height="124dp"/>
+    <TextView
+        android:textSize="14dp"
+        android:textColor="@color/black"
+        android:ellipsize="end"
+        android:id="@+id/brand_you_proj_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text=""
+        android:maxLines="2"
+        android:layout_below="@+id/poster"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="#9c9ca5"
+        android:id="@+id/brand_you_proj_memo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text=""
+        android:maxLines="1"
+        android:layout_below="@+id/brand_you_proj_title"/>
+</RelativeLayout>

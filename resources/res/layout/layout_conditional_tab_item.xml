@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.damai.common.app.widget.BubbleLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/conditional_tab_item"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp"
+    android:layout_marginTop="4dp">
+    <TextView
+        android:textSize="13dp"
+        android:textColor="@color/color_2E333E"
+        android:layout_gravity="center"
+        android:id="@+id/session_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"/>
+</cn.damai.common.app.widget.BubbleLayout>

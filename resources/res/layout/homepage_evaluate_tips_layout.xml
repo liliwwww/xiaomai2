@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_homepage_evaluate_tips"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:visibility="gone"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp"
+    android:layout_marginBottom="67dp"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentBottom="true">
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/color_eb7609"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:id="@+id/tv_homepage_evaluate_tips"
+        android:background="@drawable/ic_homepage_bottombar_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:maxLength="30"/>
+</FrameLayout>

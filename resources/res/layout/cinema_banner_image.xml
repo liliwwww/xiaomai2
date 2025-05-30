@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:background="@color/color_tpp_primary_bg"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.alibaba.pictures.moimage.MoImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:failureImage="@color/color_tpp_primary_bg"
+        app:placeholderImage="@color/color_tpp_primary_bg"
+        app:roundBottomLeft="true"
+        app:roundBottomRight="true"
+        app:roundTopLeft="true"
+        app:roundTopRight="true"
+        app:roundedCornerRadius="9dp"/>
+    <TextView
+        android:textSize="8dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_gravity="bottom|right"
+        android:id="@+id/advert_flag"
+        android:background="@drawable/banner_advert_flag_bg"
+        android:layout_width="25dp"
+        android:layout_height="17dp"
+        android:text="广告"/>
+</FrameLayout>

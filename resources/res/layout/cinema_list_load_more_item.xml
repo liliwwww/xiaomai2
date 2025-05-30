@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/item_click_effect"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:layout_marginLeft="9dp"
+    android:layout_marginRight="9dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="0dp"
+    app:cardMaxElevation="0dp">
+    <TextView
+        android:textSize="@dimen/text_size_13_dp"
+        android:textColor="@color/tpp_gray_3"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/look_all_cinemas"/>
+</androidx.cardview.widget.CardView>

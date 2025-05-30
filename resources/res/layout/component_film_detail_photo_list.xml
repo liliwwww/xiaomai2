@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.taobao.movie.android.commonui.widget.MoCardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/image_tag_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    fresco:mocard_model="clip">
+    <com.taobao.movie.android.commonui.widget.TppGifImageView
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        fresco:actualImageScaleType="fitHeight"
+        fresco:failureImage="@drawable/oscar_default_image"
+        fresco:placeholderImage="@drawable/oscar_default_image"
+        fresco:placeholderImageScaleType="fitXY"/>
+    <com.taobao.movie.android.commonui.widget.MIconfontTextView
+        android:textSize="12dp"
+        android:textColor="@color/white"
+        android:layout_gravity="bottom"
+        android:id="@+id/image_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"/>
+</com.taobao.movie.android.commonui.widget.MoCardView>

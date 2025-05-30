@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingBottom="18dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <include layout="@layout/homepage_module_title"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <cn.damai.player.DMVideoPlayer
+            android:id="@+id/homepage_video_player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <View
+            android:id="@+id/homepage_video_cover"
+            android:background="#1d2337"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homepage_video_project_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</LinearLayout>

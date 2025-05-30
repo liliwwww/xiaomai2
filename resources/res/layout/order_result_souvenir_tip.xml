@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textSize="11dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:id="@+id/tv_bubble_hint"
+        android:background="@drawable/img_order_result_souvenir_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收藏淘麦VIP纪念票"/>
+</FrameLayout>

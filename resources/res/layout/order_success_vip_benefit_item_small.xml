@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="@dimen/resource_size_6"
+    android:paddingTop="@dimen/resource_size_9"
+    android:paddingRight="@dimen/resource_size_6"
+    android:paddingBottom="@dimen/resource_size_9"
+    android:layout_width="match_parent"
+    android:layout_height="72dp">
+    <com.alibaba.pictures.moimage.MoImageView
+        android:id="@+id/order_success_vip_benefit_item_pic"
+        android:layout_width="66dp"
+        android:layout_height="54dp"
+        android:scaleType="centerCrop"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        app:placeholderImage="@color/d8d8d8"
+        app:roundedCornerRadius="4dp"/>
+    <TextView
+        android:textSize="11dp"
+        android:textColor="@color/member_main_title"
+        android:ellipsize="end"
+        android:id="@+id/order_success_vip_benefit_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:maxLines="2"
+        android:layout_toRightOf="@+id/order_success_vip_benefit_item_pic"
+        android:layout_alignTop="@+id/order_success_vip_benefit_item_pic"/>
+    <TextView
+        android:textSize="11dp"
+        android:textColor="@color/member_main_title"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:id="@+id/order_success_vip_benefit_item_btn"
+        android:layout_width="76dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="6dp"
+        android:maxLines="1"
+        android:includeFontPadding="false"
+        android:layout_toRightOf="@+id/order_success_vip_benefit_item_pic"
+        android:layout_alignBottom="@+id/order_success_vip_benefit_item_pic"/>
+</merge>

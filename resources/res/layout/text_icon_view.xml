@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textColor="@color/color_tpp_primary_assist"
+        android:gravity="end"
+        android:id="@+id/tip_tv"
+        android:layout_width="0dp"
+        android:includeFontPadding="false"
+        android:layout_weight="1"
+        style="@style/CommonListItemText"/>
+    <com.taobao.movie.android.commonui.widget.SimpleDraweeView
+        android:id="@+id/tip_iv"
+        android:background="@android:color/white"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="3dp"
+        android:scaleType="fitXY"
+        app:actualImageScaleType="fitXY"/>
+</merge>

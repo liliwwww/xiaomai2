@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <cn.damai.uikit.view.ScoreStarViewV2
+        android:id="@+id/score_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:colorType="yellow"/>
+    <cn.damai.uikit.number.DMDigitTextView
+        android:textSize="12dp"
+        android:textColor="@color/black"
+        android:id="@+id/score_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:text="9.0"/>
+</LinearLayout>

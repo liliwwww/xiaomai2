@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/common_comment_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:id="@+id/oscar_common_comment_content"
+        android:background="@color/white"
+        android:paddingBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.alibaba.pictures.moimage.MoImageView
+            android:background="@color/cg_5"
+            android:layout_width="15dp"
+            android:layout_height="1dp"/>
+        <TextView
+            android:textSize="12dp"
+            android:textColor="@color/cg_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:text="����淘票票鼓励真情实感的评价"/>
+        <com.alibaba.pictures.moimage.MoImageView
+            android:background="@color/cg_5"
+            android:layout_width="15dp"
+            android:layout_height="1dp"/>
+    </LinearLayout>
+    <com.taobao.movie.android.app.ui.filmcomment.widget.CommonCommentViewV2
+        android:id="@+id/oscar_common_comment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DFrameLayout xmlns:dinamic="http://schemas.android.com/apk/res-auto"
+    dinamic:dWidth="375ap"
+    dinamic:dHeight="match_content"
+    dinamic:dAccessibilityTextHidden="false">
+    <DLinearLayout
+        dinamic:dOrientation="horizontal"
+        dinamic:dMarginLeft="12np"
+        dinamic:dMarginRight="12np"
+        dinamic:dWidth="match_parent"
+        dinamic:dHeight="match_content"
+        dinamic:dBackgroundColor="#ffffff"
+        dinamic:dAccessibilityTextHidden="false"
+        dinamic:dClipBottomLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipBottomRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipTopLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipTopRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}">
+        <DFrameLayout
+            dinamic:dMarginLeft="11np"
+            dinamic:dMarginRight="11np"
+            dinamic:dWidth="91np"
+            dinamic:dHeight="match_content"
+            dinamic:dAccessibilityTextHidden="false"
+            dinamic:dGravity="rightCenter">
+            <DLinearLayout
+                dinamic:dOrientation="horizontal"
+                dinamic:dWidth="match_content"
+                dinamic:dHeight="35np"
+                dinamic:dGravity="rightCenter">
+                <DFrameLayout
+                    dinamic:dMarginRight="5np"
+                    dinamic:dWidth="25np"
+                    dinamic:dHeight="35np"
+                    dinamic:dVisibility="@triple{@eq{@data{status},&apos;disable&apos;}, &apos;gone&apos;, &apos;visible&apos;}"
+                    dinamic:dAccessibilityText="按钮"
+                    dinamic:dAccessibilityTextHidden="false"
+                    dinamic:onTap="@handleDinamicXEvent{@const{detailClick}}">
+                    <DImageView
+                        dinamic:dScaleType="fitCenter"
+                        dinamic:dImageUrl="https://gw.alicdn.com/tfs/TB1xdXGAER1BeNjy0FmXXb0wVXa-28-28.png"
+                        dinamic:dWidth="14np"
+                        dinamic:dHeight="14np"
+                        dinamic:dGravity="rightCenter"/>
+                </DFrameLayout>
+                <DTextView
+                    dinamic:dText="@data{fields.title}"
+                    dinamic:dTextSize="13np"
+                    dinamic:dTextColor="#333333"
+                    dinamic:dTextAlignment="right"
+                    dinamic:dMaxLines="2"
+                    dinamic:dLineBreakMode="end"
+                    dinamic:dMaxWidth="70np"
+                    dinamic:dWidth="match_content"
+                    dinamic:dHeight="match_content"
+                    dinamic:dAccessibilityTextHidden="false"
+                    dinamic:dFocusable="false"
+                    dinamic:dGravity="rightCenter"/>
+            </DLinearLayout>
+        </DFrameLayout>
+        <DTextView
+            dinamic:dText="@data{fields.desc}"
+            dinamic:dTextSize="13np"
+            dinamic:dTextColor="#999999"
+            dinamic:dMaxLines="3"
+            dinamic:dLineBreakMode="end"
+            dinamic:dMarginTop="14np"
+            dinamic:dMarginBottom="14np"
+            dinamic:dWidth="0"
+            dinamic:dHeight="match_content"
+            dinamic:dAccessibilityTextHidden="false"
+            dinamic:dFocusable="false"
+            dinamic:dGravity="leftCenter"
+            dinamic:dWeight="1.0"/>
+        <DLinearLayout
+            dinamic:dOrientation="horizontal"
+            dinamic:dMarginLeft="11np"
+            dinamic:dMarginRight="11np"
+            dinamic:dMarginTop="14np"
+            dinamic:dMarginBottom="14np"
+            dinamic:dWidth="match_content"
+            dinamic:dHeight="match_content"
+            dinamic:dGravity="rightCenter">
+            <DTextView
+                dinamic:dText="@data{fields.price}"
+                dinamic:dTextSize="13np"
+                dinamic:dTextColor="#333333"
+                dinamic:dTextAlignment="right"
+                dinamic:dLineBreakMode="end"
+                dinamic:dMaxWidth="120np"
+                dinamic:dWidth="match_content"
+                dinamic:dHeight="match_content"
+                dinamic:dVisibility="@triple{@data{fields.price}, &apos;visible&apos;, &apos;gone&apos;}"
+                dinamic:dAccessibilityTextHidden="false"
+                dinamic:dFocusable="false"
+                dinamic:dGravity="leftCenter"/>
+            <DCheckBox
+                dinamic:dMarginLeft="5np"
+                dinamic:dWidth="17np"
+                dinamic:dHeight="17np"
+                dinamic:dVisibility="@triple{@and{@data{fields.isChecked},@eq{@data{status},&apos;disable&apos;}}, &apos;gone&apos;, &apos;visible&apos;}"
+                dinamic:dAccessibilityText=" "
+                dinamic:dAccessibilityTextHidden="false"
+                dinamic:dGravity="leftCenter"
+                dinamic:dAccessibilityHint="轻点两下切换设置"
+                dinamic:dChecked="@data{fields.isChecked}"
+                dinamic:dEnabled="@triple{@or{@eq{@data{status},&apos;disable&apos;},@data{fields.disabled}},&apos;0&apos;,&apos;1&apos;}"
+                dinamic:onChange="@handleDinamicXEvent{@const{itemClick}}"
+                dinamic:dCheckImg="icon_checked"
+                dinamic:dUncheckImg="icon_unchecked"
+                dinamic:tScaleType="fitCenter"/>
+        </DLinearLayout>
+    </DLinearLayout>
+</DFrameLayout>

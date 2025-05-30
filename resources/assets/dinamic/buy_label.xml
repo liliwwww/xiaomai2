@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DFrameLayout xmlns:dinamic="http://schemas.android.com/apk/res-auto"
+    dinamic:dWidth="375ap"
+    dinamic:dHeight="match_content"
+    dinamic:dAccessibilityTextHidden="false">
+    <DLinearLayout
+        dinamic:dOrientation="horizontal"
+        dinamic:dMarginLeft="12np"
+        dinamic:dMarginRight="12np"
+        dinamic:dWidth="match_parent"
+        dinamic:dHeight="match_content"
+        dinamic:dBackgroundColor="@data{fields.background}"
+        dinamic:dAccessibilityTextHidden="false"
+        dinamic:dClipTopRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipTopLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipBottomRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipBottomLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}">
+        <TradeRichTextView
+            dinamic:dTextSize="@triple{@data{fields.textSize},@concat{@data{fields.textSize},&apos;np&apos;}, @const{&apos;13np&apos;}}"
+            dinamic:dTextColor="@triple{@data{fields.textColor},@data{fields.textColor},&apos;#999999&apos;}"
+            dinamic:dMaxLines="0"
+            dinamic:dLineBreakMode="end"
+            dinamic:dMarginLeft="12np"
+            dinamic:dMarginRight="12np"
+            dinamic:dMarginTop="12np"
+            dinamic:dMarginBottom="12np"
+            dinamic:dWidth="match_parent"
+            dinamic:dHeight="match_content"
+            dinamic:dAccessibilityTextHidden="false"
+            dinamic:dFocusable="true"
+            dinamic:dGravity="leftCenter"
+            dinamic:dRichText="@data{fields.richText}"/>
+    </DLinearLayout>
+</DFrameLayout>

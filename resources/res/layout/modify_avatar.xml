@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/color_111111"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/image_avatar"
+        android:background="@drawable/modify_default_bg"
+        android:layout_width="match_parent"
+        android:layout_height="375dp"
+        android:scaleType="centerCrop"/>
+</LinearLayout>

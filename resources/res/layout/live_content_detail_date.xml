@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:paddingLeft="12dp"
+    android:paddingTop="9dp"
+    android:paddingRight="12dp"
+    android:paddingBottom="15dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <com.alibaba.pictures.moimage.MoImageView
+        android:layout_gravity="center_vertical"
+        android:id="@+id/live_content_detail_date_icon"
+        android:visibility="gone"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginEnd="3dp"
+        app:roundAsCircle="true"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/color_9c9ca5"
+        android:id="@+id/live_content_detail_date_name"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"/>
+    <cn.damai.uikit.number.DMDigitTextView
+        android:textSize="12dp"
+        android:textColor="@color/color_9c9ca5"
+        android:id="@+id/live_content_detail_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

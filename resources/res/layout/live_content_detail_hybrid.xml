@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingLeft="@dimen/margin_12dp"
+    android:paddingTop="@dimen/margin_9dp"
+    android:paddingRight="@dimen/margin_12dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <WebView
+        android:id="@+id/live_content_detail_hybrid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</FrameLayout>

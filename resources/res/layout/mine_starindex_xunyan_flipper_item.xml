@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:id="@+id/xunyan_item_layout_1"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="24dp"
+    android:layout_weight="1">
+    <cn.damai.uikit.view.DMLabelView
+        android:id="@+id/xunyan_item_laeblview1"
+        android:layout_width="12dp"
+        android:layout_height="12dp"/>
+    <TextView
+        android:textSize="13dp"
+        android:textColor="@color/color_9c9ca5"
+        android:ellipsize="end"
+        android:id="@+id/xunyan_item_tv_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9dp"
+        android:text="巡演信息"
+        android:lines="1"/>
+</LinearLayout>

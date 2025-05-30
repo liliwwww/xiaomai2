@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.alibaba.pictures.moimage.MoImageView
+        android:id="@+id/tip_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:adjustViewBounds="true"
+        android:layout_marginEnd="6dp"/>
+    <TextView
+        android:textSize="13dp"
+        android:textColor="@color/common_color_1008"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:id="@+id/tip_tv"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:maxLines="1"
+        android:width="0dp"
+        android:includeFontPadding="false"
+        android:layout_weight="1"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/tpp_secondary_green"
+        android:gravity="center"
+        android:id="@+id/tip_right_button"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_marginLeft="15dp"
+        android:includeFontPadding="false"/>
+    <com.taobao.movie.android.commonui.widget.MIconfontTextView
+        android:textSize="8dp"
+        android:textColor="@color/common_color_1008"
+        android:gravity="center"
+        android:id="@+id/tip_right_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="@string/iconf_right_arrow"/>
+</merge>

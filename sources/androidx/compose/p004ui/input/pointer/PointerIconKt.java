@@ -1,0 +1,261 @@
+package androidx.compose.p004ui.input.pointer;
+
+import androidx.compose.p004ui.ComposedModifierKt;
+import androidx.compose.p004ui.Modifier;
+import androidx.compose.p004ui.platform.CompositionLocalsKt;
+import androidx.compose.p004ui.platform.InspectableValueKt;
+import androidx.compose.p004ui.platform.InspectorInfo;
+import androidx.compose.runtime.Composable;
+import androidx.compose.runtime.Composer;
+import androidx.compose.runtime.ComposerKt;
+import androidx.compose.runtime.Stable;
+import kotlin.ResultKt;
+import kotlin.Unit;
+import kotlin.coroutines.Continuation;
+import kotlin.coroutines.intrinsics.IntrinsicsKt;
+import kotlin.coroutines.jvm.internal.DebugMetadata;
+import kotlin.coroutines.jvm.internal.RestrictedSuspendLambda;
+import kotlin.coroutines.jvm.internal.SuspendLambda;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
+import kotlin.jvm.functions.Function3;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+/* compiled from: Taobao */
+/* loaded from: classes.dex */
+public final class PointerIconKt {
+    @Stable
+    @NotNull
+    public static final Modifier pointerHoverIcon(@NotNull Modifier modifier, @NotNull final PointerIcon pointerIcon, final boolean z) {
+        Intrinsics.checkNotNullParameter(modifier, "<this>");
+        Intrinsics.checkNotNullParameter(pointerIcon, "icon");
+        return ComposedModifierKt.composed(modifier, InspectableValueKt.isDebugInspectorInfoEnabled() ? new Function1<InspectorInfo, Unit>() { // from class: androidx.compose.ui.input.pointer.PointerIconKt$pointerHoverIcon$$inlined$debugInspectorInfo$1
+            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+            {
+                super(1);
+            }
+
+            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
+                invoke((InspectorInfo) obj);
+                return Unit.INSTANCE;
+            }
+
+            public final void invoke(@NotNull InspectorInfo inspectorInfo) {
+                Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
+                inspectorInfo.setName("pointerHoverIcon");
+                inspectorInfo.getProperties().set("icon", PointerIcon.this);
+                inspectorInfo.getProperties().set("overrideDescendants", Boolean.valueOf(z));
+            }
+        } : InspectableValueKt.getNoInspectorInfo(), new Function3<Modifier, Composer, Integer, Modifier>() { // from class: androidx.compose.ui.input.pointer.PointerIconKt$pointerHoverIcon$2
+
+            /* compiled from: Taobao */
+            @DebugMetadata(c = "androidx.compose.ui.input.pointer.PointerIconKt$pointerHoverIcon$2$1", f = "PointerIcon.kt", i = {}, l = {85}, m = "invokeSuspend", n = {}, s = {})
+            /* renamed from: androidx.compose.ui.input.pointer.PointerIconKt$pointerHoverIcon$2$1 */
+            /* loaded from: classes.dex */
+            static final class C07711 extends SuspendLambda implements Function2<PointerInputScope, Continuation<? super Unit>, Object> {
+                final /* synthetic */ PointerIcon $icon;
+                final /* synthetic */ boolean $overrideDescendants;
+                final /* synthetic */ PointerIconService $pointerIconService;
+                private /* synthetic */ Object L$0;
+                int label;
+
+                /* compiled from: Taobao */
+                @DebugMetadata(c = "androidx.compose.ui.input.pointer.PointerIconKt$pointerHoverIcon$2$1$1", f = "PointerIcon.kt", i = {0}, l = {91}, m = "invokeSuspend", n = {"$this$awaitPointerEventScope"}, s = {"L$0"})
+                /* renamed from: androidx.compose.ui.input.pointer.PointerIconKt$pointerHoverIcon$2$1$1, reason: invalid class name */
+                static final class AnonymousClass1 extends RestrictedSuspendLambda implements Function2<AwaitPointerEventScope, Continuation<? super Unit>, Object> {
+                    final /* synthetic */ PointerIcon $icon;
+                    final /* synthetic */ boolean $overrideDescendants;
+                    final /* synthetic */ PointerIconService $pointerIconService;
+                    private /* synthetic */ Object L$0;
+                    int label;
+
+                    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+                    AnonymousClass1(boolean z, PointerIconService pointerIconService, PointerIcon pointerIcon, Continuation<? super AnonymousClass1> continuation) {
+                        super(2, continuation);
+                        this.$overrideDescendants = z;
+                        this.$pointerIconService = pointerIconService;
+                        this.$icon = pointerIcon;
+                    }
+
+                    @NotNull
+                    public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
+                        AnonymousClass1 anonymousClass1 = new AnonymousClass1(this.$overrideDescendants, this.$pointerIconService, this.$icon, continuation);
+                        anonymousClass1.L$0 = obj;
+                        return anonymousClass1;
+                    }
+
+                    @Nullable
+                    public final Object invoke(@NotNull AwaitPointerEventScope awaitPointerEventScope, @Nullable Continuation<? super Unit> continuation) {
+                        return create(awaitPointerEventScope, continuation).invokeSuspend(Unit.INSTANCE);
+                    }
+
+                    /* JADX WARN: Removed duplicated region for block: B:17:0x002b  */
+                    /* JADX WARN: Removed duplicated region for block: B:20:0x003a A[RETURN] */
+                    /* JADX WARN: Removed duplicated region for block: B:22:0x003b  */
+                    /* JADX WARN: Removed duplicated region for block: B:23:0x002e  */
+                    /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:22:0x003b -> B:5:0x0040). Please report as a decompilation issue!!! */
+                    @org.jetbrains.annotations.Nullable
+                    /*
+                        Code decompiled incorrectly, please refer to instructions dump.
+                        To view partially-correct code enable 'Show inconsistent code' option in preferences
+                    */
+                    public final java.lang.Object invokeSuspend(@org.jetbrains.annotations.NotNull java.lang.Object r13) {
+                        /*
+                            r12 = this;
+                            java.lang.Object r0 = kotlin.coroutines.intrinsics.IntrinsicsKt.getCOROUTINE_SUSPENDED()
+                            int r1 = r12.label
+                            r2 = 1
+                            if (r1 == 0) goto L1e
+                            if (r1 != r2) goto L16
+                            java.lang.Object r1 = r12.L$0
+                            androidx.compose.ui.input.pointer.AwaitPointerEventScope r1 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r1
+                            kotlin.ResultKt.throwOnFailure(r13)
+                            r3 = r1
+                            r1 = r0
+                            r0 = r12
+                            goto L40
+                        L16:
+                            java.lang.IllegalStateException r13 = new java.lang.IllegalStateException
+                            java.lang.String r0 = "call to 'resume' before 'invoke' with coroutine"
+                            r13.<init>(r0)
+                            throw r13
+                        L1e:
+                            kotlin.ResultKt.throwOnFailure(r13)
+                            java.lang.Object r13 = r12.L$0
+                            androidx.compose.ui.input.pointer.AwaitPointerEventScope r13 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r13
+                            r1 = r13
+                            r13 = r12
+                        L27:
+                            boolean r3 = r13.$overrideDescendants
+                            if (r3 == 0) goto L2e
+                            androidx.compose.ui.input.pointer.PointerEventPass r3 = androidx.compose.p004ui.input.pointer.PointerEventPass.Main
+                            goto L30
+                        L2e:
+                            androidx.compose.ui.input.pointer.PointerEventPass r3 = androidx.compose.p004ui.input.pointer.PointerEventPass.Initial
+                        L30:
+                            r13.L$0 = r1
+                            r13.label = r2
+                            java.lang.Object r3 = r1.awaitPointerEvent(r3, r13)
+                            if (r3 != r0) goto L3b
+                            return r0
+                        L3b:
+                            r11 = r0
+                            r0 = r13
+                            r13 = r3
+                            r3 = r1
+                            r1 = r11
+                        L40:
+                            androidx.compose.ui.input.pointer.PointerEvent r13 = (androidx.compose.p004ui.input.pointer.PointerEvent) r13
+                            int r4 = r13.m4026getType7fucELk()
+                            androidx.compose.ui.input.pointer.PointerEventType$Companion r5 = androidx.compose.p004ui.input.pointer.PointerEventType.Companion
+                            int r6 = r5.m4041getRelease7fucELk()
+                            boolean r4 = androidx.compose.p004ui.input.pointer.PointerEventType.m4033equalsimpl0(r4, r6)
+                            r6 = 0
+                            if (r4 == 0) goto L6e
+                            java.util.List r4 = r13.getChanges()
+                            java.lang.Object r4 = r4.get(r6)
+                            androidx.compose.ui.input.pointer.PointerInputChange r4 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r4
+                            long r7 = r3.mo3997getSizeYbymL2g()
+                            androidx.compose.ui.geometry.Size$Companion r9 = androidx.compose.p004ui.geometry.Size.Companion
+                            long r9 = r9.m2634getZeroNHjbRc()
+                            boolean r4 = androidx.compose.p004ui.input.pointer.PointerEventKt.m4029isOutOfBoundsjwHxaWs(r4, r7, r9)
+                            if (r4 == 0) goto L6e
+                            r6 = 1
+                        L6e:
+                            int r13 = r13.m4026getType7fucELk()
+                            int r4 = r5.m4038getExit7fucELk()
+                            boolean r13 = androidx.compose.p004ui.input.pointer.PointerEventType.m4033equalsimpl0(r13, r4)
+                            if (r13 != 0) goto L85
+                            if (r6 != 0) goto L85
+                            androidx.compose.ui.input.pointer.PointerIconService r13 = r0.$pointerIconService
+                            androidx.compose.ui.input.pointer.PointerIcon r4 = r0.$icon
+                            r13.setCurrent(r4)
+                        L85:
+                            r13 = r0
+                            r0 = r1
+                            r1 = r3
+                            goto L27
+                        */
+                        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.p004ui.input.pointer.PointerIconKt$pointerHoverIcon$2.C07711.AnonymousClass1.invokeSuspend(java.lang.Object):java.lang.Object");
+                    }
+                }
+
+                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+                C07711(boolean z, PointerIconService pointerIconService, PointerIcon pointerIcon, Continuation<? super C07711> continuation) {
+                    super(2, continuation);
+                    this.$overrideDescendants = z;
+                    this.$pointerIconService = pointerIconService;
+                    this.$icon = pointerIcon;
+                }
+
+                @NotNull
+                public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
+                    C07711 c07711 = new C07711(this.$overrideDescendants, this.$pointerIconService, this.$icon, continuation);
+                    c07711.L$0 = obj;
+                    return c07711;
+                }
+
+                @Nullable
+                public final Object invoke(@NotNull PointerInputScope pointerInputScope, @Nullable Continuation<? super Unit> continuation) {
+                    return create(pointerInputScope, continuation).invokeSuspend(Unit.INSTANCE);
+                }
+
+                @Nullable
+                public final Object invokeSuspend(@NotNull Object obj) {
+                    Object coroutine_suspended = IntrinsicsKt.getCOROUTINE_SUSPENDED();
+                    int i = this.label;
+                    if (i == 0) {
+                        ResultKt.throwOnFailure(obj);
+                        PointerInputScope pointerInputScope = (PointerInputScope) this.L$0;
+                        AnonymousClass1 anonymousClass1 = new AnonymousClass1(this.$overrideDescendants, this.$pointerIconService, this.$icon, null);
+                        this.label = 1;
+                        if (pointerInputScope.awaitPointerEventScope(anonymousClass1, this) == coroutine_suspended) {
+                            return coroutine_suspended;
+                        }
+                    } else {
+                        if (i != 1) {
+                            throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+                        }
+                        ResultKt.throwOnFailure(obj);
+                    }
+                    return Unit.INSTANCE;
+                }
+            }
+
+            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+            {
+                super(3);
+            }
+
+            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
+                return invoke((Modifier) obj, (Composer) obj2, ((Number) obj3).intValue());
+            }
+
+            @Composable
+            @NotNull
+            public final Modifier invoke(@NotNull Modifier modifier2, @Nullable Composer composer, int i) {
+                Intrinsics.checkNotNullParameter(modifier2, "$this$composed");
+                composer.startReplaceableGroup(811087536);
+                if (ComposerKt.isTraceInProgress()) {
+                    ComposerKt.traceEventStart(811087536, i, -1, "androidx.compose.ui.input.pointer.pointerHoverIcon.<anonymous> (PointerIcon.kt:78)");
+                }
+                PointerIconService pointerIconService = (PointerIconService) composer.consume(CompositionLocalsKt.getLocalPointerIconService());
+                Modifier pointerInput = pointerIconService == null ? Modifier.Companion : SuspendingPointerInputFilterKt.pointerInput(modifier2, PointerIcon.this, Boolean.valueOf(z), new C07711(z, pointerIconService, PointerIcon.this, null));
+                if (ComposerKt.isTraceInProgress()) {
+                    ComposerKt.traceEventEnd();
+                }
+                composer.endReplaceableGroup();
+                return pointerInput;
+            }
+        });
+    }
+
+    public static /* synthetic */ Modifier pointerHoverIcon$default(Modifier modifier, PointerIcon pointerIcon, boolean z, int i, Object obj) {
+        if ((i & 2) != 0) {
+            z = false;
+        }
+        return pointerHoverIcon(modifier, pointerIcon, z);
+    }
+}

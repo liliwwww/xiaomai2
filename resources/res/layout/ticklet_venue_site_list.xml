@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/ticklet_venue_exchange_view"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <View
+        android:background="@color/line_color_dd"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+    <LinearLayout
+        android:gravity="top|center_horizontal"
+        android:layout_gravity="top|center_horizontal"
+        android:orientation="vertical"
+        android:id="@+id/errorPageView"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <ProgressBar
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/ticklet_venue_progress"
+        android:visibility="gone"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="40dp"/>
+    <cn.damai.ticklet.view.ContentRecyclerView
+        android:id="@+id/ticklet_venue_window_listview"
+        android:background="#ffffff"
+        android:paddingBottom="90dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        app:refreshEnabled="true"
+        app:refreshHeaderLayout="@layout/refresh_empty_view"/>
+</LinearLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:layout_width="115dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_18dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/aritst_content_layout"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15dp">
+        <cn.damai.tetris.component.online.viewholder.OnLinePosterView
+            android:id="@+id/aritst_content_poster"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:scaleType="fitXY"
+            app:borderRadius="6dp"
+            app:type="radial"/>
+        <TextView
+            android:textSize="12dp"
+            android:textColor="#000000"
+            android:ellipsize="end"
+            android:id="@+id/aritst_content_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="2019摩登兄弟“成长风暴”巡回演唱会"
+            android:maxLines="2"
+            android:lineSpacingExtra="4dp"/>
+    </LinearLayout>
+</LinearLayout>

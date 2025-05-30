@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_tetris_rank_empty_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="368dp">
+        <ImageView
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:src="@drawable/common_error_ticket_empty"
+            android:scaleType="fitXY"/>
+        <TextView
+            android:textSize="14dp"
+            android:textColor="@color/color_9c9ca5"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="200dp"
+            android:text="咦~当前分类暂无更多演出，看看其它榜单吧～"
+            android:lineSpacingExtra="6dp"/>
+        <TextView
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:id="@+id/id_tetris_rank_change_city"
+            android:background="@drawable/shape_rect_corners_20_gradient_ff2869_ff3299"
+            android:layout_width="78dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="18dp"
+            android:text="城市选择"/>
+    </LinearLayout>
+</FrameLayout>

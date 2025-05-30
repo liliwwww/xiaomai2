@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="216dp"
+    android:layout_marginLeft="21dp"
+    android:layout_marginRight="21dp">
+    <include
+        android:id="@+id/mine_brand_project_1"
+        android:layout_width="103dp"
+        android:layout_height="match_parent"
+        layout="@layout/mine_brand_project_item"/>
+    <View
+        android:id="@+id/mine_brand_project_div1"
+        android:layout_width="12dp"
+        android:layout_height="match_parent"/>
+    <include
+        android:id="@+id/mine_brand_project_2"
+        android:layout_width="103dp"
+        android:layout_height="match_parent"
+        layout="@layout/mine_brand_project_item"/>
+    <View
+        android:id="@+id/mine_brand_project_div2"
+        android:layout_width="12dp"
+        android:layout_height="match_parent"/>
+    <include
+        android:id="@+id/mine_brand_project_3"
+        android:layout_width="103dp"
+        android:layout_height="match_parent"
+        layout="@layout/mine_brand_project_item"/>
+</LinearLayout>

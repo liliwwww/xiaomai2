@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drama_poster_ui"
+    android:layout_width="98dp"
+    android:layout_height="115dp">
+    <View
+        android:background="@drawable/category_rank_step3_bg_v2"
+        android:layout_width="24dp"
+        android:layout_height="91dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+    <View
+        android:background="@drawable/category_rank_step2_bg_v2"
+        android:layout_width="24dp"
+        android:layout_height="103dp"
+        android:layout_marginRight="6dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+    <cn.damai.uikit.view.DMPosterView
+        android:id="@+id/drama_poster"
+        android:layout_width="86dp"
+        android:layout_height="115dp"/>
+    <cn.damai.uikit.tag.DMCategroyTagView
+        android:id="@+id/right_top_category_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"/>
+    <ImageView
+        android:id="@+id/left_bottom_img_tag"
+        android:visibility="gone"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

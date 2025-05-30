@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/margin_18dp"
+    android:paddingRight="@dimen/margin_18dp"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:id="@+id/report_item_check"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:text="@string/iconfont_fuxuanxuanzhong24"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+    <TextView
+        android:textSize="14dp"
+        android:textColor="#111111"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:id="@+id/report_item_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:text=""
+        android:maxLines="1"
+        android:layout_toRightOf="@+id/report_item_check"
+        android:layout_centerVertical="true"/>
+</RelativeLayout>

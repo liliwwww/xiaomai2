@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/aiyi_title_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/aiyi_logo_img"
+        android:layout_width="55dp"
+        android:layout_height="21dp"
+        android:src="@drawable/aiyi_logo_toolbar_img"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <ImageView
+        android:id="@+id/aiyi_million_tag_img"
+        android:visibility="gone"
+        android:layout_width="71dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/community_milliontag_noget_img"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/aiyi_logo_img"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:textSize="9dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:id="@+id/aiyi_million_waitget_tv"
+        android:background="@drawable/home_ball_tips_bg"
+        android:paddingLeft="4dp"
+        android:paddingTop="1dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="3dp"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="57dp"
+        android:layout_marginBottom="14dp"
+        android:text="待领取"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/aiyi_million_tag_img"
+        app:layout_constraintTop_toTopOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

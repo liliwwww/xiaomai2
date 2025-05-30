@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="153dp"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp">
+    <com.alibaba.pictures.moimage.MoImageView
+        android:id="@+id/luck_draw_result_empty_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:placeholderImageScaleType="centerCrop"
+        app:roundBottomLeft="true"
+        app:roundBottomRight="true"
+        app:roundTopLeft="true"
+        app:roundTopRight="true"
+        app:roundedCornerRadius="10dp"/>
+    <include
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/oscar_film_luckdraw_result_item"/>
+    <TextView
+        android:textSize="20dp"
+        android:textColor="#feffe8"
+        android:gravity="center"
+        android:id="@+id/tv_error_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="领完了，请下次再试..."/>
+    <ImageView
+        android:background="@drawable/reward_fail_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

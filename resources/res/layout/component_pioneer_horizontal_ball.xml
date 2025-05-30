@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+        <View
+            android:id="@+id/id_pioneer_home_ball_bg_high"
+            android:background="@drawable/bg_pioneer_home_ball_high"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+        <View
+            android:id="@+id/id_pioneer_home_ball_bg_normal"
+            android:background="@drawable/bg_pioneer_home_ball_normal"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="216dp"/>
+    </FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/horizontal_container"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/resource_size_6"
+        android:overScrollMode="never"/>
+</FrameLayout>

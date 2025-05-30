@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:id="@+id/id_tetris_rank_empty_layout"
+    android:background="@color/white"
+    android:paddingTop="@dimen/resource_size_20"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="-10dp">
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/ic_venue_performance_empty"
+        android:scaleType="fitXY"/>
+    <TextView
+        android:textSize="@dimen/resource_size_14"
+        android:textColor="#69717c"
+        android:id="@+id/main_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂无在售演出~"/>
+    <TextView
+        android:textSize="@dimen/resource_size_12"
+        android:textColor="#9c9ca5"
+        android:id="@+id/sub_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"/>
+</LinearLayout>

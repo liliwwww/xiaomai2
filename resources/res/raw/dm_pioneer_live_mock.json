@@ -1,0 +1,1651 @@
+{
+  "ret": [
+    "SUCCESS::调用成功"
+  ],
+  "data": {
+    "nodes": [
+      {
+        "nodes": [
+          {
+            "nodes": [
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i1/O1CN019Mv9tE1e07Fkw9iiu_!!6000000003808-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?groupId=2394&type=100&referItemId=898118407574",
+                  "iconComboDispatchId": "360801",
+                  "comboDispatchId": "309247",
+                  "referItemId": "898118407574",
+                  "idx": "1",
+                  "title": "演唱会",
+                  "comboDispatchSystem": "cms",
+                  "icon1": "孙燕姿",
+                  "icon2": ""
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i3/O1CN01UGQIix1DTtNXKcgPz_!!6000000000218-2-tps-144-144.png",
+                  "schema": "https://m.taopiaopiao.com/tickets/moviemain/pages/movies/index.html?tabIndex=now&usewindvane=1&citycode=110100&sqm=dianying.damai.tpptodm.icon",
+                  "comboDispatchId": "317067",
+                  "idx": "2",
+                  "title": "电影",
+                  "comboDispatchSystem": "cms"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i2/O1CN01MtDQ3r1m6Xjny0Chn_!!6000000004905-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?groupId=2333&type=100",
+                  "comboDispatchId": "285852",
+                  "idx": "3",
+                  "title": "话剧音乐剧",
+                  "comboDispatchSystem": "cms",
+                  "icon1": "日落大道",
+                  "icon2": "购票有礼"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i1/O1CN010AfqXJ1KEVNh2NjYC_!!6000000001132-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?groupId=2396&type=100&referItemId=892960540686",
+                  "iconComboDispatchId": "315714",
+                  "comboDispatchId": "285851",
+                  "referItemId": "892960540686",
+                  "idx": "4",
+                  "title": "音乐节",
+                  "comboDispatchSystem": "cms",
+                  "icon1": "威神V",
+                  "icon2": "赵雷"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i4/O1CN01LkSBIS23G1OlqidLE_!!6000000007227-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?groupId=2395&type=100",
+                  "comboDispatchId": "287192",
+                  "idx": "5",
+                  "title": "Livehouse",
+                  "comboDispatchSystem": "cms"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i1/O1CN01tSaDgk1OmdMH1anfQ_!!6000000001748-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?groupId=2416&type=100",
+                  "comboDispatchId": "285835",
+                  "idx": "6",
+                  "title": "脱口秀",
+                  "comboDispatchSystem": "cms"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i2/O1CN015jmNcX1y95JzAdBJh_!!6000000006535-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?groupId=2370&type=100&referItemId=902411662455",
+                  "iconComboDispatchId": "353702",
+                  "comboDispatchId": "306564",
+                  "referItemId": "902411662455",
+                  "idx": "7",
+                  "title": "展览",
+                  "comboDispatchSystem": "cms",
+                  "icon1": "奥特曼",
+                  "icon2": ""
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i2/O1CN01jEntk11XqbKWimFha_!!6000000002975-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?groupId=2368&type=100",
+                  "comboDispatchId": "270743",
+                  "idx": "8",
+                  "title": "相声曲艺",
+                  "comboDispatchSystem": "cms"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i4/O1CN01FZT4Mn1lp8gTIywsy_!!6000000004867-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?groupId=2346&type=100",
+                  "comboDispatchId": "278361",
+                  "idx": "9",
+                  "title": "音乐会",
+                  "comboDispatchSystem": "cms"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i3/O1CN01ZDBten1e6WnYNq6gi_!!6000000003822-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?groupId=2362&type=100&referItemId=884107358149",
+                  "iconComboDispatchId": "359349",
+                  "comboDispatchId": "309196",
+                  "referItemId": "884107358149",
+                  "idx": "10",
+                  "title": "舞蹈舞剧",
+                  "comboDispatchSystem": "cms",
+                  "icon1": "汉堡芭蕾",
+                  "icon2": "仲夏夜"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i2/O1CN01EkA4Pz1vacHn6lhyK_!!6000000006189-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?groupId=2360&type=100",
+                  "comboDispatchId": "309195",
+                  "idx": "11",
+                  "title": "沉浸式演出",
+                  "comboDispatchSystem": "cms"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i2/O1CN01Vv4Auu1jFkqwikcX7_!!6000000004519-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?groupId=2361&type=100",
+                  "comboDispatchId": "309455",
+                  "idx": "12",
+                  "title": "儿童亲子",
+                  "comboDispatchSystem": "cms"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i2/O1CN01y7P90T206ug60dj7Q_!!6000000006801-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?groupId=2384&type=100",
+                  "comboDispatchId": "286250",
+                  "idx": "13",
+                  "title": "体育",
+                  "comboDispatchSystem": "cms"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i2/O1CN01tLa2wQ20AZqYkjETt_!!6000000006809-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?groupId=4660&type=100",
+                  "comboDispatchId": "351907",
+                  "idx": "14",
+                  "title": "演艺旅游",
+                  "comboDispatchSystem": "cms"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              },
+              {
+                "data": {
+                  "pioneerPic": "https://img.alicdn.com/imgextra/i1/O1CN01rw8CUC1rI3m9YtdDl_!!6000000005607-2-tps-144-144.png",
+                  "schema": "damai://V1/SecondLevelHomePage?id=0&type=100",
+                  "comboDispatchId": "286251",
+                  "idx": "15",
+                  "title": "全部",
+                  "comboDispatchSystem": "cms"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7874"
+              }
+            ],
+            "data": {
+              "componentId": "dm_pioneer_discover_icon",
+              "keywords": [
+                {
+                  "showIndicator": "false",
+                  "action": {
+                    "trackInfo": {
+                      "args": {}
+                    }
+                  }
+                }
+              ],
+              "action": {
+                "item": {
+                  "trackInfo": {
+                    "spmc": "category"
+                  }
+                }
+              },
+              "hiddenTitle": "true",
+              "isFilterEmpty": "true",
+              "title": "大麦-先锋版-发现页-球区",
+              "nodeId": "96109a17-104c-44e6-b4f6-54dd36ca291e"
+            },
+            "level": "2",
+            "more": "false",
+            "style": {},
+            "type": "7874",
+            "cr": {
+              "c": {
+                "7874": {
+                  "item": {
+                    "act": "1",
+                    "d": "item_",
+                    "ack": "schema"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "data": {
+          "nodeId": "228dcee3-e566-44d0-b602-ea573275ce20"
+        },
+        "level": "1",
+        "more": "false"
+      },
+      {
+        "nodes": [
+          {
+            "nodes": [
+              {
+                "data": {
+                  "schema": "https://t.damai.cn/yep/page/m/9a89apxok0?osType=2",
+                  "ut_item_id": "856130273795,880280422239,862100736022,863839593866",
+                  "data": [
+                    {
+                      "sourceId": "856130273795",
+                      "image": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i1/2251059038/O1CN019q9lmu2GdSefaT1ha_!!2251059038.jpg",
+                      "sourceType": "PERFORMANCE",
+                      "price": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "3",
+                            "style": "bold"
+                          }
+                        ],
+                        "text": "￥99起"
+                      },
+                      "cardType": "7939",
+                      "tag": "话剧",
+                      "title": "北京·热血喜剧《显微镜下的大明之丝绢案》"
+                    },
+                    {
+                      "sourceId": "1429839",
+                      "image": "http://gw.alicdn.com/tfs/i1/O1CN016jZPyJ1rmkJ17f4XD_!!6000000005674-0-alipicbeacon.jpg",
+                      "sourceType": "MOVIE",
+                      "price": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "3",
+                            "style": "bold"
+                          },
+                          {
+                            "start": "3",
+                            "end": "5",
+                            "style": "small"
+                          }
+                        ],
+                        "text": "￥18.9起"
+                      },
+                      "cardType": "7939",
+                      "tag": "电影",
+                      "title": "哪吒之魔童闹海"
+                    },
+                    {
+                      "sourceId": "880280422239",
+                      "image": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i2/2251059038/O1CN01xXd5VA2GdSgPyG7Ty_!!2251059038.png",
+                      "sourceType": "PERFORMANCE",
+                      "price": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "3",
+                            "style": "bold"
+                          }
+                        ],
+                        "text": "￥61起"
+                      },
+                      "cardType": "7939",
+                      "tag": "脱口秀",
+                      "title": "北京·喜剧部落【三里屯喜剧联欢会】解压脱口秀|知名脱口秀演员|漫才即兴｜场场爆满"
+                    },
+                    {
+                      "sourceId": "1448084",
+                      "image": "http://gw.alicdn.com/tfs/i1/O1CN01BGHAWa1Y9pxnunBnC_!!6000000003017-0-alipicbeacon.jpg",
+                      "sourceType": "MOVIE",
+                      "price": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "3",
+                            "style": "bold"
+                          },
+                          {
+                            "start": "3",
+                            "end": "5",
+                            "style": "small"
+                          }
+                        ],
+                        "text": "￥29.9起"
+                      },
+                      "cardType": "7939",
+                      "tag": "电影",
+                      "title": "初步举证"
+                    },
+                    {
+                      "sourceId": "862100736022",
+                      "image": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i4/2251059038/O1CN01BWZ3zp2GdSgOU6O09_!!2251059038.png",
+                      "sourceType": "PERFORMANCE",
+                      "price": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "4",
+                            "style": "bold"
+                          }
+                        ],
+                        "text": "￥180起"
+                      },
+                      "cardType": "7939",
+                      "tag": "演唱会",
+                      "title": "北京·【临演套票】87版红楼梦专场演唱音乐会——“红楼梦中曲”"
+                    },
+                    {
+                      "sourceId": "1522554",
+                      "image": "http://gw.alicdn.com/tfs/i4/O1CN01blfUWN1saD5JbOOds_!!6000000005782-0-alipicbeacon.jpg",
+                      "sourceType": "MOVIE",
+                      "price": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "3",
+                            "style": "bold"
+                          },
+                          {
+                            "start": "3",
+                            "end": "5",
+                            "style": "small"
+                          }
+                        ],
+                        "text": "￥18.8起"
+                      },
+                      "cardType": "7939",
+                      "tag": "电影",
+                      "title": "还有明天"
+                    },
+                    {
+                      "sourceId": "863839593866",
+                      "image": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i3/2251059038/O1CN01wHjf6c2GdSfx6VD7l_!!2251059038.jpg",
+                      "sourceType": "PERFORMANCE",
+                      "price": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "4",
+                            "style": "bold"
+                          }
+                        ],
+                        "text": "￥100起"
+                      },
+                      "cardType": "7939",
+                      "tag": "话剧",
+                      "title": "北京·话剧《雷雨》山东省话剧团"
+                    },
+                    {
+                      "sourceId": "1555310",
+                      "image": "http://gw.alicdn.com/tfs/i3/O1CN01ksV1Pk25SVRESmsSb_!!6000000007525-0-alipicbeacon.jpg",
+                      "sourceType": "MOVIE",
+                      "price": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "3",
+                            "style": "bold"
+                          },
+                          {
+                            "start": "3",
+                            "end": "5",
+                            "style": "small"
+                          }
+                        ],
+                        "text": "￥18.8起"
+                      },
+                      "cardType": "7939",
+                      "tag": "电影",
+                      "title": "怒水西流"
+                    }
+                  ],
+                  "subTitle": "5折秒杀",
+                  "ut_show_id": "1429839,1448084,1522554,1555310",
+                  "tabType": "ttdj",
+                  "title": "今日秒杀"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7939"
+              },
+              {
+                "data": {
+                  "schema": "https://t.damai.cn/yep/page/m/djjvocjr4y?osType=2&cityId=852",
+                  "subTitle": "超低价 随时退",
+                  "couponList": [
+                    {
+                      "sourceId": "878616052846",
+                      "originalPrice": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "4",
+                            "style": "bold"
+                          }
+                        ],
+                        "text": "￥189"
+                      },
+                      "sourceType": "PROJECT_COUPON",
+                      "price": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "3",
+                            "style": "bold"
+                          }
+                        ],
+                        "text": "￥88 购"
+                      },
+                      "title": "逛展券"
+                    },
+                    {
+                      "sourceId": "1892756",
+                      "originalPrice": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "3",
+                            "style": "bold"
+                          }
+                        ],
+                        "text": "￥21"
+                      },
+                      "sourceType": "CINEMA_COUPON",
+                      "price": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "2",
+                            "style": "bold"
+                          },
+                          {
+                            "start": "2",
+                            "end": "4",
+                            "style": "small"
+                          }
+                        ],
+                        "text": "￥6.9 购"
+                      },
+                      "count": "3",
+                      "title": "影城券"
+                    },
+                    {
+                      "sourceId": "893260118855",
+                      "originalPrice": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "4",
+                            "style": "bold"
+                          }
+                        ],
+                        "text": "￥180"
+                      },
+                      "sourceType": "PROJECT_COUPON",
+                      "price": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "3",
+                            "style": "bold"
+                          }
+                        ],
+                        "text": "￥59 购"
+                      },
+                      "title": "脱口秀券"
+                    },
+                    {
+                      "sourceId": "1892764",
+                      "originalPrice": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "3",
+                            "style": "bold"
+                          }
+                        ],
+                        "text": "￥21"
+                      },
+                      "sourceType": "CINEMA_COUPON",
+                      "price": {
+                        "highlights": [
+                          {
+                            "start": "0",
+                            "end": "1",
+                            "style": "symbol"
+                          },
+                          {
+                            "start": "1",
+                            "end": "2",
+                            "style": "bold"
+                          },
+                          {
+                            "start": "2",
+                            "end": "4",
+                            "style": "small"
+                          }
+                        ],
+                        "text": "￥6.9 购"
+                      },
+                      "count": "3",
+                      "title": "影城券"
+                    }
+                  ],
+                  "tabType": "dmtg",
+                  "title": "大麦团购"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7940"
+              }
+            ],
+            "data": {
+              "componentId": "dm_pioneer_discover_function_card",
+              "action": {
+                "item": {
+                  "trackInfo": {
+                    "spmc": "function"
+                  }
+                }
+              },
+              "isFilterEmpty": "true",
+              "nodeId": "4552a078-10c0-4535-8a4b-e9bf303c0ede"
+            },
+            "level": "2",
+            "more": "false",
+            "style": {},
+            "type": "7907",
+            "cr": {
+              "c": {
+                "7939": {
+                  "item": {
+                    "act": "1",
+                    "d": "seckill",
+                    "ag": {
+                      "show_id": "${ut_show_id}",
+                      "item_id": "${ut_item_id}"
+                    },
+                    "ack": "schema"
+                  }
+                },
+                "7940": {
+                  "item": {
+                    "act": "1",
+                    "d": "groupbuying",
+                    "ack": "schema"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "nodes": [
+              {
+                "data": {
+                  "schema": "tbmovie://taobao.com/community",
+                  "subTitleColor": "#5F6672",
+                  "subTitle": "120.1万影迷社区",
+                  "icon": "https://gw.alicdn.com/imgextra/i3/O1CN011jkWmR1a35Lx0vlqn_!!6000000003273-2-tps-174-96.png",
+                  "tabType": "AYZC",
+                  "idx": "1",
+                  "title": "爱艺之城"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7937"
+              },
+              {
+                "data": {
+                  "schema": "https://m.taopiaopiao.com/marketing/cbb/home.html",
+                  "subTitleColor": "#5F6672",
+                  "subTitle": "请客包场 助力票房",
+                  "icon": "https://gw.alicdn.com/imgextra/i1/O1CN01S1PNGx1wJV60ezf7A_!!6000000006287-2-tps-120-72.png",
+                  "tabType": "COMMON",
+                  "idx": "2",
+                  "title": "影院包场"
+                },
+                "level": "3",
+                "more": "false",
+                "type": "7938"
+              }
+            ],
+            "data": {
+              "componentId": "dm_pioneer_discover_tab_button_v2",
+              "action": {
+                "item": {
+                  "trackInfo": {
+                    "spmc": "function"
+                  }
+                }
+              },
+              "isFilterEmpty": "true",
+              "nodeId": "99400dce-5411-4581-a21e-998d0ff7fc2b"
+            },
+            "level": "2",
+            "more": "false",
+            "style": {},
+            "type": "7906",
+            "cr": {
+              "c": {
+                "7937": {
+                  "item": {
+                    "act": "1",
+                    "d": "thecityofaiyi",
+                    "ack": "schema"
+                  }
+                },
+                "7938": {
+                  "item": {
+                    "act": "1",
+                    "d": "filmreservation",
+                    "ack": "schema"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "data": {
+          "nodeId": "1e9517d8-5639-49c9-bf56-fb8d2c9730c7"
+        },
+        "level": "1",
+        "more": "false"
+      },
+      {
+        "nodes": [
+          {
+            "nodes": [
+              {
+                "nodes": [
+                  {
+                    "data": {
+                      "image": "https://gw.alicdn.com/imgextra/i2/O1CN01uTp82C1JDIhvxBkaW_!!6000000000994-2-tps-81-44.png",
+                      "itemList": [
+                        {
+                          "schema": "damai://V1/ProjectPage?id=880280422239",
+                          "itemId": "880280422239",
+                          "rank": "1",
+                          "title": "喜剧部落【三里屯喜剧联欢会】解压脱口秀|知名脱口秀演员|漫才即兴｜场场爆满",
+                          "poster": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i2/2251059038/O1CN01xXd5VA2GdSgPyG7Ty_!!2251059038.png"
+                        },
+                        {
+                          "schema": "damai://V1/ProjectPage?id=896666672726",
+                          "itemId": "896666672726",
+                          "rank": "2",
+                          "title": "三里屯脱口秀【大笑喜剧】｜天天｜综艺卡司｜吐槽爆笑大会｜开心互动｜即兴喜剧爆笑之夜精品秀＞",
+                          "poster": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i2/2251059038/O1CN01H6tt6R2GdSgVyrthJ_!!2251059038.png"
+                        }
+                      ],
+                      "id": "3016",
+                      "rankTitle": "脱口秀热销榜",
+                      "jumpUrl": "damai://V1/RankSquare?categoryId=267"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7903"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=902258916909",
+                      "showTime": "2025.04.16 周三 20:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "Livehouse",
+                        "type": "201"
+                      },
+                      "formattedDistance": "625m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "Blue Note Beijing 爵士乐俱乐部",
+                      "priceStr": "160-220",
+                      "priceLow": "160",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "北京丨4.16 「A DAY IN LIFE」FIABA 释遥三重奏",
+                      "priceShowText": "160",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i4/2251059038/O1CN010o7W0j2GdSgVBIYrw_!!2251059038.png",
+                      "id": "902258916909"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=901808932953",
+                      "showTime": "2025.04.18 周五 20:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "Livehouse",
+                        "type": "201"
+                      },
+                      "formattedDistance": "625m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "Blue Note Beijing 爵士乐俱乐部",
+                      "priceStr": "260-320",
+                      "priceLow": "260",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "北京丨4.18 Nao Yoshioka吉岡尚——灵魂与音乐都在不断进化",
+                      "priceShowText": "260",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/i2/2251059038/O1CN01NTzbgb2GdSgXXPzMW_!!4611686018427383646-2-item_pic.png",
+                      "id": "901808932953"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=902812825148",
+                      "showTime": "2025.04.20 周日 20:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "Livehouse",
+                        "type": "201"
+                      },
+                      "formattedDistance": "625m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "Blue Note Beijing 爵士乐俱乐部",
+                      "priceStr": "260",
+                      "priceLow": "260",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "北京 | 4.20 「Neophonic」打破边界，重塑新声，碰撞无限可能",
+                      "priceShowText": "260",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/i4/2251059038/O1CN01P56yxc2GdSgZSBe0Q_!!4611686018427383646-2-item_pic.png",
+                      "id": "902812825148"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=900987864841",
+                      "showTime": "2025.04.12-04.13",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "Livehouse",
+                        "type": "201"
+                      },
+                      "formattedDistance": "625m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "Blue Note Beijing 爵士乐俱乐部",
+                      "priceStr": "260-320",
+                      "priceLow": "260",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "北京丨4.12-13 「Roots·寻根之旅」Sugar Blue带你重构蓝调爵士",
+                      "priceShowText": "260",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/i2/2251059038/O1CN01sCiRTy2GdSgVWxtZU_!!4611686018427383646-2-item_pic.png",
+                      "id": "900987864841"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=898820258313",
+                      "showTime": "2025.04.03-04.04",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "Livehouse",
+                        "type": "201"
+                      },
+                      "formattedDistance": "625m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "Blue Note Beijing 爵士乐俱乐部",
+                      "priceStr": "220-280",
+                      "priceLow": "220",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "北京丨4.3-4.4 「Blow your mind」听海风吟游诗人Saunders Sermons",
+                      "priceShowText": "220",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/i1/2251059038/O1CN01CR0HAH2GdSgSdKiSt_!!4611686018427383646-2-item_pic.png",
+                      "id": "898820258313"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=897563312076",
+                      "showTag": "缺省乐队",
+                      "showTime": "2025.03.30 周日 20:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "Livehouse",
+                        "type": "201"
+                      },
+                      "formattedDistance": "625m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "Blue Note Beijing 爵士乐俱乐部",
+                      "priceStr": "130-240",
+                      "priceLow": "130",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "北京 |  3.30 「黑白共舞 众生共栖」缺省X王忆灵&携火者联合专场",
+                      "priceShowText": "130",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i2/2251059038/O1CN01Vog8YB2GdSgF0IOFS_!!2251059038.png",
+                      "id": "897563312076"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=898489252441",
+                      "showTime": "2025.04.05 周六 20:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "Livehouse",
+                        "type": "201"
+                      },
+                      "formattedDistance": "625m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "Blue Note Beijing 爵士乐俱乐部",
+                      "priceStr": "220-280",
+                      "priceLow": "220",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "北京丨4.5 [致敬John Coltrane」Yannick Rieu四重奏音乐会",
+                      "priceShowText": "220",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/i1/2251059038/O1CN01uZq7dv2GdSgNmp1N8_!!4611686018427383646-2-item_pic.png",
+                      "id": "898489252441"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=895444770601",
+                      "showTime": "2025.03.29 周六 22:30",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "Livehouse",
+                        "type": "201"
+                      },
+                      "formattedDistance": "625m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "Blue Note Beijing 爵士乐俱乐部",
+                      "priceStr": "358",
+                      "priceLow": "358",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "北京 | 3.29 「明星阵容12年后再聚首」菊地成孔DUB六重奏",
+                      "priceShowText": "358",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/i1/2251059038/O1CN01cQRomJ2GdSgJ8AA6v_!!4611686018427383646-2-item_pic.png",
+                      "id": "895444770601"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=901540657138",
+                      "showTime": "2025.04.19 周六 20:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "Livehouse",
+                        "type": "201"
+                      },
+                      "formattedDistance": "625m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "Blue Note Beijing 爵士乐俱乐部",
+                      "priceStr": "179-199",
+                      "priceLow": "179",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "北京 | 4.19 「沙漠玫瑰与奇幻之旅」ZaZaZsu《第一千夜》新专辑首唱会",
+                      "priceShowText": "179",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i2/2251059038/O1CN01oAHdpB2GdSgPuRuZw_!!2251059038.png",
+                      "id": "901540657138"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=902479415140",
+                      "showTime": "2025.04.10 周四 20:00",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "Livehouse",
+                        "type": "201"
+                      },
+                      "formattedDistance": "625m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "Blue Note Beijing 爵士乐俱乐部",
+                      "priceStr": "228",
+                      "priceLow": "228",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "北京 |  4.10 The Harridans「摇滚与诗」迷幻摇滚的诗意狂想",
+                      "priceShowText": "228",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/i3/2251059038/O1CN01EpspHl2GdSga43jPU_!!4611686018427383646-2-item_pic.png",
+                      "id": "902479415140"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=809909570386",
+                      "showTag": "沉浸式高分榜NO.1",
+                      "showTime": "2025.03.28-04.26",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "沉浸式",
+                        "type": "201"
+                      },
+                      "formattedDistance": "667m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "itemScore": "9.7",
+                      "venueName": "光芒·保利沉浸剧场",
+                      "priceStr": "224-520",
+                      "priceLow": "224",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "marketPromotionTags": [
+                          {
+                            "prefix": "",
+                            "subType": "2",
+                            "shortTag": "8折起",
+                            "tag": "8折起",
+                            "type": "SINGLE",
+                            "value": "800"
+                          },
+                          {
+                            "prefix": "",
+                            "shortTag": "6.8折起",
+                            "tag": "套票6.8折起",
+                            "type": "COMBINE",
+                            "value": "684.2"
+                          }
+                        ]
+                      },
+                      "name": "原创沉浸式戏剧《逆流Sanctuary》",
+                      "priceShowText": "224",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/i2/2251059038/O1CN01MSSsY62GdSgdGPrGe_!!4611686018427383646-2-item_pic.png",
+                      "id": "809909570386"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=852638045196",
+                      "bottomRight": {
+                        "tag": "视频icon",
+                        "type": "401"
+                      },
+                      "showTime": "2024.12.04-2025.06.01",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "实景互动",
+                        "type": "201"
+                      },
+                      "formattedDistance": "696m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "itemScore": "9.6",
+                      "venueName": "深海奇遇·海洋主题 VR 沉浸展",
+                      "priceStr": "99-349",
+                      "priceLow": "99",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "marketPromotionTags": []
+                      },
+                      "name": "北京·《深海奇遇》潜海VR体验·2000米海底国风深海幻境·王府井新地标！",
+                      "priceShowText": "99",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/i4/2251059038/O1CN01tjmzGg2GdSg19lX2F_!!4611686018427383646-0-item_pic.jpg",
+                      "id": "852638045196"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=837061283243",
+                      "showTime": "2025.03.27-04.30",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "实景互动",
+                        "type": "201"
+                      },
+                      "formattedDistance": "832m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "itemScore": "8.9",
+                      "venueName": "看我天地中轴VR互动体验展",
+                      "priceStr": "158-358",
+                      "priceLow": "158",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "commonTags": [
+                          {
+                            "name": "随时退",
+                            "id": "1"
+                          }
+                        ],
+                        "marketPromotionTags": []
+                      },
+                      "name": "北京站「看我天地中轴」影院级VR互动体验展",
+                      "priceShowText": "158",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/i4/2251059038/O1CN01TXRaEZ2GdSgcbOXEY_!!4611686018427383646-0-item_pic.jpg",
+                      "id": "837061283243"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=886271615698",
+                      "showTime": "2025.04.06 周日 14:30",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "戏曲",
+                        "type": "201"
+                      },
+                      "formattedDistance": "994m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "颜料会馆",
+                      "priceStr": "100-476",
+                      "priceLow": "100",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "commonTags": [
+                          {
+                            "name": "可选座",
+                            "id": "999"
+                          }
+                        ],
+                        "marketPromotionTags": [
+                          {
+                            "prefix": "",
+                            "shortTag": "8.5折起",
+                            "tag": "套票8.5折起",
+                            "type": "COMBINE",
+                            "value": "850.0"
+                          }
+                        ]
+                      },
+                      "name": "越剧《红楼梦》（徐王版）",
+                      "priceShowText": "100",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/i1/2251059038/O1CN018OmueF2GdSfuNNBnP_!!4611686018427383646-0-item_pic.jpg",
+                      "id": "886271615698"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  },
+                  {
+                    "data": {
+                      "schema": "damai://V1/ProjectPage?id=899739058606",
+                      "showTime": "2025.04.04 周五 14:30",
+                      "cardType": "4",
+                      "topRight": {
+                        "tag": "戏曲",
+                        "type": "201"
+                      },
+                      "formattedDistance": "994m",
+                      "showStatus": {
+                        "id": "0",
+                        "desc": "去购票"
+                      },
+                      "wantSee": "false",
+                      "venueName": "颜料会馆",
+                      "priceStr": "80-280",
+                      "priceLow": "80",
+                      "cityName": "北京",
+                      "tagModel": {
+                        "commonTags": [
+                          {
+                            "name": "可选座",
+                            "id": "999"
+                          }
+                        ],
+                        "marketPromotionTags": []
+                      },
+                      "name": "颜料会馆4月4日京剧国粹经典折子戏：《小放牛》《三娘教子》",
+                      "priceShowText": "80",
+                      "verticalPic": "https://img.alicdn.com/bao/uploaded/i1/2251059038/O1CN01eunVEX2GdSgT8Q3Is_!!4611686018427383646-2-item_pic.png",
+                      "id": "899739058606"
+                    },
+                    "level": "3",
+                    "more": "false",
+                    "type": "7880"
+                  }
+                ],
+                "data": {
+                  "action": {
+                    "item": {
+                      "trackInfo": {
+                        "spmc": "bottom"
+                      }
+                    }
+                  },
+                  "tabType": "nearby",
+                  "isFilterEmpty": "false",
+                  "secondaryTabs": [
+                    {
+                      "projectCount": "2106",
+                      "latitude": "39.904179",
+                      "tabType": "nearby_852",
+                      "cityId": "852",
+                      "title": "本地",
+                      "selected": "true",
+                      "longitude": "116.407387"
+                    },
+                    {
+                      "comboDispatchId": "344083",
+                      "groupId": "3924",
+                      "latitude": "39.910866",
+                      "tabType": "submarket_西单",
+                      "cityId": "852",
+                      "title": "西单",
+                      "longitude": "116.372856"
+                    },
+                    {
+                      "comboDispatchId": "342488",
+                      "groupId": "3923",
+                      "latitude": "39.934811",
+                      "tabType": "submarket_三里屯",
+                      "cityId": "852",
+                      "title": "三里屯",
+                      "longitude": "116.454323"
+                    },
+                    {
+                      "comboDispatchId": "342566",
+                      "groupId": "3926",
+                      "latitude": "39.910255",
+                      "tabType": "submarket_五棵松",
+                      "cityId": "872",
+                      "title": "五棵松",
+                      "longitude": "116.281013"
+                    },
+                    {
+                      "comboDispatchId": "342490",
+                      "groupId": "3925",
+                      "latitude": "39.984932",
+                      "tabType": "submarket_798",
+                      "cityId": "872",
+                      "title": "798",
+                      "longitude": "116.495514"
+                    },
+                    {
+                      "projectCount": "51",
+                      "latitude": "39.538304",
+                      "tabType": "nearby_2337",
+                      "cityId": "2337",
+                      "title": "廊坊",
+                      "longitude": "116.683546"
+                    },
+                    {
+                      "projectCount": "615",
+                      "latitude": "39.085318",
+                      "tabType": "nearby_1209",
+                      "cityId": "1209",
+                      "title": "天津",
+                      "longitude": "117.201509"
+                    },
+                    {
+                      "projectCount": "51",
+                      "latitude": "38.874476",
+                      "tabType": "nearby_2348",
+                      "cityId": "2348",
+                      "title": "保定",
+                      "longitude": "115.464523"
+                    },
+                    {
+                      "projectCount": "231",
+                      "latitude": "39.63068",
+                      "tabType": "nearby_2314",
+                      "cityId": "2314",
+                      "title": "唐山",
+                      "longitude": "118.180149"
+                    },
+                    {
+                      "projectCount": "22",
+                      "latitude": "40.768931",
+                      "tabType": "nearby_2374",
+                      "cityId": "2374",
+                      "title": "张家口",
+                      "longitude": "114.885895"
+                    },
+                    {
+                      "projectCount": "29",
+                      "latitude": "40.952942",
+                      "tabType": "nearby_2392",
+                      "cityId": "2392",
+                      "title": "承德",
+                      "longitude": "117.962749"
+                    }
+                  ],
+                  "title": "附近",
+                  "nodeId": "3c3846b3-423e-469c-9c87-8f417489e65c",
+                  "selected": "true"
+                },
+                "level": "2",
+                "more": "true",
+                "type": "7879",
+                "cr": {
+                  "c": {
+                    "7880": {
+                      "item": {
+                        "acu": "damai://V1/ProjectPage?id=${id}",
+                        "act": "1",
+                        "d": "item_",
+                        "ag": {
+                          "item_id": "${${id}}"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "data": {
+                  "action": {
+                    "item": {
+                      "trackInfo": {
+                        "spmc": "bottom"
+                      }
+                    }
+                  },
+                  "tabType": "abroad",
+                  "cityId": "9999,850,848",
+                  "isFilterEmpty": "false",
+                  "title": "全球演出",
+                  "nodeId": "e88b002b-f5f8-41cb-9dfe-188bf65746c8"
+                },
+                "level": "2",
+                "more": "false",
+                "type": "7879",
+                "cr": {
+                  "c": {
+                    "7880": {
+                      "item": {
+                        "acu": "damai://V1/ProjectPage?id=${id}",
+                        "act": "1",
+                        "d": "item_",
+                        "ag": {
+                          "item_id": "${${id}}"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "data": {
+                  "action": {
+                    "item": {
+                      "trackInfo": {
+                        "spmc": "bottom"
+                      }
+                    }
+                  },
+                  "tabType": "abroad",
+                  "cityId": "9999,850,848",
+                  "isFilterEmpty": "false",
+                  "title": "热卖周边",
+                  "nodeId": "e88b002b-f5f8-41cb-9dfe-188bf65746c8"
+                },
+                "level": "2",
+                "more": "false",
+                "type": "7879",
+                "cr": {
+                  "c": {
+                    "7880": {
+                      "item": {
+                        "acu": "damai://V1/ProjectPage?id=${id}",
+                        "act": "1",
+                        "d": "item_",
+                        "ag": {
+                          "item_id": "${${id}}"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "data": {
+              "componentId": "dm_pioneer_discover_project_list",
+              "action": {
+                "item": {
+                  "trackInfo": {
+                    "spmc": "bottom"
+                  }
+                }
+              },
+              "isFilterEmpty": "true",
+              "nodeId": "0ada73c4-8e6a-49b5-8154-5a5855bff3fb"
+            },
+            "level": "2",
+            "more": "false",
+            "style": {},
+            "type": "7878"
+          }
+        ],
+        "data": {
+          "nodeId": "dde033fb-cf92-4bc0-a648-c4b8f29bba56"
+        },
+        "level": "1",
+        "more": "false"
+      }
+    ],
+    "data": {
+      "top": {
+        "layerId": "ae0092f4-5aa9-45d6-aa42-dc7d9814b28d",
+        "keywords": [
+          {
+            "comboDispatchId": "1278530",
+            "idx": "1",
+            "keyword": "陈楚生周边",
+            "comboDispatchSystem": "om"
+          },
+          {
+            "keyword": "张杰",
+            "alg": "{\"alginfo\":\"-1rcSourceType-2city2query-1rcTrig-2+1-1rcType-2CITY2QUERY-1recallTrigLen-20.00-1show_id-20-1rcQSim-28.93709-1rcTrigType-2CITY2QUERY-1rcQCate-2C2Q-1rcQuery-2852-1sceneId-214177-1rkScore-28.937087-1rcRecQuery-2张杰-1pn-21-1abId-2237526\",\"recext\":\"reqid=041b0bb9-f13b-475e-b3a6-7c923a138ff0\",\"sam\":\"1007.24177.0.237526\"}"
+          },
+          {
+            "keyword": "周杰伦",
+            "alg": "{\"alginfo\":\"-1rcSourceType-2city2query-1rcTrig-2+1-1rcType-2CITY2QUERY-1recallTrigLen-20.00-1show_id-20-1rcQSim-28.88114-1rcTrigType-2CITY2QUERY-1rcQCate-2C2Q-1rcQuery-2852-1sceneId-214177-1rkScore-28.881142-1rcRecQuery-2周杰伦-1pn-21-1abId-2237526\",\"recext\":\"reqid=041b0bb9-f13b-475e-b3a6-7c923a138ff0\",\"sam\":\"1007.24177.0.237526\"}"
+          },
+          {
+            "keyword": "哪吒之魔童闹海"
+          },
+          {
+            "keyword": "李健",
+            "alg": "{\"alginfo\":\"-1rcSourceType-2city2query-1rcTrig-2+1-1rcType-2CITY2QUERY-1recallTrigLen-20.00-1show_id-20-1rcQSim-28.37448-1rcTrigType-2CITY2QUERY-1rcQCate-2C2Q-1rcQuery-2852-1sceneId-214177-1rkScore-28.374477-1rcRecQuery-2李健-1pn-21-1abId-2237526\",\"recext\":\"reqid=041b0bb9-f13b-475e-b3a6-7c923a138ff0\",\"sam\":\"1007.24177.0.237526\"}"
+          },
+          {
+            "keyword": "林俊杰",
+            "alg": "{\"alginfo\":\"-1rcSourceType-2city2query-1rcTrig-2+1-1rcType-2CITY2QUERY-1recallTrigLen-20.00-1show_id-20-1rcQSim-28.33639-1rcTrigType-2CITY2QUERY-1rcQCate-2C2Q-1rcQuery-2852-1sceneId-214177-1rkScore-28.33639-1rcRecQuery-2林俊杰-1pn-21-1abId-2237526\",\"recext\":\"reqid=041b0bb9-f13b-475e-b3a6-7c923a138ff0\",\"sam\":\"1007.24177.0.237526\"}"
+          },
+          {
+            "keyword": "刀郎",
+            "alg": "{\"alginfo\":\"-1rcSourceType-2city2query-1rcTrig-2+1-1rcType-2CITY2QUERY-1recallTrigLen-20.00-1show_id-20-1rcQSim-28.15680-1rcTrigType-2CITY2QUERY-1rcQCate-2C2Q-1rcQuery-2852-1sceneId-214177-1rkScore-28.156797-1rcRecQuery-2刀郎-1pn-21-1abId-2237526\",\"recext\":\"reqid=041b0bb9-f13b-475e-b3a6-7c923a138ff0\",\"sam\":\"1007.24177.0.237526\"}"
+          },
+          {
+            "keyword": "孙燕姿",
+            "alg": "{\"alginfo\":\"-1rcSourceType-2city2query-1rcTrig-2+1-1rcType-2CITY2QUERY-1recallTrigLen-20.00-1show_id-20-1rcQSim-28.06306-1rcTrigType-2CITY2QUERY-1rcQCate-2C2Q-1rcQuery-2852-1sceneId-214177-1rkScore-28.063063-1rcRecQuery-2孙燕姿-1pn-21-1abId-2237526\",\"recext\":\"reqid=041b0bb9-f13b-475e-b3a6-7c923a138ff0\",\"sam\":\"1007.24177.0.237526\"}"
+          },
+          {
+            "keyword": "陈楚生",
+            "alg": "{\"alginfo\":\"-1rcSourceType-2city2query-1rcTrig-2+1-1rcType-2CITY2QUERY-1recallTrigLen-20.00-1show_id-20-1rcQSim-27.48493-1rcTrigType-2CITY2QUERY-1rcQCate-2C2Q-1rcQuery-2852-1sceneId-214177-1rkScore-27.48493-1rcRecQuery-2陈楚生-1pn-21-1abId-2237526\",\"recext\":\"reqid=041b0bb9-f13b-475e-b3a6-7c923a138ff0\",\"sam\":\"1007.24177.0.237526\"}"
+          },
+          {
+            "keyword": "汪苏泷",
+            "alg": "{\"alginfo\":\"-1rcSourceType-2city2query-1rcTrig-2+1-1rcType-2CITY2QUERY-1recallTrigLen-20.00-1show_id-20-1rcQSim-27.47591-1rcTrigType-2CITY2QUERY-1rcQCate-2C2Q-1rcQuery-2852-1sceneId-214177-1rkScore-27.475906-1rcRecQuery-2汪苏泷-1pn-21-1abId-2237526\",\"recext\":\"reqid=041b0bb9-f13b-475e-b3a6-7c923a138ff0\",\"sam\":\"1007.24177.0.237526\"}"
+          },
+          {
+            "keyword": "华晨宇",
+            "alg": "{\"alginfo\":\"-1rcSourceType-2city2query-1rcTrig-2+1-1rcType-2CITY2QUERY-1recallTrigLen-20.00-1show_id-20-1rcQSim-27.09008-1rcTrigType-2CITY2QUERY-1rcQCate-2C2Q-1rcQuery-2852-1sceneId-214177-1rkScore-27.090077-1rcRecQuery-2华晨宇-1pn-21-1abId-2237526\",\"recext\":\"reqid=041b0bb9-f13b-475e-b3a6-7c923a138ff0\",\"sam\":\"1007.24177.0.237526\"}"
+          },
+          {
+            "keyword": "林忆莲",
+            "alg": "{\"alginfo\":\"-1rcSourceType-2city2query-1rcTrig-2+1-1rcType-2CITY2QUERY-1recallTrigLen-20.00-1show_id-20-1rcQSim-27.08339-1rcTrigType-2CITY2QUERY-1rcQCate-2C2Q-1rcQuery-2852-1sceneId-214177-1rkScore-27.083388-1rcRecQuery-2林忆莲-1pn-21-1abId-2237526\",\"recext\":\"reqid=041b0bb9-f13b-475e-b3a6-7c923a138ff0\",\"sam\":\"1007.24177.0.237526\"}"
+          }
+        ],
+        "action": {
+          "barSearch": {
+            "trackInfo": {
+              "spmd": "searchtext"
+            }
+          },
+          "item": {
+            "trackInfo": {
+              "spmc": "top"
+            }
+          },
+          "bar_follow_btn": {
+            "trackInfo": {
+              "spmd": "follow",
+              "exposeEventName": "",
+              "clickEventName": ""
+            }
+          },
+          "city": {
+            "trackInfo": {
+              "spmd": "city"
+            }
+          },
+          "barResource": {
+            "trackInfo": {
+              "spmd": "resource"
+            }
+          },
+          "bar_share": {
+            "trackInfo": {
+              "spmd": "share",
+              "exposeEventName": "",
+              "clickEventName": ""
+            }
+          }
+        },
+        "sectionId": "965a75f4-f3be-49eb-a780-24376e326401",
+        "entrance": {
+          "lottie": "",
+          "comboDispatchId": "342101",
+          "icon": "https://gw.alicdn.com/imgextra/i1/O1CN010ewB2Y1KD8Afon0YY_!!6000000001129-1-tps-112-60.gif",
+          "idx": "1",
+          "comboDispatchSystem": "cms",
+          "jumpUrl": "https://t.taopiaopiao.com/yep/page/m/wm0jn4ggth"
+        }
+      },
+      "spmab": "a2o4t.pioneer_discovery",
+      "serverTime": "1743152297299",
+      "pageName": "pioneer_discovery"
+    },
+    "level": "0",
+    "more": "false"
+  },
+  "v": "3.0",
+  "api": "mtop.damai.mec.aristotle.get"
+}

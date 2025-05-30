@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DLinearLayout xmlns:dinamic="http://schemas.android.com/apk/res-auto"
+    dinamic:dOrientation="vertical"
+    dinamic:dWidth="375ap"
+    dinamic:dHeight="match_content">
+    <DTextView
+        dinamic:dText="@triple{@data{fields.dialogTitle}, @data{fields.dialogTitle}, @data{fields.title}}"
+        dinamic:dTextSize="16np"
+        dinamic:dTextColor="@data{fields.titleCss.color}"
+        dinamic:dTextAlignment="center"
+        dinamic:dMaxLines="1"
+        dinamic:dLineBreakMode="end"
+        dinamic:dMarginTop="12np"
+        dinamic:dWidth="match_parent"
+        dinamic:dHeight="match_content"
+        dinamic:dAccessibilityTextHidden="false"
+        dinamic:dFocusable="false"
+        dinamic:dGravity="center"/>
+    <DTextView
+        dinamic:dText="@data{fields.desc}"
+        dinamic:dTextSize="15np"
+        dinamic:dTextColor="@data{fields.descCss.color}"
+        dinamic:dTextAlignment="center"
+        dinamic:dMaxLines="2"
+        dinamic:dLineBreakMode="end"
+        dinamic:dMarginTop="10np"
+        dinamic:dMarginBottom="12np"
+        dinamic:dWidth="match_parent"
+        dinamic:dHeight="match_content"
+        dinamic:dAccessibilityTextHidden="false"
+        dinamic:dFocusable="false"
+        dinamic:dGravity="center"/>
+</DLinearLayout>

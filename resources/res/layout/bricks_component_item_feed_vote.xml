@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.alibaba.pictures.bricks.view.BricksStrokeLinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/item_feed_vote_ui"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:sl_corners_radius="6dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/item_feed_vote_top_img"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:scaleType="centerCrop"/>
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/bricks_item_vote_layout"/>
+        <com.alibaba.pictures.bricks.view.DMCategroyTagView
+            android:layout_gravity="left"
+            android:id="@+id/item_vote_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="17dp"/>
+        <ImageView
+            android:layout_gravity="left"
+            android:id="@+id/item_vote_tag_img"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="17dp"
+            android:src="@drawable/bricks_feed_vote_tag_img"/>
+    </FrameLayout>
+</com.alibaba.pictures.bricks.view.BricksStrokeLinearLayout>

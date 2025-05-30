@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:background="@drawable/communication_item_tag_bg"
+    android:paddingLeft="7dp"
+    android:paddingTop="5.5dp"
+    android:paddingRight="9dp"
+    android:paddingBottom="5.5dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <com.taobao.movie.android.commonui.widget.IconFontTextView
+        android:textSize="12dp"
+        android:textColor="@color/color_tpp_primary_subtitle"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/icon_font_film_icon"/>
+    <TextView
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:textColor="@color/color_tpp_primary_subtitle"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/tv_tips_title"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:singleLine="true"/>
+</LinearLayout>

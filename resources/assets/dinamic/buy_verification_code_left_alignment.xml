@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DFrameLayout xmlns:dinamic="http://schemas.android.com/apk/res-auto"
+    dinamic:dWidth="375ap"
+    dinamic:dHeight="40np"
+    dinamic:dAccessibilityTextHidden="false">
+    <DLinearLayout
+        dinamic:dOrientation="horizontal"
+        dinamic:dMarginLeft="12np"
+        dinamic:dMarginRight="12np"
+        dinamic:dWidth="match_parent"
+        dinamic:dHeight="40np"
+        dinamic:dBackgroundColor="#ffffff"
+        dinamic:dAccessibilityTextHidden="false"
+        dinamic:dClipTopRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipTopLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipBottomRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipBottomLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}">
+        <DImageView
+            dinamic:dScaleType="fitCenter"
+            dinamic:dImageUrl="@data{fields.iconUrl}"
+            dinamic:dMarginLeft="12np"
+            dinamic:dMarginRight="5np"
+            dinamic:dWidth="18np"
+            dinamic:dHeight="18np"
+            dinamic:dGravity="center"/>
+        <DTextView
+            dinamic:dText="@data{fields.title}"
+            dinamic:dTextSize="13np"
+            dinamic:dTextColor="#333333"
+            dinamic:dTextAlignment="left"
+            dinamic:dMaxLines="2"
+            dinamic:dMaxWidth="80np"
+            dinamic:dWidth="match_content"
+            dinamic:dHeight="match_content"
+            dinamic:dAccessibilityTextHidden="false"
+            dinamic:dFocusable="false"
+            dinamic:dGravity="leftCenter"/>
+        <DTextInput
+            dinamic:dTextSize="13np"
+            dinamic:dTextColor="#999999"
+            dinamic:dMarginLeft="10np"
+            dinamic:dWidth="0np"
+            dinamic:dHeight="match_parent"
+            dinamic:dVisibility="@triple{@platform{&apos;iOS&apos;},&apos;visible&apos;,&apos;gone&apos;}"
+            dinamic:dPlaceholder="@data{fields.placeholder}"
+            dinamic:dPlaceholderColor="#999999"
+            dinamic:dWeight="1.0"
+            dinamic:onFinish="@handleDinamicXEvent{@const{onFinish}}"
+            dinamic:onChange="@handleDinamicXEvent{@const{onFinish}}"/>
+        <TradeTextInput
+            dinamic:dTextSize="13np"
+            dinamic:dTextColor="#999999"
+            dinamic:dMarginLeft="10np"
+            dinamic:dWidth="0np"
+            dinamic:dHeight="match_parent"
+            dinamic:dVisibility="@triple{@platform{&apos;Android&apos;},&apos;visible&apos;,&apos;gone&apos;}"
+            dinamic:dPlaceholder="@data{fields.placeholder}"
+            dinamic:dPlaceholderColor="#999999"
+            dinamic:dWeight="1.0"
+            dinamic:onFinish="@handleDinamicXEvent{@const{onFinish}}"
+            dinamic:dInputType="@triple{@data{events.onFinish[0].fields.request}, &apos;dialog&apos;, &apos;input&apos;}"/>
+        <TradeCountDownTimer
+            dinamic:dTextColor="#333333"
+            dinamic:dMarginRight="12np"
+            dinamic:dWidth="85np"
+            dinamic:dHeight="28np"
+            dinamic:dCornerRadius="14np"
+            dinamic:dBorderWidth="1np"
+            dinamic:dBorderColor="#4A4A4A"
+            dinamic:dGravity="rightCenter"
+            dinamic:onFinish="@handleDinamicXEvent{@const{countDownFinish}}"
+            dinamic:dTextGravity="center"
+            dinamic:dTimeInFuture="@data{fields.countDownSecond}"
+            dinamic:dCountInterval="@data{fields.countDownInterval}"
+            dinamic:dIdleText="@triple{@ieq{@data{fields.clickCount}, @const{0}}, @data{fields.btnTitle}, @data{fields.btnCountDownTitle}}"
+            dinamic:dBeginTime="@data{fields.beginTime}"
+            dinamic:onClick="@handleDinamicXEvent{@const{itemClick}}"/>
+    </DLinearLayout>
+</DFrameLayout>

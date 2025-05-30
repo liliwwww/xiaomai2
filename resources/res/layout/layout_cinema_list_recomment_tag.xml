@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fl_recomment_tag"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minHeight="15dp">
+    <com.taobao.movie.android.commonui.widget.MoCardTextView
+        android:textSize="9dp"
+        android:textColor="@color/color_tpp_primary_white"
+        android:gravity="center"
+        android:id="@+id/recommend_spec_tag"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        app:mocard_background_color="@color/tpp_primary_red"
+        app:mocard_background_radius_leftbottom="0dp"
+        app:mocard_background_radius_lefttop="6dp"
+        app:mocard_background_radius_rightbottom="6dp"
+        app:mocard_background_radius_righttop="0dp"/>
+</FrameLayout>

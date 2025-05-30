@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refresh_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.taobao.movie.combolist.scrollview.ComboScrollView
+        android:id="@+id/combolist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+    </com.taobao.movie.combolist.scrollview.ComboScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

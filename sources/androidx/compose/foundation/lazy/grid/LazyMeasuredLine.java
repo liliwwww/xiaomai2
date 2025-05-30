@@ -1,0 +1,101 @@
+package androidx.compose.foundation.lazy.grid;
+
+import androidx.compose.p004ui.unit.LayoutDirection;
+import java.util.ArrayList;
+import java.util.List;
+import kotlin.jvm.internal.DefaultConstructorMarker;
+import kotlin.ranges.RangesKt;
+import org.jetbrains.annotations.NotNull;
+
+/* compiled from: Taobao */
+/* loaded from: classes2.dex */
+public final class LazyMeasuredLine {
+    private final int crossAxisSpacing;
+    private final int index;
+    private final boolean isVertical;
+
+    @NotNull
+    private final LazyMeasuredItem[] items;
+
+    @NotNull
+    private final LayoutDirection layoutDirection;
+    private final int mainAxisSize;
+    private final int mainAxisSizeWithSpacings;
+    private final int mainAxisSpacing;
+    private final int slotsPerLine;
+
+    @NotNull
+    private final List<GridItemSpan> spans;
+
+    private LazyMeasuredLine(int i, LazyMeasuredItem[] lazyMeasuredItemArr, List<GridItemSpan> list, boolean z, int i2, LayoutDirection layoutDirection, int i3, int i4) {
+        this.index = i;
+        this.items = lazyMeasuredItemArr;
+        this.spans = list;
+        this.isVertical = z;
+        this.slotsPerLine = i2;
+        this.layoutDirection = layoutDirection;
+        this.mainAxisSpacing = i3;
+        this.crossAxisSpacing = i4;
+        int i5 = 0;
+        for (LazyMeasuredItem lazyMeasuredItem : lazyMeasuredItemArr) {
+            i5 = Math.max(i5, lazyMeasuredItem.getMainAxisSize());
+        }
+        this.mainAxisSize = i5;
+        this.mainAxisSizeWithSpacings = RangesKt.coerceAtLeast(i5 + this.mainAxisSpacing, 0);
+    }
+
+    public /* synthetic */ LazyMeasuredLine(int i, LazyMeasuredItem[] lazyMeasuredItemArr, List list, boolean z, int i2, LayoutDirection layoutDirection, int i3, int i4, DefaultConstructorMarker defaultConstructorMarker) {
+        this(i, lazyMeasuredItemArr, list, z, i2, layoutDirection, i3, i4);
+    }
+
+    /* renamed from: getIndex-hA7yfN8, reason: not valid java name */
+    public final int m1593getIndexhA7yfN8() {
+        return this.index;
+    }
+
+    @NotNull
+    public final LazyMeasuredItem[] getItems() {
+        return this.items;
+    }
+
+    public final int getMainAxisSize() {
+        return this.mainAxisSize;
+    }
+
+    public final int getMainAxisSizeWithSpacings() {
+        return this.mainAxisSizeWithSpacings;
+    }
+
+    public final boolean isEmpty() {
+        return this.items.length == 0;
+    }
+
+    @NotNull
+    public final List<LazyGridPositionedItem> position(int i, int i2, int i3) {
+        LazyMeasuredItem[] lazyMeasuredItemArr = this.items;
+        ArrayList arrayList = new ArrayList(lazyMeasuredItemArr.length);
+        int length = lazyMeasuredItemArr.length;
+        int i4 = 0;
+        int i5 = 0;
+        int i6 = 0;
+        int i7 = 0;
+        while (i4 < length) {
+            LazyMeasuredItem lazyMeasuredItem = lazyMeasuredItemArr[i4];
+            int i8 = i5 + 1;
+            int m1538getCurrentLineSpanimpl = GridItemSpan.m1538getCurrentLineSpanimpl(this.spans.get(i5).m1541unboximpl());
+            int i9 = this.layoutDirection == LayoutDirection.Rtl ? (this.slotsPerLine - i6) - m1538getCurrentLineSpanimpl : i6;
+            boolean z = this.isVertical;
+            int i10 = z ? this.index : i9;
+            if (!z) {
+                i9 = this.index;
+            }
+            LazyGridPositionedItem position = lazyMeasuredItem.position(i, i7, i2, i3, i10, i9);
+            i7 += lazyMeasuredItem.getCrossAxisSize() + this.crossAxisSpacing;
+            i6 += m1538getCurrentLineSpanimpl;
+            arrayList.add(position);
+            i4++;
+            i5 = i8;
+        }
+        return arrayList;
+    }
+}

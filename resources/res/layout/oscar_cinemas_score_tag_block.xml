@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:id="@+id/oscar_cinenalist_cinema_tag_block"
+    android:background="@drawable/cinema_appraise_tag_round_fill_bg"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_flexShrink="0">
+    <TextView
+        android:textSize="10dp"
+        android:textColor="@color/appraise_color"
+        android:gravity="center"
+        android:id="@+id/oscar_cinemas_score_tag_prefix"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="好评度"
+        android:singleLine="true"
+        android:includeFontPadding="false"/>
+    <com.taobao.movie.android.app.oscar.ui.cinema.widget.CinemaScoreTagScore
+        android:textSize="10dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:id="@+id/oscar_cinemas_score_tag_score"
+        android:background="@drawable/cinema_appraise_tag_round_right_bg"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:singleLine="true"
+        android:includeFontPadding="false"/>
+</LinearLayout>

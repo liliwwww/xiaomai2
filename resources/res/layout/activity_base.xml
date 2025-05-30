@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/base_content_llyt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/bese_head_view"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/bese_content_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

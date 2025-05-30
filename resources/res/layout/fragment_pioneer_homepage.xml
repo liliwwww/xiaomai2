@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_pioneer_home_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/one_arch_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlDragRate="0.7"
+        app:srlEnableNestedScrolling="false"
+        app:srlHeaderMaxDragRate="2"
+        app:srlHeaderTriggerRate="1">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/refresh_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/color_pioneer_home_bg"
+            app:cardElevation="@dimen/resource_size_0">
+            <cn.damai.pioneer.component.tab.ParentRecyclerView
+                android:id="@+id/one_arch_recyclerView"
+                android:focusableInTouchMode="true"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-0.5dp"
+                android:overScrollMode="never"/>
+            <FrameLayout
+                android:id="@+id/home_page_guide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </androidx.cardview.widget.CardView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</FrameLayout>

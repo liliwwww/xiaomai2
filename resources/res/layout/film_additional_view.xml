@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_border_corner6_all_f7f9fc"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:paddingStart="9dp"
+    android:paddingEnd="6dp">
+    <TextView
+        android:textSize="10dp"
+        android:textColor="#754dff"
+        android:gravity="center"
+        android:id="@+id/additional_tag"
+        android:background="@drawable/bg_border_corner3_all_solid1_754dff"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"/>
+    <com.alibaba.pictures.moimage.MoImageView
+        android:id="@+id/additional_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:scaleType="centerCrop"
+        app:roundedCornerRadius="3dp"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/color_444B5B"
+        android:ellipsize="end"
+        android:id="@+id/derivation_icon_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_weight="1"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"/>
+    <com.alibaba.pictures.bricks.view.BricksIconFontTextView
+        android:textColor="@color/color_444B5B"
+        android:id="@+id/derivation_icon_arrow"
+        android:layout_width="@dimen/margin_12dp"
+        android:layout_height="@dimen/margin_12dp"
+        android:text="@string/iconfont_thin_right_arrow"/>
+</LinearLayout>

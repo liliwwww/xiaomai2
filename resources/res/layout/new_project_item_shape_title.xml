@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.alibaba.pictures.bricks.view.FakeBoldTextView
+        android:textSize="15dp"
+        android:textColor="@color/bricks_2e333e"
+        android:id="@+id/id_new_project_item_shape_title"
+        android:background="@color/white"
+        android:padding="@dimen/resource_size_12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/resource_size_9"
+        android:layout_marginRight="@dimen/resource_size_9"/>
+</FrameLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_item_seat_price_level_selector"
+    android:paddingLeft="8dp"
+    android:layout_width="wrap_content"
+    android:layout_height="30dp">
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/color_666666"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/price_icon_combine_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="1"/>
+    <com.alibaba.pictures.bricks.view.FakeBoldTextView
+        android:textSize="12dp"
+        android:textColor="@color/color_666666"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/price_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"/>
+    <View
+        android:id="@+id/price_text_div"
+        android:visibility="gone"
+        android:layout_width="8dp"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:textSize="10dp"
+        android:textColor="@color/color_FF2869"
+        android:id="@+id/price_tag"
+        android:background="@drawable/seat_perform_toptab_bg_pink"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:text="惠"/>
+</LinearLayout>

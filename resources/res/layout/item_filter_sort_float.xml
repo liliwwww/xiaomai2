@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/shape_rect_bottom_cor_12_solid_white"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingBottom="15dp"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>

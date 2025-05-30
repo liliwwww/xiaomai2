@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
+    android:paddingLeft="13dp"
+    android:paddingRight="13dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.alibaba.pictures.videobase.widget.rangeseekbar.RangeSeekBar
+        android:layout_gravity="bottom"
+        android:id="@+id/seek_bar"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        app:rsb_gravity="bottom"
+        app:rsb_max="1000"
+        app:rsb_mode="single"
+        app:rsb_progress_color="@android:color/white"
+        app:rsb_progress_default_color="#33ffffff"
+        app:rsb_progress_height="1dp"
+        app:rsb_thumb_height="0dp"
+        app:rsb_thumb_width="0dp"/>
+    <com.alibaba.pictures.videobase.widget.ProgressLoadingView
+        android:layout_gravity="bottom"
+        android:id="@+id/progress_loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:minHeight="1dp"
+        app:minProgressWidth="100dp"
+        app:minWidth="300dp"/>
+</FrameLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingRight="12dp"
+    android:layout_width="219dp"
+    android:layout_height="118dp">
+    <cn.damai.uikit.view.RoundImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/brand_album_item_pic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
+        app:borderRadius="6dp"
+        app:type="radial"/>
+    <ImageView
+        android:id="@+id/brand_banner_item_play"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/dm_poster_video_icon"
+        android:layout_centerInParent="true"/>
+    <RelativeLayout
+        android:id="@+id/brand_album_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_alignParentBottom="true">
+        <include layout="@layout/brand_album_bottom"/>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:id="@+id/cinema_distance_mall_metro_des_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="13dp"
+    android:paddingEnd="13dp">
+    <com.taobao.movie.android.commonui.widget.MIconfontTextView
+        android:textSize="12dp"
+        android:textColor="@color/color_tpp_primary_assist"
+        android:id="@+id/cinema_distance_mall_metro_des_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/color_tpp_primary_subtitle"
+        android:ellipsize="end"
+        android:id="@+id/cinema_distance_mall_metro_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:singleLine="true"/>
+</LinearLayout>

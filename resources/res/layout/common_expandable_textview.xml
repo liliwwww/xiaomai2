@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textSize="15dp"
+        android:textColor="@color/color_tpp_primary_main_title"
+        android:ellipsize="end"
+        android:id="@+id/expandable_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="11dp"/>
+    <TextView
+        android:textSize="15dp"
+        android:textColor="@color/common_color_1004"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/expand_collapse"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/commonui_expand"/>
+</merge>

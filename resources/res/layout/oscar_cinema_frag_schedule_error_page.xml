@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:id="@+id/ll_empty_root"
+    android:background="@drawable/schedule_item_round_bg"
+    android:paddingTop="20dp"
+    android:paddingBottom="30dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="9dp">
+    <androidx.legacy.widget.Space
+        android:id="@+id/top_space"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+    <TextView
+        android:id="@+id/schedule_err_desc"
+        style="@style/Schedule_Err_desc"/>
+    <Button
+        android:textSize="12dp"
+        android:textColor="@color/color_tpp_primary_subtitle"
+        android:id="@+id/switch_next_day"
+        android:background="@drawable/def_btn_next"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_width="102dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="10dp"
+        android:text="看看其他日期"/>
+    <androidx.legacy.widget.Space
+        android:id="@+id/bottom_space"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+</LinearLayout>

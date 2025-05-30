@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fl_highlight"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.alibaba.pictures.bricks.view.BricksStrokeLinearLayout
+        android:orientation="vertical"
+        android:id="@+id/ll_highlight"
+        android:paddingTop="@dimen/margin_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_9dp"
+        app:sl_corners_radius="6dp"
+        app:sl_stroke_color="?attr/iconNumBgBorder"
+        app:sl_stroke_width="1px"/>
+</FrameLayout>

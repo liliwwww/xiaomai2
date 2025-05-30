@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.alibaba.pictures.bricks.view.BricksStrokeLinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/pioneer_live_ipstore_item_card"
+    android:background="@drawable/bg_live_ipstore_entrance_12"
+    android:layout_width="match_parent"
+    android:layout_height="74dp">
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/pioneer_feed_ipstore_entrance_img"
+        android:layout_width="104dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/img_bg_ip_banner_title"/>
+    <TextView
+        android:textSize="13dp"
+        android:textColor="#2e333e"
+        android:ellipsize="end"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/pioneer_feed_ipstore_entrance_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="超多好物等你发现"
+        android:maxLines="1"
+        android:lineSpacingExtra="3dp"/>
+</com.alibaba.pictures.bricks.view.BricksStrokeLinearLayout>

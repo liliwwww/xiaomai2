@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:overScrollMode="never">
+    <com.google.android.material.tabs.TabLayout
+        android:layout_gravity="center_vertical"
+        android:id="@+id/feed_tags"
+        android:background="@drawable/bg_pioneer_live_feed_tab_bottom"
+        android:paddingBottom="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/resource_size_30"
+        android:layout_marginTop="-4dp"
+        app:selectedIndicatorBackground="@null"
+        app:tabGravity="start"
+        app:tabMinWidth="@dimen/resource_size_25"
+        app:tabPaddingEnd="1dp"
+        app:tabPaddingStart="1dp"
+        style="@style/HomeFeedTabStyle"/>
+    <com.youku.arch.v3.page.state.StateView
+        android:id="@+id/state_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <cn.damai.pioneer.component.tab.ChildRecyclerView
+            android:id="@+id/one_arch_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.youku.arch.v3.page.state.StateView>
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/reply_comment_tip_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <View
+        android:background="@color/common_text_color14"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@color/common_color_1010"
+        android:paddingLeft="15dp"
+        android:paddingTop="12.5dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="7.5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.taobao.movie.android.commonui.widget.SimpleDraweeView
+            android:id="@+id/user_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:fadeDuration="0"
+            app:placeholderImage="@drawable/header_place_holder"
+            app:roundAsCircle="true"
+            app:roundingBorderColor="@color/common_divider_color"
+            app:roundingBorderWidth="1px"/>
+        <TextView
+            android:textSize="13dp"
+            android:textColor="@color/color_tpp_primary_assist"
+            android:ellipsize="end"
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp"
+            android:maxLines="1"
+            android:singleLine="true"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textSize="@dimen/font_Footnote1_R"
+        android:textColor="#5f6672"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:id="@+id/home_calender_content_text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:maxWidth="94.5dp"
+        android:lines="1"/>
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/home_calender_content_arrow"
+        android:layout_width="8dp"
+        android:layout_height="10dp"
+        android:src="@drawable/bricks_home_calender_arrow"
+        android:layout_marginStart="@dimen/margin_1dp"/>
+</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:paddingLeft="12dp"
+    android:paddingTop="1dp"
+    android:paddingRight="12dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <cn.damai.uikit.number.DMDigitTextView
+        android:textSize="16dp"
+        android:textColor="#ff2869"
+        android:id="@+id/recommend_goods_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"/>
+    <TextView
+        android:textSize="10dp"
+        android:textColor="#9c9ca5"
+        android:layout_gravity="bottom"
+        android:id="@+id/recommend_goods_price_suffix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_marginBottom="1.2dp"
+        android:text="起"
+        android:includeFontPadding="false"/>
+    <TextView
+        android:textSize="@dimen/margin_10dp"
+        android:textColor="#9c9ca5"
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        android:id="@+id/recommend_wantsee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1.2dp"
+        android:text=" | 我想看"
+        android:includeFontPadding="false"/>
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:startColor="@color/tpp_gradient_light_orange_start"
+        android:endColor="@color/tpp_gradient_light_orange_end"
+        android:angle="cw_0"
+        android:type="linear"/>
+    <corners
+        android:topLeftRadius="5dp"
+        android:topRightRadius="6dp"
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="6dp"/>
+    <padding
+        android:left="3dp"
+        android:top="1dp"
+        android:right="4dp"
+        android:bottom="1dp"/>
+</shape>

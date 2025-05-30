@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <TextView
+        android:textSize="15dp"
+        android:textColor="#2e333e"
+        android:ellipsize="end"
+        android:id="@+id/text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:maxLines="1"
+        android:layout_toLeftOf="@+id/checkbox"
+        android:layout_centerVertical="true"/>
+    <CheckBox
+        android:enabled="false"
+        android:id="@+id/checkbox"
+        android:background="@drawable/dm_purchase_check_tax_select_circle_bg"
+        android:focusable="false"
+        android:clickable="false"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="12dp"
+        android:button="@null"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+    <View
+        android:id="@+id/line"
+        android:background="#eaeaea"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

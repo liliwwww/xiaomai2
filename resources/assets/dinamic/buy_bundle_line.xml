@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DFrameLayout xmlns:dinamic="http://schemas.android.com/apk/res-auto"
+    dinamic:dWidth="375ap"
+    dinamic:dHeight="12np"
+    __compiler_version__="2.0.0"
+    __interpreter_version__="2.0.0"/>

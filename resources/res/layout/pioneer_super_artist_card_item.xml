@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fl_channel_brand_venue_item"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+    android:clipChildren="true"
+    android:layout_width="54.5dp"
+    android:layout_height="50.5dp">
+    <com.alibaba.pictures.bricks.view.RoundImageView2
+        android:layout_gravity="center"
+        android:id="@+id/iv_super_card_artist_small_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:rRadius="12dp"/>
+</FrameLayout>

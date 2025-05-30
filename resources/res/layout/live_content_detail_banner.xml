@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <cn.damai.commonbusiness.view.DmViewPager
+        android:id="@+id/content_detail_banner"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+    <TextView
+        android:textSize="10dp"
+        android:textColor="@color/color_ffffff"
+        android:gravity="center"
+        android:layout_gravity="bottom|right"
+        android:id="@+id/content_detail_banner_count"
+        android:background="@drawable/bg_color_333333_000000"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginBottom="9dp"/>
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/discover_video_icon"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/live_feed_video_big_icon"/>
+</FrameLayout>

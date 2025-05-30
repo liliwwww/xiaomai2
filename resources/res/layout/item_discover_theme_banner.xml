@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="21dp"
+    android:paddingTop="15dp"
+    android:paddingRight="21dp"
+    android:layout_width="match_parent"
+    android:layout_height="99dp">
+    <cn.damai.uikit.view.StrokeLinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="99dp"
+        app:sl_corners_radius="12dp">
+        <cn.damai.uikit.banner.sub.XBanner
+            android:id="@+id/theme_banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </cn.damai.uikit.view.StrokeLinearLayout>
+    <cn.damai.uikit.banner.sub.XIndicator
+        android:layout_gravity="bottom"
+        android:id="@+id/theme_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="13dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginBottom="6dp"
+        app:normal_color="#99ffffff"
+        app:select_color="@color/white"/>
+</FrameLayout>

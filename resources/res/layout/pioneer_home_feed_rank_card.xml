@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.alibaba.pictures.bricks.view.BricksStrokeLinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pioneer_feed_rank_stroke_layout"
+    android:background="@drawable/home_feed_rank_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:sl_corners_radius="6dp"
+    app:sl_stroke_color="#0d000000"
+    app:sl_stroke_width="1px">
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/home_ll_feed_rank_layout"
+        android:paddingBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/pioneer_home_feed_rank_title_layout_v2"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/home_feed_rank_container"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include
+                android:id="@+id/home_feed_rank_item_first"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                layout="@layout/pioneer_home_feed_rank_card_item"/>
+            <View
+                android:layout_width="5dp"
+                android:layout_height="match_parent"/>
+            <include
+                android:id="@+id/home_feed_rank_item_second"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                layout="@layout/pioneer_home_feed_rank_card_item"/>
+            <View
+                android:layout_width="5dp"
+                android:layout_height="match_parent"/>
+            <include
+                android:id="@+id/home_feed_rank_item_third"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                layout="@layout/pioneer_home_feed_rank_card_item"/>
+            <View
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/home_feed_rank_default_r4"
+                android:layout_width="44dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="-39dp"
+                android:elevation="-1dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</com.alibaba.pictures.bricks.view.BricksStrokeLinearLayout>

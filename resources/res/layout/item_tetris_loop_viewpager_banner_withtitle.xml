@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <include
+        android:id="@+id/tetris_bannerdefault_title"
+        android:visibility="gone"
+        layout="@layout/tetris_common_list_title"/>
+    <FrameLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <cn.damai.uikit.banner.sub.XBanner
+            android:id="@+id/loop_banner"
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:layout_marginTop="3dp"/>
+        <cn.damai.uikit.banner.sub.XIndicator
+            android:layout_gravity="bottom"
+            android:id="@+id/loop_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="13dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginBottom="6dp"
+            app:normal_color="#99ffffff"
+            app:select_color="@color/white"/>
+    </FrameLayout>
+</LinearLayout>

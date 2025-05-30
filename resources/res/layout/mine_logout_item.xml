@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    android:id="@+id/mine_logout_container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_15dp">
+    <com.alibaba.pictures.moimage.MoImageView
+        android:layout_gravity="center"
+        android:id="@+id/mine_logout_image"
+        android:layout_width="220dp"
+        android:layout_height="220dp"/>
+    <TextView
+        android:textSize="13dp"
+        android:textColor="#959aa5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:text="快登录大麦，开启你的娱乐生活吧～"/>
+</LinearLayout>

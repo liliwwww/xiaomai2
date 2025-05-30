@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    android:layout_width="82dp"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/share_channel_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/share_channel_new_delete_icon"
+        android:scaleType="centerCrop"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/bricks_2e333e"
+        android:id="@+id/share_channel_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="删除"
+        android:includeFontPadding="false"/>
+</LinearLayout>

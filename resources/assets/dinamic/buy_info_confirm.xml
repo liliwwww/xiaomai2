@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DLinearLayout xmlns:dinamic="http://schemas.android.com/apk/res-auto"
+    dinamic:dOrientation="horizontal"
+    dinamic:dWidth="375ap"
+    dinamic:dHeight="55np"
+    dinamic:dAccessibilityTextHidden="false"
+    dinamic:onTap="@handleDinamicXEvent{@const{itemClick}}">
+    <DLinearLayout
+        dinamic:dOrientation="horizontal"
+        dinamic:dMarginLeft="12np"
+        dinamic:dMarginRight="12np"
+        dinamic:dWidth="match_parent"
+        dinamic:dHeight="match_parent"
+        dinamic:dBackgroundColor="#ffffff"
+        dinamic:dClipBottomLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipBottomRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipTopLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipTopRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}">
+        <DLinearLayout
+            dinamic:dWidth="0np"
+            dinamic:dHeight="match_parent"
+            dinamic:dWeight="1.0">
+            <DImageView
+                dinamic:dScaleType="fitCenter"
+                dinamic:dImageUrl="@data{fields.icon}"
+                dinamic:dMarginLeft="12np"
+                dinamic:dWidth="32np"
+                dinamic:dHeight="32np"
+                dinamic:dGravity="leftCenter"/>
+            <DTextView
+                dinamic:dText="@data{fields.name}"
+                dinamic:dTextSize="13np"
+                dinamic:dTextColor="@theme{&apos;color&apos;,&apos;titleColor&apos;,&apos;#333333&apos;}"
+                dinamic:dTextAlignment="left"
+                dinamic:dMaxLines="2"
+                dinamic:dLineBreakMode="end"
+                dinamic:dMarginLeft="12np"
+                dinamic:dWidth="match_content"
+                dinamic:dHeight="match_content"
+                dinamic:dAccessibilityTextHidden="false"
+                dinamic:dFocusable="false"
+                dinamic:dGravity="leftCenter"
+                dinamic:dRelayout="1"/>
+            <DTextView
+                dinamic:dText="@data{fields.value}"
+                dinamic:dTextSize="13np"
+                dinamic:dTextColor="@theme{&apos;color&apos;,&apos;descColor&apos;,&apos;#999999&apos;}"
+                dinamic:dTextAlignment="right"
+                dinamic:dMaxLines="1"
+                dinamic:dLineBreakMode="end"
+                dinamic:dWidth="0np"
+                dinamic:dHeight="match_content"
+                dinamic:dVisibility="@triple{@data{fields.value},&apos;visible&apos;,&apos;gone&apos;}"
+                dinamic:dAccessibilityTextHidden="false"
+                dinamic:dFocusable="false"
+                dinamic:dGravity="rightCenter"
+                dinamic:dWeight="1"/>
+        </DLinearLayout>
+        <DLinearLayout
+            dinamic:dMarginLeft="12np"
+            dinamic:dMarginRight="12np"
+            dinamic:dWidth="match_content"
+            dinamic:dHeight="match_content"
+            dinamic:dGravity="rightCenter">
+            <DTextView
+                dinamic:dText="@data{fields.updateBtn}"
+                dinamic:dTextSize="12np"
+                dinamic:dTextColor="@theme{&apos;color&apos;, &apos;themeColor&apos;, &apos;#FF5000&apos;}"
+                dinamic:dTextAlignment="center"
+                dinamic:dMaxLines="1"
+                dinamic:dLineBreakMode="end"
+                dinamic:dMarginLeft="12np"
+                dinamic:dWidth="47np"
+                dinamic:dHeight="24np"
+                dinamic:dVisibility="@triple{@or{@data{fields.updateBtn}, @not{@data{fields.supplementsFlag}}},&apos;visible&apos;,&apos;gone&apos;}"
+                dinamic:dAccessibilityTextHidden="false"
+                dinamic:dFocusable="false"
+                dinamic:dCornerRadius="12np"
+                dinamic:dBorderWidth="1np"
+                dinamic:dBorderColor="@theme{&apos;color&apos;, &apos;themeColor&apos;, &apos;#FF5000&apos;}"
+                dinamic:dGravity="rightCenter"
+                dinamic:onTap="@handleDinamicXEvent{@const{updateButton}}"/>
+            <DTextView
+                dinamic:dText="@data{fields.supplementsBtn}"
+                dinamic:dTextSize="12np"
+                dinamic:dTextColor="@theme{&apos;color&apos;, &apos;themeColor&apos;, &apos;#FF5000&apos;}"
+                dinamic:dTextAlignment="center"
+                dinamic:dMaxLines="1"
+                dinamic:dLineBreakMode="end"
+                dinamic:dMarginLeft="12np"
+                dinamic:dWidth="47np"
+                dinamic:dHeight="24np"
+                dinamic:dVisibility="@triple{@and{@data{fields.supplementsFlag}, @data{fields.supplementsBtn}},&apos;visible&apos;,&apos;gone&apos;}"
+                dinamic:dAccessibilityTextHidden="false"
+                dinamic:dFocusable="false"
+                dinamic:dCornerRadius="12np"
+                dinamic:dBorderWidth="1np"
+                dinamic:dBorderColor="@theme{&apos;color&apos;, &apos;themeColor&apos;, &apos;#FF5000&apos;}"
+                dinamic:dGravity="rightCenter"
+                dinamic:onTap="@handleDinamicXEvent{@const{updateButton}}"/>
+            <DTextView
+                dinamic:dText="@data{fields.confirmBtn}"
+                dinamic:dTextSize="12np"
+                dinamic:dTextColor="@theme{&apos;color&apos;, &apos;themeColor&apos;, &apos;#FF5000&apos;}"
+                dinamic:dTextAlignment="center"
+                dinamic:dMaxLines="1"
+                dinamic:dLineBreakMode="end"
+                dinamic:dMarginLeft="12np"
+                dinamic:dWidth="47np"
+                dinamic:dHeight="24np"
+                dinamic:dVisibility="@triple{@or{@data{fields.confirmBtn}, @not{@data{fields.supplementsFlag}}},&apos;visible&apos;,&apos;gone&apos;}"
+                dinamic:dAccessibilityTextHidden="false"
+                dinamic:dFocusable="false"
+                dinamic:dCornerRadius="12np"
+                dinamic:dBorderWidth="1np"
+                dinamic:dBorderColor="@theme{&apos;color&apos;, &apos;themeColor&apos;, &apos;#FF5000&apos;}"
+                dinamic:dGravity="rightCenter"
+                dinamic:onTap="@handleDinamicXEvent{@const{confirmButton}}"/>
+        </DLinearLayout>
+        <DImageView
+            dinamic:dScaleType="fitCenter"
+            dinamic:dMarginRight="12np"
+            dinamic:dWidth="14np"
+            dinamic:dHeight="14np"
+            dinamic:dVisibility="@triple{@data{events.itemClick},&apos;visible&apos;,&apos;gone&apos;}"
+            dinamic:dGravity="rightCenter"
+            dinamic:dImageName="order_head_arrow"/>
+    </DLinearLayout>
+</DLinearLayout>

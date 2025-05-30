@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:id="@+id/common_navbar_infoll"
+    android:visibility="gone"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="20dp"
+    android:layout_toLeftOf="@+id/title_navbar_share"
+    android:layout_toRightOf="@+id/common_navbar_back">
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/white"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:id="@+id/common_navbar_info_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:maxWidth="140dp"
+        android:lines="1"
+        android:layout_alignParentLeft="true"/>
+    <TextView
+        android:textSize="11dp"
+        android:textColor="@color/white40unalpha"
+        android:gravity="center_vertical"
+        android:id="@+id/common_navbar_info_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:lines="1"
+        android:layout_weight="1"
+        android:layout_alignParentRight="true"/>
+</LinearLayout>

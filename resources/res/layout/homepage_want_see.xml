@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="47dp">
+        <cn.damai.tetris.component.home.widget.HomeTabScrollView
+            android:layout_gravity="bottom"
+            android:id="@+id/homepage_want_see_tablayout"
+            android:paddingLeft="12dp"
+            android:layout_width="0dp"
+            android:layout_height="39dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <cn.damai.commonbusiness.view.DmViewPager
+        android:id="@+id/homepage_want_see_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

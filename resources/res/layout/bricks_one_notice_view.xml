@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingBottom="18dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textSize="14dp"
+        android:textColor="@color/bricks_black"
+        android:id="@+id/id_bricks_item_tag_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:textSize="14dp"
+        android:textColor="@color/bricks_666666"
+        android:id="@+id/id_bricks_item_tag_desc_tv"
+        android:paddingTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/project_service_tag_lv"
+        android:lineSpacingExtra="4dp"/>
+</LinearLayout>

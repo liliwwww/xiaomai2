@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/theme_new_publish_container"
+    android:layout_width="129dp"
+    android:layout_height="52dp"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true">
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:id="@+id/theme_new_publish_ui"
+        android:background="@drawable/live_publish_ui_bg"
+        android:paddingTop="@dimen/margin_11dp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <cn.damai.uikit.view.RoundImageView
+            android:id="@+id/theme_new_publish_user_icon"
+            android:visibility="gone"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+        <ImageView
+            android:id="@+id/theme_new_publish_icon_plus"
+            android:visibility="gone"
+            android:layout_width="14dp"
+            android:layout_height="20dp"
+            android:src="@drawable/icon_white_plus"/>
+        <TextView
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            android:paddingLeft="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我要参与"/>
+    </LinearLayout>
+</FrameLayout>

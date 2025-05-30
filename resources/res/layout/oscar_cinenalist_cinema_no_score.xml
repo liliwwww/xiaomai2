@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:textSize="10dp"
+    android:textColor="@color/color_tpp_primary_text_gray_66"
+    android:gravity="center"
+    android:id="@+id/oscar_cinenalist_cinema_no_score"
+    android:background="@drawable/cinema_appraise_no_score_round_fill_bg"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
+    android:visibility="visible"
+    android:layout_width="wrap_content"
+    android:layout_height="15dp"
+    android:layout_marginRight="4dp"
+    android:text="暂无好评度"
+    android:singleLine="true"
+    android:includeFontPadding="false"
+    app:layout_flexShrink="0"/>

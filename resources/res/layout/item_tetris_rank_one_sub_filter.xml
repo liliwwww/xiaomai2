@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="33dp">
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textSize="15dp"
+        android:textColor="@color/color_9c9ca5"
+        android:id="@+id/id_rank_one_sub_left_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/iconfont_huabian"/>
+    <TextView
+        android:textSize="16dp"
+        android:textColor="@color/color_9c9ca5"
+        android:id="@+id/id_rank_one_sub_text"
+        android:padding="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-2dp"/>
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textSize="15dp"
+        android:textColor="@color/color_9c9ca5"
+        android:id="@+id/id_rank_one_sub_right_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-2dp"
+        android:text="@string/iconfont_huabianfan"/>
+</LinearLayout>

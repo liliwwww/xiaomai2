@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="abc_bg_color">#e41b46</drawable>
+    <drawable name="abc_btn_press">#c9163c</drawable>
+    <drawable name="black_alpha_5">#0d000000</drawable>
+    <drawable name="black_bg">#ff000000</drawable>
+    <drawable name="color_3A3A7A">#3a3a7a</drawable>
+    <drawable name="color_60black">#99000000</drawable>
+    <drawable name="crop_content_btn_bg">#e52fb3ff</drawable>
+    <drawable name="d_buy_button_enable">#dbdbdb</drawable>
+    <drawable name="d_buy_button_normal">#fbb102</drawable>
+    <drawable name="d_buy_button_press">#e19f02</drawable>
+    <drawable name="d_buy_red_button_enable">#dbdbdb</drawable>
+    <drawable name="d_buy_red_button_normal">#e41b47</drawable>
+    <drawable name="d_buy_red_button_press">#d4355a</drawable>
+    <drawable name="d_select_sit_button_normal">#00bfb5</drawable>
+    <drawable name="d_select_sit_button_press">#00aca3</drawable>
+    <drawable name="damai_star_bg">#ffc8c8c8</drawable>
+    <drawable name="default_color_f0f0f0">#f0f0f0</drawable>
+    <drawable name="detail_buy_button_press">#e41b46</drawable>
+    <drawable name="devider_line">#ffe5e5e5</drawable>
+    <drawable name="gray_dbdbdb">#0ddbdbdb</drawable>
+    <drawable name="home_default_place_bg">@drawable/img_standard_grey_default</drawable>
+    <drawable name="list_bg_color">#f0f2f5</drawable>
+    <drawable name="material_ic_keyboard_arrow_next_black_24dp">@drawable/material_ic_keyboard_arrow_right_black_24dp</drawable>
+    <drawable name="material_ic_keyboard_arrow_previous_black_24dp">@drawable/material_ic_keyboard_arrow_left_black_24dp</drawable>
+    <drawable name="notification_template_icon_bg">#3333b5e5</drawable>
+    <drawable name="notification_template_icon_low_bg">#0cffffff</drawable>
+    <drawable name="photo_select_normal">#fff8f8f8</drawable>
+    <drawable name="photo_select_press">#ffffffff</drawable>
+    <drawable name="rpsdk_face_win_bg">#00000000</drawable>
+    <drawable name="transparent">#00ffffff</drawable>
+    <drawable name="window_bg">#fff0f2f4</drawable>
+    <drawable name="window_bg_my">#f3f5f6</drawable>
+    <drawable name="window_light_red_bg">#ffffdfe7</drawable>
+    <drawable name="window_white_bg">#ffffffff</drawable>
+</resources>

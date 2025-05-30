@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:src="@drawable/bricks_common_error_empty"
+            android:scaleType="fitXY"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:textSize="14dp"
+            android:textColor="#9c9ca4"
+            android:gravity="center_horizontal"
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="160dp"
+            android:layout_below="@+id/icon"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+</RelativeLayout>

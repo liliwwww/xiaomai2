@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DFrameLayout xmlns:dinamic="http://schemas.android.com/apk/res-auto"
+    dinamic:dWidth="375ap"
+    dinamic:dHeight="match_content"
+    dinamic:dAccessibilityTextHidden="false">
+    <DFrameLayout
+        dinamic:dMarginLeft="12np"
+        dinamic:dMarginRight="12np"
+        dinamic:dWidth="match_parent"
+        dinamic:dHeight="44np"
+        dinamic:dBackgroundColor="#ffffff"
+        dinamic:dAccessibilityTextHidden="false"
+        dinamic:dClipBottomLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @const{&apos;12np&apos;}, @const{&apos;0np&apos;}}"
+        dinamic:dClipBottomRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @const{&apos;12np&apos;}, @const{&apos;0np&apos;}}"
+        dinamic:dClipTopLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @const{&apos;12np&apos;}, @const{&apos;0np&apos;}}"
+        dinamic:dClipTopRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @const{&apos;12np&apos;}, @const{&apos;0np&apos;}}">
+        <DLinearLayout
+            dinamic:dOrientation="horizontal"
+            dinamic:dMarginLeft="12np"
+            dinamic:dWidth="match_content"
+            dinamic:dHeight="match_content"
+            dinamic:dGravity="leftCenter">
+            <DImageView
+                dinamic:dScaleType="fitCenter"
+                dinamic:dImageUrl="@data{fields.icon}"
+                dinamic:dMarginRight="4.5np"
+                dinamic:dWidth="match_content"
+                dinamic:dHeight="12np"
+                dinamic:dVisibility="@triple{@data{fields.icon}, &apos;visible&apos;, &apos;gone&apos;}"
+                dinamic:dGravity="leftCenter"
+                dinamic:onComplete="@imageRefresh{}"/>
+            <DTextView
+                dinamic:dText="@data{fields.title}"
+                dinamic:dTextSize="14np"
+                dinamic:dTextColor="#333333"
+                dinamic:dMaxLines="1"
+                dinamic:dLineBreakMode="end"
+                dinamic:dWidth="180np"
+                dinamic:dHeight="match_content"
+                dinamic:dAccessibilityTextHidden="false"
+                dinamic:dFocusable="false"
+                dinamic:dGravity="leftCenter"/>
+        </DLinearLayout>
+        <DLinearLayout
+            dinamic:dOrientation="horizontal"
+            dinamic:dWidth="match_content"
+            dinamic:dHeight="match_content"
+            dinamic:dVisibility="@triple{@data{fields.desc}, &apos;visible&apos;, &apos;gone&apos;}"
+            dinamic:dGravity="rightCenter"
+            dinamic:onTap="@handleDinamicXEvent{@const{itemClick}}">
+            <DTextView
+                dinamic:dText="@data{fields.desc}"
+                dinamic:dTextSize="13np"
+                dinamic:dTextColor="#333333"
+                dinamic:dTextAlignment="right"
+                dinamic:dMaxLines="1"
+                dinamic:dLineBreakMode="end"
+                dinamic:dMaxWidth="70np"
+                dinamic:dWidth="match_content"
+                dinamic:dHeight="match_content"
+                dinamic:dAccessibilityTextHidden="false"
+                dinamic:dFocusable="false"
+                dinamic:dGravity="leftCenter"/>
+            <DImageView
+                dinamic:dScaleType="fitCenter"
+                dinamic:dImageUrl="https://gw.alicdn.com/tfs/TB1EekovFkoBKNjSZFEXXbrEVXa-15-17.png"
+                dinamic:dMarginLeft="6np"
+                dinamic:dMarginRight="12np"
+                dinamic:dWidth="8np"
+                dinamic:dHeight="9np"
+                dinamic:dGravity="leftCenter"/>
+        </DLinearLayout>
+    </DFrameLayout>
+</DFrameLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.taobao.movie.android.commonui.widget.SimpleDraweeView
+        android:id="@+id/film_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:fadeDuration="0"
+        app:failureImage="@drawable/poster_default_bg"
+        app:placeholderImage="@drawable/poster_default_bg"
+        app:roundedCornerRadius="9dp"/>
+    <com.alibaba.pictures.bricks.view.FlowLayout
+        android:layout_gravity="start"
+        android:id="@+id/film_tag_view"
+        android:paddingTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="1dp"
+        android:paddingEnd="1dp"/>
+    <ImageView
+        android:layout_gravity="bottom|right"
+        android:id="@+id/icon_play"
+        android:visibility="visible"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_margin="3dp"
+        android:src="@drawable/play_icon_pioneer"/>
+</merge>

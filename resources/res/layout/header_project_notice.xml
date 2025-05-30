@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/margin_12dp"
+    android:paddingRight="@dimen/margin_12dp"
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="35dp">
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textSize="16dp"
+        android:textColor="#eb7609"
+        android:paddingRight="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/iconfont_tishimian_"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="#eb7609"
+        android:ellipsize="end"
+        android:id="@+id/project_header_notice_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_weight="1"/>
+</LinearLayout>

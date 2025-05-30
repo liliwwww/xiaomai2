@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/inner_project_wrapper"
+    android:background="#f5f6f7"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:id="@+id/inner_project_gap"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="9dp"/>
+    <include
+        android:id="@+id/inner_project_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/resource_size_12"
+        android:layout_marginRight="@dimen/resource_size_12"
+        android:layout_marginBottom="@dimen/margin_9dp"
+        layout="@layout/bricks_search_list_project"/>
+</LinearLayout>

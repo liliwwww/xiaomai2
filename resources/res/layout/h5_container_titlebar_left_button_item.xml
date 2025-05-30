@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center"
+    android:background="@drawable/h5_container_icon_bg_title_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <com.taomai.android.h5container.widget.IconFontTextView
+        android:textSize="22dp"
+        android:textColor="@color/color_tpp_primary_black"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/titlebar_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"/>
+</FrameLayout>

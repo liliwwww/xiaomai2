@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/oscar_cinemalist_child_root_view"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ViewStub
+        android:id="@+id/view_stub_time_filter"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:visibility="gone"
+        android:clipToPadding="false"
+        android:layout="@layout/layout_cinema_list_special_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+    <View
+        android:id="@+id/line"
+        android:background="@color/color_tpp_primary_bg"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <com.taobao.movie.android.app.oscar.ui.cinema.widget.cinemafilter.CinemaFilterGroupView
+        android:id="@+id/group_filter"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_fast_filter"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginHorizontal="12dp"/>
+</LinearLayout>

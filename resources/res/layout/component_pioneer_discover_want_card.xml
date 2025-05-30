@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <include
+        android:id="@+id/discover_want_card_header"
+        layout="@layout/bricks_component_common_header_pioneer"/>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:id="@+id/discover_want_card"
+        android:background="@drawable/bricks_damai_list_bg_bottomradius_18"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="12dp"
+        android:clipChildren="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <cn.damai.pioneer.view.PosterFlipperView
+            android:id="@+id/discover_want_left_block"
+            android:clipChildren="false"
+            android:layout_width="48dp"
+            android:layout_height="64dp"
+            android:layout_marginRight="12dp"/>
+        <ViewFlipper
+            android:id="@+id/discover_want_right_block"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

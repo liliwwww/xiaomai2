@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textSize="10dp"
+        android:textColor="@color/white"
+        android:gravity="center_horizontal"
+        android:id="@+id/mark_s4_filter_title"
+        android:background="@drawable/icon_city_mark_name_bg"
+        android:paddingLeft="9dp"
+        android:paddingTop="0.5dp"
+        android:paddingRight="9dp"
+        android:paddingBottom="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="3dp"
+        android:lines="1"/>
+    <FrameLayout
+        android:background="@drawable/bg_item_city_mark_icon_ring"
+        android:padding="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <cn.damai.uikit.view.RoundImageView
+            android:id="@+id/mark_s4_filter_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+    </FrameLayout>
+</FrameLayout>

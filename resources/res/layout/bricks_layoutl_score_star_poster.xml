@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="bottom|left"
+    android:orientation="horizontal"
+    android:id="@+id/ll_score"
+    android:background="@drawable/bricks_bg_score_star"
+    android:paddingLeft="3dp"
+    android:paddingBottom="3dp"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+    <com.alibaba.pictures.bricks.view.DigitTextView
+        android:textSize="@dimen/margin_13dp"
+        android:textColor="@color/color_score_font"
+        android:id="@+id/score_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9.0"/>
+    <TextView
+        android:textSize="10dp"
+        android:textColor="@color/color_score_font"
+        android:id="@+id/score_text_suffix"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:text="分"/>
+    <com.alibaba.pictures.bricks.view.ScoreStarViewV2
+        android:id="@+id/score_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_marginBottom="3dp"
+        app:colorType="yellow"/>
+</LinearLayout>

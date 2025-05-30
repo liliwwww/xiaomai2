@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:alignItems="center"
+    app:justifyContent="flex_end">
+    <TextView
+        android:textSize="@dimen/font_Subhead2_R"
+        android:textColor="@color/color_bricks_primary_red"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/channel_grab_highlight_content_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dim_3"
+        android:maxWidth="100dp"
+        android:minWidth="80dp"
+        android:maxLines="1"
+        app:layout_flexShrink="0"/>
+    <TextView
+        android:textSize="@dimen/font_Subhead2_R"
+        android:textColor="#3c3f44"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/channel_grab_content_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        app:layout_flexShrink="3"/>
+</com.google.android.flexbox.FlexboxLayout>

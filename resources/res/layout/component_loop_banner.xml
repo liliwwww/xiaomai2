@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.alient.onearch.adapter.widget.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <FrameLayout
+        android:paddingBottom="@dimen/resource_size_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+        <com.alient.onearch.adapter.widget.banner.IndicatorView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:indicatorLineLength="150dp"
+            app:indicatorLineWidth="2dp"
+            app:indicatorStyle="line"
+            app:selectedColor="#ffffffff"
+            app:unselectedColor="#99ffffff"/>
+    </FrameLayout>
+</RelativeLayout>

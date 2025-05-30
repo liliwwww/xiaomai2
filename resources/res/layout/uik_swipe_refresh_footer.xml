@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_horizontal"
+    android:paddingTop="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.taobao.android.dinamicx.widget.recycler.refresh.CustomProgressBar
+        android:id="@+id/uik_load_more_footer_progress"
+        android:visibility="gone"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginRight="12dp"/>
+    <TextView
+        android:textSize="10dp"
+        android:textColor="#444444"
+        android:gravity="center_vertical"
+        android:id="@+id/uik_load_more_footer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:text="@string/uik_load_more"/>
+</LinearLayout>

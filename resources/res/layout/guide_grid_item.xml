@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <cn.damai.uikit.view.RoundImageView
+        android:id="@+id/image_item_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        app:borderRadius="12dp"
+        app:type="radial"/>
+    <cn.damai.uikit.view.RoundImageView
+        android:id="@+id/image_item_bg_mask"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        app:borderRadius="12dp"
+        app:type="radial"/>
+    <ImageView
+        android:id="@+id/guide_img_check"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/guide_grid_mask_check"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:textSize="15dp"
+        android:textColor="#ffffff"
+        android:gravity="center_horizontal"
+        android:id="@+id/image_item_tv"
+        android:paddingBottom="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="音乐节"
+        android:maxLines="1"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

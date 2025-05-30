@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="30dp">
+    <TextView
+        android:textSize="14dp"
+        android:textColor="@color/color_9C9CA5"
+        android:id="@+id/filter_main_text"
+        android:paddingRight="9dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="推荐"/>
+</LinearLayout>

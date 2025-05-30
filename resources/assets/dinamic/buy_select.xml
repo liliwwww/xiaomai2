@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DFrameLayout xmlns:dinamic="http://schemas.android.com/apk/res-auto"
+    dinamic:dWidth="375ap"
+    dinamic:dHeight="match_content"
+    dinamic:dAccessibilityTextHidden="false">
+    <DLinearLayout
+        dinamic:dMarginLeft="12np"
+        dinamic:dMarginRight="12np"
+        dinamic:dWidth="match_parent"
+        dinamic:dHeight="match_content"
+        dinamic:dBackgroundColor="#ffffff"
+        dinamic:dAccessibilityText="@concat{@triple{@data{fields.title},@data{fields.title},&apos; &apos;},@triple{@data{fields.desc},@data{fields.desc},&apos; &apos;},@triple{@data{fields.value},@data{fields.value},&apos; &apos;}}"
+        dinamic:onTap="@handleDinamicXEvent{@const{itemClick}}"
+        dinamic:dClipTopRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipTopLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;top&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipBottomRightRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dClipBottomLeftRadius="@triple{@or{@eq{@data{fields.cornerType}, &apos;bottom&apos;},@eq{@data{fields.cornerType}, &apos;both&apos;},&apos;false&apos;}, @theme{&apos;size&apos;, &apos;cornerRadius&apos;, &apos;12np&apos;},  @const{&apos;0np&apos;}}"
+        dinamic:dAccessibilityHint="按钮">
+        <DTextView
+            dinamic:dText="@data{fields.title}"
+            dinamic:dTextSize="13np"
+            dinamic:dTextColor="@triple{@data{fields.titleCss.color},@data{fields.titleCss.color},&apos;#333333&apos;}"
+            dinamic:dTextAlignment="right"
+            dinamic:dMaxLines="2"
+            dinamic:dLineBreakMode="end"
+            dinamic:dMarginRight="10np"
+            dinamic:dMarginTop="14np"
+            dinamic:dMarginBottom="14np"
+            dinamic:dWidth="102np"
+            dinamic:dHeight="match_content"
+            dinamic:dAccessibilityTextHidden="false"
+            dinamic:dFocusable="false"
+            dinamic:dGravity="leftCenter"/>
+        <DLinearLayout
+            dinamic:dOrientation="horizontal"
+            dinamic:dMarginTop="14np"
+            dinamic:dMarginBottom="14np"
+            dinamic:dWidth="0np"
+            dinamic:dHeight="match_content"
+            dinamic:dGravity="leftCenter"
+            dinamic:dWeight="1">
+            <DLinearLayout
+                dinamic:dOrientation="vertical"
+                dinamic:dMarginRight="10np"
+                dinamic:dWidth="0np"
+                dinamic:dHeight="match_content"
+                dinamic:dGravity="leftCenter"
+                dinamic:dWeight="1">
+                <DLinearLayout
+                    dinamic:dOrientation="horizontal"
+                    dinamic:dWidth="match_parent"
+                    dinamic:dHeight="match_content"
+                    dinamic:dGravity="leftCenter">
+                    <DImageView
+                        dinamic:dScaleType="fitCenter"
+                        dinamic:dImageUrl="@data{fields.descIcon}"
+                        dinamic:dWidth="78ap"
+                        dinamic:dHeight="13np"
+                        dinamic:dVisibility="@triple{@data{fields.descIcon}, &apos;visible&apos;, &apos;gone&apos;}"
+                        dinamic:dGravity="leftCenter"/>
+                    <DTextView
+                        dinamic:dText="@data{fields.desc}"
+                        dinamic:dTextSize="13np"
+                        dinamic:dTextColor="@triple{@data{fields.descCss.color},@data{fields.descCss.color},&apos;#999999&apos;}"
+                        dinamic:dTextAlignment="left"
+                        dinamic:dMaxLines="3"
+                        dinamic:dLineBreakMode="end"
+                        dinamic:dWidth="0np"
+                        dinamic:dHeight="match_content"
+                        dinamic:dVisibility="@triple{@data{fields.desc}, &apos;visible&apos;, &apos;gone&apos;}"
+                        dinamic:dAccessibilityTextHidden="false"
+                        dinamic:dFocusable="false"
+                        dinamic:dGravity="leftCenter"
+                        dinamic:dWeight="1"/>
+                </DLinearLayout>
+                <DLinearLayout
+                    dinamic:dOrientation="horizontal"
+                    dinamic:dWidth="match_parent"
+                    dinamic:dHeight="match_content"
+                    dinamic:dGravity="leftCenter">
+                    <DImageView
+                        dinamic:dScaleType="fitCenter"
+                        dinamic:dImageUrl="@data{fields.desclogo}"
+                        dinamic:dMarginTop="3np"
+                        dinamic:dWidth="78ap"
+                        dinamic:dHeight="13np"
+                        dinamic:dVisibility="@triple{@data{fields.desclogo}, &apos;visible&apos;, &apos;gone&apos;}"
+                        dinamic:dGravity="leftCenter"/>
+                    <DTextView
+                        dinamic:dText="@data{fields.descBottom}"
+                        dinamic:dTextSize="13np"
+                        dinamic:dTextColor="#999999"
+                        dinamic:dTextAlignment="left"
+                        dinamic:dMaxLines="2"
+                        dinamic:dLineBreakMode="end"
+                        dinamic:dMarginTop="3np"
+                        dinamic:dWidth="0np"
+                        dinamic:dHeight="match_content"
+                        dinamic:dVisibility="@triple{@data{fields.descBottom}, &apos;visible&apos;, &apos;gone&apos;}"
+                        dinamic:dAccessibilityTextHidden="false"
+                        dinamic:dFocusable="false"
+                        dinamic:dGravity="leftCenter"
+                        dinamic:dWeight="1"/>
+                </DLinearLayout>
+            </DLinearLayout>
+        </DLinearLayout>
+        <DTextView
+            dinamic:dText="@data{fields.value}"
+            dinamic:dTextSize="13np"
+            dinamic:dTextColor="@triple{@data{fields.valueCss.color},@data{fields.valueCss.color},&apos;#333333&apos;}"
+            dinamic:dTextAlignment="right"
+            dinamic:dMaxLines="0"
+            dinamic:dLineBreakMode="end"
+            dinamic:dMaxWidth="200np"
+            dinamic:dMarginLeft="6np"
+            dinamic:dMarginRight="6np"
+            dinamic:dMarginTop="14np"
+            dinamic:dMarginBottom="14np"
+            dinamic:dWidth="match_content"
+            dinamic:dHeight="match_content"
+            dinamic:dVisibility="@triple{@data{fields.value}, &apos;visible&apos;, &apos;gone&apos;}"
+            dinamic:dAccessibilityTextHidden="false"
+            dinamic:dFocusable="false"
+            dinamic:dGravity="rightCenter"
+            dinamic:dRelayout="1"
+            dinamic:dStrikeThroughStyle="@triple{@data{fields.strikethrough}, &apos;single&apos;, &apos;&apos;}"/>
+        <DFrameLayout
+            dinamic:dMarginRight="10np"
+            dinamic:dWidth="14np"
+            dinamic:dHeight="14np"
+            dinamic:dVisibility="@triple{@eq{@data{status},&apos;disable&apos;}, &apos;gone&apos;, &apos;visible&apos;}"
+            dinamic:dGravity="rightCenter">
+            <DImageView
+                dinamic:dScaleType="fitCenter"
+                dinamic:dWidth="14np"
+                dinamic:dHeight="14np"
+                dinamic:dVisibility="@triple{@data{events.itemClick},&apos;visible&apos;,&apos;gone&apos;}"
+                dinamic:dGravity="rightCenter"
+                dinamic:dImageName="order_head_arrow"/>
+        </DFrameLayout>
+    </DLinearLayout>
+</DFrameLayout>

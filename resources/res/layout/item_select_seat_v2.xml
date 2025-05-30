@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_corner_20_solid_f6f7f8_stroke"
+    android:paddingLeft="6dp"
+    android:paddingRight="9dp"
+    android:layout_width="wrap_content"
+    android:layout_height="30dp">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/seat_group_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/color_666666"
+        android:id="@+id/seat_floor_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:lines="1"/>
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textSize="12dp"
+        android:textColor="#663c3f44"
+        android:gravity="center_vertical"
+        android:id="@+id/remove_seat"
+        android:paddingLeft="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/iconfont_guanbi24"/>
+</LinearLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingBottom="60dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:orientation="vertical"
+        android:background="@drawable/copy_shape_rect_bottom_cor_15_solid_white"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="68dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/float_category_list_main_lv"
+                android:background="@color/color_F5F5F5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/float_category_list_sub_lv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="11dp"/>
+        </LinearLayout>
+        <include
+            android:layout_gravity="bottom"
+            android:id="@+id/id_bottom_action_ui"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/copy_item_filter_reset_and_confirm_layout"/>
+    </FrameLayout>
+</FrameLayout>

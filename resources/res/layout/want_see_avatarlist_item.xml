@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.alibaba.pictures.moimage.MoImageView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="21dp"
+    android:layout_height="21dp"
+    app:failureImage="@drawable/uikit_user_default_icon"
+    app:placeholderImage="@drawable/uikit_user_default_icon"
+    app:roundAsCircle="true"/>

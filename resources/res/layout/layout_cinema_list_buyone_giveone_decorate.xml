@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cinema_list_item_buyone_giveone_decorate"
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.alibaba.pictures.moimage.MoImageView
+        android:id="@+id/cinema_list_item_buyone_giveone_tag"
+        android:layout_width="130dp"
+        android:layout_height="70dp"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+    <TextView
+        android:textSize="10dp"
+        android:textColor="#c46e31"
+        android:id="@+id/cinema_list_item_buyone_giveone_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="@dimen/cinema_list_page_hor_spacing"
+        android:singleLine="true"/>
+</LinearLayout>

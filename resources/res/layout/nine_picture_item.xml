@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <com.taobao.movie.android.commonui.widget.TppAnimImageView
+        android:id="@+id/nine_pic_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        fresco:actualImageScaleType="centerCrop"
+        fresco:placeholderImage="@drawable/common_pic_item_bg"/>
+    <TextView
+        android:textSize="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:id="@+id/nine_pic_item_tag"
+        android:background="@drawable/common_pic_item_tag_bg"
+        android:paddingLeft="6dp"
+        android:paddingTop="4dp"
+        android:paddingRight="6dp"
+        android:paddingBottom="4dp"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GIF"
+        android:includeFontPadding="false"
+        android:layout_alignRight="@+id/nine_pic_item"
+        android:layout_alignBottom="@+id/nine_pic_item"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/image_tag_view_radius_fg_6dp"
+        android:scaleType="fitXY"
+        android:layout_alignLeft="@+id/nine_pic_item"
+        android:layout_alignTop="@+id/nine_pic_item"
+        android:layout_alignRight="@+id/nine_pic_item"
+        android:layout_alignBottom="@+id/nine_pic_item"/>
+</RelativeLayout>

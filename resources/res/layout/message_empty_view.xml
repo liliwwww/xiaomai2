@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/window_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/iv_null_icon"
+        android:layout_marginTop="96dp"
+        android:src="@drawable/common_error_ticket_empty"
+        android:scaleType="centerInside"
+        android:layout_centerHorizontal="true"
+        style="@style/wrap"/>
+    <TextView
+        android:textSize="16sp"
+        android:textColor="@color/light_black_7d7d7d"
+        android:id="@+id/tv_null_tip"
+        android:layout_marginTop="24dp"
+        android:text="网络不稳定 辛苦稍后重试"
+        android:layout_below="@+id/iv_null_icon"
+        android:layout_centerHorizontal="true"
+        style="@style/wrap"/>
+    <TextView
+        android:textSize="16dp"
+        android:textColor="@color/main_color"
+        android:gravity="center"
+        android:id="@+id/tv_try_again"
+        android:background="@drawable/message_empty_btn"
+        android:layout_width="132dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:text="刷新一下"
+        android:layout_below="@+id/tv_null_tip"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

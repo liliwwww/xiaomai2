@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:id="@+id/tv_ipinfo_tagbg"
+    android:background="@drawable/bg_border_iptag"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:layout_width="wrap_content"
+    android:layout_height="16dp">
+    <TextView
+        android:textSize="10dp"
+        android:textColor="@color/mask_white_80"
+        android:id="@+id/tv_ipinfo_tagleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="累计开演48场"
+        android:layout_alignParentRight="true"/>
+    <TextView
+        android:textSize="10dp"
+        android:textColor="@color/mask_white_80"
+        android:id="@+id/tv_ipinfo_tagright"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_alignParentRight="true"/>
+</LinearLayout>

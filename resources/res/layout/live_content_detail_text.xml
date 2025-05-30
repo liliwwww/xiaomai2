@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_gravity="right"
+        android:id="@+id/live_content_detail_highlight_tag"
+        android:visibility="visible"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="fitXY"/>
+    <TextView
+        android:textSize="15dp"
+        android:textColor="@color/cg_1"
+        android:id="@+id/live_content_detail_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:lineSpacingExtra="6dp"/>
+</FrameLayout>

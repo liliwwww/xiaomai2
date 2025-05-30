@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingLeft="21dp"
+    android:paddingRight="21dp"
+    android:layout_width="match_parent"
+    android:layout_height="93dp">
+    <cn.damai.user.star.view.XunYanBanner
+        android:id="@+id/banner_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="84dp"/>
+    <cn.damai.user.star.view.XunYanIndicator
+        android:id="@+id/banner_indicator"
+        android:paddingBottom="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="13dp"/>
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.taobao.movie.android.commonui.widget.MoLinearCardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:id="@+id/roll_tip_item"
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    app:mocard_background_color="@color/color_tpp_primary_bg"
+    app:mocard_background_radius="3dp">
+    <TextView
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:textColor="@color/color_tpp_primary_yellow"
+        android:id="@+id/roll_tip_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="11dp"
+        android:maxEms="6"
+        android:singleLine="true"/>
+    <View
+        android:background="@color/color_tpp_primary_assist"
+        android:layout_width="1px"
+        android:layout_height="9dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:alpha="0.3"/>
+    <ViewFlipper
+        android:id="@+id/tip_wheel_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inAnimation="@anim/roll_in"
+        android:outAnimation="@anim/roll_out"
+        android:flipInterval="3000"
+        android:layout_weight="1"/>
+</com.taobao.movie.android.commonui.widget.MoLinearCardView>

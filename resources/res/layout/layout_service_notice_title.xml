@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:paddingLeft="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/margin_28dp"
+    android:layout_marginTop="@dimen/margin_18dp">
+    <TextView
+        android:textSize="18dp"
+        android:textColor="@color/color_333333"
+        android:id="@+id/layer_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"/>
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textSize="@dimen/margin_17dp"
+        android:textColor="#33000000"
+        android:gravity="center"
+        android:id="@+id/layer_close"
+        android:paddingRight="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/iconfont_a_huaban2x"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>

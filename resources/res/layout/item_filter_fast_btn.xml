@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="44dp">
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/color_FF2869"
+        android:gravity="center_vertical"
+        android:id="@+id/fast_filter_tv"
+        android:background="@drawable/bg_filter_fast_btn_selector_white"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"/>
+</FrameLayout>

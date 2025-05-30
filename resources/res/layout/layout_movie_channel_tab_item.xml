@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.alibaba.pictures.bricks.view.PuHuiTiTextView
+        android:textSize="@dimen/resource_size_14"
+        android:textColor="#171717"
+        android:layout_gravity="center"
+        android:id="@+id/tab_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/resource_size_1"/>
+</FrameLayout>

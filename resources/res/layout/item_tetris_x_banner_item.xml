@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingLeft="21dp"
+    android:paddingRight="21dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <cn.damai.uikit.banner.sub.RoundRadiusImageView
+        android:id="@+id/x_spec_item_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:r_round_radius="12dp"
+        app:r_stroke_color="#1a000000"
+        app:r_stroke_width="0.5dp"/>
+</LinearLayout>

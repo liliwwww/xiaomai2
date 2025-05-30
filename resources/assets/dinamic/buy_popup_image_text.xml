@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DFrameLayout xmlns:dinamic="http://schemas.android.com/apk/res-auto"
+    dinamic:dWidth="375ap"
+    dinamic:dHeight="40np"
+    dinamic:dAccessibilityTextHidden="false"
+    dinamic:onTap="@handleDinamicXEvent{@const{itemClick}}">
+    <DLinearLayout
+        dinamic:dOrientation="horizontal"
+        dinamic:dWidth="match_parent"
+        dinamic:dHeight="match_content"
+        dinamic:dGravity="leftCenter">
+        <DImageView
+            dinamic:dScaleType="fitCenter"
+            dinamic:dImageUrl="@data{fields.iconUrl}"
+            dinamic:dMarginLeft="10np"
+            dinamic:dMarginRight="5np"
+            dinamic:dWidth="18np"
+            dinamic:dHeight="18np"
+            dinamic:dVisibility="@triple{@data{fields.iconUrl}, &apos;visible&apos;, &apos;gone&apos;}"
+            dinamic:dGravity="center"/>
+        <DTextView
+            dinamic:dText="@data{fields.title}"
+            dinamic:dTextSize="13np"
+            dinamic:dTextColor="#333333"
+            dinamic:dTextAlignment="left"
+            dinamic:dMaxLines="1"
+            dinamic:dLineBreakMode="end"
+            dinamic:dWidth="0np"
+            dinamic:dHeight="match_content"
+            dinamic:dAccessibilityTextHidden="false"
+            dinamic:dFocusable="false"
+            dinamic:dWeight="1.0"/>
+        <DTextView
+            dinamic:dText="@data{fields.value}"
+            dinamic:dTextSize="13np"
+            dinamic:dTextColor="@triple{@data{fields.valueCss.color},@data{fields.valueCss.color},&apos;#999999&apos;}"
+            dinamic:dTextAlignment="right"
+            dinamic:dMaxLines="1"
+            dinamic:dLineBreakMode="end"
+            dinamic:dMarginRight="10np"
+            dinamic:dWidth="match_content"
+            dinamic:dHeight="match_content"
+            dinamic:dAccessibilityTextHidden="false"
+            dinamic:dFocusable="false"
+            dinamic:dGravity="rightCenter"/>
+    </DLinearLayout>
+</DFrameLayout>

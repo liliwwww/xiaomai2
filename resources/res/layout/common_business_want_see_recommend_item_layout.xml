@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <cn.damai.tetris.component.girl.mvp.HWRatioLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:h_w_layout_ratio="1.3421">
+        <cn.damai.uikit.view.DMPosterView
+            android:id="@+id/want_see_poster"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </cn.damai.tetris.component.girl.mvp.HWRatioLayout>
+    <TextView
+        android:textSize="14dp"
+        android:textColor="@color/color_2E333E"
+        android:ellipsize="end"
+        android:id="@+id/want_see_recommend_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="6dp"
+        android:minHeight="38dp"
+        android:lines="2"
+        android:layout_weight="1"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_gravity="bottom|left"
+        android:id="@+id/want_see_btn"
+        android:background="@drawable/want_see_background_already"
+        android:layout_width="51dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="9dp"/>
+</merge>

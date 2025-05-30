@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.alibaba.pictures.bricks.view.CornerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/super_card_select_item"
+    android:clipChildren="true"
+    android:layout_width="66dp"
+    android:layout_height="66dp"
+    app:clip_corner_radius="15dp">
+    <com.alibaba.pictures.moimage.MoImageView
+        android:id="@+id/iv_super_card_artist_small_image"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:scaleType="centerCrop"
+        app:failureImage="@drawable/home_default_image_bg_gradient_pioneer"
+        app:placeholderImage="@drawable/home_default_image_bg_gradient_pioneer"
+        app:roundedCornerRadius="15dp"/>
+    <View
+        android:layout_gravity="bottom|center_horizontal"
+        android:id="@+id/s_card_mask_view"
+        android:background="@drawable/bricks_artist_name_bg"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+    <cn.damai.pioneer.view.AlphaTextView
+        android:textSize="13dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_gravity="bottom|center_horizontal"
+        android:id="@+id/tv_s_card_artist_name"
+        android:paddingBottom="2dp"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:textAlignment="center"
+        android:breakStrategy="high_quality"
+        android:hyphenationFrequency="normal"/>
+</com.alibaba.pictures.bricks.view.CornerFrameLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textSize="14dp"
+    android:textColor="@color/color_tpp_primary_subtitle"
+    android:gravity="center"
+    android:id="@+id/tv_article_magic_date_title"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="2017年9月3日"
+    android:includeFontPadding="false"/>

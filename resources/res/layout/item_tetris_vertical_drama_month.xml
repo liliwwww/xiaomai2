@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:paddingLeft="21dp"
+        android:paddingRight="21dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/item_card_title_layout"/>
+    </FrameLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/drama_list_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/color_9C9CA5"
+        android:gravity="center"
+        android:id="@+id/drama_no_more"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:text="只有这么多了"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="#30aeff"
+        android:gravity="center"
+        android:id="@+id/drama_show_more"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:text="展开全部"/>
+</LinearLayout>

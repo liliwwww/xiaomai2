@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_9dp"
+        android:layout_marginRight="@dimen/margin_9dp"
+        android:layout_weight="1">
+        <TextView
+            android:textSize="@dimen/margin_13dp"
+            android:textColor="#742626"
+            android:ellipsize="end"
+            android:id="@+id/pioneer_iv_vip_profit_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:lineSpacingExtra="1dp"/>
+        <TextView
+            android:textSize="@dimen/margin_12dp"
+            android:textColor="#99874334"
+            android:ellipsize="end"
+            android:id="@+id/pioneer_iv_vip_profit_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"/>
+    </LinearLayout>
+    <com.alibaba.pictures.bricks.view.PuHuiTiTextView
+        android:textSize="@dimen/margin_12dp"
+        android:textColor="#742626"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/pioneer_iv_vip_profit_see"
+        android:paddingLeft="@dimen/margin_15dp"
+        android:paddingRight="@dimen/margin_15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_28dp"
+        android:layout_marginRight="12dp"
+        android:includeFontPadding="false"/>
+</LinearLayout>

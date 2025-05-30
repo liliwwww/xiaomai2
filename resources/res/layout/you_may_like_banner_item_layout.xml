@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/media_vod_container"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.legacy.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
+    <com.taobao.movie.android.commonui.widget.TppGifImageView
+        android:id="@+id/iv_media_vod"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        app:actualImageScaleType="fitCenter"
+        app:fadeDuration="0"
+        app:failureImage="@drawable/oscar_default_image"
+        app:failureImageScaleType="fitXY"
+        app:placeholderImage="@drawable/oscar_default_image"
+        app:placeholderImageScaleType="fitXY"
+        app:retryImage="@drawable/oscar_default_image"
+        app:retryImageScaleType="fitXY"
+        app:roundedCornerRadius="6dp"/>
+    <androidx.legacy.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="21dp"/>
+</LinearLayout>

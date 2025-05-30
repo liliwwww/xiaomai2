@@ -1,0 +1,116 @@
+{
+  "components": [
+    {
+      "type": 7879,
+      "tag": "feed",
+      "layout": {
+        "layoutType": "linear",
+        "params": {
+        }
+      },
+      "viewTypes": [
+        {
+          "type": 7880,
+          "model": "com.alibaba.pictures.bricks.component.project.DMProjectModel",
+          "present": "com.alibaba.pictures.bricks.component.project.DMProjectPresent4Discover",
+          "view": "com.alibaba.pictures.bricks.component.project.DMProjectView",
+          "layoutID": "bricks_item_dm_project",
+          "params": {
+            "bean": "com.alibaba.pictures.bricks.component.project.bean.DMProjectItemBean"
+          }
+        },
+        {
+          "type": 7903,
+          "layoutID": "pioneer_live_feed_rank_card",
+          "model": "cn.damai.pioneer.model.HomeFeedRankCardModel",
+          "present": "cn.damai.pioneer.component.tab.LiveFeedRankCardPresent",
+          "view": "cn.damai.pioneer.view.LiveFeedRankCardView",
+          "params": {
+            "bean": "cn.damai.pioneer.bean.HomeFeedRankCardBean"
+          }
+        }
+      ]
+    },
+    {
+      "type": 7665,
+      "tag": "感受现场-来自经典版现场页TODO-YSL",
+      "layout": {
+        "layoutType": "feed_list",
+        "params": {
+          "span": 2
+        }
+      },
+      "viewTypes": [
+        {
+          "type": 7667,
+          "layoutID": "bricks_component_home_marketing_card",
+          "viewHolder": "com.alibaba.pictures.bricks.component.home.feed.HomeMarketingCardViewHolder",
+          "params": {
+            "bean": "com.alibaba.pictures.bricks.bean.HomeMarketingCardBean"
+          }
+        },
+        {
+          "type": 7557,
+          "layoutID": "pioneer_component_homepage_waterflow_recmmend_note",
+          "model": "com.alibaba.pictures.bricks.component.home.feed.NoteModel",
+          "present": "com.alibaba.pictures.bricks.component.home.feed.NotePresent",
+          "view": "com.alibaba.pictures.bricks.component.home.feed.NoteView",
+          "params": {
+            "bean": "com.alibaba.pictures.bricks.bean.NoteBean"
+          }
+        }
+      ]
+    },
+    {
+      "type": 7871,
+      "tag": "feed_load_more",
+      "layout": {
+        "layoutType": "single",
+        "params": {
+        }
+      },
+      "viewTypes": [
+        {
+          "type": 7699,
+          "layoutID": "component_pioneer_home_feed_load_more",
+          "viewHolder": "cn.damai.pioneer.component.tab.category.viewholder.LoadMoreViewHolder",
+          "params": {
+          }
+        }
+      ]
+    },
+    {
+      "type": 7944,
+      "tag": "feed",
+      "layout": {
+        "layoutType": "feed_list",
+        "params": {
+          "span": 2,
+          "gap": "resource_size_9"
+        }
+      },
+      "viewTypes": [
+        {
+          "type": 7967,
+          "layoutID": "pioneer_live_ipstore_entrance",
+          "model": "com.alibaba.pictures.bricks.component.ipstore.IPStoreEntranceModel",
+          "present": "com.alibaba.pictures.bricks.component.ipstore.IPStoreEntrancePresent",
+          "view": "com.alibaba.pictures.bricks.component.ipstore.IPStoreEntranceView",
+          "params": {
+            "bean": "com.alibaba.pictures.bricks.component.ipstore.IPStoreEntranceBean"
+          }
+        },
+        {
+          "type": 7961,
+          "layoutID": "pioneer_live_ipstore_item_card",
+          "model": "com.alibaba.pictures.bricks.component.ipstore.IPStoreItemCardModel",
+          "present": "com.alibaba.pictures.bricks.component.ipstore.IPStoreItemCardPresent",
+          "view": "com.alibaba.pictures.bricks.component.ipstore.IPStoreItemCardView",
+          "params": {
+            "bean": "com.alibaba.pictures.bricks.component.ipstore.IPStoreItemCardBean"
+          }
+        }
+      ]
+    }
+  ]
+}

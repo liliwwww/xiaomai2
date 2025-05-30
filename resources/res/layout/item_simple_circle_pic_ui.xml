@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <cn.damai.tetris.component.home.widget.banner.sub.RoundRadiusImageView
+        android:id="@+id/circle_pic_img"
+        android:layout_width="59dp"
+        android:layout_height="59dp"
+        android:scaleType="centerCrop"
+        app:r_round_radius="4dp"
+        app:r_stroke_color="#1a000000"
+        app:r_stroke_width="1px"/>
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/circle_pic_video_icon"
+        android:visibility="gone"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/feed_video_icon"/>
+</FrameLayout>

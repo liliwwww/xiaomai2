@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center"
+    android:id="@+id/mine_banner_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/margin_9dp">
+    <com.alient.onearch.adapter.widget.banner.Banner
+        android:gravity="center"
+        android:id="@+id/mine_banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <com.alient.onearch.adapter.widget.banner.IndicatorView
+        android:layout_gravity="bottom|center_horizontal"
+        android:id="@+id/mine_indicator"
+        android:paddingBottom="@dimen/margin_6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</FrameLayout>

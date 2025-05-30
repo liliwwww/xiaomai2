@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingRight="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textSize="12dp"
+        android:textColor="#ff993a"
+        android:id="@+id/service_support"
+        android:paddingTop="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="4dp"/>
+    <com.alibaba.pictures.bricks.view.FakeBoldTextView
+        android:textSize="@dimen/resource_size_12"
+        android:textColor="@color/bricks_2e333e"
+        android:id="@+id/service_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

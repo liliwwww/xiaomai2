@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textSize="@dimen/margin_30dp"
+    android:id="@+id/sound_test_success"
+    android:background="#ff00ee"
+    android:padding="@dimen/margin_20dp"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:text="toast 8.1.0 add crash 测试"/>

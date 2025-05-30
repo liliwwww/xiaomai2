@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:paddingLeft="22dp"
+    android:paddingTop="16dp"
+    android:paddingRight="30dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:id="@+id/icb_check_container"
+        android:layout_width="32dp"
+        android:layout_height="32dp">
+        <CheckBox
+            android:layout_gravity="center"
+            android:id="@+id/icb_check"
+            android:background="@drawable/common_business_check_circle_selector_v2"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:checked="false"
+            android:button="@null"/>
+    </FrameLayout>
+    <TextView
+        android:textSize="14dp"
+        android:textColor="@color/color_666666"
+        android:id="@+id/icb_protocol_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="6dp"/>
+</LinearLayout>

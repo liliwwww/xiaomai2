@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="93dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <cn.damai.uikit.banner.sub.XBanner
+            android:id="@+id/banner_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"/>
+        <cn.damai.uikit.banner.sub.RoundLayerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:x_round_radius="6dp"/>
+    </FrameLayout>
+    <cn.damai.uikit.banner.sub.XIndicator
+        android:id="@+id/banner_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="13dp"/>
+</LinearLayout>

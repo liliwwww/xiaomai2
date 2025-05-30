@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <View
+        android:layout_gravity="bottom"
+        android:id="@+id/mask_layer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+    <com.alibaba.pictures.bricks.view.BricksIconFontTextView
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:layout_gravity="bottom|left"
+        android:id="@+id/icon_mute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="21dp"
+        android:layout_marginBottom="9dp"
+        android:text="@string/iconfont_voice_off"/>
+    <TextView
+        android:textSize="16dp"
+        android:textColor="@color/C_white"
+        android:layout_gravity="bottom|right"
+        android:id="@+id/tv_page_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="21dp"
+        android:layout_marginBottom="9dp"
+        android:maxLines="1"
+        android:includeFontPadding="false"/>
+</FrameLayout>

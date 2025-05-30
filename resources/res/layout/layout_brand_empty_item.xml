@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:id="@+id/conditional_tab_item"
+    android:paddingTop="100dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_error_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/common_error_ticket_empty"/>
+    <TextView
+        android:textSize="@dimen/margin_14dp"
+        android:textColor="#9c9ca5"
+        android:gravity="center"
+        android:id="@+id/tv_error_tip"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        android:paddingBottom="@dimen/margin_18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="没有找到相关内容哦～"
+        android:lineSpacingExtra="4dp"/>
+</LinearLayout>

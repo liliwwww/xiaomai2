@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="bottom|left"
+    android:orientation="vertical"
+    android:id="@+id/ll_star"
+    android:background="@drawable/bg_score_star_radio"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+    <cn.damai.tetris.component.home.utils.DMMarqueeView
+        android:id="@+id/multi_user_layout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginBottom="6dp"
+        android:layout_alignParentBottom="true"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/single_user_layout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginBottom="6dp"
+        android:layout_alignParentBottom="true">
+        <include layout="@layout/homepage_video_item_artist"/>
+    </LinearLayout>
+</LinearLayout>

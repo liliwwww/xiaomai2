@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:banner="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <cn.damai.tetris.component.home.widget.banner.Banner
+        android:id="@+id/homepage_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="9dp"
+        banner:image_scale_type="fit_xy"
+        banner:indicator_drawable_selected="@drawable/homepage_banner_indicator_select"
+        banner:indicator_drawable_unselected="@drawable/homepage_banner_indicator_unselect"
+        banner:indicator_height="6dp"
+        banner:indicator_margin="3dp"
+        banner:indicator_width="6dp"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/view_null"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="130dp">
+        <View
+            android:id="@+id/view_btn1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <View
+            android:id="@+id/view_btn2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

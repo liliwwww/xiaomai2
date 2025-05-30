@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="220dp"
+    android:layout_height="26dp">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:id="@+id/mfh_text_layout"
+        android:paddingLeft="23dp"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp">
+        <TextView
+            android:textSize="12dp"
+            android:textColor="@color/white"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:id="@+id/mfh_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:maxWidth="170dp"
+            android:lines="1"/>
+        <cn.damai.uikit.iconfont.DMIconFontTextView
+            android:textSize="10dp"
+            android:textColor="@color/white"
+            android:paddingLeft="1dp"
+            android:paddingRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/iconfont_youjiantou12"/>
+    </LinearLayout>
+</FrameLayout>

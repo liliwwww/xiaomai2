@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:id="@+id/ll_delivery_tip"
+    android:background="@color/white"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp"
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textSize="@dimen/margin_24dp"
+        android:textColor="@color/color_888888"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/iconfont_tixing24"/>
+    <TextView
+        android:textSize="@dimen/margin_14dp"
+        android:textColor="@color/color_888888"
+        android:id="@+id/tv_delivery_tip"
+        android:paddingLeft="14dp"
+        android:paddingTop="@dimen/margin_15dp"
+        android:paddingBottom="@dimen/margin_15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="5dp"/>
+</LinearLayout>

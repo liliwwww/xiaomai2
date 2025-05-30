@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/common_text_color46"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="35dp">
+    <TextView
+        android:textSize="15dp"
+        android:textColor="@color/common_text_color45"
+        android:id="@+id/sales_header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:layout_alignParentBottom="true"/>
+    <TextView
+        android:textSize="11dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:id="@+id/sales_header_title_goods_coupon_des"
+        android:background="@drawable/schedule_sale_good_tips"
+        android:paddingLeft="4dp"
+        android:paddingTop="2dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="2dp"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

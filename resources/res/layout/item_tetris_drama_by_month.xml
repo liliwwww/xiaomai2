@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:paddingLeft="21dp"
+        android:paddingRight="21dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/item_card_title_layout"/>
+    </FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dbm_tab_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:layout_marginLeft="21dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dbm_drama_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="194dp"/>
+</LinearLayout>

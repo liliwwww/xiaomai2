@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="9dp"
+    android:paddingRight="9dp"
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="33dp"
+    android:paddingHorizontal="9dp"
+    app:alignItems="center">
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textSize="15dp"
+        android:textColor="#171717"
+        android:paddingRight="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/iconfont_xinxitishi36"
+        app:layout_flexShrink="0"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="#171717"
+        android:ellipsize="end"
+        android:id="@+id/project_v2_notice_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:singleLine="true"
+        android:includeFontPadding="false"
+        app:layout_flexShrink="1"/>
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textSize="10dp"
+        android:textColor="#1d642c"
+        android:paddingRight="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/iconfont_youjiantou12"
+        app:layout_flexShrink="0"/>
+</com.google.android.flexbox.FlexboxLayout>

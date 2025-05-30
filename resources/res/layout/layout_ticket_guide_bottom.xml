@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/margin_21dp"
+    android:paddingTop="@dimen/margin_30dp"
+    android:paddingRight="@dimen/margin_21dp"
+    android:paddingBottom="@dimen/margin_30dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textSize="@dimen/margin_14dp"
+        android:textColor="@color/color_9C9CA5"
+        android:gravity="center"
+        android:id="@+id/tv_ticket_guide_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

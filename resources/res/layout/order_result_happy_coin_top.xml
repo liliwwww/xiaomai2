@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/order_result_happy_coin_dialog_top_bg"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:layout_width="300dp"
+    android:layout_height="105dp">
+    <TextView
+        android:textSize="14dp"
+        android:textColor="@color/white"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:layout_gravity="bottom|center_horizontal"
+        android:id="@+id/order_result_dialog_top_msg"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:singleLine="true"
+        android:includeFontPadding="false"/>
+</FrameLayout>

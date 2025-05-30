@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+    <ImageView
+        android:id="@+id/dialog_item_action_img"
+        android:visibility="gone"
+        android:layout_width="52dp"
+        android:layout_height="52dp"/>
+    <cn.damai.uikit.iconfont.DMIconFontTextView
+        android:textSize="32dp"
+        android:textColor="@color/color_666666"
+        android:gravity="center"
+        android:id="@+id/dialog_item_action_icon_f"
+        android:layout_width="52dp"
+        android:layout_height="52dp"/>
+    <TextView
+        android:textSize="12dp"
+        android:textColor="@color/color_666666"
+        android:id="@+id/dialog_item_action_tv"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:lines="1"/>
+</LinearLayout>

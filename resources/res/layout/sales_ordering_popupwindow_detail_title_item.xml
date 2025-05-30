@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    style="@style/CommonListItemContainerWhite">
+    <TextView
+        android:id="@+id/detail_title"
+        style="@style/CommonListItemOrderTitle"/>
+    <TextView
+        android:id="@+id/detail_servicefee"
+        android:visibility="gone"
+        android:layout_alignBaseline="@+id/detail_title"
+        android:layout_alignParentRight="true"
+        style="@style/CommonListItemOrderTitle"/>
+</RelativeLayout>

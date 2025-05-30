@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.alibaba.security.realidentity.ui.widgets.TitleBarWidget
+        android:id="@+id/widget_title_bar"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/abfl_widget_tb_close_parent"
+            android:layout_width="120px"
+            android:layout_height="80px"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true">
+            <ImageView
+                android:id="@+id/abfl_widget_tb_close"
+                android:layout_width="36px"
+                android:layout_height="36px"
+                android:src="@drawable/rp_face_top_back"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"/>
+        </LinearLayout>
+        <TextView
+            android:textSize="38px"
+            android:textColor="@color/rpsdk_top_bar_title_color"
+            android:gravity="center"
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="80px"/>
+    </com.alibaba.security.realidentity.ui.widgets.TitleBarWidget>
+</merge>

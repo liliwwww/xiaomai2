@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/resource_size_9"
+    android:layout_marginRight="@dimen/resource_size_9">
+    <cn.damai.trade.newtradeorder.ui.projectdetail.projectdetailnew.xholdercreator.wantsee.ProjectWantSeeRecommendView
+        android:id="@+id/project_want_see_recommend"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</FrameLayout>
