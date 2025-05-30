@@ -14,10 +14,11 @@ import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import androidx.appcompat.R;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WebNaviBar extends AbstractNaviBar {
     private static final int INDEX_NEXT = 3;
     private static final int INDEX_PRE = 2;
@@ -78,6 +79,7 @@ public class WebNaviBar extends AbstractNaviBar {
         });
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     private void setNextIcon(Context context, Resources resources) {
         ImageButton imageButton = new ImageButton(context);
         this.imgNext = imageButton;
@@ -96,6 +98,7 @@ public class WebNaviBar extends AbstractNaviBar {
         addView(this.imgNext, layoutParams);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     private void setPreIcon(Context context, Resources resources) {
         ImageButton imageButton = new ImageButton(context);
         this.imgPre = imageButton;
@@ -114,10 +117,11 @@ public class WebNaviBar extends AbstractNaviBar {
         addView(this.imgPre, layoutParams);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     private void setRefreshIcon(Context context, Resources resources) {
         ImageButton imageButton = new ImageButton(context);
         this.imgRefresh = imageButton;
-        imageButton.setId(114);
+        imageButton.setId(R.styleable.AppCompatTheme_tooltipForegroundColor);
         this.imgRefresh.setBackgroundColor(-657931);
         int i = this.mHeight;
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(i, i - 2);
@@ -132,9 +136,10 @@ public class WebNaviBar extends AbstractNaviBar {
         addView(this.imgRefresh, layoutParams);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     protected void init(Context context) {
         this.mContext = context;
-        setId(110);
+        setId(R.styleable.AppCompatTheme_textColorAlertDialogListItem);
         setBackgroundColor(-657931);
         setClickable(true);
         float f = context.getResources().getDisplayMetrics().density;
@@ -150,13 +155,12 @@ public class WebNaviBar extends AbstractNaviBar {
         setPreIcon(context, resources);
     }
 
-    @Override // android.view.View
+    /* JADX WARN: Multi-variable type inference failed */
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+        super/*android.widget.RelativeLayout*/.onDraw(canvas);
         canvas.drawLine(0.0f, 0.0f, getWidth(), 0.0f, this.paint);
     }
 
-    @Override // android.taobao.windvane.view.AbstractNaviBar
     public void resetState() {
         if (this.imgNext != null) {
             if (this.webview.canGoForward()) {
@@ -175,7 +179,6 @@ public class WebNaviBar extends AbstractNaviBar {
         }
     }
 
-    @Override // android.taobao.windvane.view.AbstractNaviBar
     public void startLoading() {
         ImageButton imageButton = this.imgRefresh;
         if (imageButton != null) {
@@ -183,7 +186,6 @@ public class WebNaviBar extends AbstractNaviBar {
         }
     }
 
-    @Override // android.taobao.windvane.view.AbstractNaviBar
     public void stopLoading() {
     }
 

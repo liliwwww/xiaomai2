@@ -1,10 +1,9 @@
 package androidx.constraintlayout.core.motion;
 
-import androidx.constraintlayout.core.motion.utils.TypedValues;
 import androidx.core.view.ViewCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class CustomVariable {
     private static final String TAG = "TransitionLayout";
     boolean mBooleanValue;
@@ -74,19 +73,19 @@ public class CustomVariable {
     public void applyToWidget(MotionWidget motionWidget) {
         int i = this.mType;
         switch (i) {
-            case TypedValues.Custom.TYPE_INT /* 900 */:
-            case TypedValues.Custom.TYPE_COLOR /* 902 */:
-            case TypedValues.Custom.TYPE_REFERENCE /* 906 */:
+            case 900:
+            case 902:
+            case 906:
                 motionWidget.setCustomAttribute(this.mName, i, this.mIntegerValue);
                 break;
-            case TypedValues.Custom.TYPE_FLOAT /* 901 */:
-            case TypedValues.Custom.TYPE_DIMENSION /* 905 */:
+            case 901:
+            case 905:
                 motionWidget.setCustomAttribute(this.mName, i, this.mFloatValue);
                 break;
-            case TypedValues.Custom.TYPE_STRING /* 903 */:
+            case 903:
                 motionWidget.setCustomAttribute(this.mName, i, this.mStringValue);
                 break;
-            case TypedValues.Custom.TYPE_BOOLEAN /* 904 */:
+            case 904:
                 motionWidget.setCustomAttribute(this.mName, i, this.mBooleanValue);
                 break;
         }
@@ -102,28 +101,28 @@ public class CustomVariable {
             return false;
         }
         switch (i) {
-            case TypedValues.Custom.TYPE_INT /* 900 */:
-            case TypedValues.Custom.TYPE_REFERENCE /* 906 */:
+            case 900:
+            case 906:
                 if (this.mIntegerValue == customVariable.mIntegerValue) {
                 }
                 break;
-            case TypedValues.Custom.TYPE_FLOAT /* 901 */:
+            case 901:
                 if (this.mFloatValue == customVariable.mFloatValue) {
                 }
                 break;
-            case TypedValues.Custom.TYPE_COLOR /* 902 */:
+            case 902:
                 if (this.mIntegerValue == customVariable.mIntegerValue) {
                 }
                 break;
-            case TypedValues.Custom.TYPE_STRING /* 903 */:
+            case 903:
                 if (this.mIntegerValue == customVariable.mIntegerValue) {
                 }
                 break;
-            case TypedValues.Custom.TYPE_BOOLEAN /* 904 */:
+            case 904:
                 if (this.mBooleanValue == customVariable.mBooleanValue) {
                 }
                 break;
-            case TypedValues.Custom.TYPE_DIMENSION /* 905 */:
+            case 905:
                 if (this.mFloatValue == customVariable.mFloatValue) {
                 }
                 break;
@@ -165,17 +164,17 @@ public class CustomVariable {
 
     public float getValueToInterpolate() {
         switch (this.mType) {
-            case TypedValues.Custom.TYPE_INT /* 900 */:
+            case 900:
                 return this.mIntegerValue;
-            case TypedValues.Custom.TYPE_FLOAT /* 901 */:
+            case 901:
                 return this.mFloatValue;
-            case TypedValues.Custom.TYPE_COLOR /* 902 */:
+            case 902:
                 throw new RuntimeException("Color does not have a single color to interpolate");
-            case TypedValues.Custom.TYPE_STRING /* 903 */:
+            case 903:
                 throw new RuntimeException("Cannot interpolate String");
-            case TypedValues.Custom.TYPE_BOOLEAN /* 904 */:
+            case 904:
                 return this.mBooleanValue ? 1.0f : 0.0f;
-            case TypedValues.Custom.TYPE_DIMENSION /* 905 */:
+            case 905:
                 return this.mFloatValue;
             default:
                 return Float.NaN;
@@ -184,13 +183,13 @@ public class CustomVariable {
 
     public void getValuesToInterpolate(float[] fArr) {
         switch (this.mType) {
-            case TypedValues.Custom.TYPE_INT /* 900 */:
+            case 900:
                 fArr[0] = this.mIntegerValue;
                 return;
-            case TypedValues.Custom.TYPE_FLOAT /* 901 */:
+            case 901:
                 fArr[0] = this.mFloatValue;
                 return;
-            case TypedValues.Custom.TYPE_COLOR /* 902 */:
+            case 902:
                 int i = (this.mIntegerValue >> 24) & 255;
                 float pow = (float) Math.pow(((r0 >> 16) & 255) / 255.0f, 2.2d);
                 float pow2 = (float) Math.pow(((r0 >> 8) & 255) / 255.0f, 2.2d);
@@ -200,12 +199,12 @@ public class CustomVariable {
                 fArr[2] = pow3;
                 fArr[3] = i / 255.0f;
                 return;
-            case TypedValues.Custom.TYPE_STRING /* 903 */:
+            case 903:
                 throw new RuntimeException("Cannot interpolate String");
-            case TypedValues.Custom.TYPE_BOOLEAN /* 904 */:
+            case 904:
                 fArr[0] = this.mBooleanValue ? 1.0f : 0.0f;
                 return;
-            case TypedValues.Custom.TYPE_DIMENSION /* 905 */:
+            case 905:
                 fArr[0] = this.mFloatValue;
                 return;
             default:
@@ -237,20 +236,20 @@ public class CustomVariable {
     public void setInterpolatedValue(MotionWidget motionWidget, float[] fArr) {
         int i = this.mType;
         switch (i) {
-            case TypedValues.Custom.TYPE_INT /* 900 */:
+            case 900:
                 motionWidget.setCustomAttribute(this.mName, i, (int) fArr[0]);
                 return;
-            case TypedValues.Custom.TYPE_FLOAT /* 901 */:
-            case TypedValues.Custom.TYPE_DIMENSION /* 905 */:
+            case 901:
+            case 905:
                 motionWidget.setCustomAttribute(this.mName, i, fArr[0]);
                 return;
-            case TypedValues.Custom.TYPE_COLOR /* 902 */:
+            case 902:
                 motionWidget.setCustomAttribute(this.mName, this.mType, (clamp((int) (fArr[3] * 255.0f)) << 24) | (clamp((int) (((float) Math.pow(fArr[0], 0.45454545454545453d)) * 255.0f)) << 16) | (clamp((int) (((float) Math.pow(fArr[1], 0.45454545454545453d)) * 255.0f)) << 8) | clamp((int) (((float) Math.pow(fArr[2], 0.45454545454545453d)) * 255.0f)));
                 return;
-            case TypedValues.Custom.TYPE_STRING /* 903 */:
-            case TypedValues.Custom.TYPE_REFERENCE /* 906 */:
+            case 903:
+            case 906:
                 throw new RuntimeException("unable to interpolate " + this.mName);
-            case TypedValues.Custom.TYPE_BOOLEAN /* 904 */:
+            case 904:
                 motionWidget.setCustomAttribute(this.mName, i, fArr[0] > 0.5f);
                 return;
             default:
@@ -264,20 +263,20 @@ public class CustomVariable {
 
     public void setValue(float[] fArr) {
         switch (this.mType) {
-            case TypedValues.Custom.TYPE_INT /* 900 */:
-            case TypedValues.Custom.TYPE_REFERENCE /* 906 */:
+            case 900:
+            case 906:
                 this.mIntegerValue = (int) fArr[0];
                 return;
-            case TypedValues.Custom.TYPE_FLOAT /* 901 */:
-            case TypedValues.Custom.TYPE_DIMENSION /* 905 */:
+            case 901:
+            case 905:
                 this.mFloatValue = fArr[0];
                 return;
-            case TypedValues.Custom.TYPE_COLOR /* 902 */:
+            case 902:
                 this.mIntegerValue = ((Math.round(fArr[3] * 255.0f) & 255) << 24) | ((Math.round(((float) Math.pow(fArr[0], 0.5d)) * 255.0f) & 255) << 16) | ((Math.round(((float) Math.pow(fArr[1], 0.5d)) * 255.0f) & 255) << 8) | (Math.round(((float) Math.pow(fArr[2], 0.5d)) * 255.0f) & 255);
                 return;
-            case TypedValues.Custom.TYPE_STRING /* 903 */:
+            case 903:
                 throw new RuntimeException("Cannot interpolate String");
-            case TypedValues.Custom.TYPE_BOOLEAN /* 904 */:
+            case 904:
                 this.mBooleanValue = ((double) fArr[0]) > 0.5d;
                 return;
             default:
@@ -288,17 +287,17 @@ public class CustomVariable {
     public String toString() {
         String str = this.mName + ':';
         switch (this.mType) {
-            case TypedValues.Custom.TYPE_INT /* 900 */:
+            case 900:
                 return str + this.mIntegerValue;
-            case TypedValues.Custom.TYPE_FLOAT /* 901 */:
+            case 901:
                 return str + this.mFloatValue;
-            case TypedValues.Custom.TYPE_COLOR /* 902 */:
+            case 902:
                 return str + colorString(this.mIntegerValue);
-            case TypedValues.Custom.TYPE_STRING /* 903 */:
+            case 903:
                 return str + this.mStringValue;
-            case TypedValues.Custom.TYPE_BOOLEAN /* 904 */:
+            case 904:
                 return str + Boolean.valueOf(this.mBooleanValue);
-            case TypedValues.Custom.TYPE_DIMENSION /* 905 */:
+            case 905:
                 return str + this.mFloatValue;
             default:
                 return str + "????";
@@ -316,23 +315,23 @@ public class CustomVariable {
 
     public void setValue(Object obj) {
         switch (this.mType) {
-            case TypedValues.Custom.TYPE_INT /* 900 */:
-            case TypedValues.Custom.TYPE_REFERENCE /* 906 */:
+            case 900:
+            case 906:
                 this.mIntegerValue = ((Integer) obj).intValue();
                 break;
-            case TypedValues.Custom.TYPE_FLOAT /* 901 */:
+            case 901:
                 this.mFloatValue = ((Float) obj).floatValue();
                 break;
-            case TypedValues.Custom.TYPE_COLOR /* 902 */:
+            case 902:
                 this.mIntegerValue = ((Integer) obj).intValue();
                 break;
-            case TypedValues.Custom.TYPE_STRING /* 903 */:
+            case 903:
                 this.mStringValue = (String) obj;
                 break;
-            case TypedValues.Custom.TYPE_BOOLEAN /* 904 */:
+            case 904:
                 this.mBooleanValue = ((Boolean) obj).booleanValue();
                 break;
-            case TypedValues.Custom.TYPE_DIMENSION /* 905 */:
+            case 905:
                 this.mFloatValue = ((Float) obj).floatValue();
                 break;
         }

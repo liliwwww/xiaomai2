@@ -8,16 +8,14 @@ import android.net.Proxy;
 import android.os.Build;
 import android.taobao.windvane.config.GlobalConfig;
 import android.taobao.windvane.connect.HttpRequest;
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import androidx.autofill.HintConstants;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.http.HttpHost;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class NetWork {
     public static final int CHINA_MOBILE = 1;
     public static final int CHINA_TELECOM = 3;
@@ -62,10 +60,10 @@ public class NetWork {
         if (getSimState(context) != 0) {
             return -1;
         }
-        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(HintConstants.AUTOFILL_HINT_PHONE);
+        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService("phone");
         String replaceAll = com.alibaba.wireless.security.aopsdk.replace.android.telephony.TelephonyManager.getNetworkOperatorName(telephonyManager).replaceAll(" ", "");
         String networkOperator = com.alibaba.wireless.security.aopsdk.replace.android.telephony.TelephonyManager.getNetworkOperator(telephonyManager);
-        TaoLog.m18d("NSP: ", "operator = " + replaceAll + "  type = " + networkOperator);
+        TaoLog.d("NSP: ", "operator = " + replaceAll + "  type = " + networkOperator);
         if (networkOperator != null) {
             replaceAll = networkOperator;
         }
@@ -94,7 +92,7 @@ public class NetWork {
     public static String getNetConnType(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService("connectivity");
         if (connectivityManager == null) {
-            TaoLog.m30w("Network", "can not get Context.CONNECTIVITY_SERVICE");
+            TaoLog.w("Network", "can not get Context.CONNECTIVITY_SERVICE");
             return CONN_TYPE_NONE;
         }
         NetworkInfo networkInfo = connectivityManager.getNetworkInfo(1);
@@ -103,7 +101,7 @@ public class NetWork {
                 return CONN_TYPE_WIFI;
             }
         } else {
-            TaoLog.m30w("Network", "can not get ConnectivityManager.TYPE_WIFI");
+            TaoLog.w("Network", "can not get ConnectivityManager.TYPE_WIFI");
         }
         NetworkInfo networkInfo2 = connectivityManager.getNetworkInfo(0);
         if (networkInfo2 != null) {
@@ -111,7 +109,7 @@ public class NetWork {
                 return CONN_TYPE_GPRS;
             }
         } else {
-            TaoLog.m30w("Network", "can not get ConnectivityManager.TYPE_MOBILE");
+            TaoLog.w("Network", "can not get ConnectivityManager.TYPE_MOBILE");
         }
         return CONN_TYPE_NONE;
     }
@@ -231,7 +229,7 @@ public class NetWork {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public static java.util.HashMap<java.lang.String, java.lang.String> getProxyInfo(android.content.Context r12, android.net.Uri r13) {
         /*
@@ -250,7 +248,7 @@ public class NetWork {
             r4.append(r1)
             java.lang.String r4 = r4.toString()
             java.lang.String r5 = "getProxyInfo"
-            android.taobao.windvane.util.TaoLog.m18d(r5, r4)
+            android.taobao.windvane.util.TaoLog.d(r5, r4)
             java.lang.String r4 = "WIFI"
             boolean r4 = r1.contains(r4)
             if (r4 != 0) goto Lb4
@@ -289,7 +287,7 @@ public class NetWork {
             r4.append(r6)     // Catch: java.lang.Throwable -> La1 java.lang.Exception -> La4
             r4.append(r13)     // Catch: java.lang.Throwable -> La1 java.lang.Exception -> La4
             java.lang.String r4 = r4.toString()     // Catch: java.lang.Throwable -> La1 java.lang.Exception -> La4
-            android.taobao.windvane.util.TaoLog.m18d(r5, r4)     // Catch: java.lang.Throwable -> La1 java.lang.Exception -> La4
+            android.taobao.windvane.util.TaoLog.d(r5, r4)     // Catch: java.lang.Throwable -> La1 java.lang.Exception -> La4
             boolean r13 = r1.contains(r13)     // Catch: java.lang.Throwable -> La1 java.lang.Exception -> La4
             if (r13 == 0) goto L9a
             r12.close()
@@ -326,7 +324,7 @@ public class NetWork {
     }
 
     public static int getSimState(Context context) {
-        int simState = com.alibaba.wireless.security.aopsdk.replace.android.telephony.TelephonyManager.getSimState((TelephonyManager) context.getSystemService(HintConstants.AUTOFILL_HINT_PHONE));
+        int simState = com.alibaba.wireless.security.aopsdk.replace.android.telephony.TelephonyManager.getSimState((TelephonyManager) context.getSystemService("phone"));
         if (simState == 5) {
             return 0;
         }
@@ -363,7 +361,7 @@ public class NetWork {
             return;
         }
         proxy = true;
-        System.getProperties().put("proxySet", BasePreInitManager.PRE_RENDER_URL_ADDITION_VALUE);
+        System.getProperties().put("proxySet", "true");
         System.getProperties().put("proxyHost", str);
         if (str2 == null || str2.length() <= 0) {
             System.getProperties().put("proxyPort", "80");

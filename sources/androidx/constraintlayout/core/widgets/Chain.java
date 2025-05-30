@@ -4,7 +4,7 @@ import androidx.constraintlayout.core.LinearSystem;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Chain {
     private static final boolean DEBUG = false;
     public static final boolean USE_CHAIN_OPTIMIZATION = false;
@@ -71,20 +71,14 @@ public class Chain {
     /* JADX WARN: Removed duplicated region for block: B:313:0x04dd  */
     /* JADX WARN: Removed duplicated region for block: B:90:0x01a1  */
     /* JADX WARN: Removed duplicated region for block: B:93:0x01c0  */
-    /* JADX WARN: Type inference failed for: r1v42, types: [androidx.constraintlayout.core.widgets.ConstraintWidget] */
-    /* JADX WARN: Type inference failed for: r7v1 */
-    /* JADX WARN: Type inference failed for: r7v2, types: [androidx.constraintlayout.core.widgets.ConstraintWidget] */
-    /* JADX WARN: Type inference failed for: r7v28 */
-    /* JADX WARN: Type inference failed for: r7v29 */
-    /* JADX WARN: Type inference failed for: r7v30 */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     static void applyChainConstraints(androidx.constraintlayout.core.widgets.ConstraintWidgetContainer r38, androidx.constraintlayout.core.LinearSystem r39, int r40, int r41, androidx.constraintlayout.core.widgets.ChainHead r42) {
         /*
             Method dump skipped, instructions count: 1358
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.constraintlayout.core.widgets.Chain.applyChainConstraints(androidx.constraintlayout.core.widgets.ConstraintWidgetContainer, androidx.constraintlayout.core.LinearSystem, int, int, androidx.constraintlayout.core.widgets.ChainHead):void");
     }

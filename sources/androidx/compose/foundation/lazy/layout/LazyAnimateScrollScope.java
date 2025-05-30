@@ -1,7 +1,7 @@
 package androidx.compose.foundation.lazy.layout;
 
 import androidx.compose.foundation.gestures.ScrollScope;
-import androidx.compose.p004ui.unit.Density;
+import androidx.compose.ui.unit.Density;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function2;
@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface LazyAnimateScrollScope {
     float expectedDistanceTo(int i, int i2);
 

@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyGridDslKt$itemsIndexed$10 extends Lambda implements Function4<LazyGridItemScope, Integer, Composer, Integer, Unit> {
     final /* synthetic */ Function5<LazyGridItemScope, Integer, T, Composer, Integer, Unit> $itemContent;
     final /* synthetic */ T[] $items;

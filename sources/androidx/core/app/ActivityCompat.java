@@ -1,22 +1,15 @@
 package androidx.core.app;
 
 import android.app.Activity;
-import android.app.SharedElementCallback;
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
-import android.graphics.Matrix;
-import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Parcelable;
 import android.text.TextUtils;
-import android.view.Display;
 import android.view.DragEvent;
 import android.view.View;
 import androidx.annotation.DoNotInline;
@@ -27,45 +20,19 @@ import androidx.annotation.Nullable;
 import androidx.annotation.OptIn;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.SharedElementCallback;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.LocusIdCompat;
 import androidx.core.os.BuildCompat;
 import androidx.core.view.DragAndDropPermissionsCompat;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import tb.z2;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ActivityCompat extends ContextCompat {
     private static PermissionCompatDelegate sDelegate;
-
-    /* compiled from: Taobao */
-    @RequiresApi(16)
-    /* loaded from: classes2.dex */
-    static class Api16Impl {
-        private Api16Impl() {
-        }
-
-        @DoNotInline
-        static void finishAffinity(Activity activity) {
-            activity.finishAffinity();
-        }
-
-        @DoNotInline
-        static void startActivityForResult(Activity activity, Intent intent, int i, Bundle bundle) {
-            activity.startActivityForResult(intent, i, bundle);
-        }
-
-        @DoNotInline
-        static void startIntentSenderForResult(Activity activity, IntentSender intentSender, int i, Intent intent, int i2, int i3, int i4, Bundle bundle) throws IntentSender.SendIntentException {
-            activity.startIntentSenderForResult(intentSender, i, intent, i2, i3, i4, bundle);
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(21)
@@ -100,43 +67,6 @@ public class ActivityCompat extends ContextCompat {
     }
 
     /* compiled from: Taobao */
-    @RequiresApi(22)
-    /* loaded from: classes2.dex */
-    static class Api22Impl {
-        private Api22Impl() {
-        }
-
-        @DoNotInline
-        static Uri getReferrer(Activity activity) {
-            return activity.getReferrer();
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(23)
-    /* loaded from: classes2.dex */
-    static class Api23Impl {
-        private Api23Impl() {
-        }
-
-        /* JADX INFO: Access modifiers changed from: package-private */
-        @DoNotInline
-        public static void onSharedElementsReady(Object obj) {
-            ((SharedElementCallback.OnSharedElementsReadyListener) obj).onSharedElementsReady();
-        }
-
-        @DoNotInline
-        static void requestPermissions(Activity activity, String[] strArr, int i) {
-            activity.requestPermissions(strArr, i);
-        }
-
-        @DoNotInline
-        static boolean shouldShowRequestPermissionRationale(Activity activity, String str) {
-            return activity.shouldShowRequestPermissionRationale(str);
-        }
-    }
-
-    /* compiled from: Taobao */
     @RequiresApi(28)
     static class Api28Impl {
         private Api28Impl() {
@@ -145,24 +75,6 @@ public class ActivityCompat extends ContextCompat {
         @DoNotInline
         static <T> T requireViewById(Activity activity, int i) {
             return (T) activity.requireViewById(i);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(30)
-    /* loaded from: classes2.dex */
-    static class Api30Impl {
-        private Api30Impl() {
-        }
-
-        @DoNotInline
-        static Display getDisplay(ContextWrapper contextWrapper) {
-            return contextWrapper.getDisplay();
-        }
-
-        @DoNotInline
-        static void setLocusContext(@NonNull Activity activity, @Nullable LocusIdCompat locusIdCompat, @Nullable Bundle bundle) {
-            activity.setLocusContext(locusIdCompat == null ? null : locusIdCompat.toLocusId(), bundle);
         }
     }
 
@@ -179,75 +91,10 @@ public class ActivityCompat extends ContextCompat {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public interface OnRequestPermissionsResultCallback {
-        void onRequestPermissionsResult(int i, @NonNull String[] strArr, @NonNull int[] iArr);
-    }
-
-    /* compiled from: Taobao */
     public interface PermissionCompatDelegate {
         boolean onActivityResult(@NonNull Activity activity, @IntRange(from = 0) int i, int i2, @Nullable Intent intent);
 
         boolean requestPermissions(@NonNull Activity activity, @NonNull String[] strArr, @IntRange(from = 0) int i);
-    }
-
-    /* compiled from: Taobao */
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes2.dex */
-    public interface RequestPermissionsRequestCodeValidator {
-        void validateRequestPermissionsRequestCode(int i);
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(21)
-    /* loaded from: classes2.dex */
-    static class SharedElementCallback21Impl extends android.app.SharedElementCallback {
-        private final SharedElementCallback mCallback;
-
-        SharedElementCallback21Impl(SharedElementCallback sharedElementCallback) {
-            this.mCallback = sharedElementCallback;
-        }
-
-        @Override // android.app.SharedElementCallback
-        public Parcelable onCaptureSharedElementSnapshot(View view, Matrix matrix, RectF rectF) {
-            return this.mCallback.onCaptureSharedElementSnapshot(view, matrix, rectF);
-        }
-
-        @Override // android.app.SharedElementCallback
-        public View onCreateSnapshotView(Context context, Parcelable parcelable) {
-            return this.mCallback.onCreateSnapshotView(context, parcelable);
-        }
-
-        @Override // android.app.SharedElementCallback
-        public void onMapSharedElements(List<String> list, Map<String, View> map) {
-            this.mCallback.onMapSharedElements(list, map);
-        }
-
-        @Override // android.app.SharedElementCallback
-        public void onRejectSharedElements(List<View> list) {
-            this.mCallback.onRejectSharedElements(list);
-        }
-
-        @Override // android.app.SharedElementCallback
-        public void onSharedElementEnd(List<String> list, List<View> list2, List<View> list3) {
-            this.mCallback.onSharedElementEnd(list, list2, list3);
-        }
-
-        @Override // android.app.SharedElementCallback
-        public void onSharedElementStart(List<String> list, List<View> list2, List<View> list3) {
-            this.mCallback.onSharedElementStart(list, list2, list3);
-        }
-
-        @Override // android.app.SharedElementCallback
-        @RequiresApi(23)
-        public void onSharedElementsArrived(List<String> list, List<View> list2, final SharedElementCallback.OnSharedElementsReadyListener onSharedElementsReadyListener) {
-            this.mCallback.onSharedElementsArrived(list, list2, new SharedElementCallback.OnSharedElementsReadyListener() { // from class: androidx.core.app.a
-                @Override // androidx.core.app.SharedElementCallback.OnSharedElementsReadyListener
-                public final void onSharedElementsReady() {
-                    ActivityCompat.Api23Impl.onSharedElementsReady(onSharedElementsReadyListener);
-                }
-            });
-        }
     }
 
     protected ActivityCompat() {
@@ -270,7 +117,7 @@ public class ActivityCompat extends ContextCompat {
     }
 
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public static PermissionCompatDelegate getPermissionCompatDelegate() {
         return sDelegate;
     }
@@ -330,7 +177,6 @@ public class ActivityCompat extends ContextCompat {
         return DragAndDropPermissionsCompat.request(activity, dragEvent);
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @OptIn(markerClass = {BuildCompat.PrereleaseSdkCheck.class})
     public static void requestPermissions(@NonNull final Activity activity, @NonNull String[] strArr, @IntRange(from = 0) final int i) {
         PermissionCompatDelegate permissionCompatDelegate = sDelegate;
@@ -374,7 +220,7 @@ public class ActivityCompat extends ContextCompat {
                         for (int i5 = 0; i5 < length; i5++) {
                             iArr[i5] = packageManager.checkPermission(strArr2[i5], packageName);
                         }
-                        ((OnRequestPermissionsResultCallback) activity).onRequestPermissionsResult(i, strArr2, iArr);
+                        activity.onRequestPermissionsResult(i, strArr2, iArr);
                     }
                 });
             }

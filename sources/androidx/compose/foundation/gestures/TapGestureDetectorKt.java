@@ -1,10 +1,10 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.input.pointer.AwaitPointerEventScope;
-import androidx.compose.p004ui.input.pointer.PointerEventPass;
-import androidx.compose.p004ui.input.pointer.PointerInputChange;
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope;
+import androidx.compose.ui.input.pointer.PointerEventPass;
+import androidx.compose.ui.input.pointer.PointerInputChange;
+import androidx.compose.ui.input.pointer.PointerInputScope;
 import kotlin.Deprecated;
 import kotlin.DeprecationLevel;
 import kotlin.Unit;
@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.i80;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TapGestureDetectorKt {
 
     @NotNull
@@ -37,7 +37,7 @@ public final class TapGestureDetectorKt {
 
     /* JADX INFO: Access modifiers changed from: private */
     public static final Object awaitSecondDown(AwaitPointerEventScope awaitPointerEventScope, PointerInputChange pointerInputChange, Continuation<? super PointerInputChange> continuation) {
-        return awaitPointerEventScope.withTimeoutOrNull(awaitPointerEventScope.getViewConfiguration().getDoubleTapTimeoutMillis(), new TapGestureDetectorKt$awaitSecondDown$2(pointerInputChange, null), continuation);
+        return awaitPointerEventScope.withTimeoutOrNull(awaitPointerEventScope.getViewConfiguration().getDoubleTapTimeoutMillis(), new awaitSecondDown.2(pointerInputChange, (Continuation) null), continuation);
     }
 
     /*  JADX ERROR: JadxOverflowException in pass: RegionMakerVisitor
@@ -55,9 +55,9 @@ public final class TapGestureDetectorKt {
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:21:0x0041 -> B:10:0x0044). Please report as a decompilation issue!!! */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object consumeUntilUp(androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r8, kotlin.coroutines.Continuation<? super kotlin.Unit> r9) {
+    public static final java.lang.Object consumeUntilUp(androidx.compose.ui.input.pointer.AwaitPointerEventScope r8, kotlin.coroutines.Continuation<? super kotlin.Unit> r9) {
         /*
             boolean r0 = r9 instanceof androidx.compose.foundation.gestures.TapGestureDetectorKt$consumeUntilUp$1
             if (r0 == 0) goto L13
@@ -81,7 +81,7 @@ public final class TapGestureDetectorKt {
             if (r2 == 0) goto L35
             if (r2 != r3) goto L2d
             java.lang.Object r8 = r0.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r8 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r8
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r8 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r8
             kotlin.ResultKt.throwOnFailure(r9)
             goto L44
         L2d:
@@ -99,7 +99,7 @@ public final class TapGestureDetectorKt {
             if (r9 != r1) goto L44
             return r1
         L44:
-            androidx.compose.ui.input.pointer.PointerEvent r9 = (androidx.compose.p004ui.input.pointer.PointerEvent) r9
+            androidx.compose.ui.input.pointer.PointerEvent r9 = (androidx.compose.ui.input.pointer.PointerEvent) r9
             java.util.List r2 = r9.getChanges()
             int r4 = r2.size()
             r5 = 0
@@ -107,7 +107,7 @@ public final class TapGestureDetectorKt {
         L50:
             if (r6 >= r4) goto L5e
             java.lang.Object r7 = r2.get(r6)
-            androidx.compose.ui.input.pointer.PointerInputChange r7 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r7
+            androidx.compose.ui.input.pointer.PointerInputChange r7 = (androidx.compose.ui.input.pointer.PointerInputChange) r7
             r7.consume()
             int r6 = r6 + 1
             goto L50
@@ -118,7 +118,7 @@ public final class TapGestureDetectorKt {
         L67:
             if (r4 >= r2) goto L7a
             java.lang.Object r6 = r9.get(r4)
-            androidx.compose.ui.input.pointer.PointerInputChange r6 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r6
+            androidx.compose.ui.input.pointer.PointerInputChange r6 = (androidx.compose.ui.input.pointer.PointerInputChange) r6
             boolean r6 = r6.getPressed()
             if (r6 == 0) goto L77
             r5 = 1
@@ -186,9 +186,9 @@ public final class TapGestureDetectorKt {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object awaitFirstDown(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r9, boolean r10, @org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.PointerEventPass r11, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerInputChange> r12) {
+    public static final java.lang.Object awaitFirstDown(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r9, boolean r10, @org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.PointerEventPass r11, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerInputChange> r12) {
         /*
             boolean r0 = r12 instanceof androidx.compose.foundation.gestures.TapGestureDetectorKt$awaitFirstDown$2
             if (r0 == 0) goto L13
@@ -213,9 +213,9 @@ public final class TapGestureDetectorKt {
             if (r2 != r3) goto L37
             boolean r9 = r0.Z$0
             java.lang.Object r10 = r0.L$1
-            androidx.compose.ui.input.pointer.PointerEventPass r10 = (androidx.compose.p004ui.input.pointer.PointerEventPass) r10
+            androidx.compose.ui.input.pointer.PointerEventPass r10 = (androidx.compose.ui.input.pointer.PointerEventPass) r10
             java.lang.Object r11 = r0.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r11 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r11
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r11 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r11
             kotlin.ResultKt.throwOnFailure(r12)
             r8 = r10
             r10 = r9
@@ -238,7 +238,7 @@ public final class TapGestureDetectorKt {
             if (r12 != r1) goto L51
             return r1
         L51:
-            androidx.compose.ui.input.pointer.PointerEvent r12 = (androidx.compose.p004ui.input.pointer.PointerEvent) r12
+            androidx.compose.ui.input.pointer.PointerEvent r12 = (androidx.compose.ui.input.pointer.PointerEvent) r12
             java.util.List r2 = r12.getChanges()
             int r4 = r2.size()
             r5 = 0
@@ -246,12 +246,12 @@ public final class TapGestureDetectorKt {
         L5d:
             if (r6 >= r4) goto L77
             java.lang.Object r7 = r2.get(r6)
-            androidx.compose.ui.input.pointer.PointerInputChange r7 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r7
+            androidx.compose.ui.input.pointer.PointerInputChange r7 = (androidx.compose.ui.input.pointer.PointerInputChange) r7
             if (r10 == 0) goto L6c
-            boolean r7 = androidx.compose.p004ui.input.pointer.PointerEventKt.changedToDown(r7)
+            boolean r7 = androidx.compose.ui.input.pointer.PointerEventKt.changedToDown(r7)
             goto L70
         L6c:
-            boolean r7 = androidx.compose.p004ui.input.pointer.PointerEventKt.changedToDownIgnoreConsumed(r7)
+            boolean r7 = androidx.compose.ui.input.pointer.PointerEventKt.changedToDownIgnoreConsumed(r7)
         L70:
             if (r7 != 0) goto L74
             r2 = 0
@@ -296,12 +296,12 @@ public final class TapGestureDetectorKt {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object waitForUpOrCancellation(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r18, @org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.PointerEventPass r19, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerInputChange> r20) {
+    public static final java.lang.Object waitForUpOrCancellation(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r18, @org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.PointerEventPass r19, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerInputChange> r20) {
         /*
             Method dump skipped, instructions count: 262
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.TapGestureDetectorKt.waitForUpOrCancellation(androidx.compose.ui.input.pointer.AwaitPointerEventScope, androidx.compose.ui.input.pointer.PointerEventPass, kotlin.coroutines.Continuation):java.lang.Object");
     }

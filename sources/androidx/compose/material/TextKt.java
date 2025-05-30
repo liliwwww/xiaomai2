@@ -1,6 +1,5 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.text.TextStyle;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
 import androidx.compose.runtime.Composer;
@@ -10,25 +9,19 @@ import androidx.compose.runtime.ProvidableCompositionLocal;
 import androidx.compose.runtime.ProvidedValue;
 import androidx.compose.runtime.ScopeUpdateScope;
 import androidx.compose.runtime.SnapshotStateKt;
+import androidx.compose.ui.text.TextStyle;
 import kotlin.Unit;
-import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TextKt {
 
     @NotNull
-    private static final ProvidableCompositionLocal<TextStyle> LocalTextStyle = CompositionLocalKt.compositionLocalOf(SnapshotStateKt.structuralEqualityPolicy(), new Function0<TextStyle>() { // from class: androidx.compose.material.TextKt$LocalTextStyle$1
-        @NotNull
-        /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-        public final TextStyle m2333invoke() {
-            return TextStyle.Companion.getDefault();
-        }
-    });
+    private static final ProvidableCompositionLocal<TextStyle> LocalTextStyle = CompositionLocalKt.compositionLocalOf(SnapshotStateKt.structuralEqualityPolicy(), LocalTextStyle.1.INSTANCE);
 
     @Composable
     @ComposableInferredTarget(scheme = "[0[0]]")
@@ -63,7 +56,6 @@ public final class TextKt {
         }
         endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.material.TextKt$ProvideTextStyle$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
             {
                 super(2);
             }
@@ -155,14 +147,14 @@ public final class TextKt {
     /* renamed from: Text--4IGK_g, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m2331Text4IGK_g(@org.jetbrains.annotations.NotNull final androidx.compose.p004ui.text.AnnotatedString r63, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r64, long r65, long r67, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.font.FontStyle r69, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.font.FontWeight r70, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.font.FontFamily r71, long r72, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.style.TextDecoration r74, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.style.TextAlign r75, long r76, int r78, boolean r79, int r80, @org.jetbrains.annotations.Nullable java.util.Map<java.lang.String, androidx.compose.foundation.text.InlineTextContent> r81, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.text.TextLayoutResult, kotlin.Unit> r82, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.TextStyle r83, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r84, final int r85, final int r86, final int r87) {
+    public static final void m877Text4IGK_g(@org.jetbrains.annotations.NotNull androidx.compose.ui.text.AnnotatedString r63, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r64, long r65, long r67, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.font.FontStyle r69, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.font.FontWeight r70, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.font.FontFamily r71, long r72, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.style.TextDecoration r74, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.style.TextAlign r75, long r76, int r78, boolean r79, int r80, @org.jetbrains.annotations.Nullable java.util.Map<java.lang.String, androidx.compose.foundation.text.InlineTextContent> r81, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.ui.text.TextLayoutResult, kotlin.Unit> r82, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.TextStyle r83, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r84, int r85, int r86, int r87) {
         /*
             Method dump skipped, instructions count: 1118
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.TextKt.m2331Text4IGK_g(androidx.compose.ui.text.AnnotatedString, androidx.compose.ui.Modifier, long, long, androidx.compose.ui.text.font.FontStyle, androidx.compose.ui.text.font.FontWeight, androidx.compose.ui.text.font.FontFamily, long, androidx.compose.ui.text.style.TextDecoration, androidx.compose.ui.text.style.TextAlign, long, int, boolean, int, java.util.Map, kotlin.jvm.functions.Function1, androidx.compose.ui.text.TextStyle, androidx.compose.runtime.Composer, int, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.TextKt.m877Text4IGK_g(androidx.compose.ui.text.AnnotatedString, androidx.compose.ui.Modifier, long, long, androidx.compose.ui.text.font.FontStyle, androidx.compose.ui.text.font.FontWeight, androidx.compose.ui.text.font.FontFamily, long, androidx.compose.ui.text.style.TextDecoration, androidx.compose.ui.text.style.TextAlign, long, int, boolean, int, java.util.Map, kotlin.jvm.functions.Function1, androidx.compose.ui.text.TextStyle, androidx.compose.runtime.Composer, int, int, int):void");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:100:0x031a  */
@@ -236,14 +228,14 @@ public final class TextKt {
     /* renamed from: Text-fLXpl1I, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m2332TextfLXpl1I(@org.jetbrains.annotations.NotNull final java.lang.String r60, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r61, long r62, long r64, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.font.FontStyle r66, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.font.FontWeight r67, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.font.FontFamily r68, long r69, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.style.TextDecoration r71, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.style.TextAlign r72, long r73, int r75, boolean r76, int r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.text.TextLayoutResult, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.TextStyle r79, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r80, final int r81, final int r82, final int r83) {
+    public static final void m878TextfLXpl1I(@org.jetbrains.annotations.NotNull java.lang.String r60, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r61, long r62, long r64, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.font.FontStyle r66, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.font.FontWeight r67, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.font.FontFamily r68, long r69, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.style.TextDecoration r71, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.style.TextAlign r72, long r73, int r75, boolean r76, int r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.ui.text.TextLayoutResult, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.TextStyle r79, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r80, int r81, int r82, int r83) {
         /*
             Method dump skipped, instructions count: 1057
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.TextKt.m2332TextfLXpl1I(java.lang.String, androidx.compose.ui.Modifier, long, long, androidx.compose.ui.text.font.FontStyle, androidx.compose.ui.text.font.FontWeight, androidx.compose.ui.text.font.FontFamily, long, androidx.compose.ui.text.style.TextDecoration, androidx.compose.ui.text.style.TextAlign, long, int, boolean, int, kotlin.jvm.functions.Function1, androidx.compose.ui.text.TextStyle, androidx.compose.runtime.Composer, int, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.TextKt.m878TextfLXpl1I(java.lang.String, androidx.compose.ui.Modifier, long, long, androidx.compose.ui.text.font.FontStyle, androidx.compose.ui.text.font.FontWeight, androidx.compose.ui.text.font.FontFamily, long, androidx.compose.ui.text.style.TextDecoration, androidx.compose.ui.text.style.TextAlign, long, int, boolean, int, kotlin.jvm.functions.Function1, androidx.compose.ui.text.TextStyle, androidx.compose.runtime.Composer, int, int, int):void");
     }
 
     @NotNull

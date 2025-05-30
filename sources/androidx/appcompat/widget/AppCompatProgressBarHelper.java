@@ -16,36 +16,15 @@ import android.media.IVivoSpatializer;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.VisibleForTesting;
 import androidx.core.graphics.drawable.WrappedDrawable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class AppCompatProgressBarHelper {
     private static final int[] TINT_ATTRS = {R.attr.indeterminateDrawable, R.attr.progressDrawable};
     private Bitmap mSampleTile;
     private final ProgressBar mView;
-
-    /* compiled from: Taobao */
-    @RequiresApi(23)
-    /* loaded from: classes2.dex */
-    private static class Api23Impl {
-        private Api23Impl() {
-        }
-
-        public static void transferLayerProperties(LayerDrawable layerDrawable, LayerDrawable layerDrawable2, int i) {
-            layerDrawable2.setLayerGravity(i, layerDrawable.getLayerGravity(i));
-            layerDrawable2.setLayerWidth(i, layerDrawable.getLayerWidth(i));
-            layerDrawable2.setLayerHeight(i, layerDrawable.getLayerHeight(i));
-            layerDrawable2.setLayerInsetLeft(i, layerDrawable.getLayerInsetLeft(i));
-            layerDrawable2.setLayerInsetRight(i, layerDrawable.getLayerInsetRight(i));
-            layerDrawable2.setLayerInsetTop(i, layerDrawable.getLayerInsetTop(i));
-            layerDrawable2.setLayerInsetBottom(i, layerDrawable.getLayerInsetBottom(i));
-            layerDrawable2.setLayerInsetStart(i, layerDrawable.getLayerInsetStart(i));
-            layerDrawable2.setLayerInsetEnd(i, layerDrawable.getLayerInsetEnd(i));
-        }
-    }
 
     AppCompatProgressBarHelper(ProgressBar progressBar) {
         this.mView = progressBar;
@@ -89,7 +68,6 @@ class AppCompatProgressBarHelper {
         obtainStyledAttributes.recycle();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @VisibleForTesting
     Drawable tileify(Drawable drawable, boolean z) {
         if (drawable instanceof WrappedDrawable) {

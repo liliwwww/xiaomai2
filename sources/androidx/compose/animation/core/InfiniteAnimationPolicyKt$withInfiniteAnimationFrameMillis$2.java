@@ -5,7 +5,7 @@ import kotlin.jvm.internal.Lambda;
 
 /* JADX INFO: Add missing generic type declarations: [R] */
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class InfiniteAnimationPolicyKt$withInfiniteAnimationFrameMillis$2<R> extends Lambda implements Function1<Long, R> {
     final /* synthetic */ Function1<Long, R> $onFrame;
 
@@ -17,7 +17,7 @@ public final class InfiniteAnimationPolicyKt$withInfiniteAnimationFrameMillis$2<
     }
 
     public final R invoke(long j) {
-        return (R) this.$onFrame.invoke(Long.valueOf(j / AnimationKt.MillisToNanos));
+        return (R) this.$onFrame.invoke(Long.valueOf(j / 1000000));
     }
 
     public /* bridge */ /* synthetic */ Object invoke(Object obj) {

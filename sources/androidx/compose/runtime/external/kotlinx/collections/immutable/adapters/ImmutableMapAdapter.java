@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ImmutableMapAdapter<K, V> implements ImmutableMap<K, V>, Map<K, V>, KMappedMarker {
 
     @NotNull
@@ -82,13 +82,11 @@ public final class ImmutableMapAdapter<K, V> implements ImmutableMap<K, V>, Map<
         return this.impl.get(obj);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.ImmutableMap
     @NotNull
     public ImmutableSet<Map.Entry<K, V>> getEntries() {
         return this.entries;
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.ImmutableMap
     @NotNull
     public ImmutableSet<K> getKeys() {
         return this.keys;
@@ -98,7 +96,6 @@ public final class ImmutableMapAdapter<K, V> implements ImmutableMap<K, V>, Map<
         return this.impl.size();
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.ImmutableMap
     @NotNull
     public ImmutableCollection<V> getValues() {
         return this.values;

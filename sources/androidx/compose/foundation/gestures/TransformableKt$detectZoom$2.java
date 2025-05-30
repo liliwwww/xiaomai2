@@ -1,6 +1,7 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.input.pointer.AwaitPointerEventScope;
+import androidx.appcompat.R;
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -12,8 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-@DebugMetadata(c = "androidx.compose.foundation.gestures.TransformableKt$detectZoom$2", f = "Transformable.kt", i = {}, l = {107}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+@DebugMetadata(c = "androidx.compose.foundation.gestures.TransformableKt$detectZoom$2", f = "Transformable.kt", i = {}, l = {R.styleable.AppCompatTheme_textAppearanceSearchResultSubtitle}, m = "invokeSuspend", n = {}, s = {})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class TransformableKt$detectZoom$2 extends RestrictedSuspendLambda implements Function2<AwaitPointerEventScope, Continuation<? super Unit>, Object> {
     private /* synthetic */ Object L$0;
     int label;

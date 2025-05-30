@@ -19,8 +19,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.annotation.UiThread;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R;
 import androidx.core.view.ContentInfoCompat;
 import androidx.core.view.OnReceiveContentViewBehavior;
 import androidx.core.view.TintableBackgroundView;
@@ -32,7 +33,7 @@ import androidx.core.widget.TextViewOnReceiveContentListener;
 import androidx.core.widget.TintableCompoundDrawablesView;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class AppCompatEditText extends EditText implements EmojiCompatConfigurationView, OnReceiveContentViewBehavior, TintableBackgroundView, TintableCompoundDrawablesView {
 
     @NonNull
@@ -96,7 +97,7 @@ public class AppCompatEditText extends EditText implements EmojiCompatConfigurat
 
     @Override // androidx.core.view.TintableBackgroundView
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public ColorStateList getSupportBackgroundTintList() {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
         if (appCompatBackgroundHelper != null) {
@@ -107,7 +108,7 @@ public class AppCompatEditText extends EditText implements EmojiCompatConfigurat
 
     @Override // androidx.core.view.TintableBackgroundView
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public PorterDuff.Mode getSupportBackgroundTintMode() {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
         if (appCompatBackgroundHelper != null) {
@@ -118,14 +119,14 @@ public class AppCompatEditText extends EditText implements EmojiCompatConfigurat
 
     @Override // androidx.core.widget.TintableCompoundDrawablesView
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public ColorStateList getSupportCompoundDrawablesTintList() {
         return this.mTextHelper.getCompoundDrawableTintList();
     }
 
     @Override // androidx.core.widget.TintableCompoundDrawablesView
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public PorterDuff.Mode getSupportCompoundDrawablesTintMode() {
         return this.mTextHelper.getCompoundDrawableTintMode();
     }
@@ -157,7 +158,6 @@ public class AppCompatEditText extends EditText implements EmojiCompatConfigurat
         }
     }
 
-    @Override // androidx.appcompat.widget.EmojiCompatConfigurationView
     public boolean isEmojiCompatEnabled() {
         return this.mAppCompatEmojiEditTextHelper.isEnabled();
     }
@@ -240,7 +240,6 @@ public class AppCompatEditText extends EditText implements EmojiCompatConfigurat
         super.setCustomSelectionActionModeCallback(TextViewCompat.wrapCustomSelectionActionModeCallback(this, callback));
     }
 
-    @Override // androidx.appcompat.widget.EmojiCompatConfigurationView
     public void setEmojiCompatEnabled(boolean z) {
         this.mAppCompatEmojiEditTextHelper.setEnabled(z);
     }
@@ -251,7 +250,7 @@ public class AppCompatEditText extends EditText implements EmojiCompatConfigurat
     }
 
     @Override // androidx.core.view.TintableBackgroundView
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportBackgroundTintList(@Nullable ColorStateList colorStateList) {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
         if (appCompatBackgroundHelper != null) {
@@ -260,7 +259,7 @@ public class AppCompatEditText extends EditText implements EmojiCompatConfigurat
     }
 
     @Override // androidx.core.view.TintableBackgroundView
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportBackgroundTintMode(@Nullable PorterDuff.Mode mode) {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
         if (appCompatBackgroundHelper != null) {
@@ -269,14 +268,14 @@ public class AppCompatEditText extends EditText implements EmojiCompatConfigurat
     }
 
     @Override // androidx.core.widget.TintableCompoundDrawablesView
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportCompoundDrawablesTintList(@Nullable ColorStateList colorStateList) {
         this.mTextHelper.setCompoundDrawableTintList(colorStateList);
         this.mTextHelper.applyCompoundDrawablesTints();
     }
 
     @Override // androidx.core.widget.TintableCompoundDrawablesView
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportCompoundDrawablesTintMode(@Nullable PorterDuff.Mode mode) {
         this.mTextHelper.setCompoundDrawableTintMode(mode);
         this.mTextHelper.applyCompoundDrawablesTints();
@@ -303,7 +302,7 @@ public class AppCompatEditText extends EditText implements EmojiCompatConfigurat
     }
 
     public AppCompatEditText(@NonNull Context context, @Nullable AttributeSet attributeSet) {
-        this(context, attributeSet, C0257R.attr.editTextStyle);
+        this(context, attributeSet, R.attr.editTextStyle);
     }
 
     @Override // android.widget.EditText, android.widget.TextView

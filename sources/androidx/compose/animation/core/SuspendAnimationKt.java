@@ -1,7 +1,7 @@
 package androidx.compose.animation.core;
 
-import androidx.compose.p004ui.MotionDurationScale;
 import androidx.compose.runtime.MonotonicFrameClockKt;
+import androidx.compose.ui.MotionDurationScale;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
@@ -9,13 +9,14 @@ import kotlin.coroutines.intrinsics.IntrinsicsKt;
 import kotlin.coroutines.jvm.internal.Boxing;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
+import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.FloatCompanionObject;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SuspendAnimationKt {
     @Nullable
     public static final Object animate(float f, float f2, float f3, @NotNull AnimationSpec<Float> animationSpec, @NotNull Function2<? super Float, ? super Float, Unit> function2, @NotNull Continuation<? super Unit> continuation) {
@@ -33,7 +34,7 @@ public final class SuspendAnimationKt {
 
     @Nullable
     public static final Object animateDecay(float f, float f2, @NotNull FloatDecayAnimationSpec floatDecayAnimationSpec, @NotNull final Function2<? super Float, ? super Float, Unit> function2, @NotNull Continuation<? super Unit> continuation) {
-        Object animate$default = animate$default(AnimationStateKt.AnimationState$default(f, f2, 0L, 0L, false, 28, null), AnimationKt.DecayAnimation(floatDecayAnimationSpec, f, f2), 0L, new Function1<AnimationScope<Float, AnimationVector1D>, Unit>() { // from class: androidx.compose.animation.core.SuspendAnimationKt$animateDecay$2
+        Object animate$default = animate$default(AnimationStateKt.AnimationState$default(f, f2, 0L, 0L, false, 28, (Object) null), AnimationKt.DecayAnimation(floatDecayAnimationSpec, f, f2), 0L, new Function1<AnimationScope<Float, AnimationVector1D>, Unit>() { // from class: androidx.compose.animation.core.SuspendAnimationKt$animateDecay$2
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             /* JADX WARN: Multi-variable type inference failed */
             {
@@ -47,7 +48,7 @@ public final class SuspendAnimationKt {
 
             public final void invoke(@NotNull AnimationScope<Float, AnimationVector1D> animationScope) {
                 Intrinsics.checkNotNullParameter(animationScope, "$this$animate");
-                function2.invoke(animationScope.getValue(), Float.valueOf(animationScope.getVelocityVector().getValue()));
+                function2.invoke(animationScope.getValue(), Float.valueOf(((AnimationVector1D) animationScope.getVelocityVector()).getValue()));
             }
         }, continuation, 2, null);
         return animate$default == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? animate$default : Unit.INSTANCE;
@@ -74,7 +75,7 @@ public final class SuspendAnimationKt {
 
     @Nullable
     public static final <T, V extends AnimationVector> Object animateTo(@NotNull AnimationState<T, V> animationState, T t, @NotNull AnimationSpec<T> animationSpec, boolean z, @NotNull Function1<? super AnimationScope<T, V>, Unit> function1, @NotNull Continuation<? super Unit> continuation) {
-        Object animate = animate(animationState, new TargetBasedAnimation(animationSpec, animationState.getTypeConverter(), animationState.getValue(), t, animationState.getVelocityVector()), z ? animationState.getLastFrameTimeNanos() : Long.MIN_VALUE, function1, continuation);
+        Object animate = animate(animationState, new TargetBasedAnimation(animationSpec, (TwoWayConverter<T, AnimationVector>) animationState.getTypeConverter(), animationState.getValue(), t, animationState.getVelocityVector()), z ? animationState.getLastFrameTimeNanos() : Long.MIN_VALUE, function1, continuation);
         return animate == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? animate : Unit.INSTANCE;
     }
 
@@ -100,22 +101,8 @@ public final class SuspendAnimationKt {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public static final <R, T, V extends AnimationVector> Object callWithFrameNanos(Animation<T, V> animation, final Function1<? super Long, ? extends R> function1, Continuation<? super R> continuation) {
-        return animation.isInfinite() ? InfiniteAnimationPolicyKt.withInfiniteAnimationFrameNanos(function1, continuation) : MonotonicFrameClockKt.withFrameNanos(new Function1<Long, R>() { // from class: androidx.compose.animation.core.SuspendAnimationKt$callWithFrameNanos$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                return invoke(((Number) obj).longValue());
-            }
-
-            public final R invoke(long j) {
-                return (R) function1.invoke(Long.valueOf(j / 1));
-            }
-        }, continuation);
+    public static final <R, T, V extends AnimationVector> Object callWithFrameNanos(Animation<T, V> animation, Function1<? super Long, ? extends R> function1, Continuation<? super R> continuation) {
+        return animation.isInfinite() ? InfiniteAnimationPolicyKt.withInfiniteAnimationFrameNanos(function1, continuation) : MonotonicFrameClockKt.withFrameNanos(new callWithFrameNanos.2(function1), continuation);
     }
 
     private static final <T, V extends AnimationVector> void doAnimationFrame(AnimationScope<T, V> animationScope, long j, long j2, Animation<T, V> animation, AnimationState<T, V> animationState, Function1<? super AnimationScope<T, V>, Unit> function1) {
@@ -137,7 +124,7 @@ public final class SuspendAnimationKt {
 
     public static final float getDurationScale(@NotNull CoroutineContext coroutineContext) {
         Intrinsics.checkNotNullParameter(coroutineContext, "<this>");
-        MotionDurationScale motionDurationScale = (MotionDurationScale) coroutineContext.get(MotionDurationScale.Key);
+        MotionDurationScale motionDurationScale = coroutineContext.get(MotionDurationScale.Key);
         float scaleFactor = motionDurationScale != null ? motionDurationScale.getScaleFactor() : 1.0f;
         if (scaleFactor >= 0.0f) {
             return scaleFactor;
@@ -157,7 +144,7 @@ public final class SuspendAnimationKt {
 
     @Nullable
     public static final <T, V extends AnimationVector> Object animateDecay(@NotNull AnimationState<T, V> animationState, @NotNull DecayAnimationSpec<T> decayAnimationSpec, boolean z, @NotNull Function1<? super AnimationScope<T, V>, Unit> function1, @NotNull Continuation<? super Unit> continuation) {
-        Object animate = animate(animationState, new DecayAnimation((DecayAnimationSpec) decayAnimationSpec, (TwoWayConverter) animationState.getTypeConverter(), (Object) animationState.getValue(), (AnimationVector) animationState.getVelocityVector()), z ? animationState.getLastFrameTimeNanos() : Long.MIN_VALUE, function1, continuation);
+        Object animate = animate(animationState, new DecayAnimation((DecayAnimationSpec<Object>) decayAnimationSpec, (TwoWayConverter<Object, AnimationVector>) animationState.getTypeConverter(), animationState.getValue(), animationState.getVelocityVector()), z ? animationState.getLastFrameTimeNanos() : Long.MIN_VALUE, function1, continuation);
         return animate == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? animate : Unit.INSTANCE;
     }
 
@@ -167,43 +154,18 @@ public final class SuspendAnimationKt {
         }
         long j2 = j;
         if ((i & 4) != 0) {
-            function1 = new Function1<AnimationScope<T, V>, Unit>() { // from class: androidx.compose.animation.core.SuspendAnimationKt$animate$5
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    invoke((AnimationScope) obj2);
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull AnimationScope<T, V> animationScope) {
-                    Intrinsics.checkNotNullParameter(animationScope, "$this$null");
-                }
-            };
+            function1 = animate.5.INSTANCE;
         }
         return animate(animationState, animation, j2, function1, continuation);
     }
 
     @Nullable
-    public static final <T, V extends AnimationVector> Object animate(@NotNull final TwoWayConverter<T, V> twoWayConverter, T t, T t2, @Nullable T t3, @NotNull AnimationSpec<T> animationSpec, @NotNull final Function2<? super T, ? super T, Unit> function2, @NotNull Continuation<? super Unit> continuation) {
+    public static final <T, V extends AnimationVector> Object animate(@NotNull TwoWayConverter<T, V> twoWayConverter, T t, T t2, @Nullable T t3, @NotNull AnimationSpec<T> animationSpec, @NotNull Function2<? super T, ? super T, Unit> function2, @NotNull Continuation<? super Unit> continuation) {
         AnimationVector newInstance;
         if (t3 == null || (newInstance = (AnimationVector) twoWayConverter.getConvertToVector().invoke(t3)) == null) {
             newInstance = AnimationVectorsKt.newInstance((AnimationVector) twoWayConverter.getConvertToVector().invoke(t));
         }
-        Object animate$default = animate$default(new AnimationState(twoWayConverter, t, newInstance, 0L, 0L, false, 56, null), new TargetBasedAnimation(animationSpec, twoWayConverter, t, t2, newInstance), 0L, new Function1<AnimationScope<T, V>, Unit>() { // from class: androidx.compose.animation.core.SuspendAnimationKt$animate$3
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((AnimationScope) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull AnimationScope<T, V> animationScope) {
-                Intrinsics.checkNotNullParameter(animationScope, "$this$animate");
-                function2.invoke(animationScope.getValue(), twoWayConverter.getConvertFromVector().invoke(animationScope.getVelocityVector()));
-            }
-        }, continuation, 2, null);
+        Object animate$default = animate$default(new AnimationState(twoWayConverter, t, newInstance, 0L, 0L, false, 56, (DefaultConstructorMarker) null), new TargetBasedAnimation(animationSpec, twoWayConverter, t, t2, newInstance), 0L, new animate.3(function2, twoWayConverter), continuation, 2, null);
         return animate$default == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? animate$default : Unit.INSTANCE;
     }
 
@@ -216,12 +178,12 @@ public final class SuspendAnimationKt {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final <T, V extends androidx.compose.animation.core.AnimationVector> java.lang.Object animate(@org.jetbrains.annotations.NotNull final androidx.compose.animation.core.AnimationState<T, V> r25, @org.jetbrains.annotations.NotNull final androidx.compose.animation.core.Animation<T, V> r26, long r27, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.animation.core.AnimationScope<T, V>, kotlin.Unit> r29, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r30) {
+    public static final <T, V extends androidx.compose.animation.core.AnimationVector> java.lang.Object animate(@org.jetbrains.annotations.NotNull androidx.compose.animation.core.AnimationState<T, V> r25, @org.jetbrains.annotations.NotNull androidx.compose.animation.core.Animation<T, V> r26, long r27, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.animation.core.AnimationScope<T, V>, kotlin.Unit> r29, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r30) {
         /*
             Method dump skipped, instructions count: 325
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.core.SuspendAnimationKt.animate(androidx.compose.animation.core.AnimationState, androidx.compose.animation.core.Animation, long, kotlin.jvm.functions.Function1, kotlin.coroutines.Continuation):java.lang.Object");
     }

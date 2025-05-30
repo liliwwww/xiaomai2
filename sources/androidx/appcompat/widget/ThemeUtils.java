@@ -12,12 +12,12 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.core.graphics.ColorUtils;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ThemeUtils {
     private static final String TAG = "ThemeUtils";
     private static final ThreadLocal<TypedValue> TL_TYPED_VALUE = new ThreadLocal<>();
@@ -35,9 +35,9 @@ public class ThemeUtils {
     }
 
     public static void checkAppCompatTheme(@NonNull View view, @NonNull Context context) {
-        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(C0257R.styleable.AppCompatTheme);
+        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(androidx.appcompat.R.styleable.AppCompatTheme);
         try {
-            if (!obtainStyledAttributes.hasValue(C0257R.styleable.AppCompatTheme_windowActionBar)) {
+            if (!obtainStyledAttributes.hasValue(androidx.appcompat.R.styleable.AppCompatTheme_windowActionBar)) {
                 Log.e(TAG, "View " + view.getClass() + " is an AppCompat widget that can only be used with a Theme.AppCompat theme (or descendant).");
             }
         } finally {

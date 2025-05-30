@@ -6,7 +6,7 @@ import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
 @RequiresApi(23)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class MediaDescriptionCompatApi23 {
 
     /* compiled from: Taobao */

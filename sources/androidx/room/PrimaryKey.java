@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /* compiled from: Taobao */
 @Target({ElementType.FIELD, ElementType.METHOD})
 @Retention(RetentionPolicy.CLASS)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public @interface PrimaryKey {
     boolean autoGenerate() default false;
 }

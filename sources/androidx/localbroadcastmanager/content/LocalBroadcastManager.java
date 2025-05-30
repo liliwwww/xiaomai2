@@ -16,7 +16,7 @@ import java.util.Set;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LocalBroadcastManager {
     private static final boolean DEBUG = false;
     static final int MSG_EXEC_PENDING_BROADCASTS = 1;
@@ -28,18 +28,6 @@ public final class LocalBroadcastManager {
     private final HashMap<BroadcastReceiver, ArrayList<ReceiverRecord>> mReceivers = new HashMap<>();
     private final HashMap<String, ArrayList<ReceiverRecord>> mActions = new HashMap<>();
     private final ArrayList<BroadcastRecord> mPendingBroadcasts = new ArrayList<>();
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static final class BroadcastRecord {
-        final Intent intent;
-        final ArrayList<ReceiverRecord> receivers;
-
-        BroadcastRecord(Intent intent, ArrayList<ReceiverRecord> arrayList) {
-            this.intent = intent;
-            this.receivers = arrayList;
-        }
-    }
 
     /* compiled from: Taobao */
     private static final class ReceiverRecord {
@@ -110,7 +98,7 @@ public final class LocalBroadcastManager {
                 BroadcastRecord broadcastRecord = broadcastRecordArr[i];
                 int size2 = broadcastRecord.receivers.size();
                 for (int i2 = 0; i2 < size2; i2++) {
-                    ReceiverRecord receiverRecord = broadcastRecord.receivers.get(i2);
+                    ReceiverRecord receiverRecord = (ReceiverRecord) broadcastRecord.receivers.get(i2);
                     if (!receiverRecord.dead) {
                         receiverRecord.receiver.onReceive(this.mAppContext, broadcastRecord.intent);
                     }

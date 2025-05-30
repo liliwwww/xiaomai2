@@ -16,19 +16,13 @@ import java.util.List;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class SharedElementCallback {
     private static final String BUNDLE_SNAPSHOT_BITMAP = "sharedElement:snapshot:bitmap";
     private static final String BUNDLE_SNAPSHOT_IMAGE_MATRIX = "sharedElement:snapshot:imageMatrix";
     private static final String BUNDLE_SNAPSHOT_IMAGE_SCALETYPE = "sharedElement:snapshot:imageScaleType";
     private static final int MAX_IMAGE_SIZE = 1048576;
     private Matrix mTempMatrix;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public interface OnSharedElementsReadyListener {
-        void onSharedElementsReady();
-    }
 
     private static Bitmap createDrawableBitmap(Drawable drawable) {
         int intrinsicWidth = drawable.getIntrinsicWidth();

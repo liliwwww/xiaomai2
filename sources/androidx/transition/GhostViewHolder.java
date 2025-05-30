@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /* compiled from: Taobao */
 @SuppressLint({"ViewConstructor"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class GhostViewHolder extends FrameLayout {
     private boolean mAttached;
 
@@ -21,13 +21,13 @@ class GhostViewHolder extends FrameLayout {
         super(viewGroup.getContext());
         setClipChildren(false);
         this.mParent = viewGroup;
-        viewGroup.setTag(C1345R.id.ghost_view_holder, this);
+        viewGroup.setTag(R$id.ghost_view_holder, this);
         ViewGroupUtils.getOverlay(this.mParent).add(this);
         this.mAttached = true;
     }
 
     static GhostViewHolder getHolder(@NonNull ViewGroup viewGroup) {
-        return (GhostViewHolder) viewGroup.getTag(C1345R.id.ghost_view_holder);
+        return (GhostViewHolder) viewGroup.getTag(R$id.ghost_view_holder);
     }
 
     private int getInsertIndex(ArrayList<View> arrayList) {
@@ -36,7 +36,7 @@ class GhostViewHolder extends FrameLayout {
         int i = 0;
         while (i <= childCount) {
             int i2 = (i + childCount) / 2;
-            getParents(((GhostViewPort) getChildAt(i2)).mView, arrayList2);
+            getParents(getChildAt(i2).mView, arrayList2);
             if (isOnTop(arrayList, (ArrayList<View>) arrayList2)) {
                 i = i2 + 1;
             } else {
@@ -77,7 +77,7 @@ class GhostViewHolder extends FrameLayout {
         if (insertIndex < 0 || insertIndex >= getChildCount()) {
             addView(ghostViewPort);
         } else {
-            addView(ghostViewPort, insertIndex);
+            addView((View) ghostViewPort, insertIndex);
         }
     }
 
@@ -93,7 +93,7 @@ class GhostViewHolder extends FrameLayout {
     public void onViewRemoved(View view) {
         super.onViewRemoved(view);
         if ((getChildCount() == 1 && getChildAt(0) == view) || getChildCount() == 0) {
-            this.mParent.setTag(C1345R.id.ghost_view_holder, null);
+            this.mParent.setTag(R$id.ghost_view_holder, null);
             ViewGroupUtils.getOverlay(this.mParent).remove(this);
             this.mAttached = false;
         }

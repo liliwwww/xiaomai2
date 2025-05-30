@@ -5,7 +5,8 @@ import androidx.compose.foundation.MutatorMutex;
 import androidx.compose.foundation.gestures.DragScope;
 import androidx.compose.foundation.gestures.DraggableState;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.intrinsics.IntrinsicsKt;
@@ -17,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.i80;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class SliderDraggableState implements DraggableState {
 
     @NotNull
@@ -36,13 +37,8 @@ final class SliderDraggableState implements DraggableState {
     public SliderDraggableState(@NotNull Function1<? super Float, Unit> function1) {
         Intrinsics.checkNotNullParameter(function1, "onDelta");
         this.onDelta = function1;
-        this.isDragging$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
-        this.dragScope = new DragScope() { // from class: androidx.compose.material.SliderDraggableState$dragScope$1
-            @Override // androidx.compose.foundation.gestures.DragScope
-            public void dragBy(float f) {
-                SliderDraggableState.this.getOnDelta().invoke(Float.valueOf(f));
-            }
-        };
+        this.isDragging$delegate = SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.dragScope = new dragScope.1(this);
         this.scrollMutex = new MutatorMutex();
     }
 
@@ -59,7 +55,7 @@ final class SliderDraggableState implements DraggableState {
     @Override // androidx.compose.foundation.gestures.DraggableState
     @Nullable
     public Object drag(@NotNull MutatePriority mutatePriority, @NotNull Function2<? super DragScope, ? super Continuation<? super Unit>, ? extends Object> function2, @NotNull Continuation<? super Unit> continuation) {
-        Object g = i80.g(new SliderDraggableState$drag$2(this, mutatePriority, function2, null), continuation);
+        Object g = i80.g(new drag.2(this, mutatePriority, function2, (Continuation) null), continuation);
         return g == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? g : Unit.INSTANCE;
     }
 
@@ -68,7 +64,6 @@ final class SliderDraggableState implements DraggableState {
         return this.onDelta;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final boolean isDragging() {
         return ((Boolean) this.isDragging$delegate.getValue()).booleanValue();
     }

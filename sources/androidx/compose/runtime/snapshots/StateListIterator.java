@@ -7,7 +7,7 @@ import kotlin.jvm.internal.markers.KMutableListIterator;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class StateListIterator<T> implements ListIterator<T>, KMutableListIterator {
     private int index;
 
@@ -56,7 +56,7 @@ final class StateListIterator<T> implements ListIterator<T>, KMutableListIterato
         validateModification();
         int i = this.index + 1;
         SnapshotStateListKt.validateRange(i, this.list.size());
-        T t = this.list.get(i);
+        T t = (T) this.list.get(i);
         this.index = i;
         return t;
     }
@@ -71,7 +71,7 @@ final class StateListIterator<T> implements ListIterator<T>, KMutableListIterato
         validateModification();
         SnapshotStateListKt.validateRange(this.index, this.list.size());
         this.index--;
-        return this.list.get(this.index);
+        return (T) this.list.get(this.index);
     }
 
     @Override // java.util.ListIterator

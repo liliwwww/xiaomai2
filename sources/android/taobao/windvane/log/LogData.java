@@ -6,7 +6,7 @@ import java.util.Map;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class LogData {
     String errorCode;
     String errorMsg;

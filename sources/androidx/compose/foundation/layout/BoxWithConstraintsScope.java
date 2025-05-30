@@ -4,20 +4,20 @@ import androidx.compose.runtime.Stable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface BoxWithConstraintsScope extends BoxScope {
     /* renamed from: getConstraints-msEJaDk, reason: not valid java name */
-    long mo1365getConstraintsmsEJaDk();
+    long m304getConstraintsmsEJaDk();
 
     /* renamed from: getMaxHeight-D9Ej5fM, reason: not valid java name */
-    float mo1366getMaxHeightD9Ej5fM();
+    float m305getMaxHeightD9Ej5fM();
 
     /* renamed from: getMaxWidth-D9Ej5fM, reason: not valid java name */
-    float mo1367getMaxWidthD9Ej5fM();
+    float m306getMaxWidthD9Ej5fM();
 
     /* renamed from: getMinHeight-D9Ej5fM, reason: not valid java name */
-    float mo1368getMinHeightD9Ej5fM();
+    float m307getMinHeightD9Ej5fM();
 
     /* renamed from: getMinWidth-D9Ej5fM, reason: not valid java name */
-    float mo1369getMinWidthD9Ej5fM();
+    float m308getMinWidthD9Ej5fM();
 }

@@ -11,13 +11,13 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.SpinnerAdapter;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.view.menu.MenuBuilder$Callback;
 import androidx.appcompat.view.menu.MenuPresenter;
 import androidx.core.view.ViewPropertyAnimatorCompat;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface DecorToolbar {
     void animateToVisibility(int i);
 
@@ -105,7 +105,7 @@ public interface DecorToolbar {
 
     void setMenu(Menu menu, MenuPresenter.Callback callback);
 
-    void setMenuCallbacks(MenuPresenter.Callback callback, MenuBuilder.Callback callback2);
+    void setMenuCallbacks(MenuPresenter.Callback callback, MenuBuilder$Callback menuBuilder$Callback);
 
     void setMenuPrepared();
 

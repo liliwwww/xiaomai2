@@ -16,10 +16,9 @@ import kotlin.annotation.MustBeDocumented;
 @Documented
 @Retention(RetentionPolicy.CLASS)
 @kotlin.annotation.Retention(AnnotationRetention.BINARY)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public @interface IntRange {
     long from() default Long.MIN_VALUE;
 
-    /* renamed from: to */
-    long m43to() default Long.MAX_VALUE;
+    long to() default Long.MAX_VALUE;
 }

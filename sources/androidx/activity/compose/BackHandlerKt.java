@@ -1,9 +1,8 @@
 package androidx.activity.compose;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.activity.OnBackPressedDispatcher;
 import androidx.activity.OnBackPressedDispatcherOwner;
-import androidx.compose.p004ui.platform.AndroidCompositionLocals_androidKt;
+import androidx.activity.compose.BackHandlerKt;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.DisposableEffectResult;
@@ -12,6 +11,7 @@ import androidx.compose.runtime.EffectsKt;
 import androidx.compose.runtime.ScopeUpdateScope;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.platform.AndroidCompositionLocals_androidKt;
 import androidx.lifecycle.LifecycleOwner;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class BackHandlerKt {
     @Composable
     public static final void BackHandler(final boolean z, @NotNull final Function0<Unit> function0, @Nullable Composer composer, final int i, final int i2) {
@@ -48,44 +48,22 @@ public final class BackHandlerKt {
             if (i4 != 0) {
                 z = true;
             }
-            final State rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(function0, startRestartGroup, (i3 >> 3) & 14);
+            State rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(function0, startRestartGroup, (i3 >> 3) & 14);
             startRestartGroup.startReplaceableGroup(-3687241);
             Object rememberedValue = startRestartGroup.rememberedValue();
             Composer.Companion companion = Composer.Companion;
             if (rememberedValue == companion.getEmpty()) {
-                rememberedValue = new OnBackPressedCallback(z) { // from class: androidx.activity.compose.BackHandlerKt$BackHandler$backCallback$1$1
-                    @Override // androidx.activity.OnBackPressedCallback
-                    public void handleOnBackPressed() {
-                        Function0 m930BackHandler$lambda0;
-                        m930BackHandler$lambda0 = BackHandlerKt.m930BackHandler$lambda0(rememberUpdatedState);
-                        m930BackHandler$lambda0.invoke();
-                    }
-                };
+                rememberedValue = new BackHandler.backCallback.1.1(z, rememberUpdatedState);
                 startRestartGroup.updateRememberedValue(rememberedValue);
             }
             startRestartGroup.endReplaceableGroup();
-            final BackHandlerKt$BackHandler$backCallback$1$1 backHandlerKt$BackHandler$backCallback$1$1 = (BackHandlerKt$BackHandler$backCallback$1$1) rememberedValue;
+            final BackHandler.backCallback.1.1 r1 = (BackHandler.backCallback.1.1) rememberedValue;
             Boolean valueOf = Boolean.valueOf(z);
             startRestartGroup.startReplaceableGroup(-3686552);
-            boolean changed = startRestartGroup.changed(valueOf) | startRestartGroup.changed(backHandlerKt$BackHandler$backCallback$1$1);
+            boolean changed = startRestartGroup.changed(valueOf) | startRestartGroup.changed(r1);
             Object rememberedValue2 = startRestartGroup.rememberedValue();
             if (changed || rememberedValue2 == companion.getEmpty()) {
-                rememberedValue2 = new Function0<Unit>() { // from class: androidx.activity.compose.BackHandlerKt$BackHandler$1$1
-                    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                    {
-                        super(0);
-                    }
-
-                    public /* bridge */ /* synthetic */ Object invoke() {
-                        m932invoke();
-                        return Unit.INSTANCE;
-                    }
-
-                    /* renamed from: invoke, reason: collision with other method in class */
-                    public final void m932invoke() {
-                        setEnabled(z);
-                    }
-                };
+                rememberedValue2 = new BackHandler.1.1(r1, z);
                 startRestartGroup.updateRememberedValue(rememberedValue2);
             }
             startRestartGroup.endReplaceableGroup();
@@ -106,12 +84,11 @@ public final class BackHandlerKt {
                 @NotNull
                 public final DisposableEffectResult invoke(@NotNull DisposableEffectScope disposableEffectScope) {
                     Intrinsics.checkNotNullParameter(disposableEffectScope, "$this$DisposableEffect");
-                    OnBackPressedDispatcher.this.addCallback(lifecycleOwner, backHandlerKt$BackHandler$backCallback$1$1);
-                    final BackHandlerKt$BackHandler$backCallback$1$1 backHandlerKt$BackHandler$backCallback$1$12 = backHandlerKt$BackHandler$backCallback$1$1;
+                    OnBackPressedDispatcher.this.addCallback(lifecycleOwner, r1);
+                    final BackHandlerKt.BackHandler.backCallback.1.1 r3 = r1;
                     return new DisposableEffectResult() { // from class: androidx.activity.compose.BackHandlerKt$BackHandler$2$invoke$$inlined$onDispose$1
-                        @Override // androidx.compose.runtime.DisposableEffectResult
                         public void dispose() {
-                            remove();
+                            r3.remove();
                         }
                     };
                 }
@@ -140,7 +117,7 @@ public final class BackHandlerKt {
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: BackHandler$lambda-0, reason: not valid java name */
-    public static final Function0<Unit> m930BackHandler$lambda0(State<? extends Function0<Unit>> state) {
+    public static final Function0<Unit> m8BackHandler$lambda0(State<? extends Function0<Unit>> state) {
         return state.getValue();
     }
 }

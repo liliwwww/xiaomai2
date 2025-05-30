@@ -13,7 +13,7 @@ import java.lang.reflect.Array;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Allocation extends BaseObj {
     public static final int USAGE_GRAPHICS_TEXTURE = 2;
     public static final int USAGE_IO_INPUT = 32;
@@ -35,7 +35,7 @@ public class Allocation extends BaseObj {
     boolean mIncAllocDestroyed;
     long mIncCompatAllocation;
     boolean mReadAllowed;
-    Type.CubemapFace mSelectedFace;
+    Type$CubemapFace mSelectedFace;
     int mSelectedLOD;
     int mSelectedY;
     int mSelectedZ;
@@ -45,8 +45,8 @@ public class Allocation extends BaseObj {
     boolean mWriteAllowed;
 
     /* compiled from: Taobao */
-    /* renamed from: androidx.renderscript.Allocation$1 */
-    static /* synthetic */ class C12401 {
+    /* renamed from: androidx.renderscript.Allocation$1, reason: invalid class name */
+    static /* synthetic */ class AnonymousClass1 {
         static final /* synthetic */ int[] $SwitchMap$android$graphics$Bitmap$Config;
 
         static {
@@ -95,7 +95,7 @@ public class Allocation extends BaseObj {
         this.mReadAllowed = true;
         this.mWriteAllowed = true;
         this.mAutoPadding = false;
-        this.mSelectedFace = Type.CubemapFace.POSITIVE_X;
+        this.mSelectedFace = Type$CubemapFace.POSITIVE_X;
         if ((i & (-228)) != 0) {
             throw new RSIllegalArgumentException("Unknown usage specified.");
         }
@@ -123,43 +123,43 @@ public class Allocation extends BaseObj {
         }
     }
 
-    private void copy1DRangeFromUnchecked(int i, int i2, Object obj, Element.DataType dataType, int i3) {
-        Element.DataType dataType2;
+    private void copy1DRangeFromUnchecked(int i, int i2, Object obj, Element$DataType element$DataType, int i3) {
+        Element$DataType element$DataType2;
         boolean z;
         int bytesSize = this.mType.mElement.getBytesSize() * i2;
         if (this.mAutoPadding && this.mType.getElement().getVectorSize() == 3) {
-            dataType2 = dataType;
+            element$DataType2 = element$DataType;
             z = true;
         } else {
-            dataType2 = dataType;
+            element$DataType2 = element$DataType;
             z = false;
         }
-        data1DChecks(i, i2, i3 * dataType2.mSize, bytesSize, z);
-        this.mRS.nAllocationData1D(getIDSafe(), i, this.mSelectedLOD, i2, obj, bytesSize, dataType, this.mType.mElement.mType.mSize, z);
+        data1DChecks(i, i2, i3 * element$DataType2.mSize, bytesSize, z);
+        ((BaseObj) this).mRS.nAllocationData1D(getIDSafe(), i, this.mSelectedLOD, i2, obj, bytesSize, element$DataType, this.mType.mElement.mType.mSize, z);
     }
 
-    private void copy1DRangeToUnchecked(int i, int i2, Object obj, Element.DataType dataType, int i3) {
-        Element.DataType dataType2;
+    private void copy1DRangeToUnchecked(int i, int i2, Object obj, Element$DataType element$DataType, int i3) {
+        Element$DataType element$DataType2;
         boolean z;
         int bytesSize = this.mType.mElement.getBytesSize() * i2;
         if (this.mAutoPadding && this.mType.getElement().getVectorSize() == 3) {
-            dataType2 = dataType;
+            element$DataType2 = element$DataType;
             z = true;
         } else {
-            dataType2 = dataType;
+            element$DataType2 = element$DataType;
             z = false;
         }
-        data1DChecks(i, i2, i3 * dataType2.mSize, bytesSize, z);
-        this.mRS.nAllocationRead1D(getIDSafe(), i, this.mSelectedLOD, i2, obj, bytesSize, dataType, this.mType.mElement.mType.mSize, z);
+        data1DChecks(i, i2, i3 * element$DataType2.mSize, bytesSize, z);
+        ((BaseObj) this).mRS.nAllocationRead1D(getIDSafe(), i, this.mSelectedLOD, i2, obj, bytesSize, element$DataType, this.mType.mElement.mType.mSize, z);
     }
 
-    private void copy3DRangeFromUnchecked(int i, int i2, int i3, int i4, int i5, int i6, Object obj, Element.DataType dataType, int i7) {
+    private void copy3DRangeFromUnchecked(int i, int i2, int i3, int i4, int i5, int i6, Object obj, Element$DataType element$DataType, int i7) {
         int i8;
         boolean z;
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         validate3DRange(i, i2, i3, i4, i5, i6);
         int bytesSize = this.mType.mElement.getBytesSize() * i4 * i5 * i6;
-        int i9 = dataType.mSize * i7;
+        int i9 = element$DataType.mSize * i7;
         if (this.mAutoPadding && this.mType.getElement().getVectorSize() == 3) {
             if ((bytesSize / 4) * 3 > i9) {
                 throw new RSIllegalArgumentException("Array too small for allocation type.");
@@ -173,21 +173,21 @@ public class Allocation extends BaseObj {
             i8 = i9;
             z = false;
         }
-        this.mRS.nAllocationData3D(getIDSafe(), i, i2, i3, this.mSelectedLOD, i4, i5, i6, obj, i8, dataType, this.mType.mElement.mType.mSize, z);
+        ((BaseObj) this).mRS.nAllocationData3D(getIDSafe(), i, i2, i3, this.mSelectedLOD, i4, i5, i6, obj, i8, element$DataType, this.mType.mElement.mType.mSize, z);
     }
 
-    private void copyFromUnchecked(Object obj, Element.DataType dataType, int i) {
-        this.mRS.validate();
+    private void copyFromUnchecked(Object obj, Element$DataType element$DataType, int i) {
+        ((BaseObj) this).mRS.validate();
         int i2 = this.mCurrentDimZ;
         if (i2 > 0) {
-            copy3DRangeFromUnchecked(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, i2, obj, dataType, i);
+            copy3DRangeFromUnchecked(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, i2, obj, element$DataType, i);
             return;
         }
         int i3 = this.mCurrentDimY;
         if (i3 > 0) {
-            copy2DRangeFromUnchecked(0, 0, this.mCurrentDimX, i3, obj, dataType, i);
+            copy2DRangeFromUnchecked(0, 0, this.mCurrentDimX, i3, obj, element$DataType, i);
         } else {
-            copy1DRangeFromUnchecked(0, this.mCurrentCount, obj, dataType, i);
+            copy1DRangeFromUnchecked(0, this.mCurrentCount, obj, element$DataType, i);
         }
     }
 
@@ -268,7 +268,7 @@ public class Allocation extends BaseObj {
         renderScript.validate();
         try {
             byte[] bytes = str.getBytes("UTF-8");
-            Allocation createSized = createSized(renderScript, Element.m294U8(renderScript), bytes.length, i);
+            Allocation createSized = createSized(renderScript, Element.U8(renderScript), bytes.length, i);
             createSized.copyFrom(bytes);
             return createSized;
         } catch (Exception unused) {
@@ -304,7 +304,7 @@ public class Allocation extends BaseObj {
     }
 
     private void data1DChecks(int i, int i2, int i3, int i4, boolean z) {
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         if (i < 0) {
             throw new RSIllegalArgumentException("Offset must be >= 0.");
         }
@@ -346,7 +346,7 @@ public class Allocation extends BaseObj {
 
     private long getIDSafe() {
         Allocation allocation = this.mAdaptedAllocation;
-        return allocation != null ? allocation.getID(this.mRS) : getID(this.mRS);
+        return allocation != null ? allocation.getID(((BaseObj) this).mRS) : getID(((BaseObj) this).mRS);
     }
 
     private void setBitmap(Bitmap bitmap) {
@@ -412,7 +412,7 @@ public class Allocation extends BaseObj {
         if (config == null) {
             throw new RSIllegalArgumentException("Bitmap has an unsupported format for this operation");
         }
-        int i = C12401.$SwitchMap$android$graphics$Bitmap$Config[config.ordinal()];
+        int i = AnonymousClass1.$SwitchMap$android$graphics$Bitmap$Config[config.ordinal()];
         if (i == 1) {
             if (this.mType.getElement().mKind == Element.DataKind.PIXEL_A) {
                 return;
@@ -447,60 +447,60 @@ public class Allocation extends BaseObj {
     }
 
     private void validateIsFloat32() {
-        if (this.mType.mElement.mType == Element.DataType.FLOAT_32) {
+        if (this.mType.mElement.mType == Element$DataType.FLOAT_32) {
             return;
         }
         throw new RSIllegalArgumentException("32 bit float source does not match allocation type " + this.mType.mElement.mType);
     }
 
     private void validateIsFloat64() {
-        if (this.mType.mElement.mType == Element.DataType.FLOAT_64) {
+        if (this.mType.mElement.mType == Element$DataType.FLOAT_64) {
             return;
         }
         throw new RSIllegalArgumentException("64 bit float source does not match allocation type " + this.mType.mElement.mType);
     }
 
     private void validateIsInt16() {
-        Element.DataType dataType = this.mType.mElement.mType;
-        if (dataType == Element.DataType.SIGNED_16 || dataType == Element.DataType.UNSIGNED_16) {
+        Element$DataType element$DataType = this.mType.mElement.mType;
+        if (element$DataType == Element$DataType.SIGNED_16 || element$DataType == Element$DataType.UNSIGNED_16) {
             return;
         }
         throw new RSIllegalArgumentException("16 bit integer source does not match allocation type " + this.mType.mElement.mType);
     }
 
     private void validateIsInt32() {
-        Element.DataType dataType = this.mType.mElement.mType;
-        if (dataType == Element.DataType.SIGNED_32 || dataType == Element.DataType.UNSIGNED_32) {
+        Element$DataType element$DataType = this.mType.mElement.mType;
+        if (element$DataType == Element$DataType.SIGNED_32 || element$DataType == Element$DataType.UNSIGNED_32) {
             return;
         }
         throw new RSIllegalArgumentException("32 bit integer source does not match allocation type " + this.mType.mElement.mType);
     }
 
     private void validateIsInt64() {
-        Element.DataType dataType = this.mType.mElement.mType;
-        if (dataType == Element.DataType.SIGNED_64 || dataType == Element.DataType.UNSIGNED_64) {
+        Element$DataType element$DataType = this.mType.mElement.mType;
+        if (element$DataType == Element$DataType.SIGNED_64 || element$DataType == Element$DataType.UNSIGNED_64) {
             return;
         }
         throw new RSIllegalArgumentException("64 bit integer source does not match allocation type " + this.mType.mElement.mType);
     }
 
     private void validateIsInt8() {
-        Element.DataType dataType = this.mType.mElement.mType;
-        if (dataType == Element.DataType.SIGNED_8 || dataType == Element.DataType.UNSIGNED_8) {
+        Element$DataType element$DataType = this.mType.mElement.mType;
+        if (element$DataType == Element$DataType.SIGNED_8 || element$DataType == Element$DataType.UNSIGNED_8) {
             return;
         }
         throw new RSIllegalArgumentException("8 bit integer source does not match allocation type " + this.mType.mElement.mType);
     }
 
     private void validateIsObject() {
-        Element.DataType dataType = this.mType.mElement.mType;
-        if (dataType == Element.DataType.RS_ELEMENT || dataType == Element.DataType.RS_TYPE || dataType == Element.DataType.RS_ALLOCATION || dataType == Element.DataType.RS_SAMPLER || dataType == Element.DataType.RS_SCRIPT) {
+        Element$DataType element$DataType = this.mType.mElement.mType;
+        if (element$DataType == Element$DataType.RS_ELEMENT || element$DataType == Element$DataType.RS_TYPE || element$DataType == Element$DataType.RS_ALLOCATION || element$DataType == Element$DataType.RS_SAMPLER || element$DataType == Element$DataType.RS_SCRIPT) {
             return;
         }
         throw new RSIllegalArgumentException("Object source does not match allocation type " + this.mType.mElement.mType);
     }
 
-    private Element.DataType validateObjectIsPrimitiveArray(Object obj, boolean z) {
+    private Element$DataType validateObjectIsPrimitiveArray(Object obj, boolean z) {
         Class<?> cls = obj.getClass();
         if (!cls.isArray()) {
             throw new RSIllegalArgumentException("Object passed is not an array of primitives.");
@@ -511,28 +511,28 @@ public class Allocation extends BaseObj {
         }
         if (componentType == Long.TYPE) {
             if (!z) {
-                return Element.DataType.SIGNED_64;
+                return Element$DataType.SIGNED_64;
             }
             validateIsInt64();
             return this.mType.mElement.mType;
         }
         if (componentType == Integer.TYPE) {
             if (!z) {
-                return Element.DataType.SIGNED_32;
+                return Element$DataType.SIGNED_32;
             }
             validateIsInt32();
             return this.mType.mElement.mType;
         }
         if (componentType == Short.TYPE) {
             if (!z) {
-                return Element.DataType.SIGNED_16;
+                return Element$DataType.SIGNED_16;
             }
             validateIsInt16();
             return this.mType.mElement.mType;
         }
         if (componentType == Byte.TYPE) {
             if (!z) {
-                return Element.DataType.SIGNED_8;
+                return Element$DataType.SIGNED_8;
             }
             validateIsInt8();
             return this.mType.mElement.mType;
@@ -541,7 +541,7 @@ public class Allocation extends BaseObj {
             if (z) {
                 validateIsFloat32();
             }
-            return Element.DataType.FLOAT_32;
+            return Element$DataType.FLOAT_32;
         }
         if (componentType != Double.TYPE) {
             return null;
@@ -549,7 +549,7 @@ public class Allocation extends BaseObj {
         if (z) {
             validateIsFloat64();
         }
-        return Element.DataType.FLOAT_64;
+        return Element$DataType.FLOAT_64;
     }
 
     public void copy1DRangeFrom(int i, int i2, Object obj) {
@@ -564,13 +564,13 @@ public class Allocation extends BaseObj {
         copy2DRangeFromUnchecked(i, i2, i3, i4, obj, validateObjectIsPrimitiveArray(obj, true), Array.getLength(obj));
     }
 
-    void copy2DRangeFromUnchecked(int i, int i2, int i3, int i4, Object obj, Element.DataType dataType, int i5) {
+    void copy2DRangeFromUnchecked(int i, int i2, int i3, int i4, Object obj, Element$DataType element$DataType, int i5) {
         int i6;
         boolean z;
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         validate2DRange(i, i2, i3, i4);
         int bytesSize = this.mType.mElement.getBytesSize() * i3 * i4;
-        int i7 = dataType.mSize * i5;
+        int i7 = element$DataType.mSize * i5;
         if (this.mAutoPadding && this.mType.getElement().getVectorSize() == 3) {
             if ((bytesSize / 4) * 3 > i7) {
                 throw new RSIllegalArgumentException("Array too small for allocation type.");
@@ -584,20 +584,20 @@ public class Allocation extends BaseObj {
             i6 = i7;
             z = false;
         }
-        this.mRS.nAllocationData2D(getIDSafe(), i, i2, this.mSelectedLOD, this.mSelectedFace.mID, i3, i4, obj, i6, dataType, this.mType.mElement.mType.mSize, z);
+        ((BaseObj) this).mRS.nAllocationData2D(getIDSafe(), i, i2, this.mSelectedLOD, this.mSelectedFace.mID, i3, i4, obj, i6, element$DataType, this.mType.mElement.mType.mSize, z);
     }
 
     public void copy2DRangeTo(int i, int i2, int i3, int i4, Object obj) {
         copy2DRangeToUnchecked(i, i2, i3, i4, obj, validateObjectIsPrimitiveArray(obj, true), Array.getLength(obj));
     }
 
-    void copy2DRangeToUnchecked(int i, int i2, int i3, int i4, Object obj, Element.DataType dataType, int i5) {
+    void copy2DRangeToUnchecked(int i, int i2, int i3, int i4, Object obj, Element$DataType element$DataType, int i5) {
         int i6;
         boolean z;
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         validate2DRange(i, i2, i3, i4);
         int bytesSize = this.mType.mElement.getBytesSize() * i3 * i4;
-        int i7 = dataType.mSize * i5;
+        int i7 = element$DataType.mSize * i5;
         if (this.mAutoPadding && this.mType.getElement().getVectorSize() == 3) {
             if ((bytesSize / 4) * 3 > i7) {
                 throw new RSIllegalArgumentException("Array too small for allocation type.");
@@ -611,7 +611,7 @@ public class Allocation extends BaseObj {
             i6 = i7;
             z = false;
         }
-        this.mRS.nAllocationRead2D(getIDSafe(), i, i2, this.mSelectedLOD, this.mSelectedFace.mID, i3, i4, obj, i6, dataType, this.mType.mElement.mType.mSize, z);
+        ((BaseObj) this).mRS.nAllocationRead2D(getIDSafe(), i, i2, this.mSelectedLOD, this.mSelectedFace.mID, i3, i4, obj, i6, element$DataType, this.mType.mElement.mType.mSize, z);
     }
 
     public void copy3DRangeFrom(int i, int i2, int i3, int i4, int i5, int i6, Object obj) {
@@ -619,7 +619,7 @@ public class Allocation extends BaseObj {
     }
 
     public void copyFrom(BaseObj[] baseObjArr) {
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         validateIsObject();
         if (baseObjArr.length != this.mCurrentCount) {
             throw new RSIllegalArgumentException("Array size mismatch, allocation sizeX = " + this.mCurrentCount + ", array length = " + baseObjArr.length);
@@ -627,27 +627,26 @@ public class Allocation extends BaseObj {
         if (RenderScript.sPointerSize == 8) {
             long[] jArr = new long[baseObjArr.length * 4];
             for (int i = 0; i < baseObjArr.length; i++) {
-                jArr[i * 4] = baseObjArr[i].getID(this.mRS);
+                jArr[i * 4] = baseObjArr[i].getID(((BaseObj) this).mRS);
             }
             copy1DRangeFromUnchecked(0, this.mCurrentCount, (Object) jArr);
             return;
         }
         int[] iArr = new int[baseObjArr.length];
         for (int i2 = 0; i2 < baseObjArr.length; i2++) {
-            iArr[i2] = (int) baseObjArr[i2].getID(this.mRS);
+            iArr[i2] = (int) baseObjArr[i2].getID(((BaseObj) this).mRS);
         }
         copy1DRangeFromUnchecked(0, this.mCurrentCount, iArr);
     }
 
     public void copyTo(Bitmap bitmap) {
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         validateBitmapFormat(bitmap);
         validateBitmapSize(bitmap);
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         renderScript.nAllocationCopyToBitmap(getID(renderScript), bitmap);
     }
 
-    @Override // androidx.renderscript.BaseObj
     public void destroy() {
         if (this.mIncCompatAllocation != 0) {
             boolean z = false;
@@ -658,10 +657,10 @@ public class Allocation extends BaseObj {
                 }
             }
             if (z) {
-                ReentrantReadWriteLock.ReadLock readLock = this.mRS.mRWLock.readLock();
+                ReentrantReadWriteLock.ReadLock readLock = ((BaseObj) this).mRS.mRWLock.readLock();
                 readLock.lock();
-                if (this.mRS.isAlive()) {
-                    this.mRS.nIncObjDestroy(this.mIncCompatAllocation);
+                if (((BaseObj) this).mRS.isAlive()) {
+                    ((BaseObj) this).mRS.nIncObjDestroy(this.mIncCompatAllocation);
                 }
                 readLock.unlock();
                 this.mIncCompatAllocation = 0L;
@@ -673,7 +672,6 @@ public class Allocation extends BaseObj {
         super.destroy();
     }
 
-    @Override // androidx.renderscript.BaseObj
     protected void finalize() throws Throwable {
         if (RenderScript.sUseGCHooks) {
             RenderScript.registerNativeFree.invoke(RenderScript.sRuntime, Integer.valueOf(this.mSize));
@@ -682,7 +680,7 @@ public class Allocation extends BaseObj {
     }
 
     public void generateMipmaps() {
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         renderScript.nAllocationGenerateMipmaps(getID(renderScript));
     }
 
@@ -711,8 +709,8 @@ public class Allocation extends BaseObj {
         if ((this.mUsage & 32) == 0) {
             throw new RSIllegalArgumentException("Can only receive if IO_INPUT usage specified.");
         }
-        this.mRS.validate();
-        RenderScript renderScript = this.mRS;
+        ((BaseObj) this).mRS.validate();
+        RenderScript renderScript = ((BaseObj) this).mRS;
         renderScript.nAllocationIoReceive(getID(renderScript));
     }
 
@@ -720,8 +718,8 @@ public class Allocation extends BaseObj {
         if ((this.mUsage & 64) == 0) {
             throw new RSIllegalArgumentException("Can only send buffer if IO_OUTPUT usage specified.");
         }
-        this.mRS.validate();
-        RenderScript renderScript = this.mRS;
+        ((BaseObj) this).mRS.validate();
+        RenderScript renderScript = ((BaseObj) this).mRS;
         renderScript.nAllocationIoSend(getID(renderScript));
     }
 
@@ -734,7 +732,7 @@ public class Allocation extends BaseObj {
     }
 
     public void setFromFieldPacker(int i, FieldPacker fieldPacker) {
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         int bytesSize = this.mType.mElement.getBytesSize();
         byte[] data = fieldPacker.getData();
         int pos = fieldPacker.getPos();
@@ -751,11 +749,11 @@ public class Allocation extends BaseObj {
     }
 
     public void setSurface(Surface surface) {
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         if ((this.mUsage & 64) == 0) {
             throw new RSInvalidStateException("Allocation is not USAGE_IO_OUTPUT.");
         }
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         renderScript.nAllocationSetSurface(getID(renderScript), surface);
     }
 
@@ -763,68 +761,68 @@ public class Allocation extends BaseObj {
         if (i != 1 && i != 2) {
             throw new RSIllegalArgumentException("Source must be exactly one usage type.");
         }
-        this.mRS.validate();
-        this.mRS.nAllocationSyncAll(getIDSafe(), i);
+        ((BaseObj) this).mRS.validate();
+        ((BaseObj) this).mRS.nAllocationSyncAll(getIDSafe(), i);
     }
 
     public void copy1DRangeFrom(int i, int i2, int[] iArr) {
         validateIsInt32();
-        copy1DRangeFromUnchecked(i, i2, iArr, Element.DataType.SIGNED_32, iArr.length);
+        copy1DRangeFromUnchecked(i, i2, iArr, Element$DataType.SIGNED_32, iArr.length);
     }
 
     public void copy1DRangeTo(int i, int i2, int[] iArr) {
         validateIsInt32();
-        copy1DRangeToUnchecked(i, i2, iArr, Element.DataType.SIGNED_32, iArr.length);
+        copy1DRangeToUnchecked(i, i2, iArr, Element$DataType.SIGNED_32, iArr.length);
     }
 
     public void copy2DRangeFrom(int i, int i2, int i3, int i4, byte[] bArr) {
         validateIsInt8();
-        copy2DRangeFromUnchecked(i, i2, i3, i4, bArr, Element.DataType.SIGNED_8, bArr.length);
+        copy2DRangeFromUnchecked(i, i2, i3, i4, bArr, Element$DataType.SIGNED_8, bArr.length);
     }
 
     public void copy2DRangeTo(int i, int i2, int i3, int i4, byte[] bArr) {
         validateIsInt8();
-        copy2DRangeToUnchecked(i, i2, i3, i4, bArr, Element.DataType.SIGNED_8, bArr.length);
+        copy2DRangeToUnchecked(i, i2, i3, i4, bArr, Element$DataType.SIGNED_8, bArr.length);
     }
 
     public void copy3DRangeFrom(int i, int i2, int i3, int i4, int i5, int i6, Allocation allocation, int i7, int i8, int i9) {
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         validate3DRange(i, i2, i3, i4, i5, i6);
-        this.mRS.nAllocationData3D(getIDSafe(), i, i2, i3, this.mSelectedLOD, i4, i5, i6, allocation.getID(this.mRS), i7, i8, i9, allocation.mSelectedLOD);
+        ((BaseObj) this).mRS.nAllocationData3D(getIDSafe(), i, i2, i3, this.mSelectedLOD, i4, i5, i6, allocation.getID(((BaseObj) this).mRS), i7, i8, i9, allocation.mSelectedLOD);
     }
 
     public void copy1DRangeFrom(int i, int i2, short[] sArr) {
         validateIsInt16();
-        copy1DRangeFromUnchecked(i, i2, sArr, Element.DataType.SIGNED_16, sArr.length);
+        copy1DRangeFromUnchecked(i, i2, sArr, Element$DataType.SIGNED_16, sArr.length);
     }
 
     public void copy1DRangeTo(int i, int i2, short[] sArr) {
         validateIsInt16();
-        copy1DRangeToUnchecked(i, i2, sArr, Element.DataType.SIGNED_16, sArr.length);
+        copy1DRangeToUnchecked(i, i2, sArr, Element$DataType.SIGNED_16, sArr.length);
     }
 
     public void copy2DRangeFrom(int i, int i2, int i3, int i4, short[] sArr) {
         validateIsInt16();
-        copy2DRangeFromUnchecked(i, i2, i3, i4, sArr, Element.DataType.SIGNED_16, sArr.length);
+        copy2DRangeFromUnchecked(i, i2, i3, i4, sArr, Element$DataType.SIGNED_16, sArr.length);
     }
 
     public void copy2DRangeTo(int i, int i2, int i3, int i4, short[] sArr) {
         validateIsInt16();
-        copy2DRangeToUnchecked(i, i2, i3, i4, sArr, Element.DataType.SIGNED_16, sArr.length);
+        copy2DRangeToUnchecked(i, i2, i3, i4, sArr, Element$DataType.SIGNED_16, sArr.length);
     }
 
-    private void copyTo(Object obj, Element.DataType dataType, int i) {
-        this.mRS.validate();
+    private void copyTo(Object obj, Element$DataType element$DataType, int i) {
+        ((BaseObj) this).mRS.validate();
         boolean z = this.mAutoPadding && this.mType.getElement().getVectorSize() == 3;
         if (z) {
-            if (dataType.mSize * i < (this.mSize / 4) * 3) {
+            if (element$DataType.mSize * i < (this.mSize / 4) * 3) {
                 throw new RSIllegalArgumentException("Size of output array cannot be smaller than size of allocation.");
             }
-        } else if (dataType.mSize * i < this.mSize) {
+        } else if (element$DataType.mSize * i < this.mSize) {
             throw new RSIllegalArgumentException("Size of output array cannot be smaller than size of allocation.");
         }
-        RenderScript renderScript = this.mRS;
-        renderScript.nAllocationRead(getID(renderScript), obj, dataType, this.mType.mElement.mType.mSize, z);
+        RenderScript renderScript = ((BaseObj) this).mRS;
+        renderScript.nAllocationRead(getID(renderScript), obj, element$DataType, this.mType.mElement.mType.mSize, z);
     }
 
     public void copy1DRangeFromUnchecked(int i, int i2, Object obj) {
@@ -841,38 +839,38 @@ public class Allocation extends BaseObj {
 
     public void copy1DRangeFrom(int i, int i2, byte[] bArr) {
         validateIsInt8();
-        copy1DRangeFromUnchecked(i, i2, bArr, Element.DataType.SIGNED_8, bArr.length);
+        copy1DRangeFromUnchecked(i, i2, bArr, Element$DataType.SIGNED_8, bArr.length);
     }
 
     public void copy1DRangeFromUnchecked(int i, int i2, int[] iArr) {
-        copy1DRangeFromUnchecked(i, i2, iArr, Element.DataType.SIGNED_32, iArr.length);
+        copy1DRangeFromUnchecked(i, i2, iArr, Element$DataType.SIGNED_32, iArr.length);
     }
 
     public void copy1DRangeTo(int i, int i2, byte[] bArr) {
         validateIsInt8();
-        copy1DRangeToUnchecked(i, i2, bArr, Element.DataType.SIGNED_8, bArr.length);
+        copy1DRangeToUnchecked(i, i2, bArr, Element$DataType.SIGNED_8, bArr.length);
     }
 
     public void copy1DRangeToUnchecked(int i, int i2, int[] iArr) {
-        copy1DRangeToUnchecked(i, i2, iArr, Element.DataType.SIGNED_32, iArr.length);
+        copy1DRangeToUnchecked(i, i2, iArr, Element$DataType.SIGNED_32, iArr.length);
     }
 
     public void copy2DRangeFrom(int i, int i2, int i3, int i4, int[] iArr) {
         validateIsInt32();
-        copy2DRangeFromUnchecked(i, i2, i3, i4, iArr, Element.DataType.SIGNED_32, iArr.length);
+        copy2DRangeFromUnchecked(i, i2, i3, i4, iArr, Element$DataType.SIGNED_32, iArr.length);
     }
 
     public void copy2DRangeTo(int i, int i2, int i3, int i4, int[] iArr) {
         validateIsInt32();
-        copy2DRangeToUnchecked(i, i2, i3, i4, iArr, Element.DataType.SIGNED_32, iArr.length);
+        copy2DRangeToUnchecked(i, i2, i3, i4, iArr, Element$DataType.SIGNED_32, iArr.length);
     }
 
     public void copy1DRangeFromUnchecked(int i, int i2, short[] sArr) {
-        copy1DRangeFromUnchecked(i, i2, sArr, Element.DataType.SIGNED_16, sArr.length);
+        copy1DRangeFromUnchecked(i, i2, sArr, Element$DataType.SIGNED_16, sArr.length);
     }
 
     public void copy1DRangeToUnchecked(int i, int i2, short[] sArr) {
-        copy1DRangeToUnchecked(i, i2, sArr, Element.DataType.SIGNED_16, sArr.length);
+        copy1DRangeToUnchecked(i, i2, sArr, Element$DataType.SIGNED_16, sArr.length);
     }
 
     public void copyFromUnchecked(Object obj) {
@@ -885,38 +883,38 @@ public class Allocation extends BaseObj {
 
     public void copy1DRangeFrom(int i, int i2, float[] fArr) {
         validateIsFloat32();
-        copy1DRangeFromUnchecked(i, i2, fArr, Element.DataType.FLOAT_32, fArr.length);
+        copy1DRangeFromUnchecked(i, i2, fArr, Element$DataType.FLOAT_32, fArr.length);
     }
 
     public void copy1DRangeFromUnchecked(int i, int i2, byte[] bArr) {
-        copy1DRangeFromUnchecked(i, i2, bArr, Element.DataType.SIGNED_8, bArr.length);
+        copy1DRangeFromUnchecked(i, i2, bArr, Element$DataType.SIGNED_8, bArr.length);
     }
 
     public void copy1DRangeTo(int i, int i2, float[] fArr) {
         validateIsFloat32();
-        copy1DRangeToUnchecked(i, i2, fArr, Element.DataType.FLOAT_32, fArr.length);
+        copy1DRangeToUnchecked(i, i2, fArr, Element$DataType.FLOAT_32, fArr.length);
     }
 
     public void copy1DRangeToUnchecked(int i, int i2, byte[] bArr) {
-        copy1DRangeToUnchecked(i, i2, bArr, Element.DataType.SIGNED_8, bArr.length);
+        copy1DRangeToUnchecked(i, i2, bArr, Element$DataType.SIGNED_8, bArr.length);
     }
 
     public void copy2DRangeFrom(int i, int i2, int i3, int i4, float[] fArr) {
         validateIsFloat32();
-        copy2DRangeFromUnchecked(i, i2, i3, i4, fArr, Element.DataType.FLOAT_32, fArr.length);
+        copy2DRangeFromUnchecked(i, i2, i3, i4, fArr, Element$DataType.FLOAT_32, fArr.length);
     }
 
     public void copy2DRangeTo(int i, int i2, int i3, int i4, float[] fArr) {
         validateIsFloat32();
-        copy2DRangeToUnchecked(i, i2, i3, i4, fArr, Element.DataType.FLOAT_32, fArr.length);
+        copy2DRangeToUnchecked(i, i2, i3, i4, fArr, Element$DataType.FLOAT_32, fArr.length);
     }
 
     public void copyFromUnchecked(int[] iArr) {
-        copyFromUnchecked(iArr, Element.DataType.SIGNED_32, iArr.length);
+        copyFromUnchecked(iArr, Element$DataType.SIGNED_32, iArr.length);
     }
 
     public void setFromFieldPacker(int i, int i2, FieldPacker fieldPacker) {
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         if (i2 >= this.mType.mElement.mElements.length) {
             throw new RSIllegalArgumentException("Component_number " + i2 + " out of range.");
         }
@@ -925,7 +923,7 @@ public class Allocation extends BaseObj {
             int pos = fieldPacker.getPos();
             int bytesSize = this.mType.mElement.mElements[i2].getBytesSize() * this.mType.mElement.mArraySizes[i2];
             if (pos == bytesSize) {
-                this.mRS.nAllocationElementData1D(getIDSafe(), i, this.mSelectedLOD, i2, data, pos);
+                ((BaseObj) this).mRS.nAllocationElementData1D(getIDSafe(), i, this.mSelectedLOD, i2, data, pos);
                 return;
             }
             throw new RSIllegalArgumentException("Field packer sizelength " + pos + " does not match component size " + bytesSize + ".");
@@ -938,15 +936,15 @@ public class Allocation extends BaseObj {
     }
 
     public void copy1DRangeFromUnchecked(int i, int i2, float[] fArr) {
-        copy1DRangeFromUnchecked(i, i2, fArr, Element.DataType.FLOAT_32, fArr.length);
+        copy1DRangeFromUnchecked(i, i2, fArr, Element$DataType.FLOAT_32, fArr.length);
     }
 
     public void copy1DRangeToUnchecked(int i, int i2, float[] fArr) {
-        copy1DRangeToUnchecked(i, i2, fArr, Element.DataType.FLOAT_32, fArr.length);
+        copy1DRangeToUnchecked(i, i2, fArr, Element$DataType.FLOAT_32, fArr.length);
     }
 
     public void copyFromUnchecked(short[] sArr) {
-        copyFromUnchecked(sArr, Element.DataType.SIGNED_16, sArr.length);
+        copyFromUnchecked(sArr, Element$DataType.SIGNED_16, sArr.length);
     }
 
     public static Allocation createTyped(RenderScript renderScript, Type type) {
@@ -954,21 +952,21 @@ public class Allocation extends BaseObj {
     }
 
     public void copy1DRangeFrom(int i, int i2, Allocation allocation, int i3) {
-        this.mRS.nAllocationData2D(getIDSafe(), i, 0, this.mSelectedLOD, this.mSelectedFace.mID, i2, 1, allocation.getID(this.mRS), i3, 0, allocation.mSelectedLOD, allocation.mSelectedFace.mID);
+        ((BaseObj) this).mRS.nAllocationData2D(getIDSafe(), i, 0, this.mSelectedLOD, this.mSelectedFace.mID, i2, 1, allocation.getID(((BaseObj) this).mRS), i3, 0, allocation.mSelectedLOD, allocation.mSelectedFace.mID);
     }
 
     public void copy2DRangeFrom(int i, int i2, int i3, int i4, Allocation allocation, int i5, int i6) {
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         validate2DRange(i, i2, i3, i4);
-        this.mRS.nAllocationData2D(getIDSafe(), i, i2, this.mSelectedLOD, this.mSelectedFace.mID, i3, i4, allocation.getID(this.mRS), i5, i6, allocation.mSelectedLOD, allocation.mSelectedFace.mID);
+        ((BaseObj) this).mRS.nAllocationData2D(getIDSafe(), i, i2, this.mSelectedLOD, this.mSelectedFace.mID, i3, i4, allocation.getID(((BaseObj) this).mRS), i5, i6, allocation.mSelectedLOD, allocation.mSelectedFace.mID);
     }
 
     public void copyFromUnchecked(byte[] bArr) {
-        copyFromUnchecked(bArr, Element.DataType.SIGNED_8, bArr.length);
+        copyFromUnchecked(bArr, Element$DataType.SIGNED_8, bArr.length);
     }
 
     public void copyFromUnchecked(float[] fArr) {
-        copyFromUnchecked(fArr, Element.DataType.FLOAT_32, fArr.length);
+        copyFromUnchecked(fArr, Element$DataType.FLOAT_32, fArr.length);
     }
 
     public void copyTo(Object obj) {
@@ -976,7 +974,7 @@ public class Allocation extends BaseObj {
     }
 
     public void copy2DRangeFrom(int i, int i2, Bitmap bitmap) {
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         if (bitmap.getConfig() == null) {
             Bitmap createBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
             new Canvas(createBitmap).drawBitmap(bitmap, 0.0f, 0.0f, (Paint) null);
@@ -984,13 +982,13 @@ public class Allocation extends BaseObj {
         } else {
             validateBitmapFormat(bitmap);
             validate2DRange(i, i2, bitmap.getWidth(), bitmap.getHeight());
-            this.mRS.nAllocationData2D(getIDSafe(), i, i2, this.mSelectedLOD, this.mSelectedFace.mID, bitmap);
+            ((BaseObj) this).mRS.nAllocationData2D(getIDSafe(), i, i2, this.mSelectedLOD, this.mSelectedFace.mID, bitmap);
         }
     }
 
     public void copyTo(byte[] bArr) {
         validateIsInt8();
-        copyTo(bArr, Element.DataType.SIGNED_8, bArr.length);
+        copyTo(bArr, Element$DataType.SIGNED_8, bArr.length);
     }
 
     public void copyFrom(Object obj) {
@@ -999,26 +997,26 @@ public class Allocation extends BaseObj {
 
     public void copyFrom(int[] iArr) {
         validateIsInt32();
-        copyFromUnchecked(iArr, Element.DataType.SIGNED_32, iArr.length);
+        copyFromUnchecked(iArr, Element$DataType.SIGNED_32, iArr.length);
     }
 
     public void copyTo(short[] sArr) {
         validateIsInt16();
-        copyTo(sArr, Element.DataType.SIGNED_16, sArr.length);
+        copyTo(sArr, Element$DataType.SIGNED_16, sArr.length);
     }
 
     public static Allocation createFromBitmap(RenderScript renderScript, Bitmap bitmap) {
-        return createFromBitmap(renderScript, bitmap, MipmapControl.MIPMAP_NONE, ScriptIntrinsicBLAS.NON_UNIT);
+        return createFromBitmap(renderScript, bitmap, MipmapControl.MIPMAP_NONE, 131);
     }
 
     public void copyFrom(short[] sArr) {
         validateIsInt16();
-        copyFromUnchecked(sArr, Element.DataType.SIGNED_16, sArr.length);
+        copyFromUnchecked(sArr, Element$DataType.SIGNED_16, sArr.length);
     }
 
     public void copyTo(int[] iArr) {
         validateIsInt32();
-        copyTo(iArr, Element.DataType.SIGNED_32, iArr.length);
+        copyTo(iArr, Element$DataType.SIGNED_32, iArr.length);
     }
 
     public static Allocation createCubemapFromBitmap(RenderScript renderScript, Bitmap bitmap) {
@@ -1027,21 +1025,21 @@ public class Allocation extends BaseObj {
 
     public void copyFrom(byte[] bArr) {
         validateIsInt8();
-        copyFromUnchecked(bArr, Element.DataType.SIGNED_8, bArr.length);
+        copyFromUnchecked(bArr, Element$DataType.SIGNED_8, bArr.length);
     }
 
     public void copyTo(float[] fArr) {
         validateIsFloat32();
-        copyTo(fArr, Element.DataType.FLOAT_32, fArr.length);
+        copyTo(fArr, Element$DataType.FLOAT_32, fArr.length);
     }
 
     public void copyFrom(float[] fArr) {
         validateIsFloat32();
-        copyFromUnchecked(fArr, Element.DataType.FLOAT_32, fArr.length);
+        copyFromUnchecked(fArr, Element$DataType.FLOAT_32, fArr.length);
     }
 
     public void copyFrom(Bitmap bitmap) {
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         if (bitmap.getConfig() == null) {
             Bitmap createBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
             new Canvas(createBitmap).drawBitmap(bitmap, 0.0f, 0.0f, (Paint) null);
@@ -1049,13 +1047,13 @@ public class Allocation extends BaseObj {
         } else {
             validateBitmapSize(bitmap);
             validateBitmapFormat(bitmap);
-            RenderScript renderScript = this.mRS;
+            RenderScript renderScript = ((BaseObj) this).mRS;
             renderScript.nAllocationCopyFromBitmap(getID(renderScript), bitmap);
         }
     }
 
     public void copyFrom(Allocation allocation) {
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         if (this.mType.equals(allocation.getType())) {
             copy2DRangeFrom(0, 0, this.mCurrentDimX, this.mCurrentDimY, allocation, 0, 0);
             return;

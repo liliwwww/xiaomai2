@@ -9,14 +9,15 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 abstract class MapCollections<K, V> {
 
     @Nullable
     MapCollections<K, V>.EntrySet mEntrySet;
 
+    /* JADX WARN: Incorrect inner types in field signature: Landroidx/collection/MapCollections<TK;TV;>.KeySet; */
     @Nullable
-    MapCollections<K, V>.KeySet mKeySet;
+    KeySet mKeySet;
 
     @Nullable
     MapCollections<K, V>.ValuesCollection mValues;
@@ -164,98 +165,6 @@ abstract class MapCollections<K, V> {
         @Override // java.util.Set, java.util.Collection
         public <T> T[] toArray(T[] tArr) {
             throw new UnsupportedOperationException();
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    final class KeySet implements Set<K> {
-        KeySet() {
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public boolean add(K k) {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public boolean addAll(Collection<? extends K> collection) {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public void clear() {
-            MapCollections.this.colClear();
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public boolean contains(Object obj) {
-            return MapCollections.this.colIndexOfKey(obj) >= 0;
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public boolean containsAll(Collection<?> collection) {
-            return MapCollections.containsAllHelper(MapCollections.this.colGetMap(), collection);
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public boolean equals(Object obj) {
-            return MapCollections.equalsSetHelper(this, obj);
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public int hashCode() {
-            int i = 0;
-            for (int colGetSize = MapCollections.this.colGetSize() - 1; colGetSize >= 0; colGetSize--) {
-                Object colGetEntry = MapCollections.this.colGetEntry(colGetSize, 0);
-                i += colGetEntry == null ? 0 : colGetEntry.hashCode();
-            }
-            return i;
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public boolean isEmpty() {
-            return MapCollections.this.colGetSize() == 0;
-        }
-
-        @Override // java.util.Set, java.util.Collection, java.lang.Iterable
-        public Iterator<K> iterator() {
-            return new ArrayIterator(0);
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public boolean remove(Object obj) {
-            int colIndexOfKey = MapCollections.this.colIndexOfKey(obj);
-            if (colIndexOfKey < 0) {
-                return false;
-            }
-            MapCollections.this.colRemoveAt(colIndexOfKey);
-            return true;
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public boolean removeAll(Collection<?> collection) {
-            return MapCollections.removeAllHelper(MapCollections.this.colGetMap(), collection);
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public boolean retainAll(Collection<?> collection) {
-            return MapCollections.retainAllHelper(MapCollections.this.colGetMap(), collection);
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public int size() {
-            return MapCollections.this.colGetSize();
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public Object[] toArray() {
-            return MapCollections.this.toArrayHelper(0);
-        }
-
-        @Override // java.util.Set, java.util.Collection
-        public <T> T[] toArray(T[] tArr) {
-            return (T[]) MapCollections.this.toArrayHelper(tArr, 0);
         }
     }
 
@@ -531,7 +440,7 @@ abstract class MapCollections<K, V> {
 
     public Set<K> getKeySet() {
         if (this.mKeySet == null) {
-            this.mKeySet = new KeySet();
+            this.mKeySet = new KeySet(this);
         }
         return this.mKeySet;
     }

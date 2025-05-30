@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class CreationExtras {
 
     @NotNull
@@ -28,11 +28,6 @@ public abstract class CreationExtras {
             Intrinsics.checkNotNullParameter(key, "key");
             return null;
         }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface Key<T> {
     }
 
     @Nullable

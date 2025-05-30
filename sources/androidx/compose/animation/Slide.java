@@ -1,9 +1,9 @@
 package androidx.compose.animation;
 
 import androidx.compose.animation.core.FiniteAnimationSpec;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntSize;
 import androidx.compose.runtime.Immutable;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntSize;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class Slide {
 
     @NotNull
@@ -20,7 +20,6 @@ public final class Slide {
     @NotNull
     private final Function1<IntSize, IntOffset> slideOffset;
 
-    /* JADX WARN: Multi-variable type inference failed */
     public Slide(@NotNull Function1<? super IntSize, IntOffset> function1, @NotNull FiniteAnimationSpec<IntOffset> finiteAnimationSpec) {
         Intrinsics.checkNotNullParameter(function1, "slideOffset");
         Intrinsics.checkNotNullParameter(finiteAnimationSpec, "animationSpec");

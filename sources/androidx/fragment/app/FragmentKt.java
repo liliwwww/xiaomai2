@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import tb.fp1;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FragmentKt {
     public static final void clearFragmentResult(@NotNull Fragment fragment, @NotNull String str) {
         Intrinsics.checkNotNullParameter(fragment, "<this>");
@@ -38,7 +38,7 @@ public final class FragmentKt {
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: setFragmentResultListener$lambda-0, reason: not valid java name */
-    public static final void m5581setFragmentResultListener$lambda0(Function2 function2, String str, Bundle bundle) {
+    public static final void m2325setFragmentResultListener$lambda0(Function2 function2, String str, Bundle bundle) {
         Intrinsics.checkNotNullParameter(function2, "$tmp0");
         Intrinsics.checkNotNullParameter(str, "p0");
         Intrinsics.checkNotNullParameter(bundle, "p1");

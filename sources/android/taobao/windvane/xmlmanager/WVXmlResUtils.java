@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import java.io.IOException;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVXmlResUtils {
     public static Bitmap obtainBitmapFromAssets(Context context, String str) {
         try {
@@ -29,7 +29,7 @@ public class WVXmlResUtils {
         try {
             return LayoutInflater.from(context).inflate(new WVFileParser().openXmlResourceParser(str), viewGroup);
         } catch (Throwable th) {
-            TaoLog.m21e("Puti Inflater XmlBlock Error", th.toString());
+            TaoLog.e("Puti Inflater XmlBlock Error", th.toString());
             return null;
         }
     }

@@ -9,11 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.C1043R;
+import androidx.fragment.R;
 import androidx.fragment.app.strictmode.FragmentStrictMode;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class FragmentLayoutInflaterFactory implements LayoutInflater.Factory2 {
     private static final String TAG = "FragmentManager";
     final FragmentManager mFragmentManager;
@@ -31,7 +31,7 @@ class FragmentLayoutInflaterFactory implements LayoutInflater.Factory2 {
     @Override // android.view.LayoutInflater.Factory2
     @Nullable
     public View onCreateView(@Nullable View view, @NonNull String str, @NonNull Context context, @NonNull AttributeSet attributeSet) {
-        final FragmentStateManager createOrGetFragmentStateManager;
+        FragmentStateManager createOrGetFragmentStateManager;
         if (FragmentContainerView.class.getName().equals(str)) {
             return new FragmentContainerView(context, attributeSet, this.mFragmentManager);
         }
@@ -39,12 +39,12 @@ class FragmentLayoutInflaterFactory implements LayoutInflater.Factory2 {
             return null;
         }
         String attributeValue = attributeSet.getAttributeValue(null, "class");
-        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C1043R.styleable.Fragment);
+        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, R.styleable.Fragment);
         if (attributeValue == null) {
-            attributeValue = obtainStyledAttributes.getString(C1043R.styleable.Fragment_android_name);
+            attributeValue = obtainStyledAttributes.getString(R.styleable.Fragment_android_name);
         }
-        int resourceId = obtainStyledAttributes.getResourceId(C1043R.styleable.Fragment_android_id, -1);
-        String string = obtainStyledAttributes.getString(C1043R.styleable.Fragment_android_tag);
+        int resourceId = obtainStyledAttributes.getResourceId(R.styleable.Fragment_android_id, -1);
+        String string = obtainStyledAttributes.getString(R.styleable.Fragment_android_tag);
         obtainStyledAttributes.recycle();
         if (attributeValue == null || !FragmentFactory.isFragmentClass(context.getClassLoader(), attributeValue)) {
             return null;
@@ -73,7 +73,7 @@ class FragmentLayoutInflaterFactory implements LayoutInflater.Factory2 {
             findFragmentById.onInflate(this.mFragmentManager.getHost().getContext(), attributeSet, findFragmentById.mSavedFragmentState);
             createOrGetFragmentStateManager = this.mFragmentManager.addFragment(findFragmentById);
             if (FragmentManager.isLoggingEnabled(2)) {
-                Log.v("FragmentManager", "Fragment " + findFragmentById + " has been inflated via the <fragment> tag: id=0x" + Integer.toHexString(resourceId));
+                Log.v(TAG, "Fragment " + findFragmentById + " has been inflated via the <fragment> tag: id=0x" + Integer.toHexString(resourceId));
             }
         } else {
             if (findFragmentById.mInLayout) {
@@ -86,7 +86,7 @@ class FragmentLayoutInflaterFactory implements LayoutInflater.Factory2 {
             findFragmentById.onInflate(this.mFragmentManager.getHost().getContext(), attributeSet, findFragmentById.mSavedFragmentState);
             createOrGetFragmentStateManager = this.mFragmentManager.createOrGetFragmentStateManager(findFragmentById);
             if (FragmentManager.isLoggingEnabled(2)) {
-                Log.v("FragmentManager", "Retained Fragment " + findFragmentById + " has been re-attached via the <fragment> tag: id=0x" + Integer.toHexString(resourceId));
+                Log.v(TAG, "Retained Fragment " + findFragmentById + " has been re-attached via the <fragment> tag: id=0x" + Integer.toHexString(resourceId));
             }
         }
         ViewGroup viewGroup = (ViewGroup) view;
@@ -104,18 +104,7 @@ class FragmentLayoutInflaterFactory implements LayoutInflater.Factory2 {
         if (findFragmentById.mView.getTag() == null) {
             findFragmentById.mView.setTag(string);
         }
-        findFragmentById.mView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() { // from class: androidx.fragment.app.FragmentLayoutInflaterFactory.1
-            @Override // android.view.View.OnAttachStateChangeListener
-            public void onViewAttachedToWindow(View view3) {
-                Fragment fragment = createOrGetFragmentStateManager.getFragment();
-                createOrGetFragmentStateManager.moveToExpectedState();
-                SpecialEffectsController.getOrCreateController((ViewGroup) fragment.mView.getParent(), FragmentLayoutInflaterFactory.this.mFragmentManager).forceCompleteAllOperations();
-            }
-
-            @Override // android.view.View.OnAttachStateChangeListener
-            public void onViewDetachedFromWindow(View view3) {
-            }
-        });
+        findFragmentById.mView.addOnAttachStateChangeListener(new 1(this, createOrGetFragmentStateManager));
         return findFragmentById.mView;
     }
 }

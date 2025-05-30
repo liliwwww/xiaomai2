@@ -6,6 +6,7 @@ import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.emoji2.text.flatbuffer.MetadataList;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,8 +16,8 @@ import java.nio.ByteOrder;
 /* compiled from: Taobao */
 @AnyThread
 @RequiresApi(19)
-@RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class MetadataListReader {
     private static final int EMJI_TAG = 1164798569;
     private static final int EMJI_TAG_DEPRECATED = 1701669481;
@@ -33,27 +34,22 @@ class MetadataListReader {
             byteBuffer.order(ByteOrder.BIG_ENDIAN);
         }
 
-        @Override // androidx.emoji2.text.MetadataListReader.OpenTypeReader
         public long getPosition() {
             return this.mByteBuffer.position();
         }
 
-        @Override // androidx.emoji2.text.MetadataListReader.OpenTypeReader
         public int readTag() throws IOException {
             return this.mByteBuffer.getInt();
         }
 
-        @Override // androidx.emoji2.text.MetadataListReader.OpenTypeReader
         public long readUnsignedInt() throws IOException {
             return MetadataListReader.toUnsignedInt(this.mByteBuffer.getInt());
         }
 
-        @Override // androidx.emoji2.text.MetadataListReader.OpenTypeReader
         public int readUnsignedShort() throws IOException {
             return MetadataListReader.toUnsignedShort(this.mByteBuffer.getShort());
         }
 
-        @Override // androidx.emoji2.text.MetadataListReader.OpenTypeReader
         public void skip(int i) throws IOException {
             ByteBuffer byteBuffer = this.mByteBuffer;
             byteBuffer.position(byteBuffer.position() + i);
@@ -82,40 +78,35 @@ class MetadataListReader {
             wrap.order(ByteOrder.BIG_ENDIAN);
         }
 
-        private void read(@IntRange(from = 0, m43to = 4) int i) throws IOException {
+        private void read(@IntRange(from = 0, to = 4) int i) throws IOException {
             if (this.mInputStream.read(this.mByteArray, 0, i) != i) {
                 throw new IOException("read failed");
             }
             this.mPosition += i;
         }
 
-        @Override // androidx.emoji2.text.MetadataListReader.OpenTypeReader
         public long getPosition() {
             return this.mPosition;
         }
 
-        @Override // androidx.emoji2.text.MetadataListReader.OpenTypeReader
         public int readTag() throws IOException {
             this.mByteBuffer.position(0);
             read(4);
             return this.mByteBuffer.getInt();
         }
 
-        @Override // androidx.emoji2.text.MetadataListReader.OpenTypeReader
         public long readUnsignedInt() throws IOException {
             this.mByteBuffer.position(0);
             read(4);
             return MetadataListReader.toUnsignedInt(this.mByteBuffer.getInt());
         }
 
-        @Override // androidx.emoji2.text.MetadataListReader.OpenTypeReader
         public int readUnsignedShort() throws IOException {
             this.mByteBuffer.position(0);
             read(2);
             return MetadataListReader.toUnsignedShort(this.mByteBuffer.getShort());
         }
 
-        @Override // androidx.emoji2.text.MetadataListReader.OpenTypeReader
         public void skip(int i) throws IOException {
             while (i > 0) {
                 int skip = (int) this.mInputStream.skip(i);
@@ -126,43 +117,6 @@ class MetadataListReader {
                 this.mPosition += skip;
             }
         }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static class OffsetInfo {
-        private final long mLength;
-        private final long mStartOffset;
-
-        OffsetInfo(long j, long j2) {
-            this.mStartOffset = j;
-            this.mLength = j2;
-        }
-
-        long getLength() {
-            return this.mLength;
-        }
-
-        long getStartOffset() {
-            return this.mStartOffset;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private interface OpenTypeReader {
-        public static final int UINT16_BYTE_COUNT = 2;
-        public static final int UINT32_BYTE_COUNT = 4;
-
-        long getPosition();
-
-        int readTag() throws IOException;
-
-        long readUnsignedInt() throws IOException;
-
-        int readUnsignedShort() throws IOException;
-
-        void skip(int i) throws IOException;
     }
 
     private MetadataListReader() {

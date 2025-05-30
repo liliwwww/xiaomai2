@@ -8,14 +8,14 @@ import android.os.CancellationSignal;
 import android.os.ParcelFileDescriptor;
 import android.os.Process;
 import android.os.StrictMode;
-import android.taobao.windvane.connect.api.ApiConstants;
 import android.util.Log;
 import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
-import androidx.core.provider.FontsContractCompat;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.core.provider.FontsContractCompat$FontInfo;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,8 +31,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class TypefaceCompatUtil {
     private static final String CACHE_FILE_PREFIX = ".font";
     private static final String TAG = "TypefaceCompatUtil";
@@ -79,41 +79,42 @@ public class TypefaceCompatUtil {
     }
 
     public static boolean copyToFile(@NonNull File file, @NonNull InputStream inputStream) {
+        FileOutputStream fileOutputStream;
         StrictMode.ThreadPolicy allowThreadDiskWrites = StrictMode.allowThreadDiskWrites();
-        FileOutputStream fileOutputStream = null;
+        FileOutputStream fileOutputStream2 = null;
         try {
             try {
-                FileOutputStream fileOutputStream2 = new FileOutputStream(file, false);
-                try {
-                    byte[] bArr = new byte[1024];
-                    while (true) {
-                        int read = inputStream.read(bArr);
-                        if (read == -1) {
-                            closeQuietly(fileOutputStream2);
-                            StrictMode.setThreadPolicy(allowThreadDiskWrites);
-                            return true;
-                        }
-                        fileOutputStream2.write(bArr, 0, read);
-                    }
-                } catch (IOException e) {
-                    e = e;
-                    fileOutputStream = fileOutputStream2;
-                    Log.e(TAG, "Error copying resource contents to temp file: " + e.getMessage());
+                fileOutputStream = new FileOutputStream(file, false);
+            } catch (IOException e) {
+                e = e;
+            }
+        } catch (Throwable th) {
+            th = th;
+        }
+        try {
+            byte[] bArr = new byte[1024];
+            while (true) {
+                int read = inputStream.read(bArr);
+                if (read == -1) {
                     closeQuietly(fileOutputStream);
                     StrictMode.setThreadPolicy(allowThreadDiskWrites);
-                    return false;
-                } catch (Throwable th) {
-                    th = th;
-                    fileOutputStream = fileOutputStream2;
-                    closeQuietly(fileOutputStream);
-                    StrictMode.setThreadPolicy(allowThreadDiskWrites);
-                    throw th;
+                    return true;
                 }
-            } catch (Throwable th2) {
-                th = th2;
+                fileOutputStream.write(bArr, 0, read);
             }
         } catch (IOException e2) {
             e = e2;
+            fileOutputStream2 = fileOutputStream;
+            Log.e(TAG, "Error copying resource contents to temp file: " + e.getMessage());
+            closeQuietly(fileOutputStream2);
+            StrictMode.setThreadPolicy(allowThreadDiskWrites);
+            return false;
+        } catch (Throwable th2) {
+            th = th2;
+            fileOutputStream2 = fileOutputStream;
+            closeQuietly(fileOutputStream2);
+            StrictMode.setThreadPolicy(allowThreadDiskWrites);
+            throw th;
         }
     }
 
@@ -123,7 +124,7 @@ public class TypefaceCompatUtil {
         if (cacheDir == null) {
             return null;
         }
-        String str = CACHE_FILE_PREFIX + Process.myPid() + ApiConstants.SPLIT_LINE + Process.myTid() + ApiConstants.SPLIT_LINE;
+        String str = CACHE_FILE_PREFIX + Process.myPid() + "-" + Process.myTid() + "-";
         for (int i = 0; i < 100; i++) {
             File file = new File(cacheDir, str + i);
             if (file.createNewFile()) {
@@ -152,12 +153,12 @@ public class TypefaceCompatUtil {
 
     @NonNull
     @RequiresApi(19)
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
-    public static Map<Uri, ByteBuffer> readFontInfoIntoByteBuffer(@NonNull Context context, @NonNull FontsContractCompat.FontInfo[] fontInfoArr, @Nullable CancellationSignal cancellationSignal) {
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
+    public static Map<Uri, ByteBuffer> readFontInfoIntoByteBuffer(@NonNull Context context, @NonNull FontsContractCompat$FontInfo[] fontsContractCompat$FontInfoArr, @Nullable CancellationSignal cancellationSignal) {
         HashMap hashMap = new HashMap();
-        for (FontsContractCompat.FontInfo fontInfo : fontInfoArr) {
-            if (fontInfo.getResultCode() == 0) {
-                Uri uri = fontInfo.getUri();
+        for (FontsContractCompat$FontInfo fontsContractCompat$FontInfo : fontsContractCompat$FontInfoArr) {
+            if (fontsContractCompat$FontInfo.getResultCode() == 0) {
+                Uri uri = fontsContractCompat$FontInfo.getUri();
                 if (!hashMap.containsKey(uri)) {
                     hashMap.put(uri, mmap(context, cancellationSignal, uri));
                 }
@@ -198,18 +199,18 @@ public class TypefaceCompatUtil {
         InputStream inputStream;
         try {
             inputStream = resources.openRawResource(i);
-        } catch (Throwable th) {
-            th = th;
-            inputStream = null;
-        }
-        try {
-            boolean copyToFile = copyToFile(file, inputStream);
-            closeQuietly(inputStream);
-            return copyToFile;
+            try {
+                boolean copyToFile = copyToFile(file, inputStream);
+                closeQuietly(inputStream);
+                return copyToFile;
+            } catch (Throwable th) {
+                th = th;
+                closeQuietly(inputStream);
+                throw th;
+            }
         } catch (Throwable th2) {
             th = th2;
-            closeQuietly(inputStream);
-            throw th;
+            inputStream = null;
         }
     }
 }

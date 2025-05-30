@@ -7,7 +7,7 @@ import kotlin.ReplaceWith;
 import kotlin.jvm.internal.Intrinsics;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ViewKt {
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "Replaced by View.findViewTreeLifecycleOwner() from lifecycle module", replaceWith = @ReplaceWith(expression = "findViewTreeLifecycleOwner()", imports = {"androidx.lifecycle.findViewTreeLifecycleOwner"}))
     public static final /* synthetic */ LifecycleOwner findViewTreeLifecycleOwner(View view) {

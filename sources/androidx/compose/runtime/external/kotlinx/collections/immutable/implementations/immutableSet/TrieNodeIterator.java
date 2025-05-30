@@ -5,7 +5,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TrieNodeIterator<E> {
 
     @NotNull
@@ -20,13 +20,13 @@ public final class TrieNodeIterator<E> {
     }
 
     public final E currentElement() {
-        CommonFunctionsKt.m2432assert(hasNextElement());
+        CommonFunctionsKt.assert(hasNextElement());
         return (E) this.buffer[this.index];
     }
 
     @NotNull
     public final TrieNode<? extends E> currentNode() {
-        CommonFunctionsKt.m2432assert(hasNextNode());
+        CommonFunctionsKt.assert(hasNextNode());
         Object obj = this.buffer[this.index];
         Intrinsics.checkNotNull(obj, "null cannot be cast to non-null type androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableSet.TrieNode<E of androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableSet.TrieNodeIterator>");
         return (TrieNode) obj;
@@ -45,12 +45,12 @@ public final class TrieNodeIterator<E> {
     }
 
     public final void moveToNextCell() {
-        CommonFunctionsKt.m2432assert(hasNextCell());
+        CommonFunctionsKt.assert(hasNextCell());
         this.index++;
     }
 
     public final E nextElement() {
-        CommonFunctionsKt.m2432assert(hasNextElement());
+        CommonFunctionsKt.assert(hasNextElement());
         Object[] objArr = this.buffer;
         int i = this.index;
         this.index = i + 1;

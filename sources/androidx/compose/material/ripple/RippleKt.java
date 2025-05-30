@@ -1,24 +1,26 @@
 package androidx.compose.material.ripple;
 
+import android.taobao.windvane.packageapp.zipapp.utils.ZipAppConstants;
 import androidx.compose.animation.core.AnimationSpec;
 import androidx.compose.animation.core.EasingKt;
 import androidx.compose.animation.core.TweenSpec;
 import androidx.compose.foundation.Indication;
 import androidx.compose.foundation.interaction.DragInteraction;
-import androidx.compose.foundation.interaction.FocusInteraction;
+import androidx.compose.foundation.interaction.FocusInteraction$Focus;
 import androidx.compose.foundation.interaction.HoverInteraction;
 import androidx.compose.foundation.interaction.Interaction;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.unit.C0856Dp;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.unit.Dp;
+import kotlin.jvm.internal.DefaultConstructorMarker;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class RippleKt {
 
     @NotNull
@@ -29,7 +31,7 @@ public final class RippleKt {
         if (interaction instanceof HoverInteraction.Enter) {
             return DefaultTweenSpec;
         }
-        if (!(interaction instanceof FocusInteraction.Focus) && !(interaction instanceof DragInteraction.Start)) {
+        if (!(interaction instanceof FocusInteraction$Focus) && !(interaction instanceof DragInteraction.Start)) {
             return DefaultTweenSpec;
         }
         return new TweenSpec(45, 0, EasingKt.getLinearEasing(), 2, null);
@@ -37,8 +39,8 @@ public final class RippleKt {
 
     /* JADX INFO: Access modifiers changed from: private */
     public static final AnimationSpec<Float> outgoingStateLayerAnimationSpecFor(Interaction interaction) {
-        if (!(interaction instanceof HoverInteraction.Enter) && !(interaction instanceof FocusInteraction.Focus)) {
-            return interaction instanceof DragInteraction.Start ? new TweenSpec(150, 0, EasingKt.getLinearEasing(), 2, null) : DefaultTweenSpec;
+        if (!(interaction instanceof HoverInteraction.Enter) && !(interaction instanceof FocusInteraction$Focus)) {
+            return interaction instanceof DragInteraction.Start ? new TweenSpec(ZipAppConstants.LOW_LIMITED_MAX_APP_NUM, 0, EasingKt.getLinearEasing(), 2, null) : DefaultTweenSpec;
         }
         return DefaultTweenSpec;
     }
@@ -46,25 +48,25 @@ public final class RippleKt {
     @Composable
     @NotNull
     /* renamed from: rememberRipple-9IZ8Weo, reason: not valid java name */
-    public static final Indication m2376rememberRipple9IZ8Weo(boolean z, float f, long j, @Nullable Composer composer, int i, int i2) {
+    public static final Indication m897rememberRipple9IZ8Weo(boolean z, float f, long j, @Nullable Composer composer, int i, int i2) {
         composer.startReplaceableGroup(1635163520);
         if ((i2 & 1) != 0) {
             z = true;
         }
         if ((i2 & 2) != 0) {
-            f = C0856Dp.Companion.m5236getUnspecifiedD9Ej5fM();
+            f = Dp.Companion.getUnspecified-D9Ej5fM();
         }
         if ((i2 & 4) != 0) {
-            j = Color.Companion.m2823getUnspecified0d7_KjU();
+            j = Color.Companion.m1084getUnspecified0d7_KjU();
         }
-        State rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(j), composer, (i >> 6) & 14);
+        State rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.box-impl(j), composer, (i >> 6) & 14);
         Boolean valueOf = Boolean.valueOf(z);
-        C0856Dp m5214boximpl = C0856Dp.m5214boximpl(f);
+        Dp dp = Dp.box-impl(f);
         composer.startReplaceableGroup(-3686552);
-        boolean changed = composer.changed(valueOf) | composer.changed(m5214boximpl);
+        boolean changed = composer.changed(valueOf) | composer.changed(dp);
         Object rememberedValue = composer.rememberedValue();
         if (changed || rememberedValue == Composer.Companion.getEmpty()) {
-            rememberedValue = new PlatformRipple(z, f, rememberUpdatedState, null);
+            rememberedValue = new PlatformRipple(z, f, rememberUpdatedState, (DefaultConstructorMarker) null);
             composer.updateRememberedValue(rememberedValue);
         }
         composer.endReplaceableGroup();

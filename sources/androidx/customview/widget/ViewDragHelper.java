@@ -1,6 +1,7 @@
 package androidx.customview.widget;
 
 import android.content.Context;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -17,7 +18,7 @@ import androidx.core.view.ViewCompat;
 import java.util.Arrays;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ViewDragHelper {
     private static final int BASE_SETTLE_DURATION = 256;
     public static final int DIRECTION_ALL = 3;
@@ -341,7 +342,7 @@ public class ViewDragHelper {
     }
 
     private void releaseViewForPointerUp() {
-        this.mVelocityTracker.computeCurrentVelocity(1000, this.mMaxVelocity);
+        this.mVelocityTracker.computeCurrentVelocity(WVURLRuleConstants.LOGIN, this.mMaxVelocity);
         dispatchViewReleased(clampMag(this.mVelocityTracker.getXVelocity(this.mActivePointerId), this.mMinVelocity, this.mMaxVelocity), clampMag(this.mVelocityTracker.getYVelocity(this.mActivePointerId), this.mMinVelocity, this.mMaxVelocity));
     }
 
@@ -720,12 +721,12 @@ public class ViewDragHelper {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public boolean shouldInterceptTouchEvent(@androidx.annotation.NonNull android.view.MotionEvent r17) {
         /*
             Method dump skipped, instructions count: 315
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.customview.widget.ViewDragHelper.shouldInterceptTouchEvent(android.view.MotionEvent):boolean");
     }

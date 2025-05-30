@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
 @InternalComposeApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class MovableContentStateReference {
     public static final int $stable = 8;
 
@@ -37,7 +37,6 @@ public final class MovableContentStateReference {
     @NotNull
     private final SlotTable slotTable;
 
-    /* JADX WARN: Multi-variable type inference failed */
     public MovableContentStateReference(@NotNull MovableContent<Object> movableContent, @Nullable Object obj, @NotNull ControlledComposition controlledComposition, @NotNull SlotTable slotTable, @NotNull Anchor anchor, @NotNull List<Pair<RecomposeScopeImpl, IdentityArraySet<Object>>> list, @NotNull PersistentMap<CompositionLocal<Object>, ? extends State<? extends Object>> persistentMap) {
         Intrinsics.checkNotNullParameter(movableContent, "content");
         Intrinsics.checkNotNullParameter(controlledComposition, "composition");

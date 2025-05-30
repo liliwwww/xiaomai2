@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* JADX WARN: Unexpected interfaces in signature: [kotlin.jvm.internal.markers.KMutableMap$Entry] */
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class MutableMapEntry<K, V> extends MapEntry<K, V> implements Map.Entry<K, V> {
 
     @NotNull
@@ -25,16 +25,17 @@ final class MutableMapEntry<K, V> extends MapEntry<K, V> implements Map.Entry<K,
         this.links = linkedValue;
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableMap.MapEntry, java.util.Map.Entry
+    @Override // java.util.Map.Entry
     public V getValue() {
-        return this.links.getValue();
+        return (V) this.links.getValue();
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableMap.MapEntry, java.util.Map.Entry
+    /* JADX WARN: Multi-variable type inference failed */
+    @Override // java.util.Map.Entry
     public V setValue(V v) {
-        V value = this.links.getValue();
+        V v2 = (V) this.links.getValue();
         this.links = this.links.withValue(v);
         this.mutableMap.put(getKey(), this.links);
-        return value;
+        return v2;
     }
 }

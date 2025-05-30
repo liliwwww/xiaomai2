@@ -1,16 +1,17 @@
 package androidx.compose.foundation.gestures;
 
-import android.taobao.windvane.util.WVConstants;
+import androidx.compose.foundation.gestures.DragEvent;
 import androidx.core.app.NotificationCompat;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.jvm.internal.ContinuationImpl;
 import kotlin.coroutines.jvm.internal.DebugMetadata;
+import kotlinx.coroutines.CoroutineScope;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-@DebugMetadata(c = "androidx.compose.foundation.gestures.DragLogic", f = "Draggable.kt", i = {0, 0, 0, 1, 1, 1, 1}, l = {WVConstants.NOTIFY_SAVE_IMAGE_FAIL, 408, 410}, m = "processDragStart", n = {"this", "$this$processDragStart", NotificationCompat.CATEGORY_EVENT, "this", "$this$processDragStart", NotificationCompat.CATEGORY_EVENT, "interaction"}, s = {"L$0", "L$1", "L$2", "L$0", "L$1", "L$2", "L$3"})
-/* loaded from: classes.dex */
+@DebugMetadata(c = "androidx.compose.foundation.gestures.DragLogic", f = "Draggable.kt", i = {0, 0, 0, 1, 1, 1, 1}, l = {405, 408, 410}, m = "processDragStart", n = {"this", "$this$processDragStart", NotificationCompat.CATEGORY_EVENT, "this", "$this$processDragStart", NotificationCompat.CATEGORY_EVENT, "interaction"}, s = {"L$0", "L$1", "L$2", "L$0", "L$1", "L$2", "L$3"})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class DragLogic$processDragStart$1 extends ContinuationImpl {
     Object L$0;
     Object L$1;
@@ -30,6 +31,6 @@ final class DragLogic$processDragStart$1 extends ContinuationImpl {
     public final Object invokeSuspend(@NotNull Object obj) {
         this.result = obj;
         this.label |= Integer.MIN_VALUE;
-        return this.this$0.processDragStart(null, null, this);
+        return this.this$0.processDragStart((CoroutineScope) null, (DragEvent.DragStarted) null, this);
     }
 }

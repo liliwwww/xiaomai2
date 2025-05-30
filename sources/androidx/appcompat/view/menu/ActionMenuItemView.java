@@ -12,20 +12,19 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.appcompat.R;
 import androidx.appcompat.view.menu.MenuBuilder;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.appcompat.widget.ActionMenuView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.ForwardingListener;
 import androidx.appcompat.widget.TooltipCompat;
-import androidx.constraintlayout.core.widgets.analyzer.BasicMeasure;
 import com.alibaba.wireless.security.aopsdk.replace.android.graphics.Rect;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
-public class ActionMenuItemView extends AppCompatTextView implements View.OnClickListener, MenuView.ItemView, ActionMenuView.ActionMenuChildView {
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
+public class ActionMenuItemView extends AppCompatTextView implements View.OnClickListener, MenuView$ItemView, ActionMenuView.ActionMenuChildView {
     private static final int MAX_ICON_SIZE = 32;
     private static final String TAG = "ActionMenuItemView";
     private boolean mAllowTextWithIcon;
@@ -42,11 +41,11 @@ public class ActionMenuItemView extends AppCompatTextView implements View.OnClic
 
     /* compiled from: Taobao */
     private class ActionMenuItemForwardingListener extends ForwardingListener {
+        /* JADX WARN: Multi-variable type inference failed */
         public ActionMenuItemForwardingListener() {
             super(ActionMenuItemView.this);
         }
 
-        @Override // androidx.appcompat.widget.ForwardingListener
         public ShowableListMenu getPopup() {
             PopupCallback popupCallback = ActionMenuItemView.this.mPopupCallback;
             if (popupCallback != null) {
@@ -55,7 +54,6 @@ public class ActionMenuItemView extends AppCompatTextView implements View.OnClic
             return null;
         }
 
-        @Override // androidx.appcompat.widget.ForwardingListener
         protected boolean onForwardingStarted() {
             ShowableListMenu popup;
             ActionMenuItemView actionMenuItemView = ActionMenuItemView.this;
@@ -64,22 +62,18 @@ public class ActionMenuItemView extends AppCompatTextView implements View.OnClic
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static abstract class PopupCallback {
-        public abstract ShowableListMenu getPopup();
-    }
-
     public ActionMenuItemView(Context context) {
         this(context, null);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     private boolean shouldAllowTextWithIcon() {
         Configuration configuration = getContext().getResources().getConfiguration();
         int i = configuration.screenWidthDp;
         return i >= 480 || (i >= 640 && configuration.screenHeightDp >= 480) || configuration.orientation == 2;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     private void updateTextButtonVisibility() {
         boolean z = true;
         boolean z2 = !TextUtils.isEmpty(this.mTitle);
@@ -102,12 +96,11 @@ public class ActionMenuItemView extends AppCompatTextView implements View.OnClic
         }
     }
 
-    @Override // android.widget.TextView, android.view.View
     public CharSequence getAccessibilityClassName() {
         return Button.class.getName();
     }
 
-    @Override // androidx.appcompat.view.menu.MenuView.ItemView
+    @Override // androidx.appcompat.view.menu.MenuView$ItemView
     public MenuItemImpl getItemData() {
         return this.mItemData;
     }
@@ -116,7 +109,8 @@ public class ActionMenuItemView extends AppCompatTextView implements View.OnClic
         return !TextUtils.isEmpty(getText());
     }
 
-    @Override // androidx.appcompat.view.menu.MenuView.ItemView
+    /* JADX WARN: Multi-variable type inference failed */
+    @Override // androidx.appcompat.view.menu.MenuView$ItemView
     public void initialize(MenuItemImpl menuItemImpl, int i) {
         this.mItemData = menuItemImpl;
         setIcon(menuItemImpl.getIcon());
@@ -147,19 +141,19 @@ public class ActionMenuItemView extends AppCompatTextView implements View.OnClic
         }
     }
 
-    @Override // android.widget.TextView, android.view.View
+    /* JADX WARN: Multi-variable type inference failed */
     public void onConfigurationChanged(Configuration configuration) {
-        super.onConfigurationChanged(configuration);
+        super/*android.widget.TextView*/.onConfigurationChanged(configuration);
         this.mAllowTextWithIcon = shouldAllowTextWithIcon();
         updateTextButtonVisibility();
     }
 
-    @Override // androidx.appcompat.widget.AppCompatTextView, android.widget.TextView, android.view.View
+    /* JADX WARN: Multi-variable type inference failed */
     protected void onMeasure(int i, int i2) {
         int i3;
         boolean hasText = hasText();
         if (hasText && (i3 = this.mSavedPaddingLeft) >= 0) {
-            super.setPadding(i3, getPaddingTop(), getPaddingRight(), getPaddingBottom());
+            super/*android.widget.TextView*/.setPadding(i3, getPaddingTop(), getPaddingRight(), getPaddingBottom());
         }
         super.onMeasure(i, i2);
         int mode = View.MeasureSpec.getMode(i);
@@ -167,38 +161,38 @@ public class ActionMenuItemView extends AppCompatTextView implements View.OnClic
         int measuredWidth = getMeasuredWidth();
         int min = mode == Integer.MIN_VALUE ? Math.min(size, this.mMinWidth) : this.mMinWidth;
         if (mode != 1073741824 && this.mMinWidth > 0 && measuredWidth < min) {
-            super.onMeasure(View.MeasureSpec.makeMeasureSpec(min, BasicMeasure.EXACTLY), i2);
+            super.onMeasure(View.MeasureSpec.makeMeasureSpec(min, 1073741824), i2);
         }
         if (hasText || this.mIcon == null) {
             return;
         }
-        super.setPadding((getMeasuredWidth() - Rect.width(this.mIcon.getBounds())) / 2, getPaddingTop(), getPaddingRight(), getPaddingBottom());
+        super/*android.widget.TextView*/.setPadding((getMeasuredWidth() - Rect.width(this.mIcon.getBounds())) / 2, getPaddingTop(), getPaddingRight(), getPaddingBottom());
     }
 
-    @Override // android.widget.TextView, android.view.View
+    /* JADX WARN: Multi-variable type inference failed */
     public void onRestoreInstanceState(Parcelable parcelable) {
-        super.onRestoreInstanceState(null);
+        super/*android.widget.TextView*/.onRestoreInstanceState(null);
     }
 
-    @Override // android.widget.TextView, android.view.View
+    /* JADX WARN: Multi-variable type inference failed */
     public boolean onTouchEvent(MotionEvent motionEvent) {
         ForwardingListener forwardingListener;
         if (this.mItemData.hasSubMenu() && (forwardingListener = this.mForwardingListener) != null && forwardingListener.onTouch(this, motionEvent)) {
             return true;
         }
-        return super.onTouchEvent(motionEvent);
+        return super/*android.widget.TextView*/.onTouchEvent(motionEvent);
     }
 
-    @Override // androidx.appcompat.view.menu.MenuView.ItemView
+    @Override // androidx.appcompat.view.menu.MenuView$ItemView
     public boolean prefersCondensedTitle() {
         return true;
     }
 
-    @Override // androidx.appcompat.view.menu.MenuView.ItemView
+    @Override // androidx.appcompat.view.menu.MenuView$ItemView
     public void setCheckable(boolean z) {
     }
 
-    @Override // androidx.appcompat.view.menu.MenuView.ItemView
+    @Override // androidx.appcompat.view.menu.MenuView$ItemView
     public void setChecked(boolean z) {
     }
 
@@ -212,7 +206,7 @@ public class ActionMenuItemView extends AppCompatTextView implements View.OnClic
         }
     }
 
-    @Override // androidx.appcompat.view.menu.MenuView.ItemView
+    @Override // androidx.appcompat.view.menu.MenuView$ItemView
     public void setIcon(Drawable drawable) {
         this.mIcon = drawable;
         if (drawable != null) {
@@ -230,7 +224,7 @@ public class ActionMenuItemView extends AppCompatTextView implements View.OnClic
             }
             drawable.setBounds(0, 0, intrinsicWidth, i);
         }
-        setCompoundDrawables(drawable, null, null, null);
+        setCompoundDrawables(drawable, (Drawable) null, (Drawable) null, (Drawable) null);
         updateTextButtonVisibility();
     }
 
@@ -238,27 +232,27 @@ public class ActionMenuItemView extends AppCompatTextView implements View.OnClic
         this.mItemInvoker = itemInvoker;
     }
 
-    @Override // android.widget.TextView, android.view.View
+    /* JADX WARN: Multi-variable type inference failed */
     public void setPadding(int i, int i2, int i3, int i4) {
         this.mSavedPaddingLeft = i;
-        super.setPadding(i, i2, i3, i4);
+        super/*android.widget.TextView*/.setPadding(i, i2, i3, i4);
     }
 
     public void setPopupCallback(PopupCallback popupCallback) {
         this.mPopupCallback = popupCallback;
     }
 
-    @Override // androidx.appcompat.view.menu.MenuView.ItemView
+    @Override // androidx.appcompat.view.menu.MenuView$ItemView
     public void setShortcut(boolean z, char c) {
     }
 
-    @Override // androidx.appcompat.view.menu.MenuView.ItemView
+    @Override // androidx.appcompat.view.menu.MenuView$ItemView
     public void setTitle(CharSequence charSequence) {
         this.mTitle = charSequence;
         updateTextButtonVisibility();
     }
 
-    @Override // androidx.appcompat.view.menu.MenuView.ItemView
+    @Override // androidx.appcompat.view.menu.MenuView$ItemView
     public boolean showsIcon() {
         return true;
     }
@@ -267,12 +261,13 @@ public class ActionMenuItemView extends AppCompatTextView implements View.OnClic
         this(context, attributeSet, 0);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public ActionMenuItemView(Context context, AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
         Resources resources = context.getResources();
         this.mAllowTextWithIcon = shouldAllowTextWithIcon();
-        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0257R.styleable.ActionMenuItemView, i, 0);
-        this.mMinWidth = obtainStyledAttributes.getDimensionPixelSize(C0257R.styleable.ActionMenuItemView_android_minWidth, 0);
+        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, R.styleable.ActionMenuItemView, i, 0);
+        this.mMinWidth = obtainStyledAttributes.getDimensionPixelSize(R.styleable.ActionMenuItemView_android_minWidth, 0);
         obtainStyledAttributes.recycle();
         this.mMaxIconSize = (int) ((resources.getDisplayMetrics().density * 32.0f) + 0.5f);
         setOnClickListener(this);

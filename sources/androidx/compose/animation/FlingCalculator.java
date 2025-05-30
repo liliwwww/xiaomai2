@@ -1,14 +1,14 @@
 package androidx.compose.animation;
 
-import androidx.compose.p004ui.unit.Density;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.unit.Density;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tb.c8;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FlingCalculator {
 
     @NotNull

@@ -35,8 +35,6 @@ import androidx.annotation.RestrictTo;
 import androidx.annotation.StyleRes;
 import androidx.core.text.PrecomputedTextCompat;
 import androidx.core.util.Preconditions;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -45,7 +43,7 @@ import java.util.List;
 import java.util.Locale;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TextViewCompat {
     public static final int AUTO_SIZE_TEXT_TYPE_NONE = 0;
     public static final int AUTO_SIZE_TEXT_TYPE_UNIFORM = 1;
@@ -177,19 +175,6 @@ public final class TextViewCompat {
     }
 
     /* compiled from: Taobao */
-    @RequiresApi(24)
-    /* loaded from: classes.dex */
-    static class Api24Impl {
-        private Api24Impl() {
-        }
-
-        @DoNotInline
-        static DecimalFormatSymbols getInstance(Locale locale) {
-            return DecimalFormatSymbols.getInstance(locale);
-        }
-    }
-
-    /* compiled from: Taobao */
     @RequiresApi(26)
     static class Api26Impl {
         private Api26Impl() {
@@ -256,13 +241,6 @@ public final class TextViewCompat {
         static void setFirstBaselineToTopHeight(TextView textView, int i) {
             textView.setFirstBaselineToTopHeight(i);
         }
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes.dex */
-    public @interface AutoSizeTextType {
     }
 
     /* compiled from: Taobao */
@@ -383,7 +361,6 @@ public final class TextViewCompat {
     private TextViewCompat() {
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static int getAutoSizeMaxTextSize(@NonNull TextView textView) {
         if (Build.VERSION.SDK_INT >= 27) {
             return Api26Impl.getAutoSizeMaxTextSize(textView);
@@ -394,7 +371,6 @@ public final class TextViewCompat {
         return -1;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static int getAutoSizeMinTextSize(@NonNull TextView textView) {
         if (Build.VERSION.SDK_INT >= 27) {
             return Api26Impl.getAutoSizeMinTextSize(textView);
@@ -405,7 +381,6 @@ public final class TextViewCompat {
         return -1;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static int getAutoSizeStepGranularity(@NonNull TextView textView) {
         if (Build.VERSION.SDK_INT >= 27) {
             return Api26Impl.getAutoSizeStepGranularity(textView);
@@ -416,13 +391,11 @@ public final class TextViewCompat {
         return -1;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @NonNull
     public static int[] getAutoSizeTextAvailableSizes(@NonNull TextView textView) {
         return Build.VERSION.SDK_INT >= 27 ? Api26Impl.getAutoSizeTextAvailableSizes(textView) : textView instanceof AutoSizeableTextView ? ((AutoSizeableTextView) textView).getAutoSizeTextAvailableSizes() : new int[0];
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static int getAutoSizeTextType(@NonNull TextView textView) {
         if (Build.VERSION.SDK_INT >= 27) {
             return Api26Impl.getAutoSizeTextType(textView);
@@ -433,7 +406,6 @@ public final class TextViewCompat {
         return 0;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     public static ColorStateList getCompoundDrawableTintList(@NonNull TextView textView) {
         Preconditions.checkNotNull(textView);
@@ -446,7 +418,6 @@ public final class TextViewCompat {
         return null;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     public static PorterDuff.Mode getCompoundDrawableTintMode(@NonNull TextView textView) {
         Preconditions.checkNotNull(textView);
@@ -627,7 +598,6 @@ public final class TextViewCompat {
         }
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static void setAutoSizeTextTypeUniformWithConfiguration(@NonNull TextView textView, int i, int i2, int i3, int i4) throws IllegalArgumentException {
         if (Build.VERSION.SDK_INT >= 27) {
             Api26Impl.setAutoSizeTextTypeUniformWithConfiguration(textView, i, i2, i3, i4);
@@ -636,7 +606,6 @@ public final class TextViewCompat {
         }
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static void setAutoSizeTextTypeUniformWithPresetSizes(@NonNull TextView textView, @NonNull int[] iArr, int i) throws IllegalArgumentException {
         if (Build.VERSION.SDK_INT >= 27) {
             Api26Impl.setAutoSizeTextTypeUniformWithPresetSizes(textView, iArr, i);
@@ -645,7 +614,6 @@ public final class TextViewCompat {
         }
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static void setAutoSizeTextTypeWithDefaults(@NonNull TextView textView, int i) {
         if (Build.VERSION.SDK_INT >= 27) {
             Api26Impl.setAutoSizeTextTypeWithDefaults(textView, i);
@@ -654,7 +622,6 @@ public final class TextViewCompat {
         }
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static void setCompoundDrawableTintList(@NonNull TextView textView, @Nullable ColorStateList colorStateList) {
         Preconditions.checkNotNull(textView);
         if (Build.VERSION.SDK_INT >= 24) {
@@ -664,7 +631,6 @@ public final class TextViewCompat {
         }
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static void setCompoundDrawableTintMode(@NonNull TextView textView, @Nullable PorterDuff.Mode mode) {
         Preconditions.checkNotNull(textView);
         if (Build.VERSION.SDK_INT >= 24) {

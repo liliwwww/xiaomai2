@@ -2,13 +2,14 @@ package androidx.compose.material;
 
 import androidx.compose.animation.SingleValueAnimationKt;
 import androidx.compose.animation.core.AnimationSpecKt;
-import androidx.compose.p004ui.graphics.Color;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.Immutable;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.graphics.Color;
+import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Reflection;
@@ -17,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DefaultRadioButtonColors implements RadioButtonColors {
     private final long disabledColor;
     private final long selectedColor;
@@ -41,11 +42,11 @@ final class DefaultRadioButtonColors implements RadioButtonColors {
             return false;
         }
         DefaultRadioButtonColors defaultRadioButtonColors = (DefaultRadioButtonColors) obj;
-        return Color.m2788equalsimpl0(this.selectedColor, defaultRadioButtonColors.selectedColor) && Color.m2788equalsimpl0(this.unselectedColor, defaultRadioButtonColors.unselectedColor) && Color.m2788equalsimpl0(this.disabledColor, defaultRadioButtonColors.disabledColor);
+        return Color.equals-impl0(this.selectedColor, defaultRadioButtonColors.selectedColor) && Color.equals-impl0(this.unselectedColor, defaultRadioButtonColors.unselectedColor) && Color.equals-impl0(this.disabledColor, defaultRadioButtonColors.disabledColor);
     }
 
     public int hashCode() {
-        return (((Color.m2794hashCodeimpl(this.selectedColor) * 31) + Color.m2794hashCodeimpl(this.unselectedColor)) * 31) + Color.m2794hashCodeimpl(this.disabledColor);
+        return (((Color.hashCode-impl(this.selectedColor) * 31) + Color.hashCode-impl(this.unselectedColor)) * 31) + Color.hashCode-impl(this.disabledColor);
     }
 
     @Override // androidx.compose.material.RadioButtonColors
@@ -60,11 +61,11 @@ final class DefaultRadioButtonColors implements RadioButtonColors {
         long j = !z ? this.disabledColor : !z2 ? this.unselectedColor : this.selectedColor;
         if (z) {
             composer.startReplaceableGroup(-1052799218);
-            rememberUpdatedState = SingleValueAnimationKt.m1020animateColorAsStateKTwxG1Y(j, AnimationSpecKt.tween$default(100, 0, null, 6, null), null, composer, 48, 4);
+            rememberUpdatedState = SingleValueAnimationKt.animateColorAsState-KTwxG1Y(j, AnimationSpecKt.tween$default(100, 0, null, 6, null), (Function1) null, composer, 48, 4);
             composer.endReplaceableGroup();
         } else {
             composer.startReplaceableGroup(-1052799113);
-            rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(j), composer, 0);
+            rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.box-impl(j), composer, 0);
             composer.endReplaceableGroup();
         }
         if (ComposerKt.isTraceInProgress()) {

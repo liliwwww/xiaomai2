@@ -5,33 +5,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVFixedThreadPool {
     private static final int CORE_POOL_SIZE = 1;
     private static ExecutorService SingleExecutor = null;
     public static int bufferSize = 4096;
     private static WVFixedThreadPool threadManager;
     private BufferWrapper tempBuffer = null;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class BufferWrapper {
-        private boolean isFree = false;
-        public byte[] tempBuffer;
-
-        BufferWrapper() {
-            this.tempBuffer = null;
-            this.tempBuffer = new byte[WVFixedThreadPool.bufferSize];
-        }
-
-        public boolean isFree() {
-            return this.isFree;
-        }
-
-        public void setIsFree(boolean z) {
-            this.isFree = z;
-        }
-    }
 
     public static WVFixedThreadPool getInstance() {
         if (threadManager == null) {
@@ -45,7 +25,7 @@ public class WVFixedThreadPool {
             SingleExecutor = Executors.newFixedThreadPool(1);
         }
         if (runnable == null) {
-            TaoLog.m30w("WVThreadPool", "executeSingle is null.");
+            TaoLog.w("WVThreadPool", "executeSingle is null.");
         } else {
             SingleExecutor.execute(runnable);
         }
@@ -60,10 +40,10 @@ public class WVFixedThreadPool {
 
     public void reSetTempBuffer() {
         BufferWrapper bufferWrapper = this.tempBuffer;
-        if (bufferWrapper != null || bufferWrapper.isFree) {
+        if (bufferWrapper != null || BufferWrapper.access$000(bufferWrapper)) {
             BufferWrapper bufferWrapper2 = this.tempBuffer;
             bufferWrapper2.tempBuffer = null;
-            bufferWrapper2.isFree = false;
+            BufferWrapper.access$002(bufferWrapper2, false);
             this.tempBuffer = null;
         }
     }

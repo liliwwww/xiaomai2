@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.taobao.windvane.cache.WVCacheManager;
 import android.taobao.windvane.cache.WVFileInfo;
-import android.taobao.windvane.cache.WVFileInfoParser;
 import android.taobao.windvane.file.FileManager;
 import android.taobao.windvane.util.DigestUtils;
 import android.taobao.windvane.util.TaoLog;
@@ -18,7 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVUtils {
     public static final String LOCAL_CAPTURE_IMAGE = "//127.0.0.1/wvcache/photo.jpg?_wvcrc=1&t=";
     public static final String URL_DATA_CHAR = "?";
@@ -34,8 +33,28 @@ public class WVUtils {
             if (bitmap != null) {
                 try {
                     byteArrayOutputStream2 = new ByteArrayOutputStream();
-                } catch (IOException e) {
-                    e = e;
+                    try {
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream2);
+                        byteArrayOutputStream2.flush();
+                        byteArrayOutputStream2.close();
+                        encodeToString = Base64.encodeToString(byteArrayOutputStream2.toByteArray(), 0);
+                        byteArrayOutputStream3 = byteArrayOutputStream2;
+                    } catch (IOException e) {
+                        e = e;
+                        e.printStackTrace();
+                        if (byteArrayOutputStream2 == null) {
+                            return null;
+                        }
+                        try {
+                            byteArrayOutputStream2.flush();
+                            byteArrayOutputStream2.close();
+                            return null;
+                        } catch (Exception unused) {
+                            return null;
+                        }
+                    }
+                } catch (IOException e2) {
+                    e = e2;
                     byteArrayOutputStream2 = null;
                 } catch (Throwable th) {
                     th = th;
@@ -43,30 +62,10 @@ public class WVUtils {
                         try {
                             byteArrayOutputStream3.flush();
                             byteArrayOutputStream3.close();
-                        } catch (Exception unused) {
+                        } catch (Exception unused2) {
                         }
                     }
                     throw th;
-                }
-                try {
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream2);
-                    byteArrayOutputStream2.flush();
-                    byteArrayOutputStream2.close();
-                    encodeToString = Base64.encodeToString(byteArrayOutputStream2.toByteArray(), 0);
-                    byteArrayOutputStream3 = byteArrayOutputStream2;
-                } catch (IOException e2) {
-                    e = e2;
-                    e.printStackTrace();
-                    if (byteArrayOutputStream2 == null) {
-                        return null;
-                    }
-                    try {
-                        byteArrayOutputStream2.flush();
-                        byteArrayOutputStream2.close();
-                        return null;
-                    } catch (Exception unused2) {
-                        return null;
-                    }
                 }
             } else {
                 encodeToString = null;
@@ -114,38 +113,37 @@ public class WVUtils {
     }
 
     public static long saveBitmapToCache(Bitmap bitmap) throws IOException {
-        FileOutputStream fileOutputStream;
         long currentTimeMillis = System.currentTimeMillis();
         WVFileInfo wVFileInfo = new WVFileInfo();
         wVFileInfo.fileName = DigestUtils.md5ToHex("//127.0.0.1/wvcache/photo.jpg?_wvcrc=1&t=" + currentTimeMillis);
         wVFileInfo.mimeType = "image/jpeg";
-        wVFileInfo.expireTime = System.currentTimeMillis() + WVFileInfoParser.DEFAULT_MAX_AGE;
+        wVFileInfo.expireTime = System.currentTimeMillis() + 2592000000L;
         WVCacheManager.getInstance().writeToFile(wVFileInfo, new byte[]{0});
         File file = new File(WVCacheManager.getInstance().getCacheDir(true), wVFileInfo.fileName);
-        FileOutputStream fileOutputStream2 = null;
+        FileOutputStream fileOutputStream = null;
         try {
-            fileOutputStream = new FileOutputStream(file);
-        } catch (Exception unused) {
-        } catch (Throwable th) {
-            th = th;
-        }
-        try {
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
-            fileOutputStream.close();
-            return currentTimeMillis;
-        } catch (Exception unused2) {
-            fileOutputStream2 = fileOutputStream;
-            if (fileOutputStream2 != null) {
+            FileOutputStream fileOutputStream2 = new FileOutputStream(file);
+            try {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream2);
                 fileOutputStream2.close();
+                return currentTimeMillis;
+            } catch (Exception unused) {
+                fileOutputStream = fileOutputStream2;
+                if (fileOutputStream != null) {
+                    fileOutputStream.close();
+                }
+                return 0L;
+            } catch (Throwable th) {
+                th = th;
+                fileOutputStream = fileOutputStream2;
+                if (fileOutputStream != null) {
+                    fileOutputStream.close();
+                }
+                throw th;
             }
-            return 0L;
+        } catch (Exception unused2) {
         } catch (Throwable th2) {
             th = th2;
-            fileOutputStream2 = fileOutputStream;
-            if (fileOutputStream2 != null) {
-                fileOutputStream2.close();
-            }
-            throw th;
         }
     }
 
@@ -155,7 +153,7 @@ public class WVUtils {
         if (file != null && file.exists() && FileManager.copy(file, file2)) {
             return currentTimeMillis;
         }
-        TaoLog.m30w("WVUtils", "fail to copy " + file.getAbsolutePath());
+        TaoLog.w("WVUtils", "fail to copy " + file.getAbsolutePath());
         return 0L;
     }
 }

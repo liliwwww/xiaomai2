@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class MarginPageTransformer implements ViewPager2.PageTransformer {
     private final int mMarginPx;
 
@@ -27,7 +27,6 @@ public final class MarginPageTransformer implements ViewPager2.PageTransformer {
         throw new IllegalStateException("Expected the page view to be managed by a ViewPager2 instance.");
     }
 
-    @Override // androidx.viewpager2.widget.ViewPager2.PageTransformer
     public void transformPage(@NonNull View view, float f) {
         ViewPager2 requireViewPager = requireViewPager(view);
         float f2 = this.mMarginPx * f;

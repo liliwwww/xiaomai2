@@ -15,46 +15,25 @@ import androidx.compose.runtime.Stable;
 import androidx.compose.runtime.State;
 import androidx.compose.runtime.saveable.Saver;
 import androidx.compose.runtime.saveable.SaverKt;
-import androidx.compose.runtime.saveable.SaverScope;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.intrinsics.IntrinsicsKt;
 import kotlin.jvm.functions.Function0;
-import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.DefaultConstructorMarker;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.math.MathKt;
-import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ScrollState implements ScrollableState {
 
     @NotNull
     public static final Companion Companion = new Companion(null);
 
     @NotNull
-    private static final Saver<ScrollState, ?> Saver = SaverKt.Saver(new Function2<SaverScope, ScrollState, Integer>() { // from class: androidx.compose.foundation.ScrollState$Companion$Saver$1
-        @Nullable
-        public final Integer invoke(@NotNull SaverScope saverScope, @NotNull ScrollState scrollState) {
-            Intrinsics.checkNotNullParameter(saverScope, "$this$Saver");
-            Intrinsics.checkNotNullParameter(scrollState, "it");
-            return Integer.valueOf(scrollState.getValue());
-        }
-    }, new Function1<Integer, ScrollState>() { // from class: androidx.compose.foundation.ScrollState$Companion$Saver$2
-        public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return invoke(((Number) obj).intValue());
-        }
-
-        @Nullable
-        public final ScrollState invoke(int i) {
-            return new ScrollState(i);
-        }
-    });
+    private static final Saver<ScrollState, ?> Saver = SaverKt.Saver(Companion.Saver.1.INSTANCE, Companion.Saver.2.INSTANCE);
     private float accumulator;
 
     @NotNull
@@ -67,33 +46,7 @@ public final class ScrollState implements ScrollableState {
     private MutableState<Integer> _maxValueState = SnapshotStateKt.mutableStateOf(Integer.MAX_VALUE, SnapshotStateKt.structuralEqualityPolicy());
 
     @NotNull
-    private final ScrollableState scrollableState = ScrollableStateKt.ScrollableState(new Function1<Float, Float>() { // from class: androidx.compose.foundation.ScrollState$scrollableState$1
-        {
-            super(1);
-        }
-
-        public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return invoke(((Number) obj).floatValue());
-        }
-
-        @NotNull
-        public final Float invoke(float f) {
-            float f2;
-            f2 = ScrollState.this.accumulator;
-            float value = ScrollState.this.getValue() + f + f2;
-            float coerceIn = RangesKt.coerceIn(value, 0.0f, ScrollState.this.getMaxValue());
-            boolean z = !(value == coerceIn);
-            float value2 = coerceIn - ScrollState.this.getValue();
-            int roundToInt = MathKt.roundToInt(value2);
-            ScrollState scrollState = ScrollState.this;
-            scrollState.setValue(scrollState.getValue() + roundToInt);
-            ScrollState.this.accumulator = value2 - roundToInt;
-            if (z) {
-                f = value2;
-            }
-            return Float.valueOf(f);
-        }
-    });
+    private final ScrollableState scrollableState = ScrollableStateKt.ScrollableState(new scrollableState.1(this));
 
     @NotNull
     private final State canScrollForward$delegate = SnapshotStateKt.derivedStateOf(new Function0<Boolean>() { // from class: androidx.compose.foundation.ScrollState$canScrollForward$2
@@ -103,7 +56,7 @@ public final class ScrollState implements ScrollableState {
 
         @NotNull
         /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-        public final Boolean m1200invoke() {
+        public final Boolean m154invoke() {
             return Boolean.valueOf(ScrollState.this.getValue() < ScrollState.this.getMaxValue());
         }
     });
@@ -116,7 +69,7 @@ public final class ScrollState implements ScrollableState {
 
         @NotNull
         /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-        public final Boolean m1199invoke() {
+        public final Boolean m153invoke() {
             return Boolean.valueOf(ScrollState.this.getValue() > 0);
         }
     });
@@ -143,7 +96,7 @@ public final class ScrollState implements ScrollableState {
     /* JADX WARN: Multi-variable type inference failed */
     public static /* synthetic */ Object animateScrollTo$default(ScrollState scrollState, int i, AnimationSpec animationSpec, Continuation continuation, int i2, Object obj) {
         if ((i2 & 2) != 0) {
-            animationSpec = new SpringSpec(0.0f, 0.0f, null, 7, null);
+            animationSpec = new SpringSpec(0.0f, 0.0f, (Object) null, 7, (DefaultConstructorMarker) null);
         }
         return scrollState.animateScrollTo(i, animationSpec, continuation);
     }
@@ -159,17 +112,14 @@ public final class ScrollState implements ScrollableState {
         return animateScrollBy == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? animateScrollBy : Unit.INSTANCE;
     }
 
-    @Override // androidx.compose.foundation.gestures.ScrollableState
     public float dispatchRawDelta(float f) {
         return this.scrollableState.dispatchRawDelta(f);
     }
 
-    @Override // androidx.compose.foundation.gestures.ScrollableState
     public boolean getCanScrollBackward() {
         return ((Boolean) this.canScrollBackward$delegate.getValue()).booleanValue();
     }
 
-    @Override // androidx.compose.foundation.gestures.ScrollableState
     public boolean getCanScrollForward() {
         return ((Boolean) this.canScrollForward$delegate.getValue()).booleanValue();
     }
@@ -188,17 +138,14 @@ public final class ScrollState implements ScrollableState {
         return this._maxValueState.getValue().intValue();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final int getValue() {
         return ((Number) this.value$delegate.getValue()).intValue();
     }
 
-    @Override // androidx.compose.foundation.gestures.ScrollableState
     public boolean isScrollInProgress() {
         return this.scrollableState.isScrollInProgress();
     }
 
-    @Override // androidx.compose.foundation.gestures.ScrollableState
     @Nullable
     public Object scroll(@NotNull MutatePriority mutatePriority, @NotNull Function2<? super ScrollScope, ? super Continuation<? super Unit>, ? extends Object> function2, @NotNull Continuation<? super Unit> continuation) {
         Object scroll = this.scrollableState.scroll(mutatePriority, function2, continuation);

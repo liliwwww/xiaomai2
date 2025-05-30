@@ -1,6 +1,6 @@
 package androidx.compose.foundation.text.selection;
 
-import androidx.compose.p004ui.input.pointer.AwaitPointerEventScope;
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.jvm.internal.DebugMetadata;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.text.selection.TextSelectionMouseDetectorKt$mouseSelectionDetector$2", f = "TextSelectionMouseDetector.kt", i = {0, 0, 1, 1, 2, 2}, l = {89, 96, 111}, m = "invokeSuspend", n = {"$this$awaitEachGesture", "clicksCounter", "$this$awaitEachGesture", "clicksCounter", "$this$awaitEachGesture", "clicksCounter"}, s = {"L$0", "L$1", "L$0", "L$1", "L$0", "L$1"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class TextSelectionMouseDetectorKt$mouseSelectionDetector$2 extends RestrictedSuspendLambda implements Function2<AwaitPointerEventScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ MouseSelectionObserver $observer;
     private /* synthetic */ Object L$0;
@@ -44,7 +44,7 @@ final class TextSelectionMouseDetectorKt$mouseSelectionDetector$2 extends Restri
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object invokeSuspend(@org.jetbrains.annotations.NotNull java.lang.Object r13) {
         /*
@@ -68,7 +68,7 @@ final class TextSelectionMouseDetectorKt$mouseSelectionDetector$2 extends Restri
             java.lang.Object r1 = r12.L$1
             androidx.compose.foundation.text.selection.ClicksCounter r1 = (androidx.compose.foundation.text.selection.ClicksCounter) r1
             java.lang.Object r5 = r12.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r5 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r5
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r5 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r5
             kotlin.ResultKt.throwOnFailure(r13)
             r13 = r5
             goto L44
@@ -76,14 +76,14 @@ final class TextSelectionMouseDetectorKt$mouseSelectionDetector$2 extends Restri
             java.lang.Object r1 = r12.L$1
             androidx.compose.foundation.text.selection.ClicksCounter r1 = (androidx.compose.foundation.text.selection.ClicksCounter) r1
             java.lang.Object r5 = r12.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r5 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r5
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r5 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r5
             kotlin.ResultKt.throwOnFailure(r13)
             r6 = r12
             goto L56
         L34:
             kotlin.ResultKt.throwOnFailure(r13)
             java.lang.Object r13 = r12.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r13 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r13
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r13 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r13
             androidx.compose.foundation.text.selection.ClicksCounter r1 = new androidx.compose.foundation.text.selection.ClicksCounter
             androidx.compose.ui.platform.ViewConfiguration r5 = r13.getViewConfiguration()
             r1.<init>(r5)
@@ -102,27 +102,27 @@ final class TextSelectionMouseDetectorKt$mouseSelectionDetector$2 extends Restri
             r13 = r6
             r6 = r11
         L56:
-            androidx.compose.ui.input.pointer.PointerEvent r13 = (androidx.compose.p004ui.input.pointer.PointerEvent) r13
+            androidx.compose.ui.input.pointer.PointerEvent r13 = (androidx.compose.ui.input.pointer.PointerEvent) r13
             r1.update(r13)
             java.util.List r7 = r13.getChanges()
             r8 = 0
             java.lang.Object r7 = r7.get(r8)
-            androidx.compose.ui.input.pointer.PointerInputChange r7 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r7
+            androidx.compose.ui.input.pointer.PointerInputChange r7 = (androidx.compose.ui.input.pointer.PointerInputChange) r7
             boolean r13 = androidx.compose.foundation.text.selection.TextFieldSelectionManager_androidKt.isShiftPressed(r13)
             if (r13 == 0) goto L93
             androidx.compose.foundation.text.selection.MouseSelectionObserver r13 = r6.$observer
-            long r8 = r7.m4081getPositionF1C5BW0()
-            boolean r13 = r13.mo1775onExtendk4lQ0M(r8)
+            long r8 = r7.getPosition-F1C5BW0()
+            boolean r13 = r13.mo566onExtendk4lQ0M(r8)
             if (r13 == 0) goto Ld6
             r7.consume()
-            long r7 = r7.m4080getIdJ3iCeTQ()
+            long r7 = r7.getId-J3iCeTQ()
             androidx.compose.foundation.text.selection.TextSelectionMouseDetectorKt$mouseSelectionDetector$2$1 r13 = new androidx.compose.foundation.text.selection.TextSelectionMouseDetectorKt$mouseSelectionDetector$2$1
             androidx.compose.foundation.text.selection.MouseSelectionObserver r9 = r6.$observer
-            r13.<init>()
+            r13.<init>(r9)
             r6.L$0 = r5
             r6.L$1 = r1
             r6.label = r3
-            java.lang.Object r13 = androidx.compose.foundation.gestures.DragGestureDetectorKt.m1230dragjO51t88(r5, r7, r13, r6)
+            java.lang.Object r13 = androidx.compose.foundation.gestures.DragGestureDetectorKt.m187dragjO51t88(r5, r7, r13, r6)
             if (r13 != r0) goto Ld6
             return r0
         L93:
@@ -141,18 +141,18 @@ final class TextSelectionMouseDetectorKt$mouseSelectionDetector$2 extends Restri
             androidx.compose.foundation.text.selection.SelectionAdjustment r13 = r13.getNone()
         Laf:
             androidx.compose.foundation.text.selection.MouseSelectionObserver r8 = r6.$observer
-            long r9 = r7.m4081getPositionF1C5BW0()
-            boolean r8 = r8.mo1777onStart3MmeM6k(r9, r13)
+            long r9 = r7.getPosition-F1C5BW0()
+            boolean r8 = r8.mo568onStart3MmeM6k(r9, r13)
             if (r8 == 0) goto Ld6
             r7.consume()
-            long r7 = r7.m4080getIdJ3iCeTQ()
+            long r7 = r7.getId-J3iCeTQ()
             androidx.compose.foundation.text.selection.TextSelectionMouseDetectorKt$mouseSelectionDetector$2$2 r9 = new androidx.compose.foundation.text.selection.TextSelectionMouseDetectorKt$mouseSelectionDetector$2$2
             androidx.compose.foundation.text.selection.MouseSelectionObserver r10 = r6.$observer
             r9.<init>()
             r6.L$0 = r5
             r6.L$1 = r1
             r6.label = r2
-            java.lang.Object r13 = androidx.compose.foundation.gestures.DragGestureDetectorKt.m1230dragjO51t88(r5, r7, r9, r6)
+            java.lang.Object r13 = androidx.compose.foundation.gestures.DragGestureDetectorKt.m187dragjO51t88(r5, r7, r9, r6)
             if (r13 != r0) goto Ld6
             return r0
         Ld6:

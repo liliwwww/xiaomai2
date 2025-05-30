@@ -15,14 +15,13 @@ import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import androidx.constraintlayout.core.widgets.ConstraintWidgetContainer;
 import androidx.constraintlayout.core.widgets.Helper;
 import androidx.constraintlayout.core.widgets.HelperWidget;
-import androidx.constraintlayout.widget.C0923R;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.constraintlayout.widget.R;
 import java.util.Arrays;
 import java.util.HashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class ConstraintHelper extends View {
     protected int mCount;
     protected Helper mHelperWidget;
@@ -50,6 +49,7 @@ public abstract class ConstraintHelper extends View {
         }
         String trim = str.trim();
         if (getParent() instanceof ConstraintLayout) {
+            getParent();
         }
         int findId = findId(trim);
         if (findId != 0) {
@@ -80,16 +80,16 @@ public abstract class ConstraintHelper extends View {
             return;
         }
         String trim = str.trim();
-        ConstraintLayout constraintLayout = getParent() instanceof ConstraintLayout ? (ConstraintLayout) getParent() : null;
-        if (constraintLayout == null) {
+        ConstraintLayout parent = getParent() instanceof ConstraintLayout ? getParent() : null;
+        if (parent == null) {
             Log.w("ConstraintHelper", "Parent not a ConstraintLayout");
             return;
         }
-        int childCount = constraintLayout.getChildCount();
+        int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
-            View childAt = constraintLayout.getChildAt(i);
+            View childAt = parent.getChildAt(i);
             ViewGroup.LayoutParams layoutParams = childAt.getLayoutParams();
-            if ((layoutParams instanceof ConstraintLayout.LayoutParams) && trim.equals(((ConstraintLayout.LayoutParams) layoutParams).constraintTag)) {
+            if ((layoutParams instanceof ConstraintLayout$LayoutParams) && trim.equals(((ConstraintLayout$LayoutParams) layoutParams).constraintTag)) {
                 if (childAt.getId() == -1) {
                     Log.w("ConstraintHelper", "to use ConstraintTag view " + childAt.getClass().getSimpleName() + " must have an ID");
                 } else {
@@ -128,7 +128,7 @@ public abstract class ConstraintHelper extends View {
         }
         if (i == 0) {
             try {
-                i = C0923R.id.class.getField(str).getInt(null);
+                i = R.id.class.getField(str).getInt(null);
             } catch (Exception unused) {
             }
         }
@@ -206,15 +206,15 @@ public abstract class ConstraintHelper extends View {
 
     protected void init(AttributeSet attributeSet) {
         if (attributeSet != null) {
-            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, C0923R.styleable.ConstraintLayout_Layout);
+            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.ConstraintLayout_Layout);
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
                 int index = obtainStyledAttributes.getIndex(i);
-                if (index == C0923R.styleable.ConstraintLayout_Layout_constraint_referenced_ids) {
+                if (index == R.styleable.ConstraintLayout_Layout_constraint_referenced_ids) {
                     String string = obtainStyledAttributes.getString(index);
                     this.mReferenceIds = string;
                     setIds(string);
-                } else if (index == C0923R.styleable.ConstraintLayout_Layout_constraint_referenced_tags) {
+                } else if (index == R.styleable.ConstraintLayout_Layout_constraint_referenced_tags) {
                     String string2 = obtainStyledAttributes.getString(index);
                     this.mReferenceTags = string2;
                     setReferenceTags(string2);
@@ -224,7 +224,7 @@ public abstract class ConstraintHelper extends View {
         }
     }
 
-    public void loadParameters(ConstraintSet.Constraint constraint, HelperWidget helperWidget, ConstraintLayout.LayoutParams layoutParams, SparseArray<ConstraintWidget> sparseArray) {
+    public void loadParameters(ConstraintSet.Constraint constraint, HelperWidget helperWidget, ConstraintLayout$LayoutParams constraintLayout$LayoutParams, SparseArray<ConstraintWidget> sparseArray) {
         ConstraintSet.Layout layout = constraint.layout;
         int[] iArr = layout.mReferenceIds;
         if (iArr != null) {
@@ -423,8 +423,8 @@ public abstract class ConstraintHelper extends View {
             return;
         }
         ViewGroup.LayoutParams layoutParams = getLayoutParams();
-        if (layoutParams instanceof ConstraintLayout.LayoutParams) {
-            ((ConstraintLayout.LayoutParams) layoutParams).widget = (ConstraintWidget) this.mHelperWidget;
+        if (layoutParams instanceof ConstraintLayout$LayoutParams) {
+            ((ConstraintLayout$LayoutParams) layoutParams).widget = this.mHelperWidget;
         }
     }
 

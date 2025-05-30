@@ -18,7 +18,7 @@ import java.nio.ByteBuffer;
 /* compiled from: Taobao */
 @AnyThread
 @RequiresApi(19)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class MetadataRepo {
     private static final int DEFAULT_ROOT_SIZE = 1024;
     private static final String S_TRACE_CREATE_REPO = "EmojiCompat.MetadataRepo.create";

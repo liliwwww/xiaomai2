@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @LazyStaggeredGridScopeMarker
 @ExperimentalFoundationApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface LazyStaggeredGridScope {
     @ExperimentalFoundationApi
     void item(@Nullable Object obj, @Nullable Object obj2, @NotNull Function3<? super LazyStaggeredGridItemScope, ? super Composer, ? super Integer, Unit> function3);

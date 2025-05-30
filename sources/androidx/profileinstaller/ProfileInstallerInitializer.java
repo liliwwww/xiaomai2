@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.Choreographer;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -20,28 +20,9 @@ import tb.sz3;
 import tb.tz3;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ProfileInstallerInitializer implements Initializer<Result> {
     private static final int DELAY_MS = 5000;
-
-    /* JADX INFO: Access modifiers changed from: private */
-    /* compiled from: Taobao */
-    @RequiresApi(16)
-    /* loaded from: classes2.dex */
-    static class Choreographer16Impl {
-        private Choreographer16Impl() {
-        }
-
-        @DoNotInline
-        public static void postFrameCallback(final Runnable runnable) {
-            Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback() { // from class: androidx.profileinstaller.a
-                @Override // android.view.Choreographer.FrameCallback
-                public final void doFrame(long j) {
-                    runnable.run();
-                }
-            });
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(28)
@@ -53,11 +34,6 @@ public class ProfileInstallerInitializer implements Initializer<Result> {
         public static Handler createAsync(Looper looper) {
             return Handler.createAsync(looper);
         }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static class Result {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -79,7 +55,7 @@ public class ProfileInstallerInitializer implements Initializer<Result> {
     /* JADX INFO: Access modifiers changed from: package-private */
     /* renamed from: installAfterDelay, reason: merged with bridge method [inline-methods] */
     public void lambda$delayAfterFirstFrame$0(@NonNull Context context) {
-        (Build.VERSION.SDK_INT >= 28 ? Handler28Impl.createAsync(Looper.getMainLooper()) : new Handler(Looper.getMainLooper())).postDelayed(new rz3(context), new Random().nextInt(Math.max(1000, 1)) + DELAY_MS);
+        (Build.VERSION.SDK_INT >= 28 ? Handler28Impl.createAsync(Looper.getMainLooper()) : new Handler(Looper.getMainLooper())).postDelayed(new rz3(context), new Random().nextInt(Math.max(WVURLRuleConstants.LOGIN, 1)) + DELAY_MS);
     }
 
     /* JADX WARN: Can't rename method to resolve collision */

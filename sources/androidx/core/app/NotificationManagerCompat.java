@@ -40,7 +40,7 @@ import java.util.Map;
 import java.util.Set;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class NotificationManagerCompat {
     public static final String ACTION_BIND_SIDE_CHANNEL = "android.support.BIND_NOTIFICATION_SIDE_CHANNEL";
     private static final String CHECK_OP_NO_THROW = "checkOpNoThrow";
@@ -71,34 +71,6 @@ public final class NotificationManagerCompat {
     @GuardedBy("sEnabledNotificationListenersLock")
     private static Set<String> sEnabledNotificationListenerPackages = new HashSet();
     private static final Object sLock = new Object();
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static class NotifyTask implements Task {
-
-        /* renamed from: id */
-        final int f288id;
-        final Notification notif;
-        final String packageName;
-        final String tag;
-
-        NotifyTask(String str, int i, String str2, Notification notification) {
-            this.packageName = str;
-            this.f288id = i;
-            this.tag = str2;
-            this.notif = notification;
-        }
-
-        @Override // androidx.core.app.NotificationManagerCompat.Task
-        public void send(INotificationSideChannel iNotificationSideChannel) throws RemoteException {
-            iNotificationSideChannel.notify(this.packageName, this.f288id, this.tag, this.notif);
-        }
-
-        @NonNull
-        public String toString() {
-            return "NotifyTask[packageName:" + this.packageName + ", id:" + this.f288id + ", tag:" + this.tag + "]";
-        }
-    }
 
     /* compiled from: Taobao */
     private static class ServiceConnectedEvent {
@@ -642,15 +614,13 @@ public final class NotificationManagerCompat {
     /* compiled from: Taobao */
     private static class CancelTask implements Task {
         final boolean all;
-
-        /* renamed from: id */
-        final int f287id;
+        final int id;
         final String packageName;
         final String tag;
 
         CancelTask(String str) {
             this.packageName = str;
-            this.f287id = 0;
+            this.id = 0;
             this.tag = null;
             this.all = true;
         }
@@ -660,18 +630,18 @@ public final class NotificationManagerCompat {
             if (this.all) {
                 iNotificationSideChannel.cancelAll(this.packageName);
             } else {
-                iNotificationSideChannel.cancel(this.packageName, this.f287id, this.tag);
+                iNotificationSideChannel.cancel(this.packageName, this.id, this.tag);
             }
         }
 
         @NonNull
         public String toString() {
-            return "CancelTask[packageName:" + this.packageName + ", id:" + this.f287id + ", tag:" + this.tag + ", all:" + this.all + "]";
+            return "CancelTask[packageName:" + this.packageName + ", id:" + this.id + ", tag:" + this.tag + ", all:" + this.all + "]";
         }
 
         CancelTask(String str, int i, String str2) {
             this.packageName = str;
-            this.f287id = i;
+            this.id = i;
             this.tag = str2;
             this.all = false;
         }

@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD})
 @Api
 @Retention(RetentionPolicy.RUNTIME)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public @interface JavascriptInterface {
 }

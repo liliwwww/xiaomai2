@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SnapshotApplyConflictException extends Exception {
     public static final int $stable = 8;
 

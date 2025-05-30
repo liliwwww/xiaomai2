@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 /* JADX INFO: Add missing generic type declarations: [R] */
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.animation.core.InfiniteAnimationPolicyKt$withInfiniteAnimationFrameNanos$2", f = "InfiniteAnimationPolicy.kt", i = {}, l = {31}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class InfiniteAnimationPolicyKt$withInfiniteAnimationFrameNanos$2<R> extends SuspendLambda implements Function1<Continuation<? super R>, Object> {
     final /* synthetic */ Function1<Long, R> $onFrame;
     int label;

@@ -4,7 +4,7 @@ import androidx.compose.runtime.Immutable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class ArrowValues {
     private final float alpha;
     private final float endAngle;

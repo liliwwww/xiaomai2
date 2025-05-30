@@ -11,7 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
 import androidx.collection.SimpleArrayMap;
-import androidx.core.content.res.FontResourcesParserCompat;
+import androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry;
+import androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry;
 import androidx.core.provider.FontsContractCompat;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
@@ -23,7 +24,7 @@ import java.util.List;
 /* compiled from: Taobao */
 @RequiresApi(24)
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class TypefaceCompatApi24Impl extends TypefaceCompatBaseImpl {
     private static final String ADD_FONT_WEIGHT_STYLE_METHOD = "addFontWeightStyle";
     private static final String CREATE_FROM_FAMILIES_WITH_DEFAULT_METHOD = "createFromFamiliesWithDefault";
@@ -95,23 +96,21 @@ class TypefaceCompatApi24Impl extends TypefaceCompatBaseImpl {
         }
     }
 
-    @Override // androidx.core.graphics.TypefaceCompatBaseImpl
     @Nullable
-    public Typeface createFromFontFamilyFilesResourceEntry(Context context, FontResourcesParserCompat.FontFamilyFilesResourceEntry fontFamilyFilesResourceEntry, Resources resources, int i) {
+    public Typeface createFromFontFamilyFilesResourceEntry(Context context, FontResourcesParserCompat$FontFamilyFilesResourceEntry fontResourcesParserCompat$FontFamilyFilesResourceEntry, Resources resources, int i) {
         Object newFamily = newFamily();
         if (newFamily == null) {
             return null;
         }
-        for (FontResourcesParserCompat.FontFileResourceEntry fontFileResourceEntry : fontFamilyFilesResourceEntry.getEntries()) {
-            ByteBuffer copyToDirectBuffer = TypefaceCompatUtil.copyToDirectBuffer(context, resources, fontFileResourceEntry.getResourceId());
-            if (copyToDirectBuffer == null || !addFontWeightStyle(newFamily, copyToDirectBuffer, fontFileResourceEntry.getTtcIndex(), fontFileResourceEntry.getWeight(), fontFileResourceEntry.isItalic())) {
+        for (FontResourcesParserCompat$FontFileResourceEntry fontResourcesParserCompat$FontFileResourceEntry : fontResourcesParserCompat$FontFamilyFilesResourceEntry.getEntries()) {
+            ByteBuffer copyToDirectBuffer = TypefaceCompatUtil.copyToDirectBuffer(context, resources, fontResourcesParserCompat$FontFileResourceEntry.getResourceId());
+            if (copyToDirectBuffer == null || !addFontWeightStyle(newFamily, copyToDirectBuffer, fontResourcesParserCompat$FontFileResourceEntry.getTtcIndex(), fontResourcesParserCompat$FontFileResourceEntry.getWeight(), fontResourcesParserCompat$FontFileResourceEntry.isItalic())) {
                 return null;
             }
         }
         return createFromFamiliesWithDefault(newFamily);
     }
 
-    @Override // androidx.core.graphics.TypefaceCompatBaseImpl
     @Nullable
     public Typeface createFromFontInfo(Context context, @Nullable CancellationSignal cancellationSignal, @NonNull FontsContractCompat.FontInfo[] fontInfoArr, int i) {
         Object newFamily = newFamily();
@@ -137,7 +136,6 @@ class TypefaceCompatApi24Impl extends TypefaceCompatBaseImpl {
         return Typeface.create(createFromFamiliesWithDefault, i);
     }
 
-    @Override // androidx.core.graphics.TypefaceCompatBaseImpl
     @NonNull
     Typeface createWeightStyle(@NonNull Context context, @NonNull Typeface typeface, int i, boolean z) {
         Typeface typeface2;

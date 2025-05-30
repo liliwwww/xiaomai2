@@ -9,7 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ZipAppUtils {
     public static InputStream getInputStreamByUrl(String str) {
         String force2HttpUrl = WVUrlUtil.force2HttpUrl(WVUrlUtil.removeQueryParam(str));
@@ -21,7 +21,7 @@ public class ZipAppUtils {
         sb.append("], with response=[");
         sb.append(zCacheResource != null && zCacheResource.isSuccess);
         sb.append("]");
-        TaoLog.m24i("ZCache", sb.toString());
+        TaoLog.i("ZCache", sb.toString());
         if (zCacheResource == null || !zCacheResource.isSuccess) {
             return null;
         }

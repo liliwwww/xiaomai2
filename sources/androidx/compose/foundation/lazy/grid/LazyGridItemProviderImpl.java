@@ -1,6 +1,7 @@
 package androidx.compose.foundation.lazy.grid;
 
 import androidx.compose.foundation.ExperimentalFoundationApi;
+import androidx.compose.foundation.lazy.grid.ComposableSingletons;
 import androidx.compose.foundation.lazy.layout.IntervalList;
 import androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider;
 import androidx.compose.foundation.lazy.layout.LazyLayoutItemProviderKt;
@@ -19,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class LazyGridItemProviderImpl implements LazyGridItemProvider, LazyLayoutItemProvider {
     private final /* synthetic */ LazyLayoutItemProvider $$delegate_0;
     private final boolean hasCustomSpans;
@@ -35,11 +36,10 @@ final class LazyGridItemProviderImpl implements LazyGridItemProvider, LazyLayout
         Intrinsics.checkNotNullParameter(intRange, "nearestItemsRange");
         this.intervals = intervalList;
         this.hasCustomSpans = z;
-        this.$$delegate_0 = LazyLayoutItemProviderKt.LazyLayoutItemProvider(intervalList, intRange, ComposableSingletons$LazyGridItemProviderKt.INSTANCE.m1532getLambda1$foundation_release());
+        this.$$delegate_0 = LazyLayoutItemProviderKt.LazyLayoutItemProvider(intervalList, intRange, ComposableSingletons.LazyGridItemProviderKt.INSTANCE.getLambda-1$foundation_release());
         this.spanLayoutProvider = new LazyGridSpanLayoutProvider(this);
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider
     @Composable
     public void Item(final int i, @Nullable Composer composer, final int i2) {
         int i3;
@@ -84,43 +84,36 @@ final class LazyGridItemProviderImpl implements LazyGridItemProvider, LazyLayout
         });
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider
     @Nullable
     public Object getContentType(int i) {
         return this.$$delegate_0.getContentType(i);
     }
 
-    @Override // androidx.compose.foundation.lazy.grid.LazyGridItemProvider
     public boolean getHasCustomSpans() {
         return this.hasCustomSpans;
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider
     public int getItemCount() {
         return this.$$delegate_0.getItemCount();
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider
     @NotNull
     public Object getKey(int i) {
         return this.$$delegate_0.getKey(i);
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider
     @NotNull
     public Map<Object, Integer> getKeyToIndexMap() {
         return this.$$delegate_0.getKeyToIndexMap();
     }
 
-    @Override // androidx.compose.foundation.lazy.grid.LazyGridItemProvider
-    /* renamed from: getSpan-_-orMbw */
-    public long mo1570getSpan_orMbw(@NotNull LazyGridItemSpanScope lazyGridItemSpanScope, int i) {
+    /* renamed from: getSpan-_-orMbw, reason: not valid java name */
+    public long m458getSpan_orMbw(@NotNull LazyGridItemSpanScope lazyGridItemSpanScope, int i) {
         Intrinsics.checkNotNullParameter(lazyGridItemSpanScope, "$this$getSpan");
-        IntervalList.Interval<LazyGridIntervalContent> interval = this.intervals.get(i);
-        return ((GridItemSpan) interval.getValue().getSpan().invoke(lazyGridItemSpanScope, Integer.valueOf(i - interval.getStartIndex()))).m1541unboximpl();
+        IntervalList.Interval interval = this.intervals.get(i);
+        return ((GridItemSpan) ((LazyGridIntervalContent) interval.getValue()).getSpan().invoke(lazyGridItemSpanScope, Integer.valueOf(i - interval.getStartIndex()))).unbox-impl();
     }
 
-    @Override // androidx.compose.foundation.lazy.grid.LazyGridItemProvider
     @NotNull
     public LazyGridSpanLayoutProvider getSpanLayoutProvider() {
         return this.spanLayoutProvider;

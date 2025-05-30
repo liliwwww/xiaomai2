@@ -1,11 +1,11 @@
 package androidx.compose.foundation.text;
 
-import androidx.compose.p004ui.text.AnnotatedString;
+import androidx.compose.ui.text.AnnotatedString;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class InlineTextContentKt {
 
     @NotNull

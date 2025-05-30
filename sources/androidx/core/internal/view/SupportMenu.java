@@ -2,10 +2,11 @@ package androidx.core.internal.view;
 
 import android.view.Menu;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface SupportMenu extends Menu {
     public static final int CATEGORY_MASK = -65536;
     public static final int CATEGORY_SHIFT = 16;

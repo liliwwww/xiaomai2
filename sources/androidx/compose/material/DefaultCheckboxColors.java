@@ -2,15 +2,16 @@ package androidx.compose.material;
 
 import androidx.compose.animation.SingleValueAnimationKt;
 import androidx.compose.animation.core.AnimationSpecKt;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.state.ToggleableState;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.Stable;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.state.ToggleableState;
 import kotlin.NoWhenBranchMatchedException;
+import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -18,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DefaultCheckboxColors implements CheckboxColors {
     private final long checkedBorderColor;
     private final long checkedBoxColor;
@@ -31,20 +32,6 @@ final class DefaultCheckboxColors implements CheckboxColors {
     private final long uncheckedBorderColor;
     private final long uncheckedBoxColor;
     private final long uncheckedCheckmarkColor;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public /* synthetic */ class WhenMappings {
-        public static final /* synthetic */ int[] $EnumSwitchMapping$0;
-
-        static {
-            int[] iArr = new int[ToggleableState.values().length];
-            iArr[ToggleableState.On.ordinal()] = 1;
-            iArr[ToggleableState.Indeterminate.ordinal()] = 2;
-            iArr[ToggleableState.Off.ordinal()] = 3;
-            $EnumSwitchMapping$0 = iArr;
-        }
-    }
 
     private DefaultCheckboxColors(long j, long j2, long j3, long j4, long j5, long j6, long j7, long j8, long j9, long j10, long j11) {
         this.checkedCheckmarkColor = j;
@@ -99,11 +86,11 @@ final class DefaultCheckboxColors implements CheckboxColors {
         long j2 = j;
         if (z) {
             composer.startReplaceableGroup(-796405338);
-            rememberUpdatedState = SingleValueAnimationKt.m1020animateColorAsStateKTwxG1Y(j2, AnimationSpecKt.tween$default(toggleableState == ToggleableState.Off ? 100 : 50, 0, null, 6, null), null, composer, 0, 4);
+            rememberUpdatedState = SingleValueAnimationKt.animateColorAsState-KTwxG1Y(j2, AnimationSpecKt.tween$default(toggleableState == ToggleableState.Off ? 100 : 50, 0, null, 6, null), (Function1) null, composer, 0, 4);
             composer.endReplaceableGroup();
         } else {
             composer.startReplaceableGroup(-796405152);
-            rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(j2), composer, 0);
+            rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.box-impl(j2), composer, 0);
             composer.endReplaceableGroup();
         }
         if (ComposerKt.isTraceInProgress()) {
@@ -150,11 +137,11 @@ final class DefaultCheckboxColors implements CheckboxColors {
         long j2 = j;
         if (z) {
             composer.startReplaceableGroup(-2010643579);
-            rememberUpdatedState = SingleValueAnimationKt.m1020animateColorAsStateKTwxG1Y(j2, AnimationSpecKt.tween$default(toggleableState == ToggleableState.Off ? 100 : 50, 0, null, 6, null), null, composer, 0, 4);
+            rememberUpdatedState = SingleValueAnimationKt.animateColorAsState-KTwxG1Y(j2, AnimationSpecKt.tween$default(toggleableState == ToggleableState.Off ? 100 : 50, 0, null, 6, null), (Function1) null, composer, 0, 4);
             composer.endReplaceableGroup();
         } else {
             composer.startReplaceableGroup(-2010643393);
-            rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(j2), composer, 0);
+            rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.box-impl(j2), composer, 0);
             composer.endReplaceableGroup();
         }
         if (ComposerKt.isTraceInProgress()) {
@@ -174,11 +161,11 @@ final class DefaultCheckboxColors implements CheckboxColors {
             ComposerKt.traceEventStart(544656267, i, -1, "androidx.compose.material.DefaultCheckboxColors.checkmarkColor (Checkbox.kt:408)");
         }
         ToggleableState toggleableState2 = ToggleableState.Off;
-        State<Color> m1020animateColorAsStateKTwxG1Y = SingleValueAnimationKt.m1020animateColorAsStateKTwxG1Y(toggleableState == toggleableState2 ? this.uncheckedCheckmarkColor : this.checkedCheckmarkColor, AnimationSpecKt.tween$default(toggleableState == toggleableState2 ? 100 : 50, 0, null, 6, null), null, composer, 0, 4);
+        State<Color> state = SingleValueAnimationKt.animateColorAsState-KTwxG1Y(toggleableState == toggleableState2 ? this.uncheckedCheckmarkColor : this.checkedCheckmarkColor, AnimationSpecKt.tween$default(toggleableState == toggleableState2 ? 100 : 50, 0, null, 6, null), (Function1) null, composer, 0, 4);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
         composer.endReplaceableGroup();
-        return m1020animateColorAsStateKTwxG1Y;
+        return state;
     }
 }

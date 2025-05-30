@@ -9,7 +9,6 @@ import android.taobao.windvane.fullspan.SpanWrapper;
 import android.taobao.windvane.util.CommonUtils;
 import android.taobao.windvane.util.FullTraceUtils;
 import android.taobao.windvane.util.TaoLog;
-import android.taobao.windvane.util.WVConstants;
 import android.taobao.windvane.utils.TimeUtils;
 import android.taobao.windvane.webview.IFullTrace;
 import android.taobao.windvane.webview.IWVWebView;
@@ -17,7 +16,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.webkit.ValueCallback;
-import androidx.lifecycle.CoroutineLiveDataKt;
 import com.taobao.monitor.procedure.IProcedure;
 import com.uc.webview.export.WebView;
 import org.json.JSONException;
@@ -25,7 +23,7 @@ import org.json.JSONObject;
 import tb.zy3;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVH5PPManager {
     private static final String TAG = "H5PP";
     public static final int WV_H5PP_ZCache_State_Hit = 2;
@@ -99,7 +97,6 @@ public class WVH5PPManager {
         });
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     private void uploadToFullTrace(View view) {
         if (view instanceof IFullTrace) {
             SpanWrapper spanWrapper = ((IFullTrace) view).getSpanWrapper();
@@ -204,7 +201,7 @@ public class WVH5PPManager {
     }
 
     public void receiveTTITime(long j) {
-        if (j - this.h5_PP_TTI <= CoroutineLiveDataKt.DEFAULT_TIMEOUT) {
+        if (j - this.h5_PP_TTI <= 5000) {
             this.h5_PP_TTI = j;
         }
     }
@@ -240,7 +237,7 @@ public class WVH5PPManager {
         int i = identify;
         identify = i + 1;
         wVAPMManager.onStart(String.valueOf(i));
-        wVAPMManager.addProperty(WVConstants.INTENT_EXTRA_URL, this.pagePerformance.getUrl());
+        wVAPMManager.addProperty("URL", this.pagePerformance.getUrl());
         wVAPMManager.addProperty("process", CommonUtils.getProcessName(GlobalConfig.context));
         wVAPMManager.addProperty("isFinished", Boolean.valueOf(this.pagePerformance.getH5_PP_isFinished()));
         wVAPMManager.addProperty("errorCode", this.pagePerformance.getH5_PP_errorCode());
@@ -294,19 +291,19 @@ public class WVH5PPManager {
         try {
             IProcedure launcherProcedure = zy3.b.getLauncherProcedure();
             if (launcherProcedure == null || !launcherProcedure.isAlive()) {
-                TaoLog.m27v(TAG, "LauncherProcedure is not Alive");
+                TaoLog.v(TAG, "LauncherProcedure is not Alive");
             } else {
                 uploadToNativeApm(launcherProcedure);
             }
             IProcedure currentActivityProcedure = zy3.b.getCurrentActivityProcedure();
             if (currentActivityProcedure == null || !currentActivityProcedure.isAlive()) {
-                TaoLog.m18d(TAG, "CurrentActivityProcedure is not Alive");
+                TaoLog.d(TAG, "CurrentActivityProcedure is not Alive");
             } else {
                 uploadToNativeApm(currentActivityProcedure);
             }
             IProcedure procedure = zy3.b.getProcedure(view);
             if (procedure == null || !procedure.isAlive()) {
-                TaoLog.m18d(TAG, "Procedure is not Alive");
+                TaoLog.d(TAG, "Procedure is not Alive");
             } else {
                 uploadToNativeApm(procedure);
             }
@@ -330,7 +327,7 @@ public class WVH5PPManager {
             iProcedure.stage(str, l.longValue());
             return;
         }
-        TaoLog.m21e(TAG, "stage=" + str + " time=" + l);
+        TaoLog.e(TAG, "stage=" + str + " time=" + l);
     }
 
     public void uploadToNativeApm(IProcedure iProcedure) {

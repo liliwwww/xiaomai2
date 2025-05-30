@@ -4,7 +4,7 @@ import android.os.Build;
 import androidx.renderscript.Script;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ScriptIntrinsicBlend extends ScriptIntrinsic {
     private static final int INTRINSIC_API_LEVEL = 19;
 
@@ -12,6 +12,7 @@ public class ScriptIntrinsicBlend extends ScriptIntrinsic {
         super(j, renderScript);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     private void blend(int i, Allocation allocation, Allocation allocation2) {
         if (!allocation.getElement().isCompatible(Element.U8_4(this.mRS))) {
             throw new RSIllegalArgumentException("Input is not of expected format.");
@@ -19,7 +20,7 @@ public class ScriptIntrinsicBlend extends ScriptIntrinsic {
         if (!allocation2.getElement().isCompatible(Element.U8_4(this.mRS))) {
             throw new RSIllegalArgumentException("Output is not of expected format.");
         }
-        forEach(i, allocation, allocation2, null);
+        forEach(i, allocation, allocation2, (FieldPacker) null);
     }
 
     public static ScriptIntrinsicBlend create(RenderScript renderScript, Element element) {
@@ -89,62 +90,62 @@ public class ScriptIntrinsicBlend extends ScriptIntrinsic {
     }
 
     public Script.KernelID getKernelIDAdd() {
-        return createKernelID(34, 3, null, null);
+        return createKernelID(34, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDClear() {
-        return createKernelID(0, 3, null, null);
+        return createKernelID(0, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDDst() {
-        return createKernelID(2, 3, null, null);
+        return createKernelID(2, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDDstAtop() {
-        return createKernelID(10, 3, null, null);
+        return createKernelID(10, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDDstIn() {
-        return createKernelID(6, 3, null, null);
+        return createKernelID(6, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDDstOut() {
-        return createKernelID(8, 3, null, null);
+        return createKernelID(8, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDDstOver() {
-        return createKernelID(4, 3, null, null);
+        return createKernelID(4, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDMultiply() {
-        return createKernelID(14, 3, null, null);
+        return createKernelID(14, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDSrc() {
-        return createKernelID(1, 3, null, null);
+        return createKernelID(1, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDSrcAtop() {
-        return createKernelID(9, 3, null, null);
+        return createKernelID(9, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDSrcIn() {
-        return createKernelID(5, 3, null, null);
+        return createKernelID(5, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDSrcOut() {
-        return createKernelID(7, 3, null, null);
+        return createKernelID(7, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDSrcOver() {
-        return createKernelID(3, 3, null, null);
+        return createKernelID(3, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDSubtract() {
-        return createKernelID(35, 3, null, null);
+        return createKernelID(35, 3, (Element) null, (Element) null);
     }
 
     public Script.KernelID getKernelIDXor() {
-        return createKernelID(11, 3, null, null);
+        return createKernelID(11, 3, (Element) null, (Element) null);
     }
 }

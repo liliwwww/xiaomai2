@@ -1,7 +1,7 @@
 package android.taobao.windvane.urlintercept;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVURLRuleConstants {
     public static final int ADDRESS = 800;
     public static final int CART = 400;

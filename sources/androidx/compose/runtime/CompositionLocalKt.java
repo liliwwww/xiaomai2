@@ -1,6 +1,6 @@
 package androidx.compose.runtime;
 
-import androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap;
+import androidx.compose.runtime.external.kotlinx.collections.immutable.ImmutableMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class CompositionLocalKt {
     @Composable
     @ComposableInferredTarget(scheme = "[0[0]]")
@@ -35,7 +35,6 @@ public final class CompositionLocalKt {
         }
         endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.CompositionLocalKt$CompositionLocalProvider$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
             {
                 super(2);
             }
@@ -47,7 +46,7 @@ public final class CompositionLocalKt {
 
             public final void invoke(@Nullable Composer composer2, int i2) {
                 ProvidedValue<?>[] providedValueArr2 = providedValueArr;
-                CompositionLocalKt.CompositionLocalProvider((ProvidedValue<?>[]) Arrays.copyOf(providedValueArr2, providedValueArr2.length), function2, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
+                CompositionLocalKt.CompositionLocalProvider((ProvidedValue<?>[]) Arrays.copyOf(providedValueArr2, providedValueArr2.length), (Function2<? super Composer, ? super Integer, Unit>) function2, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
             }
         });
     }
@@ -88,12 +87,12 @@ public final class CompositionLocalKt {
             if (ComposerKt.isTraceInProgress()) {
                 ComposerKt.traceEventStart(1853897736, i2, -1, "androidx.compose.runtime.CompositionLocalProvider (CompositionLocal.kt:246)");
             }
-            PersistentMap<CompositionLocal<Object>, State<Object>> compositionLocals$runtime_release = compositionLocalContext.getCompositionLocals$runtime_release();
+            ImmutableMap compositionLocals$runtime_release = compositionLocalContext.getCompositionLocals$runtime_release();
             ArrayList arrayList = new ArrayList(compositionLocals$runtime_release.size());
-            for (Map.Entry<CompositionLocal<Object>, State<Object>> entry : compositionLocals$runtime_release.entrySet()) {
-                CompositionLocal<Object> key = entry.getKey();
+            for (Map.Entry entry : compositionLocals$runtime_release.entrySet()) {
+                Object key = entry.getKey();
                 Intrinsics.checkNotNull(key, "null cannot be cast to non-null type androidx.compose.runtime.ProvidableCompositionLocal<kotlin.Any?>");
-                arrayList.add(((ProvidableCompositionLocal) key).provides(entry.getValue().getValue()));
+                arrayList.add(((ProvidableCompositionLocal) key).provides(((State) entry.getValue()).getValue()));
             }
             ProvidedValue[] providedValueArr = (ProvidedValue[]) arrayList.toArray(new ProvidedValue[0]);
             CompositionLocalProvider((ProvidedValue<?>[]) Arrays.copyOf(providedValueArr, providedValueArr.length), function2, startRestartGroup, (i2 & 112) | 8);
@@ -107,7 +106,6 @@ public final class CompositionLocalKt {
         }
         endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.CompositionLocalKt$CompositionLocalProvider$3
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
             {
                 super(2);
             }
@@ -118,7 +116,7 @@ public final class CompositionLocalKt {
             }
 
             public final void invoke(@Nullable Composer composer2, int i3) {
-                CompositionLocalKt.CompositionLocalProvider(CompositionLocalContext.this, function2, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
+                CompositionLocalKt.CompositionLocalProvider(compositionLocalContext, (Function2<? super Composer, ? super Integer, Unit>) function2, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
             }
         });
     }

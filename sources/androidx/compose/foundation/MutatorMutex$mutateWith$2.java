@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 /* JADX INFO: Add missing generic type declarations: [R] */
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.MutatorMutex$mutateWith$2", f = "MutatorMutex.kt", i = {0, 0, 1, 1}, l = {173, 160}, m = "invokeSuspend", n = {"mutator", "$this$withLock_u24default$iv", "mutator", "$this$withLock_u24default$iv"}, s = {"L$0", "L$1", "L$0", "L$1"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class MutatorMutex$mutateWith$2<R> extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super R>, Object> {
     final /* synthetic */ Function2<T, Continuation<? super R>, Object> $block;
     final /* synthetic */ MutatePriority $priority;

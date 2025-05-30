@@ -4,17 +4,15 @@ import android.annotation.SuppressLint;
 import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
 import androidx.fragment.app.FragmentTransitionImpl;
-import androidx.transition.Transition;
 import java.util.ArrayList;
 import java.util.List;
 
 /* compiled from: Taobao */
 @SuppressLint({"RestrictedApi"})
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class FragmentTransitionSupport extends FragmentTransitionImpl {
     private static boolean hasSimpleTarget(Transition transition) {
         return (FragmentTransitionImpl.isNullOrEmpty(transition.getTargetIds()) && FragmentTransitionImpl.isNullOrEmpty(transition.getTargetNames()) && FragmentTransitionImpl.isNullOrEmpty(transition.getTargetTypes())) ? false : true;
@@ -66,7 +64,7 @@ public class FragmentTransitionSupport extends FragmentTransitionImpl {
     @Override // androidx.fragment.app.FragmentTransitionImpl
     public Object cloneTransition(Object obj) {
         if (obj != null) {
-            return ((Transition) obj).mo5618clone();
+            return ((Transition) obj).mo2815clone();
         }
         return null;
     }
@@ -144,73 +142,21 @@ public class FragmentTransitionSupport extends FragmentTransitionImpl {
     }
 
     @Override // androidx.fragment.app.FragmentTransitionImpl
-    public void scheduleHideFragmentView(Object obj, final View view, final ArrayList<View> arrayList) {
-        ((Transition) obj).addListener(new Transition.TransitionListener() { // from class: androidx.transition.FragmentTransitionSupport.2
-            @Override // androidx.transition.Transition.TransitionListener
-            public void onTransitionCancel(@NonNull Transition transition) {
-            }
-
-            @Override // androidx.transition.Transition.TransitionListener
-            public void onTransitionEnd(@NonNull Transition transition) {
-                transition.removeListener(this);
-                view.setVisibility(8);
-                int size = arrayList.size();
-                for (int i = 0; i < size; i++) {
-                    ((View) arrayList.get(i)).setVisibility(0);
-                }
-            }
-
-            @Override // androidx.transition.Transition.TransitionListener
-            public void onTransitionPause(@NonNull Transition transition) {
-            }
-
-            @Override // androidx.transition.Transition.TransitionListener
-            public void onTransitionResume(@NonNull Transition transition) {
-            }
-
-            @Override // androidx.transition.Transition.TransitionListener
-            public void onTransitionStart(@NonNull Transition transition) {
-            }
-        });
+    public void scheduleHideFragmentView(Object obj, View view, ArrayList<View> arrayList) {
+        ((Transition) obj).addListener(new 2(this, view, arrayList));
     }
 
     @Override // androidx.fragment.app.FragmentTransitionImpl
-    public void scheduleRemoveTargets(Object obj, final Object obj2, final ArrayList<View> arrayList, final Object obj3, final ArrayList<View> arrayList2, final Object obj4, final ArrayList<View> arrayList3) {
-        ((Transition) obj).addListener(new TransitionListenerAdapter() { // from class: androidx.transition.FragmentTransitionSupport.3
-            @Override // androidx.transition.TransitionListenerAdapter, androidx.transition.Transition.TransitionListener
-            public void onTransitionEnd(@NonNull Transition transition) {
-                transition.removeListener(this);
-            }
-
-            @Override // androidx.transition.TransitionListenerAdapter, androidx.transition.Transition.TransitionListener
-            public void onTransitionStart(@NonNull Transition transition) {
-                Object obj5 = obj2;
-                if (obj5 != null) {
-                    FragmentTransitionSupport.this.replaceTargets(obj5, arrayList, null);
-                }
-                Object obj6 = obj3;
-                if (obj6 != null) {
-                    FragmentTransitionSupport.this.replaceTargets(obj6, arrayList2, null);
-                }
-                Object obj7 = obj4;
-                if (obj7 != null) {
-                    FragmentTransitionSupport.this.replaceTargets(obj7, arrayList3, null);
-                }
-            }
-        });
+    public void scheduleRemoveTargets(Object obj, Object obj2, ArrayList<View> arrayList, Object obj3, ArrayList<View> arrayList2, Object obj4, ArrayList<View> arrayList3) {
+        ((Transition) obj).addListener(new 3(this, obj2, arrayList, obj3, arrayList2, obj4, arrayList3));
     }
 
     @Override // androidx.fragment.app.FragmentTransitionImpl
     public void setEpicenter(Object obj, View view) {
         if (view != null) {
-            final Rect rect = new Rect();
+            Rect rect = new Rect();
             getBoundsOnScreen(view, rect);
-            ((Transition) obj).setEpicenterCallback(new Transition.EpicenterCallback() { // from class: androidx.transition.FragmentTransitionSupport.1
-                @Override // androidx.transition.Transition.EpicenterCallback
-                public Rect onGetEpicenter(@NonNull Transition transition) {
-                    return rect;
-                }
-            });
+            ((Transition) obj).setEpicenterCallback(new 1(this, rect));
         }
     }
 
@@ -249,18 +195,9 @@ public class FragmentTransitionSupport extends FragmentTransitionImpl {
     }
 
     @Override // androidx.fragment.app.FragmentTransitionImpl
-    public void setEpicenter(Object obj, final Rect rect) {
+    public void setEpicenter(Object obj, Rect rect) {
         if (obj != null) {
-            ((Transition) obj).setEpicenterCallback(new Transition.EpicenterCallback() { // from class: androidx.transition.FragmentTransitionSupport.4
-                @Override // androidx.transition.Transition.EpicenterCallback
-                public Rect onGetEpicenter(@NonNull Transition transition) {
-                    Rect rect2 = rect;
-                    if (rect2 == null || rect2.isEmpty()) {
-                        return null;
-                    }
-                    return rect;
-                }
-            });
+            ((Transition) obj).setEpicenterCallback(new 4(this, rect));
         }
     }
 }

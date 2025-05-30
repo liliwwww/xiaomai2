@@ -8,29 +8,26 @@ import kotlin.jvm.internal.markers.KMutableList;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface PersistentList<E> extends ImmutableList<E>, PersistentCollection<E> {
 
     /* compiled from: Taobao */
     public interface Builder<E> extends List<E>, PersistentCollection.Builder<E>, KMutableList {
-        @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection.Builder
         @NotNull
         PersistentList<E> build();
     }
 
-    @Override // java.util.List
     @NotNull
     PersistentList<E> add(int i, E e);
 
-    @Override // java.util.List, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     @NotNull
     PersistentList<E> add(E e);
 
-    @Override // java.util.List
     @NotNull
     PersistentList<E> addAll(int i, @NotNull Collection<? extends E> collection);
 
-    @Override // java.util.List, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     @NotNull
     PersistentList<E> addAll(@NotNull Collection<? extends E> collection);
 
@@ -38,15 +35,15 @@ public interface PersistentList<E> extends ImmutableList<E>, PersistentCollectio
     @NotNull
     Builder<E> builder();
 
-    @Override // java.util.List, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     @NotNull
     PersistentList<E> clear();
 
-    @Override // java.util.List, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     @NotNull
     PersistentList<E> remove(E e);
 
-    @Override // java.util.List, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     @NotNull
     PersistentList<E> removeAll(@NotNull Collection<? extends E> collection);
 
@@ -57,11 +54,10 @@ public interface PersistentList<E> extends ImmutableList<E>, PersistentCollectio
     @NotNull
     PersistentList<E> removeAt(int i);
 
-    @Override // java.util.List, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     @NotNull
     PersistentList<E> retainAll(@NotNull Collection<? extends E> collection);
 
-    @Override // java.util.List
     @NotNull
     PersistentList<E> set(int i, E e);
 }

@@ -1,9 +1,7 @@
 package androidx.core.math;
 
-import androidx.core.location.LocationRequestCompat;
-
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class MathUtils {
     private MathUtils() {
     }
@@ -94,7 +92,7 @@ public class MathUtils {
     }
 
     public static long incrementExact(long j) {
-        if (j != LocationRequestCompat.PASSIVE_INTERVAL) {
+        if (j != Long.MAX_VALUE) {
             return j + 1;
         }
         throw new ArithmeticException("long overflow");

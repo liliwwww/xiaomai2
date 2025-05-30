@@ -19,8 +19,6 @@ import android.os.Handler;
 import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 import android.taobao.windvane.connect.ConnectManager;
-import android.taobao.windvane.connect.HttpConnectListener;
-import android.taobao.windvane.connect.HttpResponse;
 import android.util.AndroidRuntimeException;
 import android.util.Base64;
 import android.webkit.URLUtil;
@@ -32,7 +30,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ImageTool {
     private static final int MAX_LENGTH = 10240;
 
@@ -57,7 +55,7 @@ public class ImageTool {
             return 0;
         }
         try {
-            int attributeInt = new ExifInterface(str).getAttributeInt(androidx.exifinterface.media.ExifInterface.TAG_ORIENTATION, 1);
+            int attributeInt = new ExifInterface(str).getAttributeInt("Orientation", 1);
             if (attributeInt == 3) {
                 return 180;
             }
@@ -108,7 +106,7 @@ public class ImageTool {
             if (saveImageQ(context, bitmap)) {
                 return true;
             }
-            TaoLog.m21e("ImageTool", "save image failed");
+            TaoLog.e("ImageTool", "save image failed");
             return false;
         }
         File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), String.valueOf(System.currentTimeMillis()) + ".jpg");
@@ -152,8 +150,49 @@ public class ImageTool {
                 parcelFileDescriptor = contentResolver.openFileDescriptor(insert, "w", null);
                 try {
                     fileOutputStream = new FileOutputStream(parcelFileDescriptor.getFileDescriptor());
-                } catch (IOException e) {
-                    e = e;
+                    try {
+                        if (!bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)) {
+                            new AndroidRuntimeException("android Q: save image failed").printStackTrace();
+                            try {
+                                fileOutputStream.flush();
+                                fileOutputStream.close();
+                                parcelFileDescriptor.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            return false;
+                        }
+                        contentValues.clear();
+                        contentValues.put("is_pending", (Integer) 0);
+                        contentResolver.update(insert, contentValues, null, null);
+                        try {
+                            fileOutputStream.flush();
+                            fileOutputStream.close();
+                            parcelFileDescriptor.close();
+                        } catch (IOException e2) {
+                            e2.printStackTrace();
+                        }
+                        return true;
+                    } catch (IOException e3) {
+                        e = e3;
+                        e.printStackTrace();
+                        contentResolver.delete(insert, null, null);
+                        if (fileOutputStream != null) {
+                            try {
+                                fileOutputStream.flush();
+                                fileOutputStream.close();
+                            } catch (IOException e4) {
+                                e4.printStackTrace();
+                                return false;
+                            }
+                        }
+                        if (parcelFileDescriptor != null) {
+                            parcelFileDescriptor.close();
+                        }
+                        return false;
+                    }
+                } catch (IOException e5) {
+                    e = e5;
                     fileOutputStream = null;
                 } catch (Throwable th) {
                     th = th;
@@ -161,8 +200,8 @@ public class ImageTool {
                         try {
                             fileOutputStream3.flush();
                             fileOutputStream3.close();
-                        } catch (IOException e2) {
-                            e2.printStackTrace();
+                        } catch (IOException e6) {
+                            e6.printStackTrace();
                             throw th;
                         }
                     }
@@ -171,102 +210,23 @@ public class ImageTool {
                     }
                     throw th;
                 }
-                try {
-                    if (!bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)) {
-                        new AndroidRuntimeException("android Q: save image failed").printStackTrace();
-                        try {
-                            fileOutputStream.flush();
-                            fileOutputStream.close();
-                            parcelFileDescriptor.close();
-                        } catch (IOException e3) {
-                            e3.printStackTrace();
-                        }
-                        return false;
-                    }
-                    contentValues.clear();
-                    contentValues.put("is_pending", (Integer) 0);
-                    contentResolver.update(insert, contentValues, null, null);
-                    try {
-                        fileOutputStream.flush();
-                        fileOutputStream.close();
-                        parcelFileDescriptor.close();
-                    } catch (IOException e4) {
-                        e4.printStackTrace();
-                    }
-                    return true;
-                } catch (IOException e5) {
-                    e = e5;
-                    e.printStackTrace();
-                    contentResolver.delete(insert, null, null);
-                    if (fileOutputStream != null) {
-                        try {
-                            fileOutputStream.flush();
-                            fileOutputStream.close();
-                        } catch (IOException e6) {
-                            e6.printStackTrace();
-                            return false;
-                        }
-                    }
-                    if (parcelFileDescriptor != null) {
-                        parcelFileDescriptor.close();
-                    }
-                    return false;
-                }
-            } catch (IOException e7) {
-                e = e7;
-                parcelFileDescriptor = null;
-                fileOutputStream = null;
             } catch (Throwable th2) {
                 th = th2;
-                parcelFileDescriptor = null;
+                fileOutputStream3 = fileOutputStream2;
             }
+        } catch (IOException e7) {
+            e = e7;
+            parcelFileDescriptor = null;
+            fileOutputStream = null;
         } catch (Throwable th3) {
             th = th3;
-            fileOutputStream3 = fileOutputStream2;
+            parcelFileDescriptor = null;
         }
     }
 
-    public static void saveImageToDCIM(final Context context, String str, final ImageSaveCallback imageSaveCallback) {
+    public static void saveImageToDCIM(Context context, String str, ImageSaveCallback imageSaveCallback) {
         if (URLUtil.isHttpUrl(str) || URLUtil.isHttpsUrl(str)) {
-            ConnectManager.getInstance().connect(str, new HttpConnectListener<HttpResponse>() { // from class: android.taobao.windvane.util.ImageTool.1
-                @Override // android.taobao.windvane.connect.HttpConnectListener
-                public void onError(int i, String str2) {
-                    ImageSaveCallback imageSaveCallback2 = imageSaveCallback;
-                    if (imageSaveCallback2 != null) {
-                        imageSaveCallback2.error("error get resource, code=[" + i + "],msg=[" + str2 + "]");
-                    }
-                }
-
-                @Override // android.taobao.windvane.connect.HttpConnectListener
-                public void onFinish(HttpResponse httpResponse, int i) {
-                    try {
-                        if (httpResponse.isSuccess() && "mounted".equals(Environment.getExternalStorageState())) {
-                            if (ImageTool.saveImage(context, BitmapFactory.decodeStream(new ByteArrayInputStream(httpResponse.getData())))) {
-                                ImageSaveCallback imageSaveCallback2 = imageSaveCallback;
-                                if (imageSaveCallback2 != null) {
-                                    imageSaveCallback2.success();
-                                    return;
-                                }
-                                return;
-                            }
-                        }
-                        ImageSaveCallback imageSaveCallback3 = imageSaveCallback;
-                        if (imageSaveCallback3 != null) {
-                            imageSaveCallback3.error("bad resource");
-                        }
-                    } catch (Exception e) {
-                        ImageSaveCallback imageSaveCallback4 = imageSaveCallback;
-                        if (imageSaveCallback4 != null) {
-                            imageSaveCallback4.error(e.getMessage());
-                        }
-                    } catch (OutOfMemoryError e2) {
-                        ImageSaveCallback imageSaveCallback5 = imageSaveCallback;
-                        if (imageSaveCallback5 != null) {
-                            imageSaveCallback5.error(e2.getMessage());
-                        }
-                    }
-                }
-            });
+            ConnectManager.getInstance().connect(str, new 1(context, imageSaveCallback));
             return;
         }
         if (str.startsWith("data:")) {
@@ -344,23 +304,7 @@ public class ImageTool {
         return Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
     }
 
-    public static void saveImageToDCIM(Context context, String str, final Handler handler) {
-        saveImageToDCIM(context, str, new ImageSaveCallback() { // from class: android.taobao.windvane.util.ImageTool.2
-            @Override // android.taobao.windvane.util.ImageTool.ImageSaveCallback
-            public void error(String str2) {
-                Handler handler2 = handler;
-                if (handler2 != null) {
-                    handler2.sendEmptyMessage(WVConstants.NOTIFY_SAVE_IMAGE_FAIL);
-                }
-            }
-
-            @Override // android.taobao.windvane.util.ImageTool.ImageSaveCallback
-            public void success() {
-                Handler handler2 = handler;
-                if (handler2 != null) {
-                    handler2.sendEmptyMessage(WVConstants.NOTIFY_SAVE_IMAGE_SUCCESS);
-                }
-            }
-        });
+    public static void saveImageToDCIM(Context context, String str, Handler handler) {
+        saveImageToDCIM(context, str, (ImageSaveCallback) new 2(handler));
     }
 }

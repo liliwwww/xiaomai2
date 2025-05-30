@@ -1,11 +1,11 @@
 package androidx.compose.foundation.text.selection;
 
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.geometry.Offset;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.geometry.Offset;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function3;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class SelectionMagnifierKt$animatedSelectionMagnifier$1 extends Lambda implements Function3<Modifier, Composer, Integer, Modifier> {
     final /* synthetic */ Function0<Offset> $magnifierCenter;
     final /* synthetic */ Function1<Function0<Offset>, Modifier> $platformMagnifier;
@@ -29,7 +29,7 @@ final class SelectionMagnifierKt$animatedSelectionMagnifier$1 extends Lambda imp
 
     /* JADX INFO: Access modifiers changed from: private */
     public static final long invoke$lambda$0(State<Offset> state) {
-        return state.getValue().m2566unboximpl();
+        return ((Offset) state.getValue()).m858unboximpl();
     }
 
     public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
@@ -39,16 +39,15 @@ final class SelectionMagnifierKt$animatedSelectionMagnifier$1 extends Lambda imp
     @Composable
     @NotNull
     public final Modifier invoke(@NotNull Modifier modifier, @Nullable Composer composer, int i) {
-        final State rememberAnimatedMagnifierPosition;
         Intrinsics.checkNotNullParameter(modifier, "$this$composed");
         composer.startReplaceableGroup(759876635);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(759876635, i, -1, "androidx.compose.foundation.text.selection.animatedSelectionMagnifier.<anonymous> (SelectionMagnifier.kt:66)");
         }
-        rememberAnimatedMagnifierPosition = SelectionMagnifierKt.rememberAnimatedMagnifierPosition(this.$magnifierCenter, composer, 0);
+        final State access$rememberAnimatedMagnifierPosition = SelectionMagnifierKt.access$rememberAnimatedMagnifierPosition(this.$magnifierCenter, composer, 0);
         Function1<Function0<Offset>, Modifier> function1 = this.$platformMagnifier;
         composer.startReplaceableGroup(1157296644);
-        boolean changed = composer.changed(rememberAnimatedMagnifierPosition);
+        boolean changed = composer.changed(access$rememberAnimatedMagnifierPosition);
         Object rememberedValue = composer.rememberedValue();
         if (changed || rememberedValue == Composer.Companion.getEmpty()) {
             rememberedValue = new Function0<Offset>() { // from class: androidx.compose.foundation.text.selection.SelectionMagnifierKt$animatedSelectionMagnifier$1$1$1
@@ -58,13 +57,13 @@ final class SelectionMagnifierKt$animatedSelectionMagnifier$1 extends Lambda imp
                 }
 
                 public /* bridge */ /* synthetic */ Object invoke() {
-                    return Offset.m2545boximpl(m1846invokeF1C5BW0());
+                    return Offset.m837boximpl(m466invokeF1C5BW0());
                 }
 
                 /* renamed from: invoke-F1C5BW0, reason: not valid java name */
-                public final long m1846invokeF1C5BW0() {
+                public final long m466invokeF1C5BW0() {
                     long invoke$lambda$0;
-                    invoke$lambda$0 = SelectionMagnifierKt$animatedSelectionMagnifier$1.invoke$lambda$0(rememberAnimatedMagnifierPosition);
+                    invoke$lambda$0 = SelectionMagnifierKt$animatedSelectionMagnifier$1.invoke$lambda$0(access$rememberAnimatedMagnifierPosition);
                     return invoke$lambda$0;
                 }
             };

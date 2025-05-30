@@ -2,19 +2,20 @@ package androidx.compose.animation;
 
 import androidx.compose.animation.core.AnimationVector2D;
 import androidx.compose.animation.core.FiniteAnimationSpec;
-import androidx.compose.animation.core.SpringSpec;
 import androidx.compose.animation.core.Transition;
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.layout.Measurable;
-import androidx.compose.p004ui.layout.MeasureResult;
-import androidx.compose.p004ui.layout.MeasureScope;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntOffsetKt;
-import androidx.compose.p004ui.unit.IntSize;
-import androidx.compose.p004ui.unit.IntSizeKt;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.Alignment;
+import androidx.compose.ui.layout.Measurable;
+import androidx.compose.ui.layout.MeasureResult;
+import androidx.compose.ui.layout.MeasureScope;
+import androidx.compose.ui.layout.MeasureScope$CC;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.layout.Placeable$PlacementScope;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntOffsetKt;
+import androidx.compose.ui.unit.IntSize;
+import androidx.compose.ui.unit.IntSizeKt;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.NoWhenBranchMatchedException;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -23,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class ExpandShrinkModifier extends LayoutModifierWithPassThroughIntrinsics {
 
     @NotNull
@@ -79,7 +80,6 @@ final class ExpandShrinkModifier extends LayoutModifierWithPassThroughIntrinsics
 
             @NotNull
             public final FiniteAnimationSpec<IntSize> invoke(@NotNull Transition.Segment<EnterExitState> segment) {
-                SpringSpec springSpec;
                 Intrinsics.checkNotNullParameter(segment, "$this$null");
                 EnterExitState enterExitState = EnterExitState.PreEnter;
                 EnterExitState enterExitState2 = EnterExitState.Visible;
@@ -95,13 +95,9 @@ final class ExpandShrinkModifier extends LayoutModifierWithPassThroughIntrinsics
                         finiteAnimationSpec = value2.getAnimationSpec();
                     }
                 } else {
-                    finiteAnimationSpec = EnterExitTransitionKt.DefaultSizeAnimationSpec;
+                    finiteAnimationSpec = EnterExitTransitionKt.access$getDefaultSizeAnimationSpec$p();
                 }
-                if (finiteAnimationSpec != null) {
-                    return finiteAnimationSpec;
-                }
-                springSpec = EnterExitTransitionKt.DefaultSizeAnimationSpec;
-                return springSpec;
+                return finiteAnimationSpec == null ? EnterExitTransitionKt.access$getDefaultSizeAnimationSpec$p() : finiteAnimationSpec;
             }
         };
     }
@@ -141,37 +137,35 @@ final class ExpandShrinkModifier extends LayoutModifierWithPassThroughIntrinsics
         return this.sizeTransitionSpec;
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
+    @Override // androidx.compose.ui.layout.LayoutModifier
     @NotNull
-    /* renamed from: measure-3p2s80s */
-    public MeasureResult mo959measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull Measurable measurable, long j) {
+    /* renamed from: measure-3p2s80s, reason: not valid java name */
+    public MeasureResult mo49measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull Measurable measurable, long j) {
         Intrinsics.checkNotNullParameter(measureScope, "$this$measure");
         Intrinsics.checkNotNullParameter(measurable, "measurable");
-        final Placeable mo4187measureBRTryo0 = measurable.mo4187measureBRTryo0(j);
-        final long IntSize = IntSizeKt.IntSize(mo4187measureBRTryo0.getWidth(), mo4187measureBRTryo0.getHeight());
-        long m5380unboximpl = this.sizeAnimation.animate(this.sizeTransitionSpec, new Function1<EnterExitState, IntSize>() { // from class: androidx.compose.animation.ExpandShrinkModifier$measure$currentSize$1
+        final Placeable placeable = measurable.measure-BRTryo0(j);
+        final long IntSize = IntSizeKt.IntSize(placeable.getWidth(), placeable.getHeight());
+        long m2689unboximpl = this.sizeAnimation.animate(this.sizeTransitionSpec, new Function1<EnterExitState, IntSize>() { // from class: androidx.compose.animation.ExpandShrinkModifier$measure$currentSize$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             {
                 super(1);
             }
 
             public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                return IntSize.m5368boximpl(m1013invokeYEO4UFw((EnterExitState) obj));
+                return IntSize.m2677boximpl(m52invokeYEO4UFw((EnterExitState) obj));
             }
 
             /* renamed from: invoke-YEO4UFw, reason: not valid java name */
-            public final long m1013invokeYEO4UFw(@NotNull EnterExitState enterExitState) {
+            public final long m52invokeYEO4UFw(@NotNull EnterExitState enterExitState) {
                 Intrinsics.checkNotNullParameter(enterExitState, "it");
-                return ExpandShrinkModifier.this.m1011sizeByStateUzc_VyU(enterExitState, IntSize);
+                return ExpandShrinkModifier.this.m50sizeByStateUzc_VyU(enterExitState, IntSize);
             }
-        }).getValue().m5380unboximpl();
-        final long m5343unboximpl = this.offsetAnimation.animate(new Function1<Transition.Segment<EnterExitState>, FiniteAnimationSpec<IntOffset>>() { // from class: androidx.compose.animation.ExpandShrinkModifier$measure$offsetDelta$1
+        }).getValue().m2689unboximpl();
+        final long m2652unboximpl = this.offsetAnimation.animate(new Function1<Transition.Segment<EnterExitState>, FiniteAnimationSpec<IntOffset>>() { // from class: androidx.compose.animation.ExpandShrinkModifier$measure$offsetDelta$1
             @NotNull
             public final FiniteAnimationSpec<IntOffset> invoke(@NotNull Transition.Segment<EnterExitState> segment) {
-                SpringSpec springSpec;
                 Intrinsics.checkNotNullParameter(segment, "$this$animate");
-                springSpec = EnterExitTransitionKt.DefaultOffsetAnimationSpec;
-                return springSpec;
+                return EnterExitTransitionKt.access$getDefaultOffsetAnimationSpec$p();
             }
         }, new Function1<EnterExitState, IntOffset>() { // from class: androidx.compose.animation.ExpandShrinkModifier$measure$offsetDelta$2
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
@@ -180,31 +174,31 @@ final class ExpandShrinkModifier extends LayoutModifierWithPassThroughIntrinsics
             }
 
             public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                return IntOffset.m5325boximpl(m1014invokeBjo55l4((EnterExitState) obj));
+                return IntOffset.m2634boximpl(m53invokeBjo55l4((EnterExitState) obj));
             }
 
             /* renamed from: invoke-Bjo55l4, reason: not valid java name */
-            public final long m1014invokeBjo55l4(@NotNull EnterExitState enterExitState) {
+            public final long m53invokeBjo55l4(@NotNull EnterExitState enterExitState) {
                 Intrinsics.checkNotNullParameter(enterExitState, "it");
-                return ExpandShrinkModifier.this.m1012targetOffsetByStateoFUgxo0(enterExitState, IntSize);
+                return ExpandShrinkModifier.this.m51targetOffsetByStateoFUgxo0(enterExitState, IntSize);
             }
-        }).getValue().m5343unboximpl();
+        }).getValue().m2652unboximpl();
         Alignment alignment = this.currentAlignment;
-        final long mo2450alignKFBX0sM = alignment != null ? alignment.mo2450alignKFBX0sM(IntSize, m5380unboximpl, LayoutDirection.Ltr) : IntOffset.Companion.m5344getZeronOccac();
-        return MeasureScope.CC.m140p(measureScope, IntSize.m5376getWidthimpl(m5380unboximpl), IntSize.m5375getHeightimpl(m5380unboximpl), null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.animation.ExpandShrinkModifier$measure$1
+        final long mo935alignKFBX0sM = alignment != null ? alignment.mo935alignKFBX0sM(IntSize, m2689unboximpl, LayoutDirection.Ltr) : IntOffset.Companion.m2653getZeronOccac();
+        return MeasureScope$CC.p(measureScope, IntSize.m2685getWidthimpl(m2689unboximpl), IntSize.m2684getHeightimpl(m2689unboximpl), null, new Function1<Placeable$PlacementScope, Unit>() { // from class: androidx.compose.animation.ExpandShrinkModifier$measure$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             {
                 super(1);
             }
 
             public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((Placeable.PlacementScope) obj);
+                invoke((Placeable$PlacementScope) obj);
                 return Unit.INSTANCE;
             }
 
-            public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
-                Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
-                Placeable.PlacementScope.place$default(placementScope, Placeable.this, IntOffset.m5334getXimpl(mo2450alignKFBX0sM) + IntOffset.m5334getXimpl(m5343unboximpl), IntOffset.m5335getYimpl(mo2450alignKFBX0sM) + IntOffset.m5335getYimpl(m5343unboximpl), 0.0f, 4, null);
+            public final void invoke(@NotNull Placeable$PlacementScope placeable$PlacementScope) {
+                Intrinsics.checkNotNullParameter(placeable$PlacementScope, "$this$layout");
+                Placeable$PlacementScope.place$default(placeable$PlacementScope, placeable, IntOffset.m2643getXimpl(mo935alignKFBX0sM) + IntOffset.m2643getXimpl(m2652unboximpl), IntOffset.m2644getYimpl(mo935alignKFBX0sM) + IntOffset.m2644getYimpl(m2652unboximpl), 0.0f, 4, null);
             }
         }, 4, null);
     }
@@ -214,54 +208,54 @@ final class ExpandShrinkModifier extends LayoutModifierWithPassThroughIntrinsics
     }
 
     /* renamed from: sizeByState-Uzc_VyU, reason: not valid java name */
-    public final long m1011sizeByStateUzc_VyU(@NotNull EnterExitState enterExitState, long j) {
+    public final long m50sizeByStateUzc_VyU(@NotNull EnterExitState enterExitState, long j) {
         Intrinsics.checkNotNullParameter(enterExitState, "targetState");
         ChangeSize value = this.expand.getValue();
-        long m5380unboximpl = value != null ? ((IntSize) value.getSize().invoke(IntSize.m5368boximpl(j))).m5380unboximpl() : j;
+        long m2689unboximpl = value != null ? ((IntSize) value.getSize().invoke(IntSize.m2677boximpl(j))).m2689unboximpl() : j;
         ChangeSize value2 = this.shrink.getValue();
-        long m5380unboximpl2 = value2 != null ? ((IntSize) value2.getSize().invoke(IntSize.m5368boximpl(j))).m5380unboximpl() : j;
+        long m2689unboximpl2 = value2 != null ? ((IntSize) value2.getSize().invoke(IntSize.m2677boximpl(j))).m2689unboximpl() : j;
         int i = WhenMappings.$EnumSwitchMapping$0[enterExitState.ordinal()];
         if (i == 1) {
             return j;
         }
         if (i == 2) {
-            return m5380unboximpl;
+            return m2689unboximpl;
         }
         if (i == 3) {
-            return m5380unboximpl2;
+            return m2689unboximpl2;
         }
         throw new NoWhenBranchMatchedException();
     }
 
     /* renamed from: targetOffsetByState-oFUgxo0, reason: not valid java name */
-    public final long m1012targetOffsetByStateoFUgxo0(@NotNull EnterExitState enterExitState, long j) {
+    public final long m51targetOffsetByStateoFUgxo0(@NotNull EnterExitState enterExitState, long j) {
         Intrinsics.checkNotNullParameter(enterExitState, "targetState");
         if (this.currentAlignment != null && this.alignment.getValue() != null && !Intrinsics.areEqual(this.currentAlignment, this.alignment.getValue())) {
             int i = WhenMappings.$EnumSwitchMapping$0[enterExitState.ordinal()];
             if (i == 1) {
-                return IntOffset.Companion.m5344getZeronOccac();
+                return IntOffset.Companion.m2653getZeronOccac();
             }
             if (i == 2) {
-                return IntOffset.Companion.m5344getZeronOccac();
+                return IntOffset.Companion.m2653getZeronOccac();
             }
             if (i != 3) {
                 throw new NoWhenBranchMatchedException();
             }
             ChangeSize value = this.shrink.getValue();
             if (value == null) {
-                return IntOffset.Companion.m5344getZeronOccac();
+                return IntOffset.Companion.m2653getZeronOccac();
             }
-            long m5380unboximpl = ((IntSize) value.getSize().invoke(IntSize.m5368boximpl(j))).m5380unboximpl();
+            long m2689unboximpl = ((IntSize) value.getSize().invoke(IntSize.m2677boximpl(j))).m2689unboximpl();
             Alignment value2 = this.alignment.getValue();
             Intrinsics.checkNotNull(value2);
             Alignment alignment = value2;
             LayoutDirection layoutDirection = LayoutDirection.Ltr;
-            long mo2450alignKFBX0sM = alignment.mo2450alignKFBX0sM(j, m5380unboximpl, layoutDirection);
+            long mo935alignKFBX0sM = alignment.mo935alignKFBX0sM(j, m2689unboximpl, layoutDirection);
             Alignment alignment2 = this.currentAlignment;
             Intrinsics.checkNotNull(alignment2);
-            long mo2450alignKFBX0sM2 = alignment2.mo2450alignKFBX0sM(j, m5380unboximpl, layoutDirection);
-            return IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(mo2450alignKFBX0sM) - IntOffset.m5334getXimpl(mo2450alignKFBX0sM2), IntOffset.m5335getYimpl(mo2450alignKFBX0sM) - IntOffset.m5335getYimpl(mo2450alignKFBX0sM2));
+            long mo935alignKFBX0sM2 = alignment2.mo935alignKFBX0sM(j, m2689unboximpl, layoutDirection);
+            return IntOffsetKt.IntOffset(IntOffset.m2643getXimpl(mo935alignKFBX0sM) - IntOffset.m2643getXimpl(mo935alignKFBX0sM2), IntOffset.m2644getYimpl(mo935alignKFBX0sM) - IntOffset.m2644getYimpl(mo935alignKFBX0sM2));
         }
-        return IntOffset.Companion.m5344getZeronOccac();
+        return IntOffset.Companion.m2653getZeronOccac();
     }
 }

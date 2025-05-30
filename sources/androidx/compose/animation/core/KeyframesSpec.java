@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class KeyframesSpec<T> implements DurationBasedAnimationSpec<T> {
 
     @NotNull
@@ -34,8 +34,7 @@ public final class KeyframesSpec<T> implements DurationBasedAnimationSpec<T> {
         private final Map<Integer, KeyframeEntity<T>> keyframes = new LinkedHashMap();
 
         @NotNull
-        /* renamed from: at */
-        public final KeyframeEntity<T> m55at(T t, int i) {
+        public final KeyframeEntity<T> at(T t, int i) {
             Easing easing = null;
             KeyframeEntity<T> keyframeEntity = new KeyframeEntity<>(t, easing, 2, easing);
             this.keyframes.put(Integer.valueOf(i), keyframeEntity);
@@ -44,7 +43,7 @@ public final class KeyframesSpec<T> implements DurationBasedAnimationSpec<T> {
 
         @NotNull
         public final KeyframeEntity<T> atFraction(T t, float f) {
-            return m55at(t, MathKt.roundToInt(this.durationMillis * f));
+            return at(t, MathKt.roundToInt(this.durationMillis * f));
         }
 
         public boolean equals(@Nullable Object obj) {
@@ -162,9 +161,9 @@ public final class KeyframesSpec<T> implements DurationBasedAnimationSpec<T> {
         }
     }
 
-    @Override // androidx.compose.animation.core.FiniteAnimationSpec, androidx.compose.animation.core.AnimationSpec
     @NotNull
-    public <V extends AnimationVector> VectorizedKeyframesSpec<V> vectorize(@NotNull TwoWayConverter<T, V> twoWayConverter) {
+    /* renamed from: vectorize, reason: collision with other method in class and merged with bridge method [inline-methods] and merged with bridge method [inline-methods] and merged with bridge method [inline-methods] */
+    public <V extends AnimationVector> VectorizedKeyframesSpec<V> m70vectorize(@NotNull TwoWayConverter<T, V> twoWayConverter) {
         Intrinsics.checkNotNullParameter(twoWayConverter, "converter");
         Map<Integer, KeyframeEntity<T>> keyframes$animation_core_release = this.config.getKeyframes$animation_core_release();
         LinkedHashMap linkedHashMap = new LinkedHashMap(MapsKt.mapCapacity(keyframes$animation_core_release.size()));

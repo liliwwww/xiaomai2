@@ -13,10 +13,10 @@ import androidx.core.os.BundleKt;
 import androidx.savedstate.SavedStateRegistry;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import kotlin.Pair;
 import kotlin.TuplesKt;
 import kotlin.collections.MapsKt;
 import kotlin.collections.SetsKt;
@@ -32,14 +32,14 @@ import org.jetbrains.annotations.Nullable;
 import tb.ri4;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SavedStateHandle {
 
     @NotNull
     private static final Class<? extends Object>[] ACCEPTABLE_CLASSES;
 
     @NotNull
-    public static final Companion Companion = new Companion(null);
+    public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
 
     @NotNull
     private static final String KEYS = "keys";
@@ -61,61 +61,6 @@ public final class SavedStateHandle {
 
     @NotNull
     private final Map<String, SavedStateRegistry.SavedStateProvider> savedStateProviders;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class Companion {
-        private Companion() {
-        }
-
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-
-        @JvmStatic
-        @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-        @NotNull
-        public final SavedStateHandle createHandle(@Nullable Bundle bundle, @Nullable Bundle bundle2) {
-            if (bundle == null) {
-                if (bundle2 == null) {
-                    return new SavedStateHandle();
-                }
-                HashMap hashMap = new HashMap();
-                for (String str : bundle2.keySet()) {
-                    Intrinsics.checkNotNullExpressionValue(str, "key");
-                    hashMap.put(str, bundle2.get(str));
-                }
-                return new SavedStateHandle(hashMap);
-            }
-            ArrayList parcelableArrayList = bundle.getParcelableArrayList(SavedStateHandle.KEYS);
-            ArrayList parcelableArrayList2 = bundle.getParcelableArrayList(SavedStateHandle.VALUES);
-            if (!((parcelableArrayList == null || parcelableArrayList2 == null || parcelableArrayList.size() != parcelableArrayList2.size()) ? false : true)) {
-                throw new IllegalStateException("Invalid bundle passed as restored state".toString());
-            }
-            LinkedHashMap linkedHashMap = new LinkedHashMap();
-            int size = parcelableArrayList.size();
-            for (int i = 0; i < size; i++) {
-                Object obj = parcelableArrayList.get(i);
-                Intrinsics.checkNotNull(obj, "null cannot be cast to non-null type kotlin.String");
-                linkedHashMap.put((String) obj, parcelableArrayList2.get(i));
-            }
-            return new SavedStateHandle(linkedHashMap);
-        }
-
-        @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-        public final boolean validateValue(@Nullable Object obj) {
-            if (obj == null) {
-                return true;
-            }
-            for (Class cls : SavedStateHandle.ACCEPTABLE_CLASSES) {
-                Intrinsics.checkNotNull(cls);
-                if (cls.isInstance(obj)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
 
     static {
         Class<? extends Object>[] clsArr = new Class[29];
@@ -176,10 +121,10 @@ public final class SavedStateHandle {
 
     private final <T> MutableLiveData<T> getLiveDataInternal(String str, boolean z, T t) {
         SavingStateLiveData<?> savingStateLiveData;
-        SavingStateLiveData<?> savingStateLiveData2 = this.liveDatas.get(str);
-        SavingStateLiveData<?> savingStateLiveData3 = savingStateLiveData2 instanceof MutableLiveData ? savingStateLiveData2 : null;
-        if (savingStateLiveData3 != null) {
-            return savingStateLiveData3;
+        MutableLiveData<T> mutableLiveData = this.liveDatas.get(str);
+        MutableLiveData<T> mutableLiveData2 = mutableLiveData instanceof MutableLiveData ? mutableLiveData : null;
+        if (mutableLiveData2 != null) {
+            return mutableLiveData2;
         }
         if (this.regular.containsKey(str)) {
             savingStateLiveData = new SavingStateLiveData<>(this, str, this.regular.get(str));
@@ -206,7 +151,7 @@ public final class SavedStateHandle {
             arrayList.add(str);
             arrayList2.add(savedStateHandle.regular.get(str));
         }
-        return BundleKt.bundleOf(TuplesKt.to(KEYS, arrayList), TuplesKt.to(VALUES, arrayList2));
+        return BundleKt.bundleOf(new Pair[]{TuplesKt.to(KEYS, arrayList), TuplesKt.to(VALUES, arrayList2)});
     }
 
     @MainThread
@@ -297,10 +242,10 @@ public final class SavedStateHandle {
             sb.append(" into saved state");
             throw new IllegalArgumentException(sb.toString());
         }
-        SavingStateLiveData<?> savingStateLiveData = this.liveDatas.get(str);
-        SavingStateLiveData<?> savingStateLiveData2 = savingStateLiveData instanceof MutableLiveData ? savingStateLiveData : null;
-        if (savingStateLiveData2 != null) {
-            savingStateLiveData2.setValue(t);
+        MutableLiveData mutableLiveData = this.liveDatas.get(str);
+        MutableLiveData mutableLiveData2 = mutableLiveData instanceof MutableLiveData ? mutableLiveData : null;
+        if (mutableLiveData2 != null) {
+            mutableLiveData2.setValue(t);
         } else {
             this.regular.put(str, t);
         }
@@ -323,48 +268,6 @@ public final class SavedStateHandle {
     public final <T> MutableLiveData<T> getLiveData(@NotNull String str, T t) {
         Intrinsics.checkNotNullParameter(str, "key");
         return getLiveDataInternal(str, true, t);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class SavingStateLiveData<T> extends MutableLiveData<T> {
-
-        @Nullable
-        private SavedStateHandle handle;
-
-        @NotNull
-        private String key;
-
-        /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        public SavingStateLiveData(@Nullable SavedStateHandle savedStateHandle, @NotNull String str, T t) {
-            super(t);
-            Intrinsics.checkNotNullParameter(str, "key");
-            this.key = str;
-            this.handle = savedStateHandle;
-        }
-
-        public final void detach() {
-            this.handle = null;
-        }
-
-        @Override // androidx.lifecycle.MutableLiveData, androidx.lifecycle.LiveData
-        public void setValue(T t) {
-            SavedStateHandle savedStateHandle = this.handle;
-            if (savedStateHandle != null) {
-                savedStateHandle.regular.put(this.key, t);
-                MutableStateFlow mutableStateFlow = (MutableStateFlow) savedStateHandle.flows.get(this.key);
-                if (mutableStateFlow != null) {
-                    mutableStateFlow.setValue(t);
-                }
-            }
-            super.setValue(t);
-        }
-
-        public SavingStateLiveData(@Nullable SavedStateHandle savedStateHandle, @NotNull String str) {
-            Intrinsics.checkNotNullParameter(str, "key");
-            this.key = str;
-            this.handle = savedStateHandle;
-        }
     }
 
     public SavedStateHandle() {

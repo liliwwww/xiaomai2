@@ -7,11 +7,11 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R;
 import androidx.emoji2.viewsintegration.EmojiTextViewHelper;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class AppCompatEmojiTextHelper {
 
     @NonNull
@@ -35,9 +35,9 @@ class AppCompatEmojiTextHelper {
     }
 
     void loadFromAttributes(@Nullable AttributeSet attributeSet, int i) {
-        TypedArray obtainStyledAttributes = this.mView.getContext().obtainStyledAttributes(attributeSet, C0257R.styleable.AppCompatTextView, i, 0);
+        TypedArray obtainStyledAttributes = this.mView.getContext().obtainStyledAttributes(attributeSet, R.styleable.AppCompatTextView, i, 0);
         try {
-            int i2 = C0257R.styleable.AppCompatTextView_emojiCompatEnabled;
+            int i2 = R.styleable.AppCompatTextView_emojiCompatEnabled;
             boolean z = obtainStyledAttributes.hasValue(i2) ? obtainStyledAttributes.getBoolean(i2, true) : true;
             obtainStyledAttributes.recycle();
             setEnabled(z);

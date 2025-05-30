@@ -5,6 +5,7 @@ import androidx.compose.runtime.ComposableTarget;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.internal.ComposableLambdaKt;
+import androidx.compose.ui.Modifier;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Intrinsics;
@@ -12,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ComposableSingletons$BackdropScaffoldKt {
 
     @NotNull
@@ -20,7 +21,7 @@ public final class ComposableSingletons$BackdropScaffoldKt {
 
     /* renamed from: lambda-1, reason: not valid java name */
     @NotNull
-    public static Function3<SnackbarHostState, Composer, Integer, Unit> f1015lambda1 = ComposableLambdaKt.composableLambdaInstance(229445492, false, new Function3<SnackbarHostState, Composer, Integer, Unit>() { // from class: androidx.compose.material.ComposableSingletons$BackdropScaffoldKt$lambda-1$1
+    public static Function3<SnackbarHostState, Composer, Integer, Unit> f4lambda1 = ComposableLambdaKt.composableLambdaInstance(229445492, false, new Function3<SnackbarHostState, Composer, Integer, Unit>() { // from class: androidx.compose.material.ComposableSingletons$BackdropScaffoldKt$lambda-1$1
         public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
             invoke((SnackbarHostState) obj, (Composer) obj2, ((Number) obj3).intValue());
             return Unit.INSTANCE;
@@ -40,7 +41,7 @@ public final class ComposableSingletons$BackdropScaffoldKt {
             if (ComposerKt.isTraceInProgress()) {
                 ComposerKt.traceEventStart(229445492, i, -1, "androidx.compose.material.ComposableSingletons$BackdropScaffoldKt.lambda-1.<anonymous> (BackdropScaffold.kt:273)");
             }
-            SnackbarHostKt.SnackbarHost(snackbarHostState, null, null, composer, i & 14, 6);
+            SnackbarHostKt.SnackbarHost(snackbarHostState, (Modifier) null, (Function3) null, composer, i & 14, 6);
             if (ComposerKt.isTraceInProgress()) {
                 ComposerKt.traceEventEnd();
             }
@@ -49,7 +50,7 @@ public final class ComposableSingletons$BackdropScaffoldKt {
 
     @NotNull
     /* renamed from: getLambda-1$material_release, reason: not valid java name */
-    public final Function3<SnackbarHostState, Composer, Integer, Unit> m2041getLambda1$material_release() {
-        return f1015lambda1;
+    public final Function3<SnackbarHostState, Composer, Integer, Unit> m712getLambda1$material_release() {
+        return f4lambda1;
     }
 }

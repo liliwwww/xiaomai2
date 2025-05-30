@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 /* compiled from: Taobao */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.SOURCE)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public @interface Attribute {
 
     /* compiled from: Taobao */

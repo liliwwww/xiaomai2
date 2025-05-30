@@ -1,8 +1,8 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.input.pointer.AwaitPointerEventScope;
-import androidx.constraintlayout.motion.widget.Key;
+import androidx.appcompat.R;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.jvm.internal.DebugMetadata;
@@ -13,8 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-@DebugMetadata(c = "androidx.compose.foundation.gestures.TransformGestureDetectorKt$detectTransformGestures$2", f = "TransformGestureDetector.kt", i = {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1}, l = {59, 61}, m = "invokeSuspend", n = {"$this$awaitEachGesture", Key.ROTATION, "zoom", "pan", "pastTouchSlop", "touchSlop", "lockedToPanZoom", "$this$awaitEachGesture", Key.ROTATION, "zoom", "pan", "pastTouchSlop", "touchSlop", "lockedToPanZoom"}, s = {"L$0", "F$0", "F$1", "J$0", "I$0", "F$2", "I$1", "L$0", "F$0", "F$1", "J$0", "I$0", "F$2", "I$1"})
-/* loaded from: classes.dex */
+@DebugMetadata(c = "androidx.compose.foundation.gestures.TransformGestureDetectorKt$detectTransformGestures$2", f = "TransformGestureDetector.kt", i = {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1}, l = {R.styleable.AppCompatTheme_colorSwitchThumbNormal, R.styleable.AppCompatTheme_dialogCornerRadius}, m = "invokeSuspend", n = {"$this$awaitEachGesture", "rotation", "zoom", "pan", "pastTouchSlop", "touchSlop", "lockedToPanZoom", "$this$awaitEachGesture", "rotation", "zoom", "pan", "pastTouchSlop", "touchSlop", "lockedToPanZoom"}, s = {"L$0", "F$0", "F$1", "J$0", "I$0", "F$2", "I$1", "L$0", "F$0", "F$1", "J$0", "I$0", "F$2", "I$1"})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class TransformGestureDetectorKt$detectTransformGestures$2 extends RestrictedSuspendLambda implements Function2<AwaitPointerEventScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ Function4<Offset, Offset, Float, Float, Unit> $onGesture;
     final /* synthetic */ boolean $panZoomLock;
@@ -49,7 +49,7 @@ final class TransformGestureDetectorKt$detectTransformGestures$2 extends Restric
 
     /* JADX WARN: Code restructure failed: missing block: B:36:0x0158, code lost:
     
-        if (androidx.compose.p004ui.geometry.Offset.m2553equalsimpl0(r11, androidx.compose.p004ui.geometry.Offset.Companion.m2572getZeroF1C5BW0()) == false) goto L64;
+        if (androidx.compose.ui.geometry.Offset.m845equalsimpl0(r11, androidx.compose.ui.geometry.Offset.Companion.getZero-F1C5BW0()) == false) goto L64;
      */
     /* JADX WARN: Removed duplicated region for block: B:14:0x00c3  */
     /* JADX WARN: Removed duplicated region for block: B:48:0x01a9  */
@@ -61,12 +61,12 @@ final class TransformGestureDetectorKt$detectTransformGestures$2 extends Restric
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object invokeSuspend(@org.jetbrains.annotations.NotNull java.lang.Object r26) {
         /*
             Method dump skipped, instructions count: 470
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.TransformGestureDetectorKt$detectTransformGestures$2.invokeSuspend(java.lang.Object):java.lang.Object");
     }

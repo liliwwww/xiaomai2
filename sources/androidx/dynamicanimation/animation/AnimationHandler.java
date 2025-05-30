@@ -1,16 +1,12 @@
 package androidx.dynamicanimation.animation;
 
 import android.os.Build;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.SystemClock;
-import android.view.Choreographer;
-import androidx.annotation.RequiresApi;
 import androidx.collection.SimpleArrayMap;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class AnimationHandler {
     private static final long FRAME_DELAY_MS = 10;
     public static final ThreadLocal<AnimationHandler> sAnimatorHandler = new ThreadLocal<>();
@@ -37,12 +33,6 @@ class AnimationHandler {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    interface AnimationFrameCallback {
-        boolean doAnimationFrame(long j);
-    }
-
-    /* compiled from: Taobao */
     static abstract class AnimationFrameCallbackProvider {
         final AnimationCallbackDispatcher mDispatcher;
 
@@ -51,56 +41,6 @@ class AnimationHandler {
         }
 
         abstract void postFrameCallback();
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static class FrameCallbackProvider14 extends AnimationFrameCallbackProvider {
-        private final Handler mHandler;
-        long mLastFrameTime;
-        private final Runnable mRunnable;
-
-        FrameCallbackProvider14(AnimationCallbackDispatcher animationCallbackDispatcher) {
-            super(animationCallbackDispatcher);
-            this.mLastFrameTime = -1L;
-            this.mRunnable = new Runnable() { // from class: androidx.dynamicanimation.animation.AnimationHandler.FrameCallbackProvider14.1
-                @Override // java.lang.Runnable
-                public void run() {
-                    FrameCallbackProvider14.this.mLastFrameTime = SystemClock.uptimeMillis();
-                    FrameCallbackProvider14.this.mDispatcher.dispatchAnimationFrame();
-                }
-            };
-            this.mHandler = new Handler(Looper.myLooper());
-        }
-
-        @Override // androidx.dynamicanimation.animation.AnimationHandler.AnimationFrameCallbackProvider
-        void postFrameCallback() {
-            this.mHandler.postDelayed(this.mRunnable, Math.max(AnimationHandler.FRAME_DELAY_MS - (SystemClock.uptimeMillis() - this.mLastFrameTime), 0L));
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(16)
-    /* loaded from: classes2.dex */
-    private static class FrameCallbackProvider16 extends AnimationFrameCallbackProvider {
-        private final Choreographer mChoreographer;
-        private final Choreographer.FrameCallback mChoreographerCallback;
-
-        FrameCallbackProvider16(AnimationCallbackDispatcher animationCallbackDispatcher) {
-            super(animationCallbackDispatcher);
-            this.mChoreographer = Choreographer.getInstance();
-            this.mChoreographerCallback = new Choreographer.FrameCallback() { // from class: androidx.dynamicanimation.animation.AnimationHandler.FrameCallbackProvider16.1
-                @Override // android.view.Choreographer.FrameCallback
-                public void doFrame(long j) {
-                    FrameCallbackProvider16.this.mDispatcher.dispatchAnimationFrame();
-                }
-            };
-        }
-
-        @Override // androidx.dynamicanimation.animation.AnimationHandler.AnimationFrameCallbackProvider
-        void postFrameCallback() {
-            this.mChoreographer.postFrameCallback(this.mChoreographerCallback);
-        }
     }
 
     AnimationHandler() {
@@ -134,7 +74,7 @@ class AnimationHandler {
     }
 
     private boolean isCallbackDue(AnimationFrameCallback animationFrameCallback, long j) {
-        Long l = this.mDelayedCallbackStartTime.get(animationFrameCallback);
+        Long l = (Long) this.mDelayedCallbackStartTime.get(animationFrameCallback);
         if (l == null) {
             return true;
         }

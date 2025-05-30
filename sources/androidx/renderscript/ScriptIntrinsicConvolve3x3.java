@@ -4,7 +4,7 @@ import android.os.Build;
 import androidx.renderscript.Script;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ScriptIntrinsicConvolve3x3 extends ScriptIntrinsic {
     private static final int INTRINSIC_API_LEVEL = 19;
     private Allocation mInput;
@@ -17,7 +17,7 @@ public class ScriptIntrinsicConvolve3x3 extends ScriptIntrinsic {
 
     public static ScriptIntrinsicConvolve3x3 create(RenderScript renderScript, Element element) {
         float[] fArr = {0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f};
-        if (!element.isCompatible(Element.m294U8(renderScript)) && !element.isCompatible(Element.U8_2(renderScript)) && !element.isCompatible(Element.U8_3(renderScript)) && !element.isCompatible(Element.U8_4(renderScript)) && !element.isCompatible(Element.F32(renderScript)) && !element.isCompatible(Element.F32_2(renderScript)) && !element.isCompatible(Element.F32_3(renderScript)) && !element.isCompatible(Element.F32_4(renderScript))) {
+        if (!element.isCompatible(Element.U8(renderScript)) && !element.isCompatible(Element.U8_2(renderScript)) && !element.isCompatible(Element.U8_3(renderScript)) && !element.isCompatible(Element.U8_4(renderScript)) && !element.isCompatible(Element.F32(renderScript)) && !element.isCompatible(Element.F32_2(renderScript)) && !element.isCompatible(Element.F32_3(renderScript)) && !element.isCompatible(Element.F32_4(renderScript))) {
             throw new RSIllegalArgumentException("Unsuported element type.");
         }
         boolean z = renderScript.isUseNative() && Build.VERSION.SDK_INT < 19;
@@ -28,15 +28,15 @@ public class ScriptIntrinsicConvolve3x3 extends ScriptIntrinsic {
     }
 
     public void forEach(Allocation allocation) {
-        forEach(0, null, allocation, null);
+        forEach(0, (Allocation) null, allocation, (FieldPacker) null);
     }
 
-    public Script.FieldID getFieldID_Input() {
-        return createFieldID(1, null);
+    public Script$FieldID getFieldID_Input() {
+        return createFieldID(1, (Element) null);
     }
 
     public Script.KernelID getKernelID() {
-        return createKernelID(0, 2, null, null);
+        return createKernelID(0, 2, (Element) null, (Element) null);
     }
 
     public void setCoefficients(float[] fArr) {
@@ -61,6 +61,6 @@ public class ScriptIntrinsicConvolve3x3 extends ScriptIntrinsic {
     }
 
     public void forEach(Allocation allocation, Script.LaunchOptions launchOptions) {
-        forEach(0, null, allocation, null, launchOptions);
+        forEach(0, (Allocation) null, allocation, (FieldPacker) null, launchOptions);
     }
 }

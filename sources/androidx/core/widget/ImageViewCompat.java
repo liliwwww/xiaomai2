@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ImageViewCompat {
 
     /* compiled from: Taobao */
@@ -44,7 +44,6 @@ public class ImageViewCompat {
     private ImageViewCompat() {
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     public static ColorStateList getImageTintList(@NonNull ImageView imageView) {
         if (Build.VERSION.SDK_INT >= 21) {
@@ -56,7 +55,6 @@ public class ImageViewCompat {
         return null;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     public static PorterDuff.Mode getImageTintMode(@NonNull ImageView imageView) {
         if (Build.VERSION.SDK_INT >= 21) {
@@ -68,7 +66,6 @@ public class ImageViewCompat {
         return null;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static void setImageTintList(@NonNull ImageView imageView, @Nullable ColorStateList colorStateList) {
         Drawable drawable;
         int i = Build.VERSION.SDK_INT;
@@ -89,7 +86,6 @@ public class ImageViewCompat {
         imageView.setImageDrawable(drawable);
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static void setImageTintMode(@NonNull ImageView imageView, @Nullable PorterDuff.Mode mode) {
         Drawable drawable;
         int i = Build.VERSION.SDK_INT;

@@ -7,7 +7,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.view.menu.MenuItemWrapperICS;
 import androidx.appcompat.view.menu.MenuWrapperICS;
 import androidx.collection.SimpleArrayMap;
@@ -17,14 +16,14 @@ import java.util.ArrayList;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
-public class SupportActionModeWrapper extends android.view.ActionMode {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
+public class SupportActionModeWrapper extends ActionMode {
     final Context mContext;
     final ActionMode mWrappedObject;
 
     /* compiled from: Taobao */
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    public static class CallbackWrapper implements ActionMode.Callback {
+    public static class CallbackWrapper implements ActionMode$Callback {
         final Context mContext;
         final ActionMode.Callback mWrappedCallback;
         final ArrayList<SupportActionModeWrapper> mActionModes = new ArrayList<>();
@@ -40,12 +39,12 @@ public class SupportActionModeWrapper extends android.view.ActionMode {
             if (menu2 != null) {
                 return menu2;
             }
-            MenuWrapperICS menuWrapperICS = new MenuWrapperICS(this.mContext, (SupportMenu) menu);
+            Menu menuWrapperICS = new MenuWrapperICS(this.mContext, (SupportMenu) menu);
             this.mMenus.put(menu, menuWrapperICS);
             return menuWrapperICS;
         }
 
-        public android.view.ActionMode getActionModeWrapper(ActionMode actionMode) {
+        public ActionMode getActionModeWrapper(ActionMode actionMode) {
             int size = this.mActionModes.size();
             for (int i = 0; i < size; i++) {
                 SupportActionModeWrapper supportActionModeWrapper = this.mActionModes.get(i);
@@ -58,22 +57,22 @@ public class SupportActionModeWrapper extends android.view.ActionMode {
             return supportActionModeWrapper2;
         }
 
-        @Override // androidx.appcompat.view.ActionMode.Callback
+        @Override // androidx.appcompat.view.ActionMode$Callback
         public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
             return this.mWrappedCallback.onActionItemClicked(getActionModeWrapper(actionMode), new MenuItemWrapperICS(this.mContext, (SupportMenuItem) menuItem));
         }
 
-        @Override // androidx.appcompat.view.ActionMode.Callback
+        @Override // androidx.appcompat.view.ActionMode$Callback
         public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
             return this.mWrappedCallback.onCreateActionMode(getActionModeWrapper(actionMode), getMenuWrapper(menu));
         }
 
-        @Override // androidx.appcompat.view.ActionMode.Callback
+        @Override // androidx.appcompat.view.ActionMode$Callback
         public void onDestroyActionMode(ActionMode actionMode) {
             this.mWrappedCallback.onDestroyActionMode(getActionModeWrapper(actionMode));
         }
 
-        @Override // androidx.appcompat.view.ActionMode.Callback
+        @Override // androidx.appcompat.view.ActionMode$Callback
         public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
             return this.mWrappedCallback.onPrepareActionMode(getActionModeWrapper(actionMode), getMenuWrapper(menu));
         }
@@ -96,7 +95,7 @@ public class SupportActionModeWrapper extends android.view.ActionMode {
 
     @Override // android.view.ActionMode
     public Menu getMenu() {
-        return new MenuWrapperICS(this.mContext, (SupportMenu) this.mWrappedObject.getMenu());
+        return new MenuWrapperICS(this.mContext, this.mWrappedObject.getMenu());
     }
 
     @Override // android.view.ActionMode

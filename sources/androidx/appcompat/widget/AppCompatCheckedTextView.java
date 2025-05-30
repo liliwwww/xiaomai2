@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R$attr;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.view.TintableBackgroundView;
 import androidx.core.widget.TextViewCompat;
@@ -22,7 +22,7 @@ import androidx.core.widget.TintableCheckedTextView;
 import androidx.core.widget.TintableCompoundDrawablesView;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class AppCompatCheckedTextView extends CheckedTextView implements EmojiCompatConfigurationView, TintableBackgroundView, TintableCheckedTextView, TintableCompoundDrawablesView {
 
     @NonNull
@@ -66,7 +66,6 @@ public class AppCompatCheckedTextView extends CheckedTextView implements EmojiCo
         return TextViewCompat.unwrapCustomSelectionActionModeCallback(super.getCustomSelectionActionModeCallback());
     }
 
-    @Override // androidx.core.view.TintableBackgroundView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public ColorStateList getSupportBackgroundTintList() {
@@ -77,7 +76,6 @@ public class AppCompatCheckedTextView extends CheckedTextView implements EmojiCo
         return null;
     }
 
-    @Override // androidx.core.view.TintableBackgroundView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public PorterDuff.Mode getSupportBackgroundTintMode() {
@@ -88,7 +86,6 @@ public class AppCompatCheckedTextView extends CheckedTextView implements EmojiCo
         return null;
     }
 
-    @Override // androidx.core.widget.TintableCheckedTextView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public ColorStateList getSupportCheckMarkTintList() {
@@ -99,7 +96,6 @@ public class AppCompatCheckedTextView extends CheckedTextView implements EmojiCo
         return null;
     }
 
-    @Override // androidx.core.widget.TintableCheckedTextView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public PorterDuff.Mode getSupportCheckMarkTintMode() {
@@ -110,14 +106,12 @@ public class AppCompatCheckedTextView extends CheckedTextView implements EmojiCo
         return null;
     }
 
-    @Override // androidx.core.widget.TintableCompoundDrawablesView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public ColorStateList getSupportCompoundDrawablesTintList() {
         return this.mTextHelper.getCompoundDrawableTintList();
     }
 
-    @Override // androidx.core.widget.TintableCompoundDrawablesView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public PorterDuff.Mode getSupportCompoundDrawablesTintMode() {
@@ -197,7 +191,6 @@ public class AppCompatCheckedTextView extends CheckedTextView implements EmojiCo
         getEmojiTextViewHelper().setEnabled(z);
     }
 
-    @Override // androidx.core.view.TintableBackgroundView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportBackgroundTintList(@Nullable ColorStateList colorStateList) {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
@@ -206,7 +199,6 @@ public class AppCompatCheckedTextView extends CheckedTextView implements EmojiCo
         }
     }
 
-    @Override // androidx.core.view.TintableBackgroundView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportBackgroundTintMode(@Nullable PorterDuff.Mode mode) {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
@@ -215,7 +207,6 @@ public class AppCompatCheckedTextView extends CheckedTextView implements EmojiCo
         }
     }
 
-    @Override // androidx.core.widget.TintableCheckedTextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportCheckMarkTintList(@Nullable ColorStateList colorStateList) {
         AppCompatCheckedTextViewHelper appCompatCheckedTextViewHelper = this.mCheckedHelper;
@@ -224,7 +215,6 @@ public class AppCompatCheckedTextView extends CheckedTextView implements EmojiCo
         }
     }
 
-    @Override // androidx.core.widget.TintableCheckedTextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportCheckMarkTintMode(@Nullable PorterDuff.Mode mode) {
         AppCompatCheckedTextViewHelper appCompatCheckedTextViewHelper = this.mCheckedHelper;
@@ -233,14 +223,12 @@ public class AppCompatCheckedTextView extends CheckedTextView implements EmojiCo
         }
     }
 
-    @Override // androidx.core.widget.TintableCompoundDrawablesView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportCompoundDrawablesTintList(@Nullable ColorStateList colorStateList) {
         this.mTextHelper.setCompoundDrawableTintList(colorStateList);
         this.mTextHelper.applyCompoundDrawablesTints();
     }
 
-    @Override // androidx.core.widget.TintableCompoundDrawablesView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportCompoundDrawablesTintMode(@Nullable PorterDuff.Mode mode) {
         this.mTextHelper.setCompoundDrawableTintMode(mode);
@@ -257,7 +245,7 @@ public class AppCompatCheckedTextView extends CheckedTextView implements EmojiCo
     }
 
     public AppCompatCheckedTextView(@NonNull Context context, @Nullable AttributeSet attributeSet) {
-        this(context, attributeSet, C0257R.attr.checkedTextViewStyle);
+        this(context, attributeSet, R$attr.checkedTextViewStyle);
     }
 
     public AppCompatCheckedTextView(@NonNull Context context, @Nullable AttributeSet attributeSet, int i) {

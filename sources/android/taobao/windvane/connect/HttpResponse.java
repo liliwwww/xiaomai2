@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class HttpResponse {
     private int httpCode = 0;
     private String errorMsg = null;

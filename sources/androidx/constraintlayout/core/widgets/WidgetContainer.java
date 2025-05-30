@@ -4,7 +4,7 @@ import androidx.constraintlayout.core.Cache;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WidgetContainer extends ConstraintWidget {
     public ArrayList<ConstraintWidget> mChildren;
 
@@ -60,13 +60,11 @@ public class WidgetContainer extends ConstraintWidget {
         this.mChildren.clear();
     }
 
-    @Override // androidx.constraintlayout.core.widgets.ConstraintWidget
     public void reset() {
         this.mChildren.clear();
         super.reset();
     }
 
-    @Override // androidx.constraintlayout.core.widgets.ConstraintWidget
     public void resetSolverVariables(Cache cache) {
         super.resetSolverVariables(cache);
         int size = this.mChildren.size();
@@ -75,7 +73,6 @@ public class WidgetContainer extends ConstraintWidget {
         }
     }
 
-    @Override // androidx.constraintlayout.core.widgets.ConstraintWidget
     public void setOffset(int i, int i2) {
         super.setOffset(i, i2);
         int size = this.mChildren.size();

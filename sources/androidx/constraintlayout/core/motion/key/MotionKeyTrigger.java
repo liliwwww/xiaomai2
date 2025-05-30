@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Locale;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class MotionKeyTrigger extends MotionKey {
     public static final String CROSS = "CROSS";
     public static final int KEY_TYPE = 5;
@@ -75,8 +75,8 @@ public class MotionKeyTrigger extends MotionKey {
         this.mViewTransitionOnCross = i;
         this.mCollisionRect = new FloatRect();
         this.mTargetRect = new FloatRect();
-        this.mType = 5;
-        this.mCustom = new HashMap<>();
+        ((MotionKey) this).mType = 5;
+        ((MotionKey) this).mCustom = new HashMap();
     }
 
     private void fireCustom(String str, MotionWidget motionWidget) {
@@ -84,10 +84,10 @@ public class MotionKeyTrigger extends MotionKey {
         if (!z) {
             str = str.substring(1).toLowerCase(Locale.ROOT);
         }
-        for (String str2 : this.mCustom.keySet()) {
+        for (String str2 : ((MotionKey) this).mCustom.keySet()) {
             String lowerCase = str2.toLowerCase(Locale.ROOT);
             if (z || lowerCase.matches(str)) {
-                CustomVariable customVariable = this.mCustom.get(str2);
+                CustomVariable customVariable = (CustomVariable) ((MotionKey) this).mCustom.get(str2);
                 if (customVariable != null) {
                     customVariable.applyToWidget(motionWidget);
                 }
@@ -95,19 +95,16 @@ public class MotionKeyTrigger extends MotionKey {
         }
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public void addValues(HashMap<String, SplineSet> hashMap) {
     }
 
     public void conditionallyFire(float f, MotionWidget motionWidget) {
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public void getAttributeNames(HashSet<String> hashSet) {
     }
 
     /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public int getId(String str) {
         char c;
         str.hashCode();
@@ -221,7 +218,6 @@ public class MotionKeyTrigger extends MotionKey {
         }
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, int i2) {
         if (i == 307) {
             this.mTriggerCollisionId = i2;
@@ -250,13 +246,11 @@ public class MotionKeyTrigger extends MotionKey {
         }
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey
-    /* renamed from: clone */
-    public MotionKey mo5574clone() {
+    /* renamed from: clone, reason: merged with bridge method [inline-methods] */
+    public MotionKey m2780clone() {
         return new MotionKeyTrigger().copy((MotionKey) this);
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public MotionKeyTrigger copy(MotionKey motionKey) {
         super.copy(motionKey);
         MotionKeyTrigger motionKeyTrigger = (MotionKeyTrigger) motionKey;
@@ -279,7 +273,6 @@ public class MotionKeyTrigger extends MotionKey {
         return this;
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, float f) {
         if (i != 305) {
             return super.setValue(i, f);
@@ -288,7 +281,6 @@ public class MotionKeyTrigger extends MotionKey {
         return true;
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, String str) {
         if (i == 309) {
             this.mPositiveCross = str;
@@ -305,7 +297,6 @@ public class MotionKeyTrigger extends MotionKey {
         return true;
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, boolean z) {
         if (i != 304) {
             return super.setValue(i, z);

@@ -12,26 +12,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class TelephonyManagerCompat {
     private static Method sGetDeviceIdMethod;
     private static Method sGetSubIdMethod;
-
-    /* compiled from: Taobao */
-    @RequiresApi(23)
-    /* loaded from: classes.dex */
-    private static class Api23Impl {
-        private Api23Impl() {
-        }
-
-        @SuppressLint({"MissingPermission"})
-        @Nullable
-        @RequiresPermission("android.permission.READ_PHONE_STATE")
-        @DoNotInline
-        static String getDeviceId(TelephonyManager telephonyManager, int i) {
-            return com.alibaba.wireless.security.aopsdk.replace.android.telephony.TelephonyManager.getDeviceId(telephonyManager, i);
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(26)

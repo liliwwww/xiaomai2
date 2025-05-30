@@ -5,14 +5,15 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import androidx.constraintlayout.widget.C0923R;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintLayout$LayoutParams;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.constraintlayout.widget.R;
 import androidx.constraintlayout.widget.VirtualLayout;
 import java.util.Arrays;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class CircularFlow extends VirtualLayout {
     private static float DEFAULT_ANGLE = 0.0f;
     private static int DEFAULT_RADIUS = 0;
@@ -57,7 +58,7 @@ public class CircularFlow extends VirtualLayout {
     }
 
     private void anchorReferences() {
-        this.mContainer = (ConstraintLayout) getParent();
+        this.mContainer = getParent();
         for (int i = 0; i < this.mCount; i++) {
             View viewById = this.mContainer.getViewById(this.mIds[i]);
             if (viewById != null) {
@@ -97,11 +98,11 @@ public class CircularFlow extends VirtualLayout {
                 } else {
                     f = fArr[i];
                 }
-                ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) viewById.getLayoutParams();
-                layoutParams.circleAngle = f;
-                layoutParams.circleConstraint = this.mViewCenter;
-                layoutParams.circleRadius = i2;
-                viewById.setLayoutParams(layoutParams);
+                ConstraintLayout$LayoutParams constraintLayout$LayoutParams = (ConstraintLayout$LayoutParams) viewById.getLayoutParams();
+                constraintLayout$LayoutParams.circleAngle = f;
+                constraintLayout$LayoutParams.circleConstraint = this.mViewCenter;
+                constraintLayout$LayoutParams.circleRadius = i2;
+                viewById.setLayoutParams(constraintLayout$LayoutParams);
             }
         }
         applyLayoutFeatures();
@@ -191,25 +192,25 @@ public class CircularFlow extends VirtualLayout {
     protected void init(AttributeSet attributeSet) {
         super.init(attributeSet);
         if (attributeSet != null) {
-            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, C0923R.styleable.ConstraintLayout_Layout);
+            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.ConstraintLayout_Layout);
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
                 int index = obtainStyledAttributes.getIndex(i);
-                if (index == C0923R.styleable.ConstraintLayout_Layout_circularflow_viewCenter) {
+                if (index == R.styleable.ConstraintLayout_Layout_circularflow_viewCenter) {
                     this.mViewCenter = obtainStyledAttributes.getResourceId(index, 0);
-                } else if (index == C0923R.styleable.ConstraintLayout_Layout_circularflow_angles) {
+                } else if (index == R.styleable.ConstraintLayout_Layout_circularflow_angles) {
                     String string = obtainStyledAttributes.getString(index);
                     this.mReferenceAngles = string;
                     setAngles(string);
-                } else if (index == C0923R.styleable.ConstraintLayout_Layout_circularflow_radiusInDP) {
+                } else if (index == R.styleable.ConstraintLayout_Layout_circularflow_radiusInDP) {
                     String string2 = obtainStyledAttributes.getString(index);
                     this.mReferenceRadius = string2;
                     setRadius(string2);
-                } else if (index == C0923R.styleable.ConstraintLayout_Layout_circularflow_defaultAngle) {
+                } else if (index == R.styleable.ConstraintLayout_Layout_circularflow_defaultAngle) {
                     Float valueOf = Float.valueOf(obtainStyledAttributes.getFloat(index, DEFAULT_ANGLE));
                     this.mReferenceDefaultAngle = valueOf;
                     setDefaultAngle(valueOf.floatValue());
-                } else if (index == C0923R.styleable.ConstraintLayout_Layout_circularflow_defaultRadius) {
+                } else if (index == R.styleable.ConstraintLayout_Layout_circularflow_defaultRadius) {
                     Integer valueOf2 = Integer.valueOf(obtainStyledAttributes.getDimensionPixelSize(index, DEFAULT_RADIUS));
                     this.mReferenceDefaultRadius = valueOf2;
                     setDefaultRadius(valueOf2.intValue());

@@ -15,14 +15,14 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R$attr;
 import androidx.core.view.TintableBackgroundView;
 import androidx.core.widget.AutoSizeableTextView;
 import androidx.core.widget.TextViewCompat;
 import androidx.core.widget.TintableCompoundDrawablesView;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class AppCompatButton extends Button implements EmojiCompatConfigurationView, TintableBackgroundView, AutoSizeableTextView, TintableCompoundDrawablesView {
 
     @NonNull
@@ -55,7 +55,7 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         }
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public int getAutoSizeMaxTextSize() {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -68,7 +68,7 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         return -1;
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public int getAutoSizeMinTextSize() {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -81,7 +81,7 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         return -1;
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public int getAutoSizeStepGranularity() {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -94,7 +94,7 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         return -1;
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public int[] getAutoSizeTextAvailableSizes() {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -104,7 +104,7 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         return appCompatTextHelper != null ? appCompatTextHelper.getAutoSizeTextAvailableSizes() : new int[0];
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @SuppressLint({"WrongConstant"})
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public int getAutoSizeTextType() {
@@ -124,7 +124,6 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         return TextViewCompat.unwrapCustomSelectionActionModeCallback(super.getCustomSelectionActionModeCallback());
     }
 
-    @Override // androidx.core.view.TintableBackgroundView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public ColorStateList getSupportBackgroundTintList() {
@@ -135,7 +134,6 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         return null;
     }
 
-    @Override // androidx.core.view.TintableBackgroundView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public PorterDuff.Mode getSupportBackgroundTintMode() {
@@ -146,14 +144,12 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         return null;
     }
 
-    @Override // androidx.core.widget.TintableCompoundDrawablesView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public ColorStateList getSupportCompoundDrawablesTintList() {
         return this.mTextHelper.getCompoundDrawableTintList();
     }
 
-    @Override // androidx.core.widget.TintableCompoundDrawablesView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public PorterDuff.Mode getSupportCompoundDrawablesTintMode() {
@@ -201,7 +197,7 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         getEmojiTextViewHelper().setAllCaps(z);
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setAutoSizeTextTypeUniformWithConfiguration(int i, int i2, int i3, int i4) throws IllegalArgumentException {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -214,7 +210,7 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         }
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setAutoSizeTextTypeUniformWithPresetSizes(@NonNull int[] iArr, int i) throws IllegalArgumentException {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -227,7 +223,7 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         }
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setAutoSizeTextTypeWithDefaults(int i) {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -280,7 +276,6 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         }
     }
 
-    @Override // androidx.core.view.TintableBackgroundView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportBackgroundTintList(@Nullable ColorStateList colorStateList) {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
@@ -289,7 +284,6 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         }
     }
 
-    @Override // androidx.core.view.TintableBackgroundView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportBackgroundTintMode(@Nullable PorterDuff.Mode mode) {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
@@ -298,14 +292,12 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
         }
     }
 
-    @Override // androidx.core.widget.TintableCompoundDrawablesView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportCompoundDrawablesTintList(@Nullable ColorStateList colorStateList) {
         this.mTextHelper.setCompoundDrawableTintList(colorStateList);
         this.mTextHelper.applyCompoundDrawablesTints();
     }
 
-    @Override // androidx.core.widget.TintableCompoundDrawablesView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportCompoundDrawablesTintMode(@Nullable PorterDuff.Mode mode) {
         this.mTextHelper.setCompoundDrawableTintMode(mode);
@@ -334,7 +326,7 @@ public class AppCompatButton extends Button implements EmojiCompatConfigurationV
     }
 
     public AppCompatButton(@NonNull Context context, @Nullable AttributeSet attributeSet) {
-        this(context, attributeSet, C0257R.attr.buttonStyle);
+        this(context, attributeSet, R$attr.buttonStyle);
     }
 
     public AppCompatButton(@NonNull Context context, @Nullable AttributeSet attributeSet, int i) {

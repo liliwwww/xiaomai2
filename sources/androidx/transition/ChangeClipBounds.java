@@ -3,7 +3,6 @@ package androidx.transition;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
-import android.animation.TypeEvaluator;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
@@ -14,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ChangeClipBounds extends Transition {
     private static final String PROPNAME_BOUNDS = "android:clipBounds:bounds";
     private static final String PROPNAME_CLIP = "android:clipBounds:clip";
@@ -64,7 +63,7 @@ public class ChangeClipBounds extends Transition {
                 return null;
             }
             ViewCompat.setClipBounds(transitionValues2.view, rect);
-            objectAnimator = ObjectAnimator.ofObject(transitionValues2.view, (Property<View, V>) ViewUtils.CLIP_BOUNDS, (TypeEvaluator) new RectEvaluator(new Rect()), (Object[]) new Rect[]{rect, rect2});
+            objectAnimator = ObjectAnimator.ofObject(transitionValues2.view, (Property<View, V>) ViewUtils.CLIP_BOUNDS, new RectEvaluator(new Rect()), rect, rect2);
             if (z) {
                 final View view = transitionValues2.view;
                 objectAnimator.addListener(new AnimatorListenerAdapter() { // from class: androidx.transition.ChangeClipBounds.1

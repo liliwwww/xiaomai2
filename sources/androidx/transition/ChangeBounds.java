@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.TypeEvaluator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -25,7 +26,7 @@ import androidx.core.view.ViewCompat;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ChangeBounds extends Transition {
     private static final Property<View, PointF> BOTTOM_RIGHT_ONLY_PROPERTY;
     private static final Property<ViewBounds, PointF> BOTTOM_RIGHT_PROPERTY;
@@ -200,19 +201,16 @@ public class ChangeBounds extends Transition {
         return false;
     }
 
-    @Override // androidx.transition.Transition
     public void captureEndValues(@NonNull TransitionValues transitionValues) {
         captureValues(transitionValues);
     }
 
-    @Override // androidx.transition.Transition
     public void captureStartValues(@NonNull TransitionValues transitionValues) {
         captureValues(transitionValues);
     }
 
-    @Override // androidx.transition.Transition
     @Nullable
-    public Animator createAnimator(@NonNull final ViewGroup viewGroup, @Nullable TransitionValues transitionValues, @Nullable TransitionValues transitionValues2) {
+    public Animator createAnimator(@NonNull ViewGroup viewGroup, @Nullable TransitionValues transitionValues, @Nullable TransitionValues transitionValues2) {
         int i;
         final View view;
         int i2;
@@ -229,7 +227,7 @@ public class ChangeBounds extends Transition {
         if (viewGroup2 == null || viewGroup3 == null) {
             return null;
         }
-        final View view2 = transitionValues2.view;
+        View view2 = transitionValues2.view;
         if (!parentMatches(viewGroup2, viewGroup3)) {
             int intValue = ((Integer) transitionValues.values.get(PROPNAME_WINDOW_X)).intValue();
             int intValue2 = ((Integer) transitionValues.values.get(PROPNAME_WINDOW_Y)).intValue();
@@ -241,20 +239,14 @@ public class ChangeBounds extends Transition {
             viewGroup.getLocationInWindow(this.mTempLocation);
             Bitmap createBitmap = Bitmap.createBitmap(view2.getWidth(), view2.getHeight(), Bitmap.Config.ARGB_8888);
             view2.draw(new Canvas(createBitmap));
-            final BitmapDrawable bitmapDrawable = new BitmapDrawable(createBitmap);
-            final float transitionAlpha = ViewUtils.getTransitionAlpha(view2);
+            BitmapDrawable bitmapDrawable = new BitmapDrawable(createBitmap);
+            float transitionAlpha = ViewUtils.getTransitionAlpha(view2);
             ViewUtils.setTransitionAlpha(view2, 0.0f);
             ViewUtils.getOverlay(viewGroup).add(bitmapDrawable);
             PathMotion pathMotion = getPathMotion();
             int[] iArr = this.mTempLocation;
             ObjectAnimator ofPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(bitmapDrawable, PropertyValuesHolderUtils.ofPointF(DRAWABLE_ORIGIN_PROPERTY, pathMotion.getPath(intValue - iArr[0], intValue2 - iArr[1], intValue3 - iArr[0], intValue4 - iArr[1])));
-            ofPropertyValuesHolder.addListener(new AnimatorListenerAdapter() { // from class: androidx.transition.ChangeBounds.10
-                @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-                public void onAnimationEnd(Animator animator) {
-                    ViewUtils.getOverlay(viewGroup).remove(bitmapDrawable);
-                    ViewUtils.setTransitionAlpha(view2, transitionAlpha);
-                }
-            });
+            ofPropertyValuesHolder.addListener(new 10(this, viewGroup, bitmapDrawable, view2, transitionAlpha));
             return ofPropertyValuesHolder;
         }
         Rect rect2 = (Rect) transitionValues.values.get(PROPNAME_BOUNDS);
@@ -307,7 +299,7 @@ public class ChangeBounds extends Transition {
                 Object[] objArr = new Object[2];
                 objArr[i2] = rect;
                 objArr[1] = rect6;
-                ObjectAnimator ofObject = ObjectAnimator.ofObject(view, "clipBounds", rectEvaluator, objArr);
+                ObjectAnimator ofObject = ObjectAnimator.ofObject((Object) view, "clipBounds", (TypeEvaluator) rectEvaluator, objArr);
                 ofObject.addListener(new AnimatorListenerAdapter() { // from class: androidx.transition.ChangeBounds.8
                     private boolean mIsCanceled;
 
@@ -359,13 +351,13 @@ public class ChangeBounds extends Transition {
             addListener(new TransitionListenerAdapter() { // from class: androidx.transition.ChangeBounds.9
                 boolean mCanceled = false;
 
-                @Override // androidx.transition.TransitionListenerAdapter, androidx.transition.Transition.TransitionListener
+                @Override // androidx.transition.TransitionListenerAdapter
                 public void onTransitionCancel(@NonNull Transition transition) {
                     ViewGroupUtils.suppressLayout(viewGroup4, false);
                     this.mCanceled = true;
                 }
 
-                @Override // androidx.transition.TransitionListenerAdapter, androidx.transition.Transition.TransitionListener
+                @Override // androidx.transition.TransitionListenerAdapter
                 public void onTransitionEnd(@NonNull Transition transition) {
                     if (!this.mCanceled) {
                         ViewGroupUtils.suppressLayout(viewGroup4, false);
@@ -373,12 +365,12 @@ public class ChangeBounds extends Transition {
                     transition.removeListener(this);
                 }
 
-                @Override // androidx.transition.TransitionListenerAdapter, androidx.transition.Transition.TransitionListener
+                @Override // androidx.transition.TransitionListenerAdapter
                 public void onTransitionPause(@NonNull Transition transition) {
                     ViewGroupUtils.suppressLayout(viewGroup4, false);
                 }
 
-                @Override // androidx.transition.TransitionListenerAdapter, androidx.transition.Transition.TransitionListener
+                @Override // androidx.transition.TransitionListenerAdapter
                 public void onTransitionResume(@NonNull Transition transition) {
                     ViewGroupUtils.suppressLayout(viewGroup4, true);
                 }
@@ -391,7 +383,6 @@ public class ChangeBounds extends Transition {
         return this.mResizeClip;
     }
 
-    @Override // androidx.transition.Transition
     @Nullable
     public String[] getTransitionProperties() {
         return sTransitionProperties;

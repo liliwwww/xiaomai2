@@ -2,21 +2,17 @@ package androidx.compose.animation;
 
 import androidx.compose.animation.core.DecayAnimationSpec;
 import androidx.compose.animation.core.DecayAnimationSpecKt;
-import androidx.compose.p004ui.unit.Density;
+import androidx.compose.ui.unit.Density;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SplineBasedDecayKt {
     private static final float EndTension = 1.0f;
     private static final float Inflection = 0.35f;
-
-    /* renamed from: P1 */
-    private static final float f63P1 = 0.175f;
-
-    /* renamed from: P2 */
-    private static final float f64P2 = 0.35000002f;
+    private static final float P1 = 0.175f;
+    private static final float P2 = 0.35000002f;
     private static final float StartTension = 0.5f;
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -39,7 +35,7 @@ public final class SplineBasedDecayKt {
                 f2 = 1.0f - f;
                 f3 = f * 3.0f * f2;
                 f4 = f * f * f;
-                float f13 = (((f2 * f63P1) + (f * f64P2)) * f3) + f4;
+                float f13 = (((f2 * P1) + (f * P2)) * f3) + f4;
                 if (Math.abs(f13 - f11) < 1.0E-5d) {
                     break;
                 } else if (f13 > f11) {
@@ -66,7 +62,7 @@ public final class SplineBasedDecayKt {
                     f14 = 0.5f;
                 }
             }
-            fArr2[i2] = (f7 * ((f6 * f63P1) + (f5 * f64P2))) + f8;
+            fArr2[i2] = (f7 * ((f6 * P1) + (f5 * P2))) + f8;
         }
         fArr2[i] = 1.0f;
         fArr[i] = fArr2[i];

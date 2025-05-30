@@ -9,7 +9,7 @@ import android.taobao.windvane.jsbridge.WVPluginManager;
 import android.taobao.windvane.standardmodal.WVStandardEventCenter;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVAPI {
 
     /* compiled from: Taobao */

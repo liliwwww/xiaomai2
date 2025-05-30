@@ -1,11 +1,11 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.unit.C0856Dp;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.saveable.RememberSaveableKt;
 import androidx.compose.runtime.saveable.Saver;
+import androidx.compose.ui.unit.Dp;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
@@ -13,9 +13,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SwipeToDismissKt {
-    private static final float DISMISS_THRESHOLD = C0856Dp.m5216constructorimpl(56);
+    private static final float DISMISS_THRESHOLD = Dp.m2142constructorimpl(56);
 
     /* JADX WARN: Removed duplicated region for block: B:10:0x005a  */
     /* JADX WARN: Removed duplicated region for block: B:13:0x0060  */
@@ -39,12 +39,12 @@ public final class SwipeToDismissKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void SwipeToDismiss(@org.jetbrains.annotations.NotNull final androidx.compose.material.DismissState r21, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r22, @org.jetbrains.annotations.Nullable java.util.Set<? extends androidx.compose.material.DismissDirection> r23, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.material.DismissDirection, ? extends androidx.compose.material.ThresholdConfig> r24, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r25, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r26, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r27, final int r28, final int r29) {
+    public static final void SwipeToDismiss(@org.jetbrains.annotations.NotNull androidx.compose.material.DismissState r21, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r22, @org.jetbrains.annotations.Nullable java.util.Set<? extends androidx.compose.material.DismissDirection> r23, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.material.DismissDirection, ? extends androidx.compose.material.ThresholdConfig> r24, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r25, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r26, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r27, int r28, int r29) {
         /*
             Method dump skipped, instructions count: 379
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SwipeToDismissKt.SwipeToDismiss(androidx.compose.material.DismissState, androidx.compose.ui.Modifier, java.util.Set, kotlin.jvm.functions.Function1, kotlin.jvm.functions.Function3, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -97,7 +97,7 @@ public final class SwipeToDismissKt {
             ComposerKt.traceEventStart(-1753522702, i, -1, "androidx.compose.material.rememberDismissState (SwipeToDismiss.kt:148)");
         }
         Object[] objArr = new Object[0];
-        Saver<DismissState, DismissValue> Saver = DismissState.Companion.Saver(function1);
+        Saver Saver = DismissState.Companion.Saver(function1);
         composer.startReplaceableGroup(511388516);
         boolean changed = composer.changed(dismissValue) | composer.changed(function1);
         Object rememberedValue = composer.rememberedValue();
@@ -111,14 +111,14 @@ public final class SwipeToDismissKt {
 
                 @NotNull
                 /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-                public final DismissState m2251invoke() {
+                public final DismissState m668invoke() {
                     return new DismissState(DismissValue.this, function1);
                 }
             };
             composer.updateRememberedValue(rememberedValue);
         }
         composer.endReplaceableGroup();
-        DismissState dismissState = (DismissState) RememberSaveableKt.m2434rememberSaveable(objArr, (Saver) Saver, (String) null, (Function0) rememberedValue, composer, 72, 4);
+        DismissState dismissState = (DismissState) RememberSaveableKt.m795rememberSaveable(objArr, Saver, (String) null, (Function0) rememberedValue, composer, 72, 4);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }

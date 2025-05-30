@@ -8,17 +8,15 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @Immutable
 @ExperimentalMaterialApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SwipeProgress<T> {
     private final float fraction;
     private final T from;
-
-    /* renamed from: to */
-    private final T f96to;
+    private final T to;
 
     public SwipeProgress(T t, T t2, float f) {
         this.from = t;
-        this.f96to = t2;
+        this.to = t2;
         this.fraction = f;
     }
 
@@ -30,7 +28,7 @@ public final class SwipeProgress<T> {
             return false;
         }
         SwipeProgress swipeProgress = (SwipeProgress) obj;
-        if (Intrinsics.areEqual(this.from, swipeProgress.from) && Intrinsics.areEqual(this.f96to, swipeProgress.f96to)) {
+        if (Intrinsics.areEqual(this.from, swipeProgress.from) && Intrinsics.areEqual(this.to, swipeProgress.to)) {
             return (this.fraction > swipeProgress.fraction ? 1 : (this.fraction == swipeProgress.fraction ? 0 : -1)) == 0;
         }
         return false;
@@ -45,18 +43,18 @@ public final class SwipeProgress<T> {
     }
 
     public final T getTo() {
-        return this.f96to;
+        return this.to;
     }
 
     public int hashCode() {
         T t = this.from;
         int hashCode = (t != null ? t.hashCode() : 0) * 31;
-        T t2 = this.f96to;
+        T t2 = this.to;
         return ((hashCode + (t2 != null ? t2.hashCode() : 0)) * 31) + Float.floatToIntBits(this.fraction);
     }
 
     @NotNull
     public String toString() {
-        return "SwipeProgress(from=" + this.from + ", to=" + this.f96to + ", fraction=" + this.fraction + ')';
+        return "SwipeProgress(from=" + this.from + ", to=" + this.to + ", fraction=" + this.fraction + ')';
     }
 }

@@ -2,9 +2,10 @@ package android.taobao.windvane.config;
 
 import android.app.Application;
 import android.os.Environment;
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
+import android.taobao.windvane.extra.uc.preRender.BasePreInitManager;
 import android.taobao.windvane.util.TaoLog;
 import android.text.TextUtils;
+import androidx.core.view.GravityCompat;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class UCParamData {
     private static final String DEFAULT_HOST_UCM_VERSIONS = "";
     private static final String LOAD_POLICY_CD_ONLY_LEGAL_VALUE = "sc_lshco";
@@ -40,7 +41,7 @@ public class UCParamData {
     public int discardableLimitBytes = 134217728;
     public boolean discardableReleaseFreeAfterTimeSwitch = false;
     public int discardableReleaseFreeAfterSecond = 60;
-    public int discardableReleaseFreeUntilByte = 8388608;
+    public int discardableReleaseFreeUntilByte = GravityCompat.RELATIVE_LAYOUT_DIRECTION;
     public boolean discardableReleaseForAllocFailedSwitch = true;
     public int grDiscardableLimitByte = 100663296;
     public int grResourceCacheLimitByte = 100663296;
@@ -130,7 +131,7 @@ public class UCParamData {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            TaoLog.m21e("UCParamData", "obtainGLLostUnreloadList: obtatin unreload url list error!");
+            TaoLog.e("UCParamData", "obtainGLLostUnreloadList: obtatin unreload url list error!");
         }
     }
 
@@ -139,7 +140,7 @@ public class UCParamData {
             if (TextUtils.isEmpty(str)) {
                 return;
             }
-            TaoLog.m18d("UCParamData", str);
+            TaoLog.d("UCParamData", str);
             JSONObject jSONObject = new JSONObject(str);
             this.sdCopyPathCd = getSdCopyPathCd(jSONObject.optString("sdCopyPathCd", ""));
             this.hostUcmVersionsCd = jSONObject.optString("hostUcmVersionsCd", "");
@@ -154,7 +155,7 @@ public class UCParamData {
             this.discardableLimitBytes = jSONObject.optInt("discardableLimitBytes", 134217728);
             this.discardableReleaseFreeAfterTimeSwitch = jSONObject.optBoolean("discardableReleaseFreeAfterTimeSwitch", false);
             this.discardableReleaseFreeAfterSecond = jSONObject.optInt("discardableReleaseFreeAfterSecond", 60);
-            this.discardableReleaseFreeUntilByte = jSONObject.optInt("discardableReleaseFreeUntilByte", 8388608);
+            this.discardableReleaseFreeUntilByte = jSONObject.optInt("discardableReleaseFreeUntilByte", GravityCompat.RELATIVE_LAYOUT_DIRECTION);
             this.discardableReleaseForAllocFailedSwitch = jSONObject.optBoolean("discardableReleaseForAllocFailedSwitch", true);
             this.grDiscardableLimitByte = jSONObject.optInt("grDiscardableLimitByte", 100663296);
             this.grResourceCacheLimitByte = jSONObject.optInt("grResourceCacheLimitByte", 100663296);
@@ -166,7 +167,7 @@ public class UCParamData {
             obtainGLLostUnreloadList(jSONObject);
             this.webglErrorRate = jSONObject.optInt("webglErrorRate", this.webglErrorRate);
         } catch (Throwable unused) {
-            TaoLog.m32w("UCParamData", "failed to parse uc params", str);
+            TaoLog.w("UCParamData", "failed to parse uc params", new Object[]{str});
         }
     }
 

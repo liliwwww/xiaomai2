@@ -8,11 +8,10 @@ import android.util.Log;
 import android.widget.CheckedTextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import java.lang.reflect.Field;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class CheckedTextViewCompat {
     private static final String TAG = "CheckedTextViewCompat";
 
@@ -46,45 +45,6 @@ public final class CheckedTextViewCompat {
                 }
             }
             return null;
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(16)
-    /* loaded from: classes2.dex */
-    private static class Api16Impl {
-        private Api16Impl() {
-        }
-
-        @Nullable
-        static Drawable getCheckMarkDrawable(@NonNull CheckedTextView checkedTextView) {
-            return checkedTextView.getCheckMarkDrawable();
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(21)
-    /* loaded from: classes2.dex */
-    private static class Api21Impl {
-        private Api21Impl() {
-        }
-
-        @Nullable
-        static ColorStateList getCheckMarkTintList(@NonNull CheckedTextView checkedTextView) {
-            return checkedTextView.getCheckMarkTintList();
-        }
-
-        @Nullable
-        static PorterDuff.Mode getCheckMarkTintMode(@NonNull CheckedTextView checkedTextView) {
-            return checkedTextView.getCheckMarkTintMode();
-        }
-
-        static void setCheckMarkTintList(@NonNull CheckedTextView checkedTextView, @Nullable ColorStateList colorStateList) {
-            checkedTextView.setCheckMarkTintList(colorStateList);
-        }
-
-        static void setCheckMarkTintMode(@NonNull CheckedTextView checkedTextView, @Nullable PorterDuff.Mode mode) {
-            checkedTextView.setCheckMarkTintMode(mode);
         }
     }
 

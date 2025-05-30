@@ -5,7 +5,7 @@ import kotlin.collections.ArraysKt;
 import kotlin.jvm.internal.Intrinsics;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TrieNodeKt {
     public static final int ENTRY_SIZE = 2;
     public static final int LOG_MAX_BRANCHING_FACTOR = 5;

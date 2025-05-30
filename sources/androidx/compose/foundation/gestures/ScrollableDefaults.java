@@ -5,19 +5,20 @@ import androidx.compose.animation.core.DecayAnimationSpec;
 import androidx.compose.foundation.AndroidOverscrollKt;
 import androidx.compose.foundation.ExperimentalFoundationApi;
 import androidx.compose.foundation.OverscrollEffect;
-import androidx.compose.p004ui.MotionDurationScale;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.MotionDurationScale;
+import androidx.compose.ui.unit.LayoutDirection;
+import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ScrollableDefaults {
     public static final int $stable = 0;
 
@@ -39,8 +40,7 @@ public final class ScrollableDefaults {
         boolean changed = composer.changed(rememberSplineBasedDecay);
         Object rememberedValue = composer.rememberedValue();
         if (changed || rememberedValue == Composer.Companion.getEmpty()) {
-            MotionDurationScale motionDurationScale = null;
-            rememberedValue = new DefaultFlingBehavior(rememberSplineBasedDecay, motionDurationScale, 2, motionDurationScale);
+            rememberedValue = new DefaultFlingBehavior(rememberSplineBasedDecay, (MotionDurationScale) null, 2, (DefaultConstructorMarker) null);
             composer.updateRememberedValue(rememberedValue);
         }
         composer.endReplaceableGroup();

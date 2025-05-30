@@ -1,9 +1,9 @@
 package androidx.compose.foundation.relocation;
 
-import androidx.compose.p004ui.geometry.Rect;
-import androidx.compose.p004ui.layout.LayoutCoordinates;
-import androidx.compose.p004ui.modifier.ModifierLocalProvider;
-import androidx.compose.p004ui.modifier.ProvidableModifierLocal;
+import androidx.compose.ui.geometry.Rect;
+import androidx.compose.ui.layout.LayoutCoordinates;
+import androidx.compose.ui.modifier.ModifierLocalProvider;
+import androidx.compose.ui.modifier.ProvidableModifierLocal;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.intrinsics.IntrinsicsKt;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.i80;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class BringIntoViewResponderModifier extends BringIntoViewChildModifier implements ModifierLocalProvider<BringIntoViewParent>, BringIntoViewParent {
     public BringIntoViewResponder responder;
 
@@ -27,7 +27,6 @@ final class BringIntoViewResponderModifier extends BringIntoViewChildModifier im
     /* JADX INFO: Access modifiers changed from: private */
     public static final Rect bringChildIntoView$localRect(BringIntoViewResponderModifier bringIntoViewResponderModifier, LayoutCoordinates layoutCoordinates, Function0<Rect> function0) {
         Rect rect;
-        Rect localRectOf;
         LayoutCoordinates layoutCoordinates2 = bringIntoViewResponderModifier.getLayoutCoordinates();
         if (layoutCoordinates2 == null) {
             return null;
@@ -38,14 +37,13 @@ final class BringIntoViewResponderModifier extends BringIntoViewChildModifier im
         if (layoutCoordinates == null || (rect = (Rect) function0.invoke()) == null) {
             return null;
         }
-        localRectOf = BringIntoViewResponderKt.localRectOf(layoutCoordinates2, layoutCoordinates, rect);
-        return localRectOf;
+        return BringIntoViewResponderKt.access$localRectOf(layoutCoordinates2, layoutCoordinates, rect);
     }
 
     @Override // androidx.compose.foundation.relocation.BringIntoViewParent
     @Nullable
     public Object bringChildIntoView(@NotNull final LayoutCoordinates layoutCoordinates, @NotNull final Function0<Rect> function0, @NotNull Continuation<? super Unit> continuation) {
-        Object g = i80.g(new BringIntoViewResponderModifier$bringChildIntoView$2(this, layoutCoordinates, function0, new Function0<Rect>() { // from class: androidx.compose.foundation.relocation.BringIntoViewResponderModifier$bringChildIntoView$parentRect$1
+        Object g = i80.g(new bringChildIntoView.2(this, layoutCoordinates, function0, new Function0<Rect>() { // from class: androidx.compose.foundation.relocation.BringIntoViewResponderModifier$bringChildIntoView$parentRect$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             {
                 super(0);
@@ -53,7 +51,7 @@ final class BringIntoViewResponderModifier extends BringIntoViewChildModifier im
 
             @Nullable
             /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Rect m1663invoke() {
+            public final Rect m351invoke() {
                 Rect bringChildIntoView$localRect;
                 bringChildIntoView$localRect = BringIntoViewResponderModifier.bringChildIntoView$localRect(BringIntoViewResponderModifier.this, layoutCoordinates, function0);
                 if (bringChildIntoView$localRect != null) {
@@ -61,11 +59,11 @@ final class BringIntoViewResponderModifier extends BringIntoViewChildModifier im
                 }
                 return null;
             }
-        }, null), continuation);
+        }, (Continuation) null), continuation);
         return g == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? g : Unit.INSTANCE;
     }
 
-    @Override // androidx.compose.p004ui.modifier.ModifierLocalProvider
+    @Override // androidx.compose.ui.modifier.ModifierLocalProvider
     @NotNull
     public ProvidableModifierLocal<BringIntoViewParent> getKey() {
         return BringIntoViewKt.getModifierLocalBringIntoViewParent();
@@ -82,7 +80,7 @@ final class BringIntoViewResponderModifier extends BringIntoViewChildModifier im
     }
 
     /* JADX WARN: Can't rename method to resolve collision */
-    @Override // androidx.compose.p004ui.modifier.ModifierLocalProvider
+    @Override // androidx.compose.ui.modifier.ModifierLocalProvider
     @NotNull
     public BringIntoViewParent getValue() {
         return this;

@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SaveableStateRegistryImpl implements SaveableStateRegistry {
 
     @NotNull
@@ -90,7 +90,7 @@ final class SaveableStateRegistryImpl implements SaveableStateRegistry {
 
     @Override // androidx.compose.runtime.saveable.SaveableStateRegistry
     @NotNull
-    public SaveableStateRegistry.Entry registerProvider(@NotNull final String str, @NotNull final Function0<? extends Object> function0) {
+    public SaveableStateRegistry.Entry registerProvider(@NotNull String str, @NotNull Function0<? extends Object> function0) {
         Intrinsics.checkNotNullParameter(str, "key");
         Intrinsics.checkNotNullParameter(function0, "valueProvider");
         if (!(!StringsKt.isBlank(str))) {
@@ -103,22 +103,6 @@ final class SaveableStateRegistryImpl implements SaveableStateRegistry {
             map.put(str, list);
         }
         list.add(function0);
-        return new SaveableStateRegistry.Entry() { // from class: androidx.compose.runtime.saveable.SaveableStateRegistryImpl$registerProvider$3
-            @Override // androidx.compose.runtime.saveable.SaveableStateRegistry.Entry
-            public void unregister() {
-                Map map2;
-                Map map3;
-                map2 = SaveableStateRegistryImpl.this.valueProviders;
-                List list2 = (List) map2.remove(str);
-                if (list2 != null) {
-                    list2.remove(function0);
-                }
-                if (list2 == null || !(!list2.isEmpty())) {
-                    return;
-                }
-                map3 = SaveableStateRegistryImpl.this.valueProviders;
-                map3.put(str, list2);
-            }
-        };
+        return new registerProvider.3(this, str, function0);
     }
 }

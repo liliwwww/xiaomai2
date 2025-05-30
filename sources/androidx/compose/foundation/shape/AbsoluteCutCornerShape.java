@@ -1,19 +1,19 @@
 package androidx.compose.foundation.shape;
 
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.geometry.SizeKt;
-import androidx.compose.p004ui.graphics.AndroidPath_androidKt;
-import androidx.compose.p004ui.graphics.Outline;
-import androidx.compose.p004ui.graphics.Path;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.geometry.SizeKt;
+import androidx.compose.ui.graphics.AndroidPath_androidKt;
+import androidx.compose.ui.graphics.Outline;
+import androidx.compose.ui.graphics.Path;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AbsoluteCutCornerShape extends CornerBasedShape {
     public static final int $stable = 0;
 
@@ -26,23 +26,22 @@ public final class AbsoluteCutCornerShape extends CornerBasedShape {
         Intrinsics.checkNotNullParameter(cornerSize4, "bottomLeft");
     }
 
-    @Override // androidx.compose.foundation.shape.CornerBasedShape
     @NotNull
     /* renamed from: createOutline-LjSzlW0, reason: not valid java name */
-    public Outline mo1677createOutlineLjSzlW0(long j, float f, float f2, float f3, float f4, @NotNull LayoutDirection layoutDirection) {
+    public Outline m365createOutlineLjSzlW0(long j, float f, float f2, float f3, float f4, @NotNull LayoutDirection layoutDirection) {
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
         if (((f + f2) + f4) + f3 == 0.0f) {
-            return new Outline.Rectangle(SizeKt.m2646toRectuvyYCjk(j));
+            return new Outline.Rectangle(SizeKt.m924toRectuvyYCjk(j));
         }
         Path Path = AndroidPath_androidKt.Path();
         Path.moveTo(0.0f, f);
         Path.lineTo(f, 0.0f);
-        Path.lineTo(Size.m2625getWidthimpl(j) - f2, 0.0f);
-        Path.lineTo(Size.m2625getWidthimpl(j), f2);
-        Path.lineTo(Size.m2625getWidthimpl(j), Size.m2622getHeightimpl(j) - f3);
-        Path.lineTo(Size.m2625getWidthimpl(j) - f3, Size.m2622getHeightimpl(j));
-        Path.lineTo(f4, Size.m2622getHeightimpl(j));
-        Path.lineTo(0.0f, Size.m2622getHeightimpl(j) - f4);
+        Path.lineTo(Size.m903getWidthimpl(j) - f2, 0.0f);
+        Path.lineTo(Size.m903getWidthimpl(j), f2);
+        Path.lineTo(Size.m903getWidthimpl(j), Size.m900getHeightimpl(j) - f3);
+        Path.lineTo(Size.m903getWidthimpl(j) - f3, Size.m900getHeightimpl(j));
+        Path.lineTo(f4, Size.m900getHeightimpl(j));
+        Path.lineTo(0.0f, Size.m900getHeightimpl(j) - f4);
         Path.close();
         return new Outline.Generic(Path);
     }
@@ -67,9 +66,9 @@ public final class AbsoluteCutCornerShape extends CornerBasedShape {
         return "AbsoluteCutCornerShape(topLeft = " + getTopStart() + ", topRight = " + getTopEnd() + ", bottomRight = " + getBottomEnd() + ", bottomLeft = " + getBottomStart() + ')';
     }
 
-    @Override // androidx.compose.foundation.shape.CornerBasedShape
     @NotNull
-    public AbsoluteCutCornerShape copy(@NotNull CornerSize cornerSize, @NotNull CornerSize cornerSize2, @NotNull CornerSize cornerSize3, @NotNull CornerSize cornerSize4) {
+    /* renamed from: copy, reason: merged with bridge method [inline-methods] */
+    public AbsoluteCutCornerShape m366copy(@NotNull CornerSize cornerSize, @NotNull CornerSize cornerSize2, @NotNull CornerSize cornerSize3, @NotNull CornerSize cornerSize4) {
         Intrinsics.checkNotNullParameter(cornerSize, "topStart");
         Intrinsics.checkNotNullParameter(cornerSize2, "topEnd");
         Intrinsics.checkNotNullParameter(cornerSize3, "bottomEnd");

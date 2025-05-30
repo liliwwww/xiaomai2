@@ -5,7 +5,7 @@ import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyGridDslKt$items$7 extends Lambda implements Function1<Integer, Object> {
     final /* synthetic */ T[] $items;
     final /* synthetic */ Function1<T, Object> $key;

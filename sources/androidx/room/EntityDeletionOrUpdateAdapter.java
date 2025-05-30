@@ -1,12 +1,13 @@
 package androidx.room;
 
 import androidx.annotation.RestrictTo;
-import androidx.sqlite.p008db.SupportSQLiteStatement;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.sqlite.db.SupportSQLiteStatement;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class EntityDeletionOrUpdateAdapter<T> extends SharedSQLiteStatement {
     public EntityDeletionOrUpdateAdapter(RoomDatabase roomDatabase) {
         super(roomDatabase);
@@ -14,7 +15,6 @@ public abstract class EntityDeletionOrUpdateAdapter<T> extends SharedSQLiteState
 
     protected abstract void bind(SupportSQLiteStatement supportSQLiteStatement, T t);
 
-    @Override // androidx.room.SharedSQLiteStatement
     protected abstract String createQuery();
 
     public final int handle(T t) {

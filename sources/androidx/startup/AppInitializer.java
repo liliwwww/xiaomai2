@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Set;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AppInitializer {
     private static final String SECTION_NAME = "Startup";
     private static volatile AppInitializer sInstance;
@@ -125,7 +125,7 @@ public final class AppInitializer {
 
     /* JADX WARN: Multi-variable type inference failed */
     void discoverAndInitialize(@Nullable Bundle bundle) {
-        String string = this.mContext.getString(C1307R.string.androidx_startup);
+        String string = this.mContext.getString(R.string.androidx_startup);
         if (bundle != null) {
             try {
                 HashSet hashSet = new HashSet();

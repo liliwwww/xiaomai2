@@ -3,11 +3,10 @@ package androidx.recyclerview.widget;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 import androidx.annotation.NonNull;
-import java.util.ArrayList;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 interface ViewTypeStorage {
 
     /* compiled from: Taobao */
@@ -88,43 +87,10 @@ interface ViewTypeStorage {
     public static class SharedIdRangeViewTypeStorage implements ViewTypeStorage {
         SparseArray<List<NestedAdapterWrapper>> mGlobalTypeToWrapper = new SparseArray<>();
 
-        /* compiled from: Taobao */
-        /* loaded from: classes2.dex */
-        class WrapperViewTypeLookup implements ViewTypeLookup {
-            final NestedAdapterWrapper mWrapper;
-
-            WrapperViewTypeLookup(NestedAdapterWrapper nestedAdapterWrapper) {
-                this.mWrapper = nestedAdapterWrapper;
-            }
-
-            @Override // androidx.recyclerview.widget.ViewTypeStorage.ViewTypeLookup
-            public void dispose() {
-                SharedIdRangeViewTypeStorage.this.removeWrapper(this.mWrapper);
-            }
-
-            @Override // androidx.recyclerview.widget.ViewTypeStorage.ViewTypeLookup
-            public int globalToLocal(int i) {
-                return i;
-            }
-
-            @Override // androidx.recyclerview.widget.ViewTypeStorage.ViewTypeLookup
-            public int localToGlobal(int i) {
-                List<NestedAdapterWrapper> list = SharedIdRangeViewTypeStorage.this.mGlobalTypeToWrapper.get(i);
-                if (list == null) {
-                    list = new ArrayList<>();
-                    SharedIdRangeViewTypeStorage.this.mGlobalTypeToWrapper.put(i, list);
-                }
-                if (!list.contains(this.mWrapper)) {
-                    list.add(this.mWrapper);
-                }
-                return i;
-            }
-        }
-
         @Override // androidx.recyclerview.widget.ViewTypeStorage
         @NonNull
         public ViewTypeLookup createViewTypeWrapper(@NonNull NestedAdapterWrapper nestedAdapterWrapper) {
-            return new WrapperViewTypeLookup(nestedAdapterWrapper);
+            return new WrapperViewTypeLookup(this, nestedAdapterWrapper);
         }
 
         @Override // androidx.recyclerview.widget.ViewTypeStorage

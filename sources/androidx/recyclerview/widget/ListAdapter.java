@@ -10,20 +10,15 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class ListAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
     final AsyncListDiffer<T> mDiffer;
     private final AsyncListDiffer.ListListener<T> mListener;
 
     protected ListAdapter(@NonNull DiffUtil.ItemCallback<T> itemCallback) {
-        AsyncListDiffer.ListListener<T> listListener = (AsyncListDiffer.ListListener<T>) new AsyncListDiffer.ListListener<Object>() { // from class: androidx.recyclerview.widget.ListAdapter.1
-            @Override // androidx.recyclerview.widget.AsyncListDiffer.ListListener
-            public void onCurrentListChanged(@NonNull List<Object> list, @NonNull List<Object> list2) {
-                ListAdapter.this.onCurrentListChanged(list, list2);
-            }
-        };
+        AsyncListDiffer.ListListener<T> listListener = new 1<>(this);
         this.mListener = listListener;
-        AsyncListDiffer<T> asyncListDiffer = new AsyncListDiffer<>(new AdapterListUpdateCallback(this), new AsyncDifferConfig.Builder(itemCallback).build());
+        AsyncListDiffer<T> asyncListDiffer = new AsyncListDiffer<>((ListUpdateCallback) new AdapterListUpdateCallback(this), (AsyncDifferConfig) new AsyncDifferConfig.Builder(itemCallback).build());
         this.mDiffer = asyncListDiffer;
         asyncListDiffer.addListListener(listListener);
     }
@@ -37,7 +32,6 @@ public abstract class ListAdapter<T, VH extends RecyclerView.ViewHolder> extends
         return this.mDiffer.getCurrentList().get(i);
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.Adapter
     public int getItemCount() {
         return this.mDiffer.getCurrentList().size();
     }
@@ -54,14 +48,9 @@ public abstract class ListAdapter<T, VH extends RecyclerView.ViewHolder> extends
     }
 
     protected ListAdapter(@NonNull AsyncDifferConfig<T> asyncDifferConfig) {
-        AsyncListDiffer.ListListener<T> listListener = (AsyncListDiffer.ListListener<T>) new AsyncListDiffer.ListListener<Object>() { // from class: androidx.recyclerview.widget.ListAdapter.1
-            @Override // androidx.recyclerview.widget.AsyncListDiffer.ListListener
-            public void onCurrentListChanged(@NonNull List<Object> list, @NonNull List<Object> list2) {
-                ListAdapter.this.onCurrentListChanged(list, list2);
-            }
-        };
+        AsyncListDiffer.ListListener<T> listListener = new 1<>(this);
         this.mListener = listListener;
-        AsyncListDiffer<T> asyncListDiffer = new AsyncListDiffer<>(new AdapterListUpdateCallback(this), asyncDifferConfig);
+        AsyncListDiffer<T> asyncListDiffer = new AsyncListDiffer<>((ListUpdateCallback) new AdapterListUpdateCallback(this), (AsyncDifferConfig) asyncDifferConfig);
         this.mDiffer = asyncListDiffer;
         asyncListDiffer.addListListener(listListener);
     }

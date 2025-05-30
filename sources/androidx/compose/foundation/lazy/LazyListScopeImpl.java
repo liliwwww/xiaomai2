@@ -1,7 +1,6 @@
 package androidx.compose.foundation.lazy;
 
 import androidx.compose.foundation.ExperimentalFoundationApi;
-import androidx.compose.foundation.lazy.LazyListScope;
 import androidx.compose.foundation.lazy.layout.IntervalList;
 import androidx.compose.foundation.lazy.layout.MutableIntervalList;
 import androidx.compose.runtime.Composable;
@@ -20,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyListScopeImpl implements LazyListScope {
 
     @Nullable
@@ -49,7 +48,6 @@ public final class LazyListScopeImpl implements LazyListScope {
         return this.intervals;
     }
 
-    @Override // androidx.compose.foundation.lazy.LazyListScope
     public void item(@Nullable final Object obj, @Nullable final Object obj2, @NotNull final Function3<? super LazyItemScope, ? super Composer, ? super Integer, Unit> function3) {
         Intrinsics.checkNotNullParameter(function3, "content");
         this._intervals.addInterval(1, new LazyListIntervalContent(obj != null ? new Function1<Integer, Object>() { // from class: androidx.compose.foundation.lazy.LazyListScopeImpl$item$1
@@ -82,7 +80,6 @@ public final class LazyListScopeImpl implements LazyListScope {
             }
         }, ComposableLambdaKt.composableLambdaInstance(-735119482, true, new Function4<LazyItemScope, Integer, Composer, Integer, Unit>() { // from class: androidx.compose.foundation.lazy.LazyListScopeImpl$item$3
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
             {
                 super(4);
             }
@@ -113,24 +110,20 @@ public final class LazyListScopeImpl implements LazyListScope {
         })));
     }
 
-    @Override // androidx.compose.foundation.lazy.LazyListScope
     public /* synthetic */ void item(Object obj, Function3 function3) {
-        LazyListScope.CC.m66b(this, obj, function3);
+        LazyListScope$CC.b(this, obj, function3);
     }
 
-    @Override // androidx.compose.foundation.lazy.LazyListScope
     public void items(int i, @Nullable Function1<? super Integer, ? extends Object> function1, @NotNull Function1<? super Integer, ? extends Object> function12, @NotNull Function4<? super LazyItemScope, ? super Integer, ? super Composer, ? super Integer, Unit> function4) {
         Intrinsics.checkNotNullParameter(function12, "contentType");
         Intrinsics.checkNotNullParameter(function4, "itemContent");
         this._intervals.addInterval(i, new LazyListIntervalContent(function1, function12, function4));
     }
 
-    @Override // androidx.compose.foundation.lazy.LazyListScope
     public /* synthetic */ void items(int i, Function1 function1, Function4 function4) {
-        LazyListScope.CC.m68d(this, i, function1, function4);
+        LazyListScope$CC.d(this, i, function1, function4);
     }
 
-    @Override // androidx.compose.foundation.lazy.LazyListScope
     @ExperimentalFoundationApi
     public void stickyHeader(@Nullable Object obj, @Nullable Object obj2, @NotNull Function3<? super LazyItemScope, ? super Composer, ? super Integer, Unit> function3) {
         Intrinsics.checkNotNullParameter(function3, "content");

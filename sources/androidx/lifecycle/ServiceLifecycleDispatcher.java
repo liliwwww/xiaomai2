@@ -5,33 +5,11 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ServiceLifecycleDispatcher {
     private final Handler mHandler = new Handler();
     private DispatchRunnable mLastDispatchRunnable;
     private final LifecycleRegistry mRegistry;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static class DispatchRunnable implements Runnable {
-        final Lifecycle.Event mEvent;
-        private final LifecycleRegistry mRegistry;
-        private boolean mWasExecuted = false;
-
-        DispatchRunnable(@NonNull LifecycleRegistry lifecycleRegistry, Lifecycle.Event event) {
-            this.mRegistry = lifecycleRegistry;
-            this.mEvent = event;
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            if (this.mWasExecuted) {
-                return;
-            }
-            this.mRegistry.handleLifecycleEvent(this.mEvent);
-            this.mWasExecuted = true;
-        }
-    }
 
     public ServiceLifecycleDispatcher(@NonNull LifecycleOwner lifecycleOwner) {
         this.mRegistry = new LifecycleRegistry(lifecycleOwner);
@@ -42,7 +20,7 @@ public class ServiceLifecycleDispatcher {
         if (dispatchRunnable != null) {
             dispatchRunnable.run();
         }
-        DispatchRunnable dispatchRunnable2 = new DispatchRunnable(this.mRegistry, event);
+        Runnable dispatchRunnable2 = new DispatchRunnable(this.mRegistry, event);
         this.mLastDispatchRunnable = dispatchRunnable2;
         this.mHandler.postAtFrontOfQueue(dispatchRunnable2);
     }

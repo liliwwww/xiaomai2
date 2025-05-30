@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* JADX WARN: Unexpected interfaces in signature: [androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentList<E>] */
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PersistentVector<E> extends AbstractPersistentList<E> {
 
     @NotNull
@@ -33,7 +33,7 @@ public final class PersistentVector<E> extends AbstractPersistentList<E> {
         this.size = i;
         this.rootShift = i2;
         if (size() > 32) {
-            CommonFunctionsKt.m2432assert(size() - UtilsKt.rootSize(size()) <= RangesKt.coerceAtMost(objArr2.length, 32));
+            CommonFunctionsKt.assert(size() - UtilsKt.rootSize(size()) <= RangesKt.coerceAtMost(objArr2.length, 32));
             return;
         }
         throw new IllegalArgumentException(("Trie-based persistent vector should have at least 33 elements, got " + size()).toString());
@@ -162,7 +162,7 @@ public final class PersistentVector<E> extends AbstractPersistentList<E> {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private final java.lang.Object[] pushTail(java.lang.Object[] r4, int r5, java.lang.Object[] r6) {
         /*
@@ -234,7 +234,7 @@ public final class PersistentVector<E> extends AbstractPersistentList<E> {
 
     private final PersistentList<E> removeFromTailAt(Object[] objArr, int i, int i2, int i3) {
         int size = size() - i;
-        CommonFunctionsKt.m2432assert(i3 < size);
+        CommonFunctionsKt.assert(i3 < size);
         if (size == 1) {
             return pullLastBufferFromRoot(objArr, i, i2);
         }
@@ -267,12 +267,10 @@ public final class PersistentVector<E> extends AbstractPersistentList<E> {
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // java.util.List, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
     public /* bridge */ /* synthetic */ PersistentCollection add(Object obj) {
-        return add((PersistentVector<E>) obj);
+        return m765add((PersistentVector<E>) obj);
     }
 
-    @Override // java.util.List
     public E get(int i) {
         ListImplementation.checkElementIndex$runtime_release(i, size());
         return (E) bufferFor(i)[i & 31];
@@ -282,14 +280,12 @@ public final class PersistentVector<E> extends AbstractPersistentList<E> {
         return this.size;
     }
 
-    @Override // java.util.List
     @NotNull
     public ListIterator<E> listIterator(int i) {
         ListImplementation.checkPositionIndex$runtime_release(i, size());
         return new PersistentVectorIterator(this.root, this.tail, i, size(), (this.rootShift / 5) + 1);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentList
     @NotNull
     public PersistentList<E> removeAt(int i) {
         ListImplementation.checkElementIndex$runtime_release(i, size());
@@ -297,7 +293,6 @@ public final class PersistentVector<E> extends AbstractPersistentList<E> {
         return i >= rootSize ? removeFromTailAt(this.root, rootSize, this.rootShift, i - rootSize) : removeFromTailAt(removeFromRootAt(this.root, this.rootShift, i, new ObjectRef(this.tail[0])), rootSize, this.rootShift, 0);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentList, java.util.List
     @NotNull
     public PersistentList<E> set(int i, E e) {
         ListImplementation.checkElementIndex$runtime_release(i, size());
@@ -310,9 +305,9 @@ public final class PersistentVector<E> extends AbstractPersistentList<E> {
         return new PersistentVector(this.root, copyOf, size(), this.rootShift);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentList, java.util.List, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
     @NotNull
-    public PersistentList<E> add(E e) {
+    /* renamed from: add, reason: collision with other method in class */
+    public PersistentList<E> m765add(E e) {
         int size = size() - rootSize();
         if (size >= 32) {
             return pushFilledTail(this.root, this.tail, UtilsKt.presizedBufferWith(e));
@@ -323,27 +318,25 @@ public final class PersistentVector<E> extends AbstractPersistentList<E> {
         return new PersistentVector(this.root, copyOf, size() + 1, this.rootShift);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
     @NotNull
     public PersistentList<E> removeAll(@NotNull Function1<? super E, Boolean> function1) {
         Intrinsics.checkNotNullParameter(function1, "predicate");
-        PersistentVectorBuilder<E> builder = builder();
-        builder.removeAllWithPredicate(function1);
-        return builder.build();
+        PersistentVectorBuilder<E> m766builder = m766builder();
+        m766builder.removeAllWithPredicate(function1);
+        return m766builder.build();
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentList, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
     @NotNull
-    public PersistentVectorBuilder<E> builder() {
+    /* renamed from: builder, reason: collision with other method in class and merged with bridge method [inline-methods] and merged with bridge method [inline-methods] */
+    public PersistentVectorBuilder<E> m766builder() {
         return new PersistentVectorBuilder<>(this, this.root, this.tail, this.rootShift);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentList, java.util.List
     @NotNull
     public PersistentList<E> add(int i, E e) {
         ListImplementation.checkPositionIndex$runtime_release(i, size());
         if (i == size()) {
-            return add((PersistentVector<E>) e);
+            return m765add((PersistentVector<E>) e);
         }
         int rootSize = rootSize();
         if (i >= rootSize) {

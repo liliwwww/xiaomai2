@@ -6,7 +6,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AnimationVector1D extends AnimationVector {
     public static final int $stable = 8;
     private final int size;

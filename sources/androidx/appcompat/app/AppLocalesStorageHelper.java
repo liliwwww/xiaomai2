@@ -8,7 +8,6 @@ import android.util.Log;
 import android.util.Xml;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.app.AppLocalesStorageHelper;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,7 +17,7 @@ import java.util.concurrent.Executor;
 import org.xmlpull.v1.XmlSerializer;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class AppLocalesStorageHelper {
     static final String APPLICATION_LOCALES_RECORD_FILE = "androidx.appcompat.app.AppCompatDelegate.application_locales_record_file";
     static final String APP_LOCALES_META_DATA_HOLDER_SERVICE_NAME = "androidx.appcompat.app.AppLocalesMetadataHolderService";
@@ -47,14 +46,9 @@ class AppLocalesStorageHelper {
         }
 
         @Override // java.util.concurrent.Executor
-        public void execute(final Runnable runnable) {
+        public void execute(Runnable runnable) {
             synchronized (this.mLock) {
-                this.mTasks.add(new Runnable() { // from class: androidx.appcompat.app.c
-                    @Override // java.lang.Runnable
-                    public final void run() {
-                        AppLocalesStorageHelper.SerialExecutor.this.lambda$execute$0(runnable);
-                    }
-                });
+                this.mTasks.add(new c(this, runnable));
                 if (this.mActive == null) {
                     scheduleNext();
                 }
@@ -69,18 +63,6 @@ class AppLocalesStorageHelper {
                     this.mExecutor.execute(poll);
                 }
             }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class ThreadPerTaskExecutor implements Executor {
-        ThreadPerTaskExecutor() {
-        }
-
-        @Override // java.util.concurrent.Executor
-        public void execute(Runnable runnable) {
-            new Thread(runnable).start();
         }
     }
 
@@ -107,24 +89,24 @@ class AppLocalesStorageHelper {
                     if (openFileOutput == null) {
                         return;
                     }
-                } catch (Exception e) {
-                    Log.w(TAG, "Storing App Locales : Failed to persist app-locales: " + str, e);
-                    if (openFileOutput == null) {
-                        return;
+                } catch (Throwable th) {
+                    if (openFileOutput != null) {
+                        try {
+                            openFileOutput.close();
+                        } catch (IOException unused) {
+                        }
                     }
+                    throw th;
                 }
-                try {
-                    openFileOutput.close();
-                } catch (IOException unused) {
+            } catch (Exception e) {
+                Log.w(TAG, "Storing App Locales : Failed to persist app-locales: " + str, e);
+                if (openFileOutput == null) {
+                    return;
                 }
-            } catch (Throwable th) {
-                if (openFileOutput != null) {
-                    try {
-                        openFileOutput.close();
-                    } catch (IOException unused2) {
-                    }
-                }
-                throw th;
+            }
+            try {
+                openFileOutput.close();
+            } catch (IOException unused2) {
             }
         } catch (FileNotFoundException unused3) {
             Log.w(TAG, String.format("Storing App Locales : FileNotFoundException: Cannot open file %s for writing ", APPLICATION_LOCALES_RECORD_FILE));
@@ -150,7 +132,7 @@ class AppLocalesStorageHelper {
     @androidx.annotation.NonNull
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     static java.lang.String readLocales(@androidx.annotation.NonNull android.content.Context r9) {
         /*
@@ -234,7 +216,7 @@ class AppLocalesStorageHelper {
                     String readLocales = readLocales(context);
                     Object systemService = context.getSystemService(WVConfigManager.CONFIGNAME_LOCALE);
                     if (systemService != null) {
-                        AppCompatDelegate.Api33Impl.localeManagerSetApplicationLocales(systemService, AppCompatDelegate.Api24Impl.localeListForLanguageTags(readLocales));
+                        AppCompatDelegate.Api33Impl.localeManagerSetApplicationLocales(systemService, AppCompatDelegate$Api24Impl.localeListForLanguageTags(readLocales));
                     }
                 }
                 context.getPackageManager().setComponentEnabledSetting(componentName, 1, 1);

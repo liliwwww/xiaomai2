@@ -10,20 +10,19 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import androidx.annotation.AttrRes;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.StyleRes;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R$attr;
+import androidx.appcompat.R$dimen;
 import androidx.appcompat.view.menu.MenuPresenter;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class MenuPopupHelper implements MenuHelper {
     private static final int TOUCH_EPICENTER_SIZE_DP = 48;
     private View mAnchorView;
@@ -39,21 +38,8 @@ public class MenuPopupHelper implements MenuHelper {
     private final int mPopupStyleRes;
     private MenuPresenter.Callback mPresenterCallback;
 
-    /* compiled from: Taobao */
-    @RequiresApi(17)
-    /* loaded from: classes.dex */
-    static class Api17Impl {
-        private Api17Impl() {
-        }
-
-        @DoNotInline
-        static void getRealSize(Display display, Point point) {
-            com.alibaba.wireless.security.aopsdk.replace.android.view.Display.getRealSize(display, point);
-        }
-    }
-
     public MenuPopupHelper(@NonNull Context context, @NonNull MenuBuilder menuBuilder) {
-        this(context, menuBuilder, null, false, C0257R.attr.popupMenuStyle, 0);
+        this(context, menuBuilder, null, false, R$attr.popupMenuStyle, 0);
     }
 
     @NonNull
@@ -65,7 +51,7 @@ public class MenuPopupHelper implements MenuHelper {
         } else {
             com.alibaba.wireless.security.aopsdk.replace.android.view.Display.getSize(defaultDisplay, point);
         }
-        MenuPopup cascadingMenuPopup = Math.min(com.alibaba.wireless.security.aopsdk.replace.android.graphics.Point.getx(point), com.alibaba.wireless.security.aopsdk.replace.android.graphics.Point.gety(point)) >= this.mContext.getResources().getDimensionPixelSize(C0257R.dimen.abc_cascading_menus_min_smallest_width) ? new CascadingMenuPopup(this.mContext, this.mAnchorView, this.mPopupStyleAttr, this.mPopupStyleRes, this.mOverflowOnly) : new StandardMenuPopup(this.mContext, this.mMenu, this.mAnchorView, this.mPopupStyleAttr, this.mPopupStyleRes, this.mOverflowOnly);
+        MenuPopup cascadingMenuPopup = Math.min(com.alibaba.wireless.security.aopsdk.replace.android.graphics.Point.getx(point), com.alibaba.wireless.security.aopsdk.replace.android.graphics.Point.gety(point)) >= this.mContext.getResources().getDimensionPixelSize(R$dimen.abc_cascading_menus_min_smallest_width) ? new CascadingMenuPopup(this.mContext, this.mAnchorView, this.mPopupStyleAttr, this.mPopupStyleRes, this.mOverflowOnly) : new StandardMenuPopup(this.mContext, this.mMenu, this.mAnchorView, this.mPopupStyleAttr, this.mPopupStyleRes, this.mOverflowOnly);
         cascadingMenuPopup.addMenu(this.mMenu);
         cascadingMenuPopup.setOnDismissListener(this.mInternalOnDismissListener);
         cascadingMenuPopup.setAnchorView(this.mAnchorView);
@@ -174,7 +160,7 @@ public class MenuPopupHelper implements MenuHelper {
     }
 
     public MenuPopupHelper(@NonNull Context context, @NonNull MenuBuilder menuBuilder, @NonNull View view) {
-        this(context, menuBuilder, view, false, C0257R.attr.popupMenuStyle, 0);
+        this(context, menuBuilder, view, false, R$attr.popupMenuStyle, 0);
     }
 
     public MenuPopupHelper(@NonNull Context context, @NonNull MenuBuilder menuBuilder, @NonNull View view, boolean z, @AttrRes int i) {
@@ -188,7 +174,7 @@ public class MenuPopupHelper implements MenuHelper {
     }
 
     public MenuPopupHelper(@NonNull Context context, @NonNull MenuBuilder menuBuilder, @NonNull View view, boolean z, @AttrRes int i, @StyleRes int i2) {
-        this.mDropDownGravity = GravityCompat.START;
+        this.mDropDownGravity = 8388611;
         this.mInternalOnDismissListener = new PopupWindow.OnDismissListener() { // from class: androidx.appcompat.view.menu.MenuPopupHelper.1
             @Override // android.widget.PopupWindow.OnDismissListener
             public void onDismiss() {

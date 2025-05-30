@@ -4,25 +4,6 @@ import androidx.compose.foundation.layout.BoxKt;
 import androidx.compose.foundation.layout.BoxScopeInstance;
 import androidx.compose.foundation.layout.PaddingKt;
 import androidx.compose.foundation.layout.PaddingValues;
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.draw.DrawModifierKt;
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.graphics.ClipOp;
-import androidx.compose.p004ui.graphics.drawscope.ContentDrawScope;
-import androidx.compose.p004ui.graphics.drawscope.DrawContext;
-import androidx.compose.p004ui.layout.LayoutIdKt;
-import androidx.compose.p004ui.layout.LayoutKt;
-import androidx.compose.p004ui.layout.MeasurePolicy;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.node.ComposeUiNode;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.platform.ViewConfiguration;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Constraints;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Applier;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
@@ -32,6 +13,27 @@ import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.ScopeUpdateScope;
 import androidx.compose.runtime.SkippableUpdater;
 import androidx.compose.runtime.Updater;
+import androidx.compose.ui.Alignment;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.draw.DrawModifierKt;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.graphics.ClipOp;
+import androidx.compose.ui.graphics.drawscope.ContentDrawScope;
+import androidx.compose.ui.graphics.drawscope.DrawContext;
+import androidx.compose.ui.layout.LayoutIdKt;
+import androidx.compose.ui.layout.LayoutKt;
+import androidx.compose.ui.layout.MeasurePolicy;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.layout.Placeable$PlacementScope;
+import androidx.compose.ui.node.ComposeUiNode;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.platform.ViewConfiguration;
+import androidx.compose.ui.unit.Constraints;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.LayoutDirection;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
@@ -44,13 +46,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class OutlinedTextFieldKt {
 
     @NotNull
     public static final String BorderId = "border";
-    private static final float OutlinedTextFieldInnerPadding = C0856Dp.m5216constructorimpl(4);
-    private static final float OutlinedTextFieldTopPadding = C0856Dp.m5216constructorimpl(8);
+    private static final float OutlinedTextFieldInnerPadding = Dp.constructor-impl(4);
+    private static final float OutlinedTextFieldTopPadding = Dp.constructor-impl(8);
 
     /* JADX WARN: Code restructure failed: missing block: B:57:0x01b0, code lost:
     
@@ -135,19 +137,19 @@ public final class OutlinedTextFieldKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void OutlinedTextField(@org.jetbrains.annotations.NotNull final java.lang.String r70, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super java.lang.String, kotlin.Unit> r71, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r72, boolean r73, boolean r74, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.TextStyle r75, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r76, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r79, boolean r80, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.input.VisualTransformation r81, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardOptions r82, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardActions r83, boolean r84, int r85, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r86, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r87, @org.jetbrains.annotations.Nullable androidx.compose.material.TextFieldColors r88, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r89, final int r90, final int r91, final int r92) {
+    public static final void OutlinedTextField(@org.jetbrains.annotations.NotNull final java.lang.String r70, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super java.lang.String, kotlin.Unit> r71, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r72, boolean r73, boolean r74, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.TextStyle r75, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r76, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r79, boolean r80, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.input.VisualTransformation r81, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardOptions r82, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardActions r83, boolean r84, int r85, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r86, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r87, @org.jetbrains.annotations.Nullable androidx.compose.material.TextFieldColors r88, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r89, final int r90, final int r91, final int r92) {
         /*
             Method dump skipped, instructions count: 1516
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.OutlinedTextFieldKt.OutlinedTextField(java.lang.String, kotlin.jvm.functions.Function1, androidx.compose.ui.Modifier, boolean, boolean, androidx.compose.ui.text.TextStyle, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, boolean, androidx.compose.ui.text.input.VisualTransformation, androidx.compose.foundation.text.KeyboardOptions, androidx.compose.foundation.text.KeyboardActions, boolean, int, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.ui.graphics.Shape, androidx.compose.material.TextFieldColors, androidx.compose.runtime.Composer, int, int, int):void");
     }
 
     @Composable
     @ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable]]")
-    public static final void OutlinedTextFieldLayout(@NotNull final Modifier modifier, @NotNull final Function2<? super Composer, ? super Integer, Unit> function2, @Nullable final Function3<? super Modifier, ? super Composer, ? super Integer, Unit> function3, @Nullable final Function2<? super Composer, ? super Integer, Unit> function22, @Nullable final Function2<? super Composer, ? super Integer, Unit> function23, @Nullable final Function2<? super Composer, ? super Integer, Unit> function24, final boolean z, final float f, @NotNull final Function1<? super Size, Unit> function1, @NotNull final Function2<? super Composer, ? super Integer, Unit> function25, @NotNull final PaddingValues paddingValues, @Nullable Composer composer, final int i, final int i2) {
+    public static final void OutlinedTextFieldLayout(@NotNull Modifier modifier, @NotNull Function2<? super Composer, ? super Integer, Unit> function2, @Nullable Function3<? super Modifier, ? super Composer, ? super Integer, Unit> function3, @Nullable Function2<? super Composer, ? super Integer, Unit> function22, @Nullable Function2<? super Composer, ? super Integer, Unit> function23, @Nullable Function2<? super Composer, ? super Integer, Unit> function24, boolean z, float f, @NotNull Function1<? super Size, Unit> function1, @NotNull Function2<? super Composer, ? super Integer, Unit> function25, @NotNull PaddingValues paddingValues, @Nullable Composer composer, int i, int i2) {
         int i3;
         Intrinsics.checkNotNullParameter(modifier, "modifier");
         Intrinsics.checkNotNullParameter(function2, "textField");
@@ -163,19 +165,19 @@ public final class OutlinedTextFieldKt {
             i4 |= startRestartGroup.changed(function3) ? 256 : 128;
         }
         if ((i & 7168) == 0) {
-            i4 |= startRestartGroup.changed(function22) ? 2048 : 1024;
+            i4 |= startRestartGroup.changed(function22) ? AccessibilityEventCompat.TYPE_WINDOW_CONTENT_CHANGED : AccessibilityEventCompat.TYPE_TOUCH_EXPLORATION_GESTURE_END;
         }
         if ((57344 & i) == 0) {
-            i4 |= startRestartGroup.changed(function23) ? 16384 : 8192;
+            i4 |= startRestartGroup.changed(function23) ? AccessibilityEventCompat.TYPE_ANNOUNCEMENT : AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED;
         }
         if ((458752 & i) == 0) {
-            i4 |= startRestartGroup.changed(function24) ? 131072 : 65536;
+            i4 |= startRestartGroup.changed(function24) ? AccessibilityEventCompat.TYPE_VIEW_TEXT_TRAVERSED_AT_MOVEMENT_GRANULARITY : AccessibilityEventCompat.TYPE_VIEW_ACCESSIBILITY_FOCUS_CLEARED;
         }
         if ((3670016 & i) == 0) {
-            i4 |= startRestartGroup.changed(z) ? 1048576 : 524288;
+            i4 |= startRestartGroup.changed(z) ? AccessibilityEventCompat.TYPE_TOUCH_INTERACTION_START : AccessibilityEventCompat.TYPE_GESTURE_DETECTION_END;
         }
         if ((29360128 & i) == 0) {
-            i4 |= startRestartGroup.changed(f) ? 8388608 : 4194304;
+            i4 |= startRestartGroup.changed(f) ? AccessibilityEventCompat.TYPE_VIEW_CONTEXT_CLICKED : AccessibilityEventCompat.TYPE_WINDOWS_CHANGED;
         }
         if ((234881024 & i) == 0) {
             i4 |= startRestartGroup.changed(function1) ? 67108864 : 33554432;
@@ -211,8 +213,8 @@ public final class OutlinedTextFieldKt {
             LayoutDirection layoutDirection2 = (LayoutDirection) startRestartGroup.consume(CompositionLocalsKt.getLocalLayoutDirection());
             ViewConfiguration viewConfiguration = (ViewConfiguration) startRestartGroup.consume(CompositionLocalsKt.getLocalViewConfiguration());
             ComposeUiNode.Companion companion = ComposeUiNode.Companion;
-            Function0<ComposeUiNode> constructor = companion.getConstructor();
-            Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf = LayoutKt.materializerOf(modifier);
+            Function0 constructor = companion.getConstructor();
+            Function3 materializerOf = LayoutKt.materializerOf(modifier);
             int i8 = ((((i4 << 3) & 112) << 9) & 7168) | 6;
             if (!(startRestartGroup.getApplier() instanceof Applier)) {
                 ComposablesKt.invalidApplier();
@@ -224,13 +226,13 @@ public final class OutlinedTextFieldKt {
                 startRestartGroup.useNode();
             }
             startRestartGroup.disableReusing();
-            Composer m2410constructorimpl = Updater.m2410constructorimpl(startRestartGroup);
-            Updater.m2417setimpl(m2410constructorimpl, outlinedTextFieldMeasurePolicy, companion.getSetMeasurePolicy());
-            Updater.m2417setimpl(m2410constructorimpl, density, companion.getSetDensity());
-            Updater.m2417setimpl(m2410constructorimpl, layoutDirection2, companion.getSetLayoutDirection());
-            Updater.m2417setimpl(m2410constructorimpl, viewConfiguration, companion.getSetViewConfiguration());
+            Composer composer2 = Updater.constructor-impl(startRestartGroup);
+            Updater.set-impl(composer2, outlinedTextFieldMeasurePolicy, companion.getSetMeasurePolicy());
+            Updater.set-impl(composer2, density, companion.getSetDensity());
+            Updater.set-impl(composer2, layoutDirection2, companion.getSetLayoutDirection());
+            Updater.set-impl(composer2, viewConfiguration, companion.getSetViewConfiguration());
             startRestartGroup.enableReusing();
-            materializerOf.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(startRestartGroup)), startRestartGroup, Integer.valueOf((i8 >> 3) & 112));
+            materializerOf.invoke(SkippableUpdater.m907boximpl(SkippableUpdater.m908constructorimpl(startRestartGroup)), startRestartGroup, Integer.valueOf((i8 >> 3) & 112));
             startRestartGroup.startReplaceableGroup(2058660585);
             startRestartGroup.startReplaceableGroup(118153609);
             if (((i8 >> 9) & 14 & 11) == 2 && startRestartGroup.getSkipping()) {
@@ -239,7 +241,7 @@ public final class OutlinedTextFieldKt {
                 function25.invoke(startRestartGroup, Integer.valueOf((i4 >> 27) & 14));
                 startRestartGroup.startReplaceableGroup(1169914597);
                 if (function23 != null) {
-                    Modifier then = LayoutIdKt.layoutId(Modifier.Companion, TextFieldImplKt.LeadingId).then(TextFieldImplKt.getIconDefaultSizeModifier());
+                    Modifier then = LayoutIdKt.layoutId(Modifier.Companion, "Leading").then(TextFieldImplKt.getIconDefaultSizeModifier());
                     Alignment center = Alignment.Companion.getCenter();
                     startRestartGroup.startReplaceableGroup(733328855);
                     MeasurePolicy rememberBoxMeasurePolicy = BoxKt.rememberBoxMeasurePolicy(center, false, startRestartGroup, 6);
@@ -247,8 +249,8 @@ public final class OutlinedTextFieldKt {
                     Density density2 = (Density) startRestartGroup.consume(CompositionLocalsKt.getLocalDensity());
                     LayoutDirection layoutDirection3 = (LayoutDirection) startRestartGroup.consume(CompositionLocalsKt.getLocalLayoutDirection());
                     ViewConfiguration viewConfiguration2 = (ViewConfiguration) startRestartGroup.consume(CompositionLocalsKt.getLocalViewConfiguration());
-                    Function0<ComposeUiNode> constructor2 = companion.getConstructor();
-                    Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf2 = LayoutKt.materializerOf(then);
+                    Function0 constructor2 = companion.getConstructor();
+                    Function3 materializerOf2 = LayoutKt.materializerOf(then);
                     if (!(startRestartGroup.getApplier() instanceof Applier)) {
                         ComposablesKt.invalidApplier();
                     }
@@ -259,13 +261,13 @@ public final class OutlinedTextFieldKt {
                         startRestartGroup.useNode();
                     }
                     startRestartGroup.disableReusing();
-                    Composer m2410constructorimpl2 = Updater.m2410constructorimpl(startRestartGroup);
-                    Updater.m2417setimpl(m2410constructorimpl2, rememberBoxMeasurePolicy, companion.getSetMeasurePolicy());
-                    Updater.m2417setimpl(m2410constructorimpl2, density2, companion.getSetDensity());
-                    Updater.m2417setimpl(m2410constructorimpl2, layoutDirection3, companion.getSetLayoutDirection());
-                    Updater.m2417setimpl(m2410constructorimpl2, viewConfiguration2, companion.getSetViewConfiguration());
+                    Composer composer3 = Updater.constructor-impl(startRestartGroup);
+                    Updater.set-impl(composer3, rememberBoxMeasurePolicy, companion.getSetMeasurePolicy());
+                    Updater.set-impl(composer3, density2, companion.getSetDensity());
+                    Updater.set-impl(composer3, layoutDirection3, companion.getSetLayoutDirection());
+                    Updater.set-impl(composer3, viewConfiguration2, companion.getSetViewConfiguration());
                     startRestartGroup.enableReusing();
-                    materializerOf2.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(startRestartGroup)), startRestartGroup, 0);
+                    materializerOf2.invoke(SkippableUpdater.m907boximpl(SkippableUpdater.m908constructorimpl(startRestartGroup)), startRestartGroup, 0);
                     startRestartGroup.startReplaceableGroup(2058660585);
                     startRestartGroup.startReplaceableGroup(-2137368960);
                     BoxScopeInstance boxScopeInstance = BoxScopeInstance.INSTANCE;
@@ -281,7 +283,7 @@ public final class OutlinedTextFieldKt {
                 startRestartGroup.endReplaceableGroup();
                 startRestartGroup.startReplaceableGroup(1169914882);
                 if (function24 != null) {
-                    Modifier then2 = LayoutIdKt.layoutId(Modifier.Companion, TextFieldImplKt.TrailingId).then(TextFieldImplKt.getIconDefaultSizeModifier());
+                    Modifier then2 = LayoutIdKt.layoutId(Modifier.Companion, "Trailing").then(TextFieldImplKt.getIconDefaultSizeModifier());
                     Alignment center2 = Alignment.Companion.getCenter();
                     startRestartGroup.startReplaceableGroup(733328855);
                     MeasurePolicy rememberBoxMeasurePolicy2 = BoxKt.rememberBoxMeasurePolicy(center2, false, startRestartGroup, 6);
@@ -289,8 +291,8 @@ public final class OutlinedTextFieldKt {
                     Density density3 = (Density) startRestartGroup.consume(CompositionLocalsKt.getLocalDensity());
                     LayoutDirection layoutDirection4 = (LayoutDirection) startRestartGroup.consume(CompositionLocalsKt.getLocalLayoutDirection());
                     ViewConfiguration viewConfiguration3 = (ViewConfiguration) startRestartGroup.consume(CompositionLocalsKt.getLocalViewConfiguration());
-                    Function0<ComposeUiNode> constructor3 = companion.getConstructor();
-                    Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf3 = LayoutKt.materializerOf(then2);
+                    Function0 constructor3 = companion.getConstructor();
+                    Function3 materializerOf3 = LayoutKt.materializerOf(then2);
                     if (!(startRestartGroup.getApplier() instanceof Applier)) {
                         ComposablesKt.invalidApplier();
                     }
@@ -301,13 +303,13 @@ public final class OutlinedTextFieldKt {
                         startRestartGroup.useNode();
                     }
                     startRestartGroup.disableReusing();
-                    Composer m2410constructorimpl3 = Updater.m2410constructorimpl(startRestartGroup);
-                    Updater.m2417setimpl(m2410constructorimpl3, rememberBoxMeasurePolicy2, companion.getSetMeasurePolicy());
-                    Updater.m2417setimpl(m2410constructorimpl3, density3, companion.getSetDensity());
-                    Updater.m2417setimpl(m2410constructorimpl3, layoutDirection4, companion.getSetLayoutDirection());
-                    Updater.m2417setimpl(m2410constructorimpl3, viewConfiguration3, companion.getSetViewConfiguration());
+                    Composer composer4 = Updater.constructor-impl(startRestartGroup);
+                    Updater.set-impl(composer4, rememberBoxMeasurePolicy2, companion.getSetMeasurePolicy());
+                    Updater.set-impl(composer4, density3, companion.getSetDensity());
+                    Updater.set-impl(composer4, layoutDirection4, companion.getSetLayoutDirection());
+                    Updater.set-impl(composer4, viewConfiguration3, companion.getSetViewConfiguration());
                     startRestartGroup.enableReusing();
-                    materializerOf3.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(startRestartGroup)), startRestartGroup, 0);
+                    materializerOf3.invoke(SkippableUpdater.m907boximpl(SkippableUpdater.m908constructorimpl(startRestartGroup)), startRestartGroup, 0);
                     startRestartGroup.startReplaceableGroup(2058660585);
                     startRestartGroup.startReplaceableGroup(-2137368960);
                     BoxScopeInstance boxScopeInstance2 = BoxScopeInstance.INSTANCE;
@@ -326,21 +328,21 @@ public final class OutlinedTextFieldKt {
                 Modifier.Companion companion2 = Modifier.Companion;
                 if (function23 != null) {
                     i3 = 0;
-                    calculateStartPadding = C0856Dp.m5216constructorimpl(RangesKt.coerceAtLeast(C0856Dp.m5216constructorimpl(calculateStartPadding - TextFieldImplKt.getHorizontalIconPadding()), C0856Dp.m5216constructorimpl(0)));
+                    calculateStartPadding = Dp.constructor-impl(RangesKt.coerceAtLeast(Dp.constructor-impl(calculateStartPadding - TextFieldImplKt.getHorizontalIconPadding()), Dp.constructor-impl(0)));
                 } else {
                     i3 = 0;
                 }
                 float f2 = calculateStartPadding;
                 if (function24 != null) {
-                    calculateEndPadding = C0856Dp.m5216constructorimpl(RangesKt.coerceAtLeast(C0856Dp.m5216constructorimpl(calculateEndPadding - TextFieldImplKt.getHorizontalIconPadding()), C0856Dp.m5216constructorimpl(i3)));
+                    calculateEndPadding = Dp.constructor-impl(RangesKt.coerceAtLeast(Dp.constructor-impl(calculateEndPadding - TextFieldImplKt.getHorizontalIconPadding()), Dp.constructor-impl(i3)));
                 }
-                Modifier m1398paddingqDBjuR0$default = PaddingKt.m1398paddingqDBjuR0$default(companion2, f2, 0.0f, calculateEndPadding, 0.0f, 10, null);
+                Modifier m336paddingqDBjuR0$default = PaddingKt.m336paddingqDBjuR0$default(companion2, f2, 0.0f, calculateEndPadding, 0.0f, 10, null);
                 startRestartGroup.startReplaceableGroup(1169915893);
                 if (function3 != null) {
-                    function3.invoke(LayoutIdKt.layoutId(companion2, TextFieldImplKt.PlaceholderId).then(m1398paddingqDBjuR0$default), startRestartGroup, Integer.valueOf((i4 >> 3) & 112));
+                    function3.invoke(LayoutIdKt.layoutId(companion2, "Hint").then(m336paddingqDBjuR0$default), startRestartGroup, Integer.valueOf((i4 >> 3) & 112));
                 }
                 startRestartGroup.endReplaceableGroup();
-                Modifier then3 = LayoutIdKt.layoutId(companion2, TextFieldImplKt.TextFieldId).then(m1398paddingqDBjuR0$default);
+                Modifier then3 = LayoutIdKt.layoutId(companion2, "TextField").then(m336paddingqDBjuR0$default);
                 startRestartGroup.startReplaceableGroup(733328855);
                 Alignment.Companion companion3 = Alignment.Companion;
                 MeasurePolicy rememberBoxMeasurePolicy3 = BoxKt.rememberBoxMeasurePolicy(companion3.getTopStart(), true, startRestartGroup, 48);
@@ -348,8 +350,8 @@ public final class OutlinedTextFieldKt {
                 Density density4 = (Density) startRestartGroup.consume(CompositionLocalsKt.getLocalDensity());
                 LayoutDirection layoutDirection5 = (LayoutDirection) startRestartGroup.consume(CompositionLocalsKt.getLocalLayoutDirection());
                 ViewConfiguration viewConfiguration4 = (ViewConfiguration) startRestartGroup.consume(CompositionLocalsKt.getLocalViewConfiguration());
-                Function0<ComposeUiNode> constructor4 = companion.getConstructor();
-                Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf4 = LayoutKt.materializerOf(then3);
+                Function0 constructor4 = companion.getConstructor();
+                Function3 materializerOf4 = LayoutKt.materializerOf(then3);
                 if (!(startRestartGroup.getApplier() instanceof Applier)) {
                     ComposablesKt.invalidApplier();
                 }
@@ -360,13 +362,13 @@ public final class OutlinedTextFieldKt {
                     startRestartGroup.useNode();
                 }
                 startRestartGroup.disableReusing();
-                Composer m2410constructorimpl4 = Updater.m2410constructorimpl(startRestartGroup);
-                Updater.m2417setimpl(m2410constructorimpl4, rememberBoxMeasurePolicy3, companion.getSetMeasurePolicy());
-                Updater.m2417setimpl(m2410constructorimpl4, density4, companion.getSetDensity());
-                Updater.m2417setimpl(m2410constructorimpl4, layoutDirection5, companion.getSetLayoutDirection());
-                Updater.m2417setimpl(m2410constructorimpl4, viewConfiguration4, companion.getSetViewConfiguration());
+                Composer composer5 = Updater.constructor-impl(startRestartGroup);
+                Updater.set-impl(composer5, rememberBoxMeasurePolicy3, companion.getSetMeasurePolicy());
+                Updater.set-impl(composer5, density4, companion.getSetDensity());
+                Updater.set-impl(composer5, layoutDirection5, companion.getSetLayoutDirection());
+                Updater.set-impl(composer5, viewConfiguration4, companion.getSetViewConfiguration());
                 startRestartGroup.enableReusing();
-                materializerOf4.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(startRestartGroup)), startRestartGroup, 0);
+                materializerOf4.invoke(SkippableUpdater.m907boximpl(SkippableUpdater.m908constructorimpl(startRestartGroup)), startRestartGroup, 0);
                 startRestartGroup.startReplaceableGroup(2058660585);
                 startRestartGroup.startReplaceableGroup(-2137368960);
                 BoxScopeInstance boxScopeInstance3 = BoxScopeInstance.INSTANCE;
@@ -379,15 +381,15 @@ public final class OutlinedTextFieldKt {
                 startRestartGroup.endReplaceableGroup();
                 startRestartGroup.endReplaceableGroup();
                 if (function22 != null) {
-                    Modifier layoutId = LayoutIdKt.layoutId(companion2, TextFieldImplKt.LabelId);
+                    Modifier layoutId = LayoutIdKt.layoutId(companion2, "Label");
                     startRestartGroup.startReplaceableGroup(733328855);
                     MeasurePolicy rememberBoxMeasurePolicy4 = BoxKt.rememberBoxMeasurePolicy(companion3.getTopStart(), false, startRestartGroup, 0);
                     startRestartGroup.startReplaceableGroup(-1323940314);
                     Density density5 = (Density) startRestartGroup.consume(CompositionLocalsKt.getLocalDensity());
                     LayoutDirection layoutDirection6 = (LayoutDirection) startRestartGroup.consume(CompositionLocalsKt.getLocalLayoutDirection());
                     ViewConfiguration viewConfiguration5 = (ViewConfiguration) startRestartGroup.consume(CompositionLocalsKt.getLocalViewConfiguration());
-                    Function0<ComposeUiNode> constructor5 = companion.getConstructor();
-                    Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf5 = LayoutKt.materializerOf(layoutId);
+                    Function0 constructor5 = companion.getConstructor();
+                    Function3 materializerOf5 = LayoutKt.materializerOf(layoutId);
                     if (!(startRestartGroup.getApplier() instanceof Applier)) {
                         ComposablesKt.invalidApplier();
                     }
@@ -398,13 +400,13 @@ public final class OutlinedTextFieldKt {
                         startRestartGroup.useNode();
                     }
                     startRestartGroup.disableReusing();
-                    Composer m2410constructorimpl5 = Updater.m2410constructorimpl(startRestartGroup);
-                    Updater.m2417setimpl(m2410constructorimpl5, rememberBoxMeasurePolicy4, companion.getSetMeasurePolicy());
-                    Updater.m2417setimpl(m2410constructorimpl5, density5, companion.getSetDensity());
-                    Updater.m2417setimpl(m2410constructorimpl5, layoutDirection6, companion.getSetLayoutDirection());
-                    Updater.m2417setimpl(m2410constructorimpl5, viewConfiguration5, companion.getSetViewConfiguration());
+                    Composer composer6 = Updater.constructor-impl(startRestartGroup);
+                    Updater.set-impl(composer6, rememberBoxMeasurePolicy4, companion.getSetMeasurePolicy());
+                    Updater.set-impl(composer6, density5, companion.getSetDensity());
+                    Updater.set-impl(composer6, layoutDirection6, companion.getSetLayoutDirection());
+                    Updater.set-impl(composer6, viewConfiguration5, companion.getSetViewConfiguration());
                     startRestartGroup.enableReusing();
-                    materializerOf5.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(startRestartGroup)), startRestartGroup, 0);
+                    materializerOf5.invoke(SkippableUpdater.m907boximpl(SkippableUpdater.m908constructorimpl(startRestartGroup)), startRestartGroup, 0);
                     startRestartGroup.startReplaceableGroup(2058660585);
                     startRestartGroup.startReplaceableGroup(-2137368960);
                     startRestartGroup.startReplaceableGroup(-55131805);
@@ -429,40 +431,25 @@ public final class OutlinedTextFieldKt {
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.material.OutlinedTextFieldKt$OutlinedTextFieldLayout$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                invoke((Composer) obj, ((Number) obj2).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i9) {
-                OutlinedTextFieldKt.OutlinedTextFieldLayout(Modifier.this, function2, function3, function22, function23, function24, z, f, function1, function25, paddingValues, composer2, i | 1, i2);
-            }
-        });
+        endRestartGroup.updateScope(new OutlinedTextFieldLayout.2(modifier, function2, function3, function22, function23, function24, z, f, function1, function25, paddingValues, i, i2));
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: calculateHeight-zUg2_y0, reason: not valid java name */
-    public static final int m2172calculateHeightzUg2_y0(int i, int i2, int i3, int i4, int i5, long j, float f, PaddingValues paddingValues) {
-        return Math.max(Constraints.m5185getMinHeightimpl(j), Math.max(i, Math.max(i2, MathKt.roundToInt(Math.max(i3, i5) + (paddingValues.mo1374calculateBottomPaddingD9Ej5fM() * f) + Math.max(paddingValues.mo1377calculateTopPaddingD9Ej5fM() * f, i4 / 2.0f)))));
+    public static final int m793calculateHeightzUg2_y0(int i, int i2, int i3, int i4, int i5, long j, float f, PaddingValues paddingValues) {
+        return Math.max(Constraints.getMinHeight-impl(j), Math.max(i, Math.max(i2, MathKt.roundToInt(Math.max(i3, i5) + (paddingValues.calculateBottomPadding-D9Ej5fM() * f) + Math.max(paddingValues.calculateTopPadding-D9Ej5fM() * f, i4 / 2.0f)))));
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: calculateWidth-O3s9Psw, reason: not valid java name */
-    public static final int m2173calculateWidthO3s9Psw(int i, int i2, int i3, int i4, int i5, boolean z, long j, float f, PaddingValues paddingValues) {
+    public static final int m794calculateWidthO3s9Psw(int i, int i2, int i3, int i4, int i5, boolean z, long j, float f, PaddingValues paddingValues) {
         int i6 = 0;
         int max = i + Math.max(i3, Math.max(z ? i4 : 0, i5)) + i2;
         if (!z) {
             LayoutDirection layoutDirection = LayoutDirection.Ltr;
-            i6 = i4 + MathKt.roundToInt(C0856Dp.m5216constructorimpl(paddingValues.mo1375calculateLeftPaddingu2uoSUM(layoutDirection) + paddingValues.mo1376calculateRightPaddingu2uoSUM(layoutDirection)) * f);
+            i6 = i4 + MathKt.roundToInt(Dp.constructor-impl(paddingValues.calculateLeftPadding-u2uoSUM(layoutDirection) + paddingValues.calculateRightPadding-u2uoSUM(layoutDirection)) * f);
         }
-        return Math.max(max, Math.max(i6, Constraints.m5186getMinWidthimpl(j)));
+        return Math.max(max, Math.max(i6, Constraints.getMinWidth-impl(j)));
     }
 
     public static final float getOutlinedTextFieldTopPadding() {
@@ -471,7 +458,7 @@ public final class OutlinedTextFieldKt {
 
     @NotNull
     /* renamed from: outlineCutout-12SF9DM, reason: not valid java name */
-    public static final Modifier m2174outlineCutout12SF9DM(@NotNull Modifier modifier, final long j, @NotNull final PaddingValues paddingValues) {
+    public static final Modifier m795outlineCutout12SF9DM(@NotNull Modifier modifier, final long j, @NotNull final PaddingValues paddingValues) {
         Intrinsics.checkNotNullParameter(modifier, "$this$outlineCutout");
         Intrinsics.checkNotNullParameter(paddingValues, "paddingValues");
         return DrawModifierKt.drawWithContent(modifier, new Function1<ContentDrawScope, Unit>() { // from class: androidx.compose.material.OutlinedTextFieldKt$outlineCutout$1
@@ -500,61 +487,61 @@ public final class OutlinedTextFieldKt {
             public final void invoke(@NotNull ContentDrawScope contentDrawScope) {
                 float f;
                 Intrinsics.checkNotNullParameter(contentDrawScope, "$this$drawWithContent");
-                float m2625getWidthimpl = Size.m2625getWidthimpl(j);
-                if (m2625getWidthimpl <= 0.0f) {
+                float f2 = Size.getWidth-impl(j);
+                if (f2 <= 0.0f) {
                     contentDrawScope.drawContent();
                     return;
                 }
                 f = OutlinedTextFieldKt.OutlinedTextFieldInnerPadding;
-                float mo1283toPx0680j_4 = contentDrawScope.mo1283toPx0680j_4(f);
-                float mo1283toPx0680j_42 = contentDrawScope.mo1283toPx0680j_4(paddingValues.mo1375calculateLeftPaddingu2uoSUM(contentDrawScope.getLayoutDirection())) - mo1283toPx0680j_4;
-                float f2 = 2;
-                float f3 = m2625getWidthimpl + mo1283toPx0680j_42 + (mo1283toPx0680j_4 * f2);
+                float f3 = contentDrawScope.toPx-0680j_4(f);
+                float f4 = contentDrawScope.toPx-0680j_4(paddingValues.calculateLeftPadding-u2uoSUM(contentDrawScope.getLayoutDirection())) - f3;
+                float f5 = 2;
+                float f6 = f2 + f4 + (f3 * f5);
                 LayoutDirection layoutDirection = contentDrawScope.getLayoutDirection();
                 int[] iArr = WhenMappings.$EnumSwitchMapping$0;
-                float m2625getWidthimpl2 = iArr[layoutDirection.ordinal()] == 1 ? Size.m2625getWidthimpl(contentDrawScope.mo3205getSizeNHjbRc()) - f3 : RangesKt.coerceAtLeast(mo1283toPx0680j_42, 0.0f);
+                float f7 = iArr[layoutDirection.ordinal()] == 1 ? Size.getWidth-impl(contentDrawScope.getSize-NH-jbRc()) - f6 : RangesKt.coerceAtLeast(f4, 0.0f);
                 if (iArr[contentDrawScope.getLayoutDirection().ordinal()] == 1) {
-                    f3 = Size.m2625getWidthimpl(contentDrawScope.mo3205getSizeNHjbRc()) - RangesKt.coerceAtLeast(mo1283toPx0680j_42, 0.0f);
+                    f6 = Size.getWidth-impl(contentDrawScope.getSize-NH-jbRc()) - RangesKt.coerceAtLeast(f4, 0.0f);
                 }
-                float f4 = f3;
-                float m2622getHeightimpl = Size.m2622getHeightimpl(j);
-                float f5 = (-m2622getHeightimpl) / f2;
-                float f6 = m2622getHeightimpl / f2;
-                int m2775getDifferencertfAjoo = ClipOp.Companion.m2775getDifferencertfAjoo();
+                float f8 = f6;
+                float f9 = Size.getHeight-impl(j);
+                float f10 = (-f9) / f5;
+                float f11 = f9 / f5;
+                int m1057getDifferencertfAjoo = ClipOp.Companion.m1057getDifferencertfAjoo();
                 DrawContext drawContext = contentDrawScope.getDrawContext();
-                long mo3211getSizeNHjbRc = drawContext.mo3211getSizeNHjbRc();
+                long mo1254getSizeNHjbRc = drawContext.mo1254getSizeNHjbRc();
                 drawContext.getCanvas().save();
-                drawContext.getTransform().mo3214clipRectN_I0leg(m2625getWidthimpl2, f5, f4, f6, m2775getDifferencertfAjoo);
+                drawContext.getTransform().clipRect-N_I0leg(f7, f10, f8, f11, m1057getDifferencertfAjoo);
                 contentDrawScope.drawContent();
                 drawContext.getCanvas().restore();
-                drawContext.mo3212setSizeuvyYCjk(mo3211getSizeNHjbRc);
+                drawContext.mo1255setSizeuvyYCjk(mo1254getSizeNHjbRc);
             }
         });
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public static final void place(Placeable.PlacementScope placementScope, int i, int i2, Placeable placeable, Placeable placeable2, Placeable placeable3, Placeable placeable4, Placeable placeable5, Placeable placeable6, float f, boolean z, float f2, LayoutDirection layoutDirection, PaddingValues paddingValues) {
-        int roundToInt = MathKt.roundToInt(paddingValues.mo1377calculateTopPaddingD9Ej5fM() * f2);
+    public static final void place(Placeable$PlacementScope placeable$PlacementScope, int i, int i2, Placeable placeable, Placeable placeable2, Placeable placeable3, Placeable placeable4, Placeable placeable5, Placeable placeable6, float f, boolean z, float f2, LayoutDirection layoutDirection, PaddingValues paddingValues) {
+        int roundToInt = MathKt.roundToInt(paddingValues.calculateTopPadding-D9Ej5fM() * f2);
         int roundToInt2 = MathKt.roundToInt(PaddingKt.calculateStartPadding(paddingValues, layoutDirection) * f2);
         float horizontalIconPadding = TextFieldImplKt.getHorizontalIconPadding() * f2;
         if (placeable != null) {
-            Placeable.PlacementScope.placeRelative$default(placementScope, placeable, 0, Alignment.Companion.getCenterVertically().align(placeable.getHeight(), i), 0.0f, 4, null);
+            Placeable$PlacementScope.placeRelative$default(placeable$PlacementScope, placeable, 0, Alignment.Companion.getCenterVertically().align(placeable.getHeight(), i), 0.0f, 4, null);
         }
         if (placeable2 != null) {
-            Placeable.PlacementScope.placeRelative$default(placementScope, placeable2, i2 - placeable2.getWidth(), Alignment.Companion.getCenterVertically().align(placeable2.getHeight(), i), 0.0f, 4, null);
+            Placeable$PlacementScope.placeRelative$default(placeable$PlacementScope, placeable2, i2 - placeable2.getWidth(), Alignment.Companion.getCenterVertically().align(placeable2.getHeight(), i), 0.0f, 4, null);
         }
         if (placeable4 != null) {
             float f3 = 1 - f;
-            Placeable.PlacementScope.placeRelative$default(placementScope, placeable4, MathKt.roundToInt(placeable == null ? 0.0f : f3 * (TextFieldImplKt.widthOrZero(placeable) - horizontalIconPadding)) + roundToInt2, MathKt.roundToInt(((z ? Alignment.Companion.getCenterVertically().align(placeable4.getHeight(), i) : roundToInt) * f3) - ((placeable4.getHeight() / 2) * f)), 0.0f, 4, null);
+            Placeable$PlacementScope.placeRelative$default(placeable$PlacementScope, placeable4, MathKt.roundToInt(placeable == null ? 0.0f : f3 * (TextFieldImplKt.widthOrZero(placeable) - horizontalIconPadding)) + roundToInt2, MathKt.roundToInt(((z ? Alignment.Companion.getCenterVertically().align(placeable4.getHeight(), i) : roundToInt) * f3) - ((placeable4.getHeight() / 2) * f)), 0.0f, 4, null);
         }
-        Placeable.PlacementScope.placeRelative$default(placementScope, placeable3, TextFieldImplKt.widthOrZero(placeable), Math.max(z ? Alignment.Companion.getCenterVertically().align(placeable3.getHeight(), i) : roundToInt, TextFieldImplKt.heightOrZero(placeable4) / 2), 0.0f, 4, null);
+        Placeable$PlacementScope.placeRelative$default(placeable$PlacementScope, placeable3, TextFieldImplKt.widthOrZero(placeable), Math.max(z ? Alignment.Companion.getCenterVertically().align(placeable3.getHeight(), i) : roundToInt, TextFieldImplKt.heightOrZero(placeable4) / 2), 0.0f, 4, null);
         if (placeable5 != null) {
             if (z) {
                 roundToInt = Alignment.Companion.getCenterVertically().align(placeable5.getHeight(), i);
             }
-            Placeable.PlacementScope.placeRelative$default(placementScope, placeable5, TextFieldImplKt.widthOrZero(placeable), roundToInt, 0.0f, 4, null);
+            Placeable$PlacementScope.placeRelative$default(placeable$PlacementScope, placeable5, TextFieldImplKt.widthOrZero(placeable), roundToInt, 0.0f, 4, null);
         }
-        Placeable.PlacementScope.m4223place70tqf50$default(placementScope, placeable6, IntOffset.Companion.m5344getZeronOccac(), 0.0f, 2, null);
+        Placeable$PlacementScope.m2068place70tqf50$default(placeable$PlacementScope, placeable6, IntOffset.Companion.m2653getZeronOccac(), 0.0f, 2, null);
     }
 
     /* JADX WARN: Code restructure failed: missing block: B:57:0x01b0, code lost:
@@ -640,12 +627,12 @@ public final class OutlinedTextFieldKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void OutlinedTextField(@org.jetbrains.annotations.NotNull final androidx.compose.p004ui.text.input.TextFieldValue r70, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.text.input.TextFieldValue, kotlin.Unit> r71, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r72, boolean r73, boolean r74, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.TextStyle r75, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r76, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r79, boolean r80, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.input.VisualTransformation r81, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardOptions r82, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardActions r83, boolean r84, int r85, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r86, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r87, @org.jetbrains.annotations.Nullable androidx.compose.material.TextFieldColors r88, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r89, final int r90, final int r91, final int r92) {
+    public static final void OutlinedTextField(@org.jetbrains.annotations.NotNull final androidx.compose.ui.text.input.TextFieldValue r70, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit> r71, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r72, boolean r73, boolean r74, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.TextStyle r75, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r76, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r79, boolean r80, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.input.VisualTransformation r81, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardOptions r82, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardActions r83, boolean r84, int r85, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r86, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r87, @org.jetbrains.annotations.Nullable androidx.compose.material.TextFieldColors r88, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r89, final int r90, final int r91, final int r92) {
         /*
             Method dump skipped, instructions count: 1545
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.OutlinedTextFieldKt.OutlinedTextField(androidx.compose.ui.text.input.TextFieldValue, kotlin.jvm.functions.Function1, androidx.compose.ui.Modifier, boolean, boolean, androidx.compose.ui.text.TextStyle, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, boolean, androidx.compose.ui.text.input.VisualTransformation, androidx.compose.foundation.text.KeyboardOptions, androidx.compose.foundation.text.KeyboardActions, boolean, int, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.ui.graphics.Shape, androidx.compose.material.TextFieldColors, androidx.compose.runtime.Composer, int, int, int):void");
     }

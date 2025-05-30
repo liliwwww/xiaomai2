@@ -2,6 +2,7 @@ package androidx.compose.runtime;
 
 import java.util.Iterator;
 import java.util.Set;
+import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
 import kotlin.coroutines.EmptyCoroutineContext;
 import kotlin.jvm.functions.Function0;
@@ -13,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final /* synthetic */ class SnapshotStateKt__SnapshotFlowKt {
     @Composable
     @NotNull
@@ -60,7 +61,7 @@ final /* synthetic */ class SnapshotStateKt__SnapshotFlowKt {
     @NotNull
     public static final <T> Flow<T> snapshotFlow(@NotNull Function0<? extends T> function0) {
         Intrinsics.checkNotNullParameter(function0, "block");
-        return d.y(new SnapshotStateKt__SnapshotFlowKt$snapshotFlow$1(function0, null));
+        return d.y(new snapshotFlow.1(function0, (Continuation) null));
     }
 
     @Composable
@@ -76,7 +77,7 @@ final /* synthetic */ class SnapshotStateKt__SnapshotFlowKt {
             ComposerKt.traceEventStart(-606625098, i, -1, "androidx.compose.runtime.collectAsState (SnapshotFlow.kt:59)");
         }
         int i3 = i >> 3;
-        State<R> produceState = SnapshotStateKt.produceState(r, flow, coroutineContext2, new SnapshotStateKt__SnapshotFlowKt$collectAsState$1(coroutineContext2, flow, null), composer, (i3 & 8) | 4672 | (i3 & 14));
+        State<R> produceState = SnapshotStateKt.produceState(r, flow, coroutineContext2, new collectAsState.1(coroutineContext2, flow, (Continuation) null), composer, (i3 & 8) | 4672 | (i3 & 14));
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }

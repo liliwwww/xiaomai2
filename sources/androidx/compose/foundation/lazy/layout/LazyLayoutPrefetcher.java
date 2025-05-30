@@ -6,9 +6,10 @@ import android.view.Display;
 import android.view.View;
 import androidx.compose.foundation.ExperimentalFoundationApi;
 import androidx.compose.foundation.lazy.layout.LazyLayoutPrefetchState;
-import androidx.compose.p004ui.layout.SubcomposeLayoutState;
 import androidx.compose.runtime.RememberObserver;
 import androidx.compose.runtime.collection.MutableVector;
+import androidx.compose.ui.layout.SubcomposeLayoutState;
+import androidx.compose.ui.layout.SubcomposeLayoutState$PrecomposedSlotHandle;
 import java.util.concurrent.TimeUnit;
 import kotlin.Unit;
 import kotlin.jvm.internal.DefaultConstructorMarker;
@@ -18,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyLayoutPrefetcher implements Choreographer.FrameCallback, LazyLayoutPrefetchState.Prefetcher, RememberObserver, Runnable {
 
     @NotNull
@@ -78,7 +79,7 @@ public final class LazyLayoutPrefetcher implements Choreographer.FrameCallback, 
         private boolean measured;
 
         @Nullable
-        private SubcomposeLayoutState.PrecomposedSlotHandle precomposeHandle;
+        private SubcomposeLayoutState$PrecomposedSlotHandle precomposeHandle;
 
         private PrefetchRequest(int i, long j) {
             this.index = i;
@@ -89,15 +90,14 @@ public final class LazyLayoutPrefetcher implements Choreographer.FrameCallback, 
             this(i, j);
         }
 
-        @Override // androidx.compose.foundation.lazy.layout.LazyLayoutPrefetchState.PrefetchHandle
         public void cancel() {
             if (this.canceled) {
                 return;
             }
             this.canceled = true;
-            SubcomposeLayoutState.PrecomposedSlotHandle precomposedSlotHandle = this.precomposeHandle;
-            if (precomposedSlotHandle != null) {
-                precomposedSlotHandle.dispose();
+            SubcomposeLayoutState$PrecomposedSlotHandle subcomposeLayoutState$PrecomposedSlotHandle = this.precomposeHandle;
+            if (subcomposeLayoutState$PrecomposedSlotHandle != null) {
+                subcomposeLayoutState$PrecomposedSlotHandle.dispose();
             }
             this.precomposeHandle = null;
         }
@@ -107,7 +107,7 @@ public final class LazyLayoutPrefetcher implements Choreographer.FrameCallback, 
         }
 
         /* renamed from: getConstraints-msEJaDk, reason: not valid java name */
-        public final long m1618getConstraintsmsEJaDk() {
+        public final long m492getConstraintsmsEJaDk() {
             return this.constraints;
         }
 
@@ -120,7 +120,7 @@ public final class LazyLayoutPrefetcher implements Choreographer.FrameCallback, 
         }
 
         @Nullable
-        public final SubcomposeLayoutState.PrecomposedSlotHandle getPrecomposeHandle() {
+        public final SubcomposeLayoutState$PrecomposedSlotHandle getPrecomposeHandle() {
             return this.precomposeHandle;
         }
 
@@ -132,8 +132,8 @@ public final class LazyLayoutPrefetcher implements Choreographer.FrameCallback, 
             this.measured = z;
         }
 
-        public final void setPrecomposeHandle(@Nullable SubcomposeLayoutState.PrecomposedSlotHandle precomposedSlotHandle) {
-            this.precomposeHandle = precomposedSlotHandle;
+        public final void setPrecomposeHandle(@Nullable SubcomposeLayoutState$PrecomposedSlotHandle subcomposeLayoutState$PrecomposedSlotHandle) {
+            this.precomposeHandle = subcomposeLayoutState$PrecomposedSlotHandle;
         }
     }
 
@@ -225,11 +225,11 @@ public final class LazyLayoutPrefetcher implements Choreographer.FrameCallback, 
                         try {
                             long nanoTime2 = System.nanoTime();
                             if (enoughTimeLeft(nanoTime2, nanos, this.averagePremeasureTimeNs)) {
-                                SubcomposeLayoutState.PrecomposedSlotHandle precomposeHandle = prefetchRequest.getPrecomposeHandle();
+                                SubcomposeLayoutState$PrecomposedSlotHandle precomposeHandle = prefetchRequest.getPrecomposeHandle();
                                 Intrinsics.checkNotNull(precomposeHandle);
                                 int placeablesCount = precomposeHandle.getPlaceablesCount();
                                 for (int i = 0; i < placeablesCount; i++) {
-                                    precomposeHandle.mo4199premeasure0kLqBqw(i, prefetchRequest.m1618getConstraintsmsEJaDk());
+                                    precomposeHandle.m2090premeasure0kLqBqw(i, prefetchRequest.m492getConstraintsmsEJaDk());
                                 }
                                 this.averagePremeasureTimeNs = calculateAverageTime(System.nanoTime() - nanoTime2, this.averagePremeasureTimeNs);
                                 this.prefetchRequests.removeAt(0);
@@ -254,7 +254,7 @@ public final class LazyLayoutPrefetcher implements Choreographer.FrameCallback, 
     @Override // androidx.compose.foundation.lazy.layout.LazyLayoutPrefetchState.Prefetcher
     @NotNull
     /* renamed from: schedulePrefetch-0kLqBqw */
-    public LazyLayoutPrefetchState.PrefetchHandle mo1617schedulePrefetch0kLqBqw(int i, long j) {
+    public LazyLayoutPrefetchState.PrefetchHandle mo491schedulePrefetch0kLqBqw(int i, long j) {
         PrefetchRequest prefetchRequest = new PrefetchRequest(i, j, null);
         this.prefetchRequests.add(prefetchRequest);
         if (!this.prefetchScheduled) {

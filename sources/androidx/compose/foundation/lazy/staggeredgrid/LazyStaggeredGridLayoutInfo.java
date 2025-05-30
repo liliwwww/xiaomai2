@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface LazyStaggeredGridLayoutInfo {
     int getAfterContentPadding();
 
@@ -21,7 +21,7 @@ public interface LazyStaggeredGridLayoutInfo {
     int getViewportEndOffset();
 
     /* renamed from: getViewportSize-YbymL2g */
-    long mo1624getViewportSizeYbymL2g();
+    long mo325getViewportSizeYbymL2g();
 
     int getViewportStartOffset();
 

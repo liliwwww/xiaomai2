@@ -7,16 +7,8 @@ import java.lang.annotation.Target;
 /* compiled from: Taobao */
 @Target({})
 @Retention(RetentionPolicy.CLASS)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public @interface Index {
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public enum Order {
-        ASC,
-        DESC
-    }
-
     String name() default "";
 
     Order[] orders() default {};

@@ -2,14 +2,14 @@ package androidx.compose.foundation;
 
 import android.view.View;
 import androidx.annotation.RequiresApi;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.geometry.Rect;
-import androidx.compose.p004ui.graphics.RectHelper_androidKt;
-import androidx.compose.p004ui.layout.LayoutCoordinates;
-import androidx.compose.p004ui.layout.LayoutCoordinatesKt;
-import androidx.compose.p004ui.layout.OnGloballyPositionedModifier;
 import androidx.compose.runtime.collection.MutableVector;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.geometry.Rect;
+import androidx.compose.ui.graphics.RectHelper_androidKt;
+import androidx.compose.ui.layout.LayoutCoordinates;
+import androidx.compose.ui.layout.LayoutCoordinatesKt;
+import androidx.compose.ui.layout.OnGloballyPositionedModifier;
 import java.util.List;
 import kotlin.comparisons.ComparisonsKt;
 import kotlin.jvm.functions.Function1;
@@ -23,7 +23,7 @@ import tb.nt2;
 
 /* compiled from: Taobao */
 @RequiresApi(29)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class ExcludeFromSystemGestureModifier implements OnGloballyPositionedModifier {
 
     @Nullable
@@ -44,11 +44,11 @@ final class ExcludeFromSystemGestureModifier implements OnGloballyPositionedModi
 
     private final android.graphics.Rect calcBounds(LayoutCoordinates layoutCoordinates, Rect rect) {
         LayoutCoordinates findRoot = findRoot(layoutCoordinates);
-        long mo4192localPositionOfR5De75A = findRoot.mo4192localPositionOfR5De75A(layoutCoordinates, rect.m2591getTopLeftF1C5BW0());
-        long mo4192localPositionOfR5De75A2 = findRoot.mo4192localPositionOfR5De75A(layoutCoordinates, rect.m2592getTopRightF1C5BW0());
-        long mo4192localPositionOfR5De75A3 = findRoot.mo4192localPositionOfR5De75A(layoutCoordinates, rect.m2584getBottomLeftF1C5BW0());
-        long mo4192localPositionOfR5De75A4 = findRoot.mo4192localPositionOfR5De75A(layoutCoordinates, rect.m2585getBottomRightF1C5BW0());
-        return new android.graphics.Rect(MathKt.roundToInt(ComparisonsKt.minOf(Offset.m2556getXimpl(mo4192localPositionOfR5De75A), new float[]{Offset.m2556getXimpl(mo4192localPositionOfR5De75A2), Offset.m2556getXimpl(mo4192localPositionOfR5De75A3), Offset.m2556getXimpl(mo4192localPositionOfR5De75A4)})), MathKt.roundToInt(ComparisonsKt.minOf(Offset.m2557getYimpl(mo4192localPositionOfR5De75A), new float[]{Offset.m2557getYimpl(mo4192localPositionOfR5De75A2), Offset.m2557getYimpl(mo4192localPositionOfR5De75A3), Offset.m2557getYimpl(mo4192localPositionOfR5De75A4)})), MathKt.roundToInt(ComparisonsKt.maxOf(Offset.m2556getXimpl(mo4192localPositionOfR5De75A), new float[]{Offset.m2556getXimpl(mo4192localPositionOfR5De75A2), Offset.m2556getXimpl(mo4192localPositionOfR5De75A3), Offset.m2556getXimpl(mo4192localPositionOfR5De75A4)})), MathKt.roundToInt(ComparisonsKt.maxOf(Offset.m2557getYimpl(mo4192localPositionOfR5De75A), new float[]{Offset.m2557getYimpl(mo4192localPositionOfR5De75A2), Offset.m2557getYimpl(mo4192localPositionOfR5De75A3), Offset.m2557getYimpl(mo4192localPositionOfR5De75A4)})));
+        long mo1523localPositionOfR5De75A = findRoot.mo1523localPositionOfR5De75A(layoutCoordinates, rect.m869getTopLeftF1C5BW0());
+        long mo1523localPositionOfR5De75A2 = findRoot.mo1523localPositionOfR5De75A(layoutCoordinates, rect.m870getTopRightF1C5BW0());
+        long mo1523localPositionOfR5De75A3 = findRoot.mo1523localPositionOfR5De75A(layoutCoordinates, rect.m862getBottomLeftF1C5BW0());
+        long mo1523localPositionOfR5De75A4 = findRoot.mo1523localPositionOfR5De75A(layoutCoordinates, rect.m863getBottomRightF1C5BW0());
+        return new android.graphics.Rect(MathKt.roundToInt(ComparisonsKt.minOf(Offset.m848getXimpl(mo1523localPositionOfR5De75A), new float[]{Offset.m848getXimpl(mo1523localPositionOfR5De75A2), Offset.m848getXimpl(mo1523localPositionOfR5De75A3), Offset.m848getXimpl(mo1523localPositionOfR5De75A4)})), MathKt.roundToInt(ComparisonsKt.minOf(Offset.m849getYimpl(mo1523localPositionOfR5De75A), new float[]{Offset.m849getYimpl(mo1523localPositionOfR5De75A2), Offset.m849getYimpl(mo1523localPositionOfR5De75A3), Offset.m849getYimpl(mo1523localPositionOfR5De75A4)})), MathKt.roundToInt(ComparisonsKt.maxOf(Offset.m848getXimpl(mo1523localPositionOfR5De75A), new float[]{Offset.m848getXimpl(mo1523localPositionOfR5De75A2), Offset.m848getXimpl(mo1523localPositionOfR5De75A3), Offset.m848getXimpl(mo1523localPositionOfR5De75A4)})), MathKt.roundToInt(ComparisonsKt.maxOf(Offset.m849getYimpl(mo1523localPositionOfR5De75A), new float[]{Offset.m849getYimpl(mo1523localPositionOfR5De75A2), Offset.m849getYimpl(mo1523localPositionOfR5De75A3), Offset.m849getYimpl(mo1523localPositionOfR5De75A4)})));
     }
 
     private final LayoutCoordinates findRoot(LayoutCoordinates layoutCoordinates) {
@@ -64,22 +64,22 @@ final class ExcludeFromSystemGestureModifier implements OnGloballyPositionedModi
         }
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
@@ -99,7 +99,6 @@ final class ExcludeFromSystemGestureModifier implements OnGloballyPositionedModi
         return this.view;
     }
 
-    @Override // androidx.compose.p004ui.layout.OnGloballyPositionedModifier
     public void onGloballyPositioned(@NotNull LayoutCoordinates layoutCoordinates) {
         Intrinsics.checkNotNullParameter(layoutCoordinates, "coordinates");
         Function1<LayoutCoordinates, Rect> function1 = this.exclusion;
@@ -115,7 +114,7 @@ final class ExcludeFromSystemGestureModifier implements OnGloballyPositionedModi
         MutableVector mutableVector = new MutableVector(new android.graphics.Rect[16], 0);
         List<android.graphics.Rect> systemGestureExclusionRects = this.view.getSystemGestureExclusionRects();
         Intrinsics.checkNotNullExpressionValue(systemGestureExclusionRects, "view.systemGestureExclusionRects");
-        mutableVector.addAll(mutableVector.getSize(), (List) systemGestureExclusionRects);
+        mutableVector.addAll(mutableVector.getSize(), systemGestureExclusionRects);
         android.graphics.Rect rect2 = this.rect;
         if (rect2 != null) {
             mutableVector.remove(rect2);
@@ -134,7 +133,6 @@ final class ExcludeFromSystemGestureModifier implements OnGloballyPositionedModi
         this.rect = rect;
     }
 
-    @Override // androidx.compose.p004ui.Modifier
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }

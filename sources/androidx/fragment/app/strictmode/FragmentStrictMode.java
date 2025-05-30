@@ -1,6 +1,5 @@
 package androidx.fragment.app.strictmode;
 
-import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -10,7 +9,6 @@ import androidx.annotation.VisibleForTesting;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import kotlin.collections.CollectionsKt;
@@ -26,7 +24,7 @@ import tb.lp1;
 import tb.mp1;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class FragmentStrictMode {
 
     @NotNull
@@ -51,16 +49,10 @@ public final class FragmentStrictMode {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface OnViolationListener {
-        void onViolation(@NotNull Violation violation);
-    }
-
-    /* compiled from: Taobao */
     public static final class Policy {
 
         @NotNull
-        public static final Companion Companion = new Companion(null);
+        public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
 
         @JvmField
         @NotNull
@@ -74,17 +66,6 @@ public final class FragmentStrictMode {
 
         @NotNull
         private final Map<String, Set<Class<? extends Violation>>> mAllowedViolations;
-
-        /* compiled from: Taobao */
-        /* loaded from: classes.dex */
-        public static final class Companion {
-            private Companion() {
-            }
-
-            public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-                this();
-            }
-        }
 
         /* JADX WARN: Multi-variable type inference failed */
         public Policy(@NotNull Set<? extends Flag> set, @Nullable OnViolationListener onViolationListener, @NotNull Map<String, ? extends Set<Class<? extends Violation>>> map) {
@@ -112,116 +93,6 @@ public final class FragmentStrictMode {
         @NotNull
         public final Map<String, Set<Class<? extends Violation>>> getMAllowedViolations$fragment_release() {
             return this.mAllowedViolations;
-        }
-
-        /* compiled from: Taobao */
-        /* loaded from: classes.dex */
-        public static final class Builder {
-
-            @Nullable
-            private OnViolationListener listener;
-
-            @NotNull
-            private final Set<Flag> flags = new LinkedHashSet();
-
-            @NotNull
-            private final Map<String, Set<Class<? extends Violation>>> mAllowedViolations = new LinkedHashMap();
-
-            @SuppressLint({"BuilderSetStyle"})
-            @NotNull
-            public final Builder allowViolation(@NotNull Class<? extends Fragment> cls, @NotNull Class<? extends Violation> cls2) {
-                Intrinsics.checkNotNullParameter(cls, "fragmentClass");
-                Intrinsics.checkNotNullParameter(cls2, "violationClass");
-                String name = cls.getName();
-                Intrinsics.checkNotNullExpressionValue(name, "fragmentClassString");
-                return allowViolation(name, cls2);
-            }
-
-            @NotNull
-            public final Policy build() {
-                if (this.listener == null && !this.flags.contains(Flag.PENALTY_DEATH)) {
-                    penaltyLog();
-                }
-                return new Policy(this.flags, this.listener, this.mAllowedViolations);
-            }
-
-            @SuppressLint({"BuilderSetStyle"})
-            @NotNull
-            public final Builder detectFragmentReuse() {
-                this.flags.add(Flag.DETECT_FRAGMENT_REUSE);
-                return this;
-            }
-
-            @SuppressLint({"BuilderSetStyle"})
-            @NotNull
-            public final Builder detectFragmentTagUsage() {
-                this.flags.add(Flag.DETECT_FRAGMENT_TAG_USAGE);
-                return this;
-            }
-
-            @SuppressLint({"BuilderSetStyle"})
-            @NotNull
-            public final Builder detectRetainInstanceUsage() {
-                this.flags.add(Flag.DETECT_RETAIN_INSTANCE_USAGE);
-                return this;
-            }
-
-            @SuppressLint({"BuilderSetStyle"})
-            @NotNull
-            public final Builder detectSetUserVisibleHint() {
-                this.flags.add(Flag.DETECT_SET_USER_VISIBLE_HINT);
-                return this;
-            }
-
-            @SuppressLint({"BuilderSetStyle"})
-            @NotNull
-            public final Builder detectTargetFragmentUsage() {
-                this.flags.add(Flag.DETECT_TARGET_FRAGMENT_USAGE);
-                return this;
-            }
-
-            @SuppressLint({"BuilderSetStyle"})
-            @NotNull
-            public final Builder detectWrongFragmentContainer() {
-                this.flags.add(Flag.DETECT_WRONG_FRAGMENT_CONTAINER);
-                return this;
-            }
-
-            @SuppressLint({"BuilderSetStyle"})
-            @NotNull
-            public final Builder penaltyDeath() {
-                this.flags.add(Flag.PENALTY_DEATH);
-                return this;
-            }
-
-            @SuppressLint({"BuilderSetStyle"})
-            @NotNull
-            public final Builder penaltyListener(@NotNull OnViolationListener onViolationListener) {
-                Intrinsics.checkNotNullParameter(onViolationListener, "listener");
-                this.listener = onViolationListener;
-                return this;
-            }
-
-            @SuppressLint({"BuilderSetStyle"})
-            @NotNull
-            public final Builder penaltyLog() {
-                this.flags.add(Flag.PENALTY_LOG);
-                return this;
-            }
-
-            @SuppressLint({"BuilderSetStyle"})
-            @NotNull
-            public final Builder allowViolation(@NotNull String str, @NotNull Class<? extends Violation> cls) {
-                Intrinsics.checkNotNullParameter(str, "fragmentClass");
-                Intrinsics.checkNotNullParameter(cls, "violationClass");
-                Set<Class<? extends Violation>> set = this.mAllowedViolations.get(str);
-                if (set == null) {
-                    set = new LinkedHashSet<>();
-                }
-                set.add(cls);
-                this.mAllowedViolations.put(str, set);
-                return this;
-            }
         }
     }
 
@@ -260,7 +131,7 @@ public final class FragmentStrictMode {
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: handlePolicyViolation$lambda-0, reason: not valid java name */
-    public static final void m5605handlePolicyViolation$lambda0(Policy policy, Violation violation) {
+    public static final void m2803handlePolicyViolation$lambda0(Policy policy, Violation violation) {
         Intrinsics.checkNotNullParameter(policy, "$policy");
         Intrinsics.checkNotNullParameter(violation, "$violation");
         policy.getListener$fragment_release().onViolation(violation);
@@ -268,7 +139,7 @@ public final class FragmentStrictMode {
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: handlePolicyViolation$lambda-1, reason: not valid java name */
-    public static final void m5606handlePolicyViolation$lambda1(String str, Violation violation) {
+    public static final void m2804handlePolicyViolation$lambda1(String str, Violation violation) {
         Intrinsics.checkNotNullParameter(violation, "$violation");
         Log.e(TAG, "Policy violation with PENALTY_DEATH in " + str, violation);
         throw violation;

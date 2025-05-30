@@ -5,7 +5,7 @@ import android.app.Application;
 import android.os.Bundle;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class EmptyActivityLifecycleCallbacks implements Application.ActivityLifecycleCallbacks {
     EmptyActivityLifecycleCallbacks() {
     }

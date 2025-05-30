@@ -1,10 +1,8 @@
 package android.taobao.windvane.config;
 
-import android.taobao.windvane.config.WVConfigUpdateCallback;
 import android.taobao.windvane.connect.ConnectManager;
 import android.taobao.windvane.connect.HttpConnectListener;
 import android.taobao.windvane.connect.HttpResponse;
-import android.taobao.windvane.connect.api.ApiConstants;
 import android.taobao.windvane.util.ConfigStorage;
 import android.taobao.windvane.util.TaoLog;
 import android.text.TextUtils;
@@ -14,7 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVDomainConfig {
     private static final String TAG = "WVDomainConfig";
     private static volatile WVDomainConfig instance;
@@ -45,7 +43,7 @@ public class WVDomainConfig {
         if (jSONObject == null) {
             return false;
         }
-        String optString = jSONObject.optString(ApiConstants.f5V, "");
+        String optString = jSONObject.optString("v", "");
         if (TextUtils.isEmpty(optString)) {
             return false;
         }
@@ -78,7 +76,7 @@ public class WVDomainConfig {
                 this.forbiddenDomainRedirectURL = "";
             }
         }
-        WVServerConfig.f3v = optString;
+        WVServerConfig.v = optString;
         return true;
     }
 
@@ -87,12 +85,12 @@ public class WVDomainConfig {
     }
 
     public void init() {
-        parseConfig(ConfigStorage.getStringVal(WVConfigManager.SPNAME_CONFIG, "domainwv-data"));
+        parseConfig(ConfigStorage.getStringVal("wv_main_config", "domainwv-data"));
     }
 
     public void updateDomainRule(final WVConfigUpdateCallback wVConfigUpdateCallback, final String str, String str2) {
         if (TextUtils.isEmpty(str)) {
-            str = WVConfigManager.getInstance().getConfigUrl(ExifInterface.GPS_MEASUREMENT_2D, WVServerConfig.f3v, WVConfigUtils.getTargetValue(), str2);
+            str = WVConfigManager.getInstance().getConfigUrl(ExifInterface.GPS_MEASUREMENT_2D, WVServerConfig.v, WVConfigUtils.getTargetValue(), str2);
         }
         ConnectManager.getInstance().connectSync(str, new HttpConnectListener<HttpResponse>() { // from class: android.taobao.windvane.config.WVDomainConfig.1
             @Override // android.taobao.windvane.connect.HttpConnectListener
@@ -100,9 +98,9 @@ public class WVDomainConfig {
                 WVConfigUpdateCallback wVConfigUpdateCallback2 = wVConfigUpdateCallback;
                 if (wVConfigUpdateCallback2 != null) {
                     wVConfigUpdateCallback2.updateError(str, str3);
-                    wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback.CONFIG_UPDATE_STATUS.UNKNOWN_ERROR, 0);
+                    wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback$CONFIG_UPDATE_STATUS.UNKNOWN_ERROR, 0);
                 }
-                TaoLog.m18d(WVDomainConfig.TAG, "update domain failed! : " + str3);
+                TaoLog.d(WVDomainConfig.TAG, "update domain failed! : " + str3);
                 super.onError(i, str3);
             }
 
@@ -112,20 +110,20 @@ public class WVDomainConfig {
                     return;
                 }
                 if (httpResponse == null || httpResponse.getData() == null) {
-                    wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback.CONFIG_UPDATE_STATUS.NULL_DATA, 0);
+                    wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback$CONFIG_UPDATE_STATUS.NULL_DATA, 0);
                     return;
                 }
                 try {
                     String str3 = new String(httpResponse.getData(), "utf-8");
                     if (WVDomainConfig.this.parseConfig(str3)) {
-                        ConfigStorage.putStringVal(WVConfigManager.SPNAME_CONFIG, "domainwv-data", str3);
-                        wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback.CONFIG_UPDATE_STATUS.SUCCESS, 1);
+                        ConfigStorage.putStringVal("wv_main_config", "domainwv-data", str3);
+                        wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback$CONFIG_UPDATE_STATUS.SUCCESS, 1);
                     } else {
-                        wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback.CONFIG_UPDATE_STATUS.NO_VERSION, 0);
+                        wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback$CONFIG_UPDATE_STATUS.NO_VERSION, 0);
                     }
                 } catch (UnsupportedEncodingException e) {
-                    wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback.CONFIG_UPDATE_STATUS.ENCODING_ERROR, 0);
-                    TaoLog.m21e(WVDomainConfig.TAG, "config encoding error. " + e.getMessage());
+                    wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback$CONFIG_UPDATE_STATUS.ENCODING_ERROR, 0);
+                    TaoLog.e(WVDomainConfig.TAG, "config encoding error. " + e.getMessage());
                 }
             }
         });

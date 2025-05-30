@@ -1,67 +1,46 @@
 package androidx.transition;
 
+import android.R;
 import android.annotation.SuppressLint;
 import androidx.annotation.StyleableRes;
 
 /* compiled from: Taobao */
 @SuppressLint({"InlinedApi"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class Styleable {
 
     @StyleableRes
-    static final int[] TRANSITION_TARGET = {android.R.attr.targetClass, android.R.attr.targetId, android.R.attr.excludeId, android.R.attr.excludeClass, android.R.attr.targetName, android.R.attr.excludeName};
+    static final int[] TRANSITION_TARGET = {R.attr.targetClass, R.attr.targetId, R.attr.excludeId, R.attr.excludeClass, R.attr.targetName, R.attr.excludeName};
 
     @StyleableRes
-    static final int[] TRANSITION_MANAGER = {android.R.attr.fromScene, android.R.attr.toScene, android.R.attr.transition};
+    static final int[] TRANSITION_MANAGER = {R.attr.fromScene, R.attr.toScene, R.attr.transition};
 
     @StyleableRes
-    static final int[] TRANSITION = {android.R.attr.interpolator, android.R.attr.duration, android.R.attr.startDelay, android.R.attr.matchOrder};
+    static final int[] TRANSITION = {R.attr.interpolator, R.attr.duration, R.attr.startDelay, R.attr.matchOrder};
 
     @StyleableRes
-    static final int[] CHANGE_BOUNDS = {android.R.attr.resizeClip};
+    static final int[] CHANGE_BOUNDS = {R.attr.resizeClip};
 
     @StyleableRes
-    static final int[] VISIBILITY_TRANSITION = {android.R.attr.transitionVisibilityMode};
+    static final int[] VISIBILITY_TRANSITION = {R.attr.transitionVisibilityMode};
 
     @StyleableRes
-    static final int[] FADE = {android.R.attr.fadingMode};
+    static final int[] FADE = {R.attr.fadingMode};
 
     @StyleableRes
-    static final int[] CHANGE_TRANSFORM = {android.R.attr.reparent, android.R.attr.reparentWithOverlay};
+    static final int[] CHANGE_TRANSFORM = {R.attr.reparent, R.attr.reparentWithOverlay};
 
     @StyleableRes
-    static final int[] SLIDE = {android.R.attr.slideEdge};
+    static final int[] SLIDE = {R.attr.slideEdge};
 
     @StyleableRes
-    static final int[] TRANSITION_SET = {android.R.attr.transitionOrdering};
+    static final int[] TRANSITION_SET = {R.attr.transitionOrdering};
 
     @StyleableRes
-    static final int[] ARC_MOTION = {android.R.attr.minimumHorizontalAngle, android.R.attr.minimumVerticalAngle, android.R.attr.maximumAngle};
+    static final int[] ARC_MOTION = {R.attr.minimumHorizontalAngle, R.attr.minimumVerticalAngle, R.attr.maximumAngle};
 
     @StyleableRes
-    static final int[] PATTERN_PATH_MOTION = {android.R.attr.patternPathData};
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    interface ArcMotion {
-
-        @StyleableRes
-        public static final int MAXIMUM_ANGLE = 2;
-
-        @StyleableRes
-        public static final int MINIMUM_HORIZONTAL_ANGLE = 0;
-
-        @StyleableRes
-        public static final int MINIMUM_VERTICAL_ANGLE = 1;
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    interface ChangeBounds {
-
-        @StyleableRes
-        public static final int RESIZE_CLIP = 0;
-    }
+    static final int[] PATTERN_PATH_MOTION = {R.attr.patternPathData};
 
     /* compiled from: Taobao */
     interface ChangeTransform {
@@ -74,26 +53,10 @@ class Styleable {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    interface Fade {
-
-        @StyleableRes
-        public static final int FADING_MODE = 0;
-    }
-
-    /* compiled from: Taobao */
     interface PatternPathMotion {
 
         @StyleableRes
         public static final int PATTERN_PATH_DATA = 0;
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    interface Slide {
-
-        @StyleableRes
-        public static final int SLIDE_EDGE = 0;
     }
 
     /* compiled from: Taobao */
@@ -123,14 +86,6 @@ class Styleable {
 
         @StyleableRes
         public static final int TRANSITION = 2;
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    interface TransitionSet {
-
-        @StyleableRes
-        public static final int TRANSITION_ORDERING = 0;
     }
 
     /* compiled from: Taobao */

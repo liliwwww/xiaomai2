@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SlotTable implements CompositionData, Iterable<CompositionGroup>, KMappedMarker {
     private int groupsSize;
     private int readers;
@@ -35,24 +35,10 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
     private ArrayList<Anchor> anchors = new ArrayList<>();
 
     private final List<Integer> dataIndexes() {
-        List<Integer> dataAnchors;
-        dataAnchors = SlotTableKt.dataAnchors(this.groups, this.groupsSize * 5);
-        return dataAnchors;
+        return SlotTableKt.access$dataAnchors(this.groups, this.groupsSize * 5);
     }
 
     private final int emitGroup(StringBuilder sb, int i, int i2) {
-        int key;
-        int groupSize;
-        int nodeCount;
-        boolean hasMark;
-        boolean containsMark;
-        boolean hasObjectKey;
-        boolean isNode;
-        boolean hasAux;
-        int slotAnchor;
-        int auxIndex;
-        int nodeIndex;
-        int objectKeyIndex;
         boolean z = false;
         for (int i3 = 0; i3 < i2; i3++) {
             sb.append(' ');
@@ -60,20 +46,16 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
         sb.append("Group(");
         sb.append(i);
         sb.append(") key=");
-        key = SlotTableKt.key(this.groups, i);
-        sb.append(key);
-        groupSize = SlotTableKt.groupSize(this.groups, i);
+        sb.append(SlotTableKt.access$key(this.groups, i));
+        int access$groupSize = SlotTableKt.access$groupSize(this.groups, i);
         sb.append(", nodes=");
-        nodeCount = SlotTableKt.nodeCount(this.groups, i);
-        sb.append(nodeCount);
+        sb.append(SlotTableKt.access$nodeCount(this.groups, i));
         sb.append(", size=");
-        sb.append(groupSize);
-        hasMark = SlotTableKt.hasMark(this.groups, i);
-        if (hasMark) {
+        sb.append(access$groupSize);
+        if (SlotTableKt.access$hasMark(this.groups, i)) {
             sb.append(", mark");
         }
-        containsMark = SlotTableKt.containsMark(this.groups, i);
-        if (containsMark) {
+        if (SlotTableKt.access$containsMark(this.groups, i)) {
             sb.append(", contains mark");
         }
         int emitGroup$dataIndex = emitGroup$dataIndex(this, i);
@@ -85,40 +67,22 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
         if (!z || emitGroup$dataIndex2 > this.slotsSize) {
             sb.append(", *invalid data offsets " + emitGroup$dataIndex + '-' + emitGroup$dataIndex2 + '*');
         } else {
-            hasObjectKey = SlotTableKt.hasObjectKey(this.groups, i);
-            if (hasObjectKey) {
-                StringBuilder sb2 = new StringBuilder();
-                sb2.append(" objectKey=");
-                Object[] objArr = this.slots;
-                objectKeyIndex = SlotTableKt.objectKeyIndex(this.groups, i);
-                sb2.append(objArr[objectKeyIndex]);
-                sb.append(sb2.toString());
+            if (SlotTableKt.access$hasObjectKey(this.groups, i)) {
+                sb.append(" objectKey=" + this.slots[SlotTableKt.access$objectKeyIndex(this.groups, i)]);
             }
-            isNode = SlotTableKt.isNode(this.groups, i);
-            if (isNode) {
-                StringBuilder sb3 = new StringBuilder();
-                sb3.append(" node=");
-                Object[] objArr2 = this.slots;
-                nodeIndex = SlotTableKt.nodeIndex(this.groups, i);
-                sb3.append(objArr2[nodeIndex]);
-                sb.append(sb3.toString());
+            if (SlotTableKt.access$isNode(this.groups, i)) {
+                sb.append(" node=" + this.slots[SlotTableKt.access$nodeIndex(this.groups, i)]);
             }
-            hasAux = SlotTableKt.hasAux(this.groups, i);
-            if (hasAux) {
-                StringBuilder sb4 = new StringBuilder();
-                sb4.append(" aux=");
-                Object[] objArr3 = this.slots;
-                auxIndex = SlotTableKt.auxIndex(this.groups, i);
-                sb4.append(objArr3[auxIndex]);
-                sb.append(sb4.toString());
+            if (SlotTableKt.access$hasAux(this.groups, i)) {
+                sb.append(" aux=" + this.slots[SlotTableKt.access$auxIndex(this.groups, i)]);
             }
-            slotAnchor = SlotTableKt.slotAnchor(this.groups, i);
-            if (slotAnchor < emitGroup$dataIndex2) {
+            int access$slotAnchor = SlotTableKt.access$slotAnchor(this.groups, i);
+            if (access$slotAnchor < emitGroup$dataIndex2) {
                 sb.append(", slots=[");
-                sb.append(slotAnchor);
+                sb.append(access$slotAnchor);
                 sb.append(": ");
-                for (int i5 = slotAnchor; i5 < emitGroup$dataIndex2; i5++) {
-                    if (i5 != slotAnchor) {
+                for (int i5 = access$slotAnchor; i5 < emitGroup$dataIndex2; i5++) {
+                    if (i5 != access$slotAnchor) {
                         sb.append(", ");
                     }
                     sb.append(String.valueOf(this.slots[i5]));
@@ -127,45 +91,38 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
             }
         }
         sb.append('\n');
-        int i6 = i + groupSize;
+        int i6 = i + access$groupSize;
         while (i4 < i6) {
             i4 += emitGroup(sb, i4, i2 + 1);
         }
-        return groupSize;
+        return access$groupSize;
     }
 
     private static final int emitGroup$dataIndex(SlotTable slotTable, int i) {
-        int dataAnchor;
-        if (i >= slotTable.groupsSize) {
-            return slotTable.slotsSize;
-        }
-        dataAnchor = SlotTableKt.dataAnchor(slotTable.groups, i);
-        return dataAnchor;
+        return i >= slotTable.groupsSize ? slotTable.slotsSize : SlotTableKt.access$dataAnchor(slotTable.groups, i);
     }
 
     private final RecomposeScopeImpl findEffectiveRecomposeScope(int i) {
         while (i > 0) {
-            Iterator<Object> it = new DataIterator(this, i).iterator();
+            Iterator it = new DataIterator(this, i).iterator();
             while (it.hasNext()) {
                 Object next = it.next();
                 if (next instanceof RecomposeScopeImpl) {
                     return (RecomposeScopeImpl) next;
                 }
             }
-            i = SlotTableKt.parentAnchor(this.groups, i);
+            i = SlotTableKt.access$parentAnchor(this.groups, i);
         }
         return null;
     }
 
     private final List<Integer> groupSizes() {
-        List<Integer> groupSizes;
-        groupSizes = SlotTableKt.groupSizes(this.groups, this.groupsSize * 5);
-        return groupSizes;
+        return SlotTableKt.access$groupSizes(this.groups, this.groupsSize * 5);
     }
 
     private final boolean invalidateGroup(int i) {
         while (i >= 0) {
-            Iterator<Object> it = new DataIterator(this, i).iterator();
+            Iterator it = new DataIterator(this, i).iterator();
             while (it.hasNext()) {
                 Object next = it.next();
                 if (next instanceof RecomposeScopeImpl) {
@@ -174,7 +131,7 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
                     return recomposeScopeImpl.invalidateForResult(null) != InvalidationResult.IGNORED;
                 }
             }
-            i = SlotTableKt.parentAnchor(this.groups, i);
+            i = SlotTableKt.access$parentAnchor(this.groups, i);
         }
         return false;
     }
@@ -202,39 +159,72 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
     }
 
     private final List<Integer> keys() {
-        List<Integer> keys;
-        keys = SlotTableKt.keys(this.groups, this.groupsSize * 5);
-        return keys;
+        return SlotTableKt.access$keys(this.groups, this.groupsSize * 5);
     }
 
     private final List<Integer> nodes() {
-        List<Integer> nodeCounts;
-        nodeCounts = SlotTableKt.nodeCounts(this.groups, this.groupsSize * 5);
-        return nodeCounts;
+        return SlotTableKt.access$nodeCounts(this.groups, this.groupsSize * 5);
     }
 
     private final List<Integer> parentIndexes() {
-        List<Integer> parentAnchors;
-        parentAnchors = SlotTableKt.parentAnchors(this.groups, this.groupsSize * 5);
-        return parentAnchors;
+        return SlotTableKt.access$parentAnchors(this.groups, this.groupsSize * 5);
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:54:0x00d0, code lost:
-    
-        if (r9 != false) goto L67;
-     */
-    /* JADX WARN: Removed duplicated region for block: B:36:0x0094  */
-    /* JADX WARN: Removed duplicated region for block: B:70:0x0151  */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
-    */
-    private static final int verifyWellFormed$validateGroup(kotlin.jvm.internal.Ref.IntRef r9, androidx.compose.runtime.SlotTable r10, int r11, int r12) {
-        /*
-            Method dump skipped, instructions count: 574
-            To view this dump change 'Code comments level' option to 'DEBUG'
-        */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.runtime.SlotTable.verifyWellFormed$validateGroup(kotlin.jvm.internal.Ref$IntRef, androidx.compose.runtime.SlotTable, int, int):int");
+    private static final int verifyWellFormed$validateGroup(Ref.IntRef intRef, SlotTable slotTable, int i, int i2) {
+        int i3 = intRef.element;
+        int i4 = i3 + 1;
+        intRef.element = i4;
+        int access$parentAnchor = SlotTableKt.access$parentAnchor(slotTable.groups, i3);
+        if (!(access$parentAnchor == i)) {
+            throw new IllegalStateException(("Invalid parent index detected at " + i3 + ", expected parent index to be " + i + " found " + access$parentAnchor).toString());
+        }
+        int access$groupSize = SlotTableKt.access$groupSize(slotTable.groups, i3) + i3;
+        if (!(access$groupSize <= slotTable.groupsSize)) {
+            throw new IllegalStateException(("A group extends past the end of the table at " + i3).toString());
+        }
+        if (!(access$groupSize <= i2)) {
+            throw new IllegalStateException(("A group extends past its parent group at " + i3).toString());
+        }
+        int access$dataAnchor = SlotTableKt.access$dataAnchor(slotTable.groups, i3);
+        int access$dataAnchor2 = i3 >= slotTable.groupsSize - 1 ? slotTable.slotsSize : SlotTableKt.access$dataAnchor(slotTable.groups, i4);
+        if (!(access$dataAnchor2 <= slotTable.slots.length)) {
+            throw new IllegalStateException(("Slots for " + i3 + " extend past the end of the slot table").toString());
+        }
+        if (!(access$dataAnchor <= access$dataAnchor2)) {
+            throw new IllegalStateException(("Invalid data anchor at " + i3).toString());
+        }
+        if (!(SlotTableKt.access$slotAnchor(slotTable.groups, i3) <= access$dataAnchor2)) {
+            throw new IllegalStateException(("Slots start out of range at " + i3).toString());
+        }
+        if (!(access$dataAnchor2 - access$dataAnchor >= ((SlotTableKt.access$isNode(slotTable.groups, i3) ? 1 : 0) + (SlotTableKt.access$hasObjectKey(slotTable.groups, i3) ? 1 : 0)) + (SlotTableKt.access$hasAux(slotTable.groups, i3) ? 1 : 0))) {
+            throw new IllegalStateException(("Not enough slots added for group " + i3).toString());
+        }
+        boolean access$isNode = SlotTableKt.access$isNode(slotTable.groups, i3);
+        if (!((access$isNode && slotTable.slots[SlotTableKt.access$nodeIndex(slotTable.groups, i3)] == null) ? false : true)) {
+            throw new IllegalStateException(("No node recorded for a node group at " + i3).toString());
+        }
+        int i5 = 0;
+        while (intRef.element < access$groupSize) {
+            i5 += verifyWellFormed$validateGroup(intRef, slotTable, i3, access$groupSize);
+        }
+        int access$nodeCount = SlotTableKt.access$nodeCount(slotTable.groups, i3);
+        int access$groupSize2 = SlotTableKt.access$groupSize(slotTable.groups, i3);
+        if (!(access$nodeCount == i5)) {
+            throw new IllegalStateException(("Incorrect node count detected at " + i3 + ", expected " + access$nodeCount + ", received " + i5).toString());
+        }
+        int i6 = intRef.element - i3;
+        if (!(access$groupSize2 == i6)) {
+            throw new IllegalStateException(("Incorrect slot count detected at " + i3 + ", expected " + access$groupSize2 + ", received " + i6).toString());
+        }
+        if (SlotTableKt.access$containsAnyMark(slotTable.groups, i3)) {
+            if (!(i3 <= 0 || SlotTableKt.access$containsMark(slotTable.groups, i))) {
+                throw new IllegalStateException(("Expected group " + i + " to record it contains a mark because " + i3 + " does").toString());
+            }
+        }
+        if (access$isNode) {
+            return 1;
+        }
+        return i5;
     }
 
     @NotNull
@@ -251,13 +241,13 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
             throw new IllegalArgumentException("Parameter index is out of range".toString());
         }
         ArrayList<Anchor> arrayList = this.anchors;
-        int search = SlotTableKt.search(arrayList, i, this.groupsSize);
-        if (search < 0) {
+        int access$search = SlotTableKt.access$search(arrayList, i, this.groupsSize);
+        if (access$search < 0) {
             Anchor anchor = new Anchor(i);
-            arrayList.add(-(search + 1), anchor);
+            arrayList.add(-(access$search + 1), anchor);
             return anchor;
         }
-        Anchor anchor2 = arrayList.get(search);
+        Anchor anchor2 = arrayList.get(access$search);
         Intrinsics.checkNotNullExpressionValue(anchor2, "get(location)");
         return anchor2;
     }
@@ -307,15 +297,9 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
     }
 
     public final boolean containsMark() {
-        boolean containsMark;
-        if (this.groupsSize <= 0) {
-            return false;
-        }
-        containsMark = SlotTableKt.containsMark(this.groups, 0);
-        return containsMark;
+        return this.groupsSize > 0 && SlotTableKt.access$containsMark(this.groups, 0);
     }
 
-    @Override // androidx.compose.runtime.tooling.CompositionData
     @Nullable
     public CompositionGroup find(@NotNull Object obj) {
         Intrinsics.checkNotNullParameter(obj, "identityToFind");
@@ -327,7 +311,6 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
         return this.anchors;
     }
 
-    @Override // androidx.compose.runtime.tooling.CompositionData
     @NotNull
     public Iterable<CompositionGroup> getCompositionGroups() {
         return this;
@@ -360,7 +343,6 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
     }
 
     public final boolean groupContainsAnchor(int i, @NotNull Anchor anchor) {
-        int groupSize;
         Intrinsics.checkNotNullParameter(anchor, "anchor");
         if (!(!this.writer)) {
             ComposerKt.composeRuntimeError("Writer is active".toString());
@@ -371,10 +353,9 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
             throw new KotlinNothingValueException();
         }
         if (ownsAnchor(anchor)) {
-            groupSize = SlotTableKt.groupSize(this.groups, i);
-            int i2 = groupSize + i;
+            int access$groupSize = SlotTableKt.access$groupSize(this.groups, i) + i;
             int location$runtime_release = anchor.getLocation$runtime_release();
-            if (i <= location$runtime_release && location$runtime_release < i2) {
+            if (i <= location$runtime_release && location$runtime_release < access$groupSize) {
                 return true;
             }
         }
@@ -420,7 +401,6 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
         }
     }
 
-    @Override // androidx.compose.runtime.tooling.CompositionData
     public boolean isEmpty() {
         return this.groupsSize == 0;
     }
@@ -458,8 +438,8 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
     public final boolean ownsAnchor(@NotNull Anchor anchor) {
         Intrinsics.checkNotNullParameter(anchor, "anchor");
         if (anchor.getValid()) {
-            int search = SlotTableKt.search(this.anchors, anchor.getLocation$runtime_release(), this.groupsSize);
-            if (search >= 0 && Intrinsics.areEqual(this.anchors.get(search), anchor)) {
+            int access$search = SlotTableKt.access$search(this.anchors, anchor.getLocation$runtime_release(), this.groupsSize);
+            if (access$search >= 0 && Intrinsics.areEqual(this.anchors.get(access$search), anchor)) {
                 return true;
             }
         }
@@ -500,16 +480,14 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
 
     @NotNull
     public final List<Object> slotsOf$runtime_release(int i) {
-        int dataAnchor;
-        dataAnchor = SlotTableKt.dataAnchor(this.groups, i);
+        int access$dataAnchor = SlotTableKt.access$dataAnchor(this.groups, i);
         int i2 = i + 1;
-        return ArraysKt.toList(this.slots).subList(dataAnchor, i2 < this.groupsSize ? SlotTableKt.dataAnchor(this.groups, i2) : this.slots.length);
+        return ArraysKt.toList(this.slots).subList(access$dataAnchor, i2 < this.groupsSize ? SlotTableKt.access$dataAnchor(this.groups, i2) : this.slots.length);
     }
 
     public final void verifyWellFormed() {
         int i;
         int i2;
-        int groupSize;
         Ref.IntRef intRef = new Ref.IntRef();
         int i3 = -1;
         if (this.groupsSize > 0) {
@@ -518,9 +496,9 @@ public final class SlotTable implements CompositionData, Iterable<CompositionGro
                 i2 = this.groupsSize;
                 if (i >= i2) {
                     break;
+                } else {
+                    verifyWellFormed$validateGroup(intRef, this, -1, i + SlotTableKt.access$groupSize(this.groups, i));
                 }
-                groupSize = SlotTableKt.groupSize(this.groups, i);
-                verifyWellFormed$validateGroup(intRef, this, -1, i + groupSize);
             }
             if (!(i == i2)) {
                 throw new IllegalStateException(("Incomplete group at root " + intRef.element + " expected to be " + this.groupsSize).toString());

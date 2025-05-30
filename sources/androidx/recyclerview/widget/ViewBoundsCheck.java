@@ -1,19 +1,15 @@
 package androidx.recyclerview.widget;
 
 import android.view.View;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ViewBoundsCheck {
     static final int CVE_PVE_POS = 12;
     static final int CVE_PVS_POS = 8;
     static final int CVS_PVE_POS = 4;
     static final int CVS_PVS_POS = 0;
-
-    /* renamed from: EQ */
-    static final int f378EQ = 2;
+    static final int EQ = 2;
     static final int FLAG_CVE_EQ_PVE = 8192;
     static final int FLAG_CVE_EQ_PVS = 512;
     static final int FLAG_CVE_GT_PVE = 4096;
@@ -26,67 +22,11 @@ class ViewBoundsCheck {
     static final int FLAG_CVS_GT_PVS = 1;
     static final int FLAG_CVS_LT_PVE = 64;
     static final int FLAG_CVS_LT_PVS = 4;
-
-    /* renamed from: GT */
-    static final int f379GT = 1;
-
-    /* renamed from: LT */
-    static final int f380LT = 4;
+    static final int GT = 1;
+    static final int LT = 4;
     static final int MASK = 7;
     BoundFlags mBoundFlags = new BoundFlags();
     final Callback mCallback;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static class BoundFlags {
-        int mBoundFlags = 0;
-        int mChildEnd;
-        int mChildStart;
-        int mRvEnd;
-        int mRvStart;
-
-        BoundFlags() {
-        }
-
-        void addFlags(int i) {
-            this.mBoundFlags = i | this.mBoundFlags;
-        }
-
-        boolean boundsMatch() {
-            int i = this.mBoundFlags;
-            if ((i & 7) != 0 && (i & (compare(this.mChildStart, this.mRvStart) << 0)) == 0) {
-                return false;
-            }
-            int i2 = this.mBoundFlags;
-            if ((i2 & 112) != 0 && (i2 & (compare(this.mChildStart, this.mRvEnd) << 4)) == 0) {
-                return false;
-            }
-            int i3 = this.mBoundFlags;
-            if ((i3 & 1792) != 0 && (i3 & (compare(this.mChildEnd, this.mRvStart) << 8)) == 0) {
-                return false;
-            }
-            int i4 = this.mBoundFlags;
-            return (i4 & 28672) == 0 || (i4 & (compare(this.mChildEnd, this.mRvEnd) << 12)) != 0;
-        }
-
-        int compare(int i, int i2) {
-            if (i > i2) {
-                return 1;
-            }
-            return i == i2 ? 2 : 4;
-        }
-
-        void resetFlags() {
-            this.mBoundFlags = 0;
-        }
-
-        void setBounds(int i, int i2, int i3, int i4) {
-            this.mRvStart = i;
-            this.mRvEnd = i2;
-            this.mChildStart = i3;
-            this.mChildEnd = i4;
-        }
-    }
 
     /* compiled from: Taobao */
     interface Callback {
@@ -99,12 +39,6 @@ class ViewBoundsCheck {
         int getParentEnd();
 
         int getParentStart();
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    /* loaded from: classes2.dex */
-    public @interface ViewBounds {
     }
 
     ViewBoundsCheck(Callback callback) {

@@ -1,15 +1,16 @@
 package androidx.compose.foundation.lazy.staggeredgrid;
 
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntOffsetKt;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntOffsetKt;
 import java.util.List;
+import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class LazyStaggeredGridPositionedItem implements LazyStaggeredGridItemInfo {
     private final long contentOffset;
     private final int index;
@@ -40,31 +41,26 @@ final class LazyStaggeredGridPositionedItem implements LazyStaggeredGridItemInfo
         this(j, i, i2, obj, j2, list, j3, z);
     }
 
-    @Override // androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridItemInfo
     public int getIndex() {
         return this.index;
     }
 
-    @Override // androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridItemInfo
     @NotNull
     public Object getKey() {
         return this.key;
     }
 
-    @Override // androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridItemInfo
     public int getLane() {
         return this.lane;
     }
 
-    @Override // androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridItemInfo
-    /* renamed from: getOffset-nOcc-ac */
-    public long mo1629getOffsetnOccac() {
+    /* renamed from: getOffset-nOcc-ac, reason: not valid java name */
+    public long m330getOffsetnOccac() {
         return this.offset;
     }
 
-    @Override // androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridItemInfo
-    /* renamed from: getSize-YbymL2g */
-    public long mo1630getSizeYbymL2g() {
+    /* renamed from: getSize-YbymL2g, reason: not valid java name */
+    public long m331getSizeYbymL2g() {
         return this.size;
     }
 
@@ -75,13 +71,13 @@ final class LazyStaggeredGridPositionedItem implements LazyStaggeredGridItemInfo
         for (int i = 0; i < size; i++) {
             Placeable placeable = list.get(i);
             if (this.isVertical) {
-                long mo1629getOffsetnOccac = mo1629getOffsetnOccac();
+                long m330getOffsetnOccac = m330getOffsetnOccac();
                 long j = this.contentOffset;
-                Placeable.PlacementScope.m4226placeWithLayeraW9wM$default(placementScope, placeable, IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(mo1629getOffsetnOccac) + IntOffset.m5334getXimpl(j), IntOffset.m5335getYimpl(mo1629getOffsetnOccac) + IntOffset.m5335getYimpl(j)), 0.0f, null, 6, null);
+                Placeable.PlacementScope.placeWithLayer-aW-9-wM$default(placementScope, placeable, IntOffsetKt.IntOffset(IntOffset.getX-impl(m330getOffsetnOccac) + IntOffset.getX-impl(j), IntOffset.getY-impl(m330getOffsetnOccac) + IntOffset.getY-impl(j)), 0.0f, (Function1) null, 6, (Object) null);
             } else {
-                long mo1629getOffsetnOccac2 = mo1629getOffsetnOccac();
+                long m330getOffsetnOccac2 = m330getOffsetnOccac();
                 long j2 = this.contentOffset;
-                Placeable.PlacementScope.m4225placeRelativeWithLayeraW9wM$default(placementScope, placeable, IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(mo1629getOffsetnOccac2) + IntOffset.m5334getXimpl(j2), IntOffset.m5335getYimpl(mo1629getOffsetnOccac2) + IntOffset.m5335getYimpl(j2)), 0.0f, null, 6, null);
+                Placeable.PlacementScope.placeRelativeWithLayer-aW-9-wM$default(placementScope, placeable, IntOffsetKt.IntOffset(IntOffset.getX-impl(m330getOffsetnOccac2) + IntOffset.getX-impl(j2), IntOffset.getY-impl(m330getOffsetnOccac2) + IntOffset.getY-impl(j2)), 0.0f, (Function1) null, 6, (Object) null);
             }
         }
     }

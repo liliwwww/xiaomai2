@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.graphics.drawable.DrawableContainerCompat;
-import androidx.appcompat.resources.C0290R;
-import androidx.appcompat.resources.Compatibility;
+import androidx.appcompat.resources.Compatibility$Api21Impl;
+import androidx.appcompat.resources.R;
 import androidx.appcompat.widget.ResourceManagerInternal;
 import androidx.core.content.res.TypedArrayUtils;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class StateListDrawableCompat extends DrawableContainerCompat {
     private static final boolean DEBUG = false;
     private static final String TAG = "StateListDrawableCompat";
@@ -46,7 +46,6 @@ public class StateListDrawableCompat extends DrawableContainerCompat {
             return addChild;
         }
 
-        @Override // androidx.appcompat.graphics.drawable.DrawableContainerCompat.DrawableContainerState
         public void growArray(int i, int i2) {
             super.growArray(i, i2);
             int[][] iArr = new int[i2][];
@@ -65,7 +64,6 @@ public class StateListDrawableCompat extends DrawableContainerCompat {
             return -1;
         }
 
-        @Override // androidx.appcompat.graphics.drawable.DrawableContainerCompat.DrawableContainerState
         void mutate() {
             int[][] iArr = this.mStateSets;
             int[][] iArr2 = new int[iArr.length][];
@@ -76,13 +74,11 @@ public class StateListDrawableCompat extends DrawableContainerCompat {
             this.mStateSets = iArr2;
         }
 
-        @Override // android.graphics.drawable.Drawable.ConstantState
         @NonNull
         public Drawable newDrawable() {
             return new StateListDrawableCompat(this, null);
         }
 
-        @Override // android.graphics.drawable.Drawable.ConstantState
         @NonNull
         public Drawable newDrawable(Resources resources) {
             return new StateListDrawableCompat(this, resources);
@@ -107,8 +103,8 @@ public class StateListDrawableCompat extends DrawableContainerCompat {
                 return;
             }
             if (next2 == 2 && depth2 <= depth && xmlPullParser.getName().equals("item")) {
-                TypedArray obtainAttributes = TypedArrayUtils.obtainAttributes(resources, theme, attributeSet, C0290R.styleable.StateListDrawableItem);
-                int resourceId = obtainAttributes.getResourceId(C0290R.styleable.StateListDrawableItem_android_drawable, -1);
+                TypedArray obtainAttributes = TypedArrayUtils.obtainAttributes(resources, theme, attributeSet, R.styleable.StateListDrawableItem);
+                int resourceId = obtainAttributes.getResourceId(R.styleable.StateListDrawableItem_android_drawable, -1);
                 Drawable drawable = resourceId > 0 ? ResourceManagerInternal.get().getDrawable(context, resourceId) : null;
                 obtainAttributes.recycle();
                 int[] extractStateSet = extractStateSet(attributeSet);
@@ -119,7 +115,7 @@ public class StateListDrawableCompat extends DrawableContainerCompat {
                     if (next != 2) {
                         throw new XmlPullParserException(xmlPullParser.getPositionDescription() + ": <item> tag requires a 'drawable' attribute or child tag defining a drawable");
                     }
-                    drawable = Build.VERSION.SDK_INT >= 21 ? Compatibility.Api21Impl.createFromXmlInner(resources, xmlPullParser, attributeSet, theme) : Drawable.createFromXmlInner(resources, xmlPullParser, attributeSet);
+                    drawable = Build.VERSION.SDK_INT >= 21 ? Compatibility$Api21Impl.createFromXmlInner(resources, xmlPullParser, attributeSet, theme) : Drawable.createFromXmlInner(resources, xmlPullParser, attributeSet);
                 }
                 stateListState.addStateSet(extractStateSet, drawable);
             }
@@ -129,13 +125,13 @@ public class StateListDrawableCompat extends DrawableContainerCompat {
     private void updateStateFromTypedArray(TypedArray typedArray) {
         StateListState stateListState = this.mStateListState;
         if (Build.VERSION.SDK_INT >= 21) {
-            stateListState.mChangingConfigurations |= Compatibility.Api21Impl.getChangingConfigurations(typedArray);
+            ((DrawableContainerCompat.DrawableContainerState) stateListState).mChangingConfigurations |= Compatibility$Api21Impl.getChangingConfigurations(typedArray);
         }
-        stateListState.mVariablePadding = typedArray.getBoolean(C0290R.styleable.StateListDrawable_android_variablePadding, stateListState.mVariablePadding);
-        stateListState.mConstantSize = typedArray.getBoolean(C0290R.styleable.StateListDrawable_android_constantSize, stateListState.mConstantSize);
-        stateListState.mEnterFadeDuration = typedArray.getInt(C0290R.styleable.StateListDrawable_android_enterFadeDuration, stateListState.mEnterFadeDuration);
-        stateListState.mExitFadeDuration = typedArray.getInt(C0290R.styleable.StateListDrawable_android_exitFadeDuration, stateListState.mExitFadeDuration);
-        stateListState.mDither = typedArray.getBoolean(C0290R.styleable.StateListDrawable_android_dither, stateListState.mDither);
+        ((DrawableContainerCompat.DrawableContainerState) stateListState).mVariablePadding = typedArray.getBoolean(R.styleable.StateListDrawable_android_variablePadding, ((DrawableContainerCompat.DrawableContainerState) stateListState).mVariablePadding);
+        ((DrawableContainerCompat.DrawableContainerState) stateListState).mConstantSize = typedArray.getBoolean(R.styleable.StateListDrawable_android_constantSize, ((DrawableContainerCompat.DrawableContainerState) stateListState).mConstantSize);
+        ((DrawableContainerCompat.DrawableContainerState) stateListState).mEnterFadeDuration = typedArray.getInt(R.styleable.StateListDrawable_android_enterFadeDuration, ((DrawableContainerCompat.DrawableContainerState) stateListState).mEnterFadeDuration);
+        ((DrawableContainerCompat.DrawableContainerState) stateListState).mExitFadeDuration = typedArray.getInt(R.styleable.StateListDrawable_android_exitFadeDuration, ((DrawableContainerCompat.DrawableContainerState) stateListState).mExitFadeDuration);
+        ((DrawableContainerCompat.DrawableContainerState) stateListState).mDither = typedArray.getBoolean(R.styleable.StateListDrawable_android_dither, ((DrawableContainerCompat.DrawableContainerState) stateListState).mDither);
     }
 
     public void addState(int[] iArr, Drawable drawable) {
@@ -197,8 +193,8 @@ public class StateListDrawableCompat extends DrawableContainerCompat {
     }
 
     public void inflate(@NonNull Context context, @NonNull Resources resources, @NonNull XmlPullParser xmlPullParser, @NonNull AttributeSet attributeSet, @Nullable Resources.Theme theme) throws XmlPullParserException, IOException {
-        TypedArray obtainAttributes = TypedArrayUtils.obtainAttributes(resources, theme, attributeSet, C0290R.styleable.StateListDrawable);
-        setVisible(obtainAttributes.getBoolean(C0290R.styleable.StateListDrawable_android_visible, true), true);
+        TypedArray obtainAttributes = TypedArrayUtils.obtainAttributes(resources, theme, attributeSet, R.styleable.StateListDrawable);
+        setVisible(obtainAttributes.getBoolean(R.styleable.StateListDrawable_android_visible, true), true);
         updateStateFromTypedArray(obtainAttributes);
         updateDensity(resources);
         obtainAttributes.recycle();

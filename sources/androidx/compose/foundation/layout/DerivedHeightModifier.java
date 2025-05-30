@@ -1,23 +1,23 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.C0790a;
-import androidx.compose.p004ui.layout.IntrinsicMeasurable;
-import androidx.compose.p004ui.layout.IntrinsicMeasureScope;
-import androidx.compose.p004ui.layout.LayoutModifier;
-import androidx.compose.p004ui.layout.Measurable;
-import androidx.compose.p004ui.layout.MeasureResult;
-import androidx.compose.p004ui.layout.MeasureScope;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.modifier.ModifierLocalConsumer;
-import androidx.compose.p004ui.modifier.ModifierLocalReadScope;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.platform.InspectorValueInfo;
-import androidx.compose.p004ui.unit.Constraints;
-import androidx.compose.p004ui.unit.Density;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.IntrinsicMeasurable;
+import androidx.compose.ui.layout.IntrinsicMeasureScope;
+import androidx.compose.ui.layout.LayoutModifier;
+import androidx.compose.ui.layout.Measurable;
+import androidx.compose.ui.layout.MeasureResult;
+import androidx.compose.ui.layout.MeasureScope;
+import androidx.compose.ui.layout.MeasureScope$CC;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.modifier.ModifierLocalConsumer;
+import androidx.compose.ui.modifier.ModifierLocalReadScope;
+import androidx.compose.ui.platform.InspectorInfo;
+import androidx.compose.ui.platform.InspectorValueInfo;
+import androidx.compose.ui.unit.Constraints;
+import androidx.compose.ui.unit.Density;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
@@ -29,7 +29,7 @@ import tb.nt2;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DerivedHeightModifier extends InspectorValueInfo implements LayoutModifier, ModifierLocalConsumer {
 
     @NotNull
@@ -45,12 +45,14 @@ final class DerivedHeightModifier extends InspectorValueInfo implements LayoutMo
     /* JADX WARN: Multi-variable type inference failed */
     public DerivedHeightModifier(@NotNull WindowInsets windowInsets, @NotNull Function1<? super InspectorInfo, Unit> function1, @NotNull Function2<? super WindowInsets, ? super Density, Integer> function2) {
         super(function1);
+        MutableState mutableStateOf$default;
         Intrinsics.checkNotNullParameter(windowInsets, "insets");
         Intrinsics.checkNotNullParameter(function1, "inspectorInfo");
         Intrinsics.checkNotNullParameter(function2, "heightCalc");
         this.insets = windowInsets;
         this.heightCalc = function2;
-        this.unconsumedInsets$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(windowInsets, null, 2, null);
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(windowInsets, null, 2, null);
+        this.unconsumedInsets$delegate = mutableStateOf$default;
     }
 
     private final WindowInsets getUnconsumedInsets() {
@@ -61,12 +63,10 @@ final class DerivedHeightModifier extends InspectorValueInfo implements LayoutMo
         this.unconsumedInsets$delegate.setValue(windowInsets);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
@@ -82,12 +82,10 @@ final class DerivedHeightModifier extends InspectorValueInfo implements LayoutMo
         return Intrinsics.areEqual(this.insets, derivedHeightModifier.insets) && Intrinsics.areEqual(this.heightCalc, derivedHeightModifier.heightCalc);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
@@ -96,70 +94,46 @@ final class DerivedHeightModifier extends InspectorValueInfo implements LayoutMo
         return (this.insets.hashCode() * 31) + this.heightCalc.hashCode();
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
+    @Override // androidx.compose.ui.layout.LayoutModifier
     public /* synthetic */ int maxIntrinsicHeight(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m141a(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return androidx.compose.ui.layout.a.a(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
+    @Override // androidx.compose.ui.layout.LayoutModifier
     public /* synthetic */ int maxIntrinsicWidth(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m142b(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return androidx.compose.ui.layout.a.b(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
+    @Override // androidx.compose.ui.layout.LayoutModifier
     @NotNull
     /* renamed from: measure-3p2s80s */
-    public MeasureResult mo959measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull Measurable measurable, long j) {
+    public MeasureResult mo49measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull Measurable measurable, long j) {
         Intrinsics.checkNotNullParameter(measureScope, "$this$measure");
         Intrinsics.checkNotNullParameter(measurable, "measurable");
         int intValue = ((Number) this.heightCalc.invoke(getUnconsumedInsets(), measureScope)).intValue();
         if (intValue == 0) {
-            return MeasureScope.CC.m140p(measureScope, 0, 0, null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.foundation.layout.DerivedHeightModifier$measure$1
-                public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                    invoke((Placeable.PlacementScope) obj);
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
-                    Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
-                }
-            }, 4, null);
+            return MeasureScope$CC.p(measureScope, 0, 0, null, measure.1.INSTANCE, 4, null);
         }
-        final Placeable mo4187measureBRTryo0 = measurable.mo4187measureBRTryo0(Constraints.m5175copyZbe2FdA$default(j, 0, 0, intValue, intValue, 3, null));
-        return MeasureScope.CC.m140p(measureScope, mo4187measureBRTryo0.getWidth(), intValue, null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.foundation.layout.DerivedHeightModifier$measure$2
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((Placeable.PlacementScope) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
-                Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
-                Placeable.PlacementScope.placeRelative$default(placementScope, Placeable.this, 0, 0, 0.0f, 4, null);
-            }
-        }, 4, null);
+        Placeable placeable = measurable.measure-BRTryo0(Constraints.copy-Zbe2FdA$default(j, 0, 0, intValue, intValue, 3, (Object) null));
+        return MeasureScope$CC.p(measureScope, placeable.getWidth(), intValue, null, new measure.2(placeable), 4, null);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
+    @Override // androidx.compose.ui.layout.LayoutModifier
     public /* synthetic */ int minIntrinsicHeight(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m143c(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return androidx.compose.ui.layout.a.c(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
+    @Override // androidx.compose.ui.layout.LayoutModifier
     public /* synthetic */ int minIntrinsicWidth(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m144d(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return androidx.compose.ui.layout.a.d(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.modifier.ModifierLocalConsumer
     public void onModifierLocalsUpdated(@NotNull ModifierLocalReadScope modifierLocalReadScope) {
         Intrinsics.checkNotNullParameter(modifierLocalReadScope, "scope");
         setUnconsumedInsets(WindowInsetsKt.exclude(this.insets, (WindowInsets) modifierLocalReadScope.getCurrent(WindowInsetsPaddingKt.getModifierLocalConsumedWindowInsets())));
     }
 
-    @Override // androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }

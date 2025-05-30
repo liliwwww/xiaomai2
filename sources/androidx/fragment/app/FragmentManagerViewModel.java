@@ -6,29 +6,16 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStore;
-import androidx.lifecycle.viewmodel.CreationExtras;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import tb.j56;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class FragmentManagerViewModel extends ViewModel {
-    private static final ViewModelProvider.Factory FACTORY = new ViewModelProvider.Factory() { // from class: androidx.fragment.app.FragmentManagerViewModel.1
-        @Override // androidx.lifecycle.ViewModelProvider.Factory
-        @NonNull
-        public <T extends ViewModel> T create(@NonNull Class<T> cls) {
-            return new FragmentManagerViewModel(true);
-        }
-
-        @Override // androidx.lifecycle.ViewModelProvider.Factory
-        public /* synthetic */ ViewModel create(Class cls, CreationExtras creationExtras) {
-            return j56.b(this, cls, creationExtras);
-        }
-    };
+    private static final ViewModelProvider.Factory FACTORY = new 1();
     private static final String TAG = "FragmentManager";
     private final boolean mStateAutomaticallySaved;
     private final HashMap<String, Fragment> mRetainedFragments = new HashMap<>();
@@ -154,7 +141,6 @@ final class FragmentManagerViewModel extends ViewModel {
         return this.mHasBeenCleared;
     }
 
-    @Override // androidx.lifecycle.ViewModel
     protected void onCleared() {
         if (FragmentManager.isLoggingEnabled(3)) {
             Log.d("FragmentManager", "onCleared called for " + this);

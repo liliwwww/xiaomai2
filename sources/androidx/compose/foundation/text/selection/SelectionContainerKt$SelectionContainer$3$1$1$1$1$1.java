@@ -2,7 +2,8 @@ package androidx.compose.foundation.text.selection;
 
 import androidx.compose.foundation.text.LongPressTextDragObserverKt;
 import androidx.compose.foundation.text.TextDragObserver;
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.input.pointer.PointerInputScope;
+import androidx.constraintlayout.widget.R$styleable;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -14,8 +15,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-@DebugMetadata(c = "androidx.compose.foundation.text.selection.SelectionContainerKt$SelectionContainer$3$1$1$1$1$1", f = "SelectionContainer.kt", i = {}, l = {126}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+@DebugMetadata(c = "androidx.compose.foundation.text.selection.SelectionContainerKt$SelectionContainer$3$1$1$1$1$1", f = "SelectionContainer.kt", i = {}, l = {R$styleable.AppCompatTheme_windowNoTitle}, m = "invokeSuspend", n = {}, s = {})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SelectionContainerKt$SelectionContainer$3$1$1$1$1$1 extends SuspendLambda implements Function2<PointerInputScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ TextDragObserver $observer;
     private /* synthetic */ Object L$0;

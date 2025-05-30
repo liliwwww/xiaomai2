@@ -34,7 +34,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class AppCompatTextView extends TextView implements EmojiCompatConfigurationView, TintableBackgroundView, AutoSizeableTextView, TintableCompoundDrawablesView {
     private final AppCompatBackgroundHelper mBackgroundTintHelper;
 
@@ -49,119 +49,6 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
     private SuperCaller mSuperCaller;
     private final AppCompatTextClassifierHelper mTextClassifierHelper;
     private final AppCompatTextHelper mTextHelper;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private interface SuperCaller {
-        int getAutoSizeMaxTextSize();
-
-        int getAutoSizeMinTextSize();
-
-        int getAutoSizeStepGranularity();
-
-        int[] getAutoSizeTextAvailableSizes();
-
-        int getAutoSizeTextType();
-
-        TextClassifier getTextClassifier();
-
-        void setAutoSizeTextTypeUniformWithConfiguration(int i, int i2, int i3, int i4);
-
-        void setAutoSizeTextTypeUniformWithPresetSizes(int[] iArr, int i);
-
-        void setAutoSizeTextTypeWithDefaults(int i);
-
-        void setFirstBaselineToTopHeight(@Px int i);
-
-        void setLastBaselineToBottomHeight(@Px int i);
-
-        void setTextClassifier(@Nullable TextClassifier textClassifier);
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(api = 26)
-    /* loaded from: classes.dex */
-    class SuperCallerApi26 implements SuperCaller {
-        SuperCallerApi26() {
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public int getAutoSizeMaxTextSize() {
-            return AppCompatTextView.super.getAutoSizeMaxTextSize();
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public int getAutoSizeMinTextSize() {
-            return AppCompatTextView.super.getAutoSizeMinTextSize();
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public int getAutoSizeStepGranularity() {
-            return AppCompatTextView.super.getAutoSizeStepGranularity();
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public int[] getAutoSizeTextAvailableSizes() {
-            return AppCompatTextView.super.getAutoSizeTextAvailableSizes();
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public int getAutoSizeTextType() {
-            return AppCompatTextView.super.getAutoSizeTextType();
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public TextClassifier getTextClassifier() {
-            return AppCompatTextView.super.getTextClassifier();
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public void setAutoSizeTextTypeUniformWithConfiguration(int i, int i2, int i3, int i4) {
-            AppCompatTextView.super.setAutoSizeTextTypeUniformWithConfiguration(i, i2, i3, i4);
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public void setAutoSizeTextTypeUniformWithPresetSizes(int[] iArr, int i) {
-            AppCompatTextView.super.setAutoSizeTextTypeUniformWithPresetSizes(iArr, i);
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public void setAutoSizeTextTypeWithDefaults(int i) {
-            AppCompatTextView.super.setAutoSizeTextTypeWithDefaults(i);
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public void setFirstBaselineToTopHeight(int i) {
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public void setLastBaselineToBottomHeight(int i) {
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public void setTextClassifier(@Nullable TextClassifier textClassifier) {
-            AppCompatTextView.super.setTextClassifier(textClassifier);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(api = 28)
-    /* loaded from: classes.dex */
-    class SuperCallerApi28 extends SuperCallerApi26 {
-        SuperCallerApi28() {
-            super();
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCallerApi26, androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public void setFirstBaselineToTopHeight(@Px int i) {
-            AppCompatTextView.super.setFirstBaselineToTopHeight(i);
-        }
-
-        @Override // androidx.appcompat.widget.AppCompatTextView.SuperCallerApi26, androidx.appcompat.widget.AppCompatTextView.SuperCaller
-        public void setLastBaselineToBottomHeight(@Px int i) {
-            AppCompatTextView.super.setLastBaselineToBottomHeight(i);
-        }
-    }
 
     public AppCompatTextView(@NonNull Context context) {
         this(context, null);
@@ -199,7 +86,7 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         }
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public int getAutoSizeMaxTextSize() {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -212,7 +99,7 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         return -1;
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public int getAutoSizeMinTextSize() {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -225,7 +112,7 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         return -1;
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public int getAutoSizeStepGranularity() {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -238,7 +125,7 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         return -1;
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public int[] getAutoSizeTextAvailableSizes() {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -248,7 +135,7 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         return appCompatTextHelper != null ? appCompatTextHelper.getAutoSizeTextAvailableSizes() : new int[0];
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @SuppressLint({"WrongConstant"})
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public int getAutoSizeTextType() {
@@ -284,15 +171,14 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         if (this.mSuperCaller == null) {
             int i = Build.VERSION.SDK_INT;
             if (i >= 28) {
-                this.mSuperCaller = new SuperCallerApi28();
+                this.mSuperCaller = new SuperCallerApi28(this);
             } else if (i >= 26) {
-                this.mSuperCaller = new SuperCallerApi26();
+                this.mSuperCaller = new SuperCallerApi26(this);
             }
         }
         return this.mSuperCaller;
     }
 
-    @Override // androidx.core.view.TintableBackgroundView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public ColorStateList getSupportBackgroundTintList() {
@@ -303,7 +189,6 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         return null;
     }
 
-    @Override // androidx.core.view.TintableBackgroundView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public PorterDuff.Mode getSupportBackgroundTintMode() {
@@ -314,14 +199,12 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         return null;
     }
 
-    @Override // androidx.core.widget.TintableCompoundDrawablesView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public ColorStateList getSupportCompoundDrawablesTintList() {
         return this.mTextHelper.getCompoundDrawableTintList();
     }
 
-    @Override // androidx.core.widget.TintableCompoundDrawablesView
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public PorterDuff.Mode getSupportCompoundDrawablesTintMode() {
@@ -389,7 +272,7 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         getEmojiTextViewHelper().setAllCaps(z);
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setAutoSizeTextTypeUniformWithConfiguration(int i, int i2, int i3, int i4) throws IllegalArgumentException {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -402,7 +285,7 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         }
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setAutoSizeTextTypeUniformWithPresetSizes(@NonNull int[] iArr, int i) throws IllegalArgumentException {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -415,7 +298,7 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         }
     }
 
-    @Override // android.widget.TextView, androidx.core.widget.AutoSizeableTextView
+    @Override // android.widget.TextView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setAutoSizeTextTypeWithDefaults(int i) {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
@@ -526,7 +409,6 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         TextViewCompat.setPrecomputedText(this, precomputedTextCompat);
     }
 
-    @Override // androidx.core.view.TintableBackgroundView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportBackgroundTintList(@Nullable ColorStateList colorStateList) {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
@@ -535,7 +417,6 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         }
     }
 
-    @Override // androidx.core.view.TintableBackgroundView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportBackgroundTintMode(@Nullable PorterDuff.Mode mode) {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
@@ -544,14 +425,12 @@ public class AppCompatTextView extends TextView implements EmojiCompatConfigurat
         }
     }
 
-    @Override // androidx.core.widget.TintableCompoundDrawablesView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportCompoundDrawablesTintList(@Nullable ColorStateList colorStateList) {
         this.mTextHelper.setCompoundDrawableTintList(colorStateList);
         this.mTextHelper.applyCompoundDrawablesTints();
     }
 
-    @Override // androidx.core.widget.TintableCompoundDrawablesView
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportCompoundDrawablesTintMode(@Nullable PorterDuff.Mode mode) {
         this.mTextHelper.setCompoundDrawableTintMode(mode);

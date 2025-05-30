@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.pullrefresh.PullRefreshNestedScrollConnection", f = "PullRefresh.kt", i = {}, l = {108}, m = "onPreFling-QWom1Mo", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class PullRefreshNestedScrollConnection$onPreFling$1 extends ContinuationImpl {
     int label;
     /* synthetic */ Object result;
@@ -24,6 +24,6 @@ final class PullRefreshNestedScrollConnection$onPreFling$1 extends ContinuationI
     public final Object invokeSuspend(@NotNull Object obj) {
         this.result = obj;
         this.label |= Integer.MIN_VALUE;
-        return this.this$0.mo1292onPreFlingQWom1Mo(0L, this);
+        return this.this$0.m722onPreFlingQWom1Mo(0L, this);
     }
 }

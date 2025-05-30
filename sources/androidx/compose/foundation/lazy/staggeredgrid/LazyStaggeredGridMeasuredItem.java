@@ -1,8 +1,8 @@
 package androidx.compose.foundation.lazy.staggeredgrid;
 
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.unit.IntOffsetKt;
-import androidx.compose.p004ui.unit.IntSizeKt;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.unit.IntOffsetKt;
+import androidx.compose.ui.unit.IntSizeKt;
 import java.util.List;
 import kotlin.collections.CollectionsKt;
 import kotlin.jvm.internal.DefaultConstructorMarker;
@@ -10,7 +10,7 @@ import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class LazyStaggeredGridMeasuredItem {
     private final long contentOffset;
     private final int crossAxisSize;
@@ -26,7 +26,6 @@ final class LazyStaggeredGridMeasuredItem {
     private final int sizeWithSpacings;
     private final int spacing;
 
-    /* JADX WARN: Multi-variable type inference failed */
     private LazyStaggeredGridMeasuredItem(int i, Object obj, List<? extends Placeable> list, boolean z, long j, int i2) {
         Integer num;
         this.index = i;
@@ -38,7 +37,7 @@ final class LazyStaggeredGridMeasuredItem {
         Integer num2 = 0;
         int size = list.size();
         for (int i3 = 0; i3 < size; i3++) {
-            Placeable placeable = (Placeable) list.get(i3);
+            Placeable placeable = list.get(i3);
             num2 = Integer.valueOf(num2.intValue() + (this.isVertical ? placeable.getHeight() : placeable.getWidth()));
         }
         int intValue = num2.intValue();
@@ -75,7 +74,7 @@ final class LazyStaggeredGridMeasuredItem {
     }
 
     /* renamed from: getContentOffset-nOcc-ac, reason: not valid java name */
-    public final long m1640getContentOffsetnOccac() {
+    public final long m507getContentOffsetnOccac() {
         return this.contentOffset;
     }
 
@@ -115,6 +114,6 @@ final class LazyStaggeredGridMeasuredItem {
 
     @NotNull
     public final LazyStaggeredGridPositionedItem position(int i, int i2, int i3) {
-        return new LazyStaggeredGridPositionedItem(this.isVertical ? IntOffsetKt.IntOffset(i3, i2) : IntOffsetKt.IntOffset(i2, i3), this.index, i, this.key, this.isVertical ? IntSizeKt.IntSize(this.crossAxisSize, this.sizeWithSpacings) : IntSizeKt.IntSize(this.sizeWithSpacings, this.crossAxisSize), this.placeables, this.contentOffset, this.isVertical, null);
+        return new LazyStaggeredGridPositionedItem(this.isVertical ? IntOffsetKt.IntOffset(i3, i2) : IntOffsetKt.IntOffset(i2, i3), this.index, i, this.key, this.isVertical ? IntSizeKt.IntSize(this.crossAxisSize, this.sizeWithSpacings) : IntSizeKt.IntSize(this.sizeWithSpacings, this.crossAxisSize), this.placeables, this.contentOffset, this.isVertical, (DefaultConstructorMarker) null);
     }
 }

@@ -1,17 +1,18 @@
 package androidx.compose.animation;
 
-import androidx.compose.p004ui.layout.IntrinsicMeasurable;
-import androidx.compose.p004ui.layout.IntrinsicMeasureScope;
-import androidx.compose.p004ui.layout.Measurable;
-import androidx.compose.p004ui.layout.MeasurePolicy;
-import androidx.compose.p004ui.layout.MeasureResult;
-import androidx.compose.p004ui.layout.MeasureScope;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.unit.IntSize;
-import androidx.compose.p004ui.unit.IntSizeKt;
+import androidx.compose.ui.layout.IntrinsicMeasurable;
+import androidx.compose.ui.layout.IntrinsicMeasureScope;
+import androidx.compose.ui.layout.Measurable;
+import androidx.compose.ui.layout.MeasurePolicy;
+import androidx.compose.ui.layout.MeasureResult;
+import androidx.compose.ui.layout.MeasureScope;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.unit.IntSize;
+import androidx.compose.ui.unit.IntSizeKt;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import kotlin.Unit;
 import kotlin.collections.CollectionsKt;
 import kotlin.jvm.functions.Function1;
@@ -20,7 +21,7 @@ import kotlin.sequences.SequencesKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class AnimatedEnterExitMeasurePolicy implements MeasurePolicy {
 
     @NotNull
@@ -36,44 +37,22 @@ final class AnimatedEnterExitMeasurePolicy implements MeasurePolicy {
         return this.scope;
     }
 
-    @Override // androidx.compose.p004ui.layout.MeasurePolicy
-    public int maxIntrinsicHeight(@NotNull IntrinsicMeasureScope intrinsicMeasureScope, @NotNull List<? extends IntrinsicMeasurable> list, final int i) {
+    @Override // androidx.compose.ui.layout.MeasurePolicy
+    public int maxIntrinsicHeight(@NotNull IntrinsicMeasureScope intrinsicMeasureScope, @NotNull List<? extends IntrinsicMeasurable> list, int i) {
         Intrinsics.checkNotNullParameter(intrinsicMeasureScope, "<this>");
         Intrinsics.checkNotNullParameter(list, "measurables");
-        Integer num = (Integer) SequencesKt.maxOrNull(SequencesKt.map(CollectionsKt.asSequence(list), new Function1<IntrinsicMeasurable, Integer>() { // from class: androidx.compose.animation.AnimatedEnterExitMeasurePolicy$maxIntrinsicHeight$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            @NotNull
-            public final Integer invoke(@NotNull IntrinsicMeasurable intrinsicMeasurable) {
-                Intrinsics.checkNotNullParameter(intrinsicMeasurable, "it");
-                return Integer.valueOf(intrinsicMeasurable.maxIntrinsicHeight(i));
-            }
-        }));
+        Integer num = (Integer) SequencesKt.maxOrNull(SequencesKt.map(CollectionsKt.asSequence(list), new maxIntrinsicHeight.1(i)));
         if (num != null) {
             return num.intValue();
         }
         return 0;
     }
 
-    @Override // androidx.compose.p004ui.layout.MeasurePolicy
-    public int maxIntrinsicWidth(@NotNull IntrinsicMeasureScope intrinsicMeasureScope, @NotNull List<? extends IntrinsicMeasurable> list, final int i) {
+    @Override // androidx.compose.ui.layout.MeasurePolicy
+    public int maxIntrinsicWidth(@NotNull IntrinsicMeasureScope intrinsicMeasureScope, @NotNull List<? extends IntrinsicMeasurable> list, int i) {
         Intrinsics.checkNotNullParameter(intrinsicMeasureScope, "<this>");
         Intrinsics.checkNotNullParameter(list, "measurables");
-        Integer num = (Integer) SequencesKt.maxOrNull(SequencesKt.map(CollectionsKt.asSequence(list), new Function1<IntrinsicMeasurable, Integer>() { // from class: androidx.compose.animation.AnimatedEnterExitMeasurePolicy$maxIntrinsicWidth$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            @NotNull
-            public final Integer invoke(@NotNull IntrinsicMeasurable intrinsicMeasurable) {
-                Intrinsics.checkNotNullParameter(intrinsicMeasurable, "it");
-                return Integer.valueOf(intrinsicMeasurable.maxIntrinsicWidth(i));
-            }
-        }));
+        Integer num = (Integer) SequencesKt.maxOrNull(SequencesKt.map(CollectionsKt.asSequence(list), new maxIntrinsicWidth.1(i)));
         if (num != null) {
             return num.intValue();
         }
@@ -86,17 +65,17 @@ final class AnimatedEnterExitMeasurePolicy implements MeasurePolicy {
     /* JADX WARN: Type inference failed for: r11v15 */
     /* JADX WARN: Type inference failed for: r11v16 */
     /* JADX WARN: Type inference failed for: r11v21 */
-    @Override // androidx.compose.p004ui.layout.MeasurePolicy
+    @Override // androidx.compose.ui.layout.MeasurePolicy
     @NotNull
     /* renamed from: measure-3p2s80s */
-    public MeasureResult mo944measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull List<? extends Measurable> list, long j) {
+    public MeasureResult mo16measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull List<? extends Measurable> list, long j) {
         Object obj;
         Intrinsics.checkNotNullParameter(measureScope, "$this$measure");
         Intrinsics.checkNotNullParameter(list, "measurables");
         final ArrayList arrayList = new ArrayList(CollectionsKt.collectionSizeOrDefault(list, 10));
         Iterator it = list.iterator();
         while (it.hasNext()) {
-            arrayList.add(((Measurable) it.next()).mo4187measureBRTryo0(j));
+            arrayList.add(((Measurable) it.next()).mo1521measureBRTryo0(j));
         }
         Placeable placeable = null;
         int i = 1;
@@ -149,8 +128,8 @@ final class AnimatedEnterExitMeasurePolicy implements MeasurePolicy {
         }
         Placeable placeable3 = placeable;
         int height3 = placeable3 != null ? placeable3.getHeight() : 0;
-        this.scope.getTargetSize$animation_release().setValue(IntSize.m5368boximpl(IntSizeKt.IntSize(width3, height3)));
-        return MeasureScope.CC.m140p(measureScope, width3, height3, null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.animation.AnimatedEnterExitMeasurePolicy$measure$1
+        this.scope.getTargetSize$animation_release().setValue(IntSize.box-impl(IntSizeKt.IntSize(width3, height3)));
+        return MeasureScope.-CC.p(measureScope, width3, height3, (Map) null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.animation.AnimatedEnterExitMeasurePolicy$measure$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             /* JADX WARN: Multi-variable type inference failed */
             {
@@ -167,13 +146,13 @@ final class AnimatedEnterExitMeasurePolicy implements MeasurePolicy {
                 List<Placeable> list2 = arrayList;
                 int size = list2.size();
                 for (int i3 = 0; i3 < size; i3++) {
-                    Placeable.PlacementScope.place$default(placementScope, list2.get(i3), 0, 0, 0.0f, 4, null);
+                    Placeable.PlacementScope.place$default(placementScope, list2.get(i3), 0, 0, 0.0f, 4, (Object) null);
                 }
             }
-        }, 4, null);
+        }, 4, (Object) null);
     }
 
-    @Override // androidx.compose.p004ui.layout.MeasurePolicy
+    @Override // androidx.compose.ui.layout.MeasurePolicy
     public int minIntrinsicHeight(@NotNull IntrinsicMeasureScope intrinsicMeasureScope, @NotNull List<? extends IntrinsicMeasurable> list, final int i) {
         Intrinsics.checkNotNullParameter(intrinsicMeasureScope, "<this>");
         Intrinsics.checkNotNullParameter(list, "measurables");
@@ -195,7 +174,7 @@ final class AnimatedEnterExitMeasurePolicy implements MeasurePolicy {
         return 0;
     }
 
-    @Override // androidx.compose.p004ui.layout.MeasurePolicy
+    @Override // androidx.compose.ui.layout.MeasurePolicy
     public int minIntrinsicWidth(@NotNull IntrinsicMeasureScope intrinsicMeasureScope, @NotNull List<? extends IntrinsicMeasurable> list, final int i) {
         Intrinsics.checkNotNullParameter(intrinsicMeasureScope, "<this>");
         Intrinsics.checkNotNullParameter(list, "measurables");

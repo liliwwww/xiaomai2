@@ -1,7 +1,7 @@
 package android.taobao.windvane.connect.api;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface IApiAdapter {
     String formatBody(ApiRequest apiRequest);
 

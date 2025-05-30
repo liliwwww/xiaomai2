@@ -1,7 +1,6 @@
 package androidx.core.text.util;
 
 import android.os.Build;
-import android.taobao.windvane.extra.p002uc.WVUCWebViewClient;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
@@ -9,12 +8,11 @@ import android.text.style.URLSpan;
 import android.text.util.Linkify;
 import android.webkit.WebView;
 import android.widget.TextView;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
-import androidx.core.text.util.LinkifyCompat;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.core.net.MailTo;
 import androidx.core.util.PatternsCompat;
 import java.io.UnsupportedEncodingException;
 import java.lang.annotation.Retention;
@@ -29,52 +27,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LinkifyCompat {
     private static final String[] EMPTY_STRING = new String[0];
-    private static final Comparator<LinkSpec> COMPARATOR = new Comparator() { // from class: androidx.core.text.util.a
-        @Override // java.util.Comparator
-        public final int compare(Object obj, Object obj2) {
-            int lambda$static$0;
-            lambda$static$0 = LinkifyCompat.lambda$static$0((LinkifyCompat.LinkSpec) obj, (LinkifyCompat.LinkSpec) obj2);
-            return lambda$static$0;
-        }
-    };
-
-    /* compiled from: Taobao */
-    @RequiresApi(24)
-    /* loaded from: classes2.dex */
-    static class Api24Impl {
-        private Api24Impl() {
-        }
-
-        @DoNotInline
-        static void addLinks(TextView textView, Pattern pattern, String str, String[] strArr, Linkify.MatchFilter matchFilter, Linkify.TransformFilter transformFilter) {
-            Linkify.addLinks(textView, pattern, str, strArr, matchFilter, transformFilter);
-        }
-
-        @DoNotInline
-        static boolean addLinks(Spannable spannable, Pattern pattern, String str, String[] strArr, Linkify.MatchFilter matchFilter, Linkify.TransformFilter transformFilter) {
-            return Linkify.addLinks(spannable, pattern, str, strArr, matchFilter, transformFilter);
-        }
-    }
-
-    /* JADX INFO: Access modifiers changed from: private */
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static class LinkSpec {
-        int end;
-        URLSpan frameworkAddedSpan;
-        int start;
-        String url;
-
-        LinkSpec() {
-        }
-    }
+    private static final Comparator<LinkSpec> COMPARATOR = a.a;
 
     /* compiled from: Taobao */
     @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public @interface LinkifyMask {
     }
 
@@ -107,7 +67,7 @@ public final class LinkifyCompat {
             gatherLinks(arrayList, spannable, PatternsCompat.AUTOLINK_WEB_URL, new String[]{"http://", "https://", "rtsp://"}, Linkify.sUrlMatchFilter, null);
         }
         if ((i & 2) != 0) {
-            gatherLinks(arrayList, spannable, PatternsCompat.AUTOLINK_EMAIL_ADDRESS, new String[]{"mailto:"}, null, null);
+            gatherLinks(arrayList, spannable, PatternsCompat.AUTOLINK_EMAIL_ADDRESS, new String[]{MailTo.MAILTO_SCHEME}, null, null);
         }
         if ((i & 8) != 0) {
             gatherMapLinks(arrayList, spannable);
@@ -167,7 +127,7 @@ public final class LinkifyCompat {
                     linkSpec.end = i;
                     obj = obj.substring(length);
                     try {
-                        linkSpec.url = WVUCWebViewClient.SCHEME_GEO + URLEncoder.encode(findAddress, "UTF-8");
+                        linkSpec.url = "geo:0,0?q=" + URLEncoder.encode(findAddress, "UTF-8");
                         arrayList.add(linkSpec);
                     } catch (UnsupportedEncodingException unused) {
                     }

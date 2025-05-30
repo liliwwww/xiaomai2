@@ -1,7 +1,5 @@
 package androidx.activity.result;
 
-import android.content.Context;
-import android.content.Intent;
 import androidx.activity.result.ActivityResultCallerLauncher$resultContract$2;
 import androidx.activity.result.contract.ActivityResultContract;
 import androidx.core.app.ActivityOptionsCompat;
@@ -14,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ActivityResultCallerLauncher<I, O> extends ActivityResultLauncher<Unit> {
 
     @NotNull
@@ -33,7 +31,7 @@ public final class ActivityResultCallerLauncher<I, O> extends ActivityResultLaun
         this.launcher = activityResultLauncher;
         this.callerContract = activityResultContract;
         this.callerInput = i;
-        this.resultContract$delegate = LazyKt.lazy(new Function0<ActivityResultCallerLauncher$resultContract$2.C02511>(this) { // from class: androidx.activity.result.ActivityResultCallerLauncher$resultContract$2
+        this.resultContract$delegate = LazyKt.lazy(new Function0<ActivityResultCallerLauncher$resultContract$2.1>(this) { // from class: androidx.activity.result.ActivityResultCallerLauncher$resultContract$2
             final /* synthetic */ ActivityResultCallerLauncher<I, O> this$0;
 
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
@@ -42,25 +40,10 @@ public final class ActivityResultCallerLauncher<I, O> extends ActivityResultLaun
                 this.this$0 = this;
             }
 
-            /* JADX WARN: Type inference failed for: r0v0, types: [androidx.activity.result.ActivityResultCallerLauncher$resultContract$2$1] */
             @NotNull
             /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final C02511 m937invoke() {
-                final ActivityResultCallerLauncher<I, O> activityResultCallerLauncher = this.this$0;
-                return new ActivityResultContract<Unit, O>() { // from class: androidx.activity.result.ActivityResultCallerLauncher$resultContract$2.1
-                    @Override // androidx.activity.result.contract.ActivityResultContract
-                    public O parseResult(int i2, @Nullable Intent intent) {
-                        return (O) activityResultCallerLauncher.getCallerContract().parseResult(i2, intent);
-                    }
-
-                    @Override // androidx.activity.result.contract.ActivityResultContract
-                    @NotNull
-                    public Intent createIntent(@NotNull Context context, @NotNull Unit unit) {
-                        Intrinsics.checkNotNullParameter(context, "context");
-                        Intrinsics.checkNotNullParameter(unit, "input");
-                        return activityResultCallerLauncher.getCallerContract().createIntent(context, activityResultCallerLauncher.getCallerInput());
-                    }
-                };
+            public final 1 m7invoke() {
+                return new 1(this.this$0);
             }
         });
     }

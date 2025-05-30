@@ -2,10 +2,7 @@ package androidx.emoji2.text;
 
 import android.text.Editable;
 import android.text.Selection;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.Spanned;
-import android.text.TextUtils;
 import android.text.method.MetaKeyKeyListener;
 import android.view.KeyEvent;
 import android.view.inputmethod.InputConnection;
@@ -16,15 +13,13 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
 import androidx.emoji2.text.EmojiCompat;
-import androidx.emoji2.text.MetadataRepo;
-import java.util.Arrays;
 import java.util.Set;
 
 /* compiled from: Taobao */
 @AnyThread
 @RequiresApi(19)
 @RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class EmojiProcessor {
     private static final int ACTION_ADVANCE_BOTH = 1;
     private static final int ACTION_ADVANCE_END = 2;
@@ -43,276 +38,6 @@ final class EmojiProcessor {
     @NonNull
     private final EmojiCompat.SpanFactory mSpanFactory;
     private final boolean mUseEmojiAsDefaultStyle;
-
-    /* compiled from: Taobao */
-    @RequiresApi(19)
-    /* loaded from: classes.dex */
-    private static final class CodepointIndexFinder {
-        private static final int INVALID_INDEX = -1;
-
-        private CodepointIndexFinder() {
-        }
-
-        static int findIndexBackward(CharSequence charSequence, int i, int i2) {
-            int length = charSequence.length();
-            if (i < 0 || length < i || i2 < 0) {
-                return -1;
-            }
-            while (true) {
-                boolean z = false;
-                while (i2 != 0) {
-                    i--;
-                    if (i < 0) {
-                        return z ? -1 : 0;
-                    }
-                    char charAt = charSequence.charAt(i);
-                    if (z) {
-                        if (!Character.isHighSurrogate(charAt)) {
-                            return -1;
-                        }
-                        i2--;
-                    } else if (!Character.isSurrogate(charAt)) {
-                        i2--;
-                    } else {
-                        if (Character.isHighSurrogate(charAt)) {
-                            return -1;
-                        }
-                        z = true;
-                    }
-                }
-                return i;
-            }
-        }
-
-        static int findIndexForward(CharSequence charSequence, int i, int i2) {
-            int length = charSequence.length();
-            if (i < 0 || length < i || i2 < 0) {
-                return -1;
-            }
-            while (true) {
-                boolean z = false;
-                while (i2 != 0) {
-                    if (i >= length) {
-                        if (z) {
-                            return -1;
-                        }
-                        return length;
-                    }
-                    char charAt = charSequence.charAt(i);
-                    if (z) {
-                        if (!Character.isLowSurrogate(charAt)) {
-                            return -1;
-                        }
-                        i2--;
-                        i++;
-                    } else if (!Character.isSurrogate(charAt)) {
-                        i2--;
-                        i++;
-                    } else {
-                        if (Character.isLowSurrogate(charAt)) {
-                            return -1;
-                        }
-                        i++;
-                        z = true;
-                    }
-                }
-                return i;
-            }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static class EmojiProcessAddSpanCallback implements EmojiProcessCallback<UnprecomputeTextOnModificationSpannable> {
-        private final EmojiCompat.SpanFactory mSpanFactory;
-
-        @Nullable
-        public UnprecomputeTextOnModificationSpannable spannable;
-
-        EmojiProcessAddSpanCallback(@Nullable UnprecomputeTextOnModificationSpannable unprecomputeTextOnModificationSpannable, EmojiCompat.SpanFactory spanFactory) {
-            this.spannable = unprecomputeTextOnModificationSpannable;
-            this.mSpanFactory = spanFactory;
-        }
-
-        @Override // androidx.emoji2.text.EmojiProcessor.EmojiProcessCallback
-        public boolean handleEmoji(@NonNull CharSequence charSequence, int i, int i2, TypefaceEmojiRasterizer typefaceEmojiRasterizer) {
-            if (typefaceEmojiRasterizer.isPreferredSystemRender()) {
-                return true;
-            }
-            if (this.spannable == null) {
-                this.spannable = new UnprecomputeTextOnModificationSpannable(charSequence instanceof Spannable ? (Spannable) charSequence : new SpannableString(charSequence));
-            }
-            this.spannable.setSpan(this.mSpanFactory.createSpan(typefaceEmojiRasterizer), i, i2, 33);
-            return true;
-        }
-
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // androidx.emoji2.text.EmojiProcessor.EmojiProcessCallback
-        public UnprecomputeTextOnModificationSpannable getResult() {
-            return this.spannable;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private interface EmojiProcessCallback<T> {
-        T getResult();
-
-        boolean handleEmoji(@NonNull CharSequence charSequence, int i, int i2, TypefaceEmojiRasterizer typefaceEmojiRasterizer);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static class EmojiProcessLookupCallback implements EmojiProcessCallback<EmojiProcessLookupCallback> {
-        private final int mOffset;
-        public int start = -1;
-        public int end = -1;
-
-        EmojiProcessLookupCallback(int i) {
-            this.mOffset = i;
-        }
-
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // androidx.emoji2.text.EmojiProcessor.EmojiProcessCallback
-        public EmojiProcessLookupCallback getResult() {
-            return this;
-        }
-
-        @Override // androidx.emoji2.text.EmojiProcessor.EmojiProcessCallback
-        public boolean handleEmoji(@NonNull CharSequence charSequence, int i, int i2, TypefaceEmojiRasterizer typefaceEmojiRasterizer) {
-            int i3 = this.mOffset;
-            if (i > i3 || i3 >= i2) {
-                return i2 <= i3;
-            }
-            this.start = i;
-            this.end = i2;
-            return false;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static class MarkExclusionCallback implements EmojiProcessCallback<MarkExclusionCallback> {
-        private final String mExclusion;
-
-        MarkExclusionCallback(String str) {
-            this.mExclusion = str;
-        }
-
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // androidx.emoji2.text.EmojiProcessor.EmojiProcessCallback
-        public MarkExclusionCallback getResult() {
-            return this;
-        }
-
-        @Override // androidx.emoji2.text.EmojiProcessor.EmojiProcessCallback
-        public boolean handleEmoji(@NonNull CharSequence charSequence, int i, int i2, TypefaceEmojiRasterizer typefaceEmojiRasterizer) {
-            if (!TextUtils.equals(charSequence.subSequence(i, i2), this.mExclusion)) {
-                return true;
-            }
-            typefaceEmojiRasterizer.setExclusion(true);
-            return false;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static final class ProcessorSm {
-        private static final int STATE_DEFAULT = 1;
-        private static final int STATE_WALKING = 2;
-        private int mCurrentDepth;
-        private MetadataRepo.Node mCurrentNode;
-        private final int[] mEmojiAsDefaultStyleExceptions;
-        private MetadataRepo.Node mFlushNode;
-        private int mLastCodepoint;
-        private final MetadataRepo.Node mRootNode;
-        private int mState = 1;
-        private final boolean mUseEmojiAsDefaultStyle;
-
-        ProcessorSm(MetadataRepo.Node node, boolean z, int[] iArr) {
-            this.mRootNode = node;
-            this.mCurrentNode = node;
-            this.mUseEmojiAsDefaultStyle = z;
-            this.mEmojiAsDefaultStyleExceptions = iArr;
-        }
-
-        private static boolean isEmojiStyle(int i) {
-            return i == 65039;
-        }
-
-        private static boolean isTextStyle(int i) {
-            return i == 65038;
-        }
-
-        private int reset() {
-            this.mState = 1;
-            this.mCurrentNode = this.mRootNode;
-            this.mCurrentDepth = 0;
-            return 1;
-        }
-
-        private boolean shouldUseEmojiPresentationStyleForSingleCodepoint() {
-            if (this.mCurrentNode.getData().isDefaultEmoji() || isEmojiStyle(this.mLastCodepoint)) {
-                return true;
-            }
-            if (this.mUseEmojiAsDefaultStyle) {
-                if (this.mEmojiAsDefaultStyleExceptions == null) {
-                    return true;
-                }
-                if (Arrays.binarySearch(this.mEmojiAsDefaultStyleExceptions, this.mCurrentNode.getData().getCodepointAt(0)) < 0) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        int check(int i) {
-            MetadataRepo.Node node = this.mCurrentNode.get(i);
-            int i2 = 3;
-            if (this.mState == 2) {
-                if (node != null) {
-                    this.mCurrentNode = node;
-                    this.mCurrentDepth++;
-                } else if (isTextStyle(i)) {
-                    i2 = reset();
-                } else if (!isEmojiStyle(i)) {
-                    if (this.mCurrentNode.getData() == null) {
-                        i2 = reset();
-                    } else if (this.mCurrentDepth != 1) {
-                        this.mFlushNode = this.mCurrentNode;
-                        reset();
-                    } else if (shouldUseEmojiPresentationStyleForSingleCodepoint()) {
-                        this.mFlushNode = this.mCurrentNode;
-                        reset();
-                    } else {
-                        i2 = reset();
-                    }
-                }
-                i2 = 2;
-            } else if (node == null) {
-                i2 = reset();
-            } else {
-                this.mState = 2;
-                this.mCurrentNode = node;
-                this.mCurrentDepth = 1;
-                i2 = 2;
-            }
-            this.mLastCodepoint = i;
-            return i2;
-        }
-
-        TypefaceEmojiRasterizer getCurrentMetadata() {
-            return this.mCurrentNode.getData();
-        }
-
-        TypefaceEmojiRasterizer getFlushMetadata() {
-            return this.mFlushNode.getData();
-        }
-
-        boolean isInFlushableState() {
-            return this.mState == 2 && this.mCurrentNode.getData() != null && (this.mCurrentDepth > 1 || shouldUseEmojiPresentationStyleForSingleCodepoint());
-        }
-    }
 
     EmojiProcessor(@NonNull MetadataRepo metadataRepo, @NonNull EmojiCompat.SpanFactory spanFactory, @NonNull EmojiCompat.GlyphChecker glyphChecker, boolean z, @Nullable int[] iArr, @NonNull Set<int[]> set) {
         this.mSpanFactory = spanFactory;
@@ -455,7 +180,7 @@ final class EmojiProcessor {
     /* JADX WARN: Removed duplicated region for block: B:43:0x00a0  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     java.lang.CharSequence process(@androidx.annotation.NonNull java.lang.CharSequence r10, @androidx.annotation.IntRange(from = 0) int r11, @androidx.annotation.IntRange(from = 0) int r12, @androidx.annotation.IntRange(from = 0) int r13, boolean r14) {
         /*
@@ -637,6 +362,6 @@ final class EmojiProcessor {
         if (processorSm.isInFlushableState() && i5 < i3 && z2 && (z || !hasGlyph(charSequence, i4, i, processorSm.getCurrentMetadata()))) {
             emojiProcessCallback.handleEmoji(charSequence, i4, i, processorSm.getCurrentMetadata());
         }
-        return emojiProcessCallback.getResult();
+        return (T) emojiProcessCallback.getResult();
     }
 }

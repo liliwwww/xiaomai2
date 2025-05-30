@@ -6,7 +6,7 @@ import androidx.constraintlayout.core.state.State;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class AlignVerticallyReference extends HelperReference {
     private float mBias;
 
@@ -15,28 +15,28 @@ public class AlignVerticallyReference extends HelperReference {
         this.mBias = 0.5f;
     }
 
-    @Override // androidx.constraintlayout.core.state.HelperReference, androidx.constraintlayout.core.state.ConstraintReference, androidx.constraintlayout.core.state.Reference
+    /* JADX WARN: Multi-variable type inference failed */
     public void apply() {
-        Iterator<Object> it = this.mReferences.iterator();
+        Iterator it = ((HelperReference) this).mReferences.iterator();
         while (it.hasNext()) {
             ConstraintReference constraints = ((HelperReference) this).mState.constraints(it.next());
             constraints.clearVertical();
-            Object obj = this.mTopToTop;
+            Object obj = ((ConstraintReference) this).mTopToTop;
             if (obj != null) {
                 constraints.topToTop(obj);
             } else {
-                Object obj2 = this.mTopToBottom;
+                Object obj2 = ((ConstraintReference) this).mTopToBottom;
                 if (obj2 != null) {
                     constraints.topToBottom(obj2);
                 } else {
                     constraints.topToTop(State.PARENT);
                 }
             }
-            Object obj3 = this.mBottomToTop;
+            Object obj3 = ((ConstraintReference) this).mBottomToTop;
             if (obj3 != null) {
                 constraints.bottomToTop(obj3);
             } else {
-                Object obj4 = this.mBottomToBottom;
+                Object obj4 = ((ConstraintReference) this).mBottomToBottom;
                 if (obj4 != null) {
                     constraints.bottomToBottom(obj4);
                 } else {

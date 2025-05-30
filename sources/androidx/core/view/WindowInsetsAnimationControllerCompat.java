@@ -1,6 +1,5 @@
 package androidx.core.view;
 
-import android.annotation.SuppressLint;
 import android.view.WindowInsetsAnimationController;
 import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
@@ -9,123 +8,9 @@ import androidx.annotation.RequiresApi;
 import androidx.core.graphics.Insets;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class WindowInsetsAnimationControllerCompat {
     private final Impl mImpl;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static class Impl {
-        Impl() {
-        }
-
-        void finish(boolean z) {
-        }
-
-        public float getCurrentAlpha() {
-            return 0.0f;
-        }
-
-        @FloatRange(from = 0.0d, m42to = 1.0d)
-        public float getCurrentFraction() {
-            return 0.0f;
-        }
-
-        @NonNull
-        public Insets getCurrentInsets() {
-            return Insets.NONE;
-        }
-
-        @NonNull
-        public Insets getHiddenStateInsets() {
-            return Insets.NONE;
-        }
-
-        @NonNull
-        public Insets getShownStateInsets() {
-            return Insets.NONE;
-        }
-
-        public int getTypes() {
-            return 0;
-        }
-
-        boolean isCancelled() {
-            return true;
-        }
-
-        boolean isFinished() {
-            return false;
-        }
-
-        public void setInsetsAndAlpha(@Nullable Insets insets, @FloatRange(from = 0.0d, m42to = 1.0d) float f, @FloatRange(from = 0.0d, m42to = 1.0d) float f2) {
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(30)
-    /* loaded from: classes2.dex */
-    private static class Impl30 extends Impl {
-        private final WindowInsetsAnimationController mController;
-
-        Impl30(@NonNull WindowInsetsAnimationController windowInsetsAnimationController) {
-            this.mController = windowInsetsAnimationController;
-        }
-
-        @Override // androidx.core.view.WindowInsetsAnimationControllerCompat.Impl
-        void finish(boolean z) {
-            this.mController.finish(z);
-        }
-
-        @Override // androidx.core.view.WindowInsetsAnimationControllerCompat.Impl
-        public float getCurrentAlpha() {
-            return this.mController.getCurrentAlpha();
-        }
-
-        @Override // androidx.core.view.WindowInsetsAnimationControllerCompat.Impl
-        public float getCurrentFraction() {
-            return this.mController.getCurrentFraction();
-        }
-
-        @Override // androidx.core.view.WindowInsetsAnimationControllerCompat.Impl
-        @NonNull
-        public Insets getCurrentInsets() {
-            return Insets.toCompatInsets(this.mController.getCurrentInsets());
-        }
-
-        @Override // androidx.core.view.WindowInsetsAnimationControllerCompat.Impl
-        @NonNull
-        public Insets getHiddenStateInsets() {
-            return Insets.toCompatInsets(this.mController.getHiddenStateInsets());
-        }
-
-        @Override // androidx.core.view.WindowInsetsAnimationControllerCompat.Impl
-        @NonNull
-        public Insets getShownStateInsets() {
-            return Insets.toCompatInsets(this.mController.getShownStateInsets());
-        }
-
-        @Override // androidx.core.view.WindowInsetsAnimationControllerCompat.Impl
-        @SuppressLint({"WrongConstant"})
-        public int getTypes() {
-            return this.mController.getTypes();
-        }
-
-        @Override // androidx.core.view.WindowInsetsAnimationControllerCompat.Impl
-        boolean isCancelled() {
-            return this.mController.isCancelled();
-        }
-
-        @Override // androidx.core.view.WindowInsetsAnimationControllerCompat.Impl
-        boolean isFinished() {
-            return this.mController.isFinished();
-        }
-
-        @Override // androidx.core.view.WindowInsetsAnimationControllerCompat.Impl
-        public void setInsetsAndAlpha(@Nullable Insets insets, float f, float f2) {
-            this.mController.setInsetsAndAlpha(insets == null ? null : insets.toPlatformInsets(), f, f2);
-        }
-    }
 
     @RequiresApi(30)
     WindowInsetsAnimationControllerCompat(@NonNull WindowInsetsAnimationController windowInsetsAnimationController) {
@@ -140,7 +25,7 @@ public final class WindowInsetsAnimationControllerCompat {
         return this.mImpl.getCurrentAlpha();
     }
 
-    @FloatRange(from = 0.0d, m42to = 1.0d)
+    @FloatRange(from = 0.0d, to = 1.0d)
     public float getCurrentFraction() {
         return this.mImpl.getCurrentFraction();
     }
@@ -176,7 +61,7 @@ public final class WindowInsetsAnimationControllerCompat {
         return (isFinished() || isCancelled()) ? false : true;
     }
 
-    public void setInsetsAndAlpha(@Nullable Insets insets, @FloatRange(from = 0.0d, m42to = 1.0d) float f, @FloatRange(from = 0.0d, m42to = 1.0d) float f2) {
+    public void setInsetsAndAlpha(@Nullable Insets insets, @FloatRange(from = 0.0d, to = 1.0d) float f, @FloatRange(from = 0.0d, to = 1.0d) float f2) {
         this.mImpl.setInsetsAndAlpha(insets, f, f2);
     }
 }

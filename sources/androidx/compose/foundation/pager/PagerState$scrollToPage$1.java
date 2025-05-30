@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.pager.PagerState", f = "PagerState.kt", i = {0, 0, 0}, l = {248, 254}, m = "scrollToPage", n = {"this", "page", "pageOffsetFraction"}, s = {"L$0", "I$0", "F$0"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class PagerState$scrollToPage$1 extends ContinuationImpl {
     float F$0;
     int I$0;

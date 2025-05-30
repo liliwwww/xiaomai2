@@ -1,12 +1,12 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.ParentDataModifier;
-import androidx.compose.p004ui.platform.InspectableValueKt;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.platform.InspectorValueInfo;
-import androidx.compose.p004ui.unit.Density;
+import androidx.compose.ui.Alignment;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.ParentDataModifier;
+import androidx.compose.ui.platform.InspectableValueKt;
+import androidx.compose.ui.platform.InspectorInfo;
+import androidx.compose.ui.platform.InspectorValueInfo;
+import androidx.compose.ui.unit.Density;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
@@ -19,7 +19,7 @@ import tb.mt2;
 import tb.nt2;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class BoxChildData extends InspectorValueInfo implements ParentDataModifier {
 
     @NotNull
@@ -30,12 +30,12 @@ final class BoxChildData extends InspectorValueInfo implements ParentDataModifie
         this(alignment, (i & 2) != 0 ? false : z, (i & 4) != 0 ? InspectableValueKt.getNoInspectorInfo() : function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
@@ -48,12 +48,12 @@ final class BoxChildData extends InspectorValueInfo implements ParentDataModifie
         return boxChildData != null && Intrinsics.areEqual(this.alignment, boxChildData.alignment) && this.matchParentSize == boxChildData.matchParentSize;
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
@@ -71,7 +71,7 @@ final class BoxChildData extends InspectorValueInfo implements ParentDataModifie
         return (this.alignment.hashCode() * 31) + l3.a(this.matchParentSize);
     }
 
-    @Override // androidx.compose.p004ui.layout.ParentDataModifier
+    @Override // androidx.compose.ui.layout.ParentDataModifier
     @NotNull
     public BoxChildData modifyParentData(@NotNull Density density, @Nullable Object obj) {
         Intrinsics.checkNotNullParameter(density, "<this>");
@@ -87,7 +87,6 @@ final class BoxChildData extends InspectorValueInfo implements ParentDataModifie
         this.matchParentSize = z;
     }
 
-    @Override // androidx.compose.p004ui.Modifier
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }

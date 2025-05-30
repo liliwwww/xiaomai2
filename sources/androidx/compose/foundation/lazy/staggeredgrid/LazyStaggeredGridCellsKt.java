@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyStaggeredGridCellsKt {
     /* JADX INFO: Access modifiers changed from: private */
     public static final List<Integer> calculateCellsCrossAxisSizeImpl(int i, int i2, int i3) {

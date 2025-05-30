@@ -20,10 +20,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
-import java.util.regex.Pattern;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class CommonUtils {
     private static final String TAG = "CommonUtils";
     private static String currentProcessName = "";
@@ -125,16 +124,11 @@ public class CommonUtils {
 
     public static int getNumCores() {
         try {
-            File[] listFiles = new File("/sys/devices/system/cpu/").listFiles(new FileFilter() { // from class: android.taobao.windvane.util.CommonUtils.1CpuFilter
-                @Override // java.io.FileFilter
-                public boolean accept(File file) {
-                    return Pattern.matches("cpu[0-9]", file.getName());
-                }
-            });
-            TaoLog.m18d("HomePageNetwork", "CPU Count: " + listFiles.length);
+            File[] listFiles = new File("/sys/devices/system/cpu/").listFiles((FileFilter) new 1CpuFilter());
+            TaoLog.d("HomePageNetwork", "CPU Count: " + listFiles.length);
             return listFiles.length;
         } catch (Exception e) {
-            TaoLog.m18d("HomePageNetwork", "CPU Count: Failed.");
+            TaoLog.d("HomePageNetwork", "CPU Count: Failed.");
             e.printStackTrace();
             return 1;
         }
@@ -145,7 +139,7 @@ public class CommonUtils {
         try {
             str = currentProcessName;
         } catch (Exception e) {
-            TaoLog.m21e("getProcessName error", e.toString());
+            TaoLog.e("getProcessName error", e.toString());
         }
         if (str != null && str.length() > 0) {
             return currentProcessName;
@@ -176,7 +170,7 @@ public class CommonUtils {
     /* JADX WARN: Removed duplicated region for block: B:9:0x002b  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public static int getTotalRAM() {
         /*
@@ -270,7 +264,7 @@ public class CommonUtils {
     public static boolean isLowendPhone() {
         int numCores = getNumCores();
         int totalRAM = getTotalRAM();
-        TaoLog.m18d("HomePageNetwork", "processorCore = " + numCores + " ram = " + totalRAM + " MB");
+        TaoLog.d("HomePageNetwork", "processorCore = " + numCores + " ram = " + totalRAM + " MB");
         return numCores == 1 && totalRAM < 800;
     }
 

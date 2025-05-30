@@ -1,6 +1,5 @@
 package androidx.lifecycle;
 
-import android.app.Application;
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,19 +9,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ViewModelProviders {
-
-    /* compiled from: Taobao */
-    @Deprecated
-    /* loaded from: classes2.dex */
-    public static class DefaultFactory extends ViewModelProvider.AndroidViewModelFactory {
-        @Deprecated
-        public DefaultFactory(@NonNull Application application) {
-            super(application);
-        }
-    }
-
     @Deprecated
     public ViewModelProviders() {
     }
@@ -30,24 +18,21 @@ public class ViewModelProviders {
     @NonNull
     @MainThread
     @Deprecated
-    /* renamed from: of */
-    public static ViewModelProvider m280of(@NonNull Fragment fragment) {
+    public static ViewModelProvider of(@NonNull Fragment fragment) {
         return new ViewModelProvider(fragment);
     }
 
     @NonNull
     @MainThread
     @Deprecated
-    /* renamed from: of */
-    public static ViewModelProvider m282of(@NonNull FragmentActivity fragmentActivity) {
+    public static ViewModelProvider of(@NonNull FragmentActivity fragmentActivity) {
         return new ViewModelProvider(fragmentActivity);
     }
 
     @NonNull
     @MainThread
     @Deprecated
-    /* renamed from: of */
-    public static ViewModelProvider m281of(@NonNull Fragment fragment, @Nullable ViewModelProvider.Factory factory) {
+    public static ViewModelProvider of(@NonNull Fragment fragment, @Nullable ViewModelProvider.Factory factory) {
         if (factory == null) {
             factory = fragment.getDefaultViewModelProviderFactory();
         }
@@ -57,8 +42,7 @@ public class ViewModelProviders {
     @NonNull
     @MainThread
     @Deprecated
-    /* renamed from: of */
-    public static ViewModelProvider m283of(@NonNull FragmentActivity fragmentActivity, @Nullable ViewModelProvider.Factory factory) {
+    public static ViewModelProvider of(@NonNull FragmentActivity fragmentActivity, @Nullable ViewModelProvider.Factory factory) {
         if (factory == null) {
             factory = fragmentActivity.getDefaultViewModelProviderFactory();
         }

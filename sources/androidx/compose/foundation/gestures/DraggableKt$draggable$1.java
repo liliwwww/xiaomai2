@@ -1,6 +1,6 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.geometry.Offset;
+import androidx.compose.ui.geometry.Offset;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -12,11 +12,10 @@ import kotlinx.coroutines.CoroutineScope;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: Access modifiers changed from: package-private */
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.DraggableKt$draggable$1", f = "Draggable.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
-public final class DraggableKt$draggable$1 extends SuspendLambda implements Function3<CoroutineScope, Offset, Continuation<? super Unit>, Object> {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
+final class DraggableKt$draggable$1 extends SuspendLambda implements Function3<CoroutineScope, Offset, Continuation<? super Unit>, Object> {
     int label;
 
     DraggableKt$draggable$1(Continuation<? super DraggableKt$draggable$1> continuation) {
@@ -24,12 +23,12 @@ public final class DraggableKt$draggable$1 extends SuspendLambda implements Func
     }
 
     public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-        return m1259invoked4ec7I((CoroutineScope) obj, ((Offset) obj2).m2566unboximpl(), (Continuation) obj3);
+        return m169invoked4ec7I((CoroutineScope) obj, ((Offset) obj2).m858unboximpl(), (Continuation) obj3);
     }
 
     @Nullable
     /* renamed from: invoke-d-4ec7I, reason: not valid java name */
-    public final Object m1259invoked4ec7I(@NotNull CoroutineScope coroutineScope, long j, @Nullable Continuation<? super Unit> continuation) {
+    public final Object m169invoked4ec7I(@NotNull CoroutineScope coroutineScope, long j, @Nullable Continuation<? super Unit> continuation) {
         return new DraggableKt$draggable$1(continuation).invokeSuspend(Unit.INSTANCE);
     }
 

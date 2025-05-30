@@ -4,7 +4,7 @@ import android.graphics.Rect;
 import android.view.ViewGroup;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class CircularPropagation extends VisibilityPropagation {
     private float mPropagationSpeed = 3.0f;
 
@@ -14,7 +14,6 @@ public class CircularPropagation extends VisibilityPropagation {
         return (float) Math.sqrt((f5 * f5) + (f6 * f6));
     }
 
-    @Override // androidx.transition.TransitionPropagation
     public long getStartDelay(ViewGroup viewGroup, Transition transition, TransitionValues transitionValues, TransitionValues transitionValues2) {
         int i;
         int round;

@@ -1,5 +1,6 @@
 package androidx.compose.foundation.lazy;
 
+import androidx.compose.foundation.lazy.LazyDslKt$itemsIndexed$;
 import androidx.compose.runtime.ComposableInferredTarget;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.internal.ComposableLambdaKt;
@@ -16,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyDslKt {
     /* JADX WARN: Removed duplicated region for block: B:100:0x01e1  */
     /* JADX WARN: Removed duplicated region for block: B:101:0x01cb  */
@@ -55,12 +56,12 @@ public final class LazyDslKt {
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void LazyColumn(@org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r27, @org.jetbrains.annotations.Nullable androidx.compose.foundation.lazy.LazyListState r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r29, boolean r30, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Vertical r31, @org.jetbrains.annotations.Nullable androidx.compose.ui.Alignment.Horizontal r32, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r33, boolean r34, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.LazyListScope, kotlin.Unit> r35, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r36, final int r37, final int r38) {
+    public static final void LazyColumn(@org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r27, @org.jetbrains.annotations.Nullable androidx.compose.foundation.lazy.LazyListState r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r29, boolean r30, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement$Vertical r31, @org.jetbrains.annotations.Nullable androidx.compose.ui.Alignment.Horizontal r32, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r33, boolean r34, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.LazyListScope, kotlin.Unit> r35, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r36, final int r37, final int r38) {
         /*
             Method dump skipped, instructions count: 632
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.LazyDslKt.LazyColumn(androidx.compose.ui.Modifier, androidx.compose.foundation.lazy.LazyListState, androidx.compose.foundation.layout.PaddingValues, boolean, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.ui.Alignment$Horizontal, androidx.compose.foundation.gestures.FlingBehavior, boolean, kotlin.jvm.functions.Function1, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -102,12 +103,12 @@ public final class LazyDslKt {
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void LazyRow(@org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r26, @org.jetbrains.annotations.Nullable androidx.compose.foundation.lazy.LazyListState r27, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r28, boolean r29, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Horizontal r30, @org.jetbrains.annotations.Nullable androidx.compose.ui.Alignment.Vertical r31, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r32, boolean r33, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.LazyListScope, kotlin.Unit> r34, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r35, final int r36, final int r37) {
+    public static final void LazyRow(@org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r26, @org.jetbrains.annotations.Nullable androidx.compose.foundation.lazy.LazyListState r27, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r28, boolean r29, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement$Horizontal r30, @org.jetbrains.annotations.Nullable androidx.compose.ui.Alignment.Vertical r31, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r32, boolean r33, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.LazyListScope, kotlin.Unit> r34, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r35, int r36, int r37) {
         /*
             Method dump skipped, instructions count: 631
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.LazyDslKt.LazyRow(androidx.compose.ui.Modifier, androidx.compose.foundation.lazy.LazyListState, androidx.compose.foundation.layout.PaddingValues, boolean, androidx.compose.foundation.layout.Arrangement$Horizontal, androidx.compose.ui.Alignment$Vertical, androidx.compose.foundation.gestures.FlingBehavior, boolean, kotlin.jvm.functions.Function1, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -141,7 +142,7 @@ public final class LazyDslKt {
         Intrinsics.checkNotNullParameter(list, "items");
         Intrinsics.checkNotNullParameter(function22, "contentType");
         Intrinsics.checkNotNullParameter(function5, "itemContent");
-        lazyListScope.items(list.size(), function2 != null ? new LazyDslKt$itemsIndexed$2(function2, list) : null, new LazyDslKt$itemsIndexed$3(function22, list), ComposableLambdaKt.composableLambdaInstance(-1091073711, true, new LazyDslKt$itemsIndexed$4(function5, list)));
+        lazyListScope.items(list.size(), function2 != null ? new itemsIndexed.2(function2, list) : null, new itemsIndexed.3(function22, list), ComposableLambdaKt.composableLambdaInstance(-1091073711, true, new itemsIndexed.4(function5, list)));
     }
 
     public static /* synthetic */ void itemsIndexed$default(LazyListScope lazyListScope, List list, Function2 function2, Function2 function22, Function5 function5, int i, Object obj) {
@@ -149,22 +150,13 @@ public final class LazyDslKt {
             function2 = null;
         }
         if ((i & 4) != 0) {
-            function22 = new Function2() { // from class: androidx.compose.foundation.lazy.LazyDslKt$itemsIndexed$1
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2, Object obj3) {
-                    return invoke(((Number) obj2).intValue(), (int) obj3);
-                }
-
-                @Nullable
-                public final Void invoke(int i2, T t) {
-                    return null;
-                }
-            };
+            function22 = itemsIndexed.1.INSTANCE;
         }
         Intrinsics.checkNotNullParameter(lazyListScope, "<this>");
         Intrinsics.checkNotNullParameter(list, "items");
         Intrinsics.checkNotNullParameter(function22, "contentType");
         Intrinsics.checkNotNullParameter(function5, "itemContent");
-        lazyListScope.items(list.size(), function2 != null ? new LazyDslKt$itemsIndexed$2(function2, list) : null, new LazyDslKt$itemsIndexed$3(function22, list), ComposableLambdaKt.composableLambdaInstance(-1091073711, true, new LazyDslKt$itemsIndexed$4(function5, list)));
+        lazyListScope.items(list.size(), function2 != null ? new itemsIndexed.2(function2, list) : null, new itemsIndexed.3(function22, list), ComposableLambdaKt.composableLambdaInstance(-1091073711, true, new itemsIndexed.4(function5, list)));
     }
 
     @ComposableInferredTarget(scheme = "[0[0]]")
@@ -182,7 +174,7 @@ public final class LazyDslKt {
         Intrinsics.checkNotNullParameter(tArr, "items");
         Intrinsics.checkNotNullParameter(function22, "contentType");
         Intrinsics.checkNotNullParameter(function5, "itemContent");
-        lazyListScope.items(tArr.length, function2 != null ? new LazyDslKt$itemsIndexed$6(function2, tArr) : null, new LazyDslKt$itemsIndexed$7(function22, tArr), ComposableLambdaKt.composableLambdaInstance(1600639390, true, new LazyDslKt$itemsIndexed$8(function5, tArr)));
+        lazyListScope.items(tArr.length, function2 != null ? new itemsIndexed.6(function2, tArr) : null, new itemsIndexed.7(function22, tArr), ComposableLambdaKt.composableLambdaInstance(1600639390, true, new itemsIndexed.8(function5, tArr)));
     }
 
     public static /* synthetic */ void items$default(LazyListScope lazyListScope, List list, Function1 function1, Function4 function4, int i, Object obj) {
@@ -202,7 +194,7 @@ public final class LazyDslKt {
         Intrinsics.checkNotNullParameter(lazyListScope, "<this>");
         Intrinsics.checkNotNullParameter(list, "items");
         Intrinsics.checkNotNullParameter(function5, "itemContent");
-        lazyListScope.items(list.size(), function2 != null ? new LazyDslKt$itemsIndexed$2(function2, list) : null, new LazyDslKt$itemsIndexed$$inlined$itemsIndexed$default$1(list), ComposableLambdaKt.composableLambdaInstance(-1091073711, true, new LazyDslKt$itemsIndexed$4(function5, list)));
+        lazyListScope.items(list.size(), function2 != null ? new itemsIndexed.2(function2, list) : null, new LazyDslKt$itemsIndexed$.inlined.itemsIndexed.default.1(list), ComposableLambdaKt.composableLambdaInstance(-1091073711, true, new itemsIndexed.4(function5, list)));
     }
 
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "Use the non deprecated overload")
@@ -220,7 +212,7 @@ public final class LazyDslKt {
         Intrinsics.checkNotNullParameter(lazyListScope, "<this>");
         Intrinsics.checkNotNullParameter(list, "items");
         Intrinsics.checkNotNullParameter(function5, "itemContent");
-        lazyListScope.items(list.size(), function2 != null ? new LazyDslKt$itemsIndexed$2(function2, list) : null, new LazyDslKt$itemsIndexed$$inlined$itemsIndexed$default$1(list), ComposableLambdaKt.composableLambdaInstance(-1091073711, true, new LazyDslKt$itemsIndexed$4(function5, list)));
+        lazyListScope.items(list.size(), function2 != null ? new itemsIndexed.2(function2, list) : null, new LazyDslKt$itemsIndexed$.inlined.itemsIndexed.default.1(list), ComposableLambdaKt.composableLambdaInstance(-1091073711, true, new itemsIndexed.4(function5, list)));
     }
 
     public static /* synthetic */ void itemsIndexed$default(LazyListScope lazyListScope, Object[] objArr, Function2 function2, Function2 function22, Function5 function5, int i, Object obj) {
@@ -228,22 +220,13 @@ public final class LazyDslKt {
             function2 = null;
         }
         if ((i & 4) != 0) {
-            function22 = new Function2() { // from class: androidx.compose.foundation.lazy.LazyDslKt$itemsIndexed$5
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2, Object obj3) {
-                    return invoke(((Number) obj2).intValue(), (int) obj3);
-                }
-
-                @Nullable
-                public final Void invoke(int i2, T t) {
-                    return null;
-                }
-            };
+            function22 = itemsIndexed.5.INSTANCE;
         }
         Intrinsics.checkNotNullParameter(lazyListScope, "<this>");
         Intrinsics.checkNotNullParameter(objArr, "items");
         Intrinsics.checkNotNullParameter(function22, "contentType");
         Intrinsics.checkNotNullParameter(function5, "itemContent");
-        lazyListScope.items(objArr.length, function2 != null ? new LazyDslKt$itemsIndexed$6(function2, objArr) : null, new LazyDslKt$itemsIndexed$7(function22, objArr), ComposableLambdaKt.composableLambdaInstance(1600639390, true, new LazyDslKt$itemsIndexed$8(function5, objArr)));
+        lazyListScope.items(objArr.length, function2 != null ? new itemsIndexed.6(function2, objArr) : null, new itemsIndexed.7(function22, objArr), ComposableLambdaKt.composableLambdaInstance(1600639390, true, new itemsIndexed.8(function5, objArr)));
     }
 
     public static /* synthetic */ void items$default(LazyListScope lazyListScope, Object[] objArr, Function1 function1, Function1 function12, Function4 function4, int i, Object obj) {
@@ -266,7 +249,7 @@ public final class LazyDslKt {
         Intrinsics.checkNotNullParameter(lazyListScope, "<this>");
         Intrinsics.checkNotNullParameter(tArr, "items");
         Intrinsics.checkNotNullParameter(function5, "itemContent");
-        lazyListScope.items(tArr.length, function2 != null ? new LazyDslKt$itemsIndexed$6(function2, tArr) : null, new LazyDslKt$itemsIndexed$$inlined$itemsIndexed$default$2(tArr), ComposableLambdaKt.composableLambdaInstance(1600639390, true, new LazyDslKt$itemsIndexed$8(function5, tArr)));
+        lazyListScope.items(tArr.length, function2 != null ? new itemsIndexed.6(function2, tArr) : null, new LazyDslKt$itemsIndexed$.inlined.itemsIndexed.default.2(tArr), ComposableLambdaKt.composableLambdaInstance(1600639390, true, new itemsIndexed.8(function5, tArr)));
     }
 
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "Use the non deprecated overload")
@@ -309,12 +292,12 @@ public final class LazyDslKt {
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final /* synthetic */ void LazyColumn(androidx.compose.p004ui.Modifier r27, androidx.compose.foundation.lazy.LazyListState r28, androidx.compose.foundation.layout.PaddingValues r29, boolean r30, androidx.compose.foundation.layout.Arrangement.Vertical r31, androidx.compose.ui.Alignment.Horizontal r32, androidx.compose.foundation.gestures.FlingBehavior r33, final kotlin.jvm.functions.Function1 r34, androidx.compose.runtime.Composer r35, final int r36, final int r37) {
+    public static final /* synthetic */ void LazyColumn(androidx.compose.ui.Modifier r27, androidx.compose.foundation.lazy.LazyListState r28, androidx.compose.foundation.layout.PaddingValues r29, boolean r30, androidx.compose.foundation.layout.Arrangement$Vertical r31, androidx.compose.ui.Alignment.Horizontal r32, androidx.compose.foundation.gestures.FlingBehavior r33, final kotlin.jvm.functions.Function1 r34, androidx.compose.runtime.Composer r35, final int r36, final int r37) {
         /*
             Method dump skipped, instructions count: 545
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.LazyDslKt.LazyColumn(androidx.compose.ui.Modifier, androidx.compose.foundation.lazy.LazyListState, androidx.compose.foundation.layout.PaddingValues, boolean, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.ui.Alignment$Horizontal, androidx.compose.foundation.gestures.FlingBehavior, kotlin.jvm.functions.Function1, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -350,12 +333,12 @@ public final class LazyDslKt {
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final /* synthetic */ void LazyRow(androidx.compose.p004ui.Modifier r27, androidx.compose.foundation.lazy.LazyListState r28, androidx.compose.foundation.layout.PaddingValues r29, boolean r30, androidx.compose.foundation.layout.Arrangement.Horizontal r31, androidx.compose.ui.Alignment.Vertical r32, androidx.compose.foundation.gestures.FlingBehavior r33, final kotlin.jvm.functions.Function1 r34, androidx.compose.runtime.Composer r35, final int r36, final int r37) {
+    public static final /* synthetic */ void LazyRow(androidx.compose.ui.Modifier r27, androidx.compose.foundation.lazy.LazyListState r28, androidx.compose.foundation.layout.PaddingValues r29, boolean r30, androidx.compose.foundation.layout.Arrangement$Horizontal r31, androidx.compose.ui.Alignment.Vertical r32, androidx.compose.foundation.gestures.FlingBehavior r33, kotlin.jvm.functions.Function1 r34, androidx.compose.runtime.Composer r35, int r36, int r37) {
         /*
             Method dump skipped, instructions count: 545
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.LazyDslKt.LazyRow(androidx.compose.ui.Modifier, androidx.compose.foundation.lazy.LazyListState, androidx.compose.foundation.layout.PaddingValues, boolean, androidx.compose.foundation.layout.Arrangement$Horizontal, androidx.compose.ui.Alignment$Vertical, androidx.compose.foundation.gestures.FlingBehavior, kotlin.jvm.functions.Function1, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -367,7 +350,7 @@ public final class LazyDslKt {
         Intrinsics.checkNotNullParameter(lazyListScope, "<this>");
         Intrinsics.checkNotNullParameter(objArr, "items");
         Intrinsics.checkNotNullParameter(function5, "itemContent");
-        lazyListScope.items(objArr.length, function2 != null ? new LazyDslKt$itemsIndexed$6(function2, objArr) : null, new LazyDslKt$itemsIndexed$$inlined$itemsIndexed$default$2(objArr), ComposableLambdaKt.composableLambdaInstance(1600639390, true, new LazyDslKt$itemsIndexed$8(function5, objArr)));
+        lazyListScope.items(objArr.length, function2 != null ? new itemsIndexed.6(function2, objArr) : null, new LazyDslKt$itemsIndexed$.inlined.itemsIndexed.default.2(objArr), ComposableLambdaKt.composableLambdaInstance(1600639390, true, new itemsIndexed.8(function5, objArr)));
     }
 
     public static /* synthetic */ void items$default(LazyListScope lazyListScope, Object[] objArr, Function1 function1, Function4 function4, int i, Object obj) {

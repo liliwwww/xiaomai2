@@ -3,7 +3,7 @@ package androidx.recyclerview.widget;
 import androidx.annotation.NonNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class BatchingListUpdateCallback implements ListUpdateCallback {
     private static final int TYPE_ADD = 1;
     private static final int TYPE_CHANGE = 3;
@@ -35,7 +35,6 @@ public class BatchingListUpdateCallback implements ListUpdateCallback {
         this.mLastEventType = 0;
     }
 
-    @Override // androidx.recyclerview.widget.ListUpdateCallback
     public void onChanged(int i, int i2, Object obj) {
         int i3;
         if (this.mLastEventType == 3) {
@@ -54,7 +53,6 @@ public class BatchingListUpdateCallback implements ListUpdateCallback {
         this.mLastEventType = 3;
     }
 
-    @Override // androidx.recyclerview.widget.ListUpdateCallback
     public void onInserted(int i, int i2) {
         int i3;
         if (this.mLastEventType == 1 && i >= (i3 = this.mLastEventPosition)) {
@@ -71,13 +69,11 @@ public class BatchingListUpdateCallback implements ListUpdateCallback {
         this.mLastEventType = 1;
     }
 
-    @Override // androidx.recyclerview.widget.ListUpdateCallback
     public void onMoved(int i, int i2) {
         dispatchLastEvent();
         this.mWrapped.onMoved(i, i2);
     }
 
-    @Override // androidx.recyclerview.widget.ListUpdateCallback
     public void onRemoved(int i, int i2) {
         int i3;
         if (this.mLastEventType == 2 && (i3 = this.mLastEventPosition) >= i && i3 <= i + i2) {

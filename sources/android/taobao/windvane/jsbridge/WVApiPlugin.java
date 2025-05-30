@@ -9,7 +9,7 @@ import android.taobao.windvane.webview.IWVWebView;
 import android.taobao.windvane.webview.WVWebView;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class WVApiPlugin {
     public static final int REQUEST_MULTI_PICK_PHOTO = 4003;
     public static final int REQUEST_PICK_PHONE = 4003;
@@ -27,7 +27,7 @@ public abstract class WVApiPlugin {
         try {
             return execute(str, str2, wVCallBackContext);
         } catch (Throwable th) {
-            TaoLog.m21e("WVJsBridge", th.getMessage());
+            TaoLog.e("WVJsBridge", th.getMessage());
             return false;
         }
     }

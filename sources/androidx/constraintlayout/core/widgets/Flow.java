@@ -1,12 +1,11 @@
 package androidx.constraintlayout.core.widgets;
 
 import androidx.constraintlayout.core.LinearSystem;
-import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Flow extends VirtualLayout {
     public static final int HORIZONTAL_ALIGN_CENTER = 2;
     public static final int HORIZONTAL_ALIGN_END = 1;
@@ -45,398 +44,6 @@ public class Flow extends VirtualLayout {
     private int[] mAlignedDimensions = null;
     private int mDisplayedWidgetsCount = 0;
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private class WidgetsList {
-        private ConstraintAnchor mBottom;
-        private ConstraintAnchor mLeft;
-        private int mMax;
-        private int mOrientation;
-        private int mPaddingBottom;
-        private int mPaddingLeft;
-        private int mPaddingRight;
-        private int mPaddingTop;
-        private ConstraintAnchor mRight;
-        private ConstraintAnchor mTop;
-        private ConstraintWidget biggest = null;
-        int biggestDimension = 0;
-        private int mWidth = 0;
-        private int mHeight = 0;
-        private int mStartIndex = 0;
-        private int mCount = 0;
-        private int mNbMatchConstraintsWidgets = 0;
-
-        public WidgetsList(int i, ConstraintAnchor constraintAnchor, ConstraintAnchor constraintAnchor2, ConstraintAnchor constraintAnchor3, ConstraintAnchor constraintAnchor4, int i2) {
-            this.mOrientation = 0;
-            this.mPaddingLeft = 0;
-            this.mPaddingTop = 0;
-            this.mPaddingRight = 0;
-            this.mPaddingBottom = 0;
-            this.mMax = 0;
-            this.mOrientation = i;
-            this.mLeft = constraintAnchor;
-            this.mTop = constraintAnchor2;
-            this.mRight = constraintAnchor3;
-            this.mBottom = constraintAnchor4;
-            this.mPaddingLeft = Flow.this.getPaddingLeft();
-            this.mPaddingTop = Flow.this.getPaddingTop();
-            this.mPaddingRight = Flow.this.getPaddingRight();
-            this.mPaddingBottom = Flow.this.getPaddingBottom();
-            this.mMax = i2;
-        }
-
-        private void recomputeDimensions() {
-            this.mWidth = 0;
-            this.mHeight = 0;
-            this.biggest = null;
-            this.biggestDimension = 0;
-            int i = this.mCount;
-            for (int i2 = 0; i2 < i && this.mStartIndex + i2 < Flow.this.mDisplayedWidgetsCount; i2++) {
-                ConstraintWidget constraintWidget = Flow.this.mDisplayedWidgets[this.mStartIndex + i2];
-                if (this.mOrientation == 0) {
-                    int width = constraintWidget.getWidth();
-                    int i3 = Flow.this.mHorizontalGap;
-                    if (constraintWidget.getVisibility() == 8) {
-                        i3 = 0;
-                    }
-                    this.mWidth += width + i3;
-                    int widgetHeight = Flow.this.getWidgetHeight(constraintWidget, this.mMax);
-                    if (this.biggest == null || this.biggestDimension < widgetHeight) {
-                        this.biggest = constraintWidget;
-                        this.biggestDimension = widgetHeight;
-                        this.mHeight = widgetHeight;
-                    }
-                } else {
-                    int widgetWidth = Flow.this.getWidgetWidth(constraintWidget, this.mMax);
-                    int widgetHeight2 = Flow.this.getWidgetHeight(constraintWidget, this.mMax);
-                    int i4 = Flow.this.mVerticalGap;
-                    if (constraintWidget.getVisibility() == 8) {
-                        i4 = 0;
-                    }
-                    this.mHeight += widgetHeight2 + i4;
-                    if (this.biggest == null || this.biggestDimension < widgetWidth) {
-                        this.biggest = constraintWidget;
-                        this.biggestDimension = widgetWidth;
-                        this.mWidth = widgetWidth;
-                    }
-                }
-            }
-        }
-
-        public void add(ConstraintWidget constraintWidget) {
-            if (this.mOrientation == 0) {
-                int widgetWidth = Flow.this.getWidgetWidth(constraintWidget, this.mMax);
-                if (constraintWidget.getHorizontalDimensionBehaviour() == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
-                    this.mNbMatchConstraintsWidgets++;
-                    widgetWidth = 0;
-                }
-                this.mWidth += widgetWidth + (constraintWidget.getVisibility() != 8 ? Flow.this.mHorizontalGap : 0);
-                int widgetHeight = Flow.this.getWidgetHeight(constraintWidget, this.mMax);
-                if (this.biggest == null || this.biggestDimension < widgetHeight) {
-                    this.biggest = constraintWidget;
-                    this.biggestDimension = widgetHeight;
-                    this.mHeight = widgetHeight;
-                }
-            } else {
-                int widgetWidth2 = Flow.this.getWidgetWidth(constraintWidget, this.mMax);
-                int widgetHeight2 = Flow.this.getWidgetHeight(constraintWidget, this.mMax);
-                if (constraintWidget.getVerticalDimensionBehaviour() == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
-                    this.mNbMatchConstraintsWidgets++;
-                    widgetHeight2 = 0;
-                }
-                this.mHeight += widgetHeight2 + (constraintWidget.getVisibility() != 8 ? Flow.this.mVerticalGap : 0);
-                if (this.biggest == null || this.biggestDimension < widgetWidth2) {
-                    this.biggest = constraintWidget;
-                    this.biggestDimension = widgetWidth2;
-                    this.mWidth = widgetWidth2;
-                }
-            }
-            this.mCount++;
-        }
-
-        public void clear() {
-            this.biggestDimension = 0;
-            this.biggest = null;
-            this.mWidth = 0;
-            this.mHeight = 0;
-            this.mStartIndex = 0;
-            this.mCount = 0;
-            this.mNbMatchConstraintsWidgets = 0;
-        }
-
-        public void createConstraints(boolean z, int i, boolean z2) {
-            ConstraintWidget constraintWidget;
-            float f;
-            float f2;
-            int i2 = this.mCount;
-            for (int i3 = 0; i3 < i2 && this.mStartIndex + i3 < Flow.this.mDisplayedWidgetsCount; i3++) {
-                ConstraintWidget constraintWidget2 = Flow.this.mDisplayedWidgets[this.mStartIndex + i3];
-                if (constraintWidget2 != null) {
-                    constraintWidget2.resetAnchors();
-                }
-            }
-            if (i2 == 0 || this.biggest == null) {
-                return;
-            }
-            boolean z3 = z2 && i == 0;
-            int i4 = -1;
-            int i5 = -1;
-            for (int i6 = 0; i6 < i2; i6++) {
-                int i7 = z ? (i2 - 1) - i6 : i6;
-                if (this.mStartIndex + i7 >= Flow.this.mDisplayedWidgetsCount) {
-                    break;
-                }
-                ConstraintWidget constraintWidget3 = Flow.this.mDisplayedWidgets[this.mStartIndex + i7];
-                if (constraintWidget3 != null && constraintWidget3.getVisibility() == 0) {
-                    if (i4 == -1) {
-                        i4 = i6;
-                    }
-                    i5 = i6;
-                }
-            }
-            ConstraintWidget constraintWidget4 = null;
-            if (this.mOrientation != 0) {
-                ConstraintWidget constraintWidget5 = this.biggest;
-                constraintWidget5.setHorizontalChainStyle(Flow.this.mHorizontalStyle);
-                int i8 = this.mPaddingLeft;
-                if (i > 0) {
-                    i8 += Flow.this.mHorizontalGap;
-                }
-                if (z) {
-                    constraintWidget5.mRight.connect(this.mRight, i8);
-                    if (z2) {
-                        constraintWidget5.mLeft.connect(this.mLeft, this.mPaddingRight);
-                    }
-                    if (i > 0) {
-                        this.mRight.mOwner.mLeft.connect(constraintWidget5.mRight, 0);
-                    }
-                } else {
-                    constraintWidget5.mLeft.connect(this.mLeft, i8);
-                    if (z2) {
-                        constraintWidget5.mRight.connect(this.mRight, this.mPaddingRight);
-                    }
-                    if (i > 0) {
-                        this.mLeft.mOwner.mRight.connect(constraintWidget5.mLeft, 0);
-                    }
-                }
-                for (int i9 = 0; i9 < i2 && this.mStartIndex + i9 < Flow.this.mDisplayedWidgetsCount; i9++) {
-                    ConstraintWidget constraintWidget6 = Flow.this.mDisplayedWidgets[this.mStartIndex + i9];
-                    if (constraintWidget6 != null) {
-                        if (i9 == 0) {
-                            constraintWidget6.connect(constraintWidget6.mTop, this.mTop, this.mPaddingTop);
-                            int i10 = Flow.this.mVerticalStyle;
-                            float f3 = Flow.this.mVerticalBias;
-                            if (this.mStartIndex == 0 && Flow.this.mFirstVerticalStyle != -1) {
-                                i10 = Flow.this.mFirstVerticalStyle;
-                                f3 = Flow.this.mFirstVerticalBias;
-                            } else if (z2 && Flow.this.mLastVerticalStyle != -1) {
-                                i10 = Flow.this.mLastVerticalStyle;
-                                f3 = Flow.this.mLastVerticalBias;
-                            }
-                            constraintWidget6.setVerticalChainStyle(i10);
-                            constraintWidget6.setVerticalBiasPercent(f3);
-                        }
-                        if (i9 == i2 - 1) {
-                            constraintWidget6.connect(constraintWidget6.mBottom, this.mBottom, this.mPaddingBottom);
-                        }
-                        if (constraintWidget4 != null) {
-                            constraintWidget6.mTop.connect(constraintWidget4.mBottom, Flow.this.mVerticalGap);
-                            if (i9 == i4) {
-                                constraintWidget6.mTop.setGoneMargin(this.mPaddingTop);
-                            }
-                            constraintWidget4.mBottom.connect(constraintWidget6.mTop, 0);
-                            if (i9 == i5 + 1) {
-                                constraintWidget4.mBottom.setGoneMargin(this.mPaddingBottom);
-                            }
-                        }
-                        if (constraintWidget6 != constraintWidget5) {
-                            if (z) {
-                                int i11 = Flow.this.mHorizontalAlign;
-                                if (i11 == 0) {
-                                    constraintWidget6.mRight.connect(constraintWidget5.mRight, 0);
-                                } else if (i11 == 1) {
-                                    constraintWidget6.mLeft.connect(constraintWidget5.mLeft, 0);
-                                } else if (i11 == 2) {
-                                    constraintWidget6.mLeft.connect(constraintWidget5.mLeft, 0);
-                                    constraintWidget6.mRight.connect(constraintWidget5.mRight, 0);
-                                }
-                            } else {
-                                int i12 = Flow.this.mHorizontalAlign;
-                                if (i12 == 0) {
-                                    constraintWidget6.mLeft.connect(constraintWidget5.mLeft, 0);
-                                } else if (i12 == 1) {
-                                    constraintWidget6.mRight.connect(constraintWidget5.mRight, 0);
-                                } else if (i12 == 2) {
-                                    if (z3) {
-                                        constraintWidget6.mLeft.connect(this.mLeft, this.mPaddingLeft);
-                                        constraintWidget6.mRight.connect(this.mRight, this.mPaddingRight);
-                                    } else {
-                                        constraintWidget6.mLeft.connect(constraintWidget5.mLeft, 0);
-                                        constraintWidget6.mRight.connect(constraintWidget5.mRight, 0);
-                                    }
-                                }
-                                constraintWidget4 = constraintWidget6;
-                            }
-                        }
-                        constraintWidget4 = constraintWidget6;
-                    }
-                }
-                return;
-            }
-            ConstraintWidget constraintWidget7 = this.biggest;
-            constraintWidget7.setVerticalChainStyle(Flow.this.mVerticalStyle);
-            int i13 = this.mPaddingTop;
-            if (i > 0) {
-                i13 += Flow.this.mVerticalGap;
-            }
-            constraintWidget7.mTop.connect(this.mTop, i13);
-            if (z2) {
-                constraintWidget7.mBottom.connect(this.mBottom, this.mPaddingBottom);
-            }
-            if (i > 0) {
-                this.mTop.mOwner.mBottom.connect(constraintWidget7.mTop, 0);
-            }
-            if (Flow.this.mVerticalAlign == 3 && !constraintWidget7.hasBaseline()) {
-                for (int i14 = 0; i14 < i2; i14++) {
-                    int i15 = z ? (i2 - 1) - i14 : i14;
-                    if (this.mStartIndex + i15 >= Flow.this.mDisplayedWidgetsCount) {
-                        break;
-                    }
-                    constraintWidget = Flow.this.mDisplayedWidgets[this.mStartIndex + i15];
-                    if (constraintWidget.hasBaseline()) {
-                        break;
-                    }
-                }
-            }
-            constraintWidget = constraintWidget7;
-            int i16 = 0;
-            while (i16 < i2) {
-                int i17 = z ? (i2 - 1) - i16 : i16;
-                if (this.mStartIndex + i17 >= Flow.this.mDisplayedWidgetsCount) {
-                    return;
-                }
-                ConstraintWidget constraintWidget8 = Flow.this.mDisplayedWidgets[this.mStartIndex + i17];
-                if (constraintWidget8 == null) {
-                    constraintWidget8 = constraintWidget4;
-                } else {
-                    if (i16 == 0) {
-                        constraintWidget8.connect(constraintWidget8.mLeft, this.mLeft, this.mPaddingLeft);
-                    }
-                    if (i17 == 0) {
-                        int i18 = Flow.this.mHorizontalStyle;
-                        float f4 = Flow.this.mHorizontalBias;
-                        if (z) {
-                            f4 = 1.0f - f4;
-                        }
-                        if (this.mStartIndex == 0 && Flow.this.mFirstHorizontalStyle != -1) {
-                            i18 = Flow.this.mFirstHorizontalStyle;
-                            if (z) {
-                                f2 = Flow.this.mFirstHorizontalBias;
-                                f = 1.0f - f2;
-                                f4 = f;
-                            } else {
-                                f = Flow.this.mFirstHorizontalBias;
-                                f4 = f;
-                            }
-                        } else if (z2 && Flow.this.mLastHorizontalStyle != -1) {
-                            i18 = Flow.this.mLastHorizontalStyle;
-                            if (z) {
-                                f2 = Flow.this.mLastHorizontalBias;
-                                f = 1.0f - f2;
-                                f4 = f;
-                            } else {
-                                f = Flow.this.mLastHorizontalBias;
-                                f4 = f;
-                            }
-                        }
-                        constraintWidget8.setHorizontalChainStyle(i18);
-                        constraintWidget8.setHorizontalBiasPercent(f4);
-                    }
-                    if (i16 == i2 - 1) {
-                        constraintWidget8.connect(constraintWidget8.mRight, this.mRight, this.mPaddingRight);
-                    }
-                    if (constraintWidget4 != null) {
-                        constraintWidget8.mLeft.connect(constraintWidget4.mRight, Flow.this.mHorizontalGap);
-                        if (i16 == i4) {
-                            constraintWidget8.mLeft.setGoneMargin(this.mPaddingLeft);
-                        }
-                        constraintWidget4.mRight.connect(constraintWidget8.mLeft, 0);
-                        if (i16 == i5 + 1) {
-                            constraintWidget4.mRight.setGoneMargin(this.mPaddingRight);
-                        }
-                    }
-                    if (constraintWidget8 != constraintWidget7) {
-                        if (Flow.this.mVerticalAlign == 3 && constraintWidget.hasBaseline() && constraintWidget8 != constraintWidget && constraintWidget8.hasBaseline()) {
-                            constraintWidget8.mBaseline.connect(constraintWidget.mBaseline, 0);
-                        } else {
-                            int i19 = Flow.this.mVerticalAlign;
-                            if (i19 == 0) {
-                                constraintWidget8.mTop.connect(constraintWidget7.mTop, 0);
-                            } else if (i19 == 1) {
-                                constraintWidget8.mBottom.connect(constraintWidget7.mBottom, 0);
-                            } else if (z3) {
-                                constraintWidget8.mTop.connect(this.mTop, this.mPaddingTop);
-                                constraintWidget8.mBottom.connect(this.mBottom, this.mPaddingBottom);
-                            } else {
-                                constraintWidget8.mTop.connect(constraintWidget7.mTop, 0);
-                                constraintWidget8.mBottom.connect(constraintWidget7.mBottom, 0);
-                            }
-                        }
-                        i16++;
-                        constraintWidget4 = constraintWidget8;
-                    }
-                }
-                i16++;
-                constraintWidget4 = constraintWidget8;
-            }
-        }
-
-        public int getHeight() {
-            return this.mOrientation == 1 ? this.mHeight - Flow.this.mVerticalGap : this.mHeight;
-        }
-
-        public int getWidth() {
-            return this.mOrientation == 0 ? this.mWidth - Flow.this.mHorizontalGap : this.mWidth;
-        }
-
-        public void measureMatchConstraints(int i) {
-            int i2 = this.mNbMatchConstraintsWidgets;
-            if (i2 == 0) {
-                return;
-            }
-            int i3 = this.mCount;
-            int i4 = i / i2;
-            for (int i5 = 0; i5 < i3 && this.mStartIndex + i5 < Flow.this.mDisplayedWidgetsCount; i5++) {
-                ConstraintWidget constraintWidget = Flow.this.mDisplayedWidgets[this.mStartIndex + i5];
-                if (this.mOrientation == 0) {
-                    if (constraintWidget != null && constraintWidget.getHorizontalDimensionBehaviour() == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT && constraintWidget.mMatchConstraintDefaultWidth == 0) {
-                        Flow.this.measure(constraintWidget, ConstraintWidget.DimensionBehaviour.FIXED, i4, constraintWidget.getVerticalDimensionBehaviour(), constraintWidget.getHeight());
-                    }
-                } else if (constraintWidget != null && constraintWidget.getVerticalDimensionBehaviour() == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT && constraintWidget.mMatchConstraintDefaultHeight == 0) {
-                    Flow.this.measure(constraintWidget, constraintWidget.getHorizontalDimensionBehaviour(), constraintWidget.getWidth(), ConstraintWidget.DimensionBehaviour.FIXED, i4);
-                }
-            }
-            recomputeDimensions();
-        }
-
-        public void setStartIndex(int i) {
-            this.mStartIndex = i;
-        }
-
-        public void setup(int i, ConstraintAnchor constraintAnchor, ConstraintAnchor constraintAnchor2, ConstraintAnchor constraintAnchor3, ConstraintAnchor constraintAnchor4, int i2, int i3, int i4, int i5, int i6) {
-            this.mOrientation = i;
-            this.mLeft = constraintAnchor;
-            this.mTop = constraintAnchor2;
-            this.mRight = constraintAnchor3;
-            this.mBottom = constraintAnchor4;
-            this.mPaddingLeft = i2;
-            this.mPaddingTop = i3;
-            this.mPaddingRight = i4;
-            this.mPaddingBottom = i5;
-            this.mMax = i6;
-        }
-    }
-
     private void createAlignedConstraints(boolean z) {
         ConstraintWidget constraintWidget;
         float f;
@@ -464,12 +71,12 @@ public class Flow extends VirtualLayout {
             ConstraintWidget constraintWidget3 = this.mAlignedBiggestElementsInCols[i];
             if (constraintWidget3 != null && constraintWidget3.getVisibility() != 8) {
                 if (i5 == 0) {
-                    constraintWidget3.connect(constraintWidget3.mLeft, this.mLeft, getPaddingLeft());
+                    constraintWidget3.connect(constraintWidget3.mLeft, ((ConstraintWidget) this).mLeft, getPaddingLeft());
                     constraintWidget3.setHorizontalChainStyle(this.mHorizontalStyle);
                     constraintWidget3.setHorizontalBiasPercent(f);
                 }
                 if (i5 == i3 - 1) {
-                    constraintWidget3.connect(constraintWidget3.mRight, this.mRight, getPaddingRight());
+                    constraintWidget3.connect(constraintWidget3.mRight, ((ConstraintWidget) this).mRight, getPaddingRight());
                 }
                 if (i5 > 0 && constraintWidget2 != null) {
                     constraintWidget3.connect(constraintWidget3.mLeft, constraintWidget2.mRight, this.mHorizontalGap);
@@ -484,12 +91,12 @@ public class Flow extends VirtualLayout {
             ConstraintWidget constraintWidget4 = this.mAlignedBiggestElementsInRows[i6];
             if (constraintWidget4 != null && constraintWidget4.getVisibility() != 8) {
                 if (i6 == 0) {
-                    constraintWidget4.connect(constraintWidget4.mTop, this.mTop, getPaddingTop());
+                    constraintWidget4.connect(constraintWidget4.mTop, ((ConstraintWidget) this).mTop, getPaddingTop());
                     constraintWidget4.setVerticalChainStyle(this.mVerticalStyle);
                     constraintWidget4.setVerticalBiasPercent(this.mVerticalBias);
                 }
                 if (i6 == i4 - 1) {
-                    constraintWidget4.connect(constraintWidget4.mBottom, this.mBottom, getPaddingBottom());
+                    constraintWidget4.connect(constraintWidget4.mBottom, ((ConstraintWidget) this).mBottom, getPaddingBottom());
                 }
                 if (i6 > 0 && constraintWidget2 != null) {
                     constraintWidget4.connect(constraintWidget4.mTop, constraintWidget2.mBottom, this.mVerticalGap);
@@ -526,7 +133,7 @@ public class Flow extends VirtualLayout {
         if (constraintWidget == null) {
             return 0;
         }
-        if (constraintWidget.getVerticalDimensionBehaviour() == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
+        if (constraintWidget.getVerticalDimensionBehaviour() == ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT) {
             int i2 = constraintWidget.mMatchConstraintDefaultHeight;
             if (i2 == 0) {
                 return 0;
@@ -535,7 +142,7 @@ public class Flow extends VirtualLayout {
                 int i3 = (int) (constraintWidget.mMatchConstraintPercentHeight * i);
                 if (i3 != constraintWidget.getHeight()) {
                     constraintWidget.setMeasureRequested(true);
-                    measure(constraintWidget, constraintWidget.getHorizontalDimensionBehaviour(), constraintWidget.getWidth(), ConstraintWidget.DimensionBehaviour.FIXED, i3);
+                    measure(constraintWidget, constraintWidget.getHorizontalDimensionBehaviour(), constraintWidget.getWidth(), ConstraintWidget$DimensionBehaviour.FIXED, i3);
                 }
                 return i3;
             }
@@ -554,7 +161,7 @@ public class Flow extends VirtualLayout {
         if (constraintWidget == null) {
             return 0;
         }
-        if (constraintWidget.getHorizontalDimensionBehaviour() == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
+        if (constraintWidget.getHorizontalDimensionBehaviour() == ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT) {
             int i2 = constraintWidget.mMatchConstraintDefaultWidth;
             if (i2 == 0) {
                 return 0;
@@ -563,7 +170,7 @@ public class Flow extends VirtualLayout {
                 int i3 = (int) (constraintWidget.mMatchConstraintPercentWidth * i);
                 if (i3 != constraintWidget.getWidth()) {
                     constraintWidget.setMeasureRequested(true);
-                    measure(constraintWidget, ConstraintWidget.DimensionBehaviour.FIXED, i3, constraintWidget.getVerticalDimensionBehaviour(), constraintWidget.getHeight());
+                    measure(constraintWidget, ConstraintWidget$DimensionBehaviour.FIXED, i3, constraintWidget.getVerticalDimensionBehaviour(), constraintWidget.getHeight());
                 }
                 return i3;
             }
@@ -584,12 +191,12 @@ public class Flow extends VirtualLayout {
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:81:0x0125 -> B:22:0x0063). Please report as a decompilation issue!!! */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private void measureAligned(androidx.constraintlayout.core.widgets.ConstraintWidget[] r17, int r18, int r19, int r20, int[] r21) {
         /*
             Method dump skipped, instructions count: 306
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.constraintlayout.core.widgets.Flow.measureAligned(androidx.constraintlayout.core.widgets.ConstraintWidget[], int, int, int, int[]):void");
     }
@@ -607,7 +214,7 @@ public class Flow extends VirtualLayout {
             return;
         }
         this.mChainList.clear();
-        WidgetsList widgetsList = new WidgetsList(i2, this.mLeft, this.mTop, this.mRight, this.mBottom, i3);
+        WidgetsList widgetsList = new WidgetsList(this, i2, ((ConstraintWidget) this).mLeft, ((ConstraintWidget) this).mTop, ((ConstraintWidget) this).mRight, ((ConstraintWidget) this).mBottom, i3);
         this.mChainList.add(widgetsList);
         if (i2 == 0) {
             i4 = 0;
@@ -616,16 +223,16 @@ public class Flow extends VirtualLayout {
             while (i9 < i) {
                 ConstraintWidget constraintWidget = constraintWidgetArr[i9];
                 int widgetWidth = getWidgetWidth(constraintWidget, i3);
-                if (constraintWidget.getHorizontalDimensionBehaviour() == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
+                if (constraintWidget.getHorizontalDimensionBehaviour() == ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT) {
                     i4++;
                 }
                 int i10 = i4;
-                boolean z = (i8 == i3 || (this.mHorizontalGap + i8) + widgetWidth > i3) && widgetsList.biggest != null;
+                boolean z = (i8 == i3 || (this.mHorizontalGap + i8) + widgetWidth > i3) && WidgetsList.access$2000(widgetsList) != null;
                 if (!z && i9 > 0 && (i7 = this.mMaxElementsWrap) > 0 && i9 % i7 == 0) {
                     z = true;
                 }
                 if (z) {
-                    widgetsList = new WidgetsList(i2, this.mLeft, this.mTop, this.mRight, this.mBottom, i3);
+                    widgetsList = new WidgetsList(this, i2, ((ConstraintWidget) this).mLeft, ((ConstraintWidget) this).mTop, ((ConstraintWidget) this).mRight, ((ConstraintWidget) this).mBottom, i3);
                     widgetsList.setStartIndex(i9);
                     this.mChainList.add(widgetsList);
                 } else if (i9 > 0) {
@@ -646,16 +253,16 @@ public class Flow extends VirtualLayout {
             while (i12 < i) {
                 ConstraintWidget constraintWidget2 = constraintWidgetArr[i12];
                 int widgetHeight = getWidgetHeight(constraintWidget2, i3);
-                if (constraintWidget2.getVerticalDimensionBehaviour() == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
+                if (constraintWidget2.getVerticalDimensionBehaviour() == ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT) {
                     i4++;
                 }
                 int i13 = i4;
-                boolean z2 = (i11 == i3 || (this.mVerticalGap + i11) + widgetHeight > i3) && widgetsList.biggest != null;
+                boolean z2 = (i11 == i3 || (this.mVerticalGap + i11) + widgetHeight > i3) && WidgetsList.access$2000(widgetsList) != null;
                 if (!z2 && i12 > 0 && (i5 = this.mMaxElementsWrap) > 0 && i12 % i5 == 0) {
                     z2 = true;
                 }
                 if (z2) {
-                    widgetsList = new WidgetsList(i2, this.mLeft, this.mTop, this.mRight, this.mBottom, i3);
+                    widgetsList = new WidgetsList(this, i2, ((ConstraintWidget) this).mLeft, ((ConstraintWidget) this).mTop, ((ConstraintWidget) this).mRight, ((ConstraintWidget) this).mBottom, i3);
                     widgetsList.setStartIndex(i12);
                     this.mChainList.add(widgetsList);
                 } else if (i12 > 0) {
@@ -671,17 +278,17 @@ public class Flow extends VirtualLayout {
             }
         }
         int size = this.mChainList.size();
-        ConstraintAnchor constraintAnchor3 = this.mLeft;
-        ConstraintAnchor constraintAnchor4 = this.mTop;
-        ConstraintAnchor constraintAnchor5 = this.mRight;
-        ConstraintAnchor constraintAnchor6 = this.mBottom;
+        ConstraintAnchor constraintAnchor3 = ((ConstraintWidget) this).mLeft;
+        ConstraintAnchor constraintAnchor4 = ((ConstraintWidget) this).mTop;
+        ConstraintAnchor constraintAnchor5 = ((ConstraintWidget) this).mRight;
+        ConstraintAnchor constraintAnchor6 = ((ConstraintWidget) this).mBottom;
         int paddingLeft = getPaddingLeft();
         int paddingTop = getPaddingTop();
         int paddingRight2 = getPaddingRight();
         int paddingBottom2 = getPaddingBottom();
-        ConstraintWidget.DimensionBehaviour horizontalDimensionBehaviour = getHorizontalDimensionBehaviour();
-        ConstraintWidget.DimensionBehaviour dimensionBehaviour = ConstraintWidget.DimensionBehaviour.WRAP_CONTENT;
-        boolean z3 = horizontalDimensionBehaviour == dimensionBehaviour || getVerticalDimensionBehaviour() == dimensionBehaviour;
+        ConstraintWidget$DimensionBehaviour horizontalDimensionBehaviour = getHorizontalDimensionBehaviour();
+        ConstraintWidget$DimensionBehaviour constraintWidget$DimensionBehaviour = ConstraintWidget$DimensionBehaviour.WRAP_CONTENT;
+        boolean z3 = horizontalDimensionBehaviour == constraintWidget$DimensionBehaviour || getVerticalDimensionBehaviour() == constraintWidget$DimensionBehaviour;
         if (i4 > 0 && z3) {
             for (int i14 = 0; i14 < size; i14++) {
                 WidgetsList widgetsList2 = this.mChainList.get(i14);
@@ -705,13 +312,13 @@ public class Flow extends VirtualLayout {
             WidgetsList widgetsList3 = this.mChainList.get(i19);
             if (i2 == 0) {
                 if (i19 < size - 1) {
-                    constraintAnchor2 = this.mChainList.get(i19 + 1).biggest.mTop;
+                    constraintAnchor2 = WidgetsList.access$2000(this.mChainList.get(i19 + 1)).mTop;
                     paddingBottom = 0;
                 } else {
-                    constraintAnchor2 = this.mBottom;
+                    constraintAnchor2 = ((ConstraintWidget) this).mBottom;
                     paddingBottom = getPaddingBottom();
                 }
-                ConstraintAnchor constraintAnchor9 = widgetsList3.biggest.mBottom;
+                ConstraintAnchor constraintAnchor9 = WidgetsList.access$2000(widgetsList3).mBottom;
                 ConstraintAnchor constraintAnchor10 = constraintAnchor8;
                 ConstraintAnchor constraintAnchor11 = constraintAnchor8;
                 int i22 = i17;
@@ -740,13 +347,13 @@ public class Flow extends VirtualLayout {
                 int i26 = i18;
                 i6 = i19;
                 if (i6 < size - 1) {
-                    constraintAnchor = this.mChainList.get(i6 + 1).biggest.mLeft;
+                    constraintAnchor = WidgetsList.access$2000(this.mChainList.get(i6 + 1)).mLeft;
                     paddingRight = 0;
                 } else {
-                    constraintAnchor = this.mRight;
+                    constraintAnchor = ((ConstraintWidget) this).mRight;
                     paddingRight = getPaddingRight();
                 }
-                ConstraintAnchor constraintAnchor16 = widgetsList3.biggest.mRight;
+                ConstraintAnchor constraintAnchor16 = WidgetsList.access$2000(widgetsList3).mRight;
                 widgetsList3.setup(i2, constraintAnchor15, constraintAnchor7, constraintAnchor, constraintAnchor6, i20, i15, paddingRight, i21, i3);
                 i18 = i26 + widgetsList3.getWidth();
                 int max2 = Math.max(i25, widgetsList3.getHeight());
@@ -778,7 +385,7 @@ public class Flow extends VirtualLayout {
             return;
         }
         this.mChainList.clear();
-        WidgetsList widgetsList = new WidgetsList(i2, this.mLeft, this.mTop, this.mRight, this.mBottom, i3);
+        WidgetsList widgetsList = new WidgetsList(this, i2, ((ConstraintWidget) this).mLeft, ((ConstraintWidget) this).mTop, ((ConstraintWidget) this).mRight, ((ConstraintWidget) this).mBottom, i3);
         this.mChainList.add(widgetsList);
         if (i2 == 0) {
             int i8 = 0;
@@ -789,16 +396,16 @@ public class Flow extends VirtualLayout {
                 int i11 = i8 + 1;
                 ConstraintWidget constraintWidget = constraintWidgetArr[i10];
                 int widgetWidth = getWidgetWidth(constraintWidget, i3);
-                if (constraintWidget.getHorizontalDimensionBehaviour() == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
+                if (constraintWidget.getHorizontalDimensionBehaviour() == ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT) {
                     i4++;
                 }
                 int i12 = i4;
-                boolean z = (i9 == i3 || (this.mHorizontalGap + i9) + widgetWidth > i3) && widgetsList.biggest != null;
+                boolean z = (i9 == i3 || (this.mHorizontalGap + i9) + widgetWidth > i3) && WidgetsList.access$2000(widgetsList) != null;
                 if (!z && i10 > 0 && (i7 = this.mMaxElementsWrap) > 0 && i11 > i7) {
                     z = true;
                 }
                 if (z) {
-                    widgetsList = new WidgetsList(i2, this.mLeft, this.mTop, this.mRight, this.mBottom, i3);
+                    widgetsList = new WidgetsList(this, i2, ((ConstraintWidget) this).mLeft, ((ConstraintWidget) this).mTop, ((ConstraintWidget) this).mRight, ((ConstraintWidget) this).mBottom, i3);
                     widgetsList.setStartIndex(i10);
                     this.mChainList.add(widgetsList);
                     i8 = i11;
@@ -818,16 +425,16 @@ public class Flow extends VirtualLayout {
             while (i14 < i) {
                 ConstraintWidget constraintWidget2 = constraintWidgetArr[i14];
                 int widgetHeight = getWidgetHeight(constraintWidget2, i3);
-                if (constraintWidget2.getVerticalDimensionBehaviour() == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
+                if (constraintWidget2.getVerticalDimensionBehaviour() == ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT) {
                     i4++;
                 }
                 int i15 = i4;
-                boolean z2 = (i13 == i3 || (this.mVerticalGap + i13) + widgetHeight > i3) && widgetsList.biggest != null;
+                boolean z2 = (i13 == i3 || (this.mVerticalGap + i13) + widgetHeight > i3) && WidgetsList.access$2000(widgetsList) != null;
                 if (!z2 && i14 > 0 && (i5 = this.mMaxElementsWrap) > 0 && i5 < 0) {
                     z2 = true;
                 }
                 if (z2) {
-                    widgetsList = new WidgetsList(i2, this.mLeft, this.mTop, this.mRight, this.mBottom, i3);
+                    widgetsList = new WidgetsList(this, i2, ((ConstraintWidget) this).mLeft, ((ConstraintWidget) this).mTop, ((ConstraintWidget) this).mRight, ((ConstraintWidget) this).mBottom, i3);
                     widgetsList.setStartIndex(i14);
                     this.mChainList.add(widgetsList);
                 } else if (i14 > 0) {
@@ -843,17 +450,17 @@ public class Flow extends VirtualLayout {
             }
         }
         int size = this.mChainList.size();
-        ConstraintAnchor constraintAnchor3 = this.mLeft;
-        ConstraintAnchor constraintAnchor4 = this.mTop;
-        ConstraintAnchor constraintAnchor5 = this.mRight;
-        ConstraintAnchor constraintAnchor6 = this.mBottom;
+        ConstraintAnchor constraintAnchor3 = ((ConstraintWidget) this).mLeft;
+        ConstraintAnchor constraintAnchor4 = ((ConstraintWidget) this).mTop;
+        ConstraintAnchor constraintAnchor5 = ((ConstraintWidget) this).mRight;
+        ConstraintAnchor constraintAnchor6 = ((ConstraintWidget) this).mBottom;
         int paddingLeft = getPaddingLeft();
         int paddingTop = getPaddingTop();
         int paddingRight2 = getPaddingRight();
         int paddingBottom2 = getPaddingBottom();
-        ConstraintWidget.DimensionBehaviour horizontalDimensionBehaviour = getHorizontalDimensionBehaviour();
-        ConstraintWidget.DimensionBehaviour dimensionBehaviour = ConstraintWidget.DimensionBehaviour.WRAP_CONTENT;
-        boolean z3 = horizontalDimensionBehaviour == dimensionBehaviour || getVerticalDimensionBehaviour() == dimensionBehaviour;
+        ConstraintWidget$DimensionBehaviour horizontalDimensionBehaviour = getHorizontalDimensionBehaviour();
+        ConstraintWidget$DimensionBehaviour constraintWidget$DimensionBehaviour = ConstraintWidget$DimensionBehaviour.WRAP_CONTENT;
+        boolean z3 = horizontalDimensionBehaviour == constraintWidget$DimensionBehaviour || getVerticalDimensionBehaviour() == constraintWidget$DimensionBehaviour;
         if (i4 > 0 && z3) {
             for (int i16 = 0; i16 < size; i16++) {
                 WidgetsList widgetsList2 = this.mChainList.get(i16);
@@ -877,13 +484,13 @@ public class Flow extends VirtualLayout {
             WidgetsList widgetsList3 = this.mChainList.get(i21);
             if (i2 == 0) {
                 if (i21 < size - 1) {
-                    constraintAnchor2 = this.mChainList.get(i21 + 1).biggest.mTop;
+                    constraintAnchor2 = WidgetsList.access$2000(this.mChainList.get(i21 + 1)).mTop;
                     paddingBottom = 0;
                 } else {
-                    constraintAnchor2 = this.mBottom;
+                    constraintAnchor2 = ((ConstraintWidget) this).mBottom;
                     paddingBottom = getPaddingBottom();
                 }
-                ConstraintAnchor constraintAnchor9 = widgetsList3.biggest.mBottom;
+                ConstraintAnchor constraintAnchor9 = WidgetsList.access$2000(widgetsList3).mBottom;
                 ConstraintAnchor constraintAnchor10 = constraintAnchor8;
                 ConstraintAnchor constraintAnchor11 = constraintAnchor8;
                 int i24 = i19;
@@ -912,13 +519,13 @@ public class Flow extends VirtualLayout {
                 int i28 = i20;
                 i6 = i21;
                 if (i6 < size - 1) {
-                    constraintAnchor = this.mChainList.get(i6 + 1).biggest.mLeft;
+                    constraintAnchor = WidgetsList.access$2000(this.mChainList.get(i6 + 1)).mLeft;
                     paddingRight = 0;
                 } else {
-                    constraintAnchor = this.mRight;
+                    constraintAnchor = ((ConstraintWidget) this).mRight;
                     paddingRight = getPaddingRight();
                 }
-                ConstraintAnchor constraintAnchor16 = widgetsList3.biggest.mRight;
+                ConstraintAnchor constraintAnchor16 = WidgetsList.access$2000(widgetsList3).mRight;
                 widgetsList3.setup(i2, constraintAnchor15, constraintAnchor7, constraintAnchor, constraintAnchor6, i22, i17, paddingRight, i23, i3);
                 i20 = i28 + widgetsList3.getWidth();
                 int max2 = Math.max(i27, widgetsList3.getHeight());
@@ -943,13 +550,13 @@ public class Flow extends VirtualLayout {
             return;
         }
         if (this.mChainList.size() == 0) {
-            widgetsList = new WidgetsList(i2, this.mLeft, this.mTop, this.mRight, this.mBottom, i3);
+            widgetsList = new WidgetsList(this, i2, ((ConstraintWidget) this).mLeft, ((ConstraintWidget) this).mTop, ((ConstraintWidget) this).mRight, ((ConstraintWidget) this).mBottom, i3);
             this.mChainList.add(widgetsList);
         } else {
             WidgetsList widgetsList2 = this.mChainList.get(0);
             widgetsList2.clear();
             widgetsList = widgetsList2;
-            widgetsList.setup(i2, this.mLeft, this.mTop, this.mRight, this.mBottom, getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom(), i3);
+            widgetsList.setup(i2, ((ConstraintWidget) this).mLeft, ((ConstraintWidget) this).mTop, ((ConstraintWidget) this).mRight, ((ConstraintWidget) this).mBottom, getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom(), i3);
         }
         for (int i4 = 0; i4 < i; i4++) {
             widgetsList.add(constraintWidgetArr[i4]);
@@ -958,10 +565,9 @@ public class Flow extends VirtualLayout {
         iArr[1] = widgetsList.getHeight();
     }
 
-    @Override // androidx.constraintlayout.core.widgets.ConstraintWidget
     public void addToSolver(LinearSystem linearSystem, boolean z) {
         super.addToSolver(linearSystem, z);
-        boolean z2 = getParent() != null && ((ConstraintWidgetContainer) getParent()).isRtl();
+        boolean z2 = getParent() != null && getParent().isRtl();
         int i = this.mWrapMode;
         if (i != 0) {
             if (i == 1) {
@@ -987,7 +593,7 @@ public class Flow extends VirtualLayout {
         needsCallbackFromSolver(false);
     }
 
-    @Override // androidx.constraintlayout.core.widgets.HelperWidget, androidx.constraintlayout.core.widgets.ConstraintWidget
+    @Override // androidx.constraintlayout.core.widgets.HelperWidget
     public void copy(ConstraintWidget constraintWidget, HashMap<ConstraintWidget, ConstraintWidget> hashMap) {
         super.copy(constraintWidget, hashMap);
         Flow flow = (Flow) constraintWidget;
@@ -1024,12 +630,12 @@ public class Flow extends VirtualLayout {
     @Override // androidx.constraintlayout.core.widgets.VirtualLayout
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void measure(int r19, int r20, int r21, int r22) {
         /*
             Method dump skipped, instructions count: 281
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.constraintlayout.core.widgets.Flow.measure(int, int, int, int):void");
     }

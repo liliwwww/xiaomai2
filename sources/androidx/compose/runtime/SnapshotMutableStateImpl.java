@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class SnapshotMutableStateImpl<T> implements StateObject, SnapshotMutableState<T> {
 
     @NotNull
@@ -30,13 +30,11 @@ public class SnapshotMutableStateImpl<T> implements StateObject, SnapshotMutable
             this.value = t;
         }
 
-        @Override // androidx.compose.runtime.snapshots.StateRecord
         public void assign(@NotNull StateRecord stateRecord) {
             Intrinsics.checkNotNullParameter(stateRecord, "value");
             this.value = ((StateStateRecord) stateRecord).value;
         }
 
-        @Override // androidx.compose.runtime.snapshots.StateRecord
         @NotNull
         public StateRecord create() {
             return new StateStateRecord(this.value);
@@ -63,34 +61,13 @@ public class SnapshotMutableStateImpl<T> implements StateObject, SnapshotMutable
     public static /* synthetic */ void getValue$annotations() {
     }
 
-    @Override // androidx.compose.runtime.MutableState
     public T component1() {
         return getValue();
     }
 
-    @Override // androidx.compose.runtime.MutableState
     @NotNull
     public Function1<T, Unit> component2() {
-        return new Function1<T, Unit>(this) { // from class: androidx.compose.runtime.SnapshotMutableStateImpl$component2$1
-            final /* synthetic */ SnapshotMutableStateImpl<T> this$0;
-
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-                this.this$0 = this;
-            }
-
-            /* JADX WARN: Multi-variable type inference failed */
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                m2407invoke((SnapshotMutableStateImpl$component2$1<T>) obj);
-                return Unit.INSTANCE;
-            }
-
-            /* renamed from: invoke, reason: collision with other method in class */
-            public final void m2407invoke(T t) {
-                this.this$0.setValue(t);
-            }
-        };
+        return new component2.1(this);
     }
 
     @JvmName(name = "getDebuggerDisplayValue")
@@ -104,13 +81,11 @@ public class SnapshotMutableStateImpl<T> implements StateObject, SnapshotMutable
         return this.next;
     }
 
-    @Override // androidx.compose.runtime.snapshots.SnapshotMutableState
     @NotNull
     public SnapshotMutationPolicy<T> getPolicy() {
         return this.policy;
     }
 
-    @Override // androidx.compose.runtime.MutableState, androidx.compose.runtime.State
     public T getValue() {
         return (T) ((StateStateRecord) SnapshotKt.readable(this.next, this)).getValue();
     }
@@ -144,8 +119,6 @@ public class SnapshotMutableStateImpl<T> implements StateObject, SnapshotMutable
         this.next = (StateStateRecord) stateRecord;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    @Override // androidx.compose.runtime.MutableState
     public void setValue(T t) {
         Snapshot current;
         StateStateRecord stateStateRecord = (StateStateRecord) SnapshotKt.current(this.next);

@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.snapping.SnapFlingBehavior$fling$result$1", f = "SnapFlingBehavior.kt", i = {}, l = {136, 138}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SnapFlingBehavior$fling$result$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super AnimationResult<Float, AnimationVector1D>>, Object> {
     final /* synthetic */ float $initialVelocity;
     final /* synthetic */ Function1<Float, Unit> $onRemainingScrollOffsetUpdate;
@@ -46,7 +46,6 @@ final class SnapFlingBehavior$fling$result$1 extends SuspendLambda implements Fu
 
     @Nullable
     public final Object invokeSuspend(@NotNull Object obj) {
-        float f;
         Object coroutine_suspended = IntrinsicsKt.getCOROUTINE_SUSPENDED();
         int i = this.label;
         if (i != 0) {
@@ -61,15 +60,13 @@ final class SnapFlingBehavior$fling$result$1 extends SuspendLambda implements Fu
             return (AnimationResult) obj;
         }
         ResultKt.throwOnFailure(obj);
-        float abs = Math.abs(this.$initialVelocity);
-        f = this.this$0.velocityThreshold;
-        if (abs <= Math.abs(f)) {
+        if (Math.abs(this.$initialVelocity) <= Math.abs(SnapFlingBehavior.access$getVelocityThreshold$p(this.this$0))) {
             SnapFlingBehavior snapFlingBehavior = this.this$0;
             ScrollScope scrollScope = this.$this_fling;
-            float f2 = this.$initialVelocity;
+            float f = this.$initialVelocity;
             Function1<Float, Unit> function1 = this.$onRemainingScrollOffsetUpdate;
             this.label = 1;
-            obj = snapFlingBehavior.shortSnap(scrollScope, f2, function1, this);
+            obj = SnapFlingBehavior.access$shortSnap(snapFlingBehavior, scrollScope, f, function1, this);
             if (obj == coroutine_suspended) {
                 return coroutine_suspended;
             }
@@ -77,10 +74,10 @@ final class SnapFlingBehavior$fling$result$1 extends SuspendLambda implements Fu
         }
         SnapFlingBehavior snapFlingBehavior2 = this.this$0;
         ScrollScope scrollScope2 = this.$this_fling;
-        float f3 = this.$initialVelocity;
+        float f2 = this.$initialVelocity;
         Function1<Float, Unit> function12 = this.$onRemainingScrollOffsetUpdate;
         this.label = 2;
-        obj = snapFlingBehavior2.longSnap(scrollScope2, f3, function12, this);
+        obj = SnapFlingBehavior.access$longSnap(snapFlingBehavior2, scrollScope2, f2, function12, this);
         if (obj == coroutine_suspended) {
             return coroutine_suspended;
         }

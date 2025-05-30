@@ -8,7 +8,7 @@ import android.hardware.SensorManager;
 import android.taobao.windvane.util.TaoLog;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ShakeListener implements SensorEventListener {
     private static final int SPEED_THRESHOLD = 10;
     protected long TIME_INTERVAL_THRESHOLD = 100;
@@ -77,7 +77,7 @@ public class ShakeListener implements SensorEventListener {
             return;
         }
         this.mSensorManager.unregisterListener(this);
-        TaoLog.m30w("ShakeListener", "start: Accelerometer not supported");
+        TaoLog.w("ShakeListener", "start: Accelerometer not supported");
     }
 
     public void setOnShakeListener(OnShakeListener onShakeListener) {
@@ -88,13 +88,13 @@ public class ShakeListener implements SensorEventListener {
         SensorManager sensorManager = (SensorManager) this.mContext.getSystemService("sensor");
         this.mSensorManager = sensorManager;
         if (sensorManager == null) {
-            TaoLog.m30w("ShakeListener", "start: Sensors not supported");
+            TaoLog.w("ShakeListener", "start: Sensors not supported");
         } else {
             if (sensorManager.registerListener(this, com.alibaba.wireless.security.aopsdk.replace.android.hardware.SensorManager.getDefaultSensor(sensorManager, 1), 2)) {
                 return;
             }
             this.mSensorManager.unregisterListener(this);
-            TaoLog.m30w("ShakeListener", "start: Accelerometer not supported");
+            TaoLog.w("ShakeListener", "start: Accelerometer not supported");
         }
     }
 

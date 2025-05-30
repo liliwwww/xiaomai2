@@ -17,7 +17,6 @@ import android.taobao.windvane.util.TaoLog;
 import android.taobao.windvane.webview.IWVWebView;
 import android.text.TextUtils;
 import android.util.Base64;
-import androidx.core.app.NotificationCompat;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -28,7 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVBluetooth extends WVApiPlugin {
     private static final String TAG = "WVBluetooth";
     private BluetoothAdapter mBTAdapter = null;
@@ -43,7 +42,7 @@ public class WVBluetooth extends WVApiPlugin {
     private final BluetoothGattCallback mGattCallback = new BluetoothGattCallback() { // from class: android.taobao.windvane.jsbridge.api.WVBluetooth.4
         @Override // android.bluetooth.BluetoothGattCallback
         public void onCharacteristicChanged(BluetoothGatt bluetoothGatt, BluetoothGattCharacteristic bluetoothGattCharacteristic) {
-            TaoLog.m24i("WVBluetooth", "onCharacteristicChanged : " + bluetoothGattCharacteristic.getUuid());
+            TaoLog.i(WVBluetooth.TAG, "onCharacteristicChanged : " + bluetoothGattCharacteristic.getUuid());
             try {
                 JSONObject jSONObject = new JSONObject();
                 jSONObject.put(ApiConstants.DEVICEID, WVBluetooth.this.mBluetoothGatt.getDevice().getAddress());
@@ -58,7 +57,7 @@ public class WVBluetooth extends WVApiPlugin {
 
         @Override // android.bluetooth.BluetoothGattCallback
         public void onCharacteristicRead(BluetoothGatt bluetoothGatt, BluetoothGattCharacteristic bluetoothGattCharacteristic, int i) {
-            TaoLog.m24i("WVBluetooth", "onCharacteristicRead : " + i);
+            TaoLog.i(WVBluetooth.TAG, "onCharacteristicRead : " + i);
             if (WVBluetooth.this.mReadValueCallback != null) {
                 WVResult wVResult = new WVResult();
                 if (i == 0) {
@@ -72,7 +71,7 @@ public class WVBluetooth extends WVApiPlugin {
                         WVBluetooth.this.mReadValueCallback.error();
                     }
                 } else {
-                    wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "FAILED_TO_READ: " + i);
+                    wVResult.addData("msg", "FAILED_TO_READ: " + i);
                     WVBluetooth.this.mReadValueCallback.error(wVResult);
                 }
                 WVBluetooth.this.mReadValueCallback = null;
@@ -81,7 +80,7 @@ public class WVBluetooth extends WVApiPlugin {
 
         @Override // android.bluetooth.BluetoothGattCallback
         public void onCharacteristicWrite(BluetoothGatt bluetoothGatt, BluetoothGattCharacteristic bluetoothGattCharacteristic, int i) {
-            TaoLog.m24i("WVBluetooth", "onCharacteristicWrite : " + i);
+            TaoLog.i(WVBluetooth.TAG, "onCharacteristicWrite : " + i);
             if (WVBluetooth.this.mWriteValueCallback != null) {
                 WVResult wVResult = new WVResult();
                 if (i == 0) {
@@ -95,7 +94,7 @@ public class WVBluetooth extends WVApiPlugin {
                         WVBluetooth.this.mWriteValueCallback.error(th.getMessage());
                     }
                 } else {
-                    wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "FAILED_TO_WRITE: " + i);
+                    wVResult.addData("msg", "FAILED_TO_WRITE: " + i);
                     WVBluetooth.this.mWriteValueCallback.error(wVResult);
                 }
             }
@@ -105,7 +104,7 @@ public class WVBluetooth extends WVApiPlugin {
         @Override // android.bluetooth.BluetoothGattCallback
         public void onConnectionStateChange(BluetoothGatt bluetoothGatt, int i, int i2) {
             WVBluetooth.this.mCurrentConnectionState = i2;
-            TaoLog.m24i("WVBluetooth", "onConnectionStateChange: " + i + "," + i2);
+            TaoLog.i(WVBluetooth.TAG, "onConnectionStateChange: " + i + "," + i2);
             if (WVBluetooth.this.mConnectCallback != null) {
                 if (i2 == 2) {
                     WVBluetooth.this.mConnectCallback.success();
@@ -127,17 +126,17 @@ public class WVBluetooth extends WVApiPlugin {
 
         @Override // android.bluetooth.BluetoothGattCallback
         public void onDescriptorWrite(BluetoothGatt bluetoothGatt, BluetoothGattDescriptor bluetoothGattDescriptor, int i) {
-            TaoLog.m24i("WVBluetooth", "onDescriptorWrite : " + bluetoothGattDescriptor.getCharacteristic().getUuid());
+            TaoLog.i(WVBluetooth.TAG, "onDescriptorWrite : " + bluetoothGattDescriptor.getCharacteristic().getUuid());
         }
 
         @Override // android.bluetooth.BluetoothGattCallback
         public void onReadRemoteRssi(BluetoothGatt bluetoothGatt, int i, int i2) {
-            TaoLog.m24i("WVBluetooth", "onReadRemoteRssi : " + i);
+            TaoLog.i(WVBluetooth.TAG, "onReadRemoteRssi : " + i);
         }
 
         @Override // android.bluetooth.BluetoothGattCallback
         public void onServicesDiscovered(BluetoothGatt bluetoothGatt, int i) {
-            TaoLog.m24i("WVBluetooth", "onServicesDiscovered : " + i);
+            TaoLog.i(WVBluetooth.TAG, "onServicesDiscovered : " + i);
             if (WVBluetooth.this.mGetServiceCallback != null) {
                 Iterator<BluetoothGattService> it = bluetoothGatt.getServices().iterator();
                 JSONArray jSONArray = new JSONArray();
@@ -159,16 +158,16 @@ public class WVBluetooth extends WVApiPlugin {
     public boolean connect(String str) {
         BluetoothAdapter bluetoothAdapter = this.mBTAdapter;
         if (bluetoothAdapter == null || str == null) {
-            TaoLog.m30w("WVBluetooth", "BluetoothAdapter not initialized or unspecified address.");
+            TaoLog.w(TAG, "BluetoothAdapter not initialized or unspecified address.");
             return false;
         }
         BluetoothDevice remoteDevice = bluetoothAdapter.getRemoteDevice(str);
         if (remoteDevice == null) {
-            TaoLog.m30w("WVBluetooth", "Device not found.  Unable to connect.");
+            TaoLog.w(TAG, "Device not found.  Unable to connect.");
             return false;
         }
         this.mBluetoothGatt = remoteDevice.connectGatt(this.mContext, false, this.mGattCallback);
-        TaoLog.m18d("WVBluetooth", "Trying to create a new connection.");
+        TaoLog.d(TAG, "Trying to create a new connection.");
         return true;
     }
 
@@ -176,12 +175,12 @@ public class WVBluetooth extends WVApiPlugin {
         WVResult wVResult = new WVResult();
         BluetoothAdapter bluetoothAdapter = this.mBTAdapter;
         if (bluetoothAdapter == null) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_SUPPORT");
+            wVResult.addData("msg", "DEVICE_NOT_SUPPORT");
             wVCallBackContext.error(wVResult);
             return;
         }
         if (!bluetoothAdapter.isEnabled()) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "BLUETOOTH_DISABLED");
+            wVResult.addData("msg", "BLUETOOTH_DISABLED");
             wVCallBackContext.error(wVResult);
             return;
         }
@@ -196,7 +195,7 @@ public class WVBluetooth extends WVApiPlugin {
             th.printStackTrace();
             wVCallBackContext.error();
         }
-        wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "FAILED_TO_CONNECT");
+        wVResult.addData("msg", "FAILED_TO_CONNECT");
         wVCallBackContext.error(wVResult);
     }
 
@@ -204,12 +203,12 @@ public class WVBluetooth extends WVApiPlugin {
         WVResult wVResult = new WVResult();
         BluetoothAdapter bluetoothAdapter = this.mBTAdapter;
         if (bluetoothAdapter == null) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_SUPPORT");
+            wVResult.addData("msg", "DEVICE_NOT_SUPPORT");
             wVCallBackContext.error(wVResult);
             return;
         }
         if (!bluetoothAdapter.isEnabled()) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "BLUETOOTH_DISABLED");
+            wVResult.addData("msg", "BLUETOOTH_DISABLED");
             wVCallBackContext.error(wVResult);
             return;
         }
@@ -220,7 +219,7 @@ public class WVBluetooth extends WVApiPlugin {
         } catch (Throwable th) {
             th.printStackTrace();
             wVCallBackContext.error();
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "FAILED_TO_CONNECT");
+            wVResult.addData("msg", "FAILED_TO_CONNECT");
             wVCallBackContext.error(wVResult);
         }
     }
@@ -278,11 +277,11 @@ public class WVBluetooth extends WVApiPlugin {
         WVResult wVResult = new WVResult();
         BluetoothAdapter bluetoothAdapter = this.mBTAdapter;
         if (bluetoothAdapter == null) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_SUPPORT");
+            wVResult.addData("msg", "DEVICE_NOT_SUPPORT");
             wVCallBackContext.error(wVResult);
         } else {
             if (!bluetoothAdapter.isEnabled()) {
-                wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "BLUETOOTH_DISABLED");
+                wVResult.addData("msg", "BLUETOOTH_DISABLED");
                 wVCallBackContext.error(wVResult);
                 return;
             }
@@ -300,7 +299,7 @@ public class WVBluetooth extends WVApiPlugin {
                             jSONObject.put("name", bluetoothDevice.getName());
                             jSONObject.put(ApiConstants.DEVICEID, bluetoothDevice.getAddress());
                             ((WVApiPlugin) WVBluetooth.this).mWebView.fireEvent("WV.Event.WVBluetooth.discoverDevice", jSONObject.toString());
-                            TaoLog.m24i("WVBluetooth", "find device : " + bluetoothDevice.getName() + " ads : " + bluetoothDevice.getAddress());
+                            TaoLog.i(WVBluetooth.TAG, "find device : " + bluetoothDevice.getName() + " ads : " + bluetoothDevice.getAddress());
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -317,7 +316,7 @@ public class WVBluetooth extends WVApiPlugin {
         WVResult wVResult = new WVResult();
         BluetoothAdapter bluetoothAdapter = this.mBTAdapter;
         if (bluetoothAdapter == null) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_SUPPORT");
+            wVResult.addData("msg", "DEVICE_NOT_SUPPORT");
             wVCallBackContext.error(wVResult);
             return;
         }
@@ -337,7 +336,7 @@ public class WVBluetooth extends WVApiPlugin {
                     wVResult.addData("characteristics", jSONArray);
                     wVCallBackContext.success(wVResult);
                 }
-                wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_CONNECT");
+                wVResult.addData("msg", "DEVICE_NOT_CONNECT");
                 wVCallBackContext.error();
                 return;
             } catch (Throwable th) {
@@ -352,7 +351,7 @@ public class WVBluetooth extends WVApiPlugin {
         WVResult wVResult = new WVResult();
         BluetoothAdapter bluetoothAdapter = this.mBTAdapter;
         if (bluetoothAdapter == null) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_SUPPORT");
+            wVResult.addData("msg", "DEVICE_NOT_SUPPORT");
             wVCallBackContext.error(wVResult);
             return;
         }
@@ -364,19 +363,19 @@ public class WVBluetooth extends WVApiPlugin {
             String optString = new JSONObject(str).optString(ApiConstants.DEVICEID, "");
             BluetoothGatt bluetoothGatt = this.mBluetoothGatt;
             if (bluetoothGatt == null || !optString.equals(bluetoothGatt.getDevice().getAddress())) {
-                wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_CONNECT");
+                wVResult.addData("msg", "DEVICE_NOT_CONNECT");
                 wVCallBackContext.error(wVResult);
                 return;
             }
         } catch (Throwable th) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, th.getCause());
+            wVResult.addData("msg", th.getCause());
             wVCallBackContext.error(wVResult);
         }
         BluetoothGatt bluetoothGatt2 = this.mBluetoothGatt;
         if (bluetoothGatt2 != null) {
             this.mGetServiceCallback = wVCallBackContext;
             bluetoothGatt2.discoverServices();
-            TaoLog.m24i("WVBluetooth", "Attempting to start service discovery");
+            TaoLog.i(TAG, "Attempting to start service discovery");
         }
     }
 
@@ -394,17 +393,17 @@ public class WVBluetooth extends WVApiPlugin {
         WVResult wVResult = new WVResult();
         BluetoothAdapter bluetoothAdapter = this.mBTAdapter;
         if (bluetoothAdapter == null) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_SUPPORT");
+            wVResult.addData("msg", "DEVICE_NOT_SUPPORT");
             wVCallBackContext.error(wVResult);
             return;
         }
         if (!bluetoothAdapter.isEnabled()) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "BLUETOOTH_DISABLED");
+            wVResult.addData("msg", "BLUETOOTH_DISABLED");
             wVCallBackContext.error(wVResult);
             return;
         }
         if (this.mCurrentConnectionState != 2) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "BLUETOOTH_NOT_ACTIVE: " + this.mCurrentConnectionState);
+            wVResult.addData("msg", "BLUETOOTH_NOT_ACTIVE: " + this.mCurrentConnectionState);
             wVCallBackContext.error(wVResult);
             return;
         }
@@ -424,15 +423,15 @@ public class WVBluetooth extends WVApiPlugin {
                 if (this.mBluetoothGatt.readCharacteristic(characteristic)) {
                     this.mReadValueCallback = wVCallBackContext;
                 } else {
-                    wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "FAILED_TO_READ_CHARACTERISTIC: " + characteristic.getProperties());
+                    wVResult.addData("msg", "FAILED_TO_READ_CHARACTERISTIC: " + characteristic.getProperties());
                     wVCallBackContext.error(wVResult);
                 }
             }
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "FAILED_TO_READ");
+            wVResult.addData("msg", "FAILED_TO_READ");
             wVCallBackContext.error(wVResult);
             return;
         }
-        wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_CONNECT");
+        wVResult.addData("msg", "DEVICE_NOT_CONNECT");
         wVCallBackContext.error(wVResult);
     }
 
@@ -444,11 +443,11 @@ public class WVBluetooth extends WVApiPlugin {
                     WVResult wVResult = new WVResult();
                     JSONObject jSONObject = new JSONObject();
                     if (WVBluetooth.this.mBTAdapter == null) {
-                        wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_SUPPORT");
+                        wVResult.addData("msg", "DEVICE_NOT_SUPPORT");
                         wVCallBackContext.error(wVResult);
                     } else {
                         if (!WVBluetooth.this.mBTAdapter.isEnabled() && !WVBluetooth.this.mBTAdapter.enable()) {
-                            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "BLUETOOTH_POWERED_OFF");
+                            wVResult.addData("msg", "BLUETOOTH_POWERED_OFF");
                             wVCallBackContext.error(wVResult);
                             return;
                         }
@@ -465,7 +464,7 @@ public class WVBluetooth extends WVApiPlugin {
                 @Override // java.lang.Runnable
                 public void run() {
                     WVResult wVResult = new WVResult();
-                    wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "HY_USER_DENIED");
+                    wVResult.addData("msg", "HY_USER_DENIED");
                     wVCallBackContext.error(wVResult);
                 }
             }).execute();
@@ -479,17 +478,17 @@ public class WVBluetooth extends WVApiPlugin {
         WVResult wVResult = new WVResult();
         BluetoothAdapter bluetoothAdapter = this.mBTAdapter;
         if (bluetoothAdapter == null) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_SUPPORT");
+            wVResult.addData("msg", "DEVICE_NOT_SUPPORT");
             wVCallBackContext.error(wVResult);
             return;
         }
         if (!bluetoothAdapter.isEnabled()) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "BLUETOOTH_DISABLED");
+            wVResult.addData("msg", "BLUETOOTH_DISABLED");
             wVCallBackContext.error(wVResult);
             return;
         }
         if (this.mCurrentConnectionState != 2) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "BLUETOOTH_NOT_ACTIVE: " + this.mCurrentConnectionState);
+            wVResult.addData("msg", "BLUETOOTH_NOT_ACTIVE: " + this.mCurrentConnectionState);
             wVCallBackContext.error(wVResult);
             return;
         }
@@ -504,7 +503,7 @@ public class WVBluetooth extends WVApiPlugin {
                 BluetoothGattCharacteristic characteristic = this.mBluetoothGatt.getService(UUID.fromString(optString2)).getCharacteristic(UUID.fromString(optString3));
                 if (characteristic != null) {
                     if (!this.mBluetoothGatt.setCharacteristicNotification(characteristic, z)) {
-                        wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "FAILED_TO_SET_NOTIFICATION");
+                        wVResult.addData("msg", "FAILED_TO_SET_NOTIFICATION");
                         wVCallBackContext.error(wVResult);
                         return;
                     }
@@ -524,7 +523,7 @@ public class WVBluetooth extends WVApiPlugin {
                 }
                 return;
             }
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_CONNECT");
+            wVResult.addData("msg", "DEVICE_NOT_CONNECT");
             wVCallBackContext.error(wVResult);
         } catch (Throwable th) {
             th.printStackTrace();
@@ -535,13 +534,13 @@ public class WVBluetooth extends WVApiPlugin {
         WVResult wVResult = new WVResult();
         BluetoothAdapter bluetoothAdapter = this.mBTAdapter;
         if (bluetoothAdapter == null) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_SUPPORT");
+            wVResult.addData("msg", "DEVICE_NOT_SUPPORT");
             wVCallBackContext.error(wVResult);
         } else if (bluetoothAdapter.isEnabled()) {
             this.mBTAdapter.stopLeScan(this.mLeScanCallback);
             wVCallBackContext.success();
         } else {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "BLUETOOTH_DISABLED");
+            wVResult.addData("msg", "BLUETOOTH_DISABLED");
             wVCallBackContext.error(wVResult);
         }
     }
@@ -555,17 +554,17 @@ public class WVBluetooth extends WVApiPlugin {
         WVResult wVResult = new WVResult();
         BluetoothAdapter bluetoothAdapter = this.mBTAdapter;
         if (bluetoothAdapter == null) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_SUPPORT");
+            wVResult.addData("msg", "DEVICE_NOT_SUPPORT");
             wVCallBackContext.error(wVResult);
             return;
         }
         if (!bluetoothAdapter.isEnabled()) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "BLUETOOTH_DISABLED");
+            wVResult.addData("msg", "BLUETOOTH_DISABLED");
             wVCallBackContext.error(wVResult);
             return;
         }
         if (this.mCurrentConnectionState != 2) {
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "BLUETOOTH_NOT_ACTIVE: " + this.mCurrentConnectionState);
+            wVResult.addData("msg", "BLUETOOTH_NOT_ACTIVE: " + this.mCurrentConnectionState);
             wVCallBackContext.error(wVResult);
             return;
         }
@@ -578,26 +577,26 @@ public class WVBluetooth extends WVApiPlugin {
             bluetoothGatt = this.mBluetoothGatt;
         } catch (Throwable th) {
             th.printStackTrace();
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, th.getCause());
+            wVResult.addData("msg", th.getCause());
         }
         if (bluetoothGatt != null && optString.equals(bluetoothGatt.getDevice().getAddress())) {
             BluetoothGattCharacteristic characteristic = this.mBluetoothGatt.getService(UUID.fromString(optString2)).getCharacteristic(UUID.fromString(optString3));
-            TaoLog.m18d("WVBluetooth", "get characteristic: " + optString3);
+            TaoLog.d(TAG, "get characteristic: " + optString3);
             if (characteristic != null) {
                 characteristic.setValue(Base64.decode(optString4, 2));
                 if (this.mBluetoothGatt.writeCharacteristic(characteristic)) {
                     this.mWriteValueCallback = wVCallBackContext;
                     return;
                 }
-                wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "FAILED_TO_WRITE_CHARACTERISTIC: " + characteristic.getProperties());
+                wVResult.addData("msg", "FAILED_TO_WRITE_CHARACTERISTIC: " + characteristic.getProperties());
                 wVCallBackContext.error(wVResult);
                 return;
             }
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "FAILED_TO_WRITE");
+            wVResult.addData("msg", "FAILED_TO_WRITE");
             wVCallBackContext.error(wVResult);
             return;
         }
-        wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "DEVICE_NOT_CONNECT");
+        wVResult.addData("msg", "DEVICE_NOT_CONNECT");
         wVCallBackContext.error(wVResult);
     }
 }

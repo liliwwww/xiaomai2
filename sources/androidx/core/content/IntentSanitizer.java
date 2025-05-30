@@ -42,7 +42,7 @@ import tb.y82;
 import tb.z82;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class IntentSanitizer {
     private static final String TAG = "IntentSanitizer";
     private boolean mAllowAnyComponent;
@@ -62,43 +62,8 @@ public class IntentSanitizer {
     private Predicate<String> mAllowedTypes;
 
     /* compiled from: Taobao */
-    @RequiresApi(15)
-    /* loaded from: classes.dex */
-    private static class Api15Impl {
-        private Api15Impl() {
-        }
-
-        @DoNotInline
-        static Intent getSelector(Intent intent) {
-            return intent.getSelector();
-        }
-
-        @DoNotInline
-        static void setSelector(Intent intent, Intent intent2) {
-            intent.setSelector(intent2);
-        }
-    }
-
-    /* compiled from: Taobao */
     @RequiresApi(16)
     private static class Api16Impl {
-
-        /* compiled from: Taobao */
-        @RequiresApi(31)
-        /* loaded from: classes.dex */
-        private static class Api31Impl {
-            private Api31Impl() {
-            }
-
-            @DoNotInline
-            static void checkOtherMembers(int i, ClipData.Item item, Consumer<String> consumer) {
-                if (item.getHtmlText() == null && item.getIntent() == null && item.getTextLinks() == null) {
-                    return;
-                }
-                consumer.accept("ClipData item at position " + i + " contains htmlText, textLinks or intent: " + item);
-            }
-        }
-
         private Api16Impl() {
         }
 
@@ -114,7 +79,7 @@ public class IntentSanitizer {
         @androidx.annotation.DoNotInline
         /*
             Code decompiled incorrectly, please refer to instructions dump.
-            To view partially-correct code enable 'Show inconsistent code' option in preferences
+            To view partially-correct add '--show-bad-code' argument
         */
         static void sanitizeClipData(@androidx.annotation.NonNull android.content.Intent r7, android.content.Intent r8, androidx.core.util.Predicate<android.content.ClipData> r9, boolean r10, androidx.core.util.Predicate<android.net.Uri> r11, androidx.core.util.Consumer<java.lang.String> r12) {
             /*
@@ -380,7 +345,7 @@ public class IntentSanitizer {
         @SuppressLint({"BuilderSetStyle"})
         public Builder allowClipData(@NonNull Predicate<ClipData> predicate) {
             Preconditions.checkNotNull(predicate);
-            this.mAllowedClipData = this.mAllowedClipData.m239or(predicate);
+            this.mAllowedClipData = this.mAllowedClipData.or(predicate);
             return this;
         }
 
@@ -395,7 +360,7 @@ public class IntentSanitizer {
         @SuppressLint({"BuilderSetStyle"})
         public Builder allowClipDataUri(@NonNull Predicate<Uri> predicate) {
             Preconditions.checkNotNull(predicate);
-            this.mAllowedClipDataUri = this.mAllowedClipDataUri.m239or(predicate);
+            this.mAllowedClipDataUri = this.mAllowedClipDataUri.or(predicate);
             return this;
         }
 
@@ -425,7 +390,7 @@ public class IntentSanitizer {
         @SuppressLint({"BuilderSetStyle"})
         public Builder allowData(@NonNull Predicate<Uri> predicate) {
             Preconditions.checkNotNull(predicate);
-            this.mAllowedData = this.mAllowedData.m239or(predicate);
+            this.mAllowedData = this.mAllowedData.or(predicate);
             return this;
         }
 
@@ -569,7 +534,7 @@ public class IntentSanitizer {
         @SuppressLint({"BuilderSetStyle"})
         public Builder allowAction(@NonNull Predicate<String> predicate) {
             Preconditions.checkNotNull(predicate);
-            this.mAllowedActions = this.mAllowedActions.m239or(predicate);
+            this.mAllowedActions = this.mAllowedActions.or(predicate);
             return this;
         }
 
@@ -577,7 +542,7 @@ public class IntentSanitizer {
         @SuppressLint({"BuilderSetStyle"})
         public Builder allowCategory(@NonNull Predicate<String> predicate) {
             Preconditions.checkNotNull(predicate);
-            this.mAllowedCategories = this.mAllowedCategories.m239or(predicate);
+            this.mAllowedCategories = this.mAllowedCategories.or(predicate);
             return this;
         }
 
@@ -586,7 +551,7 @@ public class IntentSanitizer {
         public Builder allowComponent(@NonNull Predicate<ComponentName> predicate) {
             Preconditions.checkNotNull(predicate);
             this.mAllowSomeComponents = true;
-            this.mAllowedComponents = this.mAllowedComponents.m239or(predicate);
+            this.mAllowedComponents = this.mAllowedComponents.or(predicate);
             return this;
         }
 
@@ -594,7 +559,7 @@ public class IntentSanitizer {
         @SuppressLint({"BuilderSetStyle"})
         public Builder allowPackage(@NonNull Predicate<String> predicate) {
             Preconditions.checkNotNull(predicate);
-            this.mAllowedPackages = this.mAllowedPackages.m239or(predicate);
+            this.mAllowedPackages = this.mAllowedPackages.or(predicate);
             return this;
         }
 
@@ -602,7 +567,7 @@ public class IntentSanitizer {
         @SuppressLint({"BuilderSetStyle"})
         public Builder allowType(@NonNull Predicate<String> predicate) {
             Preconditions.checkNotNull(predicate);
-            this.mAllowedTypes = this.mAllowedTypes.m239or(predicate);
+            this.mAllowedTypes = this.mAllowedTypes.or(predicate);
             return this;
         }
 
@@ -615,7 +580,7 @@ public class IntentSanitizer {
             if (d92Var == null) {
                 d92Var = d92.a;
             }
-            this.mAllowedExtras.put(str, d92Var.m239or(predicate));
+            this.mAllowedExtras.put(str, d92Var.or(predicate));
             return this;
         }
     }

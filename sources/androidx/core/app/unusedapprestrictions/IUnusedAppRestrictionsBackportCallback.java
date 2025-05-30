@@ -7,22 +7,9 @@ import android.os.Parcel;
 import android.os.RemoteException;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface IUnusedAppRestrictionsBackportCallback extends IInterface {
     public static final String DESCRIPTOR = "androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportCallback";
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static class Default implements IUnusedAppRestrictionsBackportCallback {
-        @Override // android.os.IInterface
-        public IBinder asBinder() {
-            return null;
-        }
-
-        @Override // androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportCallback
-        public void onIsPermissionRevocationEnabledForAppResult(boolean z, boolean z2) throws RemoteException {
-        }
-    }
 
     /* compiled from: Taobao */
     public static abstract class Stub extends Binder implements IUnusedAppRestrictionsBackportCallback {

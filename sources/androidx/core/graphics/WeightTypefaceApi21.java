@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.collection.LongSparseArray;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -18,8 +19,8 @@ import java.lang.reflect.Method;
 /* compiled from: Taobao */
 @RequiresApi(21)
 @SuppressLint({"SoonBlockedPrivateApi"})
-@RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class WeightTypefaceApi21 {
     private static final String NATIVE_CREATE_FROM_TYPEFACE_METHOD = "nativeCreateFromTypeface";
     private static final String NATIVE_CREATE_WEIGHT_ALIAS_METHOD = "nativeCreateWeightAlias";
@@ -85,12 +86,12 @@ final class WeightTypefaceApi21 {
         synchronized (sWeightCacheLock) {
             long nativeInstance = getNativeInstance(typeface);
             LongSparseArray<SparseArray<Typeface>> longSparseArray = sWeightTypefaceCache;
-            SparseArray<Typeface> sparseArray = longSparseArray.get(nativeInstance);
+            SparseArray sparseArray = (SparseArray) longSparseArray.get(nativeInstance);
             if (sparseArray == null) {
-                sparseArray = new SparseArray<>(4);
+                sparseArray = new SparseArray(4);
                 longSparseArray.put(nativeInstance, sparseArray);
             } else {
-                Typeface typeface2 = sparseArray.get(i2);
+                Typeface typeface2 = (Typeface) sparseArray.get(i2);
                 if (typeface2 != null) {
                     return typeface2;
                 }

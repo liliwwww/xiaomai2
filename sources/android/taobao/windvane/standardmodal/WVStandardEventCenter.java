@@ -7,13 +7,12 @@ import android.taobao.windvane.service.WVEventService;
 import android.taobao.windvane.webview.IWVWebView;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVStandardEventCenter extends WVApiPlugin {
     public static void postNotificationToJS(IWVWebView iWVWebView, String str, String str2) {
         WVCallBackContext.fireEvent(iWVWebView, str, str2);
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if (!"postNotificationToNative".equals(str)) {
             return false;

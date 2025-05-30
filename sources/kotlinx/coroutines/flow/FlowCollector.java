@@ -1,6 +1,7 @@
 package kotlinx.coroutines.flow;
 
 import android.app.Activity;
+import androidx.appcompat.R;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -14,9 +15,9 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Metadata(bv = {1, 0, 3}, d1 = {"\u0000\u000e\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0010\u0002\n\u0000\u0010\u0003\u001a\u00020\u0002*\b\u0012\u0004\u0012\u00020\u00010\u0000H\u008a@"}, d2 = {"Lkotlinx/coroutines/flow/FlowCollector;", "Landroidx/window/layout/WindowLayoutInfo;", "", "<anonymous>"}, k = 3, mv = {1, 5, 1})
-@DebugMetadata(c = "androidx.window.layout.WindowInfoTrackerImpl$windowLayoutInfo$1", f = "WindowInfoTrackerImpl.kt", i = {0, 0, 1, 1}, l = {54, 55}, m = "invokeSuspend", n = {"$this$flow", "listener", "$this$flow", "listener"}, s = {"L$0", "L$1", "L$0", "L$1"})
+@DebugMetadata(c = "androidx.window.layout.WindowInfoTrackerImpl$windowLayoutInfo$1", f = "WindowInfoTrackerImpl.kt", i = {0, 0, 1, 1}, l = {R.styleable.AppCompatTheme_colorControlHighlight, R.styleable.AppCompatTheme_colorControlNormal}, m = "invokeSuspend", n = {"$this$flow", "listener", "$this$flow", "listener"}, s = {"L$0", "L$1", "L$0", "L$1"})
 /* renamed from: androidx.window.layout.WindowInfoTrackerImpl$windowLayoutInfo$1, reason: from Kotlin metadata */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class FlowCollector extends SuspendLambda implements Function2<kotlinx.coroutines.flow.FlowCollector<? super WindowLayoutInfo>, Continuation<? super Unit>, Object> {
     final /* synthetic */ Activity $activity;
     private /* synthetic */ Object L$0;
@@ -34,7 +35,7 @@ final class FlowCollector extends SuspendLambda implements Function2<kotlinx.cor
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: invokeSuspend$lambda-0, reason: not valid java name */
-    public static final void m5627invokeSuspend$lambda0(Channel channel, WindowLayoutInfo windowLayoutInfo) {
+    public static final void m2347invokeSuspend$lambda0(Channel channel, WindowLayoutInfo windowLayoutInfo) {
         Intrinsics.checkNotNullExpressionValue(windowLayoutInfo, "info");
         channel.trySend-JP2dKIU(windowLayoutInfo);
     }
@@ -59,7 +60,7 @@ final class FlowCollector extends SuspendLambda implements Function2<kotlinx.cor
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object invokeSuspend(@org.jetbrains.annotations.NotNull java.lang.Object r10) {
         /*
@@ -106,7 +107,7 @@ final class FlowCollector extends SuspendLambda implements Function2<kotlinx.cor
             r6 = 0
             kotlinx.coroutines.channels.Channel r1 = tb.gs.b(r1, r4, r6, r5, r6)
             androidx.window.layout.a r4 = new androidx.window.layout.a
-            r4.<init>()
+            r4.<init>(r1)
             androidx.window.layout.WindowInfoTrackerImpl r5 = r9.this$0
             androidx.window.layout.WindowBackend r5 = kotlinx.coroutines.flow.WindowInfoTrackerImpl.access$getWindowBackend$p(r5)
             android.app.Activity r6 = r9.$activity

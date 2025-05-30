@@ -1,7 +1,9 @@
 package androidx.constraintlayout.core.state;
 
+import android.taobao.windvane.util.WVConstants;
 import androidx.constraintlayout.core.motion.Motion;
 import androidx.constraintlayout.core.motion.MotionWidget;
+import androidx.constraintlayout.core.motion.key.MotionKey;
 import androidx.constraintlayout.core.motion.key.MotionKeyAttributes;
 import androidx.constraintlayout.core.motion.key.MotionKeyCycle;
 import androidx.constraintlayout.core.motion.key.MotionKeyPosition;
@@ -11,6 +13,7 @@ import androidx.constraintlayout.core.motion.utils.TypedBundle;
 import androidx.constraintlayout.core.motion.utils.TypedValues;
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import androidx.constraintlayout.core.widgets.ConstraintWidgetContainer;
+import androidx.constraintlayout.widget.R$styleable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,7 +27,7 @@ import tb.np5;
 import tb.op5;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Transition implements TypedValues {
     static final int ANTICIPATE = 6;
     static final int BOUNCE = 4;
@@ -45,7 +48,7 @@ public class Transition implements TypedValues {
     private String mDefaultInterpolatorString = null;
     private Easing mEasing = null;
     private int mAutoTransition = 0;
-    private int mDuration = 400;
+    private int mDuration = WVConstants.NOTIFY_PAGE_START;
     private float mStagger = 0.0f;
 
     /* compiled from: Taobao */
@@ -53,19 +56,15 @@ public class Transition implements TypedValues {
         int frame;
         String target;
         int type;
-
-        /* renamed from: x */
-        float f259x;
-
-        /* renamed from: y */
-        float f260y;
+        float x;
+        float y;
 
         public KeyPosition(String str, int i, int i2, float f, float f2) {
             this.target = str;
             this.frame = i;
             this.type = i2;
-            this.f259x = f;
-            this.f260y = f2;
+            this.x = f;
+            this.y = f2;
         }
     }
 
@@ -103,7 +102,7 @@ public class Transition implements TypedValues {
         }
 
         public void setKeyAttribute(TypedBundle typedBundle) {
-            MotionKeyAttributes motionKeyAttributes = new MotionKeyAttributes();
+            MotionKey motionKeyAttributes = new MotionKeyAttributes();
             typedBundle.applyDelta(motionKeyAttributes);
             this.motionControl.addKey(motionKeyAttributes);
         }
@@ -233,8 +232,8 @@ public class Transition implements TypedValues {
         for (int i2 = 0; i2 <= 100; i2++) {
             HashMap<String, KeyPosition> hashMap = this.keyPositions.get(Integer.valueOf(i2));
             if (hashMap != null && (keyPosition = hashMap.get(widgetFrame.widget.stringId)) != null) {
-                fArr[i] = keyPosition.f259x;
-                fArr2[i] = keyPosition.f260y;
+                fArr[i] = keyPosition.x;
+                fArr2[i] = keyPosition.y;
                 fArr3[i] = keyPosition.frame;
                 i++;
             }
@@ -310,8 +309,9 @@ public class Transition implements TypedValues {
     }
 
     public float[] getPath(String str) {
-        float[] fArr = new float[124];
-        this.state.get(str).motionControl.buildPath(fArr, 62);
+        WidgetState widgetState = this.state.get(str);
+        float[] fArr = new float[R$styleable.AppCompatTheme_windowMinWidthMajor];
+        widgetState.motionControl.buildPath(fArr, 62);
         return fArr;
     }
 
@@ -390,10 +390,10 @@ public class Transition implements TypedValues {
 
     public void addKeyPosition(String str, int i, int i2, float f, float f2) {
         TypedBundle typedBundle = new TypedBundle();
-        typedBundle.add(TypedValues.PositionType.TYPE_POSITION_TYPE, 2);
+        typedBundle.add(510, 2);
         typedBundle.add(100, i);
-        typedBundle.add(TypedValues.PositionType.TYPE_PERCENT_X, f);
-        typedBundle.add(TypedValues.PositionType.TYPE_PERCENT_Y, f2);
+        typedBundle.add(506, f);
+        typedBundle.add(507, f2);
         getWidgetState(str, null, 0).setKeyPosition(typedBundle);
         KeyPosition keyPosition = new KeyPosition(str, i, i2, f, f2);
         HashMap<String, KeyPosition> hashMap = this.keyPositions.get(Integer.valueOf(i));

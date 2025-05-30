@@ -1,6 +1,5 @@
 package androidx.compose.runtime.external.kotlinx.collections.immutable;
 
-import android.Manifest;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentList;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap;
@@ -33,7 +32,7 @@ import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ExtensionsKt {
     @Deprecated(message = "Use persistentHashMapOf instead.", replaceWith = @ReplaceWith(expression = "persistentHashMapOf(*pairs)", imports = {}))
     @NotNull
@@ -101,7 +100,7 @@ public final class ExtensionsKt {
     @NotNull
     public static final <K, V> PersistentMap<K, V> persistentHashMapOf(@NotNull Pair<? extends K, ? extends V>... pairArr) {
         Intrinsics.checkNotNullParameter(pairArr, "pairs");
-        PersistentHashMap<K, V> emptyOf$runtime_release = PersistentHashMap.Companion.emptyOf$runtime_release();
+        PersistentHashMap emptyOf$runtime_release = PersistentHashMap.Companion.emptyOf$runtime_release();
         Intrinsics.checkNotNull(emptyOf$runtime_release, "null cannot be cast to non-null type androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap<K of androidx.compose.runtime.external.kotlinx.collections.immutable.ExtensionsKt.mutate, V of androidx.compose.runtime.external.kotlinx.collections.immutable.ExtensionsKt.mutate>");
         PersistentMap.Builder<K, V> builder = emptyOf$runtime_release.builder();
         MapsKt.putAll(builder, pairArr);
@@ -148,7 +147,7 @@ public final class ExtensionsKt {
     public static final <K, V> PersistentMap<K, V> putAll(@NotNull PersistentMap<? extends K, ? extends V> persistentMap, @NotNull Map<? extends K, ? extends V> map) {
         Intrinsics.checkNotNullParameter(persistentMap, "<this>");
         Intrinsics.checkNotNullParameter(map, "map");
-        return persistentMap.putAll((Map<? extends Object, ? extends Object>) map);
+        return persistentMap.putAll(map);
     }
 
     @NotNull
@@ -167,7 +166,7 @@ public final class ExtensionsKt {
         }
         PersistentMap.Builder builder = map instanceof PersistentMap.Builder ? (PersistentMap.Builder) map : null;
         PersistentMap<K, V> build = builder != null ? builder.build() : null;
-        return build != null ? build : persistentMapOf().putAll((Map) map);
+        return build != null ? build : persistentMapOf().putAll(map);
     }
 
     @NotNull
@@ -190,8 +189,8 @@ public final class ExtensionsKt {
             return persistentHashMap;
         }
         PersistentHashMapBuilder persistentHashMapBuilder = map instanceof PersistentHashMapBuilder ? (PersistentHashMapBuilder) map : null;
-        PersistentHashMap<K, V> build = persistentHashMapBuilder != null ? persistentHashMapBuilder.build() : null;
-        return build != null ? build : PersistentHashMap.Companion.emptyOf$runtime_release().putAll((Map) map);
+        PersistentHashMap build = persistentHashMapBuilder != null ? persistentHashMapBuilder.build() : null;
+        return build != null ? build : PersistentHashMap.Companion.emptyOf$runtime_release().putAll(map);
     }
 
     @NotNull
@@ -227,7 +226,7 @@ public final class ExtensionsKt {
         }
         PersistentOrderedMapBuilder persistentOrderedMapBuilder = map instanceof PersistentOrderedMapBuilder ? (PersistentOrderedMapBuilder) map : null;
         PersistentMap<K, V> build = persistentOrderedMapBuilder != null ? persistentOrderedMapBuilder.build() : null;
-        return build == null ? PersistentOrderedMap.Companion.emptyOf$runtime_release().putAll((Map) map) : build;
+        return build == null ? PersistentOrderedMap.Companion.emptyOf$runtime_release().putAll(map) : build;
     }
 
     @NotNull
@@ -537,14 +536,14 @@ public final class ExtensionsKt {
     @NotNull
     public static final <K, V> PersistentMap<K, V> minus(@NotNull PersistentMap<? extends K, ? extends V> persistentMap, K k) {
         Intrinsics.checkNotNullParameter(persistentMap, "<this>");
-        return persistentMap.remove((PersistentMap<? extends K, ? extends V>) k);
+        return persistentMap.remove(k);
     }
 
     @NotNull
     public static final <K, V> PersistentMap<K, V> plus(@NotNull PersistentMap<? extends K, ? extends V> persistentMap, @NotNull Pair<? extends K, ? extends V> pair) {
         Intrinsics.checkNotNullParameter(persistentMap, "<this>");
         Intrinsics.checkNotNullParameter(pair, "pair");
-        return persistentMap.put((PersistentMap<? extends K, ? extends V>) pair.getFirst(), (Manifest) pair.getSecond());
+        return persistentMap.put((Object) pair.getFirst(), (Object) pair.getSecond());
     }
 
     @NotNull

@@ -7,7 +7,7 @@ import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FragmentViewModelLazyKt$activityViewModels$2 extends Lambda implements Function0<CreationExtras> {
     final /* synthetic */ Fragment $this_activityViewModels;
 
@@ -19,7 +19,7 @@ public final class FragmentViewModelLazyKt$activityViewModels$2 extends Lambda i
 
     @NotNull
     /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-    public final CreationExtras m5587invoke() {
+    public final CreationExtras m2327invoke() {
         CreationExtras defaultViewModelCreationExtras = this.$this_activityViewModels.requireActivity().getDefaultViewModelCreationExtras();
         Intrinsics.checkNotNullExpressionValue(defaultViewModelCreationExtras, "requireActivity().defaultViewModelCreationExtras");
         return defaultViewModelCreationExtras;

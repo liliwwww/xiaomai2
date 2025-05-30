@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.lifecycle.LifecycleCoroutineScope$launchWhenStarted$1", f = "Lifecycle.kt", i = {}, l = {100}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class LifecycleCoroutineScope$launchWhenStarted$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ Function2<CoroutineScope, Continuation<? super Unit>, Object> $block;
     int label;
@@ -45,7 +45,7 @@ final class LifecycleCoroutineScope$launchWhenStarted$1 extends SuspendLambda im
             Lifecycle lifecycle$lifecycle_runtime_ktx_release = this.this$0.getLifecycle$lifecycle_runtime_ktx_release();
             Function2<CoroutineScope, Continuation<? super Unit>, Object> function2 = this.$block;
             this.label = 1;
-            if (PausingDispatcherKt.whenStarted(lifecycle$lifecycle_runtime_ktx_release, (Function2) function2, (Continuation) this) == coroutine_suspended) {
+            if (PausingDispatcherKt.whenStarted(lifecycle$lifecycle_runtime_ktx_release, function2, this) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

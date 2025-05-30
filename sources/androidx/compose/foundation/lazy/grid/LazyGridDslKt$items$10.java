@@ -11,13 +11,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyGridDslKt$items$10 extends Lambda implements Function4<LazyGridItemScope, Integer, Composer, Integer, Unit> {
     final /* synthetic */ Function4<LazyGridItemScope, T, Composer, Integer, Unit> $itemContent;
     final /* synthetic */ T[] $items;
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    /* JADX WARN: Multi-variable type inference failed */
     public LazyGridDslKt$items$10(Function4<? super LazyGridItemScope, ? super T, ? super Composer, ? super Integer, Unit> function4, T[] tArr) {
         super(4);
         this.$itemContent = function4;

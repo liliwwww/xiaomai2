@@ -6,7 +6,7 @@ import androidx.versionedparcelable.VersionedParcel;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class RemoteActionCompatParcelizer extends androidx.core.app.RemoteActionCompatParcelizer {
     public static RemoteActionCompat read(VersionedParcel versionedParcel) {
         return androidx.core.app.RemoteActionCompatParcelizer.read(versionedParcel);

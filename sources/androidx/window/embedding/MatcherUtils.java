@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 /* compiled from: Taobao */
 @ExperimentalWindowApi
 @Metadata(bv = {1, 0, 3}, d1 = {"\u0000&\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\u0010\u000e\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u000b\bÁ\u0002\u0018\u00002\u00020\u0001B\t\b\u0002¢\u0006\u0004\b\u0016\u0010\u0017J\u0018\u0010\u0006\u001a\u00020\u00052\u0006\u0010\u0003\u001a\u00020\u00022\u0006\u0010\u0004\u001a\u00020\u0002H\u0002J!\u0010\f\u001a\u00020\u00052\b\u0010\b\u001a\u0004\u0018\u00010\u00072\u0006\u0010\t\u001a\u00020\u0007H\u0000¢\u0006\u0004\b\n\u0010\u000bJ\u001f\u0010\u0011\u001a\u00020\u00052\u0006\u0010\u000e\u001a\u00020\r2\u0006\u0010\t\u001a\u00020\u0007H\u0000¢\u0006\u0004\b\u000f\u0010\u0010R\u0016\u0010\u0012\u001a\u00020\u00058\u0000@\u0000X\u0080T¢\u0006\u0006\n\u0004\b\u0012\u0010\u0013R\u0016\u0010\u0014\u001a\u00020\u00028\u0000@\u0000X\u0080T¢\u0006\u0006\n\u0004\b\u0014\u0010\u0015¨\u0006\u0018"}, d2 = {"Landroidx/window/embedding/MatcherUtils;", "", "", "name", "pattern", "", "wildcardMatch", "Landroid/content/ComponentName;", "activityComponent", "ruleComponent", "areComponentsMatching$window_release", "(Landroid/content/ComponentName;Landroid/content/ComponentName;)Z", "areComponentsMatching", "Landroid/app/Activity;", "activity", "areActivityOrIntentComponentsMatching$window_release", "(Landroid/app/Activity;Landroid/content/ComponentName;)Z", "areActivityOrIntentComponentsMatching", "sDebugMatchers", "Z", "sMatchersTag", "Ljava/lang/String;", "<init>", "()V", "window_release"}, k = 1, mv = {1, 5, 1})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class MatcherUtils {
 
     @NotNull
@@ -58,7 +58,7 @@ public final class MatcherUtils {
     /* JADX WARN: Removed duplicated region for block: B:23:0x008a A[ADDED_TO_REGION] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final boolean areComponentsMatching$window_release(@org.jetbrains.annotations.Nullable android.content.ComponentName r7, @org.jetbrains.annotations.NotNull android.content.ComponentName r8) {
         /*

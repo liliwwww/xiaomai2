@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AnimationStateKt {
     @NotNull
     public static final AnimationState<Float, AnimationVector1D> AnimationState(float f, float f2, long j, long j2, boolean z) {
@@ -76,7 +76,7 @@ public final class AnimationStateKt {
             f = ((Number) animationState.getValue()).floatValue();
         }
         if ((i & 2) != 0) {
-            f2 = ((AnimationVector1D) animationState.getVelocityVector()).getValue();
+            f2 = animationState.getVelocityVector().getValue();
         }
         float f3 = f2;
         if ((i & 4) != 0) {

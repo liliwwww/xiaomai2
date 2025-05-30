@@ -1,9 +1,8 @@
 package androidx.emoji2.text.flatbuffer;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 interface ReadWriteBuf extends ReadBuf {
-    @Override // androidx.emoji2.text.flatbuffer.ReadBuf
     int limit();
 
     void put(byte b);

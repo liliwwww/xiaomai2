@@ -8,38 +8,37 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
-import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class DefaultItemAnimator extends SimpleItemAnimator {
     private static final boolean DEBUG = false;
     private static TimeInterpolator sDefaultInterpolator;
-    private ArrayList<RecyclerView.ViewHolder> mPendingRemovals = new ArrayList<>();
-    private ArrayList<RecyclerView.ViewHolder> mPendingAdditions = new ArrayList<>();
+    private ArrayList<RecyclerView$ViewHolder> mPendingRemovals = new ArrayList<>();
+    private ArrayList<RecyclerView$ViewHolder> mPendingAdditions = new ArrayList<>();
     private ArrayList<MoveInfo> mPendingMoves = new ArrayList<>();
     private ArrayList<ChangeInfo> mPendingChanges = new ArrayList<>();
-    ArrayList<ArrayList<RecyclerView.ViewHolder>> mAdditionsList = new ArrayList<>();
+    ArrayList<ArrayList<RecyclerView$ViewHolder>> mAdditionsList = new ArrayList<>();
     ArrayList<ArrayList<MoveInfo>> mMovesList = new ArrayList<>();
     ArrayList<ArrayList<ChangeInfo>> mChangesList = new ArrayList<>();
-    ArrayList<RecyclerView.ViewHolder> mAddAnimations = new ArrayList<>();
-    ArrayList<RecyclerView.ViewHolder> mMoveAnimations = new ArrayList<>();
-    ArrayList<RecyclerView.ViewHolder> mRemoveAnimations = new ArrayList<>();
-    ArrayList<RecyclerView.ViewHolder> mChangeAnimations = new ArrayList<>();
+    ArrayList<RecyclerView$ViewHolder> mAddAnimations = new ArrayList<>();
+    ArrayList<RecyclerView$ViewHolder> mMoveAnimations = new ArrayList<>();
+    ArrayList<RecyclerView$ViewHolder> mRemoveAnimations = new ArrayList<>();
+    ArrayList<RecyclerView$ViewHolder> mChangeAnimations = new ArrayList<>();
 
     /* compiled from: Taobao */
     private static class MoveInfo {
         public int fromX;
         public int fromY;
-        public RecyclerView.ViewHolder holder;
+        public RecyclerView$ViewHolder holder;
         public int toX;
         public int toY;
 
-        MoveInfo(RecyclerView.ViewHolder viewHolder, int i, int i2, int i3, int i4) {
-            this.holder = viewHolder;
+        MoveInfo(RecyclerView$ViewHolder recyclerView$ViewHolder, int i, int i2, int i3, int i4) {
+            this.holder = recyclerView$ViewHolder;
             this.fromX = i;
             this.fromY = i2;
             this.toX = i3;
@@ -47,67 +46,66 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
         }
     }
 
-    private void animateRemoveImpl(final RecyclerView.ViewHolder viewHolder) {
-        final View view = viewHolder.itemView;
+    private void animateRemoveImpl(final RecyclerView$ViewHolder recyclerView$ViewHolder) {
+        final View view = recyclerView$ViewHolder.itemView;
         final ViewPropertyAnimator animate = view.animate();
-        this.mRemoveAnimations.add(viewHolder);
+        this.mRemoveAnimations.add(recyclerView$ViewHolder);
         animate.setDuration(getRemoveDuration()).alpha(0.0f).setListener(new AnimatorListenerAdapter() { // from class: androidx.recyclerview.widget.DefaultItemAnimator.4
             @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
             public void onAnimationEnd(Animator animator) {
                 animate.setListener(null);
                 view.setAlpha(1.0f);
-                DefaultItemAnimator.this.dispatchRemoveFinished(viewHolder);
-                DefaultItemAnimator.this.mRemoveAnimations.remove(viewHolder);
+                DefaultItemAnimator.this.dispatchRemoveFinished(recyclerView$ViewHolder);
+                DefaultItemAnimator.this.mRemoveAnimations.remove(recyclerView$ViewHolder);
                 DefaultItemAnimator.this.dispatchFinishedWhenDone();
             }
 
             @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
             public void onAnimationStart(Animator animator) {
-                DefaultItemAnimator.this.dispatchRemoveStarting(viewHolder);
+                DefaultItemAnimator.this.dispatchRemoveStarting(recyclerView$ViewHolder);
             }
         }).start();
     }
 
-    private void endChangeAnimation(List<ChangeInfo> list, RecyclerView.ViewHolder viewHolder) {
+    private void endChangeAnimation(List<ChangeInfo> list, RecyclerView$ViewHolder recyclerView$ViewHolder) {
         for (int size = list.size() - 1; size >= 0; size--) {
             ChangeInfo changeInfo = list.get(size);
-            if (endChangeAnimationIfNecessary(changeInfo, viewHolder) && changeInfo.oldHolder == null && changeInfo.newHolder == null) {
+            if (endChangeAnimationIfNecessary(changeInfo, recyclerView$ViewHolder) && changeInfo.oldHolder == null && changeInfo.newHolder == null) {
                 list.remove(changeInfo);
             }
         }
     }
 
     private void endChangeAnimationIfNecessary(ChangeInfo changeInfo) {
-        RecyclerView.ViewHolder viewHolder = changeInfo.oldHolder;
-        if (viewHolder != null) {
-            endChangeAnimationIfNecessary(changeInfo, viewHolder);
+        RecyclerView$ViewHolder recyclerView$ViewHolder = changeInfo.oldHolder;
+        if (recyclerView$ViewHolder != null) {
+            endChangeAnimationIfNecessary(changeInfo, recyclerView$ViewHolder);
         }
-        RecyclerView.ViewHolder viewHolder2 = changeInfo.newHolder;
-        if (viewHolder2 != null) {
-            endChangeAnimationIfNecessary(changeInfo, viewHolder2);
+        RecyclerView$ViewHolder recyclerView$ViewHolder2 = changeInfo.newHolder;
+        if (recyclerView$ViewHolder2 != null) {
+            endChangeAnimationIfNecessary(changeInfo, recyclerView$ViewHolder2);
         }
     }
 
-    private void resetAnimation(RecyclerView.ViewHolder viewHolder) {
+    private void resetAnimation(RecyclerView$ViewHolder recyclerView$ViewHolder) {
         if (sDefaultInterpolator == null) {
             sDefaultInterpolator = new ValueAnimator().getInterpolator();
         }
-        viewHolder.itemView.animate().setInterpolator(sDefaultInterpolator);
-        endAnimation(viewHolder);
+        recyclerView$ViewHolder.itemView.animate().setInterpolator(sDefaultInterpolator);
+        endAnimation(recyclerView$ViewHolder);
     }
 
-    @Override // androidx.recyclerview.widget.SimpleItemAnimator
-    public boolean animateAdd(RecyclerView.ViewHolder viewHolder) {
-        resetAnimation(viewHolder);
-        viewHolder.itemView.setAlpha(0.0f);
-        this.mPendingAdditions.add(viewHolder);
+    public boolean animateAdd(RecyclerView$ViewHolder recyclerView$ViewHolder) {
+        resetAnimation(recyclerView$ViewHolder);
+        recyclerView$ViewHolder.itemView.setAlpha(0.0f);
+        this.mPendingAdditions.add(recyclerView$ViewHolder);
         return true;
     }
 
-    void animateAddImpl(final RecyclerView.ViewHolder viewHolder) {
-        final View view = viewHolder.itemView;
+    void animateAddImpl(final RecyclerView$ViewHolder recyclerView$ViewHolder) {
+        final View view = recyclerView$ViewHolder.itemView;
         final ViewPropertyAnimator animate = view.animate();
-        this.mAddAnimations.add(viewHolder);
+        this.mAddAnimations.add(recyclerView$ViewHolder);
         animate.alpha(1.0f).setDuration(getAddDuration()).setListener(new AnimatorListenerAdapter() { // from class: androidx.recyclerview.widget.DefaultItemAnimator.5
             @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
             public void onAnimationCancel(Animator animator) {
@@ -117,47 +115,46 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
             @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
             public void onAnimationEnd(Animator animator) {
                 animate.setListener(null);
-                DefaultItemAnimator.this.dispatchAddFinished(viewHolder);
-                DefaultItemAnimator.this.mAddAnimations.remove(viewHolder);
+                DefaultItemAnimator.this.dispatchAddFinished(recyclerView$ViewHolder);
+                DefaultItemAnimator.this.mAddAnimations.remove(recyclerView$ViewHolder);
                 DefaultItemAnimator.this.dispatchFinishedWhenDone();
             }
 
             @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
             public void onAnimationStart(Animator animator) {
-                DefaultItemAnimator.this.dispatchAddStarting(viewHolder);
+                DefaultItemAnimator.this.dispatchAddStarting(recyclerView$ViewHolder);
             }
         }).start();
     }
 
-    @Override // androidx.recyclerview.widget.SimpleItemAnimator
-    public boolean animateChange(RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder viewHolder2, int i, int i2, int i3, int i4) {
-        if (viewHolder == viewHolder2) {
-            return animateMove(viewHolder, i, i2, i3, i4);
+    public boolean animateChange(RecyclerView$ViewHolder recyclerView$ViewHolder, RecyclerView$ViewHolder recyclerView$ViewHolder2, int i, int i2, int i3, int i4) {
+        if (recyclerView$ViewHolder == recyclerView$ViewHolder2) {
+            return animateMove(recyclerView$ViewHolder, i, i2, i3, i4);
         }
-        float translationX = viewHolder.itemView.getTranslationX();
-        float translationY = viewHolder.itemView.getTranslationY();
-        float alpha = viewHolder.itemView.getAlpha();
-        resetAnimation(viewHolder);
+        float translationX = recyclerView$ViewHolder.itemView.getTranslationX();
+        float translationY = recyclerView$ViewHolder.itemView.getTranslationY();
+        float alpha = recyclerView$ViewHolder.itemView.getAlpha();
+        resetAnimation(recyclerView$ViewHolder);
         int i5 = (int) ((i3 - i) - translationX);
         int i6 = (int) ((i4 - i2) - translationY);
-        viewHolder.itemView.setTranslationX(translationX);
-        viewHolder.itemView.setTranslationY(translationY);
-        viewHolder.itemView.setAlpha(alpha);
-        if (viewHolder2 != null) {
-            resetAnimation(viewHolder2);
-            viewHolder2.itemView.setTranslationX(-i5);
-            viewHolder2.itemView.setTranslationY(-i6);
-            viewHolder2.itemView.setAlpha(0.0f);
+        recyclerView$ViewHolder.itemView.setTranslationX(translationX);
+        recyclerView$ViewHolder.itemView.setTranslationY(translationY);
+        recyclerView$ViewHolder.itemView.setAlpha(alpha);
+        if (recyclerView$ViewHolder2 != null) {
+            resetAnimation(recyclerView$ViewHolder2);
+            recyclerView$ViewHolder2.itemView.setTranslationX(-i5);
+            recyclerView$ViewHolder2.itemView.setTranslationY(-i6);
+            recyclerView$ViewHolder2.itemView.setAlpha(0.0f);
         }
-        this.mPendingChanges.add(new ChangeInfo(viewHolder, viewHolder2, i, i2, i3, i4));
+        this.mPendingChanges.add(new ChangeInfo(recyclerView$ViewHolder, recyclerView$ViewHolder2, i, i2, i3, i4));
         return true;
     }
 
     void animateChangeImpl(final ChangeInfo changeInfo) {
-        RecyclerView.ViewHolder viewHolder = changeInfo.oldHolder;
-        final View view = viewHolder == null ? null : viewHolder.itemView;
-        RecyclerView.ViewHolder viewHolder2 = changeInfo.newHolder;
-        final View view2 = viewHolder2 != null ? viewHolder2.itemView : null;
+        RecyclerView$ViewHolder recyclerView$ViewHolder = changeInfo.oldHolder;
+        final View view = recyclerView$ViewHolder == null ? null : recyclerView$ViewHolder.itemView;
+        RecyclerView$ViewHolder recyclerView$ViewHolder2 = changeInfo.newHolder;
+        final View view2 = recyclerView$ViewHolder2 != null ? recyclerView$ViewHolder2.itemView : null;
         if (view != null) {
             final ViewPropertyAnimator duration = view.animate().setDuration(getChangeDuration());
             this.mChangeAnimations.add(changeInfo.oldHolder);
@@ -204,16 +201,15 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
         }
     }
 
-    @Override // androidx.recyclerview.widget.SimpleItemAnimator
-    public boolean animateMove(RecyclerView.ViewHolder viewHolder, int i, int i2, int i3, int i4) {
-        View view = viewHolder.itemView;
+    public boolean animateMove(RecyclerView$ViewHolder recyclerView$ViewHolder, int i, int i2, int i3, int i4) {
+        View view = recyclerView$ViewHolder.itemView;
         int translationX = i + ((int) view.getTranslationX());
-        int translationY = i2 + ((int) viewHolder.itemView.getTranslationY());
-        resetAnimation(viewHolder);
+        int translationY = i2 + ((int) recyclerView$ViewHolder.itemView.getTranslationY());
+        resetAnimation(recyclerView$ViewHolder);
         int i5 = i3 - translationX;
         int i6 = i4 - translationY;
         if (i5 == 0 && i6 == 0) {
-            dispatchMoveFinished(viewHolder);
+            dispatchMoveFinished(recyclerView$ViewHolder);
             return false;
         }
         if (i5 != 0) {
@@ -222,12 +218,12 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
         if (i6 != 0) {
             view.setTranslationY(-i6);
         }
-        this.mPendingMoves.add(new MoveInfo(viewHolder, translationX, translationY, i3, i4));
+        this.mPendingMoves.add(new MoveInfo(recyclerView$ViewHolder, translationX, translationY, i3, i4));
         return true;
     }
 
-    void animateMoveImpl(final RecyclerView.ViewHolder viewHolder, int i, int i2, int i3, int i4) {
-        final View view = viewHolder.itemView;
+    void animateMoveImpl(final RecyclerView$ViewHolder recyclerView$ViewHolder, int i, int i2, int i3, int i4) {
+        final View view = recyclerView$ViewHolder.itemView;
         final int i5 = i3 - i;
         final int i6 = i4 - i2;
         if (i5 != 0) {
@@ -237,7 +233,7 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
             view.animate().translationY(0.0f);
         }
         final ViewPropertyAnimator animate = view.animate();
-        this.mMoveAnimations.add(viewHolder);
+        this.mMoveAnimations.add(recyclerView$ViewHolder);
         animate.setDuration(getMoveDuration()).setListener(new AnimatorListenerAdapter() { // from class: androidx.recyclerview.widget.DefaultItemAnimator.6
             @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
             public void onAnimationCancel(Animator animator) {
@@ -252,31 +248,29 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
             @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
             public void onAnimationEnd(Animator animator) {
                 animate.setListener(null);
-                DefaultItemAnimator.this.dispatchMoveFinished(viewHolder);
-                DefaultItemAnimator.this.mMoveAnimations.remove(viewHolder);
+                DefaultItemAnimator.this.dispatchMoveFinished(recyclerView$ViewHolder);
+                DefaultItemAnimator.this.mMoveAnimations.remove(recyclerView$ViewHolder);
                 DefaultItemAnimator.this.dispatchFinishedWhenDone();
             }
 
             @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
             public void onAnimationStart(Animator animator) {
-                DefaultItemAnimator.this.dispatchMoveStarting(viewHolder);
+                DefaultItemAnimator.this.dispatchMoveStarting(recyclerView$ViewHolder);
             }
         }).start();
     }
 
-    @Override // androidx.recyclerview.widget.SimpleItemAnimator
-    public boolean animateRemove(RecyclerView.ViewHolder viewHolder) {
-        resetAnimation(viewHolder);
-        this.mPendingRemovals.add(viewHolder);
+    public boolean animateRemove(RecyclerView$ViewHolder recyclerView$ViewHolder) {
+        resetAnimation(recyclerView$ViewHolder);
+        this.mPendingRemovals.add(recyclerView$ViewHolder);
         return true;
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.ItemAnimator
-    public boolean canReuseUpdatedViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, @NonNull List<Object> list) {
-        return !list.isEmpty() || super.canReuseUpdatedViewHolder(viewHolder, list);
+    public boolean canReuseUpdatedViewHolder(@NonNull RecyclerView$ViewHolder recyclerView$ViewHolder, @NonNull List<Object> list) {
+        return !list.isEmpty() || super/*androidx.recyclerview.widget.RecyclerView.ItemAnimator*/.canReuseUpdatedViewHolder(recyclerView$ViewHolder, list);
     }
 
-    void cancelAll(List<RecyclerView.ViewHolder> list) {
+    void cancelAll(List<RecyclerView$ViewHolder> list) {
         for (int size = list.size() - 1; size >= 0; size--) {
             list.get(size).itemView.animate().cancel();
         }
@@ -289,9 +283,8 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
         dispatchAnimationsFinished();
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.ItemAnimator
-    public void endAnimation(RecyclerView.ViewHolder viewHolder) {
-        View view = viewHolder.itemView;
+    public void endAnimation(RecyclerView$ViewHolder recyclerView$ViewHolder) {
+        View view = recyclerView$ViewHolder.itemView;
         view.animate().cancel();
         int size = this.mPendingMoves.size();
         while (true) {
@@ -299,25 +292,25 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
             if (size < 0) {
                 break;
             }
-            if (this.mPendingMoves.get(size).holder == viewHolder) {
+            if (this.mPendingMoves.get(size).holder == recyclerView$ViewHolder) {
                 view.setTranslationY(0.0f);
                 view.setTranslationX(0.0f);
-                dispatchMoveFinished(viewHolder);
+                dispatchMoveFinished(recyclerView$ViewHolder);
                 this.mPendingMoves.remove(size);
             }
         }
-        endChangeAnimation(this.mPendingChanges, viewHolder);
-        if (this.mPendingRemovals.remove(viewHolder)) {
+        endChangeAnimation(this.mPendingChanges, recyclerView$ViewHolder);
+        if (this.mPendingRemovals.remove(recyclerView$ViewHolder)) {
             view.setAlpha(1.0f);
-            dispatchRemoveFinished(viewHolder);
+            dispatchRemoveFinished(recyclerView$ViewHolder);
         }
-        if (this.mPendingAdditions.remove(viewHolder)) {
+        if (this.mPendingAdditions.remove(recyclerView$ViewHolder)) {
             view.setAlpha(1.0f);
-            dispatchAddFinished(viewHolder);
+            dispatchAddFinished(recyclerView$ViewHolder);
         }
         for (int size2 = this.mChangesList.size() - 1; size2 >= 0; size2--) {
             ArrayList<ChangeInfo> arrayList = this.mChangesList.get(size2);
-            endChangeAnimation(arrayList, viewHolder);
+            endChangeAnimation(arrayList, recyclerView$ViewHolder);
             if (arrayList.isEmpty()) {
                 this.mChangesList.remove(size2);
             }
@@ -329,10 +322,10 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
                 if (size4 < 0) {
                     break;
                 }
-                if (arrayList2.get(size4).holder == viewHolder) {
+                if (arrayList2.get(size4).holder == recyclerView$ViewHolder) {
                     view.setTranslationY(0.0f);
                     view.setTranslationX(0.0f);
-                    dispatchMoveFinished(viewHolder);
+                    dispatchMoveFinished(recyclerView$ViewHolder);
                     arrayList2.remove(size4);
                     if (arrayList2.isEmpty()) {
                         this.mMovesList.remove(size3);
@@ -343,23 +336,22 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
             }
         }
         for (int size5 = this.mAdditionsList.size() - 1; size5 >= 0; size5--) {
-            ArrayList<RecyclerView.ViewHolder> arrayList3 = this.mAdditionsList.get(size5);
-            if (arrayList3.remove(viewHolder)) {
+            ArrayList<RecyclerView$ViewHolder> arrayList3 = this.mAdditionsList.get(size5);
+            if (arrayList3.remove(recyclerView$ViewHolder)) {
                 view.setAlpha(1.0f);
-                dispatchAddFinished(viewHolder);
+                dispatchAddFinished(recyclerView$ViewHolder);
                 if (arrayList3.isEmpty()) {
                     this.mAdditionsList.remove(size5);
                 }
             }
         }
-        this.mRemoveAnimations.remove(viewHolder);
-        this.mAddAnimations.remove(viewHolder);
-        this.mChangeAnimations.remove(viewHolder);
-        this.mMoveAnimations.remove(viewHolder);
+        this.mRemoveAnimations.remove(recyclerView$ViewHolder);
+        this.mAddAnimations.remove(recyclerView$ViewHolder);
+        this.mChangeAnimations.remove(recyclerView$ViewHolder);
+        this.mMoveAnimations.remove(recyclerView$ViewHolder);
         dispatchFinishedWhenDone();
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.ItemAnimator
     public void endAnimations() {
         int size = this.mPendingMoves.size();
         while (true) {
@@ -384,9 +376,9 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
             if (size3 < 0) {
                 break;
             }
-            RecyclerView.ViewHolder viewHolder = this.mPendingAdditions.get(size3);
-            viewHolder.itemView.setAlpha(1.0f);
-            dispatchAddFinished(viewHolder);
+            RecyclerView$ViewHolder recyclerView$ViewHolder = this.mPendingAdditions.get(size3);
+            recyclerView$ViewHolder.itemView.setAlpha(1.0f);
+            dispatchAddFinished(recyclerView$ViewHolder);
             this.mPendingAdditions.remove(size3);
         }
         for (int size4 = this.mPendingChanges.size() - 1; size4 >= 0; size4--) {
@@ -409,11 +401,11 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
                 }
             }
             for (int size7 = this.mAdditionsList.size() - 1; size7 >= 0; size7--) {
-                ArrayList<RecyclerView.ViewHolder> arrayList2 = this.mAdditionsList.get(size7);
+                ArrayList<RecyclerView$ViewHolder> arrayList2 = this.mAdditionsList.get(size7);
                 for (int size8 = arrayList2.size() - 1; size8 >= 0; size8--) {
-                    RecyclerView.ViewHolder viewHolder2 = arrayList2.get(size8);
-                    viewHolder2.itemView.setAlpha(1.0f);
-                    dispatchAddFinished(viewHolder2);
+                    RecyclerView$ViewHolder recyclerView$ViewHolder2 = arrayList2.get(size8);
+                    recyclerView$ViewHolder2.itemView.setAlpha(1.0f);
+                    dispatchAddFinished(recyclerView$ViewHolder2);
                     arrayList2.remove(size8);
                     if (arrayList2.isEmpty()) {
                         this.mAdditionsList.remove(arrayList2);
@@ -437,19 +429,17 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
         }
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.ItemAnimator
     public boolean isRunning() {
         return (this.mPendingAdditions.isEmpty() && this.mPendingChanges.isEmpty() && this.mPendingMoves.isEmpty() && this.mPendingRemovals.isEmpty() && this.mMoveAnimations.isEmpty() && this.mRemoveAnimations.isEmpty() && this.mAddAnimations.isEmpty() && this.mChangeAnimations.isEmpty() && this.mMovesList.isEmpty() && this.mAdditionsList.isEmpty() && this.mChangesList.isEmpty()) ? false : true;
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.ItemAnimator
     public void runPendingAnimations() {
         boolean z = !this.mPendingRemovals.isEmpty();
         boolean z2 = !this.mPendingMoves.isEmpty();
         boolean z3 = !this.mPendingChanges.isEmpty();
         boolean z4 = !this.mPendingAdditions.isEmpty();
         if (z || z2 || z4 || z3) {
-            Iterator<RecyclerView.ViewHolder> it = this.mPendingRemovals.iterator();
+            Iterator<RecyclerView$ViewHolder> it = this.mPendingRemovals.iterator();
             while (it.hasNext()) {
                 animateRemoveImpl(it.next());
             }
@@ -500,7 +490,7 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
                 }
             }
             if (z4) {
-                final ArrayList<RecyclerView.ViewHolder> arrayList3 = new ArrayList<>();
+                final ArrayList<RecyclerView$ViewHolder> arrayList3 = new ArrayList<>();
                 arrayList3.addAll(this.mPendingAdditions);
                 this.mAdditionsList.add(arrayList3);
                 this.mPendingAdditions.clear();
@@ -509,7 +499,7 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
                     public void run() {
                         Iterator it2 = arrayList3.iterator();
                         while (it2.hasNext()) {
-                            DefaultItemAnimator.this.animateAddImpl((RecyclerView.ViewHolder) it2.next());
+                            DefaultItemAnimator.this.animateAddImpl((RecyclerView$ViewHolder) it2.next());
                         }
                         arrayList3.clear();
                         DefaultItemAnimator.this.mAdditionsList.remove(arrayList3);
@@ -524,49 +514,21 @@ public class DefaultItemAnimator extends SimpleItemAnimator {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static class ChangeInfo {
-        public int fromX;
-        public int fromY;
-        public RecyclerView.ViewHolder newHolder;
-        public RecyclerView.ViewHolder oldHolder;
-        public int toX;
-        public int toY;
-
-        private ChangeInfo(RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder viewHolder2) {
-            this.oldHolder = viewHolder;
-            this.newHolder = viewHolder2;
-        }
-
-        public String toString() {
-            return "ChangeInfo{oldHolder=" + this.oldHolder + ", newHolder=" + this.newHolder + ", fromX=" + this.fromX + ", fromY=" + this.fromY + ", toX=" + this.toX + ", toY=" + this.toY + '}';
-        }
-
-        ChangeInfo(RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder viewHolder2, int i, int i2, int i3, int i4) {
-            this(viewHolder, viewHolder2);
-            this.fromX = i;
-            this.fromY = i2;
-            this.toX = i3;
-            this.toY = i4;
-        }
-    }
-
-    private boolean endChangeAnimationIfNecessary(ChangeInfo changeInfo, RecyclerView.ViewHolder viewHolder) {
+    private boolean endChangeAnimationIfNecessary(ChangeInfo changeInfo, RecyclerView$ViewHolder recyclerView$ViewHolder) {
         boolean z = false;
-        if (changeInfo.newHolder == viewHolder) {
+        if (changeInfo.newHolder == recyclerView$ViewHolder) {
             changeInfo.newHolder = null;
         } else {
-            if (changeInfo.oldHolder != viewHolder) {
+            if (changeInfo.oldHolder != recyclerView$ViewHolder) {
                 return false;
             }
             changeInfo.oldHolder = null;
             z = true;
         }
-        viewHolder.itemView.setAlpha(1.0f);
-        viewHolder.itemView.setTranslationX(0.0f);
-        viewHolder.itemView.setTranslationY(0.0f);
-        dispatchChangeFinished(viewHolder, z);
+        recyclerView$ViewHolder.itemView.setAlpha(1.0f);
+        recyclerView$ViewHolder.itemView.setTranslationX(0.0f);
+        recyclerView$ViewHolder.itemView.setTranslationY(0.0f);
+        dispatchChangeFinished(recyclerView$ViewHolder, z);
         return true;
     }
 }

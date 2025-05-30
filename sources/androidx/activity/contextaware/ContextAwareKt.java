@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ContextAwareKt {
     @Nullable
     public static final <R> Object withContextAvailable(@NotNull ContextAware contextAware, @NotNull Function1<? super Context, ? extends R> function1, @NotNull Continuation<? super R> continuation) {

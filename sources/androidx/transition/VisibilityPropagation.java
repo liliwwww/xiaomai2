@@ -3,7 +3,7 @@ package androidx.transition;
 import android.view.View;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class VisibilityPropagation extends TransitionPropagation {
     private static final String PROPNAME_VISIBILITY = "android:visibilityPropagation:visibility";
     private static final String PROPNAME_VIEW_CENTER = "android:visibilityPropagation:center";
@@ -17,7 +17,6 @@ public abstract class VisibilityPropagation extends TransitionPropagation {
         return iArr[i];
     }
 
-    @Override // androidx.transition.TransitionPropagation
     public void captureValues(TransitionValues transitionValues) {
         View view = transitionValues.view;
         Integer num = (Integer) transitionValues.values.get("android:visibility:visibility");
@@ -34,7 +33,6 @@ public abstract class VisibilityPropagation extends TransitionPropagation {
         transitionValues.values.put(PROPNAME_VIEW_CENTER, iArr);
     }
 
-    @Override // androidx.transition.TransitionPropagation
     public String[] getPropagationProperties() {
         return VISIBILITY_PROPAGATION_VALUES;
     }

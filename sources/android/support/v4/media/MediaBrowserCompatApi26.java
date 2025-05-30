@@ -10,7 +10,7 @@ import java.util.List;
 
 /* compiled from: Taobao */
 @RequiresApi(26)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class MediaBrowserCompatApi26 {
 
     /* compiled from: Taobao */
@@ -26,16 +26,14 @@ class MediaBrowserCompatApi26 {
             super(t);
         }
 
-        @Override // android.media.browse.MediaBrowser.SubscriptionCallback
         public void onChildrenLoaded(@NonNull String str, List<MediaBrowser.MediaItem> list, @NonNull Bundle bundle) {
             MediaSessionCompat.ensureClassLoader(bundle);
-            ((SubscriptionCallback) this.mSubscriptionCallback).onChildrenLoaded(str, list, bundle);
+            ((SubscriptionCallback) ((MediaBrowserCompatApi21.SubscriptionCallbackProxy) this).mSubscriptionCallback).onChildrenLoaded(str, list, bundle);
         }
 
-        @Override // android.media.browse.MediaBrowser.SubscriptionCallback
         public void onError(@NonNull String str, @NonNull Bundle bundle) {
             MediaSessionCompat.ensureClassLoader(bundle);
-            ((SubscriptionCallback) this.mSubscriptionCallback).onError(str, bundle);
+            ((SubscriptionCallback) ((MediaBrowserCompatApi21.SubscriptionCallbackProxy) this).mSubscriptionCallback).onError(str, bundle);
         }
     }
 

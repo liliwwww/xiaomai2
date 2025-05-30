@@ -8,11 +8,11 @@ import androidx.compose.foundation.gestures.Orientation;
 import androidx.compose.foundation.lazy.LazyListItemInfo;
 import androidx.compose.foundation.lazy.LazyListLayoutInfo;
 import androidx.compose.foundation.lazy.LazyListState;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.IntSize;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.IntSize;
 import java.util.List;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Intrinsics;
@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyListSnapLayoutInfoProviderKt {
     @ExperimentalFoundationApi
     @NotNull
@@ -31,17 +31,15 @@ public final class LazyListSnapLayoutInfoProviderKt {
         Intrinsics.checkNotNullParameter(function3, "positionInLayout");
         return new SnapLayoutInfoProvider() { // from class: androidx.compose.foundation.gestures.snapping.LazyListSnapLayoutInfoProviderKt$SnapLayoutInfoProvider$2
             private final LazyListLayoutInfo getLayoutInfo() {
-                return LazyListState.this.getLayoutInfo();
+                return lazyListState.getLayoutInfo();
             }
 
-            @Override // androidx.compose.foundation.gestures.snapping.SnapLayoutInfoProvider
             public float calculateApproachOffset(@NotNull Density density, float f) {
                 Intrinsics.checkNotNullParameter(density, "<this>");
                 float coerceAtLeast = RangesKt.coerceAtLeast(Math.abs(DecayAnimationSpecKt.calculateTargetValue(SplineBasedDecayKt.splineBasedDecay(density), 0.0f, f)) - calculateSnapStepSize(density), 0.0f);
                 return (coerceAtLeast > 0.0f ? 1 : (coerceAtLeast == 0.0f ? 0 : -1)) == 0 ? coerceAtLeast : coerceAtLeast * Math.signum(f);
             }
 
-            @Override // androidx.compose.foundation.gestures.snapping.SnapLayoutInfoProvider
             public float calculateSnapStepSize(@NotNull Density density) {
                 Intrinsics.checkNotNullParameter(density, "<this>");
                 LazyListLayoutInfo layoutInfo = getLayoutInfo();
@@ -57,7 +55,6 @@ public final class LazyListSnapLayoutInfoProviderKt {
                 return i / layoutInfo.getVisibleItemsInfo().size();
             }
 
-            @Override // androidx.compose.foundation.gestures.snapping.SnapLayoutInfoProvider
             @NotNull
             public ClosedFloatingPointRange<Float> calculateSnappingOffsetBounds(@NotNull Density density) {
                 Intrinsics.checkNotNullParameter(density, "<this>");
@@ -106,7 +103,7 @@ public final class LazyListSnapLayoutInfoProviderKt {
     }
 
     private static final int getSingleAxisViewportSize(LazyListLayoutInfo lazyListLayoutInfo) {
-        return lazyListLayoutInfo.getOrientation() == Orientation.Vertical ? IntSize.m5375getHeightimpl(lazyListLayoutInfo.mo1494getViewportSizeYbymL2g()) : IntSize.m5376getWidthimpl(lazyListLayoutInfo.mo1494getViewportSizeYbymL2g());
+        return lazyListLayoutInfo.getOrientation() == Orientation.Vertical ? IntSize.getHeight-impl(lazyListLayoutInfo.mo261getViewportSizeYbymL2g()) : IntSize.getWidth-impl(lazyListLayoutInfo.mo261getViewportSizeYbymL2g());
     }
 
     @Composable

@@ -13,15 +13,11 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ZipGlobalConfig {
     private String TAG = "ZipGlobalConfig";
-
-    /* renamed from: v */
-    public String f29v = "0";
-
-    /* renamed from: i */
-    public String f28i = "0";
+    public String v = "0";
+    public String i = "0";
     public String online_v = null;
     private Map<String, ZipAppInfo> mAppsMap = new ConcurrentHashMap();
     private Hashtable<String, ArrayList<String>> mZcacheResConfig = new Hashtable<>();
@@ -32,9 +28,7 @@ public class ZipGlobalConfig {
         public String errorCode;
         public String path;
         public long seq;
-
-        /* renamed from: v */
-        public String f30v;
+        public String v;
     }
 
     public void addZcacheResConfig(String str, ArrayList<String> arrayList) {
@@ -42,7 +36,7 @@ public class ZipGlobalConfig {
             return;
         }
         this.mZcacheResConfig.put(str, arrayList);
-        TaoLog.m18d(this.TAG, "ZcacheforDebug 新增zcache name:" + str);
+        TaoLog.d(this.TAG, "ZcacheforDebug 新增zcache name:" + str);
     }
 
     public ZipAppInfo getAppInfo(String str) {
@@ -68,7 +62,7 @@ public class ZipGlobalConfig {
             Iterator<Map.Entry<String, ZipAppInfo>> it = this.mAppsMap.entrySet().iterator();
             while (it.hasNext()) {
                 ZipAppInfo value = it.next().getValue();
-                if (value.status != ZipAppConstants.ZIP_REMOVED && value.f24s != value.installedSeq) {
+                if (value.status != ZipAppConstants.ZIP_REMOVED && value.s != value.installedSeq) {
                     return false;
                 }
             }
@@ -98,9 +92,9 @@ public class ZipGlobalConfig {
                     if (this.mAppsMap != null && zipAppInfo != null) {
                         CacheFileData cacheFileData = new CacheFileData();
                         cacheFileData.appName = zipAppInfo.name;
-                        cacheFileData.f30v = zipAppInfo.f26v;
+                        cacheFileData.v = zipAppInfo.v;
                         cacheFileData.path = ZipAppFileManager.getInstance().getZipResAbsolutePath(zipAppInfo, md5ToHex, false);
-                        cacheFileData.seq = zipAppInfo.f24s;
+                        cacheFileData.seq = zipAppInfo.s;
                         return cacheFileData;
                     }
                 }
@@ -108,7 +102,7 @@ public class ZipGlobalConfig {
             return null;
         } catch (Exception e) {
             e.printStackTrace();
-            TaoLog.m18d(this.TAG, "ZcacheforDebug 资源url 解析匹配异常，url=" + str);
+            TaoLog.d(this.TAG, "ZcacheforDebug 资源url 解析匹配异常，url=" + str);
             return null;
         }
     }
@@ -129,32 +123,32 @@ public class ZipGlobalConfig {
                 return;
             } else {
                 zipAppInfo2.status = ZipAppConstants.ZIP_REMOVED;
-                zipAppInfo2.f23f = zipAppInfo.f23f;
+                zipAppInfo2.f = zipAppInfo.f;
                 return;
             }
         }
-        zipAppInfo2.f23f = zipAppInfo.f23f;
-        long j = zipAppInfo2.f24s;
-        long j2 = zipAppInfo.f24s;
+        zipAppInfo2.f = zipAppInfo.f;
+        long j = zipAppInfo2.s;
+        long j2 = zipAppInfo.s;
         if (j > j2) {
             return;
         }
-        zipAppInfo2.f24s = j2;
-        zipAppInfo2.f26v = zipAppInfo.f26v;
-        zipAppInfo2.f25t = zipAppInfo.f25t;
-        zipAppInfo2.f27z = zipAppInfo.f27z;
+        zipAppInfo2.s = j2;
+        zipAppInfo2.v = zipAppInfo.v;
+        zipAppInfo2.t = zipAppInfo.t;
+        zipAppInfo2.z = zipAppInfo.z;
         zipAppInfo2.isOptional = zipAppInfo.isOptional;
         zipAppInfo2.isPreViewApp = zipAppInfo.isPreViewApp;
         ArrayList<String> arrayList = zipAppInfo.folders;
         if (arrayList != null && arrayList.size() > 0) {
             ArrayList<String> arrayList2 = zipAppInfo2.folders;
             int size = arrayList2 == null ? -1 : arrayList2.size();
-            TaoLog.m21e(this.TAG + "-Folders", "Before replace: " + zipAppInfo2.name + " [" + size + "] ");
+            TaoLog.e(this.TAG + "-Folders", "Before replace: " + zipAppInfo2.name + " [" + size + "] ");
             zipAppInfo2.folders = zipAppInfo.folders;
             StringBuilder sb = new StringBuilder();
             sb.append(this.TAG);
             sb.append("-Folders");
-            TaoLog.m21e(sb.toString(), "Replace " + zipAppInfo2.name + " folders to [" + zipAppInfo.folders.size() + "] ");
+            TaoLog.e(sb.toString(), "Replace " + zipAppInfo2.name + " folders to [" + zipAppInfo.folders.size() + "] ");
         }
         if (!TextUtils.isEmpty(zipAppInfo.mappingUrl)) {
             zipAppInfo2.mappingUrl = zipAppInfo.mappingUrl;
@@ -180,13 +174,13 @@ public class ZipGlobalConfig {
     public void removeZcacheRes(String str) {
         if (str != null) {
             this.mZcacheResConfig.remove(str);
-            TaoLog.m18d(this.TAG, "ZcacheforDebug 删除zcache name:" + str);
+            TaoLog.d(this.TAG, "ZcacheforDebug 删除zcache name:" + str);
         }
     }
 
     public void reset() {
-        this.f29v = "0";
-        this.f28i = "0";
+        this.v = "0";
+        this.i = "0";
         if (isAvailableData()) {
             this.mAppsMap.clear();
         }
@@ -205,7 +199,7 @@ public class ZipGlobalConfig {
                 StringBuilder sb = new StringBuilder();
                 sb.append("ZcacheforDebug 设置Zcache 的url map size:");
                 sb.append(hashtable != null ? hashtable.size() : 0);
-                TaoLog.m18d(str, sb.toString());
+                TaoLog.d(str, sb.toString());
             }
         }
     }

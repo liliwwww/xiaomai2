@@ -25,15 +25,13 @@ import android.view.View;
 import android.view.ViewOutlineProvider;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.C0257R;
-import androidx.constraintlayout.core.widgets.analyzer.BasicMeasure;
 import androidx.constraintlayout.motion.widget.Debug;
 import androidx.constraintlayout.motion.widget.FloatLayout;
-import androidx.constraintlayout.widget.C0923R;
+import androidx.constraintlayout.widget.R;
 import androidx.core.view.GravityCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MotionLabel extends View implements FloatLayout {
     private static final int MONOSPACE = 3;
     private static final int SANS = 1;
@@ -151,66 +149,66 @@ public class MotionLabel extends View implements FloatLayout {
     private void init(Context context, AttributeSet attributeSet) {
         setUpTheme(context, attributeSet);
         if (attributeSet != null) {
-            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, C0923R.styleable.MotionLabel);
+            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.MotionLabel);
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
                 int index = obtainStyledAttributes.getIndex(i);
-                if (index == C0923R.styleable.MotionLabel_android_text) {
+                if (index == R.styleable.MotionLabel_android_text) {
                     setText(obtainStyledAttributes.getText(index));
-                } else if (index == C0923R.styleable.MotionLabel_android_fontFamily) {
+                } else if (index == R.styleable.MotionLabel_android_fontFamily) {
                     this.mFontFamily = obtainStyledAttributes.getString(index);
-                } else if (index == C0923R.styleable.MotionLabel_scaleFromTextSize) {
+                } else if (index == R.styleable.MotionLabel_scaleFromTextSize) {
                     this.mBaseTextSize = obtainStyledAttributes.getDimensionPixelSize(index, (int) this.mBaseTextSize);
-                } else if (index == C0923R.styleable.MotionLabel_android_textSize) {
+                } else if (index == R.styleable.MotionLabel_android_textSize) {
                     this.mTextSize = obtainStyledAttributes.getDimensionPixelSize(index, (int) this.mTextSize);
-                } else if (index == C0923R.styleable.MotionLabel_android_textStyle) {
+                } else if (index == R.styleable.MotionLabel_android_textStyle) {
                     this.mStyleIndex = obtainStyledAttributes.getInt(index, this.mStyleIndex);
-                } else if (index == C0923R.styleable.MotionLabel_android_typeface) {
+                } else if (index == R.styleable.MotionLabel_android_typeface) {
                     this.mTypefaceIndex = obtainStyledAttributes.getInt(index, this.mTypefaceIndex);
-                } else if (index == C0923R.styleable.MotionLabel_android_textColor) {
+                } else if (index == R.styleable.MotionLabel_android_textColor) {
                     this.mTextFillColor = obtainStyledAttributes.getColor(index, this.mTextFillColor);
-                } else if (index == C0923R.styleable.MotionLabel_borderRound) {
+                } else if (index == R.styleable.MotionLabel_borderRound) {
                     float dimension = obtainStyledAttributes.getDimension(index, this.mRound);
                     this.mRound = dimension;
                     if (Build.VERSION.SDK_INT >= 21) {
                         setRound(dimension);
                     }
-                } else if (index == C0923R.styleable.MotionLabel_borderRoundPercent) {
+                } else if (index == R.styleable.MotionLabel_borderRoundPercent) {
                     float f = obtainStyledAttributes.getFloat(index, this.mRoundPercent);
                     this.mRoundPercent = f;
                     if (Build.VERSION.SDK_INT >= 21) {
                         setRoundPercent(f);
                     }
-                } else if (index == C0923R.styleable.MotionLabel_android_gravity) {
+                } else if (index == R.styleable.MotionLabel_android_gravity) {
                     setGravity(obtainStyledAttributes.getInt(index, -1));
-                } else if (index == C0923R.styleable.MotionLabel_android_autoSizeTextType) {
+                } else if (index == R.styleable.MotionLabel_android_autoSizeTextType) {
                     this.mAutoSizeTextType = obtainStyledAttributes.getInt(index, 0);
-                } else if (index == C0923R.styleable.MotionLabel_textOutlineColor) {
+                } else if (index == R.styleable.MotionLabel_textOutlineColor) {
                     this.mTextOutlineColor = obtainStyledAttributes.getInt(index, this.mTextOutlineColor);
                     this.mUseOutline = true;
-                } else if (index == C0923R.styleable.MotionLabel_textOutlineThickness) {
+                } else if (index == R.styleable.MotionLabel_textOutlineThickness) {
                     this.mTextOutlineThickness = obtainStyledAttributes.getDimension(index, this.mTextOutlineThickness);
                     this.mUseOutline = true;
-                } else if (index == C0923R.styleable.MotionLabel_textBackground) {
+                } else if (index == R.styleable.MotionLabel_textBackground) {
                     this.mTextBackground = obtainStyledAttributes.getDrawable(index);
                     this.mUseOutline = true;
-                } else if (index == C0923R.styleable.MotionLabel_textBackgroundPanX) {
+                } else if (index == R.styleable.MotionLabel_textBackgroundPanX) {
                     this.mBackgroundPanX = obtainStyledAttributes.getFloat(index, this.mBackgroundPanX);
-                } else if (index == C0923R.styleable.MotionLabel_textBackgroundPanY) {
+                } else if (index == R.styleable.MotionLabel_textBackgroundPanY) {
                     this.mBackgroundPanY = obtainStyledAttributes.getFloat(index, this.mBackgroundPanY);
-                } else if (index == C0923R.styleable.MotionLabel_textPanX) {
+                } else if (index == R.styleable.MotionLabel_textPanX) {
                     this.mTextPanX = obtainStyledAttributes.getFloat(index, this.mTextPanX);
-                } else if (index == C0923R.styleable.MotionLabel_textPanY) {
+                } else if (index == R.styleable.MotionLabel_textPanY) {
                     this.mTextPanY = obtainStyledAttributes.getFloat(index, this.mTextPanY);
-                } else if (index == C0923R.styleable.MotionLabel_textBackgroundRotate) {
+                } else if (index == R.styleable.MotionLabel_textBackgroundRotate) {
                     this.mRotate = obtainStyledAttributes.getFloat(index, this.mRotate);
-                } else if (index == C0923R.styleable.MotionLabel_textBackgroundZoom) {
+                } else if (index == R.styleable.MotionLabel_textBackgroundZoom) {
                     this.mZoom = obtainStyledAttributes.getFloat(index, this.mZoom);
-                } else if (index == C0923R.styleable.MotionLabel_textureHeight) {
+                } else if (index == R.styleable.MotionLabel_textureHeight) {
                     this.mTextureHeight = obtainStyledAttributes.getDimension(index, this.mTextureHeight);
-                } else if (index == C0923R.styleable.MotionLabel_textureWidth) {
+                } else if (index == R.styleable.MotionLabel_textureWidth) {
                     this.mTextureWidth = obtainStyledAttributes.getDimension(index, this.mTextureWidth);
-                } else if (index == C0923R.styleable.MotionLabel_textureEffect) {
+                } else if (index == R.styleable.MotionLabel_textureEffect) {
                     this.mTextureEffect = obtainStyledAttributes.getInt(index, this.mTextureEffect);
                 }
             }
@@ -253,7 +251,7 @@ public class MotionLabel extends View implements FloatLayout {
 
     private void setUpTheme(Context context, @Nullable AttributeSet attributeSet) {
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(C0257R.attr.colorPrimary, typedValue, true);
+        context.getTheme().resolveAttribute(androidx.appcompat.R.attr.colorPrimary, typedValue, true);
         TextPaint textPaint = this.mPaint;
         int i = typedValue.data;
         this.mTextFillColor = i;
@@ -789,7 +787,7 @@ public class MotionLabel extends View implements FloatLayout {
         if (getMeasuredHeight() == i6 && getMeasuredWidth() == i3) {
             super.layout(i, i5, i2, i4);
         } else {
-            measure(View.MeasureSpec.makeMeasureSpec(i3, BasicMeasure.EXACTLY), View.MeasureSpec.makeMeasureSpec(i6, BasicMeasure.EXACTLY));
+            measure(View.MeasureSpec.makeMeasureSpec(i3, 1073741824), View.MeasureSpec.makeMeasureSpec(i6, 1073741824));
             super.layout(i, i5, i2, i4);
         }
         if (this.mAutoSize) {

@@ -2,15 +2,15 @@ package androidx.compose.foundation.lazy.grid;
 
 import androidx.compose.foundation.ExperimentalFoundationApi;
 import androidx.compose.foundation.lazy.layout.LazyLayoutMeasureScope;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.unit.Constraints;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.unit.Constraints;
 import java.util.List;
 import java.util.Map;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyMeasuredItemProvider {
     private final int defaultMainAxisSpacing;
 
@@ -35,28 +35,28 @@ public final class LazyMeasuredItemProvider {
     }
 
     /* renamed from: getAndMeasure-ednRnyU$default, reason: not valid java name */
-    public static /* synthetic */ LazyMeasuredItem m1591getAndMeasureednRnyU$default(LazyMeasuredItemProvider lazyMeasuredItemProvider, int i, int i2, long j, int i3, Object obj) {
+    public static /* synthetic */ LazyMeasuredItem m304getAndMeasureednRnyU$default(LazyMeasuredItemProvider lazyMeasuredItemProvider, int i, int i2, long j, int i3, Object obj) {
         if ((i3 & 2) != 0) {
             i2 = lazyMeasuredItemProvider.defaultMainAxisSpacing;
         }
-        return lazyMeasuredItemProvider.m1592getAndMeasureednRnyU(i, i2, j);
+        return lazyMeasuredItemProvider.m305getAndMeasureednRnyU(i, i2, j);
     }
 
     @NotNull
     /* renamed from: getAndMeasure-ednRnyU, reason: not valid java name */
-    public final LazyMeasuredItem m1592getAndMeasureednRnyU(int i, int i2, long j) {
-        int m5185getMinHeightimpl;
+    public final LazyMeasuredItem m305getAndMeasureednRnyU(int i, int i2, long j) {
+        int m2123getMinHeightimpl;
         Object key = this.itemProvider.getKey(i);
-        List<Placeable> mo1615measure0kLqBqw = this.measureScope.mo1615measure0kLqBqw(i, j);
-        if (Constraints.m5182getHasFixedWidthimpl(j)) {
-            m5185getMinHeightimpl = Constraints.m5186getMinWidthimpl(j);
+        List<Placeable> mo309measure0kLqBqw = this.measureScope.mo309measure0kLqBqw(i, j);
+        if (Constraints.m2120getHasFixedWidthimpl(j)) {
+            m2123getMinHeightimpl = Constraints.m2124getMinWidthimpl(j);
         } else {
-            if (!Constraints.m5181getHasFixedHeightimpl(j)) {
+            if (!Constraints.m2119getHasFixedHeightimpl(j)) {
                 throw new IllegalArgumentException("Failed requirement.".toString());
             }
-            m5185getMinHeightimpl = Constraints.m5185getMinHeightimpl(j);
+            m2123getMinHeightimpl = Constraints.m2123getMinHeightimpl(j);
         }
-        return this.measuredItemFactory.mo1577createItemPU_OBEw(i, key, m5185getMinHeightimpl, i2, mo1615measure0kLqBqw);
+        return this.measuredItemFactory.mo296createItemPU_OBEw(i, key, m2123getMinHeightimpl, i2, mo309measure0kLqBqw);
     }
 
     @NotNull

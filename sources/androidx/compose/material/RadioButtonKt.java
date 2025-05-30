@@ -1,26 +1,26 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.ui.unit.Dp;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class RadioButtonKt {
     private static final int RadioAnimationDuration = 100;
     private static final float RadioButtonDotSize;
     private static final float RadioButtonPadding;
-    private static final float RadioButtonRippleRadius = C0856Dp.m5216constructorimpl(24);
+    private static final float RadioButtonRippleRadius = Dp.m2142constructorimpl(24);
     private static final float RadioButtonSize;
     private static final float RadioRadius;
     private static final float RadioStrokeWidth;
 
     static {
         float f = 2;
-        RadioButtonPadding = C0856Dp.m5216constructorimpl(f);
-        float m5216constructorimpl = C0856Dp.m5216constructorimpl(20);
-        RadioButtonSize = m5216constructorimpl;
-        RadioRadius = C0856Dp.m5216constructorimpl(m5216constructorimpl / f);
-        RadioButtonDotSize = C0856Dp.m5216constructorimpl(12);
-        RadioStrokeWidth = C0856Dp.m5216constructorimpl(f);
+        RadioButtonPadding = Dp.m2142constructorimpl(f);
+        float m2142constructorimpl = Dp.m2142constructorimpl(20);
+        RadioButtonSize = m2142constructorimpl;
+        RadioRadius = Dp.m2142constructorimpl(m2142constructorimpl / f);
+        RadioButtonDotSize = Dp.m2142constructorimpl(12);
+        RadioStrokeWidth = Dp.m2142constructorimpl(f);
     }
 
     /* JADX WARN: Removed duplicated region for block: B:13:0x005e  */
@@ -53,12 +53,12 @@ public final class RadioButtonKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void RadioButton(final boolean r22, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function0<kotlin.Unit> r23, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r24, boolean r25, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r26, @org.jetbrains.annotations.Nullable androidx.compose.material.RadioButtonColors r27, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r28, final int r29, final int r30) {
+    public static final void RadioButton(final boolean r22, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function0<kotlin.Unit> r23, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r24, boolean r25, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r26, @org.jetbrains.annotations.Nullable androidx.compose.material.RadioButtonColors r27, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r28, final int r29, final int r30) {
         /*
             Method dump skipped, instructions count: 601
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.RadioButtonKt.RadioButton(boolean, kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, boolean, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.material.RadioButtonColors, androidx.compose.runtime.Composer, int, int):void");
     }

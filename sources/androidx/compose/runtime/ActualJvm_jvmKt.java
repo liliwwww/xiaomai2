@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ActualJvm_jvmKt {
     public static final void ensureMutable(@NotNull Object obj) {
         Intrinsics.checkNotNullParameter(obj, "it");
@@ -35,7 +35,7 @@ public final class ActualJvm_jvmKt {
 
     @PublishedApi
     /* renamed from: synchronized, reason: not valid java name */
-    public static final <R> R m2384synchronized(@NotNull Object obj, @NotNull Function0<? extends R> function0) {
+    public static final <R> R m737synchronized(@NotNull Object obj, @NotNull Function0<? extends R> function0) {
         R r;
         Intrinsics.checkNotNullParameter(obj, "lock");
         Intrinsics.checkNotNullParameter(function0, "block");

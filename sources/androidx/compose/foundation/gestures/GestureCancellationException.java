@@ -7,14 +7,14 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class GestureCancellationException extends CancellationException {
     public static final int $stable = 0;
 
     /* JADX WARN: Illegal instructions before constructor call */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public GestureCancellationException() {
         /*

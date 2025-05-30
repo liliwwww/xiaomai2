@@ -5,22 +5,22 @@ import android.content.ContextWrapper;
 import android.view.View;
 import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.activity.ViewTreeOnBackPressedDispatcherOwner;
-import androidx.compose.p004ui.platform.AndroidCompositionLocals_androidKt;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.CompositionLocalKt;
 import androidx.compose.runtime.ProvidableCompositionLocal;
 import androidx.compose.runtime.ProvidedValue;
+import androidx.compose.runtime.SnapshotMutationPolicy;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.platform.AndroidCompositionLocals_androidKt;
 import kotlin.jvm.JvmName;
-import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LocalOnBackPressedDispatcherOwner {
     public static final int $stable = 0;
 
@@ -28,13 +28,7 @@ public final class LocalOnBackPressedDispatcherOwner {
     public static final LocalOnBackPressedDispatcherOwner INSTANCE = new LocalOnBackPressedDispatcherOwner();
 
     @NotNull
-    private static final ProvidableCompositionLocal<OnBackPressedDispatcherOwner> LocalOnBackPressedDispatcherOwner = CompositionLocalKt.compositionLocalOf$default(null, new Function0<OnBackPressedDispatcherOwner>() { // from class: androidx.activity.compose.LocalOnBackPressedDispatcherOwner$LocalOnBackPressedDispatcherOwner$1
-        @Nullable
-        /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-        public final OnBackPressedDispatcherOwner m934invoke() {
-            return null;
-        }
-    }, 1, null);
+    private static final ProvidableCompositionLocal<OnBackPressedDispatcherOwner> LocalOnBackPressedDispatcherOwner = CompositionLocalKt.compositionLocalOf$default((SnapshotMutationPolicy) null, LocalOnBackPressedDispatcherOwner.1.INSTANCE, 1, (Object) null);
 
     private LocalOnBackPressedDispatcherOwner() {
     }

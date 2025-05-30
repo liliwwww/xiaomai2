@@ -3,7 +3,6 @@ package androidx.compose.runtime.external.kotlinx.collections.immutable.implemen
 import androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.internal.DeltaCounter;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.internal.MutabilityOwnership;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -13,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class PersistentHashMapBuilder<K, V> extends AbstractMutableMap<K, V> implements PersistentMap.Builder<K, V> {
 
     @NotNull
@@ -54,17 +53,17 @@ public final class PersistentHashMapBuilder<K, V> extends AbstractMutableMap<K, 
     @Override // java.util.Map
     @Nullable
     public V get(Object obj) {
-        return this.node.get(obj != null ? obj.hashCode() : 0, obj, 0);
+        return (V) this.node.get(obj != null ? obj.hashCode() : 0, obj, 0);
     }
 
     @NotNull
     public Set<Map.Entry<K, V>> getEntries() {
-        return (Set<Map.Entry<K, V>>) new PersistentHashMapBuilderEntries(this);
+        return new PersistentHashMapBuilderEntries(this);
     }
 
     @NotNull
     public Set<K> getKeys() {
-        return (Set<K>) new PersistentHashMapBuilderKeys(this);
+        return new PersistentHashMapBuilderKeys(this);
     }
 
     public final int getModCount$runtime_release() {
@@ -92,7 +91,7 @@ public final class PersistentHashMapBuilder<K, V> extends AbstractMutableMap<K, 
 
     @NotNull
     public Collection<V> getValues() {
-        return (Collection<V>) new PersistentHashMapBuilderValues(this);
+        return new PersistentHashMapBuilderValues(this);
     }
 
     @Override // java.util.Map
@@ -106,7 +105,7 @@ public final class PersistentHashMapBuilder<K, V> extends AbstractMutableMap<K, 
     /* JADX WARN: Multi-variable type inference failed */
     @Override // java.util.Map
     public void putAll(@NotNull Map<? extends K, ? extends V> map) {
-        Intrinsics.checkNotNullParameter(map, TypedValues.TransitionType.S_FROM);
+        Intrinsics.checkNotNullParameter(map, "from");
         PersistentHashMap<K, V> persistentHashMap = map instanceof PersistentHashMap ? (PersistentHashMap) map : null;
         if (persistentHashMap == null) {
             PersistentHashMapBuilder persistentHashMapBuilder = map instanceof PersistentHashMapBuilder ? (PersistentHashMapBuilder) map : null;
@@ -119,7 +118,7 @@ public final class PersistentHashMapBuilder<K, V> extends AbstractMutableMap<K, 
         DeltaCounter deltaCounter = new DeltaCounter(0, 1, null);
         int size = size();
         TrieNode<K, V> trieNode = this.node;
-        TrieNode<K, V> node$runtime_release = persistentHashMap.getNode$runtime_release();
+        TrieNode node$runtime_release = persistentHashMap.getNode$runtime_release();
         Intrinsics.checkNotNull(node$runtime_release, "null cannot be cast to non-null type androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableMap.TrieNode<K of androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableMap.PersistentHashMapBuilder, V of androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableMap.PersistentHashMapBuilder>");
         this.node = trieNode.mutablePutAll(node$runtime_release, 0, deltaCounter, this);
         int size2 = (persistentHashMap.size() + size) - deltaCounter.getCount();

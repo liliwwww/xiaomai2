@@ -1,19 +1,20 @@
 package androidx.compose.foundation.text;
 
 import android.view.KeyEvent;
+import androidx.appcompat.R;
 import androidx.compose.foundation.text.selection.TextFieldPreparedSelection;
 import androidx.compose.foundation.text.selection.TextFieldSelectionManager;
 import androidx.compose.foundation.text.selection.TextPreparedSelectionState;
-import androidx.compose.p004ui.input.key.KeyEventType;
-import androidx.compose.p004ui.input.key.KeyEvent_androidKt;
-import androidx.compose.p004ui.text.TextRange;
-import androidx.compose.p004ui.text.input.CommitTextCommand;
-import androidx.compose.p004ui.text.input.DeleteSurroundingTextCommand;
-import androidx.compose.p004ui.text.input.EditCommand;
-import androidx.compose.p004ui.text.input.EditProcessor;
-import androidx.compose.p004ui.text.input.FinishComposingTextCommand;
-import androidx.compose.p004ui.text.input.OffsetMapping;
-import androidx.compose.p004ui.text.input.TextFieldValue;
+import androidx.compose.ui.input.key.KeyEventType;
+import androidx.compose.ui.input.key.KeyEvent_androidKt;
+import androidx.compose.ui.text.TextRange;
+import androidx.compose.ui.text.input.CommitTextCommand;
+import androidx.compose.ui.text.input.DeleteSurroundingTextCommand;
+import androidx.compose.ui.text.input.EditCommand;
+import androidx.compose.ui.text.input.EditProcessor;
+import androidx.compose.ui.text.input.FinishComposingTextCommand;
+import androidx.compose.ui.text.input.OffsetMapping;
+import androidx.compose.ui.text.input.TextFieldValue;
 import androidx.core.app.NotificationCompat;
 import java.util.List;
 import kotlin.Unit;
@@ -26,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TextFieldKeyInput {
     private final boolean editable;
 
@@ -84,7 +85,7 @@ public final class TextFieldKeyInput {
     /* JADX INFO: Access modifiers changed from: private */
     public final void apply(List<? extends EditCommand> list) {
         EditProcessor processor = this.state.getProcessor();
-        List<? extends EditCommand> mutableList = CollectionsKt.toMutableList(list);
+        List mutableList = CollectionsKt.toMutableList(list);
         mutableList.add(0, new FinishComposingTextCommand());
         this.onValueChange.invoke(processor.apply(mutableList));
     }
@@ -92,19 +93,19 @@ public final class TextFieldKeyInput {
     private final void commandExecutionContext(Function1<? super TextFieldPreparedSelection, Unit> function1) {
         TextFieldPreparedSelection textFieldPreparedSelection = new TextFieldPreparedSelection(this.value, this.offsetMapping, this.state.getLayoutResult(), this.preparedSelectionState);
         function1.invoke(textFieldPreparedSelection);
-        if (TextRange.m4742equalsimpl0(textFieldPreparedSelection.m1822getSelectiond9O1mEE(), this.value.m4956getSelectiond9O1mEE()) && Intrinsics.areEqual(textFieldPreparedSelection.getAnnotatedString(), this.value.getAnnotatedString())) {
+        if (TextRange.equals-impl0(textFieldPreparedSelection.getSelection-d9O1mEE(), this.value.m1985getSelectiond9O1mEE()) && Intrinsics.areEqual(textFieldPreparedSelection.getAnnotatedString(), this.value.getAnnotatedString())) {
             return;
         }
         this.onValueChange.invoke(textFieldPreparedSelection.getValue());
     }
 
     /* renamed from: typedCommand-ZmokQxo, reason: not valid java name */
-    private final CommitTextCommand m1789typedCommandZmokQxo(KeyEvent keyEvent) {
-        Integer m1726consumeZmokQxo;
-        if (!TextFieldKeyInput_androidKt.m1792isTypedEventZmokQxo(keyEvent) || (m1726consumeZmokQxo = this.keyCombiner.m1726consumeZmokQxo(keyEvent)) == null) {
+    private final CommitTextCommand m439typedCommandZmokQxo(KeyEvent keyEvent) {
+        Integer m393consumeZmokQxo;
+        if (!TextFieldKeyInput_androidKt.isTypedEvent-ZmokQxo(keyEvent) || (m393consumeZmokQxo = this.keyCombiner.m393consumeZmokQxo(keyEvent)) == null) {
             return null;
         }
-        String sb = StringHelpers_jvmKt.appendCodePointX(new StringBuilder(), m1726consumeZmokQxo.intValue()).toString();
+        String sb = StringHelpers_jvmKt.appendCodePointX(new StringBuilder(), m393consumeZmokQxo.intValue()).toString();
         Intrinsics.checkNotNullExpressionValue(sb, "StringBuilder().appendCo…ntX(codePoint).toString()");
         return new CommitTextCommand(sb, 1);
     }
@@ -148,228 +149,24 @@ public final class TextFieldKeyInput {
     }
 
     /* renamed from: process-ZmokQxo, reason: not valid java name */
-    public final boolean m1790processZmokQxo(@NotNull KeyEvent keyEvent) {
-        final KeyCommand mo1728mapZmokQxo;
+    public final boolean m440processZmokQxo(@NotNull KeyEvent keyEvent) {
+        final KeyCommand mo396mapZmokQxo;
         Intrinsics.checkNotNullParameter(keyEvent, NotificationCompat.CATEGORY_EVENT);
-        CommitTextCommand m1789typedCommandZmokQxo = m1789typedCommandZmokQxo(keyEvent);
-        if (m1789typedCommandZmokQxo != null) {
+        CommitTextCommand m439typedCommandZmokQxo = m439typedCommandZmokQxo(keyEvent);
+        if (m439typedCommandZmokQxo != null) {
             if (!this.editable) {
                 return false;
             }
-            apply(m1789typedCommandZmokQxo);
+            apply((EditCommand) m439typedCommandZmokQxo);
             this.preparedSelectionState.resetCachedX();
             return true;
         }
-        if (!KeyEventType.m3957equalsimpl0(KeyEvent_androidKt.m3965getTypeZmokQxo(keyEvent), KeyEventType.Companion.m3961getKeyDownCS__XNY()) || (mo1728mapZmokQxo = this.keyMapping.mo1728mapZmokQxo(keyEvent)) == null || (mo1728mapZmokQxo.getEditsText() && !this.editable)) {
+        if (!KeyEventType.equals-impl0(KeyEvent_androidKt.getType-ZmokQxo(keyEvent), KeyEventType.Companion.m1387getKeyDownCS__XNY()) || (mo396mapZmokQxo = this.keyMapping.mo396mapZmokQxo(keyEvent)) == null || (mo396mapZmokQxo.getEditsText() && !this.editable)) {
             return false;
         }
         final Ref.BooleanRef booleanRef = new Ref.BooleanRef();
         booleanRef.element = true;
         commandExecutionContext(new Function1<TextFieldPreparedSelection, Unit>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput$process$2
-
-            /* compiled from: Taobao */
-            /* loaded from: classes2.dex */
-            public /* synthetic */ class WhenMappings {
-                public static final /* synthetic */ int[] $EnumSwitchMapping$0;
-
-                static {
-                    int[] iArr = new int[KeyCommand.values().length];
-                    try {
-                        iArr[KeyCommand.COPY.ordinal()] = 1;
-                    } catch (NoSuchFieldError unused) {
-                    }
-                    try {
-                        iArr[KeyCommand.PASTE.ordinal()] = 2;
-                    } catch (NoSuchFieldError unused2) {
-                    }
-                    try {
-                        iArr[KeyCommand.CUT.ordinal()] = 3;
-                    } catch (NoSuchFieldError unused3) {
-                    }
-                    try {
-                        iArr[KeyCommand.LEFT_CHAR.ordinal()] = 4;
-                    } catch (NoSuchFieldError unused4) {
-                    }
-                    try {
-                        iArr[KeyCommand.RIGHT_CHAR.ordinal()] = 5;
-                    } catch (NoSuchFieldError unused5) {
-                    }
-                    try {
-                        iArr[KeyCommand.LEFT_WORD.ordinal()] = 6;
-                    } catch (NoSuchFieldError unused6) {
-                    }
-                    try {
-                        iArr[KeyCommand.RIGHT_WORD.ordinal()] = 7;
-                    } catch (NoSuchFieldError unused7) {
-                    }
-                    try {
-                        iArr[KeyCommand.PREV_PARAGRAPH.ordinal()] = 8;
-                    } catch (NoSuchFieldError unused8) {
-                    }
-                    try {
-                        iArr[KeyCommand.NEXT_PARAGRAPH.ordinal()] = 9;
-                    } catch (NoSuchFieldError unused9) {
-                    }
-                    try {
-                        iArr[KeyCommand.UP.ordinal()] = 10;
-                    } catch (NoSuchFieldError unused10) {
-                    }
-                    try {
-                        iArr[KeyCommand.DOWN.ordinal()] = 11;
-                    } catch (NoSuchFieldError unused11) {
-                    }
-                    try {
-                        iArr[KeyCommand.PAGE_UP.ordinal()] = 12;
-                    } catch (NoSuchFieldError unused12) {
-                    }
-                    try {
-                        iArr[KeyCommand.PAGE_DOWN.ordinal()] = 13;
-                    } catch (NoSuchFieldError unused13) {
-                    }
-                    try {
-                        iArr[KeyCommand.LINE_START.ordinal()] = 14;
-                    } catch (NoSuchFieldError unused14) {
-                    }
-                    try {
-                        iArr[KeyCommand.LINE_END.ordinal()] = 15;
-                    } catch (NoSuchFieldError unused15) {
-                    }
-                    try {
-                        iArr[KeyCommand.LINE_LEFT.ordinal()] = 16;
-                    } catch (NoSuchFieldError unused16) {
-                    }
-                    try {
-                        iArr[KeyCommand.LINE_RIGHT.ordinal()] = 17;
-                    } catch (NoSuchFieldError unused17) {
-                    }
-                    try {
-                        iArr[KeyCommand.HOME.ordinal()] = 18;
-                    } catch (NoSuchFieldError unused18) {
-                    }
-                    try {
-                        iArr[KeyCommand.END.ordinal()] = 19;
-                    } catch (NoSuchFieldError unused19) {
-                    }
-                    try {
-                        iArr[KeyCommand.DELETE_PREV_CHAR.ordinal()] = 20;
-                    } catch (NoSuchFieldError unused20) {
-                    }
-                    try {
-                        iArr[KeyCommand.DELETE_NEXT_CHAR.ordinal()] = 21;
-                    } catch (NoSuchFieldError unused21) {
-                    }
-                    try {
-                        iArr[KeyCommand.DELETE_PREV_WORD.ordinal()] = 22;
-                    } catch (NoSuchFieldError unused22) {
-                    }
-                    try {
-                        iArr[KeyCommand.DELETE_NEXT_WORD.ordinal()] = 23;
-                    } catch (NoSuchFieldError unused23) {
-                    }
-                    try {
-                        iArr[KeyCommand.DELETE_FROM_LINE_START.ordinal()] = 24;
-                    } catch (NoSuchFieldError unused24) {
-                    }
-                    try {
-                        iArr[KeyCommand.DELETE_TO_LINE_END.ordinal()] = 25;
-                    } catch (NoSuchFieldError unused25) {
-                    }
-                    try {
-                        iArr[KeyCommand.NEW_LINE.ordinal()] = 26;
-                    } catch (NoSuchFieldError unused26) {
-                    }
-                    try {
-                        iArr[KeyCommand.TAB.ordinal()] = 27;
-                    } catch (NoSuchFieldError unused27) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_ALL.ordinal()] = 28;
-                    } catch (NoSuchFieldError unused28) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_LEFT_CHAR.ordinal()] = 29;
-                    } catch (NoSuchFieldError unused29) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_RIGHT_CHAR.ordinal()] = 30;
-                    } catch (NoSuchFieldError unused30) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_LEFT_WORD.ordinal()] = 31;
-                    } catch (NoSuchFieldError unused31) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_RIGHT_WORD.ordinal()] = 32;
-                    } catch (NoSuchFieldError unused32) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_PREV_PARAGRAPH.ordinal()] = 33;
-                    } catch (NoSuchFieldError unused33) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_NEXT_PARAGRAPH.ordinal()] = 34;
-                    } catch (NoSuchFieldError unused34) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_LINE_START.ordinal()] = 35;
-                    } catch (NoSuchFieldError unused35) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_LINE_END.ordinal()] = 36;
-                    } catch (NoSuchFieldError unused36) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_LINE_LEFT.ordinal()] = 37;
-                    } catch (NoSuchFieldError unused37) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_LINE_RIGHT.ordinal()] = 38;
-                    } catch (NoSuchFieldError unused38) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_UP.ordinal()] = 39;
-                    } catch (NoSuchFieldError unused39) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_DOWN.ordinal()] = 40;
-                    } catch (NoSuchFieldError unused40) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_PAGE_UP.ordinal()] = 41;
-                    } catch (NoSuchFieldError unused41) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_PAGE_DOWN.ordinal()] = 42;
-                    } catch (NoSuchFieldError unused42) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_HOME.ordinal()] = 43;
-                    } catch (NoSuchFieldError unused43) {
-                    }
-                    try {
-                        iArr[KeyCommand.SELECT_END.ordinal()] = 44;
-                    } catch (NoSuchFieldError unused44) {
-                    }
-                    try {
-                        iArr[KeyCommand.DESELECT.ordinal()] = 45;
-                    } catch (NoSuchFieldError unused45) {
-                    }
-                    try {
-                        iArr[KeyCommand.UNDO.ordinal()] = 46;
-                    } catch (NoSuchFieldError unused46) {
-                    }
-                    try {
-                        iArr[KeyCommand.REDO.ordinal()] = 47;
-                    } catch (NoSuchFieldError unused47) {
-                    }
-                    try {
-                        iArr[KeyCommand.CHARACTER_PALETTE.ordinal()] = 48;
-                    } catch (NoSuchFieldError unused48) {
-                    }
-                    $EnumSwitchMapping$0 = iArr;
-                }
-            }
-
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             {
                 super(1);
@@ -465,11 +262,11 @@ public final class TextFieldKeyInput {
                         textFieldPreparedSelection.moveCursorToEnd();
                         break;
                     case 20:
-                        List<EditCommand> deleteIfSelectedOr = textFieldPreparedSelection.deleteIfSelectedOr(new Function1<TextFieldPreparedSelection, EditCommand>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput$process$2.3
+                        List deleteIfSelectedOr = textFieldPreparedSelection.deleteIfSelectedOr(new Function1<TextFieldPreparedSelection, EditCommand>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput$process$2.3
                             @Nullable
                             public final EditCommand invoke(@NotNull TextFieldPreparedSelection textFieldPreparedSelection2) {
                                 Intrinsics.checkNotNullParameter(textFieldPreparedSelection2, "$this$deleteIfSelectedOr");
-                                return new DeleteSurroundingTextCommand(TextRange.m4744getEndimpl(textFieldPreparedSelection2.m1822getSelectiond9O1mEE()) - textFieldPreparedSelection2.getPrecedingCharacterIndex(), 0);
+                                return new DeleteSurroundingTextCommand(TextRange.getEnd-impl(textFieldPreparedSelection2.getSelection-d9O1mEE()) - textFieldPreparedSelection2.getPrecedingCharacterIndex(), 0);
                             }
                         });
                         if (deleteIfSelectedOr != null) {
@@ -478,13 +275,13 @@ public final class TextFieldKeyInput {
                         }
                         break;
                     case 21:
-                        List<EditCommand> deleteIfSelectedOr2 = textFieldPreparedSelection.deleteIfSelectedOr(new Function1<TextFieldPreparedSelection, EditCommand>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput$process$2.4
+                        List deleteIfSelectedOr2 = textFieldPreparedSelection.deleteIfSelectedOr(new Function1<TextFieldPreparedSelection, EditCommand>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput$process$2.4
                             @Nullable
                             public final EditCommand invoke(@NotNull TextFieldPreparedSelection textFieldPreparedSelection2) {
                                 Intrinsics.checkNotNullParameter(textFieldPreparedSelection2, "$this$deleteIfSelectedOr");
                                 int nextCharacterIndex = textFieldPreparedSelection2.getNextCharacterIndex();
                                 if (nextCharacterIndex != -1) {
-                                    return new DeleteSurroundingTextCommand(0, nextCharacterIndex - TextRange.m4744getEndimpl(textFieldPreparedSelection2.m1822getSelectiond9O1mEE()));
+                                    return new DeleteSurroundingTextCommand(0, nextCharacterIndex - TextRange.getEnd-impl(textFieldPreparedSelection2.getSelection-d9O1mEE()));
                                 }
                                 return null;
                             }
@@ -495,7 +292,7 @@ public final class TextFieldKeyInput {
                         }
                         break;
                     case 22:
-                        List<EditCommand> deleteIfSelectedOr3 = textFieldPreparedSelection.deleteIfSelectedOr(new Function1<TextFieldPreparedSelection, EditCommand>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput$process$2.5
+                        List deleteIfSelectedOr3 = textFieldPreparedSelection.deleteIfSelectedOr(new Function1<TextFieldPreparedSelection, EditCommand>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput$process$2.5
                             @Nullable
                             public final EditCommand invoke(@NotNull TextFieldPreparedSelection textFieldPreparedSelection2) {
                                 Intrinsics.checkNotNullParameter(textFieldPreparedSelection2, "$this$deleteIfSelectedOr");
@@ -503,7 +300,7 @@ public final class TextFieldKeyInput {
                                 if (previousWordOffset == null) {
                                     return null;
                                 }
-                                return new DeleteSurroundingTextCommand(TextRange.m4744getEndimpl(textFieldPreparedSelection2.m1822getSelectiond9O1mEE()) - previousWordOffset.intValue(), 0);
+                                return new DeleteSurroundingTextCommand(TextRange.getEnd-impl(textFieldPreparedSelection2.getSelection-d9O1mEE()) - previousWordOffset.intValue(), 0);
                             }
                         });
                         if (deleteIfSelectedOr3 != null) {
@@ -512,13 +309,13 @@ public final class TextFieldKeyInput {
                         }
                         break;
                     case 23:
-                        List<EditCommand> deleteIfSelectedOr4 = textFieldPreparedSelection.deleteIfSelectedOr(new Function1<TextFieldPreparedSelection, EditCommand>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput$process$2.6
+                        List deleteIfSelectedOr4 = textFieldPreparedSelection.deleteIfSelectedOr(new Function1<TextFieldPreparedSelection, EditCommand>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput$process$2.6
                             @Nullable
                             public final EditCommand invoke(@NotNull TextFieldPreparedSelection textFieldPreparedSelection2) {
                                 Intrinsics.checkNotNullParameter(textFieldPreparedSelection2, "$this$deleteIfSelectedOr");
                                 Integer nextWordOffset = textFieldPreparedSelection2.getNextWordOffset();
                                 if (nextWordOffset != null) {
-                                    return new DeleteSurroundingTextCommand(0, nextWordOffset.intValue() - TextRange.m4744getEndimpl(textFieldPreparedSelection2.m1822getSelectiond9O1mEE()));
+                                    return new DeleteSurroundingTextCommand(0, nextWordOffset.intValue() - TextRange.getEnd-impl(textFieldPreparedSelection2.getSelection-d9O1mEE()));
                                 }
                                 return null;
                             }
@@ -529,7 +326,7 @@ public final class TextFieldKeyInput {
                         }
                         break;
                     case 24:
-                        List<EditCommand> deleteIfSelectedOr5 = textFieldPreparedSelection.deleteIfSelectedOr(new Function1<TextFieldPreparedSelection, EditCommand>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput$process$2.7
+                        List deleteIfSelectedOr5 = textFieldPreparedSelection.deleteIfSelectedOr(new Function1<TextFieldPreparedSelection, EditCommand>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput$process$2.7
                             @Nullable
                             public final EditCommand invoke(@NotNull TextFieldPreparedSelection textFieldPreparedSelection2) {
                                 Intrinsics.checkNotNullParameter(textFieldPreparedSelection2, "$this$deleteIfSelectedOr");
@@ -537,7 +334,7 @@ public final class TextFieldKeyInput {
                                 if (lineStartByOffset == null) {
                                     return null;
                                 }
-                                return new DeleteSurroundingTextCommand(TextRange.m4744getEndimpl(textFieldPreparedSelection2.m1822getSelectiond9O1mEE()) - lineStartByOffset.intValue(), 0);
+                                return new DeleteSurroundingTextCommand(TextRange.getEnd-impl(textFieldPreparedSelection2.getSelection-d9O1mEE()) - lineStartByOffset.intValue(), 0);
                             }
                         });
                         if (deleteIfSelectedOr5 != null) {
@@ -546,13 +343,13 @@ public final class TextFieldKeyInput {
                         }
                         break;
                     case 25:
-                        List<EditCommand> deleteIfSelectedOr6 = textFieldPreparedSelection.deleteIfSelectedOr(new Function1<TextFieldPreparedSelection, EditCommand>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput$process$2.8
+                        List deleteIfSelectedOr6 = textFieldPreparedSelection.deleteIfSelectedOr(new Function1<TextFieldPreparedSelection, EditCommand>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput$process$2.8
                             @Nullable
                             public final EditCommand invoke(@NotNull TextFieldPreparedSelection textFieldPreparedSelection2) {
                                 Intrinsics.checkNotNullParameter(textFieldPreparedSelection2, "$this$deleteIfSelectedOr");
                                 Integer lineEndByOffset = textFieldPreparedSelection2.getLineEndByOffset();
                                 if (lineEndByOffset != null) {
-                                    return new DeleteSurroundingTextCommand(0, lineEndByOffset.intValue() - TextRange.m4744getEndimpl(textFieldPreparedSelection2.m1822getSelectiond9O1mEE()));
+                                    return new DeleteSurroundingTextCommand(0, lineEndByOffset.intValue() - TextRange.getEnd-impl(textFieldPreparedSelection2.getSelection-d9O1mEE()));
                                 }
                                 return null;
                             }
@@ -564,7 +361,7 @@ public final class TextFieldKeyInput {
                         break;
                     case 26:
                         if (!this.getSingleLine()) {
-                            this.apply(new CommitTextCommand("\n", 1));
+                            this.apply((EditCommand) new CommitTextCommand("\n", 1));
                             break;
                         } else {
                             booleanRef.element = false;
@@ -572,7 +369,7 @@ public final class TextFieldKeyInput {
                         }
                     case 27:
                         if (!this.getSingleLine()) {
-                            this.apply(new CommitTextCommand("\t", 1));
+                            this.apply((EditCommand) new CommitTextCommand("\t", 1));
                             break;
                         } else {
                             booleanRef.element = false;
@@ -652,7 +449,7 @@ public final class TextFieldKeyInput {
                             break;
                         }
                         break;
-                    case 48:
+                    case R.styleable.AppCompatTheme_checkboxStyle /* 48 */:
                         KeyEventHelpers_androidKt.showCharacterPalette();
                         break;
                 }
@@ -671,15 +468,6 @@ public final class TextFieldKeyInput {
     }
 
     public /* synthetic */ TextFieldKeyInput(TextFieldState textFieldState, TextFieldSelectionManager textFieldSelectionManager, TextFieldValue textFieldValue, boolean z, boolean z2, TextPreparedSelectionState textPreparedSelectionState, OffsetMapping offsetMapping, UndoManager undoManager, DeadKeyCombiner deadKeyCombiner, KeyMapping keyMapping, Function1 function1, int i, DefaultConstructorMarker defaultConstructorMarker) {
-        this(textFieldState, textFieldSelectionManager, (i & 4) != 0 ? new TextFieldValue((String) null, 0L, (TextRange) null, 7, (DefaultConstructorMarker) null) : textFieldValue, (i & 8) != 0 ? true : z, (i & 16) != 0 ? false : z2, textPreparedSelectionState, (i & 64) != 0 ? OffsetMapping.Companion.getIdentity() : offsetMapping, (i & 128) != 0 ? null : undoManager, deadKeyCombiner, (i & 512) != 0 ? KeyMapping_androidKt.getPlatformDefaultKeyMapping() : keyMapping, (i & 1024) != 0 ? new Function1<TextFieldValue, Unit>() { // from class: androidx.compose.foundation.text.TextFieldKeyInput.1
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((TextFieldValue) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull TextFieldValue textFieldValue2) {
-                Intrinsics.checkNotNullParameter(textFieldValue2, "it");
-            }
-        } : function1);
+        this(textFieldState, textFieldSelectionManager, (i & 4) != 0 ? new TextFieldValue((String) null, 0L, (TextRange) null, 7, (DefaultConstructorMarker) null) : textFieldValue, (i & 8) != 0 ? true : z, (i & 16) != 0 ? false : z2, textPreparedSelectionState, (i & 64) != 0 ? OffsetMapping.Companion.getIdentity() : offsetMapping, (i & 128) != 0 ? null : undoManager, deadKeyCombiner, (i & 512) != 0 ? KeyMapping_androidKt.getPlatformDefaultKeyMapping() : keyMapping, (i & 1024) != 0 ? 1.INSTANCE : function1);
     }
 }

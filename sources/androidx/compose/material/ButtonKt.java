@@ -5,14 +5,14 @@ import androidx.compose.foundation.interaction.InteractionSourceKt;
 import androidx.compose.foundation.interaction.MutableInteractionSource;
 import androidx.compose.foundation.layout.PaddingValues;
 import androidx.compose.foundation.layout.RowScope;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.graphics.Shape;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.graphics.Shape;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function3;
@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ButtonKt {
     /* JADX WARN: Removed duplicated region for block: B:100:0x01d5  */
     /* JADX WARN: Removed duplicated region for block: B:103:0x01f7  */
@@ -67,20 +67,20 @@ public final class ButtonKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void Button(@org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r38, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r39, boolean r40, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r41, @org.jetbrains.annotations.Nullable androidx.compose.material.ButtonElevation r42, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r43, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r44, @org.jetbrains.annotations.Nullable androidx.compose.material.ButtonColors r45, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r46, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r47, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r48, final int r49, final int r50) {
+    public static final void Button(@org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r38, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r39, boolean r40, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r41, @org.jetbrains.annotations.Nullable androidx.compose.material.ButtonElevation r42, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r43, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r44, @org.jetbrains.annotations.Nullable androidx.compose.material.ButtonColors r45, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r46, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r47, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r48, final int r49, final int r50) {
         /*
             Method dump skipped, instructions count: 816
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.ButtonKt.Button(kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, boolean, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.material.ButtonElevation, androidx.compose.ui.graphics.Shape, androidx.compose.foundation.BorderStroke, androidx.compose.material.ButtonColors, androidx.compose.foundation.layout.PaddingValues, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: Button$lambda-1, reason: not valid java name */
-    public static final long m1975Button$lambda1(State<Color> state) {
-        return state.getValue().m2797unboximpl();
+    public static final long m679Button$lambda1(State<Color> state) {
+        return state.getValue().unbox-impl();
     }
 
     @Composable
@@ -107,12 +107,12 @@ public final class ButtonKt {
         ButtonElevation buttonElevation2 = (i2 & 16) != 0 ? null : buttonElevation;
         Shape small = (i2 & 32) != 0 ? MaterialTheme.INSTANCE.getShapes(composer, 6).getSmall() : shape;
         BorderStroke outlinedBorder = (i2 & 64) != 0 ? ButtonDefaults.INSTANCE.getOutlinedBorder(composer, 6) : borderStroke;
-        ButtonColors m1973outlinedButtonColorsRGew2ao = (i2 & 128) != 0 ? ButtonDefaults.INSTANCE.m1973outlinedButtonColorsRGew2ao(0L, 0L, 0L, composer, 3072, 7) : buttonColors;
+        ButtonColors buttonColors2 = (i2 & 128) != 0 ? ButtonDefaults.INSTANCE.outlinedButtonColors-RGew2ao(0L, 0L, 0L, composer, 3072, 7) : buttonColors;
         PaddingValues contentPadding = (i2 & 256) != 0 ? ButtonDefaults.INSTANCE.getContentPadding() : paddingValues;
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-1776134358, i, -1, "androidx.compose.material.OutlinedButton (Button.kt:164)");
         }
-        Button(function0, modifier2, z2, mutableInteractionSource2, buttonElevation2, small, outlinedBorder, m1973outlinedButtonColorsRGew2ao, contentPadding, function3, composer, (i & 14) | (i & 112) | (i & 896) | (i & 7168) | (57344 & i) | (458752 & i) | (3670016 & i) | (29360128 & i) | (234881024 & i) | (1879048192 & i), 0);
+        Button(function0, modifier2, z2, mutableInteractionSource2, buttonElevation2, small, outlinedBorder, buttonColors2, contentPadding, function3, composer, (i & 14) | (i & 112) | (i & 896) | (i & 7168) | (57344 & i) | (458752 & i) | (3670016 & i) | (29360128 & i) | (234881024 & i) | (1879048192 & i), 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -143,12 +143,12 @@ public final class ButtonKt {
         ButtonElevation buttonElevation2 = (i2 & 16) != 0 ? null : buttonElevation;
         Shape small = (i2 & 32) != 0 ? MaterialTheme.INSTANCE.getShapes(composer, 6).getSmall() : shape;
         BorderStroke borderStroke2 = (i2 & 64) != 0 ? null : borderStroke;
-        ButtonColors m1974textButtonColorsRGew2ao = (i2 & 128) != 0 ? ButtonDefaults.INSTANCE.m1974textButtonColorsRGew2ao(0L, 0L, 0L, composer, 3072, 7) : buttonColors;
+        ButtonColors buttonColors2 = (i2 & 128) != 0 ? ButtonDefaults.INSTANCE.textButtonColors-RGew2ao(0L, 0L, 0L, composer, 3072, 7) : buttonColors;
         PaddingValues textButtonContentPadding = (i2 & 256) != 0 ? ButtonDefaults.INSTANCE.getTextButtonContentPadding() : paddingValues;
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(288797557, i, -1, "androidx.compose.material.TextButton (Button.kt:218)");
         }
-        Button(function0, modifier2, z2, mutableInteractionSource2, buttonElevation2, small, borderStroke2, m1974textButtonColorsRGew2ao, textButtonContentPadding, function3, composer, (i & 14) | (i & 112) | (i & 896) | (i & 7168) | (57344 & i) | (458752 & i) | (3670016 & i) | (29360128 & i) | (234881024 & i) | (1879048192 & i), 0);
+        Button(function0, modifier2, z2, mutableInteractionSource2, buttonElevation2, small, borderStroke2, buttonColors2, textButtonContentPadding, function3, composer, (i & 14) | (i & 112) | (i & 896) | (i & 7168) | (57344 & i) | (458752 & i) | (3670016 & i) | (29360128 & i) | (234881024 & i) | (1879048192 & i), 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }

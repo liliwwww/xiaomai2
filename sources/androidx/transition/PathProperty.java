@@ -6,7 +6,7 @@ import android.graphics.PointF;
 import android.util.Property;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class PathProperty<T> extends Property<T, Float> {
     private float mCurrentFraction;
     private final float mPathLength;

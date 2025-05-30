@@ -1,7 +1,7 @@
 package android.taobao.windvane.packageapp.zipapp.utils;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ZipAppConstants {
     public static String APP_INFO_NAME = "app-info.wvc";
     public static String APP_PREFIXES_NAME = "h5-prefixes.wvc";
@@ -26,9 +26,7 @@ public class ZipAppConstants {
     public static int PASSIVE_UPDATE = 0;
     public static String PRELOAD_ZIP = "preload_packageapp.zip";
     public static String SEQ = "seq";
-
-    /* renamed from: TK */
-    public static String f31TK = "tk";
+    public static String TK = "tk";
     public static String TOTAL_UPDATE = "total_update";
     public static int UNINSTALL = -1;
     public static final long UPDATEGROUPID_AGE = 86400000;

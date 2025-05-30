@@ -3,7 +3,7 @@ package androidx.constraintlayout.core.motion.utils;
 import java.lang.reflect.Array;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class HyperSpline {
     double[][] mCtl;
     Cubic[][] mCurve;
@@ -14,32 +14,24 @@ public class HyperSpline {
 
     /* compiled from: Taobao */
     public static class Cubic {
-
-        /* renamed from: mA */
-        double f248mA;
-
-        /* renamed from: mB */
-        double f249mB;
-
-        /* renamed from: mC */
-        double f250mC;
-
-        /* renamed from: mD */
-        double f251mD;
+        double mA;
+        double mB;
+        double mC;
+        double mD;
 
         public Cubic(double d, double d2, double d3, double d4) {
-            this.f248mA = d;
-            this.f249mB = d2;
-            this.f250mC = d3;
-            this.f251mD = d4;
+            this.mA = d;
+            this.mB = d2;
+            this.mC = d3;
+            this.mD = d4;
         }
 
         public double eval(double d) {
-            return (((((this.f251mD * d) + this.f250mC) * d) + this.f249mB) * d) + this.f248mA;
+            return (((((this.mD * d) + this.mC) * d) + this.mB) * d) + this.mA;
         }
 
         public double vel(double d) {
-            return (((this.f251mD * 3.0d * d) + (this.f250mC * 2.0d)) * d) + this.f249mB;
+            return (((this.mD * 3.0d * d) + (this.mC * 2.0d)) * d) + this.mB;
         }
     }
 

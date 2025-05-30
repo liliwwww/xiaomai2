@@ -1,7 +1,7 @@
 package androidx.compose.foundation.gestures;
 
 import androidx.compose.animation.core.DecayAnimationSpec;
-import androidx.compose.p004ui.MotionDurationScale;
+import androidx.compose.ui.MotionDurationScale;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class DefaultFlingBehavior implements FlingBehavior {
 
     @NotNull
@@ -31,7 +31,6 @@ public final class DefaultFlingBehavior implements FlingBehavior {
         return this.lastAnimationCycleCount;
     }
 
-    @Override // androidx.compose.foundation.gestures.FlingBehavior
     @Nullable
     public Object performFling(@NotNull ScrollScope scrollScope, float f, @NotNull Continuation<? super Float> continuation) {
         this.lastAnimationCycleCount = 0;

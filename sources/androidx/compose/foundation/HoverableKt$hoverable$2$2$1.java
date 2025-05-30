@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.HoverableKt$hoverable$2$2$1", f = "Hoverable.kt", i = {}, l = {88}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class HoverableKt$hoverable$2$2$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ boolean $enabled;
     final /* synthetic */ MutableState<HoverInteraction.Enter> $hoverInteraction$delegate;
@@ -43,6 +43,7 @@ final class HoverableKt$hoverable$2$2$1 extends SuspendLambda implements Functio
 
     @Nullable
     public final Object invokeSuspend(@NotNull Object obj) {
+        Object invoke$emitExit;
         Object coroutine_suspended = IntrinsicsKt.getCOROUTINE_SUSPENDED();
         int i = this.label;
         if (i == 0) {
@@ -51,7 +52,8 @@ final class HoverableKt$hoverable$2$2$1 extends SuspendLambda implements Functio
                 MutableState<HoverInteraction.Enter> mutableState = this.$hoverInteraction$delegate;
                 MutableInteractionSource mutableInteractionSource = this.$interactionSource;
                 this.label = 1;
-                if (HoverableKt$hoverable$2.invoke$emitExit(mutableState, mutableInteractionSource, this) == coroutine_suspended) {
+                invoke$emitExit = HoverableKt$hoverable$2.invoke$emitExit(mutableState, mutableInteractionSource, this);
+                if (invoke$emitExit == coroutine_suspended) {
                     return coroutine_suspended;
                 }
             }

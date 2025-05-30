@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.runtime.ProduceStateScopeImpl", f = "ProduceState.kt", i = {0}, l = {225}, m = "awaitDispose", n = {"onDispose"}, s = {"L$0"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class ProduceStateScopeImpl$awaitDispose$1 extends ContinuationImpl {
     Object L$0;
     int label;

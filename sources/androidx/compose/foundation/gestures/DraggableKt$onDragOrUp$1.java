@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.DraggableKt", f = "Draggable.kt", i = {0, 0, 0, 0, 0}, l = {471}, m = "onDragOrUp-Axegvzg", n = {"onDrag", "motionFromChange", "$this$drag_u2dVnAYq1g$iv", "$this$awaitDragOrUp_u2djO51t88$iv$iv", "pointer$iv$iv"}, s = {"L$0", "L$1", "L$2", "L$3", "L$4"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DraggableKt$onDragOrUp$1 extends ContinuationImpl {
     Object L$0;
     Object L$1;
@@ -24,10 +24,10 @@ final class DraggableKt$onDragOrUp$1 extends ContinuationImpl {
 
     @Nullable
     public final Object invokeSuspend(@NotNull Object obj) {
-        Object m1255onDragOrUpAxegvzg;
+        Object m212onDragOrUpAxegvzg;
         this.result = obj;
         this.label |= Integer.MIN_VALUE;
-        m1255onDragOrUpAxegvzg = DraggableKt.m1255onDragOrUpAxegvzg(null, null, 0L, null, this);
-        return m1255onDragOrUpAxegvzg;
+        m212onDragOrUpAxegvzg = DraggableKt.m212onDragOrUpAxegvzg(null, null, 0L, null, this);
+        return m212onDragOrUpAxegvzg;
     }
 }

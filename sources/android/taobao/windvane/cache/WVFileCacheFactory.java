@@ -4,10 +4,9 @@ import android.taobao.windvane.config.GlobalConfig;
 import android.taobao.windvane.file.FileManager;
 import android.taobao.windvane.util.StorageMgr;
 import android.taobao.windvane.util.TaoLog;
-import android.taobao.windvane.util.WVNativeCallbackUtil;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVFileCacheFactory {
     private static WVFileCacheFactory cacheFactory;
 
@@ -27,11 +26,11 @@ public class WVFileCacheFactory {
 
     public WVFileCache createFileCache(String str, String str2, int i, boolean z) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("FileCacheFactory", "createFileCache: " + str + WVNativeCallbackUtil.SEPERATER + str2 + " capacity: " + i + " sdcard: " + z);
+            TaoLog.d("FileCacheFactory", "createFileCache: " + str + "/" + str2 + " capacity: " + i + " sdcard: " + z);
         }
         if (str2 == null || i < 10) {
             if (TaoLog.getLogStatus()) {
-                TaoLog.m18d("FileCacheFactory", "createFileCache: url is null, or capacity is too small");
+                TaoLog.d("FileCacheFactory", "createFileCache: url is null, or capacity is too small");
             }
             return null;
         }
@@ -39,13 +38,13 @@ public class WVFileCacheFactory {
         String createBaseDir = FileManager.createBaseDir(GlobalConfig.context, str, str2, z2);
         String createInnerfileStorage = FileManager.createInnerfileStorage(GlobalConfig.context, str, str2);
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("FileCacheFactory", "base dir: " + createBaseDir);
+            TaoLog.d("FileCacheFactory", "base dir: " + createBaseDir);
         }
         WVFileCache wVFileCache = new WVFileCache(createBaseDir, createInnerfileStorage, i, z2);
         if (wVFileCache.init()) {
             return wVFileCache;
         }
-        TaoLog.m30w("FileCacheFactory", "init FileCache failed");
+        TaoLog.w("FileCacheFactory", "init FileCache failed");
         return null;
     }
 }

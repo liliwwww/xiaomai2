@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class RunGroup {
     public static final int BASELINE = 2;
     public static final int END = 1;
@@ -39,8 +39,8 @@ class RunGroup {
         if (!widgetRun.widget.isTerminalWidget[i]) {
             return false;
         }
-        for (Dependency dependency : widgetRun.start.dependencies) {
-            if ((dependency instanceof DependencyNode) && (widgetRun3 = (dependencyNode2 = (DependencyNode) dependency).run) != widgetRun && dependencyNode2 == widgetRun3.start) {
+        for (DependencyNode dependencyNode3 : widgetRun.start.dependencies) {
+            if ((dependencyNode3 instanceof DependencyNode) && (widgetRun3 = (dependencyNode2 = dependencyNode3).run) != widgetRun && dependencyNode2 == widgetRun3.start) {
                 if (widgetRun instanceof ChainRun) {
                     Iterator<WidgetRun> it = ((ChainRun) widgetRun).widgets.iterator();
                     while (it.hasNext()) {
@@ -52,8 +52,8 @@ class RunGroup {
                 defineTerminalWidget(dependencyNode2.run, i);
             }
         }
-        for (Dependency dependency2 : widgetRun.end.dependencies) {
-            if ((dependency2 instanceof DependencyNode) && (widgetRun2 = (dependencyNode = (DependencyNode) dependency2).run) != widgetRun && dependencyNode == widgetRun2.start) {
+        for (DependencyNode dependencyNode4 : widgetRun.end.dependencies) {
+            if ((dependencyNode4 instanceof DependencyNode) && (widgetRun2 = (dependencyNode = dependencyNode4).run) != widgetRun && dependencyNode == widgetRun2.start) {
                 if (widgetRun instanceof ChainRun) {
                     Iterator<WidgetRun> it2 = ((ChainRun) widgetRun).widgets.iterator();
                     while (it2.hasNext()) {
@@ -76,7 +76,7 @@ class RunGroup {
         int size = dependencyNode.dependencies.size();
         long j2 = j;
         for (int i = 0; i < size; i++) {
-            Dependency dependency = dependencyNode.dependencies.get(i);
+            Dependency dependency = (Dependency) dependencyNode.dependencies.get(i);
             if (dependency instanceof DependencyNode) {
                 DependencyNode dependencyNode2 = (DependencyNode) dependency;
                 if (dependencyNode2.run != widgetRun) {
@@ -99,7 +99,7 @@ class RunGroup {
         int size = dependencyNode.dependencies.size();
         long j2 = j;
         for (int i = 0; i < size; i++) {
-            Dependency dependency = dependencyNode.dependencies.get(i);
+            Dependency dependency = (Dependency) dependencyNode.dependencies.get(i);
             if (dependency instanceof DependencyNode) {
                 DependencyNode dependencyNode2 = (DependencyNode) dependency;
                 if (dependencyNode2.run != widgetRun) {
@@ -119,12 +119,13 @@ class RunGroup {
         this.lastRun = widgetRun;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public long computeWrapSize(ConstraintWidgetContainer constraintWidgetContainer, int i) {
         long wrapDimension;
         int i2;
         WidgetRun widgetRun = this.firstRun;
         if (widgetRun instanceof ChainRun) {
-            if (((ChainRun) widgetRun).orientation != i) {
+            if (((WidgetRun) ((ChainRun) widgetRun)).orientation != i) {
                 return 0L;
             }
         } else if (i == 0) {
@@ -134,8 +135,8 @@ class RunGroup {
         } else if (!(widgetRun instanceof VerticalWidgetRun)) {
             return 0L;
         }
-        DependencyNode dependencyNode = (i == 0 ? constraintWidgetContainer.horizontalRun : constraintWidgetContainer.verticalRun).start;
-        DependencyNode dependencyNode2 = (i == 0 ? constraintWidgetContainer.horizontalRun : constraintWidgetContainer.verticalRun).end;
+        DependencyNode dependencyNode = ((WidgetRun) (i == 0 ? constraintWidgetContainer.horizontalRun : constraintWidgetContainer.verticalRun)).start;
+        DependencyNode dependencyNode2 = ((WidgetRun) (i == 0 ? constraintWidgetContainer.horizontalRun : constraintWidgetContainer.verticalRun)).end;
         boolean contains = widgetRun.start.targets.contains(dependencyNode);
         boolean contains2 = this.firstRun.end.targets.contains(dependencyNode2);
         long wrapDimension2 = this.firstRun.getWrapDimension();

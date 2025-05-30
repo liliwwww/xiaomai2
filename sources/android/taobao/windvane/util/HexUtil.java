@@ -3,7 +3,7 @@ package android.taobao.windvane.util;
 import java.io.ByteArrayOutputStream;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class HexUtil {
     private static String hexString = "0123456789ABCDEF";
 

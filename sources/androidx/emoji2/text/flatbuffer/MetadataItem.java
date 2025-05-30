@@ -4,26 +4,8 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class MetadataItem extends Table {
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class Vector extends BaseVector {
-        public Vector __assign(int i, int i2, ByteBuffer byteBuffer) {
-            __reset(i, i2, byteBuffer);
-            return this;
-        }
-
-        public MetadataItem get(int i) {
-            return get(new MetadataItem(), i);
-        }
-
-        public MetadataItem get(MetadataItem metadataItem, int i) {
-            return metadataItem.__assign(Table.__indirect(__element(i), this.f359bb), this.f359bb);
-        }
-    }
-
     public static void ValidateVersion() {
         Constants.FLATBUFFERS_1_12_0();
     }
@@ -104,7 +86,7 @@ public final class MetadataItem extends Table {
     public int codepoints(int i) {
         int __offset = __offset(16);
         if (__offset != 0) {
-            return this.f365bb.getInt(__vector(__offset) + (i * 4));
+            return this.bb.getInt(__vector(__offset) + (i * 4));
         }
         return 0;
     }
@@ -132,29 +114,28 @@ public final class MetadataItem extends Table {
     public short compatAdded() {
         int __offset = __offset(10);
         if (__offset != 0) {
-            return this.f365bb.getShort(__offset + this.bb_pos);
+            return this.bb.getShort(__offset + this.bb_pos);
         }
         return (short) 0;
     }
 
     public boolean emojiStyle() {
         int __offset = __offset(6);
-        return (__offset == 0 || this.f365bb.get(__offset + this.bb_pos) == 0) ? false : true;
+        return (__offset == 0 || this.bb.get(__offset + this.bb_pos) == 0) ? false : true;
     }
 
     public short height() {
         int __offset = __offset(14);
         if (__offset != 0) {
-            return this.f365bb.getShort(__offset + this.bb_pos);
+            return this.bb.getShort(__offset + this.bb_pos);
         }
         return (short) 0;
     }
 
-    /* renamed from: id */
-    public int m259id() {
+    public int id() {
         int __offset = __offset(4);
         if (__offset != 0) {
-            return this.f365bb.getInt(__offset + this.bb_pos);
+            return this.bb.getInt(__offset + this.bb_pos);
         }
         return 0;
     }
@@ -162,7 +143,7 @@ public final class MetadataItem extends Table {
     public short sdkAdded() {
         int __offset = __offset(8);
         if (__offset != 0) {
-            return this.f365bb.getShort(__offset + this.bb_pos);
+            return this.bb.getShort(__offset + this.bb_pos);
         }
         return (short) 0;
     }
@@ -170,7 +151,7 @@ public final class MetadataItem extends Table {
     public short width() {
         int __offset = __offset(12);
         if (__offset != 0) {
-            return this.f365bb.getShort(__offset + this.bb_pos);
+            return this.bb.getShort(__offset + this.bb_pos);
         }
         return (short) 0;
     }
@@ -183,7 +164,7 @@ public final class MetadataItem extends Table {
     public IntVector codepointsVector(IntVector intVector) {
         int __offset = __offset(16);
         if (__offset != 0) {
-            return intVector.__assign(__vector(__offset), this.f365bb);
+            return intVector.__assign(__vector(__offset), this.bb);
         }
         return null;
     }

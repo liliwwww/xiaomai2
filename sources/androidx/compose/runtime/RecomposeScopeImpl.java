@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class RecomposeScopeImpl implements RecomposeScope, ScopeUpdateScope {
 
     @Nullable
@@ -75,8 +75,8 @@ public final class RecomposeScopeImpl implements RecomposeScope, ScopeUpdateScop
     }
 
     @Nullable
-    public final Function1<Composition, Unit> end(final int i) {
-        final IdentityArrayIntMap identityArrayIntMap = this.trackedInstances;
+    public final Function1<Composition, Unit> end(int i) {
+        IdentityArrayIntMap identityArrayIntMap = this.trackedInstances;
         if (identityArrayIntMap == null || getSkipped$runtime_release()) {
             return null;
         }
@@ -95,72 +95,7 @@ public final class RecomposeScopeImpl implements RecomposeScope, ScopeUpdateScop
             i2++;
         }
         if (z) {
-            return new Function1<Composition, Unit>() { // from class: androidx.compose.runtime.RecomposeScopeImpl$end$1$2
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(1);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                    invoke((Composition) obj);
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composition composition) {
-                    int i3;
-                    IdentityArrayIntMap identityArrayIntMap2;
-                    IdentityArrayMap identityArrayMap;
-                    Intrinsics.checkNotNullParameter(composition, "composition");
-                    i3 = RecomposeScopeImpl.this.currentToken;
-                    if (i3 == i) {
-                        IdentityArrayIntMap identityArrayIntMap3 = identityArrayIntMap;
-                        identityArrayIntMap2 = RecomposeScopeImpl.this.trackedInstances;
-                        if (Intrinsics.areEqual(identityArrayIntMap3, identityArrayIntMap2) && (composition instanceof CompositionImpl)) {
-                            IdentityArrayIntMap identityArrayIntMap4 = identityArrayIntMap;
-                            int i4 = i;
-                            RecomposeScopeImpl recomposeScopeImpl = RecomposeScopeImpl.this;
-                            int size2 = identityArrayIntMap4.getSize();
-                            int i5 = 0;
-                            for (int i6 = 0; i6 < size2; i6++) {
-                                Object obj = identityArrayIntMap4.getKeys()[i6];
-                                Intrinsics.checkNotNull(obj, "null cannot be cast to non-null type kotlin.Any");
-                                int i7 = identityArrayIntMap4.getValues()[i6];
-                                boolean z2 = i7 != i4;
-                                if (z2) {
-                                    CompositionImpl compositionImpl = (CompositionImpl) composition;
-                                    compositionImpl.removeObservation$runtime_release(obj, recomposeScopeImpl);
-                                    DerivedState<?> derivedState = obj instanceof DerivedState ? (DerivedState) obj : null;
-                                    if (derivedState != null) {
-                                        compositionImpl.removeDerivedStateObservation$runtime_release(derivedState);
-                                        identityArrayMap = recomposeScopeImpl.trackedDependencies;
-                                        if (identityArrayMap != null) {
-                                            identityArrayMap.remove(derivedState);
-                                            if (identityArrayMap.getSize$runtime_release() == 0) {
-                                                recomposeScopeImpl.trackedDependencies = null;
-                                            }
-                                        }
-                                    }
-                                }
-                                if (!z2) {
-                                    if (i5 != i6) {
-                                        identityArrayIntMap4.getKeys()[i5] = obj;
-                                        identityArrayIntMap4.getValues()[i5] = i7;
-                                    }
-                                    i5++;
-                                }
-                            }
-                            int size3 = identityArrayIntMap4.getSize();
-                            for (int i8 = i5; i8 < size3; i8++) {
-                                identityArrayIntMap4.getKeys()[i8] = null;
-                            }
-                            identityArrayIntMap4.setSize(i5);
-                            if (identityArrayIntMap.getSize() == 0) {
-                                RecomposeScopeImpl.this.trackedInstances = null;
-                            }
-                        }
-                    }
-                }
-            };
+            return new end.1.2(this, i, identityArrayIntMap);
         }
         return null;
     }
@@ -207,11 +142,10 @@ public final class RecomposeScopeImpl implements RecomposeScope, ScopeUpdateScop
         return anchor != null ? anchor.getValid() : false;
     }
 
-    @Override // androidx.compose.runtime.RecomposeScope
     public void invalidate() {
         CompositionImpl compositionImpl = this.composition;
         if (compositionImpl != null) {
-            compositionImpl.invalidate(this, null);
+            compositionImpl.invalidate(this, (Object) null);
         }
     }
 
@@ -230,7 +164,7 @@ public final class RecomposeScopeImpl implements RecomposeScope, ScopeUpdateScop
     /* JADX WARN: Removed duplicated region for block: B:30:? A[LOOP:0: B:16:0x001c->B:30:?, LOOP_END, SYNTHETIC] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final boolean isInvalidFor(@org.jetbrains.annotations.Nullable androidx.compose.runtime.collection.IdentityArraySet<java.lang.Object> r7) {
         /*
@@ -376,7 +310,6 @@ public final class RecomposeScopeImpl implements RecomposeScope, ScopeUpdateScop
         setSkipped(false);
     }
 
-    @Override // androidx.compose.runtime.ScopeUpdateScope
     public void updateScope(@NotNull Function2<? super Composer, ? super Integer, Unit> function2) {
         Intrinsics.checkNotNullParameter(function2, "block");
         this.block = function2;

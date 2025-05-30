@@ -1,23 +1,22 @@
 package androidx.compose.animation;
 
 import androidx.compose.animation.core.AnimationSpecKt;
+import androidx.compose.animation.core.Easing;
 import androidx.compose.animation.core.FiniteAnimationSpec;
-import androidx.compose.p004ui.Modifier;
+import androidx.compose.animation.core.TransitionKt;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.ScopeUpdateScope;
+import androidx.compose.ui.Modifier;
 import kotlin.Deprecated;
 import kotlin.DeprecationLevel;
-import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
-import kotlin.jvm.functions.Function2;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class CrossfadeKt {
     /* JADX WARN: Removed duplicated region for block: B:10:0x004c  */
     /* JADX WARN: Removed duplicated region for block: B:13:0x0052  */
@@ -38,19 +37,19 @@ public final class CrossfadeKt {
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final <T> void Crossfade(final T r16, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r17, @org.jetbrains.annotations.Nullable androidx.compose.animation.core.FiniteAnimationSpec<java.lang.Float> r18, @org.jetbrains.annotations.Nullable java.lang.String r19, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super T, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r20, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r21, final int r22, final int r23) {
+    public static final <T> void Crossfade(T r16, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r17, @org.jetbrains.annotations.Nullable androidx.compose.animation.core.FiniteAnimationSpec<java.lang.Float> r18, @org.jetbrains.annotations.Nullable java.lang.String r19, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super T, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r20, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r21, int r22, int r23) {
         /*
             Method dump skipped, instructions count: 267
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.CrossfadeKt.Crossfade(java.lang.Object, androidx.compose.ui.Modifier, androidx.compose.animation.core.FiniteAnimationSpec, java.lang.String, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
 
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "Crossfade API now has a new label parameter added.")
     @Composable
-    public static final /* synthetic */ void Crossfade(final Object obj, Modifier modifier, FiniteAnimationSpec finiteAnimationSpec, final Function3 function3, Composer composer, final int i, final int i2) {
+    public static final /* synthetic */ void Crossfade(Object obj, Modifier modifier, FiniteAnimationSpec finiteAnimationSpec, Function3 function3, Composer composer, int i, int i2) {
         int i3;
         Intrinsics.checkNotNullParameter(function3, "content");
         Composer startRestartGroup = composer.startRestartGroup(523603005);
@@ -83,38 +82,23 @@ public final class CrossfadeKt {
                 modifier = Modifier.Companion;
             }
             if (i5 != 0) {
-                finiteAnimationSpec = AnimationSpecKt.tween$default(0, 0, null, 7, null);
+                finiteAnimationSpec = AnimationSpecKt.tween$default(0, 0, (Easing) null, 7, (Object) null);
             }
             if (ComposerKt.isTraceInProgress()) {
                 ComposerKt.traceEventStart(523603005, i3, -1, "androidx.compose.animation.Crossfade (Crossfade.kt:65)");
             }
-            Crossfade(androidx.compose.animation.core.TransitionKt.updateTransition(obj, (String) null, startRestartGroup, (i3 & 8) | (i3 & 14), 2), modifier, (FiniteAnimationSpec<Float>) finiteAnimationSpec, (Function1) null, function3, startRestartGroup, (i3 & 112) | 512 | ((i3 << 3) & 57344), 4);
+            Crossfade(TransitionKt.updateTransition(obj, (String) null, startRestartGroup, (i3 & 8) | (i3 & 14), 2), modifier, (FiniteAnimationSpec<Float>) finiteAnimationSpec, (Function1) null, function3, startRestartGroup, (i3 & 112) | 512 | ((i3 << 3) & 57344), 4);
             if (ComposerKt.isTraceInProgress()) {
                 ComposerKt.traceEventEnd();
             }
         }
-        final Modifier modifier2 = modifier;
-        final FiniteAnimationSpec finiteAnimationSpec2 = finiteAnimationSpec;
+        Modifier modifier2 = modifier;
+        FiniteAnimationSpec finiteAnimationSpec2 = finiteAnimationSpec;
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.animation.CrossfadeKt$Crossfade$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj2, Object obj3) {
-                invoke((Composer) obj2, ((Number) obj3).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i6) {
-                CrossfadeKt.Crossfade(obj, modifier2, finiteAnimationSpec2, function3, composer2, i | 1, i2);
-            }
-        });
+        endRestartGroup.updateScope(new Crossfade.2(obj, modifier2, finiteAnimationSpec2, function3, i, i2));
     }
 
     /* JADX WARN: Removed duplicated region for block: B:100:0x02c3  */
@@ -147,12 +131,12 @@ public final class CrossfadeKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[0[0]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final <T> void Crossfade(@org.jetbrains.annotations.NotNull final androidx.compose.animation.core.Transition<T> r20, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r21, @org.jetbrains.annotations.Nullable androidx.compose.animation.core.FiniteAnimationSpec<java.lang.Float> r22, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super T, ? extends java.lang.Object> r23, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super T, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r24, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r25, final int r26, final int r27) {
+    public static final <T> void Crossfade(@org.jetbrains.annotations.NotNull final androidx.compose.animation.core.Transition<T> r20, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r21, @org.jetbrains.annotations.Nullable androidx.compose.animation.core.FiniteAnimationSpec<java.lang.Float> r22, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super T, ? extends java.lang.Object> r23, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super T, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r24, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r25, int r26, int r27) {
         /*
             Method dump skipped, instructions count: 806
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.CrossfadeKt.Crossfade(androidx.compose.animation.core.Transition, androidx.compose.ui.Modifier, androidx.compose.animation.core.FiniteAnimationSpec, kotlin.jvm.functions.Function1, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }

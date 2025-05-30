@@ -5,7 +5,7 @@ import android.os.Looper;
 import androidx.annotation.NonNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class CalleeHandler {
     private CalleeHandler() {
     }

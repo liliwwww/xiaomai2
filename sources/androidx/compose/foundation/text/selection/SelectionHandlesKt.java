@@ -1,13 +1,13 @@
 package androidx.compose.foundation.text.selection;
 
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.geometry.OffsetKt;
-import androidx.compose.p004ui.semantics.SemanticsPropertyKey;
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.geometry.OffsetKt;
+import androidx.compose.ui.semantics.SemanticsPropertyKey;
+import androidx.compose.ui.unit.Dp;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SelectionHandlesKt {
     private static final float HandleHeight;
     private static final float HandleWidth;
@@ -17,13 +17,13 @@ public final class SelectionHandlesKt {
 
     static {
         float f = 25;
-        HandleWidth = C0856Dp.m5216constructorimpl(f);
-        HandleHeight = C0856Dp.m5216constructorimpl(f);
+        HandleWidth = Dp.m2142constructorimpl(f);
+        HandleHeight = Dp.m2142constructorimpl(f);
     }
 
     /* renamed from: getAdjustedCoordinates-k-4lQ0M, reason: not valid java name */
-    public static final long m1843getAdjustedCoordinatesk4lQ0M(long j) {
-        return OffsetKt.Offset(Offset.m2556getXimpl(j), Offset.m2557getYimpl(j) - 1.0f);
+    public static final long m465getAdjustedCoordinatesk4lQ0M(long j) {
+        return OffsetKt.Offset(Offset.m848getXimpl(j), Offset.m849getYimpl(j) - 1.0f);
     }
 
     public static final float getHandleHeight() {

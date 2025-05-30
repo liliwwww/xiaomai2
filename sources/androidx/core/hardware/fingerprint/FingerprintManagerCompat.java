@@ -16,7 +16,7 @@ import javax.crypto.Mac;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class FingerprintManagerCompat {
     private final Context mContext;
 
@@ -98,22 +98,6 @@ public class FingerprintManagerCompat {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static abstract class AuthenticationCallback {
-        public void onAuthenticationError(int i, CharSequence charSequence) {
-        }
-
-        public void onAuthenticationFailed() {
-        }
-
-        public void onAuthenticationHelp(int i, CharSequence charSequence) {
-        }
-
-        public void onAuthenticationSucceeded(AuthenticationResult authenticationResult) {
-        }
-    }
-
-    /* compiled from: Taobao */
     public static final class AuthenticationResult {
         private final CryptoObject mCryptoObject;
 
@@ -151,22 +135,22 @@ public class FingerprintManagerCompat {
         return new FingerprintManager.AuthenticationCallback() { // from class: androidx.core.hardware.fingerprint.FingerprintManagerCompat.1
             @Override // android.hardware.fingerprint.FingerprintManager.AuthenticationCallback
             public void onAuthenticationError(int i, CharSequence charSequence) {
-                AuthenticationCallback.this.onAuthenticationError(i, charSequence);
+                authenticationCallback.onAuthenticationError(i, charSequence);
             }
 
             @Override // android.hardware.fingerprint.FingerprintManager.AuthenticationCallback
             public void onAuthenticationFailed() {
-                AuthenticationCallback.this.onAuthenticationFailed();
+                authenticationCallback.onAuthenticationFailed();
             }
 
             @Override // android.hardware.fingerprint.FingerprintManager.AuthenticationCallback
             public void onAuthenticationHelp(int i, CharSequence charSequence) {
-                AuthenticationCallback.this.onAuthenticationHelp(i, charSequence);
+                authenticationCallback.onAuthenticationHelp(i, charSequence);
             }
 
             @Override // android.hardware.fingerprint.FingerprintManager.AuthenticationCallback
             public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult authenticationResult) {
-                AuthenticationCallback.this.onAuthenticationSucceeded(new AuthenticationResult(FingerprintManagerCompat.unwrapCryptoObject(Api23Impl.getCryptoObject(authenticationResult))));
+                authenticationCallback.onAuthenticationSucceeded(new AuthenticationResult(FingerprintManagerCompat.unwrapCryptoObject(Api23Impl.getCryptoObject(authenticationResult))));
             }
         };
     }

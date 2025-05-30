@@ -1,13 +1,9 @@
 package android.taobao.windvane.config;
 
-import androidx.vectordrawable.graphics.drawable.PathInterpolatorCompat;
-
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVCommonConfigData {
-
-    /* renamed from: v */
-    public String f2v = "0";
+    public String v = "0";
     public double packagePriorityWeight = 0.1d;
     public long updateInterval = 300000;
     public int packageAppStatus = 2;
@@ -31,7 +27,7 @@ public class WVCommonConfigData {
     public boolean enableUcShareCore = true;
     public String shareBlankList = "";
     public int packageDownloadLimit = 30;
-    public int packageAccessInterval = PathInterpolatorCompat.MAX_NUM_POINTS;
+    public int packageAccessInterval = 3000;
     public int packageRemoveInterval = 432000000;
     public int recoveryInterval = 432000000;
     public int customsDirectQueryLimit = 10;

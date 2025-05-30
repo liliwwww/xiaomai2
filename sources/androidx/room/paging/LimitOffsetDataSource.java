@@ -7,15 +7,14 @@ import androidx.paging.PositionalDataSource;
 import androidx.room.InvalidationTracker;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
-import androidx.sqlite.p008db.SupportSQLiteQuery;
+import androidx.sqlite.db.SupportSQLiteQuery;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class LimitOffsetDataSource<T> extends PositionalDataSource<T> {
     private final String mCountQuery;
     private final RoomDatabase mDb;
@@ -164,12 +163,7 @@ public abstract class LimitOffsetDataSource<T> extends PositionalDataSource<T> {
         this.mInTransaction = z;
         this.mCountQuery = "SELECT COUNT(*) FROM ( " + roomSQLiteQuery.getSql() + " )";
         this.mLimitOffsetQuery = "SELECT * FROM ( " + roomSQLiteQuery.getSql() + " ) LIMIT ? OFFSET ?";
-        this.mObserver = new InvalidationTracker.Observer(strArr) { // from class: androidx.room.paging.LimitOffsetDataSource.1
-            @Override // androidx.room.InvalidationTracker.Observer
-            public void onInvalidated(@NonNull Set<String> set) {
-                LimitOffsetDataSource.this.invalidate();
-            }
-        };
+        this.mObserver = new 1(this, strArr);
         if (z2) {
             registerObserverIfNecessary();
         }

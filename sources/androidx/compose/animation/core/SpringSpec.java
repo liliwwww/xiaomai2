@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SpringSpec<T> implements FiniteAnimationSpec<T> {
     private final float dampingRatio;
     private final float stiffness;
@@ -56,9 +56,9 @@ public final class SpringSpec<T> implements FiniteAnimationSpec<T> {
         return ((((t != null ? t.hashCode() : 0) * 31) + Float.floatToIntBits(this.dampingRatio)) * 31) + Float.floatToIntBits(this.stiffness);
     }
 
-    @Override // androidx.compose.animation.core.FiniteAnimationSpec, androidx.compose.animation.core.AnimationSpec
+    @Override // androidx.compose.animation.core.FiniteAnimationSpec
     @NotNull
-    public <V extends AnimationVector> VectorizedSpringSpec<V> vectorize(@NotNull TwoWayConverter<T, V> twoWayConverter) {
+    public <V extends AnimationVector> VectorizedSpringSpec<V> mo83vectorize(@NotNull TwoWayConverter<T, V> twoWayConverter) {
         AnimationVector convert;
         Intrinsics.checkNotNullParameter(twoWayConverter, "converter");
         float f = this.dampingRatio;

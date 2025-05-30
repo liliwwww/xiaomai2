@@ -12,7 +12,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.util.Preconditions;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class IntentCompat {
 
     @SuppressLint({"ActionValue"})
@@ -48,7 +48,7 @@ public final class IntentCompat {
         if (i >= 31) {
             return new Intent("android.settings.APPLICATION_DETAILS_SETTINGS").setData(Uri.fromParts(WVConfigManager.CONFIGNAME_PACKAGE, str, null));
         }
-        Intent data = new Intent(PackageManagerCompat.ACTION_PERMISSION_REVOCATION_SETTINGS).setData(Uri.fromParts(WVConfigManager.CONFIGNAME_PACKAGE, str, null));
+        Intent data = new Intent("android.intent.action.AUTO_REVOKE_PERMISSIONS").setData(Uri.fromParts(WVConfigManager.CONFIGNAME_PACKAGE, str, null));
         return i >= 30 ? data : data.setPackage((String) Preconditions.checkNotNull(PackageManagerCompat.getPermissionRevocationVerifierApp(context.getPackageManager())));
     }
 

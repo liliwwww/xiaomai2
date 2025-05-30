@@ -10,7 +10,7 @@ import kotlin.jvm.functions.Function2;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyGridKt {
     /* JADX WARN: Removed duplicated region for block: B:106:0x0135  */
     /* JADX WARN: Removed duplicated region for block: B:112:0x011c  */
@@ -47,12 +47,12 @@ public final class LazyGridKt {
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void LazyGrid(@org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r30, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.lazy.grid.LazyGridState r31, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.p004ui.unit.Density, ? super androidx.compose.p004ui.unit.Constraints, ? extends java.util.List<java.lang.Integer>> r32, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r33, boolean r34, final boolean r35, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r36, final boolean r37, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.layout.Arrangement.Vertical r38, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.layout.Arrangement.Horizontal r39, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.grid.LazyGridScope, kotlin.Unit> r40, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r41, final int r42, final int r43, final int r44) {
+    public static final void LazyGrid(@org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r30, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.grid.LazyGridState r31, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.ui.unit.Density, ? super androidx.compose.ui.unit.Constraints, ? extends java.util.List<java.lang.Integer>> r32, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r33, boolean r34, boolean r35, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r36, boolean r37, @org.jetbrains.annotations.NotNull androidx.compose.foundation.layout.Arrangement$Vertical r38, @org.jetbrains.annotations.NotNull androidx.compose.foundation.layout.Arrangement$Horizontal r39, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.grid.LazyGridScope, kotlin.Unit> r40, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r41, int r42, int r43, int r44) {
         /*
             Method dump skipped, instructions count: 860
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.grid.LazyGridKt.LazyGrid(androidx.compose.ui.Modifier, androidx.compose.foundation.lazy.grid.LazyGridState, kotlin.jvm.functions.Function2, androidx.compose.foundation.layout.PaddingValues, boolean, boolean, androidx.compose.foundation.gestures.FlingBehavior, boolean, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.foundation.layout.Arrangement$Horizontal, kotlin.jvm.functions.Function1, androidx.compose.runtime.Composer, int, int, int):void");
     }
@@ -99,7 +99,7 @@ public final class LazyGridKt {
             }
 
             public final void invoke(@Nullable Composer composer2, int i3) {
-                LazyGridKt.ScrollPositionUpdater(LazyGridItemProvider.this, lazyGridState, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
+                LazyGridKt.ScrollPositionUpdater(lazyGridItemProvider, lazyGridState, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
             }
         });
     }
@@ -113,12 +113,12 @@ public final class LazyGridKt {
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    private static final kotlin.jvm.functions.Function2<androidx.compose.foundation.lazy.layout.LazyLayoutMeasureScope, androidx.compose.p004ui.unit.Constraints, androidx.compose.p004ui.layout.MeasureResult> rememberLazyGridMeasurePolicy(final androidx.compose.foundation.lazy.grid.LazyGridItemProvider r16, final androidx.compose.foundation.lazy.grid.LazyGridState r17, final kotlin.jvm.functions.Function2<? super androidx.compose.p004ui.unit.Density, ? super androidx.compose.p004ui.unit.Constraints, ? extends java.util.List<java.lang.Integer>> r18, final androidx.compose.foundation.layout.PaddingValues r19, final boolean r20, final boolean r21, androidx.compose.foundation.layout.Arrangement.Horizontal r22, androidx.compose.foundation.layout.Arrangement.Vertical r23, final androidx.compose.foundation.lazy.grid.LazyGridItemPlacementAnimator r24, androidx.compose.runtime.Composer r25, int r26, int r27) {
+    private static final kotlin.jvm.functions.Function2<androidx.compose.foundation.lazy.layout.LazyLayoutMeasureScope, androidx.compose.ui.unit.Constraints, androidx.compose.ui.layout.MeasureResult> rememberLazyGridMeasurePolicy(androidx.compose.foundation.lazy.grid.LazyGridItemProvider r16, androidx.compose.foundation.lazy.grid.LazyGridState r17, kotlin.jvm.functions.Function2<? super androidx.compose.ui.unit.Density, ? super androidx.compose.ui.unit.Constraints, ? extends java.util.List<java.lang.Integer>> r18, androidx.compose.foundation.layout.PaddingValues r19, boolean r20, boolean r21, androidx.compose.foundation.layout.Arrangement$Horizontal r22, androidx.compose.foundation.layout.Arrangement$Vertical r23, androidx.compose.foundation.lazy.grid.LazyGridItemPlacementAnimator r24, androidx.compose.runtime.Composer r25, int r26, int r27) {
         /*
             Method dump skipped, instructions count: 274
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.grid.LazyGridKt.rememberLazyGridMeasurePolicy(androidx.compose.foundation.lazy.grid.LazyGridItemProvider, androidx.compose.foundation.lazy.grid.LazyGridState, kotlin.jvm.functions.Function2, androidx.compose.foundation.layout.PaddingValues, boolean, boolean, androidx.compose.foundation.layout.Arrangement$Horizontal, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.foundation.lazy.grid.LazyGridItemPlacementAnimator, androidx.compose.runtime.Composer, int, int):kotlin.jvm.functions.Function2");
     }

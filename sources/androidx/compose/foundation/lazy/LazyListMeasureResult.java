@@ -1,9 +1,9 @@
 package androidx.compose.foundation.lazy;
 
 import androidx.compose.foundation.gestures.Orientation;
-import androidx.compose.p004ui.layout.AlignmentLine;
-import androidx.compose.p004ui.layout.MeasureResult;
-import androidx.compose.p004ui.unit.IntSizeKt;
+import androidx.compose.ui.layout.AlignmentLine;
+import androidx.compose.ui.layout.MeasureResult;
+import androidx.compose.ui.unit.IntSizeKt;
 import java.util.List;
 import java.util.Map;
 import kotlin.jvm.internal.Intrinsics;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyListMeasureResult implements LazyListLayoutInfo, MeasureResult {
     private final /* synthetic */ MeasureResult $$delegate_0;
     private final int afterContentPadding;
@@ -56,7 +56,6 @@ public final class LazyListMeasureResult implements LazyListLayoutInfo, MeasureR
         return this.afterContentPadding;
     }
 
-    @Override // androidx.compose.p004ui.layout.MeasureResult
     @NotNull
     public Map<AlignmentLine, Integer> getAlignmentLines() {
         return this.$$delegate_0.getAlignmentLines();
@@ -84,7 +83,6 @@ public final class LazyListMeasureResult implements LazyListLayoutInfo, MeasureR
         return this.firstVisibleItemScrollOffset;
     }
 
-    @Override // androidx.compose.p004ui.layout.MeasureResult
     public int getHeight() {
         return this.$$delegate_0.getHeight();
     }
@@ -112,7 +110,7 @@ public final class LazyListMeasureResult implements LazyListLayoutInfo, MeasureR
 
     @Override // androidx.compose.foundation.lazy.LazyListLayoutInfo
     /* renamed from: getViewportSize-YbymL2g */
-    public long mo1494getViewportSizeYbymL2g() {
+    public long mo261getViewportSizeYbymL2g() {
         return IntSizeKt.IntSize(getWidth(), getHeight());
     }
 
@@ -127,12 +125,10 @@ public final class LazyListMeasureResult implements LazyListLayoutInfo, MeasureR
         return this.visibleItemsInfo;
     }
 
-    @Override // androidx.compose.p004ui.layout.MeasureResult
     public int getWidth() {
         return this.$$delegate_0.getWidth();
     }
 
-    @Override // androidx.compose.p004ui.layout.MeasureResult
     public void placeChildren() {
         this.$$delegate_0.placeChildren();
     }

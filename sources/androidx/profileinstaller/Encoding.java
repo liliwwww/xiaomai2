@@ -13,7 +13,7 @@ import java.util.zip.DeflaterOutputStream;
 
 /* compiled from: Taobao */
 @RequiresApi(19)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class Encoding {
     static final int SIZEOF_BYTE = 8;
     static final int UINT_16_SIZE = 2;
@@ -79,7 +79,7 @@ class Encoding {
     @androidx.annotation.NonNull
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     static byte[] readCompressed(@androidx.annotation.NonNull java.io.InputStream r8, int r9, int r10) throws java.io.IOException {
         /*

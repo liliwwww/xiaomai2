@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class BaseMenuPresenter implements MenuPresenter {
     private MenuPresenter.Callback mCallback;
     protected Context mContext;
@@ -47,7 +47,7 @@ public abstract class BaseMenuPresenter implements MenuPresenter {
     }
 
     public MenuView.ItemView createItemView(ViewGroup viewGroup) {
-        return (MenuView.ItemView) this.mSystemInflater.inflate(this.mItemLayoutRes, viewGroup, false);
+        return this.mSystemInflater.inflate(this.mItemLayoutRes, viewGroup, false);
     }
 
     @Override // androidx.appcompat.view.menu.MenuPresenter
@@ -74,7 +74,6 @@ public abstract class BaseMenuPresenter implements MenuPresenter {
         return this.mId;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public View getItemView(MenuItemImpl menuItemImpl, View view, ViewGroup viewGroup) {
         MenuView.ItemView createItemView = view instanceof MenuView.ItemView ? (MenuView.ItemView) view : createItemView(viewGroup);
         bindItemView(menuItemImpl, createItemView);
@@ -107,19 +106,16 @@ public abstract class BaseMenuPresenter implements MenuPresenter {
         }
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r2v4, types: [androidx.appcompat.view.menu.MenuBuilder] */
     @Override // androidx.appcompat.view.menu.MenuPresenter
     public boolean onSubMenuSelected(SubMenuBuilder subMenuBuilder) {
         MenuPresenter.Callback callback = this.mCallback;
-        SubMenuBuilder subMenuBuilder2 = subMenuBuilder;
         if (callback == null) {
             return false;
         }
         if (subMenuBuilder == null) {
-            subMenuBuilder2 = this.mMenu;
+            subMenuBuilder = this.mMenu;
         }
-        return callback.onOpenSubMenu(subMenuBuilder2);
+        return callback.onOpenSubMenu(subMenuBuilder);
     }
 
     @Override // androidx.appcompat.view.menu.MenuPresenter
@@ -135,7 +131,6 @@ public abstract class BaseMenuPresenter implements MenuPresenter {
         return true;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @Override // androidx.appcompat.view.menu.MenuPresenter
     public void updateMenuView(boolean z) {
         ViewGroup viewGroup = (ViewGroup) this.mMenuView;
@@ -146,15 +141,15 @@ public abstract class BaseMenuPresenter implements MenuPresenter {
         int i = 0;
         if (menuBuilder != null) {
             menuBuilder.flagActionItems();
-            ArrayList<MenuItemImpl> visibleItems = this.mMenu.getVisibleItems();
+            ArrayList visibleItems = this.mMenu.getVisibleItems();
             int size = visibleItems.size();
             int i2 = 0;
             for (int i3 = 0; i3 < size; i3++) {
-                MenuItemImpl menuItemImpl = visibleItems.get(i3);
+                MenuItemImpl menuItemImpl = (MenuItemImpl) visibleItems.get(i3);
                 if (shouldIncludeItem(i2, menuItemImpl)) {
-                    View childAt = viewGroup.getChildAt(i2);
-                    MenuItemImpl itemData = childAt instanceof MenuView.ItemView ? ((MenuView.ItemView) childAt).getItemData() : null;
-                    View itemView = getItemView(menuItemImpl, childAt, viewGroup);
+                    MenuView.ItemView childAt = viewGroup.getChildAt(i2);
+                    MenuItemImpl itemData = childAt instanceof MenuView.ItemView ? childAt.getItemData() : null;
+                    MenuView.ItemView itemView = getItemView(menuItemImpl, childAt, viewGroup);
                     if (menuItemImpl != itemData) {
                         itemView.setPressed(false);
                         itemView.jumpDrawablesToCurrentState();

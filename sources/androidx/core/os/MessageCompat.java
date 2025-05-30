@@ -3,33 +3,13 @@ package androidx.core.os;
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Message;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class MessageCompat {
     private static boolean sTryIsAsynchronous = true;
     private static boolean sTrySetAsynchronous = true;
-
-    /* compiled from: Taobao */
-    @RequiresApi(22)
-    /* loaded from: classes2.dex */
-    static class Api22Impl {
-        private Api22Impl() {
-        }
-
-        @DoNotInline
-        static boolean isAsynchronous(Message message) {
-            return message.isAsynchronous();
-        }
-
-        @DoNotInline
-        static void setAsynchronous(Message message, boolean z) {
-            message.setAsynchronous(z);
-        }
-    }
 
     private MessageCompat() {
     }

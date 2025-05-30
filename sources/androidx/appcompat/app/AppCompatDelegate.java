@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.LocaleList;
-import android.taobao.windvane.config.WVConfigManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MenuInflater;
@@ -25,7 +24,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.OptIn;
 import androidx.annotation.RequiresApi;
-import androidx.annotation.RestrictTo;
 import androidx.annotation.StyleRes;
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -36,16 +34,15 @@ import androidx.appcompat.widget.VectorEnabledTintResources;
 import androidx.collection.ArraySet;
 import androidx.core.os.BuildCompat;
 import androidx.core.os.LocaleListCompat;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.Objects;
+import java.util.concurrent.Executor;
 import tb.l9;
 import tb.m9;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class AppCompatDelegate {
     static final boolean DEBUG = false;
     public static final int FEATURE_ACTION_MODE_OVERLAY = 10;
@@ -63,7 +60,12 @@ public abstract class AppCompatDelegate {
     public static final int MODE_NIGHT_UNSPECIFIED = -100;
     public static final int MODE_NIGHT_YES = 2;
     static final String TAG = "AppCompatDelegate";
-    static AppLocalesStorageHelper.SerialExecutor sSerialExecutorForLocalesStorage = new AppLocalesStorageHelper.SerialExecutor(new AppLocalesStorageHelper.ThreadPerTaskExecutor());
+    static AppLocalesStorageHelper.SerialExecutor sSerialExecutorForLocalesStorage = new AppLocalesStorageHelper.SerialExecutor(new Executor() { // from class: androidx.appcompat.app.AppLocalesStorageHelper$ThreadPerTaskExecutor
+        @Override // java.util.concurrent.Executor
+        public void execute(Runnable runnable) {
+            new Thread(runnable).start();
+        }
+    });
     private static int sDefaultNightMode = -100;
     private static LocaleListCompat sRequestedAppLocales = null;
     private static LocaleListCompat sStoredAppLocales = null;
@@ -72,19 +74,6 @@ public abstract class AppCompatDelegate {
     private static final ArraySet<WeakReference<AppCompatDelegate>> sActivityDelegates = new ArraySet<>();
     private static final Object sActivityDelegatesLock = new Object();
     private static final Object sAppLocalesStorageSyncLock = new Object();
-
-    /* compiled from: Taobao */
-    @RequiresApi(24)
-    /* loaded from: classes2.dex */
-    static class Api24Impl {
-        private Api24Impl() {
-        }
-
-        @DoNotInline
-        static LocaleList localeListForLanguageTags(String str) {
-            return LocaleList.forLanguageTags(str);
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(33)
@@ -101,13 +90,6 @@ public abstract class AppCompatDelegate {
         static void localeManagerSetApplicationLocales(Object obj, LocaleList localeList) {
             ((LocaleManager) obj).setApplicationLocales(localeList);
         }
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes2.dex */
-    public @interface NightMode {
     }
 
     AppCompatDelegate() {
@@ -176,7 +158,7 @@ public abstract class AppCompatDelegate {
         while (it.hasNext()) {
             AppCompatDelegate appCompatDelegate = it.next().get();
             if (appCompatDelegate != null && (contextForDelegate = appCompatDelegate.getContextForDelegate()) != null) {
-                return contextForDelegate.getSystemService(WVConfigManager.CONFIGNAME_LOCALE);
+                return contextForDelegate.getSystemService("locale");
             }
         }
         return null;

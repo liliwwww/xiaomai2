@@ -11,17 +11,12 @@ import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.annotation.RestrictTo;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class RemoteInput {
     public static final int EDIT_CHOICES_BEFORE_SENDING_AUTO = 0;
     public static final int EDIT_CHOICES_BEFORE_SENDING_DISABLED = 1;
@@ -39,73 +34,6 @@ public final class RemoteInput {
     private final Bundle mExtras;
     private final CharSequence mLabel;
     private final String mResultKey;
-
-    /* compiled from: Taobao */
-    @RequiresApi(16)
-    /* loaded from: classes.dex */
-    static class Api16Impl {
-        private Api16Impl() {
-        }
-
-        @DoNotInline
-        static ClipData getClipData(Intent intent) {
-            return intent.getClipData();
-        }
-
-        @DoNotInline
-        static void setClipData(Intent intent, ClipData clipData) {
-            intent.setClipData(clipData);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(20)
-    /* loaded from: classes.dex */
-    static class Api20Impl {
-        private Api20Impl() {
-        }
-
-        @DoNotInline
-        static void addResultsToIntent(Object obj, Intent intent, Bundle bundle) {
-            android.app.RemoteInput.addResultsToIntent((android.app.RemoteInput[]) obj, intent, bundle);
-        }
-
-        public static android.app.RemoteInput fromCompat(RemoteInput remoteInput) {
-            Set<String> allowedDataTypes;
-            RemoteInput.Builder addExtras = new RemoteInput.Builder(remoteInput.getResultKey()).setLabel(remoteInput.getLabel()).setChoices(remoteInput.getChoices()).setAllowFreeFormInput(remoteInput.getAllowFreeFormInput()).addExtras(remoteInput.getExtras());
-            if (Build.VERSION.SDK_INT >= 26 && (allowedDataTypes = remoteInput.getAllowedDataTypes()) != null) {
-                Iterator<String> it = allowedDataTypes.iterator();
-                while (it.hasNext()) {
-                    Api26Impl.setAllowDataType(addExtras, it.next(), true);
-                }
-            }
-            if (Build.VERSION.SDK_INT >= 29) {
-                Api29Impl.setEditChoicesBeforeSending(addExtras, remoteInput.getEditChoicesBeforeSending());
-            }
-            return addExtras.build();
-        }
-
-        static RemoteInput fromPlatform(Object obj) {
-            Set<String> allowedDataTypes;
-            android.app.RemoteInput remoteInput = (android.app.RemoteInput) obj;
-            Builder addExtras = new Builder(remoteInput.getResultKey()).setLabel(remoteInput.getLabel()).setChoices(remoteInput.getChoices()).setAllowFreeFormInput(remoteInput.getAllowFreeFormInput()).addExtras(remoteInput.getExtras());
-            if (Build.VERSION.SDK_INT >= 26 && (allowedDataTypes = Api26Impl.getAllowedDataTypes(remoteInput)) != null) {
-                Iterator<String> it = allowedDataTypes.iterator();
-                while (it.hasNext()) {
-                    addExtras.setAllowDataType(it.next(), true);
-                }
-            }
-            if (Build.VERSION.SDK_INT >= 29) {
-                addExtras.setEditChoicesBeforeSending(Api29Impl.getEditChoicesBeforeSending(remoteInput));
-            }
-            return addExtras.build();
-        }
-
-        @DoNotInline
-        static Bundle getResultsFromIntent(Intent intent) {
-            return android.app.RemoteInput.getResultsFromIntent(intent);
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(26)
@@ -135,24 +63,6 @@ public final class RemoteInput {
     }
 
     /* compiled from: Taobao */
-    @RequiresApi(28)
-    /* loaded from: classes.dex */
-    static class Api28Impl {
-        private Api28Impl() {
-        }
-
-        @DoNotInline
-        static int getResultsSource(Intent intent) {
-            return android.app.RemoteInput.getResultsSource(intent);
-        }
-
-        @DoNotInline
-        static void setResultsSource(Intent intent, int i) {
-            android.app.RemoteInput.setResultsSource(intent, i);
-        }
-    }
-
-    /* compiled from: Taobao */
     @RequiresApi(29)
     static class Api29Impl {
         private Api29Impl() {
@@ -167,91 +77,6 @@ public final class RemoteInput {
         static RemoteInput.Builder setEditChoicesBeforeSending(RemoteInput.Builder builder, int i) {
             return builder.setEditChoicesBeforeSending(i);
         }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class Builder {
-        private CharSequence[] mChoices;
-        private CharSequence mLabel;
-        private final String mResultKey;
-        private final Set<String> mAllowedDataTypes = new HashSet();
-        private final Bundle mExtras = new Bundle();
-        private boolean mAllowFreeFormTextInput = true;
-        private int mEditChoicesBeforeSending = 0;
-
-        public Builder(@NonNull String str) {
-            if (str == null) {
-                throw new IllegalArgumentException("Result key can't be null");
-            }
-            this.mResultKey = str;
-        }
-
-        @NonNull
-        public Builder addExtras(@NonNull Bundle bundle) {
-            if (bundle != null) {
-                this.mExtras.putAll(bundle);
-            }
-            return this;
-        }
-
-        @NonNull
-        public RemoteInput build() {
-            return new RemoteInput(this.mResultKey, this.mLabel, this.mChoices, this.mAllowFreeFormTextInput, this.mEditChoicesBeforeSending, this.mExtras, this.mAllowedDataTypes);
-        }
-
-        @NonNull
-        public Bundle getExtras() {
-            return this.mExtras;
-        }
-
-        @NonNull
-        public Builder setAllowDataType(@NonNull String str, boolean z) {
-            if (z) {
-                this.mAllowedDataTypes.add(str);
-            } else {
-                this.mAllowedDataTypes.remove(str);
-            }
-            return this;
-        }
-
-        @NonNull
-        public Builder setAllowFreeFormInput(boolean z) {
-            this.mAllowFreeFormTextInput = z;
-            return this;
-        }
-
-        @NonNull
-        public Builder setChoices(@Nullable CharSequence[] charSequenceArr) {
-            this.mChoices = charSequenceArr;
-            return this;
-        }
-
-        @NonNull
-        public Builder setEditChoicesBeforeSending(int i) {
-            this.mEditChoicesBeforeSending = i;
-            return this;
-        }
-
-        @NonNull
-        public Builder setLabel(@Nullable CharSequence charSequence) {
-            this.mLabel = charSequence;
-            return this;
-        }
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes.dex */
-    public @interface EditChoicesBeforeSending {
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes.dex */
-    public @interface Source {
     }
 
     RemoteInput(String str, CharSequence charSequence, CharSequence[] charSequenceArr, boolean z, int i, Bundle bundle, Set<String> set) {

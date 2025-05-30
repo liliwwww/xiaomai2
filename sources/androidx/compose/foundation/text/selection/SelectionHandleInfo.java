@@ -1,14 +1,14 @@
 package androidx.compose.foundation.text.selection;
 
 import androidx.compose.foundation.text.Handle;
-import androidx.compose.p004ui.geometry.Offset;
+import androidx.compose.ui.geometry.Offset;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SelectionHandleInfo {
 
     @NotNull
@@ -25,14 +25,14 @@ public final class SelectionHandleInfo {
     }
 
     /* renamed from: copy-Uv8p0NA$default, reason: not valid java name */
-    public static /* synthetic */ SelectionHandleInfo m1839copyUv8p0NA$default(SelectionHandleInfo selectionHandleInfo, Handle handle, long j, int i, Object obj) {
+    public static /* synthetic */ SelectionHandleInfo m605copyUv8p0NA$default(SelectionHandleInfo selectionHandleInfo, Handle handle, long j, int i, Object obj) {
         if ((i & 1) != 0) {
             handle = selectionHandleInfo.handle;
         }
         if ((i & 2) != 0) {
             j = selectionHandleInfo.position;
         }
-        return selectionHandleInfo.m1841copyUv8p0NA(handle, j);
+        return selectionHandleInfo.m607copyUv8p0NA(handle, j);
     }
 
     @NotNull
@@ -41,13 +41,13 @@ public final class SelectionHandleInfo {
     }
 
     /* renamed from: component2-F1C5BW0, reason: not valid java name */
-    public final long m1840component2F1C5BW0() {
+    public final long m606component2F1C5BW0() {
         return this.position;
     }
 
     @NotNull
     /* renamed from: copy-Uv8p0NA, reason: not valid java name */
-    public final SelectionHandleInfo m1841copyUv8p0NA(@NotNull Handle handle, long j) {
+    public final SelectionHandleInfo m607copyUv8p0NA(@NotNull Handle handle, long j) {
         Intrinsics.checkNotNullParameter(handle, "handle");
         return new SelectionHandleInfo(handle, j, null);
     }
@@ -60,7 +60,7 @@ public final class SelectionHandleInfo {
             return false;
         }
         SelectionHandleInfo selectionHandleInfo = (SelectionHandleInfo) obj;
-        return this.handle == selectionHandleInfo.handle && Offset.m2553equalsimpl0(this.position, selectionHandleInfo.position);
+        return this.handle == selectionHandleInfo.handle && Offset.equals-impl0(this.position, selectionHandleInfo.position);
     }
 
     @NotNull
@@ -69,16 +69,16 @@ public final class SelectionHandleInfo {
     }
 
     /* renamed from: getPosition-F1C5BW0, reason: not valid java name */
-    public final long m1842getPositionF1C5BW0() {
+    public final long m608getPositionF1C5BW0() {
         return this.position;
     }
 
     public int hashCode() {
-        return (this.handle.hashCode() * 31) + Offset.m2558hashCodeimpl(this.position);
+        return (this.handle.hashCode() * 31) + Offset.hashCode-impl(this.position);
     }
 
     @NotNull
     public String toString() {
-        return "SelectionHandleInfo(handle=" + this.handle + ", position=" + ((Object) Offset.m2564toStringimpl(this.position)) + ')';
+        return "SelectionHandleInfo(handle=" + this.handle + ", position=" + ((Object) Offset.toString-impl(this.position)) + ')';
     }
 }

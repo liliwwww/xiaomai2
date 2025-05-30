@@ -1,7 +1,7 @@
 package androidx.compose.foundation.text.selection;
 
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.input.pointer.PointerInputScope;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.text.selection.SelectionManager$onClearSelectionRequested$1", f = "SelectionManager.kt", i = {}, l = {625}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SelectionManager$onClearSelectionRequested$1 extends SuspendLambda implements Function2<PointerInputScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ Function0<Unit> $block;
     private /* synthetic */ Object L$0;
@@ -59,12 +59,12 @@ final class SelectionManager$onClearSelectionRequested$1 extends SuspendLambda i
                 }
 
                 public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    m1876invokek4lQ0M(((Offset) obj2).m2566unboximpl());
+                    m638invokek4lQ0M(((Offset) obj2).unbox-impl());
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke-k-4lQ0M, reason: not valid java name */
-                public final void m1876invokek4lQ0M(long j) {
+                public final void m638invokek4lQ0M(long j) {
                     function0.invoke();
                 }
             };

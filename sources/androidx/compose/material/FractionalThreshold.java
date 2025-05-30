@@ -1,8 +1,8 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.util.MathHelpersKt;
 import androidx.compose.runtime.Immutable;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.util.MathHelpersKt;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @Immutable
 @ExperimentalMaterialApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class FractionalThreshold implements ThresholdConfig {
     private final float fraction;
 

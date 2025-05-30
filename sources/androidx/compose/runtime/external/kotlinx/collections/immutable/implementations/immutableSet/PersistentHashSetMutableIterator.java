@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* JADX WARN: Unexpected interfaces in signature: [kotlin.jvm.internal.markers.KMutableIterator] */
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class PersistentHashSetMutableIterator<E> extends PersistentHashSetIterator<E> implements Iterator<E> {
 
     @NotNull
@@ -49,13 +49,13 @@ public final class PersistentHashSetMutableIterator<E> extends PersistentHashSet
     private final void resetPath(int i, TrieNode<?> trieNode, E e, int i2) {
         if (isCollision(trieNode)) {
             int indexOf = ArraysKt.indexOf(trieNode.getBuffer(), e);
-            CommonFunctionsKt.m2432assert(indexOf != -1);
-            getPath().get(i2).reset(trieNode.getBuffer(), indexOf);
+            CommonFunctionsKt.m922assert(indexOf != -1);
+            ((TrieNodeIterator) getPath().get(i2)).reset(trieNode.getBuffer(), indexOf);
             setPathLastIndex(i2);
             return;
         }
         int indexOfCellAt$runtime_release = trieNode.indexOfCellAt$runtime_release(1 << TrieNodeKt.indexSegment(i, i2 * 5));
-        getPath().get(i2).reset(trieNode.getBuffer(), indexOfCellAt$runtime_release);
+        ((TrieNodeIterator) getPath().get(i2)).reset(trieNode.getBuffer(), indexOfCellAt$runtime_release);
         Object obj = trieNode.getBuffer()[indexOfCellAt$runtime_release];
         if (obj instanceof TrieNode) {
             resetPath(i, (TrieNode) obj, e, i2 + 1);
@@ -64,7 +64,7 @@ public final class PersistentHashSetMutableIterator<E> extends PersistentHashSet
         }
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableSet.PersistentHashSetIterator, java.util.Iterator
+    @Override // java.util.Iterator
     public E next() {
         checkForComodification();
         E e = (E) super.next();
@@ -73,11 +73,12 @@ public final class PersistentHashSetMutableIterator<E> extends PersistentHashSet
         return e;
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableSet.PersistentHashSetIterator, java.util.Iterator
+    /* JADX WARN: Multi-variable type inference failed */
+    @Override // java.util.Iterator
     public void remove() {
         checkNextWasInvoked();
         if (hasNext()) {
-            E currentElement = currentElement();
+            Object currentElement = currentElement();
             TypeIntrinsics.asMutableCollection(this.builder).remove(this.lastIteratedElement);
             resetPath(currentElement != null ? currentElement.hashCode() : 0, this.builder.getNode$runtime_release(), currentElement, 0);
         } else {

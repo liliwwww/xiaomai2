@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PersistentHashMap<K, V> extends AbstractMap<K, V> implements PersistentMap<K, V> {
 
     @NotNull
@@ -54,29 +54,24 @@ public final class PersistentHashMap<K, V> extends AbstractMap<K, V> implements 
         return new PersistentHashMapEntries(this);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap, java.util.Map
     @NotNull
     public PersistentMap<K, V> clear() {
         return Companion.emptyOf$runtime_release();
     }
 
-    @Override // java.util.Map
     public boolean containsKey(Object obj) {
         return this.node.containsKey(obj != null ? obj.hashCode() : 0, obj, 0);
     }
 
-    @Override // java.util.Map
     public final /* bridge */ ImmutableSet<Map.Entry<K, V>> entrySet() {
         return getEntries();
     }
 
-    @Override // java.util.Map
     @Nullable
     public V get(Object obj) {
         return this.node.get(obj != null ? obj.hashCode() : 0, obj, 0);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.ImmutableMap
     @NotNull
     public ImmutableSet<Map.Entry<K, V>> getEntries() {
         return createEntries();
@@ -91,39 +86,33 @@ public final class PersistentHashMap<K, V> extends AbstractMap<K, V> implements 
         return this.size;
     }
 
-    @Override // java.util.Map
     public final /* bridge */ ImmutableSet<K> keySet() {
-        return m2430getKeys();
+        return m775getKeys();
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap, java.util.Map
     public /* bridge */ /* synthetic */ PersistentMap put(Object obj, Object obj2) {
-        return put((PersistentHashMap<K, V>) obj, obj2);
+        return m777put((PersistentHashMap<K, V>) obj, obj2);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap, java.util.Map
     @NotNull
     public PersistentMap<K, V> putAll(@NotNull Map<? extends K, ? extends V> map) {
         Intrinsics.checkNotNullParameter(map, "m");
         Intrinsics.checkNotNull(this, "null cannot be cast to non-null type androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap<K of androidx.compose.runtime.external.kotlinx.collections.immutable.ExtensionsKt.mutate, V of androidx.compose.runtime.external.kotlinx.collections.immutable.ExtensionsKt.mutate>");
-        PersistentMap.Builder<K, V> builder = builder();
+        PersistentMap.Builder builder = builder();
         builder.putAll(map);
         return builder.build();
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap, java.util.Map
     public /* bridge */ /* synthetic */ PersistentMap remove(Object obj) {
-        return remove((PersistentHashMap<K, V>) obj);
+        return m778remove((PersistentHashMap<K, V>) obj);
     }
 
-    @Override // java.util.Map
     public final /* bridge */ ImmutableCollection<V> values() {
-        return m2431getValues();
+        return m776getValues();
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap
     @NotNull
     public PersistentHashMapBuilder<K, V> builder() {
         return new PersistentHashMapBuilder<>(this);
@@ -132,40 +121,37 @@ public final class PersistentHashMap<K, V> extends AbstractMap<K, V> implements 
     @PublishedApi
     @NotNull
     /* renamed from: getEntries, reason: collision with other method in class */
-    public final Set<Map.Entry<K, V>> m2425getEntries() {
+    public final Set<Map.Entry<K, V>> m774getEntries() {
         return createEntries();
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.ImmutableMap
     @NotNull
     /* renamed from: getKeys, reason: merged with bridge method [inline-methods] */
-    public ImmutableSet<K> m2426getKeys() {
+    public ImmutableSet<K> m775getKeys() {
         return new PersistentHashMapKeys(this);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.ImmutableMap
     @NotNull
     /* renamed from: getValues, reason: merged with bridge method [inline-methods] */
-    public ImmutableCollection<V> m2427getValues() {
+    public ImmutableCollection<V> m776getValues() {
         return new PersistentHashMapValues(this);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap, java.util.Map
     @NotNull
-    public PersistentHashMap<K, V> put(K k, V v) {
+    /* renamed from: put, reason: collision with other method in class */
+    public PersistentHashMap<K, V> m777put(K k, V v) {
         TrieNode.ModificationResult<K, V> put = this.node.put(k != null ? k.hashCode() : 0, k, v, 0);
         return put == null ? this : new PersistentHashMap<>(put.getNode(), size() + put.getSizeDelta());
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap, java.util.Map
     public /* bridge */ /* synthetic */ PersistentMap remove(Object obj, Object obj2) {
-        return remove((PersistentHashMap<K, V>) obj, obj2);
+        return m779remove((PersistentHashMap<K, V>) obj, obj2);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap, java.util.Map
     @NotNull
-    public PersistentHashMap<K, V> remove(K k) {
+    /* renamed from: remove, reason: collision with other method in class */
+    public PersistentHashMap<K, V> m778remove(K k) {
         TrieNode<K, V> remove = this.node.remove(k != null ? k.hashCode() : 0, k, 0);
         if (this.node == remove) {
             return this;
@@ -176,9 +162,9 @@ public final class PersistentHashMap<K, V> extends AbstractMap<K, V> implements 
         return new PersistentHashMap<>(remove, size() - 1);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap, java.util.Map
     @NotNull
-    public PersistentHashMap<K, V> remove(K k, V v) {
+    /* renamed from: remove, reason: collision with other method in class */
+    public PersistentHashMap<K, V> m779remove(K k, V v) {
         TrieNode<K, V> remove = this.node.remove(k != null ? k.hashCode() : 0, k, v, 0);
         if (this.node == remove) {
             return this;

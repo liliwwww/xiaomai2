@@ -4,7 +4,7 @@ import android.taobao.windvane.config.UCHASettings;
 import java.util.concurrent.Callable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVAppParams {
     public String appKey;
     public String appSecret;

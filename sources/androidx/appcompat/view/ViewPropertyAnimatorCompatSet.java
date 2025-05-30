@@ -1,6 +1,5 @@
 package androidx.appcompat.view;
 
-import android.view.View;
 import android.view.animation.Interpolator;
 import androidx.annotation.RestrictTo;
 import androidx.core.view.ViewPropertyAnimatorCompat;
@@ -11,47 +10,13 @@ import java.util.Iterator;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ViewPropertyAnimatorCompatSet {
     private Interpolator mInterpolator;
     private boolean mIsStarted;
     ViewPropertyAnimatorListener mListener;
     private long mDuration = -1;
-    private final ViewPropertyAnimatorListenerAdapter mProxyListener = new ViewPropertyAnimatorListenerAdapter() { // from class: androidx.appcompat.view.ViewPropertyAnimatorCompatSet.1
-        private boolean mProxyStarted = false;
-        private int mProxyEndCount = 0;
-
-        @Override // androidx.core.view.ViewPropertyAnimatorListenerAdapter, androidx.core.view.ViewPropertyAnimatorListener
-        public void onAnimationEnd(View view) {
-            int i = this.mProxyEndCount + 1;
-            this.mProxyEndCount = i;
-            if (i == ViewPropertyAnimatorCompatSet.this.mAnimators.size()) {
-                ViewPropertyAnimatorListener viewPropertyAnimatorListener = ViewPropertyAnimatorCompatSet.this.mListener;
-                if (viewPropertyAnimatorListener != null) {
-                    viewPropertyAnimatorListener.onAnimationEnd(null);
-                }
-                onEnd();
-            }
-        }
-
-        @Override // androidx.core.view.ViewPropertyAnimatorListenerAdapter, androidx.core.view.ViewPropertyAnimatorListener
-        public void onAnimationStart(View view) {
-            if (this.mProxyStarted) {
-                return;
-            }
-            this.mProxyStarted = true;
-            ViewPropertyAnimatorListener viewPropertyAnimatorListener = ViewPropertyAnimatorCompatSet.this.mListener;
-            if (viewPropertyAnimatorListener != null) {
-                viewPropertyAnimatorListener.onAnimationStart(null);
-            }
-        }
-
-        void onEnd() {
-            this.mProxyEndCount = 0;
-            this.mProxyStarted = false;
-            ViewPropertyAnimatorCompatSet.this.onAnimationsEnded();
-        }
-    };
+    private final ViewPropertyAnimatorListenerAdapter mProxyListener = new 1(this);
     final ArrayList<ViewPropertyAnimatorCompat> mAnimators = new ArrayList<>();
 
     public void cancel() {

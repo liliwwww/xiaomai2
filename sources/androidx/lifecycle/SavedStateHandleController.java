@@ -5,7 +5,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.savedstate.SavedStateRegistry;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class SavedStateHandleController implements LifecycleEventObserver {
     private final SavedStateHandle mHandle;
     private boolean mIsAttached = false;

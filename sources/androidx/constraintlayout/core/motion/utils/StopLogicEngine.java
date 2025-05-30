@@ -1,7 +1,7 @@
 package androidx.constraintlayout.core.motion.utils;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class StopLogicEngine implements StopEngine {
     private static final float EPSILON = 1.0E-5f;
     private boolean mBackwards = false;

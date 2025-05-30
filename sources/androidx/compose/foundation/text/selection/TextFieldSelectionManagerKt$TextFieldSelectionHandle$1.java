@@ -2,7 +2,7 @@ package androidx.compose.foundation.text.selection;
 
 import androidx.compose.foundation.text.LongPressTextDragObserverKt;
 import androidx.compose.foundation.text.TextDragObserver;
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.input.pointer.PointerInputScope;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.text.selection.TextFieldSelectionManagerKt$TextFieldSelectionHandle$1", f = "TextFieldSelectionManager.kt", i = {}, l = {820}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class TextFieldSelectionManagerKt$TextFieldSelectionHandle$1 extends SuspendLambda implements Function2<PointerInputScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ TextDragObserver $observer;
     private /* synthetic */ Object L$0;

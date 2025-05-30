@@ -1,8 +1,8 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.input.pointer.AwaitPointerEventScope;
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope;
+import androidx.compose.ui.input.pointer.PointerInputScope;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.TransformableKt$detectZoom$3", f = "Transformable.kt", i = {}, l = {111}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class TransformableKt$detectZoom$3 extends SuspendLambda implements Function2<TransformScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ Ref.BooleanRef $lockedToPanZoom;
     final /* synthetic */ Ref.LongRef $pan;
@@ -32,8 +32,8 @@ final class TransformableKt$detectZoom$3 extends SuspendLambda implements Functi
 
     /* compiled from: Taobao */
     @DebugMetadata(c = "androidx.compose.foundation.gestures.TransformableKt$detectZoom$3$1", f = "Transformable.kt", i = {0}, l = {113}, m = "invokeSuspend", n = {"$this$awaitPointerEventScope"}, s = {"L$0"})
-    /* renamed from: androidx.compose.foundation.gestures.TransformableKt$detectZoom$3$1 */
-    static final class C04351 extends RestrictedSuspendLambda implements Function2<AwaitPointerEventScope, Continuation<? super Unit>, Object> {
+    /* renamed from: androidx.compose.foundation.gestures.TransformableKt$detectZoom$3$1, reason: invalid class name */
+    static final class AnonymousClass1 extends RestrictedSuspendLambda implements Function2<AwaitPointerEventScope, Continuation<? super Unit>, Object> {
         final /* synthetic */ TransformScope $$this$transform;
         final /* synthetic */ Ref.BooleanRef $lockedToPanZoom;
         final /* synthetic */ Ref.LongRef $pan;
@@ -46,7 +46,7 @@ final class TransformableKt$detectZoom$3 extends SuspendLambda implements Functi
         int label;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        C04351(Ref.BooleanRef booleanRef, Ref.FloatRef floatRef, Ref.FloatRef floatRef2, Ref.LongRef longRef, float f, Ref.BooleanRef booleanRef2, State<Boolean> state, TransformScope transformScope, Continuation<? super C04351> continuation) {
+        AnonymousClass1(Ref.BooleanRef booleanRef, Ref.FloatRef floatRef, Ref.FloatRef floatRef2, Ref.LongRef longRef, float f, Ref.BooleanRef booleanRef2, State<Boolean> state, TransformScope transformScope, Continuation<? super AnonymousClass1> continuation) {
             super(2, continuation);
             this.$pastTouchSlop = booleanRef;
             this.$zoom = floatRef;
@@ -60,9 +60,9 @@ final class TransformableKt$detectZoom$3 extends SuspendLambda implements Functi
 
         @NotNull
         public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
-            C04351 c04351 = new C04351(this.$pastTouchSlop, this.$zoom, this.$rotation, this.$pan, this.$touchSlop, this.$lockedToPanZoom, this.$panZoomLock, this.$$this$transform, continuation);
-            c04351.L$0 = obj;
-            return c04351;
+            AnonymousClass1 anonymousClass1 = new AnonymousClass1(this.$pastTouchSlop, this.$zoom, this.$rotation, this.$pan, this.$touchSlop, this.$lockedToPanZoom, this.$panZoomLock, this.$$this$transform, continuation);
+            anonymousClass1.L$0 = obj;
+            return anonymousClass1;
         }
 
         @Nullable
@@ -72,7 +72,7 @@ final class TransformableKt$detectZoom$3 extends SuspendLambda implements Functi
 
         /* JADX WARN: Code restructure failed: missing block: B:42:0x0104, code lost:
         
-            if (androidx.compose.p004ui.geometry.Offset.m2553equalsimpl0(r10, androidx.compose.p004ui.geometry.Offset.Companion.m2572getZeroF1C5BW0()) != false) goto L53;
+            if (androidx.compose.ui.geometry.Offset.m845equalsimpl0(r10, androidx.compose.ui.geometry.Offset.Companion.getZero-F1C5BW0()) != false) goto L53;
          */
         /* JADX WARN: Code restructure failed: missing block: B:63:0x0146, code lost:
         
@@ -86,14 +86,14 @@ final class TransformableKt$detectZoom$3 extends SuspendLambda implements Functi
         @org.jetbrains.annotations.Nullable
         /*
             Code decompiled incorrectly, please refer to instructions dump.
-            To view partially-correct code enable 'Show inconsistent code' option in preferences
+            To view partially-correct add '--show-bad-code' argument
         */
         public final java.lang.Object invokeSuspend(@org.jetbrains.annotations.NotNull java.lang.Object r17) {
             /*
                 Method dump skipped, instructions count: 331
-                To view this dump change 'Code comments level' option to 'DEBUG'
+                To view this dump add '--comments-level debug' option
             */
-            throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.TransformableKt$detectZoom$3.C04351.invokeSuspend(java.lang.Object):java.lang.Object");
+            throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.TransformableKt$detectZoom$3.AnonymousClass1.invokeSuspend(java.lang.Object):java.lang.Object");
         }
     }
 
@@ -130,9 +130,9 @@ final class TransformableKt$detectZoom$3 extends SuspendLambda implements Functi
             ResultKt.throwOnFailure(obj);
             TransformScope transformScope = (TransformScope) this.L$0;
             PointerInputScope pointerInputScope = this.$this_detectZoom;
-            C04351 c04351 = new C04351(this.$pastTouchSlop, this.$zoom, this.$rotation, this.$pan, this.$touchSlop, this.$lockedToPanZoom, this.$panZoomLock, transformScope, null);
+            AnonymousClass1 anonymousClass1 = new AnonymousClass1(this.$pastTouchSlop, this.$zoom, this.$rotation, this.$pan, this.$touchSlop, this.$lockedToPanZoom, this.$panZoomLock, transformScope, null);
             this.label = 1;
-            if (pointerInputScope.awaitPointerEventScope(c04351, this) == coroutine_suspended) {
+            if (pointerInputScope.awaitPointerEventScope(anonymousClass1, this) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

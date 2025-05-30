@@ -1,13 +1,13 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface WindowInsets {
 
     @NotNull

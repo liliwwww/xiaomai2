@@ -7,19 +7,13 @@ import java.lang.annotation.Target;
 /* compiled from: Taobao */
 @Target({})
 @Retention(RetentionPolicy.CLASS)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public @interface ForeignKey {
     public static final int CASCADE = 5;
     public static final int NO_ACTION = 1;
     public static final int RESTRICT = 2;
     public static final int SET_DEFAULT = 4;
     public static final int SET_NULL = 3;
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.CLASS)
-    /* loaded from: classes2.dex */
-    public @interface Action {
-    }
 
     String[] childColumns();
 

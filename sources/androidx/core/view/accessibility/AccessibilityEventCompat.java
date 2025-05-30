@@ -6,12 +6,9 @@ import android.view.accessibility.AccessibilityRecord;
 import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.annotation.RestrictTo;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AccessibilityEventCompat {
     public static final int CONTENT_CHANGE_TYPE_CONTENT_DESCRIPTION = 4;
     public static final int CONTENT_CHANGE_TYPE_DRAG_CANCELLED = 512;
@@ -100,13 +97,6 @@ public final class AccessibilityEventCompat {
         static void setContentChangeTypes(AccessibilityEvent accessibilityEvent, int i) {
             accessibilityEvent.setContentChangeTypes(i);
         }
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes.dex */
-    public @interface ContentChangeType {
     }
 
     private AccessibilityEventCompat() {

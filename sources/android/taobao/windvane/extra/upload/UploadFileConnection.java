@@ -3,7 +3,7 @@ package android.taobao.windvane.extra.upload;
 import android.taobao.windvane.connect.HttpConnectListener;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class UploadFileConnection implements Runnable {
     private static final int DEFAULT_CONNECT_TIMEOUT = 60000;
     private static final int DEFAULT_READ_TIMEOUT = 60000;
@@ -31,12 +31,12 @@ public class UploadFileConnection implements Runnable {
     @Override // java.lang.Runnable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void run() {
         /*
             Method dump skipped, instructions count: 379
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.extra.upload.UploadFileConnection.run():void");
     }
@@ -55,7 +55,7 @@ public class UploadFileConnection implements Runnable {
      */
     /* JADX WARN: Code restructure failed: missing block: B:52:0x01bf, code lost:
     
-        android.taobao.windvane.util.TaoLog.m18d(android.taobao.windvane.extra.upload.UploadFileConnection.TAG, "upload file fail.");
+        android.taobao.windvane.util.TaoLog.d(android.taobao.windvane.extra.upload.UploadFileConnection.TAG, "upload file fail.");
      */
     /* JADX WARN: Code restructure failed: missing block: B:54:0x01ca, code lost:
     
@@ -74,12 +74,12 @@ public class UploadFileConnection implements Runnable {
     /* JADX WARN: Type inference failed for: r13v4, types: [java.net.HttpURLConnection] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final android.taobao.windvane.connect.HttpResponse uploadFile(java.lang.String r13, java.lang.String r14) {
         /*
             Method dump skipped, instructions count: 484
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.extra.upload.UploadFileConnection.uploadFile(java.lang.String, java.lang.String):android.taobao.windvane.connect.HttpResponse");
     }

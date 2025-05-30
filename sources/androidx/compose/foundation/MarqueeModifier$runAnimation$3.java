@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.MarqueeModifier$runAnimation$3", f = "BasicMarquee.kt", i = {0, 0}, l = {277, 279, 281, 281}, m = "invokeSuspend", n = {"contentWithSpacingWidth", "spec"}, s = {"L$0", "L$1"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class MarqueeModifier$runAnimation$3 extends SuspendLambda implements Function2<Float, Continuation<? super Unit>, Object> {
     /* synthetic */ Object L$0;
     Object L$1;
@@ -39,7 +39,7 @@ final class MarqueeModifier$runAnimation$3 extends SuspendLambda implements Func
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object invokeSuspend(@org.jetbrains.annotations.NotNull java.lang.Object r22) {
         /*
@@ -103,7 +103,7 @@ final class MarqueeModifier$runAnimation$3 extends SuspendLambda implements Func
             float r19 = androidx.compose.foundation.MarqueeModifier.access$getVelocity$p(r3)
             androidx.compose.foundation.MarqueeModifier r3 = r9.this$0
             androidx.compose.ui.unit.Density r20 = androidx.compose.foundation.MarqueeModifier.access$getDensity$p(r3)
-            androidx.compose.animation.core.AnimationSpec r3 = androidx.compose.foundation.BasicMarqueeKt.m1118access$createMarqueeAnimationSpecZ4HSEVQ(r15, r16, r17, r18, r19, r20)
+            androidx.compose.animation.core.AnimationSpec r3 = androidx.compose.foundation.BasicMarqueeKt.m119access$createMarqueeAnimationSpecZ4HSEVQ(r15, r16, r17, r18, r19, r20)
             androidx.compose.foundation.MarqueeModifier r4 = r9.this$0
             androidx.compose.animation.core.Animatable r4 = androidx.compose.foundation.MarqueeModifier.access$getOffset$p(r4)
             java.lang.Float r5 = kotlin.coroutines.jvm.internal.Boxing.boxFloat(r14)

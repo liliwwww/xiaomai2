@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyListScrollPosition {
     private boolean hadFirstNotEmptyLayout;
 
@@ -28,7 +28,7 @@ public final class LazyListScrollPosition {
     /* JADX WARN: Illegal instructions before constructor call */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public LazyListScrollPosition() {
         /*
@@ -43,8 +43,12 @@ public final class LazyListScrollPosition {
     }
 
     public LazyListScrollPosition(int i, int i2) {
-        this.index$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(DataIndex.m1481boximpl(DataIndex.m1483constructorimpl(i)), null, 2, null);
-        this.scrollOffset$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Integer.valueOf(i2), null, 2, null);
+        MutableState mutableStateOf$default;
+        MutableState mutableStateOf$default2;
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(DataIndex.box-impl(DataIndex.constructor-impl(i)), null, 2, null);
+        this.index$delegate = mutableStateOf$default;
+        mutableStateOf$default2 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Integer.valueOf(i2), null, 2, null);
+        this.scrollOffset$delegate = mutableStateOf$default2;
     }
 
     private final void setScrollOffset(int i) {
@@ -52,38 +56,36 @@ public final class LazyListScrollPosition {
     }
 
     /* renamed from: update-AhXoVpI, reason: not valid java name */
-    private final void m1519updateAhXoVpI(int i, int i2) {
+    private final void m431updateAhXoVpI(int i, int i2) {
         if (!(((float) i) >= 0.0f)) {
             throw new IllegalArgumentException(("Index should be non-negative (" + i + ')').toString());
         }
-        if (!DataIndex.m1486equalsimpl0(i, m1520getIndexjQJCoq8())) {
-            m1522setIndexZjPyQlc(i);
+        if (!DataIndex.equals-impl0(i, m432getIndexjQJCoq8())) {
+            m434setIndexZjPyQlc(i);
         }
         if (i2 != getScrollOffset()) {
             setScrollOffset(i2);
         }
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     /* renamed from: getIndex-jQJCoq8, reason: not valid java name */
-    public final int m1520getIndexjQJCoq8() {
-        return ((DataIndex) this.index$delegate.getValue()).m1493unboximpl();
+    public final int m432getIndexjQJCoq8() {
+        return ((DataIndex) this.index$delegate.getValue()).unbox-impl();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final int getScrollOffset() {
         return ((Number) this.scrollOffset$delegate.getValue()).intValue();
     }
 
     /* renamed from: requestPosition-AhXoVpI, reason: not valid java name */
-    public final void m1521requestPositionAhXoVpI(int i, int i2) {
-        m1519updateAhXoVpI(i, i2);
+    public final void m433requestPositionAhXoVpI(int i, int i2) {
+        m431updateAhXoVpI(i, i2);
         this.lastKnownFirstItemKey = null;
     }
 
     /* renamed from: setIndex-ZjPyQlc, reason: not valid java name */
-    public final void m1522setIndexZjPyQlc(int i) {
-        this.index$delegate.setValue(DataIndex.m1481boximpl(i));
+    public final void m434setIndexZjPyQlc(int i) {
+        this.index$delegate.setValue(DataIndex.box-impl(i));
     }
 
     public final void updateFromMeasureResult(@NotNull LazyListMeasureResult lazyListMeasureResult) {
@@ -101,7 +103,7 @@ public final class LazyListScrollPosition {
                 Snapshot makeCurrent = createNonObservableSnapshot.makeCurrent();
                 try {
                     LazyMeasuredItem firstVisibleItem2 = lazyListMeasureResult.getFirstVisibleItem();
-                    m1519updateAhXoVpI(DataIndex.m1483constructorimpl(firstVisibleItem2 != null ? firstVisibleItem2.getIndex() : 0), firstVisibleItemScrollOffset);
+                    m431updateAhXoVpI(DataIndex.constructor-impl(firstVisibleItem2 != null ? firstVisibleItem2.getIndex() : 0), firstVisibleItemScrollOffset);
                     Unit unit = Unit.INSTANCE;
                 } finally {
                     createNonObservableSnapshot.restoreCurrent(makeCurrent);
@@ -119,7 +121,7 @@ public final class LazyListScrollPosition {
         try {
             Snapshot makeCurrent = createNonObservableSnapshot.makeCurrent();
             try {
-                m1519updateAhXoVpI(DataIndex.m1483constructorimpl(LazyLayoutItemProviderKt.findIndexByKey(lazyListItemProvider, this.lastKnownFirstItemKey, m1520getIndexjQJCoq8())), getScrollOffset());
+                m431updateAhXoVpI(DataIndex.constructor-impl(LazyLayoutItemProviderKt.findIndexByKey(lazyListItemProvider, this.lastKnownFirstItemKey, m432getIndexjQJCoq8())), getScrollOffset());
                 Unit unit = Unit.INSTANCE;
             } finally {
                 createNonObservableSnapshot.restoreCurrent(makeCurrent);

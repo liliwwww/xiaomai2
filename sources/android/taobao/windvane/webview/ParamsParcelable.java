@@ -4,21 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ParamsParcelable implements Parcelable {
-    public static final Parcelable.Creator<ParamsParcelable> CREATOR = new Parcelable.Creator<ParamsParcelable>() { // from class: android.taobao.windvane.webview.ParamsParcelable.1
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // android.os.Parcelable.Creator
-        public ParamsParcelable createFromParcel(Parcel parcel) {
-            return new ParamsParcelable(parcel);
-        }
-
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // android.os.Parcelable.Creator
-        public ParamsParcelable[] newArray(int i) {
-            return new ParamsParcelable[i];
-        }
-    };
+    public static final Parcelable.Creator<ParamsParcelable> CREATOR = new 1();
     private boolean jsbridgeEnabled;
     private boolean navBarEnabled;
     private boolean showLoading;

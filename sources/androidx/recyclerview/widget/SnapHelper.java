@@ -1,6 +1,5 @@
 package androidx.recyclerview.widget;
 
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
@@ -9,31 +8,12 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class SnapHelper extends RecyclerView.OnFlingListener {
     static final float MILLISECONDS_PER_INCH = 100.0f;
     private Scroller mGravityScroller;
     RecyclerView mRecyclerView;
-    private final RecyclerView.OnScrollListener mScrollListener = new RecyclerView.OnScrollListener() { // from class: androidx.recyclerview.widget.SnapHelper.1
-        boolean mScrolled = false;
-
-        @Override // androidx.recyclerview.widget.RecyclerView.OnScrollListener
-        public void onScrollStateChanged(RecyclerView recyclerView, int i) {
-            super.onScrollStateChanged(recyclerView, i);
-            if (i == 0 && this.mScrolled) {
-                this.mScrolled = false;
-                SnapHelper.this.snapToTargetExistingView();
-            }
-        }
-
-        @Override // androidx.recyclerview.widget.RecyclerView.OnScrollListener
-        public void onScrolled(RecyclerView recyclerView, int i, int i2) {
-            if (i == 0 && i2 == 0) {
-                return;
-            }
-            this.mScrolled = true;
-        }
-    };
+    private final RecyclerView.OnScrollListener mScrollListener = new 1(this);
 
     private void destroyCallbacks() {
         this.mRecyclerView.removeOnScrollListener(this.mScrollListener);
@@ -92,28 +72,7 @@ public abstract class SnapHelper extends RecyclerView.OnFlingListener {
     @Deprecated
     protected LinearSmoothScroller createSnapScroller(@NonNull RecyclerView.LayoutManager layoutManager) {
         if (layoutManager instanceof RecyclerView.SmoothScroller.ScrollVectorProvider) {
-            return new LinearSmoothScroller(this.mRecyclerView.getContext()) { // from class: androidx.recyclerview.widget.SnapHelper.2
-                @Override // androidx.recyclerview.widget.LinearSmoothScroller
-                protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
-                    return SnapHelper.MILLISECONDS_PER_INCH / displayMetrics.densityDpi;
-                }
-
-                @Override // androidx.recyclerview.widget.LinearSmoothScroller, androidx.recyclerview.widget.RecyclerView.SmoothScroller
-                protected void onTargetFound(View view, RecyclerView.State state, RecyclerView.SmoothScroller.Action action) {
-                    SnapHelper snapHelper = SnapHelper.this;
-                    RecyclerView recyclerView = snapHelper.mRecyclerView;
-                    if (recyclerView == null) {
-                        return;
-                    }
-                    int[] calculateDistanceToFinalSnap = snapHelper.calculateDistanceToFinalSnap(recyclerView.getLayoutManager(), view);
-                    int i = calculateDistanceToFinalSnap[0];
-                    int i2 = calculateDistanceToFinalSnap[1];
-                    int calculateTimeForDeceleration = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(i2)));
-                    if (calculateTimeForDeceleration > 0) {
-                        action.update(i, i2, calculateTimeForDeceleration, this.mDecelerateInterpolator);
-                    }
-                }
-            };
+            return new 2(this, this.mRecyclerView.getContext());
         }
         return null;
     }

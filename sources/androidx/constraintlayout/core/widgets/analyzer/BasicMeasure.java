@@ -2,8 +2,9 @@ package androidx.constraintlayout.core.widgets.analyzer;
 
 import androidx.constraintlayout.core.LinearSystem;
 import androidx.constraintlayout.core.Metrics;
-import androidx.constraintlayout.core.widgets.ConstraintAnchor;
+import androidx.constraintlayout.core.widgets.ConstraintAnchor$Type;
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
+import androidx.constraintlayout.core.widgets.ConstraintWidget$DimensionBehaviour;
 import androidx.constraintlayout.core.widgets.ConstraintWidgetContainer;
 import androidx.constraintlayout.core.widgets.Guideline;
 import androidx.constraintlayout.core.widgets.Helper;
@@ -12,7 +13,7 @@ import androidx.constraintlayout.core.widgets.VirtualLayout;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class BasicMeasure {
     public static final int AT_MOST = Integer.MIN_VALUE;
     private static final boolean DEBUG = false;
@@ -31,7 +32,7 @@ public class BasicMeasure {
         public static int SELF_DIMENSIONS = 0;
         public static int TRY_GIVEN_DIMENSIONS = 1;
         public static int USE_GIVEN_DIMENSIONS = 2;
-        public ConstraintWidget.DimensionBehaviour horizontalBehavior;
+        public ConstraintWidget$DimensionBehaviour horizontalBehavior;
         public int horizontalDimension;
         public int measureStrategy;
         public int measuredBaseline;
@@ -39,16 +40,8 @@ public class BasicMeasure {
         public int measuredHeight;
         public boolean measuredNeedsSolverPass;
         public int measuredWidth;
-        public ConstraintWidget.DimensionBehaviour verticalBehavior;
+        public ConstraintWidget$DimensionBehaviour verticalBehavior;
         public int verticalDimension;
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface Measurer {
-        void didMeasures();
-
-        void measure(ConstraintWidget constraintWidget, Measure measure);
     }
 
     public BasicMeasure(ConstraintWidgetContainer constraintWidgetContainer) {
@@ -63,17 +56,17 @@ public class BasicMeasure {
         Measure measure = this.mMeasure;
         measure.measuredNeedsSolverPass = false;
         measure.measureStrategy = i;
-        ConstraintWidget.DimensionBehaviour dimensionBehaviour = measure.horizontalBehavior;
-        ConstraintWidget.DimensionBehaviour dimensionBehaviour2 = ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT;
-        boolean z = dimensionBehaviour == dimensionBehaviour2;
-        boolean z2 = measure.verticalBehavior == dimensionBehaviour2;
+        ConstraintWidget$DimensionBehaviour constraintWidget$DimensionBehaviour = measure.horizontalBehavior;
+        ConstraintWidget$DimensionBehaviour constraintWidget$DimensionBehaviour2 = ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT;
+        boolean z = constraintWidget$DimensionBehaviour == constraintWidget$DimensionBehaviour2;
+        boolean z2 = measure.verticalBehavior == constraintWidget$DimensionBehaviour2;
         boolean z3 = z && constraintWidget.mDimensionRatio > 0.0f;
         boolean z4 = z2 && constraintWidget.mDimensionRatio > 0.0f;
         if (z3 && constraintWidget.mResolvedMatchConstraintDefault[0] == 4) {
-            measure.horizontalBehavior = ConstraintWidget.DimensionBehaviour.FIXED;
+            measure.horizontalBehavior = ConstraintWidget$DimensionBehaviour.FIXED;
         }
         if (z4 && constraintWidget.mResolvedMatchConstraintDefault[1] == 4) {
-            measure.verticalBehavior = ConstraintWidget.DimensionBehaviour.FIXED;
+            measure.verticalBehavior = ConstraintWidget$DimensionBehaviour.FIXED;
         }
         measurer.measure(constraintWidget, measure);
         constraintWidget.setWidth(this.mMeasure.measuredWidth);
@@ -95,7 +88,7 @@ public class BasicMeasure {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private void measureChildren(androidx.constraintlayout.core.widgets.ConstraintWidgetContainer r13) {
         /*
@@ -140,7 +133,7 @@ public class BasicMeasure {
             androidx.constraintlayout.core.widgets.ConstraintWidget$DimensionBehaviour r6 = r5.getDimensionBehaviour(r3)
             r7 = 1
             androidx.constraintlayout.core.widgets.ConstraintWidget$DimensionBehaviour r8 = r5.getDimensionBehaviour(r7)
-            androidx.constraintlayout.core.widgets.ConstraintWidget$DimensionBehaviour r9 = androidx.constraintlayout.core.widgets.ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT
+            androidx.constraintlayout.core.widgets.ConstraintWidget$DimensionBehaviour r9 = androidx.constraintlayout.core.widgets.ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT
             if (r6 != r9) goto L60
             int r10 = r5.mMatchConstraintDefaultWidth
             if (r10 == r7) goto L60
@@ -239,9 +232,9 @@ public class BasicMeasure {
         if (z4) {
             for (int i16 = 0; i16 < size; i16++) {
                 ConstraintWidget constraintWidget = constraintWidgetContainer.mChildren.get(i16);
-                ConstraintWidget.DimensionBehaviour horizontalDimensionBehaviour = constraintWidget.getHorizontalDimensionBehaviour();
-                ConstraintWidget.DimensionBehaviour dimensionBehaviour = ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT;
-                boolean z5 = (horizontalDimensionBehaviour == dimensionBehaviour) && (constraintWidget.getVerticalDimensionBehaviour() == dimensionBehaviour) && constraintWidget.getDimensionRatio() > 0.0f;
+                ConstraintWidget$DimensionBehaviour horizontalDimensionBehaviour = constraintWidget.getHorizontalDimensionBehaviour();
+                ConstraintWidget$DimensionBehaviour constraintWidget$DimensionBehaviour = ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT;
+                boolean z5 = (horizontalDimensionBehaviour == constraintWidget$DimensionBehaviour) && (constraintWidget.getVerticalDimensionBehaviour() == constraintWidget$DimensionBehaviour) && constraintWidget.getDimensionRatio() > 0.0f;
                 if ((constraintWidget.isInHorizontalChain() && z5) || ((constraintWidget.isInVerticalChain() && z5) || (constraintWidget instanceof VirtualLayout) || constraintWidget.isInHorizontalChain() || constraintWidget.isInVerticalChain())) {
                     z4 = false;
                     break;
@@ -301,10 +294,10 @@ public class BasicMeasure {
             solveLinearSystem(constraintWidgetContainer, "First pass", 0, width, height);
         }
         if (size2 > 0) {
-            ConstraintWidget.DimensionBehaviour horizontalDimensionBehaviour2 = constraintWidgetContainer.getHorizontalDimensionBehaviour();
-            ConstraintWidget.DimensionBehaviour dimensionBehaviour2 = ConstraintWidget.DimensionBehaviour.WRAP_CONTENT;
-            boolean z7 = horizontalDimensionBehaviour2 == dimensionBehaviour2;
-            boolean z8 = constraintWidgetContainer.getVerticalDimensionBehaviour() == dimensionBehaviour2;
+            ConstraintWidget$DimensionBehaviour horizontalDimensionBehaviour2 = constraintWidgetContainer.getHorizontalDimensionBehaviour();
+            ConstraintWidget$DimensionBehaviour constraintWidget$DimensionBehaviour2 = ConstraintWidget$DimensionBehaviour.WRAP_CONTENT;
+            boolean z7 = horizontalDimensionBehaviour2 == constraintWidget$DimensionBehaviour2;
+            boolean z8 = constraintWidgetContainer.getVerticalDimensionBehaviour() == constraintWidget$DimensionBehaviour2;
             int max = Math.max(constraintWidgetContainer.getWidth(), this.constraintWidgetContainer.getMinWidth());
             int max2 = Math.max(constraintWidgetContainer.getHeight(), this.constraintWidgetContainer.getMinHeight());
             int i17 = 0;
@@ -327,7 +320,7 @@ public class BasicMeasure {
                     if (width3 != width2) {
                         constraintWidget2.setWidth(width3);
                         if (z7 && constraintWidget2.getRight() > max) {
-                            max = Math.max(max, constraintWidget2.getRight() + constraintWidget2.getAnchor(ConstraintAnchor.Type.RIGHT).getMargin());
+                            max = Math.max(max, constraintWidget2.getRight() + constraintWidget2.getAnchor(ConstraintAnchor$Type.RIGHT).getMargin());
                         }
                         z3 = true;
                     } else {
@@ -336,7 +329,7 @@ public class BasicMeasure {
                     if (height3 != height2) {
                         constraintWidget2.setHeight(height3);
                         if (z8 && constraintWidget2.getBottom() > max2) {
-                            max2 = Math.max(max2, constraintWidget2.getBottom() + constraintWidget2.getAnchor(ConstraintAnchor.Type.BOTTOM).getMargin());
+                            max2 = Math.max(max2, constraintWidget2.getBottom() + constraintWidget2.getAnchor(ConstraintAnchor$Type.BOTTOM).getMargin());
                         }
                         z3 = true;
                     }
@@ -385,14 +378,14 @@ public class BasicMeasure {
                         if (width5 != width4) {
                             constraintWidget3.setWidth(width5);
                             if (z7 && constraintWidget3.getRight() > max) {
-                                max = Math.max(max, constraintWidget3.getRight() + constraintWidget3.getAnchor(ConstraintAnchor.Type.RIGHT).getMargin());
+                                max = Math.max(max, constraintWidget3.getRight() + constraintWidget3.getAnchor(ConstraintAnchor$Type.RIGHT).getMargin());
                             }
                             measure2 = true;
                         }
                         if (height5 != height4) {
                             constraintWidget3.setHeight(height5);
                             if (z8 && constraintWidget3.getBottom() > max2) {
-                                max2 = Math.max(max2, constraintWidget3.getBottom() + constraintWidget3.getAnchor(ConstraintAnchor.Type.BOTTOM).getMargin());
+                                max2 = Math.max(max2, constraintWidget3.getBottom() + constraintWidget3.getAnchor(ConstraintAnchor$Type.BOTTOM).getMargin());
                             }
                             measure2 = true;
                         }
@@ -430,9 +423,9 @@ public class BasicMeasure {
         int size = constraintWidgetContainer.mChildren.size();
         for (int i = 0; i < size; i++) {
             ConstraintWidget constraintWidget = constraintWidgetContainer.mChildren.get(i);
-            ConstraintWidget.DimensionBehaviour horizontalDimensionBehaviour = constraintWidget.getHorizontalDimensionBehaviour();
-            ConstraintWidget.DimensionBehaviour dimensionBehaviour = ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT;
-            if (horizontalDimensionBehaviour == dimensionBehaviour || constraintWidget.getVerticalDimensionBehaviour() == dimensionBehaviour) {
+            ConstraintWidget$DimensionBehaviour horizontalDimensionBehaviour = constraintWidget.getHorizontalDimensionBehaviour();
+            ConstraintWidget$DimensionBehaviour constraintWidget$DimensionBehaviour = ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT;
+            if (horizontalDimensionBehaviour == constraintWidget$DimensionBehaviour || constraintWidget.getVerticalDimensionBehaviour() == constraintWidget$DimensionBehaviour) {
                 this.mVariableDimensionsWidgets.add(constraintWidget);
             }
         }

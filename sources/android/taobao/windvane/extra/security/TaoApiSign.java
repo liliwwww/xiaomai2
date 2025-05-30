@@ -6,18 +6,18 @@ import android.taobao.windvane.util.TaoLog;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class TaoApiSign {
     public static String getSign(Map<String, String> map) {
         try {
             String str = map.get(ApiConstants.APPKEY);
             String str2 = map.get(ApiConstants.APPSECRET);
             String str3 = map.get(ApiConstants.API);
-            String str4 = map.get(ApiConstants.f5V);
-            String str5 = map.get("imei");
-            String str6 = map.get("imsi");
+            String str4 = map.get(ApiConstants.V);
+            String str5 = map.get(ApiConstants.IMEI);
+            String str6 = map.get(ApiConstants.IMSI);
             String str7 = map.get(ApiConstants.DATA);
-            String str8 = map.get(ApiConstants.f4T);
+            String str8 = map.get(ApiConstants.T);
             String str9 = map.get(ApiConstants.ECODE);
             if (str4 == null || "".equals(str4)) {
                 str4 = "*";
@@ -48,7 +48,7 @@ public class TaoApiSign {
             sb.append(str8);
             return DigestUtils.md5ToHex(sb.toString());
         } catch (Exception e) {
-            TaoLog.m21e("TaoApiSign", "generate sign fail." + e);
+            TaoLog.e("TaoApiSign", "generate sign fail." + e);
             return null;
         }
     }

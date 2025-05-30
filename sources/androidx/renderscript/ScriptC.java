@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ScriptC extends Script {
     private static final String TAG = "ScriptC";
 
@@ -37,11 +37,11 @@ public class ScriptC extends Script {
                             i2 += read;
                         }
                     }
-                } finally {
-                    openRawResource.close();
+                } catch (IOException unused) {
+                    throw new Resources.NotFoundException();
                 }
-            } catch (IOException unused) {
-                throw new Resources.NotFoundException();
+            } finally {
+                openRawResource.close();
             }
         }
         return nScriptCCreate;
@@ -55,6 +55,7 @@ public class ScriptC extends Script {
         return nScriptCCreate;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     protected ScriptC(RenderScript renderScript, Resources resources, int i) {
         super(0L, renderScript);
         long internalCreate = internalCreate(renderScript, resources, i);
@@ -64,6 +65,7 @@ public class ScriptC extends Script {
         setID(internalCreate);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     protected ScriptC(RenderScript renderScript, String str, byte[] bArr, byte[] bArr2) {
         super(0L, renderScript);
         long internalStringCreate;

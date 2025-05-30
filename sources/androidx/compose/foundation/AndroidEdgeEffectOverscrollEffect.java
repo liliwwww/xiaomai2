@@ -4,24 +4,23 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.widget.EdgeEffect;
 import androidx.annotation.VisibleForTesting;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.geometry.SizeKt;
-import androidx.compose.p004ui.graphics.AndroidCanvas_androidKt;
-import androidx.compose.p004ui.graphics.ColorKt;
-import androidx.compose.p004ui.graphics.drawscope.DrawScope;
-import androidx.compose.p004ui.input.nestedscroll.NestedScrollSource;
-import androidx.compose.p004ui.input.pointer.PointerId;
-import androidx.compose.p004ui.input.pointer.SuspendingPointerInputFilterKt;
-import androidx.compose.p004ui.layout.OnRemeasuredModifierKt;
-import androidx.compose.p004ui.platform.InspectableValueKt;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.unit.IntSize;
-import androidx.compose.p004ui.unit.IntSizeKt;
-import androidx.compose.p004ui.unit.Velocity;
+import androidx.compose.foundation.AndroidEdgeEffectOverscrollEffect$special$;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.SnapshotStateKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.geometry.SizeKt;
+import androidx.compose.ui.graphics.AndroidCanvas_androidKt;
+import androidx.compose.ui.graphics.ColorKt;
+import androidx.compose.ui.graphics.drawscope.DrawScope;
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource;
+import androidx.compose.ui.input.pointer.PointerId;
+import androidx.compose.ui.input.pointer.SuspendingPointerInputFilterKt;
+import androidx.compose.ui.layout.OnRemeasuredModifierKt;
+import androidx.compose.ui.platform.InspectableValueKt;
+import androidx.compose.ui.unit.IntSize;
+import androidx.compose.ui.unit.Velocity;
 import java.util.List;
 import kotlin.Unit;
 import kotlin.collections.CollectionsKt;
@@ -33,7 +32,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect {
 
     @NotNull
@@ -106,80 +105,17 @@ public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect
         this.rightEffectNegation = edgeEffectCompat.create(context, null);
         int size = listOf.size();
         for (int i = 0; i < size; i++) {
-            listOf.get(i).setColor(ColorKt.m2841toArgb8_81llA(this.overscrollConfig.m1192getGlowColor0d7_KjU()));
+            listOf.get(i).setColor(ColorKt.toArgb-8_81llA(this.overscrollConfig.getGlowColor-0d7_KjU()));
         }
         Unit unit = Unit.INSTANCE;
         this.redrawSignal = SnapshotStateKt.mutableStateOf(unit, SnapshotStateKt.neverEqualPolicy());
         this.invalidationEnabled = true;
-        this.containerSize = Size.Companion.m2634getZeroNHjbRc();
-        Function1<IntSize, Unit> function1 = new Function1<IntSize, Unit>() { // from class: androidx.compose.foundation.AndroidEdgeEffectOverscrollEffect$onNewSize$1
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                m1112invokeozmzZPI(((IntSize) obj).m5380unboximpl());
-                return Unit.INSTANCE;
-            }
-
-            /* renamed from: invoke-ozmzZPI, reason: not valid java name */
-            public final void m1112invokeozmzZPI(long j) {
-                long j2;
-                EdgeEffect edgeEffect;
-                EdgeEffect edgeEffect2;
-                EdgeEffect edgeEffect3;
-                EdgeEffect edgeEffect4;
-                EdgeEffect edgeEffect5;
-                EdgeEffect edgeEffect6;
-                EdgeEffect edgeEffect7;
-                EdgeEffect edgeEffect8;
-                long m5386toSizeozmzZPI = IntSizeKt.m5386toSizeozmzZPI(j);
-                j2 = AndroidEdgeEffectOverscrollEffect.this.containerSize;
-                boolean z = !Size.m2621equalsimpl0(m5386toSizeozmzZPI, j2);
-                AndroidEdgeEffectOverscrollEffect.this.containerSize = IntSizeKt.m5386toSizeozmzZPI(j);
-                if (z) {
-                    edgeEffect = AndroidEdgeEffectOverscrollEffect.this.topEffect;
-                    edgeEffect.setSize(IntSize.m5376getWidthimpl(j), IntSize.m5375getHeightimpl(j));
-                    edgeEffect2 = AndroidEdgeEffectOverscrollEffect.this.bottomEffect;
-                    edgeEffect2.setSize(IntSize.m5376getWidthimpl(j), IntSize.m5375getHeightimpl(j));
-                    edgeEffect3 = AndroidEdgeEffectOverscrollEffect.this.leftEffect;
-                    edgeEffect3.setSize(IntSize.m5375getHeightimpl(j), IntSize.m5376getWidthimpl(j));
-                    edgeEffect4 = AndroidEdgeEffectOverscrollEffect.this.rightEffect;
-                    edgeEffect4.setSize(IntSize.m5375getHeightimpl(j), IntSize.m5376getWidthimpl(j));
-                    edgeEffect5 = AndroidEdgeEffectOverscrollEffect.this.topEffectNegation;
-                    edgeEffect5.setSize(IntSize.m5376getWidthimpl(j), IntSize.m5375getHeightimpl(j));
-                    edgeEffect6 = AndroidEdgeEffectOverscrollEffect.this.bottomEffectNegation;
-                    edgeEffect6.setSize(IntSize.m5376getWidthimpl(j), IntSize.m5375getHeightimpl(j));
-                    edgeEffect7 = AndroidEdgeEffectOverscrollEffect.this.leftEffectNegation;
-                    edgeEffect7.setSize(IntSize.m5375getHeightimpl(j), IntSize.m5376getWidthimpl(j));
-                    edgeEffect8 = AndroidEdgeEffectOverscrollEffect.this.rightEffectNegation;
-                    edgeEffect8.setSize(IntSize.m5375getHeightimpl(j), IntSize.m5376getWidthimpl(j));
-                }
-                if (z) {
-                    AndroidEdgeEffectOverscrollEffect.this.invalidateOverscroll();
-                    AndroidEdgeEffectOverscrollEffect.this.animateToRelease();
-                }
-            }
-        };
-        this.onNewSize = function1;
+        this.containerSize = Size.Companion.getZero-NH-jbRc();
+        onNewSize.1 r9 = new onNewSize.1(this);
+        this.onNewSize = r9;
         Modifier.Companion companion = Modifier.Companion;
         modifier = AndroidOverscrollKt.StretchOverscrollNonClippingLayer;
-        this.effectModifier = OnRemeasuredModifierKt.onSizeChanged(SuspendingPointerInputFilterKt.pointerInput(companion.then(modifier), unit, new AndroidEdgeEffectOverscrollEffect$effectModifier$1(this, null)), function1).then(new DrawOverscrollModifier(this, InspectableValueKt.isDebugInspectorInfoEnabled() ? new Function1<InspectorInfo, Unit>() { // from class: androidx.compose.foundation.AndroidEdgeEffectOverscrollEffect$special$$inlined$debugInspectorInfo$1
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((InspectorInfo) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull InspectorInfo inspectorInfo) {
-                Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
-                inspectorInfo.setName("overscroll");
-                inspectorInfo.setValue(AndroidEdgeEffectOverscrollEffect.this);
-            }
-        } : InspectableValueKt.getNoInspectorInfo()));
+        this.effectModifier = OnRemeasuredModifierKt.onSizeChanged(SuspendingPointerInputFilterKt.pointerInput(companion.then(modifier), unit, new effectModifier.1(this, (Continuation) null)), r9).then(new DrawOverscrollModifier(this, InspectableValueKt.isDebugInspectorInfoEnabled() ? new AndroidEdgeEffectOverscrollEffect$special$.inlined.debugInspectorInfo.1(this) : InspectableValueKt.getNoInspectorInfo()));
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -200,7 +136,7 @@ public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect
     private final boolean drawBottom(DrawScope drawScope, EdgeEffect edgeEffect, Canvas canvas) {
         int save = canvas.save();
         canvas.rotate(180.0f);
-        canvas.translate(-Size.m2625getWidthimpl(this.containerSize), (-Size.m2622getHeightimpl(this.containerSize)) + drawScope.mo1283toPx0680j_4(this.overscrollConfig.getDrawPadding().mo1374calculateBottomPaddingD9Ej5fM()));
+        canvas.translate(-Size.getWidth-impl(this.containerSize), (-Size.getHeight-impl(this.containerSize)) + drawScope.toPx-0680j_4(this.overscrollConfig.getDrawPadding().calculateBottomPadding-D9Ej5fM()));
         boolean draw = edgeEffect.draw(canvas);
         canvas.restoreToCount(save);
         return draw;
@@ -209,7 +145,7 @@ public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect
     private final boolean drawLeft(DrawScope drawScope, EdgeEffect edgeEffect, Canvas canvas) {
         int save = canvas.save();
         canvas.rotate(270.0f);
-        canvas.translate(-Size.m2622getHeightimpl(this.containerSize), drawScope.mo1283toPx0680j_4(this.overscrollConfig.getDrawPadding().mo1375calculateLeftPaddingu2uoSUM(drawScope.getLayoutDirection())));
+        canvas.translate(-Size.getHeight-impl(this.containerSize), drawScope.toPx-0680j_4(this.overscrollConfig.getDrawPadding().calculateLeftPadding-u2uoSUM(drawScope.getLayoutDirection())));
         boolean draw = edgeEffect.draw(canvas);
         canvas.restoreToCount(save);
         return draw;
@@ -217,10 +153,10 @@ public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect
 
     private final boolean drawRight(DrawScope drawScope, EdgeEffect edgeEffect, Canvas canvas) {
         int save = canvas.save();
-        int roundToInt = MathKt.roundToInt(Size.m2625getWidthimpl(this.containerSize));
-        float mo1376calculateRightPaddingu2uoSUM = this.overscrollConfig.getDrawPadding().mo1376calculateRightPaddingu2uoSUM(drawScope.getLayoutDirection());
+        int roundToInt = MathKt.roundToInt(Size.getWidth-impl(this.containerSize));
+        float f = this.overscrollConfig.getDrawPadding().calculateRightPadding-u2uoSUM(drawScope.getLayoutDirection());
         canvas.rotate(90.0f);
-        canvas.translate(0.0f, (-roundToInt) + drawScope.mo1283toPx0680j_4(mo1376calculateRightPaddingu2uoSUM));
+        canvas.translate(0.0f, (-roundToInt) + drawScope.toPx-0680j_4(f));
         boolean draw = edgeEffect.draw(canvas);
         canvas.restoreToCount(save);
         return draw;
@@ -228,7 +164,7 @@ public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect
 
     private final boolean drawTop(DrawScope drawScope, EdgeEffect edgeEffect, Canvas canvas) {
         int save = canvas.save();
-        canvas.translate(0.0f, drawScope.mo1283toPx0680j_4(this.overscrollConfig.getDrawPadding().mo1377calculateTopPaddingD9Ej5fM()));
+        canvas.translate(0.0f, drawScope.toPx-0680j_4(this.overscrollConfig.getDrawPadding().calculateTopPadding-D9Ej5fM()));
         boolean draw = edgeEffect.draw(canvas);
         canvas.restoreToCount(save);
         return draw;
@@ -246,126 +182,124 @@ public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect
     }
 
     /* renamed from: pullBottom-0a9Yr6o, reason: not valid java name */
-    private final float m1103pullBottom0a9Yr6o(long j, long j2) {
-        return (-EdgeEffectCompat.INSTANCE.onPullDistanceCompat(this.bottomEffect, -(Offset.m2557getYimpl(j) / Size.m2622getHeightimpl(this.containerSize)), 1 - (Offset.m2556getXimpl(j2) / Size.m2625getWidthimpl(this.containerSize)))) * Size.m2622getHeightimpl(this.containerSize);
+    private final float m107pullBottom0a9Yr6o(long j, long j2) {
+        return (-EdgeEffectCompat.INSTANCE.onPullDistanceCompat(this.bottomEffect, -(Offset.getY-impl(j) / Size.getHeight-impl(this.containerSize)), 1 - (Offset.getX-impl(j2) / Size.getWidth-impl(this.containerSize)))) * Size.getHeight-impl(this.containerSize);
     }
 
     /* renamed from: pullLeft-0a9Yr6o, reason: not valid java name */
-    private final float m1104pullLeft0a9Yr6o(long j, long j2) {
-        return EdgeEffectCompat.INSTANCE.onPullDistanceCompat(this.leftEffect, Offset.m2556getXimpl(j) / Size.m2625getWidthimpl(this.containerSize), 1 - (Offset.m2557getYimpl(j2) / Size.m2622getHeightimpl(this.containerSize))) * Size.m2625getWidthimpl(this.containerSize);
+    private final float m108pullLeft0a9Yr6o(long j, long j2) {
+        return EdgeEffectCompat.INSTANCE.onPullDistanceCompat(this.leftEffect, Offset.getX-impl(j) / Size.getWidth-impl(this.containerSize), 1 - (Offset.getY-impl(j2) / Size.getHeight-impl(this.containerSize))) * Size.getWidth-impl(this.containerSize);
     }
 
     /* renamed from: pullRight-0a9Yr6o, reason: not valid java name */
-    private final float m1105pullRight0a9Yr6o(long j, long j2) {
-        return (-EdgeEffectCompat.INSTANCE.onPullDistanceCompat(this.rightEffect, -(Offset.m2556getXimpl(j) / Size.m2625getWidthimpl(this.containerSize)), Offset.m2557getYimpl(j2) / Size.m2622getHeightimpl(this.containerSize))) * Size.m2625getWidthimpl(this.containerSize);
+    private final float m109pullRight0a9Yr6o(long j, long j2) {
+        return (-EdgeEffectCompat.INSTANCE.onPullDistanceCompat(this.rightEffect, -(Offset.getX-impl(j) / Size.getWidth-impl(this.containerSize)), Offset.getY-impl(j2) / Size.getHeight-impl(this.containerSize))) * Size.getWidth-impl(this.containerSize);
     }
 
     /* renamed from: pullTop-0a9Yr6o, reason: not valid java name */
-    private final float m1106pullTop0a9Yr6o(long j, long j2) {
-        float m2556getXimpl = Offset.m2556getXimpl(j2) / Size.m2625getWidthimpl(this.containerSize);
-        return EdgeEffectCompat.INSTANCE.onPullDistanceCompat(this.topEffect, Offset.m2557getYimpl(j) / Size.m2622getHeightimpl(this.containerSize), m2556getXimpl) * Size.m2622getHeightimpl(this.containerSize);
+    private final float m110pullTop0a9Yr6o(long j, long j2) {
+        float f = Offset.getX-impl(j2) / Size.getWidth-impl(this.containerSize);
+        return EdgeEffectCompat.INSTANCE.onPullDistanceCompat(this.topEffect, Offset.getY-impl(j) / Size.getHeight-impl(this.containerSize), f) * Size.getHeight-impl(this.containerSize);
     }
 
     /* renamed from: releaseOppositeOverscroll-k-4lQ0M, reason: not valid java name */
-    private final boolean m1107releaseOppositeOverscrollk4lQ0M(long j) {
+    private final boolean m111releaseOppositeOverscrollk4lQ0M(long j) {
         boolean z;
-        if (this.leftEffect.isFinished() || Offset.m2556getXimpl(j) >= 0.0f) {
+        if (this.leftEffect.isFinished() || Offset.getX-impl(j) >= 0.0f) {
             z = false;
         } else {
-            EdgeEffectCompat.INSTANCE.onReleaseWithOppositeDelta(this.leftEffect, Offset.m2556getXimpl(j));
+            EdgeEffectCompat.INSTANCE.onReleaseWithOppositeDelta(this.leftEffect, Offset.getX-impl(j));
             z = this.leftEffect.isFinished();
         }
-        if (!this.rightEffect.isFinished() && Offset.m2556getXimpl(j) > 0.0f) {
-            EdgeEffectCompat.INSTANCE.onReleaseWithOppositeDelta(this.rightEffect, Offset.m2556getXimpl(j));
+        if (!this.rightEffect.isFinished() && Offset.getX-impl(j) > 0.0f) {
+            EdgeEffectCompat.INSTANCE.onReleaseWithOppositeDelta(this.rightEffect, Offset.getX-impl(j));
             z = z || this.rightEffect.isFinished();
         }
-        if (!this.topEffect.isFinished() && Offset.m2557getYimpl(j) < 0.0f) {
-            EdgeEffectCompat.INSTANCE.onReleaseWithOppositeDelta(this.topEffect, Offset.m2557getYimpl(j));
+        if (!this.topEffect.isFinished() && Offset.getY-impl(j) < 0.0f) {
+            EdgeEffectCompat.INSTANCE.onReleaseWithOppositeDelta(this.topEffect, Offset.getY-impl(j));
             z = z || this.topEffect.isFinished();
         }
-        if (this.bottomEffect.isFinished() || Offset.m2557getYimpl(j) <= 0.0f) {
+        if (this.bottomEffect.isFinished() || Offset.getY-impl(j) <= 0.0f) {
             return z;
         }
-        EdgeEffectCompat.INSTANCE.onReleaseWithOppositeDelta(this.bottomEffect, Offset.m2557getYimpl(j));
+        EdgeEffectCompat.INSTANCE.onReleaseWithOppositeDelta(this.bottomEffect, Offset.getY-impl(j));
         return z || this.bottomEffect.isFinished();
     }
 
     private final boolean stopOverscrollAnimation() {
         boolean z;
-        long m2635getCenteruvyYCjk = SizeKt.m2635getCenteruvyYCjk(this.containerSize);
+        long j = SizeKt.getCenter-uvyYCjk(this.containerSize);
         EdgeEffectCompat edgeEffectCompat = EdgeEffectCompat.INSTANCE;
         if (edgeEffectCompat.getDistanceCompat(this.leftEffect) == 0.0f) {
             z = false;
         } else {
-            m1104pullLeft0a9Yr6o(Offset.Companion.m2572getZeroF1C5BW0(), m2635getCenteruvyYCjk);
+            m108pullLeft0a9Yr6o(Offset.Companion.m1024getZeroF1C5BW0(), j);
             z = true;
         }
         if (!(edgeEffectCompat.getDistanceCompat(this.rightEffect) == 0.0f)) {
-            m1105pullRight0a9Yr6o(Offset.Companion.m2572getZeroF1C5BW0(), m2635getCenteruvyYCjk);
+            m109pullRight0a9Yr6o(Offset.Companion.m1024getZeroF1C5BW0(), j);
             z = true;
         }
         if (!(edgeEffectCompat.getDistanceCompat(this.topEffect) == 0.0f)) {
-            m1106pullTop0a9Yr6o(Offset.Companion.m2572getZeroF1C5BW0(), m2635getCenteruvyYCjk);
+            m110pullTop0a9Yr6o(Offset.Companion.m1024getZeroF1C5BW0(), j);
             z = true;
         }
         if (edgeEffectCompat.getDistanceCompat(this.bottomEffect) == 0.0f) {
             return z;
         }
-        m1103pullBottom0a9Yr6o(Offset.Companion.m2572getZeroF1C5BW0(), m2635getCenteruvyYCjk);
+        m107pullBottom0a9Yr6o(Offset.Companion.m1024getZeroF1C5BW0(), j);
         return true;
     }
 
-    @Override // androidx.compose.foundation.OverscrollEffect
     @Nullable
     /* renamed from: consumePostFling-sF-c-tU, reason: not valid java name */
-    public Object mo1108consumePostFlingsFctU(long j, @NotNull Continuation<? super Unit> continuation) {
-        if (Size.m2627isEmptyimpl(this.containerSize)) {
+    public Object m112consumePostFlingsFctU(long j, @NotNull Continuation<? super Unit> continuation) {
+        if (Size.isEmpty-impl(this.containerSize)) {
             return Unit.INSTANCE;
         }
         this.scrollCycleInProgress = false;
-        if (Velocity.m5441getXimpl(j) > 0.0f) {
-            EdgeEffectCompat.INSTANCE.onAbsorbCompat(this.leftEffect, MathKt.roundToInt(Velocity.m5441getXimpl(j)));
-        } else if (Velocity.m5441getXimpl(j) < 0.0f) {
-            EdgeEffectCompat.INSTANCE.onAbsorbCompat(this.rightEffect, -MathKt.roundToInt(Velocity.m5441getXimpl(j)));
+        if (Velocity.m2710getXimpl(j) > 0.0f) {
+            EdgeEffectCompat.INSTANCE.onAbsorbCompat(this.leftEffect, MathKt.roundToInt(Velocity.m2710getXimpl(j)));
+        } else if (Velocity.m2710getXimpl(j) < 0.0f) {
+            EdgeEffectCompat.INSTANCE.onAbsorbCompat(this.rightEffect, -MathKt.roundToInt(Velocity.m2710getXimpl(j)));
         }
-        if (Velocity.m5442getYimpl(j) > 0.0f) {
-            EdgeEffectCompat.INSTANCE.onAbsorbCompat(this.topEffect, MathKt.roundToInt(Velocity.m5442getYimpl(j)));
-        } else if (Velocity.m5442getYimpl(j) < 0.0f) {
-            EdgeEffectCompat.INSTANCE.onAbsorbCompat(this.bottomEffect, -MathKt.roundToInt(Velocity.m5442getYimpl(j)));
+        if (Velocity.m2711getYimpl(j) > 0.0f) {
+            EdgeEffectCompat.INSTANCE.onAbsorbCompat(this.topEffect, MathKt.roundToInt(Velocity.m2711getYimpl(j)));
+        } else if (Velocity.m2711getYimpl(j) < 0.0f) {
+            EdgeEffectCompat.INSTANCE.onAbsorbCompat(this.bottomEffect, -MathKt.roundToInt(Velocity.m2711getYimpl(j)));
         }
-        if (!Velocity.m5440equalsimpl0(j, Velocity.Companion.m5452getZero9UxMQ8M())) {
+        if (!Velocity.m2709equalsimpl0(j, Velocity.Companion.getZero-9UxMQ8M())) {
             invalidateOverscroll();
         }
         animateToRelease();
         return Unit.INSTANCE;
     }
 
-    @Override // androidx.compose.foundation.OverscrollEffect
     /* renamed from: consumePostScroll-OMhpSzk, reason: not valid java name */
-    public void mo1109consumePostScrollOMhpSzk(long j, long j2, int i) {
+    public void m113consumePostScrollOMhpSzk(long j, long j2, int i) {
         boolean z;
-        if (Size.m2627isEmptyimpl(this.containerSize)) {
+        if (Size.isEmpty-impl(this.containerSize)) {
             return;
         }
         boolean z2 = true;
-        if (NestedScrollSource.m3988equalsimpl0(i, NestedScrollSource.Companion.m3993getDragWNlRxjI())) {
+        if (NestedScrollSource.equals-impl0(i, NestedScrollSource.Companion.getDrag-WNlRxjI())) {
             Offset offset = this.pointerPosition;
-            long m2566unboximpl = offset != null ? offset.m2566unboximpl() : SizeKt.m2635getCenteruvyYCjk(this.containerSize);
-            if (Offset.m2556getXimpl(j2) > 0.0f) {
-                m1104pullLeft0a9Yr6o(j2, m2566unboximpl);
-            } else if (Offset.m2556getXimpl(j2) < 0.0f) {
-                m1105pullRight0a9Yr6o(j2, m2566unboximpl);
+            long j3 = offset != null ? offset.unbox-impl() : SizeKt.getCenter-uvyYCjk(this.containerSize);
+            if (Offset.getX-impl(j2) > 0.0f) {
+                m108pullLeft0a9Yr6o(j2, j3);
+            } else if (Offset.getX-impl(j2) < 0.0f) {
+                m109pullRight0a9Yr6o(j2, j3);
             }
-            if (Offset.m2557getYimpl(j2) > 0.0f) {
-                m1106pullTop0a9Yr6o(j2, m2566unboximpl);
-            } else if (Offset.m2557getYimpl(j2) < 0.0f) {
-                m1103pullBottom0a9Yr6o(j2, m2566unboximpl);
+            if (Offset.getY-impl(j2) > 0.0f) {
+                m110pullTop0a9Yr6o(j2, j3);
+            } else if (Offset.getY-impl(j2) < 0.0f) {
+                m107pullBottom0a9Yr6o(j2, j3);
             }
-            z = !Offset.m2553equalsimpl0(j2, Offset.Companion.m2572getZeroF1C5BW0());
+            z = !Offset.equals-impl0(j2, Offset.Companion.m1024getZeroF1C5BW0());
         } else {
             z = false;
         }
-        if (!m1107releaseOppositeOverscrollk4lQ0M(j) && !z) {
+        if (!m111releaseOppositeOverscrollk4lQ0M(j) && !z) {
             z2 = false;
         }
         if (z2) {
@@ -376,25 +310,24 @@ public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect
     /* JADX WARN: Removed duplicated region for block: B:15:0x0076  */
     /* JADX WARN: Removed duplicated region for block: B:22:0x00d3  */
     /* JADX WARN: Removed duplicated region for block: B:28:0x00a1  */
-    @Override // androidx.compose.foundation.OverscrollEffect
     @org.jetbrains.annotations.Nullable
     /* renamed from: consumePreFling-QWom1Mo, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public java.lang.Object mo1110consumePreFlingQWom1Mo(long r6, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.unit.Velocity> r8) {
+    public java.lang.Object m114consumePreFlingQWom1Mo(long r6, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.unit.Velocity> r8) {
         /*
             r5 = this;
             long r0 = r5.containerSize
-            boolean r8 = androidx.compose.p004ui.geometry.Size.m2627isEmptyimpl(r0)
+            boolean r8 = androidx.compose.ui.geometry.Size.isEmpty-impl(r0)
             if (r8 == 0) goto L13
-            androidx.compose.ui.unit.Velocity$Companion r6 = androidx.compose.p004ui.unit.Velocity.Companion
-            long r6 = r6.m5452getZero9UxMQ8M()
-            androidx.compose.ui.unit.Velocity r6 = androidx.compose.p004ui.unit.Velocity.m5432boximpl(r6)
+            androidx.compose.ui.unit.Velocity$Companion r6 = androidx.compose.ui.unit.Velocity.Companion
+            long r6 = r6.getZero-9UxMQ8M()
+            androidx.compose.ui.unit.Velocity r6 = androidx.compose.ui.unit.Velocity.m2701boximpl(r6)
             return r6
         L13:
-            float r8 = androidx.compose.p004ui.unit.Velocity.m5441getXimpl(r6)
+            float r8 = androidx.compose.ui.unit.Velocity.m2710getXimpl(r6)
             r0 = 1
             r1 = 0
             r2 = 0
@@ -412,13 +345,13 @@ public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect
         L2d:
             if (r3 != 0) goto L41
             android.widget.EdgeEffect r3 = r5.leftEffect
-            float r4 = androidx.compose.p004ui.unit.Velocity.m5441getXimpl(r6)
+            float r4 = androidx.compose.ui.unit.Velocity.m2710getXimpl(r6)
             int r4 = kotlin.math.MathKt.roundToInt(r4)
             r8.onAbsorbCompat(r3, r4)
-            float r8 = androidx.compose.p004ui.unit.Velocity.m5441getXimpl(r6)
+            float r8 = androidx.compose.ui.unit.Velocity.m2710getXimpl(r6)
             goto L6e
         L41:
-            float r8 = androidx.compose.p004ui.unit.Velocity.m5441getXimpl(r6)
+            float r8 = androidx.compose.ui.unit.Velocity.m2710getXimpl(r6)
             int r8 = (r8 > r2 ? 1 : (r8 == r2 ? 0 : -1))
             if (r8 >= 0) goto L6d
             androidx.compose.foundation.EdgeEffectCompat r8 = androidx.compose.foundation.EdgeEffectCompat.INSTANCE
@@ -433,16 +366,16 @@ public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect
         L58:
             if (r3 != 0) goto L6d
             android.widget.EdgeEffect r3 = r5.rightEffect
-            float r4 = androidx.compose.p004ui.unit.Velocity.m5441getXimpl(r6)
+            float r4 = androidx.compose.ui.unit.Velocity.m2710getXimpl(r6)
             int r4 = kotlin.math.MathKt.roundToInt(r4)
             int r4 = -r4
             r8.onAbsorbCompat(r3, r4)
-            float r8 = androidx.compose.p004ui.unit.Velocity.m5441getXimpl(r6)
+            float r8 = androidx.compose.ui.unit.Velocity.m2710getXimpl(r6)
             goto L6e
         L6d:
             r8 = 0
         L6e:
-            float r3 = androidx.compose.p004ui.unit.Velocity.m5442getYimpl(r6)
+            float r3 = androidx.compose.ui.unit.Velocity.m2711getYimpl(r6)
             int r3 = (r3 > r2 ? 1 : (r3 == r2 ? 0 : -1))
             if (r3 <= 0) goto L99
             androidx.compose.foundation.EdgeEffectCompat r3 = androidx.compose.foundation.EdgeEffectCompat.INSTANCE
@@ -457,13 +390,13 @@ public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect
         L85:
             if (r4 != 0) goto L99
             android.widget.EdgeEffect r0 = r5.topEffect
-            float r1 = androidx.compose.p004ui.unit.Velocity.m5442getYimpl(r6)
+            float r1 = androidx.compose.ui.unit.Velocity.m2711getYimpl(r6)
             int r1 = kotlin.math.MathKt.roundToInt(r1)
             r3.onAbsorbCompat(r0, r1)
-            float r2 = androidx.compose.p004ui.unit.Velocity.m5442getYimpl(r6)
+            float r2 = androidx.compose.ui.unit.Velocity.m2711getYimpl(r6)
             goto Lc3
         L99:
-            float r3 = androidx.compose.p004ui.unit.Velocity.m5442getYimpl(r6)
+            float r3 = androidx.compose.ui.unit.Velocity.m2711getYimpl(r6)
             int r3 = (r3 > r2 ? 1 : (r3 == r2 ? 0 : -1))
             if (r3 >= 0) goto Lc3
             androidx.compose.foundation.EdgeEffectCompat r3 = androidx.compose.foundation.EdgeEffectCompat.INSTANCE
@@ -477,50 +410,49 @@ public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect
         Laf:
             if (r0 != 0) goto Lc3
             android.widget.EdgeEffect r0 = r5.bottomEffect
-            float r1 = androidx.compose.p004ui.unit.Velocity.m5442getYimpl(r6)
+            float r1 = androidx.compose.ui.unit.Velocity.m2711getYimpl(r6)
             int r1 = kotlin.math.MathKt.roundToInt(r1)
             int r1 = -r1
             r3.onAbsorbCompat(r0, r1)
-            float r2 = androidx.compose.p004ui.unit.Velocity.m5442getYimpl(r6)
+            float r2 = androidx.compose.ui.unit.Velocity.m2711getYimpl(r6)
         Lc3:
-            long r6 = androidx.compose.p004ui.unit.VelocityKt.Velocity(r8, r2)
-            androidx.compose.ui.unit.Velocity$Companion r8 = androidx.compose.p004ui.unit.Velocity.Companion
-            long r0 = r8.m5452getZero9UxMQ8M()
-            boolean r8 = androidx.compose.p004ui.unit.Velocity.m5440equalsimpl0(r6, r0)
+            long r6 = androidx.compose.ui.unit.VelocityKt.Velocity(r8, r2)
+            androidx.compose.ui.unit.Velocity$Companion r8 = androidx.compose.ui.unit.Velocity.Companion
+            long r0 = r8.getZero-9UxMQ8M()
+            boolean r8 = androidx.compose.ui.unit.Velocity.m2709equalsimpl0(r6, r0)
             if (r8 != 0) goto Ld6
             r5.invalidateOverscroll()
         Ld6:
-            androidx.compose.ui.unit.Velocity r6 = androidx.compose.p004ui.unit.Velocity.m5432boximpl(r6)
+            androidx.compose.ui.unit.Velocity r6 = androidx.compose.ui.unit.Velocity.m2701boximpl(r6)
             return r6
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.AndroidEdgeEffectOverscrollEffect.mo1110consumePreFlingQWom1Mo(long, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.AndroidEdgeEffectOverscrollEffect.m114consumePreFlingQWom1Mo(long, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:19:0x0092  */
     /* JADX WARN: Removed duplicated region for block: B:21:0x0098  */
     /* JADX WARN: Removed duplicated region for block: B:44:0x00f9  */
     /* JADX WARN: Removed duplicated region for block: B:46:0x0094  */
-    @Override // androidx.compose.foundation.OverscrollEffect
     /* renamed from: consumePreScroll-OzD1aCk, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public long mo1111consumePreScrollOzD1aCk(long r8, int r10) {
+    public long m115consumePreScrollOzD1aCk(long r8, int r10) {
         /*
             Method dump skipped, instructions count: 253
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.AndroidEdgeEffectOverscrollEffect.mo1111consumePreScrollOzD1aCk(long, int):long");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.AndroidEdgeEffectOverscrollEffect.m115consumePreScrollOzD1aCk(long, int):long");
     }
 
     public final void drawOverscroll(@NotNull DrawScope drawScope) {
         boolean z;
         Intrinsics.checkNotNullParameter(drawScope, "<this>");
-        if (Size.m2627isEmptyimpl(this.containerSize)) {
+        if (Size.isEmpty-impl(this.containerSize)) {
             return;
         }
-        androidx.compose.p004ui.graphics.Canvas canvas = drawScope.getDrawContext().getCanvas();
+        androidx.compose.ui.graphics.Canvas canvas = drawScope.getDrawContext().getCanvas();
         this.redrawSignal.getValue();
         Canvas nativeCanvas = AndroidCanvas_androidKt.getNativeCanvas(canvas);
         EdgeEffectCompat edgeEffectCompat = EdgeEffectCompat.INSTANCE;
@@ -567,7 +499,6 @@ public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect
         }
     }
 
-    @Override // androidx.compose.foundation.OverscrollEffect
     @NotNull
     public Modifier getEffectModifier() {
         return this.effectModifier;
@@ -577,7 +508,6 @@ public final class AndroidEdgeEffectOverscrollEffect implements OverscrollEffect
         return this.invalidationEnabled;
     }
 
-    @Override // androidx.compose.foundation.OverscrollEffect
     public boolean isInProgress() {
         List<EdgeEffect> list = this.allEffects;
         int size = list.size();

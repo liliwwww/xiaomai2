@@ -1,79 +1,39 @@
 package androidx.compose.material.icons.outlined;
 
-import androidx.compose.material.icons.Icons;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.graphics.SolidColor;
-import androidx.compose.p004ui.graphics.StrokeCap;
-import androidx.compose.p004ui.graphics.StrokeJoin;
-import androidx.compose.p004ui.graphics.vector.ImageVector;
-import androidx.compose.p004ui.graphics.vector.PathBuilder;
-import androidx.compose.p004ui.graphics.vector.VectorKt;
-import androidx.compose.p004ui.unit.C0856Dp;
-import kotlin.jvm.internal.DefaultConstructorMarker;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import androidx.compose.ui.graphics.vector.ImageVector;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ShoppingCartKt {
 
     @Nullable
     private static ImageVector _shoppingCart;
 
-    @NotNull
-    public static final ImageVector getShoppingCart(@NotNull Icons.Outlined outlined) {
-        Intrinsics.checkNotNullParameter(outlined, "<this>");
-        ImageVector imageVector = _shoppingCart;
-        if (imageVector != null) {
-            Intrinsics.checkNotNull(imageVector);
-            return imageVector;
-        }
-        ImageVector.Builder builder = new ImageVector.Builder("Outlined.ShoppingCart", C0856Dp.m5216constructorimpl(24.0f), C0856Dp.m5216constructorimpl(24.0f), 24.0f, 24.0f, 0L, 0, 96, (DefaultConstructorMarker) null);
-        int defaultFillType = VectorKt.getDefaultFillType();
-        SolidColor solidColor = new SolidColor(Color.Companion.m2813getBlack0d7_KjU(), null);
-        int m3092getButtKaPHkGw = StrokeCap.Companion.m3092getButtKaPHkGw();
-        int m3102getBevelLxFBmk8 = StrokeJoin.Companion.m3102getBevelLxFBmk8();
-        PathBuilder pathBuilder = new PathBuilder();
-        pathBuilder.moveTo(15.55f, 13.0f);
-        pathBuilder.curveToRelative(0.75f, 0.0f, 1.41f, -0.41f, 1.75f, -1.03f);
-        pathBuilder.lineToRelative(3.58f, -6.49f);
-        pathBuilder.curveToRelative(0.37f, -0.66f, -0.11f, -1.48f, -0.87f, -1.48f);
-        pathBuilder.lineTo(5.21f, 4.0f);
-        pathBuilder.lineToRelative(-0.94f, -2.0f);
-        pathBuilder.lineTo(1.0f, 2.0f);
-        pathBuilder.verticalLineToRelative(2.0f);
-        pathBuilder.horizontalLineToRelative(2.0f);
-        pathBuilder.lineToRelative(3.6f, 7.59f);
-        pathBuilder.lineToRelative(-1.35f, 2.44f);
-        pathBuilder.curveTo(4.52f, 15.37f, 5.48f, 17.0f, 7.0f, 17.0f);
-        pathBuilder.horizontalLineToRelative(12.0f);
-        pathBuilder.verticalLineToRelative(-2.0f);
-        pathBuilder.lineTo(7.0f, 15.0f);
-        pathBuilder.lineToRelative(1.1f, -2.0f);
-        pathBuilder.horizontalLineToRelative(7.45f);
-        pathBuilder.close();
-        pathBuilder.moveTo(6.16f, 6.0f);
-        pathBuilder.horizontalLineToRelative(12.15f);
-        pathBuilder.lineToRelative(-2.76f, 5.0f);
-        pathBuilder.lineTo(8.53f, 11.0f);
-        pathBuilder.lineTo(6.16f, 6.0f);
-        pathBuilder.close();
-        pathBuilder.moveTo(7.0f, 18.0f);
-        pathBuilder.curveToRelative(-1.1f, 0.0f, -1.99f, 0.9f, -1.99f, 2.0f);
-        pathBuilder.reflectiveCurveTo(5.9f, 22.0f, 7.0f, 22.0f);
-        pathBuilder.reflectiveCurveToRelative(2.0f, -0.9f, 2.0f, -2.0f);
-        pathBuilder.reflectiveCurveToRelative(-0.9f, -2.0f, -2.0f, -2.0f);
-        pathBuilder.close();
-        pathBuilder.moveTo(17.0f, 18.0f);
-        pathBuilder.curveToRelative(-1.1f, 0.0f, -1.99f, 0.9f, -1.99f, 2.0f);
-        pathBuilder.reflectiveCurveToRelative(0.89f, 2.0f, 1.99f, 2.0f);
-        pathBuilder.reflectiveCurveToRelative(2.0f, -0.9f, 2.0f, -2.0f);
-        pathBuilder.reflectiveCurveToRelative(-0.9f, -2.0f, -2.0f, -2.0f);
-        pathBuilder.close();
-        ImageVector build = ImageVector.Builder.m3310addPathoIyEayM$default(builder, pathBuilder.getNodes(), defaultFillType, "", solidColor, 1.0f, null, 1.0f, 1.0f, m3092getButtKaPHkGw, m3102getBevelLxFBmk8, 1.0f, 0.0f, 0.0f, 0.0f, 14336, null).build();
-        _shoppingCart = build;
-        Intrinsics.checkNotNull(build);
-        return build;
+    /*  JADX ERROR: JadxRuntimeException in pass: InlineMethods
+        jadx.core.utils.exceptions.JadxRuntimeException: Failed to process method for inline: androidx.compose.ui.graphics.vector.ImageVector.Builder.addPath-oIyEayM$default(androidx.compose.ui.graphics.vector.ImageVector$Builder, java.util.List, int, java.lang.String, androidx.compose.ui.graphics.Brush, float, androidx.compose.ui.graphics.Brush, float, float, int, int, float, float, float, float, int, java.lang.Object):androidx.compose.ui.graphics.vector.ImageVector$Builder
+        	at jadx.core.dex.visitors.InlineMethods.processInvokeInsn(InlineMethods.java:79)
+        	at jadx.core.dex.visitors.InlineMethods.visit(InlineMethods.java:49)
+        Caused by: java.util.ConcurrentModificationException
+        	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1685)
+        	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1660)
+        	at jadx.core.dex.instructions.args.SSAVar.removeUse(SSAVar.java:141)
+        	at jadx.core.dex.instructions.args.SSAVar.use(SSAVar.java:134)
+        	at jadx.core.dex.nodes.InsnNode.rebindArgs(InsnNode.java:493)
+        	at jadx.core.dex.instructions.mods.TernaryInsn.rebindArgs(TernaryInsn.java:92)
+        	at jadx.core.dex.nodes.InsnNode.rebindArgs(InsnNode.java:496)
+        	at jadx.core.utils.BlockUtils.replaceInsn(BlockUtils.java:1122)
+        	at jadx.core.utils.BlockUtils.replaceInsn(BlockUtils.java:1131)
+        	at jadx.core.dex.visitors.InlineMethods.inlineMethod(InlineMethods.java:118)
+        	at jadx.core.dex.visitors.InlineMethods.processInvokeInsn(InlineMethods.java:77)
+        	... 1 more
+        */
+    @org.jetbrains.annotations.NotNull
+    public static final androidx.compose.ui.graphics.vector.ImageVector getShoppingCart(@org.jetbrains.annotations.NotNull androidx.compose.material.icons.Icons$Outlined r29) {
+        /*
+            Method dump skipped, instructions count: 381
+            To view this dump add '--comments-level debug' option
+        */
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.icons.outlined.ShoppingCartKt.getShoppingCart(androidx.compose.material.icons.Icons$Outlined):androidx.compose.ui.graphics.vector.ImageVector");
     }
 }

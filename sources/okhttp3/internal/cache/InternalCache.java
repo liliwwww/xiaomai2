@@ -2,23 +2,23 @@ package okhttp3.internal.cache;
 
 import java.io.IOException;
 import javax.annotation.Nullable;
-import okhttp3.C1474n;
-import okhttp3.C1476p;
+import okhttp3.n;
+import okhttp3.p;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface InternalCache {
     @Nullable
-    C1476p get(C1474n c1474n) throws IOException;
+    p get(n nVar) throws IOException;
 
     @Nullable
-    CacheRequest put(C1476p c1476p) throws IOException;
+    CacheRequest put(p pVar) throws IOException;
 
-    void remove(C1474n c1474n) throws IOException;
+    void remove(n nVar) throws IOException;
 
     void trackConditionalCacheHit();
 
-    void trackResponse(C1424b c1424b);
+    void trackResponse(b bVar);
 
-    void update(C1476p c1476p, C1476p c1476p2);
+    void update(p pVar, p pVar2);
 }

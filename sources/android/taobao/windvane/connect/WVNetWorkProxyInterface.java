@@ -4,7 +4,7 @@ import android.content.Context;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface WVNetWorkProxyInterface {
     IResponse getWebResourceResponse(Context context, String str, Map<String, String> map, boolean z, boolean z2, int i);
 

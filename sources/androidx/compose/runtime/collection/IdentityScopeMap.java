@@ -10,7 +10,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class IdentityScopeMap<T> {
 
     @NotNull
@@ -61,7 +61,7 @@ public final class IdentityScopeMap<T> {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private final int findExactIndex(int r4, java.lang.Object r5, int r6) {
         /*

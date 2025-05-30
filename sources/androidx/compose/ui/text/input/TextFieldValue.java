@@ -1,0 +1,187 @@
+package androidx.compose.ui.text.input;
+
+import androidx.compose.runtime.Immutable;
+import androidx.compose.runtime.saveable.Saver;
+import androidx.compose.runtime.saveable.SaverKt;
+import androidx.compose.runtime.saveable.SaverScope;
+import androidx.compose.ui.text.AnnotatedString;
+import androidx.compose.ui.text.SaversKt;
+import androidx.compose.ui.text.TextRange;
+import androidx.compose.ui.text.TextRangeKt;
+import java.util.List;
+import kotlin.collections.CollectionsKt;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
+import kotlin.jvm.internal.DefaultConstructorMarker;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+/* compiled from: Taobao */
+@Immutable
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
+public final class TextFieldValue {
+
+    @NotNull
+    public static final Companion Companion = new Companion(null);
+
+    @NotNull
+    private static final Saver<TextFieldValue, Object> Saver = SaverKt.Saver(new Function2<SaverScope, TextFieldValue, Object>() { // from class: androidx.compose.ui.text.input.TextFieldValue$Companion$Saver$1
+        @Nullable
+        public final Object invoke(@NotNull SaverScope saverScope, @NotNull TextFieldValue textFieldValue) {
+            Intrinsics.checkNotNullParameter(saverScope, "$this$Saver");
+            Intrinsics.checkNotNullParameter(textFieldValue, "it");
+            return CollectionsKt.arrayListOf(new Object[]{SaversKt.save(textFieldValue.getAnnotatedString(), SaversKt.getAnnotatedStringSaver(), saverScope), SaversKt.save(TextRange.box-impl(textFieldValue.m1985getSelectiond9O1mEE()), SaversKt.getSaver(TextRange.Companion), saverScope)});
+        }
+    }, new Function1<Object, TextFieldValue>() { // from class: androidx.compose.ui.text.input.TextFieldValue$Companion$Saver$2
+        @Nullable
+        /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
+        public final TextFieldValue m1986invoke(@NotNull Object obj) {
+            Intrinsics.checkNotNullParameter(obj, "it");
+            List list = (List) obj;
+            Object obj2 = list.get(0);
+            Saver annotatedStringSaver = SaversKt.getAnnotatedStringSaver();
+            Boolean bool = Boolean.FALSE;
+            TextRange textRange = null;
+            AnnotatedString annotatedString = (Intrinsics.areEqual(obj2, bool) || obj2 == null) ? null : (AnnotatedString) annotatedStringSaver.restore(obj2);
+            Intrinsics.checkNotNull(annotatedString);
+            Object obj3 = list.get(1);
+            Saver saver = SaversKt.getSaver(TextRange.Companion);
+            if (!Intrinsics.areEqual(obj3, bool) && obj3 != null) {
+                textRange = (TextRange) saver.restore(obj3);
+            }
+            Intrinsics.checkNotNull(textRange);
+            return new TextFieldValue(annotatedString, textRange.unbox-impl(), (TextRange) null, 4, (DefaultConstructorMarker) null);
+        }
+    });
+
+    @NotNull
+    private final AnnotatedString annotatedString;
+
+    @Nullable
+    private final TextRange composition;
+    private final long selection;
+
+    /* compiled from: Taobao */
+    public static final class Companion {
+        private Companion() {
+        }
+
+        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
+            this();
+        }
+
+        @NotNull
+        public final Saver<TextFieldValue, Object> getSaver() {
+            return TextFieldValue.Saver;
+        }
+    }
+
+    private TextFieldValue(AnnotatedString annotatedString, long j, TextRange textRange) {
+        this.annotatedString = annotatedString;
+        this.selection = TextRangeKt.m1894constrain8ffj60Q(j, 0, getText().length());
+        this.composition = textRange != null ? TextRange.box-impl(TextRangeKt.m1894constrain8ffj60Q(textRange.unbox-impl(), 0, getText().length())) : null;
+    }
+
+    public /* synthetic */ TextFieldValue(AnnotatedString annotatedString, long j, TextRange textRange, DefaultConstructorMarker defaultConstructorMarker) {
+        this(annotatedString, j, textRange);
+    }
+
+    public /* synthetic */ TextFieldValue(String str, long j, TextRange textRange, DefaultConstructorMarker defaultConstructorMarker) {
+        this(str, j, textRange);
+    }
+
+    /* renamed from: copy-3r_uNRQ$default, reason: not valid java name */
+    public static /* synthetic */ TextFieldValue m1980copy3r_uNRQ$default(TextFieldValue textFieldValue, AnnotatedString annotatedString, long j, TextRange textRange, int i, Object obj) {
+        if ((i & 1) != 0) {
+            annotatedString = textFieldValue.annotatedString;
+        }
+        if ((i & 2) != 0) {
+            j = textFieldValue.selection;
+        }
+        if ((i & 4) != 0) {
+            textRange = textFieldValue.composition;
+        }
+        return textFieldValue.m1982copy3r_uNRQ(annotatedString, j, textRange);
+    }
+
+    @NotNull
+    /* renamed from: copy-3r_uNRQ, reason: not valid java name */
+    public final TextFieldValue m1982copy3r_uNRQ(@NotNull AnnotatedString annotatedString, long j, @Nullable TextRange textRange) {
+        Intrinsics.checkNotNullParameter(annotatedString, "annotatedString");
+        return new TextFieldValue(annotatedString, j, textRange, (DefaultConstructorMarker) null);
+    }
+
+    public boolean equals(@Nullable Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof TextFieldValue)) {
+            return false;
+        }
+        TextFieldValue textFieldValue = (TextFieldValue) obj;
+        return TextRange.equals-impl0(this.selection, textFieldValue.selection) && Intrinsics.areEqual(this.composition, textFieldValue.composition) && Intrinsics.areEqual(this.annotatedString, textFieldValue.annotatedString);
+    }
+
+    @NotNull
+    public final AnnotatedString getAnnotatedString() {
+        return this.annotatedString;
+    }
+
+    @Nullable
+    /* renamed from: getComposition-MzsxiRA, reason: not valid java name */
+    public final TextRange m1984getCompositionMzsxiRA() {
+        return this.composition;
+    }
+
+    /* renamed from: getSelection-d9O1mEE, reason: not valid java name */
+    public final long m1985getSelectiond9O1mEE() {
+        return this.selection;
+    }
+
+    @NotNull
+    public final String getText() {
+        return this.annotatedString.getText();
+    }
+
+    public int hashCode() {
+        int hashCode = ((this.annotatedString.hashCode() * 31) + TextRange.hashCode-impl(this.selection)) * 31;
+        TextRange textRange = this.composition;
+        return hashCode + (textRange != null ? TextRange.hashCode-impl(textRange.unbox-impl()) : 0);
+    }
+
+    @NotNull
+    public String toString() {
+        return "TextFieldValue(text='" + this.annotatedString + "', selection=" + ((Object) TextRange.toString-impl(this.selection)) + ", composition=" + this.composition + ')';
+    }
+
+    @NotNull
+    /* renamed from: copy-3r_uNRQ, reason: not valid java name */
+    public final TextFieldValue m1983copy3r_uNRQ(@NotNull String str, long j, @Nullable TextRange textRange) {
+        Intrinsics.checkNotNullParameter(str, "text");
+        return new TextFieldValue(new AnnotatedString(str, (List) null, (List) null, 6, (DefaultConstructorMarker) null), j, textRange, (DefaultConstructorMarker) null);
+    }
+
+    public /* synthetic */ TextFieldValue(AnnotatedString annotatedString, long j, TextRange textRange, int i, DefaultConstructorMarker defaultConstructorMarker) {
+        this(annotatedString, (i & 2) != 0 ? TextRange.Companion.m1893getZerod9O1mEE() : j, (i & 4) != 0 ? null : textRange, (DefaultConstructorMarker) null);
+    }
+
+    /* renamed from: copy-3r_uNRQ$default, reason: not valid java name */
+    public static /* synthetic */ TextFieldValue m1981copy3r_uNRQ$default(TextFieldValue textFieldValue, String str, long j, TextRange textRange, int i, Object obj) {
+        if ((i & 2) != 0) {
+            j = textFieldValue.selection;
+        }
+        if ((i & 4) != 0) {
+            textRange = textFieldValue.composition;
+        }
+        return textFieldValue.m1983copy3r_uNRQ(str, j, textRange);
+    }
+
+    public /* synthetic */ TextFieldValue(String str, long j, TextRange textRange, int i, DefaultConstructorMarker defaultConstructorMarker) {
+        this((i & 1) != 0 ? "" : str, (i & 2) != 0 ? TextRange.Companion.m1893getZerod9O1mEE() : j, (i & 4) != 0 ? null : textRange, (DefaultConstructorMarker) null);
+    }
+
+    private TextFieldValue(String str, long j, TextRange textRange) {
+        this(new AnnotatedString(str, (List) null, (List) null, 6, (DefaultConstructorMarker) null), j, textRange, (DefaultConstructorMarker) null);
+    }
+}

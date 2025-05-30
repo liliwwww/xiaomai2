@@ -1,20 +1,16 @@
 package androidx.renderscript;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Double2 {
-
-    /* renamed from: x */
-    public double f390x;
-
-    /* renamed from: y */
-    public double f391y;
+    public double x;
+    public double y;
 
     public Double2() {
     }
 
     public Double2(double d, double d2) {
-        this.f390x = d;
-        this.f391y = d2;
+        this.x = d;
+        this.y = d2;
     }
 }

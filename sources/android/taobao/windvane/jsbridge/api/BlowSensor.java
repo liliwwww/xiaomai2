@@ -2,34 +2,29 @@ package android.taobao.windvane.jsbridge.api;
 
 import android.media.AudioRecord;
 import android.os.Handler;
-import androidx.vectordrawable.graphics.drawable.PathInterpolatorCompat;
 import java.util.Timer;
 import java.util.TimerTask;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class BlowSensor {
     public static final int BLOW_HANDLER_BLOWING = 4101;
     public static final int BLOW_HANDLER_FAIL = 4102;
-
-    /* renamed from: ar */
-    private AudioRecord f17ar;
-
-    /* renamed from: bs */
-    private int f18bs;
+    private AudioRecord ar;
+    private int bs;
     private byte[] buffer;
     private Handler mHandler;
     private Timer mTimer;
     private int SAMPLE_RATE_IN_HZ = 8000;
     private int number = 1;
     private long time = 1;
-    private int BLOW_ACTIVI = PathInterpolatorCompat.MAX_NUM_POINTS;
+    private int BLOW_ACTIVI = 3000;
 
     public BlowSensor(Handler handler) {
-        this.f18bs = 100;
+        this.bs = 100;
         this.mHandler = handler;
-        this.f18bs = AudioRecord.getMinBufferSize(8000, 16, 2);
-        this.f17ar = new AudioRecord(1, this.SAMPLE_RATE_IN_HZ, 16, 2, this.f18bs);
+        this.bs = AudioRecord.getMinBufferSize(8000, 16, 2);
+        this.ar = new AudioRecord(1, this.SAMPLE_RATE_IN_HZ, 16, 2, this.bs);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -39,7 +34,7 @@ public class BlowSensor {
             Thread.sleep(8L);
             long currentTimeMillis = System.currentTimeMillis();
             int i = 0;
-            int read = this.f17ar.read(this.buffer, 0, this.f18bs) + 1;
+            int read = this.ar.read(this.buffer, 0, this.bs) + 1;
             int i2 = 0;
             while (true) {
                 byte[] bArr = this.buffer;
@@ -65,16 +60,11 @@ public class BlowSensor {
 
     public void start() {
         try {
-            this.f17ar.startRecording();
-            this.buffer = new byte[this.f18bs];
+            this.ar.startRecording();
+            this.buffer = new byte[this.bs];
             Timer timer = new Timer("WVBlowTimer");
             this.mTimer = timer;
-            timer.scheduleAtFixedRate(new TimerTask() { // from class: android.taobao.windvane.jsbridge.api.BlowSensor.1
-                @Override // java.util.TimerTask, java.lang.Runnable
-                public void run() {
-                    BlowSensor.this.recordBlow();
-                }
-            }, 0L, 100L);
+            timer.scheduleAtFixedRate((TimerTask) new 1(this), 0L, 100L);
         } catch (Exception unused) {
             stop();
         }
@@ -82,11 +72,11 @@ public class BlowSensor {
 
     public void stop() {
         try {
-            AudioRecord audioRecord = this.f17ar;
+            AudioRecord audioRecord = this.ar;
             if (audioRecord != null) {
                 audioRecord.stop();
-                this.f17ar.release();
-                this.f18bs = 100;
+                this.ar.release();
+                this.bs = 100;
             }
         } catch (Exception unused) {
         }

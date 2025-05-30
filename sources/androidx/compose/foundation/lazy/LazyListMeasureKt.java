@@ -1,8 +1,8 @@
 package androidx.compose.foundation.lazy;
 
 import androidx.compose.foundation.layout.Arrangement;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
 import java.util.ArrayList;
 import java.util.List;
 import kotlin.Pair;
@@ -15,7 +15,7 @@ import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyListMeasureKt {
 
     @NotNull
@@ -140,7 +140,7 @@ public final class LazyListMeasureKt {
         if (obj == null) {
             throw new IllegalArgumentException("Required value was null.".toString());
         }
-        ((List) obj).add(lazyMeasuredItemProvider.m1526getAndMeasureZjPyQlc(DataIndex.m1483constructorimpl(i)));
+        ((List) obj).add(lazyMeasuredItemProvider.m267getAndMeasureZjPyQlc(DataIndex.m245constructorimpl(i)));
     }
 
     private static final int createItemsAfterList$endIndex(LazyListBeyondBoundsInfo lazyListBeyondBoundsInfo, int i) {
@@ -148,7 +148,7 @@ public final class LazyListMeasureKt {
     }
 
     /* renamed from: createItemsBeforeList-_ok666U, reason: not valid java name */
-    private static final List<LazyMeasuredItem> m1514createItemsBeforeList_ok666U(LazyListBeyondBoundsInfo lazyListBeyondBoundsInfo, int i, LazyMeasuredItemProvider lazyMeasuredItemProvider, int i2, int i3, List<? extends LazyListPinnedItem> list) {
+    private static final List<LazyMeasuredItem> m262createItemsBeforeList_ok666U(LazyListBeyondBoundsInfo lazyListBeyondBoundsInfo, int i, LazyMeasuredItemProvider lazyMeasuredItemProvider, int i2, int i3, List<? extends LazyListPinnedItem> list) {
         Ref.ObjectRef objectRef = new Ref.ObjectRef();
         int min = lazyListBeyondBoundsInfo.hasIntervals() ? Math.min(createItemsBeforeList__ok666U$startIndex(lazyListBeyondBoundsInfo, i2), i) : i;
         int max = Math.max(0, min - i3);
@@ -181,7 +181,7 @@ public final class LazyListMeasureKt {
         if (obj == null) {
             throw new IllegalArgumentException("Required value was null.".toString());
         }
-        ((List) obj).add(lazyMeasuredItemProvider.m1526getAndMeasureZjPyQlc(DataIndex.m1483constructorimpl(i)));
+        ((List) obj).add(lazyMeasuredItemProvider.m267getAndMeasureZjPyQlc(DataIndex.m245constructorimpl(i)));
     }
 
     private static final int createItemsBeforeList__ok666U$startIndex(LazyListBeyondBoundsInfo lazyListBeyondBoundsInfo, int i) {
@@ -200,13 +200,13 @@ public final class LazyListMeasureKt {
     /* renamed from: measureLazyList-QaF8Ofo, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final androidx.compose.foundation.lazy.LazyListMeasureResult m1515measureLazyListQaF8Ofo(int r29, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.LazyMeasuredItemProvider r30, int r31, int r32, int r33, int r34, int r35, int r36, float r37, long r38, boolean r40, @org.jetbrains.annotations.NotNull java.util.List<java.lang.Integer> r41, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Vertical r42, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Horizontal r43, boolean r44, @org.jetbrains.annotations.NotNull androidx.compose.p004ui.unit.Density r45, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.LazyListItemPlacementAnimator r46, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.LazyListBeyondBoundsInfo r47, int r48, @org.jetbrains.annotations.NotNull java.util.List<? extends androidx.compose.foundation.lazy.LazyListPinnedItem> r49, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super java.lang.Integer, ? super java.lang.Integer, ? super kotlin.jvm.functions.Function1<? super androidx.compose.ui.layout.Placeable.PlacementScope, kotlin.Unit>, ? extends androidx.compose.p004ui.layout.MeasureResult> r50) {
+    public static final androidx.compose.foundation.lazy.LazyListMeasureResult m263measureLazyListQaF8Ofo(int r29, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.LazyMeasuredItemProvider r30, int r31, int r32, int r33, int r34, int r35, int r36, float r37, long r38, boolean r40, @org.jetbrains.annotations.NotNull java.util.List<java.lang.Integer> r41, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Vertical r42, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Horizontal r43, boolean r44, @org.jetbrains.annotations.NotNull androidx.compose.ui.unit.Density r45, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.LazyListItemPlacementAnimator r46, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.LazyListBeyondBoundsInfo r47, int r48, @org.jetbrains.annotations.NotNull java.util.List<? extends androidx.compose.foundation.lazy.LazyListPinnedItem> r49, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super java.lang.Integer, ? super java.lang.Integer, ? super kotlin.jvm.functions.Function1<? super androidx.compose.ui.layout.Placeable.PlacementScope, kotlin.Unit>, ? extends androidx.compose.ui.layout.MeasureResult> r50) {
         /*
             Method dump skipped, instructions count: 915
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.LazyListMeasureKt.m1515measureLazyListQaF8Ofo(int, androidx.compose.foundation.lazy.LazyMeasuredItemProvider, int, int, int, int, int, int, float, long, boolean, java.util.List, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.foundation.layout.Arrangement$Horizontal, boolean, androidx.compose.ui.unit.Density, androidx.compose.foundation.lazy.LazyListItemPlacementAnimator, androidx.compose.foundation.lazy.LazyListBeyondBoundsInfo, int, java.util.List, kotlin.jvm.functions.Function3):androidx.compose.foundation.lazy.LazyListMeasureResult");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.LazyListMeasureKt.m263measureLazyListQaF8Ofo(int, androidx.compose.foundation.lazy.LazyMeasuredItemProvider, int, int, int, int, int, int, float, long, boolean, java.util.List, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.foundation.layout.Arrangement$Horizontal, boolean, androidx.compose.ui.unit.Density, androidx.compose.foundation.lazy.LazyListItemPlacementAnimator, androidx.compose.foundation.lazy.LazyListBeyondBoundsInfo, int, java.util.List, kotlin.jvm.functions.Function3):androidx.compose.foundation.lazy.LazyListMeasureResult");
     }
 }

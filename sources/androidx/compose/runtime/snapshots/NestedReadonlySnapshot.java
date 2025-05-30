@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class NestedReadonlySnapshot extends Snapshot {
 
     @NotNull
@@ -24,7 +24,7 @@ public final class NestedReadonlySnapshot extends Snapshot {
         Intrinsics.checkNotNullParameter(snapshotIdSet, "invalid");
         Intrinsics.checkNotNullParameter(snapshot, "parent");
         this.parent = snapshot;
-        snapshot.mo2438nestedActivated$runtime_release(this);
+        snapshot.mo797nestedActivated$runtime_release(this);
         if (function1 != null) {
             final Function1<Object, Unit> readObserver$runtime_release = snapshot.getReadObserver$runtime_release();
             if (readObserver$runtime_release != null) {
@@ -35,12 +35,12 @@ public final class NestedReadonlySnapshot extends Snapshot {
                     }
 
                     public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                        m2442invoke(obj);
+                        m800invoke(obj);
                         return Unit.INSTANCE;
                     }
 
                     /* renamed from: invoke, reason: collision with other method in class */
-                    public final void m2442invoke(@NotNull Object obj) {
+                    public final void m800invoke(@NotNull Object obj) {
                         Intrinsics.checkNotNullParameter(obj, "state");
                         function1.invoke(obj);
                         readObserver$runtime_release.invoke(obj);
@@ -61,7 +61,7 @@ public final class NestedReadonlySnapshot extends Snapshot {
         if (getId() != this.parent.getId()) {
             closeAndReleasePinning$runtime_release();
         }
-        this.parent.mo2439nestedDeactivated$runtime_release(this);
+        this.parent.mo798nestedDeactivated$runtime_release(this);
         super.dispose();
     }
 
@@ -116,7 +116,7 @@ public final class NestedReadonlySnapshot extends Snapshot {
     @Override // androidx.compose.runtime.snapshots.Snapshot
     @NotNull
     /* renamed from: nestedActivated$runtime_release, reason: merged with bridge method [inline-methods] */
-    public Void mo2438nestedActivated$runtime_release(@NotNull Snapshot snapshot) {
+    public Void mo797nestedActivated$runtime_release(@NotNull Snapshot snapshot) {
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
         SnapshotStateMapKt.unsupported();
         throw new KotlinNothingValueException();
@@ -125,7 +125,7 @@ public final class NestedReadonlySnapshot extends Snapshot {
     @Override // androidx.compose.runtime.snapshots.Snapshot
     @NotNull
     /* renamed from: nestedDeactivated$runtime_release, reason: merged with bridge method [inline-methods] */
-    public Void mo2439nestedDeactivated$runtime_release(@NotNull Snapshot snapshot) {
+    public Void mo798nestedDeactivated$runtime_release(@NotNull Snapshot snapshot) {
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
         SnapshotStateMapKt.unsupported();
         throw new KotlinNothingValueException();
@@ -134,9 +134,9 @@ public final class NestedReadonlySnapshot extends Snapshot {
     @Override // androidx.compose.runtime.snapshots.Snapshot
     @NotNull
     /* renamed from: recordModified$runtime_release, reason: merged with bridge method [inline-methods] */
-    public Void mo2441recordModified$runtime_release(@NotNull StateObject stateObject) {
+    public Void mo799recordModified$runtime_release(@NotNull StateObject stateObject) {
         Intrinsics.checkNotNullParameter(stateObject, "state");
-        SnapshotKt.reportReadonlySnapshotWrite();
+        SnapshotKt.access$reportReadonlySnapshotWrite();
         throw new KotlinNothingValueException();
     }
 

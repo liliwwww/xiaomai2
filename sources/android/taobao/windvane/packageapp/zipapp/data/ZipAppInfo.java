@@ -5,17 +5,16 @@ import android.taobao.windvane.config.EnvEnum;
 import android.taobao.windvane.config.GlobalConfig;
 import android.taobao.windvane.config.WVCommonConfig;
 import android.taobao.windvane.config.WVCommonConfigData;
-import android.taobao.windvane.connect.api.ApiConstants;
 import android.taobao.windvane.packageapp.WVPackageAppService;
 import android.taobao.windvane.packageapp.zipapp.utils.ZipAppConstants;
 import android.taobao.windvane.util.TaoLog;
 import android.taobao.windvane.util.WVNativeCallbackUtil;
 import android.text.TextUtils;
-import com.ali.mobisecenhance.p009ld.multidex.Constants;
+import com.ali.mobisecenhance.ld.multidex.Constants;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ZipAppInfo {
     private ZipAppTypeEnum appType;
     public String errorCode;
@@ -34,51 +33,17 @@ public class ZipAppInfo {
     public boolean isDamage = false;
     public boolean isInstantApp = false;
     public ArrayList<String> localFolders = new ArrayList<>();
-
-    /* renamed from: v */
-    public String f26v = "";
-
-    /* renamed from: z */
-    public String f27z = "";
-
-    /* renamed from: t */
-    public long f25t = 0;
-
-    /* renamed from: s */
-    public long f24s = 0;
-
-    /* renamed from: f */
-    public long f23f = 5;
-
-    /* compiled from: Taobao */
-    /* renamed from: android.taobao.windvane.packageapp.zipapp.data.ZipAppInfo$1 */
-    /* loaded from: classes2.dex */
-    static /* synthetic */ class C02091 {
-        static final /* synthetic */ int[] $SwitchMap$android$taobao$windvane$config$EnvEnum;
-
-        static {
-            int[] iArr = new int[EnvEnum.values().length];
-            $SwitchMap$android$taobao$windvane$config$EnvEnum = iArr;
-            try {
-                iArr[EnvEnum.ONLINE.ordinal()] = 1;
-            } catch (NoSuchFieldError unused) {
-            }
-            try {
-                $SwitchMap$android$taobao$windvane$config$EnvEnum[EnvEnum.PRE.ordinal()] = 2;
-            } catch (NoSuchFieldError unused2) {
-            }
-            try {
-                $SwitchMap$android$taobao$windvane$config$EnvEnum[EnvEnum.DAILY.ordinal()] = 3;
-            } catch (NoSuchFieldError unused3) {
-            }
-        }
-    }
+    public String v = "";
+    public String z = "";
+    public long t = 0;
+    public long s = 0;
+    public long f = 5;
 
     public boolean equals(ZipAppInfo zipAppInfo) {
         String str;
-        String str2 = this.f26v;
-        if (str2 == null || zipAppInfo == null || (str = zipAppInfo.f26v) == null || str2.equals(str)) {
-            return zipAppInfo == null || this.f24s == zipAppInfo.f24s;
+        String str2 = this.v;
+        if (str2 == null || zipAppInfo == null || (str = zipAppInfo.v) == null || str2.equals(str)) {
+            return zipAppInfo == null || this.s == zipAppInfo.s;
         }
         return false;
     }
@@ -87,13 +52,13 @@ public class ZipAppInfo {
         StringBuilder sb = new StringBuilder();
         sb.append(this.name);
         sb.append(WVNativeCallbackUtil.SEPERATER);
-        sb.append((z || "0.0".equals(this.installedVersion)) ? this.f26v : this.installedVersion);
+        sb.append((z || "0.0".equals(this.installedVersion)) ? this.v : this.installedVersion);
         return sb.toString();
     }
 
     public ZipAppTypeEnum getAppType() {
         for (ZipAppTypeEnum zipAppTypeEnum : ZipAppTypeEnum.values()) {
-            if (zipAppTypeEnum.getValue() == (this.f23f & 240)) {
+            if (zipAppTypeEnum.getValue() == (this.f & 240)) {
                 this.appType = zipAppTypeEnum;
                 if (zipAppTypeEnum == ZipAppTypeEnum.ZIP_APP_TYPE_MINI_APP) {
                     this.isInstantApp = true;
@@ -107,7 +72,7 @@ public class ZipAppInfo {
 
     public ZipUpdateInfoEnum getInfo() {
         for (ZipUpdateInfoEnum zipUpdateInfoEnum : ZipUpdateInfoEnum.values()) {
-            if (zipUpdateInfoEnum.getValue() == (this.f23f & 12288)) {
+            if (zipUpdateInfoEnum.getValue() == (this.f & 12288)) {
                 this.updateInfo = zipUpdateInfoEnum;
                 return zipUpdateInfoEnum;
             }
@@ -116,28 +81,28 @@ public class ZipAppInfo {
     }
 
     public boolean getIs2GUpdate() {
-        return (this.f23f & PlaybackStateCompat.ACTION_PREPARE) != 0;
+        return (this.f & PlaybackStateCompat.ACTION_PREPARE) != 0;
     }
 
     public boolean getIs3GUpdate() {
-        return (this.f23f & PlaybackStateCompat.ACTION_PREPARE_FROM_MEDIA_ID) != 0;
+        return (this.f & PlaybackStateCompat.ACTION_PREPARE_FROM_MEDIA_ID) != 0;
     }
 
     public String getNameAndSeq() {
-        return this.name + ApiConstants.SPLIT_LINE + this.installedSeq;
+        return this.name + "-" + this.installedSeq;
     }
 
     public String getNameandVersion() {
-        return this.name + "_" + this.f26v;
+        return this.name + "_" + this.v;
     }
 
     public int getPriority() {
-        return (int) (this.f23f & 15);
+        return (int) (this.f & 15);
     }
 
     public ZipUpdateTypeEnum getUpdateType() {
         for (ZipUpdateTypeEnum zipUpdateTypeEnum : ZipUpdateTypeEnum.values()) {
-            if (zipUpdateTypeEnum.getValue() == (this.f23f & 3840)) {
+            if (zipUpdateTypeEnum.getValue() == (this.f & 3840)) {
                 this.updateType = zipUpdateTypeEnum;
                 return zipUpdateTypeEnum;
             }
@@ -146,64 +111,64 @@ public class ZipAppInfo {
     }
 
     public String getZipUrl() {
-        if (this.f27z.contains("wapp")) {
-            this.f27z = "";
+        if (this.z.contains("wapp")) {
+            this.z = "";
         }
         WVPackageAppService.IPackageZipPrefixAdapter packageZipPrefixAdapter = WVPackageAppService.getPackageZipPrefixAdapter();
         if (packageZipPrefixAdapter != null) {
             String packageZipPrefix = packageZipPrefixAdapter.getPackageZipPrefix(GlobalConfig.env, this.isPreViewApp);
             if (!TextUtils.isEmpty(packageZipPrefix)) {
-                this.f27z = packageZipPrefix;
-                TaoLog.m18d("ZipURL", "Zip url by app config: [" + this.name + "] " + packageZipPrefix);
+                this.z = packageZipPrefix;
+                TaoLog.d("ZipURL", "Zip url by app config: [" + this.name + "] " + packageZipPrefix);
             }
         }
-        if (TextUtils.isEmpty(this.f27z)) {
+        if (TextUtils.isEmpty(this.z)) {
             if (this.isPreViewApp && (isAppInstalled() || this.isInstantApp)) {
                 this.isPreViewApp = false;
             }
             if (this.isPreViewApp) {
                 WVCommonConfigData wVCommonConfigData = WVCommonConfig.commonConfig;
                 if (TextUtils.isEmpty(wVCommonConfigData.packageZipPreviewPrefix)) {
-                    int i = C02091.$SwitchMap$android$taobao$windvane$config$EnvEnum[GlobalConfig.env.ordinal()];
+                    int i = 1.$SwitchMap$android$taobao$windvane$config$EnvEnum[GlobalConfig.env.ordinal()];
                     if (i == 1) {
-                        this.f27z = "http://wapp.m.taobao.com/";
+                        this.z = "http://wapp.m.taobao.com/";
                     } else if (i == 2) {
-                        this.f27z = "http://wapp.wapa.taobao.com/";
+                        this.z = "http://wapp.wapa.taobao.com/";
                     } else if (i != 3) {
-                        this.f27z = "http://wapp.m.taobao.com/";
+                        this.z = "http://wapp.m.taobao.com/";
                     } else {
-                        this.f27z = "http://wapp.waptest.taobao.com/";
+                        this.z = "http://wapp.waptest.taobao.com/";
                     }
                 } else {
-                    this.f27z = wVCommonConfigData.packageZipPreviewPrefix;
+                    this.z = wVCommonConfigData.packageZipPreviewPrefix;
                 }
             } else {
                 WVCommonConfigData wVCommonConfigData2 = WVCommonConfig.commonConfig;
                 if (TextUtils.isEmpty(wVCommonConfigData2.packageZipPrefix)) {
-                    int i2 = C02091.$SwitchMap$android$taobao$windvane$config$EnvEnum[GlobalConfig.env.ordinal()];
+                    int i2 = 1.$SwitchMap$android$taobao$windvane$config$EnvEnum[GlobalConfig.env.ordinal()];
                     if (i2 == 1) {
-                        this.f27z = "https://ossgw.alicdn.com/awp/h5.m.taobao.com/";
+                        this.z = "https://ossgw.alicdn.com/awp/h5.m.taobao.com/";
                     } else if (i2 == 2) {
-                        this.f27z = "http://h5.wapa.taobao.com/";
+                        this.z = "http://h5.wapa.taobao.com/";
                     } else if (i2 != 3) {
-                        this.f27z = "https://ossgw.alicdn.com/awp/h5.m.taobao.com/";
+                        this.z = "https://ossgw.alicdn.com/awp/h5.m.taobao.com/";
                     } else {
-                        this.f27z = "http://h5.waptest.taobao.com/";
+                        this.z = "http://h5.waptest.taobao.com/";
                     }
                 } else {
-                    this.f27z = wVCommonConfigData2.packageZipPrefix;
+                    this.z = wVCommonConfigData2.packageZipPrefix;
                 }
             }
         }
-        StringBuilder sb = new StringBuilder(this.f27z);
+        StringBuilder sb = new StringBuilder(this.z);
         if ('/' != sb.charAt(sb.length() - 1)) {
             sb.append(WVNativeCallbackUtil.SEPERATER);
         }
         sb.append("app/");
         sb.append(this.name);
         sb.append("/app-");
-        sb.append(this.f24s);
-        if (!this.isPreViewApp && !GlobalConfig.env.equals(EnvEnum.PRE) && this.f26v.equals(this.installedVersion) && this.f24s != this.installedSeq) {
+        sb.append(this.s);
+        if (!this.isPreViewApp && !GlobalConfig.env.equals(EnvEnum.PRE) && this.v.equals(this.installedVersion) && this.s != this.installedSeq) {
             sb.append("-incr");
         }
         sb.append(Constants.ZIP_SUFFIX);

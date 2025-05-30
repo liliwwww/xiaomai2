@@ -1,16 +1,17 @@
 package androidx.compose.runtime;
 
 import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class ProvidableCompositionLocal<T> extends CompositionLocal<T> {
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
     public ProvidableCompositionLocal(@NotNull Function0<? extends T> function0) {
-        super(function0, null);
+        super(function0, (DefaultConstructorMarker) null);
         Intrinsics.checkNotNullParameter(function0, "defaultFactory");
     }
 

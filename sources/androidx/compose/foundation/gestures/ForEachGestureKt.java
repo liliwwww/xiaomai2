@@ -1,8 +1,8 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.input.pointer.AwaitPointerEventScope;
-import androidx.compose.p004ui.input.pointer.PointerInputChange;
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope;
+import androidx.compose.ui.input.pointer.PointerInputChange;
+import androidx.compose.ui.input.pointer.PointerInputScope;
 import java.util.List;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ForEachGestureKt {
     public static final boolean allPointersUp(@NotNull AwaitPointerEventScope awaitPointerEventScope) {
         Intrinsics.checkNotNullParameter(awaitPointerEventScope, "<this>");
@@ -60,11 +60,8 @@ public final class ForEachGestureKt {
     /* JADX WARN: Removed duplicated region for block: B:43:0x0067  */
     /* JADX WARN: Removed duplicated region for block: B:9:0x0025  */
     /* JADX WARN: Type inference failed for: r2v0, types: [int] */
-    /* JADX WARN: Type inference failed for: r2v1 */
-    /* JADX WARN: Type inference failed for: r2v2, types: [androidx.compose.ui.input.pointer.PointerInputScope, java.lang.Object] */
     /* JADX WARN: Type inference failed for: r2v20 */
     /* JADX WARN: Type inference failed for: r2v3, types: [androidx.compose.ui.input.pointer.PointerInputScope, java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r2v6 */
     /* JADX WARN: Type inference failed for: r2v8 */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:25:0x0091 -> B:13:0x0052). Please report as a decompilation issue!!! */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:34:0x00ab -> B:13:0x0052). Please report as a decompilation issue!!! */
@@ -72,14 +69,14 @@ public final class ForEachGestureKt {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object forEachGesture(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.PointerInputScope r8, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.p004ui.input.pointer.PointerInputScope, ? super kotlin.coroutines.Continuation<? super kotlin.Unit>, ? extends java.lang.Object> r9, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r10) {
+    public static final java.lang.Object forEachGesture(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.PointerInputScope r8, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.ui.input.pointer.PointerInputScope, ? super kotlin.coroutines.Continuation<? super kotlin.Unit>, ? extends java.lang.Object> r9, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r10) {
         /*
-            boolean r0 = r10 instanceof androidx.compose.foundation.gestures.ForEachGestureKt$forEachGesture$1
+            boolean r0 = r10 instanceof androidx.compose.foundation.gestures.ForEachGestureKt.forEachGesture.1
             if (r0 == 0) goto L13
             r0 = r10
-            androidx.compose.foundation.gestures.ForEachGestureKt$forEachGesture$1 r0 = (androidx.compose.foundation.gestures.ForEachGestureKt$forEachGesture$1) r0
+            androidx.compose.foundation.gestures.ForEachGestureKt$forEachGesture$1 r0 = (androidx.compose.foundation.gestures.ForEachGestureKt.forEachGesture.1) r0
             int r1 = r0.label
             r2 = -2147483648(0xffffffff80000000, float:-0.0)
             r3 = r1 & r2
@@ -106,7 +103,7 @@ public final class ForEachGestureKt {
             java.lang.Object r9 = r0.L$1
             kotlin.jvm.functions.Function2 r9 = (kotlin.jvm.functions.Function2) r9
             java.lang.Object r2 = r0.L$0
-            androidx.compose.ui.input.pointer.PointerInputScope r2 = (androidx.compose.p004ui.input.pointer.PointerInputScope) r2
+            androidx.compose.ui.input.pointer.PointerInputScope r2 = (androidx.compose.ui.input.pointer.PointerInputScope) r2
             kotlin.ResultKt.throwOnFailure(r10)
             goto L52
         L3b:
@@ -120,7 +117,7 @@ public final class ForEachGestureKt {
             java.lang.Object r9 = r0.L$1
             kotlin.jvm.functions.Function2 r9 = (kotlin.jvm.functions.Function2) r9
             java.lang.Object r2 = r0.L$0
-            androidx.compose.ui.input.pointer.PointerInputScope r2 = (androidx.compose.p004ui.input.pointer.PointerInputScope) r2
+            androidx.compose.ui.input.pointer.PointerInputScope r2 = (androidx.compose.ui.input.pointer.PointerInputScope) r2
             kotlin.ResultKt.throwOnFailure(r10)     // Catch: java.util.concurrent.CancellationException -> L65
         L52:
             r10 = r8
@@ -132,7 +129,7 @@ public final class ForEachGestureKt {
             java.lang.Object r9 = r0.L$1
             kotlin.jvm.functions.Function2 r9 = (kotlin.jvm.functions.Function2) r9
             java.lang.Object r2 = r0.L$0
-            androidx.compose.ui.input.pointer.PointerInputScope r2 = (androidx.compose.p004ui.input.pointer.PointerInputScope) r2
+            androidx.compose.ui.input.pointer.PointerInputScope r2 = (androidx.compose.ui.input.pointer.PointerInputScope) r2
             kotlin.ResultKt.throwOnFailure(r10)     // Catch: java.util.concurrent.CancellationException -> L65
             goto L85
         L65:
@@ -193,7 +190,7 @@ public final class ForEachGestureKt {
      */
     /* JADX WARN: Code restructure failed: missing block: B:18:0x003e, code lost:
     
-        r8 = androidx.compose.p004ui.input.pointer.PointerEventPass.Final;
+        r8 = androidx.compose.ui.input.pointer.PointerEventPass.Final;
         r0.L$0 = r7;
         r0.label = 1;
         r8 = r7.awaitPointerEvent(r8, r0);
@@ -220,9 +217,9 @@ public final class ForEachGestureKt {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object awaitAllPointersUp(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r7, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r8) {
+    public static final java.lang.Object awaitAllPointersUp(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r7, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r8) {
         /*
             boolean r0 = r8 instanceof androidx.compose.foundation.gestures.ForEachGestureKt$awaitAllPointersUp$3
             if (r0 == 0) goto L13
@@ -246,7 +243,7 @@ public final class ForEachGestureKt {
             if (r2 == 0) goto L35
             if (r2 != r3) goto L2d
             java.lang.Object r7 = r0.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r7 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r7
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r7 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r7
             kotlin.ResultKt.throwOnFailure(r8)
             goto L4b
         L2d:
@@ -259,14 +256,14 @@ public final class ForEachGestureKt {
             boolean r8 = allPointersUp(r7)
             if (r8 != 0) goto L6c
         L3e:
-            androidx.compose.ui.input.pointer.PointerEventPass r8 = androidx.compose.p004ui.input.pointer.PointerEventPass.Final
+            androidx.compose.ui.input.pointer.PointerEventPass r8 = androidx.compose.ui.input.pointer.PointerEventPass.Final
             r0.L$0 = r7
             r0.label = r3
             java.lang.Object r8 = r7.awaitPointerEvent(r8, r0)
             if (r8 != r1) goto L4b
             return r1
         L4b:
-            androidx.compose.ui.input.pointer.PointerEvent r8 = (androidx.compose.p004ui.input.pointer.PointerEvent) r8
+            androidx.compose.ui.input.pointer.PointerEvent r8 = (androidx.compose.ui.input.pointer.PointerEvent) r8
             java.util.List r8 = r8.getChanges()
             int r2 = r8.size()
             r4 = 0
@@ -274,7 +271,7 @@ public final class ForEachGestureKt {
         L57:
             if (r5 >= r2) goto L6a
             java.lang.Object r6 = r8.get(r5)
-            androidx.compose.ui.input.pointer.PointerInputChange r6 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r6
+            androidx.compose.ui.input.pointer.PointerInputChange r6 = (androidx.compose.ui.input.pointer.PointerInputChange) r6
             boolean r6 = r6.getPressed()
             if (r6 == 0) goto L67
             r4 = 1

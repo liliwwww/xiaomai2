@@ -17,7 +17,7 @@ import java.util.TreeMap;
 
 /* compiled from: Taobao */
 @RequiresApi(19)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ProfileTranscoder {
     private static final int HOT = 1;
     private static final int INLINE_CACHE_MEGAMORPHIC_ENCODING = 7;
@@ -31,10 +31,10 @@ class ProfileTranscoder {
     }
 
     private static int computeMethodFlags(@NonNull DexProfileData dexProfileData) {
-        Iterator<Map.Entry<Integer, Integer>> it = dexProfileData.methods.entrySet().iterator();
+        Iterator it = dexProfileData.methods.entrySet().iterator();
         int i = 0;
         while (it.hasNext()) {
-            i |= it.next().getValue().intValue();
+            i |= ((Integer) ((Map.Entry) it.next()).getValue()).intValue();
         }
         return i;
     }
@@ -392,7 +392,7 @@ class ProfileTranscoder {
             }
             int readFlagsFromBitmap = readFlagsFromBitmap(valueOf, i, i2);
             if (readFlagsFromBitmap != 0) {
-                Integer num = dexProfileData.methods.get(Integer.valueOf(i));
+                Integer num = (Integer) dexProfileData.methods.get(Integer.valueOf(i));
                 if (num == null) {
                     num = 0;
                 }
@@ -560,9 +560,9 @@ class ProfileTranscoder {
 
     private static void writeMethodBitmap(@NonNull OutputStream outputStream, @NonNull DexProfileData dexProfileData) throws IOException {
         byte[] bArr = new byte[getMethodBitmapStorageSize(dexProfileData.numMethodIds)];
-        for (Map.Entry<Integer, Integer> entry : dexProfileData.methods.entrySet()) {
-            int intValue = entry.getKey().intValue();
-            int intValue2 = entry.getValue().intValue();
+        for (Map.Entry entry : dexProfileData.methods.entrySet()) {
+            int intValue = ((Integer) entry.getKey()).intValue();
+            int intValue2 = ((Integer) entry.getValue()).intValue();
             if ((intValue2 & 2) != 0) {
                 setMethodBitmapBit(bArr, 2, intValue, dexProfileData);
             }
@@ -575,9 +575,9 @@ class ProfileTranscoder {
 
     private static void writeMethodsWithInlineCaches(@NonNull OutputStream outputStream, @NonNull DexProfileData dexProfileData) throws IOException {
         int i = 0;
-        for (Map.Entry<Integer, Integer> entry : dexProfileData.methods.entrySet()) {
-            int intValue = entry.getKey().intValue();
-            if ((entry.getValue().intValue() & 1) != 0) {
+        for (Map.Entry entry : dexProfileData.methods.entrySet()) {
+            int intValue = ((Integer) entry.getKey()).intValue();
+            if ((((Integer) entry.getValue()).intValue() & 1) != 0) {
                 Encoding.writeUInt16(outputStream, intValue - i);
                 Encoding.writeUInt16(outputStream, 0);
                 i = intValue;
@@ -594,9 +594,9 @@ class ProfileTranscoder {
             Encoding.writeUInt16(outputStream, dexProfileData.classes.length);
             Encoding.writeUInt32(outputStream, dexProfileData.dexChecksum);
             Encoding.writeString(outputStream, generateDexKey);
-            Iterator<Integer> it = dexProfileData.methods.keySet().iterator();
+            Iterator it = dexProfileData.methods.keySet().iterator();
             while (it.hasNext()) {
-                Encoding.writeUInt16(outputStream, it.next().intValue());
+                Encoding.writeUInt16(outputStream, ((Integer) it.next()).intValue());
             }
             for (int i : dexProfileData.classes) {
                 Encoding.writeUInt16(outputStream, i);
@@ -614,9 +614,9 @@ class ProfileTranscoder {
             Encoding.writeUInt32(outputStream, size);
             Encoding.writeUInt32(outputStream, dexProfileData.dexChecksum);
             Encoding.writeString(outputStream, generateDexKey);
-            Iterator<Integer> it = dexProfileData.methods.keySet().iterator();
+            Iterator it = dexProfileData.methods.keySet().iterator();
             while (it.hasNext()) {
-                Encoding.writeUInt16(outputStream, it.next().intValue());
+                Encoding.writeUInt16(outputStream, ((Integer) it.next()).intValue());
                 Encoding.writeUInt16(outputStream, 0);
             }
             for (int i : dexProfileData.classes) {

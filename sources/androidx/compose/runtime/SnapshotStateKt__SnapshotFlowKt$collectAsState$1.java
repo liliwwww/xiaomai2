@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 /* JADX INFO: Add missing generic type declarations: [R] */
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.runtime.SnapshotStateKt__SnapshotFlowKt$collectAsState$1", f = "SnapshotFlow.kt", i = {}, l = {65, 66}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SnapshotStateKt__SnapshotFlowKt$collectAsState$1<R> extends SuspendLambda implements Function2<ProduceStateScope<R>, Continuation<? super Unit>, Object> {
     final /* synthetic */ CoroutineContext $context;
     final /* synthetic */ Flow<T> $this_collectAsState;
@@ -29,15 +29,15 @@ final class SnapshotStateKt__SnapshotFlowKt$collectAsState$1<R> extends SuspendL
 
     /* compiled from: Taobao */
     @DebugMetadata(c = "androidx.compose.runtime.SnapshotStateKt__SnapshotFlowKt$collectAsState$1$2", f = "SnapshotFlow.kt", i = {}, l = {67}, m = "invokeSuspend", n = {}, s = {})
-    /* renamed from: androidx.compose.runtime.SnapshotStateKt__SnapshotFlowKt$collectAsState$1$2 */
-    static final class C07462 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
+    /* renamed from: androidx.compose.runtime.SnapshotStateKt__SnapshotFlowKt$collectAsState$1$2, reason: invalid class name */
+    static final class AnonymousClass2 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
         final /* synthetic */ ProduceStateScope<R> $$this$produceState;
         final /* synthetic */ Flow<T> $this_collectAsState;
         int label;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
         /* JADX WARN: Multi-variable type inference failed */
-        C07462(Flow<? extends T> flow, ProduceStateScope<R> produceStateScope, Continuation<? super C07462> continuation) {
+        AnonymousClass2(Flow<? extends T> flow, ProduceStateScope<R> produceStateScope, Continuation<? super AnonymousClass2> continuation) {
             super(2, continuation);
             this.$this_collectAsState = flow;
             this.$$this$produceState = produceStateScope;
@@ -45,7 +45,7 @@ final class SnapshotStateKt__SnapshotFlowKt$collectAsState$1<R> extends SuspendL
 
         @NotNull
         public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
-            return new C07462(this.$this_collectAsState, this.$$this$produceState, continuation);
+            return new AnonymousClass2(this.$this_collectAsState, this.$$this$produceState, continuation);
         }
 
         @Nullable
@@ -124,9 +124,9 @@ final class SnapshotStateKt__SnapshotFlowKt$collectAsState$1<R> extends SuspendL
                 }
             } else {
                 CoroutineContext coroutineContext = this.$context;
-                C07462 c07462 = new C07462(this.$this_collectAsState, produceStateScope, null);
+                AnonymousClass2 anonymousClass2 = new AnonymousClass2(this.$this_collectAsState, produceStateScope, null);
                 this.label = 2;
-                if (d.g(coroutineContext, c07462, this) == coroutine_suspended) {
+                if (d.g(coroutineContext, anonymousClass2, this) == coroutine_suspended) {
                     return coroutine_suspended;
                 }
             }

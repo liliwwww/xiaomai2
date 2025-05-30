@@ -7,12 +7,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import androidx.annotation.NonNull;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R$layout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.menu.MenuPresenter;
+import androidx.core.view.PointerIconCompat;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class MenuDialogHelper implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener, DialogInterface.OnKeyListener, MenuPresenter.Callback {
     private AlertDialog mDialog;
     private MenuBuilder mMenu;
@@ -87,10 +89,11 @@ class MenuDialogHelper implements DialogInterface.OnClickListener, DialogInterfa
         this.mPresenterCallback = callback;
     }
 
+    /* JADX WARN: Type inference failed for: r0v2, types: [android.app.Dialog, androidx.appcompat.app.AlertDialog] */
     public void show(IBinder iBinder) {
         MenuBuilder menuBuilder = this.mMenu;
         AlertDialog.Builder builder = new AlertDialog.Builder(menuBuilder.getContext());
-        ListMenuPresenter listMenuPresenter = new ListMenuPresenter(builder.getContext(), C0257R.layout.abc_list_menu_item_layout);
+        ListMenuPresenter listMenuPresenter = new ListMenuPresenter(builder.getContext(), R$layout.abc_list_menu_item_layout);
         this.mPresenter = listMenuPresenter;
         listMenuPresenter.setCallback(this);
         this.mMenu.addMenuPresenter(this.mPresenter);
@@ -102,15 +105,15 @@ class MenuDialogHelper implements DialogInterface.OnClickListener, DialogInterfa
             builder.setIcon(menuBuilder.getHeaderIcon()).setTitle(menuBuilder.getHeaderTitle());
         }
         builder.setOnKeyListener(this);
-        AlertDialog create = builder.create();
+        ?? create = builder.create();
         this.mDialog = create;
         create.setOnDismissListener(this);
         WindowManager.LayoutParams attributes = this.mDialog.getWindow().getAttributes();
-        attributes.type = 1003;
+        attributes.type = PointerIconCompat.TYPE_HELP;
         if (iBinder != null) {
             attributes.token = iBinder;
         }
-        attributes.flags |= 131072;
+        attributes.flags |= AccessibilityEventCompat.TYPE_VIEW_TEXT_TRAVERSED_AT_MOVEMENT_GRANULARITY;
         this.mDialog.show();
     }
 }

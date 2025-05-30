@@ -1,6 +1,7 @@
 package androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.persistentOrderedSet;
 
 import androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentSet;
+import androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentSet$Builder;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableMap.PersistentHashMap;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableMap.PersistentHashMapBuilder;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.internal.CommonFunctionsKt;
@@ -12,8 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
-public final class PersistentOrderedSetBuilder<E> extends AbstractMutableSet<E> implements PersistentSet.Builder<E> {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
+public final class PersistentOrderedSetBuilder<E> extends AbstractMutableSet<E> implements PersistentSet$Builder<E> {
 
     @Nullable
     private Object firstElement;
@@ -47,9 +48,9 @@ public final class PersistentOrderedSetBuilder<E> extends AbstractMutableSet<E> 
             this.hashMapBuilder.put(e, new Links());
             return true;
         }
-        Links links = this.hashMapBuilder.get(this.lastElement);
-        Intrinsics.checkNotNull(links);
-        this.hashMapBuilder.put(this.lastElement, links.withNext(e));
+        Object obj = this.hashMapBuilder.get(this.lastElement);
+        Intrinsics.checkNotNull(obj);
+        this.hashMapBuilder.put(this.lastElement, ((Links) obj).withNext(e));
         this.hashMapBuilder.put(e, new Links(this.lastElement));
         this.lastElement = e;
         return true;
@@ -90,24 +91,24 @@ public final class PersistentOrderedSetBuilder<E> extends AbstractMutableSet<E> 
 
     @Override // java.util.Set, java.util.Collection
     public boolean remove(Object obj) {
-        Links remove = this.hashMapBuilder.remove(obj);
-        if (remove == null) {
+        Links links = (Links) this.hashMapBuilder.remove(obj);
+        if (links == null) {
             return false;
         }
-        if (remove.getHasPrevious()) {
-            Links links = this.hashMapBuilder.get(remove.getPrevious());
-            Intrinsics.checkNotNull(links);
-            this.hashMapBuilder.put(remove.getPrevious(), links.withNext(remove.getNext()));
+        if (links.getHasPrevious()) {
+            Object obj2 = this.hashMapBuilder.get(links.getPrevious());
+            Intrinsics.checkNotNull(obj2);
+            this.hashMapBuilder.put(links.getPrevious(), ((Links) obj2).withNext(links.getNext()));
         } else {
-            this.firstElement = remove.getNext();
+            this.firstElement = links.getNext();
         }
-        if (!remove.getHasNext()) {
-            this.lastElement = remove.getPrevious();
+        if (!links.getHasNext()) {
+            this.lastElement = links.getPrevious();
             return true;
         }
-        Links links2 = this.hashMapBuilder.get(remove.getNext());
-        Intrinsics.checkNotNull(links2);
-        this.hashMapBuilder.put(remove.getNext(), links2.withPrevious(remove.getPrevious()));
+        Object obj3 = this.hashMapBuilder.get(links.getNext());
+        Intrinsics.checkNotNull(obj3);
+        this.hashMapBuilder.put(links.getNext(), ((Links) obj3).withPrevious(links.getPrevious()));
         return true;
     }
 
@@ -115,14 +116,14 @@ public final class PersistentOrderedSetBuilder<E> extends AbstractMutableSet<E> 
         this.firstElement = obj;
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection.Builder
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection$Builder
     @NotNull
     public PersistentSet<E> build() {
         PersistentOrderedSet<E> persistentOrderedSet;
-        PersistentHashMap<E, Links> build = this.hashMapBuilder.build();
+        PersistentHashMap build = this.hashMapBuilder.build();
         if (build == this.set.getHashMap$runtime_release()) {
-            CommonFunctionsKt.m2432assert(this.firstElement == this.set.getFirstElement$runtime_release());
-            CommonFunctionsKt.m2432assert(this.lastElement == this.set.getLastElement$runtime_release());
+            CommonFunctionsKt.assert(this.firstElement == this.set.getFirstElement$runtime_release());
+            CommonFunctionsKt.assert(this.lastElement == this.set.getLastElement$runtime_release());
             persistentOrderedSet = this.set;
         } else {
             persistentOrderedSet = new PersistentOrderedSet<>(this.firstElement, this.lastElement, build);

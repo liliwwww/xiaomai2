@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.arch.core.util.Function;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Transformations {
     private Transformations() {
     }
@@ -18,12 +18,11 @@ public class Transformations {
         mediatorLiveData.addSource(liveData, new Observer<X>() { // from class: androidx.lifecycle.Transformations.3
             boolean mFirstTime = true;
 
-            @Override // androidx.lifecycle.Observer
             public void onChanged(X x) {
-                T value = MediatorLiveData.this.getValue();
-                if (this.mFirstTime || ((value == 0 && x != null) || !(value == 0 || value.equals(x)))) {
+                Object value = mediatorLiveData.getValue();
+                if (this.mFirstTime || ((value == null && x != null) || !(value == null || value.equals(x)))) {
                     this.mFirstTime = false;
-                    MediatorLiveData.this.setValue(x);
+                    mediatorLiveData.setValue(x);
                 }
             }
         });
@@ -35,9 +34,8 @@ public class Transformations {
     public static <X, Y> LiveData<Y> map(@NonNull LiveData<X> liveData, @NonNull final Function<X, Y> function) {
         final MediatorLiveData mediatorLiveData = new MediatorLiveData();
         mediatorLiveData.addSource(liveData, new Observer<X>() { // from class: androidx.lifecycle.Transformations.1
-            @Override // androidx.lifecycle.Observer
             public void onChanged(@Nullable X x) {
-                MediatorLiveData.this.setValue(function.apply(x));
+                mediatorLiveData.setValue(function.apply(x));
             }
         });
         return mediatorLiveData;
@@ -50,24 +48,18 @@ public class Transformations {
         mediatorLiveData.addSource(liveData, new Observer<X>() { // from class: androidx.lifecycle.Transformations.2
             LiveData<Y> mSource;
 
-            @Override // androidx.lifecycle.Observer
             public void onChanged(@Nullable X x) {
                 LiveData<Y> liveData2 = (LiveData) Function.this.apply(x);
-                Object obj = this.mSource;
-                if (obj == liveData2) {
+                LiveData<Y> liveData3 = this.mSource;
+                if (liveData3 == liveData2) {
                     return;
                 }
-                if (obj != null) {
-                    mediatorLiveData.removeSource(obj);
+                if (liveData3 != 0) {
+                    mediatorLiveData.removeSource(liveData3);
                 }
                 this.mSource = liveData2;
                 if (liveData2 != 0) {
-                    mediatorLiveData.addSource(liveData2, new Observer<Y>() { // from class: androidx.lifecycle.Transformations.2.1
-                        @Override // androidx.lifecycle.Observer
-                        public void onChanged(@Nullable Y y) {
-                            mediatorLiveData.setValue(y);
-                        }
-                    });
+                    mediatorLiveData.addSource(liveData2, new 1(this));
                 }
             }
         });

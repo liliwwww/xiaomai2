@@ -1,6 +1,6 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.unit.Velocity;
+import androidx.compose.ui.unit.Velocity;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.DraggableKt$draggable$7", f = "Draggable.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class DraggableKt$draggable$7 extends SuspendLambda implements Function3<CoroutineScope, Velocity, Continuation<? super Unit>, Object> {
     int label;
 
@@ -23,12 +23,12 @@ final class DraggableKt$draggable$7 extends SuspendLambda implements Function3<C
     }
 
     public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-        return m1263invokeLuvzFrg((CoroutineScope) obj, ((Velocity) obj2).m5450unboximpl(), (Continuation) obj3);
+        return m173invokeLuvzFrg((CoroutineScope) obj, ((Velocity) obj2).unbox-impl(), (Continuation) obj3);
     }
 
     @Nullable
     /* renamed from: invoke-LuvzFrg, reason: not valid java name */
-    public final Object m1263invokeLuvzFrg(@NotNull CoroutineScope coroutineScope, long j, @Nullable Continuation<? super Unit> continuation) {
+    public final Object m173invokeLuvzFrg(@NotNull CoroutineScope coroutineScope, long j, @Nullable Continuation<? super Unit> continuation) {
         return new DraggableKt$draggable$7(continuation).invokeSuspend(Unit.INSTANCE);
     }
 

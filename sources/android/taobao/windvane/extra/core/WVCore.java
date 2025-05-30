@@ -5,8 +5,8 @@ import android.content.Context;
 import android.taobao.windvane.config.GlobalConfig;
 import android.taobao.windvane.config.WVCommonConfig;
 import android.taobao.windvane.config.WVCommonConfigData;
-import android.taobao.windvane.extra.p002uc.WVCoreSettings;
-import android.taobao.windvane.extra.p002uc.WVUCWebView;
+import android.taobao.windvane.extra.uc.WVCoreSettings;
+import android.taobao.windvane.extra.uc.WVUCWebView;
 import android.taobao.windvane.file.FileAccesser;
 import android.taobao.windvane.file.FileManager;
 import android.taobao.windvane.file.NotEnoughSpace;
@@ -24,7 +24,7 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVCore {
     public static final int DOWNLOAD = 0;
     public static final int INNER_ASSET = 2;
@@ -97,13 +97,13 @@ public class WVCore {
                         updateIsolatePolicy(context, true);
                     }
                     z = false;
-                    TaoLog.m21e(TAG, "isolate policy: remote=[" + checkRemoteIsolateOpen + "], local=[" + z + "]");
+                    TaoLog.e(TAG, "isolate policy: remote=[" + checkRemoteIsolateOpen + "], local=[" + z + "]");
                     return checkRemoteIsolateOpen && z;
                 }
             }
         }
         z = true;
-        TaoLog.m21e(TAG, "isolate policy: remote=[" + checkRemoteIsolateOpen + "], local=[" + z + "]");
+        TaoLog.e(TAG, "isolate policy: remote=[" + checkRemoteIsolateOpen + "], local=[" + z + "]");
         if (checkRemoteIsolateOpen) {
             return false;
         }
@@ -128,16 +128,16 @@ public class WVCore {
             sb.append(UCCore.getExtractDirPath(GlobalConfig.context, GlobalConfig.context.getApplicationInfo().nativeLibraryDir + "/libkernelu4_7z_uc.so"));
             sb.append("/lib/libwebviewuc.so");
             String sb2 = sb.toString();
-            TaoLog.m24i(TAG, "get v8 path by inner lib so, path=[" + sb2 + "]");
+            TaoLog.i(TAG, "get v8 path by inner lib so, path=[" + sb2 + "]");
             return sb2;
         }
         if (i != 2) {
             String ucSoPath = getUcSoPath(UCCore.getExtractDirPathByUrl(GlobalConfig.context, WVUCWebView.UC_CORE_URL));
-            TaoLog.m24i(TAG, "get v8 path by download so, path=[" + ucSoPath + "]");
+            TaoLog.i(TAG, "get v8 path by download so, path=[" + ucSoPath + "]");
             return ucSoPath;
         }
         String ucSoPath2 = getUcSoPath(GlobalConfig.getInstance().getUcLibDir());
-        TaoLog.m24i(TAG, "get v8 path by inner asset so, path=[" + ucSoPath2 + "]");
+        TaoLog.i(TAG, "get v8 path by inner asset so, path=[" + ucSoPath2 + "]");
         return ucSoPath2;
     }
 

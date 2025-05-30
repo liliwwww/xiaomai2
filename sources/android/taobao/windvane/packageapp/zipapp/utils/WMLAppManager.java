@@ -6,7 +6,6 @@ import android.taobao.windvane.packageapp.zipapp.data.WMLWrapData;
 import android.taobao.windvane.packageapp.zipapp.utils.InstantPerformanceData;
 import android.taobao.windvane.util.TaoLog;
 import android.text.TextUtils;
-import androidx.exifinterface.media.ExifInterface;
 import com.taobao.zcache.ZCacheInitTask;
 import com.taobao.zcache.ZCacheManager;
 import com.taobao.zcachecorewrapper.IZCacheCore;
@@ -16,7 +15,7 @@ import java.io.File;
 import java.util.Set;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WMLAppManager {
     private static WMLAppManager sInstance;
 
@@ -59,7 +58,7 @@ public class WMLAppManager {
         final InstantPerformanceData instantPerformanceData = new InstantPerformanceData();
         instantPerformanceData.t_startTime = System.currentTimeMillis();
         instantPerformanceData.appName = str;
-        instantPerformanceData.type = ExifInterface.GPS_MEASUREMENT_3D;
+        instantPerformanceData.type = "3";
         ZCacheInitTask.getInstance().init();
         ZCacheManager.instance().getAppPath(str, new IZCacheCore.AppInfoCallback() { // from class: android.taobao.windvane.packageapp.zipapp.utils.WMLAppManager.1
             public void onReceive(AppInfo appInfo, Error error) {
@@ -80,7 +79,7 @@ public class WMLAppManager {
                         if (WVMonitorService.getPackageMonitorInterface() != null) {
                             WVPackageMonitorInterface packageMonitorInterface = WVMonitorService.getPackageMonitorInterface();
                             InstantPerformanceData instantPerformanceData3 = instantPerformanceData;
-                            packageMonitorInterface.commitZCacheDownLoadTime(ExifInterface.GPS_MEASUREMENT_3D, instantPerformanceData3.appName, instantPerformanceData3.task_wait, j, instantPerformanceData3.t_endTime - instantPerformanceData3.t_startTime, instantPerformanceData3.msg, false);
+                            packageMonitorInterface.commitZCacheDownLoadTime("3", instantPerformanceData3.appName, instantPerformanceData3.task_wait, j, instantPerformanceData3.t_endTime - instantPerformanceData3.t_startTime, instantPerformanceData3.msg, false);
                             return;
                         }
                         return;
@@ -126,7 +125,7 @@ public class WMLAppManager {
                 if (WVMonitorService.getPackageMonitorInterface() != null) {
                     WVPackageMonitorInterface packageMonitorInterface2 = WVMonitorService.getPackageMonitorInterface();
                     InstantPerformanceData instantPerformanceData7 = instantPerformanceData;
-                    packageMonitorInterface2.commitZCacheDownLoadTime(ExifInterface.GPS_MEASUREMENT_3D, instantPerformanceData7.appName, instantPerformanceData7.task_wait, j2, instantPerformanceData7.t_endTime - instantPerformanceData7.t_startTime, instantPerformanceData7.msg, instantPerformanceData7.isSuccess);
+                    packageMonitorInterface2.commitZCacheDownLoadTime("3", instantPerformanceData7.appName, instantPerformanceData7.task_wait, j2, instantPerformanceData7.t_endTime - instantPerformanceData7.t_startTime, instantPerformanceData7.msg, instantPerformanceData7.isSuccess);
                 }
                 StringBuilder sb5 = new StringBuilder();
                 sb5.append("miniApp use ZCache 3.0, name=[");
@@ -138,7 +137,7 @@ public class WMLAppManager {
                 sb5.append("]; msg=[");
                 sb5.append(error.errMsg);
                 sb5.append("]");
-                TaoLog.m24i("ZCache", sb5.toString());
+                TaoLog.i("ZCache", sb5.toString());
             }
         });
     }

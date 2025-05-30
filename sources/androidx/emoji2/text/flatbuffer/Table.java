@@ -3,14 +3,11 @@ package androidx.emoji2.text.flatbuffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Arrays;
-import java.util.Comparator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Table {
-
-    /* renamed from: bb */
-    protected ByteBuffer f365bb;
+    protected ByteBuffer bb;
     protected int bb_pos;
     Utf8 utf8 = Utf8.getDefault();
     private int vtable_size;
@@ -47,18 +44,18 @@ public class Table {
     }
 
     protected int __indirect(int i) {
-        return i + this.f365bb.getInt(i);
+        return i + this.bb.getInt(i);
     }
 
     protected int __offset(int i) {
         if (i < this.vtable_size) {
-            return this.f365bb.getShort(this.vtable_start + i);
+            return this.bb.getShort(this.vtable_start + i);
         }
         return 0;
     }
 
     protected void __reset(int i, ByteBuffer byteBuffer) {
-        this.f365bb = byteBuffer;
+        this.bb = byteBuffer;
         if (byteBuffer == null) {
             this.bb_pos = 0;
             this.vtable_start = 0;
@@ -67,21 +64,21 @@ public class Table {
             this.bb_pos = i;
             int i2 = i - byteBuffer.getInt(i);
             this.vtable_start = i2;
-            this.vtable_size = this.f365bb.getShort(i2);
+            this.vtable_size = this.bb.getShort(i2);
         }
     }
 
     protected String __string(int i) {
-        return __string(i, this.f365bb, this.utf8);
+        return __string(i, this.bb, this.utf8);
     }
 
     protected Table __union(Table table, int i) {
-        return __union(table, i, this.f365bb);
+        return __union(table, i, this.bb);
     }
 
     protected int __vector(int i) {
         int i2 = i + this.bb_pos;
-        return i2 + this.f365bb.getInt(i2) + 4;
+        return i2 + this.bb.getInt(i2) + 4;
     }
 
     protected ByteBuffer __vector_as_bytebuffer(int i, int i2) {
@@ -89,7 +86,7 @@ public class Table {
         if (__offset == 0) {
             return null;
         }
-        ByteBuffer order = this.f365bb.duplicate().order(ByteOrder.LITTLE_ENDIAN);
+        ByteBuffer order = this.bb.duplicate().order(ByteOrder.LITTLE_ENDIAN);
         int __vector = __vector(__offset);
         order.position(__vector);
         order.limit(__vector + (__vector_len(__offset) * i2));
@@ -110,28 +107,23 @@ public class Table {
 
     protected int __vector_len(int i) {
         int i2 = i + this.bb_pos;
-        return this.f365bb.getInt(i2 + this.f365bb.getInt(i2));
+        return this.bb.getInt(i2 + this.bb.getInt(i2));
     }
 
     public ByteBuffer getByteBuffer() {
-        return this.f365bb;
+        return this.bb;
     }
 
     protected int keysCompare(Integer num, Integer num2, ByteBuffer byteBuffer) {
         return 0;
     }
 
-    protected void sortTables(int[] iArr, final ByteBuffer byteBuffer) {
+    protected void sortTables(int[] iArr, ByteBuffer byteBuffer) {
         Integer[] numArr = new Integer[iArr.length];
         for (int i = 0; i < iArr.length; i++) {
             numArr[i] = Integer.valueOf(iArr[i]);
         }
-        Arrays.sort(numArr, new Comparator<Integer>() { // from class: androidx.emoji2.text.flatbuffer.Table.1
-            @Override // java.util.Comparator
-            public int compare(Integer num, Integer num2) {
-                return Table.this.keysCompare(num, num2, byteBuffer);
-            }
-        });
+        Arrays.sort(numArr, new 1(this, byteBuffer));
         for (int i2 = 0; i2 < iArr.length; i2++) {
             iArr[i2] = numArr[i2].intValue();
         }

@@ -9,7 +9,7 @@ import kotlin.jvm.internal.markers.KMutableIterator;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class MenuKt$iterator$1 implements Iterator<MenuItem>, KMutableIterator {
     final /* synthetic */ Menu $this_iterator;
     private int index;

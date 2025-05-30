@@ -8,7 +8,7 @@ import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyGridDslKt$itemsIndexed$3 extends Lambda implements Function2<LazyGridItemSpanScope, Integer, GridItemSpan> {
     final /* synthetic */ List<T> $items;
     final /* synthetic */ Function3<LazyGridItemSpanScope, Integer, T, GridItemSpan> $span;
@@ -22,12 +22,12 @@ public final class LazyGridDslKt$itemsIndexed$3 extends Lambda implements Functi
     }
 
     public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-        return GridItemSpan.m1534boximpl(m1561invoke_orMbw((LazyGridItemSpanScope) obj, ((Number) obj2).intValue()));
+        return GridItemSpan.m274boximpl(m288invoke_orMbw((LazyGridItemSpanScope) obj, ((Number) obj2).intValue()));
     }
 
     /* renamed from: invoke-_-orMbw, reason: not valid java name */
-    public final long m1561invoke_orMbw(@NotNull LazyGridItemSpanScope lazyGridItemSpanScope, int i) {
+    public final long m288invoke_orMbw(@NotNull LazyGridItemSpanScope lazyGridItemSpanScope, int i) {
         Intrinsics.checkNotNullParameter(lazyGridItemSpanScope, "$this$null");
-        return ((GridItemSpan) this.$span.invoke(lazyGridItemSpanScope, Integer.valueOf(i), this.$items.get(i))).m1541unboximpl();
+        return ((GridItemSpan) this.$span.invoke(lazyGridItemSpanScope, Integer.valueOf(i), this.$items.get(i))).m281unboximpl();
     }
 }

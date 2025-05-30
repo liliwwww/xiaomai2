@@ -2,29 +2,15 @@ package androidx.core.telephony;
 
 import android.os.Build;
 import android.telephony.SubscriptionManager;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.RequiresApi;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
 @RequiresApi(22)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class SubscriptionManagerCompat {
     private static Method sGetSlotIndexMethod;
-
-    /* compiled from: Taobao */
-    @RequiresApi(29)
-    /* loaded from: classes2.dex */
-    private static class Api29Impl {
-        private Api29Impl() {
-        }
-
-        @DoNotInline
-        static int getSlotIndex(int i) {
-            return SubscriptionManager.getSlotIndex(i);
-        }
-    }
 
     private SubscriptionManagerCompat() {
     }

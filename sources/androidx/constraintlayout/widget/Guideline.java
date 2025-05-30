@@ -8,7 +8,7 @@ import android.view.View;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Guideline extends View {
     private boolean mFilterRedundantCalls;
 
@@ -33,7 +33,7 @@ public class Guideline extends View {
     }
 
     public void setGuidelineBegin(int i) {
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) getLayoutParams();
+        ConstraintLayout.LayoutParams layoutParams = getLayoutParams();
         if (this.mFilterRedundantCalls && layoutParams.guideBegin == i) {
             return;
         }
@@ -42,7 +42,7 @@ public class Guideline extends View {
     }
 
     public void setGuidelineEnd(int i) {
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) getLayoutParams();
+        ConstraintLayout.LayoutParams layoutParams = getLayoutParams();
         if (this.mFilterRedundantCalls && layoutParams.guideEnd == i) {
             return;
         }
@@ -51,7 +51,7 @@ public class Guideline extends View {
     }
 
     public void setGuidelinePercent(float f) {
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) getLayoutParams();
+        ConstraintLayout.LayoutParams layoutParams = getLayoutParams();
         if (this.mFilterRedundantCalls && layoutParams.guidePercent == f) {
             return;
         }

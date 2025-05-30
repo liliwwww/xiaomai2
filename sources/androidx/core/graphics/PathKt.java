@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @SuppressLint({"ClassVerificationFailure"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class PathKt {
     @RequiresApi(19)
     @NotNull
@@ -49,8 +49,7 @@ public final class PathKt {
 
     @RequiresApi(19)
     @NotNull
-    /* renamed from: or */
-    public static final Path m214or(@NotNull Path path, @NotNull Path path2) {
+    public static final Path or(@NotNull Path path, @NotNull Path path2) {
         Intrinsics.checkNotNullParameter(path, "<this>");
         Intrinsics.checkNotNullParameter(path2, "p");
         Path path3 = new Path(path);

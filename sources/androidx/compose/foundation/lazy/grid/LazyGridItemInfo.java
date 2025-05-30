@@ -3,7 +3,7 @@ package androidx.compose.foundation.lazy.grid;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface LazyGridItemInfo {
 
     @NotNull
@@ -29,10 +29,10 @@ public interface LazyGridItemInfo {
     Object getKey();
 
     /* renamed from: getOffset-nOcc-ac, reason: not valid java name */
-    long mo1565getOffsetnOccac();
+    long m453getOffsetnOccac();
 
     int getRow();
 
     /* renamed from: getSize-YbymL2g, reason: not valid java name */
-    long mo1566getSizeYbymL2g();
+    long m454getSizeYbymL2g();
 }

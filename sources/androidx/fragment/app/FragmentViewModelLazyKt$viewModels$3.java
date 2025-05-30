@@ -9,7 +9,7 @@ import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FragmentViewModelLazyKt$viewModels$3 extends Lambda implements Function0<CreationExtras> {
     final /* synthetic */ Lazy<ViewModelStoreOwner> $owner$delegate;
 
@@ -22,11 +22,10 @@ public final class FragmentViewModelLazyKt$viewModels$3 extends Lambda implement
 
     @NotNull
     /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-    public final CreationExtras m5597invoke() {
-        ViewModelStoreOwner m5584viewModels$lambda0;
-        m5584viewModels$lambda0 = FragmentViewModelLazyKt.m5584viewModels$lambda0(this.$owner$delegate);
-        HasDefaultViewModelProviderFactory hasDefaultViewModelProviderFactory = m5584viewModels$lambda0 instanceof HasDefaultViewModelProviderFactory ? (HasDefaultViewModelProviderFactory) m5584viewModels$lambda0 : null;
-        CreationExtras defaultViewModelCreationExtras = hasDefaultViewModelProviderFactory != null ? hasDefaultViewModelProviderFactory.getDefaultViewModelCreationExtras() : null;
+    public final CreationExtras m2334invoke() {
+        HasDefaultViewModelProviderFactory hasDefaultViewModelProviderFactory = FragmentViewModelLazyKt.access$viewModels$lambda-0(this.$owner$delegate);
+        HasDefaultViewModelProviderFactory hasDefaultViewModelProviderFactory2 = hasDefaultViewModelProviderFactory instanceof HasDefaultViewModelProviderFactory ? hasDefaultViewModelProviderFactory : null;
+        CreationExtras defaultViewModelCreationExtras = hasDefaultViewModelProviderFactory2 != null ? hasDefaultViewModelProviderFactory2.getDefaultViewModelCreationExtras() : null;
         return defaultViewModelCreationExtras == null ? CreationExtras.Empty.INSTANCE : defaultViewModelCreationExtras;
     }
 }

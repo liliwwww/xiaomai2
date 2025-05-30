@@ -1,10 +1,10 @@
 package androidx.compose.foundation.lazy.staggeredgrid;
 
 import androidx.compose.foundation.ExperimentalFoundationApi;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Density;
 import androidx.compose.runtime.Stable;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
 import java.util.List;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @Stable
 @ExperimentalFoundationApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface StaggeredGridCells {
 
     /* compiled from: Taobao */
@@ -25,7 +25,7 @@ public interface StaggeredGridCells {
 
         private Adaptive(float f) {
             this.minSize = f;
-            if (!(C0856Dp.m5215compareTo0680j_4(f, C0856Dp.m5216constructorimpl((float) 0)) > 0)) {
+            if (!(Dp.compareTo-0680j_4(f, Dp.constructor-impl((float) 0)) > 0)) {
                 throw new IllegalArgumentException("Failed requirement.".toString());
             }
         }
@@ -39,16 +39,16 @@ public interface StaggeredGridCells {
         public List<Integer> calculateCrossAxisCellSizes(@NotNull Density density, int i, int i2) {
             List<Integer> calculateCellsCrossAxisSizeImpl;
             Intrinsics.checkNotNullParameter(density, "<this>");
-            calculateCellsCrossAxisSizeImpl = LazyStaggeredGridCellsKt.calculateCellsCrossAxisSizeImpl(i, Math.max((i + i2) / (density.mo1277roundToPx0680j_4(this.minSize) + i2), 1), i2);
+            calculateCellsCrossAxisSizeImpl = LazyStaggeredGridCellsKt.calculateCellsCrossAxisSizeImpl(i, Math.max((i + i2) / (density.roundToPx-0680j_4(this.minSize) + i2), 1), i2);
             return calculateCellsCrossAxisSizeImpl;
         }
 
         public boolean equals(@Nullable Object obj) {
-            return (obj instanceof Adaptive) && C0856Dp.m5221equalsimpl0(this.minSize, ((Adaptive) obj).minSize);
+            return (obj instanceof Adaptive) && Dp.equals-impl0(this.minSize, ((Adaptive) obj).minSize);
         }
 
         public int hashCode() {
-            return C0856Dp.m5222hashCodeimpl(this.minSize);
+            return Dp.hashCode-impl(this.minSize);
         }
     }
 

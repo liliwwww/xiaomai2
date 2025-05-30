@@ -1,12 +1,12 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.graphics.Color;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.Immutable;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.graphics.Color;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Reflection;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @Immutable
 @ExperimentalMaterialApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DefaultSelectableChipColors implements SelectableChipColors {
     private final long backgroundColor;
     private final long contentColor;
@@ -52,7 +52,7 @@ final class DefaultSelectableChipColors implements SelectableChipColors {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-403836585, i, -1, "androidx.compose.material.DefaultSelectableChipColors.backgroundColor (Chip.kt:653)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(!z ? this.disabledBackgroundColor : !z2 ? this.backgroundColor : this.selectedBackgroundColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.box-impl(!z ? this.disabledBackgroundColor : !z2 ? this.backgroundColor : this.selectedBackgroundColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -68,7 +68,7 @@ final class DefaultSelectableChipColors implements SelectableChipColors {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(2025240134, i, -1, "androidx.compose.material.DefaultSelectableChipColors.contentColor (Chip.kt:663)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(!z ? this.disabledContentColor : !z2 ? this.contentColor : this.selectedContentColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.box-impl(!z ? this.disabledContentColor : !z2 ? this.contentColor : this.selectedContentColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -84,11 +84,11 @@ final class DefaultSelectableChipColors implements SelectableChipColors {
             return false;
         }
         DefaultSelectableChipColors defaultSelectableChipColors = (DefaultSelectableChipColors) obj;
-        return Color.m2788equalsimpl0(this.backgroundColor, defaultSelectableChipColors.backgroundColor) && Color.m2788equalsimpl0(this.contentColor, defaultSelectableChipColors.contentColor) && Color.m2788equalsimpl0(this.leadingIconColor, defaultSelectableChipColors.leadingIconColor) && Color.m2788equalsimpl0(this.disabledBackgroundColor, defaultSelectableChipColors.disabledBackgroundColor) && Color.m2788equalsimpl0(this.disabledContentColor, defaultSelectableChipColors.disabledContentColor) && Color.m2788equalsimpl0(this.disabledLeadingIconColor, defaultSelectableChipColors.disabledLeadingIconColor) && Color.m2788equalsimpl0(this.selectedBackgroundColor, defaultSelectableChipColors.selectedBackgroundColor) && Color.m2788equalsimpl0(this.selectedContentColor, defaultSelectableChipColors.selectedContentColor) && Color.m2788equalsimpl0(this.selectedLeadingIconColor, defaultSelectableChipColors.selectedLeadingIconColor);
+        return Color.equals-impl0(this.backgroundColor, defaultSelectableChipColors.backgroundColor) && Color.equals-impl0(this.contentColor, defaultSelectableChipColors.contentColor) && Color.equals-impl0(this.leadingIconColor, defaultSelectableChipColors.leadingIconColor) && Color.equals-impl0(this.disabledBackgroundColor, defaultSelectableChipColors.disabledBackgroundColor) && Color.equals-impl0(this.disabledContentColor, defaultSelectableChipColors.disabledContentColor) && Color.equals-impl0(this.disabledLeadingIconColor, defaultSelectableChipColors.disabledLeadingIconColor) && Color.equals-impl0(this.selectedBackgroundColor, defaultSelectableChipColors.selectedBackgroundColor) && Color.equals-impl0(this.selectedContentColor, defaultSelectableChipColors.selectedContentColor) && Color.equals-impl0(this.selectedLeadingIconColor, defaultSelectableChipColors.selectedLeadingIconColor);
     }
 
     public int hashCode() {
-        return (((((((((((((((Color.m2794hashCodeimpl(this.backgroundColor) * 31) + Color.m2794hashCodeimpl(this.contentColor)) * 31) + Color.m2794hashCodeimpl(this.leadingIconColor)) * 31) + Color.m2794hashCodeimpl(this.disabledBackgroundColor)) * 31) + Color.m2794hashCodeimpl(this.disabledContentColor)) * 31) + Color.m2794hashCodeimpl(this.disabledLeadingIconColor)) * 31) + Color.m2794hashCodeimpl(this.selectedBackgroundColor)) * 31) + Color.m2794hashCodeimpl(this.selectedContentColor)) * 31) + Color.m2794hashCodeimpl(this.selectedLeadingIconColor);
+        return (((((((((((((((Color.hashCode-impl(this.backgroundColor) * 31) + Color.hashCode-impl(this.contentColor)) * 31) + Color.hashCode-impl(this.leadingIconColor)) * 31) + Color.hashCode-impl(this.disabledBackgroundColor)) * 31) + Color.hashCode-impl(this.disabledContentColor)) * 31) + Color.hashCode-impl(this.disabledLeadingIconColor)) * 31) + Color.hashCode-impl(this.selectedBackgroundColor)) * 31) + Color.hashCode-impl(this.selectedContentColor)) * 31) + Color.hashCode-impl(this.selectedLeadingIconColor);
     }
 
     @Override // androidx.compose.material.SelectableChipColors
@@ -99,7 +99,7 @@ final class DefaultSelectableChipColors implements SelectableChipColors {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(189838188, i, -1, "androidx.compose.material.DefaultSelectableChipColors.leadingIconColor (Chip.kt:673)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(!z ? this.disabledLeadingIconColor : !z2 ? this.leadingIconColor : this.selectedLeadingIconColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.box-impl(!z ? this.disabledLeadingIconColor : !z2 ? this.leadingIconColor : this.selectedLeadingIconColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }

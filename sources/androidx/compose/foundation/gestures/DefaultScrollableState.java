@@ -16,7 +16,7 @@ import tb.eo4;
 import tb.i80;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DefaultScrollableState implements ScrollableState {
 
     @NotNull
@@ -33,16 +33,13 @@ final class DefaultScrollableState implements ScrollableState {
 
     /* JADX WARN: Multi-variable type inference failed */
     public DefaultScrollableState(@NotNull Function1<? super Float, Float> function1) {
+        MutableState<Boolean> mutableStateOf$default;
         Intrinsics.checkNotNullParameter(function1, "onDelta");
         this.onDelta = function1;
-        this.scrollScope = new ScrollScope() { // from class: androidx.compose.foundation.gestures.DefaultScrollableState$scrollScope$1
-            @Override // androidx.compose.foundation.gestures.ScrollScope
-            public float scrollBy(float f) {
-                return ((Number) DefaultScrollableState.this.getOnDelta().invoke(Float.valueOf(f))).floatValue();
-            }
-        };
+        this.scrollScope = new scrollScope.1(this);
         this.scrollMutex = new MutatorMutex();
-        this.isScrollingState = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
+        this.isScrollingState = mutableStateOf$default;
     }
 
     @Override // androidx.compose.foundation.gestures.ScrollableState
@@ -67,13 +64,13 @@ final class DefaultScrollableState implements ScrollableState {
 
     @Override // androidx.compose.foundation.gestures.ScrollableState
     public boolean isScrollInProgress() {
-        return this.isScrollingState.getValue().booleanValue();
+        return ((Boolean) this.isScrollingState.getValue()).booleanValue();
     }
 
     @Override // androidx.compose.foundation.gestures.ScrollableState
     @Nullable
     public Object scroll(@NotNull MutatePriority mutatePriority, @NotNull Function2<? super ScrollScope, ? super Continuation<? super Unit>, ? extends Object> function2, @NotNull Continuation<? super Unit> continuation) {
-        Object g = i80.g(new DefaultScrollableState$scroll$2(this, mutatePriority, function2, null), continuation);
+        Object g = i80.g(new scroll.2(this, mutatePriority, function2, (Continuation) null), continuation);
         return g == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? g : Unit.INSTANCE;
     }
 }

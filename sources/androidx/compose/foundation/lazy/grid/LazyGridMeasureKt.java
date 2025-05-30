@@ -1,8 +1,9 @@
 package androidx.compose.foundation.lazy.grid;
 
-import androidx.compose.foundation.layout.Arrangement;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
+import androidx.compose.foundation.layout.Arrangement$Horizontal;
+import androidx.compose.foundation.layout.Arrangement$Vertical;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
 import java.util.ArrayList;
 import java.util.List;
 import kotlin.collections.ArraysKt;
@@ -10,9 +11,9 @@ import kotlin.ranges.IntProgression;
 import kotlin.ranges.RangesKt;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyGridMeasureKt {
-    private static final List<LazyGridPositionedItem> calculateItemsOffsets(List<LazyMeasuredLine> list, int i, int i2, int i3, int i4, int i5, boolean z, Arrangement.Vertical vertical, Arrangement.Horizontal horizontal, boolean z2, Density density) {
+    private static final List<LazyGridPositionedItem> calculateItemsOffsets(List<LazyMeasuredLine> list, int i, int i2, int i3, int i4, int i5, boolean z, Arrangement$Vertical arrangement$Vertical, Arrangement$Horizontal arrangement$Horizontal, boolean z2, Density density) {
         int i6 = z ? i2 : i;
         boolean z3 = i3 < Math.min(i6, i4);
         if (z3) {
@@ -37,15 +38,15 @@ public final class LazyGridMeasureKt {
                 iArr2[i10] = 0;
             }
             if (z) {
-                if (vertical == null) {
+                if (arrangement$Vertical == null) {
                     throw new IllegalArgumentException("Required value was null.".toString());
                 }
-                vertical.arrange(density, i6, iArr, iArr2);
+                arrangement$Vertical.arrange(density, i6, iArr, iArr2);
             } else {
-                if (horizontal == null) {
+                if (arrangement$Horizontal == null) {
                     throw new IllegalArgumentException("Required value was null.".toString());
                 }
-                horizontal.arrange(density, i6, iArr, LayoutDirection.Ltr, iArr2);
+                arrangement$Horizontal.arrange(density, i6, iArr, LayoutDirection.Ltr, iArr2);
             }
             IntProgression indices = ArraysKt.getIndices(iArr2);
             if (z2) {
@@ -92,13 +93,13 @@ public final class LazyGridMeasureKt {
     /* renamed from: measureLazyGrid-0cYbdkg, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final androidx.compose.foundation.lazy.grid.LazyGridMeasureResult m1579measureLazyGrid0cYbdkg(int r24, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.grid.LazyMeasuredLineProvider r25, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.grid.LazyMeasuredItemProvider r26, int r27, int r28, int r29, int r30, int r31, int r32, float r33, long r34, boolean r36, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Vertical r37, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Horizontal r38, boolean r39, @org.jetbrains.annotations.NotNull androidx.compose.p004ui.unit.Density r40, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.grid.LazyGridItemPlacementAnimator r41, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.grid.LazyGridSpanLayoutProvider r42, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super java.lang.Integer, ? super java.lang.Integer, ? super kotlin.jvm.functions.Function1<? super androidx.compose.ui.layout.Placeable.PlacementScope, kotlin.Unit>, ? extends androidx.compose.p004ui.layout.MeasureResult> r43) {
+    public static final androidx.compose.foundation.lazy.grid.LazyGridMeasureResult m461measureLazyGrid0cYbdkg(int r24, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.grid.LazyMeasuredLineProvider r25, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.grid.LazyMeasuredItemProvider r26, int r27, int r28, int r29, int r30, int r31, int r32, float r33, long r34, boolean r36, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement$Vertical r37, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement$Horizontal r38, boolean r39, @org.jetbrains.annotations.NotNull androidx.compose.ui.unit.Density r40, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.grid.LazyGridItemPlacementAnimator r41, @org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.grid.LazyGridSpanLayoutProvider r42, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super java.lang.Integer, ? super java.lang.Integer, ? super kotlin.jvm.functions.Function1<? super androidx.compose.ui.layout.Placeable$PlacementScope, kotlin.Unit>, ? extends androidx.compose.ui.layout.MeasureResult> r43) {
         /*
             Method dump skipped, instructions count: 691
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.grid.LazyGridMeasureKt.m1579measureLazyGrid0cYbdkg(int, androidx.compose.foundation.lazy.grid.LazyMeasuredLineProvider, androidx.compose.foundation.lazy.grid.LazyMeasuredItemProvider, int, int, int, int, int, int, float, long, boolean, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.foundation.layout.Arrangement$Horizontal, boolean, androidx.compose.ui.unit.Density, androidx.compose.foundation.lazy.grid.LazyGridItemPlacementAnimator, androidx.compose.foundation.lazy.grid.LazyGridSpanLayoutProvider, kotlin.jvm.functions.Function3):androidx.compose.foundation.lazy.grid.LazyGridMeasureResult");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.grid.LazyGridMeasureKt.m461measureLazyGrid0cYbdkg(int, androidx.compose.foundation.lazy.grid.LazyMeasuredLineProvider, androidx.compose.foundation.lazy.grid.LazyMeasuredItemProvider, int, int, int, int, int, int, float, long, boolean, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.foundation.layout.Arrangement$Horizontal, boolean, androidx.compose.ui.unit.Density, androidx.compose.foundation.lazy.grid.LazyGridItemPlacementAnimator, androidx.compose.foundation.lazy.grid.LazyGridSpanLayoutProvider, kotlin.jvm.functions.Function3):androidx.compose.foundation.lazy.grid.LazyGridMeasureResult");
     }
 }

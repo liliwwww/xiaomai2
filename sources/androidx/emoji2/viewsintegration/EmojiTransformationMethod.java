@@ -12,7 +12,7 @@ import androidx.emoji2.text.EmojiCompat;
 /* compiled from: Taobao */
 @RequiresApi(19)
 @RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class EmojiTransformationMethod implements TransformationMethod {
 
     @Nullable

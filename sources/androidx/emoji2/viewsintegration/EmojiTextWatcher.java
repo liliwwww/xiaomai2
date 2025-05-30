@@ -8,14 +8,13 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.emoji2.text.EmojiCompat;
-import java.lang.ref.Reference;
-import java.lang.ref.WeakReference;
 
 /* compiled from: Taobao */
 @RequiresApi(19)
-@RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class EmojiTextWatcher implements TextWatcher {
     private final EditText mEditText;
     private final boolean mExpectInitializedEmojiCompat;
@@ -23,23 +22,6 @@ final class EmojiTextWatcher implements TextWatcher {
     private int mMaxEmojiCount = Integer.MAX_VALUE;
     private int mEmojiReplaceStrategy = 0;
     private boolean mEnabled = true;
-
-    /* compiled from: Taobao */
-    @RequiresApi(19)
-    /* loaded from: classes2.dex */
-    private static class InitCallbackImpl extends EmojiCompat.InitCallback {
-        private final Reference<EditText> mViewRef;
-
-        InitCallbackImpl(EditText editText) {
-            this.mViewRef = new WeakReference(editText);
-        }
-
-        @Override // androidx.emoji2.text.EmojiCompat.InitCallback
-        public void onInitialized() {
-            super.onInitialized();
-            EmojiTextWatcher.processTextOnEnablingEvent(this.mViewRef.get(), 1);
-        }
-    }
 
     EmojiTextWatcher(EditText editText, boolean z) {
         this.mEditText = editText;

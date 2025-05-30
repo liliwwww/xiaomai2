@@ -1,11 +1,10 @@
 package androidx.constraintlayout.core;
 
 import androidx.constraintlayout.core.LinearSystem;
-import androidx.constraintlayout.core.SolverVariable;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ArrayRow implements LinearSystem.Row {
     private static final boolean DEBUG = false;
     private static final boolean FULL_NEW_CHECK = false;
@@ -16,40 +15,6 @@ public class ArrayRow implements LinearSystem.Row {
     ArrayList<SolverVariable> variablesToUpdate = new ArrayList<>();
     boolean isSimpleDefinition = false;
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public interface ArrayRowVariables {
-        void add(SolverVariable solverVariable, float f, boolean z);
-
-        void clear();
-
-        boolean contains(SolverVariable solverVariable);
-
-        void display();
-
-        void divideByAmount(float f);
-
-        float get(SolverVariable solverVariable);
-
-        int getCurrentSize();
-
-        SolverVariable getVariable(int i);
-
-        float getVariableValue(int i);
-
-        int indexOf(SolverVariable solverVariable);
-
-        void invert();
-
-        void put(SolverVariable solverVariable, float f);
-
-        float remove(SolverVariable solverVariable, boolean z);
-
-        int sizeInBytes();
-
-        float use(ArrayRow arrayRow, boolean z);
-    }
-
     public ArrayRow() {
     }
 
@@ -58,7 +23,7 @@ public class ArrayRow implements LinearSystem.Row {
     }
 
     private SolverVariable pickPivotInVariables(boolean[] zArr, SolverVariable solverVariable) {
-        SolverVariable.Type type;
+        SolverVariable$Type solverVariable$Type;
         int currentSize = this.variables.getCurrentSize();
         SolverVariable solverVariable2 = null;
         float f = 0.0f;
@@ -66,7 +31,7 @@ public class ArrayRow implements LinearSystem.Row {
             float variableValue = this.variables.getVariableValue(i);
             if (variableValue < 0.0f) {
                 SolverVariable variable = this.variables.getVariable(i);
-                if ((zArr == null || !zArr[variable.f235id]) && variable != solverVariable && (((type = variable.mType) == SolverVariable.Type.SLACK || type == SolverVariable.Type.ERROR) && variableValue < f)) {
+                if ((zArr == null || !zArr[variable.id]) && variable != solverVariable && (((solverVariable$Type = variable.mType) == SolverVariable$Type.SLACK || solverVariable$Type == SolverVariable$Type.ERROR) && variableValue < f)) {
                     f = variableValue;
                     solverVariable2 = variable;
                 }
@@ -114,7 +79,7 @@ public class ArrayRow implements LinearSystem.Row {
         for (int i = 0; i < currentSize; i++) {
             float variableValue = this.variables.getVariableValue(i);
             SolverVariable variable = this.variables.getVariable(i);
-            if (variable.mType == SolverVariable.Type.UNRESTRICTED) {
+            if (variable.mType == SolverVariable$Type.UNRESTRICTED) {
                 if (solverVariable == null) {
                     isNew2 = isNew(variable, linearSystem);
                 } else if (f > variableValue) {
@@ -145,7 +110,6 @@ public class ArrayRow implements LinearSystem.Row {
         return solverVariable != null ? solverVariable : solverVariable2;
     }
 
-    @Override // androidx.constraintlayout.core.LinearSystem.Row
     public void clear() {
         this.variables.clear();
         this.variable = null;
@@ -322,26 +286,23 @@ public class ArrayRow implements LinearSystem.Row {
         }
     }
 
-    @Override // androidx.constraintlayout.core.LinearSystem.Row
     public SolverVariable getKey() {
         return this.variable;
     }
 
-    @Override // androidx.constraintlayout.core.LinearSystem.Row
     public SolverVariable getPivotCandidate(LinearSystem linearSystem, boolean[] zArr) {
         return pickPivotInVariables(zArr, null);
     }
 
     boolean hasKeyVariable() {
         SolverVariable solverVariable = this.variable;
-        return solverVariable != null && (solverVariable.mType == SolverVariable.Type.UNRESTRICTED || this.constantValue >= 0.0f);
+        return solverVariable != null && (solverVariable.mType == SolverVariable$Type.UNRESTRICTED || this.constantValue >= 0.0f);
     }
 
     boolean hasVariable(SolverVariable solverVariable) {
         return this.variables.contains(solverVariable);
     }
 
-    @Override // androidx.constraintlayout.core.LinearSystem.Row
     public void initFromRow(LinearSystem.Row row) {
         if (row instanceof ArrayRow) {
             ArrayRow arrayRow = (ArrayRow) row;
@@ -353,7 +314,6 @@ public class ArrayRow implements LinearSystem.Row {
         }
     }
 
-    @Override // androidx.constraintlayout.core.LinearSystem.Row
     public boolean isEmpty() {
         return this.variable == null && this.constantValue == 0.0f && this.variables.getCurrentSize() == 0;
     }
@@ -393,12 +353,12 @@ public class ArrayRow implements LinearSystem.Row {
     /* JADX WARN: Removed duplicated region for block: B:25:0x00cf  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     java.lang.String toReadableString() {
         /*
             Method dump skipped, instructions count: 255
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.constraintlayout.core.ArrayRow.toReadableString():java.lang.String");
     }
@@ -407,7 +367,6 @@ public class ArrayRow implements LinearSystem.Row {
         return toReadableString();
     }
 
-    @Override // androidx.constraintlayout.core.LinearSystem.Row
     public void updateFromFinalVariable(LinearSystem linearSystem, SolverVariable solverVariable, boolean z) {
         if (solverVariable == null || !solverVariable.isFinalValue) {
             return;
@@ -423,7 +382,6 @@ public class ArrayRow implements LinearSystem.Row {
         }
     }
 
-    @Override // androidx.constraintlayout.core.LinearSystem.Row
     public void updateFromRow(LinearSystem linearSystem, ArrayRow arrayRow, boolean z) {
         this.constantValue += arrayRow.constantValue * this.variables.use(arrayRow, z);
         if (z) {
@@ -452,7 +410,6 @@ public class ArrayRow implements LinearSystem.Row {
         }
     }
 
-    @Override // androidx.constraintlayout.core.LinearSystem.Row
     public void updateFromSystem(LinearSystem linearSystem) {
         if (linearSystem.mRows.length == 0) {
             return;
@@ -489,7 +446,6 @@ public class ArrayRow implements LinearSystem.Row {
         }
     }
 
-    @Override // androidx.constraintlayout.core.LinearSystem.Row
     public void addError(SolverVariable solverVariable) {
         int i = solverVariable.strength;
         float f = 1.0f;

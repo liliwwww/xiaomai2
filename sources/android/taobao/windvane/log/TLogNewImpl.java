@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import com.taobao.tao.log.TTraceLog;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class TLogNewImpl implements IWMLog {
     private static boolean newTLogEnable = true;
 

@@ -6,12 +6,13 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
-import androidx.constraintlayout.widget.C0923R;
 import androidx.constraintlayout.widget.ConstraintHelper;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintLayout$LayoutParams;
+import androidx.constraintlayout.widget.R;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Layer extends ConstraintHelper {
     private static final String TAG = "Layer";
     private boolean mApplyElevationOnAttach;
@@ -150,13 +151,13 @@ public class Layer extends ConstraintHelper {
         super.init(attributeSet);
         this.mUseViewMeasure = false;
         if (attributeSet != null) {
-            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, C0923R.styleable.ConstraintLayout_Layout);
+            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.ConstraintLayout_Layout);
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
                 int index = obtainStyledAttributes.getIndex(i);
-                if (index == C0923R.styleable.ConstraintLayout_Layout_android_visibility) {
+                if (index == R.styleable.ConstraintLayout_Layout_android_visibility) {
                     this.mApplyVisibilityOnAttach = true;
-                } else if (index == C0923R.styleable.ConstraintLayout_Layout_android_elevation) {
+                } else if (index == R.styleable.ConstraintLayout_Layout_android_elevation) {
                     this.mApplyElevationOnAttach = true;
                 }
             }
@@ -167,7 +168,7 @@ public class Layer extends ConstraintHelper {
     @Override // androidx.constraintlayout.widget.ConstraintHelper, android.view.View
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        this.mContainer = (ConstraintLayout) getParent();
+        this.mContainer = getParent();
         if (this.mApplyVisibilityOnAttach || this.mApplyElevationOnAttach) {
             int visibility = getVisibility();
             float elevation = Build.VERSION.SDK_INT >= 21 ? getElevation() : 0.0f;
@@ -244,7 +245,7 @@ public class Layer extends ConstraintHelper {
         reCacheViews();
         this.mComputedCenterX = Float.NaN;
         this.mComputedCenterY = Float.NaN;
-        ConstraintWidget constraintWidget = ((ConstraintLayout.LayoutParams) getLayoutParams()).getConstraintWidget();
+        ConstraintWidget constraintWidget = ((ConstraintLayout$LayoutParams) getLayoutParams()).getConstraintWidget();
         constraintWidget.setWidth(0);
         constraintWidget.setHeight(0);
         calcCenters();

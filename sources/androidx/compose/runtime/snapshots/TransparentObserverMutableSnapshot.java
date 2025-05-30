@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TransparentObserverMutableSnapshot extends MutableSnapshot {
     private final boolean mergeParentObservers;
     private final boolean ownsPreviousSnapshot;
@@ -27,7 +27,7 @@ public final class TransparentObserverMutableSnapshot extends MutableSnapshot {
     /* JADX WARN: Illegal instructions before constructor call */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public TransparentObserverMutableSnapshot(@org.jetbrains.annotations.Nullable androidx.compose.runtime.snapshots.MutableSnapshot r5, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<java.lang.Object, kotlin.Unit> r6, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<java.lang.Object, kotlin.Unit> r7, boolean r8, boolean r9) {
         /*
@@ -78,13 +78,11 @@ public final class TransparentObserverMutableSnapshot extends MutableSnapshot {
         return (MutableSnapshot) obj;
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot
     @NotNull
     public SnapshotApplyResult apply() {
         return getCurrentSnapshot().apply();
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
     public void dispose() {
         MutableSnapshot mutableSnapshot;
         setDisposed$runtime_release(true);
@@ -94,24 +92,20 @@ public final class TransparentObserverMutableSnapshot extends MutableSnapshot {
         mutableSnapshot.dispose();
     }
 
-    @Override // androidx.compose.runtime.snapshots.Snapshot
     public int getId() {
         return getCurrentSnapshot().getId();
     }
 
-    @Override // androidx.compose.runtime.snapshots.Snapshot
     @NotNull
     public SnapshotIdSet getInvalid$runtime_release() {
         return getCurrentSnapshot().getInvalid$runtime_release();
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
     @Nullable
     public Set<StateObject> getModified$runtime_release() {
         return getCurrentSnapshot().getModified$runtime_release();
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
     public boolean getReadOnly() {
         return getCurrentSnapshot().getReadOnly();
     }
@@ -126,76 +120,65 @@ public final class TransparentObserverMutableSnapshot extends MutableSnapshot {
         return this.specifiedWriteObserver;
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
     public boolean hasPendingChanges() {
         return getCurrentSnapshot().hasPendingChanges();
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
     public void notifyObjectsInitialized$runtime_release() {
         getCurrentSnapshot().notifyObjectsInitialized$runtime_release();
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
-    /* renamed from: recordModified$runtime_release */
-    public void mo2441recordModified$runtime_release(@NotNull StateObject stateObject) {
+    public void recordModified$runtime_release(@NotNull StateObject stateObject) {
         Intrinsics.checkNotNullParameter(stateObject, "state");
-        getCurrentSnapshot().mo2441recordModified$runtime_release(stateObject);
+        getCurrentSnapshot().recordModified$runtime_release(stateObject);
     }
 
-    @Override // androidx.compose.runtime.snapshots.Snapshot
     public void setId$runtime_release(int i) {
         SnapshotStateMapKt.unsupported();
         throw new KotlinNothingValueException();
     }
 
-    @Override // androidx.compose.runtime.snapshots.Snapshot
     public void setInvalid$runtime_release(@NotNull SnapshotIdSet snapshotIdSet) {
         Intrinsics.checkNotNullParameter(snapshotIdSet, "value");
         SnapshotStateMapKt.unsupported();
         throw new KotlinNothingValueException();
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot
     public void setModified(@Nullable Set<StateObject> set) {
         SnapshotStateMapKt.unsupported();
         throw new KotlinNothingValueException();
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot
     @NotNull
     public MutableSnapshot takeNestedMutableSnapshot(@Nullable Function1<Object, Unit> function1, @Nullable Function1<Object, Unit> function12) {
-        Function1<Object, Unit> mergedWriteObserver;
-        Function1<Object, Unit> mergedReadObserver$default = SnapshotKt.mergedReadObserver$default(function1, getReadObserver$runtime_release(), false, 4, null);
+        Function1 mergedWriteObserver;
+        Function1 mergedReadObserver$default = SnapshotKt.mergedReadObserver$default(function1, getReadObserver$runtime_release(), false, 4, null);
         mergedWriteObserver = SnapshotKt.mergedWriteObserver(function12, getWriteObserver$runtime_release());
-        return !this.mergeParentObservers ? new TransparentObserverMutableSnapshot(getCurrentSnapshot().takeNestedMutableSnapshot(null, mergedWriteObserver), mergedReadObserver$default, mergedWriteObserver, false, true) : getCurrentSnapshot().takeNestedMutableSnapshot(mergedReadObserver$default, mergedWriteObserver);
+        return !this.mergeParentObservers ? new TransparentObserverMutableSnapshot(getCurrentSnapshot().takeNestedMutableSnapshot((Function1) null, mergedWriteObserver), mergedReadObserver$default, mergedWriteObserver, false, true) : getCurrentSnapshot().takeNestedMutableSnapshot(mergedReadObserver$default, mergedWriteObserver);
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
     @NotNull
     public Snapshot takeNestedSnapshot(@Nullable Function1<Object, Unit> function1) {
         Snapshot createTransparentSnapshotWithNoParentReadObserver;
-        Function1<Object, Unit> mergedReadObserver$default = SnapshotKt.mergedReadObserver$default(function1, getReadObserver$runtime_release(), false, 4, null);
+        Function1 mergedReadObserver$default = SnapshotKt.mergedReadObserver$default(function1, getReadObserver$runtime_release(), false, 4, null);
         if (this.mergeParentObservers) {
             return getCurrentSnapshot().takeNestedSnapshot(mergedReadObserver$default);
         }
-        createTransparentSnapshotWithNoParentReadObserver = SnapshotKt.createTransparentSnapshotWithNoParentReadObserver(getCurrentSnapshot().takeNestedSnapshot(null), mergedReadObserver$default, true);
+        createTransparentSnapshotWithNoParentReadObserver = SnapshotKt.createTransparentSnapshotWithNoParentReadObserver(getCurrentSnapshot().takeNestedSnapshot((Function1) null), mergedReadObserver$default, true);
         return createTransparentSnapshotWithNoParentReadObserver;
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
     @NotNull
     /* renamed from: nestedActivated$runtime_release, reason: merged with bridge method [inline-methods] */
-    public Void mo2438nestedActivated$runtime_release(@NotNull Snapshot snapshot) {
+    public Void m932nestedActivated$runtime_release(@NotNull Snapshot snapshot) {
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
         SnapshotStateMapKt.unsupported();
         throw new KotlinNothingValueException();
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
     @NotNull
     /* renamed from: nestedDeactivated$runtime_release, reason: merged with bridge method [inline-methods] */
-    public Void mo2439nestedDeactivated$runtime_release(@NotNull Snapshot snapshot) {
+    public Void m933nestedDeactivated$runtime_release(@NotNull Snapshot snapshot) {
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
         SnapshotStateMapKt.unsupported();
         throw new KotlinNothingValueException();

@@ -7,13 +7,13 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.util.SparseIntArray;
 import androidx.constraintlayout.motion.utils.ViewSpline;
-import androidx.constraintlayout.widget.C0923R;
+import androidx.constraintlayout.widget.R$styleable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class KeyTimeCycle extends Key {
     public static final int KEY_TYPE = 3;
     static final String NAME = "KeyTimeCycle";
@@ -73,25 +73,25 @@ public class KeyTimeCycle extends Key {
         static {
             SparseIntArray sparseIntArray = new SparseIntArray();
             mAttrMap = sparseIntArray;
-            sparseIntArray.append(C0923R.styleable.KeyTimeCycle_android_alpha, 1);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_android_elevation, 2);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_android_rotation, 4);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_android_rotationX, 5);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_android_rotationY, 6);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_android_scaleX, 7);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_transitionPathRotate, 8);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_transitionEasing, 9);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_motionTarget, 10);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_framePosition, 12);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_curveFit, 13);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_android_scaleY, 14);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_android_translationX, 15);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_android_translationY, 16);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_android_translationZ, 17);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_motionProgress, 18);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_wavePeriod, 20);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_waveOffset, 21);
-            mAttrMap.append(C0923R.styleable.KeyTimeCycle_waveShape, 19);
+            sparseIntArray.append(R$styleable.KeyTimeCycle_android_alpha, 1);
+            mAttrMap.append(R$styleable.KeyTimeCycle_android_elevation, 2);
+            mAttrMap.append(R$styleable.KeyTimeCycle_android_rotation, 4);
+            mAttrMap.append(R$styleable.KeyTimeCycle_android_rotationX, 5);
+            mAttrMap.append(R$styleable.KeyTimeCycle_android_rotationY, 6);
+            mAttrMap.append(R$styleable.KeyTimeCycle_android_scaleX, 7);
+            mAttrMap.append(R$styleable.KeyTimeCycle_transitionPathRotate, 8);
+            mAttrMap.append(R$styleable.KeyTimeCycle_transitionEasing, 9);
+            mAttrMap.append(R$styleable.KeyTimeCycle_motionTarget, 10);
+            mAttrMap.append(R$styleable.KeyTimeCycle_framePosition, 12);
+            mAttrMap.append(R$styleable.KeyTimeCycle_curveFit, 13);
+            mAttrMap.append(R$styleable.KeyTimeCycle_android_scaleY, 14);
+            mAttrMap.append(R$styleable.KeyTimeCycle_android_translationX, 15);
+            mAttrMap.append(R$styleable.KeyTimeCycle_android_translationY, 16);
+            mAttrMap.append(R$styleable.KeyTimeCycle_android_translationZ, 17);
+            mAttrMap.append(R$styleable.KeyTimeCycle_motionProgress, 18);
+            mAttrMap.append(R$styleable.KeyTimeCycle_wavePeriod, 20);
+            mAttrMap.append(R$styleable.KeyTimeCycle_waveOffset, 21);
+            mAttrMap.append(R$styleable.KeyTimeCycle_waveShape, 19);
         }
 
         private Loader() {
@@ -210,12 +210,12 @@ public class KeyTimeCycle extends Key {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void addTimeValues(java.util.HashMap<java.lang.String, androidx.constraintlayout.motion.utils.ViewTimeCycle> r11) {
         /*
             Method dump skipped, instructions count: 618
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.constraintlayout.motion.widget.KeyTimeCycle.addTimeValues(java.util.HashMap):void");
     }
@@ -276,7 +276,7 @@ public class KeyTimeCycle extends Key {
             hashSet.add("translationZ");
         }
         if (!Float.isNaN(this.mTransitionPathRotate)) {
-            hashSet.add("transitionPathRotate");
+            hashSet.add(Key.TRANSITION_PATH_ROTATE);
         }
         if (!Float.isNaN(this.mScaleX)) {
             hashSet.add("scaleX");
@@ -297,7 +297,7 @@ public class KeyTimeCycle extends Key {
 
     @Override // androidx.constraintlayout.motion.widget.Key
     public void load(Context context, AttributeSet attributeSet) {
-        Loader.read(this, context.obtainStyledAttributes(attributeSet, C0923R.styleable.KeyTimeCycle));
+        Loader.read(this, context.obtainStyledAttributes(attributeSet, R$styleable.KeyTimeCycle));
     }
 
     @Override // androidx.constraintlayout.motion.widget.Key
@@ -330,7 +330,7 @@ public class KeyTimeCycle extends Key {
             hashMap.put("translationZ", Integer.valueOf(this.mCurveFit));
         }
         if (!Float.isNaN(this.mTransitionPathRotate)) {
-            hashMap.put("transitionPathRotate", Integer.valueOf(this.mCurveFit));
+            hashMap.put(Key.TRANSITION_PATH_ROTATE, Integer.valueOf(this.mCurveFit));
         }
         if (!Float.isNaN(this.mScaleX)) {
             hashMap.put("scaleX", Integer.valueOf(this.mCurveFit));
@@ -415,7 +415,7 @@ public class KeyTimeCycle extends Key {
 
     @Override // androidx.constraintlayout.motion.widget.Key
     /* renamed from: clone */
-    public Key mo5575clone() {
+    public Key mo2783clone() {
         return new KeyTimeCycle().copy(this);
     }
 }

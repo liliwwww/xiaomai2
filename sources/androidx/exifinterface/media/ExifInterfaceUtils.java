@@ -8,6 +8,7 @@ import android.system.Os;
 import android.util.Log;
 import androidx.annotation.DoNotInline;
 import androidx.annotation.RequiresApi;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 import java.io.Closeable;
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -15,7 +16,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class ExifInterfaceUtils {
     private static final String TAG = "ExifInterfaceUtils";
 
@@ -103,7 +104,7 @@ class ExifInterfaceUtils {
     }
 
     static int copy(InputStream inputStream, OutputStream outputStream) throws IOException {
-        byte[] bArr = new byte[8192];
+        byte[] bArr = new byte[AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED];
         int i = 0;
         while (true) {
             int read = inputStream.read(bArr);
@@ -142,9 +143,9 @@ class ExifInterfaceUtils {
     }
 
     static void copy(InputStream inputStream, OutputStream outputStream, int i) throws IOException {
-        byte[] bArr = new byte[8192];
+        byte[] bArr = new byte[AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED];
         while (i > 0) {
-            int min = Math.min(i, 8192);
+            int min = Math.min(i, AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED);
             int read = inputStream.read(bArr, 0, min);
             if (read == min) {
                 i -= read;

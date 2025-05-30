@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class BringIntoViewRequesterImpl implements BringIntoViewRequester {
 
     @NotNull
@@ -23,9 +23,9 @@ final class BringIntoViewRequesterImpl implements BringIntoViewRequester {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public java.lang.Object bringIntoView(@org.jetbrains.annotations.Nullable androidx.compose.p004ui.geometry.Rect r7, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r8) {
+    public java.lang.Object bringIntoView(@org.jetbrains.annotations.Nullable androidx.compose.ui.geometry.Rect r7, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r8) {
         /*
             r6 = this;
             boolean r0 = r8 instanceof androidx.compose.foundation.relocation.BringIntoViewRequesterImpl$bringIntoView$1
@@ -54,7 +54,7 @@ final class BringIntoViewRequesterImpl implements BringIntoViewRequester {
             java.lang.Object r4 = r0.L$1
             java.lang.Object[] r4 = (java.lang.Object[]) r4
             java.lang.Object r5 = r0.L$0
-            androidx.compose.ui.geometry.Rect r5 = (androidx.compose.p004ui.geometry.Rect) r5
+            androidx.compose.ui.geometry.Rect r5 = (androidx.compose.ui.geometry.Rect) r5
             kotlin.ResultKt.throwOnFailure(r8)
             r8 = r5
             goto L66

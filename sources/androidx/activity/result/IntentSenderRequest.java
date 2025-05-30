@@ -11,23 +11,11 @@ import androidx.annotation.Nullable;
 
 /* compiled from: Taobao */
 @SuppressLint({"BanParcelableUsage"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class IntentSenderRequest implements Parcelable {
 
     @NonNull
-    public static final Parcelable.Creator<IntentSenderRequest> CREATOR = new Parcelable.Creator<IntentSenderRequest>() { // from class: androidx.activity.result.IntentSenderRequest.1
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // android.os.Parcelable.Creator
-        public IntentSenderRequest createFromParcel(Parcel parcel) {
-            return new IntentSenderRequest(parcel);
-        }
-
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // android.os.Parcelable.Creator
-        public IntentSenderRequest[] newArray(int i) {
-            return new IntentSenderRequest[i];
-        }
-    };
+    public static final Parcelable.Creator<IntentSenderRequest> CREATOR = new 1();
 
     @Nullable
     private final Intent mFillInIntent;

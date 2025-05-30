@@ -14,10 +14,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ComposablesKt {
     @Composable
-    public static final /* synthetic */ <T, E extends Applier<?>> void ComposeNode(final Function0<? extends T> function0, Function1<? super Updater<T>, Unit> function1, Composer composer, int i) {
+    public static final /* synthetic */ <T, E extends Applier<?>> void ComposeNode(Function0<? extends T> function0, Function1<? super Updater<T>, Unit> function1, Composer composer, int i) {
         Intrinsics.checkNotNullParameter(function0, "factory");
         Intrinsics.checkNotNullParameter(function1, "update");
         composer.startReplaceableGroup(1886828752);
@@ -28,28 +28,17 @@ public final class ComposablesKt {
         }
         composer.startNode();
         if (composer.getInserting()) {
-            composer.createNode(new Function0<T>() { // from class: androidx.compose.runtime.ComposablesKt$ComposeNode$1
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                /* JADX WARN: Multi-variable type inference failed */
-                {
-                    super(0);
-                }
-
-                @NotNull
-                public final T invoke() {
-                    return (T) function0.invoke();
-                }
-            });
+            composer.createNode(new ComposeNode.1(function0));
         } else {
             composer.useNode();
         }
-        function1.invoke(Updater.m2409boximpl(Updater.m2410constructorimpl(composer)));
+        function1.invoke(Updater.m746boximpl(Updater.m747constructorimpl(composer)));
         composer.endNode();
         composer.endReplaceableGroup();
     }
 
     @Composable
-    public static final /* synthetic */ <T, E extends Applier<?>> void ReusableComposeNode(final Function0<? extends T> function0, Function1<? super Updater<T>, Unit> function1, Composer composer, int i) {
+    public static final /* synthetic */ <T, E extends Applier<?>> void ReusableComposeNode(Function0<? extends T> function0, Function1<? super Updater<T>, Unit> function1, Composer composer, int i) {
         Intrinsics.checkNotNullParameter(function0, "factory");
         Intrinsics.checkNotNullParameter(function1, "update");
         composer.startReplaceableGroup(1405779621);
@@ -60,23 +49,12 @@ public final class ComposablesKt {
         }
         composer.startReusableNode();
         if (composer.getInserting()) {
-            composer.createNode(new Function0<T>() { // from class: androidx.compose.runtime.ComposablesKt$ReusableComposeNode$1
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                /* JADX WARN: Multi-variable type inference failed */
-                {
-                    super(0);
-                }
-
-                @NotNull
-                public final T invoke() {
-                    return (T) function0.invoke();
-                }
-            });
+            composer.createNode(new ReusableComposeNode.1(function0));
         } else {
             composer.useNode();
         }
         composer.disableReusing();
-        function1.invoke(Updater.m2409boximpl(Updater.m2410constructorimpl(composer)));
+        function1.invoke(Updater.m746boximpl(Updater.m747constructorimpl(composer)));
         composer.enableReusing();
         composer.endNode();
         composer.endReplaceableGroup();
@@ -86,7 +64,7 @@ public final class ComposablesKt {
     public static final void ReusableContent(@Nullable Object obj, @NotNull Function2<? super Composer, ? super Integer, Unit> function2, @Nullable Composer composer, int i) {
         Intrinsics.checkNotNullParameter(function2, "content");
         composer.startReplaceableGroup(444418301);
-        composer.startReusableGroup(ComposerKt.reuseKey, obj);
+        composer.startReusableGroup(207, obj);
         function2.invoke(composer, Integer.valueOf((i >> 3) & 14));
         composer.endReusableGroup();
         composer.endReplaceableGroup();
@@ -96,7 +74,7 @@ public final class ComposablesKt {
     @ComposableInferredTarget(scheme = "[0[0]]")
     public static final void ReusableContentHost(boolean z, @NotNull Function2<? super Composer, ? super Integer, Unit> function2, @Nullable Composer composer, int i) {
         Intrinsics.checkNotNullParameter(function2, "content");
-        composer.startReusableGroup(ComposerKt.reuseKey, Boolean.valueOf(z));
+        composer.startReusableGroup(207, Boolean.valueOf(z));
         boolean changed = composer.changed(z);
         if (z) {
             function2.invoke(composer, Integer.valueOf((i >> 3) & 14));
@@ -245,7 +223,7 @@ public final class ComposablesKt {
         } else {
             composer.useNode();
         }
-        function1.invoke(Updater.m2409boximpl(Updater.m2410constructorimpl(composer)));
+        function1.invoke(Updater.m746boximpl(Updater.m747constructorimpl(composer)));
         function2.invoke(composer, Integer.valueOf((i >> 6) & 14));
         composer.endNode();
         composer.endReplaceableGroup();
@@ -270,7 +248,7 @@ public final class ComposablesKt {
             composer.useNode();
         }
         composer.disableReusing();
-        function1.invoke(Updater.m2409boximpl(Updater.m2410constructorimpl(composer)));
+        function1.invoke(Updater.m746boximpl(Updater.m747constructorimpl(composer)));
         composer.enableReusing();
         function2.invoke(composer, Integer.valueOf((i >> 6) & 14));
         composer.endNode();
@@ -309,8 +287,8 @@ public final class ComposablesKt {
         } else {
             composer.useNode();
         }
-        function1.invoke(Updater.m2409boximpl(Updater.m2410constructorimpl(composer)));
-        function3.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(composer)), composer, Integer.valueOf((i >> 3) & 112));
+        function1.invoke(Updater.m746boximpl(Updater.m747constructorimpl(composer)));
+        function3.invoke(SkippableUpdater.box-impl(SkippableUpdater.constructor-impl(composer)), composer, Integer.valueOf((i >> 3) & 112));
         composer.startReplaceableGroup(2058660585);
         function2.invoke(composer, Integer.valueOf((i >> 9) & 14));
         composer.endReplaceableGroup();
@@ -336,9 +314,9 @@ public final class ComposablesKt {
             composer.useNode();
         }
         composer.disableReusing();
-        function1.invoke(Updater.m2409boximpl(Updater.m2410constructorimpl(composer)));
+        function1.invoke(Updater.m746boximpl(Updater.m747constructorimpl(composer)));
         composer.enableReusing();
-        function3.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(composer)), composer, Integer.valueOf((i >> 3) & 112));
+        function3.invoke(SkippableUpdater.box-impl(SkippableUpdater.constructor-impl(composer)), composer, Integer.valueOf((i >> 3) & 112));
         composer.startReplaceableGroup(2058660585);
         function2.invoke(composer, Integer.valueOf((i >> 9) & 14));
         composer.endReplaceableGroup();

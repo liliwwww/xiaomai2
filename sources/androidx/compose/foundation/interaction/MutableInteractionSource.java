@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface MutableInteractionSource extends InteractionSource {
     @Nullable
     Object emit(@NotNull Interaction interaction, @NotNull Continuation<? super Unit> continuation);

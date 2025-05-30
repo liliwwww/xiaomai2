@@ -12,7 +12,7 @@ import tb.hu2;
 import tb.m11;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SdkStubsFallbackFrameClock implements MonotonicFrameClock {
     private static final long DefaultFrameDelay = 16;
 
@@ -49,6 +49,6 @@ final class SdkStubsFallbackFrameClock implements MonotonicFrameClock {
     @Override // androidx.compose.runtime.MonotonicFrameClock
     @Nullable
     public <R> Object withFrameNanos(@NotNull Function1<? super Long, ? extends R> function1, @NotNull Continuation<? super R> continuation) {
-        return d.g(m11.c(), new SdkStubsFallbackFrameClock$withFrameNanos$2(function1, null), continuation);
+        return d.g(m11.c(), new withFrameNanos.2(function1, (Continuation) null), continuation);
     }
 }

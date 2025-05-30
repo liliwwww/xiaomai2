@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVFSPManager implements Serializable {
     private static final String TAG = "FSP";
     public static final int WV_FSP_STATE_Initialize = 0;
@@ -40,7 +40,7 @@ public class WVFSPManager implements Serializable {
             if (WVMonitorService.getPerformanceMonitor() != null) {
                 WVMonitorService.getPerformanceMonitor().didPageStartInFSP(this.url, this.time - this.startTime);
             }
-            TaoLog.m24i("FSP", "FSP_URL: " + this.url + "\nFSP_Time: " + (this.time - this.startTime));
+            TaoLog.i(TAG, "FSP_URL: " + this.url + "\nFSP_Time: " + (this.time - this.startTime));
         }
     }
 
@@ -62,7 +62,7 @@ public class WVFSPManager implements Serializable {
             this.time_H5Pages = currentTimeMillis;
             this.url = str;
             this.state = 2;
-            TaoLog.m24i("FSP", "navigationDidFinishWithURL: " + str);
+            TaoLog.i(TAG, "navigationDidFinishWithURL: " + str);
         }
     }
 
@@ -72,7 +72,7 @@ public class WVFSPManager implements Serializable {
             if (i == 0 || i == 2 || i == 3) {
                 this.state = 1;
                 this.startTime = System.currentTimeMillis();
-                TaoLog.m24i("FSP", "navigationDidStart");
+                TaoLog.i(TAG, "navigationDidStart");
             }
         }
     }
@@ -87,7 +87,7 @@ public class WVFSPManager implements Serializable {
                     it.next().onFSPBack(j);
                 }
             }
-            TaoLog.m24i("FSP", "sendTime: " + j);
+            TaoLog.i(TAG, "sendTime: " + j);
         }
     }
 
@@ -105,7 +105,7 @@ public class WVFSPManager implements Serializable {
         if (WVPerformanceManager.getInstance().getConfig().isOpenFSP() && completionHandler != null && this.state == 2) {
             this.state = 3;
             commitStat();
-            TaoLog.m24i("FSP", "unitDidFinish");
+            TaoLog.i(TAG, "unitDidFinish");
             completionHandler.stopObserving();
             completionHandler.uploadFSPInfo(this.url, this.time);
             this.time_H5Pages = this.time;

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class TransitionSet extends Transition {
     private static final int FLAG_CHANGE_EPICENTER = 8;
     private static final int FLAG_CHANGE_INTERPOLATOR = 1;
@@ -32,38 +32,6 @@ public class TransitionSet extends Transition {
     private boolean mPlayTogether;
     boolean mStarted;
     private ArrayList<Transition> mTransitions;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class TransitionSetListener extends TransitionListenerAdapter {
-        TransitionSet mTransitionSet;
-
-        TransitionSetListener(TransitionSet transitionSet) {
-            this.mTransitionSet = transitionSet;
-        }
-
-        @Override // androidx.transition.TransitionListenerAdapter, androidx.transition.Transition.TransitionListener
-        public void onTransitionEnd(@NonNull Transition transition) {
-            TransitionSet transitionSet = this.mTransitionSet;
-            int i = transitionSet.mCurrentListeners - 1;
-            transitionSet.mCurrentListeners = i;
-            if (i == 0) {
-                transitionSet.mStarted = false;
-                transitionSet.end();
-            }
-            transition.removeListener(this);
-        }
-
-        @Override // androidx.transition.TransitionListenerAdapter, androidx.transition.Transition.TransitionListener
-        public void onTransitionStart(@NonNull Transition transition) {
-            TransitionSet transitionSet = this.mTransitionSet;
-            if (transitionSet.mStarted) {
-                return;
-            }
-            transitionSet.start();
-            this.mTransitionSet.mStarted = true;
-        }
-    }
 
     public TransitionSet() {
         this.mTransitions = new ArrayList<>();
@@ -78,7 +46,7 @@ public class TransitionSet extends Transition {
     }
 
     private void setupStartEndListeners() {
-        TransitionSetListener transitionSetListener = new TransitionSetListener(this);
+        Transition.TransitionListener transitionSetListener = new TransitionSetListener(this);
         Iterator<Transition> it = this.mTransitions.iterator();
         while (it.hasNext()) {
             it.next().addListener(transitionSetListener);
@@ -256,7 +224,7 @@ public class TransitionSet extends Transition {
             Transition transition = this.mTransitions.get(i - 1);
             final Transition transition2 = this.mTransitions.get(i);
             transition.addListener(new TransitionListenerAdapter() { // from class: androidx.transition.TransitionSet.1
-                @Override // androidx.transition.TransitionListenerAdapter, androidx.transition.Transition.TransitionListener
+                /* JADX WARN: Multi-variable type inference failed */
                 public void onTransitionEnd(@NonNull Transition transition3) {
                     transition2.runAnimators();
                     transition3.removeListener(this);
@@ -342,13 +310,13 @@ public class TransitionSet extends Transition {
     }
 
     @Override // androidx.transition.Transition
-    /* renamed from: clone */
-    public Transition mo5618clone() {
-        TransitionSet transitionSet = (TransitionSet) super.mo5618clone();
+    /* renamed from: clone, reason: merged with bridge method [inline-methods] */
+    public Transition mo2815clone() {
+        TransitionSet transitionSet = (TransitionSet) super.mo2815clone();
         transitionSet.mTransitions = new ArrayList<>();
         int size = this.mTransitions.size();
         for (int i = 0; i < size; i++) {
-            transitionSet.addTransitionInternal(this.mTransitions.get(i).mo5618clone());
+            transitionSet.addTransitionInternal(this.mTransitions.get(i).mo2815clone());
         }
         return transitionSet;
     }

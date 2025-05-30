@@ -1,6 +1,6 @@
 package androidx.compose.foundation.lazy.grid;
 
-import androidx.compose.p004ui.unit.LayoutDirection;
+import androidx.compose.ui.unit.LayoutDirection;
 import java.util.ArrayList;
 import java.util.List;
 import kotlin.jvm.internal.DefaultConstructorMarker;
@@ -8,7 +8,7 @@ import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyMeasuredLine {
     private final int crossAxisSpacing;
     private final int index;
@@ -49,7 +49,7 @@ public final class LazyMeasuredLine {
     }
 
     /* renamed from: getIndex-hA7yfN8, reason: not valid java name */
-    public final int m1593getIndexhA7yfN8() {
+    public final int m470getIndexhA7yfN8() {
         return this.index;
     }
 
@@ -82,16 +82,16 @@ public final class LazyMeasuredLine {
         while (i4 < length) {
             LazyMeasuredItem lazyMeasuredItem = lazyMeasuredItemArr[i4];
             int i8 = i5 + 1;
-            int m1538getCurrentLineSpanimpl = GridItemSpan.m1538getCurrentLineSpanimpl(this.spans.get(i5).m1541unboximpl());
-            int i9 = this.layoutDirection == LayoutDirection.Rtl ? (this.slotsPerLine - i6) - m1538getCurrentLineSpanimpl : i6;
+            int i9 = GridItemSpan.getCurrentLineSpan-impl(this.spans.get(i5).unbox-impl());
+            int i10 = this.layoutDirection == LayoutDirection.Rtl ? (this.slotsPerLine - i6) - i9 : i6;
             boolean z = this.isVertical;
-            int i10 = z ? this.index : i9;
+            int i11 = z ? this.index : i10;
             if (!z) {
-                i9 = this.index;
+                i10 = this.index;
             }
-            LazyGridPositionedItem position = lazyMeasuredItem.position(i, i7, i2, i3, i10, i9);
+            LazyGridPositionedItem position = lazyMeasuredItem.position(i, i7, i2, i3, i11, i10);
             i7 += lazyMeasuredItem.getCrossAxisSize() + this.crossAxisSpacing;
-            i6 += m1538getCurrentLineSpanimpl;
+            i6 += i9;
             arrayList.add(position);
             i4++;
             i5 = i8;

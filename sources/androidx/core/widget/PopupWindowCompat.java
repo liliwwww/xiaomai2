@@ -4,16 +4,14 @@ import android.os.Build;
 import android.util.Log;
 import android.view.View;
 import android.widget.PopupWindow;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class PopupWindowCompat {
     private static final String TAG = "PopupWindowCompatApi21";
     private static Method sGetWindowLayoutTypeMethod;
@@ -22,47 +20,6 @@ public final class PopupWindowCompat {
     private static boolean sOverlapAnchorFieldAttempted;
     private static Method sSetWindowLayoutTypeMethod;
     private static boolean sSetWindowLayoutTypeMethodAttempted;
-
-    /* compiled from: Taobao */
-    @RequiresApi(19)
-    /* loaded from: classes.dex */
-    static class Api19Impl {
-        private Api19Impl() {
-        }
-
-        @DoNotInline
-        static void showAsDropDown(PopupWindow popupWindow, View view, int i, int i2, int i3) {
-            popupWindow.showAsDropDown(view, i, i2, i3);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(23)
-    /* loaded from: classes.dex */
-    static class Api23Impl {
-        private Api23Impl() {
-        }
-
-        @DoNotInline
-        static boolean getOverlapAnchor(PopupWindow popupWindow) {
-            return popupWindow.getOverlapAnchor();
-        }
-
-        @DoNotInline
-        static int getWindowLayoutType(PopupWindow popupWindow) {
-            return popupWindow.getWindowLayoutType();
-        }
-
-        @DoNotInline
-        static void setOverlapAnchor(PopupWindow popupWindow, boolean z) {
-            popupWindow.setOverlapAnchor(z);
-        }
-
-        @DoNotInline
-        static void setWindowLayoutType(PopupWindow popupWindow, int i) {
-            popupWindow.setWindowLayoutType(i);
-        }
-    }
 
     private PopupWindowCompat() {
     }

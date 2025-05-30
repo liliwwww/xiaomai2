@@ -22,7 +22,7 @@ import androidx.savedstate.SavedStateRegistryController;
 import androidx.savedstate.SavedStateRegistryOwner;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class FragmentViewLifecycleOwner implements HasDefaultViewModelProviderFactory, ViewModelStoreOwner, SavedStateRegistryOwner {
     private ViewModelProvider.Factory mDefaultFactory;
     private final Fragment mFragment;
@@ -35,7 +35,6 @@ class FragmentViewLifecycleOwner implements HasDefaultViewModelProviderFactory, 
         this.mViewModelStore = viewModelStore;
     }
 
-    @Override // androidx.lifecycle.HasDefaultViewModelProviderFactory
     @NonNull
     @CallSuper
     public CreationExtras getDefaultViewModelCreationExtras() {
@@ -64,7 +63,6 @@ class FragmentViewLifecycleOwner implements HasDefaultViewModelProviderFactory, 
         return mutableCreationExtras;
     }
 
-    @Override // androidx.lifecycle.HasDefaultViewModelProviderFactory
     @NonNull
     public ViewModelProvider.Factory getDefaultViewModelProviderFactory() {
         ViewModelProvider.Factory defaultViewModelProviderFactory = this.mFragment.getDefaultViewModelProviderFactory();
@@ -91,14 +89,12 @@ class FragmentViewLifecycleOwner implements HasDefaultViewModelProviderFactory, 
         return this.mDefaultFactory;
     }
 
-    @Override // androidx.lifecycle.LifecycleOwner
     @NonNull
     public Lifecycle getLifecycle() {
         initialize();
         return this.mLifecycleRegistry;
     }
 
-    @Override // androidx.savedstate.SavedStateRegistryOwner
     @NonNull
     public SavedStateRegistry getSavedStateRegistry() {
         initialize();
@@ -116,6 +112,7 @@ class FragmentViewLifecycleOwner implements HasDefaultViewModelProviderFactory, 
         this.mLifecycleRegistry.handleLifecycleEvent(event);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     void initialize() {
         if (this.mLifecycleRegistry == null) {
             this.mLifecycleRegistry = new LifecycleRegistry(this);

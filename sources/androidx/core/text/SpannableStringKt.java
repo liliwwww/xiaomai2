@@ -8,7 +8,7 @@ import kotlin.ranges.IntRange;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SpannableStringKt {
     @SuppressLint({"SyntheticAccessor"})
     public static final void clearSpans(@NotNull Spannable spannable) {

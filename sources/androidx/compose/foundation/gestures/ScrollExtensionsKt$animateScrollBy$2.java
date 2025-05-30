@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.ScrollExtensionsKt$animateScrollBy$2", f = "ScrollExtensions.kt", i = {}, l = {41}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class ScrollExtensionsKt$animateScrollBy$2 extends SuspendLambda implements Function2<ScrollScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ AnimationSpec<Float> $animationSpec;
     final /* synthetic */ Ref.FloatRef $previousValue;
@@ -49,29 +49,12 @@ final class ScrollExtensionsKt$animateScrollBy$2 extends SuspendLambda implement
         int i = this.label;
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
-            final ScrollScope scrollScope = (ScrollScope) this.L$0;
+            ScrollScope scrollScope = (ScrollScope) this.L$0;
             float f = this.$value;
             AnimationSpec<Float> animationSpec = this.$animationSpec;
-            final Ref.FloatRef floatRef = this.$previousValue;
-            Function2<Float, Float, Unit> function2 = new Function2<Float, Float, Unit>() { // from class: androidx.compose.foundation.gestures.ScrollExtensionsKt$animateScrollBy$2.1
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2, Object obj3) {
-                    invoke(((Number) obj2).floatValue(), ((Number) obj3).floatValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(float f2, float f3) {
-                    Ref.FloatRef floatRef2 = floatRef;
-                    float f4 = floatRef2.element;
-                    floatRef2.element = f4 + scrollScope.scrollBy(f2 - f4);
-                }
-            };
+            1 r7 = new 1(this.$previousValue, scrollScope);
             this.label = 1;
-            if (SuspendAnimationKt.animate$default(0.0f, f, 0.0f, animationSpec, function2, this, 4, null) == coroutine_suspended) {
+            if (SuspendAnimationKt.animate$default(0.0f, f, 0.0f, animationSpec, r7, this, 4, null) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

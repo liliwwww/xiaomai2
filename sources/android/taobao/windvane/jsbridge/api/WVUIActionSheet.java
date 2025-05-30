@@ -13,29 +13,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVUIActionSheet extends WVApiPlugin {
     private static final String TAG = "WVUIActionSheet";
     private String _index;
     private PopupWindowController mPopupWindowController;
     private WVCallBackContext mCallback = null;
-    private View.OnClickListener popupClickListener = new View.OnClickListener() { // from class: android.taobao.windvane.jsbridge.api.WVUIActionSheet.1
-        @Override // android.view.View.OnClickListener
-        public void onClick(View view) {
-            WVResult wVResult = new WVResult();
-            wVResult.addData("type", (String) view.getTag());
-            wVResult.addData("_index", WVUIActionSheet.this._index);
-            if (TaoLog.getLogStatus()) {
-                TaoLog.m18d("WVUIActionSheet", "ActionSheet: click: 8.5.0");
-            }
-            WVUIActionSheet.this.mPopupWindowController.hide();
-            wVResult.setSuccess();
-            WVUIActionSheet.this.mCallback.success(wVResult);
-            WVUIActionSheet.this.mCallback.fireEvent("wv.actionsheet", wVResult.toJsonString());
-        }
-    };
+    private View.OnClickListener popupClickListener = new 1(this);
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if (!"show".equals(str)) {
             return false;
@@ -44,7 +29,6 @@ public class WVUIActionSheet extends WVApiPlugin {
         return true;
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void onDestroy() {
         this.mCallback = null;
     }
@@ -64,7 +48,7 @@ public class WVUIActionSheet extends WVApiPlugin {
                 JSONArray optJSONArray = jSONObject.optJSONArray("buttons");
                 if (optJSONArray != null) {
                     if (optJSONArray.length() > 8) {
-                        TaoLog.m30w("WVUIActionSheet", "WVUIDialog: ActionSheet is too long, limit 8");
+                        TaoLog.w("WVUIActionSheet", "WVUIDialog: ActionSheet is too long, limit 8");
                         WVResult wVResult = new WVResult();
                         wVResult.setResult(WVResult.PARAM_ERR);
                         wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "ActionSheet is too long. limit 8");
@@ -79,7 +63,7 @@ public class WVUIActionSheet extends WVApiPlugin {
                 strArr = strArr2;
                 str2 = optString;
             } catch (JSONException unused) {
-                TaoLog.m21e("WVUIActionSheet", "WVUIDialog: param parse to JSON error, param=" + str);
+                TaoLog.e("WVUIActionSheet", "WVUIDialog: param parse to JSON error, param=" + str);
                 WVResult wVResult2 = new WVResult();
                 wVResult2.setResult(WVResult.PARAM_ERR);
                 wVCallBackContext.error(wVResult2);
@@ -88,12 +72,12 @@ public class WVUIActionSheet extends WVApiPlugin {
         }
         this.mCallback = wVCallBackContext;
         try {
-            PopupWindowController popupWindowController = new PopupWindowController(this.mContext, this.mWebView.getView(), str2, strArr, this.popupClickListener);
+            PopupWindowController popupWindowController = new PopupWindowController(((WVApiPlugin) this).mContext, ((WVApiPlugin) this).mWebView.getView(), str2, strArr, this.popupClickListener);
             this.mPopupWindowController = popupWindowController;
             popupWindowController.show();
-            TaoLog.m18d("WVUIActionSheet", "ActionSheet: show");
+            TaoLog.d("WVUIActionSheet", "ActionSheet: show");
         } catch (Exception e) {
-            TaoLog.m30w("WVUIActionSheet", e.getMessage());
+            TaoLog.w("WVUIActionSheet", e.getMessage());
             WVResult wVResult3 = new WVResult();
             wVResult3.addData("errMsg", e.getMessage());
             wVCallBackContext.error(wVResult3);

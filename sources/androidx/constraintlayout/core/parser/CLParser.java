@@ -1,7 +1,9 @@
 package androidx.constraintlayout.core.parser;
 
+import androidx.appcompat.R;
+
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class CLParser {
     static boolean DEBUG;
     private boolean hasComment = false;
@@ -9,8 +11,8 @@ public class CLParser {
     private String mContent;
 
     /* compiled from: Taobao */
-    /* renamed from: androidx.constraintlayout.core.parser.CLParser$1 */
-    static /* synthetic */ class C08871 {
+    /* renamed from: androidx.constraintlayout.core.parser.CLParser$1, reason: invalid class name */
+    static /* synthetic */ class AnonymousClass1 {
         static final /* synthetic */ int[] $SwitchMap$androidx$constraintlayout$core$parser$CLParser$TYPE;
 
         static {
@@ -43,18 +45,6 @@ public class CLParser {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    enum TYPE {
-        UNKNOWN,
-        OBJECT,
-        ARRAY,
-        NUMBER,
-        STRING,
-        KEY,
-        TOKEN
-    }
-
     public CLParser(String str) {
         this.mContent = str;
     }
@@ -64,7 +54,7 @@ public class CLParser {
         if (DEBUG) {
             System.out.println("CREATE " + type + " at " + cArr[i]);
         }
-        switch (C08871.$SwitchMap$androidx$constraintlayout$core$parser$CLParser$TYPE[type.ordinal()]) {
+        switch (AnonymousClass1.$SwitchMap$androidx$constraintlayout$core$parser$CLParser$TYPE[type.ordinal()]) {
             case 1:
                 allocate = CLObject.allocate(cArr);
                 i++;
@@ -121,19 +111,19 @@ public class CLParser {
                     case '+':
                     case '-':
                     case '.':
-                    case '0':
-                    case '1':
-                    case '2':
-                    case '3':
-                    case '4':
-                    case '5':
-                    case '6':
-                    case '7':
-                    case '8':
-                    case '9':
+                    case R.styleable.AppCompatTheme_checkboxStyle /* 48 */:
+                    case R.styleable.AppCompatTheme_checkedTextViewStyle /* 49 */:
+                    case R.styleable.AppCompatTheme_colorAccent /* 50 */:
+                    case R.styleable.AppCompatTheme_colorBackgroundFloating /* 51 */:
+                    case R.styleable.AppCompatTheme_colorButtonNormal /* 52 */:
+                    case R.styleable.AppCompatTheme_colorControlActivated /* 53 */:
+                    case R.styleable.AppCompatTheme_colorControlHighlight /* 54 */:
+                    case R.styleable.AppCompatTheme_colorControlNormal /* 55 */:
+                    case R.styleable.AppCompatTheme_colorError /* 56 */:
+                    case R.styleable.AppCompatTheme_colorPrimary /* 57 */:
                         return createElement(cLElement, i, TYPE.NUMBER, true, cArr);
                     case ',':
-                    case ':':
+                    case R.styleable.AppCompatTheme_colorPrimaryDark /* 58 */:
                         return cLElement;
                     case '/':
                         int i2 = i + 1;
@@ -146,8 +136,8 @@ public class CLParser {
                         if (!(cLElement instanceof CLContainer) || (cLElement instanceof CLObject)) {
                             return createElement(cLElement, i, TYPE.KEY, true, cArr);
                         }
-                        CLElement createElement = createElement(cLElement, i, TYPE.TOKEN, true, cArr);
-                        CLToken cLToken = (CLToken) createElement;
+                        CLToken createElement = createElement(cLElement, i, TYPE.TOKEN, true, cArr);
+                        CLToken cLToken = createElement;
                         if (cLToken.validate(c, i)) {
                             return createElement;
                         }
@@ -187,13 +177,13 @@ public class CLParser {
             i2++;
         }
         if (i2 == -1) {
-            throw new CLParsingException("invalid json content", null);
+            throw new CLParsingException("invalid json content", (CLElement) null);
         }
-        CLObject allocate = CLObject.allocate(charArray);
+        CLKey allocate = CLObject.allocate(charArray);
         allocate.setLine(this.lineNumber);
         allocate.setStart(i2);
         int i3 = i2 + 1;
-        CLElement cLElement = allocate;
+        CLKey cLKey = allocate;
         while (i3 < length) {
             char c2 = charArray[i3];
             if (c2 == '\n') {
@@ -209,71 +199,71 @@ public class CLParser {
                     z = false;
                 }
             }
-            if (cLElement == null) {
+            if (cLKey == null) {
                 break;
             }
-            if (cLElement.isDone()) {
-                cLElement = getNextJsonElement(i3, c2, cLElement, charArray);
-            } else if (cLElement instanceof CLObject) {
+            if (cLKey.isDone()) {
+                cLKey = getNextJsonElement(i3, c2, cLKey, charArray);
+            } else if (cLKey instanceof CLObject) {
                 if (c2 == '}') {
-                    cLElement.setEnd(i3 - 1);
+                    cLKey.setEnd(i3 - 1);
                 } else {
-                    cLElement = getNextJsonElement(i3, c2, cLElement, charArray);
+                    cLKey = getNextJsonElement(i3, c2, cLKey, charArray);
                 }
-            } else if (!(cLElement instanceof CLArray)) {
-                boolean z2 = cLElement instanceof CLString;
+            } else if (!(cLKey instanceof CLArray)) {
+                boolean z2 = cLKey instanceof CLString;
                 if (z2) {
-                    long j = cLElement.start;
+                    long j = cLKey.start;
                     if (charArray[(int) j] == c2) {
-                        cLElement.setStart(j + 1);
-                        cLElement.setEnd(i3 - 1);
+                        cLKey.setStart(j + 1);
+                        cLKey.setEnd(i3 - 1);
                     }
                 } else {
-                    if (cLElement instanceof CLToken) {
-                        CLToken cLToken = (CLToken) cLElement;
+                    if (cLKey instanceof CLToken) {
+                        CLToken cLToken = (CLToken) cLKey;
                         if (!cLToken.validate(c2, i3)) {
                             throw new CLParsingException("parsing incorrect token " + cLToken.content() + " at line " + this.lineNumber, cLToken);
                         }
                     }
-                    if ((cLElement instanceof CLKey) || z2) {
-                        long j2 = cLElement.start;
+                    if ((cLKey instanceof CLKey) || z2) {
+                        long j2 = cLKey.start;
                         char c3 = charArray[(int) j2];
                         if ((c3 == '\'' || c3 == '\"') && c3 == c2) {
-                            cLElement.setStart(j2 + 1);
-                            cLElement.setEnd(i3 - 1);
+                            cLKey.setStart(j2 + 1);
+                            cLKey.setEnd(i3 - 1);
                         }
                     }
-                    if (!cLElement.isDone() && (c2 == '}' || c2 == ']' || c2 == ',' || c2 == ' ' || c2 == '\t' || c2 == '\r' || c2 == '\n' || c2 == ':')) {
+                    if (!cLKey.isDone() && (c2 == '}' || c2 == ']' || c2 == ',' || c2 == ' ' || c2 == '\t' || c2 == '\r' || c2 == '\n' || c2 == ':')) {
                         long j3 = i3 - 1;
-                        cLElement.setEnd(j3);
+                        cLKey.setEnd(j3);
                         if (c2 == '}' || c2 == ']') {
-                            cLElement = cLElement.getContainer();
-                            cLElement.setEnd(j3);
-                            if (cLElement instanceof CLKey) {
-                                cLElement = cLElement.getContainer();
-                                cLElement.setEnd(j3);
+                            cLKey = cLKey.getContainer();
+                            cLKey.setEnd(j3);
+                            if (cLKey instanceof CLKey) {
+                                cLKey = cLKey.getContainer();
+                                cLKey.setEnd(j3);
                             }
                         }
                     }
                 }
             } else if (c2 == ']') {
-                cLElement.setEnd(i3 - 1);
+                cLKey.setEnd(i3 - 1);
             } else {
-                cLElement = getNextJsonElement(i3, c2, cLElement, charArray);
+                cLKey = getNextJsonElement(i3, c2, cLKey, charArray);
             }
-            if (cLElement.isDone() && (!(cLElement instanceof CLKey) || ((CLKey) cLElement).mElements.size() > 0)) {
-                cLElement = cLElement.getContainer();
+            if (cLKey.isDone() && (!(cLKey instanceof CLKey) || cLKey.mElements.size() > 0)) {
+                cLKey = cLKey.getContainer();
             }
             i3++;
             i = 1;
             z = false;
         }
-        while (cLElement != null && !cLElement.isDone()) {
-            if (cLElement instanceof CLString) {
-                cLElement.setStart(((int) cLElement.start) + 1);
+        while (cLKey != null && !cLKey.isDone()) {
+            if (cLKey instanceof CLString) {
+                cLKey.setStart(((int) cLKey.start) + 1);
             }
-            cLElement.setEnd(length - 1);
-            cLElement = cLElement.getContainer();
+            cLKey.setEnd(length - 1);
+            cLKey = cLKey.getContainer();
         }
         if (DEBUG) {
             System.out.println("Root: " + allocate.toJSON());

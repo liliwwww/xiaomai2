@@ -6,7 +6,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PersistentHashMapBuilderEntries<K, V> extends AbstractMapBuilderEntries<Map.Entry<K, V>, K, V> {
 
     @NotNull
@@ -21,11 +21,10 @@ public final class PersistentHashMapBuilderEntries<K, V> extends AbstractMapBuil
         this.builder.clear();
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableMap.AbstractMapBuilderEntries
     public boolean containsEntry(@NotNull Map.Entry<? extends K, ? extends V> entry) {
         Intrinsics.checkNotNullParameter(entry, "element");
-        V v = this.builder.get(entry.getKey());
-        return v != null ? Intrinsics.areEqual(v, entry.getValue()) : entry.getValue() == null && this.builder.containsKey(entry.getKey());
+        Object obj = this.builder.get(entry.getKey());
+        return obj != null ? Intrinsics.areEqual(obj, entry.getValue()) : entry.getValue() == null && this.builder.containsKey(entry.getKey());
     }
 
     public int getSize() {
@@ -37,7 +36,6 @@ public final class PersistentHashMapBuilderEntries<K, V> extends AbstractMapBuil
         return new PersistentHashMapBuilderEntriesIterator(this.builder);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableMap.AbstractMapBuilderEntries
     public boolean removeEntry(@NotNull Map.Entry<? extends K, ? extends V> entry) {
         Intrinsics.checkNotNullParameter(entry, "element");
         return this.builder.remove(entry.getKey(), entry.getValue());

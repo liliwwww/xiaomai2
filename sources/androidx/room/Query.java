@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /* compiled from: Taobao */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.CLASS)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public @interface Query {
     String value();
 }

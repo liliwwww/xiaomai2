@@ -2,15 +2,15 @@ package androidx.compose.foundation.relocation;
 
 import android.graphics.Rect;
 import android.view.View;
-import androidx.compose.p004ui.platform.AndroidCompositionLocals_androidKt;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
+import androidx.compose.ui.platform.AndroidCompositionLocals_androidKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class BringIntoViewResponder_androidKt {
     @Composable
     @NotNull
@@ -37,7 +37,7 @@ public final class BringIntoViewResponder_androidKt {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public static final Rect toRect(androidx.compose.p004ui.geometry.Rect rect) {
+    public static final Rect toRect(androidx.compose.ui.geometry.Rect rect) {
         return new Rect((int) rect.getLeft(), (int) rect.getTop(), (int) rect.getRight(), (int) rect.getBottom());
     }
 }

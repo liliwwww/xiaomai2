@@ -12,7 +12,7 @@ import androidx.core.view.ViewCompat;
 
 /* compiled from: Taobao */
 @SuppressLint({"ViewConstructor"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class GhostViewPort extends ViewGroup implements GhostView {
 
     @Nullable
@@ -97,7 +97,7 @@ class GhostViewPort extends ViewGroup implements GhostView {
     }
 
     static GhostViewPort getGhostView(View view) {
-        return (GhostViewPort) view.getTag(C1345R.id.ghost_view);
+        return (GhostViewPort) view.getTag(R.id.ghost_view);
     }
 
     static void removeGhost(View view) {
@@ -106,13 +106,13 @@ class GhostViewPort extends ViewGroup implements GhostView {
             int i = ghostView.mReferences - 1;
             ghostView.mReferences = i;
             if (i <= 0) {
-                ((GhostViewHolder) ghostView.getParent()).removeView(ghostView);
+                ghostView.getParent().removeView(ghostView);
             }
         }
     }
 
     static void setGhostView(@NonNull View view, @Nullable GhostViewPort ghostViewPort) {
-        view.setTag(C1345R.id.ghost_view, ghostViewPort);
+        view.setTag(R.id.ghost_view, ghostViewPort);
     }
 
     @Override // android.view.ViewGroup, android.view.View

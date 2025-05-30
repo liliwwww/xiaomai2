@@ -1,10 +1,10 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.ui.unit.Dp;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class ThreeLine {
     private static final float ContentLeftPadding;
     private static final float ContentRightPadding;
@@ -17,21 +17,21 @@ final class ThreeLine {
 
     @NotNull
     public static final ThreeLine INSTANCE = new ThreeLine();
-    private static final float MinHeight = C0856Dp.m5216constructorimpl(88);
-    private static final float IconMinPaddedWidth = C0856Dp.m5216constructorimpl(40);
-    private static final float ThreeLineBaselineFirstOffset = C0856Dp.m5216constructorimpl(28);
+    private static final float MinHeight = Dp.m2142constructorimpl(88);
+    private static final float IconMinPaddedWidth = Dp.m2142constructorimpl(40);
+    private static final float ThreeLineBaselineFirstOffset = Dp.m2142constructorimpl(28);
 
     static {
         float f = 16;
-        IconLeftPadding = C0856Dp.m5216constructorimpl(f);
-        IconThreeLineVerticalPadding = C0856Dp.m5216constructorimpl(f);
-        ContentLeftPadding = C0856Dp.m5216constructorimpl(f);
-        ContentRightPadding = C0856Dp.m5216constructorimpl(f);
+        IconLeftPadding = Dp.m2142constructorimpl(f);
+        IconThreeLineVerticalPadding = Dp.m2142constructorimpl(f);
+        ContentLeftPadding = Dp.m2142constructorimpl(f);
+        ContentRightPadding = Dp.m2142constructorimpl(f);
         float f2 = 20;
-        ThreeLineBaselineSecondOffset = C0856Dp.m5216constructorimpl(f2);
-        ThreeLineBaselineThirdOffset = C0856Dp.m5216constructorimpl(f2);
-        ThreeLineTrailingTopPadding = C0856Dp.m5216constructorimpl(f);
-        TrailingRightPadding = C0856Dp.m5216constructorimpl(f);
+        ThreeLineBaselineSecondOffset = Dp.m2142constructorimpl(f2);
+        ThreeLineBaselineThirdOffset = Dp.m2142constructorimpl(f2);
+        ThreeLineTrailingTopPadding = Dp.m2142constructorimpl(f);
+        TrailingRightPadding = Dp.m2142constructorimpl(f);
     }
 
     private ThreeLine() {
@@ -54,12 +54,12 @@ final class ThreeLine {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public final void ListItem(@org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r33, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r34, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r35, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r36, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r37, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r38, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r39, final int r40, final int r41) {
+    public final void ListItem(@org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r33, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r34, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r35, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r36, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r37, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r38, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r39, final int r40, final int r41) {
         /*
             Method dump skipped, instructions count: 862
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.ThreeLine.ListItem(androidx.compose.ui.Modifier, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int):void");
     }

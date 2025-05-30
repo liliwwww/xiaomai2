@@ -2,7 +2,6 @@ package android.taobao.windvane.config;
 
 import android.os.Handler;
 import android.taobao.windvane.service.WVEventContext;
-import android.taobao.windvane.service.WVEventId;
 import android.taobao.windvane.service.WVEventListener;
 import android.taobao.windvane.service.WVEventResult;
 import android.taobao.windvane.service.WVEventService;
@@ -11,7 +10,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVUCPrecacheManager implements WVEventListener {
     private static final String TAG = "WVUCPrecacheManager";
     private static WVUCPrecacheManager mInstance = null;
@@ -73,7 +72,7 @@ public class WVUCPrecacheManager implements WVEventListener {
     /* JADX WARN: Removed duplicated region for block: B:8:0x0025  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private static void notifyUpdateCommonConfig() {
         /*
@@ -174,7 +173,7 @@ public class WVUCPrecacheManager implements WVEventListener {
             sPreMemCacheUrlSet = new HashSet<>();
             return;
         }
-        WVEventResult onEvent = WVEventService.getInstance().onEvent(WVEventId.GET_URLS_BY_APP_NAME, sLastPrecachePackageName);
+        WVEventResult onEvent = WVEventService.getInstance().onEvent(6011, new Object[]{sLastPrecachePackageName});
         if (onEvent.isSuccess && (obj = onEvent.resultObj) != null && (obj instanceof HashSet)) {
             sPreMemCacheUrlSet = (HashSet) obj;
             sHasInitUrlSet = true;
@@ -222,7 +221,6 @@ public class WVUCPrecacheManager implements WVEventListener {
         return sPrecacheDocResMap.contains(str);
     }
 
-    @Override // android.taobao.windvane.service.WVEventListener
     public WVEventResult onEvent(int i, WVEventContext wVEventContext, Object... objArr) {
         if (i == 6008) {
             notifyUpdateZcache((String) objArr[0]);

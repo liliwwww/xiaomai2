@@ -8,12 +8,13 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.SparseIntArray;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.collection.ArrayMap;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class VersionedParcelParcel extends VersionedParcel {
     private static final boolean DEBUG = false;
     private static final String TAG = "VersionedParcelParcel";

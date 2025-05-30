@@ -12,7 +12,7 @@ import tb.dy5;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class VectorizedInfiniteRepeatableSpec<V extends AnimationVector> implements VectorizedAnimationSpec<V> {
     public static final int $stable = 8;
 
@@ -27,8 +27,8 @@ public final class VectorizedInfiniteRepeatableSpec<V extends AnimationVector> i
     private VectorizedInfiniteRepeatableSpec(VectorizedDurationBasedAnimationSpec<V> vectorizedDurationBasedAnimationSpec, RepeatMode repeatMode, long j) {
         this.animation = vectorizedDurationBasedAnimationSpec;
         this.repeatMode = repeatMode;
-        this.durationNanos = (vectorizedDurationBasedAnimationSpec.getDelayMillis() + vectorizedDurationBasedAnimationSpec.getDurationMillis()) * AnimationKt.MillisToNanos;
-        this.initialOffsetNanos = j * AnimationKt.MillisToNanos;
+        this.durationNanos = (vectorizedDurationBasedAnimationSpec.getDelayMillis() + vectorizedDurationBasedAnimationSpec.getDurationMillis()) * 1000000;
+        this.initialOffsetNanos = j * 1000000;
     }
 
     public /* synthetic */ VectorizedInfiniteRepeatableSpec(VectorizedDurationBasedAnimationSpec vectorizedDurationBasedAnimationSpec, RepeatMode repeatMode, long j, DefaultConstructorMarker defaultConstructorMarker) {
@@ -98,7 +98,7 @@ public final class VectorizedInfiniteRepeatableSpec<V extends AnimationVector> i
     }
 
     public /* synthetic */ VectorizedInfiniteRepeatableSpec(VectorizedDurationBasedAnimationSpec vectorizedDurationBasedAnimationSpec, RepeatMode repeatMode, long j, int i, DefaultConstructorMarker defaultConstructorMarker) {
-        this(vectorizedDurationBasedAnimationSpec, (i & 2) != 0 ? RepeatMode.Restart : repeatMode, (i & 4) != 0 ? StartOffset.m1071constructorimpl$default(0, 0, 2, null) : j, (DefaultConstructorMarker) null);
+        this(vectorizedDurationBasedAnimationSpec, (i & 2) != 0 ? RepeatMode.Restart : repeatMode, (i & 4) != 0 ? StartOffset.constructor-impl$default(0, 0, 2, (DefaultConstructorMarker) null) : j, (DefaultConstructorMarker) null);
     }
 
     public /* synthetic */ VectorizedInfiniteRepeatableSpec(VectorizedDurationBasedAnimationSpec vectorizedDurationBasedAnimationSpec, RepeatMode repeatMode, int i, DefaultConstructorMarker defaultConstructorMarker) {
@@ -108,7 +108,7 @@ public final class VectorizedInfiniteRepeatableSpec<V extends AnimationVector> i
     /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "This method has been deprecated in favor of the constructor that accepts start offset.")
     public /* synthetic */ VectorizedInfiniteRepeatableSpec(VectorizedDurationBasedAnimationSpec vectorizedDurationBasedAnimationSpec, RepeatMode repeatMode) {
-        this(vectorizedDurationBasedAnimationSpec, repeatMode, StartOffset.m1071constructorimpl$default(0, 0, 2, null), (DefaultConstructorMarker) null);
+        this(vectorizedDurationBasedAnimationSpec, repeatMode, StartOffset.constructor-impl$default(0, 0, 2, (DefaultConstructorMarker) null), (DefaultConstructorMarker) null);
         Intrinsics.checkNotNullParameter(vectorizedDurationBasedAnimationSpec, "animation");
         Intrinsics.checkNotNullParameter(repeatMode, "repeatMode");
     }

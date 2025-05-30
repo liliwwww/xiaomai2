@@ -1,5 +1,6 @@
 package androidx.appcompat.app;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -13,12 +14,13 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.appcompat.R;
 import androidx.appcompat.view.ActionMode;
 import androidx.core.view.KeyEventDispatcher;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class AppCompatDialog extends ComponentDialog implements AppCompatCallback {
     private AppCompatDelegate mDelegate;
     private final KeyEventDispatcher.Component mKeyDispatcher;
@@ -32,36 +34,35 @@ public class AppCompatDialog extends ComponentDialog implements AppCompatCallbac
             return i;
         }
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(C0257R.attr.dialogTheme, typedValue, true);
+        context.getTheme().resolveAttribute(R.attr.dialogTheme, typedValue, true);
         return typedValue.resourceId;
     }
 
-    @Override // androidx.activity.ComponentDialog, android.app.Dialog
     public void addContentView(@NonNull View view, ViewGroup.LayoutParams layoutParams) {
         getDelegate().addContentView(view, layoutParams);
     }
 
-    @Override // android.app.Dialog, android.content.DialogInterface
+    /* JADX WARN: Multi-variable type inference failed */
     public void dismiss() {
-        super.dismiss();
+        super/*android.app.Dialog*/.dismiss();
         getDelegate().onDestroy();
     }
 
-    @Override // android.app.Dialog, android.view.Window.Callback
+    /* JADX WARN: Multi-variable type inference failed */
     public boolean dispatchKeyEvent(KeyEvent keyEvent) {
         return KeyEventDispatcher.dispatchKeyEvent(this.mKeyDispatcher, getWindow().getDecorView(), this, keyEvent);
     }
 
-    @Override // android.app.Dialog
     @Nullable
     public <T extends View> T findViewById(@IdRes int i) {
         return (T) getDelegate().findViewById(i);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     @NonNull
     public AppCompatDelegate getDelegate() {
         if (this.mDelegate == null) {
-            this.mDelegate = AppCompatDelegate.create(this, this);
+            this.mDelegate = AppCompatDelegate.create((Dialog) this, (AppCompatCallback) this);
         }
         return this.mDelegate;
     }
@@ -70,52 +71,46 @@ public class AppCompatDialog extends ComponentDialog implements AppCompatCallbac
         return getDelegate().getSupportActionBar();
     }
 
-    @Override // android.app.Dialog
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void invalidateOptionsMenu() {
         getDelegate().invalidateOptionsMenu();
     }
 
-    @Override // androidx.activity.ComponentDialog, android.app.Dialog
     protected void onCreate(Bundle bundle) {
         getDelegate().installViewFactory();
         super.onCreate(bundle);
         getDelegate().onCreate(bundle);
     }
 
-    @Override // androidx.activity.ComponentDialog, android.app.Dialog
     protected void onStop() {
         super.onStop();
         getDelegate().onStop();
     }
 
-    @Override // androidx.appcompat.app.AppCompatCallback
     public void onSupportActionModeFinished(ActionMode actionMode) {
     }
 
-    @Override // androidx.appcompat.app.AppCompatCallback
     public void onSupportActionModeStarted(ActionMode actionMode) {
     }
 
-    @Override // androidx.appcompat.app.AppCompatCallback
     @Nullable
     public ActionMode onWindowStartingSupportActionMode(ActionMode.Callback callback) {
         return null;
     }
 
-    @Override // androidx.activity.ComponentDialog, android.app.Dialog
     public void setContentView(@LayoutRes int i) {
         getDelegate().setContentView(i);
     }
 
-    @Override // android.app.Dialog
+    /* JADX WARN: Multi-variable type inference failed */
     public void setTitle(CharSequence charSequence) {
-        super.setTitle(charSequence);
+        super/*android.app.Dialog*/.setTitle(charSequence);
         getDelegate().setTitle(charSequence);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     boolean superDispatchKeyEvent(KeyEvent keyEvent) {
-        return super.dispatchKeyEvent(keyEvent);
+        return super/*android.app.Dialog*/.dispatchKeyEvent(keyEvent);
     }
 
     public boolean supportRequestWindowFeature(int i) {
@@ -135,22 +130,21 @@ public class AppCompatDialog extends ComponentDialog implements AppCompatCallbac
         delegate.onCreate(null);
     }
 
-    @Override // androidx.activity.ComponentDialog, android.app.Dialog
     public void setContentView(@NonNull View view) {
         getDelegate().setContentView(view);
     }
 
-    @Override // androidx.activity.ComponentDialog, android.app.Dialog
     public void setContentView(@NonNull View view, ViewGroup.LayoutParams layoutParams) {
         getDelegate().setContentView(view, layoutParams);
     }
 
-    @Override // android.app.Dialog
+    /* JADX WARN: Multi-variable type inference failed */
     public void setTitle(int i) {
-        super.setTitle(i);
+        super/*android.app.Dialog*/.setTitle(i);
         getDelegate().setTitle(getContext().getString(i));
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     protected AppCompatDialog(@NonNull Context context, boolean z, @Nullable DialogInterface.OnCancelListener onCancelListener) {
         super(context);
         this.mKeyDispatcher = new KeyEventDispatcher.Component() { // from class: androidx.appcompat.app.b

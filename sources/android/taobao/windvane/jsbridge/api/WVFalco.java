@@ -7,6 +7,7 @@ import android.taobao.windvane.fullspan.SpanWrapper;
 import android.taobao.windvane.jsbridge.WVApiPlugin;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.taobao.windvane.jsbridge.WVResult;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.taobao.windvane.util.FullTraceUtils;
 import android.taobao.windvane.util.TaoLog;
 import android.taobao.windvane.webview.IFullTrace;
@@ -22,7 +23,7 @@ import java.util.Map;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVFalco extends WVApiPlugin {
     private static final String FAIL_REASON = "fail_reason";
     private static final int LEVEL_PHASE = 1;
@@ -34,8 +35,8 @@ public class WVFalco extends WVApiPlugin {
     private SpanWrapper webviewSpanWrapper;
     private SpanWrapper windvaneSpanWrapper;
     boolean webviewSpanFinished = false;
-    private int stageLimit = 1000;
-    private int propertyLimit = 1000;
+    private int stageLimit = WVURLRuleConstants.LOGIN;
+    private int propertyLimit = WVURLRuleConstants.LOGIN;
     private Map<String, SpanWrapper> phaseMap = new HashMap();
     private Map<String, SpanWrapper> stageMap = new HashMap();
     private String pageName = "h5_page";
@@ -46,7 +47,7 @@ public class WVFalco extends WVApiPlugin {
             spanWrapper.setFalcoSpan(spanWrapper2);
         } else {
             spanWrapper.setFalcoSpan(this.windvaneSpanWrapper);
-            TaoLog.m21e("WVFalco", "pageName not set,use windvane span to findSpan");
+            TaoLog.e("WVFalco", "pageName not set,use windvane span to findSpan");
             IPerformance iPerformance = this.webView;
             AppMonitor.Alarm.commitFail("WindVane", "WVFalco", iPerformance != null ? iPerformance.getCachedUrl() : EnvironmentCompat.MEDIA_UNKNOWN, ExifInterface.GPS_MEASUREMENT_2D, "findSpan");
         }
@@ -112,7 +113,7 @@ public class WVFalco extends WVApiPlugin {
                 } else {
                     String str3 = this.pageName;
                     FalcoSpan makeSpanChildOf2 = FullTraceUtils.makeSpanChildOf(str3, str3, this.windvaneSpanWrapper);
-                    TaoLog.m21e("WVFalco", "pageName not set,use windvane span to make Span");
+                    TaoLog.e("WVFalco", "pageName not set,use windvane span to make Span");
                     String str4 = EnvironmentCompat.MEDIA_UNKNOWN;
                     IPerformance iPerformance = this.webView;
                     if (iPerformance != null) {
@@ -217,9 +218,8 @@ public class WVFalco extends WVApiPlugin {
         }
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
-        TaoLog.m21e("WVFalco", "execute() called with: action = [" + str + "], params = [" + str2 + "], callback = [" + wVCallBackContext + "]");
+        TaoLog.e("WVFalco", "execute() called with: action = [" + str + "], params = [" + str2 + "], callback = [" + wVCallBackContext + "]");
         if ("addLog".equals(str)) {
             addLog(str2, wVCallBackContext);
             return true;
@@ -247,7 +247,6 @@ public class WVFalco extends WVApiPlugin {
         return true;
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void initialize(Context context, IWVWebView iWVWebView) {
         super.initialize(context, iWVWebView);
         WVCommonConfig.getInstance();
@@ -261,7 +260,6 @@ public class WVFalco extends WVApiPlugin {
         }
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void onDestroy() {
         SpanWrapper spanWrapper;
         if (this.webviewSpanFinished || (spanWrapper = this.webviewSpanWrapper) == null) {
@@ -283,7 +281,7 @@ public class WVFalco extends WVApiPlugin {
                 spanWrapper.finish();
             }
             this.pageName = str2;
-            TaoLog.m21e("WVFalco", "pageName=" + str2);
+            TaoLog.e("WVFalco", "pageName=" + str2);
             this.webviewSpanWrapper = new SpanWrapper(FullTraceUtils.makeSpanChildOf(str2, str2, this.windvaneSpanWrapper));
             this.webviewSpanFinished = false;
         }

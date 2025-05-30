@@ -2,8 +2,8 @@ package androidx.compose.material;
 
 import androidx.compose.foundation.shape.CornerBasedShape;
 import androidx.compose.foundation.shape.RoundedCornerShapeKt;
-import androidx.compose.p004ui.unit.C0856Dp;
 import androidx.compose.runtime.Immutable;
+import androidx.compose.ui.unit.Dp;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class Shapes {
 
     @NotNull
@@ -93,6 +93,6 @@ public final class Shapes {
     }
 
     public /* synthetic */ Shapes(CornerBasedShape cornerBasedShape, CornerBasedShape cornerBasedShape2, CornerBasedShape cornerBasedShape3, int i, DefaultConstructorMarker defaultConstructorMarker) {
-        this((i & 1) != 0 ? RoundedCornerShapeKt.m1694RoundedCornerShape0680j_4(C0856Dp.m5216constructorimpl(4)) : cornerBasedShape, (i & 2) != 0 ? RoundedCornerShapeKt.m1694RoundedCornerShape0680j_4(C0856Dp.m5216constructorimpl(4)) : cornerBasedShape2, (i & 4) != 0 ? RoundedCornerShapeKt.m1694RoundedCornerShape0680j_4(C0856Dp.m5216constructorimpl(0)) : cornerBasedShape3);
+        this((i & 1) != 0 ? RoundedCornerShapeKt.m542RoundedCornerShape0680j_4(Dp.constructor-impl(4)) : cornerBasedShape, (i & 2) != 0 ? RoundedCornerShapeKt.m542RoundedCornerShape0680j_4(Dp.constructor-impl(4)) : cornerBasedShape2, (i & 4) != 0 ? RoundedCornerShapeKt.m542RoundedCornerShape0680j_4(Dp.constructor-impl(0)) : cornerBasedShape3);
     }
 }

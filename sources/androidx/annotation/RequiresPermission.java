@@ -16,27 +16,8 @@ import kotlin.annotation.MustBeDocumented;
 @Documented
 @Retention(RetentionPolicy.CLASS)
 @kotlin.annotation.Retention(AnnotationRetention.BINARY)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public @interface RequiresPermission {
-
-    /* compiled from: Taobao */
-    @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
-    @kotlin.annotation.Target(allowedTargets = {AnnotationTarget.FIELD, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER, AnnotationTarget.VALUE_PARAMETER})
-    @Retention(RetentionPolicy.RUNTIME)
-    /* loaded from: classes.dex */
-    public @interface Read {
-        RequiresPermission value() default @RequiresPermission;
-    }
-
-    /* compiled from: Taobao */
-    @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
-    @kotlin.annotation.Target(allowedTargets = {AnnotationTarget.FIELD, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER, AnnotationTarget.VALUE_PARAMETER})
-    @Retention(RetentionPolicy.RUNTIME)
-    /* loaded from: classes.dex */
-    public @interface Write {
-        RequiresPermission value() default @RequiresPermission;
-    }
-
     String[] allOf() default {};
 
     String[] anyOf() default {};

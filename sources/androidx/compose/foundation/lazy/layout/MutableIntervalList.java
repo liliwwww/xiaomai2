@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
 @ExperimentalFoundationApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class MutableIntervalList<T> implements IntervalList<T> {
     public static final int $stable = 8;
 
@@ -64,7 +64,6 @@ public final class MutableIntervalList<T> implements IntervalList<T> {
         this.intervals.add(interval);
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.IntervalList
     public void forEach(int i, int i2, @NotNull Function1<? super IntervalList.Interval<? extends T>, Unit> function1) {
         int binarySearch;
         Intrinsics.checkNotNullParameter(function1, "block");
@@ -83,14 +82,12 @@ public final class MutableIntervalList<T> implements IntervalList<T> {
         }
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.IntervalList
     @NotNull
     public IntervalList.Interval<T> get(int i) {
         checkIndexBounds(i);
         return getIntervalForIndex(i);
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.IntervalList
     public int getSize() {
         return this.size;
     }

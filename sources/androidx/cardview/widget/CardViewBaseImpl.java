@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.RoundRectDrawableWithShadow;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class CardViewBaseImpl implements CardViewImpl {
     final RectF mCornerRect = new RectF();
 
@@ -22,7 +22,7 @@ class CardViewBaseImpl implements CardViewImpl {
     }
 
     private RoundRectDrawableWithShadow getShadowBackground(CardViewDelegate cardViewDelegate) {
-        return (RoundRectDrawableWithShadow) cardViewDelegate.getCardBackground();
+        return cardViewDelegate.getCardBackground();
     }
 
     @Override // androidx.cardview.widget.CardViewImpl
@@ -58,7 +58,6 @@ class CardViewBaseImpl implements CardViewImpl {
     @Override // androidx.cardview.widget.CardViewImpl
     public void initStatic() {
         RoundRectDrawableWithShadow.sRoundRectHelper = new RoundRectDrawableWithShadow.RoundRectHelper() { // from class: androidx.cardview.widget.CardViewBaseImpl.1
-            @Override // androidx.cardview.widget.RoundRectDrawableWithShadow.RoundRectHelper
             public void drawRoundRect(Canvas canvas, RectF rectF, float f, Paint paint) {
                 float f2 = 2.0f * f;
                 float width = (rectF.width() - f2) - 1.0f;

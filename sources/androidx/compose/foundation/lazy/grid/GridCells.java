@@ -1,9 +1,9 @@
 package androidx.compose.foundation.lazy.grid;
 
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Density;
 import androidx.compose.runtime.Stable;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
 import java.util.List;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface GridCells {
 
     /* compiled from: Taobao */
@@ -23,7 +23,7 @@ public interface GridCells {
 
         private Adaptive(float f) {
             this.minSize = f;
-            if (!(C0856Dp.m5215compareTo0680j_4(f, C0856Dp.m5216constructorimpl((float) 0)) > 0)) {
+            if (!(Dp.m2141compareTo0680j_4(f, Dp.m2142constructorimpl((float) 0)) > 0)) {
                 throw new IllegalArgumentException("Failed requirement.".toString());
             }
         }
@@ -35,18 +35,16 @@ public interface GridCells {
         @Override // androidx.compose.foundation.lazy.grid.GridCells
         @NotNull
         public List<Integer> calculateCrossAxisCellSizes(@NotNull Density density, int i, int i2) {
-            List<Integer> calculateCellsCrossAxisSizeImpl;
             Intrinsics.checkNotNullParameter(density, "<this>");
-            calculateCellsCrossAxisSizeImpl = LazyGridDslKt.calculateCellsCrossAxisSizeImpl(i, Math.max((i + i2) / (density.mo1277roundToPx0680j_4(this.minSize) + i2), 1), i2);
-            return calculateCellsCrossAxisSizeImpl;
+            return LazyGridDslKt.access$calculateCellsCrossAxisSizeImpl(i, Math.max((i + i2) / (density.mo319roundToPx0680j_4(this.minSize) + i2), 1), i2);
         }
 
         public boolean equals(@Nullable Object obj) {
-            return (obj instanceof Adaptive) && C0856Dp.m5221equalsimpl0(this.minSize, ((Adaptive) obj).minSize);
+            return (obj instanceof Adaptive) && Dp.m2147equalsimpl0(this.minSize, ((Adaptive) obj).minSize);
         }
 
         public int hashCode() {
-            return C0856Dp.m5222hashCodeimpl(this.minSize);
+            return Dp.m2148hashCodeimpl(this.minSize);
         }
     }
 
@@ -66,10 +64,8 @@ public interface GridCells {
         @Override // androidx.compose.foundation.lazy.grid.GridCells
         @NotNull
         public List<Integer> calculateCrossAxisCellSizes(@NotNull Density density, int i, int i2) {
-            List<Integer> calculateCellsCrossAxisSizeImpl;
             Intrinsics.checkNotNullParameter(density, "<this>");
-            calculateCellsCrossAxisSizeImpl = LazyGridDslKt.calculateCellsCrossAxisSizeImpl(i, this.count, i2);
-            return calculateCellsCrossAxisSizeImpl;
+            return LazyGridDslKt.access$calculateCellsCrossAxisSizeImpl(i, this.count, i2);
         }
 
         public boolean equals(@Nullable Object obj) {

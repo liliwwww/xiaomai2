@@ -5,6 +5,7 @@ import android.taobao.windvane.config.WVCommonConfig;
 import android.taobao.windvane.fullspan.SpanWrapper;
 import android.taobao.windvane.jsbridge.WVApiPlugin;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.taobao.windvane.webview.IFullTrace;
 import android.taobao.windvane.webview.IWVWebView;
 import com.taobao.analysis.v3.FalcoStage;
@@ -12,14 +13,13 @@ import java.util.Iterator;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVFullTrace extends WVApiPlugin {
     private static final String TAG = "WVFullTrace";
     private SpanWrapper spanWrapper;
-    private int stageLimit = 1000;
-    private int propertyLimit = 1000;
+    private int stageLimit = WVURLRuleConstants.LOGIN;
+    private int propertyLimit = WVURLRuleConstants.LOGIN;
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if ("log".equals(str)) {
             log(str2, wVCallBackContext);
@@ -36,7 +36,6 @@ public class WVFullTrace extends WVApiPlugin {
         return true;
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void initialize(Context context, IWVWebView iWVWebView) {
         super.initialize(context, iWVWebView);
         WVCommonConfig.getInstance();

@@ -1,7 +1,6 @@
 package android.taobao.windvane.jsbridge;
 
 import android.os.Looper;
-import android.taobao.windvane.connect.api.ApiConstants;
 import android.taobao.windvane.monitor.WVMonitorService;
 import android.taobao.windvane.service.WVEventId;
 import android.taobao.windvane.service.WVEventService;
@@ -15,7 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVCallBackContext {
     private static final String TAG = "WVCallBackContext";
     private IJsApiFailedCallBack failedCallBack;
@@ -37,7 +36,7 @@ public class WVCallBackContext {
             try {
                 new JSONObject(str2);
             } catch (JSONException unused) {
-                TaoLog.m21e(TAG, "return param is not a valid json!\n" + str + "\n" + str2);
+                TaoLog.e(TAG, "return param is not a valid json!\n" + str + "\n" + str2);
             }
         }
         if (TextUtils.isEmpty(str2)) {
@@ -49,14 +48,14 @@ public class WVCallBackContext {
                 runOnUiThread(iWVWebView, new Runnable() { // from class: android.taobao.windvane.jsbridge.WVCallBackContext.1
                     @Override // java.lang.Runnable
                     public void run() {
-                        IWVWebView.this.evaluateJavascript(format);
+                        iWVWebView.evaluateJavascript(format);
                     }
                 });
             } catch (Exception e) {
-                TaoLog.m30w(TAG, e.getMessage());
+                TaoLog.w(TAG, e.getMessage());
             }
         } catch (Exception e2) {
-            TaoLog.m21e(TAG, "callback error. " + e2.getMessage());
+            TaoLog.e(TAG, "callback error. " + e2.getMessage());
         }
     }
 
@@ -95,7 +94,7 @@ public class WVCallBackContext {
         try {
             String str = "" + this.objectname + "." + this.methodname;
             String str2 = this.instancename;
-            String str3 = wVResult.get(ApiConstants.RET, "HY_FAILED_EMPTY");
+            String str3 = wVResult.get("ret", "HY_FAILED_EMPTY");
             String str4 = wVResult.get(NotificationCompat.CATEGORY_MESSAGE, "");
             IWVWebView iWVWebView = this.webview;
             String url = iWVWebView == null ? EnvironmentCompat.MEDIA_UNKNOWN : iWVWebView.getUrl();
@@ -111,7 +110,7 @@ public class WVCallBackContext {
     }
 
     public void fireEvent(String str, String str2) {
-        TaoLog.m18d(TAG, "call fireEvent ");
+        TaoLog.d(TAG, "call fireEvent ");
         WVEventService.getInstance().onEvent(WVEventId.WV_JSFIRE_EVENT, this.mAction, str, str2);
         callback(this.webview, String.format("window.WindVane && window.WindVane.fireEvent('%s', '%%s', %s);", str, null), str2);
     }
@@ -131,7 +130,7 @@ public class WVCallBackContext {
     public void setNeedfireNativeEvent(String str, boolean z) {
         this.mAction = str;
         this.mNotiNavtive = z;
-        TaoLog.m21e(TAG, "setNeedfireNativeEvent : " + str);
+        TaoLog.e(TAG, "setNeedfireNativeEvent : " + str);
     }
 
     public void setToken(String str) {
@@ -147,7 +146,7 @@ public class WVCallBackContext {
     }
 
     public void successAndKeepAlive(String str) {
-        TaoLog.m18d(TAG, "call success and keep alive");
+        TaoLog.d(TAG, "call success and keep alive");
         IJsApiSucceedCallBack iJsApiSucceedCallBack = this.succeedCallBack;
         if (iJsApiSucceedCallBack == null || !(iJsApiSucceedCallBack instanceof IExtJsApiSuccessCallBack)) {
             callback(this.webview, String.format("javascript:window.WindVane&&window.WindVane.onSuccess('%s','%%s', true);", this.token), str);
@@ -172,7 +171,7 @@ public class WVCallBackContext {
     }
 
     public static void fireEvent(IWVWebView iWVWebView, String str, String str2) {
-        TaoLog.m18d(TAG, "call fireEvent ");
+        TaoLog.d(TAG, "call fireEvent ");
         WVEventService.getInstance().onEvent(WVEventId.WV_JSFIRE_EVENT, null, str, str2);
         callback(iWVWebView, String.format("window.WindVane && window.WindVane.fireEvent('%s', '%%s', %s);", str, null), str2);
     }
@@ -191,7 +190,7 @@ public class WVCallBackContext {
     }
 
     public void success(String str) {
-        TaoLog.m18d(TAG, "call success ");
+        TaoLog.d(TAG, "call success ");
         IJsApiSucceedCallBack iJsApiSucceedCallBack = this.succeedCallBack;
         if (iJsApiSucceedCallBack != null) {
             iJsApiSucceedCallBack.succeed(str);
@@ -210,7 +209,7 @@ public class WVCallBackContext {
     }
 
     public void error(String str) {
-        TaoLog.m18d(TAG, "call error ");
+        TaoLog.d(TAG, "call error ");
         IJsApiFailedCallBack iJsApiFailedCallBack = this.failedCallBack;
         if (iJsApiFailedCallBack != null) {
             iJsApiFailedCallBack.fail(str);

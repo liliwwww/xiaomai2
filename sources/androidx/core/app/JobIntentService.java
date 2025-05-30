@@ -2,9 +2,7 @@ package androidx.core.app;
 
 import android.app.Service;
 import android.app.job.JobInfo;
-import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
-import android.app.job.JobServiceEngine;
 import android.app.job.JobWorkItem;
 import android.content.ComponentName;
 import android.content.Context;
@@ -12,7 +10,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.IBinder;
-import android.os.PowerManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -21,7 +18,7 @@ import java.util.HashMap;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class JobIntentService extends Service {
     static final boolean DEBUG = false;
     static final String TAG = "JobIntentService";
@@ -74,180 +71,10 @@ public abstract class JobIntentService extends Service {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static final class CompatWorkEnqueuer extends WorkEnqueuer {
-        private final Context mContext;
-        private final PowerManager.WakeLock mLaunchWakeLock;
-        boolean mLaunchingService;
-        private final PowerManager.WakeLock mRunWakeLock;
-        boolean mServiceProcessing;
-
-        CompatWorkEnqueuer(Context context, ComponentName componentName) {
-            super(componentName);
-            this.mContext = context.getApplicationContext();
-            PowerManager powerManager = (PowerManager) context.getSystemService("power");
-            PowerManager.WakeLock newWakeLock = powerManager.newWakeLock(1, componentName.getClassName() + ":launch");
-            this.mLaunchWakeLock = newWakeLock;
-            newWakeLock.setReferenceCounted(false);
-            PowerManager.WakeLock newWakeLock2 = powerManager.newWakeLock(1, componentName.getClassName() + ":run");
-            this.mRunWakeLock = newWakeLock2;
-            newWakeLock2.setReferenceCounted(false);
-        }
-
-        @Override // androidx.core.app.JobIntentService.WorkEnqueuer
-        void enqueueWork(Intent intent) {
-            Intent intent2 = new Intent(intent);
-            intent2.setComponent(this.mComponentName);
-            if (this.mContext.startService(intent2) != null) {
-                synchronized (this) {
-                    if (!this.mLaunchingService) {
-                        this.mLaunchingService = true;
-                        if (!this.mServiceProcessing) {
-                            this.mLaunchWakeLock.acquire(60000L);
-                        }
-                    }
-                }
-            }
-        }
-
-        @Override // androidx.core.app.JobIntentService.WorkEnqueuer
-        public void serviceProcessingFinished() {
-            synchronized (this) {
-                if (this.mServiceProcessing) {
-                    if (this.mLaunchingService) {
-                        this.mLaunchWakeLock.acquire(60000L);
-                    }
-                    this.mServiceProcessing = false;
-                    this.mRunWakeLock.release();
-                }
-            }
-        }
-
-        @Override // androidx.core.app.JobIntentService.WorkEnqueuer
-        public void serviceProcessingStarted() {
-            synchronized (this) {
-                if (!this.mServiceProcessing) {
-                    this.mServiceProcessing = true;
-                    this.mRunWakeLock.acquire(600000L);
-                    this.mLaunchWakeLock.release();
-                }
-            }
-        }
-
-        @Override // androidx.core.app.JobIntentService.WorkEnqueuer
-        public void serviceStartReceived() {
-            synchronized (this) {
-                this.mLaunchingService = false;
-            }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    final class CompatWorkItem implements GenericWorkItem {
-        final Intent mIntent;
-        final int mStartId;
-
-        CompatWorkItem(Intent intent, int i) {
-            this.mIntent = intent;
-            this.mStartId = i;
-        }
-
-        @Override // androidx.core.app.JobIntentService.GenericWorkItem
-        public void complete() {
-            JobIntentService.this.stopSelf(this.mStartId);
-        }
-
-        @Override // androidx.core.app.JobIntentService.GenericWorkItem
-        public Intent getIntent() {
-            return this.mIntent;
-        }
-    }
-
-    /* compiled from: Taobao */
     interface GenericWorkItem {
         void complete();
 
         Intent getIntent();
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(26)
-    /* loaded from: classes2.dex */
-    static final class JobServiceEngineImpl extends JobServiceEngine implements CompatJobEngine {
-        static final boolean DEBUG = false;
-        static final String TAG = "JobServiceEngineImpl";
-        final Object mLock;
-        JobParameters mParams;
-        final JobIntentService mService;
-
-        /* compiled from: Taobao */
-        /* loaded from: classes.dex */
-        final class WrapperWorkItem implements GenericWorkItem {
-            final JobWorkItem mJobWork;
-
-            WrapperWorkItem(JobWorkItem jobWorkItem) {
-                this.mJobWork = jobWorkItem;
-            }
-
-            @Override // androidx.core.app.JobIntentService.GenericWorkItem
-            public void complete() {
-                synchronized (JobServiceEngineImpl.this.mLock) {
-                    JobParameters jobParameters = JobServiceEngineImpl.this.mParams;
-                    if (jobParameters != null) {
-                        jobParameters.completeWork(this.mJobWork);
-                    }
-                }
-            }
-
-            @Override // androidx.core.app.JobIntentService.GenericWorkItem
-            public Intent getIntent() {
-                return this.mJobWork.getIntent();
-            }
-        }
-
-        JobServiceEngineImpl(JobIntentService jobIntentService) {
-            super(jobIntentService);
-            this.mLock = new Object();
-            this.mService = jobIntentService;
-        }
-
-        @Override // androidx.core.app.JobIntentService.CompatJobEngine
-        public IBinder compatGetBinder() {
-            return getBinder();
-        }
-
-        @Override // androidx.core.app.JobIntentService.CompatJobEngine
-        public GenericWorkItem dequeueWork() {
-            synchronized (this.mLock) {
-                JobParameters jobParameters = this.mParams;
-                if (jobParameters == null) {
-                    return null;
-                }
-                JobWorkItem dequeueWork = jobParameters.dequeueWork();
-                if (dequeueWork == null) {
-                    return null;
-                }
-                dequeueWork.getIntent().setExtrasClassLoader(this.mService.getClassLoader());
-                return new WrapperWorkItem(dequeueWork);
-            }
-        }
-
-        @Override // android.app.job.JobServiceEngine
-        public boolean onStartJob(JobParameters jobParameters) {
-            this.mParams = jobParameters;
-            this.mService.ensureProcessorRunningLocked(false);
-            return true;
-        }
-
-        @Override // android.app.job.JobServiceEngine
-        public boolean onStopJob(JobParameters jobParameters) {
-            boolean doStopCurrentWork = this.mService.doStopCurrentWork();
-            synchronized (this.mLock) {
-                this.mParams = null;
-            }
-            return doStopCurrentWork;
-        }
     }
 
     /* compiled from: Taobao */
@@ -259,48 +86,12 @@ public abstract class JobIntentService extends Service {
         JobWorkEnqueuer(Context context, ComponentName componentName, int i) {
             super(componentName);
             ensureJobId(i);
-            this.mJobInfo = new JobInfo.Builder(i, this.mComponentName).setOverrideDeadline(0L).build();
+            this.mJobInfo = new JobInfo.Builder(i, ((WorkEnqueuer) this).mComponentName).setOverrideDeadline(0L).build();
             this.mJobScheduler = (JobScheduler) context.getApplicationContext().getSystemService("jobscheduler");
         }
 
-        @Override // androidx.core.app.JobIntentService.WorkEnqueuer
         void enqueueWork(Intent intent) {
             this.mJobScheduler.enqueue(this.mJobInfo, new JobWorkItem(intent));
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static abstract class WorkEnqueuer {
-        final ComponentName mComponentName;
-        boolean mHasJobId;
-        int mJobId;
-
-        WorkEnqueuer(ComponentName componentName) {
-            this.mComponentName = componentName;
-        }
-
-        abstract void enqueueWork(Intent intent);
-
-        void ensureJobId(int i) {
-            if (!this.mHasJobId) {
-                this.mHasJobId = true;
-                this.mJobId = i;
-            } else {
-                if (this.mJobId == i) {
-                    return;
-                }
-                throw new IllegalArgumentException("Given job ID " + i + " is different than previous " + this.mJobId);
-            }
-        }
-
-        public void serviceProcessingFinished() {
-        }
-
-        public void serviceProcessingStarted() {
-        }
-
-        public void serviceStartReceived() {
         }
     }
 
@@ -317,7 +108,7 @@ public abstract class JobIntentService extends Service {
     }
 
     static WorkEnqueuer getWorkEnqueuer(Context context, ComponentName componentName, boolean z, int i) {
-        WorkEnqueuer compatWorkEnqueuer;
+        JobWorkEnqueuer compatWorkEnqueuer;
         HashMap<ComponentName, WorkEnqueuer> hashMap = sClassWorkEnqueuer;
         WorkEnqueuer workEnqueuer = hashMap.get(componentName);
         if (workEnqueuer != null) {
@@ -331,9 +122,9 @@ public abstract class JobIntentService extends Service {
             }
             compatWorkEnqueuer = new JobWorkEnqueuer(context, componentName, i);
         }
-        WorkEnqueuer workEnqueuer2 = compatWorkEnqueuer;
-        hashMap.put(componentName, workEnqueuer2);
-        return workEnqueuer2;
+        JobWorkEnqueuer jobWorkEnqueuer = compatWorkEnqueuer;
+        hashMap.put(componentName, jobWorkEnqueuer);
+        return jobWorkEnqueuer;
     }
 
     GenericWorkItem dequeueWork() {
@@ -419,7 +210,7 @@ public abstract class JobIntentService extends Service {
             if (intent == null) {
                 intent = new Intent();
             }
-            arrayList.add(new CompatWorkItem(intent, i2));
+            arrayList.add(new CompatWorkItem(this, intent, i2));
             ensureProcessorRunningLocked(true);
         }
         return 3;

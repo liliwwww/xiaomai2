@@ -1,15 +1,15 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class InsetsPaddingValues implements PaddingValues {
 
     @NotNull
@@ -25,34 +25,30 @@ final class InsetsPaddingValues implements PaddingValues {
         this.density = density;
     }
 
-    @Override // androidx.compose.foundation.layout.PaddingValues
     /* renamed from: calculateBottomPadding-D9Ej5fM, reason: not valid java name */
-    public float mo1374calculateBottomPaddingD9Ej5fM() {
+    public float m315calculateBottomPaddingD9Ej5fM() {
         Density density = this.density;
-        return density.mo1280toDpu2uoSUM(this.insets.getBottom(density));
+        return density.toDp-u2uoSUM(this.insets.getBottom(density));
     }
 
-    @Override // androidx.compose.foundation.layout.PaddingValues
     /* renamed from: calculateLeftPadding-u2uoSUM, reason: not valid java name */
-    public float mo1375calculateLeftPaddingu2uoSUM(@NotNull LayoutDirection layoutDirection) {
+    public float m316calculateLeftPaddingu2uoSUM(@NotNull LayoutDirection layoutDirection) {
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
         Density density = this.density;
-        return density.mo1280toDpu2uoSUM(this.insets.getLeft(density, layoutDirection));
+        return density.toDp-u2uoSUM(this.insets.getLeft(density, layoutDirection));
     }
 
-    @Override // androidx.compose.foundation.layout.PaddingValues
     /* renamed from: calculateRightPadding-u2uoSUM, reason: not valid java name */
-    public float mo1376calculateRightPaddingu2uoSUM(@NotNull LayoutDirection layoutDirection) {
+    public float m317calculateRightPaddingu2uoSUM(@NotNull LayoutDirection layoutDirection) {
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
         Density density = this.density;
-        return density.mo1280toDpu2uoSUM(this.insets.getRight(density, layoutDirection));
+        return density.toDp-u2uoSUM(this.insets.getRight(density, layoutDirection));
     }
 
-    @Override // androidx.compose.foundation.layout.PaddingValues
     /* renamed from: calculateTopPadding-D9Ej5fM, reason: not valid java name */
-    public float mo1377calculateTopPaddingD9Ej5fM() {
+    public float m318calculateTopPaddingD9Ej5fM() {
         Density density = this.density;
-        return density.mo1280toDpu2uoSUM(this.insets.getTop(density));
+        return density.toDp-u2uoSUM(this.insets.getTop(density));
     }
 
     public boolean equals(@Nullable Object obj) {

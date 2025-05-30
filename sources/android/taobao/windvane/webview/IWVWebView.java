@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface IWVWebView {
     public static final ConcurrentHashMap<String, Integer> JsbridgeHis = new ConcurrentHashMap<>();
     public static final List<Runnable> taskQueue = new ArrayList();

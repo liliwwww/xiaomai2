@@ -1,18 +1,18 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.graphics.ColorKt;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.graphics.ColorKt;
 import kotlin.jvm.JvmName;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ContentAlpha {
     public static final int $stable = 0;
 
@@ -28,8 +28,8 @@ public final class ContentAlpha {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-1528360391, i, -1, "androidx.compose.material.ContentAlpha.contentAlpha (ContentAlpha.kt:70)");
         }
-        long m2797unboximpl = ((Color) composer.consume(ContentColorKt.getLocalContentColor())).m2797unboximpl();
-        if (!MaterialTheme.INSTANCE.getColors(composer, 6).isLight() ? ColorKt.m2839luminance8_81llA(m2797unboximpl) >= 0.5d : ColorKt.m2839luminance8_81llA(m2797unboximpl) <= 0.5d) {
+        long m1060unboximpl = ((Color) composer.consume(ContentColorKt.getLocalContentColor())).m1060unboximpl();
+        if (!MaterialTheme.INSTANCE.getColors(composer, 6).isLight() ? ColorKt.m1072luminance8_81llA(m1060unboximpl) >= 0.5d : ColorKt.m1072luminance8_81llA(m1060unboximpl) <= 0.5d) {
             f = f2;
         }
         if (ComposerKt.isTraceInProgress()) {

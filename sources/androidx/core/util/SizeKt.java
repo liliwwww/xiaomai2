@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @SuppressLint({"ClassVerificationFailure"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SizeKt {
     @RequiresApi(21)
     public static final int component1(@NotNull Size size) {

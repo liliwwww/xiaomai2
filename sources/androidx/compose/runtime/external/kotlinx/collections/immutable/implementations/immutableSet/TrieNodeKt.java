@@ -3,11 +3,9 @@ package androidx.compose.runtime.external.kotlinx.collections.immutable.implemen
 import androidx.compose.runtime.external.kotlinx.collections.immutable.internal.CommonFunctionsKt;
 import kotlin.collections.ArraysKt;
 import kotlin.jvm.functions.Function1;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TrieNodeKt {
     public static final int LOG_MAX_BRANCHING_FACTOR = 5;
     public static final int MAX_BRANCHING_FACTOR = 32;
@@ -27,11 +25,11 @@ public final class TrieNodeKt {
         int i2 = 0;
         int i3 = 0;
         while (i2 < objArr.length) {
-            CommonFunctionsKt.m2432assert(i3 <= i2);
+            CommonFunctionsKt.assert(i3 <= i2);
             if (((Boolean) function1.invoke(objArr[i2])).booleanValue()) {
                 objArr2[i + i3] = objArr[i2];
                 i3++;
-                CommonFunctionsKt.m2432assert(i + i3 <= objArr2.length);
+                CommonFunctionsKt.assert(i + i3 <= objArr2.length);
             }
             i2++;
         }
@@ -43,22 +41,16 @@ public final class TrieNodeKt {
             i = 0;
         }
         if ((i2 & 4) != 0) {
-            function1 = new Function1<Object, Boolean>() { // from class: androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableSet.TrieNodeKt$filterTo$1
-                @NotNull
-                /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-                public final Boolean m2428invoke(@Nullable Object obj2) {
-                    return Boolean.valueOf(obj2 != TrieNode.Companion.getEMPTY$runtime_release());
-                }
-            };
+            function1 = filterTo.1.INSTANCE;
         }
         int i3 = 0;
         int i4 = 0;
         while (i3 < objArr.length) {
-            CommonFunctionsKt.m2432assert(i4 <= i3);
+            CommonFunctionsKt.assert(i4 <= i3);
             if (((Boolean) function1.invoke(objArr[i3])).booleanValue()) {
                 objArr2[i + i4] = objArr[i3];
                 i4++;
-                CommonFunctionsKt.m2432assert(i + i4 <= objArr2.length);
+                CommonFunctionsKt.assert(i + i4 <= objArr2.length);
             }
             i3++;
         }

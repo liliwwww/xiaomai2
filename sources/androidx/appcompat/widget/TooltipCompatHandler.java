@@ -7,12 +7,13 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.accessibility.AccessibilityManager;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewConfigurationCompat;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class TooltipCompatHandler implements View.OnAttachStateChangeListener, View.OnHoverListener, View.OnLongClickListener {
     private static final long HOVER_HIDE_TIMEOUT_MS = 15000;
     private static final long HOVER_HIDE_TIMEOUT_SHORT_MS = 3000;
@@ -28,18 +29,8 @@ class TooltipCompatHandler implements View.OnAttachStateChangeListener, View.OnH
     private final int mHoverSlop;
     private TooltipPopup mPopup;
     private final CharSequence mTooltipText;
-    private final Runnable mShowRunnable = new Runnable() { // from class: androidx.appcompat.widget.b
-        @Override // java.lang.Runnable
-        public final void run() {
-            TooltipCompatHandler.this.lambda$new$0();
-        }
-    };
-    private final Runnable mHideRunnable = new Runnable() { // from class: androidx.appcompat.widget.a
-        @Override // java.lang.Runnable
-        public final void run() {
-            TooltipCompatHandler.this.hide();
-        }
-    };
+    private final Runnable mShowRunnable = new b(this);
+    private final Runnable mHideRunnable = new a(this);
 
     private TooltipCompatHandler(View view, CharSequence charSequence) {
         this.mAnchor = view;

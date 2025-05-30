@@ -17,7 +17,7 @@ import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.OptIn;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R$attr;
 import androidx.appcompat.graphics.drawable.DrawableWrapperCompat;
 import androidx.constraintlayout.core.widgets.analyzer.BasicMeasure;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -29,7 +29,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class DropDownListView extends ListView {
     public static final int INVALID_POSITION = -1;
     public static final int NO_POSITION = -1;
@@ -218,32 +218,8 @@ class DropDownListView extends ListView {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private class ResolveHoverRunnable implements Runnable {
-        ResolveHoverRunnable() {
-        }
-
-        public void cancel() {
-            DropDownListView dropDownListView = DropDownListView.this;
-            dropDownListView.mResolveHoverRunnable = null;
-            dropDownListView.removeCallbacks(this);
-        }
-
-        public void post() {
-            DropDownListView.this.post(this);
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            DropDownListView dropDownListView = DropDownListView.this;
-            dropDownListView.mResolveHoverRunnable = null;
-            dropDownListView.drawableStateChanged();
-        }
-    }
-
     DropDownListView(@NonNull Context context, boolean z) {
-        super(context, null, C0257R.attr.dropDownListViewStyle);
+        super(context, null, R$attr.dropDownListViewStyle);
         this.mSelectorRect = new Rect();
         this.mSelectionLeftPadding = 0;
         this.mSelectionTopPadding = 0;
@@ -511,7 +487,7 @@ class DropDownListView extends ListView {
     /* JADX WARN: Removed duplicated region for block: B:9:0x0048 A[ADDED_TO_REGION] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public boolean onForwardedEvent(android.view.MotionEvent r8, int r9) {
         /*
@@ -597,7 +573,7 @@ class DropDownListView extends ListView {
         }
         int actionMasked = motionEvent.getActionMasked();
         if (actionMasked == 10 && this.mResolveHoverRunnable == null) {
-            ResolveHoverRunnable resolveHoverRunnable = new ResolveHoverRunnable();
+            ResolveHoverRunnable resolveHoverRunnable = new ResolveHoverRunnable(this);
             this.mResolveHoverRunnable = resolveHoverRunnable;
             resolveHoverRunnable.post();
         }

@@ -8,7 +8,7 @@ import kotlin.jvm.functions.Function4;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TextViewKt$addTextChangedListener$textWatcher$1 implements TextWatcher {
     final /* synthetic */ Function1<Editable, Unit> $afterTextChanged;
     final /* synthetic */ Function4<CharSequence, Integer, Integer, Integer, Unit> $beforeTextChanged;

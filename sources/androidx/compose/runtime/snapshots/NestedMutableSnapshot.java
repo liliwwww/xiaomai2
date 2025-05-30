@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class NestedMutableSnapshot extends MutableSnapshot {
     private boolean deactivated;
 
@@ -20,7 +20,7 @@ public final class NestedMutableSnapshot extends MutableSnapshot {
         Intrinsics.checkNotNullParameter(snapshotIdSet, "invalid");
         Intrinsics.checkNotNullParameter(mutableSnapshot, "parent");
         this.parent = mutableSnapshot;
-        mutableSnapshot.mo2438nestedActivated$runtime_release(this);
+        mutableSnapshot.mo797nestedActivated$runtime_release(this);
     }
 
     private final void deactivate() {
@@ -28,7 +28,7 @@ public final class NestedMutableSnapshot extends MutableSnapshot {
             return;
         }
         this.deactivated = true;
-        this.parent.mo2439nestedDeactivated$runtime_release(this);
+        this.parent.mo798nestedDeactivated$runtime_release(this);
     }
 
     /* JADX WARN: Removed duplicated region for block: B:27:0x0074 A[Catch: all -> 0x00bb, TryCatch #0 {, blocks: (B:11:0x002d, B:13:0x0032, B:16:0x0039, B:21:0x0053, B:23:0x005b, B:24:0x0065, B:25:0x006c, B:27:0x0074, B:28:0x0079, B:33:0x0069), top: B:10:0x002d }] */
@@ -36,7 +36,7 @@ public final class NestedMutableSnapshot extends MutableSnapshot {
     @org.jetbrains.annotations.NotNull
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public androidx.compose.runtime.snapshots.SnapshotApplyResult apply() {
         /*

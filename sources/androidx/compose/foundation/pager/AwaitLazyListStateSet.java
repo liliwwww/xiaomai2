@@ -6,7 +6,7 @@ import kotlin.coroutines.Continuation;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class AwaitLazyListStateSet {
 
     @Nullable
@@ -32,15 +32,15 @@ final class AwaitLazyListStateSet {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object waitFinalLazyListSetting(@org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r5) {
         /*
             r4 = this;
-            boolean r0 = r5 instanceof androidx.compose.foundation.pager.AwaitLazyListStateSet$waitFinalLazyListSetting$1
+            boolean r0 = r5 instanceof androidx.compose.foundation.pager.AwaitLazyListStateSet.waitFinalLazyListSetting.1
             if (r0 == 0) goto L13
             r0 = r5
-            androidx.compose.foundation.pager.AwaitLazyListStateSet$waitFinalLazyListSetting$1 r0 = (androidx.compose.foundation.pager.AwaitLazyListStateSet$waitFinalLazyListSetting$1) r0
+            androidx.compose.foundation.pager.AwaitLazyListStateSet$waitFinalLazyListSetting$1 r0 = (androidx.compose.foundation.pager.AwaitLazyListStateSet.waitFinalLazyListSetting.1) r0
             int r1 = r0.label
             r2 = -2147483648(0xffffffff80000000, float:-0.0)
             r3 = r1 & r2

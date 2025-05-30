@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class CompositeOnPageChangeCallback extends ViewPager2.OnPageChangeCallback {
 
     @NonNull
@@ -27,7 +27,6 @@ final class CompositeOnPageChangeCallback extends ViewPager2.OnPageChangeCallbac
         this.mCallbacks.add(onPageChangeCallback);
     }
 
-    @Override // androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
     public void onPageScrollStateChanged(int i) {
         try {
             Iterator<ViewPager2.OnPageChangeCallback> it = this.mCallbacks.iterator();
@@ -39,7 +38,6 @@ final class CompositeOnPageChangeCallback extends ViewPager2.OnPageChangeCallbac
         }
     }
 
-    @Override // androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
     public void onPageScrolled(int i, float f, @Px int i2) {
         try {
             Iterator<ViewPager2.OnPageChangeCallback> it = this.mCallbacks.iterator();
@@ -51,7 +49,6 @@ final class CompositeOnPageChangeCallback extends ViewPager2.OnPageChangeCallbac
         }
     }
 
-    @Override // androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
     public void onPageSelected(int i) {
         try {
             Iterator<ViewPager2.OnPageChangeCallback> it = this.mCallbacks.iterator();

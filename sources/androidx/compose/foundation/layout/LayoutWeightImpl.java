@@ -1,13 +1,14 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.ParentDataModifier;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.platform.InspectorValueInfo;
-import androidx.compose.p004ui.unit.Density;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.ParentDataModifier;
+import androidx.compose.ui.platform.InspectorInfo;
+import androidx.compose.ui.platform.InspectorValueInfo;
+import androidx.compose.ui.unit.Density;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
+import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -16,7 +17,7 @@ import tb.mt2;
 import tb.nt2;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LayoutWeightImpl extends InspectorValueInfo implements ParentDataModifier {
     private final boolean fill;
     private final float weight;
@@ -29,12 +30,10 @@ public final class LayoutWeightImpl extends InspectorValueInfo implements Parent
         this.fill = z;
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
@@ -50,12 +49,10 @@ public final class LayoutWeightImpl extends InspectorValueInfo implements Parent
         return ((this.weight > layoutWeightImpl.weight ? 1 : (this.weight == layoutWeightImpl.weight ? 0 : -1)) == 0) && this.fill == layoutWeightImpl.fill;
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
@@ -72,7 +69,7 @@ public final class LayoutWeightImpl extends InspectorValueInfo implements Parent
         return (Float.floatToIntBits(this.weight) * 31) + l3.a(this.fill);
     }
 
-    @Override // androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }
@@ -82,13 +79,13 @@ public final class LayoutWeightImpl extends InspectorValueInfo implements Parent
         return "LayoutWeightImpl(weight=" + this.weight + ", fill=" + this.fill + ')';
     }
 
-    @Override // androidx.compose.p004ui.layout.ParentDataModifier
     @NotNull
-    public RowColumnParentData modifyParentData(@NotNull Density density, @Nullable Object obj) {
+    /* renamed from: modifyParentData, reason: merged with bridge method [inline-methods] */
+    public RowColumnParentData m320modifyParentData(@NotNull Density density, @Nullable Object obj) {
         Intrinsics.checkNotNullParameter(density, "<this>");
         RowColumnParentData rowColumnParentData = obj instanceof RowColumnParentData ? (RowColumnParentData) obj : null;
         if (rowColumnParentData == null) {
-            rowColumnParentData = new RowColumnParentData(0.0f, false, null, 7, null);
+            rowColumnParentData = new RowColumnParentData(0.0f, false, (CrossAxisAlignment) null, 7, (DefaultConstructorMarker) null);
         }
         rowColumnParentData.setWeight(this.weight);
         rowColumnParentData.setFill(this.fill);

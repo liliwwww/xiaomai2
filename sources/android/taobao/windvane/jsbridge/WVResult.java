@@ -1,12 +1,11 @@
 package android.taobao.windvane.jsbridge;
 
-import android.taobao.windvane.connect.api.ApiConstants;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVResult {
     public static final String ERROR_EXECUTE = "HY_ERROR_EXECUTE";
     public static final String NO_CLASS = "HY_NO_CLASS";
@@ -56,7 +55,7 @@ public class WVResult {
 
     public void setResult(String str) {
         try {
-            this.result.put(ApiConstants.RET, str);
+            this.result.put("ret", str);
             this.success = SUCCESS.equals(str) ? 1 : -1;
         } catch (JSONException e) {
             e.printStackTrace();
@@ -71,9 +70,9 @@ public class WVResult {
         try {
             int i = this.success;
             if (i == 1) {
-                this.result.put(ApiConstants.RET, SUCCESS);
+                this.result.put("ret", SUCCESS);
             } else if (i == 0) {
-                this.result.put(ApiConstants.RET, FAIL);
+                this.result.put("ret", FAIL);
             }
         } catch (JSONException e) {
             e.printStackTrace();

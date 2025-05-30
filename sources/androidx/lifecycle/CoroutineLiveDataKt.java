@@ -1,6 +1,5 @@
 package androidx.lifecycle;
 
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
 import androidx.annotation.RequiresApi;
 import java.time.Duration;
 import kotlin.Unit;
@@ -15,13 +14,13 @@ import org.jetbrains.annotations.Nullable;
 import tb.m11;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class CoroutineLiveDataKt {
     public static final long DEFAULT_TIMEOUT = 5000;
 
     @Nullable
     public static final <T> Object addDisposableSource(@NotNull MediatorLiveData<T> mediatorLiveData, @NotNull LiveData<T> liveData, @NotNull Continuation<? super EmittedSource> continuation) {
-        return d.g(m11.c().a(), new CoroutineLiveDataKt$addDisposableSource$2(mediatorLiveData, liveData, null), continuation);
+        return d.g(m11.c().a(), new addDisposableSource.2(mediatorLiveData, liveData, (Continuation) null), continuation);
     }
 
     @NotNull
@@ -45,7 +44,7 @@ public final class CoroutineLiveDataKt {
     @NotNull
     public static final <T> LiveData<T> liveData(@NotNull CoroutineContext coroutineContext, @NotNull Duration duration, @NotNull Function2<? super LiveDataScope<T>, ? super Continuation<? super Unit>, ? extends Object> function2) {
         Intrinsics.checkNotNullParameter(coroutineContext, "context");
-        Intrinsics.checkNotNullParameter(duration, BasePreInitManager.TIMEOUT);
+        Intrinsics.checkNotNullParameter(duration, "timeout");
         Intrinsics.checkNotNullParameter(function2, "block");
         return new CoroutineLiveData(coroutineContext, Api26Impl.INSTANCE.toMillis(duration), function2);
     }

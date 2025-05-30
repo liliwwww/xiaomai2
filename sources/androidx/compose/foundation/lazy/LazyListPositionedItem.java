@@ -1,9 +1,9 @@
 package androidx.compose.foundation.lazy;
 
 import androidx.compose.animation.core.FiniteAnimationSpec;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntOffsetKt;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntOffsetKt;
 import java.util.List;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.DefaultConstructorMarker;
@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyListPositionedItem implements LazyListItemInfo {
     private final boolean hasAnimations;
     private final int index;
@@ -68,14 +68,14 @@ public final class LazyListPositionedItem implements LazyListItemInfo {
     }
 
     /* renamed from: copy-4Tuh3kE, reason: not valid java name */
-    private final long m1517copy4Tuh3kE(long j, Function1<? super Integer, Integer> function1) {
-        int m5334getXimpl = this.isVertical ? IntOffset.m5334getXimpl(j) : ((Number) function1.invoke(Integer.valueOf(IntOffset.m5334getXimpl(j)))).intValue();
+    private final long m265copy4Tuh3kE(long j, Function1<? super Integer, Integer> function1) {
+        int i = this.isVertical ? IntOffset.getX-impl(j) : ((Number) function1.invoke(Integer.valueOf(IntOffset.getX-impl(j)))).intValue();
         boolean z = this.isVertical;
-        int m5335getYimpl = IntOffset.m5335getYimpl(j);
+        int i2 = IntOffset.getY-impl(j);
         if (z) {
-            m5335getYimpl = ((Number) function1.invoke(Integer.valueOf(m5335getYimpl))).intValue();
+            i2 = ((Number) function1.invoke(Integer.valueOf(i2))).intValue();
         }
-        return IntOffsetKt.IntOffset(m5334getXimpl, m5335getYimpl);
+        return IntOffsetKt.IntOffset(i, i2);
     }
 
     @Nullable
@@ -112,8 +112,8 @@ public final class LazyListPositionedItem implements LazyListItemInfo {
     }
 
     /* renamed from: getOffset-Bjo55l4, reason: not valid java name */
-    public final long m1518getOffsetBjo55l4(int i) {
-        return this.wrappers.get(i).m1516getOffsetnOccac();
+    public final long m266getOffsetBjo55l4(int i) {
+        return this.wrappers.get(i).m264getOffsetnOccac();
     }
 
     public final int getPlaceablesCount() {
@@ -130,16 +130,16 @@ public final class LazyListPositionedItem implements LazyListItemInfo {
         int placeablesCount = getPlaceablesCount();
         for (int i = 0; i < placeablesCount; i++) {
             Placeable placeable = this.wrappers.get(i).getPlaceable();
-            long m1506getAnimatedOffsetYT5a7pE = getAnimationSpec(i) != null ? this.placementAnimator.m1506getAnimatedOffsetYT5a7pE(getKey(), i, this.minMainAxisOffset - getMainAxisSize(placeable), this.maxMainAxisOffset, m1518getOffsetBjo55l4(i)) : m1518getOffsetBjo55l4(i);
+            long m258getAnimatedOffsetYT5a7pE = getAnimationSpec(i) != null ? this.placementAnimator.m258getAnimatedOffsetYT5a7pE(getKey(), i, this.minMainAxisOffset - getMainAxisSize(placeable), this.maxMainAxisOffset, m266getOffsetBjo55l4(i)) : m266getOffsetBjo55l4(i);
             if (this.reverseLayout) {
-                m1506getAnimatedOffsetYT5a7pE = IntOffsetKt.IntOffset(this.isVertical ? IntOffset.m5334getXimpl(m1506getAnimatedOffsetYT5a7pE) : (this.mainAxisLayoutSize - IntOffset.m5334getXimpl(m1506getAnimatedOffsetYT5a7pE)) - getMainAxisSize(placeable), this.isVertical ? (this.mainAxisLayoutSize - IntOffset.m5335getYimpl(m1506getAnimatedOffsetYT5a7pE)) - getMainAxisSize(placeable) : IntOffset.m5335getYimpl(m1506getAnimatedOffsetYT5a7pE));
+                m258getAnimatedOffsetYT5a7pE = IntOffsetKt.IntOffset(this.isVertical ? IntOffset.getX-impl(m258getAnimatedOffsetYT5a7pE) : (this.mainAxisLayoutSize - IntOffset.getX-impl(m258getAnimatedOffsetYT5a7pE)) - getMainAxisSize(placeable), this.isVertical ? (this.mainAxisLayoutSize - IntOffset.getY-impl(m258getAnimatedOffsetYT5a7pE)) - getMainAxisSize(placeable) : IntOffset.getY-impl(m258getAnimatedOffsetYT5a7pE));
             }
             if (this.isVertical) {
                 long j = this.visualOffset;
-                Placeable.PlacementScope.m4226placeWithLayeraW9wM$default(placementScope, placeable, IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1506getAnimatedOffsetYT5a7pE) + IntOffset.m5334getXimpl(j), IntOffset.m5335getYimpl(m1506getAnimatedOffsetYT5a7pE) + IntOffset.m5335getYimpl(j)), 0.0f, null, 6, null);
+                Placeable.PlacementScope.placeWithLayer-aW-9-wM$default(placementScope, placeable, IntOffsetKt.IntOffset(IntOffset.getX-impl(m258getAnimatedOffsetYT5a7pE) + IntOffset.getX-impl(j), IntOffset.getY-impl(m258getAnimatedOffsetYT5a7pE) + IntOffset.getY-impl(j)), 0.0f, (Function1) null, 6, (Object) null);
             } else {
                 long j2 = this.visualOffset;
-                Placeable.PlacementScope.m4225placeRelativeWithLayeraW9wM$default(placementScope, placeable, IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1506getAnimatedOffsetYT5a7pE) + IntOffset.m5334getXimpl(j2), IntOffset.m5335getYimpl(m1506getAnimatedOffsetYT5a7pE) + IntOffset.m5335getYimpl(j2)), 0.0f, null, 6, null);
+                Placeable.PlacementScope.placeRelativeWithLayer-aW-9-wM$default(placementScope, placeable, IntOffsetKt.IntOffset(IntOffset.getX-impl(m258getAnimatedOffsetYT5a7pE) + IntOffset.getX-impl(j2), IntOffset.getY-impl(m258getAnimatedOffsetYT5a7pE) + IntOffset.getY-impl(j2)), 0.0f, (Function1) null, 6, (Object) null);
             }
         }
     }

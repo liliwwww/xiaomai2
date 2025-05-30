@@ -8,13 +8,14 @@ import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.collection.LongSparseArray;
 import androidx.core.content.res.FontResourcesParserCompat;
 import java.lang.reflect.Field;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class WeightTypefaceApi14 {
     private static final String NATIVE_INSTANCE_FIELD = "native_instance";
     private static final String TAG = "WeightTypeface";
@@ -50,12 +51,12 @@ final class WeightTypefaceApi14 {
         synchronized (sWeightCacheLock) {
             long nativeInstance = getNativeInstance(typeface);
             LongSparseArray<SparseArray<Typeface>> longSparseArray = sWeightTypefaceCache;
-            SparseArray<Typeface> sparseArray = longSparseArray.get(nativeInstance);
+            SparseArray sparseArray = (SparseArray) longSparseArray.get(nativeInstance);
             if (sparseArray == null) {
-                sparseArray = new SparseArray<>(4);
+                sparseArray = new SparseArray(4);
                 longSparseArray.put(nativeInstance, sparseArray);
             } else {
-                Typeface typeface2 = sparseArray.get(i2);
+                Typeface typeface2 = (Typeface) sparseArray.get(i2);
                 if (typeface2 != null) {
                     return typeface2;
                 }

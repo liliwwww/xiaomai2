@@ -4,7 +4,7 @@ import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class PagerSnapDistanceMaxPages implements PagerSnapDistance {
     private final int pagesLimit;
 

@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class UserTrackUtil {
     public static final int EVENTID_DEV_STORAGE = 15307;
     public static final int EVENTID_ERROR = 15306;
@@ -29,7 +29,7 @@ public class UserTrackUtil {
         }
         try {
             if (TaoLog.getLogStatus()) {
-                TaoLog.m18d(TAG, "commitEvent: " + i + "||" + str + "||" + str2 + "||" + str3);
+                TaoLog.d(TAG, "commitEvent: " + i + "||" + str + "||" + str2 + "||" + str3);
             }
             utCommitEvent.invoke(null, Integer.valueOf(i), str, str2, str3);
         } catch (Exception e) {
@@ -49,9 +49,9 @@ public class UserTrackUtil {
             utCommitEventWithArgs = TBS.Ext.class.getDeclaredMethod("commitEvent", cls, Object.class, Object.class, Object.class, String[].class);
             isInit = true;
         } catch (ClassNotFoundException unused) {
-            TaoLog.m18d(TAG, "UT class not found");
+            TaoLog.d(TAG, "UT class not found");
         } catch (NoSuchMethodException unused2) {
-            TaoLog.m18d(TAG, "UT method not found");
+            TaoLog.d(TAG, "UT method not found");
         }
     }
 
@@ -78,7 +78,7 @@ public class UserTrackUtil {
         }
         try {
             if (TaoLog.getLogStatus()) {
-                TaoLog.m18d(TAG, "commitEvent: " + str + "||" + i + "||" + str2 + "||" + str3 + "||" + str4 + ((Object) TextUtils.concat(str5)));
+                TaoLog.d(TAG, "commitEvent: " + str + "||" + i + "||" + str2 + "||" + str3 + "||" + str4 + ((Object) TextUtils.concat(str5)));
             }
             utCommitPage.invoke(null, str, Integer.valueOf(i), str2, str3, str4, new String[]{str5});
         } catch (Exception e) {
@@ -92,7 +92,7 @@ public class UserTrackUtil {
         }
         try {
             if (TaoLog.getLogStatus()) {
-                TaoLog.m18d(TAG, "commitEvent: " + i + "||" + str + "||" + str2 + "||" + str3 + ((Object) TextUtils.concat(strArr)));
+                TaoLog.d(TAG, "commitEvent: " + i + "||" + str + "||" + str2 + "||" + str3 + ((Object) TextUtils.concat(strArr)));
             }
             utCommitEventWithArgs.invoke(null, Integer.valueOf(i), str, str2, str3, strArr);
         } catch (Exception e) {

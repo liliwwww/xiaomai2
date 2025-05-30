@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class Icons {
     public static final int $stable = 0;
 
@@ -14,58 +14,6 @@ public final class Icons {
 
     @NotNull
     private static final Filled Default = Filled.INSTANCE;
-
-    /* compiled from: Taobao */
-    @StabilityInferred(parameters = 0)
-    /* loaded from: classes2.dex */
-    public static final class Filled {
-        public static final int $stable = 0;
-
-        @NotNull
-        public static final Filled INSTANCE = new Filled();
-
-        private Filled() {
-        }
-    }
-
-    /* compiled from: Taobao */
-    @StabilityInferred(parameters = 0)
-    /* loaded from: classes2.dex */
-    public static final class Outlined {
-        public static final int $stable = 0;
-
-        @NotNull
-        public static final Outlined INSTANCE = new Outlined();
-
-        private Outlined() {
-        }
-    }
-
-    /* compiled from: Taobao */
-    @StabilityInferred(parameters = 0)
-    /* loaded from: classes2.dex */
-    public static final class Rounded {
-        public static final int $stable = 0;
-
-        @NotNull
-        public static final Rounded INSTANCE = new Rounded();
-
-        private Rounded() {
-        }
-    }
-
-    /* compiled from: Taobao */
-    @StabilityInferred(parameters = 0)
-    /* loaded from: classes2.dex */
-    public static final class Sharp {
-        public static final int $stable = 0;
-
-        @NotNull
-        public static final Sharp INSTANCE = new Sharp();
-
-        private Sharp() {
-        }
-    }
 
     /* compiled from: Taobao */
     @StabilityInferred(parameters = 0)

@@ -3,35 +3,14 @@ package androidx.core.net;
 import android.net.TrafficStats;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import java.net.DatagramSocket;
 import java.net.Socket;
 import java.net.SocketException;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TrafficStatsCompat {
-
-    /* compiled from: Taobao */
-    @RequiresApi(24)
-    /* loaded from: classes.dex */
-    static class Api24Impl {
-        private Api24Impl() {
-        }
-
-        @DoNotInline
-        static void tagDatagramSocket(DatagramSocket datagramSocket) throws SocketException {
-            TrafficStats.tagDatagramSocket(datagramSocket);
-        }
-
-        @DoNotInline
-        static void untagDatagramSocket(DatagramSocket datagramSocket) throws SocketException {
-            TrafficStats.untagDatagramSocket(datagramSocket);
-        }
-    }
-
     private TrafficStatsCompat() {
     }
 

@@ -1,7 +1,7 @@
 package androidx.room;
 
 import androidx.annotation.RestrictTo;
-import androidx.sqlite.p008db.SupportSQLiteStatement;
+import androidx.sqlite.db.SupportSQLiteStatement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -9,7 +9,7 @@ import java.util.List;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class EntityInsertionAdapter<T> extends SharedSQLiteStatement {
     public EntityInsertionAdapter(RoomDatabase roomDatabase) {
         super(roomDatabase);

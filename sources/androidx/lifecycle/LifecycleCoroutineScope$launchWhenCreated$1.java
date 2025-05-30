@@ -1,5 +1,6 @@
 package androidx.lifecycle;
 
+import androidx.appcompat.R;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -12,8 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-@DebugMetadata(c = "androidx.lifecycle.LifecycleCoroutineScope$launchWhenCreated$1", f = "Lifecycle.kt", i = {}, l = {81}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+@DebugMetadata(c = "androidx.lifecycle.LifecycleCoroutineScope$launchWhenCreated$1", f = "Lifecycle.kt", i = {}, l = {R.styleable.AppCompatTheme_listPreferredItemHeightSmall}, m = "invokeSuspend", n = {}, s = {})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class LifecycleCoroutineScope$launchWhenCreated$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ Function2<CoroutineScope, Continuation<? super Unit>, Object> $block;
     int label;

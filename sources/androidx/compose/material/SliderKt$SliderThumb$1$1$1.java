@@ -3,7 +3,9 @@ package androidx.compose.material;
 import androidx.compose.foundation.interaction.DragInteraction;
 import androidx.compose.foundation.interaction.Interaction;
 import androidx.compose.foundation.interaction.MutableInteractionSource;
-import androidx.compose.foundation.interaction.PressInteraction;
+import androidx.compose.foundation.interaction.PressInteraction$Cancel;
+import androidx.compose.foundation.interaction.PressInteraction$Press;
+import androidx.compose.foundation.interaction.PressInteraction$Release;
 import androidx.compose.runtime.snapshots.SnapshotStateList;
 import kotlin.ResultKt;
 import kotlin.Unit;
@@ -20,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.SliderKt$SliderThumb$1$1$1", f = "Slider.kt", i = {}, l = {698}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SliderKt$SliderThumb$1$1$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ MutableInteractionSource $interactionSource;
     final /* synthetic */ SnapshotStateList<Interaction> $interactions;
@@ -56,14 +58,15 @@ final class SliderKt$SliderThumb$1$1$1 extends SuspendLambda implements Function
                     return emit((Interaction) obj2, (Continuation<? super Unit>) continuation);
                 }
 
+                /* JADX WARN: Multi-variable type inference failed */
                 @Nullable
                 public final Object emit(@NotNull Interaction interaction, @NotNull Continuation<? super Unit> continuation) {
-                    if (interaction instanceof PressInteraction.Press) {
+                    if (interaction instanceof PressInteraction$Press) {
                         snapshotStateList.add(interaction);
-                    } else if (interaction instanceof PressInteraction.Release) {
-                        snapshotStateList.remove(((PressInteraction.Release) interaction).getPress());
-                    } else if (interaction instanceof PressInteraction.Cancel) {
-                        snapshotStateList.remove(((PressInteraction.Cancel) interaction).getPress());
+                    } else if (interaction instanceof PressInteraction$Release) {
+                        snapshotStateList.remove(((PressInteraction$Release) interaction).getPress());
+                    } else if (interaction instanceof PressInteraction$Cancel) {
+                        snapshotStateList.remove(((PressInteraction$Cancel) interaction).getPress());
                     } else if (interaction instanceof DragInteraction.Start) {
                         snapshotStateList.add(interaction);
                     } else if (interaction instanceof DragInteraction.Stop) {

@@ -5,7 +5,7 @@ import android.taobao.windvane.packageapp.zipapp.data.ZipGlobalConfig;
 import android.webkit.ValueCallback;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface WVPackageAppConfigInterface {
     ZipGlobalConfig getGlobalConfig();
 

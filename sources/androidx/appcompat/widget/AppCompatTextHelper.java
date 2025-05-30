@@ -16,7 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.appcompat.R;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.inputmethod.EditorInfoCompat;
@@ -24,7 +25,7 @@ import java.lang.ref.WeakReference;
 import java.util.Locale;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class AppCompatTextHelper {
     private static final int MONOSPACE = 3;
     private static final int SANS = 1;
@@ -126,19 +127,6 @@ class AppCompatTextHelper {
         }
     }
 
-    /* compiled from: Taobao */
-    @RequiresApi(28)
-    /* loaded from: classes2.dex */
-    static class Api28Impl {
-        private Api28Impl() {
-        }
-
-        @DoNotInline
-        static Typeface create(Typeface typeface, int i, boolean z) {
-            return Typeface.create(typeface, i, z);
-        }
-    }
-
     AppCompatTextHelper(@NonNull TextView textView) {
         this.mView = textView;
         this.mAutoSizeTextHelper = new AppCompatTextViewAutoSizeHelper(textView);
@@ -234,18 +222,18 @@ class AppCompatTextHelper {
 
     private void updateTypefaceAndStyle(Context context, TintTypedArray tintTypedArray) {
         String string;
-        this.mStyle = tintTypedArray.getInt(C0257R.styleable.TextAppearance_android_textStyle, this.mStyle);
+        this.mStyle = tintTypedArray.getInt(R.styleable.TextAppearance_android_textStyle, this.mStyle);
         int i = Build.VERSION.SDK_INT;
         if (i >= 28) {
-            int i2 = tintTypedArray.getInt(C0257R.styleable.TextAppearance_android_textFontWeight, -1);
+            int i2 = tintTypedArray.getInt(R.styleable.TextAppearance_android_textFontWeight, -1);
             this.mFontWeight = i2;
             if (i2 != -1) {
                 this.mStyle = (this.mStyle & 2) | 0;
             }
         }
-        int i3 = C0257R.styleable.TextAppearance_android_fontFamily;
-        if (!tintTypedArray.hasValue(i3) && !tintTypedArray.hasValue(C0257R.styleable.TextAppearance_fontFamily)) {
-            int i4 = C0257R.styleable.TextAppearance_android_typeface;
+        int i3 = R.styleable.TextAppearance_android_fontFamily;
+        if (!tintTypedArray.hasValue(i3) && !tintTypedArray.hasValue(R.styleable.TextAppearance_fontFamily)) {
+            int i4 = R.styleable.TextAppearance_android_typeface;
             if (tintTypedArray.hasValue(i4)) {
                 this.mAsyncFontPending = false;
                 int i5 = tintTypedArray.getInt(i4, 1);
@@ -266,7 +254,7 @@ class AppCompatTextHelper {
             return;
         }
         this.mFontTypeface = null;
-        int i6 = C0257R.styleable.TextAppearance_fontFamily;
+        int i6 = R.styleable.TextAppearance_fontFamily;
         if (tintTypedArray.hasValue(i6)) {
             i3 = i6;
         }
@@ -276,14 +264,10 @@ class AppCompatTextHelper {
             final WeakReference weakReference = new WeakReference(this.mView);
             try {
                 Typeface font = tintTypedArray.getFont(i3, this.mStyle, new ResourcesCompat.FontCallback() { // from class: androidx.appcompat.widget.AppCompatTextHelper.1
-                    @Override // androidx.core.content.res.ResourcesCompat.FontCallback
-                    /* renamed from: onFontRetrievalFailed */
-                    public void lambda$callbackFailAsync$1(int i9) {
+                    public void onFontRetrievalFailed(int i9) {
                     }
 
-                    @Override // androidx.core.content.res.ResourcesCompat.FontCallback
-                    /* renamed from: onFontRetrieved */
-                    public void lambda$callbackSuccessAsync$0(@NonNull Typeface typeface) {
+                    public void onFontRetrieved(@NonNull Typeface typeface) {
                         int i9;
                         if (Build.VERSION.SDK_INT >= 28 && (i9 = i7) != -1) {
                             typeface = Api28Impl.create(typeface, i9, (i8 & 2) != 0);
@@ -330,7 +314,7 @@ class AppCompatTextHelper {
         }
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     void autoSizeText() {
         this.mAutoSizeTextHelper.autoSizeText();
     }
@@ -373,7 +357,7 @@ class AppCompatTextHelper {
         return null;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     boolean isAutoSizeEnabled() {
         return this.mAutoSizeTextHelper.isAutoSizeEnabled();
     }
@@ -418,12 +402,12 @@ class AppCompatTextHelper {
     @android.annotation.SuppressLint({"NewApi"})
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     void loadFromAttributes(@androidx.annotation.Nullable android.util.AttributeSet r24, int r25) {
         /*
             Method dump skipped, instructions count: 792
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.appcompat.widget.AppCompatTextHelper.loadFromAttributes(android.util.AttributeSet, int):void");
     }
@@ -448,7 +432,7 @@ class AppCompatTextHelper {
         }
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     void onLayout(boolean z, int i, int i2, int i3, int i4) {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE) {
             return;
@@ -465,33 +449,33 @@ class AppCompatTextHelper {
         ColorStateList colorStateList;
         ColorStateList colorStateList2;
         ColorStateList colorStateList3;
-        TintTypedArray obtainStyledAttributes = TintTypedArray.obtainStyledAttributes(context, i, C0257R.styleable.TextAppearance);
-        int i2 = C0257R.styleable.TextAppearance_textAllCaps;
+        TintTypedArray obtainStyledAttributes = TintTypedArray.obtainStyledAttributes(context, i, R.styleable.TextAppearance);
+        int i2 = R.styleable.TextAppearance_textAllCaps;
         if (obtainStyledAttributes.hasValue(i2)) {
             setAllCaps(obtainStyledAttributes.getBoolean(i2, false));
         }
         int i3 = Build.VERSION.SDK_INT;
         if (i3 < 23) {
-            int i4 = C0257R.styleable.TextAppearance_android_textColor;
+            int i4 = R.styleable.TextAppearance_android_textColor;
             if (obtainStyledAttributes.hasValue(i4) && (colorStateList3 = obtainStyledAttributes.getColorStateList(i4)) != null) {
                 this.mView.setTextColor(colorStateList3);
             }
-            int i5 = C0257R.styleable.TextAppearance_android_textColorLink;
+            int i5 = R.styleable.TextAppearance_android_textColorLink;
             if (obtainStyledAttributes.hasValue(i5) && (colorStateList2 = obtainStyledAttributes.getColorStateList(i5)) != null) {
                 this.mView.setLinkTextColor(colorStateList2);
             }
-            int i6 = C0257R.styleable.TextAppearance_android_textColorHint;
+            int i6 = R.styleable.TextAppearance_android_textColorHint;
             if (obtainStyledAttributes.hasValue(i6) && (colorStateList = obtainStyledAttributes.getColorStateList(i6)) != null) {
                 this.mView.setHintTextColor(colorStateList);
             }
         }
-        int i7 = C0257R.styleable.TextAppearance_android_textSize;
+        int i7 = R.styleable.TextAppearance_android_textSize;
         if (obtainStyledAttributes.hasValue(i7) && obtainStyledAttributes.getDimensionPixelSize(i7, -1) == 0) {
             this.mView.setTextSize(0, 0.0f);
         }
         updateTypefaceAndStyle(context, obtainStyledAttributes);
         if (i3 >= 26) {
-            int i8 = C0257R.styleable.TextAppearance_fontVariationSettings;
+            int i8 = R.styleable.TextAppearance_fontVariationSettings;
             if (obtainStyledAttributes.hasValue(i8) && (string = obtainStyledAttributes.getString(i8)) != null) {
                 Api26Impl.setFontVariationSettings(this.mView, string);
             }
@@ -546,7 +530,7 @@ class AppCompatTextHelper {
         setCompoundTints();
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     void setTextSize(int i, float f) {
         if (ViewUtils.SDK_LEVEL_SUPPORTS_AUTOSIZE || isAutoSizeEnabled()) {
             return;

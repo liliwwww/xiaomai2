@@ -1,10 +1,9 @@
 package androidx.compose.animation;
 
 import androidx.compose.animation.core.FiniteAnimationSpec;
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.unit.IntSize;
-import androidx.compose.p004ui.unit.IntSizeKt;
 import androidx.compose.runtime.Immutable;
+import androidx.compose.ui.Alignment;
+import androidx.compose.ui.unit.IntSize;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
@@ -13,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ChangeSize {
 
     @NotNull
@@ -26,7 +25,6 @@ public final class ChangeSize {
     @NotNull
     private final Function1<IntSize, IntSize> size;
 
-    /* JADX WARN: Multi-variable type inference failed */
     public ChangeSize(@NotNull Alignment alignment, @NotNull Function1<? super IntSize, IntSize> function1, @NotNull FiniteAnimationSpec<IntSize> finiteAnimationSpec, boolean z) {
         Intrinsics.checkNotNullParameter(alignment, "alignment");
         Intrinsics.checkNotNullParameter(function1, "size");
@@ -128,15 +126,6 @@ public final class ChangeSize {
     }
 
     public /* synthetic */ ChangeSize(Alignment alignment, Function1 function1, FiniteAnimationSpec finiteAnimationSpec, boolean z, int i, DefaultConstructorMarker defaultConstructorMarker) {
-        this(alignment, (i & 2) != 0 ? new Function1<IntSize, IntSize>() { // from class: androidx.compose.animation.ChangeSize.1
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                return IntSize.m5368boximpl(m975invokemzRDjE0(((IntSize) obj).m5380unboximpl()));
-            }
-
-            /* renamed from: invoke-mzRDjE0, reason: not valid java name */
-            public final long m975invokemzRDjE0(long j) {
-                return IntSizeKt.IntSize(0, 0);
-            }
-        } : function1, finiteAnimationSpec, (i & 8) != 0 ? true : z);
+        this(alignment, (i & 2) != 0 ? 1.INSTANCE : function1, finiteAnimationSpec, (i & 8) != 0 ? true : z);
     }
 }

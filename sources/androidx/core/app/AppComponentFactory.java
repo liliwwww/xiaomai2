@@ -13,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 
 /* compiled from: Taobao */
 @RequiresApi(28)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class AppComponentFactory extends android.app.AppComponentFactory {
     @Override // android.app.AppComponentFactory
     @NonNull

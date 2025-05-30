@@ -11,14 +11,13 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Metadata(bv = {1, 0, 3}, d1 = {}, d2 = {}, k = 3, mv = {1, 5, 1})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class MotionLayoutKt$MotionLayoutCore$3$2 extends Lambda implements Function2<Composer, Integer, Unit> {
     final /* synthetic */ int $$changed;
     final /* synthetic */ Function3<MotionLayoutScope, Composer, Integer, Unit> $content;
     final /* synthetic */ MotionLayoutScope $scope;
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    /* JADX WARN: Multi-variable type inference failed */
     public MotionLayoutKt$MotionLayoutCore$3$2(Function3<? super MotionLayoutScope, ? super Composer, ? super Integer, Unit> function3, MotionLayoutScope motionLayoutScope, int i) {
         super(2);
         this.$content = function3;

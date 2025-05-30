@@ -13,7 +13,7 @@ import androidx.annotation.RestrictTo;
 /* compiled from: Taobao */
 @SuppressLint({"BanParcelableUsage"})
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ResultReceiver implements Parcelable {
     public static final Parcelable.Creator<ResultReceiver> CREATOR = new Parcelable.Creator<ResultReceiver>() { // from class: android.support.v4.os.ResultReceiver.1
         /* JADX WARN: Can't rename method to resolve collision */
@@ -32,41 +32,6 @@ public class ResultReceiver implements Parcelable {
     final boolean mLocal;
     IResultReceiver mReceiver;
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    class MyResultReceiver extends IResultReceiver.Stub {
-        MyResultReceiver() {
-        }
-
-        @Override // android.support.v4.os.IResultReceiver
-        public void send(int i, Bundle bundle) {
-            ResultReceiver resultReceiver = ResultReceiver.this;
-            Handler handler = resultReceiver.mHandler;
-            if (handler != null) {
-                handler.post(resultReceiver.new MyRunnable(i, bundle));
-            } else {
-                resultReceiver.onReceiveResult(i, bundle);
-            }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    class MyRunnable implements Runnable {
-        final int mResultCode;
-        final Bundle mResultData;
-
-        MyRunnable(int i, Bundle bundle) {
-            this.mResultCode = i;
-            this.mResultData = bundle;
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            ResultReceiver.this.onReceiveResult(this.mResultCode, this.mResultData);
-        }
-    }
-
     public ResultReceiver(Handler handler) {
         this.mLocal = true;
         this.mHandler = handler;
@@ -84,7 +49,7 @@ public class ResultReceiver implements Parcelable {
         if (this.mLocal) {
             Handler handler = this.mHandler;
             if (handler != null) {
-                handler.post(new MyRunnable(i, bundle));
+                handler.post(new MyRunnable(this, i, bundle));
                 return;
             } else {
                 onReceiveResult(i, bundle);
@@ -104,7 +69,7 @@ public class ResultReceiver implements Parcelable {
     public void writeToParcel(@NonNull Parcel parcel, int i) {
         synchronized (this) {
             if (this.mReceiver == null) {
-                this.mReceiver = new MyResultReceiver();
+                this.mReceiver = new MyResultReceiver(this);
             }
             parcel.writeStrongBinder(this.mReceiver.asBinder());
         }

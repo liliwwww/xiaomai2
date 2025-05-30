@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class TransitionManager {
     private static final String LOG_TAG = "TransitionManager";
     private static Transition sDefaultTransition = new AutoTransition();
@@ -42,24 +42,17 @@ public class TransitionManager {
             if (!TransitionManager.sPendingTransitions.remove(this.mSceneRoot)) {
                 return true;
             }
-            final ArrayMap<ViewGroup, ArrayList<Transition>> runningTransitions = TransitionManager.getRunningTransitions();
-            ArrayList<Transition> arrayList = runningTransitions.get(this.mSceneRoot);
+            ArrayMap<ViewGroup, ArrayList<Transition>> runningTransitions = TransitionManager.getRunningTransitions();
+            ArrayList arrayList = (ArrayList) runningTransitions.get(this.mSceneRoot);
             ArrayList arrayList2 = null;
             if (arrayList == null) {
-                arrayList = new ArrayList<>();
+                arrayList = new ArrayList();
                 runningTransitions.put(this.mSceneRoot, arrayList);
             } else if (arrayList.size() > 0) {
                 arrayList2 = new ArrayList(arrayList);
             }
             arrayList.add(this.mTransition);
-            this.mTransition.addListener(new TransitionListenerAdapter() { // from class: androidx.transition.TransitionManager.MultiListener.1
-                /* JADX WARN: Multi-variable type inference failed */
-                @Override // androidx.transition.TransitionListenerAdapter, androidx.transition.Transition.TransitionListener
-                public void onTransitionEnd(@NonNull Transition transition) {
-                    ((ArrayList) runningTransitions.get(MultiListener.this.mSceneRoot)).remove(transition);
-                    transition.removeListener(this);
-                }
-            });
+            this.mTransition.addListener(new 1(this, runningTransitions));
             this.mTransition.captureValues(this.mSceneRoot, false);
             if (arrayList2 != null) {
                 Iterator it = arrayList2.iterator();
@@ -79,11 +72,11 @@ public class TransitionManager {
         public void onViewDetachedFromWindow(View view) {
             removeListeners();
             TransitionManager.sPendingTransitions.remove(this.mSceneRoot);
-            ArrayList<Transition> arrayList = TransitionManager.getRunningTransitions().get(this.mSceneRoot);
+            ArrayList arrayList = (ArrayList) TransitionManager.getRunningTransitions().get(this.mSceneRoot);
             if (arrayList != null && arrayList.size() > 0) {
-                Iterator<Transition> it = arrayList.iterator();
+                Iterator it = arrayList.iterator();
                 while (it.hasNext()) {
-                    it.next().resume(this.mSceneRoot);
+                    ((Transition) it.next()).resume(this.mSceneRoot);
                 }
             }
             this.mTransition.clearValues(true);
@@ -108,19 +101,19 @@ public class TransitionManager {
             return;
         }
         sPendingTransitions.add(sceneRoot);
-        Transition mo5618clone = transition.mo5618clone();
-        mo5618clone.setSceneRoot(sceneRoot);
+        Transition clone = transition.clone();
+        clone.setSceneRoot(sceneRoot);
         if (currentScene != null && currentScene.isCreatedFromLayoutResource()) {
-            mo5618clone.setCanRemoveViews(true);
+            clone.setCanRemoveViews(true);
         }
-        sceneChangeSetup(sceneRoot, mo5618clone);
+        sceneChangeSetup(sceneRoot, clone);
         scene.enter();
-        sceneChangeRunTransition(sceneRoot, mo5618clone);
+        sceneChangeRunTransition(sceneRoot, clone);
     }
 
     public static void endTransitions(ViewGroup viewGroup) {
         sPendingTransitions.remove(viewGroup);
-        ArrayList<Transition> arrayList = getRunningTransitions().get(viewGroup);
+        ArrayList arrayList = (ArrayList) getRunningTransitions().get(viewGroup);
         if (arrayList == null || arrayList.isEmpty()) {
             return;
         }
@@ -143,18 +136,17 @@ public class TransitionManager {
 
     private Transition getTransition(Scene scene) {
         Scene currentScene;
-        ArrayMap<Scene, Transition> arrayMap;
+        ArrayMap arrayMap;
         Transition transition;
         ViewGroup sceneRoot = scene.getSceneRoot();
-        if (sceneRoot != null && (currentScene = Scene.getCurrentScene(sceneRoot)) != null && (arrayMap = this.mScenePairTransitions.get(scene)) != null && (transition = arrayMap.get(currentScene)) != null) {
+        if (sceneRoot != null && (currentScene = Scene.getCurrentScene(sceneRoot)) != null && (arrayMap = (ArrayMap) this.mScenePairTransitions.get(scene)) != null && (transition = (Transition) arrayMap.get(currentScene)) != null) {
             return transition;
         }
-        Transition transition2 = this.mSceneTransitions.get(scene);
+        Transition transition2 = (Transition) this.mSceneTransitions.get(scene);
         return transition2 != null ? transition2 : sDefaultTransition;
     }
 
-    /* renamed from: go */
-    public static void m335go(@NonNull Scene scene) {
+    public static void go(@NonNull Scene scene) {
         changeScene(scene, sDefaultTransition);
     }
 
@@ -168,11 +160,11 @@ public class TransitionManager {
     }
 
     private static void sceneChangeSetup(ViewGroup viewGroup, Transition transition) {
-        ArrayList<Transition> arrayList = getRunningTransitions().get(viewGroup);
+        ArrayList arrayList = (ArrayList) getRunningTransitions().get(viewGroup);
         if (arrayList != null && arrayList.size() > 0) {
-            Iterator<Transition> it = arrayList.iterator();
+            Iterator it = arrayList.iterator();
             while (it.hasNext()) {
-                it.next().pause(viewGroup);
+                ((Transition) it.next()).pause(viewGroup);
             }
         }
         if (transition != null) {
@@ -200,21 +192,20 @@ public class TransitionManager {
         if (transition == null) {
             transition = sDefaultTransition;
         }
-        Transition mo5618clone = transition.mo5618clone();
-        sceneChangeSetup(viewGroup, mo5618clone);
+        Transition clone = transition.clone();
+        sceneChangeSetup(viewGroup, clone);
         Scene.setCurrentScene(viewGroup, null);
-        sceneChangeRunTransition(viewGroup, mo5618clone);
+        sceneChangeRunTransition(viewGroup, clone);
     }
 
-    /* renamed from: go */
-    public static void m336go(@NonNull Scene scene, @Nullable Transition transition) {
+    public static void go(@NonNull Scene scene, @Nullable Transition transition) {
         changeScene(scene, transition);
     }
 
     public void setTransition(@NonNull Scene scene, @NonNull Scene scene2, @Nullable Transition transition) {
-        ArrayMap<Scene, Transition> arrayMap = this.mScenePairTransitions.get(scene2);
+        ArrayMap arrayMap = (ArrayMap) this.mScenePairTransitions.get(scene2);
         if (arrayMap == null) {
-            arrayMap = new ArrayMap<>();
+            arrayMap = new ArrayMap();
             this.mScenePairTransitions.put(scene2, arrayMap);
         }
         arrayMap.put(scene, transition);

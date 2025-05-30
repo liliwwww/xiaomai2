@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class FragmentTransaction {
     static final int OP_ADD = 1;
     static final int OP_ATTACH = 7;
@@ -54,69 +54,13 @@ public abstract class FragmentTransaction {
 
     @Nullable
     String mName;
-    ArrayList<C1090Op> mOps;
+    ArrayList<Op> mOps;
     int mPopEnterAnim;
     int mPopExitAnim;
     boolean mReorderingAllowed;
     ArrayList<String> mSharedElementSourceNames;
     ArrayList<String> mSharedElementTargetNames;
     int mTransition;
-
-    /* compiled from: Taobao */
-    /* renamed from: androidx.fragment.app.FragmentTransaction$Op */
-    /* loaded from: classes2.dex */
-    static final class C1090Op {
-        int mCmd;
-        Lifecycle.State mCurrentMaxState;
-        int mEnterAnim;
-        int mExitAnim;
-        Fragment mFragment;
-        boolean mFromExpandedOp;
-        Lifecycle.State mOldMaxState;
-        int mPopEnterAnim;
-        int mPopExitAnim;
-
-        C1090Op() {
-        }
-
-        C1090Op(int i, Fragment fragment) {
-            this.mCmd = i;
-            this.mFragment = fragment;
-            this.mFromExpandedOp = false;
-            Lifecycle.State state = Lifecycle.State.RESUMED;
-            this.mOldMaxState = state;
-            this.mCurrentMaxState = state;
-        }
-
-        C1090Op(int i, Fragment fragment, boolean z) {
-            this.mCmd = i;
-            this.mFragment = fragment;
-            this.mFromExpandedOp = z;
-            Lifecycle.State state = Lifecycle.State.RESUMED;
-            this.mOldMaxState = state;
-            this.mCurrentMaxState = state;
-        }
-
-        C1090Op(int i, @NonNull Fragment fragment, Lifecycle.State state) {
-            this.mCmd = i;
-            this.mFragment = fragment;
-            this.mFromExpandedOp = false;
-            this.mOldMaxState = fragment.mMaxState;
-            this.mCurrentMaxState = state;
-        }
-
-        C1090Op(C1090Op c1090Op) {
-            this.mCmd = c1090Op.mCmd;
-            this.mFragment = c1090Op.mFragment;
-            this.mFromExpandedOp = c1090Op.mFromExpandedOp;
-            this.mEnterAnim = c1090Op.mEnterAnim;
-            this.mExitAnim = c1090Op.mExitAnim;
-            this.mPopEnterAnim = c1090Op.mPopEnterAnim;
-            this.mPopExitAnim = c1090Op.mPopExitAnim;
-            this.mOldMaxState = c1090Op.mOldMaxState;
-            this.mCurrentMaxState = c1090Op.mCurrentMaxState;
-        }
-    }
 
     @Deprecated
     public FragmentTransaction() {
@@ -149,12 +93,12 @@ public abstract class FragmentTransaction {
         return add(createFragment(cls, bundle), str);
     }
 
-    void addOp(C1090Op c1090Op) {
-        this.mOps.add(c1090Op);
-        c1090Op.mEnterAnim = this.mEnterAnim;
-        c1090Op.mExitAnim = this.mExitAnim;
-        c1090Op.mPopEnterAnim = this.mPopEnterAnim;
-        c1090Op.mPopExitAnim = this.mPopExitAnim;
+    void addOp(Op op) {
+        this.mOps.add(op);
+        op.mEnterAnim = this.mEnterAnim;
+        op.mExitAnim = this.mExitAnim;
+        op.mPopEnterAnim = this.mPopEnterAnim;
+        op.mPopExitAnim = this.mPopExitAnim;
     }
 
     @NonNull
@@ -193,7 +137,7 @@ public abstract class FragmentTransaction {
 
     @NonNull
     public FragmentTransaction attach(@NonNull Fragment fragment) {
-        addOp(new C1090Op(7, fragment));
+        addOp(new Op(7, fragment));
         return this;
     }
 
@@ -207,7 +151,7 @@ public abstract class FragmentTransaction {
 
     @NonNull
     public FragmentTransaction detach(@NonNull Fragment fragment) {
-        addOp(new C1090Op(6, fragment));
+        addOp(new Op(6, fragment));
         return this;
     }
 
@@ -248,12 +192,12 @@ public abstract class FragmentTransaction {
             fragment.mFragmentId = i;
             fragment.mContainerId = i;
         }
-        addOp(new C1090Op(i2, fragment));
+        addOp(new Op(i2, fragment));
     }
 
     @NonNull
     public FragmentTransaction hide(@NonNull Fragment fragment) {
-        addOp(new C1090Op(4, fragment));
+        addOp(new Op(4, fragment));
         return this;
     }
 
@@ -267,7 +211,7 @@ public abstract class FragmentTransaction {
 
     @NonNull
     public FragmentTransaction remove(@NonNull Fragment fragment) {
-        addOp(new C1090Op(3, fragment));
+        addOp(new Op(3, fragment));
         return this;
     }
 
@@ -315,13 +259,13 @@ public abstract class FragmentTransaction {
 
     @NonNull
     public FragmentTransaction setMaxLifecycle(@NonNull Fragment fragment, @NonNull Lifecycle.State state) {
-        addOp(new C1090Op(10, fragment, state));
+        addOp(new Op(10, fragment, state));
         return this;
     }
 
     @NonNull
     public FragmentTransaction setPrimaryNavigationFragment(@Nullable Fragment fragment) {
-        addOp(new C1090Op(8, fragment));
+        addOp(new Op(8, fragment));
         return this;
     }
 
@@ -345,7 +289,7 @@ public abstract class FragmentTransaction {
 
     @NonNull
     public FragmentTransaction show(@NonNull Fragment fragment) {
-        addOp(new C1090Op(5, fragment));
+        addOp(new Op(5, fragment));
         return this;
     }
 
@@ -436,9 +380,9 @@ public abstract class FragmentTransaction {
 
     FragmentTransaction(@NonNull FragmentFactory fragmentFactory, @Nullable ClassLoader classLoader, @NonNull FragmentTransaction fragmentTransaction) {
         this(fragmentFactory, classLoader);
-        Iterator<C1090Op> it = fragmentTransaction.mOps.iterator();
+        Iterator<Op> it = fragmentTransaction.mOps.iterator();
         while (it.hasNext()) {
-            this.mOps.add(new C1090Op(it.next()));
+            this.mOps.add(new Op(it.next()));
         }
         this.mEnterAnim = fragmentTransaction.mEnterAnim;
         this.mExitAnim = fragmentTransaction.mExitAnim;

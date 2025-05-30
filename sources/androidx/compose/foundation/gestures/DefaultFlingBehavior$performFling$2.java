@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.DefaultFlingBehavior$performFling$2", f = "Scrollable.kt", i = {0}, l = {577}, m = "invokeSuspend", n = {"velocityLeft"}, s = {"L$0"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DefaultFlingBehavior$performFling$2 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Float>, Object> {
     final /* synthetic */ float $initialVelocity;
     final /* synthetic */ ScrollScope $this_performFling;
@@ -65,7 +65,7 @@ final class DefaultFlingBehavior$performFling$2 extends SuspendLambda implements
             final Ref.FloatRef floatRef2 = new Ref.FloatRef();
             floatRef2.element = this.$initialVelocity;
             final Ref.FloatRef floatRef3 = new Ref.FloatRef();
-            AnimationState AnimationState$default = AnimationStateKt.AnimationState$default(0.0f, this.$initialVelocity, 0L, 0L, false, 28, null);
+            AnimationState AnimationState$default = AnimationStateKt.AnimationState$default(0.0f, this.$initialVelocity, 0L, 0L, false, 28, (Object) null);
             decayAnimationSpec = this.this$0.flingDecay;
             final ScrollScope scrollScope = this.$this_performFling;
             final DefaultFlingBehavior defaultFlingBehavior = this.this$0;
@@ -82,10 +82,10 @@ final class DefaultFlingBehavior$performFling$2 extends SuspendLambda implements
 
                 public final void invoke(@NotNull AnimationScope<Float, AnimationVector1D> animationScope) {
                     Intrinsics.checkNotNullParameter(animationScope, "$this$animateDecay");
-                    float floatValue = animationScope.getValue().floatValue() - floatRef3.element;
+                    float floatValue = ((Number) animationScope.getValue()).floatValue() - floatRef3.element;
                     float scrollBy = scrollScope.scrollBy(floatValue);
-                    floatRef3.element = animationScope.getValue().floatValue();
-                    floatRef2.element = animationScope.getVelocity().floatValue();
+                    floatRef3.element = ((Number) animationScope.getValue()).floatValue();
+                    floatRef2.element = ((Number) animationScope.getVelocity()).floatValue();
                     if (Math.abs(floatValue - scrollBy) > 0.5f) {
                         animationScope.cancelAnimation();
                     }

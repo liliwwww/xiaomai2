@@ -3,7 +3,7 @@ package androidx.constraintlayout.core.motion.utils;
 import java.util.Arrays;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Easing {
     private static final String ACCELERATE = "cubic(0.4, 0.05, 0.8, 0.7)";
     private static final String ANTICIPATE = "cubic(0.36, 0, 0.66, -0.56)";
@@ -69,58 +69,50 @@ public class Easing {
     static class CubicEasing extends Easing {
         private static double d_error = 1.0E-4d;
         private static double error = 0.01d;
-
-        /* renamed from: x1 */
-        double f244x1;
-
-        /* renamed from: x2 */
-        double f245x2;
-
-        /* renamed from: y1 */
-        double f246y1;
-
-        /* renamed from: y2 */
-        double f247y2;
+        double x1;
+        double x2;
+        double y1;
+        double y2;
 
         CubicEasing(String str) {
             this.str = str;
             int indexOf = str.indexOf(40);
             int indexOf2 = str.indexOf(44, indexOf);
-            this.f244x1 = Double.parseDouble(str.substring(indexOf + 1, indexOf2).trim());
+            this.x1 = Double.parseDouble(str.substring(indexOf + 1, indexOf2).trim());
             int i = indexOf2 + 1;
             int indexOf3 = str.indexOf(44, i);
-            this.f246y1 = Double.parseDouble(str.substring(i, indexOf3).trim());
+            this.y1 = Double.parseDouble(str.substring(i, indexOf3).trim());
             int i2 = indexOf3 + 1;
             int indexOf4 = str.indexOf(44, i2);
-            this.f245x2 = Double.parseDouble(str.substring(i2, indexOf4).trim());
+            this.x2 = Double.parseDouble(str.substring(i2, indexOf4).trim());
             int i3 = indexOf4 + 1;
-            this.f247y2 = Double.parseDouble(str.substring(i3, str.indexOf(41, i3)).trim());
+            this.y2 = Double.parseDouble(str.substring(i3, str.indexOf(41, i3)).trim());
         }
 
         private double getDiffX(double d) {
             double d2 = 1.0d - d;
-            double d3 = this.f244x1;
-            double d4 = this.f245x2;
+            double d3 = this.x1;
+            double d4 = this.x2;
             return (d2 * 3.0d * d2 * d3) + (d2 * 6.0d * d * (d4 - d3)) + (3.0d * d * d * (1.0d - d4));
         }
 
         private double getDiffY(double d) {
             double d2 = 1.0d - d;
-            double d3 = this.f246y1;
-            double d4 = this.f247y2;
+            double d3 = this.y1;
+            double d4 = this.y2;
             return (d2 * 3.0d * d2 * d3) + (d2 * 6.0d * d * (d4 - d3)) + (3.0d * d * d * (1.0d - d4));
         }
 
         private double getX(double d) {
             double d2 = 1.0d - d;
             double d3 = 3.0d * d2;
-            return (this.f244x1 * d2 * d3 * d) + (this.f245x2 * d3 * d * d) + (d * d * d);
+            return (this.x1 * d2 * d3 * d) + (this.x2 * d3 * d * d) + (d * d * d);
         }
 
         private double getY(double d) {
             double d2 = 1.0d - d;
             double d3 = 3.0d * d2;
-            return (this.f246y1 * d2 * d3 * d) + (this.f247y2 * d3 * d * d) + (d * d * d);
+            return (this.y1 * d2 * d3 * d) + (this.y2 * d3 * d * d) + (d * d * d);
         }
 
         @Override // androidx.constraintlayout.core.motion.utils.Easing
@@ -159,10 +151,10 @@ public class Easing {
         }
 
         void setup(double d, double d2, double d3, double d4) {
-            this.f244x1 = d;
-            this.f246y1 = d2;
-            this.f245x2 = d3;
-            this.f247y2 = d4;
+            this.x1 = d;
+            this.y1 = d2;
+            this.x2 = d3;
+            this.y2 = d4;
         }
 
         public CubicEasing(double d, double d2, double d3, double d4) {

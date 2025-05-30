@@ -16,7 +16,7 @@ import tb.i80;
 import tb.m11;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class CoroutineLiveData<T> extends MediatorLiveData<T> {
 
     @Nullable
@@ -26,7 +26,7 @@ public final class CoroutineLiveData<T> extends MediatorLiveData<T> {
     private EmittedSource emittedSource;
 
     public /* synthetic */ CoroutineLiveData(CoroutineContext coroutineContext, long j, Function2 function2, int i, DefaultConstructorMarker defaultConstructorMarker) {
-        this((i & 1) != 0 ? EmptyCoroutineContext.INSTANCE : coroutineContext, (i & 2) != 0 ? CoroutineLiveDataKt.DEFAULT_TIMEOUT : j, function2);
+        this((i & 1) != 0 ? EmptyCoroutineContext.INSTANCE : coroutineContext, (i & 2) != 0 ? 5000L : j, function2);
     }
 
     /* JADX WARN: Removed duplicated region for block: B:15:0x0035  */
@@ -34,7 +34,7 @@ public final class CoroutineLiveData<T> extends MediatorLiveData<T> {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object clearSource$lifecycle_livedata_ktx_release(@org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r5) {
         /*
@@ -95,15 +95,15 @@ public final class CoroutineLiveData<T> extends MediatorLiveData<T> {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object emitSource$lifecycle_livedata_ktx_release(@org.jetbrains.annotations.NotNull androidx.lifecycle.LiveData<T> r6, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlinx.coroutines.DisposableHandle> r7) {
         /*
             r5 = this;
-            boolean r0 = r7 instanceof androidx.lifecycle.CoroutineLiveData$emitSource$1
+            boolean r0 = r7 instanceof androidx.lifecycle.CoroutineLiveData.emitSource.1
             if (r0 == 0) goto L13
             r0 = r7
-            androidx.lifecycle.CoroutineLiveData$emitSource$1 r0 = (androidx.lifecycle.CoroutineLiveData$emitSource$1) r0
+            androidx.lifecycle.CoroutineLiveData$emitSource$1 r0 = (androidx.lifecycle.CoroutineLiveData.emitSource.1) r0
             int r1 = r0.label
             r2 = -2147483648(0xffffffff80000000, float:-0.0)
             r3 = r1 & r2
@@ -168,7 +168,6 @@ public final class CoroutineLiveData<T> extends MediatorLiveData<T> {
         throw new UnsupportedOperationException("Method not decompiled: androidx.lifecycle.CoroutineLiveData.emitSource$lifecycle_livedata_ktx_release(androidx.lifecycle.LiveData, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
-    @Override // androidx.lifecycle.MediatorLiveData, androidx.lifecycle.LiveData
     protected void onActive() {
         super.onActive();
         BlockRunner<T> blockRunner = this.blockRunner;
@@ -177,7 +176,6 @@ public final class CoroutineLiveData<T> extends MediatorLiveData<T> {
         }
     }
 
-    @Override // androidx.lifecycle.MediatorLiveData, androidx.lifecycle.LiveData
     protected void onInactive() {
         super.onInactive();
         BlockRunner<T> blockRunner = this.blockRunner;
@@ -199,12 +197,12 @@ public final class CoroutineLiveData<T> extends MediatorLiveData<T> {
             }
 
             public /* bridge */ /* synthetic */ Object invoke() {
-                m5607invoke();
+                m2340invoke();
                 return Unit.INSTANCE;
             }
 
             /* renamed from: invoke, reason: collision with other method in class */
-            public final void m5607invoke() {
+            public final void m2340invoke() {
                 ((CoroutineLiveData) this.this$0).blockRunner = null;
             }
         });

@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class InfiniteRepeatableSpec<T> implements AnimationSpec<T> {
     public static final int $stable = 8;
 
@@ -36,7 +36,7 @@ public final class InfiniteRepeatableSpec<T> implements AnimationSpec<T> {
             return false;
         }
         InfiniteRepeatableSpec infiniteRepeatableSpec = (InfiniteRepeatableSpec) obj;
-        return Intrinsics.areEqual(infiniteRepeatableSpec.animation, this.animation) && infiniteRepeatableSpec.repeatMode == this.repeatMode && StartOffset.m1073equalsimpl0(infiniteRepeatableSpec.initialStartOffset, this.initialStartOffset);
+        return Intrinsics.areEqual(infiniteRepeatableSpec.animation, this.animation) && infiniteRepeatableSpec.repeatMode == this.repeatMode && StartOffset.equals-impl0(infiniteRepeatableSpec.initialStartOffset, this.initialStartOffset);
     }
 
     @NotNull
@@ -45,7 +45,7 @@ public final class InfiniteRepeatableSpec<T> implements AnimationSpec<T> {
     }
 
     /* renamed from: getInitialStartOffset-Rmkjzm4, reason: not valid java name */
-    public final long m1051getInitialStartOffsetRmkjzm4() {
+    public final long m84getInitialStartOffsetRmkjzm4() {
         return this.initialStartOffset;
     }
 
@@ -55,18 +55,17 @@ public final class InfiniteRepeatableSpec<T> implements AnimationSpec<T> {
     }
 
     public int hashCode() {
-        return (((this.animation.hashCode() * 31) + this.repeatMode.hashCode()) * 31) + StartOffset.m1076hashCodeimpl(this.initialStartOffset);
+        return (((this.animation.hashCode() * 31) + this.repeatMode.hashCode()) * 31) + StartOffset.hashCode-impl(this.initialStartOffset);
     }
 
-    @Override // androidx.compose.animation.core.AnimationSpec
     @NotNull
     public <V extends AnimationVector> VectorizedAnimationSpec<V> vectorize(@NotNull TwoWayConverter<T, V> twoWayConverter) {
         Intrinsics.checkNotNullParameter(twoWayConverter, "converter");
-        return new VectorizedInfiniteRepeatableSpec(this.animation.vectorize((TwoWayConverter) twoWayConverter), this.repeatMode, this.initialStartOffset, (DefaultConstructorMarker) null);
+        return new VectorizedInfiniteRepeatableSpec(this.animation.m89vectorize(twoWayConverter), this.repeatMode, this.initialStartOffset, (DefaultConstructorMarker) null);
     }
 
     public /* synthetic */ InfiniteRepeatableSpec(DurationBasedAnimationSpec durationBasedAnimationSpec, RepeatMode repeatMode, long j, int i, DefaultConstructorMarker defaultConstructorMarker) {
-        this(durationBasedAnimationSpec, (i & 2) != 0 ? RepeatMode.Restart : repeatMode, (i & 4) != 0 ? StartOffset.m1071constructorimpl$default(0, 0, 2, null) : j, (DefaultConstructorMarker) null);
+        this(durationBasedAnimationSpec, (i & 2) != 0 ? RepeatMode.Restart : repeatMode, (i & 4) != 0 ? StartOffset.constructor-impl$default(0, 0, 2, (DefaultConstructorMarker) null) : j, (DefaultConstructorMarker) null);
     }
 
     public /* synthetic */ InfiniteRepeatableSpec(DurationBasedAnimationSpec durationBasedAnimationSpec, RepeatMode repeatMode, int i, DefaultConstructorMarker defaultConstructorMarker) {
@@ -76,7 +75,7 @@ public final class InfiniteRepeatableSpec<T> implements AnimationSpec<T> {
     /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "This constructor has been deprecated")
     public /* synthetic */ InfiniteRepeatableSpec(DurationBasedAnimationSpec durationBasedAnimationSpec, RepeatMode repeatMode) {
-        this(durationBasedAnimationSpec, repeatMode, StartOffset.m1071constructorimpl$default(0, 0, 2, null), (DefaultConstructorMarker) null);
+        this(durationBasedAnimationSpec, repeatMode, StartOffset.constructor-impl$default(0, 0, 2, (DefaultConstructorMarker) null), (DefaultConstructorMarker) null);
         Intrinsics.checkNotNullParameter(durationBasedAnimationSpec, "animation");
         Intrinsics.checkNotNullParameter(repeatMode, "repeatMode");
     }

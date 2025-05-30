@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class WrappedDrawableApi14 extends Drawable implements Drawable.Callback, TintAwareDrawable, WrappedDrawable {
     static final PorterDuff.Mode DEFAULT_TINT_MODE = PorterDuff.Mode.SRC_IN;
     private boolean mColorFilterSet;
@@ -141,7 +141,6 @@ class WrappedDrawableApi14 extends Drawable implements Drawable.Callback, TintAw
         return this.mDrawable.getTransparentRegion();
     }
 
-    @Override // androidx.core.graphics.drawable.WrappedDrawable
     public final Drawable getWrappedDrawable() {
         return this.mDrawable;
     }
@@ -252,18 +251,18 @@ class WrappedDrawableApi14 extends Drawable implements Drawable.Callback, TintAw
         return updateTint(iArr) || this.mDrawable.setState(iArr);
     }
 
-    @Override // android.graphics.drawable.Drawable, androidx.core.graphics.drawable.TintAwareDrawable
+    @Override // android.graphics.drawable.Drawable
     public void setTint(int i) {
         setTintList(ColorStateList.valueOf(i));
     }
 
-    @Override // android.graphics.drawable.Drawable, androidx.core.graphics.drawable.TintAwareDrawable
+    @Override // android.graphics.drawable.Drawable
     public void setTintList(ColorStateList colorStateList) {
         this.mState.mTint = colorStateList;
         updateTint(getState());
     }
 
-    @Override // android.graphics.drawable.Drawable, androidx.core.graphics.drawable.TintAwareDrawable
+    @Override // android.graphics.drawable.Drawable
     public void setTintMode(@NonNull PorterDuff.Mode mode) {
         this.mState.mTintMode = mode;
         updateTint(getState());
@@ -274,7 +273,6 @@ class WrappedDrawableApi14 extends Drawable implements Drawable.Callback, TintAw
         return super.setVisible(z, z2) || this.mDrawable.setVisible(z, z2);
     }
 
-    @Override // androidx.core.graphics.drawable.WrappedDrawable
     public final void setWrappedDrawable(Drawable drawable) {
         Drawable drawable2 = this.mDrawable;
         if (drawable2 != null) {

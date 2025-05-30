@@ -13,15 +13,14 @@ import androidx.annotation.GravityInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R;
 import androidx.constraintlayout.core.widgets.analyzer.BasicMeasure;
-import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class LinearLayoutCompat extends ViewGroup {
     private static final String ACCESSIBILITY_CLASS_NAME = "androidx.appcompat.widget.LinearLayoutCompat";
     public static final int HORIZONTAL = 0;
@@ -78,13 +77,6 @@ public class LinearLayoutCompat extends ViewGroup {
         public LayoutParams(ViewGroup.MarginLayoutParams marginLayoutParams) {
             super(marginLayoutParams);
         }
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes.dex */
-    public @interface OrientationMode {
     }
 
     public LinearLayoutCompat(@NonNull Context context) {
@@ -308,12 +300,12 @@ public class LinearLayoutCompat extends ViewGroup {
     /* JADX WARN: Removed duplicated region for block: B:46:0x00e3  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     void layoutHorizontal(int r25, int r26, int r27, int r28) {
         /*
             Method dump skipped, instructions count: 320
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.appcompat.widget.LinearLayoutCompat.layoutHorizontal(int, int, int, int):void");
     }
@@ -321,7 +313,7 @@ public class LinearLayoutCompat extends ViewGroup {
     /* JADX WARN: Removed duplicated region for block: B:25:0x009e  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     void layoutVertical(int r18, int r19, int r20, int r21) {
         /*
@@ -449,12 +441,12 @@ public class LinearLayoutCompat extends ViewGroup {
     /* JADX WARN: Removed duplicated region for block: B:58:0x01d4  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     void measureHorizontal(int r38, int r39) {
         /*
             Method dump skipped, instructions count: 1288
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.appcompat.widget.LinearLayoutCompat.measureHorizontal(int, int):void");
     }
@@ -466,12 +458,12 @@ public class LinearLayoutCompat extends ViewGroup {
     /* JADX WARN: Removed duplicated region for block: B:158:0x0322  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     void measureVertical(int r34, int r35) {
         /*
             Method dump skipped, instructions count: 910
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.appcompat.widget.LinearLayoutCompat.measureVertical(int, int):void");
     }
@@ -553,7 +545,7 @@ public class LinearLayoutCompat extends ViewGroup {
     public void setGravity(@GravityInt int i) {
         if (this.mGravity != i) {
             if ((8388615 & i) == 0) {
-                i |= GravityCompat.START;
+                i |= 8388611;
             }
             if ((i & 112) == 0) {
                 i |= 48;
@@ -564,7 +556,7 @@ public class LinearLayoutCompat extends ViewGroup {
     }
 
     public void setHorizontalGravity(int i) {
-        int i2 = i & GravityCompat.RELATIVE_HORIZONTAL_GRAVITY_MASK;
+        int i2 = i & 8388615;
         int i3 = this.mGravity;
         if ((8388615 & i3) != i2) {
             this.mGravity = i2 | ((-8388616) & i3);
@@ -631,27 +623,27 @@ public class LinearLayoutCompat extends ViewGroup {
         this.mBaselineAlignedChildIndex = -1;
         this.mBaselineChildTop = 0;
         this.mGravity = 8388659;
-        int[] iArr = C0257R.styleable.LinearLayoutCompat;
+        int[] iArr = R.styleable.LinearLayoutCompat;
         TintTypedArray obtainStyledAttributes = TintTypedArray.obtainStyledAttributes(context, attributeSet, iArr, i, 0);
         ViewCompat.saveAttributeDataForStyleable(this, context, iArr, attributeSet, obtainStyledAttributes.getWrappedTypeArray(), i, 0);
-        int i2 = obtainStyledAttributes.getInt(C0257R.styleable.LinearLayoutCompat_android_orientation, -1);
+        int i2 = obtainStyledAttributes.getInt(R.styleable.LinearLayoutCompat_android_orientation, -1);
         if (i2 >= 0) {
             setOrientation(i2);
         }
-        int i3 = obtainStyledAttributes.getInt(C0257R.styleable.LinearLayoutCompat_android_gravity, -1);
+        int i3 = obtainStyledAttributes.getInt(R.styleable.LinearLayoutCompat_android_gravity, -1);
         if (i3 >= 0) {
             setGravity(i3);
         }
-        boolean z = obtainStyledAttributes.getBoolean(C0257R.styleable.LinearLayoutCompat_android_baselineAligned, true);
+        boolean z = obtainStyledAttributes.getBoolean(R.styleable.LinearLayoutCompat_android_baselineAligned, true);
         if (!z) {
             setBaselineAligned(z);
         }
-        this.mWeightSum = obtainStyledAttributes.getFloat(C0257R.styleable.LinearLayoutCompat_android_weightSum, -1.0f);
-        this.mBaselineAlignedChildIndex = obtainStyledAttributes.getInt(C0257R.styleable.LinearLayoutCompat_android_baselineAlignedChildIndex, -1);
-        this.mUseLargestChild = obtainStyledAttributes.getBoolean(C0257R.styleable.LinearLayoutCompat_measureWithLargestChild, false);
-        setDividerDrawable(obtainStyledAttributes.getDrawable(C0257R.styleable.LinearLayoutCompat_divider));
-        this.mShowDividers = obtainStyledAttributes.getInt(C0257R.styleable.LinearLayoutCompat_showDividers, 0);
-        this.mDividerPadding = obtainStyledAttributes.getDimensionPixelSize(C0257R.styleable.LinearLayoutCompat_dividerPadding, 0);
+        this.mWeightSum = obtainStyledAttributes.getFloat(R.styleable.LinearLayoutCompat_android_weightSum, -1.0f);
+        this.mBaselineAlignedChildIndex = obtainStyledAttributes.getInt(R.styleable.LinearLayoutCompat_android_baselineAlignedChildIndex, -1);
+        this.mUseLargestChild = obtainStyledAttributes.getBoolean(R.styleable.LinearLayoutCompat_measureWithLargestChild, false);
+        setDividerDrawable(obtainStyledAttributes.getDrawable(R.styleable.LinearLayoutCompat_divider));
+        this.mShowDividers = obtainStyledAttributes.getInt(R.styleable.LinearLayoutCompat_showDividers, 0);
+        this.mDividerPadding = obtainStyledAttributes.getDimensionPixelSize(R.styleable.LinearLayoutCompat_dividerPadding, 0);
         obtainStyledAttributes.recycle();
     }
 

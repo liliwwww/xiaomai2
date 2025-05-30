@@ -1,6 +1,6 @@
 package android.taobao.windvane.connect;
 
-import android.taobao.windvane.monitor.WVPerformanceMonitorInterface;
+import android.taobao.windvane.monitor.WVPerformanceMonitorInterface$NetStat;
 import android.taobao.windvane.util.CommonUtils;
 import android.text.TextUtils;
 import java.util.HashMap;
@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class IResponse {
     private int StatusCode;
     private byte[] data;
     private String desc;
     private String encoding;
     private String mimeType;
-    public WVPerformanceMonitorInterface.NetStat mNetstat = new WVPerformanceMonitorInterface.NetStat();
+    public WVPerformanceMonitorInterface$NetStat mNetstat = new WVPerformanceMonitorInterface$NetStat();
     private Map<String, String> headersMap = new HashMap();
 
     public byte[] getData() {
@@ -60,7 +60,7 @@ public class IResponse {
                     }
                 }
             }
-            String str2 = this.headersMap.get(HttpConnector.CONTENT_TYPE);
+            String str2 = this.headersMap.get("content-type");
             if (str2 != null) {
                 this.mimeType = CommonUtils.parseMimeType(str2);
                 String parseCharset = CommonUtils.parseCharset(str2);

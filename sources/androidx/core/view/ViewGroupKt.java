@@ -7,6 +7,7 @@ import androidx.annotation.Px;
 import androidx.annotation.RequiresApi;
 import java.util.Iterator;
 import kotlin.Unit;
+import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
@@ -17,7 +18,7 @@ import kotlin.sequences.SequencesKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ViewGroupKt {
     public static final boolean contains(@NotNull ViewGroup viewGroup, @NotNull View view) {
         Intrinsics.checkNotNullParameter(viewGroup, "<this>");
@@ -59,20 +60,15 @@ public final class ViewGroupKt {
     }
 
     @NotNull
-    public static final Sequence<View> getChildren(@NotNull final ViewGroup viewGroup) {
+    public static final Sequence<View> getChildren(@NotNull ViewGroup viewGroup) {
         Intrinsics.checkNotNullParameter(viewGroup, "<this>");
-        return new Sequence<View>() { // from class: androidx.core.view.ViewGroupKt$children$1
-            @NotNull
-            public Iterator<View> iterator() {
-                return ViewGroupKt.iterator(viewGroup);
-            }
-        };
+        return new children.1(viewGroup);
     }
 
     @NotNull
     public static final Sequence<View> getDescendants(@NotNull ViewGroup viewGroup) {
         Intrinsics.checkNotNullParameter(viewGroup, "<this>");
-        return SequencesKt.sequence(new ViewGroupKt$descendants$1(viewGroup, null));
+        return SequencesKt.sequence(new descendants.1(viewGroup, (Continuation) null));
     }
 
     @NotNull
@@ -99,7 +95,7 @@ public final class ViewGroupKt {
     @NotNull
     public static final Iterator<View> iterator(@NotNull ViewGroup viewGroup) {
         Intrinsics.checkNotNullParameter(viewGroup, "<this>");
-        return new ViewGroupKt$iterator$1(viewGroup);
+        return new iterator.1(viewGroup);
     }
 
     public static final void minusAssign(@NotNull ViewGroup viewGroup, @NotNull View view) {

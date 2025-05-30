@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class CLContainer extends CLElement {
     ArrayList<CLElement> mElements;
 
@@ -27,7 +27,7 @@ public class CLContainer extends CLElement {
     public CLElement get(String str) throws CLParsingException {
         Iterator<CLElement> it = this.mElements.iterator();
         while (it.hasNext()) {
-            CLKey cLKey = (CLKey) it.next();
+            CLKey cLKey = (CLElement) it.next();
             if (cLKey.content().equals(str)) {
                 return cLKey.getValue();
             }
@@ -52,11 +52,11 @@ public class CLContainer extends CLElement {
     }
 
     public boolean getBoolean(String str) throws CLParsingException {
-        CLElement cLElement = get(str);
-        if (cLElement instanceof CLToken) {
-            return ((CLToken) cLElement).getBoolean();
+        CLToken cLToken = get(str);
+        if (cLToken instanceof CLToken) {
+            return cLToken.getBoolean();
         }
-        throw new CLParsingException("no boolean found for key <" + str + ">, found [" + cLElement.getStrClass() + "] : " + cLElement, this);
+        throw new CLParsingException("no boolean found for key <" + str + ">, found [" + cLToken.getStrClass() + "] : " + cLToken, this);
     }
 
     public float getFloat(String str) throws CLParsingException {
@@ -102,7 +102,7 @@ public class CLContainer extends CLElement {
     public CLElement getOrNull(String str) {
         Iterator<CLElement> it = this.mElements.iterator();
         while (it.hasNext()) {
-            CLKey cLKey = (CLKey) it.next();
+            CLKey cLKey = (CLElement) it.next();
             if (cLKey.content().equals(str)) {
                 return cLKey.getValue();
             }
@@ -129,8 +129,8 @@ public class CLContainer extends CLElement {
     public boolean has(String str) {
         Iterator<CLElement> it = this.mElements.iterator();
         while (it.hasNext()) {
-            CLElement next = it.next();
-            if ((next instanceof CLKey) && ((CLKey) next).content().equals(str)) {
+            CLKey cLKey = (CLElement) it.next();
+            if ((cLKey instanceof CLKey) && cLKey.content().equals(str)) {
                 return true;
             }
         }
@@ -141,9 +141,9 @@ public class CLContainer extends CLElement {
         ArrayList<String> arrayList = new ArrayList<>();
         Iterator<CLElement> it = this.mElements.iterator();
         while (it.hasNext()) {
-            CLElement next = it.next();
-            if (next instanceof CLKey) {
-                arrayList.add(((CLKey) next).content());
+            CLKey cLKey = (CLElement) it.next();
+            if (cLKey instanceof CLKey) {
+                arrayList.add(cLKey.content());
             }
         }
         return arrayList;
@@ -152,7 +152,7 @@ public class CLContainer extends CLElement {
     public void put(String str, CLElement cLElement) {
         Iterator<CLElement> it = this.mElements.iterator();
         while (it.hasNext()) {
-            CLKey cLKey = (CLKey) it.next();
+            CLKey cLKey = (CLElement) it.next();
             if (cLKey.content().equals(str)) {
                 cLKey.set(cLElement);
                 return;
@@ -169,9 +169,9 @@ public class CLContainer extends CLElement {
         ArrayList arrayList = new ArrayList();
         Iterator<CLElement> it = this.mElements.iterator();
         while (it.hasNext()) {
-            CLElement next = it.next();
-            if (((CLKey) next).content().equals(str)) {
-                arrayList.add(next);
+            CLKey cLKey = (CLElement) it.next();
+            if (cLKey.content().equals(str)) {
+                arrayList.add(cLKey);
             }
         }
         Iterator it2 = arrayList.iterator();
@@ -245,9 +245,9 @@ public class CLContainer extends CLElement {
     }
 
     public boolean getBoolean(int i) throws CLParsingException {
-        CLElement cLElement = get(i);
-        if (cLElement instanceof CLToken) {
-            return ((CLToken) cLElement).getBoolean();
+        CLToken cLToken = get(i);
+        if (cLToken instanceof CLToken) {
+            return cLToken.getBoolean();
         }
         throw new CLParsingException("no boolean at index " + i, this);
     }

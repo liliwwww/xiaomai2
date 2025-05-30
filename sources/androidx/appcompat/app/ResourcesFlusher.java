@@ -4,14 +4,13 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.util.Log;
 import android.util.LongSparseArray;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ResourcesFlusher {
     private static final String TAG = "ResourcesFlusher";
     private static Field sDrawableCacheField;
@@ -22,19 +21,6 @@ class ResourcesFlusher {
     private static boolean sThemedResourceCacheClazzFetched;
     private static Field sThemedResourceCache_mUnthemedEntriesField;
     private static boolean sThemedResourceCache_mUnthemedEntriesFieldFetched;
-
-    /* compiled from: Taobao */
-    @RequiresApi(16)
-    /* loaded from: classes2.dex */
-    static class Api16Impl {
-        private Api16Impl() {
-        }
-
-        @DoNotInline
-        static void clear(LongSparseArray longSparseArray) {
-            longSparseArray.clear();
-        }
-    }
 
     private ResourcesFlusher() {
     }

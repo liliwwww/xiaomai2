@@ -1,6 +1,7 @@
 package androidx.core.app;
 
 import android.app.Activity;
+import android.app.AppComponentFactory;
 import android.app.Application;
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -10,15 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 
 /* compiled from: Taobao */
 @RequiresApi(api = 28)
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
-public class CoreComponentFactory extends android.app.AppComponentFactory {
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
+public class CoreComponentFactory extends AppComponentFactory {
 
     /* compiled from: Taobao */
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public interface CompatWrapped {
         Object getWrapper();
     }

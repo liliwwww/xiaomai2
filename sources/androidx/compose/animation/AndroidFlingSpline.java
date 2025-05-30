@@ -1,12 +1,13 @@
 package androidx.compose.animation;
 
+import androidx.appcompat.R;
 import androidx.compose.runtime.internal.StabilityInferred;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AndroidFlingSpline {
 
     @NotNull
@@ -84,11 +85,11 @@ public final class AndroidFlingSpline {
     }
 
     static {
-        float[] fArr = new float[101];
+        float[] fArr = new float[R.styleable.AppCompatTheme_switchStyle];
         SplinePositions = fArr;
-        float[] fArr2 = new float[101];
+        float[] fArr2 = new float[R.styleable.AppCompatTheme_switchStyle];
         SplineTimes = fArr2;
-        SplineBasedDecayKt.computeSplineInfo(fArr, fArr2, 100);
+        SplineBasedDecayKt.access$computeSplineInfo(fArr, fArr2, 100);
     }
 
     private AndroidFlingSpline() {

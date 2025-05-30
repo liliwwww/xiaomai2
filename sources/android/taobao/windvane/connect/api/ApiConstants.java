@@ -1,7 +1,7 @@
 package android.taobao.windvane.connect.api;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ApiConstants {
     public static final String API = "api";
     public static final String APPKEY = "appKey";
@@ -23,13 +23,9 @@ public class ApiConstants {
     public static final String SIGN = "sign";
     public static final String SPLIT_LINE = "-";
     public static final String SPLIT_STR = "&";
-
-    /* renamed from: T */
-    public static final String f4T = "t";
+    public static final String T = "t";
     public static final String TTID = "ttid";
-
-    /* renamed from: V */
-    public static final String f5V = "v";
+    public static final String V = "v";
     public static final String WUA = "wua";
     public static final String WV_VERSION = "wvVersion";
 }

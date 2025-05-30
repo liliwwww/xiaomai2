@@ -8,7 +8,7 @@ import androidx.savedstate.SavedStateRegistryOwner;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class LegacySavedStateHandleController {
     static final String TAG_SAVED_STATE_HANDLE_CONTROLLER = "androidx.lifecycle.savedstate.vm.tag";
 
@@ -17,7 +17,6 @@ class LegacySavedStateHandleController {
         OnRecreation() {
         }
 
-        @Override // androidx.savedstate.SavedStateRegistry.AutoRecreated
         public void onRecreated(@NonNull SavedStateRegistryOwner savedStateRegistryOwner) {
             if (!(savedStateRegistryOwner instanceof ViewModelStoreOwner)) {
                 throw new IllegalStateException("Internal error: OnRecreation should be registered only on components that implement ViewModelStoreOwner");

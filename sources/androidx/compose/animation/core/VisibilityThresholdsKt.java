@@ -1,17 +1,19 @@
 package androidx.compose.animation.core;
 
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.geometry.OffsetKt;
-import androidx.compose.p004ui.geometry.Rect;
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.geometry.SizeKt;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.DpKt;
-import androidx.compose.p004ui.unit.DpOffset;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntOffsetKt;
-import androidx.compose.p004ui.unit.IntSize;
-import androidx.compose.p004ui.unit.IntSizeKt;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.geometry.Offset$Companion;
+import androidx.compose.ui.geometry.OffsetKt;
+import androidx.compose.ui.geometry.Rect;
+import androidx.compose.ui.geometry.Rect$Companion;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.geometry.SizeKt;
+import androidx.compose.ui.unit.Dp;
+import androidx.compose.ui.unit.DpKt;
+import androidx.compose.ui.unit.DpOffset;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntOffsetKt;
+import androidx.compose.ui.unit.IntSize;
+import androidx.compose.ui.unit.IntSizeKt;
 import java.util.Map;
 import kotlin.Pair;
 import kotlin.TuplesKt;
@@ -22,7 +24,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class VisibilityThresholdsKt {
     private static final float DpVisibilityThreshold = 0.1f;
     private static final float PxVisibilityThreshold = 0.5f;
@@ -38,8 +40,8 @@ public final class VisibilityThresholdsKt {
         rectVisibilityThreshold = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
         TwoWayConverter<Integer, AnimationVector1D> vectorConverter = VectorConvertersKt.getVectorConverter(IntCompanionObject.INSTANCE);
         Float valueOf2 = Float.valueOf(1.0f);
-        TwoWayConverter<C0856Dp, AnimationVector1D> vectorConverter2 = VectorConvertersKt.getVectorConverter(C0856Dp.Companion);
-        Float valueOf3 = Float.valueOf(0.1f);
+        TwoWayConverter<Dp, AnimationVector1D> vectorConverter2 = VectorConvertersKt.getVectorConverter(Dp.Companion);
+        Float valueOf3 = Float.valueOf(DpVisibilityThreshold);
         visibilityThresholdMap = MapsKt.mapOf(new Pair[]{TuplesKt.to(vectorConverter, valueOf2), TuplesKt.to(VectorConvertersKt.getVectorConverter(IntSize.Companion), valueOf2), TuplesKt.to(VectorConvertersKt.getVectorConverter(IntOffset.Companion), valueOf2), TuplesKt.to(VectorConvertersKt.getVectorConverter(FloatCompanionObject.INSTANCE), Float.valueOf(0.01f)), TuplesKt.to(VectorConvertersKt.getVectorConverter(Rect.Companion), valueOf), TuplesKt.to(VectorConvertersKt.getVectorConverter(Size.Companion), valueOf), TuplesKt.to(VectorConvertersKt.getVectorConverter(Offset.Companion), valueOf), TuplesKt.to(vectorConverter2, valueOf3), TuplesKt.to(VectorConvertersKt.getVectorConverter(DpOffset.Companion), valueOf3)});
     }
 
@@ -58,15 +60,15 @@ public final class VisibilityThresholdsKt {
         return visibilityThresholdMap;
     }
 
-    public static final long getVisibilityThreshold(@NotNull Offset.Companion companion) {
-        Intrinsics.checkNotNullParameter(companion, "<this>");
+    public static final long getVisibilityThreshold(@NotNull Offset$Companion offset$Companion) {
+        Intrinsics.checkNotNullParameter(offset$Companion, "<this>");
         return OffsetKt.Offset(0.5f, 0.5f);
     }
 
     public static final long getVisibilityThreshold(@NotNull DpOffset.Companion companion) {
         Intrinsics.checkNotNullParameter(companion, "<this>");
-        C0856Dp.Companion companion2 = C0856Dp.Companion;
-        return DpKt.m5237DpOffsetYgX7TsA(getVisibilityThreshold(companion2), getVisibilityThreshold(companion2));
+        Dp.Companion companion2 = Dp.Companion;
+        return DpKt.m2581DpOffsetYgX7TsA(getVisibilityThreshold(companion2), getVisibilityThreshold(companion2));
     }
 
     public static final long getVisibilityThreshold(@NotNull Size.Companion companion) {
@@ -80,13 +82,13 @@ public final class VisibilityThresholdsKt {
     }
 
     @NotNull
-    public static final Rect getVisibilityThreshold(@NotNull Rect.Companion companion) {
-        Intrinsics.checkNotNullParameter(companion, "<this>");
+    public static final Rect getVisibilityThreshold(@NotNull Rect$Companion rect$Companion) {
+        Intrinsics.checkNotNullParameter(rect$Companion, "<this>");
         return rectVisibilityThreshold;
     }
 
-    public static final float getVisibilityThreshold(@NotNull C0856Dp.Companion companion) {
+    public static final float getVisibilityThreshold(@NotNull Dp.Companion companion) {
         Intrinsics.checkNotNullParameter(companion, "<this>");
-        return C0856Dp.m5216constructorimpl(0.1f);
+        return Dp.constructor-impl(DpVisibilityThreshold);
     }
 }

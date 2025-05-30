@@ -8,6 +8,7 @@ import android.service.media.MediaBrowserService;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.util.Log;
 import androidx.annotation.RequiresApi;
+import androidx.media.MediaBrowserServiceCompatApi21;
 import androidx.media.MediaBrowserServiceCompatApi23;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.List;
 
 /* compiled from: Taobao */
 @RequiresApi(26)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class MediaBrowserServiceCompatApi26 {
     private static final String TAG = "MBSCompatApi26";
     static Field sResultFlags;
@@ -26,10 +27,9 @@ class MediaBrowserServiceCompatApi26 {
             super(context, serviceCompatProxy);
         }
 
-        @Override // android.service.media.MediaBrowserService
         public void onLoadChildren(String str, MediaBrowserService.Result<List<MediaBrowser.MediaItem>> result, Bundle bundle) {
             MediaSessionCompat.ensureClassLoader(bundle);
-            ((ServiceCompatProxy) this.mServiceProxy).onLoadChildren(str, new ResultWrapper(result), bundle);
+            ((ServiceCompatProxy) ((MediaBrowserServiceCompatApi21.MediaBrowserServiceAdaptor) this).mServiceProxy).onLoadChildren(str, new ResultWrapper(result), bundle);
         }
     }
 

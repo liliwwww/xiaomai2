@@ -4,27 +4,21 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Build;
 import android.util.Log;
-import dalvik.system.DexFile;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.zip.ZipFile;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class MultiDex {
     private static final String CODE_CACHE_NAME = "code_cache";
     private static final String CODE_CACHE_SECONDARY_FOLDER_NAME = "secondary-dexes";
@@ -37,182 +31,6 @@ public final class MultiDex {
     private static final int VM_WITH_MULTIDEX_VERSION_MINOR = 1;
     private static final Set<File> installedApk = new HashSet();
     private static final boolean IS_VM_MULTIDEX_CAPABLE = isVMMultidexCapable(System.getProperty("java.vm.version"));
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static final class V14 {
-        private static final int EXTRACTED_SUFFIX_LENGTH = 4;
-        private final ElementConstructor elementConstructor;
-
-        /* compiled from: Taobao */
-        /* loaded from: classes2.dex */
-        private interface ElementConstructor {
-            Object newInstance(File file, DexFile dexFile) throws IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException;
-        }
-
-        /* compiled from: Taobao */
-        private static class ICSElementConstructor implements ElementConstructor {
-            private final Constructor<?> elementConstructor;
-
-            ICSElementConstructor(Class<?> cls) throws SecurityException, NoSuchMethodException {
-                Constructor<?> constructor = cls.getConstructor(File.class, ZipFile.class, DexFile.class);
-                this.elementConstructor = constructor;
-                constructor.setAccessible(true);
-            }
-
-            @Override // androidx.multidex.MultiDex.V14.ElementConstructor
-            public Object newInstance(File file, DexFile dexFile) throws IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException {
-                return this.elementConstructor.newInstance(file, new ZipFile(file), dexFile);
-            }
-        }
-
-        /* compiled from: Taobao */
-        private static class JBMR11ElementConstructor implements ElementConstructor {
-            private final Constructor<?> elementConstructor;
-
-            JBMR11ElementConstructor(Class<?> cls) throws SecurityException, NoSuchMethodException {
-                Constructor<?> constructor = cls.getConstructor(File.class, File.class, DexFile.class);
-                this.elementConstructor = constructor;
-                constructor.setAccessible(true);
-            }
-
-            @Override // androidx.multidex.MultiDex.V14.ElementConstructor
-            public Object newInstance(File file, DexFile dexFile) throws IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException {
-                return this.elementConstructor.newInstance(file, file, dexFile);
-            }
-        }
-
-        /* compiled from: Taobao */
-        private static class JBMR2ElementConstructor implements ElementConstructor {
-            private final Constructor<?> elementConstructor;
-
-            JBMR2ElementConstructor(Class<?> cls) throws SecurityException, NoSuchMethodException {
-                Constructor<?> constructor = cls.getConstructor(File.class, Boolean.TYPE, File.class, DexFile.class);
-                this.elementConstructor = constructor;
-                constructor.setAccessible(true);
-            }
-
-            @Override // androidx.multidex.MultiDex.V14.ElementConstructor
-            public Object newInstance(File file, DexFile dexFile) throws IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException {
-                return this.elementConstructor.newInstance(file, Boolean.FALSE, file, dexFile);
-            }
-        }
-
-        private V14() throws ClassNotFoundException, SecurityException, NoSuchMethodException {
-            ElementConstructor jBMR2ElementConstructor;
-            Class<?> cls = Class.forName("dalvik.system.DexPathList$Element");
-            try {
-                try {
-                    jBMR2ElementConstructor = new ICSElementConstructor(cls);
-                } catch (NoSuchMethodException unused) {
-                    jBMR2ElementConstructor = new JBMR2ElementConstructor(cls);
-                }
-            } catch (NoSuchMethodException unused2) {
-                jBMR2ElementConstructor = new JBMR11ElementConstructor(cls);
-            }
-            this.elementConstructor = jBMR2ElementConstructor;
-        }
-
-        static void install(ClassLoader classLoader, List<? extends File> list) throws IOException, SecurityException, IllegalArgumentException, ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
-            Object obj = MultiDex.findField(classLoader, "pathList").get(classLoader);
-            Object[] makeDexElements = new V14().makeDexElements(list);
-            try {
-                MultiDex.expandFieldArray(obj, "dexElements", makeDexElements);
-            } catch (NoSuchFieldException e) {
-                Log.w(MultiDex.TAG, "Failed find field 'dexElements' attempting 'pathElements'", e);
-                MultiDex.expandFieldArray(obj, "pathElements", makeDexElements);
-            }
-        }
-
-        private Object[] makeDexElements(List<? extends File> list) throws IOException, SecurityException, IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException {
-            int size = list.size();
-            Object[] objArr = new Object[size];
-            for (int i = 0; i < size; i++) {
-                File file = list.get(i);
-                objArr[i] = this.elementConstructor.newInstance(file, DexFile.loadDex(file.getPath(), optimizedPathFor(file), 0));
-            }
-            return objArr;
-        }
-
-        private static String optimizedPathFor(File file) {
-            File parentFile = file.getParentFile();
-            String name = file.getName();
-            return new File(parentFile, name.substring(0, name.length() - EXTRACTED_SUFFIX_LENGTH) + ".dex").getPath();
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static final class V19 {
-        private V19() {
-        }
-
-        static void install(ClassLoader classLoader, List<? extends File> list, File file) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, InvocationTargetException, NoSuchMethodException, IOException {
-            IOException[] iOExceptionArr;
-            Object obj = MultiDex.findField(classLoader, "pathList").get(classLoader);
-            ArrayList arrayList = new ArrayList();
-            MultiDex.expandFieldArray(obj, "dexElements", makeDexElements(obj, new ArrayList(list), file, arrayList));
-            if (arrayList.size() > 0) {
-                Iterator it = arrayList.iterator();
-                while (it.hasNext()) {
-                    Log.w(MultiDex.TAG, "Exception in makeDexElement", (IOException) it.next());
-                }
-                Field findField = MultiDex.findField(obj, "dexElementsSuppressedExceptions");
-                IOException[] iOExceptionArr2 = (IOException[]) findField.get(obj);
-                if (iOExceptionArr2 == null) {
-                    iOExceptionArr = (IOException[]) arrayList.toArray(new IOException[arrayList.size()]);
-                } else {
-                    IOException[] iOExceptionArr3 = new IOException[arrayList.size() + iOExceptionArr2.length];
-                    arrayList.toArray(iOExceptionArr3);
-                    System.arraycopy(iOExceptionArr2, 0, iOExceptionArr3, arrayList.size(), iOExceptionArr2.length);
-                    iOExceptionArr = iOExceptionArr3;
-                }
-                findField.set(obj, iOExceptionArr);
-                IOException iOException = new IOException("I/O exception during makeDexElement");
-                iOException.initCause((Throwable) arrayList.get(0));
-                throw iOException;
-            }
-        }
-
-        private static Object[] makeDexElements(Object obj, ArrayList<File> arrayList, File file, ArrayList<IOException> arrayList2) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-            return (Object[]) MultiDex.findMethod(obj, "makeDexElements", ArrayList.class, File.class, ArrayList.class).invoke(obj, arrayList, file, arrayList2);
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* renamed from: androidx.multidex.MultiDex$V4 */
-    /* loaded from: classes.dex */
-    private static final class C1176V4 {
-        private C1176V4() {
-        }
-
-        static void install(ClassLoader classLoader, List<? extends File> list) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, IOException {
-            int size = list.size();
-            Field findField = MultiDex.findField(classLoader, "path");
-            StringBuilder sb = new StringBuilder((String) findField.get(classLoader));
-            String[] strArr = new String[size];
-            File[] fileArr = new File[size];
-            ZipFile[] zipFileArr = new ZipFile[size];
-            DexFile[] dexFileArr = new DexFile[size];
-            ListIterator<? extends File> listIterator = list.listIterator();
-            while (listIterator.hasNext()) {
-                File next = listIterator.next();
-                String absolutePath = next.getAbsolutePath();
-                sb.append(':');
-                sb.append(absolutePath);
-                int previousIndex = listIterator.previousIndex();
-                strArr[previousIndex] = absolutePath;
-                fileArr[previousIndex] = next;
-                zipFileArr[previousIndex] = new ZipFile(next);
-                dexFileArr[previousIndex] = DexFile.loadDex(absolutePath, absolutePath + ".dex", 0);
-            }
-            findField.set(classLoader, sb.toString());
-            MultiDex.expandFieldArray(classLoader, "mPaths", strArr);
-            MultiDex.expandFieldArray(classLoader, "mFiles", fileArr);
-            MultiDex.expandFieldArray(classLoader, "mZips", zipFileArr);
-            MultiDex.expandFieldArray(classLoader, "mDexs", dexFileArr);
-        }
-    }
 
     private MultiDex() {
     }
@@ -424,7 +242,7 @@ public final class MultiDex {
         } else if (i >= 14) {
             V14.install(classLoader, list);
         } else {
-            C1176V4.install(classLoader, list);
+            V4.install(classLoader, list);
         }
     }
 

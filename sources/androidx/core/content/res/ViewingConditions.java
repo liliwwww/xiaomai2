@@ -3,37 +3,31 @@ package androidx.core.content.res;
 import androidx.annotation.NonNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class ViewingConditions {
     static final ViewingConditions DEFAULT = make(CamUtils.WHITE_POINT_D65, (float) ((CamUtils.yFromLStar(50.0f) * 63.66197723675813d) / 100.0d), 50.0f, 2.0f, false);
     private final float mAw;
-
-    /* renamed from: mC */
-    private final float f295mC;
+    private final float mC;
     private final float mFl;
     private final float mFlRoot;
-
-    /* renamed from: mN */
-    private final float f296mN;
+    private final float mN;
     private final float mNbb;
     private final float mNc;
     private final float mNcb;
     private final float[] mRgbD;
-
-    /* renamed from: mZ */
-    private final float f297mZ;
+    private final float mZ;
 
     private ViewingConditions(float f, float f2, float f3, float f4, float f5, float f6, float[] fArr, float f7, float f8, float f9) {
-        this.f296mN = f;
+        this.mN = f;
         this.mAw = f2;
         this.mNbb = f3;
         this.mNcb = f4;
-        this.f295mC = f5;
+        this.mC = f5;
         this.mNc = f6;
         this.mRgbD = fArr;
         this.mFl = f7;
         this.mFlRoot = f8;
-        this.f297mZ = f9;
+        this.mZ = f9;
     }
 
     @NonNull
@@ -70,7 +64,7 @@ final class ViewingConditions {
     }
 
     float getC() {
-        return this.f295mC;
+        return this.mC;
     }
 
     float getFl() {
@@ -82,7 +76,7 @@ final class ViewingConditions {
     }
 
     float getN() {
-        return this.f296mN;
+        return this.mN;
     }
 
     float getNbb() {
@@ -103,6 +97,6 @@ final class ViewingConditions {
     }
 
     float getZ() {
-        return this.f297mZ;
+        return this.mZ;
     }
 }

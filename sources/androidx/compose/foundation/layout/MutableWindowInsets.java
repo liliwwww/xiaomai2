@@ -1,10 +1,11 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -12,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
 @ExperimentalLayoutApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class MutableWindowInsets implements WindowInsets {
     public static final int $stable = 0;
 
@@ -22,7 +23,7 @@ public final class MutableWindowInsets implements WindowInsets {
     /* JADX WARN: Illegal instructions before constructor call */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public MutableWindowInsets() {
         /*
@@ -37,10 +38,9 @@ public final class MutableWindowInsets implements WindowInsets {
 
     public MutableWindowInsets(@NotNull WindowInsets windowInsets) {
         Intrinsics.checkNotNullParameter(windowInsets, "initialInsets");
-        this.insets$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(windowInsets, null, 2, null);
+        this.insets$delegate = SnapshotStateKt.mutableStateOf$default(windowInsets, (SnapshotMutationPolicy) null, 2, (Object) null);
     }
 
-    @Override // androidx.compose.foundation.layout.WindowInsets
     public int getBottom(@NotNull Density density) {
         Intrinsics.checkNotNullParameter(density, "density");
         return getInsets().getBottom(density);
@@ -51,21 +51,18 @@ public final class MutableWindowInsets implements WindowInsets {
         return (WindowInsets) this.insets$delegate.getValue();
     }
 
-    @Override // androidx.compose.foundation.layout.WindowInsets
     public int getLeft(@NotNull Density density, @NotNull LayoutDirection layoutDirection) {
         Intrinsics.checkNotNullParameter(density, "density");
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
         return getInsets().getLeft(density, layoutDirection);
     }
 
-    @Override // androidx.compose.foundation.layout.WindowInsets
     public int getRight(@NotNull Density density, @NotNull LayoutDirection layoutDirection) {
         Intrinsics.checkNotNullParameter(density, "density");
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
         return getInsets().getRight(density, layoutDirection);
     }
 
-    @Override // androidx.compose.foundation.layout.WindowInsets
     public int getTop(@NotNull Density density) {
         Intrinsics.checkNotNullParameter(density, "density");
         return getInsets().getTop(density);

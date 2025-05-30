@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.hu2;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface MonotonicFrameClock extends CoroutineContext.Element {
 
     @NotNull

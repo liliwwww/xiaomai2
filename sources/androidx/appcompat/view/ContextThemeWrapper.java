@@ -7,13 +7,12 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.view.LayoutInflater;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.StyleRes;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R$style;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ContextThemeWrapper extends ContextWrapper {
     private static Configuration sEmptyConfig;
     private LayoutInflater mInflater;
@@ -21,19 +20,6 @@ public class ContextThemeWrapper extends ContextWrapper {
     private Resources mResources;
     private Resources.Theme mTheme;
     private int mThemeResource;
-
-    /* compiled from: Taobao */
-    @RequiresApi(17)
-    /* loaded from: classes.dex */
-    static class Api17Impl {
-        private Api17Impl() {
-        }
-
-        @DoNotInline
-        static Context createConfigurationContext(ContextThemeWrapper contextThemeWrapper, Configuration configuration) {
-            return contextThemeWrapper.createConfigurationContext(configuration);
-        }
-    }
 
     public ContextThemeWrapper() {
         super(null);
@@ -125,7 +111,7 @@ public class ContextThemeWrapper extends ContextWrapper {
             return theme;
         }
         if (this.mThemeResource == 0) {
-            this.mThemeResource = C0257R.style.Theme_AppCompat_Light;
+            this.mThemeResource = R$style.Theme_AppCompat_Light;
         }
         initializeTheme();
         return this.mTheme;

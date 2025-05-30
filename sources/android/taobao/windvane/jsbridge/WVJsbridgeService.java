@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVJsbridgeService {
     private static List<WVJSAPIAuthCheck> mPreprocessor = new CopyOnWriteArrayList();
     private static List<WVAsyncAuthCheck> mAyncPreprocessor = new CopyOnWriteArrayList();

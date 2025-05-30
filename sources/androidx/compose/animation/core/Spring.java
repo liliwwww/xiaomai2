@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class Spring {
     public static final int $stable = 0;
     public static final float DampingRatioHighBouncy = 0.2f;

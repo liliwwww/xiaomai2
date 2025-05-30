@@ -5,7 +5,7 @@ import com.taobao.analysis.v3.FalcoStage;
 import com.taobao.opentracing.api.SpanContext;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class SpanWrapper {
     FalcoSpan falcoSpan;
 

@@ -4,7 +4,7 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class FlexBuffers {
     static final /* synthetic */ boolean $assertionsDisabled = false;
     private static final ReadBuf EMPTY_BB = new ArrayReadWriteBuf(new byte[]{0}, 1);
@@ -51,21 +51,21 @@ public class FlexBuffers {
         }
 
         public ByteBuffer data() {
-            ByteBuffer wrap = ByteBuffer.wrap(this.f361bb.data());
-            wrap.position(this.end);
-            wrap.limit(this.end + size());
+            ByteBuffer wrap = ByteBuffer.wrap(((Object) this).bb.data());
+            wrap.position(((Object) this).end);
+            wrap.limit(((Object) this).end + size());
             return wrap.asReadOnlyBuffer().slice();
         }
 
         public byte get(int i) {
-            return this.f361bb.get(this.end + i);
+            return ((Object) this).bb.get(((Object) this).end + i);
         }
 
         public byte[] getBytes() {
             int size = size();
             byte[] bArr = new byte[size];
             for (int i = 0; i < size; i++) {
-                bArr[i] = this.f361bb.get(this.end + i);
+                bArr[i] = ((Object) this).bb.get(((Object) this).end + i);
             }
             return bArr;
         }
@@ -75,15 +75,13 @@ public class FlexBuffers {
             return super.size();
         }
 
-        @Override // androidx.emoji2.text.flatbuffer.FlexBuffers.Object
         public String toString() {
-            return this.f361bb.getString(this.end, size());
+            return ((Object) this).bb.getString(((Object) this).end, size());
         }
 
-        @Override // androidx.emoji2.text.flatbuffer.FlexBuffers.Object
         public StringBuilder toString(StringBuilder sb) {
             sb.append('\"');
-            sb.append(this.f361bb.getString(this.end, size()));
+            sb.append(((Object) this).bb.getString(((Object) this).end, size()));
             sb.append('\"');
             return sb;
         }
@@ -111,10 +109,10 @@ public class FlexBuffers {
         int compareTo(byte[] bArr) {
             byte b;
             byte b2;
-            int i = this.end;
+            int i = ((Object) this).end;
             int i2 = 0;
             do {
-                b = this.f361bb.get(i);
+                b = ((Object) this).bb.get(i);
                 b2 = bArr[i2];
                 if (b == 0) {
                     return b - b2;
@@ -128,70 +126,30 @@ public class FlexBuffers {
             return b - b2;
         }
 
-        public boolean equals(java.lang.Object obj) {
+        public boolean equals(Object obj) {
             if (!(obj instanceof Key)) {
                 return false;
             }
             Key key = (Key) obj;
-            return key.end == this.end && key.byteWidth == this.byteWidth;
+            return ((Object) key).end == ((Object) this).end && ((Object) key).byteWidth == ((Object) this).byteWidth;
         }
 
         public int hashCode() {
-            return this.end ^ this.byteWidth;
+            return ((Object) this).end ^ ((Object) this).byteWidth;
         }
 
-        @Override // androidx.emoji2.text.flatbuffer.FlexBuffers.Object
         public StringBuilder toString(StringBuilder sb) {
             sb.append(toString());
             return sb;
         }
 
-        @Override // androidx.emoji2.text.flatbuffer.FlexBuffers.Object
         public String toString() {
-            int i = this.end;
-            while (this.f361bb.get(i) != 0) {
+            int i = ((Object) this).end;
+            while (((Object) this).bb.get(i) != 0) {
                 i++;
             }
-            int i2 = this.end;
-            return this.f361bb.getString(i2, i - i2);
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class KeyVector {
-        private final TypedVector vec;
-
-        KeyVector(TypedVector typedVector) {
-            this.vec = typedVector;
-        }
-
-        public Key get(int i) {
-            if (i >= size()) {
-                return Key.EMPTY;
-            }
-            TypedVector typedVector = this.vec;
-            int i2 = typedVector.end + (i * typedVector.byteWidth);
-            TypedVector typedVector2 = this.vec;
-            ReadBuf readBuf = typedVector2.f361bb;
-            return new Key(readBuf, FlexBuffers.indirect(readBuf, i2, typedVector2.byteWidth), 1);
-        }
-
-        public int size() {
-            return this.vec.size();
-        }
-
-        public String toString() {
-            StringBuilder sb = new StringBuilder();
-            sb.append('[');
-            for (int i = 0; i < this.vec.size(); i++) {
-                this.vec.get(i).toString(sb);
-                if (i != this.vec.size() - 1) {
-                    sb.append(", ");
-                }
-            }
-            sb.append("]");
-            return sb.toString();
+            int i2 = ((Object) this).end;
+            return ((Object) this).bb.getString(i2, i - i2);
         }
     }
 
@@ -230,15 +188,14 @@ public class FlexBuffers {
         }
 
         public KeyVector keys() {
-            int i = this.end - (this.byteWidth * 3);
-            ReadBuf readBuf = this.f361bb;
-            int indirect = FlexBuffers.indirect(readBuf, i, this.byteWidth);
-            ReadBuf readBuf2 = this.f361bb;
-            int i2 = this.byteWidth;
+            int i = ((Object) this).end - (((Object) this).byteWidth * 3);
+            ReadBuf readBuf = ((Object) this).bb;
+            int indirect = FlexBuffers.indirect(readBuf, i, ((Object) this).byteWidth);
+            ReadBuf readBuf2 = ((Object) this).bb;
+            int i2 = ((Object) this).byteWidth;
             return new KeyVector(new TypedVector(readBuf, indirect, FlexBuffers.readInt(readBuf2, i + i2, i2), 4));
         }
 
-        @Override // androidx.emoji2.text.flatbuffer.FlexBuffers.Vector, androidx.emoji2.text.flatbuffer.FlexBuffers.Object
         public StringBuilder toString(StringBuilder sb) {
             sb.append("{ ");
             KeyVector keys = keys();
@@ -258,7 +215,7 @@ public class FlexBuffers {
         }
 
         public Vector values() {
-            return new Vector(this.f361bb, this.end, this.byteWidth);
+            return new Vector(((Object) this).bb, ((Object) this).end, ((Object) this).byteWidth);
         }
 
         public Reference get(byte[] bArr) {
@@ -270,33 +227,9 @@ public class FlexBuffers {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static abstract class Object {
-
-        /* renamed from: bb */
-        ReadBuf f361bb;
-        int byteWidth;
-        int end;
-
-        Object(ReadBuf readBuf, int i, int i2) {
-            this.f361bb = readBuf;
-            this.end = i;
-            this.byteWidth = i2;
-        }
-
-        public String toString() {
-            return toString(new StringBuilder(128)).toString();
-        }
-
-        public abstract StringBuilder toString(StringBuilder sb);
-    }
-
-    /* compiled from: Taobao */
     public static class Reference {
         private static final Reference NULL_REFERENCE = new Reference(FlexBuffers.EMPTY_BB, 0, 1, 0);
-
-        /* renamed from: bb */
-        private ReadBuf f362bb;
+        private ReadBuf bb;
         private int byteWidth;
         private int end;
         private int parentWidth;
@@ -310,36 +243,36 @@ public class FlexBuffers {
             if (!isBlob() && !isString()) {
                 return Blob.empty();
             }
-            ReadBuf readBuf = this.f362bb;
+            ReadBuf readBuf = this.bb;
             return new Blob(readBuf, FlexBuffers.indirect(readBuf, this.end, this.parentWidth), this.byteWidth);
         }
 
         public boolean asBoolean() {
-            return isBoolean() ? this.f362bb.get(this.end) != 0 : asUInt() != 0;
+            return isBoolean() ? this.bb.get(this.end) != 0 : asUInt() != 0;
         }
 
         public double asFloat() {
             int i = this.type;
             if (i == 3) {
-                return FlexBuffers.readDouble(this.f362bb, this.end, this.parentWidth);
+                return FlexBuffers.readDouble(this.bb, this.end, this.parentWidth);
             }
             if (i == 1) {
-                return FlexBuffers.readInt(this.f362bb, this.end, this.parentWidth);
+                return FlexBuffers.readInt(this.bb, this.end, this.parentWidth);
             }
             if (i != 2) {
                 if (i == 5) {
                     return Double.parseDouble(asString());
                 }
                 if (i == 6) {
-                    ReadBuf readBuf = this.f362bb;
+                    ReadBuf readBuf = this.bb;
                     return FlexBuffers.readInt(readBuf, FlexBuffers.indirect(readBuf, this.end, this.parentWidth), this.byteWidth);
                 }
                 if (i == 7) {
-                    ReadBuf readBuf2 = this.f362bb;
+                    ReadBuf readBuf2 = this.bb;
                     return FlexBuffers.readUInt(readBuf2, FlexBuffers.indirect(readBuf2, this.end, this.parentWidth), this.byteWidth);
                 }
                 if (i == 8) {
-                    ReadBuf readBuf3 = this.f362bb;
+                    ReadBuf readBuf3 = this.bb;
                     return FlexBuffers.readDouble(readBuf3, FlexBuffers.indirect(readBuf3, this.end, this.parentWidth), this.byteWidth);
                 }
                 if (i == 10) {
@@ -349,31 +282,31 @@ public class FlexBuffers {
                     return 0.0d;
                 }
             }
-            return FlexBuffers.readUInt(this.f362bb, this.end, this.parentWidth);
+            return FlexBuffers.readUInt(this.bb, this.end, this.parentWidth);
         }
 
         public int asInt() {
             long readUInt;
             int i = this.type;
             if (i == 1) {
-                return FlexBuffers.readInt(this.f362bb, this.end, this.parentWidth);
+                return FlexBuffers.readInt(this.bb, this.end, this.parentWidth);
             }
             if (i == 2) {
-                readUInt = FlexBuffers.readUInt(this.f362bb, this.end, this.parentWidth);
+                readUInt = FlexBuffers.readUInt(this.bb, this.end, this.parentWidth);
             } else {
                 if (i == 3) {
-                    return (int) FlexBuffers.readDouble(this.f362bb, this.end, this.parentWidth);
+                    return (int) FlexBuffers.readDouble(this.bb, this.end, this.parentWidth);
                 }
                 if (i == 5) {
                     return Integer.parseInt(asString());
                 }
                 if (i == 6) {
-                    ReadBuf readBuf = this.f362bb;
+                    ReadBuf readBuf = this.bb;
                     return FlexBuffers.readInt(readBuf, FlexBuffers.indirect(readBuf, this.end, this.parentWidth), this.byteWidth);
                 }
                 if (i != 7) {
                     if (i == 8) {
-                        ReadBuf readBuf2 = this.f362bb;
+                        ReadBuf readBuf2 = this.bb;
                         return (int) FlexBuffers.readDouble(readBuf2, FlexBuffers.indirect(readBuf2, this.end, this.parentWidth), this.byteWidth);
                     }
                     if (i == 10) {
@@ -382,9 +315,9 @@ public class FlexBuffers {
                     if (i != 26) {
                         return 0;
                     }
-                    return FlexBuffers.readInt(this.f362bb, this.end, this.parentWidth);
+                    return FlexBuffers.readInt(this.bb, this.end, this.parentWidth);
                 }
-                ReadBuf readBuf3 = this.f362bb;
+                ReadBuf readBuf3 = this.bb;
                 readUInt = FlexBuffers.readUInt(readBuf3, FlexBuffers.indirect(readBuf3, this.end, this.parentWidth), this.parentWidth);
             }
             return (int) readUInt;
@@ -394,20 +327,20 @@ public class FlexBuffers {
             if (!isKey()) {
                 return Key.empty();
             }
-            ReadBuf readBuf = this.f362bb;
+            ReadBuf readBuf = this.bb;
             return new Key(readBuf, FlexBuffers.indirect(readBuf, this.end, this.parentWidth), this.byteWidth);
         }
 
         public long asLong() {
             int i = this.type;
             if (i == 1) {
-                return FlexBuffers.readLong(this.f362bb, this.end, this.parentWidth);
+                return FlexBuffers.readLong(this.bb, this.end, this.parentWidth);
             }
             if (i == 2) {
-                return FlexBuffers.readUInt(this.f362bb, this.end, this.parentWidth);
+                return FlexBuffers.readUInt(this.bb, this.end, this.parentWidth);
             }
             if (i == 3) {
-                return (long) FlexBuffers.readDouble(this.f362bb, this.end, this.parentWidth);
+                return (long) FlexBuffers.readDouble(this.bb, this.end, this.parentWidth);
             }
             if (i == 5) {
                 try {
@@ -417,15 +350,15 @@ public class FlexBuffers {
                 }
             }
             if (i == 6) {
-                ReadBuf readBuf = this.f362bb;
+                ReadBuf readBuf = this.bb;
                 return FlexBuffers.readLong(readBuf, FlexBuffers.indirect(readBuf, this.end, this.parentWidth), this.byteWidth);
             }
             if (i == 7) {
-                ReadBuf readBuf2 = this.f362bb;
+                ReadBuf readBuf2 = this.bb;
                 return FlexBuffers.readUInt(readBuf2, FlexBuffers.indirect(readBuf2, this.end, this.parentWidth), this.parentWidth);
             }
             if (i == 8) {
-                ReadBuf readBuf3 = this.f362bb;
+                ReadBuf readBuf3 = this.bb;
                 return (long) FlexBuffers.readDouble(readBuf3, FlexBuffers.indirect(readBuf3, this.end, this.parentWidth), this.byteWidth);
             }
             if (i == 10) {
@@ -434,84 +367,84 @@ public class FlexBuffers {
             if (i != 26) {
                 return 0L;
             }
-            return FlexBuffers.readInt(this.f362bb, this.end, this.parentWidth);
+            return FlexBuffers.readInt(this.bb, this.end, this.parentWidth);
         }
 
         public Map asMap() {
             if (!isMap()) {
                 return Map.empty();
             }
-            ReadBuf readBuf = this.f362bb;
+            ReadBuf readBuf = this.bb;
             return new Map(readBuf, FlexBuffers.indirect(readBuf, this.end, this.parentWidth), this.byteWidth);
         }
 
         public String asString() {
             if (isString()) {
-                int indirect = FlexBuffers.indirect(this.f362bb, this.end, this.parentWidth);
-                ReadBuf readBuf = this.f362bb;
+                int indirect = FlexBuffers.indirect(this.bb, this.end, this.parentWidth);
+                ReadBuf readBuf = this.bb;
                 int i = this.byteWidth;
-                return this.f362bb.getString(indirect, (int) FlexBuffers.readUInt(readBuf, indirect - i, i));
+                return this.bb.getString(indirect, (int) FlexBuffers.readUInt(readBuf, indirect - i, i));
             }
             if (!isKey()) {
                 return "";
             }
-            int indirect2 = FlexBuffers.indirect(this.f362bb, this.end, this.byteWidth);
+            int indirect2 = FlexBuffers.indirect(this.bb, this.end, this.byteWidth);
             int i2 = indirect2;
-            while (this.f362bb.get(i2) != 0) {
+            while (this.bb.get(i2) != 0) {
                 i2++;
             }
-            return this.f362bb.getString(indirect2, i2 - indirect2);
+            return this.bb.getString(indirect2, i2 - indirect2);
         }
 
         public long asUInt() {
             int i = this.type;
             if (i == 2) {
-                return FlexBuffers.readUInt(this.f362bb, this.end, this.parentWidth);
+                return FlexBuffers.readUInt(this.bb, this.end, this.parentWidth);
             }
             if (i == 1) {
-                return FlexBuffers.readLong(this.f362bb, this.end, this.parentWidth);
+                return FlexBuffers.readLong(this.bb, this.end, this.parentWidth);
             }
             if (i == 3) {
-                return (long) FlexBuffers.readDouble(this.f362bb, this.end, this.parentWidth);
+                return (long) FlexBuffers.readDouble(this.bb, this.end, this.parentWidth);
             }
             if (i == 10) {
                 return asVector().size();
             }
             if (i == 26) {
-                return FlexBuffers.readInt(this.f362bb, this.end, this.parentWidth);
+                return FlexBuffers.readInt(this.bb, this.end, this.parentWidth);
             }
             if (i == 5) {
                 return Long.parseLong(asString());
             }
             if (i == 6) {
-                ReadBuf readBuf = this.f362bb;
+                ReadBuf readBuf = this.bb;
                 return FlexBuffers.readLong(readBuf, FlexBuffers.indirect(readBuf, this.end, this.parentWidth), this.byteWidth);
             }
             if (i == 7) {
-                ReadBuf readBuf2 = this.f362bb;
+                ReadBuf readBuf2 = this.bb;
                 return FlexBuffers.readUInt(readBuf2, FlexBuffers.indirect(readBuf2, this.end, this.parentWidth), this.byteWidth);
             }
             if (i != 8) {
                 return 0L;
             }
-            ReadBuf readBuf3 = this.f362bb;
+            ReadBuf readBuf3 = this.bb;
             return (long) FlexBuffers.readDouble(readBuf3, FlexBuffers.indirect(readBuf3, this.end, this.parentWidth), this.parentWidth);
         }
 
         public Vector asVector() {
             if (isVector()) {
-                ReadBuf readBuf = this.f362bb;
+                ReadBuf readBuf = this.bb;
                 return new Vector(readBuf, FlexBuffers.indirect(readBuf, this.end, this.parentWidth), this.byteWidth);
             }
             int i = this.type;
             if (i == 15) {
-                ReadBuf readBuf2 = this.f362bb;
+                ReadBuf readBuf2 = this.bb;
                 return new TypedVector(readBuf2, FlexBuffers.indirect(readBuf2, this.end, this.parentWidth), this.byteWidth, 4);
             }
             if (!FlexBuffers.isTypedVector(i)) {
                 return Vector.empty();
             }
-            ReadBuf readBuf3 = this.f362bb;
+            ReadBuf readBuf3 = this.bb;
             return new TypedVector(readBuf3, FlexBuffers.indirect(readBuf3, this.end, this.parentWidth), this.byteWidth, FlexBuffers.toTypedVectorElementType(this.type));
         }
 
@@ -580,7 +513,7 @@ public class FlexBuffers {
         }
 
         Reference(ReadBuf readBuf, int i, int i2, int i3, int i4) {
-            this.f362bb = readBuf;
+            this.bb = readBuf;
             this.end = i;
             this.parentWidth = i2;
             this.byteWidth = i3;
@@ -657,7 +590,7 @@ public class FlexBuffers {
 
         Sized(ReadBuf readBuf, int i, int i2) {
             super(readBuf, i, i2);
-            this.size = FlexBuffers.readInt(this.f361bb, i - i2, i2);
+            this.size = FlexBuffers.readInt(((Object) this).bb, i - i2, i2);
         }
 
         public int size() {
@@ -679,12 +612,11 @@ public class FlexBuffers {
             return EMPTY_VECTOR;
         }
 
-        @Override // androidx.emoji2.text.flatbuffer.FlexBuffers.Vector
         public Reference get(int i) {
             if (i >= size()) {
                 return Reference.NULL_REFERENCE;
             }
-            return new Reference(this.f361bb, this.end + (i * this.byteWidth), this.byteWidth, 1, this.elemType);
+            return new Reference(((Object) this).bb, ((Object) this).end + (i * ((Object) this).byteWidth), ((Object) this).byteWidth, 1, this.elemType);
         }
 
         public int getElemType() {
@@ -696,79 +628,9 @@ public class FlexBuffers {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class Unsigned {
-        Unsigned() {
-        }
-
-        static int byteToUnsignedInt(byte b) {
-            return b & 255;
-        }
-
-        static long intToUnsignedLong(int i) {
-            return i & 4294967295L;
-        }
-
-        static int shortToUnsignedInt(short s) {
-            return s & 65535;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class Vector extends Sized {
-        private static final Vector EMPTY_VECTOR = new Vector(FlexBuffers.EMPTY_BB, 1, 1);
-
-        Vector(ReadBuf readBuf, int i, int i2) {
-            super(readBuf, i, i2);
-        }
-
-        public static Vector empty() {
-            return EMPTY_VECTOR;
-        }
-
-        public Reference get(int i) {
-            long size = size();
-            long j = i;
-            if (j >= size) {
-                return Reference.NULL_REFERENCE;
-            }
-            return new Reference(this.f361bb, this.end + (i * this.byteWidth), this.byteWidth, Unsigned.byteToUnsignedInt(this.f361bb.get((int) (this.end + (size * this.byteWidth) + j))));
-        }
-
-        public boolean isEmpty() {
-            return this == EMPTY_VECTOR;
-        }
-
-        @Override // androidx.emoji2.text.flatbuffer.FlexBuffers.Sized
-        public /* bridge */ /* synthetic */ int size() {
-            return super.size();
-        }
-
-        @Override // androidx.emoji2.text.flatbuffer.FlexBuffers.Object
-        public /* bridge */ /* synthetic */ String toString() {
-            return super.toString();
-        }
-
-        @Override // androidx.emoji2.text.flatbuffer.FlexBuffers.Object
-        public StringBuilder toString(StringBuilder sb) {
-            sb.append("[ ");
-            int size = size();
-            for (int i = 0; i < size; i++) {
-                get(i).toString(sb);
-                if (i != size - 1) {
-                    sb.append(", ");
-                }
-            }
-            sb.append(" ]");
-            return sb;
-        }
-    }
-
     @Deprecated
     public static Reference getRoot(ByteBuffer byteBuffer) {
-        return getRoot(byteBuffer.hasArray() ? new ArrayReadWriteBuf(byteBuffer.array(), byteBuffer.limit()) : new ByteBufferReadWriteBuf(byteBuffer));
+        return getRoot((ReadBuf) (byteBuffer.hasArray() ? new ArrayReadWriteBuf(byteBuffer.array(), byteBuffer.limit()) : new ByteBufferReadWriteBuf(byteBuffer)));
     }
 
     /* JADX INFO: Access modifiers changed from: private */

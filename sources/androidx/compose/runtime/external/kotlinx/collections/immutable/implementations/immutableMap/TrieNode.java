@@ -5,7 +5,6 @@ import androidx.compose.runtime.external.kotlinx.collections.immutable.internal.
 import androidx.compose.runtime.external.kotlinx.collections.immutable.internal.MutabilityOwnership;
 import java.util.Arrays;
 import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function5;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
@@ -15,11 +14,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TrieNode<K, V> {
 
     @NotNull
-    public static final Companion Companion = new Companion(null);
+    public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
 
     @NotNull
     private static final TrieNode EMPTY = new TrieNode(0, 0, new Object[0]);
@@ -31,58 +30,6 @@ public final class TrieNode<K, V> {
 
     @Nullable
     private final MutabilityOwnership ownedBy;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class Companion {
-        private Companion() {
-        }
-
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-
-        @NotNull
-        public final TrieNode getEMPTY$runtime_release() {
-            return TrieNode.EMPTY;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class ModificationResult<K, V> {
-
-        @NotNull
-        private TrieNode<K, V> node;
-        private final int sizeDelta;
-
-        public ModificationResult(@NotNull TrieNode<K, V> trieNode, int i) {
-            Intrinsics.checkNotNullParameter(trieNode, "node");
-            this.node = trieNode;
-            this.sizeDelta = i;
-        }
-
-        @NotNull
-        public final TrieNode<K, V> getNode() {
-            return this.node;
-        }
-
-        public final int getSizeDelta() {
-            return this.sizeDelta;
-        }
-
-        @NotNull
-        public final ModificationResult<K, V> replaceNode(@NotNull Function1<? super TrieNode<K, V>, TrieNode<K, V>> function1) {
-            Intrinsics.checkNotNullParameter(function1, "operation");
-            setNode((TrieNode) function1.invoke(getNode()));
-            return this;
-        }
-
-        public final void setNode(@NotNull TrieNode<K, V> trieNode) {
-            Intrinsics.checkNotNullParameter(trieNode, "<set-?>");
-            this.node = trieNode;
-        }
-    }
 
     public TrieNode(int i, int i2, @NotNull Object[] objArr, @Nullable MutabilityOwnership mutabilityOwnership) {
         Intrinsics.checkNotNullParameter(objArr, "buffer");
@@ -111,10 +58,8 @@ public final class TrieNode<K, V> {
     }
 
     private final Object[] bufferMoveEntryToNode(int i, int i2, int i3, K k, V v, int i4, MutabilityOwnership mutabilityOwnership) {
-        Object[] replaceEntryWithNode;
         K keyAtIndex = keyAtIndex(i);
-        replaceEntryWithNode = TrieNodeKt.replaceEntryWithNode(this.buffer, i, nodeIndex$runtime_release(i2) + 1, makeNode(keyAtIndex != null ? keyAtIndex.hashCode() : 0, keyAtIndex, valueAtKeyIndex(i), i3, k, v, i4 + 5, mutabilityOwnership));
-        return replaceEntryWithNode;
+        return TrieNodeKt.access$replaceEntryWithNode(this.buffer, i, nodeIndex$runtime_release(i2) + 1, makeNode(keyAtIndex != null ? keyAtIndex.hashCode() : 0, keyAtIndex, valueAtKeyIndex(i), i3, k, v, i4 + 5, mutabilityOwnership));
     }
 
     private final int calculateSize() {
@@ -163,7 +108,6 @@ public final class TrieNode<K, V> {
     }
 
     private final ModificationResult<K, V> collisionPut(K k, V v) {
-        Object[] insertEntryAtIndex;
         IntProgression step = RangesKt.step(RangesKt.until(0, this.buffer.length), 2);
         int first = step.getFirst();
         int last = step.getLast();
@@ -183,8 +127,7 @@ public final class TrieNode<K, V> {
             copyOf[first + 1] = v;
             return new TrieNode(0, 0, copyOf).asUpdateResult();
         }
-        insertEntryAtIndex = TrieNodeKt.insertEntryAtIndex(this.buffer, 0, k, v);
-        return new TrieNode(0, 0, insertEntryAtIndex).asInsertResult();
+        return new TrieNode(0, 0, TrieNodeKt.access$insertEntryAtIndex(this.buffer, 0, k, v)).asInsertResult();
     }
 
     private final TrieNode<K, V> collisionRemove(K k) {
@@ -204,13 +147,11 @@ public final class TrieNode<K, V> {
     }
 
     private final TrieNode<K, V> collisionRemoveEntryAtIndex(int i) {
-        Object[] removeEntryAtIndex;
         Object[] objArr = this.buffer;
         if (objArr.length == 2) {
             return null;
         }
-        removeEntryAtIndex = TrieNodeKt.removeEntryAtIndex(objArr, i);
-        return new TrieNode<>(0, 0, removeEntryAtIndex);
+        return new TrieNode<>(0, 0, TrieNodeKt.access$removeEntryAtIndex(objArr, i));
     }
 
     private final boolean elementsIdentityEquals(TrieNode<K, V> trieNode) {
@@ -234,9 +175,7 @@ public final class TrieNode<K, V> {
     }
 
     private final TrieNode<K, V> insertEntryAt(int i, K k, V v) {
-        Object[] insertEntryAtIndex;
-        insertEntryAtIndex = TrieNodeKt.insertEntryAtIndex(this.buffer, entryKeyIndex$runtime_release(i), k, v);
-        return new TrieNode<>(i | this.dataMap, this.nodeMap, insertEntryAtIndex);
+        return new TrieNode<>(i | this.dataMap, this.nodeMap, TrieNodeKt.access$insertEntryAtIndex(this.buffer, entryKeyIndex$runtime_release(i), k, v));
     }
 
     private final K keyAtIndex(int i) {
@@ -260,7 +199,6 @@ public final class TrieNode<K, V> {
     }
 
     private final TrieNode<K, V> mutableCollisionPut(K k, V v, PersistentHashMapBuilder<K, V> persistentHashMapBuilder) {
-        Object[] insertEntryAtIndex;
         IntProgression step = RangesKt.step(RangesKt.until(0, this.buffer.length), 2);
         int first = step.getFirst();
         int last = step.getLast();
@@ -284,16 +222,15 @@ public final class TrieNode<K, V> {
             return new TrieNode<>(0, 0, copyOf, persistentHashMapBuilder.getOwnership$runtime_release());
         }
         persistentHashMapBuilder.setSize(persistentHashMapBuilder.size() + 1);
-        insertEntryAtIndex = TrieNodeKt.insertEntryAtIndex(this.buffer, 0, k, v);
-        return new TrieNode<>(0, 0, insertEntryAtIndex, persistentHashMapBuilder.getOwnership$runtime_release());
+        return new TrieNode<>(0, 0, TrieNodeKt.access$insertEntryAtIndex(this.buffer, 0, k, v), persistentHashMapBuilder.getOwnership$runtime_release());
     }
 
     /* JADX WARN: Multi-variable type inference failed */
     private final TrieNode<K, V> mutableCollisionPutAll(TrieNode<K, V> trieNode, DeltaCounter deltaCounter, MutabilityOwnership mutabilityOwnership) {
-        CommonFunctionsKt.m2432assert(this.nodeMap == 0);
-        CommonFunctionsKt.m2432assert(this.dataMap == 0);
-        CommonFunctionsKt.m2432assert(trieNode.nodeMap == 0);
-        CommonFunctionsKt.m2432assert(trieNode.dataMap == 0);
+        CommonFunctionsKt.assert(this.nodeMap == 0);
+        CommonFunctionsKt.assert(this.dataMap == 0);
+        CommonFunctionsKt.assert(trieNode.nodeMap == 0);
+        CommonFunctionsKt.assert(trieNode.dataMap == 0);
         Object[] objArr = this.buffer;
         Object[] copyOf = Arrays.copyOf(objArr, objArr.length + trieNode.buffer.length);
         Intrinsics.checkNotNullExpressionValue(copyOf, "copyOf(this, newSize)");
@@ -349,32 +286,24 @@ public final class TrieNode<K, V> {
     }
 
     private final TrieNode<K, V> mutableCollisionRemoveEntryAtIndex(int i, PersistentHashMapBuilder<K, V> persistentHashMapBuilder) {
-        Object[] removeEntryAtIndex;
-        Object[] removeEntryAtIndex2;
         persistentHashMapBuilder.setSize(persistentHashMapBuilder.size() - 1);
         persistentHashMapBuilder.setOperationResult$runtime_release(valueAtKeyIndex(i));
         if (this.buffer.length == 2) {
             return null;
         }
         if (this.ownedBy != persistentHashMapBuilder.getOwnership$runtime_release()) {
-            removeEntryAtIndex = TrieNodeKt.removeEntryAtIndex(this.buffer, i);
-            return new TrieNode<>(0, 0, removeEntryAtIndex, persistentHashMapBuilder.getOwnership$runtime_release());
+            return new TrieNode<>(0, 0, TrieNodeKt.access$removeEntryAtIndex(this.buffer, i), persistentHashMapBuilder.getOwnership$runtime_release());
         }
-        removeEntryAtIndex2 = TrieNodeKt.removeEntryAtIndex(this.buffer, i);
-        this.buffer = removeEntryAtIndex2;
+        this.buffer = TrieNodeKt.access$removeEntryAtIndex(this.buffer, i);
         return this;
     }
 
     private final TrieNode<K, V> mutableInsertEntryAt(int i, K k, V v, MutabilityOwnership mutabilityOwnership) {
-        Object[] insertEntryAtIndex;
-        Object[] insertEntryAtIndex2;
         int entryKeyIndex$runtime_release = entryKeyIndex$runtime_release(i);
         if (this.ownedBy != mutabilityOwnership) {
-            insertEntryAtIndex = TrieNodeKt.insertEntryAtIndex(this.buffer, entryKeyIndex$runtime_release, k, v);
-            return new TrieNode<>(i | this.dataMap, this.nodeMap, insertEntryAtIndex, mutabilityOwnership);
+            return new TrieNode<>(i | this.dataMap, this.nodeMap, TrieNodeKt.access$insertEntryAtIndex(this.buffer, entryKeyIndex$runtime_release, k, v), mutabilityOwnership);
         }
-        insertEntryAtIndex2 = TrieNodeKt.insertEntryAtIndex(this.buffer, entryKeyIndex$runtime_release, k, v);
-        this.buffer = insertEntryAtIndex2;
+        this.buffer = TrieNodeKt.access$insertEntryAtIndex(this.buffer, entryKeyIndex$runtime_release, k, v);
         this.dataMap = i | this.dataMap;
         return this;
     }
@@ -431,36 +360,28 @@ public final class TrieNode<K, V> {
     }
 
     private final TrieNode<K, V> mutableRemoveEntryAtIndex(int i, int i2, PersistentHashMapBuilder<K, V> persistentHashMapBuilder) {
-        Object[] removeEntryAtIndex;
-        Object[] removeEntryAtIndex2;
         persistentHashMapBuilder.setSize(persistentHashMapBuilder.size() - 1);
         persistentHashMapBuilder.setOperationResult$runtime_release(valueAtKeyIndex(i));
         if (this.buffer.length == 2) {
             return null;
         }
         if (this.ownedBy != persistentHashMapBuilder.getOwnership$runtime_release()) {
-            removeEntryAtIndex = TrieNodeKt.removeEntryAtIndex(this.buffer, i);
-            return new TrieNode<>(i2 ^ this.dataMap, this.nodeMap, removeEntryAtIndex, persistentHashMapBuilder.getOwnership$runtime_release());
+            return new TrieNode<>(i2 ^ this.dataMap, this.nodeMap, TrieNodeKt.access$removeEntryAtIndex(this.buffer, i), persistentHashMapBuilder.getOwnership$runtime_release());
         }
-        removeEntryAtIndex2 = TrieNodeKt.removeEntryAtIndex(this.buffer, i);
-        this.buffer = removeEntryAtIndex2;
+        this.buffer = TrieNodeKt.access$removeEntryAtIndex(this.buffer, i);
         this.dataMap ^= i2;
         return this;
     }
 
     private final TrieNode<K, V> mutableRemoveNodeAtIndex(int i, int i2, MutabilityOwnership mutabilityOwnership) {
-        Object[] removeNodeAtIndex;
-        Object[] removeNodeAtIndex2;
         Object[] objArr = this.buffer;
         if (objArr.length == 1) {
             return null;
         }
         if (this.ownedBy != mutabilityOwnership) {
-            removeNodeAtIndex = TrieNodeKt.removeNodeAtIndex(objArr, i);
-            return new TrieNode<>(this.dataMap, i2 ^ this.nodeMap, removeNodeAtIndex, mutabilityOwnership);
+            return new TrieNode<>(this.dataMap, i2 ^ this.nodeMap, TrieNodeKt.access$removeNodeAtIndex(objArr, i), mutabilityOwnership);
         }
-        removeNodeAtIndex2 = TrieNodeKt.removeNodeAtIndex(objArr, i);
-        this.buffer = removeNodeAtIndex2;
+        this.buffer = TrieNodeKt.access$removeNodeAtIndex(objArr, i);
         this.nodeMap ^= i2;
         return this;
     }
@@ -499,23 +420,19 @@ public final class TrieNode<K, V> {
     }
 
     private final TrieNode<K, V> removeEntryAtIndex(int i, int i2) {
-        Object[] removeEntryAtIndex;
         Object[] objArr = this.buffer;
         if (objArr.length == 2) {
             return null;
         }
-        removeEntryAtIndex = TrieNodeKt.removeEntryAtIndex(objArr, i);
-        return new TrieNode<>(i2 ^ this.dataMap, this.nodeMap, removeEntryAtIndex);
+        return new TrieNode<>(i2 ^ this.dataMap, this.nodeMap, TrieNodeKt.access$removeEntryAtIndex(objArr, i));
     }
 
     private final TrieNode<K, V> removeNodeAtIndex(int i, int i2) {
-        Object[] removeNodeAtIndex;
         Object[] objArr = this.buffer;
         if (objArr.length == 1) {
             return null;
         }
-        removeNodeAtIndex = TrieNodeKt.removeNodeAtIndex(objArr, i);
-        return new TrieNode<>(this.dataMap, i2 ^ this.nodeMap, removeNodeAtIndex);
+        return new TrieNode<>(this.dataMap, i2 ^ this.nodeMap, TrieNodeKt.access$removeNodeAtIndex(objArr, i));
     }
 
     private final TrieNode<K, V> replaceNode(TrieNode<K, V> trieNode, TrieNode<K, V> trieNode2, int i, int i2) {
@@ -523,7 +440,6 @@ public final class TrieNode<K, V> {
     }
 
     private final TrieNode<K, V> updateNodeAtIndex(int i, int i2, TrieNode<K, V> trieNode) {
-        Object[] replaceNodeWithEntry;
         Object[] objArr = trieNode.buffer;
         if (objArr.length != 2 || trieNode.nodeMap != 0) {
             Object[] objArr2 = this.buffer;
@@ -536,8 +452,7 @@ public final class TrieNode<K, V> {
             trieNode.dataMap = this.nodeMap;
             return trieNode;
         }
-        replaceNodeWithEntry = TrieNodeKt.replaceNodeWithEntry(this.buffer, i, entryKeyIndex$runtime_release(i2), objArr[0], objArr[1]);
-        return new TrieNode<>(this.dataMap ^ i2, i2 ^ this.nodeMap, replaceNodeWithEntry);
+        return new TrieNode<>(this.dataMap ^ i2, i2 ^ this.nodeMap, TrieNodeKt.access$replaceNodeWithEntry(this.buffer, i, entryKeyIndex$runtime_release(i2), objArr[0], objArr[1]));
     }
 
     private final TrieNode<K, V> updateValueAtIndex(int i, V v) {

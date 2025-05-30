@@ -3,6 +3,7 @@ package androidx.core.widget;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.TextView;
+import androidx.core.widget.TextViewKt$doBeforeTextChanged$;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function4;
@@ -11,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TextViewKt {
     @NotNull
     public static final TextWatcher addTextChangedListener(@NotNull TextView textView, @NotNull Function4<? super CharSequence, ? super Integer, ? super Integer, ? super Integer, Unit> function4, @NotNull Function4<? super CharSequence, ? super Integer, ? super Integer, ? super Integer, Unit> function42, @NotNull Function1<? super Editable, Unit> function1) {
@@ -19,9 +20,9 @@ public final class TextViewKt {
         Intrinsics.checkNotNullParameter(function4, "beforeTextChanged");
         Intrinsics.checkNotNullParameter(function42, "onTextChanged");
         Intrinsics.checkNotNullParameter(function1, "afterTextChanged");
-        TextViewKt$addTextChangedListener$textWatcher$1 textViewKt$addTextChangedListener$textWatcher$1 = new TextViewKt$addTextChangedListener$textWatcher$1(function1, function4, function42);
-        textView.addTextChangedListener(textViewKt$addTextChangedListener$textWatcher$1);
-        return textViewKt$addTextChangedListener$textWatcher$1;
+        addTextChangedListener.textWatcher.1 r0 = new addTextChangedListener.textWatcher.1(function1, function4, function42);
+        textView.addTextChangedListener(r0);
+        return r0;
     }
 
     public static /* synthetic */ TextWatcher addTextChangedListener$default(TextView textView, Function4 function4, Function4 function42, Function1 function1, int i, Object obj) {
@@ -62,9 +63,9 @@ public final class TextViewKt {
         Intrinsics.checkNotNullParameter(function4, "beforeTextChanged");
         Intrinsics.checkNotNullParameter(function42, "onTextChanged");
         Intrinsics.checkNotNullParameter(function1, "afterTextChanged");
-        TextViewKt$addTextChangedListener$textWatcher$1 textViewKt$addTextChangedListener$textWatcher$1 = new TextViewKt$addTextChangedListener$textWatcher$1(function1, function4, function42);
-        textView.addTextChangedListener(textViewKt$addTextChangedListener$textWatcher$1);
-        return textViewKt$addTextChangedListener$textWatcher$1;
+        addTextChangedListener.textWatcher.1 r4 = new addTextChangedListener.textWatcher.1(function1, function4, function42);
+        textView.addTextChangedListener(r4);
+        return r4;
     }
 
     @NotNull
@@ -90,25 +91,12 @@ public final class TextViewKt {
     }
 
     @NotNull
-    public static final TextWatcher doBeforeTextChanged(@NotNull TextView textView, @NotNull final Function4<? super CharSequence, ? super Integer, ? super Integer, ? super Integer, Unit> function4) {
+    public static final TextWatcher doBeforeTextChanged(@NotNull TextView textView, @NotNull Function4<? super CharSequence, ? super Integer, ? super Integer, ? super Integer, Unit> function4) {
         Intrinsics.checkNotNullParameter(textView, "<this>");
         Intrinsics.checkNotNullParameter(function4, "action");
-        TextWatcher textWatcher = new TextWatcher() { // from class: androidx.core.widget.TextViewKt$doBeforeTextChanged$$inlined$addTextChangedListener$default$1
-            @Override // android.text.TextWatcher
-            public void afterTextChanged(@Nullable Editable editable) {
-            }
-
-            @Override // android.text.TextWatcher
-            public void beforeTextChanged(@Nullable CharSequence charSequence, int i, int i2, int i3) {
-                function4.invoke(charSequence, Integer.valueOf(i), Integer.valueOf(i2), Integer.valueOf(i3));
-            }
-
-            @Override // android.text.TextWatcher
-            public void onTextChanged(@Nullable CharSequence charSequence, int i, int i2, int i3) {
-            }
-        };
-        textView.addTextChangedListener(textWatcher);
-        return textWatcher;
+        TextViewKt$doBeforeTextChanged$.inlined.addTextChangedListener.default.1 r0 = new TextViewKt$doBeforeTextChanged$.inlined.addTextChangedListener.default.1(function4);
+        textView.addTextChangedListener(r0);
+        return r0;
     }
 
     @NotNull

@@ -3,7 +3,7 @@ package androidx.compose.foundation;
 import android.taobao.windvane.file.FileManager;
 import androidx.compose.foundation.gestures.PressGestureScope;
 import androidx.compose.foundation.interaction.MutableInteractionSource;
-import androidx.compose.foundation.interaction.PressInteraction;
+import androidx.compose.foundation.interaction.PressInteraction$Press;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.State;
 import androidx.constraintlayout.core.motion.utils.TypedValues;
@@ -19,19 +19,19 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.ClickableKt$handlePressInteraction$2", f = "Clickable.kt", i = {0, 1, 2}, l = {419, TypedValues.CycleType.TYPE_WAVE_SHAPE, 428, 429, 438}, m = "invokeSuspend", n = {"delayJob", FileManager.UNZIP_SUCCESS, "releaseInteraction"}, s = {"L$0", "Z$0", "L$0"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class ClickableKt$handlePressInteraction$2 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ State<Function0<Boolean>> $delayPressInteraction;
     final /* synthetic */ MutableInteractionSource $interactionSource;
     final /* synthetic */ long $pressPoint;
-    final /* synthetic */ MutableState<PressInteraction.Press> $pressedInteraction;
+    final /* synthetic */ MutableState<PressInteraction$Press> $pressedInteraction;
     final /* synthetic */ PressGestureScope $this_handlePressInteraction;
     private /* synthetic */ Object L$0;
     boolean Z$0;
     int label;
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    ClickableKt$handlePressInteraction$2(PressGestureScope pressGestureScope, long j, MutableInteractionSource mutableInteractionSource, MutableState<PressInteraction.Press> mutableState, State<? extends Function0<Boolean>> state, Continuation<? super ClickableKt$handlePressInteraction$2> continuation) {
+    ClickableKt$handlePressInteraction$2(PressGestureScope pressGestureScope, long j, MutableInteractionSource mutableInteractionSource, MutableState<PressInteraction$Press> mutableState, State<? extends Function0<Boolean>> state, Continuation<? super ClickableKt$handlePressInteraction$2> continuation) {
         super(2, continuation);
         this.$this_handlePressInteraction = pressGestureScope;
         this.$pressPoint = j;
@@ -52,17 +52,19 @@ final class ClickableKt$handlePressInteraction$2 extends SuspendLambda implement
         return create(coroutineScope, continuation).invokeSuspend(Unit.INSTANCE);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Removed duplicated region for block: B:17:0x00b3 A[RETURN] */
     /* JADX WARN: Removed duplicated region for block: B:20:0x008d  */
+    /* JADX WARN: Type inference failed for: r2v13, types: [androidx.compose.foundation.interaction.Interaction, androidx.compose.foundation.interaction.PressInteraction$Press] */
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object invokeSuspend(@org.jetbrains.annotations.NotNull java.lang.Object r20) {
         /*
             Method dump skipped, instructions count: 225
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.ClickableKt$handlePressInteraction$2.invokeSuspend(java.lang.Object):java.lang.Object");
     }

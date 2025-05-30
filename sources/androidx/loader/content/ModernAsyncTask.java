@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 abstract class ModernAsyncTask<Params, Progress, Result> {
     private static final int CORE_POOL_SIZE = 5;
     private static final int KEEP_ALIVE = 1;
@@ -42,8 +42,8 @@ abstract class ModernAsyncTask<Params, Progress, Result> {
     final AtomicBoolean mTaskInvoked = new AtomicBoolean();
 
     /* compiled from: Taobao */
-    /* renamed from: androidx.loader.content.ModernAsyncTask$4 */
-    static /* synthetic */ class C11474 {
+    /* renamed from: androidx.loader.content.ModernAsyncTask$4, reason: invalid class name */
+    static /* synthetic */ class AnonymousClass4 {
         static final /* synthetic */ int[] $SwitchMap$androidx$loader$content$ModernAsyncTask$Status;
 
         static {
@@ -57,18 +57,6 @@ abstract class ModernAsyncTask<Params, Progress, Result> {
                 $SwitchMap$androidx$loader$content$ModernAsyncTask$Status[Status.FINISHED.ordinal()] = 2;
             } catch (NoSuchFieldError unused2) {
             }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static class AsyncTaskResult<Data> {
-        final Data[] mData;
-        final ModernAsyncTask mTask;
-
-        AsyncTaskResult(ModernAsyncTask modernAsyncTask, Data... dataArr) {
-            this.mTask = modernAsyncTask;
-            this.mData = dataArr;
         }
     }
 
@@ -195,7 +183,7 @@ abstract class ModernAsyncTask<Params, Progress, Result> {
             executor.execute(this.mFuture);
             return this;
         }
-        int i = C11474.$SwitchMap$androidx$loader$content$ModernAsyncTask$Status[this.mStatus.ordinal()];
+        int i = AnonymousClass4.$SwitchMap$androidx$loader$content$ModernAsyncTask$Status[this.mStatus.ordinal()];
         if (i == 1) {
             throw new IllegalStateException("Cannot execute task: the task is already running.");
         }
@@ -243,7 +231,7 @@ abstract class ModernAsyncTask<Params, Progress, Result> {
     }
 
     Result postResult(Result result) {
-        getHandler().obtainMessage(1, new AsyncTaskResult(this, result)).sendToTarget();
+        getHandler().obtainMessage(1, new AsyncTaskResult(this, new Object[]{result})).sendToTarget();
         return result;
     }
 

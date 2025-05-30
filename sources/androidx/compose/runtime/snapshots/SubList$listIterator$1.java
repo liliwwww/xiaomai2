@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SubList$listIterator$1<T> implements ListIterator<T>, KMutableListIterator {
     final /* synthetic */ Ref.IntRef $current;
     final /* synthetic */ SubList<T> this$0;
@@ -39,7 +39,7 @@ public final class SubList$listIterator$1<T> implements ListIterator<T>, KMutabl
         int i = this.$current.element + 1;
         SnapshotStateListKt.validateRange(i, this.this$0.size());
         this.$current.element = i;
-        return this.this$0.get(i);
+        return (T) this.this$0.get(i);
     }
 
     @Override // java.util.ListIterator
@@ -52,7 +52,7 @@ public final class SubList$listIterator$1<T> implements ListIterator<T>, KMutabl
         int i = this.$current.element;
         SnapshotStateListKt.validateRange(i, this.this$0.size());
         this.$current.element = i - 1;
-        return this.this$0.get(i);
+        return (T) this.this$0.get(i);
     }
 
     @Override // java.util.ListIterator

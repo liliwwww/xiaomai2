@@ -5,15 +5,18 @@ import androidx.compose.animation.core.AnimatableKt;
 import androidx.compose.animation.core.AnimationSpec;
 import androidx.compose.animation.core.AnimationVector1D;
 import androidx.compose.foundation.interaction.DragInteraction;
-import androidx.compose.foundation.interaction.FocusInteraction;
+import androidx.compose.foundation.interaction.FocusInteraction$Focus;
+import androidx.compose.foundation.interaction.FocusInteraction$Unfocus;
 import androidx.compose.foundation.interaction.HoverInteraction;
+import androidx.compose.foundation.interaction.HoverInteraction$Exit;
 import androidx.compose.foundation.interaction.Interaction;
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.graphics.ClipOp;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.graphics.drawscope.DrawContext;
-import androidx.compose.p004ui.graphics.drawscope.DrawScope;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.graphics.ClipOp;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.graphics.drawscope.DrawContext;
+import androidx.compose.ui.graphics.drawscope.DrawScope;
+import androidx.constraintlayout.widget.R$styleable;
 import java.util.ArrayList;
 import java.util.List;
 import kotlin.collections.CollectionsKt;
@@ -27,7 +30,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.w51;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class StateLayer {
 
     @NotNull
@@ -47,34 +50,35 @@ final class StateLayer {
         Intrinsics.checkNotNullParameter(state, "rippleAlpha");
         this.bounded = z;
         this.rippleAlpha = state;
-        this.animatedAlpha = AnimatableKt.Animatable$default(0.0f, 0.0f, 2, null);
+        this.animatedAlpha = AnimatableKt.Animatable$default(0.0f, 0.0f, 2, (Object) null);
         this.interactions = new ArrayList();
     }
 
     /* renamed from: drawStateLayer-H2RKhps, reason: not valid java name */
-    public final void m2380drawStateLayerH2RKhps(@NotNull DrawScope drawScope, float f, long j) {
+    public final void m898drawStateLayerH2RKhps(@NotNull DrawScope drawScope, float f, long j) {
         Intrinsics.checkNotNullParameter(drawScope, "$this$drawStateLayer");
-        float m2370getRippleEndRadiuscSwnlzA = Float.isNaN(f) ? RippleAnimationKt.m2370getRippleEndRadiuscSwnlzA(drawScope, this.bounded, drawScope.mo3205getSizeNHjbRc()) : drawScope.mo1283toPx0680j_4(f);
-        float floatValue = this.animatedAlpha.getValue().floatValue();
+        float m892getRippleEndRadiuscSwnlzA = Float.isNaN(f) ? RippleAnimationKt.m892getRippleEndRadiuscSwnlzA(drawScope, this.bounded, drawScope.getSize-NH-jbRc()) : drawScope.toPx-0680j_4(f);
+        float floatValue = ((Number) this.animatedAlpha.getValue()).floatValue();
         if (floatValue > 0.0f) {
-            long m2786copywmQWz5c$default = Color.m2786copywmQWz5c$default(j, floatValue, 0.0f, 0.0f, 0.0f, 14, null);
+            long j2 = Color.copy-wmQWz5c$default(j, floatValue, 0.0f, 0.0f, 0.0f, 14, (Object) null);
             if (!this.bounded) {
-                w51.x(drawScope, m2786copywmQWz5c$default, m2370getRippleEndRadiuscSwnlzA, 0L, 0.0f, null, null, 0, 124, null);
+                w51.x(drawScope, j2, m892getRippleEndRadiuscSwnlzA, 0L, 0.0f, null, null, 0, R$styleable.AppCompatTheme_windowMinWidthMajor, null);
                 return;
             }
-            float m2625getWidthimpl = Size.m2625getWidthimpl(drawScope.mo3205getSizeNHjbRc());
-            float m2622getHeightimpl = Size.m2622getHeightimpl(drawScope.mo3205getSizeNHjbRc());
-            int m2776getIntersectrtfAjoo = ClipOp.Companion.m2776getIntersectrtfAjoo();
+            float f2 = Size.getWidth-impl(drawScope.getSize-NH-jbRc());
+            float f3 = Size.getHeight-impl(drawScope.getSize-NH-jbRc());
+            int m1058getIntersectrtfAjoo = ClipOp.Companion.m1058getIntersectrtfAjoo();
             DrawContext drawContext = drawScope.getDrawContext();
-            long mo3211getSizeNHjbRc = drawContext.mo3211getSizeNHjbRc();
+            long mo1254getSizeNHjbRc = drawContext.mo1254getSizeNHjbRc();
             drawContext.getCanvas().save();
-            drawContext.getTransform().mo3214clipRectN_I0leg(0.0f, 0.0f, m2625getWidthimpl, m2622getHeightimpl, m2776getIntersectrtfAjoo);
-            w51.x(drawScope, m2786copywmQWz5c$default, m2370getRippleEndRadiuscSwnlzA, 0L, 0.0f, null, null, 0, 124, null);
+            drawContext.getTransform().clipRect-N_I0leg(0.0f, 0.0f, f2, f3, m1058getIntersectrtfAjoo);
+            w51.x(drawScope, j2, m892getRippleEndRadiuscSwnlzA, 0L, 0.0f, null, null, 0, R$styleable.AppCompatTheme_windowMinWidthMajor, null);
             drawContext.getCanvas().restore();
-            drawContext.mo3212setSizeuvyYCjk(mo3211getSizeNHjbRc);
+            drawContext.mo1255setSizeuvyYCjk(mo1254getSizeNHjbRc);
         }
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public final void handleInteraction(@NotNull Interaction interaction, @NotNull CoroutineScope coroutineScope) {
         AnimationSpec outgoingStateLayerAnimationSpecFor;
         AnimationSpec incomingStateLayerAnimationSpecFor;
@@ -83,12 +87,12 @@ final class StateLayer {
         boolean z = interaction instanceof HoverInteraction.Enter;
         if (z) {
             this.interactions.add(interaction);
-        } else if (interaction instanceof HoverInteraction.Exit) {
-            this.interactions.remove(((HoverInteraction.Exit) interaction).getEnter());
-        } else if (interaction instanceof FocusInteraction.Focus) {
+        } else if (interaction instanceof HoverInteraction$Exit) {
+            this.interactions.remove(((HoverInteraction$Exit) interaction).getEnter());
+        } else if (interaction instanceof FocusInteraction$Focus) {
             this.interactions.add(interaction);
-        } else if (interaction instanceof FocusInteraction.Unfocus) {
-            this.interactions.remove(((FocusInteraction.Unfocus) interaction).getFocus());
+        } else if (interaction instanceof FocusInteraction$Unfocus) {
+            this.interactions.remove(((FocusInteraction$Unfocus) interaction).getFocus());
         } else if (interaction instanceof DragInteraction.Start) {
             this.interactions.add(interaction);
         } else if (interaction instanceof DragInteraction.Stop) {
@@ -103,7 +107,7 @@ final class StateLayer {
             return;
         }
         if (interaction2 != null) {
-            float hoveredAlpha = z ? this.rippleAlpha.getValue().getHoveredAlpha() : interaction instanceof FocusInteraction.Focus ? this.rippleAlpha.getValue().getFocusedAlpha() : interaction instanceof DragInteraction.Start ? this.rippleAlpha.getValue().getDraggedAlpha() : 0.0f;
+            float hoveredAlpha = z ? this.rippleAlpha.getValue().getHoveredAlpha() : interaction instanceof FocusInteraction$Focus ? this.rippleAlpha.getValue().getFocusedAlpha() : interaction instanceof DragInteraction.Start ? this.rippleAlpha.getValue().getDraggedAlpha() : 0.0f;
             incomingStateLayerAnimationSpecFor = RippleKt.incomingStateLayerAnimationSpecFor(interaction2);
             d.d(coroutineScope, (CoroutineContext) null, (CoroutineStart) null, new StateLayer$handleInteraction$1(this, hoveredAlpha, incomingStateLayerAnimationSpecFor, null), 3, (Object) null);
         } else {

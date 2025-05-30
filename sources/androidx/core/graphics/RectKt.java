@@ -11,7 +11,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class RectKt {
     @SuppressLint({"CheckResult"})
     @NotNull
@@ -59,8 +59,7 @@ public final class RectKt {
     }
 
     @NotNull
-    /* renamed from: or */
-    public static final Rect m215or(@NotNull Rect rect, @NotNull Rect rect2) {
+    public static final Rect or(@NotNull Rect rect, @NotNull Rect rect2) {
         Intrinsics.checkNotNullParameter(rect, "<this>");
         Intrinsics.checkNotNullParameter(rect2, "r");
         Rect rect3 = new Rect(rect);
@@ -183,8 +182,7 @@ public final class RectKt {
     }
 
     @NotNull
-    /* renamed from: or */
-    public static final RectF m216or(@NotNull RectF rectF, @NotNull RectF rectF2) {
+    public static final RectF or(@NotNull RectF rectF, @NotNull RectF rectF2) {
         Intrinsics.checkNotNullParameter(rectF, "<this>");
         Intrinsics.checkNotNullParameter(rectF2, "r");
         RectF rectF3 = new RectF(rectF);

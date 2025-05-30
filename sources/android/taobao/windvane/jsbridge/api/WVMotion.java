@@ -1,8 +1,6 @@
 package android.taobao.windvane.jsbridge.api;
 
 import android.annotation.TargetApi;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Handler;
@@ -16,66 +14,26 @@ import android.taobao.windvane.jsbridge.api.ShakeListener;
 import android.taobao.windvane.runtimepermission.PermissionProposer;
 import android.taobao.windvane.util.TaoLog;
 import android.text.TextUtils;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
-import androidx.core.app.NotificationCompat;
 import java.net.URLDecoder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVMotion extends WVApiPlugin implements Handler.Callback {
     private static final int SHAKE_STOP = 1;
     private static final String TAG = "WVMotion";
     private BlowSensor blowSensor;
     private Vibrator vibrator;
     private ShakeListener mShakeListener = null;
-
-    /* renamed from: sm */
-    private SensorManager f20sm = null;
+    private SensorManager sm = null;
     private long currentTime = 0;
     private long currentTime2 = 0;
     private long frequency = 0;
     private long frequency2 = 0;
     private WVCallBackContext mCallback = null;
-    protected SensorEventListener mSensorListener = new SensorEventListener() { // from class: android.taobao.windvane.jsbridge.api.WVMotion.3
-        @Override // android.hardware.SensorEventListener
-        public void onAccuracyChanged(Sensor sensor, int i) {
-        }
-
-        @Override // android.hardware.SensorEventListener
-        public void onSensorChanged(SensorEvent sensorEvent) {
-            if (9 == sensorEvent.sensor.getType() && WVMotion.this.frequency <= System.currentTimeMillis() - WVMotion.this.currentTime) {
-                float[] fArr = sensorEvent.values;
-                String str = "{\"x\":\"" + ((-fArr[0]) / 10.0f) + "\",\"y\":\"" + ((-fArr[1]) / 10.0f) + "\",\"z\":\"" + ((-fArr[2]) / 10.0f) + "\"}";
-                if (WVMotion.this.mCallback != null) {
-                    WVMotion.this.mCallback.fireEvent("motion.gyro", str);
-                } else {
-                    WVMotion.this.stopListenGyro();
-                }
-                WVMotion.this.currentTime = System.currentTimeMillis();
-            }
-        }
-    };
-    protected SensorEventListener mSensorListener2 = new SensorEventListener() { // from class: android.taobao.windvane.jsbridge.api.WVMotion.4
-        @Override // android.hardware.SensorEventListener
-        public void onAccuracyChanged(Sensor sensor, int i) {
-        }
-
-        @Override // android.hardware.SensorEventListener
-        public void onSensorChanged(SensorEvent sensorEvent) {
-            if (4 == sensorEvent.sensor.getType() && WVMotion.this.frequency2 <= System.currentTimeMillis() - WVMotion.this.currentTime2) {
-                float[] fArr = sensorEvent.values;
-                String str = "{\"alpha\":\"" + fArr[0] + "\",\"beta\":\"" + fArr[1] + "\",\"gama\":\"" + fArr[2] + "\"}";
-                if (WVMotion.this.mCallback != null) {
-                    WVMotion.this.mCallback.fireEvent("WV.Event.Motion.RotationRate", str);
-                } else {
-                    WVMotion.this.stopListenRota();
-                }
-                WVMotion.this.currentTime2 = System.currentTimeMillis();
-            }
-        }
-    };
+    protected SensorEventListener mSensorListener = new 3(this);
+    protected SensorEventListener mSensorListener2 = new 4(this);
     private Handler handler = new Handler(Looper.getMainLooper(), this);
 
     /* compiled from: Taobao */
@@ -111,25 +69,25 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
 
     /* JADX INFO: Access modifiers changed from: private */
     public void stopListenGyro() {
-        SensorManager sensorManager = this.f20sm;
+        SensorManager sensorManager = this.sm;
         if (sensorManager != null) {
             SensorEventListener sensorEventListener = this.mSensorListener;
             if (sensorEventListener != null) {
                 sensorManager.unregisterListener(sensorEventListener);
             }
-            this.f20sm = null;
+            this.sm = null;
         }
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     public void stopListenRota() {
-        SensorManager sensorManager = this.f20sm;
+        SensorManager sensorManager = this.sm;
         if (sensorManager != null) {
             SensorEventListener sensorEventListener = this.mSensorListener2;
             if (sensorEventListener != null) {
                 sensorManager.unregisterListener(sensorEventListener);
             }
-            this.f20sm = null;
+            this.sm = null;
         }
     }
 
@@ -142,7 +100,7 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
     }
 
     @Override // android.taobao.windvane.jsbridge.WVApiPlugin
-    public boolean execute(String str, final String str2, final WVCallBackContext wVCallBackContext) {
+    public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if ("listeningShake".equals(str)) {
             listeningShake(wVCallBackContext, str2);
             return true;
@@ -153,19 +111,7 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
         }
         if ("listenBlow".equals(str)) {
             try {
-                PermissionProposer.buildPermissionTask(this.mContext, new String[]{"android.permission.RECORD_AUDIO"}).setTaskOnPermissionGranted(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVMotion.2
-                    @Override // java.lang.Runnable
-                    public void run() {
-                        WVMotion.this.listenBlow(wVCallBackContext, str2);
-                    }
-                }).setTaskOnPermissionDenied(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVMotion.1
-                    @Override // java.lang.Runnable
-                    public void run() {
-                        WVResult wVResult = new WVResult();
-                        wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "NO_PERMISSION");
-                        wVCallBackContext.error(wVResult);
-                    }
-                }).execute();
+                PermissionProposer.buildPermissionTask(this.mContext, new String[]{"android.permission.RECORD_AUDIO"}).setTaskOnPermissionGranted(new 2(this, wVCallBackContext, str2)).setTaskOnPermissionDenied(new 1(this, wVCallBackContext)).execute();
                 return true;
             } catch (Exception unused) {
                 return true;
@@ -222,7 +168,7 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
 
     public synchronized void listenBlow(WVCallBackContext wVCallBackContext, String str) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("WVMotion", "listenBlow: start. " + str);
+            TaoLog.d(TAG, "listenBlow: start. " + str);
         }
         this.mCallback = wVCallBackContext;
         BlowSensor blowSensor = this.blowSensor;
@@ -237,7 +183,7 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
 
     public synchronized void listenGyro(WVCallBackContext wVCallBackContext, String str) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("WVMotion", "listenGyro:  " + str);
+            TaoLog.d(TAG, "listenGyro:  " + str);
         }
         WVResult wVResult = new WVResult();
         try {
@@ -245,11 +191,11 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
             this.frequency = jSONObject.optInt("frequency", 100);
             boolean optBoolean = jSONObject.optBoolean("on");
             this.mCallback = wVCallBackContext;
-            if (this.f20sm == null) {
-                this.f20sm = (SensorManager) this.mContext.getSystemService("sensor");
+            if (this.sm == null) {
+                this.sm = (SensorManager) this.mContext.getSystemService("sensor");
             }
             if (optBoolean) {
-                SensorManager sensorManager = this.f20sm;
+                SensorManager sensorManager = this.sm;
                 sensorManager.registerListener(this.mSensorListener, com.alibaba.wireless.security.aopsdk.replace.android.hardware.SensorManager.getDefaultSensor(sensorManager, 9), 3);
                 this.currentTime = System.currentTimeMillis();
             } else {
@@ -257,15 +203,15 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
             }
             wVCallBackContext.success(new WVResult());
         } catch (JSONException unused) {
-            TaoLog.m21e("WVMotion", "vibrate: param parse to JSON error, param=" + str);
-            wVResult.setResult(WVResult.PARAM_ERR);
+            TaoLog.e(TAG, "vibrate: param parse to JSON error, param=" + str);
+            wVResult.setResult("HY_PARAM_ERR");
             wVCallBackContext.error(wVResult);
         }
     }
 
     public synchronized void listenRotationRate(WVCallBackContext wVCallBackContext, String str) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("WVMotion", "listenRotationRate:  " + str);
+            TaoLog.d(TAG, "listenRotationRate:  " + str);
         }
         WVResult wVResult = new WVResult();
         try {
@@ -273,11 +219,11 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
             this.frequency2 = jSONObject.optInt("frequency", 100);
             boolean optBoolean = jSONObject.optBoolean("on");
             this.mCallback = wVCallBackContext;
-            if (this.f20sm == null) {
-                this.f20sm = (SensorManager) this.mContext.getSystemService("sensor");
+            if (this.sm == null) {
+                this.sm = (SensorManager) this.mContext.getSystemService("sensor");
             }
             if (optBoolean) {
-                SensorManager sensorManager = this.f20sm;
+                SensorManager sensorManager = this.sm;
                 sensorManager.registerListener(this.mSensorListener2, com.alibaba.wireless.security.aopsdk.replace.android.hardware.SensorManager.getDefaultSensor(sensorManager, 4), 3);
                 this.currentTime = System.currentTimeMillis();
             } else {
@@ -285,8 +231,8 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
             }
             wVCallBackContext.success(new WVResult());
         } catch (JSONException unused) {
-            TaoLog.m21e("WVMotion", "vibrate: param parse to JSON error, param=" + str);
-            wVResult.setResult(WVResult.PARAM_ERR);
+            TaoLog.e(TAG, "vibrate: param parse to JSON error, param=" + str);
+            wVResult.setResult("HY_PARAM_ERR");
             wVCallBackContext.error(wVResult);
         }
     }
@@ -302,7 +248,7 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
             try {
                 str = URLDecoder.decode(str, "utf-8");
             } catch (Exception unused) {
-                TaoLog.m21e("WVMotion", "listeningShake: param decode error, param=" + str);
+                TaoLog.e(TAG, "listeningShake: param decode error, param=" + str);
                 z2 = true;
             }
             try {
@@ -310,28 +256,28 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
                 z = jSONObject.getBoolean("on");
                 j = jSONObject.optLong("frequency");
             } catch (JSONException unused2) {
-                TaoLog.m21e("WVMotion", "listeningShake: param parse to JSON error, param=" + str);
-                wVResult.setResult(WVResult.PARAM_ERR);
+                TaoLog.e(TAG, "listeningShake: param parse to JSON error, param=" + str);
+                wVResult.setResult("HY_PARAM_ERR");
                 wVCallBackContext.error(wVResult);
                 return;
             }
         }
         if (z2) {
             if (TaoLog.getLogStatus()) {
-                TaoLog.m30w("WVMotion", "listeningShake: isFail");
+                TaoLog.w(TAG, "listeningShake: isFail");
             }
             wVCallBackContext.error(wVResult);
             return;
         }
         if (z) {
-            TaoLog.m18d("WVMotion", "listeningShake: start ...");
+            TaoLog.d(TAG, "listeningShake: start ...");
             if (this.mShakeListener == null) {
                 this.mShakeListener = new ShakeListener(this.mContext, j);
             }
             this.mShakeListener.setOnShakeListener(new MyShakeListener(wVCallBackContext, j));
             wVCallBackContext.success(wVResult);
         } else {
-            TaoLog.m18d("WVMotion", "listeningShake: stop.");
+            TaoLog.d(TAG, "listeningShake: stop.");
             Message message = new Message();
             message.what = 1;
             message.obj = wVCallBackContext;
@@ -362,7 +308,7 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
     @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void onPause() {
         SensorEventListener sensorEventListener;
-        SensorManager sensorManager = this.f20sm;
+        SensorManager sensorManager = this.sm;
         if (sensorManager != null && (sensorEventListener = this.mSensorListener) != null) {
             sensorManager.unregisterListener(sensorEventListener);
         }
@@ -381,7 +327,7 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
     @TargetApi(9)
     public void onResume() {
         SensorEventListener sensorEventListener;
-        SensorManager sensorManager = this.f20sm;
+        SensorManager sensorManager = this.sm;
         if (sensorManager != null && (sensorEventListener = this.mSensorListener) != null) {
             sensorManager.registerListener(sensorEventListener, com.alibaba.wireless.security.aopsdk.replace.android.hardware.SensorManager.getDefaultSensor(sensorManager, 9), 3);
         }
@@ -398,7 +344,7 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
 
     public synchronized void stopListenBlow(WVCallBackContext wVCallBackContext, String str) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("WVMotion", "stopListenBlow: stopped. " + str);
+            TaoLog.d(TAG, "stopListenBlow: stopped. " + str);
         }
         BlowSensor blowSensor = this.blowSensor;
         if (blowSensor != null) {
@@ -411,17 +357,17 @@ public class WVMotion extends WVApiPlugin implements Handler.Callback {
     public synchronized void vibrate(WVCallBackContext wVCallBackContext, String str) {
         WVResult wVResult = new WVResult();
         try {
-            int optInt = new JSONObject(str).optInt(TypedValues.TransitionType.S_DURATION, 350);
+            int optInt = new JSONObject(str).optInt("duration", 350);
             int i = optInt >= 0 ? optInt : 350;
             if (this.vibrator == null) {
                 this.vibrator = (Vibrator) this.mContext.getSystemService("vibrator");
             }
             this.vibrator.vibrate(i);
-            TaoLog.m18d("WVMotion", "vibrate: start ...");
+            TaoLog.d(TAG, "vibrate: start ...");
             wVCallBackContext.success(new WVResult());
         } catch (JSONException unused) {
-            TaoLog.m21e("WVMotion", "vibrate: param parse to JSON error, param=" + str);
-            wVResult.setResult(WVResult.PARAM_ERR);
+            TaoLog.e(TAG, "vibrate: param parse to JSON error, param=" + str);
+            wVResult.setResult("HY_PARAM_ERR");
             wVCallBackContext.error(wVResult);
         }
     }

@@ -1,7 +1,5 @@
 package okhttp3;
 
-import android.media.IVivoSpatializer;
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
 import java.net.Proxy;
 import java.net.ProxySelector;
 import java.security.GeneralSecurityException;
@@ -20,17 +18,13 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-import okhttp3.C1471k;
-import okhttp3.C1476p;
 import okhttp3.Call;
 import okhttp3.EventListener;
 import okhttp3.WebSocket;
-import okhttp3.internal.C1421a;
 import okhttp3.internal.cache.InternalCache;
-import okhttp3.internal.connection.C1427c;
-import okhttp3.internal.connection.C1430f;
-import okhttp3.internal.p011ws.RealWebSocket;
-import okhttp3.internal.tls.AbstractC1463b;
+import okhttp3.internal.ws.RealWebSocket;
+import okhttp3.k;
+import okhttp3.p;
 import tb.ap;
 import tb.iv3;
 import tb.n43;
@@ -39,20 +33,20 @@ import tb.r33;
 import tb.s96;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class OkHttpClient implements Cloneable, Call.Factory, WebSocket.Factory {
     final Authenticator authenticator;
 
     @Nullable
     final ap cache;
     final int callTimeout;
-    final AbstractC1463b certificateChainCleaner;
-    final C1414c certificatePinner;
+    final okhttp3.internal.tls.b certificateChainCleaner;
+    final c certificatePinner;
     final int connectTimeout;
-    final C1416e connectionPool;
-    final List<C1417f> connectionSpecs;
+    final e connectionPool;
+    final List<f> connectionSpecs;
     final CookieJar cookieJar;
-    final C1418g dispatcher;
+    final g dispatcher;
     final Dns dns;
     final EventListener.Factory eventListenerFactory;
     final boolean followRedirects;
@@ -75,68 +69,58 @@ public class OkHttpClient implements Cloneable, Call.Factory, WebSocket.Factory 
     final SocketFactory socketFactory;
     final SSLSocketFactory sslSocketFactory;
     final int writeTimeout;
-    static final List<Protocol> DEFAULT_PROTOCOLS = C1421a.m484u(Protocol.HTTP_2, Protocol.HTTP_1_1);
-    static final List<C1417f> DEFAULT_CONNECTION_SPECS = C1421a.m484u(C1417f.MODERN_TLS, C1417f.CLEARTEXT);
+    static final List<Protocol> DEFAULT_PROTOCOLS = okhttp3.internal.a.u(Protocol.HTTP_2, Protocol.HTTP_1_1);
+    static final List<f> DEFAULT_CONNECTION_SPECS = okhttp3.internal.a.u(f.MODERN_TLS, f.CLEARTEXT);
 
     /* compiled from: Taobao */
-    /* renamed from: okhttp3.OkHttpClient$a */
-    class C1410a extends q92 {
-        C1410a() {
+    class a extends q92 {
+        a() {
         }
 
-        /* renamed from: a */
-        public void m372a(C1471k.a aVar, String str) {
-            aVar.m786b(str);
+        public void a(k.a aVar, String str) {
+            aVar.b(str);
         }
 
-        /* renamed from: b */
-        public void m373b(C1471k.a aVar, String str, String str2) {
-            aVar.m787c(str, str2);
+        public void b(k.a aVar, String str, String str2) {
+            aVar.c(str, str2);
         }
 
-        /* renamed from: c */
-        public void m374c(C1417f c1417f, SSLSocket sSLSocket, boolean z) {
-            c1417f.m422a(sSLSocket, z);
+        public void c(f fVar, SSLSocket sSLSocket, boolean z) {
+            fVar.a(sSLSocket, z);
         }
 
-        /* renamed from: d */
-        public int m375d(C1476p.a aVar) {
-            return aVar.f941c;
+        public int d(p.a aVar) {
+            return aVar.c;
         }
 
-        /* renamed from: e */
-        public boolean m376e(C1412a c1412a, C1412a c1412a2) {
-            return c1412a.m396d(c1412a2);
+        public boolean e(okhttp3.a aVar, okhttp3.a aVar2) {
+            return aVar.d(aVar2);
         }
 
         @Nullable
-        /* renamed from: f */
-        public C1427c m377f(C1476p c1476p) {
-            return c1476p.f937m;
+        public okhttp3.internal.connection.c f(p pVar) {
+            return pVar.m;
         }
 
-        /* renamed from: g */
-        public void m378g(C1476p.a aVar, C1427c c1427c) {
-            aVar.m896k(c1427c);
+        public void g(p.a aVar, okhttp3.internal.connection.c cVar) {
+            aVar.k(cVar);
         }
 
-        /* renamed from: h */
-        public Call m379h(OkHttpClient okHttpClient, C1474n c1474n) {
-            return RealCall.newRealCall(okHttpClient, c1474n, true);
+        public Call h(OkHttpClient okHttpClient, n nVar) {
+            return RealCall.newRealCall(okHttpClient, nVar, true);
         }
 
-        /* renamed from: i */
-        public C1430f m380i(C1416e c1416e) {
-            return c1416e.f544a;
+        public okhttp3.internal.connection.f i(e eVar) {
+            return eVar.a;
         }
     }
 
     static {
-        q92.a = new C1410a();
+        q92.a = new a();
     }
 
     public OkHttpClient() {
-        this(new C1411b());
+        this(new b());
     }
 
     private static SSLSocketFactory newSslSocketFactory(X509TrustManager x509TrustManager) {
@@ -162,7 +146,7 @@ public class OkHttpClient implements Cloneable, Call.Factory, WebSocket.Factory 
         return this.callTimeout;
     }
 
-    public C1414c certificatePinner() {
+    public c certificatePinner() {
         return this.certificatePinner;
     }
 
@@ -170,11 +154,11 @@ public class OkHttpClient implements Cloneable, Call.Factory, WebSocket.Factory 
         return this.connectTimeout;
     }
 
-    public C1416e connectionPool() {
+    public e connectionPool() {
         return this.connectionPool;
     }
 
-    public List<C1417f> connectionSpecs() {
+    public List<f> connectionSpecs() {
         return this.connectionSpecs;
     }
 
@@ -182,7 +166,7 @@ public class OkHttpClient implements Cloneable, Call.Factory, WebSocket.Factory 
         return this.cookieJar;
     }
 
-    public C1418g dispatcher() {
+    public g dispatcher() {
         return this.dispatcher;
     }
 
@@ -219,19 +203,18 @@ public class OkHttpClient implements Cloneable, Call.Factory, WebSocket.Factory 
         return this.networkInterceptors;
     }
 
-    public C1411b newBuilder() {
-        return new C1411b(this);
+    public b newBuilder() {
+        return new b(this);
     }
 
-    @Override // okhttp3.Call.Factory
-    public Call newCall(C1474n c1474n) {
-        return RealCall.newRealCall(this, c1474n, false);
+    public Call newCall(n nVar) {
+        return RealCall.newRealCall(this, nVar, false);
     }
 
     @Override // okhttp3.WebSocket.Factory
-    public WebSocket newWebSocket(C1474n c1474n, s96 s96Var) {
-        RealWebSocket realWebSocket = new RealWebSocket(c1474n, s96Var, new Random(), this.pingInterval);
-        realWebSocket.m757d(this);
+    public WebSocket newWebSocket(n nVar, s96 s96Var) {
+        RealWebSocket realWebSocket = new RealWebSocket(nVar, s96Var, new Random(), this.pingInterval);
+        realWebSocket.d(this);
         return realWebSocket;
     }
 
@@ -276,52 +259,52 @@ public class OkHttpClient implements Cloneable, Call.Factory, WebSocket.Factory 
         return this.writeTimeout;
     }
 
-    OkHttpClient(C1411b c1411b) {
+    OkHttpClient(b bVar) {
         boolean z;
-        this.dispatcher = c1411b.f497a;
-        this.proxy = c1411b.f498b;
-        this.protocols = c1411b.f499c;
-        List<C1417f> list = c1411b.f500d;
+        this.dispatcher = bVar.a;
+        this.proxy = bVar.b;
+        this.protocols = bVar.c;
+        List<f> list = bVar.d;
         this.connectionSpecs = list;
-        this.interceptors = C1421a.m483t(c1411b.f501e);
-        this.networkInterceptors = C1421a.m483t(c1411b.f502f);
-        this.eventListenerFactory = c1411b.f503g;
-        this.proxySelector = c1411b.f504h;
-        this.cookieJar = c1411b.f505i;
-        this.internalCache = c1411b.f506j;
-        this.socketFactory = c1411b.f507k;
-        Iterator<C1417f> it = list.iterator();
+        this.interceptors = okhttp3.internal.a.t(bVar.e);
+        this.networkInterceptors = okhttp3.internal.a.t(bVar.f);
+        this.eventListenerFactory = bVar.g;
+        this.proxySelector = bVar.h;
+        this.cookieJar = bVar.i;
+        this.internalCache = bVar.j;
+        this.socketFactory = bVar.k;
+        Iterator<f> it = list.iterator();
         loop0: while (true) {
             while (it.hasNext()) {
-                z = z || it.next().m425d();
+                z = z || it.next().d();
             }
         }
-        SSLSocketFactory sSLSocketFactory = c1411b.f508l;
+        SSLSocketFactory sSLSocketFactory = bVar.l;
         if (sSLSocketFactory == null && z) {
-            X509TrustManager m454D = C1421a.m454D();
-            this.sslSocketFactory = newSslSocketFactory(m454D);
-            this.certificateChainCleaner = AbstractC1463b.m750b(m454D);
+            X509TrustManager D = okhttp3.internal.a.D();
+            this.sslSocketFactory = newSslSocketFactory(D);
+            this.certificateChainCleaner = okhttp3.internal.tls.b.b(D);
         } else {
             this.sslSocketFactory = sSLSocketFactory;
-            this.certificateChainCleaner = c1411b.f509m;
+            this.certificateChainCleaner = bVar.m;
         }
         if (this.sslSocketFactory != null) {
             iv3.j().f(this.sslSocketFactory);
         }
-        this.hostnameVerifier = c1411b.f510n;
-        this.certificatePinner = c1411b.f511o.m412f(this.certificateChainCleaner);
-        this.proxyAuthenticator = c1411b.f512p;
-        this.authenticator = c1411b.f513q;
-        this.connectionPool = c1411b.f514r;
-        this.dns = c1411b.f515s;
-        this.followSslRedirects = c1411b.f516t;
-        this.followRedirects = c1411b.f517u;
-        this.retryOnConnectionFailure = c1411b.f518v;
-        this.callTimeout = c1411b.f519w;
-        this.connectTimeout = c1411b.f520x;
-        this.readTimeout = c1411b.f521y;
-        this.writeTimeout = c1411b.f522z;
-        this.pingInterval = c1411b.f496A;
+        this.hostnameVerifier = bVar.n;
+        this.certificatePinner = bVar.o.f(this.certificateChainCleaner);
+        this.proxyAuthenticator = bVar.p;
+        this.authenticator = bVar.q;
+        this.connectionPool = bVar.r;
+        this.dns = bVar.s;
+        this.followSslRedirects = bVar.t;
+        this.followRedirects = bVar.u;
+        this.retryOnConnectionFailure = bVar.v;
+        this.callTimeout = bVar.w;
+        this.connectTimeout = bVar.x;
+        this.readTimeout = bVar.y;
+        this.writeTimeout = bVar.z;
+        this.pingInterval = bVar.A;
         if (this.interceptors.contains(null)) {
             throw new IllegalStateException("Null interceptor: " + this.interceptors);
         }
@@ -331,180 +314,120 @@ public class OkHttpClient implements Cloneable, Call.Factory, WebSocket.Factory 
     }
 
     /* compiled from: Taobao */
-    /* renamed from: okhttp3.OkHttpClient$b */
-    public static final class C1411b {
+    public static final class b {
+        int A;
+        g a;
 
-        /* renamed from: A */
-        int f496A;
-
-        /* renamed from: a */
-        C1418g f497a;
-
-        /* renamed from: b */
         @Nullable
-        Proxy f498b;
+        Proxy b;
+        List<Protocol> c;
+        List<f> d;
+        final List<Interceptor> e;
+        final List<Interceptor> f;
+        EventListener.Factory g;
+        ProxySelector h;
+        CookieJar i;
 
-        /* renamed from: c */
-        List<Protocol> f499c;
-
-        /* renamed from: d */
-        List<C1417f> f500d;
-
-        /* renamed from: e */
-        final List<Interceptor> f501e;
-
-        /* renamed from: f */
-        final List<Interceptor> f502f;
-
-        /* renamed from: g */
-        EventListener.Factory f503g;
-
-        /* renamed from: h */
-        ProxySelector f504h;
-
-        /* renamed from: i */
-        CookieJar f505i;
-
-        /* renamed from: j */
         @Nullable
-        InternalCache f506j;
+        InternalCache j;
+        SocketFactory k;
 
-        /* renamed from: k */
-        SocketFactory f507k;
-
-        /* renamed from: l */
         @Nullable
-        SSLSocketFactory f508l;
+        SSLSocketFactory l;
 
-        /* renamed from: m */
         @Nullable
-        AbstractC1463b f509m;
+        okhttp3.internal.tls.b m;
+        HostnameVerifier n;
+        c o;
+        Authenticator p;
+        Authenticator q;
+        e r;
+        Dns s;
+        boolean t;
+        boolean u;
+        boolean v;
+        int w;
+        int x;
+        int y;
+        int z;
 
-        /* renamed from: n */
-        HostnameVerifier f510n;
-
-        /* renamed from: o */
-        C1414c f511o;
-
-        /* renamed from: p */
-        Authenticator f512p;
-
-        /* renamed from: q */
-        Authenticator f513q;
-
-        /* renamed from: r */
-        C1416e f514r;
-
-        /* renamed from: s */
-        Dns f515s;
-
-        /* renamed from: t */
-        boolean f516t;
-
-        /* renamed from: u */
-        boolean f517u;
-
-        /* renamed from: v */
-        boolean f518v;
-
-        /* renamed from: w */
-        int f519w;
-
-        /* renamed from: x */
-        int f520x;
-
-        /* renamed from: y */
-        int f521y;
-
-        /* renamed from: z */
-        int f522z;
-
-        public C1411b() {
-            this.f501e = new ArrayList();
-            this.f502f = new ArrayList();
-            this.f497a = new C1418g();
-            this.f499c = OkHttpClient.DEFAULT_PROTOCOLS;
-            this.f500d = OkHttpClient.DEFAULT_CONNECTION_SPECS;
-            this.f503g = EventListener.m348l(EventListener.NONE);
+        public b() {
+            this.e = new ArrayList();
+            this.f = new ArrayList();
+            this.a = new g();
+            this.c = OkHttpClient.DEFAULT_PROTOCOLS;
+            this.d = OkHttpClient.DEFAULT_CONNECTION_SPECS;
+            this.g = EventListener.l(EventListener.NONE);
             ProxySelector proxySelector = ProxySelector.getDefault();
-            this.f504h = proxySelector;
+            this.h = proxySelector;
             if (proxySelector == null) {
-                this.f504h = new r33();
+                this.h = new r33();
             }
-            this.f505i = CookieJar.NO_COOKIES;
-            this.f507k = SocketFactory.getDefault();
-            this.f510n = n43.INSTANCE;
-            this.f511o = C1414c.DEFAULT;
+            this.i = CookieJar.NO_COOKIES;
+            this.k = SocketFactory.getDefault();
+            this.n = n43.INSTANCE;
+            this.o = c.DEFAULT;
             Authenticator authenticator = Authenticator.NONE;
-            this.f512p = authenticator;
-            this.f513q = authenticator;
-            this.f514r = new C1416e();
-            this.f515s = Dns.SYSTEM;
-            this.f516t = true;
-            this.f517u = true;
-            this.f518v = true;
-            this.f519w = 0;
-            this.f520x = IVivoSpatializer.V_SDK_MIN_VERSION;
-            this.f521y = IVivoSpatializer.V_SDK_MIN_VERSION;
-            this.f522z = IVivoSpatializer.V_SDK_MIN_VERSION;
-            this.f496A = 0;
+            this.p = authenticator;
+            this.q = authenticator;
+            this.r = new e();
+            this.s = Dns.SYSTEM;
+            this.t = true;
+            this.u = true;
+            this.v = true;
+            this.w = 0;
+            this.x = 10000;
+            this.y = 10000;
+            this.z = 10000;
+            this.A = 0;
         }
 
-        /* renamed from: a */
-        public C1411b m381a(Interceptor interceptor) {
+        public b a(Interceptor interceptor) {
             if (interceptor == null) {
                 throw new IllegalArgumentException("interceptor == null");
             }
-            this.f501e.add(interceptor);
+            this.e.add(interceptor);
             return this;
         }
 
-        /* renamed from: b */
-        public OkHttpClient m382b() {
+        public OkHttpClient b() {
             return new OkHttpClient(this);
         }
 
-        /* renamed from: c */
-        public C1411b m383c(@Nullable ap apVar) {
-            this.f506j = null;
+        public b c(@Nullable ap apVar) {
+            this.j = null;
             return this;
         }
 
-        /* renamed from: d */
-        public C1411b m384d(long j, TimeUnit timeUnit) {
-            this.f520x = C1421a.m468e(BasePreInitManager.TIMEOUT, j, timeUnit);
+        public b d(long j, TimeUnit timeUnit) {
+            this.x = okhttp3.internal.a.e("timeout", j, timeUnit);
             return this;
         }
 
-        /* renamed from: e */
-        public C1411b m385e(List<C1417f> list) {
-            this.f500d = C1421a.m483t(list);
+        public b e(List<f> list) {
+            this.d = okhttp3.internal.a.t(list);
             return this;
         }
 
-        /* renamed from: f */
-        public C1411b m386f(Dns dns) {
+        public b f(Dns dns) {
             Objects.requireNonNull(dns, "dns == null");
-            this.f515s = dns;
+            this.s = dns;
             return this;
         }
 
-        /* renamed from: g */
-        public C1411b m387g(EventListener eventListener) {
+        public b g(EventListener eventListener) {
             Objects.requireNonNull(eventListener, "eventListener == null");
-            this.f503g = EventListener.m348l(eventListener);
+            this.g = EventListener.l(eventListener);
             return this;
         }
 
-        /* renamed from: h */
-        public C1411b m388h(HostnameVerifier hostnameVerifier) {
+        public b h(HostnameVerifier hostnameVerifier) {
             Objects.requireNonNull(hostnameVerifier, "hostnameVerifier == null");
-            this.f510n = hostnameVerifier;
+            this.n = hostnameVerifier;
             return this;
         }
 
-        /* renamed from: i */
-        public C1411b m389i(List<Protocol> list) {
+        public b i(List<Protocol> list) {
             ArrayList arrayList = new ArrayList(list);
             Protocol protocol = Protocol.H2_PRIOR_KNOWLEDGE;
             if (!arrayList.contains(protocol) && !arrayList.contains(Protocol.HTTP_1_1)) {
@@ -520,63 +443,60 @@ public class OkHttpClient implements Cloneable, Call.Factory, WebSocket.Factory 
                 throw new IllegalArgumentException("protocols must not contain null");
             }
             arrayList.remove(Protocol.SPDY_3);
-            this.f499c = Collections.unmodifiableList(arrayList);
+            this.c = Collections.unmodifiableList(arrayList);
             return this;
         }
 
-        /* renamed from: j */
-        public C1411b m390j(long j, TimeUnit timeUnit) {
-            this.f521y = C1421a.m468e(BasePreInitManager.TIMEOUT, j, timeUnit);
+        public b j(long j, TimeUnit timeUnit) {
+            this.y = okhttp3.internal.a.e("timeout", j, timeUnit);
             return this;
         }
 
-        /* renamed from: k */
-        public C1411b m391k(SSLSocketFactory sSLSocketFactory, X509TrustManager x509TrustManager) {
+        public b k(SSLSocketFactory sSLSocketFactory, X509TrustManager x509TrustManager) {
             Objects.requireNonNull(sSLSocketFactory, "sslSocketFactory == null");
             Objects.requireNonNull(x509TrustManager, "trustManager == null");
-            this.f508l = sSLSocketFactory;
-            this.f509m = AbstractC1463b.m750b(x509TrustManager);
+            this.l = sSLSocketFactory;
+            this.m = okhttp3.internal.tls.b.b(x509TrustManager);
             return this;
         }
 
-        /* renamed from: l */
-        public C1411b m392l(long j, TimeUnit timeUnit) {
-            this.f522z = C1421a.m468e(BasePreInitManager.TIMEOUT, j, timeUnit);
+        public b l(long j, TimeUnit timeUnit) {
+            this.z = okhttp3.internal.a.e("timeout", j, timeUnit);
             return this;
         }
 
-        C1411b(OkHttpClient okHttpClient) {
+        b(OkHttpClient okHttpClient) {
             ArrayList arrayList = new ArrayList();
-            this.f501e = arrayList;
+            this.e = arrayList;
             ArrayList arrayList2 = new ArrayList();
-            this.f502f = arrayList2;
-            this.f497a = okHttpClient.dispatcher;
-            this.f498b = okHttpClient.proxy;
-            this.f499c = okHttpClient.protocols;
-            this.f500d = okHttpClient.connectionSpecs;
+            this.f = arrayList2;
+            this.a = okHttpClient.dispatcher;
+            this.b = okHttpClient.proxy;
+            this.c = okHttpClient.protocols;
+            this.d = okHttpClient.connectionSpecs;
             arrayList.addAll(okHttpClient.interceptors);
             arrayList2.addAll(okHttpClient.networkInterceptors);
-            this.f503g = okHttpClient.eventListenerFactory;
-            this.f504h = okHttpClient.proxySelector;
-            this.f505i = okHttpClient.cookieJar;
-            this.f506j = okHttpClient.internalCache;
-            this.f507k = okHttpClient.socketFactory;
-            this.f508l = okHttpClient.sslSocketFactory;
-            this.f509m = okHttpClient.certificateChainCleaner;
-            this.f510n = okHttpClient.hostnameVerifier;
-            this.f511o = okHttpClient.certificatePinner;
-            this.f512p = okHttpClient.proxyAuthenticator;
-            this.f513q = okHttpClient.authenticator;
-            this.f514r = okHttpClient.connectionPool;
-            this.f515s = okHttpClient.dns;
-            this.f516t = okHttpClient.followSslRedirects;
-            this.f517u = okHttpClient.followRedirects;
-            this.f518v = okHttpClient.retryOnConnectionFailure;
-            this.f519w = okHttpClient.callTimeout;
-            this.f520x = okHttpClient.connectTimeout;
-            this.f521y = okHttpClient.readTimeout;
-            this.f522z = okHttpClient.writeTimeout;
-            this.f496A = okHttpClient.pingInterval;
+            this.g = okHttpClient.eventListenerFactory;
+            this.h = okHttpClient.proxySelector;
+            this.i = okHttpClient.cookieJar;
+            this.j = okHttpClient.internalCache;
+            this.k = okHttpClient.socketFactory;
+            this.l = okHttpClient.sslSocketFactory;
+            this.m = okHttpClient.certificateChainCleaner;
+            this.n = okHttpClient.hostnameVerifier;
+            this.o = okHttpClient.certificatePinner;
+            this.p = okHttpClient.proxyAuthenticator;
+            this.q = okHttpClient.authenticator;
+            this.r = okHttpClient.connectionPool;
+            this.s = okHttpClient.dns;
+            this.t = okHttpClient.followSslRedirects;
+            this.u = okHttpClient.followRedirects;
+            this.v = okHttpClient.retryOnConnectionFailure;
+            this.w = okHttpClient.callTimeout;
+            this.x = okHttpClient.connectTimeout;
+            this.y = okHttpClient.readTimeout;
+            this.z = okHttpClient.writeTimeout;
+            this.A = okHttpClient.pingInterval;
         }
     }
 }

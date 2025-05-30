@@ -4,26 +4,16 @@ import android.text.Editable;
 import android.text.method.KeyListener;
 import android.view.KeyEvent;
 import android.view.View;
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
-import androidx.emoji2.text.EmojiCompat;
 
 /* compiled from: Taobao */
 @RequiresApi(19)
 @RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class EmojiKeyListener implements KeyListener {
     private final EmojiCompatHandleKeyDownHelper mEmojiCompatHandleKeyDownHelper;
     private final KeyListener mKeyListener;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class EmojiCompatHandleKeyDownHelper {
-        public boolean handleKeyDown(@NonNull Editable editable, int i, @NonNull KeyEvent keyEvent) {
-            return EmojiCompat.handleOnKeyDown(editable, i, keyEvent);
-        }
-    }
 
     EmojiKeyListener(KeyListener keyListener) {
         this(keyListener, new EmojiCompatHandleKeyDownHelper());

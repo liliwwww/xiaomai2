@@ -1,7 +1,7 @@
 package androidx.compose.animation;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FlingCalculatorKt {
     private static final float DecelerationRate = (float) (Math.log(0.78d) / Math.log(0.9d));
     private static final float GravityEarth = 9.80665f;

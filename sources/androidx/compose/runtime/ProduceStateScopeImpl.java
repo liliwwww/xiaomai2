@@ -7,7 +7,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class ProduceStateScopeImpl<T> implements ProduceStateScope<T>, MutableState<T> {
     private final /* synthetic */ MutableState<T> $$delegate_0;
 
@@ -27,7 +27,7 @@ final class ProduceStateScopeImpl<T> implements ProduceStateScope<T>, MutableSta
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public java.lang.Object awaitDispose(@org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function0<kotlin.Unit> r5, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<?> r6) {
         /*
@@ -89,12 +89,10 @@ final class ProduceStateScopeImpl<T> implements ProduceStateScope<T>, MutableSta
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.runtime.ProduceStateScopeImpl.awaitDispose(kotlin.jvm.functions.Function0, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
-    @Override // androidx.compose.runtime.MutableState
     public T component1() {
-        return this.$$delegate_0.component1();
+        return (T) this.$$delegate_0.component1();
     }
 
-    @Override // androidx.compose.runtime.MutableState
     @NotNull
     public Function1<T, Unit> component2() {
         return this.$$delegate_0.component2();
@@ -105,12 +103,10 @@ final class ProduceStateScopeImpl<T> implements ProduceStateScope<T>, MutableSta
         return this.coroutineContext;
     }
 
-    @Override // androidx.compose.runtime.MutableState, androidx.compose.runtime.State
     public T getValue() {
-        return this.$$delegate_0.getValue();
+        return (T) this.$$delegate_0.getValue();
     }
 
-    @Override // androidx.compose.runtime.MutableState
     public void setValue(T t) {
         this.$$delegate_0.setValue(t);
     }

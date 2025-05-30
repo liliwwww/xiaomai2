@@ -4,6 +4,7 @@ import android.content.Context;
 import android.taobao.windvane.embed.BaseEmbedView;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.taobao.windvane.service.WVEventId;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +20,7 @@ import java.util.HashMap;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MyTBLiveEmbedView extends BaseEmbedView implements IMediaPlayLifecycleListener {
     private static final String Event_State = "changeState";
     private static final String Event_error = "error";
@@ -44,103 +45,53 @@ public class MyTBLiveEmbedView extends BaseEmbedView implements IMediaPlayLifecy
     private int mWidth = 0;
     private int mHeight = 0;
 
+    /* JADX WARN: Failed to restore enum class, 'enum' modifier and super class removed */
+    /* JADX WARN: Unknown enum class pattern. Please report as an issue! */
     /* compiled from: Taobao */
-    private enum EmbedProperties {
-        src { // from class: android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties.1
-            @Override // android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties
-            public boolean setValue(MyTBLiveEmbedView myTBLiveEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBLiveEmbedView, obj, z)) {
-                    return false;
-                }
-                myTBLiveEmbedView.setSrc(String.valueOf(obj));
-                return true;
-            }
-        },
-        muted { // from class: android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties.2
-            @Override // android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties
-            public boolean setValue(MyTBLiveEmbedView myTBLiveEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBLiveEmbedView, obj, z)) {
-                    return false;
-                }
-                myTBLiveEmbedView.setMuted(Boolean.parseBoolean(String.valueOf(obj)), z);
-                return true;
-            }
-        },
-        autoplay { // from class: android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties.3
-            @Override // android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties
-            public boolean setValue(MyTBLiveEmbedView myTBLiveEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBLiveEmbedView, obj, z)) {
-                    return false;
-                }
-                myTBLiveEmbedView.setAutoPlay(Boolean.parseBoolean(String.valueOf(obj)));
-                return true;
-            }
-        },
-        scenarioType { // from class: android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties.4
-            @Override // android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties
-            public boolean setValue(MyTBLiveEmbedView myTBLiveEmbedView, Object obj, boolean z) {
-                int i = 0;
-                if (!super.setValue(myTBLiveEmbedView, obj, z)) {
-                    return false;
-                }
-                try {
-                    i = Integer.valueOf(String.valueOf(obj)).intValue();
-                } catch (Throwable unused) {
-                }
-                myTBLiveEmbedView.setScenarioType(i);
-                return true;
-            }
-        },
-        objectFit { // from class: android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties.5
-            @Override // android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties
-            public boolean setValue(MyTBLiveEmbedView myTBLiveEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBLiveEmbedView, obj, z)) {
-                    return false;
-                }
-                myTBLiveEmbedView.setObjectFit(String.valueOf(obj));
-                return true;
-            }
-        },
-        bizCode { // from class: android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties.6
-            @Override // android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties
-            public boolean setValue(MyTBLiveEmbedView myTBLiveEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBLiveEmbedView, obj, z)) {
-                    return false;
-                }
-                myTBLiveEmbedView.setBizCode(String.valueOf(obj));
-                return true;
-            }
-        },
-        subBizCode { // from class: android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties.7
-            @Override // android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties
-            public boolean setValue(MyTBLiveEmbedView myTBLiveEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBLiveEmbedView, obj, z)) {
-                    return false;
-                }
-                myTBLiveEmbedView.setSubBizCode(String.valueOf(obj));
-                return true;
-            }
-        },
-        feedId { // from class: android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties.8
-            @Override // android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties
-            public boolean setValue(MyTBLiveEmbedView myTBLiveEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBLiveEmbedView, obj, z)) {
-                    return false;
-                }
-                myTBLiveEmbedView.setFeedId(String.valueOf(obj));
-                return true;
-            }
-        },
-        usePlayerManager { // from class: android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties.9
-            @Override // android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.EmbedProperties
-            public boolean setValue(MyTBLiveEmbedView myTBLiveEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBLiveEmbedView, obj, z)) {
-                    return false;
-                }
-                myTBLiveEmbedView.setUsePlayerManager(Boolean.parseBoolean(obj.toString()));
-                return true;
-            }
-        };
+    private static class EmbedProperties {
+        private static final /* synthetic */ EmbedProperties[] $VALUES;
+        public static final EmbedProperties autoplay;
+        public static final EmbedProperties bizCode;
+        public static final EmbedProperties feedId;
+        public static final EmbedProperties muted;
+        public static final EmbedProperties objectFit;
+        public static final EmbedProperties scenarioType;
+        public static final EmbedProperties src;
+        public static final EmbedProperties subBizCode;
+        public static final EmbedProperties usePlayerManager;
+
+        static {
+            EmbedProperties embedProperties = new 1("src", 0);
+            src = embedProperties;
+            EmbedProperties embedProperties2 = new 2("muted", 1);
+            muted = embedProperties2;
+            EmbedProperties embedProperties3 = new 3("autoplay", 2);
+            autoplay = embedProperties3;
+            EmbedProperties embedProperties4 = new 4("scenarioType", 3);
+            scenarioType = embedProperties4;
+            EmbedProperties embedProperties5 = new 5("objectFit", 4);
+            objectFit = embedProperties5;
+            EmbedProperties embedProperties6 = new 6("bizCode", 5);
+            bizCode = embedProperties6;
+            EmbedProperties embedProperties7 = new 7("subBizCode", 6);
+            subBizCode = embedProperties7;
+            EmbedProperties embedProperties8 = new 8("feedId", 7);
+            feedId = embedProperties8;
+            EmbedProperties embedProperties9 = new 9("usePlayerManager", 8);
+            usePlayerManager = embedProperties9;
+            $VALUES = new EmbedProperties[]{embedProperties, embedProperties2, embedProperties3, embedProperties4, embedProperties5, embedProperties6, embedProperties7, embedProperties8, embedProperties9};
+        }
+
+        private EmbedProperties(String str, int i) {
+        }
+
+        public static EmbedProperties valueOf(String str) {
+            return (EmbedProperties) Enum.valueOf(EmbedProperties.class, str);
+        }
+
+        public static EmbedProperties[] values() {
+            return (EmbedProperties[]) $VALUES.clone();
+        }
 
         public boolean setValue(MyTBLiveEmbedView myTBLiveEmbedView, Object obj, boolean z) {
             return (obj == null || myTBLiveEmbedView == null) ? false : true;
@@ -202,7 +153,7 @@ public class MyTBLiveEmbedView extends BaseEmbedView implements IMediaPlayLifecy
                 boolean z = false;
                 if (!TextUtils.isEmpty(str) && (parseObject = JSON.parseObject(str)) != null) {
                     try {
-                        myTBLiveEmbedView.seekTo(Integer.parseInt(parseObject.getString("time")) * 1000);
+                        myTBLiveEmbedView.seekTo(Integer.parseInt(parseObject.getString("time")) * WVURLRuleConstants.LOGIN);
                         z = true;
                     } catch (Throwable unused) {
                     }
@@ -236,17 +187,12 @@ public class MyTBLiveEmbedView extends BaseEmbedView implements IMediaPlayLifecy
         log("firent " + str + ":" + String.valueOf(obj));
         HashMap hashMap = new HashMap(1);
         hashMap.put("code", obj);
-        EmbedViewEvent.firevent(this.webView, this.f7id, str, JSON.toJSONString(hashMap));
+        EmbedViewEvent.firevent(this.webView, this.id, str, JSON.toJSONString(hashMap));
     }
 
     private View genVideoView() {
         if (this.mComponentHostView == null) {
-            this.mComponentHostView = new FrameLayout(this.mContext) { // from class: android.taobao.windvane.extra.embed.video.MyTBLiveEmbedView.1
-                @Override // android.view.View
-                protected void onSizeChanged(int i, int i2, int i3, int i4) {
-                    super.onSizeChanged(i, i2, i3, i4);
-                }
-            };
+            this.mComponentHostView = new 1(this, this.mContext);
         }
         MediaPlayCenter mediaPlayCenter = new MediaPlayCenter(this.mContext);
         this.mMediaPlayCenter = mediaPlayCenter;
@@ -365,7 +311,7 @@ public class MyTBLiveEmbedView extends BaseEmbedView implements IMediaPlayLifecy
         this.mWidth = i;
     }
 
-    @Override // android.taobao.windvane.embed.BaseEmbedView, android.taobao.windvane.jsbridge.WVApiPlugin
+    @Override // android.taobao.windvane.embed.BaseEmbedView
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         JSMethod jSMethod;
         try {
@@ -392,7 +338,7 @@ public class MyTBLiveEmbedView extends BaseEmbedView implements IMediaPlayLifecy
         Log.d(NAME, str);
     }
 
-    @Override // android.taobao.windvane.embed.BaseEmbedView, android.taobao.windvane.jsbridge.WVApiPlugin
+    @Override // android.taobao.windvane.embed.BaseEmbedView
     public void onDestroy() {
         super.onDestroy();
         destroyInner();
@@ -405,7 +351,7 @@ public class MyTBLiveEmbedView extends BaseEmbedView implements IMediaPlayLifecy
     }
 
     public void onMediaError(IMediaPlayer iMediaPlayer, int i, int i2) {
-        fireEvent(Event_error, Integer.valueOf((-400 <= i || i <= -500) ? (-500 < i || i <= -600) ? i == -5 ? 1008 : (i == -10006 || i == -10000) ? WVEventId.PAGE_onResume : 1023 : 1111 : 1110));
+        fireEvent(Event_error, Integer.valueOf((-400 <= i || i <= -500) ? (-500 < i || i <= -600) ? i == -5 ? WVEventId.PAGE_InterceptRequestWithHeaders : (i == -10006 || i == -10000) ? WVEventId.PAGE_onResume : 1023 : 1111 : 1110));
     }
 
     public void onMediaInfo(IMediaPlayer iMediaPlayer, long j, long j2, long j3, Object obj) {
@@ -459,12 +405,10 @@ public class MyTBLiveEmbedView extends BaseEmbedView implements IMediaPlayLifecy
         embedProperties.setValue(this, str2, true);
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void onPause() {
         super.onPause();
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void onResume() {
         super.onResume();
     }

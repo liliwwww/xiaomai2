@@ -8,11 +8,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class LifecycleService extends Service implements LifecycleOwner {
     private final ServiceLifecycleDispatcher mDispatcher = new ServiceLifecycleDispatcher(this);
 
-    @Override // androidx.lifecycle.LifecycleOwner
     @NonNull
     public Lifecycle getLifecycle() {
         return this.mDispatcher.getLifecycle();

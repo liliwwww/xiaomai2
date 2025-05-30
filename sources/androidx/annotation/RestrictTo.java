@@ -16,19 +16,7 @@ import kotlin.annotation.MustBeDocumented;
 @Documented
 @Retention(RetentionPolicy.CLASS)
 @kotlin.annotation.Retention(AnnotationRetention.BINARY)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public @interface RestrictTo {
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public enum Scope {
-        LIBRARY,
-        LIBRARY_GROUP,
-        LIBRARY_GROUP_PREFIX,
-        GROUP_ID,
-        TESTS,
-        SUBCLASSES
-    }
-
     Scope[] value();
 }

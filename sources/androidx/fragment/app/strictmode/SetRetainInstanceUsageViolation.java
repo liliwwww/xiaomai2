@@ -5,7 +5,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SetRetainInstanceUsageViolation extends RetainInstanceUsageViolation {
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
     public SetRetainInstanceUsageViolation(@NotNull Fragment fragment) {

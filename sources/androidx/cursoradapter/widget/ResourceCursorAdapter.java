@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class ResourceCursorAdapter extends CursorAdapter {
     private int mDropDownLayout;
     private LayoutInflater mInflater;
@@ -21,12 +21,10 @@ public abstract class ResourceCursorAdapter extends CursorAdapter {
         this.mInflater = (LayoutInflater) context.getSystemService("layout_inflater");
     }
 
-    @Override // androidx.cursoradapter.widget.CursorAdapter
     public View newDropDownView(Context context, Cursor cursor, ViewGroup viewGroup) {
         return this.mInflater.inflate(this.mDropDownLayout, viewGroup, false);
     }
 
-    @Override // androidx.cursoradapter.widget.CursorAdapter
     public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
         return this.mInflater.inflate(this.mLayout, viewGroup, false);
     }

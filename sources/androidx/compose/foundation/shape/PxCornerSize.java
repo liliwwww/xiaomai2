@@ -1,7 +1,7 @@
 package androidx.compose.foundation.shape;
 
-import androidx.compose.p004ui.platform.InspectableValue;
-import androidx.compose.p004ui.unit.Density;
+import androidx.compose.ui.platform.InspectableValue;
+import androidx.compose.ui.unit.Density;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.sequences.Sequence;
 import org.jetbrains.annotations.NotNull;
@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.h82;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class PxCornerSize implements CornerSize, InspectableValue {
     private final float size;
 
@@ -40,12 +40,12 @@ final class PxCornerSize implements CornerSize, InspectableValue {
         return (obj instanceof PxCornerSize) && Float.compare(this.size, ((PxCornerSize) obj).size) == 0;
     }
 
-    @Override // androidx.compose.p004ui.platform.InspectableValue
+    @Override // androidx.compose.ui.platform.InspectableValue
     public /* synthetic */ Sequence getInspectableElements() {
         return h82.a(this);
     }
 
-    @Override // androidx.compose.p004ui.platform.InspectableValue
+    @Override // androidx.compose.ui.platform.InspectableValue
     public /* synthetic */ String getNameFallback() {
         return h82.b(this);
     }
@@ -56,7 +56,7 @@ final class PxCornerSize implements CornerSize, InspectableValue {
 
     @Override // androidx.compose.foundation.shape.CornerSize
     /* renamed from: toPx-TmRCtEA */
-    public float mo1685toPxTmRCtEA(long j, @NotNull Density density) {
+    public float mo536toPxTmRCtEA(long j, @NotNull Density density) {
         Intrinsics.checkNotNullParameter(density, "density");
         return this.size;
     }
@@ -66,7 +66,7 @@ final class PxCornerSize implements CornerSize, InspectableValue {
         return "CornerSize(size = " + this.size + ".px)";
     }
 
-    @Override // androidx.compose.p004ui.platform.InspectableValue
+    @Override // androidx.compose.ui.platform.InspectableValue
     @NotNull
     public String getValueOverride() {
         return this.size + "px";

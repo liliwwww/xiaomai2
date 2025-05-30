@@ -6,7 +6,7 @@ import androidx.lifecycle.Lifecycle;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ReflectiveGenericLifecycleObserver implements LifecycleEventObserver {
     private final ClassesInfoCache.CallbackInfo mInfo;
     private final Object mWrapped;

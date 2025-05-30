@@ -1,7 +1,7 @@
 package androidx.constraintlayout.core.parser;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class CLString extends CLElement {
     public CLString(char[] cArr) {
         super(cArr);
@@ -11,7 +11,6 @@ public class CLString extends CLElement {
         return new CLString(cArr);
     }
 
-    @Override // androidx.constraintlayout.core.parser.CLElement
     protected String toFormattedJSON(int i, int i2) {
         StringBuilder sb = new StringBuilder();
         addIndent(sb, i);
@@ -21,7 +20,6 @@ public class CLString extends CLElement {
         return sb.toString();
     }
 
-    @Override // androidx.constraintlayout.core.parser.CLElement
     protected String toJSON() {
         return "'" + content() + "'";
     }

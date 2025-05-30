@@ -2,14 +2,14 @@ package androidx.compose.foundation.text.selection;
 
 import android.annotation.SuppressLint;
 import androidx.compose.foundation.MagnifierStyle;
-import androidx.compose.p004ui.ComposedModifierKt;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.input.pointer.PointerEvent;
+import androidx.compose.ui.ComposedModifierKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.input.pointer.PointerEvent;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TextFieldSelectionManager_androidKt {
     public static final boolean isShiftPressed(@NotNull PointerEvent pointerEvent) {
         Intrinsics.checkNotNullParameter(pointerEvent, "<this>");

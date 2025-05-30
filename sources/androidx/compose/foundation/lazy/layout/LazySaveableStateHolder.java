@@ -7,7 +7,6 @@ import androidx.compose.runtime.DisposableEffectResult;
 import androidx.compose.runtime.DisposableEffectScope;
 import androidx.compose.runtime.EffectsKt;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.RecomposeScopeImplKt;
 import androidx.compose.runtime.ScopeUpdateScope;
 import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
 import androidx.compose.runtime.saveable.SaveableStateHolder;
@@ -15,7 +14,6 @@ import androidx.compose.runtime.saveable.SaveableStateRegistry;
 import androidx.compose.runtime.saveable.SaveableStateRegistryKt;
 import androidx.compose.runtime.saveable.Saver;
 import androidx.compose.runtime.saveable.SaverKt;
-import androidx.compose.runtime.saveable.SaverScope;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -31,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class LazySaveableStateHolder implements SaveableStateHolder, SaveableStateRegistry {
 
     @NotNull
@@ -56,42 +54,22 @@ final class LazySaveableStateHolder implements SaveableStateHolder, SaveableStat
         }
 
         @NotNull
-        public final Saver<LazySaveableStateHolder, Map<String, List<Object>>> saver(@Nullable final SaveableStateRegistry saveableStateRegistry) {
-            return SaverKt.Saver(new Function2<SaverScope, LazySaveableStateHolder, Map<String, ? extends List<? extends Object>>>() { // from class: androidx.compose.foundation.lazy.layout.LazySaveableStateHolder$Companion$saver$1
-                @Nullable
-                public final Map<String, List<Object>> invoke(@NotNull SaverScope saverScope, @NotNull LazySaveableStateHolder lazySaveableStateHolder) {
-                    Intrinsics.checkNotNullParameter(saverScope, "$this$Saver");
-                    Intrinsics.checkNotNullParameter(lazySaveableStateHolder, "it");
-                    Map<String, List<Object>> performSave = lazySaveableStateHolder.performSave();
-                    if (performSave.isEmpty()) {
-                        return null;
-                    }
-                    return performSave;
-                }
-            }, new Function1<Map<String, ? extends List<? extends Object>>, LazySaveableStateHolder>() { // from class: androidx.compose.foundation.lazy.layout.LazySaveableStateHolder$Companion$saver$2
-                {
-                    super(1);
-                }
-
-                @Nullable
-                public final LazySaveableStateHolder invoke(@NotNull Map<String, ? extends List<? extends Object>> map) {
-                    Intrinsics.checkNotNullParameter(map, "restored");
-                    return new LazySaveableStateHolder(SaveableStateRegistry.this, map);
-                }
-            });
+        public final Saver<LazySaveableStateHolder, Map<String, List<Object>>> saver(@Nullable SaveableStateRegistry saveableStateRegistry) {
+            return SaverKt.Saver(saver.1.INSTANCE, new saver.2(saveableStateRegistry));
         }
     }
 
     public LazySaveableStateHolder(@NotNull SaveableStateRegistry saveableStateRegistry) {
+        MutableState mutableStateOf$default;
         Intrinsics.checkNotNullParameter(saveableStateRegistry, "wrappedRegistry");
         this.wrappedRegistry = saveableStateRegistry;
-        this.wrappedHolder$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
+        this.wrappedHolder$delegate = mutableStateOf$default;
         this.previouslyComposedKeys = new LinkedHashSet();
     }
 
-    @Override // androidx.compose.runtime.saveable.SaveableStateHolder
     @Composable
-    public void SaveableStateProvider(@NotNull final Object obj, @NotNull final Function2<? super Composer, ? super Integer, Unit> function2, @Nullable Composer composer, final int i) {
+    public void SaveableStateProvider(@NotNull Object obj, @NotNull Function2<? super Composer, ? super Integer, Unit> function2, @Nullable Composer composer, int i) {
         Intrinsics.checkNotNullParameter(obj, "key");
         Intrinsics.checkNotNullParameter(function2, "content");
         Composer startRestartGroup = composer.startRestartGroup(-697180401);
@@ -103,30 +81,7 @@ final class LazySaveableStateHolder implements SaveableStateHolder, SaveableStat
             throw new IllegalArgumentException("Required value was null.".toString());
         }
         wrappedHolder.SaveableStateProvider(obj, function2, startRestartGroup, (i & 112) | 520);
-        EffectsKt.DisposableEffect(obj, new Function1<DisposableEffectScope, DisposableEffectResult>() { // from class: androidx.compose.foundation.lazy.layout.LazySaveableStateHolder$SaveableStateProvider$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            @NotNull
-            public final DisposableEffectResult invoke(@NotNull DisposableEffectScope disposableEffectScope) {
-                Set set;
-                Intrinsics.checkNotNullParameter(disposableEffectScope, "$this$DisposableEffect");
-                set = LazySaveableStateHolder.this.previouslyComposedKeys;
-                set.remove(obj);
-                final LazySaveableStateHolder lazySaveableStateHolder = LazySaveableStateHolder.this;
-                final Object obj2 = obj;
-                return new DisposableEffectResult() { // from class: androidx.compose.foundation.lazy.layout.LazySaveableStateHolder$SaveableStateProvider$1$invoke$$inlined$onDispose$1
-                    @Override // androidx.compose.runtime.DisposableEffectResult
-                    public void dispose() {
-                        Set set2;
-                        set2 = LazySaveableStateHolder.this.previouslyComposedKeys;
-                        set2.add(obj2);
-                    }
-                };
-            }
-        }, startRestartGroup, 8);
+        EffectsKt.DisposableEffect(obj, (Function1<? super DisposableEffectScope, ? extends DisposableEffectResult>) new SaveableStateProvider.1(this, obj), startRestartGroup, 8);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -134,22 +89,7 @@ final class LazySaveableStateHolder implements SaveableStateHolder, SaveableStat
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.lazy.layout.LazySaveableStateHolder$SaveableStateProvider$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj2, Object obj3) {
-                invoke((Composer) obj2, ((Number) obj3).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i2) {
-                LazySaveableStateHolder.this.SaveableStateProvider(obj, function2, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
-            }
-        });
+        endRestartGroup.updateScope(new SaveableStateProvider.2(this, obj, function2, i));
     }
 
     @Override // androidx.compose.runtime.saveable.SaveableStateRegistry
@@ -191,7 +131,6 @@ final class LazySaveableStateHolder implements SaveableStateHolder, SaveableStat
         return this.wrappedRegistry.registerProvider(str, function0);
     }
 
-    @Override // androidx.compose.runtime.saveable.SaveableStateHolder
     public void removeState(@NotNull Object obj) {
         Intrinsics.checkNotNullParameter(obj, "key");
         SaveableStateHolder wrappedHolder = getWrappedHolder();
@@ -213,7 +152,7 @@ final class LazySaveableStateHolder implements SaveableStateHolder, SaveableStat
 
             @NotNull
             /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Boolean m1621invoke(@NotNull Object obj) {
+            public final Boolean m494invoke(@NotNull Object obj) {
                 Intrinsics.checkNotNullParameter(obj, "it");
                 SaveableStateRegistry saveableStateRegistry2 = SaveableStateRegistry.this;
                 return Boolean.valueOf(saveableStateRegistry2 != null ? saveableStateRegistry2.canBeSaved(obj) : true);

@@ -5,9 +5,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface KeyMapping {
     @Nullable
     /* renamed from: map-ZmokQxo, reason: not valid java name */
-    KeyCommand mo1728mapZmokQxo(@NotNull KeyEvent keyEvent);
+    KeyCommand mo396mapZmokQxo(@NotNull KeyEvent keyEvent);
 }

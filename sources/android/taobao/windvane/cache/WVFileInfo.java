@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import java.io.UnsupportedEncodingException;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVFileInfo {
     private static final String DEFAULT_ENCODING = "utf-8";
     private static final String DEFAULT_NULL = "";
@@ -103,7 +103,7 @@ public class WVFileInfo {
             sb.append(this.encoding);
         }
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("FileInfo", "composeFileInfoStr:" + ((Object) sb));
+            TaoLog.d("FileInfo", "composeFileInfoStr:" + ((Object) sb));
         }
         try {
             return sb.toString().getBytes("UTF-8");

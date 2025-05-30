@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ComposableSingletons$BottomSheetScaffoldKt {
 
     @NotNull
@@ -20,7 +20,7 @@ public final class ComposableSingletons$BottomSheetScaffoldKt {
 
     /* renamed from: lambda-1, reason: not valid java name */
     @NotNull
-    public static Function3<SnackbarHostState, Composer, Integer, Unit> f1016lambda1 = ComposableLambdaKt.composableLambdaInstance(895288908, false, new Function3<SnackbarHostState, Composer, Integer, Unit>() { // from class: androidx.compose.material.ComposableSingletons$BottomSheetScaffoldKt$lambda-1$1
+    public static Function3<SnackbarHostState, Composer, Integer, Unit> f5lambda1 = ComposableLambdaKt.composableLambdaInstance(895288908, false, new Function3<SnackbarHostState, Composer, Integer, Unit>() { // from class: androidx.compose.material.ComposableSingletons$BottomSheetScaffoldKt$lambda-1$1
         public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
             invoke((SnackbarHostState) obj, (Composer) obj2, ((Number) obj3).intValue());
             return Unit.INSTANCE;
@@ -49,7 +49,7 @@ public final class ComposableSingletons$BottomSheetScaffoldKt {
 
     @NotNull
     /* renamed from: getLambda-1$material_release, reason: not valid java name */
-    public final Function3<SnackbarHostState, Composer, Integer, Unit> m2042getLambda1$material_release() {
-        return f1016lambda1;
+    public final Function3<SnackbarHostState, Composer, Integer, Unit> m568getLambda1$material_release() {
+        return f5lambda1;
     }
 }

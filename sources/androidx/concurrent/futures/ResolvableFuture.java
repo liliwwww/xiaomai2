@@ -6,7 +6,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ResolvableFuture<V> extends AbstractResolvableFuture<V> {
     private ResolvableFuture() {
     }
@@ -15,17 +15,14 @@ public final class ResolvableFuture<V> extends AbstractResolvableFuture<V> {
         return new ResolvableFuture<>();
     }
 
-    @Override // androidx.concurrent.futures.AbstractResolvableFuture
     public boolean set(@Nullable V v) {
         return super.set(v);
     }
 
-    @Override // androidx.concurrent.futures.AbstractResolvableFuture
     public boolean setException(Throwable th) {
         return super.setException(th);
     }
 
-    @Override // androidx.concurrent.futures.AbstractResolvableFuture
     public boolean setFuture(ListenableFuture<? extends V> listenableFuture) {
         return super.setFuture(listenableFuture);
     }

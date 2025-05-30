@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @ExperimentalComposeApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SnapshotContextElementImpl implements SnapshotContextElement, ThreadContextElement<Snapshot> {
 
     @NotNull
@@ -53,7 +53,7 @@ final class SnapshotContextElementImpl implements SnapshotContextElement, Thread
 
     @Nullable
     /* renamed from: updateThreadContext, reason: merged with bridge method [inline-methods] */
-    public Snapshot m2443updateThreadContext(@NotNull CoroutineContext coroutineContext) {
+    public Snapshot m929updateThreadContext(@NotNull CoroutineContext coroutineContext) {
         Intrinsics.checkNotNullParameter(coroutineContext, "context");
         return this.snapshot.unsafeEnter();
     }

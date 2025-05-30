@@ -10,7 +10,7 @@ import java.util.List;
 
 /* compiled from: Taobao */
 @RequiresApi(21)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class MediaBrowserCompatApi21 {
     static final String NULL_MEDIA_ITEM_ID = "android.support.v4.media.MediaBrowserCompat.NULL_MEDIA_ITEM";
 
@@ -48,45 +48,10 @@ class MediaBrowserCompatApi21 {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static class MediaItem {
-        private MediaItem() {
-        }
-
-        public static Object getDescription(Object obj) {
-            return ((MediaBrowser.MediaItem) obj).getDescription();
-        }
-
-        public static int getFlags(Object obj) {
-            return ((MediaBrowser.MediaItem) obj).getFlags();
-        }
-    }
-
-    /* compiled from: Taobao */
     interface SubscriptionCallback {
         void onChildrenLoaded(@NonNull String str, List<?> list);
 
         void onError(@NonNull String str);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static class SubscriptionCallbackProxy<T extends SubscriptionCallback> extends MediaBrowser.SubscriptionCallback {
-        protected final T mSubscriptionCallback;
-
-        public SubscriptionCallbackProxy(T t) {
-            this.mSubscriptionCallback = t;
-        }
-
-        @Override // android.media.browse.MediaBrowser.SubscriptionCallback
-        public void onChildrenLoaded(@NonNull String str, List<MediaBrowser.MediaItem> list) {
-            this.mSubscriptionCallback.onChildrenLoaded(str, list);
-        }
-
-        @Override // android.media.browse.MediaBrowser.SubscriptionCallback
-        public void onError(@NonNull String str) {
-            this.mSubscriptionCallback.onError(str);
-        }
     }
 
     private MediaBrowserCompatApi21() {

@@ -2,13 +2,13 @@ package androidx.compose.foundation;
 
 import android.content.Context;
 import android.widget.EdgeEffect;
-import androidx.compose.p004ui.unit.AndroidDensity_androidKt;
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.ui.unit.AndroidDensity_androidKt;
+import androidx.compose.ui.unit.Dp;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class GlowEdgeEffectCompat extends EdgeEffect {
     private float oppositeReleaseDelta;
     private final float oppositeReleaseDeltaThreshold;
@@ -17,7 +17,7 @@ final class GlowEdgeEffectCompat extends EdgeEffect {
     public GlowEdgeEffectCompat(@NotNull Context context) {
         super(context);
         Intrinsics.checkNotNullParameter(context, "context");
-        this.oppositeReleaseDeltaThreshold = AndroidDensity_androidKt.Density(context).mo1283toPx0680j_4(C0856Dp.m5216constructorimpl(1));
+        this.oppositeReleaseDeltaThreshold = AndroidDensity_androidKt.Density(context).mo321toPx0680j_4(Dp.m2142constructorimpl(1));
     }
 
     @Override // android.widget.EdgeEffect

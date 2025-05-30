@@ -2,39 +2,15 @@ package android.taobao.windvane.webview;
 
 import android.os.Build;
 import android.os.Handler;
-import android.os.Message;
 import android.taobao.windvane.util.TaoLog;
 import android.webkit.WebView;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVTweakWebCoreHandler {
     static Handler sProxyHandler;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static class WebCoreProxyHandler extends Handler {
-        final Handler handler;
-
-        public WebCoreProxyHandler(Handler handler) {
-            super(handler.getLooper());
-            this.handler = handler;
-        }
-
-        @Override // android.os.Handler
-        public void handleMessage(Message message) {
-            try {
-                if (TaoLog.getLogStatus()) {
-                    TaoLog.m18d("WebCoreProxyHandler", "handle message: " + message.what);
-                }
-                this.handler.handleMessage(message);
-            } catch (Throwable th) {
-                TaoLog.m21e("WebCoreProxyHandler", "handleMessage exception: " + th);
-            }
-        }
-    }
 
     public static void tryTweakWebCoreHandler() {
         if (Build.VERSION.SDK_INT == 15) {
@@ -43,7 +19,7 @@ public class WVTweakWebCoreHandler {
                 return;
             }
             if (TaoLog.getLogStatus()) {
-                TaoLog.m30w("TweakWebCoreHandler", "BRAND: " + brand);
+                TaoLog.w("TweakWebCoreHandler", "BRAND: " + brand);
             }
             tweakWebCoreHandler();
         }
@@ -68,10 +44,10 @@ public class WVTweakWebCoreHandler {
             }
             declaredField.set(null, sProxyHandler);
             if (TaoLog.getLogStatus()) {
-                TaoLog.m18d("TweakWebCoreHandler", "sWebCoreHandler: " + obj);
+                TaoLog.d("TweakWebCoreHandler", "sWebCoreHandler: " + obj);
             }
         } catch (Throwable th) {
-            TaoLog.m21e("TweakWebCoreHandler", "tweakWebCoreHandler exception: " + th);
+            TaoLog.e("TweakWebCoreHandler", "tweakWebCoreHandler exception: " + th);
         }
         if (sProxyHandler == null) {
             sProxyHandler = new Handler();
@@ -98,7 +74,7 @@ public class WVTweakWebCoreHandler {
             declaredMethod2.setAccessible(true);
             declaredMethod2.invoke(obj, webView.getUrl());
         } catch (Throwable th) {
-            TaoLog.m21e("TweakWebCoreHandler", "tweakWebCoreHandler exception: " + th);
+            TaoLog.e("TweakWebCoreHandler", "tweakWebCoreHandler exception: " + th);
         }
     }
 }

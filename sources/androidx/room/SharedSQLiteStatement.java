@@ -1,12 +1,12 @@
 package androidx.room;
 
 import androidx.annotation.RestrictTo;
-import androidx.sqlite.p008db.SupportSQLiteStatement;
+import androidx.sqlite.db.SupportSQLiteStatement;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class SharedSQLiteStatement {
     private final RoomDatabase mDatabase;
     private final AtomicBoolean mLock = new AtomicBoolean(false);

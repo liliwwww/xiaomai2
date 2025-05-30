@@ -5,21 +5,16 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.SparseIntArray;
-import android.view.FrameMetrics;
 import android.view.Window;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.annotation.RestrictTo;
-import androidx.compose.animation.core.AnimationKt;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class FrameMetricsAggregator {
     public static final int ANIMATION_DURATION = 256;
     public static final int ANIMATION_INDEX = 8;
@@ -53,53 +48,12 @@ public class FrameMetricsAggregator {
         int mTrackingFlags;
         SparseIntArray[] mMetrics = new SparseIntArray[9];
         private final ArrayList<WeakReference<Activity>> mActivities = new ArrayList<>();
-        Window.OnFrameMetricsAvailableListener mListener = new Window.OnFrameMetricsAvailableListener() { // from class: androidx.core.app.FrameMetricsAggregator.FrameMetricsApi24Impl.1
-            @Override // android.view.Window.OnFrameMetricsAvailableListener
-            public void onFrameMetricsAvailable(Window window, FrameMetrics frameMetrics, int i) {
-                FrameMetricsApi24Impl frameMetricsApi24Impl = FrameMetricsApi24Impl.this;
-                if ((frameMetricsApi24Impl.mTrackingFlags & 1) != 0) {
-                    frameMetricsApi24Impl.addDurationItem(frameMetricsApi24Impl.mMetrics[0], frameMetrics.getMetric(8));
-                }
-                FrameMetricsApi24Impl frameMetricsApi24Impl2 = FrameMetricsApi24Impl.this;
-                if ((frameMetricsApi24Impl2.mTrackingFlags & 2) != 0) {
-                    frameMetricsApi24Impl2.addDurationItem(frameMetricsApi24Impl2.mMetrics[1], frameMetrics.getMetric(1));
-                }
-                FrameMetricsApi24Impl frameMetricsApi24Impl3 = FrameMetricsApi24Impl.this;
-                if ((frameMetricsApi24Impl3.mTrackingFlags & 4) != 0) {
-                    frameMetricsApi24Impl3.addDurationItem(frameMetricsApi24Impl3.mMetrics[2], frameMetrics.getMetric(3));
-                }
-                FrameMetricsApi24Impl frameMetricsApi24Impl4 = FrameMetricsApi24Impl.this;
-                if ((frameMetricsApi24Impl4.mTrackingFlags & 8) != 0) {
-                    frameMetricsApi24Impl4.addDurationItem(frameMetricsApi24Impl4.mMetrics[3], frameMetrics.getMetric(4));
-                }
-                FrameMetricsApi24Impl frameMetricsApi24Impl5 = FrameMetricsApi24Impl.this;
-                if ((frameMetricsApi24Impl5.mTrackingFlags & 16) != 0) {
-                    frameMetricsApi24Impl5.addDurationItem(frameMetricsApi24Impl5.mMetrics[4], frameMetrics.getMetric(5));
-                }
-                FrameMetricsApi24Impl frameMetricsApi24Impl6 = FrameMetricsApi24Impl.this;
-                if ((frameMetricsApi24Impl6.mTrackingFlags & 64) != 0) {
-                    frameMetricsApi24Impl6.addDurationItem(frameMetricsApi24Impl6.mMetrics[6], frameMetrics.getMetric(7));
-                }
-                FrameMetricsApi24Impl frameMetricsApi24Impl7 = FrameMetricsApi24Impl.this;
-                if ((frameMetricsApi24Impl7.mTrackingFlags & 32) != 0) {
-                    frameMetricsApi24Impl7.addDurationItem(frameMetricsApi24Impl7.mMetrics[5], frameMetrics.getMetric(6));
-                }
-                FrameMetricsApi24Impl frameMetricsApi24Impl8 = FrameMetricsApi24Impl.this;
-                if ((frameMetricsApi24Impl8.mTrackingFlags & 128) != 0) {
-                    frameMetricsApi24Impl8.addDurationItem(frameMetricsApi24Impl8.mMetrics[7], frameMetrics.getMetric(0));
-                }
-                FrameMetricsApi24Impl frameMetricsApi24Impl9 = FrameMetricsApi24Impl.this;
-                if ((frameMetricsApi24Impl9.mTrackingFlags & 256) != 0) {
-                    frameMetricsApi24Impl9.addDurationItem(frameMetricsApi24Impl9.mMetrics[8], frameMetrics.getMetric(2));
-                }
-            }
-        };
+        Window.OnFrameMetricsAvailableListener mListener = new 1(this);
 
         FrameMetricsApi24Impl(int i) {
             this.mTrackingFlags = i;
         }
 
-        @Override // androidx.core.app.FrameMetricsAggregator.FrameMetricsBaseImpl
         public void add(Activity activity) {
             if (sHandlerThread == null) {
                 HandlerThread handlerThread = new HandlerThread("FrameMetricsAggregator");
@@ -119,19 +73,17 @@ public class FrameMetricsAggregator {
 
         void addDurationItem(SparseIntArray sparseIntArray, long j) {
             if (sparseIntArray != null) {
-                int i = (int) ((500000 + j) / AnimationKt.MillisToNanos);
+                int i = (int) ((500000 + j) / 1000000);
                 if (j >= 0) {
                     sparseIntArray.put(i, sparseIntArray.get(i) + 1);
                 }
             }
         }
 
-        @Override // androidx.core.app.FrameMetricsAggregator.FrameMetricsBaseImpl
         public SparseIntArray[] getMetrics() {
             return this.mMetrics;
         }
 
-        @Override // androidx.core.app.FrameMetricsAggregator.FrameMetricsBaseImpl
         public SparseIntArray[] remove(Activity activity) {
             Iterator<WeakReference<Activity>> it = this.mActivities.iterator();
             while (true) {
@@ -148,14 +100,12 @@ public class FrameMetricsAggregator {
             return this.mMetrics;
         }
 
-        @Override // androidx.core.app.FrameMetricsAggregator.FrameMetricsBaseImpl
         public SparseIntArray[] reset() {
             SparseIntArray[] sparseIntArrayArr = this.mMetrics;
             this.mMetrics = new SparseIntArray[9];
             return sparseIntArrayArr;
         }
 
-        @Override // androidx.core.app.FrameMetricsAggregator.FrameMetricsBaseImpl
         public SparseIntArray[] stop() {
             for (int size = this.mActivities.size() - 1; size >= 0; size--) {
                 WeakReference<Activity> weakReference = this.mActivities.get(size);
@@ -167,39 +117,6 @@ public class FrameMetricsAggregator {
             }
             return this.mMetrics;
         }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static class FrameMetricsBaseImpl {
-        FrameMetricsBaseImpl() {
-        }
-
-        public void add(Activity activity) {
-        }
-
-        public SparseIntArray[] getMetrics() {
-            return null;
-        }
-
-        public SparseIntArray[] remove(Activity activity) {
-            return null;
-        }
-
-        public SparseIntArray[] reset() {
-            return null;
-        }
-
-        public SparseIntArray[] stop() {
-            return null;
-        }
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes2.dex */
-    public @interface MetricType {
     }
 
     public FrameMetricsAggregator() {

@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface LazyGridLayoutInfo {
     int getAfterContentPadding();
 
@@ -20,8 +20,8 @@ public interface LazyGridLayoutInfo {
 
     int getViewportEndOffset();
 
-    /* renamed from: getViewportSize-YbymL2g */
-    long mo1533getViewportSizeYbymL2g();
+    /* renamed from: getViewportSize-YbymL2g, reason: not valid java name */
+    long mo298getViewportSizeYbymL2g();
 
     int getViewportStartOffset();
 

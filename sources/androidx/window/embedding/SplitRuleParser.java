@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
-import androidx.window.C1398R;
+import androidx.window.R$styleable;
 import androidx.window.core.ExperimentalWindowApi;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @ExperimentalWindowApi
 @Metadata(bv = {1, 0, 3}, d1 = {"\u0000V\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0000\n\u0002\u0010\"\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0010\r\n\u0000\n\u0002\u0018\u0002\n\u0002\b\b\b\u0001\u0018\u00002\u00020\u0001B\u0007¢\u0006\u0004\b\u001f\u0010 J \u0010\b\u001a\n\u0012\u0004\u0012\u00020\u0007\u0018\u00010\u00062\u0006\u0010\u0003\u001a\u00020\u00022\u0006\u0010\u0005\u001a\u00020\u0004H\u0002J\u0018\u0010\f\u001a\u00020\u000b2\u0006\u0010\u0003\u001a\u00020\u00022\u0006\u0010\n\u001a\u00020\tH\u0002J\u0018\u0010\u000e\u001a\u00020\r2\u0006\u0010\u0003\u001a\u00020\u00022\u0006\u0010\n\u001a\u00020\tH\u0002J\u0018\u0010\u0010\u001a\u00020\u000f2\u0006\u0010\u0003\u001a\u00020\u00022\u0006\u0010\n\u001a\u00020\tH\u0002J\u0018\u0010\u0012\u001a\u00020\u00112\u0006\u0010\u0003\u001a\u00020\u00022\u0006\u0010\n\u001a\u00020\tH\u0002J\u0018\u0010\u0014\u001a\u00020\u00132\u0006\u0010\u0003\u001a\u00020\u00022\u0006\u0010\n\u001a\u00020\tH\u0002J\u001a\u0010\u001a\u001a\u00020\u00192\u0006\u0010\u0016\u001a\u00020\u00152\b\u0010\u0018\u001a\u0004\u0018\u00010\u0017H\u0002J'\u0010\u001e\u001a\n\u0012\u0004\u0012\u00020\u0007\u0018\u00010\u00062\u0006\u0010\u0003\u001a\u00020\u00022\u0006\u0010\u001b\u001a\u00020\u0004H\u0000¢\u0006\u0004\b\u001c\u0010\u001d¨\u0006!"}, d2 = {"Landroidx/window/embedding/SplitRuleParser;", "", "Landroid/content/Context;", "context", "", "splitResourceId", "", "Landroidx/window/embedding/EmbeddingRule;", "parseSplitXml", "Landroid/content/res/XmlResourceParser;", "parser", "Landroidx/window/embedding/SplitPairRule;", "parseSplitPairRule", "Landroidx/window/embedding/SplitPlaceholderRule;", "parseSplitPlaceholderRule", "Landroidx/window/embedding/SplitPairFilter;", "parseSplitPairFilter", "Landroidx/window/embedding/ActivityRule;", "parseSplitActivityRule", "Landroidx/window/embedding/ActivityFilter;", "parseActivityFilter", "", "pkg", "", "clsSeq", "Landroid/content/ComponentName;", "buildClassName", "staticRuleResourceId", "parseSplitRules$window_release", "(Landroid/content/Context;I)Ljava/util/Set;", "parseSplitRules", "<init>", "()V", "window_release"}, k = 1, mv = {1, 5, 1})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SplitRuleParser {
     private final ComponentName buildClassName(String pkg, CharSequence clsSeq) {
         if (clsSeq != null) {
@@ -46,44 +46,44 @@ public final class SplitRuleParser {
     }
 
     private final ActivityFilter parseActivityFilter(Context context, XmlResourceParser parser) {
-        TypedArray obtainStyledAttributes = context.getTheme().obtainStyledAttributes(parser, C1398R.styleable.ActivityFilter, 0, 0);
-        String string = obtainStyledAttributes.getString(C1398R.styleable.ActivityFilter_activityName);
-        String string2 = obtainStyledAttributes.getString(C1398R.styleable.ActivityFilter_activityAction);
+        TypedArray obtainStyledAttributes = context.getTheme().obtainStyledAttributes(parser, R$styleable.ActivityFilter, 0, 0);
+        String string = obtainStyledAttributes.getString(R$styleable.ActivityFilter_activityName);
+        String string2 = obtainStyledAttributes.getString(R$styleable.ActivityFilter_activityAction);
         String packageName = context.getApplicationContext().getPackageName();
         Intrinsics.checkNotNullExpressionValue(packageName, "packageName");
         return new ActivityFilter(buildClassName(packageName, string), string2);
     }
 
     private final ActivityRule parseSplitActivityRule(Context context, XmlResourceParser parser) {
-        return new ActivityRule(SetsKt.emptySet(), context.getTheme().obtainStyledAttributes(parser, C1398R.styleable.ActivityRule, 0, 0).getBoolean(C1398R.styleable.ActivityRule_alwaysExpand, false));
+        return new ActivityRule(SetsKt.emptySet(), context.getTheme().obtainStyledAttributes(parser, R$styleable.ActivityRule, 0, 0).getBoolean(R$styleable.ActivityRule_alwaysExpand, false));
     }
 
     private final SplitPairFilter parseSplitPairFilter(Context context, XmlResourceParser parser) {
-        TypedArray obtainStyledAttributes = context.getTheme().obtainStyledAttributes(parser, C1398R.styleable.SplitPairFilter, 0, 0);
-        String string = obtainStyledAttributes.getString(C1398R.styleable.SplitPairFilter_primaryActivityName);
-        String string2 = obtainStyledAttributes.getString(C1398R.styleable.SplitPairFilter_secondaryActivityName);
-        String string3 = obtainStyledAttributes.getString(C1398R.styleable.SplitPairFilter_secondaryActivityAction);
+        TypedArray obtainStyledAttributes = context.getTheme().obtainStyledAttributes(parser, R$styleable.SplitPairFilter, 0, 0);
+        String string = obtainStyledAttributes.getString(R$styleable.SplitPairFilter_primaryActivityName);
+        String string2 = obtainStyledAttributes.getString(R$styleable.SplitPairFilter_secondaryActivityName);
+        String string3 = obtainStyledAttributes.getString(R$styleable.SplitPairFilter_secondaryActivityAction);
         String packageName = context.getApplicationContext().getPackageName();
         Intrinsics.checkNotNullExpressionValue(packageName, "packageName");
         return new SplitPairFilter(buildClassName(packageName, string), buildClassName(packageName, string2), string3);
     }
 
     private final SplitPairRule parseSplitPairRule(Context context, XmlResourceParser parser) {
-        TypedArray obtainStyledAttributes = context.getTheme().obtainStyledAttributes(parser, C1398R.styleable.SplitPairRule, 0, 0);
-        float f = obtainStyledAttributes.getFloat(C1398R.styleable.SplitPairRule_splitRatio, 0.0f);
-        int dimension = (int) obtainStyledAttributes.getDimension(C1398R.styleable.SplitPairRule_splitMinWidth, 0.0f);
-        int dimension2 = (int) obtainStyledAttributes.getDimension(C1398R.styleable.SplitPairRule_splitMinSmallestWidth, 0.0f);
-        int i = obtainStyledAttributes.getInt(C1398R.styleable.SplitPairRule_splitLayoutDirection, 3);
-        return new SplitPairRule(SetsKt.emptySet(), obtainStyledAttributes.getBoolean(C1398R.styleable.SplitPairRule_finishPrimaryWithSecondary, false), obtainStyledAttributes.getBoolean(C1398R.styleable.SplitPairRule_finishSecondaryWithPrimary, true), obtainStyledAttributes.getBoolean(C1398R.styleable.SplitPairRule_clearTop, false), dimension, dimension2, f, i);
+        TypedArray obtainStyledAttributes = context.getTheme().obtainStyledAttributes(parser, R$styleable.SplitPairRule, 0, 0);
+        float f = obtainStyledAttributes.getFloat(R$styleable.SplitPairRule_splitRatio, 0.0f);
+        int dimension = (int) obtainStyledAttributes.getDimension(R$styleable.SplitPairRule_splitMinWidth, 0.0f);
+        int dimension2 = (int) obtainStyledAttributes.getDimension(R$styleable.SplitPairRule_splitMinSmallestWidth, 0.0f);
+        int i = obtainStyledAttributes.getInt(R$styleable.SplitPairRule_splitLayoutDirection, 3);
+        return new SplitPairRule(SetsKt.emptySet(), obtainStyledAttributes.getBoolean(R$styleable.SplitPairRule_finishPrimaryWithSecondary, false), obtainStyledAttributes.getBoolean(R$styleable.SplitPairRule_finishSecondaryWithPrimary, true), obtainStyledAttributes.getBoolean(R$styleable.SplitPairRule_clearTop, false), dimension, dimension2, f, i);
     }
 
     private final SplitPlaceholderRule parseSplitPlaceholderRule(Context context, XmlResourceParser parser) {
-        TypedArray obtainStyledAttributes = context.getTheme().obtainStyledAttributes(parser, C1398R.styleable.SplitPlaceholderRule, 0, 0);
-        String string = obtainStyledAttributes.getString(C1398R.styleable.SplitPlaceholderRule_placeholderActivityName);
-        float f = obtainStyledAttributes.getFloat(C1398R.styleable.SplitPlaceholderRule_splitRatio, 0.0f);
-        int dimension = (int) obtainStyledAttributes.getDimension(C1398R.styleable.SplitPlaceholderRule_splitMinWidth, 0.0f);
-        int dimension2 = (int) obtainStyledAttributes.getDimension(C1398R.styleable.SplitPlaceholderRule_splitMinSmallestWidth, 0.0f);
-        int i = obtainStyledAttributes.getInt(C1398R.styleable.SplitPlaceholderRule_splitLayoutDirection, 3);
+        TypedArray obtainStyledAttributes = context.getTheme().obtainStyledAttributes(parser, R$styleable.SplitPlaceholderRule, 0, 0);
+        String string = obtainStyledAttributes.getString(R$styleable.SplitPlaceholderRule_placeholderActivityName);
+        float f = obtainStyledAttributes.getFloat(R$styleable.SplitPlaceholderRule_splitRatio, 0.0f);
+        int dimension = (int) obtainStyledAttributes.getDimension(R$styleable.SplitPlaceholderRule_splitMinWidth, 0.0f);
+        int dimension2 = (int) obtainStyledAttributes.getDimension(R$styleable.SplitPlaceholderRule_splitMinSmallestWidth, 0.0f);
+        int i = obtainStyledAttributes.getInt(R$styleable.SplitPlaceholderRule_splitLayoutDirection, 3);
         String packageName = context.getApplicationContext().getPackageName();
         Intrinsics.checkNotNullExpressionValue(packageName, "packageName");
         ComponentName buildClassName = buildClassName(packageName, string);

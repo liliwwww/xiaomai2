@@ -1,7 +1,7 @@
 package android.taobao.windvane.monitor;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVJsMonitor implements WVJSBrdigeMonitorInterface {
     @Override // android.taobao.windvane.monitor.WVJSBrdigeMonitorInterface
     public void commitParamParseError(String str, String str2, String str3, String str4) {

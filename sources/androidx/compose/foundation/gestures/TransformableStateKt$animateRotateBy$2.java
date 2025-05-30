@@ -23,7 +23,7 @@ import tb.dp5;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.TransformableStateKt$animateRotateBy$2", f = "TransformableState.kt", i = {}, l = {158}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class TransformableStateKt$animateRotateBy$2 extends SuspendLambda implements Function2<TransformScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ AnimationSpec<Float> $animationSpec;
     final /* synthetic */ float $degrees;
@@ -80,7 +80,7 @@ final class TransformableStateKt$animateRotateBy$2 extends SuspendLambda impleme
                 }
             };
             this.label = 1;
-            if (SuspendAnimationKt.animateTo$default(AnimationState$default, boxFloat, animationSpec, false, function1, this, 4, null) == coroutine_suspended) {
+            if (SuspendAnimationKt.animateTo$default(AnimationState$default, boxFloat, animationSpec, false, function1, this, 4, (Object) null) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

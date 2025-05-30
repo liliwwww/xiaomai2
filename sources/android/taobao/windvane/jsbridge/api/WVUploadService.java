@@ -6,7 +6,7 @@ import android.taobao.windvane.jsbridge.api.WVCamera;
 import android.taobao.windvane.webview.IWVWebView;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class WVUploadService {
     protected Context mContext;
     protected IWVWebView mWebView;

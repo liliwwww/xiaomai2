@@ -1,7 +1,7 @@
 package android.taobao.windvane.thread;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class LockObject {
     public int result = 0;
     private boolean needwait = true;

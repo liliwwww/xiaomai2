@@ -18,7 +18,7 @@ import androidx.core.view.OnReceiveContentListener;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TextViewOnReceiveContentListener implements OnReceiveContentListener {
     private static final String LOG_TAG = "ReceiveContent";
 
@@ -34,18 +34,6 @@ public final class TextViewOnReceiveContentListener implements OnReceiveContentL
             }
             CharSequence coerceToText = item.coerceToText(context);
             return coerceToText instanceof Spanned ? coerceToText.toString() : coerceToText;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static final class ApiImpl {
-        private ApiImpl() {
-        }
-
-        static CharSequence coerce(@NonNull Context context, @NonNull ClipData.Item item, int i) {
-            CharSequence coerceToText = item.coerceToText(context);
-            return ((i & 1) == 0 || !(coerceToText instanceof Spanned)) ? coerceToText : coerceToText.toString();
         }
     }
 

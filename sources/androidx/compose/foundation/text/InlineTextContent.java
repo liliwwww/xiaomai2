@@ -1,8 +1,8 @@
 package androidx.compose.foundation.text;
 
-import androidx.compose.p004ui.text.Placeholder;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.Immutable;
+import androidx.compose.ui.text.Placeholder;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Intrinsics;
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class InlineTextContent {
 
     @NotNull

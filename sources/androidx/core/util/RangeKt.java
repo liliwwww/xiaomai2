@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @SuppressLint({"ClassVerificationFailure"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class RangeKt {
     @RequiresApi(21)
     @NotNull
@@ -41,28 +41,9 @@ public final class RangeKt {
 
     @RequiresApi(21)
     @NotNull
-    public static final <T extends Comparable<? super T>> ClosedRange<T> toClosedRange(@NotNull final Range<T> range) {
+    public static final <T extends Comparable<? super T>> ClosedRange<T> toClosedRange(@NotNull Range<T> range) {
         Intrinsics.checkNotNullParameter(range, "<this>");
-        return (ClosedRange<T>) new ClosedRange<T>() { // from class: androidx.core.util.RangeKt$toClosedRange$1
-            /* JADX WARN: Incorrect types in method signature: (TT;)Z */
-            public boolean contains(@NotNull Comparable comparable) {
-                return ClosedRange.DefaultImpls.contains(this, comparable);
-            }
-
-            /* JADX WARN: Incorrect return type in method signature: ()TT; */
-            public Comparable getEndInclusive() {
-                return range.getUpper();
-            }
-
-            /* JADX WARN: Incorrect return type in method signature: ()TT; */
-            public Comparable getStart() {
-                return range.getLower();
-            }
-
-            public boolean isEmpty() {
-                return ClosedRange.DefaultImpls.isEmpty(this);
-            }
-        };
+        return new toClosedRange.1(range);
     }
 
     @RequiresApi(21)

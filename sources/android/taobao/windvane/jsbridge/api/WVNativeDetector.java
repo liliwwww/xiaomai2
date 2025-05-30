@@ -17,10 +17,10 @@ import com.taobao.application.common.b;
 import com.taobao.wireless.security.sdk.SecurityGuardManager;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVNativeDetector extends WVApiPlugin {
     private void detectYearClass(String str, WVCallBackContext wVCallBackContext) {
-        int i = YearClass.get(this.mContext);
+        int i = YearClass.get(((WVApiPlugin) this).mContext);
         if (i == -1) {
             wVCallBackContext.error();
             return;
@@ -67,8 +67,8 @@ public class WVNativeDetector extends WVApiPlugin {
     private void isSimulator(String str, WVCallBackContext wVCallBackContext) {
         WVResult wVResult = new WVResult();
         try {
-            boolean isSimulator = SecurityGuardManager.getInstance(new ContextWrapper(this.mContext)).getSimulatorDetectComp().isSimulator();
-            TaoLog.m24i(WVAPI.PluginName.API_NATIVEDETECTOR, "Current phone is simulator: " + isSimulator);
+            boolean isSimulator = SecurityGuardManager.getInstance(new ContextWrapper(((WVApiPlugin) this).mContext)).getSimulatorDetectComp().isSimulator();
+            TaoLog.i(WVAPI.PluginName.API_NATIVEDETECTOR, "Current phone is simulator: " + isSimulator);
             wVResult.addData("isSimulator", Boolean.valueOf(isSimulator));
             wVCallBackContext.success(wVResult);
         } catch (Throwable th) {
@@ -77,7 +77,6 @@ public class WVNativeDetector extends WVApiPlugin {
         }
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if ("getDeviceYear".equals(str)) {
             detectYearClass(str2, wVCallBackContext);

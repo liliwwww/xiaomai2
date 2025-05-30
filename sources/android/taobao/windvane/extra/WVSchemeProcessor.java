@@ -7,9 +7,8 @@ import android.text.TextUtils;
 import anet.channel.strategy.a;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVSchemeProcessor implements WVSchemeIntercepterInterface {
-    @Override // android.taobao.windvane.webview.WVSchemeIntercepterInterface
     public String dealUrlScheme(String str) {
         try {
             if (!TextUtils.isEmpty(str) && !str.startsWith("javascript:") && !str.equals("about:blank")) {
@@ -18,7 +17,7 @@ public class WVSchemeProcessor implements WVSchemeIntercepterInterface {
             }
             return str;
         } catch (Throwable unused) {
-            TaoLog.m21e("WVSchemeProcessor", "Can not dealUrlScheme : " + str);
+            TaoLog.e("WVSchemeProcessor", "Can not dealUrlScheme : " + str);
             return str.startsWith(WVUtils.URL_SEPARATOR) ? str.replaceFirst(WVUtils.URL_SEPARATOR, "http://") : str;
         }
     }

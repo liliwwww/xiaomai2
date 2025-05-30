@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.SliderKt$Slider$3$drag$1$1", f = "Slider.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class SliderKt$Slider$3$drag$1$1 extends SuspendLambda implements Function3<CoroutineScope, Float, Continuation<? super Unit>, Object> {
     final /* synthetic */ State<Function1<Float, Unit>> $gestureEndAction;
     /* synthetic */ float F$0;
@@ -46,7 +46,7 @@ final class SliderKt$Slider$3$drag$1$1 extends SuspendLambda implements Function
             throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
         }
         ResultKt.throwOnFailure(obj);
-        this.$gestureEndAction.getValue().invoke(Boxing.boxFloat(this.F$0));
+        ((Function1) this.$gestureEndAction.getValue()).invoke(Boxing.boxFloat(this.F$0));
         return Unit.INSTANCE;
     }
 }

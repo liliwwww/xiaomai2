@@ -14,36 +14,19 @@ import okio.h;
 import tb.iv3;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PublicSuffixDatabase {
     public static final String PUBLIC_SUFFIX_RESOURCE = "publicsuffixes.gz";
+    private static final byte[] e = {42};
+    private static final String[] f = new String[0];
+    private static final String[] g = {"*"};
+    private static final PublicSuffixDatabase h = new PublicSuffixDatabase();
+    private final AtomicBoolean a = new AtomicBoolean(false);
+    private final CountDownLatch b = new CountDownLatch(1);
+    private byte[] c;
+    private byte[] d;
 
-    /* renamed from: e */
-    private static final byte[] f809e = {42};
-
-    /* renamed from: f */
-    private static final String[] f810f = new String[0];
-
-    /* renamed from: g */
-    private static final String[] f811g = {"*"};
-
-    /* renamed from: h */
-    private static final PublicSuffixDatabase f812h = new PublicSuffixDatabase();
-
-    /* renamed from: a */
-    private final AtomicBoolean f813a = new AtomicBoolean(false);
-
-    /* renamed from: b */
-    private final CountDownLatch f814b = new CountDownLatch(1);
-
-    /* renamed from: c */
-    private byte[] f815c;
-
-    /* renamed from: d */
-    private byte[] f816d;
-
-    /* renamed from: a */
-    private static String m742a(byte[] bArr, byte[][] bArr2, int i) {
+    private static String a(byte[] bArr, byte[][] bArr2, int i) {
         int i2;
         boolean z;
         int i3;
@@ -122,23 +105,22 @@ public final class PublicSuffixDatabase {
         return null;
     }
 
-    /* renamed from: b */
-    private String[] m743b(String[] strArr) {
+    private String[] b(String[] strArr) {
         String str;
         String str2;
         String str3;
         int i = 0;
-        if (this.f813a.get() || !this.f813a.compareAndSet(false, true)) {
+        if (this.a.get() || !this.a.compareAndSet(false, true)) {
             try {
-                this.f814b.await();
+                this.b.await();
             } catch (InterruptedException unused) {
                 Thread.currentThread().interrupt();
             }
         } else {
-            m746f();
+            f();
         }
         synchronized (this) {
-            if (this.f815c == null) {
+            if (this.c == null) {
                 throw new IllegalStateException("Unable to load publicsuffixes.gz resource from the classpath.");
             }
         }
@@ -154,7 +136,7 @@ public final class PublicSuffixDatabase {
                 str2 = null;
                 break;
             }
-            str2 = m742a(this.f815c, bArr, i3);
+            str2 = a(this.c, bArr, i3);
             if (str2 != null) {
                 break;
             }
@@ -163,8 +145,8 @@ public final class PublicSuffixDatabase {
         if (length > 1) {
             byte[][] bArr2 = (byte[][]) bArr.clone();
             for (int i4 = 0; i4 < bArr2.length - 1; i4++) {
-                bArr2[i4] = f809e;
-                str3 = m742a(this.f815c, bArr2, i4);
+                bArr2[i4] = e;
+                str3 = a(this.c, bArr2, i4);
                 if (str3 != null) {
                     break;
                 }
@@ -176,9 +158,9 @@ public final class PublicSuffixDatabase {
                 if (i >= length - 1) {
                     break;
                 }
-                String m742a = m742a(this.f816d, bArr, i);
-                if (m742a != null) {
-                    str = m742a;
+                String a = a(this.d, bArr, i);
+                if (a != null) {
+                    str = a;
                     break;
                 }
                 i++;
@@ -188,20 +170,18 @@ public final class PublicSuffixDatabase {
             return ("!" + str).split("\\.");
         }
         if (str2 == null && str3 == null) {
-            return f811g;
+            return g;
         }
-        String[] split = str2 != null ? str2.split("\\.") : f810f;
-        String[] split2 = str3 != null ? str3.split("\\.") : f810f;
+        String[] split = str2 != null ? str2.split("\\.") : f;
+        String[] split2 = str3 != null ? str3.split("\\.") : f;
         return split.length > split2.length ? split : split2;
     }
 
-    /* renamed from: c */
-    public static PublicSuffixDatabase m744c() {
-        return f812h;
+    public static PublicSuffixDatabase c() {
+        return h;
     }
 
-    /* renamed from: e */
-    private void m745e() throws IOException {
+    private void e() throws IOException {
         InputStream resourceAsStream = PublicSuffixDatabase.class.getResourceAsStream(PUBLIC_SUFFIX_RESOURCE);
         if (resourceAsStream == null) {
             return;
@@ -214,10 +194,10 @@ public final class PublicSuffixDatabase {
             c.readFully(bArr2);
             c.close();
             synchronized (this) {
-                this.f815c = bArr;
-                this.f816d = bArr2;
+                this.c = bArr;
+                this.d = bArr2;
             }
-            this.f814b.countDown();
+            this.b.countDown();
         } catch (Throwable th) {
             try {
                 throw th;
@@ -234,19 +214,18 @@ public final class PublicSuffixDatabase {
         }
     }
 
-    /* renamed from: f */
-    private void m746f() {
+    private void f() {
         boolean z = false;
         while (true) {
             try {
                 try {
-                    m745e();
+                    e();
                     break;
                 } catch (InterruptedIOException unused) {
                     Thread.interrupted();
                     z = true;
-                } catch (IOException e) {
-                    iv3.j().p(5, "Failed to read public suffix list", e);
+                } catch (IOException e2) {
+                    iv3.j().p(5, "Failed to read public suffix list", e2);
                     if (z) {
                         Thread.currentThread().interrupt();
                         return;
@@ -265,22 +244,21 @@ public final class PublicSuffixDatabase {
         }
     }
 
-    /* renamed from: d */
-    public String m747d(String str) {
+    public String d(String str) {
         int length;
         int length2;
         Objects.requireNonNull(str, "domain == null");
         String[] split = IDN.toUnicode(str).split("\\.");
-        String[] m743b = m743b(split);
-        if (split.length == m743b.length && m743b[0].charAt(0) != '!') {
+        String[] b = b(split);
+        if (split.length == b.length && b[0].charAt(0) != '!') {
             return null;
         }
-        if (m743b[0].charAt(0) == '!') {
+        if (b[0].charAt(0) == '!') {
             length = split.length;
-            length2 = m743b.length;
+            length2 = b.length;
         } else {
             length = split.length;
-            length2 = m743b.length + 1;
+            length2 = b.length + 1;
         }
         StringBuilder sb = new StringBuilder();
         String[] split2 = str.split("\\.");

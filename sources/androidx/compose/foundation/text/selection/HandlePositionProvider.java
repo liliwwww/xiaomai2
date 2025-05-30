@@ -1,18 +1,18 @@
 package androidx.compose.foundation.text.selection;
 
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntOffsetKt;
-import androidx.compose.p004ui.unit.IntRect;
-import androidx.compose.p004ui.unit.IntSize;
-import androidx.compose.p004ui.unit.LayoutDirection;
-import androidx.compose.p004ui.window.PopupPositionProvider;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntOffsetKt;
+import androidx.compose.ui.unit.IntRect;
+import androidx.compose.ui.unit.IntSize;
+import androidx.compose.ui.unit.LayoutDirection;
+import androidx.compose.ui.window.PopupPositionProvider;
 import kotlin.NoWhenBranchMatchedException;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class HandlePositionProvider implements PopupPositionProvider {
 
     @NotNull
@@ -50,20 +50,19 @@ public final class HandlePositionProvider implements PopupPositionProvider {
         this(handleReferencePoint, j);
     }
 
-    @Override // androidx.compose.p004ui.window.PopupPositionProvider
     /* renamed from: calculatePosition-llwVHH4, reason: not valid java name */
-    public long mo1824calculatePositionllwVHH4(@NotNull IntRect intRect, long j, @NotNull LayoutDirection layoutDirection, long j2) {
+    public long m590calculatePositionllwVHH4(@NotNull IntRect intRect, long j, @NotNull LayoutDirection layoutDirection, long j2) {
         Intrinsics.checkNotNullParameter(intRect, "anchorBounds");
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
         int i = WhenMappings.$EnumSwitchMapping$0[this.handleReferencePoint.ordinal()];
         if (i == 1) {
-            return IntOffsetKt.IntOffset(intRect.getLeft() + IntOffset.m5334getXimpl(this.offset), intRect.getTop() + IntOffset.m5335getYimpl(this.offset));
+            return IntOffsetKt.IntOffset(intRect.getLeft() + IntOffset.m2643getXimpl(this.offset), intRect.getTop() + IntOffset.m2644getYimpl(this.offset));
         }
         if (i == 2) {
-            return IntOffsetKt.IntOffset((intRect.getLeft() + IntOffset.m5334getXimpl(this.offset)) - IntSize.m5376getWidthimpl(j2), intRect.getTop() + IntOffset.m5335getYimpl(this.offset));
+            return IntOffsetKt.IntOffset((intRect.getLeft() + IntOffset.m2643getXimpl(this.offset)) - IntSize.m2685getWidthimpl(j2), intRect.getTop() + IntOffset.m2644getYimpl(this.offset));
         }
         if (i == 3) {
-            return IntOffsetKt.IntOffset((intRect.getLeft() + IntOffset.m5334getXimpl(this.offset)) - (IntSize.m5376getWidthimpl(j2) / 2), intRect.getTop() + IntOffset.m5335getYimpl(this.offset));
+            return IntOffsetKt.IntOffset((intRect.getLeft() + IntOffset.m2643getXimpl(this.offset)) - (IntSize.m2685getWidthimpl(j2) / 2), intRect.getTop() + IntOffset.m2644getYimpl(this.offset));
         }
         throw new NoWhenBranchMatchedException();
     }

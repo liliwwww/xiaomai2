@@ -2,26 +2,21 @@ package androidx.appcompat.app;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.SpinnerAdapter;
 import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.annotation.StringRes;
-import androidx.appcompat.C0257R;
 import androidx.appcompat.view.ActionMode;
-import androidx.fragment.app.FragmentTransaction;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class ActionBar {
     public static final int DISPLAY_HOME_AS_UP = 4;
     public static final int DISPLAY_SHOW_CUSTOM = 16;
@@ -40,20 +35,14 @@ public abstract class ActionBar {
 
     /* compiled from: Taobao */
     @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public @interface DisplayOptions {
     }
 
     /* compiled from: Taobao */
     @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public @interface NavigationMode {
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public interface OnMenuVisibilityListener {
-        void onMenuVisibilityChanged(boolean z);
     }
 
     /* compiled from: Taobao */
@@ -102,17 +91,6 @@ public abstract class ActionBar {
         public abstract Tab setText(CharSequence charSequence);
     }
 
-    /* compiled from: Taobao */
-    @Deprecated
-    /* loaded from: classes2.dex */
-    public interface TabListener {
-        void onTabReselected(Tab tab, FragmentTransaction fragmentTransaction);
-
-        void onTabSelected(Tab tab, FragmentTransaction fragmentTransaction);
-
-        void onTabUnselected(Tab tab, FragmentTransaction fragmentTransaction);
-    }
-
     public abstract void addOnMenuVisibilityListener(OnMenuVisibilityListener onMenuVisibilityListener);
 
     @Deprecated
@@ -127,17 +105,17 @@ public abstract class ActionBar {
     @Deprecated
     public abstract void addTab(Tab tab, boolean z);
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public boolean closeOptionsMenu() {
         return false;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public boolean collapseActionView() {
         return false;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void dispatchMenuVisibilityChanged(boolean z) {
     }
 
@@ -186,7 +164,7 @@ public abstract class ActionBar {
 
     public abstract void hide();
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public boolean invalidateOptionsMenu() {
         return false;
     }
@@ -197,7 +175,7 @@ public abstract class ActionBar {
 
     public abstract boolean isShowing();
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public boolean isTitleTruncated() {
         return false;
     }
@@ -205,24 +183,24 @@ public abstract class ActionBar {
     @Deprecated
     public abstract Tab newTab();
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void onConfigurationChanged(Configuration configuration) {
     }
 
     void onDestroy() {
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public boolean onKeyShortcut(int i, KeyEvent keyEvent) {
         return false;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public boolean onMenuKeyEvent(KeyEvent keyEvent) {
         return false;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public boolean openOptionsMenu() {
         return false;
     }
@@ -238,7 +216,7 @@ public abstract class ActionBar {
     @Deprecated
     public abstract void removeTabAt(int i);
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     boolean requestFocus() {
         return false;
     }
@@ -254,7 +232,7 @@ public abstract class ActionBar {
 
     public abstract void setCustomView(View view, LayoutParams layoutParams);
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setDefaultDisplayHomeAsUpEnabled(boolean z) {
     }
 
@@ -322,7 +300,7 @@ public abstract class ActionBar {
     @Deprecated
     public abstract void setSelectedNavigationItem(int i);
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setShowHideAnimationEnabled(boolean z) {
     }
 
@@ -340,55 +318,14 @@ public abstract class ActionBar {
 
     public abstract void setTitle(CharSequence charSequence);
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setWindowTitle(CharSequence charSequence) {
     }
 
     public abstract void show();
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public ActionMode startActionMode(ActionMode.Callback callback) {
         return null;
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static class LayoutParams extends ViewGroup.MarginLayoutParams {
-        public int gravity;
-
-        public LayoutParams(@NonNull Context context, AttributeSet attributeSet) {
-            super(context, attributeSet);
-            this.gravity = 0;
-            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0257R.styleable.ActionBarLayout);
-            this.gravity = obtainStyledAttributes.getInt(C0257R.styleable.ActionBarLayout_android_layout_gravity, 0);
-            obtainStyledAttributes.recycle();
-        }
-
-        public LayoutParams(int i, int i2) {
-            super(i, i2);
-            this.gravity = 0;
-            this.gravity = 8388627;
-        }
-
-        public LayoutParams(int i, int i2, int i3) {
-            super(i, i2);
-            this.gravity = 0;
-            this.gravity = i3;
-        }
-
-        public LayoutParams(int i) {
-            this(-2, -1, i);
-        }
-
-        public LayoutParams(LayoutParams layoutParams) {
-            super((ViewGroup.MarginLayoutParams) layoutParams);
-            this.gravity = 0;
-            this.gravity = layoutParams.gravity;
-        }
-
-        public LayoutParams(ViewGroup.LayoutParams layoutParams) {
-            super(layoutParams);
-            this.gravity = 0;
-        }
     }
 }

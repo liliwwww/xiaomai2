@@ -1,9 +1,9 @@
 package androidx.compose.foundation.text.selection;
 
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.layout.LayoutCoordinates;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.layout.LayoutCoordinates;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -24,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.cw4;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SelectionRegistrarImpl implements SelectionRegistrar {
 
     @Nullable
@@ -50,6 +50,9 @@ public final class SelectionRegistrarImpl implements SelectionRegistrar {
     private boolean sorted;
 
     @NotNull
+    private final MutableState subselections$delegate;
+
+    @NotNull
     private final List<Selectable> _selectables = new ArrayList();
 
     @NotNull
@@ -58,8 +61,11 @@ public final class SelectionRegistrarImpl implements SelectionRegistrar {
     @NotNull
     private AtomicLong incrementId = new AtomicLong(1);
 
-    @NotNull
-    private final MutableState subselections$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(MapsKt.emptyMap(), null, 2, null);
+    public SelectionRegistrarImpl() {
+        MutableState mutableStateOf$default;
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(MapsKt.emptyMap(), null, 2, null);
+        this.subselections$delegate = mutableStateOf$default;
+    }
 
     /* JADX INFO: Access modifiers changed from: private */
     public static final int sort$lambda$2(Function2 function2, Object obj, Object obj2) {
@@ -150,12 +156,12 @@ public final class SelectionRegistrarImpl implements SelectionRegistrar {
 
     @Override // androidx.compose.foundation.text.selection.SelectionRegistrar
     /* renamed from: notifySelectionUpdate-5iVPX68 */
-    public boolean mo1886notifySelectionUpdate5iVPX68(@NotNull LayoutCoordinates layoutCoordinates, long j, long j2, boolean z, @NotNull SelectionAdjustment selectionAdjustment) {
+    public boolean mo643notifySelectionUpdate5iVPX68(@NotNull LayoutCoordinates layoutCoordinates, long j, long j2, boolean z, @NotNull SelectionAdjustment selectionAdjustment) {
         Intrinsics.checkNotNullParameter(layoutCoordinates, "layoutCoordinates");
         Intrinsics.checkNotNullParameter(selectionAdjustment, "adjustment");
         Function5<? super LayoutCoordinates, ? super Offset, ? super Offset, ? super Boolean, ? super SelectionAdjustment, Boolean> function5 = this.onSelectionUpdateCallback;
         if (function5 != null) {
-            return ((Boolean) function5.invoke(layoutCoordinates, Offset.m2545boximpl(j), Offset.m2545boximpl(j2), Boolean.valueOf(z), selectionAdjustment)).booleanValue();
+            return ((Boolean) function5.invoke(layoutCoordinates, Offset.box-impl(j), Offset.box-impl(j2), Boolean.valueOf(z), selectionAdjustment)).booleanValue();
         }
         return true;
     }
@@ -178,12 +184,12 @@ public final class SelectionRegistrarImpl implements SelectionRegistrar {
 
     @Override // androidx.compose.foundation.text.selection.SelectionRegistrar
     /* renamed from: notifySelectionUpdateStart-d-4ec7I */
-    public void mo1887notifySelectionUpdateStartd4ec7I(@NotNull LayoutCoordinates layoutCoordinates, long j, @NotNull SelectionAdjustment selectionAdjustment) {
+    public void mo644notifySelectionUpdateStartd4ec7I(@NotNull LayoutCoordinates layoutCoordinates, long j, @NotNull SelectionAdjustment selectionAdjustment) {
         Intrinsics.checkNotNullParameter(layoutCoordinates, "layoutCoordinates");
         Intrinsics.checkNotNullParameter(selectionAdjustment, "adjustment");
         Function3<? super LayoutCoordinates, ? super Offset, ? super SelectionAdjustment, Unit> function3 = this.onSelectionUpdateStartCallback;
         if (function3 != null) {
-            function3.invoke(layoutCoordinates, Offset.m2545boximpl(j), selectionAdjustment);
+            function3.invoke(layoutCoordinates, Offset.box-impl(j), selectionAdjustment);
         }
     }
 
@@ -229,6 +235,7 @@ public final class SelectionRegistrarImpl implements SelectionRegistrar {
         Intrinsics.checkNotNullParameter(layoutCoordinates, "containerLayoutCoordinates");
         if (!this.sorted) {
             CollectionsKt.sortWith(this._selectables, new cw4(new Function2<Selectable, Selectable, Integer>() { // from class: androidx.compose.foundation.text.selection.SelectionRegistrarImpl$sort$1
+                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
                 {
                     super(2);
                 }
@@ -239,9 +246,9 @@ public final class SelectionRegistrarImpl implements SelectionRegistrar {
                     Intrinsics.checkNotNullParameter(selectable2, "b");
                     LayoutCoordinates layoutCoordinates2 = selectable.getLayoutCoordinates();
                     LayoutCoordinates layoutCoordinates3 = selectable2.getLayoutCoordinates();
-                    long mo4192localPositionOfR5De75A = layoutCoordinates2 != null ? LayoutCoordinates.this.mo4192localPositionOfR5De75A(layoutCoordinates2, Offset.Companion.m2572getZeroF1C5BW0()) : Offset.Companion.m2572getZeroF1C5BW0();
-                    long mo4192localPositionOfR5De75A2 = layoutCoordinates3 != null ? LayoutCoordinates.this.mo4192localPositionOfR5De75A(layoutCoordinates3, Offset.Companion.m2572getZeroF1C5BW0()) : Offset.Companion.m2572getZeroF1C5BW0();
-                    return Integer.valueOf((Offset.m2557getYimpl(mo4192localPositionOfR5De75A) > Offset.m2557getYimpl(mo4192localPositionOfR5De75A2) ? 1 : (Offset.m2557getYimpl(mo4192localPositionOfR5De75A) == Offset.m2557getYimpl(mo4192localPositionOfR5De75A2) ? 0 : -1)) == 0 ? ComparisonsKt.compareValues(Float.valueOf(Offset.m2556getXimpl(mo4192localPositionOfR5De75A)), Float.valueOf(Offset.m2556getXimpl(mo4192localPositionOfR5De75A2))) : ComparisonsKt.compareValues(Float.valueOf(Offset.m2557getYimpl(mo4192localPositionOfR5De75A)), Float.valueOf(Offset.m2557getYimpl(mo4192localPositionOfR5De75A2))));
+                    long j = layoutCoordinates2 != null ? layoutCoordinates.localPositionOf-R5De75A(layoutCoordinates2, Offset.Companion.m1024getZeroF1C5BW0()) : Offset.Companion.m1024getZeroF1C5BW0();
+                    long j2 = layoutCoordinates3 != null ? layoutCoordinates.localPositionOf-R5De75A(layoutCoordinates3, Offset.Companion.m1024getZeroF1C5BW0()) : Offset.Companion.m1024getZeroF1C5BW0();
+                    return Integer.valueOf((Offset.getY-impl(j) > Offset.getY-impl(j2) ? 1 : (Offset.getY-impl(j) == Offset.getY-impl(j2) ? 0 : -1)) == 0 ? ComparisonsKt.compareValues(Float.valueOf(Offset.getX-impl(j)), Float.valueOf(Offset.getX-impl(j2))) : ComparisonsKt.compareValues(Float.valueOf(Offset.getY-impl(j)), Float.valueOf(Offset.getY-impl(j2))));
                 }
             }));
             this.sorted = true;

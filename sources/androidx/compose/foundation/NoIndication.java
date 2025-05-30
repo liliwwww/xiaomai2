@@ -1,7 +1,6 @@
 package androidx.compose.foundation;
 
 import androidx.compose.foundation.interaction.InteractionSource;
-import androidx.compose.p004ui.graphics.drawscope.ContentDrawScope;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
@@ -10,33 +9,15 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class NoIndication implements Indication {
 
     @NotNull
     public static final NoIndication INSTANCE = new NoIndication();
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static final class NoIndicationInstance implements IndicationInstance {
-
-        @NotNull
-        public static final NoIndicationInstance INSTANCE = new NoIndicationInstance();
-
-        private NoIndicationInstance() {
-        }
-
-        @Override // androidx.compose.foundation.IndicationInstance
-        public void drawIndication(@NotNull ContentDrawScope contentDrawScope) {
-            Intrinsics.checkNotNullParameter(contentDrawScope, "<this>");
-            contentDrawScope.drawContent();
-        }
-    }
-
     private NoIndication() {
     }
 
-    @Override // androidx.compose.foundation.Indication
     @Composable
     @NotNull
     public IndicationInstance rememberUpdatedInstance(@NotNull InteractionSource interactionSource, @Nullable Composer composer, int i) {

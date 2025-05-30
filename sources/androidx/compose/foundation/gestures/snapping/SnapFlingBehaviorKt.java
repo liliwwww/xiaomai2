@@ -1,5 +1,6 @@
 package androidx.compose.foundation.gestures.snapping;
 
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import androidx.compose.animation.SplineBasedFloatDecayAnimationSpec_androidKt;
 import androidx.compose.animation.core.AnimationScope;
 import androidx.compose.animation.core.AnimationSpecKt;
@@ -8,12 +9,12 @@ import androidx.compose.animation.core.DecayAnimationSpec;
 import androidx.compose.animation.core.EasingKt;
 import androidx.compose.foundation.ExperimentalFoundationApi;
 import androidx.compose.foundation.gestures.ScrollScope;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Density;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
@@ -24,10 +25,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SnapFlingBehaviorKt {
     private static final boolean DEBUG = false;
-    private static final float MinFlingVelocityDp = C0856Dp.m5216constructorimpl(400);
+    private static final float MinFlingVelocityDp = Dp.m2142constructorimpl(WVURLRuleConstants.CART);
     public static final float NoDistance = 0.0f;
     public static final float NoVelocity = 0.0f;
 
@@ -36,14 +37,14 @@ public final class SnapFlingBehaviorKt {
     /* JADX WARN: Removed duplicated region for block: B:8:0x0023  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object animateDecay(final androidx.compose.foundation.gestures.ScrollScope r5, final float r6, androidx.compose.animation.core.AnimationState<java.lang.Float, androidx.compose.animation.core.AnimationVector1D> r7, androidx.compose.animation.core.DecayAnimationSpec<java.lang.Float> r8, final kotlin.jvm.functions.Function1<? super java.lang.Float, kotlin.Unit> r9, kotlin.coroutines.Continuation<? super androidx.compose.foundation.gestures.snapping.AnimationResult<java.lang.Float, androidx.compose.animation.core.AnimationVector1D>> r10) {
+    public static final java.lang.Object animateDecay(androidx.compose.foundation.gestures.ScrollScope r5, float r6, androidx.compose.animation.core.AnimationState<java.lang.Float, androidx.compose.animation.core.AnimationVector1D> r7, androidx.compose.animation.core.DecayAnimationSpec<java.lang.Float> r8, kotlin.jvm.functions.Function1<? super java.lang.Float, kotlin.Unit> r9, kotlin.coroutines.Continuation<? super androidx.compose.foundation.gestures.snapping.AnimationResult<java.lang.Float, androidx.compose.animation.core.AnimationVector1D>> r10) {
         /*
-            boolean r0 = r10 instanceof androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$animateDecay$1
+            boolean r0 = r10 instanceof androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt.animateDecay.1
             if (r0 == 0) goto L13
             r0 = r10
-            androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$animateDecay$1 r0 = (androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$animateDecay$1) r0
+            androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$animateDecay$1 r0 = (androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt.animateDecay.1) r0
             int r1 = r0.label
             r2 = -2147483648(0xffffffff80000000, float:-0.0)
             r3 = r1 & r2
@@ -90,7 +91,7 @@ public final class SnapFlingBehaviorKt {
         L55:
             r2 = r2 ^ r3
             androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$animateDecay$2 r4 = new androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$animateDecay$2
-            r4.<init>()
+            r4.<init>(r6, r10, r5, r9)
             r0.L$0 = r7
             r0.L$1 = r10
             r0.F$0 = r6
@@ -125,15 +126,15 @@ public final class SnapFlingBehaviorKt {
     /* JADX WARN: Removed duplicated region for block: B:8:0x0026  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object animateSnap(final androidx.compose.foundation.gestures.ScrollScope r12, float r13, final float r14, androidx.compose.animation.core.AnimationState<java.lang.Float, androidx.compose.animation.core.AnimationVector1D> r15, androidx.compose.animation.core.AnimationSpec<java.lang.Float> r16, final kotlin.jvm.functions.Function1<? super java.lang.Float, kotlin.Unit> r17, kotlin.coroutines.Continuation<? super androidx.compose.foundation.gestures.snapping.AnimationResult<java.lang.Float, androidx.compose.animation.core.AnimationVector1D>> r18) {
+    public static final java.lang.Object animateSnap(androidx.compose.foundation.gestures.ScrollScope r12, float r13, float r14, androidx.compose.animation.core.AnimationState<java.lang.Float, androidx.compose.animation.core.AnimationVector1D> r15, androidx.compose.animation.core.AnimationSpec<java.lang.Float> r16, kotlin.jvm.functions.Function1<? super java.lang.Float, kotlin.Unit> r17, kotlin.coroutines.Continuation<? super androidx.compose.foundation.gestures.snapping.AnimationResult<java.lang.Float, androidx.compose.animation.core.AnimationVector1D>> r18) {
         /*
             r0 = r18
-            boolean r1 = r0 instanceof androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$animateSnap$1
+            boolean r1 = r0 instanceof androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt.animateSnap.1
             if (r1 == 0) goto L15
             r1 = r0
-            androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$animateSnap$1 r1 = (androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$animateSnap$1) r1
+            androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$animateSnap$1 r1 = (androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt.animateSnap.1) r1
             int r2 = r1.label
             r3 = -2147483648(0xffffffff80000000, float:-0.0)
             r4 = r2 & r3
@@ -191,7 +192,7 @@ public final class SnapFlingBehaviorKt {
             r2 = r12
             r9 = r14
             r10 = r17
-            r6.<init>()
+            r6.<init>(r14, r0, r12, r10)
             r9 = r15
             r7.L$0 = r9
             r7.L$1 = r0
@@ -236,14 +237,14 @@ public final class SnapFlingBehaviorKt {
     /* JADX WARN: Removed duplicated region for block: B:8:0x0024  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object approach(androidx.compose.foundation.gestures.ScrollScope r7, float r8, float r9, androidx.compose.foundation.gestures.snapping.ApproachAnimation<java.lang.Float, androidx.compose.animation.core.AnimationVector1D> r10, androidx.compose.foundation.gestures.snapping.SnapLayoutInfoProvider r11, androidx.compose.p004ui.unit.Density r12, kotlin.jvm.functions.Function1<? super java.lang.Float, kotlin.Unit> r13, kotlin.coroutines.Continuation<? super androidx.compose.foundation.gestures.snapping.AnimationResult<java.lang.Float, androidx.compose.animation.core.AnimationVector1D>> r14) {
+    public static final java.lang.Object approach(androidx.compose.foundation.gestures.ScrollScope r7, float r8, float r9, androidx.compose.foundation.gestures.snapping.ApproachAnimation<java.lang.Float, androidx.compose.animation.core.AnimationVector1D> r10, androidx.compose.foundation.gestures.snapping.SnapLayoutInfoProvider r11, androidx.compose.ui.unit.Density r12, kotlin.jvm.functions.Function1<? super java.lang.Float, kotlin.Unit> r13, kotlin.coroutines.Continuation<? super androidx.compose.foundation.gestures.snapping.AnimationResult<java.lang.Float, androidx.compose.animation.core.AnimationVector1D>> r14) {
         /*
-            boolean r0 = r14 instanceof androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$approach$1
+            boolean r0 = r14 instanceof androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt.approach.1
             if (r0 == 0) goto L13
             r0 = r14
-            androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$approach$1 r0 = (androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$approach$1) r0
+            androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt$approach$1 r0 = (androidx.compose.foundation.gestures.snapping.SnapFlingBehaviorKt.approach.1) r0
             int r1 = r0.label
             r2 = -2147483648(0xffffffff80000000, float:-0.0)
             r3 = r1 & r2
@@ -264,7 +265,7 @@ public final class SnapFlingBehaviorKt {
             if (r1 != r2) goto L34
             java.lang.Object r7 = r6.L$1
             r12 = r7
-            androidx.compose.ui.unit.Density r12 = (androidx.compose.p004ui.unit.Density) r12
+            androidx.compose.ui.unit.Density r12 = (androidx.compose.ui.unit.Density) r12
             java.lang.Object r7 = r6.L$0
             r11 = r7
             androidx.compose.foundation.gestures.snapping.SnapLayoutInfoProvider r11 = (androidx.compose.foundation.gestures.snapping.SnapLayoutInfoProvider) r11
@@ -330,9 +331,9 @@ public final class SnapFlingBehaviorKt {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final float findClosestOffset(float r4, @org.jetbrains.annotations.NotNull androidx.compose.foundation.gestures.snapping.SnapLayoutInfoProvider r5, @org.jetbrains.annotations.NotNull androidx.compose.p004ui.unit.Density r6) {
+    public static final float findClosestOffset(float r4, @org.jetbrains.annotations.NotNull androidx.compose.foundation.gestures.snapping.SnapLayoutInfoProvider r5, @org.jetbrains.annotations.NotNull androidx.compose.ui.unit.Density r6) {
         /*
             java.lang.String r0 = "snapLayoutInfoProvider"
             kotlin.jvm.internal.Intrinsics.checkNotNullParameter(r5, r0)
@@ -425,7 +426,7 @@ public final class SnapFlingBehaviorKt {
         boolean changed = composer.changed(snapLayoutInfoProvider) | composer.changed(rememberSplineBasedDecay) | composer.changed(density);
         Object rememberedValue = composer.rememberedValue();
         if (changed || rememberedValue == Composer.Companion.getEmpty()) {
-            Object snapFlingBehavior = new SnapFlingBehavior(snapLayoutInfoProvider, AnimationSpecKt.tween$default(0, 0, EasingKt.getLinearEasing(), 3, null), rememberSplineBasedDecay, AnimationSpecKt.spring$default(0.0f, 400.0f, null, 5, null), density, 0.0f, 32, null);
+            Object snapFlingBehavior = new SnapFlingBehavior(snapLayoutInfoProvider, AnimationSpecKt.tween$default(0, 0, EasingKt.getLinearEasing(), 3, (Object) null), rememberSplineBasedDecay, AnimationSpecKt.spring$default(0.0f, 400.0f, (Object) null, 5, (Object) null), density, 0.0f, 32, null);
             composer.updateRememberedValue(snapFlingBehavior);
             rememberedValue = snapFlingBehavior;
         }

@@ -1,7 +1,7 @@
 package androidx.compose.animation.core;
 
-import androidx.compose.p004ui.platform.InfiniteAnimationPolicy;
 import androidx.compose.runtime.MonotonicFrameClockKt;
+import androidx.compose.ui.platform.InfiniteAnimationPolicy;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.InlineMarker;
@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class InfiniteAnimationPolicyKt {
     @Nullable
     public static final <R> Object withInfiniteAnimationFrameMillis(@NotNull Function1<? super Long, ? extends R> function1, @NotNull Continuation<? super R> continuation) {
@@ -26,7 +26,7 @@ public final class InfiniteAnimationPolicyKt {
 
     @Nullable
     public static final <R> Object withInfiniteAnimationFrameNanos(@NotNull Function1<? super Long, ? extends R> function1, @NotNull Continuation<? super R> continuation) {
-        InfiniteAnimationPolicy infiniteAnimationPolicy = (InfiniteAnimationPolicy) continuation.getContext().get(InfiniteAnimationPolicy.Key);
-        return infiniteAnimationPolicy == null ? MonotonicFrameClockKt.withFrameNanos(function1, continuation) : infiniteAnimationPolicy.onInfiniteOperation(new InfiniteAnimationPolicyKt$withInfiniteAnimationFrameNanos$2(function1, null), continuation);
+        InfiniteAnimationPolicy infiniteAnimationPolicy = continuation.getContext().get(InfiniteAnimationPolicy.Key);
+        return infiniteAnimationPolicy == null ? MonotonicFrameClockKt.withFrameNanos(function1, continuation) : infiniteAnimationPolicy.onInfiniteOperation(new withInfiniteAnimationFrameNanos.2(function1, (Continuation) null), continuation);
     }
 }

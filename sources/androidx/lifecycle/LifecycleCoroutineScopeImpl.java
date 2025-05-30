@@ -3,6 +3,7 @@ package androidx.lifecycle;
 import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.Lifecycle;
 import java.util.concurrent.CancellationException;
+import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
 import kotlin.jvm.internal.Intrinsics;
 import kotlinx.coroutines.CoroutineStart;
@@ -12,7 +13,7 @@ import tb.bb2;
 import tb.m11;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LifecycleCoroutineScopeImpl extends LifecycleCoroutineScope implements LifecycleEventObserver {
 
     @NotNull
@@ -53,6 +54,6 @@ public final class LifecycleCoroutineScopeImpl extends LifecycleCoroutineScope i
     }
 
     public final void register() {
-        d.d(this, m11.c().a(), (CoroutineStart) null, new LifecycleCoroutineScopeImpl$register$1(this, null), 2, (Object) null);
+        d.d(this, m11.c().a(), (CoroutineStart) null, new register.1(this, (Continuation) null), 2, (Object) null);
     }
 }

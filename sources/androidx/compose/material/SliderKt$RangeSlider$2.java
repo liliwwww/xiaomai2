@@ -17,7 +17,7 @@ import kotlin.ranges.ClosedFloatingPointRange;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class SliderKt$RangeSlider$2 extends Lambda implements Function3<BoxWithConstraintsScope, Composer, Integer, Unit> {
     final /* synthetic */ int $$dirty;
     final /* synthetic */ SliderColors $colors;
@@ -32,14 +32,14 @@ final class SliderKt$RangeSlider$2 extends Lambda implements Function3<BoxWithCo
     final /* synthetic */ ClosedFloatingPointRange<Float> $valueRange;
 
     /* compiled from: Taobao */
-    /* renamed from: androidx.compose.material.SliderKt$RangeSlider$2$2 */
-    /* synthetic */ class C06902 extends FunctionReferenceImpl implements Function1<Float, Float> {
+    /* renamed from: androidx.compose.material.SliderKt$RangeSlider$2$2, reason: invalid class name */
+    /* synthetic */ class AnonymousClass2 extends FunctionReferenceImpl implements Function1<Float, Float> {
         final /* synthetic */ Ref.FloatRef $maxPx;
         final /* synthetic */ Ref.FloatRef $minPx;
         final /* synthetic */ ClosedFloatingPointRange<Float> $valueRange;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        C06902(ClosedFloatingPointRange<Float> closedFloatingPointRange, Ref.FloatRef floatRef, Ref.FloatRef floatRef2) {
+        AnonymousClass2(ClosedFloatingPointRange<Float> closedFloatingPointRange, Ref.FloatRef floatRef, Ref.FloatRef floatRef2) {
             super(1, Intrinsics.Kotlin.class, "scaleToOffset", "invoke$scaleToOffset(Lkotlin/ranges/ClosedFloatingPointRange;Lkotlin/jvm/internal/Ref$FloatRef;Lkotlin/jvm/internal/Ref$FloatRef;F)F", 0);
             this.$valueRange = closedFloatingPointRange;
             this.$minPx = floatRef;
@@ -57,14 +57,14 @@ final class SliderKt$RangeSlider$2 extends Lambda implements Function3<BoxWithCo
     }
 
     /* compiled from: Taobao */
-    /* renamed from: androidx.compose.material.SliderKt$RangeSlider$2$3 */
-    /* synthetic */ class C06913 extends FunctionReferenceImpl implements Function1<Float, Float> {
+    /* renamed from: androidx.compose.material.SliderKt$RangeSlider$2$3, reason: invalid class name */
+    /* synthetic */ class AnonymousClass3 extends FunctionReferenceImpl implements Function1<Float, Float> {
         final /* synthetic */ Ref.FloatRef $maxPx;
         final /* synthetic */ Ref.FloatRef $minPx;
         final /* synthetic */ ClosedFloatingPointRange<Float> $valueRange;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        C06913(ClosedFloatingPointRange<Float> closedFloatingPointRange, Ref.FloatRef floatRef, Ref.FloatRef floatRef2) {
+        AnonymousClass3(ClosedFloatingPointRange<Float> closedFloatingPointRange, Ref.FloatRef floatRef, Ref.FloatRef floatRef2) {
             super(1, Intrinsics.Kotlin.class, "scaleToOffset", "invoke$scaleToOffset(Lkotlin/ranges/ClosedFloatingPointRange;Lkotlin/jvm/internal/Ref$FloatRef;Lkotlin/jvm/internal/Ref$FloatRef;F)F", 0);
             this.$valueRange = closedFloatingPointRange;
             this.$minPx = floatRef;
@@ -99,16 +99,12 @@ final class SliderKt$RangeSlider$2 extends Lambda implements Function3<BoxWithCo
 
     /* JADX INFO: Access modifiers changed from: private */
     public static final float invoke$scaleToOffset(ClosedFloatingPointRange<Float> closedFloatingPointRange, Ref.FloatRef floatRef, Ref.FloatRef floatRef2, float f) {
-        float scale;
-        scale = SliderKt.scale(((Number) closedFloatingPointRange.getStart()).floatValue(), ((Number) closedFloatingPointRange.getEndInclusive()).floatValue(), f, floatRef.element, floatRef2.element);
-        return scale;
+        return SliderKt.access$scale(((Number) closedFloatingPointRange.getStart()).floatValue(), ((Number) closedFloatingPointRange.getEndInclusive()).floatValue(), f, floatRef.element, floatRef2.element);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     public static final ClosedFloatingPointRange<Float> invoke$scaleToUserValue(Ref.FloatRef floatRef, Ref.FloatRef floatRef2, ClosedFloatingPointRange<Float> closedFloatingPointRange, ClosedFloatingPointRange<Float> closedFloatingPointRange2) {
-        ClosedFloatingPointRange<Float> scale;
-        scale = SliderKt.scale(floatRef.element, floatRef2.element, (ClosedFloatingPointRange<Float>) closedFloatingPointRange2, ((Number) closedFloatingPointRange.getStart()).floatValue(), ((Number) closedFloatingPointRange.getEndInclusive()).floatValue());
-        return scale;
+        return SliderKt.access$scale(floatRef.element, floatRef2.element, closedFloatingPointRange2, ((Number) closedFloatingPointRange.getStart()).floatValue(), ((Number) closedFloatingPointRange.getEndInclusive()).floatValue());
     }
 
     public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
@@ -128,12 +124,12 @@ final class SliderKt$RangeSlider$2 extends Lambda implements Function3<BoxWithCo
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final void invoke(@org.jetbrains.annotations.NotNull androidx.compose.foundation.layout.BoxWithConstraintsScope r31, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r32, int r33) {
         /*
             Method dump skipped, instructions count: 942
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SliderKt$RangeSlider$2.invoke(androidx.compose.foundation.layout.BoxWithConstraintsScope, androidx.compose.runtime.Composer, int):void");
     }

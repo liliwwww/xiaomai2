@@ -13,7 +13,7 @@ import java.io.File;
 import java.nio.ByteBuffer;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ConfigStorage {
     public static final long DEFAULT_MAX_AGE = 21600000;
     public static final long DEFAULT_SMALL_MAX_AGE = 1800000;
@@ -56,7 +56,7 @@ public class ConfigStorage {
                 allocate.put(read);
                 allocate.flip();
                 j = allocate.getLong();
-                TaoLog.m18d(TAG, "read " + configKey + " by file : " + j);
+                TaoLog.d(TAG, "read " + configKey + " by file : " + j);
             } else {
                 SharedPreferences sharedPreference = getSharedPreference();
                 if (sharedPreference == null) {
@@ -67,10 +67,10 @@ public class ConfigStorage {
                 SharedPreferences.Editor edit = sharedPreference.edit();
                 edit.remove(configKey);
                 edit.commit();
-                TaoLog.m24i(TAG, "read " + configKey + " by sp : " + j);
+                TaoLog.i(TAG, "read " + configKey + " by sp : " + j);
             }
         } catch (Exception unused) {
-            TaoLog.m21e(TAG, "can not read file : " + configKey);
+            TaoLog.e(TAG, "can not read file : " + configKey);
         }
         return j;
     }
@@ -89,11 +89,11 @@ public class ConfigStorage {
         if (new File(getFileAbsolutePath(configKey)).exists()) {
             String str4 = new String(FileAccesser.read(new File(getFileAbsolutePath(configKey))));
             try {
-                TaoLog.m18d(TAG, "read " + configKey + " by file : " + str4);
+                TaoLog.d(TAG, "read " + configKey + " by file : " + str4);
                 return str4;
             } catch (Exception unused) {
                 str3 = str4;
-                TaoLog.m21e(TAG, "can not read file : " + configKey);
+                TaoLog.e(TAG, "can not read file : " + configKey);
                 return str3;
             }
         }
@@ -106,7 +106,7 @@ public class ConfigStorage {
         SharedPreferences.Editor edit = sharedPreference.edit();
         edit.remove(configKey);
         edit.commit();
-        TaoLog.m24i(TAG, "read " + configKey + " by sp : " + str3);
+        TaoLog.i(TAG, "read " + configKey + " by sp : " + str3);
         return str3;
     }
 
@@ -117,7 +117,7 @@ public class ConfigStorage {
                 return false;
             }
             File createFolder = FileManager.createFolder(application, ROOT_WINDVANE_CONFIG_DIR);
-            TaoLog.m18d(TAG, "createDir: dir[" + createFolder.getAbsolutePath() + "]:" + createFolder.exists());
+            TaoLog.d(TAG, "createDir: dir[" + createFolder.getAbsolutePath() + "]:" + createFolder.exists());
             return createFolder.exists();
         }
     }
@@ -138,7 +138,7 @@ public class ConfigStorage {
                         allocate.putLong(j);
                         FileAccesser.write(fileAbsolutePath, allocate);
                     } catch (Exception unused) {
-                        TaoLog.m21e(ConfigStorage.TAG, "can not sava file : " + configKey + " value : " + j);
+                        TaoLog.e(ConfigStorage.TAG, "can not sava file : " + configKey + " value : " + j);
                     }
                 }
             });
@@ -158,7 +158,7 @@ public class ConfigStorage {
                     try {
                         FileAccesser.write(ConfigStorage.getFileAbsolutePath(configKey), ByteBuffer.wrap(str3.getBytes()));
                     } catch (Exception unused) {
-                        TaoLog.m21e(ConfigStorage.TAG, "can not sava file : " + configKey + " value : " + str3);
+                        TaoLog.e(ConfigStorage.TAG, "can not sava file : " + configKey + " value : " + str3);
                     }
                 }
             });

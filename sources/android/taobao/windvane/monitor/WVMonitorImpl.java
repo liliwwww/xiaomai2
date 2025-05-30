@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorInterface, WVMonitorInterface, WVPerformanceMonitorInterface {
     private static final String TAG = "WVMonitor";
     private long appStartTime;
@@ -111,7 +111,7 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
         if (wVMonitorData == null) {
             synchronized (WVMonitorImpl.class) {
                 if (wVMonitorData == null) {
-                    TaoLog.m24i(TAG, "monitor data init");
+                    TaoLog.i(TAG, "monitor data init");
                     wVMonitorData = new WVMonitorData();
                     this.currentUrl = str;
                     this.dataMap.put(str, wVMonitorData);
@@ -142,20 +142,20 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
             return;
         }
         int i = 1;
-        TaoLog.m18d(TAG, String.format("pageFinish: %s", str));
+        TaoLog.d(TAG, String.format("pageFinish: %s", str));
         long j2 = wVMonitorData.startTime;
         if (j2 > 0) {
             long j3 = j - j2;
             try {
-                TaoLog.m18d(TAG, String.format("url: %s", str) + " onLoad time :" + j3);
+                TaoLog.d(TAG, String.format("url: %s", str) + " onLoad time :" + j3);
                 WVMonitorConfig config = getConfig();
                 if (config != null && isEnabled() && j3 >= config.stat.onLoad) {
-                    WVMonitorData.stat statVar = wVMonitorData.stat;
-                    statVar.onLoad = j3;
+                    WVMonitorData$stat wVMonitorData$stat = wVMonitorData.stat;
+                    wVMonitorData$stat.onLoad = j3;
                     if (!z) {
                         i = 0;
                     }
-                    statVar.finish = i;
+                    wVMonitorData$stat.finish = i;
                     try {
                         Uri parse = Uri.parse(str);
                         if (parse != null && parse.isHierarchical()) {
@@ -188,9 +188,9 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
         }
         StringBuilder sb = new StringBuilder();
         sb.append("");
-        WVMonitorData.stat statVar = wVMonitorData.stat;
-        sb.append((statVar.onDomLoad == 0 && statVar.onLoad == 0) ? "" : Integer.valueOf(statVar.finish));
-        UserTrackUtil.commitEvent(UserTrackUtil.EVENTID_MONITOR, str, str2, sb.toString(), wVMonitorData.toJsonStringDict());
+        WVMonitorData$stat wVMonitorData$stat = wVMonitorData.stat;
+        sb.append((wVMonitorData$stat.onDomLoad == 0 && wVMonitorData$stat.onLoad == 0) ? "" : Integer.valueOf(wVMonitorData$stat.finish));
+        UserTrackUtil.commitEvent(15301, str, str2, sb.toString(), wVMonitorData.toJsonStringDict());
         if (this.isInit) {
             long j = wVMonitorData.startTime;
             long j2 = this.initTime;
@@ -216,10 +216,9 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
                 }
             }
         }
-        TaoLog.m24i(TAG, "upload performance info  URL: " + str + " fromType : " + wVMonitorData.stat.fromType + " packageAppName : " + wVMonitorData.stat.packageAppName);
+        TaoLog.i(TAG, "upload performance info  URL: " + str + " fromType : " + wVMonitorData.stat.fromType + " packageAppName : " + wVMonitorData.stat.packageAppName);
     }
 
-    @Override // android.taobao.windvane.monitor.WVMonitorInterface
     public void WebViewWrapType(String str) {
         if (TextUtils.isEmpty(str)) {
             str = "UnKnow";
@@ -227,7 +226,6 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
         AppMonitorUtil.commitWVWrapType(str);
     }
 
-    @Override // android.taobao.windvane.monitor.WVMonitorInterface
     public void commitCoreInitTime(long j, String str) {
         if (TextUtils.isEmpty(str)) {
             str = "UnKnow";
@@ -235,7 +233,6 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
         AppMonitorUtil.commitCoreInitTime(j, str);
     }
 
-    @Override // android.taobao.windvane.monitor.WVMonitorInterface
     public void commitCoreTypeByPV(String str, String str2) {
         if (TextUtils.isEmpty("UnKnow")) {
             str = "UnKnow";
@@ -246,20 +243,17 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
         AppMonitorUtil.commitCoreTypeByPV(str, str2);
     }
 
-    @Override // android.taobao.windvane.monitor.WVMonitorInterface
     public void commitRenderType(String str, String str2, int i) {
         AppMonitorUtil.commitRenderType(str, str2, String.valueOf(i), String.valueOf(GlobalConfig.isBackground));
     }
 
-    @Override // android.taobao.windvane.monitor.WVMonitorInterface
     public void commitUseWebgl(String str) {
         AppMonitorUtil.commitUseWebgl(str);
     }
 
-    @Override // android.taobao.windvane.monitor.WVMonitorInterface
     public void commitWebMultiTypeByPV(String str, String str2, String str3, String str4, String str5, String str6) {
         AppMonitorUtil.commitRenderTypeByPV(str, str2, str3, str4, str5, str6);
-        TaoLog.m21e(TAG, "UC Multi: initRenderType = [" + str + "], successRenderType = [" + str2 + "], renderTypeReason = [" + str3 + "], initGpuType = [" + str4 + "], successGpuType = [" + str5 + "],gpuTypeReason = [" + str6 + "]");
+        TaoLog.e(TAG, "UC Multi: initRenderType = [" + str + "], successRenderType = [" + str2 + "], renderTypeReason = [" + str3 + "], initGpuType = [" + str4 + "], successGpuType = [" + str5 + "],gpuTypeReason = [" + str6 + "]");
     }
 
     @Override // android.taobao.windvane.monitor.WVPerformanceMonitorInterface
@@ -273,15 +267,15 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
         if (!isEnabled() || str == null || (initData = initData(str)) == null) {
             return;
         }
-        WVMonitorData.extra extraVar = initData.args;
-        extraVar.netStat = netStat;
+        WVMonitorData$extra wVMonitorData$extra = initData.args;
+        wVMonitorData$extra.netStat = netStat;
         if (i > 0) {
-            extraVar.statusCode = i;
+            wVMonitorData$extra.statusCode = i;
         }
         if (i2 > 1) {
-            WVMonitorData.stat statVar = initData.stat;
-            if (statVar.fromType <= 1) {
-                statVar.fromType = i2;
+            WVMonitorData$stat wVMonitorData$stat = initData.stat;
+            if (wVMonitorData$stat.fromType <= 1) {
+                wVMonitorData$stat.fromType = i2;
             }
         }
         if (!TextUtils.isEmpty(str2)) {
@@ -329,19 +323,19 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
             if (!isEnabled() || str == null) {
                 return;
             }
-            WVMonitorData.stat statVar = wVMonitorData.stat;
-            statVar.verifyResTime = j;
-            statVar.verifyTime = j2;
-            statVar.verifyError = i;
+            WVMonitorData$stat wVMonitorData$stat = wVMonitorData.stat;
+            wVMonitorData$stat.verifyResTime = j;
+            wVMonitorData$stat.verifyTime = j2;
+            wVMonitorData$stat.verifyError = i;
         } else if (checkNeedCollectResInfo(str)) {
             WVMonitorData.resStat resData = getResData(str);
             resData.verifyResTime = j;
             resData.verifyTime = j2;
             resData.verifyError = i;
         }
-        WVMonitorData.stat statVar2 = wVMonitorData.stat;
-        statVar2.allVerifyTime += j2;
-        statVar2.verifyCacheSize = i2;
+        WVMonitorData$stat wVMonitorData$stat2 = wVMonitorData.stat;
+        wVMonitorData$stat2.allVerifyTime += j2;
+        wVMonitorData$stat2.verifyCacheSize = i2;
     }
 
     @Override // android.taobao.windvane.monitor.WVErrorMonitorInterface
@@ -349,9 +343,9 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
         if (!isEnabled() || str == null || str2 == null || str4 == null || str3 == null) {
             return;
         }
-        TaoLog.m18d(TAG, String.format("reportJsError: %s ///// %s ///// %s ///// %s", str, str3, str2, str4));
+        TaoLog.d(TAG, String.format("reportJsError: %s ///// %s ///// %s ///// %s", str, str3, str2, str4));
         if (errorNeedReport(str, str2, null)) {
-            AppMonitorUtil.commitFail(AppMonitorUtil.JS_ERROR_POINT, 1, String.format("message=%s\nline=%s\nfile=%s", str2, str4, str3), str);
+            AppMonitorUtil.commitFail("JavaScriptError", 1, String.format("message=%s\nline=%s\nfile=%s", str2, str4, str3), str);
         }
     }
 
@@ -361,9 +355,9 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
         if (!isEnabled() || str == null || str2 == null) {
             return;
         }
-        TaoLog.m18d(TAG, String.format("reportNativeError: %s ///// %s ///// %d", str, str2, Integer.valueOf(i)));
+        TaoLog.d(TAG, String.format("reportNativeError: %s ///// %s ///// %d", str, str2, Integer.valueOf(i)));
         if (isEnabled() && errorNeedReport(str, str2, Integer.valueOf(i))) {
-            AppMonitorUtil.commitFail(AppMonitorUtil.NATIVE_ERROR_POINT, i, String.format("message=%s\ncode=%d", str2, Integer.valueOf(i)), str);
+            AppMonitorUtil.commitFail("NativeError", i, String.format("message=%s\ncode=%d", str2, Integer.valueOf(i)), str);
         }
     }
 
@@ -414,7 +408,7 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
         if (!isEnabled() || str == null || (concurrentHashMap = this.dataMap) == null || (wVMonitorData = concurrentHashMap.get(str)) == null) {
             return;
         }
-        TaoLog.m18d(TAG, String.format("domLoad: %s", str));
+        TaoLog.d(TAG, String.format("domLoad: %s", str));
         if (wVMonitorData.startTime > 0) {
             Map<String, Long> map = wVMonitorData.args.selfDefine;
             for (Map.Entry<String, Long> entry : map.entrySet()) {
@@ -440,7 +434,7 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
         if (!isEnabled() || str == null || (concurrentHashMap = this.dataMap) == null || (wVMonitorData = concurrentHashMap.get(str)) == null) {
             return;
         }
-        TaoLog.m18d(TAG, String.format("domLoad: %s", str));
+        TaoLog.d(TAG, String.format("domLoad: %s", str));
         long j2 = wVMonitorData.startTime;
         if (j2 > 0) {
             wVMonitorData.stat.firstByteTime = j - j2;
@@ -457,7 +451,7 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
         if (!isEnabled() || str == null || Uri.parse(str) == null || !Uri.parse(str).isHierarchical()) {
             return;
         }
-        TaoLog.m18d(TAG, String.format("pageStart: %s", str));
+        TaoLog.d(TAG, String.format("pageStart: %s", str));
         WVMonitorData initData = initData(str);
         if (initData == null) {
             return;
@@ -488,7 +482,7 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
                 wVMonitorData.protocolType = str2;
             }
         } catch (Exception e) {
-            TaoLog.m30w(TAG, "didResourceFinishLoadAtTime Exception : " + e.getMessage());
+            TaoLog.w(TAG, "didResourceFinishLoadAtTime Exception : " + e.getMessage());
         }
     }
 
@@ -504,7 +498,7 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
                 getResData(str).start = j - wVMonitorData.startTime;
             }
         } catch (Exception e) {
-            TaoLog.m30w(TAG, "didResourceStartLoadAtTime Exception : " + e.getMessage());
+            TaoLog.w(TAG, "didResourceStartLoadAtTime Exception : " + e.getMessage());
         }
     }
 
@@ -514,7 +508,7 @@ public class WVMonitorImpl implements WVConfigMonitorInterface, WVErrorMonitorIn
             return;
         }
         AppMonitorUtil.commitConifgUpdateInfo(str, i, j, i2, i3);
-        TaoLog.m24i(TAG, "updateConfig " + str + " isSuccess : " + i2 + " count : " + i3);
+        TaoLog.i(TAG, "updateConfig " + str + " isSuccess : " + i2 + " count : " + i3);
     }
 
     @Override // android.taobao.windvane.monitor.WVPerformanceMonitorInterface

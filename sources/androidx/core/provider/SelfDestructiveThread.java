@@ -3,7 +3,6 @@ package androidx.core.provider;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.VisibleForTesting;
@@ -17,7 +16,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
 @Deprecated
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class SelfDestructiveThread {
     private static final int MSG_DESTRUCTION = 0;
     private static final int MSG_INVOKE_RUNNABLE = 1;
@@ -49,12 +48,6 @@ public class SelfDestructiveThread {
 
     @GuardedBy("mLock")
     private int mGeneration = 0;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface ReplyCallback<T> {
-        void onReply(T t);
-    }
 
     public SelfDestructiveThread(String str, int i, int i2) {
         this.mThreadName = str;
@@ -172,7 +165,7 @@ public class SelfDestructiveThread {
                     return (T) atomicReference.get();
                 }
             } while (nanos > 0);
-            throw new InterruptedException(BasePreInitManager.TIMEOUT);
+            throw new InterruptedException("timeout");
         } finally {
             reentrantLock.unlock();
         }

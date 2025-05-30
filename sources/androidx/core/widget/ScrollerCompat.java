@@ -6,7 +6,7 @@ import android.widget.OverScroller;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ScrollerCompat {
     OverScroller mScroller;
 

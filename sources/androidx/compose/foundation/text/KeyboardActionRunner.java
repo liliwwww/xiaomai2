@@ -1,9 +1,9 @@
 package androidx.compose.foundation.text;
 
-import androidx.compose.p004ui.focus.FocusDirection;
-import androidx.compose.p004ui.focus.FocusManager;
-import androidx.compose.p004ui.text.input.ImeAction;
-import androidx.compose.p004ui.text.input.TextInputSession;
+import androidx.compose.ui.focus.FocusDirection;
+import androidx.compose.ui.focus.FocusManager;
+import androidx.compose.ui.text.input.ImeAction;
+import androidx.compose.ui.text.input.TextInputSession;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class KeyboardActionRunner implements KeyboardActionScope {
     public FocusManager focusManager;
 
@@ -21,21 +21,21 @@ public final class KeyboardActionRunner implements KeyboardActionScope {
 
     @Override // androidx.compose.foundation.text.KeyboardActionScope
     /* renamed from: defaultKeyboardAction-KlQnJC8, reason: not valid java name */
-    public void mo1729defaultKeyboardActionKlQnJC8(int i) {
+    public void mo397defaultKeyboardActionKlQnJC8(int i) {
         ImeAction.Companion companion = ImeAction.Companion;
-        if (ImeAction.m4883equalsimpl0(i, companion.m4898getNexteUduSuo())) {
-            getFocusManager().mo2498moveFocus3ESFkO8(FocusDirection.Companion.m2492getNextdhqQ8s());
+        if (ImeAction.m1947equalsimpl0(i, companion.m1962getNexteUduSuo())) {
+            getFocusManager().moveFocus-3ESFkO8(FocusDirection.Companion.getNext-dhqQ-8s());
             return;
         }
-        if (ImeAction.m4883equalsimpl0(i, companion.m4900getPreviouseUduSuo())) {
-            getFocusManager().mo2498moveFocus3ESFkO8(FocusDirection.Companion.m2494getPreviousdhqQ8s());
+        if (ImeAction.m1947equalsimpl0(i, companion.m1964getPreviouseUduSuo())) {
+            getFocusManager().moveFocus-3ESFkO8(FocusDirection.Companion.getPrevious-dhqQ-8s());
             return;
         }
-        if (!ImeAction.m4883equalsimpl0(i, companion.m4896getDoneeUduSuo())) {
-            if (ImeAction.m4883equalsimpl0(i, companion.m4897getGoeUduSuo()) ? true : ImeAction.m4883equalsimpl0(i, companion.m4901getSearcheUduSuo()) ? true : ImeAction.m4883equalsimpl0(i, companion.m4902getSendeUduSuo()) ? true : ImeAction.m4883equalsimpl0(i, companion.m4895getDefaulteUduSuo())) {
+        if (!ImeAction.m1947equalsimpl0(i, companion.m1960getDoneeUduSuo())) {
+            if (ImeAction.m1947equalsimpl0(i, companion.m1961getGoeUduSuo()) ? true : ImeAction.m1947equalsimpl0(i, companion.m1965getSearcheUduSuo()) ? true : ImeAction.m1947equalsimpl0(i, companion.m1966getSendeUduSuo()) ? true : ImeAction.m1947equalsimpl0(i, companion.m1959getDefaulteUduSuo())) {
                 return;
             }
-            ImeAction.m4883equalsimpl0(i, companion.m4899getNoneeUduSuo());
+            ImeAction.m1947equalsimpl0(i, companion.m1963getNoneeUduSuo());
         } else {
             TextInputSession textInputSession = this.inputSession;
             if (textInputSession != null) {
@@ -70,24 +70,24 @@ public final class KeyboardActionRunner implements KeyboardActionScope {
     }
 
     /* renamed from: runAction-KlQnJC8, reason: not valid java name */
-    public final void m1730runActionKlQnJC8(int i) {
+    public final void m398runActionKlQnJC8(int i) {
         Function1<KeyboardActionScope, Unit> function1;
         ImeAction.Companion companion = ImeAction.Companion;
         Unit unit = null;
-        if (ImeAction.m4883equalsimpl0(i, companion.m4896getDoneeUduSuo())) {
+        if (ImeAction.m1947equalsimpl0(i, companion.m1960getDoneeUduSuo())) {
             function1 = getKeyboardActions().getOnDone();
-        } else if (ImeAction.m4883equalsimpl0(i, companion.m4897getGoeUduSuo())) {
+        } else if (ImeAction.m1947equalsimpl0(i, companion.m1961getGoeUduSuo())) {
             function1 = getKeyboardActions().getOnGo();
-        } else if (ImeAction.m4883equalsimpl0(i, companion.m4898getNexteUduSuo())) {
+        } else if (ImeAction.m1947equalsimpl0(i, companion.m1962getNexteUduSuo())) {
             function1 = getKeyboardActions().getOnNext();
-        } else if (ImeAction.m4883equalsimpl0(i, companion.m4900getPreviouseUduSuo())) {
+        } else if (ImeAction.m1947equalsimpl0(i, companion.m1964getPreviouseUduSuo())) {
             function1 = getKeyboardActions().getOnPrevious();
-        } else if (ImeAction.m4883equalsimpl0(i, companion.m4901getSearcheUduSuo())) {
+        } else if (ImeAction.m1947equalsimpl0(i, companion.m1965getSearcheUduSuo())) {
             function1 = getKeyboardActions().getOnSearch();
-        } else if (ImeAction.m4883equalsimpl0(i, companion.m4902getSendeUduSuo())) {
+        } else if (ImeAction.m1947equalsimpl0(i, companion.m1966getSendeUduSuo())) {
             function1 = getKeyboardActions().getOnSend();
         } else {
-            if (!(ImeAction.m4883equalsimpl0(i, companion.m4895getDefaulteUduSuo()) ? true : ImeAction.m4883equalsimpl0(i, companion.m4899getNoneeUduSuo()))) {
+            if (!(ImeAction.m1947equalsimpl0(i, companion.m1959getDefaulteUduSuo()) ? true : ImeAction.m1947equalsimpl0(i, companion.m1963getNoneeUduSuo()))) {
                 throw new IllegalStateException("invalid ImeAction".toString());
             }
             function1 = null;
@@ -97,7 +97,7 @@ public final class KeyboardActionRunner implements KeyboardActionScope {
             unit = Unit.INSTANCE;
         }
         if (unit == null) {
-            mo1729defaultKeyboardActionKlQnJC8(i);
+            mo397defaultKeyboardActionKlQnJC8(i);
         }
     }
 

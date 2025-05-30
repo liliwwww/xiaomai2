@@ -1,13 +1,14 @@
 package androidx.lifecycle.viewmodel.compose;
 
 import android.view.View;
-import androidx.compose.p004ui.platform.AndroidCompositionLocals_androidKt;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.CompositionLocalKt;
 import androidx.compose.runtime.ProvidableCompositionLocal;
 import androidx.compose.runtime.ProvidedValue;
+import androidx.compose.runtime.SnapshotMutationPolicy;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.platform.AndroidCompositionLocals_androidKt;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.lifecycle.ViewTreeViewModelStoreOwner;
 import kotlin.jvm.JvmName;
@@ -18,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LocalViewModelStoreOwner {
     public static final int $stable = 0;
 
@@ -26,13 +27,13 @@ public final class LocalViewModelStoreOwner {
     public static final LocalViewModelStoreOwner INSTANCE = new LocalViewModelStoreOwner();
 
     @NotNull
-    private static final ProvidableCompositionLocal<ViewModelStoreOwner> LocalViewModelStoreOwner = CompositionLocalKt.compositionLocalOf$default(null, new Function0<ViewModelStoreOwner>() { // from class: androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner$LocalViewModelStoreOwner$1
+    private static final ProvidableCompositionLocal<ViewModelStoreOwner> LocalViewModelStoreOwner = CompositionLocalKt.compositionLocalOf$default((SnapshotMutationPolicy) null, new Function0<ViewModelStoreOwner>() { // from class: androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner$LocalViewModelStoreOwner$1
         @Nullable
         /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-        public final ViewModelStoreOwner m5613invoke() {
+        public final ViewModelStoreOwner m2344invoke() {
             return null;
         }
-    }, 1, null);
+    }, 1, (Object) null);
 
     private LocalViewModelStoreOwner() {
     }

@@ -7,7 +7,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TransformationsKt {
     @CheckResult
     @NotNull
@@ -25,7 +25,6 @@ public final class TransformationsKt {
         Intrinsics.checkNotNullParameter(function1, "transform");
         LiveData<Y> map = Transformations.map(liveData, new Function() { // from class: androidx.lifecycle.TransformationsKt$map$1
             /* JADX WARN: Type inference failed for: r2v1, types: [Y, java.lang.Object] */
-            @Override // androidx.arch.core.util.Function
             public final Y apply(X x) {
                 return function1.invoke(x);
             }
@@ -40,13 +39,12 @@ public final class TransformationsKt {
         Intrinsics.checkNotNullParameter(liveData, "<this>");
         Intrinsics.checkNotNullParameter(function1, "transform");
         LiveData<Y> switchMap = Transformations.switchMap(liveData, new Function() { // from class: androidx.lifecycle.TransformationsKt$switchMap$1
-            @Override // androidx.arch.core.util.Function
             public final LiveData<Y> apply(X x) {
                 return (LiveData) function1.invoke(x);
             }
 
-            @Override // androidx.arch.core.util.Function
-            public /* bridge */ /* synthetic */ Object apply(Object obj) {
+            /* renamed from: apply, reason: collision with other method in class */
+            public /* bridge */ /* synthetic */ Object m2809apply(Object obj) {
                 return apply((TransformationsKt$switchMap$1<I, O>) obj);
             }
         });

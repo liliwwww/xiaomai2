@@ -16,11 +16,11 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SnapshotIdSet implements Iterable<Integer>, KMappedMarker {
 
     @NotNull
-    public static final Companion Companion = new Companion(null);
+    public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
 
     @NotNull
     private static final SnapshotIdSet EMPTY = new SnapshotIdSet(0, 0, 0, null);
@@ -30,22 +30,6 @@ public final class SnapshotIdSet implements Iterable<Integer>, KMappedMarker {
     private final int lowerBound;
     private final long lowerSet;
     private final long upperSet;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class Companion {
-        private Companion() {
-        }
-
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-
-        @NotNull
-        public final SnapshotIdSet getEMPTY() {
-            return SnapshotIdSet.EMPTY;
-        }
-    }
 
     private SnapshotIdSet(long j, long j2, int i, int[] iArr) {
         this.upperSet = j;
@@ -203,30 +187,20 @@ public final class SnapshotIdSet implements Iterable<Integer>, KMappedMarker {
     }
 
     public final int lowest(int i) {
-        int lowestBitOf;
-        int lowestBitOf2;
         int[] iArr = this.belowBound;
         if (iArr != null) {
             return iArr[0];
         }
         long j = this.lowerSet;
         if (j != 0) {
-            int i2 = this.lowerBound;
-            lowestBitOf2 = SnapshotIdSetKt.lowestBitOf(j);
-            return i2 + lowestBitOf2;
+            return this.lowerBound + SnapshotIdSetKt.access$lowestBitOf(j);
         }
         long j2 = this.upperSet;
-        if (j2 == 0) {
-            return i;
-        }
-        int i3 = this.lowerBound + 64;
-        lowestBitOf = SnapshotIdSetKt.lowestBitOf(j2);
-        return i3 + lowestBitOf;
+        return j2 != 0 ? this.lowerBound + 64 + SnapshotIdSetKt.access$lowestBitOf(j2) : i;
     }
 
     @NotNull
-    /* renamed from: or */
-    public final SnapshotIdSet m88or(@NotNull SnapshotIdSet snapshotIdSet) {
+    public final SnapshotIdSet or(@NotNull SnapshotIdSet snapshotIdSet) {
         Intrinsics.checkNotNullParameter(snapshotIdSet, "bits");
         SnapshotIdSet snapshotIdSet2 = EMPTY;
         if (snapshotIdSet == snapshotIdSet2) {
@@ -350,7 +324,7 @@ public final class SnapshotIdSet implements Iterable<Integer>, KMappedMarker {
         while (it.hasNext()) {
             arrayList.add(String.valueOf(it.next().intValue()));
         }
-        sb.append(ListUtilsKt.fastJoinToString$default(arrayList, null, null, null, 0, null, null, 63, null));
+        sb.append(ListUtilsKt.fastJoinToString$default(arrayList, (CharSequence) null, (CharSequence) null, (CharSequence) null, 0, (CharSequence) null, (Function1) null, 63, (Object) null));
         sb.append(']');
         return sb.toString();
     }

@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import java.io.File;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class DocumentFile {
     static final String TAG = "DocumentFile";
 
@@ -22,7 +22,7 @@ public abstract class DocumentFile {
 
     @NonNull
     public static DocumentFile fromFile(@NonNull File file) {
-        return new RawDocumentFile(null, file);
+        return new RawDocumentFile((DocumentFile) null, file);
     }
 
     @Nullable
@@ -36,7 +36,7 @@ public abstract class DocumentFile {
     @Nullable
     public static DocumentFile fromTreeUri(@NonNull Context context, @NonNull Uri uri) {
         if (Build.VERSION.SDK_INT >= 21) {
-            return new TreeDocumentFile(null, context, DocumentsContract.buildDocumentUriUsingTree(uri, DocumentsContract.getTreeDocumentId(uri)));
+            return new TreeDocumentFile((DocumentFile) null, context, DocumentsContract.buildDocumentUriUsingTree(uri, DocumentsContract.getTreeDocumentId(uri)));
         }
         return null;
     }

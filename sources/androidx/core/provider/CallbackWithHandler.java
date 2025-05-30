@@ -3,54 +3,40 @@ package androidx.core.provider;
 import android.graphics.Typeface;
 import android.os.Handler;
 import androidx.annotation.NonNull;
-import androidx.core.provider.FontRequestWorker;
-import androidx.core.provider.FontsContractCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class CallbackWithHandler {
 
     @NonNull
-    private final FontsContractCompat.FontRequestCallback mCallback;
+    private final FontsContractCompat$FontRequestCallback mCallback;
 
     @NonNull
     private final Handler mCallbackHandler;
 
-    CallbackWithHandler(@NonNull FontsContractCompat.FontRequestCallback fontRequestCallback, @NonNull Handler handler) {
-        this.mCallback = fontRequestCallback;
+    CallbackWithHandler(@NonNull FontsContractCompat$FontRequestCallback fontsContractCompat$FontRequestCallback, @NonNull Handler handler) {
+        this.mCallback = fontsContractCompat$FontRequestCallback;
         this.mCallbackHandler = handler;
     }
 
-    private void onTypefaceRequestFailed(final int i) {
-        final FontsContractCompat.FontRequestCallback fontRequestCallback = this.mCallback;
-        this.mCallbackHandler.post(new Runnable() { // from class: androidx.core.provider.CallbackWithHandler.2
-            @Override // java.lang.Runnable
-            public void run() {
-                fontRequestCallback.onTypefaceRequestFailed(i);
-            }
-        });
+    private void onTypefaceRequestFailed(int i) {
+        this.mCallbackHandler.post(new 2(this, this.mCallback, i));
     }
 
-    private void onTypefaceRetrieved(@NonNull final Typeface typeface) {
-        final FontsContractCompat.FontRequestCallback fontRequestCallback = this.mCallback;
-        this.mCallbackHandler.post(new Runnable() { // from class: androidx.core.provider.CallbackWithHandler.1
-            @Override // java.lang.Runnable
-            public void run() {
-                fontRequestCallback.onTypefaceRetrieved(typeface);
-            }
-        });
+    private void onTypefaceRetrieved(@NonNull Typeface typeface) {
+        this.mCallbackHandler.post(new 1(this, this.mCallback, typeface));
     }
 
-    void onTypefaceResult(@NonNull FontRequestWorker.TypefaceResult typefaceResult) {
-        if (typefaceResult.isSuccess()) {
-            onTypefaceRetrieved(typefaceResult.mTypeface);
+    void onTypefaceResult(@NonNull FontRequestWorker$TypefaceResult fontRequestWorker$TypefaceResult) {
+        if (fontRequestWorker$TypefaceResult.isSuccess()) {
+            onTypefaceRetrieved(fontRequestWorker$TypefaceResult.mTypeface);
         } else {
-            onTypefaceRequestFailed(typefaceResult.mResult);
+            onTypefaceRequestFailed(fontRequestWorker$TypefaceResult.mResult);
         }
     }
 
-    CallbackWithHandler(@NonNull FontsContractCompat.FontRequestCallback fontRequestCallback) {
-        this.mCallback = fontRequestCallback;
+    CallbackWithHandler(@NonNull FontsContractCompat$FontRequestCallback fontsContractCompat$FontRequestCallback) {
+        this.mCallback = fontsContractCompat$FontRequestCallback;
         this.mCallbackHandler = CalleeHandler.create();
     }
 }

@@ -3,13 +3,13 @@ package androidx.constraintlayout.core.motion.key;
 import androidx.constraintlayout.core.motion.MotionWidget;
 import androidx.constraintlayout.core.motion.utils.FloatRect;
 import androidx.constraintlayout.core.motion.utils.SplineSet;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
+import androidx.constraintlayout.core.motion.utils.TypedValues$PositionType;
 import java.util.HashMap;
 import java.util.HashSet;
 import tb.cq5;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MotionKeyPosition extends MotionKey {
     static final int KEY_TYPE = 2;
     static final String NAME = "KeyPosition";
@@ -112,7 +112,6 @@ public class MotionKeyPosition extends MotionKey {
     public void getAttributeNames(HashSet<String> hashSet) {
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public int getId(String str) {
         return cq5.a(str);
     }
@@ -127,7 +126,7 @@ public class MotionKeyPosition extends MotionKey {
 
     public boolean intersects(int i, int i2, FloatRect floatRect, FloatRect floatRect2, float f, float f2) {
         calcPosition(i, i2, floatRect.centerX(), floatRect.centerY(), floatRect2.centerX(), floatRect2.centerY());
-        return Math.abs(f - this.mCalculatedPositionX) < 20.0f && Math.abs(f2 - this.mCalculatedPositionY) < 20.0f;
+        return Math.abs(f - this.mCalculatedPositionX) < SELECTION_SLOPE && Math.abs(f2 - this.mCalculatedPositionY) < SELECTION_SLOPE;
     }
 
     public void positionAttributes(MotionWidget motionWidget, FloatRect floatRect, FloatRect floatRect2, float f, float f2, String[] strArr, float[] fArr) {
@@ -218,7 +217,7 @@ public class MotionKeyPosition extends MotionKey {
         }
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
+    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public boolean setValue(int i, int i2) {
         if (i == 100) {
             this.mFramePosition = i2;
@@ -237,27 +236,27 @@ public class MotionKeyPosition extends MotionKey {
 
     @Override // androidx.constraintlayout.core.motion.key.MotionKey
     /* renamed from: clone */
-    public MotionKey mo5574clone() {
+    public MotionKey mo2314clone() {
         return new MotionKeyPosition().copy(this);
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
+    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public boolean setValue(int i, float f) {
         switch (i) {
-            case TypedValues.PositionType.TYPE_PERCENT_WIDTH /* 503 */:
+            case TypedValues$PositionType.TYPE_PERCENT_WIDTH /* 503 */:
                 this.mPercentWidth = f;
                 return true;
-            case TypedValues.PositionType.TYPE_PERCENT_HEIGHT /* 504 */:
+            case TypedValues$PositionType.TYPE_PERCENT_HEIGHT /* 504 */:
                 this.mPercentHeight = f;
                 return true;
-            case TypedValues.PositionType.TYPE_SIZE_PERCENT /* 505 */:
+            case TypedValues$PositionType.TYPE_SIZE_PERCENT /* 505 */:
                 this.mPercentWidth = f;
                 this.mPercentHeight = f;
                 return true;
-            case TypedValues.PositionType.TYPE_PERCENT_X /* 506 */:
+            case TypedValues$PositionType.TYPE_PERCENT_X /* 506 */:
                 this.mPercentX = f;
                 return true;
-            case TypedValues.PositionType.TYPE_PERCENT_Y /* 507 */:
+            case TypedValues$PositionType.TYPE_PERCENT_Y /* 507 */:
                 this.mPercentY = f;
                 return true;
             default:
@@ -265,7 +264,7 @@ public class MotionKeyPosition extends MotionKey {
         }
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
+    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public boolean setValue(int i, String str) {
         if (i != 501) {
             return super.setValue(i, str);

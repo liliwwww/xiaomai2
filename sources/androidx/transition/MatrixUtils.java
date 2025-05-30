@@ -4,7 +4,7 @@ import android.graphics.Matrix;
 import android.graphics.RectF;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class MatrixUtils {
     static final Matrix IDENTITY_MATRIX = new Matrix() { // from class: androidx.transition.MatrixUtils.1
         void oops() {

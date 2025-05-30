@@ -3,11 +3,7 @@ package androidx.compose.material;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
 import androidx.compose.runtime.Stable;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
-import kotlin.Result;
 import kotlin.coroutines.Continuation;
-import kotlin.jvm.internal.Intrinsics;
-import kotlinx.coroutines.CancellableContinuation;
 import kotlinx.coroutines.sync.Mutex;
 import kotlinx.coroutines.sync.MutexKt;
 import org.jetbrains.annotations.NotNull;
@@ -15,78 +11,19 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SnackbarHostState {
+
+    @NotNull
+    private final MutableState currentSnackbarData$delegate;
 
     @NotNull
     private final Mutex mutex = MutexKt.b(false, 1, (Object) null);
 
-    @NotNull
-    private final MutableState currentSnackbarData$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
-
-    /* compiled from: Taobao */
-    @Stable
-    /* loaded from: classes.dex */
-    private static final class SnackbarDataImpl implements SnackbarData {
-
-        @Nullable
-        private final String actionLabel;
-
-        @NotNull
-        private final CancellableContinuation<SnackbarResult> continuation;
-
-        @NotNull
-        private final SnackbarDuration duration;
-
-        @NotNull
-        private final String message;
-
-        /* JADX WARN: Multi-variable type inference failed */
-        public SnackbarDataImpl(@NotNull String str, @Nullable String str2, @NotNull SnackbarDuration snackbarDuration, @NotNull CancellableContinuation<? super SnackbarResult> cancellableContinuation) {
-            Intrinsics.checkNotNullParameter(str, "message");
-            Intrinsics.checkNotNullParameter(snackbarDuration, TypedValues.TransitionType.S_DURATION);
-            Intrinsics.checkNotNullParameter(cancellableContinuation, "continuation");
-            this.message = str;
-            this.actionLabel = str2;
-            this.duration = snackbarDuration;
-            this.continuation = cancellableContinuation;
-        }
-
-        @Override // androidx.compose.material.SnackbarData
-        public void dismiss() {
-            if (this.continuation.isActive()) {
-                CancellableContinuation<SnackbarResult> cancellableContinuation = this.continuation;
-                Result.Companion companion = Result.Companion;
-                cancellableContinuation.resumeWith(Result.constructor-impl(SnackbarResult.Dismissed));
-            }
-        }
-
-        @Override // androidx.compose.material.SnackbarData
-        @Nullable
-        public String getActionLabel() {
-            return this.actionLabel;
-        }
-
-        @Override // androidx.compose.material.SnackbarData
-        @NotNull
-        public SnackbarDuration getDuration() {
-            return this.duration;
-        }
-
-        @Override // androidx.compose.material.SnackbarData
-        @NotNull
-        public String getMessage() {
-            return this.message;
-        }
-
-        @Override // androidx.compose.material.SnackbarData
-        public void performAction() {
-            if (this.continuation.isActive()) {
-                CancellableContinuation<SnackbarResult> cancellableContinuation = this.continuation;
-                Result.Companion companion = Result.Companion;
-                cancellableContinuation.resumeWith(Result.constructor-impl(SnackbarResult.ActionPerformed));
-            }
-        }
+    public SnackbarHostState() {
+        MutableState mutableStateOf$default;
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
+        this.currentSnackbarData$delegate = mutableStateOf$default;
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -117,12 +54,12 @@ public final class SnackbarHostState {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object showSnackbar(@org.jetbrains.annotations.NotNull java.lang.String r9, @org.jetbrains.annotations.Nullable java.lang.String r10, @org.jetbrains.annotations.NotNull androidx.compose.material.SnackbarDuration r11, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.material.SnackbarResult> r12) {
         /*
             Method dump skipped, instructions count: 208
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SnackbarHostState.showSnackbar(java.lang.String, java.lang.String, androidx.compose.material.SnackbarDuration, kotlin.coroutines.Continuation):java.lang.Object");
     }

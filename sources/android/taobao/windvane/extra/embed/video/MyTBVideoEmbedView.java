@@ -6,7 +6,6 @@ import android.taobao.windvane.embed.BaseEmbedView;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -30,7 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MyTBVideoEmbedView extends BaseEmbedView implements IDWVideoLifecycleListener, IDWVideoLoopCompleteListener, IDWMutedChangeListener, IDWRootViewClickListener {
     private static String ERROR = "error";
     private static String FINISH = "finish";
@@ -98,527 +97,193 @@ public class MyTBVideoEmbedView extends BaseEmbedView implements IDWVideoLifecyc
     private boolean mNeedAD = true;
     private boolean isCompleted = false;
 
+    /* JADX WARN: Failed to restore enum class, 'enum' modifier and super class removed */
+    /* JADX WARN: Unknown enum class pattern. Please report as an issue! */
     /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private enum EmbedProperties {
-        playerScene { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.1
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setPlayerScene(String.valueOf(obj), z);
-                return true;
-            }
-        },
-        instanceType { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.2
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setDWInstanceType(String.valueOf(obj), z);
-                return true;
-            }
-        },
-        src { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.3
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setSrc(String.valueOf(obj), z);
-                return true;
-            }
-        },
-        loop { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.4
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setIsVideoLoop(toBoolean(obj), z);
-                return true;
-            }
-        },
-        autoplay { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.5
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setAutoPlay(toBoolean(obj), z);
-                return true;
-            }
-        },
-        thumbnailSrc { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.6
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setThumbnailSrc(String.valueOf(obj), z);
-                return true;
-            }
-        },
-        poster { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.7
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setThumbnailSrc(String.valueOf(obj), z);
-                return true;
-            }
-        },
-        interactiveHidden { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.8
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setInteractiveHidden(toBoolean(obj), z);
-                return true;
-            }
-        },
-        contentId { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.9
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setContentId(String.valueOf(obj), z);
-                return true;
-            }
-        },
-        backCoverDisplay { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.10
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setBackCoverDisPlay(toBoolean(obj), z);
-                return true;
-            }
-        },
-        muted { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.11
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setMuted(toBoolean(obj), z);
-                return true;
-            }
-        },
-        preload { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.12
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setPreLoad(String.valueOf(obj), z);
-                return true;
-            }
-        },
-        videoSource { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.13
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setVideoSource(String.valueOf(obj), z);
-                return true;
-            }
-        },
-        videoId { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.14
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setVideoId(String.valueOf(obj), z);
-                return true;
-            }
-        },
-        from { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.15
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setFrom(String.valueOf(obj), z);
-                return true;
-            }
-        },
-        utParams { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.16
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setUtParams(new HashMap<>(), z);
-                return true;
-            }
-        },
-        playControl { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.17
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setPlayControl(String.valueOf(obj), z);
-                return true;
-            }
-        },
-        contentMode { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.18
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setContentMode(String.valueOf(obj), z);
-                return true;
-            }
-        },
-        interactiveId { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.19
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setInteractiveId(toLong(obj), z);
-                return true;
-            }
-        },
-        userId { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.20
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setUserId(toLong(obj), z);
-                return true;
-            }
-        },
-        miniProgressViewHidden { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.21
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setMiniProgressViewHidden(toBoolean(obj), z);
-                return true;
-            }
-        },
-        networkErrorViewHidden { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.22
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setNetworkErrorViewHidden(toBoolean(obj), z);
-                return true;
-            }
-        },
-        toastViewHidden { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.23
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setToastViewHidden(toBoolean(obj), z);
-                return true;
-            }
-        },
-        playingIconHidden { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.24
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setPlayingIconHidden(toBoolean(obj), z);
-                return true;
-            }
-        },
-        gestureViewHidden { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.25
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setGestureViewHidden(toBoolean(obj), z);
-                return true;
-            }
-        },
-        controlsViewHidden { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.26
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setControlsViewHidden(toBoolean(obj), z);
-                return true;
-            }
-        },
-        loadingHidden { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.27
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setLoadingHidden(toBoolean(obj), z);
-                return true;
-            }
-        },
-        playErrorViewHidden { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.28
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setPlayErrorViewHidden(toBoolean(obj), z);
-                return true;
-            }
-        },
-        setWidth { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.29
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (super.setValue(myTBVideoEmbedView, obj, z)) {
-                    myTBVideoEmbedView.setWidth((int) toLong(obj), true);
-                }
-                return true;
-            }
-        },
-        setHeight { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.30
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (super.setValue(myTBVideoEmbedView, obj, z)) {
-                    myTBVideoEmbedView.setHeight((int) toLong(obj), true);
-                }
-                return true;
-            }
-        },
-        shownMuteBtn { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties.31
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.EmbedProperties
-            public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-                if (!super.setValue(myTBVideoEmbedView, obj, z)) {
-                    return true;
-                }
-                myTBVideoEmbedView.setShownMuteBtn(toBoolean(obj), z);
-                return true;
-            }
-        };
+    private static class JSMethod {
+        private static final /* synthetic */ JSMethod[] $VALUES;
+        public static final JSMethod getCurrentTime;
+        public static final JSMethod getDuration;
+        public static final JSMethod getMuted;
+        public static final JSMethod getScreenMode;
+        public static final JSMethod pause;
+        public static final JSMethod play;
+        public static final JSMethod setCurrentTime;
+        public static final JSMethod setInstanceMode;
+        public static final JSMethod setMuted;
+        public static final JSMethod setScreenMode;
+        public static final JSMethod updateEmbedProperty;
 
-        public boolean setValue(MyTBVideoEmbedView myTBVideoEmbedView, Object obj, boolean z) {
-            return (obj == null || myTBVideoEmbedView == null) ? false : true;
-        }
-
-        public boolean toBoolean(Object obj) {
-            if (obj instanceof Boolean) {
-                return ((Boolean) obj).booleanValue();
-            }
-            String valueOf = String.valueOf(obj);
-            return "true".equals(valueOf) || "1".equals(valueOf);
-        }
-
-        public long toLong(Object obj) {
-            if (obj instanceof Long) {
-                return ((Long) obj).longValue();
-            }
-            try {
-                return Long.parseLong(String.valueOf(obj));
-            } catch (Throwable unused) {
-                return -1L;
-            }
-        }
-    }
-
-    /* compiled from: Taobao */
-    private enum JSMethod {
-        getCurrentTime { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.1
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
-            public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
-                if (wVCallBackContext == null) {
-                    return false;
+        static {
+            JSMethod jSMethod = new JSMethod("getCurrentTime", 0) { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.1
+                @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
+                public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
+                    if (wVCallBackContext == null) {
+                        return false;
+                    }
+                    wVCallBackContext.success("" + (myTBVideoEmbedView.getCurrentPosition() / 1000.0f));
+                    return true;
                 }
-                wVCallBackContext.success("" + (myTBVideoEmbedView.getCurrentPosition() / 1000.0f));
-                return true;
-            }
-        },
-        setCurrentTime { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.2
-            /* JADX WARN: Removed duplicated region for block: B:12:0x003a  */
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
-            /*
-                Code decompiled incorrectly, please refer to instructions dump.
-                To view partially-correct code enable 'Show inconsistent code' option in preferences
-            */
-            public boolean doSomething(android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView r3, java.lang.String r4, android.taobao.windvane.jsbridge.WVCallBackContext r5) {
+            };
+            getCurrentTime = jSMethod;
+            JSMethod jSMethod2 = new JSMethod("setCurrentTime", 1) { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.2
+                /* JADX WARN: Removed duplicated region for block: B:12:0x003a  */
+                @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
                 /*
-                    r2 = this;
-                    boolean r0 = android.text.TextUtils.isEmpty(r4)
-                    r1 = 1
-                    if (r0 != 0) goto L37
-                    com.alibaba.fastjson.JSONObject r4 = com.alibaba.fastjson.JSON.parseObject(r4)
-                    if (r4 == 0) goto L37
-                    java.lang.String r0 = "time"
-                    java.lang.String r4 = r4.getString(r0)
-                    int r4 = java.lang.Integer.parseInt(r4)     // Catch: java.lang.Throwable -> L37
-                    int r4 = r4 * 1000
-                    com.taobao.avplayer.TBDWInstance r0 = android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.access$200(r3)     // Catch: java.lang.Throwable -> L37
-                    if (r0 == 0) goto L28
-                    com.taobao.avplayer.TBDWInstance r3 = android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.access$200(r3)     // Catch: java.lang.Throwable -> L37
-                    r3.seekTo(r4)     // Catch: java.lang.Throwable -> L37
-                    goto L35
-                L28:
-                    com.taobao.avplayer.TBHighPerformanceDWInstance r0 = android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.access$300(r3)     // Catch: java.lang.Throwable -> L37
-                    if (r0 == 0) goto L35
-                    com.taobao.avplayer.TBHighPerformanceDWInstance r3 = android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.access$300(r3)     // Catch: java.lang.Throwable -> L37
-                    r3.seekTo(r4)     // Catch: java.lang.Throwable -> L37
-                L35:
-                    r3 = 1
-                    goto L38
-                L37:
-                    r3 = 0
-                L38:
-                    if (r5 == 0) goto L43
-                    if (r3 == 0) goto L40
-                    r5.success()
-                    goto L43
-                L40:
-                    r5.error()
-                L43:
-                    return r1
+                    Code decompiled incorrectly, please refer to instructions dump.
+                    To view partially-correct add '--show-bad-code' argument
                 */
-                throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.C00992.doSomething(android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView, java.lang.String, android.taobao.windvane.jsbridge.WVCallBackContext):boolean");
-            }
-        },
-        getDuration { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.3
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
-            public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
-                if (wVCallBackContext == null) {
+                public boolean doSomething(android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView r3, java.lang.String r4, android.taobao.windvane.jsbridge.WVCallBackContext r5) {
+                    /*
+                        r2 = this;
+                        boolean r0 = android.text.TextUtils.isEmpty(r4)
+                        r1 = 1
+                        if (r0 != 0) goto L37
+                        com.alibaba.fastjson.JSONObject r4 = com.alibaba.fastjson.JSON.parseObject(r4)
+                        if (r4 == 0) goto L37
+                        java.lang.String r0 = "time"
+                        java.lang.String r4 = r4.getString(r0)
+                        int r4 = java.lang.Integer.parseInt(r4)     // Catch: java.lang.Throwable -> L37
+                        int r4 = r4 * 1000
+                        com.taobao.avplayer.TBDWInstance r0 = android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.access$200(r3)     // Catch: java.lang.Throwable -> L37
+                        if (r0 == 0) goto L28
+                        com.taobao.avplayer.TBDWInstance r3 = android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.access$200(r3)     // Catch: java.lang.Throwable -> L37
+                        r3.seekTo(r4)     // Catch: java.lang.Throwable -> L37
+                        goto L35
+                    L28:
+                        com.taobao.avplayer.TBHighPerformanceDWInstance r0 = android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.access$300(r3)     // Catch: java.lang.Throwable -> L37
+                        if (r0 == 0) goto L35
+                        com.taobao.avplayer.TBHighPerformanceDWInstance r3 = android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.access$300(r3)     // Catch: java.lang.Throwable -> L37
+                        r3.seekTo(r4)     // Catch: java.lang.Throwable -> L37
+                    L35:
+                        r3 = 1
+                        goto L38
+                    L37:
+                        r3 = 0
+                    L38:
+                        if (r5 == 0) goto L43
+                        if (r3 == 0) goto L40
+                        r5.success()
+                        goto L43
+                    L40:
+                        r5.error()
+                    L43:
+                        return r1
+                    */
+                    throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.AnonymousClass2.doSomething(android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView, java.lang.String, android.taobao.windvane.jsbridge.WVCallBackContext):boolean");
+                }
+            };
+            setCurrentTime = jSMethod2;
+            JSMethod jSMethod3 = new JSMethod("getDuration", 2) { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.3
+                @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
+                public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
+                    if (wVCallBackContext == null) {
+                        return true;
+                    }
+                    wVCallBackContext.success(String.valueOf(myTBVideoEmbedView.mVideoDuration / 1000.0f));
                     return true;
                 }
-                wVCallBackContext.success(String.valueOf(myTBVideoEmbedView.mVideoDuration / 1000.0f));
-                return true;
-            }
-        },
-        getMuted { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.4
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
-            public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
-                if (wVCallBackContext == null) {
+            };
+            getDuration = jSMethod3;
+            JSMethod jSMethod4 = new JSMethod("getMuted", 3) { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.4
+                @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
+                public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
+                    if (wVCallBackContext == null) {
+                        return true;
+                    }
+                    wVCallBackContext.success(String.valueOf(myTBVideoEmbedView.isMute()));
                     return true;
                 }
-                wVCallBackContext.success(String.valueOf(myTBVideoEmbedView.isMute()));
-                return true;
-            }
-        },
-        setMuted { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.5
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
-            public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
-                JSONObject parseObject;
-                if (TextUtils.isEmpty(str) || (parseObject = JSON.parseObject(str)) == null) {
-                    return true;
-                }
-                myTBVideoEmbedView.mute(Boolean.TRUE.equals(parseObject.getBoolean("muted")));
-                if (wVCallBackContext == null) {
-                    return true;
-                }
-                wVCallBackContext.success();
-                return true;
-            }
-        },
-        setScreenMode { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.6
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
-            public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
-                JSONObject parseObject;
-                Object obj;
-                if (TextUtils.isEmpty(str) || (parseObject = JSON.parseObject(str)) == null || (obj = parseObject.get("screenMode")) == null) {
-                    return false;
-                }
-                myTBVideoEmbedView.setScreenMode(String.valueOf(obj), true);
-                if (wVCallBackContext != null) {
+            };
+            getMuted = jSMethod4;
+            JSMethod jSMethod5 = new JSMethod("setMuted", 4) { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.5
+                @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
+                public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
+                    JSONObject parseObject;
+                    if (TextUtils.isEmpty(str) || (parseObject = JSON.parseObject(str)) == null) {
+                        return true;
+                    }
+                    myTBVideoEmbedView.mute(Boolean.TRUE.equals(parseObject.getBoolean("muted")));
+                    if (wVCallBackContext == null) {
+                        return true;
+                    }
                     wVCallBackContext.success();
-                }
-                return true;
-            }
-        },
-        getScreenMode { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.7
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
-            public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
-                if (wVCallBackContext == null) {
                     return true;
                 }
-                wVCallBackContext.success(myTBVideoEmbedView.mScreenMode);
-                return true;
-            }
-        },
-        play { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.8
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
-            public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
-                myTBVideoEmbedView.play();
-                if (wVCallBackContext == null) {
+            };
+            setMuted = jSMethod5;
+            JSMethod jSMethod6 = new JSMethod("setScreenMode", 5) { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.6
+                @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
+                public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
+                    JSONObject parseObject;
+                    Object obj;
+                    if (TextUtils.isEmpty(str) || (parseObject = JSON.parseObject(str)) == null || (obj = parseObject.get("screenMode")) == null) {
+                        return false;
+                    }
+                    myTBVideoEmbedView.setScreenMode(String.valueOf(obj), true);
+                    if (wVCallBackContext != null) {
+                        wVCallBackContext.success();
+                    }
                     return true;
                 }
-                wVCallBackContext.success();
-                return true;
-            }
-        },
-        pause { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.9
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
-            public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
-                if (myTBVideoEmbedView.mTBDWInstance != null) {
-                    myTBVideoEmbedView.mTBDWInstance.pauseVideo();
-                } else if (myTBVideoEmbedView.mHigDWInstance != null) {
-                    myTBVideoEmbedView.mHigDWInstance.pauseVideo();
-                }
-                if (wVCallBackContext == null) {
+            };
+            setScreenMode = jSMethod6;
+            JSMethod jSMethod7 = new JSMethod("getScreenMode", 6) { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.7
+                @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
+                public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
+                    if (wVCallBackContext == null) {
+                        return true;
+                    }
+                    wVCallBackContext.success(myTBVideoEmbedView.mScreenMode);
                     return true;
                 }
-                wVCallBackContext.success();
-                return true;
-            }
-        },
-        setInstanceMode { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.10
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
-            public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
-                JSONObject parseObject;
-                Object obj;
-                if (TextUtils.isEmpty(str) || (parseObject = JSON.parseObject(str)) == null || (obj = parseObject.get("instanceMode")) == null) {
-                    return false;
-                }
-                myTBVideoEmbedView.setDWInstanceType(String.valueOf(obj), true);
-                if (wVCallBackContext != null) {
+            };
+            getScreenMode = jSMethod7;
+            JSMethod jSMethod8 = new JSMethod("play", 7) { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.8
+                @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
+                public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
+                    myTBVideoEmbedView.play();
+                    if (wVCallBackContext == null) {
+                        return true;
+                    }
                     wVCallBackContext.success();
+                    return true;
                 }
-                return true;
-            }
-        },
-        updateEmbedProperty { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.11
-            @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
-            public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
-                JSONObject parseObject;
-                EmbedProperties embedProperties;
-                if (myTBVideoEmbedView == null || TextUtils.isEmpty(str) || (parseObject = JSON.parseObject(str)) == null) {
-                    return false;
+            };
+            play = jSMethod8;
+            JSMethod jSMethod9 = new JSMethod("pause", 8) { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod.9
+                @Override // android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.JSMethod
+                public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
+                    if (myTBVideoEmbedView.mTBDWInstance != null) {
+                        myTBVideoEmbedView.mTBDWInstance.pauseVideo();
+                    } else if (myTBVideoEmbedView.mHigDWInstance != null) {
+                        myTBVideoEmbedView.mHigDWInstance.pauseVideo();
+                    }
+                    if (wVCallBackContext == null) {
+                        return true;
+                    }
+                    wVCallBackContext.success();
+                    return true;
                 }
-                Object obj = parseObject.get("key");
-                Object obj2 = parseObject.get("value");
-                if (obj == null || obj2 == null) {
-                    return false;
-                }
-                try {
-                    embedProperties = EmbedProperties.valueOf(String.valueOf(obj));
-                } catch (Throwable unused) {
-                    embedProperties = null;
-                }
-                if (embedProperties == null) {
-                    return false;
-                }
-                embedProperties.setValue(myTBVideoEmbedView, obj2, true);
-                return true;
-            }
-        };
+            };
+            pause = jSMethod9;
+            JSMethod jSMethod10 = new 10("setInstanceMode", 9);
+            setInstanceMode = jSMethod10;
+            JSMethod jSMethod11 = new 11("updateEmbedProperty", 10);
+            updateEmbedProperty = jSMethod11;
+            $VALUES = new JSMethod[]{jSMethod, jSMethod2, jSMethod3, jSMethod4, jSMethod5, jSMethod6, jSMethod7, jSMethod8, jSMethod9, jSMethod10, jSMethod11};
+        }
+
+        private JSMethod(String str, int i) {
+        }
+
+        public static JSMethod valueOf(String str) {
+            return (JSMethod) Enum.valueOf(JSMethod.class, str);
+        }
+
+        public static JSMethod[] values() {
+            return (JSMethod[]) $VALUES.clone();
+        }
 
         public boolean doSomething(MyTBVideoEmbedView myTBVideoEmbedView, String str, WVCallBackContext wVCallBackContext) {
             return false;
@@ -665,7 +330,7 @@ public class MyTBVideoEmbedView extends BaseEmbedView implements IDWVideoLifecyc
 
     /* JADX INFO: Access modifiers changed from: private */
     public void fireEvent(String str, String str2) {
-        EmbedViewEvent.firevent(this.webView, this.f7id, str, str2);
+        EmbedViewEvent.firevent(this.webView, this.id, str, str2);
     }
 
     private View genVideoView() {
@@ -680,25 +345,7 @@ public class MyTBVideoEmbedView extends BaseEmbedView implements IDWVideoLifecyc
         }
         this.mInit = true;
         if (this.mComponentHostView == null) {
-            this.mComponentHostView = new FrameLayout(this.mContext) { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.1
-                @Override // android.view.View
-                protected void onSizeChanged(int i, int i2, int i3, int i4) {
-                    super.onSizeChanged(i, i2, i3, i4);
-                    if (i4 == i3 && i4 == 0) {
-                        return;
-                    }
-                    if (MyTBVideoEmbedView.this.mHeight == i2 && MyTBVideoEmbedView.this.mWidth == i) {
-                        return;
-                    }
-                    MyTBVideoEmbedView.this.mHeight = i2;
-                    MyTBVideoEmbedView.this.mWidth = i;
-                    if (MyTBVideoEmbedView.this.mTBDWInstance != null) {
-                        MyTBVideoEmbedView.this.mTBDWInstance.setFrame(i, i2);
-                    } else if (MyTBVideoEmbedView.this.mHigDWInstance != null) {
-                        MyTBVideoEmbedView.this.mHigDWInstance.setFrame(i, i2);
-                    }
-                }
-            };
+            this.mComponentHostView = new 1(this, this.mContext);
         }
         ViewParent parent = initNormalInstance.getParent();
         if (parent instanceof ViewGroup) {
@@ -713,13 +360,7 @@ public class MyTBVideoEmbedView extends BaseEmbedView implements IDWVideoLifecyc
             }
             fireEvent(PLAYING, "");
         }
-        initNormalInstance.setOnTouchListener(new View.OnTouchListener() { // from class: android.taobao.windvane.extra.embed.video.MyTBVideoEmbedView.2
-            @Override // android.view.View.OnTouchListener
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                MyTBVideoEmbedView.this.fireEvent("click", "");
-                return false;
-            }
-        });
+        initNormalInstance.setOnTouchListener(new 2(this));
         return this.mComponentHostView;
     }
 
@@ -862,8 +503,8 @@ public class MyTBVideoEmbedView extends BaseEmbedView implements IDWVideoLifecyc
     private void parseParam() {
         setWidth(this.params.mWidth, false);
         setHeight(this.params.mHeight, false);
-        for (EmbedProperties embedProperties : EmbedProperties.values()) {
-            embedProperties.setValue(this, this.params.mObjectParam.get(embedProperties.name()), false);
+        for (Enum r4 : EmbedProperties.values()) {
+            r4.setValue(this, this.params.mObjectParam.get(r4.name()), false);
         }
     }
 
@@ -893,7 +534,7 @@ public class MyTBVideoEmbedView extends BaseEmbedView implements IDWVideoLifecyc
         }
     }
 
-    @Override // android.taobao.windvane.embed.BaseEmbedView, android.taobao.windvane.jsbridge.WVApiPlugin
+    @Override // android.taobao.windvane.embed.BaseEmbedView
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         JSMethod jSMethod;
         try {
@@ -934,7 +575,7 @@ public class MyTBVideoEmbedView extends BaseEmbedView implements IDWVideoLifecyc
         super.onAttachedToWebView();
     }
 
-    @Override // android.taobao.windvane.embed.BaseEmbedView, android.taobao.windvane.jsbridge.WVApiPlugin
+    @Override // android.taobao.windvane.embed.BaseEmbedView
     public void onDestroy() {
         super.onDestroy();
         destroyInner();
@@ -974,12 +615,10 @@ public class MyTBVideoEmbedView extends BaseEmbedView implements IDWVideoLifecyc
         embedProperties.setValue(this, str2, true);
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void onPause() {
         super.onPause();
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void onResume() {
         super.onResume();
     }

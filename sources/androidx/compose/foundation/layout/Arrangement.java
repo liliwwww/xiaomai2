@@ -1,11 +1,13 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Immutable;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.Alignment;
+import androidx.compose.ui.Alignment$Horizontal;
+import androidx.compose.ui.Alignment$Vertical;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.DefaultConstructorMarker;
@@ -14,47 +16,21 @@ import kotlin.math.MathKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tb.oa;
-import tb.pa;
 import tb.qa;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class Arrangement {
 
     @NotNull
     public static final Arrangement INSTANCE = new Arrangement();
 
     @NotNull
-    private static final Horizontal Start = new Horizontal() { // from class: androidx.compose.foundation.layout.Arrangement$Start$1
-        @Override // androidx.compose.foundation.layout.Arrangement.Horizontal
-        public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2) {
-            Intrinsics.checkNotNullParameter(density, "<this>");
-            Intrinsics.checkNotNullParameter(iArr, "sizes");
-            Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-            Intrinsics.checkNotNullParameter(iArr2, "outPositions");
-            if (layoutDirection == LayoutDirection.Ltr) {
-                Arrangement.INSTANCE.placeLeftOrTop$foundation_layout_release(iArr, iArr2, false);
-            } else {
-                Arrangement.INSTANCE.placeRightOrBottom$foundation_layout_release(i, iArr, iArr2, true);
-            }
-        }
-
-        @Override // androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
-        /* renamed from: getSpacing-D9Ej5fM */
-        public /* synthetic */ float mo1347getSpacingD9Ej5fM() {
-            return oa.a(this);
-        }
-
-        @NotNull
-        public String toString() {
-            return "Arrangement#Start";
-        }
-    };
+    private static final Horizontal Start = new Start.1();
 
     @NotNull
     private static final Horizontal End = new Horizontal() { // from class: androidx.compose.foundation.layout.Arrangement$End$1
-        @Override // androidx.compose.foundation.layout.Arrangement.Horizontal
         public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2) {
             Intrinsics.checkNotNullParameter(density, "<this>");
             Intrinsics.checkNotNullParameter(iArr, "sizes");
@@ -67,9 +43,8 @@ public final class Arrangement {
             }
         }
 
-        @Override // androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
-        /* renamed from: getSpacing-D9Ej5fM */
-        public /* synthetic */ float mo1347getSpacingD9Ej5fM() {
+        /* renamed from: getSpacing-D9Ej5fM, reason: not valid java name */
+        public /* synthetic */ float m192getSpacingD9Ej5fM() {
             return oa.a(this);
         }
 
@@ -81,7 +56,6 @@ public final class Arrangement {
 
     @NotNull
     private static final Vertical Top = new Vertical() { // from class: androidx.compose.foundation.layout.Arrangement$Top$1
-        @Override // androidx.compose.foundation.layout.Arrangement.Vertical
         public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull int[] iArr2) {
             Intrinsics.checkNotNullParameter(density, "<this>");
             Intrinsics.checkNotNullParameter(iArr, "sizes");
@@ -89,9 +63,8 @@ public final class Arrangement {
             Arrangement.INSTANCE.placeLeftOrTop$foundation_layout_release(iArr, iArr2, false);
         }
 
-        @Override // androidx.compose.foundation.layout.Arrangement.Vertical
-        /* renamed from: getSpacing-D9Ej5fM */
-        public /* synthetic */ float mo1347getSpacingD9Ej5fM() {
+        /* renamed from: getSpacing-D9Ej5fM, reason: not valid java name */
+        public /* synthetic */ float m198getSpacingD9Ej5fM() {
             return qa.a(this);
         }
 
@@ -102,69 +75,15 @@ public final class Arrangement {
     };
 
     @NotNull
-    private static final Vertical Bottom = new Vertical() { // from class: androidx.compose.foundation.layout.Arrangement$Bottom$1
-        @Override // androidx.compose.foundation.layout.Arrangement.Vertical
-        public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull int[] iArr2) {
-            Intrinsics.checkNotNullParameter(density, "<this>");
-            Intrinsics.checkNotNullParameter(iArr, "sizes");
-            Intrinsics.checkNotNullParameter(iArr2, "outPositions");
-            Arrangement.INSTANCE.placeRightOrBottom$foundation_layout_release(i, iArr, iArr2, false);
-        }
-
-        @Override // androidx.compose.foundation.layout.Arrangement.Vertical
-        /* renamed from: getSpacing-D9Ej5fM */
-        public /* synthetic */ float mo1347getSpacingD9Ej5fM() {
-            return qa.a(this);
-        }
-
-        @NotNull
-        public String toString() {
-            return "Arrangement#Bottom";
-        }
-    };
+    private static final Vertical Bottom = new Bottom.1();
 
     @NotNull
-    private static final HorizontalOrVertical Center = new HorizontalOrVertical() { // from class: androidx.compose.foundation.layout.Arrangement$Center$1
-        private final float spacing = C0856Dp.m5216constructorimpl(0);
-
-        @Override // androidx.compose.foundation.layout.Arrangement.Horizontal
-        public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2) {
-            Intrinsics.checkNotNullParameter(density, "<this>");
-            Intrinsics.checkNotNullParameter(iArr, "sizes");
-            Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-            Intrinsics.checkNotNullParameter(iArr2, "outPositions");
-            if (layoutDirection == LayoutDirection.Ltr) {
-                Arrangement.INSTANCE.placeCenter$foundation_layout_release(i, iArr, iArr2, false);
-            } else {
-                Arrangement.INSTANCE.placeCenter$foundation_layout_release(i, iArr, iArr2, true);
-            }
-        }
-
-        @Override // androidx.compose.foundation.layout.Arrangement.HorizontalOrVertical, androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
-        /* renamed from: getSpacing-D9Ej5fM */
-        public float mo1347getSpacingD9Ej5fM() {
-            return this.spacing;
-        }
-
-        @NotNull
-        public String toString() {
-            return "Arrangement#Center";
-        }
-
-        @Override // androidx.compose.foundation.layout.Arrangement.Vertical
-        public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull int[] iArr2) {
-            Intrinsics.checkNotNullParameter(density, "<this>");
-            Intrinsics.checkNotNullParameter(iArr, "sizes");
-            Intrinsics.checkNotNullParameter(iArr2, "outPositions");
-            Arrangement.INSTANCE.placeCenter$foundation_layout_release(i, iArr, iArr2, false);
-        }
-    };
+    private static final HorizontalOrVertical Center = new Center.1();
 
     @NotNull
     private static final HorizontalOrVertical SpaceEvenly = new HorizontalOrVertical() { // from class: androidx.compose.foundation.layout.Arrangement$SpaceEvenly$1
-        private final float spacing = C0856Dp.m5216constructorimpl(0);
+        private final float spacing = Dp.m2142constructorimpl(0);
 
-        @Override // androidx.compose.foundation.layout.Arrangement.Horizontal
         public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2) {
             Intrinsics.checkNotNullParameter(density, "<this>");
             Intrinsics.checkNotNullParameter(iArr, "sizes");
@@ -177,9 +96,9 @@ public final class Arrangement {
             }
         }
 
-        @Override // androidx.compose.foundation.layout.Arrangement.HorizontalOrVertical, androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
+        @Override // androidx.compose.foundation.layout.Arrangement.HorizontalOrVertical
         /* renamed from: getSpacing-D9Ej5fM */
-        public float mo1347getSpacingD9Ej5fM() {
+        public float mo193getSpacingD9Ej5fM() {
             return this.spacing;
         }
 
@@ -188,7 +107,6 @@ public final class Arrangement {
             return "Arrangement#SpaceEvenly";
         }
 
-        @Override // androidx.compose.foundation.layout.Arrangement.Vertical
         public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull int[] iArr2) {
             Intrinsics.checkNotNullParameter(density, "<this>");
             Intrinsics.checkNotNullParameter(iArr, "sizes");
@@ -198,78 +116,10 @@ public final class Arrangement {
     };
 
     @NotNull
-    private static final HorizontalOrVertical SpaceBetween = new HorizontalOrVertical() { // from class: androidx.compose.foundation.layout.Arrangement$SpaceBetween$1
-        private final float spacing = C0856Dp.m5216constructorimpl(0);
-
-        @Override // androidx.compose.foundation.layout.Arrangement.Horizontal
-        public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2) {
-            Intrinsics.checkNotNullParameter(density, "<this>");
-            Intrinsics.checkNotNullParameter(iArr, "sizes");
-            Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-            Intrinsics.checkNotNullParameter(iArr2, "outPositions");
-            if (layoutDirection == LayoutDirection.Ltr) {
-                Arrangement.INSTANCE.placeSpaceBetween$foundation_layout_release(i, iArr, iArr2, false);
-            } else {
-                Arrangement.INSTANCE.placeSpaceBetween$foundation_layout_release(i, iArr, iArr2, true);
-            }
-        }
-
-        @Override // androidx.compose.foundation.layout.Arrangement.HorizontalOrVertical, androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
-        /* renamed from: getSpacing-D9Ej5fM */
-        public float mo1347getSpacingD9Ej5fM() {
-            return this.spacing;
-        }
-
-        @NotNull
-        public String toString() {
-            return "Arrangement#SpaceBetween";
-        }
-
-        @Override // androidx.compose.foundation.layout.Arrangement.Vertical
-        public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull int[] iArr2) {
-            Intrinsics.checkNotNullParameter(density, "<this>");
-            Intrinsics.checkNotNullParameter(iArr, "sizes");
-            Intrinsics.checkNotNullParameter(iArr2, "outPositions");
-            Arrangement.INSTANCE.placeSpaceBetween$foundation_layout_release(i, iArr, iArr2, false);
-        }
-    };
+    private static final HorizontalOrVertical SpaceBetween = new SpaceBetween.1();
 
     @NotNull
-    private static final HorizontalOrVertical SpaceAround = new HorizontalOrVertical() { // from class: androidx.compose.foundation.layout.Arrangement$SpaceAround$1
-        private final float spacing = C0856Dp.m5216constructorimpl(0);
-
-        @Override // androidx.compose.foundation.layout.Arrangement.Horizontal
-        public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2) {
-            Intrinsics.checkNotNullParameter(density, "<this>");
-            Intrinsics.checkNotNullParameter(iArr, "sizes");
-            Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-            Intrinsics.checkNotNullParameter(iArr2, "outPositions");
-            if (layoutDirection == LayoutDirection.Ltr) {
-                Arrangement.INSTANCE.placeSpaceAround$foundation_layout_release(i, iArr, iArr2, false);
-            } else {
-                Arrangement.INSTANCE.placeSpaceAround$foundation_layout_release(i, iArr, iArr2, true);
-            }
-        }
-
-        @Override // androidx.compose.foundation.layout.Arrangement.HorizontalOrVertical, androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
-        /* renamed from: getSpacing-D9Ej5fM */
-        public float mo1347getSpacingD9Ej5fM() {
-            return this.spacing;
-        }
-
-        @NotNull
-        public String toString() {
-            return "Arrangement#SpaceAround";
-        }
-
-        @Override // androidx.compose.foundation.layout.Arrangement.Vertical
-        public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull int[] iArr2) {
-            Intrinsics.checkNotNullParameter(density, "<this>");
-            Intrinsics.checkNotNullParameter(iArr, "sizes");
-            Intrinsics.checkNotNullParameter(iArr2, "outPositions");
-            Arrangement.INSTANCE.placeSpaceAround$foundation_layout_release(i, iArr, iArr2, false);
-        }
-    };
+    private static final HorizontalOrVertical SpaceAround = new SpaceAround.1();
 
     /* compiled from: Taobao */
     @Immutable
@@ -279,31 +129,10 @@ public final class Arrangement {
         public static final Absolute INSTANCE = new Absolute();
 
         @NotNull
-        private static final Horizontal Left = new Horizontal() { // from class: androidx.compose.foundation.layout.Arrangement$Absolute$Left$1
-            @Override // androidx.compose.foundation.layout.Arrangement.Horizontal
-            public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2) {
-                Intrinsics.checkNotNullParameter(density, "<this>");
-                Intrinsics.checkNotNullParameter(iArr, "sizes");
-                Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-                Intrinsics.checkNotNullParameter(iArr2, "outPositions");
-                Arrangement.INSTANCE.placeLeftOrTop$foundation_layout_release(iArr, iArr2, false);
-            }
-
-            @Override // androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
-            /* renamed from: getSpacing-D9Ej5fM */
-            public /* synthetic */ float mo1347getSpacingD9Ej5fM() {
-                return oa.a(this);
-            }
-
-            @NotNull
-            public String toString() {
-                return "AbsoluteArrangement#Left";
-            }
-        };
+        private static final Horizontal Left = new Left.1();
 
         @NotNull
         private static final Horizontal Center = new Horizontal() { // from class: androidx.compose.foundation.layout.Arrangement$Absolute$Center$1
-            @Override // androidx.compose.foundation.layout.Arrangement.Horizontal
             public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2) {
                 Intrinsics.checkNotNullParameter(density, "<this>");
                 Intrinsics.checkNotNullParameter(iArr, "sizes");
@@ -312,9 +141,8 @@ public final class Arrangement {
                 Arrangement.INSTANCE.placeCenter$foundation_layout_release(i, iArr, iArr2, false);
             }
 
-            @Override // androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
             /* renamed from: getSpacing-D9Ej5fM, reason: not valid java name */
-            public /* synthetic */ float mo1347getSpacingD9Ej5fM() {
+            public /* synthetic */ float m191getSpacingD9Ej5fM() {
                 return oa.a(this);
             }
 
@@ -325,96 +153,16 @@ public final class Arrangement {
         };
 
         @NotNull
-        private static final Horizontal Right = new Horizontal() { // from class: androidx.compose.foundation.layout.Arrangement$Absolute$Right$1
-            @Override // androidx.compose.foundation.layout.Arrangement.Horizontal
-            public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2) {
-                Intrinsics.checkNotNullParameter(density, "<this>");
-                Intrinsics.checkNotNullParameter(iArr, "sizes");
-                Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-                Intrinsics.checkNotNullParameter(iArr2, "outPositions");
-                Arrangement.INSTANCE.placeRightOrBottom$foundation_layout_release(i, iArr, iArr2, false);
-            }
-
-            @Override // androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
-            /* renamed from: getSpacing-D9Ej5fM */
-            public /* synthetic */ float mo1347getSpacingD9Ej5fM() {
-                return oa.a(this);
-            }
-
-            @NotNull
-            public String toString() {
-                return "AbsoluteArrangement#Right";
-            }
-        };
+        private static final Horizontal Right = new Right.1();
 
         @NotNull
-        private static final Horizontal SpaceBetween = new Horizontal() { // from class: androidx.compose.foundation.layout.Arrangement$Absolute$SpaceBetween$1
-            @Override // androidx.compose.foundation.layout.Arrangement.Horizontal
-            public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2) {
-                Intrinsics.checkNotNullParameter(density, "<this>");
-                Intrinsics.checkNotNullParameter(iArr, "sizes");
-                Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-                Intrinsics.checkNotNullParameter(iArr2, "outPositions");
-                Arrangement.INSTANCE.placeSpaceBetween$foundation_layout_release(i, iArr, iArr2, false);
-            }
-
-            @Override // androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
-            /* renamed from: getSpacing-D9Ej5fM */
-            public /* synthetic */ float mo1347getSpacingD9Ej5fM() {
-                return oa.a(this);
-            }
-
-            @NotNull
-            public String toString() {
-                return "AbsoluteArrangement#SpaceBetween";
-            }
-        };
+        private static final Horizontal SpaceBetween = new SpaceBetween.1();
 
         @NotNull
-        private static final Horizontal SpaceEvenly = new Horizontal() { // from class: androidx.compose.foundation.layout.Arrangement$Absolute$SpaceEvenly$1
-            @Override // androidx.compose.foundation.layout.Arrangement.Horizontal
-            public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2) {
-                Intrinsics.checkNotNullParameter(density, "<this>");
-                Intrinsics.checkNotNullParameter(iArr, "sizes");
-                Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-                Intrinsics.checkNotNullParameter(iArr2, "outPositions");
-                Arrangement.INSTANCE.placeSpaceEvenly$foundation_layout_release(i, iArr, iArr2, false);
-            }
-
-            @Override // androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
-            /* renamed from: getSpacing-D9Ej5fM */
-            public /* synthetic */ float mo1347getSpacingD9Ej5fM() {
-                return oa.a(this);
-            }
-
-            @NotNull
-            public String toString() {
-                return "AbsoluteArrangement#SpaceEvenly";
-            }
-        };
+        private static final Horizontal SpaceEvenly = new SpaceEvenly.1();
 
         @NotNull
-        private static final Horizontal SpaceAround = new Horizontal() { // from class: androidx.compose.foundation.layout.Arrangement$Absolute$SpaceAround$1
-            @Override // androidx.compose.foundation.layout.Arrangement.Horizontal
-            public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2) {
-                Intrinsics.checkNotNullParameter(density, "<this>");
-                Intrinsics.checkNotNullParameter(iArr, "sizes");
-                Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-                Intrinsics.checkNotNullParameter(iArr2, "outPositions");
-                Arrangement.INSTANCE.placeSpaceAround$foundation_layout_release(i, iArr, iArr2, false);
-            }
-
-            @Override // androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
-            /* renamed from: getSpacing-D9Ej5fM */
-            public /* synthetic */ float mo1347getSpacingD9Ej5fM() {
-                return oa.a(this);
-            }
-
-            @NotNull
-            public String toString() {
-                return "AbsoluteArrangement#SpaceAround";
-            }
-        };
+        private static final Horizontal SpaceAround = new SpaceAround.1();
 
         private Absolute() {
         }
@@ -445,9 +193,9 @@ public final class Arrangement {
 
         @Stable
         @NotNull
-        public final Horizontal aligned(@NotNull final Alignment.Horizontal horizontal) {
-            Intrinsics.checkNotNullParameter(horizontal, "alignment");
-            return new SpacedAligned(C0856Dp.m5216constructorimpl(0), false, new Function2<Integer, LayoutDirection, Integer>() { // from class: androidx.compose.foundation.layout.Arrangement$Absolute$aligned$1
+        public final Horizontal aligned(@NotNull final Alignment$Horizontal alignment$Horizontal) {
+            Intrinsics.checkNotNullParameter(alignment$Horizontal, "alignment");
+            return new SpacedAligned(Dp.m2142constructorimpl(0), false, new Function2<Integer, LayoutDirection, Integer>() { // from class: androidx.compose.foundation.layout.Arrangement$Absolute$aligned$1
                 {
                     super(2);
                 }
@@ -459,7 +207,7 @@ public final class Arrangement {
                 @NotNull
                 public final Integer invoke(int i, @NotNull LayoutDirection layoutDirection) {
                     Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-                    return Integer.valueOf(Alignment.Horizontal.this.align(0, i, layoutDirection));
+                    return Integer.valueOf(Alignment$Horizontal.this.align(0, i, layoutDirection));
                 }
             }, null);
         }
@@ -497,7 +245,7 @@ public final class Arrangement {
         @Stable
         @NotNull
         /* renamed from: spacedBy-0680j_4, reason: not valid java name */
-        public final HorizontalOrVertical m1344spacedBy0680j_4(float f) {
+        public final HorizontalOrVertical m188spacedBy0680j_4(float f) {
             Function2 function2 = null;
             return new SpacedAligned(f, false, function2, function2);
         }
@@ -505,8 +253,8 @@ public final class Arrangement {
         @Stable
         @NotNull
         /* renamed from: spacedBy-D5KLDUw, reason: not valid java name */
-        public final Horizontal m1345spacedByD5KLDUw(float f, @NotNull final Alignment.Horizontal horizontal) {
-            Intrinsics.checkNotNullParameter(horizontal, "alignment");
+        public final Horizontal m189spacedByD5KLDUw(float f, @NotNull final Alignment$Horizontal alignment$Horizontal) {
+            Intrinsics.checkNotNullParameter(alignment$Horizontal, "alignment");
             return new SpacedAligned(f, false, new Function2<Integer, LayoutDirection, Integer>() { // from class: androidx.compose.foundation.layout.Arrangement$Absolute$spacedBy$1
                 {
                     super(2);
@@ -519,7 +267,7 @@ public final class Arrangement {
                 @NotNull
                 public final Integer invoke(int i, @NotNull LayoutDirection layoutDirection) {
                     Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-                    return Integer.valueOf(Alignment.Horizontal.this.align(0, i, layoutDirection));
+                    return Integer.valueOf(Alignment$Horizontal.this.align(0, i, layoutDirection));
                 }
             }, null);
         }
@@ -527,8 +275,8 @@ public final class Arrangement {
         @Stable
         @NotNull
         /* renamed from: spacedBy-D5KLDUw, reason: not valid java name */
-        public final Vertical m1346spacedByD5KLDUw(float f, @NotNull final Alignment.Vertical vertical) {
-            Intrinsics.checkNotNullParameter(vertical, "alignment");
+        public final Vertical m190spacedByD5KLDUw(float f, @NotNull final Alignment$Vertical alignment$Vertical) {
+            Intrinsics.checkNotNullParameter(alignment$Vertical, "alignment");
             return new SpacedAligned(f, false, new Function2<Integer, LayoutDirection, Integer>() { // from class: androidx.compose.foundation.layout.Arrangement$Absolute$spacedBy$2
                 {
                     super(2);
@@ -537,7 +285,7 @@ public final class Arrangement {
                 @NotNull
                 public final Integer invoke(int i, @NotNull LayoutDirection layoutDirection) {
                     Intrinsics.checkNotNullParameter(layoutDirection, "<anonymous parameter 1>");
-                    return Integer.valueOf(Alignment.Vertical.this.align(0, i));
+                    return Integer.valueOf(Alignment$Vertical.this.align(0, i));
                 }
 
                 public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
@@ -549,61 +297,9 @@ public final class Arrangement {
 
     /* compiled from: Taobao */
     @Stable
-    /* loaded from: classes2.dex */
-    public interface Horizontal {
-
-        /* compiled from: Taobao */
-        public static final class DefaultImpls {
-            @Deprecated
-            /* renamed from: getSpacing-D9Ej5fM, reason: not valid java name */
-            public static float m1348getSpacingD9Ej5fM(@NotNull Horizontal horizontal) {
-                return oa.b(horizontal);
-            }
-        }
-
-        void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2);
-
-        /* renamed from: getSpacing-D9Ej5fM */
-        float mo1347getSpacingD9Ej5fM();
-    }
-
-    /* compiled from: Taobao */
-    @Stable
     public interface HorizontalOrVertical extends Horizontal, Vertical {
-
-        /* compiled from: Taobao */
-        /* loaded from: classes2.dex */
-        public static final class DefaultImpls {
-            @Deprecated
-            /* renamed from: getSpacing-D9Ej5fM, reason: not valid java name */
-            public static float m1349getSpacingD9Ej5fM(@NotNull HorizontalOrVertical horizontalOrVertical) {
-                return pa.b(horizontalOrVertical);
-            }
-        }
-
-        @Override // androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
-        /* renamed from: getSpacing-D9Ej5fM */
-        float mo1347getSpacingD9Ej5fM();
-    }
-
-    /* compiled from: Taobao */
-    @Stable
-    /* loaded from: classes2.dex */
-    public interface Vertical {
-
-        /* compiled from: Taobao */
-        public static final class DefaultImpls {
-            @Deprecated
-            /* renamed from: getSpacing-D9Ej5fM, reason: not valid java name */
-            public static float m1354getSpacingD9Ej5fM(@NotNull Vertical vertical) {
-                return qa.b(vertical);
-            }
-        }
-
-        void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull int[] iArr2);
-
-        /* renamed from: getSpacing-D9Ej5fM */
-        float mo1347getSpacingD9Ej5fM();
+        /* renamed from: getSpacing-D9Ej5fM, reason: not valid java name */
+        float mo193getSpacingD9Ej5fM();
     }
 
     private Arrangement() {
@@ -666,23 +362,9 @@ public final class Arrangement {
 
     @Stable
     @NotNull
-    public final Horizontal aligned(@NotNull final Alignment.Horizontal horizontal) {
-        Intrinsics.checkNotNullParameter(horizontal, "alignment");
-        return new SpacedAligned(C0856Dp.m5216constructorimpl(0), true, new Function2<Integer, LayoutDirection, Integer>() { // from class: androidx.compose.foundation.layout.Arrangement$aligned$1
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                return invoke(((Number) obj).intValue(), (LayoutDirection) obj2);
-            }
-
-            @NotNull
-            public final Integer invoke(int i, @NotNull LayoutDirection layoutDirection) {
-                Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-                return Integer.valueOf(Alignment.Horizontal.this.align(0, i, layoutDirection));
-            }
-        }, null);
+    public final Horizontal aligned(@NotNull Alignment$Horizontal alignment$Horizontal) {
+        Intrinsics.checkNotNullParameter(alignment$Horizontal, "alignment");
+        return new SpacedAligned(Dp.m2142constructorimpl(0), true, new aligned.1(alignment$Horizontal), null);
     }
 
     @NotNull
@@ -911,7 +593,7 @@ public final class Arrangement {
     @Stable
     @NotNull
     /* renamed from: spacedBy-0680j_4, reason: not valid java name */
-    public final HorizontalOrVertical m1341spacedBy0680j_4(float f) {
+    public final HorizontalOrVertical m185spacedBy0680j_4(float f) {
         return new SpacedAligned(f, true, new Function2<Integer, LayoutDirection, Integer>() { // from class: androidx.compose.foundation.layout.Arrangement$spacedBy$1
             public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
                 return invoke(((Number) obj).intValue(), (LayoutDirection) obj2);
@@ -928,8 +610,8 @@ public final class Arrangement {
     @Stable
     @NotNull
     /* renamed from: spacedBy-D5KLDUw, reason: not valid java name */
-    public final Horizontal m1342spacedByD5KLDUw(float f, @NotNull final Alignment.Horizontal horizontal) {
-        Intrinsics.checkNotNullParameter(horizontal, "alignment");
+    public final Horizontal m186spacedByD5KLDUw(float f, @NotNull final Alignment$Horizontal alignment$Horizontal) {
+        Intrinsics.checkNotNullParameter(alignment$Horizontal, "alignment");
         return new SpacedAligned(f, true, new Function2<Integer, LayoutDirection, Integer>() { // from class: androidx.compose.foundation.layout.Arrangement$spacedBy$2
             {
                 super(2);
@@ -942,7 +624,7 @@ public final class Arrangement {
             @NotNull
             public final Integer invoke(int i, @NotNull LayoutDirection layoutDirection) {
                 Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-                return Integer.valueOf(Alignment.Horizontal.this.align(0, i, layoutDirection));
+                return Integer.valueOf(Alignment$Horizontal.this.align(0, i, layoutDirection));
             }
         }, null);
     }
@@ -950,8 +632,8 @@ public final class Arrangement {
     @Stable
     @NotNull
     /* renamed from: spacedBy-D5KLDUw, reason: not valid java name */
-    public final Vertical m1343spacedByD5KLDUw(float f, @NotNull final Alignment.Vertical vertical) {
-        Intrinsics.checkNotNullParameter(vertical, "alignment");
+    public final Vertical m187spacedByD5KLDUw(float f, @NotNull final Alignment$Vertical alignment$Vertical) {
+        Intrinsics.checkNotNullParameter(alignment$Vertical, "alignment");
         return new SpacedAligned(f, false, new Function2<Integer, LayoutDirection, Integer>() { // from class: androidx.compose.foundation.layout.Arrangement$spacedBy$3
             {
                 super(2);
@@ -960,7 +642,7 @@ public final class Arrangement {
             @NotNull
             public final Integer invoke(int i, @NotNull LayoutDirection layoutDirection) {
                 Intrinsics.checkNotNullParameter(layoutDirection, "<anonymous parameter 1>");
-                return Integer.valueOf(Alignment.Vertical.this.align(0, i));
+                return Integer.valueOf(Alignment$Vertical.this.align(0, i));
             }
 
             public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
@@ -971,23 +653,9 @@ public final class Arrangement {
 
     @Stable
     @NotNull
-    public final Vertical aligned(@NotNull final Alignment.Vertical vertical) {
-        Intrinsics.checkNotNullParameter(vertical, "alignment");
-        return new SpacedAligned(C0856Dp.m5216constructorimpl(0), false, new Function2<Integer, LayoutDirection, Integer>() { // from class: androidx.compose.foundation.layout.Arrangement$aligned$2
-            {
-                super(2);
-            }
-
-            @NotNull
-            public final Integer invoke(int i, @NotNull LayoutDirection layoutDirection) {
-                Intrinsics.checkNotNullParameter(layoutDirection, "<anonymous parameter 1>");
-                return Integer.valueOf(Alignment.Vertical.this.align(0, i));
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                return invoke(((Number) obj).intValue(), (LayoutDirection) obj2);
-            }
-        }, null);
+    public final Vertical aligned(@NotNull Alignment$Vertical alignment$Vertical) {
+        Intrinsics.checkNotNullParameter(alignment$Vertical, "alignment");
+        return new SpacedAligned(Dp.m2142constructorimpl(0), false, new aligned.2(alignment$Vertical), null);
     }
 
     /* compiled from: Taobao */
@@ -1014,7 +682,7 @@ public final class Arrangement {
 
         /* JADX WARN: Multi-variable type inference failed */
         /* renamed from: copy-8Feqmps$default, reason: not valid java name */
-        public static /* synthetic */ SpacedAligned m1350copy8Feqmps$default(SpacedAligned spacedAligned, float f, boolean z, Function2 function2, int i, Object obj) {
+        public static /* synthetic */ SpacedAligned m194copy8Feqmps$default(SpacedAligned spacedAligned, float f, boolean z, Function2 function2, int i, Object obj) {
             if ((i & 1) != 0) {
                 f = spacedAligned.space;
             }
@@ -1024,10 +692,9 @@ public final class Arrangement {
             if ((i & 4) != 0) {
                 function2 = spacedAligned.alignment;
             }
-            return spacedAligned.m1352copy8Feqmps(f, z, function2);
+            return spacedAligned.m196copy8Feqmps(f, z, function2);
         }
 
-        @Override // androidx.compose.foundation.layout.Arrangement.Horizontal
         public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull LayoutDirection layoutDirection, @NotNull int[] iArr2) {
             int i2;
             int i3;
@@ -1038,7 +705,7 @@ public final class Arrangement {
             if (iArr.length == 0) {
                 return;
             }
-            int mo1277roundToPx0680j_4 = density.mo1277roundToPx0680j_4(this.space);
+            int mo319roundToPx0680j_4 = density.mo319roundToPx0680j_4(this.space);
             boolean z = this.rtlMirror && layoutDirection == LayoutDirection.Rtl;
             Arrangement arrangement = Arrangement.INSTANCE;
             if (z) {
@@ -1047,7 +714,7 @@ public final class Arrangement {
                 for (int length = iArr.length - 1; -1 < length; length--) {
                     int i4 = iArr[length];
                     iArr2[length] = Math.min(i2, i - i4);
-                    i3 = Math.min(mo1277roundToPx0680j_4, (i - iArr2[length]) - i4);
+                    i3 = Math.min(mo319roundToPx0680j_4, (i - iArr2[length]) - i4);
                     i2 = iArr2[length] + i4 + i3;
                 }
             } else {
@@ -1059,7 +726,7 @@ public final class Arrangement {
                 while (i5 < length2) {
                     int i7 = iArr[i5];
                     iArr2[i6] = Math.min(i2, i - i7);
-                    int min = Math.min(mo1277roundToPx0680j_4, (i - iArr2[i6]) - i7);
+                    int min = Math.min(mo319roundToPx0680j_4, (i - iArr2[i6]) - i7);
                     int i8 = iArr2[i6] + i7 + min;
                     i5++;
                     i6++;
@@ -1080,7 +747,7 @@ public final class Arrangement {
         }
 
         /* renamed from: component1-D9Ej5fM, reason: not valid java name */
-        public final float m1351component1D9Ej5fM() {
+        public final float m195component1D9Ej5fM() {
             return this.space;
         }
 
@@ -1095,7 +762,7 @@ public final class Arrangement {
 
         @NotNull
         /* renamed from: copy-8Feqmps, reason: not valid java name */
-        public final SpacedAligned m1352copy8Feqmps(float f, boolean z, @Nullable Function2<? super Integer, ? super LayoutDirection, Integer> function2) {
+        public final SpacedAligned m196copy8Feqmps(float f, boolean z, @Nullable Function2<? super Integer, ? super LayoutDirection, Integer> function2) {
             return new SpacedAligned(f, z, function2, null);
         }
 
@@ -1107,7 +774,7 @@ public final class Arrangement {
                 return false;
             }
             SpacedAligned spacedAligned = (SpacedAligned) obj;
-            return C0856Dp.m5221equalsimpl0(this.space, spacedAligned.space) && this.rtlMirror == spacedAligned.rtlMirror && Intrinsics.areEqual(this.alignment, spacedAligned.alignment);
+            return Dp.m2147equalsimpl0(this.space, spacedAligned.space) && this.rtlMirror == spacedAligned.rtlMirror && Intrinsics.areEqual(this.alignment, spacedAligned.alignment);
         }
 
         @Nullable
@@ -1120,25 +787,25 @@ public final class Arrangement {
         }
 
         /* renamed from: getSpace-D9Ej5fM, reason: not valid java name */
-        public final float m1353getSpaceD9Ej5fM() {
+        public final float m197getSpaceD9Ej5fM() {
             return this.space;
         }
 
-        @Override // androidx.compose.foundation.layout.Arrangement.HorizontalOrVertical, androidx.compose.foundation.layout.Arrangement.Horizontal, androidx.compose.foundation.layout.Arrangement.Vertical
+        @Override // androidx.compose.foundation.layout.Arrangement.HorizontalOrVertical
         /* renamed from: getSpacing-D9Ej5fM */
-        public float mo1347getSpacingD9Ej5fM() {
+        public float mo193getSpacingD9Ej5fM() {
             return this.spacing;
         }
 
         /* JADX WARN: Multi-variable type inference failed */
         public int hashCode() {
-            int m5222hashCodeimpl = C0856Dp.m5222hashCodeimpl(this.space) * 31;
+            int m2148hashCodeimpl = Dp.m2148hashCodeimpl(this.space) * 31;
             boolean z = this.rtlMirror;
             int i = z;
             if (z != 0) {
                 i = 1;
             }
-            int i2 = (m5222hashCodeimpl + i) * 31;
+            int i2 = (m2148hashCodeimpl + i) * 31;
             Function2<Integer, LayoutDirection, Integer> function2 = this.alignment;
             return i2 + (function2 == null ? 0 : function2.hashCode());
         }
@@ -1148,14 +815,13 @@ public final class Arrangement {
             StringBuilder sb = new StringBuilder();
             sb.append(this.rtlMirror ? "" : "Absolute");
             sb.append("Arrangement#spacedAligned(");
-            sb.append((Object) C0856Dp.m5227toStringimpl(this.space));
+            sb.append((Object) Dp.m2153toStringimpl(this.space));
             sb.append(", ");
             sb.append(this.alignment);
             sb.append(')');
             return sb.toString();
         }
 
-        @Override // androidx.compose.foundation.layout.Arrangement.Vertical
         public void arrange(@NotNull Density density, int i, @NotNull int[] iArr, @NotNull int[] iArr2) {
             Intrinsics.checkNotNullParameter(density, "<this>");
             Intrinsics.checkNotNullParameter(iArr, "sizes");

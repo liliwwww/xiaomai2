@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.HoverableKt$hoverable$2", f = "Hoverable.kt", i = {0}, l = {70}, m = "invoke$emitExit", n = {"hoverInteraction$delegate"}, s = {"L$0"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class HoverableKt$hoverable$2$invoke$emitExit$1 extends ContinuationImpl {
     Object L$0;
     int label;
@@ -20,8 +20,10 @@ final class HoverableKt$hoverable$2$invoke$emitExit$1 extends ContinuationImpl {
 
     @Nullable
     public final Object invokeSuspend(@NotNull Object obj) {
+        Object invoke$emitExit;
         this.result = obj;
         this.label |= Integer.MIN_VALUE;
-        return HoverableKt$hoverable$2.invoke$emitExit(null, null, this);
+        invoke$emitExit = HoverableKt$hoverable$2.invoke$emitExit(null, null, this);
+        return invoke$emitExit;
     }
 }

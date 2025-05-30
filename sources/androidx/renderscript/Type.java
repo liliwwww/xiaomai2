@@ -1,7 +1,7 @@
 package androidx.renderscript;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Type extends BaseObj {
     boolean mDimFaces;
     boolean mDimMipmaps;
@@ -103,23 +103,6 @@ public class Type extends BaseObj {
             }
             this.mDimZ = i;
             return this;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public enum CubemapFace {
-        POSITIVE_X(0),
-        NEGATIVE_X(1),
-        POSITIVE_Y(2),
-        NEGATIVE_Y(3),
-        POSITIVE_Z(4),
-        NEGATIVE_Z(5);
-
-        int mID;
-
-        CubemapFace(int i) {
-            this.mID = i;
         }
     }
 

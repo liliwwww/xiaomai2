@@ -14,7 +14,7 @@ import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SubList<T> implements List<T>, KMutableList {
     private int modification;
     private final int offset;
@@ -93,7 +93,7 @@ final class SubList<T> implements List<T>, KMutableList {
     @Override // java.util.List
     public T get(int i) {
         validateModification();
-        SnapshotStateListKt.validateRange(i, size());
+        SnapshotStateListKt.access$validateRange(i, size());
         return this.parentList.get(this.offset + i);
     }
 
@@ -192,7 +192,7 @@ final class SubList<T> implements List<T>, KMutableList {
 
     @Override // java.util.List
     public T set(int i, T t) {
-        SnapshotStateListKt.validateRange(i, size());
+        SnapshotStateListKt.access$validateRange(i, size());
         validateModification();
         T t2 = this.parentList.set(i + this.offset, t);
         this.modification = this.parentList.getModification$runtime_release();
@@ -233,7 +233,7 @@ final class SubList<T> implements List<T>, KMutableList {
         validateModification();
         Ref.IntRef intRef = new Ref.IntRef();
         intRef.element = i - 1;
-        return new SubList$listIterator$1(intRef, this);
+        return new listIterator.1(intRef, this);
     }
 
     @Override // java.util.List, java.util.Collection

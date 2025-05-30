@@ -10,7 +10,7 @@ import tb.ka;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class AbstractApplier<T> implements Applier<T> {
     public static final int $stable = 8;
     private T current;
@@ -24,20 +24,17 @@ public abstract class AbstractApplier<T> implements Applier<T> {
         this.current = t;
     }
 
-    @Override // androidx.compose.runtime.Applier
     public final void clear() {
         this.stack.clear();
         setCurrent(this.root);
         onClear();
     }
 
-    @Override // androidx.compose.runtime.Applier
     public void down(T t) {
         this.stack.add(getCurrent());
         setCurrent(t);
     }
 
-    @Override // androidx.compose.runtime.Applier
     public T getCurrent() {
         return this.current;
     }
@@ -63,14 +60,12 @@ public abstract class AbstractApplier<T> implements Applier<T> {
         }
     }
 
-    @Override // androidx.compose.runtime.Applier
     public /* synthetic */ void onBeginChanges() {
         ka.a(this);
     }
 
     protected abstract void onClear();
 
-    @Override // androidx.compose.runtime.Applier
     public /* synthetic */ void onEndChanges() {
         ka.b(this);
     }
@@ -88,9 +83,7 @@ public abstract class AbstractApplier<T> implements Applier<T> {
         this.current = t;
     }
 
-    @Override // androidx.compose.runtime.Applier
-    /* renamed from: up */
-    public void mo83up() {
+    public void up() {
         if (!(!this.stack.isEmpty())) {
             throw new IllegalStateException("Check failed.".toString());
         }

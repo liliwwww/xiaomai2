@@ -1,7 +1,6 @@
 package androidx.compose.foundation.layout;
 
 import android.os.Build;
-import android.taobao.windvane.connect.api.ApiConstants;
 import android.view.View;
 import androidx.core.view.OnApplyWindowInsetsListener;
 import androidx.core.view.WindowInsetsAnimationCompat;
@@ -12,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class InsetsListener extends WindowInsetsAnimationCompat.Callback implements View.OnAttachStateChangeListener, OnApplyWindowInsetsListener, Runnable {
 
     @NotNull
@@ -48,7 +47,6 @@ final class InsetsListener extends WindowInsetsAnimationCompat.Callback implemen
         return this.savedInsets;
     }
 
-    @Override // androidx.core.view.OnApplyWindowInsetsListener
     @NotNull
     public WindowInsetsCompat onApplyWindowInsets(@NotNull View view, @NotNull WindowInsetsCompat windowInsetsCompat) {
         Intrinsics.checkNotNullParameter(view, "view");
@@ -61,7 +59,7 @@ final class InsetsListener extends WindowInsetsAnimationCompat.Callback implemen
             }
         } else if (!this.runningAnimation) {
             this.composeInsets.updateImeAnimationSource(windowInsetsCompat);
-            WindowInsetsHolder.update$default(this.composeInsets, windowInsetsCompat, 0, 2, null);
+            WindowInsetsHolder.update$default(this.composeInsets, windowInsetsCompat, 0, 2, (Object) null);
         }
         if (!this.composeInsets.getConsumes()) {
             return windowInsetsCompat;
@@ -80,7 +78,7 @@ final class InsetsListener extends WindowInsetsAnimationCompat.Callback implemen
         if (windowInsetsAnimationCompat.getDurationMillis() != 0 && windowInsetsCompat != null) {
             this.composeInsets.updateImeAnimationSource(windowInsetsCompat);
             this.composeInsets.updateImeAnimationTarget(windowInsetsCompat);
-            WindowInsetsHolder.update$default(this.composeInsets, windowInsetsCompat, 0, 2, null);
+            WindowInsetsHolder.update$default(this.composeInsets, windowInsetsCompat, 0, 2, (Object) null);
         }
         this.savedInsets = null;
         super.onEnd(windowInsetsAnimationCompat);
@@ -99,7 +97,7 @@ final class InsetsListener extends WindowInsetsAnimationCompat.Callback implemen
     public WindowInsetsCompat onProgress(@NotNull WindowInsetsCompat windowInsetsCompat, @NotNull List<WindowInsetsAnimationCompat> list) {
         Intrinsics.checkNotNullParameter(windowInsetsCompat, "insets");
         Intrinsics.checkNotNullParameter(list, "runningAnimations");
-        WindowInsetsHolder.update$default(this.composeInsets, windowInsetsCompat, 0, 2, null);
+        WindowInsetsHolder.update$default(this.composeInsets, windowInsetsCompat, 0, 2, (Object) null);
         if (!this.composeInsets.getConsumes()) {
             return windowInsetsCompat;
         }
@@ -127,7 +125,7 @@ final class InsetsListener extends WindowInsetsAnimationCompat.Callback implemen
 
     @Override // android.view.View.OnAttachStateChangeListener
     public void onViewDetachedFromWindow(@NotNull View view) {
-        Intrinsics.checkNotNullParameter(view, ApiConstants.f5V);
+        Intrinsics.checkNotNullParameter(view, "v");
     }
 
     @Override // java.lang.Runnable
@@ -138,7 +136,7 @@ final class InsetsListener extends WindowInsetsAnimationCompat.Callback implemen
             WindowInsetsCompat windowInsetsCompat = this.savedInsets;
             if (windowInsetsCompat != null) {
                 this.composeInsets.updateImeAnimationSource(windowInsetsCompat);
-                WindowInsetsHolder.update$default(this.composeInsets, windowInsetsCompat, 0, 2, null);
+                WindowInsetsHolder.update$default(this.composeInsets, windowInsetsCompat, 0, 2, (Object) null);
                 this.savedInsets = null;
             }
         }

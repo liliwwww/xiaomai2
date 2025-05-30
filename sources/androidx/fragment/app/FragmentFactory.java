@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment;
 import java.lang.reflect.InvocationTargetException;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class FragmentFactory {
     private static final SimpleArrayMap<ClassLoader, SimpleArrayMap<String, Class<?>>> sClassCacheMap = new SimpleArrayMap<>();
 
@@ -21,12 +21,12 @@ public class FragmentFactory {
     @NonNull
     private static Class<?> loadClass(@NonNull ClassLoader classLoader, @NonNull String str) throws ClassNotFoundException {
         SimpleArrayMap<ClassLoader, SimpleArrayMap<String, Class<?>>> simpleArrayMap = sClassCacheMap;
-        SimpleArrayMap<String, Class<?>> simpleArrayMap2 = simpleArrayMap.get(classLoader);
+        SimpleArrayMap simpleArrayMap2 = (SimpleArrayMap) simpleArrayMap.get(classLoader);
         if (simpleArrayMap2 == null) {
-            simpleArrayMap2 = new SimpleArrayMap<>();
+            simpleArrayMap2 = new SimpleArrayMap();
             simpleArrayMap.put(classLoader, simpleArrayMap2);
         }
-        Class<?> cls = simpleArrayMap2.get(str);
+        Class<?> cls = (Class) simpleArrayMap2.get(str);
         if (cls != null) {
             return cls;
         }

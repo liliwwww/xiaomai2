@@ -2,6 +2,7 @@ package androidx.constraintlayout.helper.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -9,14 +10,14 @@ import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.motion.widget.MotionHelper;
 import androidx.constraintlayout.motion.widget.MotionLayout;
 import androidx.constraintlayout.motion.widget.MotionScene;
-import androidx.constraintlayout.widget.C0923R;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.constraintlayout.widget.R;
 import java.util.ArrayList;
 import java.util.Iterator;
 import tb.oq;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Carousel extends MotionHelper {
     private static final boolean DEBUG = false;
     private static final String TAG = "Carousel";
@@ -43,16 +44,6 @@ public class Carousel extends MotionHelper {
     private int touchUpMode;
     private float velocityThreshold;
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public interface Adapter {
-        int count();
-
-        void onNewItem(int i);
-
-        void populate(View view, int i);
-    }
-
     public Carousel(Context context) {
         super(context);
         this.mAdapter = null;
@@ -71,7 +62,7 @@ public class Carousel extends MotionHelper {
         this.touchUpMode = 1;
         this.velocityThreshold = 2.0f;
         this.mTargetIndex = -1;
-        this.mAnimateTargetDelay = 200;
+        this.mAnimateTargetDelay = WVURLRuleConstants.SEARCH;
         this.mLastStartId = -1;
         this.mUpdateRunnable = new Runnable() { // from class: androidx.constraintlayout.helper.widget.Carousel.1
             @Override // java.lang.Runnable
@@ -83,15 +74,10 @@ public class Carousel extends MotionHelper {
                 if (Carousel.this.touchUpMode != 2 || velocity <= Carousel.this.velocityThreshold || Carousel.this.mIndex >= Carousel.this.mAdapter.count() - 1) {
                     return;
                 }
-                final float f = velocity * Carousel.this.dampening;
+                float f = velocity * Carousel.this.dampening;
                 if (Carousel.this.mIndex != 0 || Carousel.this.mPreviousIndex <= Carousel.this.mIndex) {
                     if (Carousel.this.mIndex != Carousel.this.mAdapter.count() - 1 || Carousel.this.mPreviousIndex >= Carousel.this.mIndex) {
-                        Carousel.this.mMotionLayout.post(new Runnable() { // from class: androidx.constraintlayout.helper.widget.Carousel.1.1
-                            @Override // java.lang.Runnable
-                            public void run() {
-                                Carousel.this.mMotionLayout.touchAnimateTo(5, 1.0f, f);
-                            }
-                        });
+                        Carousel.this.mMotionLayout.post(new 1(this, f));
                     }
                 }
             }
@@ -99,9 +85,9 @@ public class Carousel extends MotionHelper {
     }
 
     private void enableAllTransitions(boolean z) {
-        Iterator<MotionScene.Transition> it = this.mMotionLayout.getDefinedTransitions().iterator();
+        Iterator it = this.mMotionLayout.getDefinedTransitions().iterator();
         while (it.hasNext()) {
-            it.next().setEnabled(z);
+            ((MotionScene.Transition) it.next()).setEnabled(z);
         }
     }
 
@@ -117,29 +103,29 @@ public class Carousel extends MotionHelper {
 
     private void init(Context context, AttributeSet attributeSet) {
         if (attributeSet != null) {
-            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0923R.styleable.Carousel);
+            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, R.styleable.Carousel);
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
                 int index = obtainStyledAttributes.getIndex(i);
-                if (index == C0923R.styleable.Carousel_carousel_firstView) {
+                if (index == R.styleable.Carousel_carousel_firstView) {
                     this.firstViewReference = obtainStyledAttributes.getResourceId(index, this.firstViewReference);
-                } else if (index == C0923R.styleable.Carousel_carousel_backwardTransition) {
+                } else if (index == R.styleable.Carousel_carousel_backwardTransition) {
                     this.backwardTransition = obtainStyledAttributes.getResourceId(index, this.backwardTransition);
-                } else if (index == C0923R.styleable.Carousel_carousel_forwardTransition) {
+                } else if (index == R.styleable.Carousel_carousel_forwardTransition) {
                     this.forwardTransition = obtainStyledAttributes.getResourceId(index, this.forwardTransition);
-                } else if (index == C0923R.styleable.Carousel_carousel_emptyViewsBehavior) {
+                } else if (index == R.styleable.Carousel_carousel_emptyViewsBehavior) {
                     this.emptyViewBehavior = obtainStyledAttributes.getInt(index, this.emptyViewBehavior);
-                } else if (index == C0923R.styleable.Carousel_carousel_previousState) {
+                } else if (index == R.styleable.Carousel_carousel_previousState) {
                     this.previousState = obtainStyledAttributes.getResourceId(index, this.previousState);
-                } else if (index == C0923R.styleable.Carousel_carousel_nextState) {
+                } else if (index == R.styleable.Carousel_carousel_nextState) {
                     this.nextState = obtainStyledAttributes.getResourceId(index, this.nextState);
-                } else if (index == C0923R.styleable.Carousel_carousel_touchUp_dampeningFactor) {
+                } else if (index == R.styleable.Carousel_carousel_touchUp_dampeningFactor) {
                     this.dampening = obtainStyledAttributes.getFloat(index, this.dampening);
-                } else if (index == C0923R.styleable.Carousel_carousel_touchUpMode) {
+                } else if (index == R.styleable.Carousel_carousel_touchUpMode) {
                     this.touchUpMode = obtainStyledAttributes.getInt(index, this.touchUpMode);
-                } else if (index == C0923R.styleable.Carousel_carousel_touchUp_velocityThreshold) {
+                } else if (index == R.styleable.Carousel_carousel_touchUp_velocityThreshold) {
                     this.velocityThreshold = obtainStyledAttributes.getFloat(index, this.velocityThreshold);
-                } else if (index == C0923R.styleable.Carousel_carousel_infinite) {
+                } else if (index == R.styleable.Carousel_carousel_infinite) {
                     this.infiniteCarousel = obtainStyledAttributes.getBoolean(index, this.infiniteCarousel);
                 }
             }
@@ -269,18 +255,18 @@ public class Carousel extends MotionHelper {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         if (getParent() instanceof MotionLayout) {
-            MotionLayout motionLayout = (MotionLayout) getParent();
+            MotionLayout parent = getParent();
             for (int i = 0; i < this.mCount; i++) {
                 int i2 = this.mIds[i];
-                View viewById = motionLayout.getViewById(i2);
+                View viewById = parent.getViewById(i2);
                 if (this.firstViewReference == i2) {
                     this.startIndex = i;
                 }
                 this.mList.add(viewById);
             }
-            this.mMotionLayout = motionLayout;
+            this.mMotionLayout = parent;
             if (this.touchUpMode == 2) {
-                MotionScene.Transition transition = motionLayout.getTransition(this.forwardTransition);
+                MotionScene.Transition transition = parent.getTransition(this.forwardTransition);
                 if (transition != null) {
                     transition.setOnTouchUp(5);
                 }
@@ -293,12 +279,12 @@ public class Carousel extends MotionHelper {
         }
     }
 
-    @Override // androidx.constraintlayout.motion.widget.MotionHelper, androidx.constraintlayout.motion.widget.MotionLayout.TransitionListener
+    @Override // androidx.constraintlayout.motion.widget.MotionHelper
     public void onTransitionChange(MotionLayout motionLayout, int i, int i2, float f) {
         this.mLastStartId = i;
     }
 
-    @Override // androidx.constraintlayout.motion.widget.MotionHelper, androidx.constraintlayout.motion.widget.MotionLayout.TransitionListener
+    @Override // androidx.constraintlayout.motion.widget.MotionHelper
     public void onTransitionCompleted(MotionLayout motionLayout, int i) {
         int i2 = this.mIndex;
         this.mPreviousIndex = i2;
@@ -386,7 +372,7 @@ public class Carousel extends MotionHelper {
         this.touchUpMode = 1;
         this.velocityThreshold = 2.0f;
         this.mTargetIndex = -1;
-        this.mAnimateTargetDelay = 200;
+        this.mAnimateTargetDelay = WVURLRuleConstants.SEARCH;
         this.mLastStartId = -1;
         this.mUpdateRunnable = new Runnable() { // from class: androidx.constraintlayout.helper.widget.Carousel.1
             @Override // java.lang.Runnable
@@ -398,15 +384,10 @@ public class Carousel extends MotionHelper {
                 if (Carousel.this.touchUpMode != 2 || velocity <= Carousel.this.velocityThreshold || Carousel.this.mIndex >= Carousel.this.mAdapter.count() - 1) {
                     return;
                 }
-                final float f = velocity * Carousel.this.dampening;
+                float f = velocity * Carousel.this.dampening;
                 if (Carousel.this.mIndex != 0 || Carousel.this.mPreviousIndex <= Carousel.this.mIndex) {
                     if (Carousel.this.mIndex != Carousel.this.mAdapter.count() - 1 || Carousel.this.mPreviousIndex >= Carousel.this.mIndex) {
-                        Carousel.this.mMotionLayout.post(new Runnable() { // from class: androidx.constraintlayout.helper.widget.Carousel.1.1
-                            @Override // java.lang.Runnable
-                            public void run() {
-                                Carousel.this.mMotionLayout.touchAnimateTo(5, 1.0f, f);
-                            }
-                        });
+                        Carousel.this.mMotionLayout.post(new 1(this, f));
                     }
                 }
             }
@@ -432,7 +413,7 @@ public class Carousel extends MotionHelper {
         this.touchUpMode = 1;
         this.velocityThreshold = 2.0f;
         this.mTargetIndex = -1;
-        this.mAnimateTargetDelay = 200;
+        this.mAnimateTargetDelay = WVURLRuleConstants.SEARCH;
         this.mLastStartId = -1;
         this.mUpdateRunnable = new Runnable() { // from class: androidx.constraintlayout.helper.widget.Carousel.1
             @Override // java.lang.Runnable
@@ -444,15 +425,10 @@ public class Carousel extends MotionHelper {
                 if (Carousel.this.touchUpMode != 2 || velocity <= Carousel.this.velocityThreshold || Carousel.this.mIndex >= Carousel.this.mAdapter.count() - 1) {
                     return;
                 }
-                final float f = velocity * Carousel.this.dampening;
+                float f = velocity * Carousel.this.dampening;
                 if (Carousel.this.mIndex != 0 || Carousel.this.mPreviousIndex <= Carousel.this.mIndex) {
                     if (Carousel.this.mIndex != Carousel.this.mAdapter.count() - 1 || Carousel.this.mPreviousIndex >= Carousel.this.mIndex) {
-                        Carousel.this.mMotionLayout.post(new Runnable() { // from class: androidx.constraintlayout.helper.widget.Carousel.1.1
-                            @Override // java.lang.Runnable
-                            public void run() {
-                                Carousel.this.mMotionLayout.touchAnimateTo(5, 1.0f, f);
-                            }
-                        });
+                        Carousel.this.mMotionLayout.post(new 1(this, f));
                     }
                 }
             }

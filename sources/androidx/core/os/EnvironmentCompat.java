@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class EnvironmentCompat {
     public static final String MEDIA_UNKNOWN = "unknown";
     private static final String TAG = "EnvironmentCompat";
@@ -24,19 +24,6 @@ public final class EnvironmentCompat {
         @DoNotInline
         static String getStorageState(File file) {
             return Environment.getStorageState(file);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(21)
-    /* loaded from: classes2.dex */
-    static class Api21Impl {
-        private Api21Impl() {
-        }
-
-        @DoNotInline
-        static String getExternalStorageState(File file) {
-            return Environment.getExternalStorageState(file);
         }
     }
 

@@ -5,7 +5,7 @@ import android.os.Build;
 import androidx.annotation.NonNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ActivityManagerCompat {
     private ActivityManagerCompat() {
     }

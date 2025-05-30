@@ -4,7 +4,7 @@ import android.taobao.windvane.jsbridge.WVApiPlugin;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVUIToast extends WVApiPlugin {
     private static final String TAG = "WVUIToast";
 
@@ -20,7 +20,7 @@ public class WVUIToast extends WVApiPlugin {
     /* JADX WARN: Removed duplicated region for block: B:15:0x0054  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public synchronized void toast(android.taobao.windvane.jsbridge.WVCallBackContext r7, java.lang.String r8) {
         /*

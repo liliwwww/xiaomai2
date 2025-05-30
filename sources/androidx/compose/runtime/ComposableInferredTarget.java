@@ -13,7 +13,7 @@ import kotlin.annotation.AnnotationTarget;
 @InternalComposeApi
 @Retention(RetentionPolicy.CLASS)
 @kotlin.annotation.Retention(AnnotationRetention.BINARY)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public @interface ComposableInferredTarget {
     String scheme();
 }

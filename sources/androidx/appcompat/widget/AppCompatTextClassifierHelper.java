@@ -1,16 +1,14 @@
 package androidx.appcompat.widget;
 
-import android.view.textclassifier.TextClassificationManager;
 import android.view.textclassifier.TextClassifier;
 import android.widget.TextView;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.util.Preconditions;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class AppCompatTextClassifierHelper {
 
     @Nullable
@@ -18,21 +16,6 @@ final class AppCompatTextClassifierHelper {
 
     @NonNull
     private TextView mTextView;
-
-    /* compiled from: Taobao */
-    @RequiresApi(26)
-    /* loaded from: classes2.dex */
-    private static final class Api26Impl {
-        private Api26Impl() {
-        }
-
-        @NonNull
-        @DoNotInline
-        static TextClassifier getTextClassifier(@NonNull TextView textView) {
-            TextClassificationManager textClassificationManager = (TextClassificationManager) textView.getContext().getSystemService(TextClassificationManager.class);
-            return textClassificationManager != null ? textClassificationManager.getTextClassifier() : TextClassifier.NO_OP;
-        }
-    }
 
     AppCompatTextClassifierHelper(@NonNull TextView textView) {
         this.mTextView = (TextView) Preconditions.checkNotNull(textView);

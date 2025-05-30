@@ -9,12 +9,13 @@ import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.emoji2.text.EmojiCompat;
 
 /* compiled from: Taobao */
 @RequiresApi(19)
-@RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class EmojiInputConnection extends InputConnectionWrapper {
     private final EmojiCompatDeleteHelper mEmojiCompatDeleteHelper;
     private final TextView mTextView;

@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.RestrictTo;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class SimpleCursorAdapter extends ResourceCursorAdapter {
     private CursorToStringConverter mCursorToStringConverter;
 
@@ -21,18 +21,6 @@ public class SimpleCursorAdapter extends ResourceCursorAdapter {
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
     protected int[] mTo;
     private ViewBinder mViewBinder;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface CursorToStringConverter {
-        CharSequence convertToString(Cursor cursor);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface ViewBinder {
-        boolean setViewValue(View view, Cursor cursor, int i);
-    }
 
     @Deprecated
     public SimpleCursorAdapter(Context context, int i, Cursor cursor, String[] strArr, int[] iArr) {
@@ -58,7 +46,6 @@ public class SimpleCursorAdapter extends ResourceCursorAdapter {
         }
     }
 
-    @Override // androidx.cursoradapter.widget.CursorAdapter
     public void bindView(View view, Context context, Cursor cursor) {
         ViewBinder viewBinder = this.mViewBinder;
         int[] iArr = this.mTo;
@@ -94,7 +81,6 @@ public class SimpleCursorAdapter extends ResourceCursorAdapter {
         super.changeCursor(cursor);
     }
 
-    @Override // androidx.cursoradapter.widget.CursorAdapter, androidx.cursoradapter.widget.CursorFilter.CursorFilterClient
     public CharSequence convertToString(Cursor cursor) {
         CursorToStringConverter cursorToStringConverter = this.mCursorToStringConverter;
         if (cursorToStringConverter != null) {
@@ -140,7 +126,6 @@ public class SimpleCursorAdapter extends ResourceCursorAdapter {
         textView.setText(str);
     }
 
-    @Override // androidx.cursoradapter.widget.CursorAdapter
     public Cursor swapCursor(Cursor cursor) {
         findColumns(cursor, this.mOriginalFrom);
         return super.swapCursor(cursor);

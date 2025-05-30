@@ -11,7 +11,7 @@ import tb.fy5;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class VectorizedSnapSpec<V extends AnimationVector> implements VectorizedDurationBasedAnimationSpec<V> {
     public static final int $stable = 0;
     private final int delayMillis;
@@ -24,27 +24,22 @@ public final class VectorizedSnapSpec<V extends AnimationVector> implements Vect
         this.delayMillis = i;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedDurationBasedAnimationSpec
     public int getDelayMillis() {
         return this.delayMillis;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedDurationBasedAnimationSpec
     public int getDurationMillis() {
         return 0;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedDurationBasedAnimationSpec, androidx.compose.animation.core.VectorizedAnimationSpec
     public /* synthetic */ long getDurationNanos(AnimationVector animationVector, AnimationVector animationVector2, AnimationVector animationVector3) {
         return ey5.a(this, animationVector, animationVector2, animationVector3);
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     public /* synthetic */ AnimationVector getEndVelocity(AnimationVector animationVector, AnimationVector animationVector2, AnimationVector animationVector3) {
         return dy5.a(this, animationVector, animationVector2, animationVector3);
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     @NotNull
     public V getValueFromNanos(long j, @NotNull V v, @NotNull V v2, @NotNull V v3) {
         Intrinsics.checkNotNullParameter(v, "initialValue");
@@ -53,7 +48,6 @@ public final class VectorizedSnapSpec<V extends AnimationVector> implements Vect
         return j < ((long) getDelayMillis()) * AnimationKt.MillisToNanos ? v : v2;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     @NotNull
     public V getVelocityFromNanos(long j, @NotNull V v, @NotNull V v2, @NotNull V v3) {
         Intrinsics.checkNotNullParameter(v, "initialValue");
@@ -62,7 +56,6 @@ public final class VectorizedSnapSpec<V extends AnimationVector> implements Vect
         return v3;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedFiniteAnimationSpec, androidx.compose.animation.core.VectorizedAnimationSpec
     public /* synthetic */ boolean isInfinite() {
         return fy5.a(this);
     }

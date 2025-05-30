@@ -4,6 +4,7 @@ import androidx.compose.foundation.interaction.Interaction;
 import androidx.compose.foundation.interaction.MutableInteractionSource;
 import androidx.compose.runtime.State;
 import kotlin.Unit;
+import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
@@ -13,7 +14,7 @@ import kotlinx.coroutines.d;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class RangeSliderLogic {
 
     @NotNull
@@ -52,12 +53,12 @@ final class RangeSliderLogic {
     public final void captureThumb(boolean z, float f, @NotNull Interaction interaction, @NotNull CoroutineScope coroutineScope) {
         Intrinsics.checkNotNullParameter(interaction, "interaction");
         Intrinsics.checkNotNullParameter(coroutineScope, "scope");
-        this.onDrag.getValue().invoke(Boolean.valueOf(z), Float.valueOf(f - (z ? this.rawOffsetStart : this.rawOffsetEnd).getValue().floatValue()));
-        d.d(coroutineScope, (CoroutineContext) null, (CoroutineStart) null, new RangeSliderLogic$captureThumb$1(this, z, interaction, null), 3, (Object) null);
+        ((Function2) this.onDrag.getValue()).invoke(Boolean.valueOf(z), Float.valueOf(f - ((Number) (z ? this.rawOffsetStart : this.rawOffsetEnd).getValue()).floatValue()));
+        d.d(coroutineScope, (CoroutineContext) null, (CoroutineStart) null, new captureThumb.1(this, z, interaction, (Continuation) null), 3, (Object) null);
     }
 
     public final int compareOffsets(float f) {
-        return Float.compare(Math.abs(this.rawOffsetStart.getValue().floatValue() - f), Math.abs(this.rawOffsetEnd.getValue().floatValue() - f));
+        return Float.compare(Math.abs(((Number) this.rawOffsetStart.getValue()).floatValue() - f), Math.abs(((Number) this.rawOffsetEnd.getValue()).floatValue() - f));
     }
 
     @NotNull

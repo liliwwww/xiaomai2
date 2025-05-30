@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ComposableSingletons$ExposedDropdownMenuPopupKt {
 
     @NotNull
@@ -18,7 +18,7 @@ public final class ComposableSingletons$ExposedDropdownMenuPopupKt {
 
     /* renamed from: lambda-1, reason: not valid java name */
     @NotNull
-    public static Function2<Composer, Integer, Unit> f1024lambda1 = ComposableLambdaKt.composableLambdaInstance(-1627646060, false, new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.material.internal.ComposableSingletons$ExposedDropdownMenuPopupKt$lambda-1$1
+    public static Function2<Composer, Integer, Unit> f7lambda1 = ComposableLambdaKt.composableLambdaInstance(-1627646060, false, new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.material.internal.ComposableSingletons$ExposedDropdownMenuPopupKt$lambda-1$1
         public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
             invoke((Composer) obj, ((Number) obj2).intValue());
             return Unit.INSTANCE;
@@ -41,7 +41,7 @@ public final class ComposableSingletons$ExposedDropdownMenuPopupKt {
 
     @NotNull
     /* renamed from: getLambda-1$material_release, reason: not valid java name */
-    public final Function2<Composer, Integer, Unit> m2338getLambda1$material_release() {
-        return f1024lambda1;
+    public final Function2<Composer, Integer, Unit> m881getLambda1$material_release() {
+        return f7lambda1;
     }
 }

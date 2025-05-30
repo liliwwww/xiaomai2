@@ -11,7 +11,6 @@ import androidx.compose.foundation.interaction.InteractionSource;
 import androidx.compose.foundation.lazy.LazyListItemInfo;
 import androidx.compose.foundation.lazy.LazyListLayoutInfo;
 import androidx.compose.foundation.lazy.LazyListState;
-import androidx.compose.p004ui.unit.Density;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
@@ -20,6 +19,7 @@ import androidx.compose.runtime.State;
 import androidx.compose.runtime.saveable.ListSaverKt;
 import androidx.compose.runtime.saveable.Saver;
 import androidx.compose.runtime.saveable.SaverScope;
+import androidx.compose.ui.unit.Density;
 import java.util.List;
 import kotlin.Unit;
 import kotlin.collections.CollectionsKt;
@@ -38,7 +38,7 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @Stable
 @ExperimentalFoundationApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class PagerState implements ScrollableState {
 
     @NotNull
@@ -117,51 +117,30 @@ public final class PagerState implements ScrollableState {
     }
 
     public PagerState(int i, float f) {
+        MutableState mutableStateOf$default;
+        MutableState mutableStateOf$default2;
+        MutableState mutableStateOf$default3;
+        MutableState mutableStateOf$default4;
+        MutableState mutableStateOf$default5;
         this.initialPage = i;
         this.initialPageOffsetFraction = f;
         double d = f;
         if (!(-0.5d <= d && d <= 0.5d)) {
             throw new IllegalArgumentException(("initialPageOffsetFraction " + f + " is not within the range -0.5 to 0.5").toString());
         }
-        this.snapRemainingScrollOffset$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Float.valueOf(0.0f), null, 2, null);
-        this.lazyListState$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
-        this.pageSpacing$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(0, null, 2, null);
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Float.valueOf(0.0f), null, 2, null);
+        this.snapRemainingScrollOffset$delegate = mutableStateOf$default;
+        mutableStateOf$default2 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
+        this.lazyListState$delegate = mutableStateOf$default2;
+        mutableStateOf$default3 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(0, null, 2, null);
+        this.pageSpacing$delegate = mutableStateOf$default3;
         this.awaitLazyListStateSet = new AwaitLazyListStateSet();
-        this.currentPage$delegate = SnapshotStateKt.derivedStateOf(new Function0<Integer>() { // from class: androidx.compose.foundation.pager.PagerState$currentPage$2
-            {
-                super(0);
-            }
-
-            @NotNull
-            /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Integer m1655invoke() {
-                LazyListItemInfo closestPageToSnappedPosition;
-                closestPageToSnappedPosition = PagerState.this.getClosestPageToSnappedPosition();
-                return Integer.valueOf(closestPageToSnappedPosition != null ? closestPageToSnappedPosition.getIndex() : 0);
-            }
-        });
-        this.animationTargetPage$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(-1, null, 2, null);
-        this.settledPageState$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Integer.valueOf(i), null, 2, null);
-        this.settledPage$delegate = SnapshotStateKt.derivedStateOf(new Function0<Integer>() { // from class: androidx.compose.foundation.pager.PagerState$settledPage$2
-            {
-                super(0);
-            }
-
-            @NotNull
-            /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Integer m1657invoke() {
-                int settledPageState;
-                int coerceInPageRange;
-                if (PagerState.this.getPageCount$foundation_release() == 0) {
-                    coerceInPageRange = 0;
-                } else {
-                    PagerState pagerState = PagerState.this;
-                    settledPageState = pagerState.getSettledPageState();
-                    coerceInPageRange = pagerState.coerceInPageRange(settledPageState);
-                }
-                return Integer.valueOf(coerceInPageRange);
-            }
-        });
+        this.currentPage$delegate = SnapshotStateKt.derivedStateOf(new currentPage.2(this));
+        mutableStateOf$default4 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(-1, null, 2, null);
+        this.animationTargetPage$delegate = mutableStateOf$default4;
+        mutableStateOf$default5 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Integer.valueOf(i), null, 2, null);
+        this.settledPageState$delegate = mutableStateOf$default5;
+        this.settledPage$delegate = SnapshotStateKt.derivedStateOf(new settledPage.2(this));
         this.targetPage$delegate = SnapshotStateKt.derivedStateOf(new Function0<Integer>() { // from class: androidx.compose.foundation.pager.PagerState$targetPage$2
             {
                 super(0);
@@ -169,7 +148,7 @@ public final class PagerState implements ScrollableState {
 
             @NotNull
             /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Integer m1658invoke() {
+            public final Integer m513invoke() {
                 int animationTargetPage;
                 float positionThresholdFraction;
                 float f2;
@@ -211,7 +190,7 @@ public final class PagerState implements ScrollableState {
 
             @NotNull
             /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Float m1656invoke() {
+            public final Float m512invoke() {
                 LazyListItemInfo closestPageToSnappedPosition;
                 int pageAvailableSpace;
                 closestPageToSnappedPosition = PagerState.this.getClosestPageToSnappedPosition();
@@ -240,7 +219,7 @@ public final class PagerState implements ScrollableState {
     /* JADX WARN: Removed duplicated region for block: B:8:0x0024  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object awaitScrollDependencies(kotlin.coroutines.Continuation<? super kotlin.Unit> r6) {
         /*
@@ -322,7 +301,6 @@ public final class PagerState implements ScrollableState {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    /* JADX WARN: Multi-variable type inference failed */
     public final int getAnimationTargetPage() {
         return ((Number) this.animationTargetPage$delegate.getValue()).intValue();
     }
@@ -358,14 +336,9 @@ public final class PagerState implements ScrollableState {
     }
 
     private final Density getDensity() {
-        PagerStateKt$UnitDensity$1 pagerStateKt$UnitDensity$1;
         Density density$foundation_release;
         LazyListState lazyListState = getLazyListState();
-        if (lazyListState != null && (density$foundation_release = lazyListState.getDensity$foundation_release()) != null) {
-            return density$foundation_release;
-        }
-        pagerStateKt$UnitDensity$1 = PagerStateKt.UnitDensity;
-        return pagerStateKt$UnitDensity$1;
+        return (lazyListState == null || (density$foundation_release = lazyListState.getDensity$foundation_release()) == null) ? PagerStateKt.access$getUnitDensity$p() : density$foundation_release;
     }
 
     private final float getDistanceToSnapPosition() {
@@ -376,7 +349,6 @@ public final class PagerState implements ScrollableState {
         return 0.0f;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     private final LazyListState getLazyListState() {
         return (LazyListState) this.lazyListState$delegate.getValue();
     }
@@ -388,14 +360,10 @@ public final class PagerState implements ScrollableState {
 
     /* JADX INFO: Access modifiers changed from: private */
     public final float getPositionThresholdFraction() {
-        float f;
-        Density density = getDensity();
-        f = PagerStateKt.DefaultPositionThreshold;
-        return Math.min(density.mo1283toPx0680j_4(f), getPageSize$foundation_release() / 2.0f) / getPageSize$foundation_release();
+        return Math.min(getDensity().toPx-0680j_4(PagerStateKt.access$getDefaultPositionThreshold$p()), getPageSize$foundation_release() / 2.0f) / getPageSize$foundation_release();
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    /* JADX WARN: Multi-variable type inference failed */
     public final int getSettledPageState() {
         return ((Number) this.settledPageState$delegate.getValue()).intValue();
     }
@@ -432,12 +400,12 @@ public final class PagerState implements ScrollableState {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object animateScrollToPage(int r18, float r19, @org.jetbrains.annotations.NotNull androidx.compose.animation.core.AnimationSpec<java.lang.Float> r20, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r21) {
         /*
             Method dump skipped, instructions count: 409
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.pager.PagerState.animateScrollToPage(int, float, androidx.compose.animation.core.AnimationSpec, kotlin.coroutines.Continuation):java.lang.Object");
     }
@@ -487,26 +455,16 @@ public final class PagerState implements ScrollableState {
 
     @NotNull
     public final InteractionSource getInteractionSource() {
-        PagerStateKt$EmptyInteractionSources$1 pagerStateKt$EmptyInteractionSources$1;
         InteractionSource interactionSource;
         LazyListState lazyListState = getLazyListState();
-        if (lazyListState != null && (interactionSource = lazyListState.getInteractionSource()) != null) {
-            return interactionSource;
-        }
-        pagerStateKt$EmptyInteractionSources$1 = PagerStateKt.EmptyInteractionSources;
-        return pagerStateKt$EmptyInteractionSources$1;
+        return (lazyListState == null || (interactionSource = lazyListState.getInteractionSource()) == null) ? PagerStateKt.access$getEmptyInteractionSources$p() : interactionSource;
     }
 
     @NotNull
     public final LazyListLayoutInfo getLayoutInfo$foundation_release() {
-        PagerStateKt$EmptyLayoutInfo$1 pagerStateKt$EmptyLayoutInfo$1;
         LazyListLayoutInfo layoutInfo;
         LazyListState lazyListState = getLazyListState();
-        if (lazyListState != null && (layoutInfo = lazyListState.getLayoutInfo()) != null) {
-            return layoutInfo;
-        }
-        pagerStateKt$EmptyLayoutInfo$1 = PagerStateKt.EmptyLayoutInfo;
-        return pagerStateKt$EmptyLayoutInfo$1;
+        return (lazyListState == null || (layoutInfo = lazyListState.getLayoutInfo()) == null) ? PagerStateKt.access$getEmptyLayoutInfo$p() : layoutInfo;
     }
 
     public final int getPageCount$foundation_release() {
@@ -521,7 +479,6 @@ public final class PagerState implements ScrollableState {
         return 0;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final int getPageSpacing$foundation_release() {
         return ((Number) this.pageSpacing$delegate.getValue()).intValue();
     }
@@ -530,7 +487,6 @@ public final class PagerState implements ScrollableState {
         return ((Number) this.settledPage$delegate.getValue()).intValue();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final float getSnapRemainingScrollOffset$foundation_release() {
         return ((Number) this.snapRemainingScrollOffset$delegate.getValue()).floatValue();
     }
@@ -572,7 +528,7 @@ public final class PagerState implements ScrollableState {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object scrollToPage(int r11, float r12, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r13) {
         /*

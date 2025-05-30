@@ -1,17 +1,17 @@
 package androidx.compose.foundation.shape;
 
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.graphics.Outline;
-import androidx.compose.p004ui.graphics.Shape;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.graphics.Outline;
+import androidx.compose.ui.graphics.Shape;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class CornerBasedShape implements Shape {
     public static final int $stable = 0;
 
@@ -67,37 +67,36 @@ public abstract class CornerBasedShape implements Shape {
     public abstract CornerBasedShape copy(@NotNull CornerSize cornerSize, @NotNull CornerSize cornerSize2, @NotNull CornerSize cornerSize3, @NotNull CornerSize cornerSize4);
 
     @NotNull
-    /* renamed from: createOutline-LjSzlW0 */
-    public abstract Outline mo1677createOutlineLjSzlW0(long j, float f, float f2, float f3, float f4, @NotNull LayoutDirection layoutDirection);
+    /* renamed from: createOutline-LjSzlW0, reason: not valid java name */
+    public abstract Outline mo534createOutlineLjSzlW0(long j, float f, float f2, float f3, float f4, @NotNull LayoutDirection layoutDirection);
 
-    @Override // androidx.compose.p004ui.graphics.Shape
     @NotNull
-    /* renamed from: createOutline-Pq9zytI */
-    public final Outline mo1164createOutlinePq9zytI(long j, @NotNull LayoutDirection layoutDirection, @NotNull Density density) {
+    /* renamed from: createOutline-Pq9zytI, reason: not valid java name */
+    public final Outline m535createOutlinePq9zytI(long j, @NotNull LayoutDirection layoutDirection, @NotNull Density density) {
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
         Intrinsics.checkNotNullParameter(density, "density");
-        float mo1685toPxTmRCtEA = this.topStart.mo1685toPxTmRCtEA(j, density);
-        float mo1685toPxTmRCtEA2 = this.topEnd.mo1685toPxTmRCtEA(j, density);
-        float mo1685toPxTmRCtEA3 = this.bottomEnd.mo1685toPxTmRCtEA(j, density);
-        float mo1685toPxTmRCtEA4 = this.bottomStart.mo1685toPxTmRCtEA(j, density);
-        float m2624getMinDimensionimpl = Size.m2624getMinDimensionimpl(j);
-        float f = mo1685toPxTmRCtEA + mo1685toPxTmRCtEA4;
-        if (f > m2624getMinDimensionimpl) {
-            float f2 = m2624getMinDimensionimpl / f;
-            mo1685toPxTmRCtEA *= f2;
-            mo1685toPxTmRCtEA4 *= f2;
+        float mo536toPxTmRCtEA = this.topStart.mo536toPxTmRCtEA(j, density);
+        float mo536toPxTmRCtEA2 = this.topEnd.mo536toPxTmRCtEA(j, density);
+        float mo536toPxTmRCtEA3 = this.bottomEnd.mo536toPxTmRCtEA(j, density);
+        float mo536toPxTmRCtEA4 = this.bottomStart.mo536toPxTmRCtEA(j, density);
+        float f = Size.getMinDimension-impl(j);
+        float f2 = mo536toPxTmRCtEA + mo536toPxTmRCtEA4;
+        if (f2 > f) {
+            float f3 = f / f2;
+            mo536toPxTmRCtEA *= f3;
+            mo536toPxTmRCtEA4 *= f3;
         }
-        float f3 = mo1685toPxTmRCtEA4;
-        float f4 = mo1685toPxTmRCtEA2 + mo1685toPxTmRCtEA3;
-        if (f4 > m2624getMinDimensionimpl) {
-            float f5 = m2624getMinDimensionimpl / f4;
-            mo1685toPxTmRCtEA2 *= f5;
-            mo1685toPxTmRCtEA3 *= f5;
+        float f4 = mo536toPxTmRCtEA4;
+        float f5 = mo536toPxTmRCtEA2 + mo536toPxTmRCtEA3;
+        if (f5 > f) {
+            float f6 = f / f5;
+            mo536toPxTmRCtEA2 *= f6;
+            mo536toPxTmRCtEA3 *= f6;
         }
-        if (mo1685toPxTmRCtEA >= 0.0f && mo1685toPxTmRCtEA2 >= 0.0f && mo1685toPxTmRCtEA3 >= 0.0f && f3 >= 0.0f) {
-            return mo1677createOutlineLjSzlW0(j, mo1685toPxTmRCtEA, mo1685toPxTmRCtEA2, mo1685toPxTmRCtEA3, f3, layoutDirection);
+        if (mo536toPxTmRCtEA >= 0.0f && mo536toPxTmRCtEA2 >= 0.0f && mo536toPxTmRCtEA3 >= 0.0f && f4 >= 0.0f) {
+            return mo534createOutlineLjSzlW0(j, mo536toPxTmRCtEA, mo536toPxTmRCtEA2, mo536toPxTmRCtEA3, f4, layoutDirection);
         }
-        throw new IllegalArgumentException(("Corner size in Px can't be negative(topStart = " + mo1685toPxTmRCtEA + ", topEnd = " + mo1685toPxTmRCtEA2 + ", bottomEnd = " + mo1685toPxTmRCtEA3 + ", bottomStart = " + f3 + ")!").toString());
+        throw new IllegalArgumentException(("Corner size in Px can't be negative(topStart = " + mo536toPxTmRCtEA + ", topEnd = " + mo536toPxTmRCtEA2 + ", bottomEnd = " + mo536toPxTmRCtEA3 + ", bottomStart = " + f4 + ")!").toString());
     }
 
     @NotNull

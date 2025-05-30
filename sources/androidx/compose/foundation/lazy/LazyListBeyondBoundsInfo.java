@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyListBeyondBoundsInfo {
 
     @NotNull
@@ -88,14 +88,14 @@ public final class LazyListBeyondBoundsInfo {
     }
 
     public final int getEnd() {
-        int end = this.beyondBoundsItems.first().getEnd();
+        int end = ((Interval) this.beyondBoundsItems.first()).getEnd();
         MutableVector<Interval> mutableVector = this.beyondBoundsItems;
         int size = mutableVector.getSize();
         if (size > 0) {
             int i = 0;
-            Interval[] content = mutableVector.getContent();
+            Object[] content = mutableVector.getContent();
             do {
-                Interval interval = content[i];
+                Interval interval = (Interval) content[i];
                 if (interval.getEnd() > end) {
                     end = interval.getEnd();
                 }
@@ -106,14 +106,14 @@ public final class LazyListBeyondBoundsInfo {
     }
 
     public final int getStart() {
-        int start = this.beyondBoundsItems.first().getStart();
+        int start = ((Interval) this.beyondBoundsItems.first()).getStart();
         MutableVector<Interval> mutableVector = this.beyondBoundsItems;
         int size = mutableVector.getSize();
         if (size > 0) {
-            Interval[] content = mutableVector.getContent();
+            Object[] content = mutableVector.getContent();
             int i = 0;
             do {
-                Interval interval = content[i];
+                Interval interval = (Interval) content[i];
                 if (interval.getStart() < start) {
                     start = interval.getStart();
                 }

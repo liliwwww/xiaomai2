@@ -9,7 +9,7 @@ import androidx.profileinstaller.ProfileInstaller;
 import tb.oz3;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ProfileInstallReceiver extends BroadcastReceiver {
 
     @NonNull
@@ -32,12 +32,10 @@ public class ProfileInstallReceiver extends BroadcastReceiver {
         ResultDiagnostics() {
         }
 
-        @Override // androidx.profileinstaller.ProfileInstaller.DiagnosticsCallback
         public void onDiagnosticReceived(int i, @Nullable Object obj) {
             ProfileInstaller.LOG_DIAGNOSTICS.onDiagnosticReceived(i, obj);
         }
 
-        @Override // androidx.profileinstaller.ProfileInstaller.DiagnosticsCallback
         public void onResultReceived(int i, @Nullable Object obj) {
             ProfileInstaller.LOG_DIAGNOSTICS.onResultReceived(i, obj);
             ProfileInstallReceiver.this.setResultCode(i);

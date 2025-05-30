@@ -1,7 +1,6 @@
 package android.taobao.windvane.fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.taobao.windvane.connect.HttpConnector;
@@ -13,10 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import androidx.core.app.ComponentActivity;
 import androidx.fragment.app.Fragment;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVWebViewFragment extends Fragment {
     private static String TAG = WVWebViewFragment.class.getSimpleName();
     public static String URL = HttpConnector.URL;
@@ -32,14 +32,14 @@ public class WVWebViewFragment extends Fragment {
 
     public WebView getWebView() {
         if (this.mWebView == null) {
-            Context context = this.activity;
-            if (context == null) {
-                context = getActivity();
+            ComponentActivity componentActivity = this.activity;
+            if (componentActivity == null) {
+                componentActivity = getActivity();
             }
-            if (context == null) {
+            if (componentActivity == null) {
                 return null;
             }
-            this.mWebView = new WVWebView(context);
+            this.mWebView = new WVWebView(componentActivity);
             setWebViewClient(this.mWebclient);
             setWebchormeClient(this.mChromeClient);
             this.mWebView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
@@ -84,7 +84,7 @@ public class WVWebViewFragment extends Fragment {
         getWebView();
         String str = this.url;
         if (str == null || (wVWebView = this.mWebView) == null) {
-            TaoLog.m18d(TAG, "image urls is null");
+            TaoLog.d(TAG, "image urls is null");
         } else {
             wVWebView.loadUrl(str);
         }

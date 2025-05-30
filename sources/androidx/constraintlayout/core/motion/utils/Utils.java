@@ -5,15 +5,9 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Utils {
     static DebugHandle ourHandle;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public interface DebugHandle {
-        void message(String str);
-    }
 
     private static int clamp(int i) {
         int i2 = (i & (~(i >> 31))) - 255;

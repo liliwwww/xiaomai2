@@ -1,12 +1,12 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.graphics.Color;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.Immutable;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.graphics.Color;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Reflection;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @Immutable
 @ExperimentalMaterialApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class DefaultChipColors implements ChipColors {
     private final long backgroundColor;
     private final long contentColor;
@@ -38,7 +38,6 @@ final class DefaultChipColors implements ChipColors {
         this(j, j2, j3, j4, j5, j6);
     }
 
-    @Override // androidx.compose.material.ChipColors
     @Composable
     @NotNull
     public State<Color> backgroundColor(boolean z, @Nullable Composer composer, int i) {
@@ -46,7 +45,7 @@ final class DefaultChipColors implements ChipColors {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-1593588247, i, -1, "androidx.compose.material.DefaultChipColors.backgroundColor (Chip.kt:591)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(z ? this.backgroundColor : this.disabledBackgroundColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(z ? this.backgroundColor : this.disabledBackgroundColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -54,7 +53,6 @@ final class DefaultChipColors implements ChipColors {
         return rememberUpdatedState;
     }
 
-    @Override // androidx.compose.material.ChipColors
     @Composable
     @NotNull
     public State<Color> contentColor(boolean z, @Nullable Composer composer, int i) {
@@ -62,7 +60,7 @@ final class DefaultChipColors implements ChipColors {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(483145880, i, -1, "androidx.compose.material.DefaultChipColors.contentColor (Chip.kt:596)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(z ? this.contentColor : this.disabledContentColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(z ? this.contentColor : this.disabledContentColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -78,14 +76,13 @@ final class DefaultChipColors implements ChipColors {
             return false;
         }
         DefaultChipColors defaultChipColors = (DefaultChipColors) obj;
-        return Color.m2788equalsimpl0(this.backgroundColor, defaultChipColors.backgroundColor) && Color.m2788equalsimpl0(this.contentColor, defaultChipColors.contentColor) && Color.m2788equalsimpl0(this.leadingIconContentColor, defaultChipColors.leadingIconContentColor) && Color.m2788equalsimpl0(this.disabledBackgroundColor, defaultChipColors.disabledBackgroundColor) && Color.m2788equalsimpl0(this.disabledContentColor, defaultChipColors.disabledContentColor) && Color.m2788equalsimpl0(this.disabledLeadingIconContentColor, defaultChipColors.disabledLeadingIconContentColor);
+        return Color.m1051equalsimpl0(this.backgroundColor, defaultChipColors.backgroundColor) && Color.m1051equalsimpl0(this.contentColor, defaultChipColors.contentColor) && Color.m1051equalsimpl0(this.leadingIconContentColor, defaultChipColors.leadingIconContentColor) && Color.m1051equalsimpl0(this.disabledBackgroundColor, defaultChipColors.disabledBackgroundColor) && Color.m1051equalsimpl0(this.disabledContentColor, defaultChipColors.disabledContentColor) && Color.m1051equalsimpl0(this.disabledLeadingIconContentColor, defaultChipColors.disabledLeadingIconContentColor);
     }
 
     public int hashCode() {
-        return (((((((((Color.m2794hashCodeimpl(this.backgroundColor) * 31) + Color.m2794hashCodeimpl(this.contentColor)) * 31) + Color.m2794hashCodeimpl(this.leadingIconContentColor)) * 31) + Color.m2794hashCodeimpl(this.disabledBackgroundColor)) * 31) + Color.m2794hashCodeimpl(this.disabledContentColor)) * 31) + Color.m2794hashCodeimpl(this.disabledLeadingIconContentColor);
+        return (((((((((Color.m1057hashCodeimpl(this.backgroundColor) * 31) + Color.m1057hashCodeimpl(this.contentColor)) * 31) + Color.m1057hashCodeimpl(this.leadingIconContentColor)) * 31) + Color.m1057hashCodeimpl(this.disabledBackgroundColor)) * 31) + Color.m1057hashCodeimpl(this.disabledContentColor)) * 31) + Color.m1057hashCodeimpl(this.disabledLeadingIconContentColor);
     }
 
-    @Override // androidx.compose.material.ChipColors
     @Composable
     @NotNull
     public State<Color> leadingIconContentColor(boolean z, @Nullable Composer composer, int i) {
@@ -93,7 +90,7 @@ final class DefaultChipColors implements ChipColors {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(1955749013, i, -1, "androidx.compose.material.DefaultChipColors.leadingIconContentColor (Chip.kt:601)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(z ? this.leadingIconContentColor : this.disabledLeadingIconContentColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(z ? this.leadingIconContentColor : this.disabledLeadingIconContentColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }

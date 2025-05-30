@@ -10,7 +10,7 @@ import java.util.concurrent.Executor;
 
 /* compiled from: Taobao */
 @Keep
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class VivoSpatializerClient implements IVivoSpatializer {
     private static final boolean V_DEBUG = true;
     private static final String V_TAG = "VivoSpatializerClient";
@@ -24,7 +24,7 @@ public class VivoSpatializerClient implements IVivoSpatializer {
         Objects.requireNonNull(audioManager, "AudioManager is null for VivoSpatializerClient");
         try {
             this.mVSpat = new VivoSpatializer(audioManager);
-            this.mIsSupport = true;
+            this.mIsSupport = V_DEBUG;
         } catch (Throwable th) {
             this.mIsSupport = false;
             th.printStackTrace();
@@ -49,7 +49,10 @@ public class VivoSpatializerClient implements IVivoSpatializer {
     }
 
     private boolean isSupportedInner() {
-        return getVersion() >= 10000;
+        if (getVersion() >= 10000) {
+            return V_DEBUG;
+        }
+        return false;
     }
 
     @Override // android.media.IVivoSpatializer

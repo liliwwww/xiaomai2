@@ -9,7 +9,7 @@ import androidx.media.MediaBrowserServiceCompatApi21;
 
 /* compiled from: Taobao */
 @RequiresApi(23)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class MediaBrowserServiceCompatApi23 {
 
     /* compiled from: Taobao */
@@ -18,9 +18,8 @@ class MediaBrowserServiceCompatApi23 {
             super(context, serviceCompatProxy);
         }
 
-        @Override // android.service.media.MediaBrowserService
         public void onLoadItem(String str, MediaBrowserService.Result<MediaBrowser.MediaItem> result) {
-            ((ServiceCompatProxy) this.mServiceProxy).onLoadItem(str, new MediaBrowserServiceCompatApi21.ResultWrapper<>(result));
+            ((ServiceCompatProxy) ((MediaBrowserServiceCompatApi21.MediaBrowserServiceAdaptor) this).mServiceProxy).onLoadItem(str, new MediaBrowserServiceCompatApi21.ResultWrapper<>(result));
         }
     }
 

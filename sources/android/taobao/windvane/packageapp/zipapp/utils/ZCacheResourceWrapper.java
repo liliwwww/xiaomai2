@@ -6,7 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ZCacheResourceWrapper {
     public ZCacheResourceResponse zCacheResourceResponse = null;
 
@@ -20,11 +20,11 @@ public class ZCacheResourceWrapper {
         } else {
             zCacheResourceResponse.headers = resourceResponse.getHeader();
             Map map = this.zCacheResourceResponse.headers;
-            if (map == null || !map.containsKey(android.taobao.windvane.packageapp.zipapp.ZCacheResourceResponse.ZCACHE_INFO)) {
+            if (map == null || !map.containsKey("X-ZCache-Info")) {
                 this.zCacheResourceResponse.zcacheInfo = "NO_HEADER";
             } else {
                 ZCacheResourceResponse zCacheResourceResponse2 = this.zCacheResourceResponse;
-                zCacheResourceResponse2.zcacheInfo = (String) zCacheResourceResponse2.headers.get(android.taobao.windvane.packageapp.zipapp.ZCacheResourceResponse.ZCACHE_INFO);
+                zCacheResourceResponse2.zcacheInfo = (String) zCacheResourceResponse2.headers.get("X-ZCache-Info");
             }
             if (resourceResponse.getError() != null || resourceResponse.getData() == null) {
                 ZCacheResourceResponse zCacheResourceResponse3 = this.zCacheResourceResponse;

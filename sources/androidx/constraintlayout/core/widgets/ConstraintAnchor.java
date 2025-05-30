@@ -2,6 +2,7 @@ package androidx.constraintlayout.core.widgets;
 
 import androidx.constraintlayout.core.Cache;
 import androidx.constraintlayout.core.SolverVariable;
+import androidx.constraintlayout.core.SolverVariable$Type;
 import androidx.constraintlayout.core.widgets.analyzer.Grouping;
 import androidx.constraintlayout.core.widgets.analyzer.WidgetGroup;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ConstraintAnchor {
     private static final boolean ALLOW_BINARY = false;
     private static final int UNSET_GONE_MARGIN = Integer.MIN_VALUE;
@@ -23,70 +24,6 @@ public class ConstraintAnchor {
     private HashSet<ConstraintAnchor> mDependents = null;
     public int mMargin = 0;
     int mGoneMargin = Integer.MIN_VALUE;
-
-    /* compiled from: Taobao */
-    /* renamed from: androidx.constraintlayout.core.widgets.ConstraintAnchor$1 */
-    /* loaded from: classes2.dex */
-    static /* synthetic */ class C08941 {
-
-        /* renamed from: $SwitchMap$androidx$constraintlayout$core$widgets$ConstraintAnchor$Type */
-        static final /* synthetic */ int[] f261x6930e354;
-
-        static {
-            int[] iArr = new int[Type.values().length];
-            f261x6930e354 = iArr;
-            try {
-                iArr[Type.CENTER.ordinal()] = 1;
-            } catch (NoSuchFieldError unused) {
-            }
-            try {
-                f261x6930e354[Type.LEFT.ordinal()] = 2;
-            } catch (NoSuchFieldError unused2) {
-            }
-            try {
-                f261x6930e354[Type.RIGHT.ordinal()] = 3;
-            } catch (NoSuchFieldError unused3) {
-            }
-            try {
-                f261x6930e354[Type.TOP.ordinal()] = 4;
-            } catch (NoSuchFieldError unused4) {
-            }
-            try {
-                f261x6930e354[Type.BOTTOM.ordinal()] = 5;
-            } catch (NoSuchFieldError unused5) {
-            }
-            try {
-                f261x6930e354[Type.BASELINE.ordinal()] = 6;
-            } catch (NoSuchFieldError unused6) {
-            }
-            try {
-                f261x6930e354[Type.CENTER_X.ordinal()] = 7;
-            } catch (NoSuchFieldError unused7) {
-            }
-            try {
-                f261x6930e354[Type.CENTER_Y.ordinal()] = 8;
-            } catch (NoSuchFieldError unused8) {
-            }
-            try {
-                f261x6930e354[Type.NONE.ordinal()] = 9;
-            } catch (NoSuchFieldError unused9) {
-            }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public enum Type {
-        NONE,
-        LEFT,
-        TOP,
-        RIGHT,
-        BOTTOM,
-        BASELINE,
-        CENTER,
-        CENTER_X,
-        CENTER_Y
-    }
 
     public ConstraintAnchor(ConstraintWidget constraintWidget, Type type) {
         this.mOwner = constraintWidget;
@@ -186,7 +123,7 @@ public class ConstraintAnchor {
     }
 
     public final ConstraintAnchor getOpposite() {
-        switch (C08941.f261x6930e354[this.mType.ordinal()]) {
+        switch (1.$SwitchMap$androidx$constraintlayout$core$widgets$ConstraintAnchor$Type[this.mType.ordinal()]) {
             case 1:
             case 6:
             case 7:
@@ -254,7 +191,7 @@ public class ConstraintAnchor {
     }
 
     public boolean isSideAnchor() {
-        switch (C08941.f261x6930e354[this.mType.ordinal()]) {
+        switch (1.$SwitchMap$androidx$constraintlayout$core$widgets$ConstraintAnchor$Type[this.mType.ordinal()]) {
             case 1:
             case 6:
             case 7:
@@ -277,7 +214,7 @@ public class ConstraintAnchor {
         if (type == type2) {
             return true;
         }
-        switch (C08941.f261x6930e354[type2.ordinal()]) {
+        switch (1.$SwitchMap$androidx$constraintlayout$core$widgets$ConstraintAnchor$Type[type2.ordinal()]) {
             case 1:
                 return type != Type.BASELINE;
             case 2:
@@ -305,7 +242,7 @@ public class ConstraintAnchor {
         if (type == type2) {
             return type2 != Type.BASELINE || (constraintAnchor.getOwner().hasBaseline() && getOwner().hasBaseline());
         }
-        switch (C08941.f261x6930e354[type2.ordinal()]) {
+        switch (1.$SwitchMap$androidx$constraintlayout$core$widgets$ConstraintAnchor$Type[type2.ordinal()]) {
             case 1:
                 return (type == Type.BASELINE || type == Type.CENTER_X || type == Type.CENTER_Y) ? false : true;
             case 2:
@@ -334,7 +271,7 @@ public class ConstraintAnchor {
     }
 
     public boolean isVerticalAnchor() {
-        switch (C08941.f261x6930e354[this.mType.ordinal()]) {
+        switch (1.$SwitchMap$androidx$constraintlayout$core$widgets$ConstraintAnchor$Type[this.mType.ordinal()]) {
             case 1:
             case 2:
             case 3:
@@ -376,7 +313,7 @@ public class ConstraintAnchor {
     public void resetSolverVariable(Cache cache) {
         SolverVariable solverVariable = this.mSolverVariable;
         if (solverVariable == null) {
-            this.mSolverVariable = new SolverVariable(SolverVariable.Type.UNRESTRICTED, (String) null);
+            this.mSolverVariable = new SolverVariable(SolverVariable$Type.UNRESTRICTED, (String) null);
         } else {
             solverVariable.reset();
         }

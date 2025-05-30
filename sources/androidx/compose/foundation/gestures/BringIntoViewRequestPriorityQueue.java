@@ -1,8 +1,7 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.foundation.gestures.ContentInViewModifier;
-import androidx.compose.p004ui.geometry.Rect;
 import androidx.compose.runtime.collection.MutableVector;
+import androidx.compose.ui.geometry.Rect;
 import java.util.concurrent.CancellationException;
 import kotlin.Result;
 import kotlin.Unit;
@@ -14,14 +13,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class BringIntoViewRequestPriorityQueue {
 
     @NotNull
-    private final MutableVector<ContentInViewModifier.Request> requests = new MutableVector<>(new ContentInViewModifier.Request[16], 0);
+    private final MutableVector<ContentInViewModifier$Request> requests = new MutableVector<>(new ContentInViewModifier$Request[16], 0);
 
     public final void cancelAndRemoveAll(@Nullable Throwable th) {
-        MutableVector<ContentInViewModifier.Request> mutableVector = this.requests;
+        MutableVector<ContentInViewModifier$Request> mutableVector = this.requests;
         int size = mutableVector.getSize();
         CancellableContinuation[] cancellableContinuationArr = new CancellableContinuation[size];
         for (int i = 0; i < size; i++) {
@@ -35,30 +34,16 @@ public final class BringIntoViewRequestPriorityQueue {
         }
     }
 
-    public final boolean enqueue(@NotNull final ContentInViewModifier.Request request) {
-        Intrinsics.checkNotNullParameter(request, "request");
-        Rect rect = (Rect) request.getCurrentBounds().invoke();
+    public final boolean enqueue(@NotNull ContentInViewModifier$Request contentInViewModifier$Request) {
+        Intrinsics.checkNotNullParameter(contentInViewModifier$Request, "request");
+        Rect rect = (Rect) contentInViewModifier$Request.getCurrentBounds().invoke();
         if (rect == null) {
-            CancellableContinuation<Unit> continuation = request.getContinuation();
+            CancellableContinuation<Unit> continuation = contentInViewModifier$Request.getContinuation();
             Result.Companion companion = Result.Companion;
             continuation.resumeWith(Result.constructor-impl(Unit.INSTANCE));
             return false;
         }
-        request.getContinuation().invokeOnCancellation(new Function1<Throwable, Unit>() { // from class: androidx.compose.foundation.gestures.BringIntoViewRequestPriorityQueue$enqueue$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((Throwable) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Throwable th) {
-                BringIntoViewRequestPriorityQueue.this.requests.remove(request);
-            }
-        });
+        contentInViewModifier$Request.getContinuation().invokeOnCancellation(new enqueue.1(this, contentInViewModifier$Request));
         IntRange intRange = new IntRange(0, this.requests.getSize() - 1);
         int first = intRange.getFirst();
         int last = intRange.getLast();
@@ -68,7 +53,7 @@ public final class BringIntoViewRequestPriorityQueue {
                 if (rect2 != null) {
                     Rect intersect = rect.intersect(rect2);
                     if (Intrinsics.areEqual(intersect, rect)) {
-                        this.requests.add(last + 1, request);
+                        this.requests.add(last + 1, contentInViewModifier$Request);
                         return true;
                     }
                     if (!Intrinsics.areEqual(intersect, rect2)) {
@@ -91,7 +76,7 @@ public final class BringIntoViewRequestPriorityQueue {
                 last--;
             }
         }
-        this.requests.add(0, request);
+        this.requests.add(0, contentInViewModifier$Request);
         return true;
     }
 
@@ -103,7 +88,7 @@ public final class BringIntoViewRequestPriorityQueue {
             int i = size - 1;
             Object[] content = mutableVector.getContent();
             do {
-                function1.invoke(((ContentInViewModifier.Request) content[i]).getCurrentBounds().invoke());
+                function1.invoke(((ContentInViewModifier$Request) content[i]).getCurrentBounds().invoke());
                 i--;
             } while (i >= 0);
         }
@@ -139,8 +124,8 @@ public final class BringIntoViewRequestPriorityQueue {
 
     public final void resumeAndRemoveWhile(@NotNull Function1<? super Rect, Boolean> function1) {
         Intrinsics.checkNotNullParameter(function1, "block");
-        while (this.requests.isNotEmpty() && ((Boolean) function1.invoke(((ContentInViewModifier.Request) this.requests.last()).getCurrentBounds().invoke())).booleanValue()) {
-            CancellableContinuation<Unit> continuation = ((ContentInViewModifier.Request) this.requests.removeAt(this.requests.getSize() - 1)).getContinuation();
+        while (this.requests.isNotEmpty() && ((Boolean) function1.invoke(((ContentInViewModifier$Request) this.requests.last()).getCurrentBounds().invoke())).booleanValue()) {
+            CancellableContinuation<Unit> continuation = ((ContentInViewModifier$Request) this.requests.removeAt(this.requests.getSize() - 1)).getContinuation();
             Unit unit = Unit.INSTANCE;
             Result.Companion companion = Result.Companion;
             continuation.resumeWith(Result.constructor-impl(unit));

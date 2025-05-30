@@ -1,17 +1,17 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ValueInsets implements WindowInsets {
 
     @NotNull
@@ -21,10 +21,12 @@ public final class ValueInsets implements WindowInsets {
     private final MutableState value$delegate;
 
     public ValueInsets(@NotNull InsetsValues insetsValues, @NotNull String str) {
+        MutableState mutableStateOf$default;
         Intrinsics.checkNotNullParameter(insetsValues, "insets");
         Intrinsics.checkNotNullParameter(str, "name");
         this.name = str;
-        this.value$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(insetsValues, null, 2, null);
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(insetsValues, null, 2, null);
+        this.value$delegate = mutableStateOf$default;
     }
 
     public boolean equals(@Nullable Object obj) {
@@ -68,7 +70,6 @@ public final class ValueInsets implements WindowInsets {
         return getValue$foundation_layout_release().getTop();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @NotNull
     public final InsetsValues getValue$foundation_layout_release() {
         return (InsetsValues) this.value$delegate.getValue();

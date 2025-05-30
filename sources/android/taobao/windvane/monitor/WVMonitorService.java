@@ -1,7 +1,7 @@
 package android.taobao.windvane.monitor;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVMonitorService {
     private static WVConfigMonitorInterface configMonitorInterface;
     private static WVErrorMonitorInterface errorMonitor;

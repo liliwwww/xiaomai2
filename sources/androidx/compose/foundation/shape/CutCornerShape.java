@@ -1,19 +1,19 @@
 package androidx.compose.foundation.shape;
 
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.geometry.SizeKt;
-import androidx.compose.p004ui.graphics.AndroidPath_androidKt;
-import androidx.compose.p004ui.graphics.Outline;
-import androidx.compose.p004ui.graphics.Path;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.geometry.SizeKt;
+import androidx.compose.ui.graphics.AndroidPath_androidKt;
+import androidx.compose.ui.graphics.Outline;
+import androidx.compose.ui.graphics.Path;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class CutCornerShape extends CornerBasedShape {
     public static final int $stable = 0;
 
@@ -26,13 +26,12 @@ public final class CutCornerShape extends CornerBasedShape {
         Intrinsics.checkNotNullParameter(cornerSize4, "bottomStart");
     }
 
-    @Override // androidx.compose.foundation.shape.CornerBasedShape
     @NotNull
-    /* renamed from: createOutline-LjSzlW0 */
-    public Outline mo1677createOutlineLjSzlW0(long j, float f, float f2, float f3, float f4, @NotNull LayoutDirection layoutDirection) {
+    /* renamed from: createOutline-LjSzlW0, reason: not valid java name */
+    public Outline m370createOutlineLjSzlW0(long j, float f, float f2, float f3, float f4, @NotNull LayoutDirection layoutDirection) {
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
         if (((f + f2) + f4) + f3 == 0.0f) {
-            return new Outline.Rectangle(SizeKt.m2646toRectuvyYCjk(j));
+            return new Outline.Rectangle(SizeKt.m924toRectuvyYCjk(j));
         }
         Path Path = AndroidPath_androidKt.Path();
         LayoutDirection layoutDirection2 = LayoutDirection.Ltr;
@@ -42,16 +41,16 @@ public final class CutCornerShape extends CornerBasedShape {
         if (layoutDirection == layoutDirection2) {
             f = f2;
         }
-        Path.lineTo(Size.m2625getWidthimpl(j) - f, 0.0f);
-        Path.lineTo(Size.m2625getWidthimpl(j), f);
+        Path.lineTo(Size.m903getWidthimpl(j) - f, 0.0f);
+        Path.lineTo(Size.m903getWidthimpl(j), f);
         float f6 = layoutDirection == layoutDirection2 ? f3 : f4;
-        Path.lineTo(Size.m2625getWidthimpl(j), Size.m2622getHeightimpl(j) - f6);
-        Path.lineTo(Size.m2625getWidthimpl(j) - f6, Size.m2622getHeightimpl(j));
+        Path.lineTo(Size.m903getWidthimpl(j), Size.m900getHeightimpl(j) - f6);
+        Path.lineTo(Size.m903getWidthimpl(j) - f6, Size.m900getHeightimpl(j));
         if (layoutDirection == layoutDirection2) {
             f3 = f4;
         }
-        Path.lineTo(f3, Size.m2622getHeightimpl(j));
-        Path.lineTo(0.0f, Size.m2622getHeightimpl(j) - f3);
+        Path.lineTo(f3, Size.m900getHeightimpl(j));
+        Path.lineTo(0.0f, Size.m900getHeightimpl(j) - f3);
         Path.close();
         return new Outline.Generic(Path);
     }
@@ -76,7 +75,6 @@ public final class CutCornerShape extends CornerBasedShape {
         return "CutCornerShape(topStart = " + getTopStart() + ", topEnd = " + getTopEnd() + ", bottomEnd = " + getBottomEnd() + ", bottomStart = " + getBottomStart() + ')';
     }
 
-    @Override // androidx.compose.foundation.shape.CornerBasedShape
     @NotNull
     public CutCornerShape copy(@NotNull CornerSize cornerSize, @NotNull CornerSize cornerSize2, @NotNull CornerSize cornerSize3, @NotNull CornerSize cornerSize4) {
         Intrinsics.checkNotNullParameter(cornerSize, "topStart");

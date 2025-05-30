@@ -3,12 +3,13 @@ package androidx.recyclerview.widget;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.recyclerview.widget.DiffUtil;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AsyncDifferConfig<T> {
 
     @NonNull
@@ -54,7 +55,7 @@ public final class AsyncDifferConfig<T> {
         }
 
         @NonNull
-        @RestrictTo({RestrictTo.Scope.LIBRARY})
+        @RestrictTo({RestrictTo$Scope.LIBRARY})
         public Builder<T> setMainThreadExecutor(Executor executor) {
             this.mMainThreadExecutor = executor;
             return this;
@@ -78,7 +79,7 @@ public final class AsyncDifferConfig<T> {
     }
 
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     public Executor getMainThreadExecutor() {
         return this.mMainThreadExecutor;
     }

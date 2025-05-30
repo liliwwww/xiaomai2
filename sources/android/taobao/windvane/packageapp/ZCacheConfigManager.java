@@ -2,7 +2,7 @@ package android.taobao.windvane.packageapp;
 
 import android.content.Context;
 import android.taobao.windvane.config.GlobalConfig;
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
+import android.taobao.windvane.extra.uc.preRender.BasePreInitManager;
 import android.taobao.windvane.file.FileAccesser;
 import android.taobao.windvane.file.FileManager;
 import android.taobao.windvane.file.NotEnoughSpace;
@@ -21,7 +21,7 @@ import java.nio.ByteBuffer;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ZCacheConfigManager {
     private static ZCacheConfigManager instance;
     private AtomicBoolean updateFromLocal = new AtomicBoolean(false);
@@ -47,7 +47,7 @@ public class ZCacheConfigManager {
                 if (str.equals("ZCache")) {
                     String config = OrangeConfig.getInstance().getConfig("ZCache", "slide", "false");
                     String config2 = OrangeConfig.getInstance().getConfig("ZCache", "oldConfigV1", "false");
-                    TaoLog.m24i("ZCache", "use old config=[" + config2 + "], enable slide=[" + config + "]");
+                    TaoLog.i("ZCache", "use old config=[" + config2 + "], enable slide=[" + config + "]");
                     try {
                         FileAccesser.write(ZCacheConfigManager.this.configPath, ByteBuffer.wrap((GlobalConfig.getInstance().getAppVersion() + "," + config2 + "," + config).getBytes("utf-8")));
                     } catch (NotEnoughSpace e) {
@@ -77,16 +77,16 @@ public class ZCacheConfigManager {
             if (TextUtils.isEmpty(str)) {
                 return;
             }
-            TaoLog.m24i("ZCache", "get zcache local config=[" + str + "]");
+            TaoLog.i("ZCache", "get zcache local config=[" + str + "]");
             String[] split = str.split(",");
             if (split.length == 3) {
                 if (TextUtils.isEmpty(split[0]) || !TextUtils.equals(GlobalConfig.getInstance().getAppVersion(), split[0])) {
-                    TaoLog.m24i("ZCache", "skip local config for dispatching appVersion. require=[" + GlobalConfig.getInstance().getAppVersion() + "], real=[" + split[0] + "]");
+                    TaoLog.i("ZCache", "skip local config for dispatching appVersion. require=[" + GlobalConfig.getInstance().getAppVersion() + "], real=[" + split[0] + "]");
                     return;
                 }
                 if (!TextUtils.isEmpty(split[1])) {
                     if (TextUtils.equals(ExifInterface.GPS_MEASUREMENT_3D, this.zType) && !TextUtils.equals(this.oldConfig, split[2])) {
-                        TaoLog.m24i("ZCache", "ZCache 3.0 新旧平台切换，需要刷新本地配置");
+                        TaoLog.i("ZCache", "ZCache 3.0 新旧平台切换，需要刷新本地配置");
                         ZCacheManager.instance().removeAllZCache();
                     }
                     this.oldConfig = split[1];

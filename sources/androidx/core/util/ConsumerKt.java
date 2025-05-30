@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @RequiresApi(24)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ConsumerKt {
     @RequiresApi(24)
     @NotNull

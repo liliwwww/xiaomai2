@@ -4,13 +4,14 @@ import android.taobao.windvane.jsbridge.utils.WVUtils;
 import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class StringUtil {
     public static final String[] EMPTY_STRING_ARRAY = new String[0];
 

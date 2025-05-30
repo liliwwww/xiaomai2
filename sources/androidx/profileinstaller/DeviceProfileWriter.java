@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.profileinstaller.ProfileInstaller;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -20,8 +21,8 @@ import tb.cx0;
 
 /* compiled from: Taobao */
 @RequiresApi(19)
-@RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class DeviceProfileWriter {
 
     @NonNull
@@ -55,7 +56,7 @@ public class DeviceProfileWriter {
     @Nullable
     private final byte[] mDesiredVersion = desiredVersion();
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     public DeviceProfileWriter(@NonNull AssetManager assetManager, @NonNull Executor executor, @NonNull ProfileInstaller.DiagnosticsCallback diagnosticsCallback, @NonNull String str, @NonNull String str2, @NonNull String str3, @NonNull File file) {
         this.mAssetManager = assetManager;
         this.mExecutor = executor;
@@ -105,7 +106,7 @@ public class DeviceProfileWriter {
         this.mExecutor.execute(new cx0(this, i, obj));
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     public boolean deviceAllowsProfileInstallerAotWrites() {
         if (this.mDesiredVersion == null) {
             result(3, Integer.valueOf(Build.VERSION.SDK_INT));
@@ -120,15 +121,26 @@ public class DeviceProfileWriter {
     }
 
     @NonNull
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     public DeviceProfileWriter read() {
-        AssetFileDescriptor openFd;
         assertDeviceAllowsProfileInstallerAotWritesCalled();
         if (this.mDesiredVersion == null) {
             return this;
         }
         try {
-            openFd = this.mAssetManager.openFd(this.mProfileSourceLocation);
+            AssetFileDescriptor openFd = this.mAssetManager.openFd(this.mProfileSourceLocation);
+            try {
+                FileInputStream createInputStream = openFd.createInputStream();
+                try {
+                    this.mProfile = ProfileTranscoder.readProfile(createInputStream, ProfileTranscoder.readHeader(createInputStream, ProfileTranscoder.MAGIC_PROF), this.mApkName);
+                    if (createInputStream != null) {
+                        createInputStream.close();
+                    }
+                    openFd.close();
+                } finally {
+                }
+            } finally {
+            }
         } catch (FileNotFoundException e) {
             this.mDiagnostics.onResultReceived(6, e);
         } catch (IOException e2) {
@@ -136,57 +148,45 @@ public class DeviceProfileWriter {
         } catch (IllegalStateException e3) {
             this.mDiagnostics.onResultReceived(8, e3);
         }
-        try {
-            FileInputStream createInputStream = openFd.createInputStream();
+        DexProfileData[] dexProfileDataArr = this.mProfile;
+        if (dexProfileDataArr != null && requiresMetadata()) {
             try {
-                this.mProfile = ProfileTranscoder.readProfile(createInputStream, ProfileTranscoder.readHeader(createInputStream, ProfileTranscoder.MAGIC_PROF), this.mApkName);
-                if (createInputStream != null) {
-                    createInputStream.close();
-                }
-                openFd.close();
-                DexProfileData[] dexProfileDataArr = this.mProfile;
-                if (dexProfileDataArr != null && requiresMetadata()) {
+                AssetFileDescriptor openFd2 = this.mAssetManager.openFd(this.mProfileMetaSourceLocation);
+                try {
+                    FileInputStream createInputStream2 = openFd2.createInputStream();
                     try {
-                        AssetFileDescriptor openFd2 = this.mAssetManager.openFd(this.mProfileMetaSourceLocation);
-                        try {
-                            FileInputStream createInputStream2 = openFd2.createInputStream();
-                            try {
-                                this.mProfile = ProfileTranscoder.readMeta(createInputStream2, ProfileTranscoder.readHeader(createInputStream2, ProfileTranscoder.MAGIC_PROFM), this.mDesiredVersion, dexProfileDataArr);
-                                if (createInputStream2 != null) {
-                                    createInputStream2.close();
-                                }
-                                openFd2.close();
-                                return this;
-                            } finally {
-                            }
-                        } catch (Throwable th) {
-                            if (openFd2 != null) {
-                                try {
-                                    openFd2.close();
-                                } catch (Throwable th2) {
-                                    th.addSuppressed(th2);
-                                }
-                            }
-                            throw th;
+                        this.mProfile = ProfileTranscoder.readMeta(createInputStream2, ProfileTranscoder.readHeader(createInputStream2, ProfileTranscoder.MAGIC_PROFM), this.mDesiredVersion, dexProfileDataArr);
+                        if (createInputStream2 != null) {
+                            createInputStream2.close();
                         }
-                    } catch (FileNotFoundException e4) {
-                        this.mDiagnostics.onResultReceived(9, e4);
-                    } catch (IOException e5) {
-                        this.mDiagnostics.onResultReceived(7, e5);
-                    } catch (IllegalStateException e6) {
-                        this.mProfile = null;
-                        this.mDiagnostics.onResultReceived(8, e6);
+                        openFd2.close();
+                        return this;
+                    } finally {
                     }
+                } catch (Throwable th) {
+                    if (openFd2 != null) {
+                        try {
+                            openFd2.close();
+                        } catch (Throwable th2) {
+                            th.addSuppressed(th2);
+                        }
+                    }
+                    throw th;
                 }
-                return this;
-            } finally {
+            } catch (FileNotFoundException e4) {
+                this.mDiagnostics.onResultReceived(9, e4);
+            } catch (IOException e5) {
+                this.mDiagnostics.onResultReceived(7, e5);
+            } catch (IllegalStateException e6) {
+                this.mProfile = null;
+                this.mDiagnostics.onResultReceived(8, e6);
             }
-        } finally {
         }
+        return this;
     }
 
     @NonNull
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     public DeviceProfileWriter transcodeIfNeeded() {
         ByteArrayOutputStream byteArrayOutputStream;
         DexProfileData[] dexProfileDataArr = this.mProfile;
@@ -195,35 +195,36 @@ public class DeviceProfileWriter {
             assertDeviceAllowsProfileInstallerAotWritesCalled();
             try {
                 byteArrayOutputStream = new ByteArrayOutputStream();
+                try {
+                    ProfileTranscoder.writeHeader(byteArrayOutputStream, bArr);
+                } catch (Throwable th) {
+                    try {
+                        byteArrayOutputStream.close();
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                    }
+                    throw th;
+                }
             } catch (IOException e) {
                 this.mDiagnostics.onResultReceived(7, e);
             } catch (IllegalStateException e2) {
                 this.mDiagnostics.onResultReceived(8, e2);
             }
-            try {
-                ProfileTranscoder.writeHeader(byteArrayOutputStream, bArr);
-                if (!ProfileTranscoder.transcodeAndWriteBody(byteArrayOutputStream, bArr, dexProfileDataArr)) {
-                    this.mDiagnostics.onResultReceived(5, null);
-                    this.mProfile = null;
-                    byteArrayOutputStream.close();
-                    return this;
-                }
-                this.mTranscodedProfile = byteArrayOutputStream.toByteArray();
-                byteArrayOutputStream.close();
+            if (!ProfileTranscoder.transcodeAndWriteBody(byteArrayOutputStream, bArr, dexProfileDataArr)) {
+                this.mDiagnostics.onResultReceived(5, null);
                 this.mProfile = null;
-            } catch (Throwable th) {
-                try {
-                    byteArrayOutputStream.close();
-                } catch (Throwable th2) {
-                    th.addSuppressed(th2);
-                }
-                throw th;
+                byteArrayOutputStream.close();
+                return this;
             }
+            this.mTranscodedProfile = byteArrayOutputStream.toByteArray();
+            byteArrayOutputStream.close();
+            this.mProfile = null;
         }
         return this;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    /* JADX WARN: Multi-variable type inference failed */
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     public boolean write() {
         byte[] bArr = this.mTranscodedProfile;
         if (bArr == null) {
@@ -251,16 +252,16 @@ public class DeviceProfileWriter {
                     }
                     throw th;
                 }
-            } catch (FileNotFoundException e) {
-                result(6, e);
-                return false;
-            } catch (IOException e2) {
-                result(7, e2);
-                return false;
+            } finally {
+                this.mTranscodedProfile = null;
+                this.mProfile = null;
             }
-        } finally {
-            this.mTranscodedProfile = null;
-            this.mProfile = null;
+        } catch (FileNotFoundException e) {
+            result(6, e);
+            return false;
+        } catch (IOException e2) {
+            result(7, e2);
+            return false;
         }
     }
 }

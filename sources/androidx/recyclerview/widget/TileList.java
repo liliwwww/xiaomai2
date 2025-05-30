@@ -1,36 +1,13 @@
 package androidx.recyclerview.widget;
 
 import android.util.SparseArray;
-import java.lang.reflect.Array;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class TileList<T> {
     Tile<T> mLastAccessedTile;
     final int mTileSize;
     private final SparseArray<Tile<T>> mTiles = new SparseArray<>(10);
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static class Tile<T> {
-        public int mItemCount;
-        public final T[] mItems;
-        Tile<T> mNext;
-        public int mStartPosition;
-
-        public Tile(Class<T> cls, int i) {
-            this.mItems = (T[]) ((Object[]) Array.newInstance((Class<?>) cls, i));
-        }
-
-        boolean containsPosition(int i) {
-            int i2 = this.mStartPosition;
-            return i2 <= i && i < i2 + this.mItemCount;
-        }
-
-        T getByPosition(int i) {
-            return this.mItems[i - this.mStartPosition];
-        }
-    }
 
     public TileList(int i) {
         this.mTileSize = i;
@@ -70,7 +47,7 @@ class TileList<T> {
             }
             this.mLastAccessedTile = this.mTiles.valueAt(indexOfKey);
         }
-        return this.mLastAccessedTile.getByPosition(i);
+        return (T) this.mLastAccessedTile.getByPosition(i);
     }
 
     public Tile<T> removeAtPos(int i) {

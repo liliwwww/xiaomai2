@@ -5,9 +5,8 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class DecayAnimationSpecKt {
-    /* JADX WARN: Multi-variable type inference failed */
     public static final <T, V extends AnimationVector> T calculateTargetValue(@NotNull DecayAnimationSpec<T> decayAnimationSpec, @NotNull TwoWayConverter<T, V> twoWayConverter, T t, T t2) {
         Intrinsics.checkNotNullParameter(decayAnimationSpec, "<this>");
         Intrinsics.checkNotNullParameter(twoWayConverter, "typeConverter");
@@ -37,6 +36,6 @@ public final class DecayAnimationSpecKt {
 
     public static final float calculateTargetValue(@NotNull DecayAnimationSpec<Float> decayAnimationSpec, float f, float f2) {
         Intrinsics.checkNotNullParameter(decayAnimationSpec, "<this>");
-        return ((AnimationVector1D) decayAnimationSpec.vectorize(VectorConvertersKt.getVectorConverter(FloatCompanionObject.INSTANCE)).getTargetValue(AnimationVectorsKt.AnimationVector(f), AnimationVectorsKt.AnimationVector(f2))).getValue();
+        return decayAnimationSpec.vectorize(VectorConvertersKt.getVectorConverter(FloatCompanionObject.INSTANCE)).getTargetValue(AnimationVectorsKt.AnimationVector(f), AnimationVectorsKt.AnimationVector(f2)).getValue();
     }
 }

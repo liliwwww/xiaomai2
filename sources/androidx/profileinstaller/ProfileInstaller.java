@@ -10,6 +10,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.annotation.WorkerThread;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -25,7 +26,7 @@ import tb.pz3;
 import tb.qz3;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ProfileInstaller {
     public static final int DIAGNOSTIC_CURRENT_PROFILE_DOES_NOT_EXIST = 2;
     public static final int DIAGNOSTIC_CURRENT_PROFILE_EXISTS = 1;
@@ -116,7 +117,7 @@ public class ProfileInstaller {
 
     /* compiled from: Taobao */
     @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     public @interface DiagnosticCode {
     }
 
@@ -127,17 +128,10 @@ public class ProfileInstaller {
         void onResultReceived(int i, @Nullable Object obj);
     }
 
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
-    /* loaded from: classes2.dex */
-    public @interface ResultCode {
-    }
-
     private ProfileInstaller() {
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     static boolean deleteProfileWrittenFor(@NonNull File file) {
         return new File(file, PROFILE_INSTALLER_SKIP_FILE_NAME).delete();
     }
@@ -152,7 +146,7 @@ public class ProfileInstaller {
         executor.execute(new pz3(diagnosticsCallback, i, obj));
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     @WorkerThread
     static boolean hasAlreadyWrittenProfileForThisInstall(PackageInfo packageInfo, File file, DiagnosticsCallback diagnosticsCallback) {
         File file2 = new File(file, PROFILE_INSTALLER_SKIP_FILE_NAME);
@@ -176,7 +170,7 @@ public class ProfileInstaller {
         }
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     static void noteProfileWrittenFor(@NonNull PackageInfo packageInfo, @NonNull File file) {
         try {
             DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(new File(file, PROFILE_INSTALLER_SKIP_FILE_NAME)));

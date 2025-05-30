@@ -4,7 +4,7 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ListViewAutoScrollHelper extends AutoScrollHelper {
     private final ListView mTarget;
 
@@ -13,12 +13,10 @@ public class ListViewAutoScrollHelper extends AutoScrollHelper {
         this.mTarget = listView;
     }
 
-    @Override // androidx.core.widget.AutoScrollHelper
     public boolean canTargetScrollHorizontally(int i) {
         return false;
     }
 
-    @Override // androidx.core.widget.AutoScrollHelper
     public boolean canTargetScrollVertically(int i) {
         ListView listView = this.mTarget;
         int count = listView.getCount();
@@ -43,7 +41,6 @@ public class ListViewAutoScrollHelper extends AutoScrollHelper {
         return true;
     }
 
-    @Override // androidx.core.widget.AutoScrollHelper
     public void scrollTargetBy(int i, int i2) {
         ListViewCompat.scrollListBy(this.mTarget, i2);
     }

@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.lifecycle.CoroutineLiveData", f = "CoroutineLiveData.kt", i = {0, 0, 1}, l = {228, 229}, m = "emitSource$lifecycle_livedata_ktx_release", n = {"this", "source", "this"}, s = {"L$0", "L$1", "L$0"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class CoroutineLiveData$emitSource$1 extends ContinuationImpl {
     Object L$0;
     Object L$1;
@@ -26,6 +26,6 @@ final class CoroutineLiveData$emitSource$1 extends ContinuationImpl {
     public final Object invokeSuspend(@NotNull Object obj) {
         this.result = obj;
         this.label |= Integer.MIN_VALUE;
-        return this.this$0.emitSource$lifecycle_livedata_ktx_release(null, this);
+        return this.this$0.emitSource$lifecycle_livedata_ktx_release((LiveData) null, this);
     }
 }

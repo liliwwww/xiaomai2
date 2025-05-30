@@ -4,10 +4,10 @@ import android.graphics.Canvas;
 import android.os.Build;
 import android.view.View;
 import androidx.core.view.ViewCompat;
-import androidx.recyclerview.C1191R;
+import androidx.recyclerview.R;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class ItemTouchUIUtilImpl implements ItemTouchUIUtil {
     static final ItemTouchUIUtil INSTANCE = new ItemTouchUIUtilImpl();
 
@@ -29,10 +29,9 @@ class ItemTouchUIUtilImpl implements ItemTouchUIUtil {
         return f;
     }
 
-    @Override // androidx.recyclerview.widget.ItemTouchUIUtil
     public void clearView(View view) {
         if (Build.VERSION.SDK_INT >= 21) {
-            int i = C1191R.id.item_touch_helper_previous_elevation;
+            int i = R.id.item_touch_helper_previous_elevation;
             Object tag = view.getTag(i);
             if (tag instanceof Float) {
                 ViewCompat.setElevation(view, ((Float) tag).floatValue());
@@ -43,10 +42,9 @@ class ItemTouchUIUtilImpl implements ItemTouchUIUtil {
         view.setTranslationY(0.0f);
     }
 
-    @Override // androidx.recyclerview.widget.ItemTouchUIUtil
     public void onDraw(Canvas canvas, RecyclerView recyclerView, View view, float f, float f2, int i, boolean z) {
         if (Build.VERSION.SDK_INT >= 21 && z) {
-            int i2 = C1191R.id.item_touch_helper_previous_elevation;
+            int i2 = R.id.item_touch_helper_previous_elevation;
             if (view.getTag(i2) == null) {
                 Float valueOf = Float.valueOf(ViewCompat.getElevation(view));
                 ViewCompat.setElevation(view, findMaxElevation(recyclerView, view) + 1.0f);
@@ -57,11 +55,9 @@ class ItemTouchUIUtilImpl implements ItemTouchUIUtil {
         view.setTranslationY(f2);
     }
 
-    @Override // androidx.recyclerview.widget.ItemTouchUIUtil
     public void onDrawOver(Canvas canvas, RecyclerView recyclerView, View view, float f, float f2, int i, boolean z) {
     }
 
-    @Override // androidx.recyclerview.widget.ItemTouchUIUtil
     public void onSelected(View view) {
     }
 }

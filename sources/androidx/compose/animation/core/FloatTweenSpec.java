@@ -1,5 +1,6 @@
 package androidx.compose.animation.core;
 
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import androidx.compose.runtime.internal.StabilityInferred;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
@@ -9,7 +10,7 @@ import tb.qk1;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FloatTweenSpec implements FloatAnimationSpec {
     public static final int $stable = 0;
     private final int delay;
@@ -43,7 +44,7 @@ public final class FloatTweenSpec implements FloatAnimationSpec {
 
     @Override // androidx.compose.animation.core.FloatAnimationSpec
     public long getDurationNanos(float f, float f2, float f3) {
-        return (this.delay + this.duration) * AnimationKt.MillisToNanos;
+        return (this.delay + this.duration) * 1000000;
     }
 
     @Override // androidx.compose.animation.core.FloatAnimationSpec
@@ -53,34 +54,35 @@ public final class FloatTweenSpec implements FloatAnimationSpec {
 
     @Override // androidx.compose.animation.core.FloatAnimationSpec
     public float getValueFromNanos(long j, float f, float f2, float f3) {
-        long clampPlayTime = clampPlayTime(j / AnimationKt.MillisToNanos);
+        long clampPlayTime = clampPlayTime(j / 1000000);
         int i = this.duration;
         return VectorConvertersKt.lerp(f, f2, this.easing.transform(RangesKt.coerceIn(i == 0 ? 1.0f : clampPlayTime / i, 0.0f, 1.0f)));
     }
 
     @Override // androidx.compose.animation.core.FloatAnimationSpec
     public float getVelocityFromNanos(long j, float f, float f2, float f3) {
-        long clampPlayTime = clampPlayTime(j / AnimationKt.MillisToNanos);
+        long clampPlayTime = clampPlayTime(j / 1000000);
         if (clampPlayTime < 0) {
             return 0.0f;
         }
         if (clampPlayTime == 0) {
             return f3;
         }
-        return (getValueFromNanos(clampPlayTime * AnimationKt.MillisToNanos, f, f2, f3) - getValueFromNanos((clampPlayTime - 1) * AnimationKt.MillisToNanos, f, f2, f3)) * 1000.0f;
+        return (getValueFromNanos(clampPlayTime * 1000000, f, f2, f3) - getValueFromNanos((clampPlayTime - 1) * 1000000, f, f2, f3)) * 1000.0f;
     }
 
-    @Override // androidx.compose.animation.core.FloatAnimationSpec, androidx.compose.animation.core.AnimationSpec
+    @Override // androidx.compose.animation.core.FloatAnimationSpec
     public /* bridge */ /* synthetic */ VectorizedAnimationSpec vectorize(TwoWayConverter twoWayConverter) {
         return qk1.b(this, twoWayConverter);
     }
 
-    @Override // androidx.compose.animation.core.FloatAnimationSpec, androidx.compose.animation.core.AnimationSpec
-    public /* synthetic */ VectorizedFloatAnimationSpec vectorize(TwoWayConverter twoWayConverter) {
+    @Override // androidx.compose.animation.core.FloatAnimationSpec
+    /* renamed from: vectorize */
+    public /* synthetic */ VectorizedFloatAnimationSpec mo83vectorize(TwoWayConverter twoWayConverter) {
         return qk1.c(this, twoWayConverter);
     }
 
     public /* synthetic */ FloatTweenSpec(int i, int i2, Easing easing, int i3, DefaultConstructorMarker defaultConstructorMarker) {
-        this((i3 & 1) != 0 ? 300 : i, (i3 & 2) != 0 ? 0 : i2, (i3 & 4) != 0 ? EasingKt.getFastOutSlowInEasing() : easing);
+        this((i3 & 1) != 0 ? WVURLRuleConstants.SHOP : i, (i3 & 2) != 0 ? 0 : i2, (i3 & 4) != 0 ? EasingKt.getFastOutSlowInEasing() : easing);
     }
 }

@@ -8,7 +8,7 @@ import java.util.Locale;
 
 /* compiled from: Taobao */
 @RequiresApi(24)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class LocaleListPlatformWrapper implements LocaleListInterface {
     private final LocaleList mLocaleList;
 
@@ -20,18 +20,15 @@ final class LocaleListPlatformWrapper implements LocaleListInterface {
         return this.mLocaleList.equals(((LocaleListInterface) obj).getLocaleList());
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     public Locale get(int i) {
         return this.mLocaleList.get(i);
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     @Nullable
     public Locale getFirstMatch(@NonNull String[] strArr) {
         return this.mLocaleList.getFirstMatch(strArr);
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     public Object getLocaleList() {
         return this.mLocaleList;
     }
@@ -40,22 +37,18 @@ final class LocaleListPlatformWrapper implements LocaleListInterface {
         return this.mLocaleList.hashCode();
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     public int indexOf(Locale locale) {
         return this.mLocaleList.indexOf(locale);
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     public boolean isEmpty() {
         return this.mLocaleList.isEmpty();
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     public int size() {
         return this.mLocaleList.size();
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     public String toLanguageTags() {
         return this.mLocaleList.toLanguageTags();
     }

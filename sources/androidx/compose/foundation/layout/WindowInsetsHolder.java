@@ -1,8 +1,6 @@
 package androidx.compose.foundation.layout;
 
 import android.view.View;
-import androidx.compose.p004ui.C0756R;
-import androidx.compose.p004ui.platform.AndroidCompositionLocals_androidKt;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
@@ -10,10 +8,13 @@ import androidx.compose.runtime.DisposableEffectResult;
 import androidx.compose.runtime.DisposableEffectScope;
 import androidx.compose.runtime.EffectsKt;
 import androidx.compose.runtime.snapshots.Snapshot;
+import androidx.compose.ui.R$id;
+import androidx.compose.ui.platform.AndroidCompositionLocals_androidKt;
 import androidx.core.graphics.Insets;
 import androidx.core.view.DisplayCutoutCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsCompat$Type;
 import java.util.WeakHashMap;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.DefaultConstructorMarker;
@@ -22,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class WindowInsetsHolder {
     private static boolean testInsets;
     private int accessCount;
@@ -149,7 +150,7 @@ public final class WindowInsetsHolder {
             }
             final View view = (View) composer.consume(AndroidCompositionLocals_androidKt.getLocalView());
             final WindowInsetsHolder orCreateFor = getOrCreateFor(view);
-            EffectsKt.DisposableEffect(orCreateFor, new Function1<DisposableEffectScope, DisposableEffectResult>() { // from class: androidx.compose.foundation.layout.WindowInsetsHolder$Companion$current$1
+            EffectsKt.DisposableEffect((Object) orCreateFor, (Function1<? super DisposableEffectScope, ? extends DisposableEffectResult>) new Function1<DisposableEffectScope, DisposableEffectResult>() { // from class: androidx.compose.foundation.layout.WindowInsetsHolder$Companion$current$1
                 /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
                 {
                     super(1);
@@ -162,7 +163,6 @@ public final class WindowInsetsHolder {
                     final WindowInsetsHolder windowInsetsHolder = WindowInsetsHolder.this;
                     final View view2 = view;
                     return new DisposableEffectResult() { // from class: androidx.compose.foundation.layout.WindowInsetsHolder$Companion$current$1$invoke$$inlined$onDispose$1
-                        @Override // androidx.compose.runtime.DisposableEffectResult
                         public void dispose() {
                             WindowInsetsHolder.this.decrementAccessors(view2);
                         }
@@ -184,20 +184,20 @@ public final class WindowInsetsHolder {
     private WindowInsetsHolder(WindowInsetsCompat windowInsetsCompat, View view) {
         DisplayCutoutCompat displayCutout;
         Companion companion = Companion;
-        this.captionBar = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat.Type.captionBar(), "captionBar");
-        AndroidWindowInsets systemInsets = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat.Type.displayCutout(), "displayCutout");
+        this.captionBar = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat$Type.captionBar(), "captionBar");
+        AndroidWindowInsets systemInsets = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat$Type.displayCutout(), "displayCutout");
         this.displayCutout = systemInsets;
-        AndroidWindowInsets systemInsets2 = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat.Type.ime(), "ime");
+        AndroidWindowInsets systemInsets2 = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat$Type.ime(), "ime");
         this.ime = systemInsets2;
-        AndroidWindowInsets systemInsets3 = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat.Type.mandatorySystemGestures(), "mandatorySystemGestures");
+        AndroidWindowInsets systemInsets3 = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat$Type.mandatorySystemGestures(), "mandatorySystemGestures");
         this.mandatorySystemGestures = systemInsets3;
-        this.navigationBars = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat.Type.navigationBars(), "navigationBars");
-        this.statusBars = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat.Type.statusBars(), "statusBars");
-        AndroidWindowInsets systemInsets4 = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat.Type.systemBars(), "systemBars");
+        this.navigationBars = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat$Type.navigationBars(), "navigationBars");
+        this.statusBars = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat$Type.statusBars(), "statusBars");
+        AndroidWindowInsets systemInsets4 = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat$Type.systemBars(), "systemBars");
         this.systemBars = systemInsets4;
-        AndroidWindowInsets systemInsets5 = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat.Type.systemGestures(), "systemGestures");
+        AndroidWindowInsets systemInsets5 = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat$Type.systemGestures(), "systemGestures");
         this.systemGestures = systemInsets5;
-        AndroidWindowInsets systemInsets6 = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat.Type.tappableElement(), "tappableElement");
+        AndroidWindowInsets systemInsets6 = companion.systemInsets(windowInsetsCompat, WindowInsetsCompat$Type.tappableElement(), "tappableElement");
         this.tappableElement = systemInsets6;
         Insets insets = (windowInsetsCompat == null || (displayCutout = windowInsetsCompat.getDisplayCutout()) == null || (insets = displayCutout.getWaterfallInsets()) == null) ? Insets.NONE : insets;
         Intrinsics.checkNotNullExpressionValue(insets, "insets?.displayCutout?.w…ts ?: AndroidXInsets.NONE");
@@ -208,16 +208,16 @@ public final class WindowInsetsHolder {
         WindowInsets union2 = WindowInsetsKt.union(WindowInsetsKt.union(WindowInsetsKt.union(systemInsets6, systemInsets3), systemInsets5), ValueInsets);
         this.safeGestures = union2;
         this.safeContent = WindowInsetsKt.union(union, union2);
-        this.captionBarIgnoringVisibility = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat.Type.captionBar(), "captionBarIgnoringVisibility");
-        this.navigationBarsIgnoringVisibility = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat.Type.navigationBars(), "navigationBarsIgnoringVisibility");
-        this.statusBarsIgnoringVisibility = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat.Type.statusBars(), "statusBarsIgnoringVisibility");
-        this.systemBarsIgnoringVisibility = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat.Type.systemBars(), "systemBarsIgnoringVisibility");
-        this.tappableElementIgnoringVisibility = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat.Type.tappableElement(), "tappableElementIgnoringVisibility");
-        this.imeAnimationTarget = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat.Type.ime(), "imeAnimationTarget");
-        this.imeAnimationSource = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat.Type.ime(), "imeAnimationSource");
+        this.captionBarIgnoringVisibility = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat$Type.captionBar(), "captionBarIgnoringVisibility");
+        this.navigationBarsIgnoringVisibility = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat$Type.navigationBars(), "navigationBarsIgnoringVisibility");
+        this.statusBarsIgnoringVisibility = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat$Type.statusBars(), "statusBarsIgnoringVisibility");
+        this.systemBarsIgnoringVisibility = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat$Type.systemBars(), "systemBarsIgnoringVisibility");
+        this.tappableElementIgnoringVisibility = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat$Type.tappableElement(), "tappableElementIgnoringVisibility");
+        this.imeAnimationTarget = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat$Type.ime(), "imeAnimationTarget");
+        this.imeAnimationSource = companion.valueInsetsIgnoringVisibility(windowInsetsCompat, WindowInsetsCompat$Type.ime(), "imeAnimationSource");
         Object parent = view.getParent();
         View view2 = parent instanceof View ? (View) parent : null;
-        Object tag = view2 != null ? view2.getTag(C0756R.id.consume_window_insets_tag) : null;
+        Object tag = view2 != null ? view2.getTag(R$id.consume_window_insets_tag) : null;
         Boolean bool = tag instanceof Boolean ? (Boolean) tag : null;
         this.consumes = bool != null ? bool.booleanValue() : true;
         this.insetsListener = new InsetsListener(this);
@@ -381,23 +381,23 @@ public final class WindowInsetsHolder {
         this.mandatorySystemGestures.update$foundation_layout_release(windowInsetsCompat, i);
         if (i == 0) {
             ValueInsets valueInsets = this.captionBarIgnoringVisibility;
-            Insets insetsIgnoringVisibility = windowInsetsCompat.getInsetsIgnoringVisibility(WindowInsetsCompat.Type.captionBar());
+            Insets insetsIgnoringVisibility = windowInsetsCompat.getInsetsIgnoringVisibility(WindowInsetsCompat$Type.captionBar());
             Intrinsics.checkNotNullExpressionValue(insetsIgnoringVisibility, "insets.getInsetsIgnoring…aptionBar()\n            )");
             valueInsets.setValue$foundation_layout_release(WindowInsets_androidKt.toInsetsValues(insetsIgnoringVisibility));
             ValueInsets valueInsets2 = this.navigationBarsIgnoringVisibility;
-            Insets insetsIgnoringVisibility2 = windowInsetsCompat.getInsetsIgnoringVisibility(WindowInsetsCompat.Type.navigationBars());
+            Insets insetsIgnoringVisibility2 = windowInsetsCompat.getInsetsIgnoringVisibility(WindowInsetsCompat$Type.navigationBars());
             Intrinsics.checkNotNullExpressionValue(insetsIgnoringVisibility2, "insets.getInsetsIgnoring…ationBars()\n            )");
             valueInsets2.setValue$foundation_layout_release(WindowInsets_androidKt.toInsetsValues(insetsIgnoringVisibility2));
             ValueInsets valueInsets3 = this.statusBarsIgnoringVisibility;
-            Insets insetsIgnoringVisibility3 = windowInsetsCompat.getInsetsIgnoringVisibility(WindowInsetsCompat.Type.statusBars());
+            Insets insetsIgnoringVisibility3 = windowInsetsCompat.getInsetsIgnoringVisibility(WindowInsetsCompat$Type.statusBars());
             Intrinsics.checkNotNullExpressionValue(insetsIgnoringVisibility3, "insets.getInsetsIgnoring…tatusBars()\n            )");
             valueInsets3.setValue$foundation_layout_release(WindowInsets_androidKt.toInsetsValues(insetsIgnoringVisibility3));
             ValueInsets valueInsets4 = this.systemBarsIgnoringVisibility;
-            Insets insetsIgnoringVisibility4 = windowInsetsCompat.getInsetsIgnoringVisibility(WindowInsetsCompat.Type.systemBars());
+            Insets insetsIgnoringVisibility4 = windowInsetsCompat.getInsetsIgnoringVisibility(WindowInsetsCompat$Type.systemBars());
             Intrinsics.checkNotNullExpressionValue(insetsIgnoringVisibility4, "insets.getInsetsIgnoring…ystemBars()\n            )");
             valueInsets4.setValue$foundation_layout_release(WindowInsets_androidKt.toInsetsValues(insetsIgnoringVisibility4));
             ValueInsets valueInsets5 = this.tappableElementIgnoringVisibility;
-            Insets insetsIgnoringVisibility5 = windowInsetsCompat.getInsetsIgnoringVisibility(WindowInsetsCompat.Type.tappableElement());
+            Insets insetsIgnoringVisibility5 = windowInsetsCompat.getInsetsIgnoringVisibility(WindowInsetsCompat$Type.tappableElement());
             Intrinsics.checkNotNullExpressionValue(insetsIgnoringVisibility5, "insets.getInsetsIgnoring…leElement()\n            )");
             valueInsets5.setValue$foundation_layout_release(WindowInsets_androidKt.toInsetsValues(insetsIgnoringVisibility5));
             DisplayCutoutCompat displayCutout = windowInsetsCompat.getDisplayCutout();
@@ -413,7 +413,7 @@ public final class WindowInsetsHolder {
     public final void updateImeAnimationSource(@NotNull WindowInsetsCompat windowInsetsCompat) {
         Intrinsics.checkNotNullParameter(windowInsetsCompat, "windowInsets");
         ValueInsets valueInsets = this.imeAnimationSource;
-        Insets insets = windowInsetsCompat.getInsets(WindowInsetsCompat.Type.ime());
+        Insets insets = windowInsetsCompat.getInsets(WindowInsetsCompat$Type.ime());
         Intrinsics.checkNotNullExpressionValue(insets, "windowInsets.getInsets(W…wInsetsCompat.Type.ime())");
         valueInsets.setValue$foundation_layout_release(WindowInsets_androidKt.toInsetsValues(insets));
     }
@@ -421,7 +421,7 @@ public final class WindowInsetsHolder {
     public final void updateImeAnimationTarget(@NotNull WindowInsetsCompat windowInsetsCompat) {
         Intrinsics.checkNotNullParameter(windowInsetsCompat, "windowInsets");
         ValueInsets valueInsets = this.imeAnimationTarget;
-        Insets insets = windowInsetsCompat.getInsets(WindowInsetsCompat.Type.ime());
+        Insets insets = windowInsetsCompat.getInsets(WindowInsetsCompat$Type.ime());
         Intrinsics.checkNotNullExpressionValue(insets, "windowInsets.getInsets(W…wInsetsCompat.Type.ime())");
         valueInsets.setValue$foundation_layout_release(WindowInsets_androidKt.toInsetsValues(insets));
     }

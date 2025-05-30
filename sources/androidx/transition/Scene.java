@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Scene {
     private Context mContext;
     private Runnable mEnterAction;
@@ -26,12 +26,12 @@ public class Scene {
 
     @Nullable
     public static Scene getCurrentScene(@NonNull ViewGroup viewGroup) {
-        return (Scene) viewGroup.getTag(C1345R.id.transition_current_scene);
+        return (Scene) viewGroup.getTag(R$id.transition_current_scene);
     }
 
     @NonNull
     public static Scene getSceneForLayout(@NonNull ViewGroup viewGroup, @LayoutRes int i, @NonNull Context context) {
-        int i2 = C1345R.id.transition_scene_layoutid_cache;
+        int i2 = R$id.transition_scene_layoutid_cache;
         SparseArray sparseArray = (SparseArray) viewGroup.getTag(i2);
         if (sparseArray == null) {
             sparseArray = new SparseArray();
@@ -47,7 +47,7 @@ public class Scene {
     }
 
     static void setCurrentScene(@NonNull ViewGroup viewGroup, @Nullable Scene scene) {
-        viewGroup.setTag(C1345R.id.transition_current_scene, scene);
+        viewGroup.setTag(R$id.transition_current_scene, scene);
     }
 
     public void enter() {

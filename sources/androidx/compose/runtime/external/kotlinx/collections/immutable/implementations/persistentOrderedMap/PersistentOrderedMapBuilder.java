@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PersistentOrderedMapBuilder<K, V> extends AbstractMutableMap<K, V> implements PersistentMap.Builder<K, V> {
 
     @Nullable
@@ -37,14 +37,13 @@ public final class PersistentOrderedMapBuilder<K, V> extends AbstractMutableMap<
         this.hashMapBuilder = this.map.getHashMap$runtime_release().builder();
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap.Builder
     @NotNull
     public PersistentMap<K, V> build() {
         PersistentOrderedMap<K, V> persistentOrderedMap;
         PersistentHashMap<K, LinkedValue<V>> build = this.hashMapBuilder.build();
         if (build == this.map.getHashMap$runtime_release()) {
-            CommonFunctionsKt.m2432assert(this.firstKey == this.map.getFirstKey$runtime_release());
-            CommonFunctionsKt.m2432assert(this.lastKey == this.map.getLastKey$runtime_release());
+            CommonFunctionsKt.assert(this.firstKey == this.map.getFirstKey$runtime_release());
+            CommonFunctionsKt.assert(this.lastKey == this.map.getLastKey$runtime_release());
             persistentOrderedMap = this.map;
         } else {
             persistentOrderedMap = new PersistentOrderedMap<>(this.firstKey, this.lastKey, build);
@@ -53,7 +52,6 @@ public final class PersistentOrderedMapBuilder<K, V> extends AbstractMutableMap<
         return persistentOrderedMap;
     }
 
-    @Override // java.util.Map
     public void clear() {
         this.hashMapBuilder.clear();
         EndOfChain endOfChain = EndOfChain.INSTANCE;
@@ -61,24 +59,22 @@ public final class PersistentOrderedMapBuilder<K, V> extends AbstractMutableMap<
         this.lastKey = endOfChain;
     }
 
-    @Override // java.util.Map
     public boolean containsKey(Object obj) {
         return this.hashMapBuilder.containsKey(obj);
     }
 
-    @Override // java.util.Map
     @Nullable
     public V get(Object obj) {
-        LinkedValue<V> linkedValue = this.hashMapBuilder.get(obj);
+        LinkedValue linkedValue = (LinkedValue) this.hashMapBuilder.get(obj);
         if (linkedValue != null) {
-            return linkedValue.getValue();
+            return (V) linkedValue.getValue();
         }
         return null;
     }
 
     @NotNull
     public Set<Map.Entry<K, V>> getEntries() {
-        return (Set<Map.Entry<K, V>>) new PersistentOrderedMapBuilderEntries(this);
+        return new PersistentOrderedMapBuilderEntries(this);
     }
 
     @Nullable
@@ -93,7 +89,7 @@ public final class PersistentOrderedMapBuilder<K, V> extends AbstractMutableMap<
 
     @NotNull
     public Set<K> getKeys() {
-        return (Set<K>) new PersistentOrderedMapBuilderKeys(this);
+        return new PersistentOrderedMapBuilderKeys(this);
     }
 
     public int getSize() {
@@ -102,65 +98,62 @@ public final class PersistentOrderedMapBuilder<K, V> extends AbstractMutableMap<
 
     @NotNull
     public Collection<V> getValues() {
-        return (Collection<V>) new PersistentOrderedMapBuilderValues(this);
+        return new PersistentOrderedMapBuilderValues(this);
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // java.util.Map
     @Nullable
     public V put(K k, V v) {
-        LinkedValue<V> linkedValue = this.hashMapBuilder.get(k);
+        LinkedValue linkedValue = (LinkedValue) this.hashMapBuilder.get(k);
         if (linkedValue != null) {
             if (linkedValue.getValue() == v) {
                 return v;
             }
-            this.hashMapBuilder.put(k, linkedValue.withValue(v));
-            return linkedValue.getValue();
+            ((PersistentHashMapBuilder<K, LinkedValue<V>>) this.hashMapBuilder).put(k, linkedValue.withValue(v));
+            return (V) linkedValue.getValue();
         }
         if (isEmpty()) {
             this.firstKey = k;
             this.lastKey = k;
-            this.hashMapBuilder.put(k, new LinkedValue<>(v));
+            ((PersistentHashMapBuilder<K, LinkedValue<V>>) this.hashMapBuilder).put(k, new LinkedValue(v));
             return null;
         }
         Object obj = this.lastKey;
-        LinkedValue<V> linkedValue2 = this.hashMapBuilder.get(obj);
-        Intrinsics.checkNotNull(linkedValue2);
-        CommonFunctionsKt.m2432assert(!r2.getHasNext());
-        this.hashMapBuilder.put(obj, linkedValue2.withNext(k));
-        this.hashMapBuilder.put(k, new LinkedValue<>(v, obj));
+        Object obj2 = this.hashMapBuilder.get(obj);
+        Intrinsics.checkNotNull(obj2);
+        CommonFunctionsKt.assert(!r2.getHasNext());
+        this.hashMapBuilder.put(obj, ((LinkedValue) obj2).withNext(k));
+        ((PersistentHashMapBuilder<K, LinkedValue<V>>) this.hashMapBuilder).put(k, new LinkedValue(v, obj));
         this.lastKey = k;
         return null;
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // java.util.Map
     @Nullable
     public V remove(Object obj) {
-        LinkedValue<V> remove = this.hashMapBuilder.remove(obj);
-        if (remove == null) {
+        LinkedValue linkedValue = (LinkedValue) this.hashMapBuilder.remove(obj);
+        if (linkedValue == null) {
             return null;
         }
-        if (remove.getHasPrevious()) {
-            LinkedValue<V> linkedValue = this.hashMapBuilder.get(remove.getPrevious());
-            Intrinsics.checkNotNull(linkedValue);
-            this.hashMapBuilder.put(remove.getPrevious(), linkedValue.withNext(remove.getNext()));
+        if (linkedValue.getHasPrevious()) {
+            Object obj2 = this.hashMapBuilder.get(linkedValue.getPrevious());
+            Intrinsics.checkNotNull(obj2);
+            this.hashMapBuilder.put(linkedValue.getPrevious(), ((LinkedValue) obj2).withNext(linkedValue.getNext()));
         } else {
-            this.firstKey = remove.getNext();
+            this.firstKey = linkedValue.getNext();
         }
-        if (remove.getHasNext()) {
-            LinkedValue<V> linkedValue2 = this.hashMapBuilder.get(remove.getNext());
-            Intrinsics.checkNotNull(linkedValue2);
-            this.hashMapBuilder.put(remove.getNext(), linkedValue2.withPrevious(remove.getPrevious()));
+        if (linkedValue.getHasNext()) {
+            Object obj3 = this.hashMapBuilder.get(linkedValue.getNext());
+            Intrinsics.checkNotNull(obj3);
+            this.hashMapBuilder.put(linkedValue.getNext(), ((LinkedValue) obj3).withPrevious(linkedValue.getPrevious()));
         } else {
-            this.lastKey = remove.getPrevious();
+            this.lastKey = linkedValue.getPrevious();
         }
-        return remove.getValue();
+        return (V) linkedValue.getValue();
     }
 
-    @Override // java.util.Map
     public final boolean remove(Object obj, Object obj2) {
-        LinkedValue<V> linkedValue = this.hashMapBuilder.get(obj);
+        LinkedValue linkedValue = (LinkedValue) this.hashMapBuilder.get(obj);
         if (linkedValue == null || !Intrinsics.areEqual(linkedValue.getValue(), obj2)) {
             return false;
         }

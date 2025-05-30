@@ -3,7 +3,7 @@ package androidx.compose.runtime;
 import kotlin.PublishedApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class RecomposeScopeImplKt {
     private static final int DefaultsInScopeFlag = 2;
     private static final int DefaultsInvalidFlag = 4;

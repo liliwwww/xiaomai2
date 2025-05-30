@@ -10,7 +10,7 @@ import tb.u8;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TargetBasedAnimation<T, V extends AnimationVector> implements Animation<T, V> {
     public static final int $stable = 0;
 
@@ -49,7 +49,7 @@ public final class TargetBasedAnimation<T, V extends AnimationVector> implements
         V v4 = (v == null || (v4 = (V) AnimationVectorsKt.copy(v)) == null) ? (V) AnimationVectorsKt.newInstance((AnimationVector) getTypeConverter().getConvertToVector().invoke(t)) : v4;
         this.initialVelocityVector = v4;
         this.durationNanos = vectorizedAnimationSpec.getDurationNanos(v2, v3, v4);
-        this.endVelocity = vectorizedAnimationSpec.getEndVelocity(v2, v3, v4);
+        this.endVelocity = (V) vectorizedAnimationSpec.getEndVelocity(v2, v3, v4);
     }
 
     @NotNull
@@ -57,7 +57,6 @@ public final class TargetBasedAnimation<T, V extends AnimationVector> implements
         return this.animationSpec;
     }
 
-    @Override // androidx.compose.animation.core.Animation
     public long getDurationNanos() {
         return this.durationNanos;
     }
@@ -66,23 +65,20 @@ public final class TargetBasedAnimation<T, V extends AnimationVector> implements
         return this.initialValue;
     }
 
-    @Override // androidx.compose.animation.core.Animation
     public T getTargetValue() {
         return this.targetValue;
     }
 
-    @Override // androidx.compose.animation.core.Animation
     @NotNull
     public TwoWayConverter<T, V> getTypeConverter() {
         return this.typeConverter;
     }
 
-    @Override // androidx.compose.animation.core.Animation
     public T getValueFromNanos(long j) {
         if (isFinishedFromNanos(j)) {
             return getTargetValue();
         }
-        V valueFromNanos = this.animationSpec.getValueFromNanos(j, this.initialValueVector, this.targetValueVector, this.initialVelocityVector);
+        AnimationVector valueFromNanos = this.animationSpec.getValueFromNanos(j, this.initialValueVector, this.targetValueVector, this.initialVelocityVector);
         int size$animation_core_release = valueFromNanos.getSize$animation_core_release();
         for (int i = 0; i < size$animation_core_release; i++) {
             if (!(!Float.isNaN(valueFromNanos.get$animation_core_release(i)))) {
@@ -92,18 +88,15 @@ public final class TargetBasedAnimation<T, V extends AnimationVector> implements
         return (T) getTypeConverter().getConvertFromVector().invoke(valueFromNanos);
     }
 
-    @Override // androidx.compose.animation.core.Animation
     @NotNull
     public V getVelocityVectorFromNanos(long j) {
-        return !isFinishedFromNanos(j) ? this.animationSpec.getVelocityFromNanos(j, this.initialValueVector, this.targetValueVector, this.initialVelocityVector) : this.endVelocity;
+        return !isFinishedFromNanos(j) ? (V) this.animationSpec.getVelocityFromNanos(j, this.initialValueVector, this.targetValueVector, this.initialVelocityVector) : this.endVelocity;
     }
 
-    @Override // androidx.compose.animation.core.Animation
     public /* synthetic */ boolean isFinishedFromNanos(long j) {
         return u8.a(this, j);
     }
 
-    @Override // androidx.compose.animation.core.Animation
     public boolean isInfinite() {
         return this.animationSpec.isInfinite();
     }
@@ -123,7 +116,7 @@ public final class TargetBasedAnimation<T, V extends AnimationVector> implements
 
     /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
     public TargetBasedAnimation(@NotNull AnimationSpec<T> animationSpec, @NotNull TwoWayConverter<T, V> twoWayConverter, T t, T t2, @Nullable V v) {
-        this(animationSpec.vectorize(twoWayConverter), twoWayConverter, t, t2, v);
+        this(animationSpec.mo83vectorize(twoWayConverter), twoWayConverter, t, t2, v);
         Intrinsics.checkNotNullParameter(animationSpec, "animationSpec");
         Intrinsics.checkNotNullParameter(twoWayConverter, "typeConverter");
     }

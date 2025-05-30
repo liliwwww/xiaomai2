@@ -10,24 +10,27 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.RemoteException;
 import android.support.v4.media.MediaBrowserCompat;
+import android.support.v4.media.MediaBrowserCompat$ConnectionCallback;
 import android.support.v4.media.session.MediaControllerCompat;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.media.MediaBrowserServiceCompat;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MediaButtonReceiver extends BroadcastReceiver {
     private static final String TAG = "MediaButtonReceiver";
 
     /* compiled from: Taobao */
-    private static class MediaButtonConnectionCallback extends MediaBrowserCompat.ConnectionCallback {
+    private static class MediaButtonConnectionCallback extends MediaBrowserCompat$ConnectionCallback {
         private final Context mContext;
         private final Intent mIntent;
         private MediaBrowserCompat mMediaBrowser;
@@ -44,7 +47,7 @@ public class MediaButtonReceiver extends BroadcastReceiver {
             this.mPendingResult.finish();
         }
 
-        @Override // android.support.v4.media.MediaBrowserCompat.ConnectionCallback
+        @Override // android.support.v4.media.MediaBrowserCompat$ConnectionCallback
         public void onConnected() {
             try {
                 new MediaControllerCompat(this.mContext, this.mMediaBrowser.getSessionToken()).dispatchMediaButtonEvent((KeyEvent) this.mIntent.getParcelableExtra("android.intent.extra.KEY_EVENT"));
@@ -54,12 +57,12 @@ public class MediaButtonReceiver extends BroadcastReceiver {
             finish();
         }
 
-        @Override // android.support.v4.media.MediaBrowserCompat.ConnectionCallback
+        @Override // android.support.v4.media.MediaBrowserCompat$ConnectionCallback
         public void onConnectionFailed() {
             finish();
         }
 
-        @Override // android.support.v4.media.MediaBrowserCompat.ConnectionCallback
+        @Override // android.support.v4.media.MediaBrowserCompat$ConnectionCallback
         public void onConnectionSuspended() {
             finish();
         }
@@ -78,7 +81,7 @@ public class MediaButtonReceiver extends BroadcastReceiver {
         return null;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     public static ComponentName getMediaButtonReceiverComponent(Context context) {
         Intent intent = new Intent("android.intent.action.MEDIA_BUTTON");
         intent.setPackage(context.getPackageName());
@@ -145,7 +148,7 @@ public class MediaButtonReceiver extends BroadcastReceiver {
         BroadcastReceiver.PendingResult goAsync = goAsync();
         Context applicationContext = context.getApplicationContext();
         MediaButtonConnectionCallback mediaButtonConnectionCallback = new MediaButtonConnectionCallback(applicationContext, intent, goAsync);
-        MediaBrowserCompat mediaBrowserCompat = new MediaBrowserCompat(applicationContext, serviceComponentByAction2, mediaButtonConnectionCallback, null);
+        MediaBrowserCompat mediaBrowserCompat = new MediaBrowserCompat(applicationContext, serviceComponentByAction2, mediaButtonConnectionCallback, (Bundle) null);
         mediaButtonConnectionCallback.setMediaBrowser(mediaBrowserCompat);
         mediaBrowserCompat.connect();
     }

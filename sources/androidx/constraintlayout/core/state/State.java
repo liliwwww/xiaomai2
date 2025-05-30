@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class State {
     static final int CONSTRAINT_RATIO = 2;
     static final int CONSTRAINT_SPREAD = 0;
@@ -28,80 +28,6 @@ public class State {
     HashMap<String, ArrayList<String>> mTags = new HashMap<>();
 
     /* compiled from: Taobao */
-    /* renamed from: androidx.constraintlayout.core.state.State$1 */
-    /* loaded from: classes2.dex */
-    static /* synthetic */ class C08901 {
-        static final /* synthetic */ int[] $SwitchMap$androidx$constraintlayout$core$state$State$Helper;
-
-        static {
-            int[] iArr = new int[Helper.values().length];
-            $SwitchMap$androidx$constraintlayout$core$state$State$Helper = iArr;
-            try {
-                iArr[Helper.HORIZONTAL_CHAIN.ordinal()] = 1;
-            } catch (NoSuchFieldError unused) {
-            }
-            try {
-                $SwitchMap$androidx$constraintlayout$core$state$State$Helper[Helper.VERTICAL_CHAIN.ordinal()] = 2;
-            } catch (NoSuchFieldError unused2) {
-            }
-            try {
-                $SwitchMap$androidx$constraintlayout$core$state$State$Helper[Helper.ALIGN_HORIZONTALLY.ordinal()] = 3;
-            } catch (NoSuchFieldError unused3) {
-            }
-            try {
-                $SwitchMap$androidx$constraintlayout$core$state$State$Helper[Helper.ALIGN_VERTICALLY.ordinal()] = 4;
-            } catch (NoSuchFieldError unused4) {
-            }
-            try {
-                $SwitchMap$androidx$constraintlayout$core$state$State$Helper[Helper.BARRIER.ordinal()] = 5;
-            } catch (NoSuchFieldError unused5) {
-            }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public enum Chain {
-        SPREAD,
-        SPREAD_INSIDE,
-        PACKED
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public enum Constraint {
-        LEFT_TO_LEFT,
-        LEFT_TO_RIGHT,
-        RIGHT_TO_LEFT,
-        RIGHT_TO_RIGHT,
-        START_TO_START,
-        START_TO_END,
-        END_TO_START,
-        END_TO_END,
-        TOP_TO_TOP,
-        TOP_TO_BOTTOM,
-        BOTTOM_TO_TOP,
-        BOTTOM_TO_BOTTOM,
-        BASELINE_TO_BASELINE,
-        BASELINE_TO_TOP,
-        BASELINE_TO_BOTTOM,
-        CENTER_HORIZONTALLY,
-        CENTER_VERTICALLY,
-        CIRCULAR_CONSTRAINT
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public enum Direction {
-        LEFT,
-        RIGHT,
-        START,
-        END,
-        TOP,
-        BOTTOM
-    }
-
-    /* compiled from: Taobao */
     public enum Helper {
         HORIZONTAL_CHAIN,
         VERTICAL_CHAIN,
@@ -113,7 +39,7 @@ public class State {
     }
 
     public State() {
-        ConstraintReference constraintReference = new ConstraintReference(this);
+        Reference constraintReference = new ConstraintReference(this);
         this.mParent = constraintReference;
         this.numHelpers = 0;
         this.mReferences.put(PARENT, constraintReference);
@@ -129,46 +55,47 @@ public class State {
         return sb.toString();
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void apply(ConstraintWidgetContainer constraintWidgetContainer) {
         HelperReference helperReference;
         HelperWidget helperWidget;
-        HelperWidget helperWidget2;
+        ConstraintWidget helperWidget2;
         constraintWidgetContainer.removeAllChildren();
         this.mParent.getWidth().apply(this, constraintWidgetContainer, 0);
         this.mParent.getHeight().apply(this, constraintWidgetContainer, 1);
         for (Object obj : this.mHelperReferences.keySet()) {
-            HelperWidget helperWidget3 = this.mHelperReferences.get(obj).getHelperWidget();
+            ConstraintWidget helperWidget3 = this.mHelperReferences.get(obj).getHelperWidget();
             if (helperWidget3 != null) {
-                Reference reference = this.mReferences.get(obj);
-                if (reference == null) {
-                    reference = constraints(obj);
+                ConstraintReference constraintReference = (Reference) this.mReferences.get(obj);
+                if (constraintReference == null) {
+                    constraintReference = constraints(obj);
                 }
-                reference.setConstraintWidget(helperWidget3);
+                constraintReference.setConstraintWidget(helperWidget3);
             }
         }
         for (Object obj2 : this.mReferences.keySet()) {
-            Reference reference2 = this.mReferences.get(obj2);
-            if (reference2 != this.mParent && (reference2.getFacade() instanceof HelperReference) && (helperWidget2 = ((HelperReference) reference2.getFacade()).getHelperWidget()) != null) {
-                Reference reference3 = this.mReferences.get(obj2);
-                if (reference3 == null) {
-                    reference3 = constraints(obj2);
+            ConstraintReference constraintReference2 = (Reference) this.mReferences.get(obj2);
+            if (constraintReference2 != this.mParent && (constraintReference2.getFacade() instanceof HelperReference) && (helperWidget2 = ((HelperReference) constraintReference2.getFacade()).getHelperWidget()) != null) {
+                ConstraintReference constraintReference3 = (Reference) this.mReferences.get(obj2);
+                if (constraintReference3 == null) {
+                    constraintReference3 = constraints(obj2);
                 }
-                reference3.setConstraintWidget(helperWidget2);
+                constraintReference3.setConstraintWidget(helperWidget2);
             }
         }
         Iterator<Object> it = this.mReferences.keySet().iterator();
         while (it.hasNext()) {
-            Reference reference4 = this.mReferences.get(it.next());
-            if (reference4 != this.mParent) {
-                ConstraintWidget constraintWidget = reference4.getConstraintWidget();
-                constraintWidget.setDebugName(reference4.getKey().toString());
+            ConstraintReference constraintReference4 = (Reference) this.mReferences.get(it.next());
+            if (constraintReference4 != this.mParent) {
+                ConstraintWidget constraintWidget = constraintReference4.getConstraintWidget();
+                constraintWidget.setDebugName(constraintReference4.getKey().toString());
                 constraintWidget.setParent(null);
-                if (reference4.getFacade() instanceof GuidelineReference) {
-                    reference4.apply();
+                if (constraintReference4.getFacade() instanceof GuidelineReference) {
+                    constraintReference4.apply();
                 }
                 constraintWidgetContainer.add(constraintWidget);
             } else {
-                reference4.setConstraintWidget(constraintWidgetContainer);
+                constraintReference4.setConstraintWidget(constraintWidgetContainer);
             }
         }
         Iterator<Object> it2 = this.mHelperReferences.keySet().iterator();
@@ -186,27 +113,27 @@ public class State {
         }
         Iterator<Object> it4 = this.mReferences.keySet().iterator();
         while (it4.hasNext()) {
-            Reference reference5 = this.mReferences.get(it4.next());
-            if (reference5 != this.mParent && (reference5.getFacade() instanceof HelperReference) && (helperWidget = (helperReference = (HelperReference) reference5.getFacade()).getHelperWidget()) != null) {
+            ConstraintReference constraintReference5 = (Reference) this.mReferences.get(it4.next());
+            if (constraintReference5 != this.mParent && (constraintReference5.getFacade() instanceof HelperReference) && (helperWidget = (helperReference = (HelperReference) constraintReference5.getFacade()).getHelperWidget()) != null) {
                 Iterator<Object> it5 = helperReference.mReferences.iterator();
                 while (it5.hasNext()) {
                     Object next = it5.next();
-                    Reference reference6 = this.mReferences.get(next);
-                    if (reference6 != null) {
-                        helperWidget.add(reference6.getConstraintWidget());
+                    Reference reference = this.mReferences.get(next);
+                    if (reference != null) {
+                        helperWidget.add(reference.getConstraintWidget());
                     } else if (next instanceof Reference) {
                         helperWidget.add(((Reference) next).getConstraintWidget());
                     } else {
                         System.out.println("couldn't find reference for " + next);
                     }
                 }
-                reference5.apply();
+                constraintReference5.apply();
             }
         }
         for (Object obj3 : this.mReferences.keySet()) {
-            Reference reference7 = this.mReferences.get(obj3);
-            reference7.apply();
-            ConstraintWidget constraintWidget2 = reference7.getConstraintWidget();
+            Reference reference2 = this.mReferences.get(obj3);
+            reference2.apply();
+            ConstraintWidget constraintWidget2 = reference2.getConstraintWidget();
             if (constraintWidget2 != null && obj3 != null) {
                 constraintWidget2.stringId = obj3.toString();
             }
@@ -220,19 +147,19 @@ public class State {
             barrierReference.setBarrierDirection(direction);
             constraints.setFacade(barrierReference);
         }
-        return (BarrierReference) constraints.getFacade();
+        return constraints.getFacade();
     }
 
     public AlignHorizontallyReference centerHorizontally(Object... objArr) {
-        AlignHorizontallyReference alignHorizontallyReference = (AlignHorizontallyReference) helper(null, Helper.ALIGN_HORIZONTALLY);
-        alignHorizontallyReference.add(objArr);
-        return alignHorizontallyReference;
+        AlignHorizontallyReference helper = helper(null, Helper.ALIGN_HORIZONTALLY);
+        helper.add(objArr);
+        return helper;
     }
 
     public AlignVerticallyReference centerVertically(Object... objArr) {
-        AlignVerticallyReference alignVerticallyReference = (AlignVerticallyReference) helper(null, Helper.ALIGN_VERTICALLY);
-        alignVerticallyReference.add(objArr);
-        return alignVerticallyReference;
+        AlignVerticallyReference helper = helper(null, Helper.ALIGN_VERTICALLY);
+        helper.add(objArr);
+        return helper;
     }
 
     public ConstraintReference constraints(Object obj) {
@@ -286,7 +213,7 @@ public class State {
             guidelineReference.setKey(obj);
             constraints.setFacade(guidelineReference);
         }
-        return (GuidelineReference) constraints.getFacade();
+        return constraints.getFacade();
     }
 
     public State height(Dimension dimension) {
@@ -294,13 +221,13 @@ public class State {
     }
 
     public HelperReference helper(Object obj, Helper helper) {
-        HelperReference horizontalChainReference;
+        BarrierReference horizontalChainReference;
         if (obj == null) {
             obj = createHelperKey();
         }
-        HelperReference helperReference = this.mHelperReferences.get(obj);
-        if (helperReference == null) {
-            int i = C08901.$SwitchMap$androidx$constraintlayout$core$state$State$Helper[helper.ordinal()];
+        BarrierReference barrierReference = (HelperReference) this.mHelperReferences.get(obj);
+        if (barrierReference == null) {
+            int i = 1.$SwitchMap$androidx$constraintlayout$core$state$State$Helper[helper.ordinal()];
             if (i == 1) {
                 horizontalChainReference = new HorizontalChainReference(this);
             } else if (i == 2) {
@@ -310,21 +237,21 @@ public class State {
             } else if (i == 4) {
                 horizontalChainReference = new AlignVerticallyReference(this);
             } else if (i != 5) {
-                helperReference = new HelperReference(this, helper);
-                helperReference.setKey(obj);
-                this.mHelperReferences.put(obj, helperReference);
+                barrierReference = new HelperReference(this, helper);
+                barrierReference.setKey(obj);
+                this.mHelperReferences.put(obj, barrierReference);
             } else {
                 horizontalChainReference = new BarrierReference(this);
             }
-            helperReference = horizontalChainReference;
-            helperReference.setKey(obj);
-            this.mHelperReferences.put(obj, helperReference);
+            barrierReference = horizontalChainReference;
+            barrierReference.setKey(obj);
+            this.mHelperReferences.put(obj, barrierReference);
         }
-        return helperReference;
+        return barrierReference;
     }
 
     public HorizontalChainReference horizontalChain() {
-        return (HorizontalChainReference) helper(null, Helper.HORIZONTAL_CHAIN);
+        return helper(null, Helper.HORIZONTAL_CHAIN);
     }
 
     public GuidelineReference horizontalGuideline(Object obj) {
@@ -393,14 +320,15 @@ public class State {
     }
 
     public HorizontalChainReference horizontalChain(Object... objArr) {
-        HorizontalChainReference horizontalChainReference = (HorizontalChainReference) helper(null, Helper.HORIZONTAL_CHAIN);
-        horizontalChainReference.add(objArr);
-        return horizontalChainReference;
+        HorizontalChainReference helper = helper(null, Helper.HORIZONTAL_CHAIN);
+        helper.add(objArr);
+        return helper;
     }
 
+    /* JADX WARN: Type inference failed for: r0v2, types: [androidx.constraintlayout.core.state.HelperReference, androidx.constraintlayout.core.state.helpers.VerticalChainReference] */
     public VerticalChainReference verticalChain(Object... objArr) {
-        VerticalChainReference verticalChainReference = (VerticalChainReference) helper(null, Helper.VERTICAL_CHAIN);
-        verticalChainReference.add(objArr);
-        return verticalChainReference;
+        ?? r0 = (VerticalChainReference) helper(null, Helper.VERTICAL_CHAIN);
+        r0.add(objArr);
+        return r0;
     }
 }

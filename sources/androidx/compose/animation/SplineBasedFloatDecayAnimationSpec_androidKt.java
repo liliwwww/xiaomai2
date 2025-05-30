@@ -3,11 +3,11 @@ package androidx.compose.animation;
 import android.view.ViewConfiguration;
 import androidx.compose.animation.core.DecayAnimationSpec;
 import androidx.compose.animation.core.DecayAnimationSpecKt;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.unit.Density;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.unit.Density;
 import kotlin.Deprecated;
 import kotlin.DeprecationLevel;
 import kotlin.jvm.JvmName;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SplineBasedFloatDecayAnimationSpec_androidKt {
     private static final float platformFlingScrollFriction = ViewConfiguration.getScrollFriction();
 

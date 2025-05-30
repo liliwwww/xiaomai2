@@ -5,10 +5,10 @@ import android.taobao.windvane.config.GlobalConfig;
 import android.taobao.windvane.connect.api.ApiConstants;
 import android.taobao.windvane.connect.api.ApiRequest;
 import android.taobao.windvane.connect.api.IApiAdapter;
-import android.taobao.windvane.extra.p002uc.WVUCWebView;
+import android.taobao.windvane.extra.uc.WVUCWebView;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class CdnApiAdapter implements IApiAdapter {
     private ApiRequest request;
 

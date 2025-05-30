@@ -7,7 +7,6 @@ import kotlin.PublishedApi;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
-import kotlin.coroutines.EmptyCoroutineContext;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
@@ -21,7 +20,7 @@ import tb.bb2;
 import tb.i80;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class EffectsKt {
 
     @NotNull
@@ -111,12 +110,7 @@ public final class EffectsKt {
     public static final CoroutineScope rememberCoroutineScope(@Nullable Function0<? extends CoroutineContext> function0, @Nullable Composer composer, int i, int i2) {
         composer.startReplaceableGroup(773894976);
         if ((i2 & 1) != 0) {
-            function0 = new Function0<EmptyCoroutineContext>() { // from class: androidx.compose.runtime.EffectsKt$rememberCoroutineScope$1
-                @NotNull
-                public final EmptyCoroutineContext invoke() {
-                    return EmptyCoroutineContext.INSTANCE;
-                }
-            };
+            function0 = rememberCoroutineScope.1.INSTANCE;
         }
         Object rememberedValue = composer.rememberedValue();
         if (rememberedValue == Composer.Companion.getEmpty()) {

@@ -18,27 +18,9 @@ import java.util.List;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WindowCallbackWrapper implements Window.Callback {
     final Window.Callback mWrapped;
-
-    /* compiled from: Taobao */
-    @RequiresApi(23)
-    /* loaded from: classes.dex */
-    static class Api23Impl {
-        private Api23Impl() {
-        }
-
-        @DoNotInline
-        static boolean onSearchRequested(Window.Callback callback, SearchEvent searchEvent) {
-            return callback.onSearchRequested(searchEvent);
-        }
-
-        @DoNotInline
-        static android.view.ActionMode onWindowStartingActionMode(Window.Callback callback, ActionMode.Callback callback2, int i) {
-            return callback.onWindowStartingActionMode(callback2, i);
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(24)
@@ -106,12 +88,12 @@ public class WindowCallbackWrapper implements Window.Callback {
     }
 
     @Override // android.view.Window.Callback
-    public void onActionModeFinished(android.view.ActionMode actionMode) {
+    public void onActionModeFinished(ActionMode actionMode) {
         this.mWrapped.onActionModeFinished(actionMode);
     }
 
     @Override // android.view.Window.Callback
-    public void onActionModeStarted(android.view.ActionMode actionMode) {
+    public void onActionModeStarted(ActionMode actionMode) {
         this.mWrapped.onActionModeStarted(actionMode);
     }
 
@@ -189,7 +171,7 @@ public class WindowCallbackWrapper implements Window.Callback {
     }
 
     @Override // android.view.Window.Callback
-    public android.view.ActionMode onWindowStartingActionMode(ActionMode.Callback callback) {
+    public ActionMode onWindowStartingActionMode(ActionMode.Callback callback) {
         return this.mWrapped.onWindowStartingActionMode(callback);
     }
 
@@ -200,7 +182,7 @@ public class WindowCallbackWrapper implements Window.Callback {
 
     @Override // android.view.Window.Callback
     @RequiresApi(23)
-    public android.view.ActionMode onWindowStartingActionMode(ActionMode.Callback callback, int i) {
+    public ActionMode onWindowStartingActionMode(ActionMode.Callback callback, int i) {
         return Api23Impl.onWindowStartingActionMode(this.mWrapped, callback, i);
     }
 }

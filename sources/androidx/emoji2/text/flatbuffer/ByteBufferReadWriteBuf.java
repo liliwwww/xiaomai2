@@ -4,7 +4,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ByteBufferReadWriteBuf implements ReadWriteBuf {
     private final ByteBuffer buffer;
 
@@ -13,52 +13,43 @@ public class ByteBufferReadWriteBuf implements ReadWriteBuf {
         byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     }
 
-    @Override // androidx.emoji2.text.flatbuffer.ReadBuf
     public byte[] data() {
         return this.buffer.array();
     }
 
-    @Override // androidx.emoji2.text.flatbuffer.ReadBuf
     public byte get(int i) {
         return this.buffer.get(i);
     }
 
-    @Override // androidx.emoji2.text.flatbuffer.ReadBuf
     public boolean getBoolean(int i) {
         return get(i) != 0;
     }
 
-    @Override // androidx.emoji2.text.flatbuffer.ReadBuf
     public double getDouble(int i) {
         return this.buffer.getDouble(i);
     }
 
-    @Override // androidx.emoji2.text.flatbuffer.ReadBuf
     public float getFloat(int i) {
         return this.buffer.getFloat(i);
     }
 
-    @Override // androidx.emoji2.text.flatbuffer.ReadBuf
     public int getInt(int i) {
         return this.buffer.getInt(i);
     }
 
-    @Override // androidx.emoji2.text.flatbuffer.ReadBuf
     public long getLong(int i) {
         return this.buffer.getLong(i);
     }
 
-    @Override // androidx.emoji2.text.flatbuffer.ReadBuf
     public short getShort(int i) {
         return this.buffer.getShort(i);
     }
 
-    @Override // androidx.emoji2.text.flatbuffer.ReadBuf
     public String getString(int i, int i2) {
         return Utf8Safe.decodeUtf8Buffer(this.buffer, i, i2);
     }
 
-    @Override // androidx.emoji2.text.flatbuffer.ReadWriteBuf, androidx.emoji2.text.flatbuffer.ReadBuf
+    @Override // androidx.emoji2.text.flatbuffer.ReadWriteBuf
     public int limit() {
         return this.buffer.limit();
     }

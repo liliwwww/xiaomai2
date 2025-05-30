@@ -1,7 +1,7 @@
 package androidx.window.java.layout;
 
 import androidx.core.util.Consumer;
-import androidx.exifinterface.media.ExifInterface;
+import androidx.window.java.layout.WindowInfoTrackerCallbackAdapter$addListener$1$1$invokeSuspend$;
 import kotlin.Metadata;
 import kotlin.ResultKt;
 import kotlin.Unit;
@@ -12,14 +12,13 @@ import kotlin.coroutines.jvm.internal.SuspendLambda;
 import kotlin.jvm.functions.Function2;
 import kotlinx.coroutines.CoroutineScope;
 import kotlinx.coroutines.flow.Flow;
-import kotlinx.coroutines.flow.FlowCollector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-@Metadata(bv = {1, 0, 3}, d1 = {"\u0000\f\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010\u0002\n\u0000\u0010\u0003\u001a\u00020\u0002\"\u0004\b\u0000\u0010\u0000*\u00020\u0001H\u008a@"}, d2 = {ExifInterface.GPS_DIRECTION_TRUE, "Lkotlinx/coroutines/CoroutineScope;", "", "<anonymous>"}, k = 3, mv = {1, 5, 1})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000\f\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010\u0002\n\u0000\u0010\u0003\u001a\u00020\u0002\"\u0004\b\u0000\u0010\u0000*\u00020\u0001H\u008a@"}, d2 = {"T", "Lkotlinx/coroutines/CoroutineScope;", "", "<anonymous>"}, k = 3, mv = {1, 5, 1})
 @DebugMetadata(c = "androidx.window.java.layout.WindowInfoTrackerCallbackAdapter$addListener$1$1", f = "WindowInfoTrackerCallbackAdapter.kt", i = {}, l = {96}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class WindowInfoTrackerCallbackAdapter$addListener$1$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ Consumer<T> $consumer;
     final /* synthetic */ Flow<T> $flow;
@@ -50,16 +49,9 @@ final class WindowInfoTrackerCallbackAdapter$addListener$1$1 extends SuspendLamb
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
             Flow<T> flow = this.$flow;
-            final Consumer<T> consumer = this.$consumer;
-            FlowCollector<T> flowCollector = new FlowCollector<T>() { // from class: androidx.window.java.layout.WindowInfoTrackerCallbackAdapter$addListener$1$1$invokeSuspend$$inlined$collect$1
-                @Nullable
-                public Object emit(T t, @NotNull Continuation<? super Unit> continuation) {
-                    Consumer.this.accept(t);
-                    return Unit.INSTANCE;
-                }
-            };
+            WindowInfoTrackerCallbackAdapter$addListener$1$1$invokeSuspend$.inlined.collect.1 r3 = new WindowInfoTrackerCallbackAdapter$addListener$1$1$invokeSuspend$.inlined.collect.1(this.$consumer);
             this.label = 1;
-            if (flow.collect(flowCollector, this) == coroutine_suspended) {
+            if (flow.collect(r3, this) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

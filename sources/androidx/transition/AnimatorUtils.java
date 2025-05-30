@@ -7,17 +7,8 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class AnimatorUtils {
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    interface AnimatorPauseListenerCompat {
-        void onAnimationPause(Animator animator);
-
-        void onAnimationResume(Animator animator);
-    }
-
     private AnimatorUtils() {
     }
 
@@ -36,9 +27,9 @@ class AnimatorUtils {
         if (listeners != null) {
             int size = listeners.size();
             for (int i = 0; i < size; i++) {
-                Animator.AnimatorListener animatorListener = listeners.get(i);
-                if (animatorListener instanceof AnimatorPauseListenerCompat) {
-                    ((AnimatorPauseListenerCompat) animatorListener).onAnimationPause(animator);
+                AnimatorPauseListenerCompat animatorPauseListenerCompat = (Animator.AnimatorListener) listeners.get(i);
+                if (animatorPauseListenerCompat instanceof AnimatorPauseListenerCompat) {
+                    animatorPauseListenerCompat.onAnimationPause(animator);
                 }
             }
         }
@@ -53,9 +44,9 @@ class AnimatorUtils {
         if (listeners != null) {
             int size = listeners.size();
             for (int i = 0; i < size; i++) {
-                Animator.AnimatorListener animatorListener = listeners.get(i);
-                if (animatorListener instanceof AnimatorPauseListenerCompat) {
-                    ((AnimatorPauseListenerCompat) animatorListener).onAnimationResume(animator);
+                AnimatorPauseListenerCompat animatorPauseListenerCompat = (Animator.AnimatorListener) listeners.get(i);
+                if (animatorPauseListenerCompat instanceof AnimatorPauseListenerCompat) {
+                    animatorPauseListenerCompat.onAnimationResume(animator);
                 }
             }
         }

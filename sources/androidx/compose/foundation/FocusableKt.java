@@ -1,20 +1,22 @@
 package androidx.compose.foundation;
 
+import androidx.compose.foundation.FocusableKt$focusable$;
+import androidx.compose.foundation.FocusableKt$focusableInNonTouchMode$;
+import androidx.compose.foundation.FocusableKt$special$;
 import androidx.compose.foundation.interaction.MutableInteractionSource;
-import androidx.compose.p004ui.ComposedModifierKt;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.focus.FocusModifierKt;
-import androidx.compose.p004ui.focus.FocusProperties;
-import androidx.compose.p004ui.focus.FocusPropertiesKt;
-import androidx.compose.p004ui.input.InputMode;
-import androidx.compose.p004ui.input.InputModeManager;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.platform.InspectableModifier;
-import androidx.compose.p004ui.platform.InspectableValueKt;
-import androidx.compose.p004ui.platform.InspectorInfo;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
+import androidx.compose.ui.ComposedModifierKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.focus.FocusModifierKt;
+import androidx.compose.ui.focus.FocusProperties;
+import androidx.compose.ui.focus.FocusPropertiesKt;
+import androidx.compose.ui.input.InputMode;
+import androidx.compose.ui.input.InputModeManager;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.platform.InspectableModifier;
+import androidx.compose.ui.platform.InspectableValueKt;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function3;
@@ -23,64 +25,27 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FocusableKt {
 
     @NotNull
     private static final InspectableModifier focusGroupInspectorInfo;
 
     static {
-        focusGroupInspectorInfo = new InspectableModifier(InspectableValueKt.isDebugInspectorInfoEnabled() ? new Function1<InspectorInfo, Unit>() { // from class: androidx.compose.foundation.FocusableKt$special$$inlined$debugInspectorInfo$1
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((InspectorInfo) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull InspectorInfo inspectorInfo) {
-                Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
-                inspectorInfo.setName("focusGroup");
-            }
-        } : InspectableValueKt.getNoInspectorInfo());
+        focusGroupInspectorInfo = new InspectableModifier(InspectableValueKt.isDebugInspectorInfoEnabled() ? new FocusableKt$special$.inlined.debugInspectorInfo.1() : InspectableValueKt.getNoInspectorInfo());
     }
 
     @ExperimentalFoundationApi
     @NotNull
     public static final Modifier focusGroup(@NotNull Modifier modifier) {
         Intrinsics.checkNotNullParameter(modifier, "<this>");
-        return FocusModifierKt.focusTarget(FocusPropertiesKt.focusProperties(modifier.then(focusGroupInspectorInfo), new Function1<FocusProperties, Unit>() { // from class: androidx.compose.foundation.FocusableKt$focusGroup$1
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((FocusProperties) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull FocusProperties focusProperties) {
-                Intrinsics.checkNotNullParameter(focusProperties, "$this$focusProperties");
-                focusProperties.setCanFocus(false);
-            }
-        }));
+        return FocusModifierKt.focusTarget(FocusPropertiesKt.focusProperties(modifier.then(focusGroupInspectorInfo), focusGroup.1.INSTANCE));
     }
 
     @NotNull
-    public static final Modifier focusable(@NotNull Modifier modifier, final boolean z, @Nullable final MutableInteractionSource mutableInteractionSource) {
+    public static final Modifier focusable(@NotNull Modifier modifier, boolean z, @Nullable MutableInteractionSource mutableInteractionSource) {
         Intrinsics.checkNotNullParameter(modifier, "<this>");
-        return ComposedModifierKt.composed(modifier, InspectableValueKt.isDebugInspectorInfoEnabled() ? new Function1<InspectorInfo, Unit>() { // from class: androidx.compose.foundation.FocusableKt$focusable$$inlined$debugInspectorInfo$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((InspectorInfo) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull InspectorInfo inspectorInfo) {
-                Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
-                inspectorInfo.setName("focusable");
-                inspectorInfo.getProperties().set("enabled", Boolean.valueOf(z));
-                inspectorInfo.getProperties().set("interactionSource", mutableInteractionSource);
-            }
-        } : InspectableValueKt.getNoInspectorInfo(), new FocusableKt$focusable$2(mutableInteractionSource, z));
+        return ComposedModifierKt.composed(modifier, InspectableValueKt.isDebugInspectorInfoEnabled() ? new FocusableKt$focusable$.inlined.debugInspectorInfo.1(z, mutableInteractionSource) : InspectableValueKt.getNoInspectorInfo(), new FocusableKt$focusable$2(mutableInteractionSource, z));
     }
 
     public static /* synthetic */ Modifier focusable$default(Modifier modifier, boolean z, MutableInteractionSource mutableInteractionSource, int i, Object obj) {
@@ -96,24 +61,7 @@ public final class FocusableKt {
     @NotNull
     public static final Modifier focusableInNonTouchMode(@NotNull Modifier modifier, final boolean z, @Nullable final MutableInteractionSource mutableInteractionSource) {
         Intrinsics.checkNotNullParameter(modifier, "<this>");
-        return ComposedModifierKt.composed(modifier, InspectableValueKt.isDebugInspectorInfoEnabled() ? new Function1<InspectorInfo, Unit>() { // from class: androidx.compose.foundation.FocusableKt$focusableInNonTouchMode$$inlined$debugInspectorInfo$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((InspectorInfo) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull InspectorInfo inspectorInfo) {
-                Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
-                inspectorInfo.setName("focusableInNonTouchMode");
-                inspectorInfo.getProperties().set("enabled", Boolean.valueOf(z));
-                inspectorInfo.getProperties().set("interactionSource", mutableInteractionSource);
-            }
-        } : InspectableValueKt.getNoInspectorInfo(), new Function3<Modifier, Composer, Integer, Modifier>() { // from class: androidx.compose.foundation.FocusableKt$focusableInNonTouchMode$2
+        return ComposedModifierKt.composed(modifier, InspectableValueKt.isDebugInspectorInfoEnabled() ? new FocusableKt$focusableInNonTouchMode$.inlined.debugInspectorInfo.1(z, mutableInteractionSource) : InspectableValueKt.getNoInspectorInfo(), new Function3<Modifier, Composer, Integer, Modifier>() { // from class: androidx.compose.foundation.FocusableKt$focusableInNonTouchMode$2
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             {
                 super(3);
@@ -144,7 +92,7 @@ public final class FocusableKt {
 
                     public final void invoke(@NotNull FocusProperties focusProperties) {
                         Intrinsics.checkNotNullParameter(focusProperties, "$this$focusProperties");
-                        focusProperties.setCanFocus(!InputMode.m3356equalsimpl0(InputModeManager.this.mo3362getInputModeaOaMEAU(), InputMode.Companion.m3361getTouchaOaMEAU()));
+                        focusProperties.setCanFocus(!InputMode.equals-impl0(InputModeManager.this.m1377getInputModeaOaMEAU(), InputMode.Companion.m1376getTouchaOaMEAU()));
                     }
                 }), z, mutableInteractionSource);
                 if (ComposerKt.isTraceInProgress()) {

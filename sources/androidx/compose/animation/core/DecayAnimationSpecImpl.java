@@ -4,7 +4,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DecayAnimationSpecImpl<T> implements DecayAnimationSpec<T> {
 
     @NotNull
@@ -15,7 +15,6 @@ final class DecayAnimationSpecImpl<T> implements DecayAnimationSpec<T> {
         this.floatDecaySpec = floatDecayAnimationSpec;
     }
 
-    @Override // androidx.compose.animation.core.DecayAnimationSpec
     @NotNull
     public <V extends AnimationVector> VectorizedDecayAnimationSpec<V> vectorize(@NotNull TwoWayConverter<T, V> twoWayConverter) {
         Intrinsics.checkNotNullParameter(twoWayConverter, "typeConverter");

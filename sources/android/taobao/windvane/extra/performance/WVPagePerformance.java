@@ -3,7 +3,7 @@ package android.taobao.windvane.extra.performance;
 import android.taobao.windvane.utils.TimeUtils;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVPagePerformance {
     private long h5_PP_FP;
     private long h5_PP_FSP;

@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.snapping.SnapFlingBehavior$performFling$4", f = "SnapFlingBehavior.kt", i = {}, l = {119}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SnapFlingBehavior$performFling$4 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super AnimationResult<Float, AnimationVector1D>>, Object> {
     final /* synthetic */ float $initialVelocity;
     final /* synthetic */ Function1<Float, Unit> $onSettlingDistanceUpdated;
@@ -55,7 +55,7 @@ final class SnapFlingBehavior$performFling$4 extends SuspendLambda implements Fu
             float f = this.$initialVelocity;
             Function1<Float, Unit> function1 = this.$onSettlingDistanceUpdated;
             this.label = 1;
-            obj = snapFlingBehavior.fling(scrollScope, f, function1, this);
+            obj = SnapFlingBehavior.access$fling(snapFlingBehavior, scrollScope, f, function1, this);
             if (obj == coroutine_suspended) {
                 return coroutine_suspended;
             }

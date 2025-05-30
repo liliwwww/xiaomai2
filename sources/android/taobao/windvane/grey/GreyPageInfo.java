@@ -1,10 +1,9 @@
 package android.taobao.windvane.grey;
 
-import android.taobao.windvane.connect.api.ApiConstants;
 import android.taobao.windvane.util.TaoLog;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class GreyPageInfo {
     public static final String KEY_AIR_TAG = "wxAirTag";
     public static final String KEY_CONTENT_VERSION = "x-air-content-version";
@@ -19,7 +18,7 @@ public class GreyPageInfo {
         this.URL = str;
         this.envParam = str2;
         this.isGreyPage = str3;
-        TaoLog.m27v(TAG, "GreyPageInfo() called with: URL = [" + str + "], envParam = [" + str2 + "], isGreyPage = [" + str3 + "]");
+        TaoLog.v(TAG, "GreyPageInfo() called with: URL = [" + str + "], envParam = [" + str2 + "], isGreyPage = [" + str3 + "]");
     }
 
     public String generateOutputString() {
@@ -37,14 +36,14 @@ public class GreyPageInfo {
         String str2 = this.envParam;
         if (str2 != null && !str2.isEmpty()) {
             if (z) {
-                sb.append(ApiConstants.SPLIT_STR);
+                sb.append("&");
             }
             sb.append(KEY_GREY);
             sb.append("=");
             sb.append(this.isGreyPage);
         }
         String sb2 = sb.toString();
-        TaoLog.m27v(TAG, "generateOutputString: " + sb2);
+        TaoLog.v(TAG, "generateOutputString: " + sb2);
         return sb2;
     }
 

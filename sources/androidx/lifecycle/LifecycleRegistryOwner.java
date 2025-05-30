@@ -4,13 +4,12 @@ import androidx.annotation.NonNull;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface LifecycleRegistryOwner extends LifecycleOwner {
-    @Override // androidx.lifecycle.LifecycleOwner
     @NonNull
     /* bridge */ /* synthetic */ Lifecycle getLifecycle();
 
-    @Override // androidx.lifecycle.LifecycleOwner
     @NonNull
-    LifecycleRegistry getLifecycle();
+    /* renamed from: getLifecycle, reason: collision with other method in class */
+    LifecycleRegistry m2807getLifecycle();
 }

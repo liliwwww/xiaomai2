@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class AccessibilityWindowInfoCompat {
     public static final int TYPE_ACCESSIBILITY_OVERLAY = 4;
     public static final int TYPE_APPLICATION = 1;
@@ -95,47 +95,6 @@ public class AccessibilityWindowInfoCompat {
         @DoNotInline
         static AccessibilityWindowInfo obtain(AccessibilityWindowInfo accessibilityWindowInfo) {
             return AccessibilityWindowInfo.obtain(accessibilityWindowInfo);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(24)
-    /* loaded from: classes.dex */
-    private static class Api24Impl {
-        private Api24Impl() {
-        }
-
-        @DoNotInline
-        static AccessibilityNodeInfo getAnchor(AccessibilityWindowInfo accessibilityWindowInfo) {
-            return accessibilityWindowInfo.getAnchor();
-        }
-
-        @DoNotInline
-        static CharSequence getTitle(AccessibilityWindowInfo accessibilityWindowInfo) {
-            return accessibilityWindowInfo.getTitle();
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(33)
-    /* loaded from: classes.dex */
-    private static class Api33Impl {
-        private Api33Impl() {
-        }
-
-        @DoNotInline
-        static int getDisplayId(AccessibilityWindowInfo accessibilityWindowInfo) {
-            return accessibilityWindowInfo.getDisplayId();
-        }
-
-        @DoNotInline
-        static void getRegionInScreen(AccessibilityWindowInfo accessibilityWindowInfo, Region region) {
-            accessibilityWindowInfo.getRegionInScreen(region);
-        }
-
-        @DoNotInline
-        static boolean isInPictureInPictureMode(AccessibilityWindowInfo accessibilityWindowInfo) {
-            return accessibilityWindowInfo.isInPictureInPictureMode();
         }
     }
 

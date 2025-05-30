@@ -10,46 +10,44 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class CustomSupport {
     private static final String TAG = "CustomSupport";
 
     /* compiled from: Taobao */
-    /* renamed from: androidx.constraintlayout.motion.utils.CustomSupport$1 */
-    static /* synthetic */ class C09011 {
-
-        /* renamed from: $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType */
-        static final /* synthetic */ int[] f273x66adad53;
+    /* renamed from: androidx.constraintlayout.motion.utils.CustomSupport$1, reason: invalid class name */
+    static /* synthetic */ class AnonymousClass1 {
+        static final /* synthetic */ int[] $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType;
 
         static {
             int[] iArr = new int[ConstraintAttribute.AttributeType.values().length];
-            f273x66adad53 = iArr;
+            $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType = iArr;
             try {
                 iArr[ConstraintAttribute.AttributeType.INT_TYPE.ordinal()] = 1;
             } catch (NoSuchFieldError unused) {
             }
             try {
-                f273x66adad53[ConstraintAttribute.AttributeType.FLOAT_TYPE.ordinal()] = 2;
+                $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType[ConstraintAttribute.AttributeType.FLOAT_TYPE.ordinal()] = 2;
             } catch (NoSuchFieldError unused2) {
             }
             try {
-                f273x66adad53[ConstraintAttribute.AttributeType.COLOR_DRAWABLE_TYPE.ordinal()] = 3;
+                $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType[ConstraintAttribute.AttributeType.COLOR_DRAWABLE_TYPE.ordinal()] = 3;
             } catch (NoSuchFieldError unused3) {
             }
             try {
-                f273x66adad53[ConstraintAttribute.AttributeType.COLOR_TYPE.ordinal()] = 4;
+                $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType[ConstraintAttribute.AttributeType.COLOR_TYPE.ordinal()] = 4;
             } catch (NoSuchFieldError unused4) {
             }
             try {
-                f273x66adad53[ConstraintAttribute.AttributeType.STRING_TYPE.ordinal()] = 5;
+                $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType[ConstraintAttribute.AttributeType.STRING_TYPE.ordinal()] = 5;
             } catch (NoSuchFieldError unused5) {
             }
             try {
-                f273x66adad53[ConstraintAttribute.AttributeType.BOOLEAN_TYPE.ordinal()] = 6;
+                $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType[ConstraintAttribute.AttributeType.BOOLEAN_TYPE.ordinal()] = 6;
             } catch (NoSuchFieldError unused6) {
             }
             try {
-                f273x66adad53[ConstraintAttribute.AttributeType.DIMENSION_TYPE.ordinal()] = 7;
+                $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType[ConstraintAttribute.AttributeType.DIMENSION_TYPE.ordinal()] = 7;
             } catch (NoSuchFieldError unused7) {
             }
         }
@@ -65,7 +63,7 @@ public class CustomSupport {
         String str = "set" + constraintAttribute.getName();
         try {
             boolean z = true;
-            switch (C09011.f273x66adad53[constraintAttribute.getType().ordinal()]) {
+            switch (AnonymousClass1.$SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType[constraintAttribute.getType().ordinal()]) {
                 case 1:
                     cls.getMethod(str, Integer.TYPE).invoke(view, Integer.valueOf((int) fArr[0]));
                     return;

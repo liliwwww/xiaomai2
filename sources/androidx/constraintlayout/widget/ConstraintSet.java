@@ -16,16 +16,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.constraintlayout.core.motion.utils.Easing;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
+import androidx.constraintlayout.core.motion.utils.TypedValues$Custom;
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import androidx.constraintlayout.core.widgets.HelperWidget;
 import androidx.constraintlayout.motion.widget.Debug;
 import androidx.constraintlayout.motion.widget.MotionLayout;
 import androidx.constraintlayout.motion.widget.MotionScene;
-import androidx.constraintlayout.widget.C0923R;
 import androidx.constraintlayout.widget.ConstraintAttribute;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Constraints;
+import androidx.constraintlayout.widget.R;
 import androidx.core.os.EnvironmentCompat;
 import androidx.exifinterface.media.ExifInterface;
 import java.io.IOException;
@@ -42,7 +41,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ConstraintSet {
     private static final int ALPHA = 43;
     private static final int ANIMATE_CIRCLE_ANGLE_TO = 82;
@@ -209,69 +208,69 @@ public class ConstraintSet {
         public HashMap<String, ConstraintAttribute> mCustomConstraints = new HashMap<>();
 
         /* JADX INFO: Access modifiers changed from: private */
-        public void fillFrom(int i, ConstraintLayout.LayoutParams layoutParams) {
+        public void fillFrom(int i, ConstraintLayout$LayoutParams constraintLayout$LayoutParams) {
             this.mViewId = i;
             Layout layout = this.layout;
-            layout.leftToLeft = layoutParams.leftToLeft;
-            layout.leftToRight = layoutParams.leftToRight;
-            layout.rightToLeft = layoutParams.rightToLeft;
-            layout.rightToRight = layoutParams.rightToRight;
-            layout.topToTop = layoutParams.topToTop;
-            layout.topToBottom = layoutParams.topToBottom;
-            layout.bottomToTop = layoutParams.bottomToTop;
-            layout.bottomToBottom = layoutParams.bottomToBottom;
-            layout.baselineToBaseline = layoutParams.baselineToBaseline;
-            layout.baselineToTop = layoutParams.baselineToTop;
-            layout.baselineToBottom = layoutParams.baselineToBottom;
-            layout.startToEnd = layoutParams.startToEnd;
-            layout.startToStart = layoutParams.startToStart;
-            layout.endToStart = layoutParams.endToStart;
-            layout.endToEnd = layoutParams.endToEnd;
-            layout.horizontalBias = layoutParams.horizontalBias;
-            layout.verticalBias = layoutParams.verticalBias;
-            layout.dimensionRatio = layoutParams.dimensionRatio;
-            layout.circleConstraint = layoutParams.circleConstraint;
-            layout.circleRadius = layoutParams.circleRadius;
-            layout.circleAngle = layoutParams.circleAngle;
-            layout.editorAbsoluteX = layoutParams.editorAbsoluteX;
-            layout.editorAbsoluteY = layoutParams.editorAbsoluteY;
-            layout.orientation = layoutParams.orientation;
-            layout.guidePercent = layoutParams.guidePercent;
-            layout.guideBegin = layoutParams.guideBegin;
-            layout.guideEnd = layoutParams.guideEnd;
-            layout.mWidth = ((ViewGroup.MarginLayoutParams) layoutParams).width;
-            layout.mHeight = ((ViewGroup.MarginLayoutParams) layoutParams).height;
-            layout.leftMargin = ((ViewGroup.MarginLayoutParams) layoutParams).leftMargin;
-            layout.rightMargin = ((ViewGroup.MarginLayoutParams) layoutParams).rightMargin;
-            layout.topMargin = ((ViewGroup.MarginLayoutParams) layoutParams).topMargin;
-            layout.bottomMargin = ((ViewGroup.MarginLayoutParams) layoutParams).bottomMargin;
-            layout.baselineMargin = layoutParams.baselineMargin;
-            layout.verticalWeight = layoutParams.verticalWeight;
-            layout.horizontalWeight = layoutParams.horizontalWeight;
-            layout.verticalChainStyle = layoutParams.verticalChainStyle;
-            layout.horizontalChainStyle = layoutParams.horizontalChainStyle;
-            layout.constrainedWidth = layoutParams.constrainedWidth;
-            layout.constrainedHeight = layoutParams.constrainedHeight;
-            layout.widthDefault = layoutParams.matchConstraintDefaultWidth;
-            layout.heightDefault = layoutParams.matchConstraintDefaultHeight;
-            layout.widthMax = layoutParams.matchConstraintMaxWidth;
-            layout.heightMax = layoutParams.matchConstraintMaxHeight;
-            layout.widthMin = layoutParams.matchConstraintMinWidth;
-            layout.heightMin = layoutParams.matchConstraintMinHeight;
-            layout.widthPercent = layoutParams.matchConstraintPercentWidth;
-            layout.heightPercent = layoutParams.matchConstraintPercentHeight;
-            layout.mConstraintTag = layoutParams.constraintTag;
-            layout.goneTopMargin = layoutParams.goneTopMargin;
-            layout.goneBottomMargin = layoutParams.goneBottomMargin;
-            layout.goneLeftMargin = layoutParams.goneLeftMargin;
-            layout.goneRightMargin = layoutParams.goneRightMargin;
-            layout.goneStartMargin = layoutParams.goneStartMargin;
-            layout.goneEndMargin = layoutParams.goneEndMargin;
-            layout.goneBaselineMargin = layoutParams.goneBaselineMargin;
-            layout.mWrapBehavior = layoutParams.wrapBehaviorInParent;
+            layout.leftToLeft = constraintLayout$LayoutParams.leftToLeft;
+            layout.leftToRight = constraintLayout$LayoutParams.leftToRight;
+            layout.rightToLeft = constraintLayout$LayoutParams.rightToLeft;
+            layout.rightToRight = constraintLayout$LayoutParams.rightToRight;
+            layout.topToTop = constraintLayout$LayoutParams.topToTop;
+            layout.topToBottom = constraintLayout$LayoutParams.topToBottom;
+            layout.bottomToTop = constraintLayout$LayoutParams.bottomToTop;
+            layout.bottomToBottom = constraintLayout$LayoutParams.bottomToBottom;
+            layout.baselineToBaseline = constraintLayout$LayoutParams.baselineToBaseline;
+            layout.baselineToTop = constraintLayout$LayoutParams.baselineToTop;
+            layout.baselineToBottom = constraintLayout$LayoutParams.baselineToBottom;
+            layout.startToEnd = constraintLayout$LayoutParams.startToEnd;
+            layout.startToStart = constraintLayout$LayoutParams.startToStart;
+            layout.endToStart = constraintLayout$LayoutParams.endToStart;
+            layout.endToEnd = constraintLayout$LayoutParams.endToEnd;
+            layout.horizontalBias = constraintLayout$LayoutParams.horizontalBias;
+            layout.verticalBias = constraintLayout$LayoutParams.verticalBias;
+            layout.dimensionRatio = constraintLayout$LayoutParams.dimensionRatio;
+            layout.circleConstraint = constraintLayout$LayoutParams.circleConstraint;
+            layout.circleRadius = constraintLayout$LayoutParams.circleRadius;
+            layout.circleAngle = constraintLayout$LayoutParams.circleAngle;
+            layout.editorAbsoluteX = constraintLayout$LayoutParams.editorAbsoluteX;
+            layout.editorAbsoluteY = constraintLayout$LayoutParams.editorAbsoluteY;
+            layout.orientation = constraintLayout$LayoutParams.orientation;
+            layout.guidePercent = constraintLayout$LayoutParams.guidePercent;
+            layout.guideBegin = constraintLayout$LayoutParams.guideBegin;
+            layout.guideEnd = constraintLayout$LayoutParams.guideEnd;
+            layout.mWidth = ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).width;
+            layout.mHeight = ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).height;
+            layout.leftMargin = ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).leftMargin;
+            layout.rightMargin = ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).rightMargin;
+            layout.topMargin = ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).topMargin;
+            layout.bottomMargin = ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).bottomMargin;
+            layout.baselineMargin = constraintLayout$LayoutParams.baselineMargin;
+            layout.verticalWeight = constraintLayout$LayoutParams.verticalWeight;
+            layout.horizontalWeight = constraintLayout$LayoutParams.horizontalWeight;
+            layout.verticalChainStyle = constraintLayout$LayoutParams.verticalChainStyle;
+            layout.horizontalChainStyle = constraintLayout$LayoutParams.horizontalChainStyle;
+            layout.constrainedWidth = constraintLayout$LayoutParams.constrainedWidth;
+            layout.constrainedHeight = constraintLayout$LayoutParams.constrainedHeight;
+            layout.widthDefault = constraintLayout$LayoutParams.matchConstraintDefaultWidth;
+            layout.heightDefault = constraintLayout$LayoutParams.matchConstraintDefaultHeight;
+            layout.widthMax = constraintLayout$LayoutParams.matchConstraintMaxWidth;
+            layout.heightMax = constraintLayout$LayoutParams.matchConstraintMaxHeight;
+            layout.widthMin = constraintLayout$LayoutParams.matchConstraintMinWidth;
+            layout.heightMin = constraintLayout$LayoutParams.matchConstraintMinHeight;
+            layout.widthPercent = constraintLayout$LayoutParams.matchConstraintPercentWidth;
+            layout.heightPercent = constraintLayout$LayoutParams.matchConstraintPercentHeight;
+            layout.mConstraintTag = constraintLayout$LayoutParams.constraintTag;
+            layout.goneTopMargin = constraintLayout$LayoutParams.goneTopMargin;
+            layout.goneBottomMargin = constraintLayout$LayoutParams.goneBottomMargin;
+            layout.goneLeftMargin = constraintLayout$LayoutParams.goneLeftMargin;
+            layout.goneRightMargin = constraintLayout$LayoutParams.goneRightMargin;
+            layout.goneStartMargin = constraintLayout$LayoutParams.goneStartMargin;
+            layout.goneEndMargin = constraintLayout$LayoutParams.goneEndMargin;
+            layout.goneBaselineMargin = constraintLayout$LayoutParams.goneBaselineMargin;
+            layout.mWrapBehavior = constraintLayout$LayoutParams.wrapBehaviorInParent;
             if (Build.VERSION.SDK_INT >= 17) {
-                layout.endMargin = layoutParams.getMarginEnd();
-                this.layout.startMargin = layoutParams.getMarginStart();
+                layout.endMargin = constraintLayout$LayoutParams.getMarginEnd();
+                this.layout.startMargin = constraintLayout$LayoutParams.getMarginStart();
             }
         }
 
@@ -328,69 +327,69 @@ public class ConstraintSet {
             }
         }
 
-        public void applyTo(ConstraintLayout.LayoutParams layoutParams) {
+        public void applyTo(ConstraintLayout$LayoutParams constraintLayout$LayoutParams) {
             Layout layout = this.layout;
-            layoutParams.leftToLeft = layout.leftToLeft;
-            layoutParams.leftToRight = layout.leftToRight;
-            layoutParams.rightToLeft = layout.rightToLeft;
-            layoutParams.rightToRight = layout.rightToRight;
-            layoutParams.topToTop = layout.topToTop;
-            layoutParams.topToBottom = layout.topToBottom;
-            layoutParams.bottomToTop = layout.bottomToTop;
-            layoutParams.bottomToBottom = layout.bottomToBottom;
-            layoutParams.baselineToBaseline = layout.baselineToBaseline;
-            layoutParams.baselineToTop = layout.baselineToTop;
-            layoutParams.baselineToBottom = layout.baselineToBottom;
-            layoutParams.startToEnd = layout.startToEnd;
-            layoutParams.startToStart = layout.startToStart;
-            layoutParams.endToStart = layout.endToStart;
-            layoutParams.endToEnd = layout.endToEnd;
-            ((ViewGroup.MarginLayoutParams) layoutParams).leftMargin = layout.leftMargin;
-            ((ViewGroup.MarginLayoutParams) layoutParams).rightMargin = layout.rightMargin;
-            ((ViewGroup.MarginLayoutParams) layoutParams).topMargin = layout.topMargin;
-            ((ViewGroup.MarginLayoutParams) layoutParams).bottomMargin = layout.bottomMargin;
-            layoutParams.goneStartMargin = layout.goneStartMargin;
-            layoutParams.goneEndMargin = layout.goneEndMargin;
-            layoutParams.goneTopMargin = layout.goneTopMargin;
-            layoutParams.goneBottomMargin = layout.goneBottomMargin;
-            layoutParams.horizontalBias = layout.horizontalBias;
-            layoutParams.verticalBias = layout.verticalBias;
-            layoutParams.circleConstraint = layout.circleConstraint;
-            layoutParams.circleRadius = layout.circleRadius;
-            layoutParams.circleAngle = layout.circleAngle;
-            layoutParams.dimensionRatio = layout.dimensionRatio;
-            layoutParams.editorAbsoluteX = layout.editorAbsoluteX;
-            layoutParams.editorAbsoluteY = layout.editorAbsoluteY;
-            layoutParams.verticalWeight = layout.verticalWeight;
-            layoutParams.horizontalWeight = layout.horizontalWeight;
-            layoutParams.verticalChainStyle = layout.verticalChainStyle;
-            layoutParams.horizontalChainStyle = layout.horizontalChainStyle;
-            layoutParams.constrainedWidth = layout.constrainedWidth;
-            layoutParams.constrainedHeight = layout.constrainedHeight;
-            layoutParams.matchConstraintDefaultWidth = layout.widthDefault;
-            layoutParams.matchConstraintDefaultHeight = layout.heightDefault;
-            layoutParams.matchConstraintMaxWidth = layout.widthMax;
-            layoutParams.matchConstraintMaxHeight = layout.heightMax;
-            layoutParams.matchConstraintMinWidth = layout.widthMin;
-            layoutParams.matchConstraintMinHeight = layout.heightMin;
-            layoutParams.matchConstraintPercentWidth = layout.widthPercent;
-            layoutParams.matchConstraintPercentHeight = layout.heightPercent;
-            layoutParams.orientation = layout.orientation;
-            layoutParams.guidePercent = layout.guidePercent;
-            layoutParams.guideBegin = layout.guideBegin;
-            layoutParams.guideEnd = layout.guideEnd;
-            ((ViewGroup.MarginLayoutParams) layoutParams).width = layout.mWidth;
-            ((ViewGroup.MarginLayoutParams) layoutParams).height = layout.mHeight;
+            constraintLayout$LayoutParams.leftToLeft = layout.leftToLeft;
+            constraintLayout$LayoutParams.leftToRight = layout.leftToRight;
+            constraintLayout$LayoutParams.rightToLeft = layout.rightToLeft;
+            constraintLayout$LayoutParams.rightToRight = layout.rightToRight;
+            constraintLayout$LayoutParams.topToTop = layout.topToTop;
+            constraintLayout$LayoutParams.topToBottom = layout.topToBottom;
+            constraintLayout$LayoutParams.bottomToTop = layout.bottomToTop;
+            constraintLayout$LayoutParams.bottomToBottom = layout.bottomToBottom;
+            constraintLayout$LayoutParams.baselineToBaseline = layout.baselineToBaseline;
+            constraintLayout$LayoutParams.baselineToTop = layout.baselineToTop;
+            constraintLayout$LayoutParams.baselineToBottom = layout.baselineToBottom;
+            constraintLayout$LayoutParams.startToEnd = layout.startToEnd;
+            constraintLayout$LayoutParams.startToStart = layout.startToStart;
+            constraintLayout$LayoutParams.endToStart = layout.endToStart;
+            constraintLayout$LayoutParams.endToEnd = layout.endToEnd;
+            ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).leftMargin = layout.leftMargin;
+            ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).rightMargin = layout.rightMargin;
+            ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).topMargin = layout.topMargin;
+            ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).bottomMargin = layout.bottomMargin;
+            constraintLayout$LayoutParams.goneStartMargin = layout.goneStartMargin;
+            constraintLayout$LayoutParams.goneEndMargin = layout.goneEndMargin;
+            constraintLayout$LayoutParams.goneTopMargin = layout.goneTopMargin;
+            constraintLayout$LayoutParams.goneBottomMargin = layout.goneBottomMargin;
+            constraintLayout$LayoutParams.horizontalBias = layout.horizontalBias;
+            constraintLayout$LayoutParams.verticalBias = layout.verticalBias;
+            constraintLayout$LayoutParams.circleConstraint = layout.circleConstraint;
+            constraintLayout$LayoutParams.circleRadius = layout.circleRadius;
+            constraintLayout$LayoutParams.circleAngle = layout.circleAngle;
+            constraintLayout$LayoutParams.dimensionRatio = layout.dimensionRatio;
+            constraintLayout$LayoutParams.editorAbsoluteX = layout.editorAbsoluteX;
+            constraintLayout$LayoutParams.editorAbsoluteY = layout.editorAbsoluteY;
+            constraintLayout$LayoutParams.verticalWeight = layout.verticalWeight;
+            constraintLayout$LayoutParams.horizontalWeight = layout.horizontalWeight;
+            constraintLayout$LayoutParams.verticalChainStyle = layout.verticalChainStyle;
+            constraintLayout$LayoutParams.horizontalChainStyle = layout.horizontalChainStyle;
+            constraintLayout$LayoutParams.constrainedWidth = layout.constrainedWidth;
+            constraintLayout$LayoutParams.constrainedHeight = layout.constrainedHeight;
+            constraintLayout$LayoutParams.matchConstraintDefaultWidth = layout.widthDefault;
+            constraintLayout$LayoutParams.matchConstraintDefaultHeight = layout.heightDefault;
+            constraintLayout$LayoutParams.matchConstraintMaxWidth = layout.widthMax;
+            constraintLayout$LayoutParams.matchConstraintMaxHeight = layout.heightMax;
+            constraintLayout$LayoutParams.matchConstraintMinWidth = layout.widthMin;
+            constraintLayout$LayoutParams.matchConstraintMinHeight = layout.heightMin;
+            constraintLayout$LayoutParams.matchConstraintPercentWidth = layout.widthPercent;
+            constraintLayout$LayoutParams.matchConstraintPercentHeight = layout.heightPercent;
+            constraintLayout$LayoutParams.orientation = layout.orientation;
+            constraintLayout$LayoutParams.guidePercent = layout.guidePercent;
+            constraintLayout$LayoutParams.guideBegin = layout.guideBegin;
+            constraintLayout$LayoutParams.guideEnd = layout.guideEnd;
+            ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).width = layout.mWidth;
+            ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).height = layout.mHeight;
             String str = layout.mConstraintTag;
             if (str != null) {
-                layoutParams.constraintTag = str;
+                constraintLayout$LayoutParams.constraintTag = str;
             }
-            layoutParams.wrapBehaviorInParent = layout.mWrapBehavior;
+            constraintLayout$LayoutParams.wrapBehaviorInParent = layout.mWrapBehavior;
             if (Build.VERSION.SDK_INT >= 17) {
-                layoutParams.setMarginStart(layout.startMargin);
-                layoutParams.setMarginEnd(this.layout.endMargin);
+                constraintLayout$LayoutParams.setMarginStart(layout.startMargin);
+                constraintLayout$LayoutParams.setMarginEnd(this.layout.endMargin);
             }
-            layoutParams.validate();
+            constraintLayout$LayoutParams.validate();
         }
 
         public void printDelta(String str) {
@@ -403,7 +402,7 @@ public class ConstraintSet {
         }
 
         /* renamed from: clone, reason: merged with bridge method [inline-methods] */
-        public Constraint m5576clone() {
+        public Constraint m2318clone() {
             Constraint constraint = new Constraint();
             constraint.layout.copyFrom(this.layout);
             constraint.motion.copyFrom(this.motion);
@@ -473,7 +472,7 @@ public class ConstraintSet {
                 for (int i = 0; i < this.mCountInt; i++) {
                     Log.v(str, this.mTypeInt[i] + " = " + this.mValueInt[i]);
                 }
-                Log.v(str, TypedValues.Custom.S_FLOAT);
+                Log.v(str, TypedValues$Custom.S_FLOAT);
                 for (int i2 = 0; i2 < this.mCountFloat; i2++) {
                     Log.v(str, this.mTypeFloat[i2] + " = " + this.mValueFloat[i2]);
                 }
@@ -481,7 +480,7 @@ public class ConstraintSet {
                 for (int i3 = 0; i3 < this.mCountString; i3++) {
                     Log.v(str, this.mTypeString[i3] + " = " + this.mValueString[i3]);
                 }
-                Log.v(str, TypedValues.Custom.S_BOOLEAN);
+                Log.v(str, TypedValues$Custom.S_BOOLEAN);
                 for (int i4 = 0; i4 < this.mCountBoolean; i4++) {
                     Log.v(str, this.mTypeBoolean[i4] + " = " + this.mValueBoolean[i4]);
                 }
@@ -557,563 +556,6 @@ public class ConstraintSet {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static class Layout {
-        private static final int BARRIER_ALLOWS_GONE_WIDGETS = 75;
-        private static final int BARRIER_DIRECTION = 72;
-        private static final int BARRIER_MARGIN = 73;
-        private static final int BASELINE_MARGIN = 80;
-        private static final int BASELINE_TO_BASELINE = 1;
-        private static final int BASELINE_TO_BOTTOM = 78;
-        private static final int BASELINE_TO_TOP = 77;
-        private static final int BOTTOM_MARGIN = 2;
-        private static final int BOTTOM_TO_BOTTOM = 3;
-        private static final int BOTTOM_TO_TOP = 4;
-        private static final int CHAIN_USE_RTL = 71;
-        private static final int CIRCLE = 61;
-        private static final int CIRCLE_ANGLE = 63;
-        private static final int CIRCLE_RADIUS = 62;
-        private static final int CONSTRAINED_HEIGHT = 88;
-        private static final int CONSTRAINED_WIDTH = 87;
-        private static final int CONSTRAINT_REFERENCED_IDS = 74;
-        private static final int CONSTRAINT_TAG = 89;
-        private static final int DIMENSION_RATIO = 5;
-        private static final int EDITOR_ABSOLUTE_X = 6;
-        private static final int EDITOR_ABSOLUTE_Y = 7;
-        private static final int END_MARGIN = 8;
-        private static final int END_TO_END = 9;
-        private static final int END_TO_START = 10;
-        private static final int GONE_BASELINE_MARGIN = 79;
-        private static final int GONE_BOTTOM_MARGIN = 11;
-        private static final int GONE_END_MARGIN = 12;
-        private static final int GONE_LEFT_MARGIN = 13;
-        private static final int GONE_RIGHT_MARGIN = 14;
-        private static final int GONE_START_MARGIN = 15;
-        private static final int GONE_TOP_MARGIN = 16;
-        private static final int GUIDE_BEGIN = 17;
-        private static final int GUIDE_END = 18;
-        private static final int GUIDE_PERCENT = 19;
-        private static final int GUIDE_USE_RTL = 90;
-        private static final int HEIGHT_DEFAULT = 82;
-        private static final int HEIGHT_MAX = 83;
-        private static final int HEIGHT_MIN = 85;
-        private static final int HEIGHT_PERCENT = 70;
-        private static final int HORIZONTAL_BIAS = 20;
-        private static final int HORIZONTAL_STYLE = 39;
-        private static final int HORIZONTAL_WEIGHT = 37;
-        private static final int LAYOUT_CONSTRAINT_HEIGHT = 42;
-        private static final int LAYOUT_CONSTRAINT_WIDTH = 41;
-        private static final int LAYOUT_HEIGHT = 21;
-        private static final int LAYOUT_WIDTH = 22;
-        private static final int LAYOUT_WRAP_BEHAVIOR = 76;
-        private static final int LEFT_MARGIN = 23;
-        private static final int LEFT_TO_LEFT = 24;
-        private static final int LEFT_TO_RIGHT = 25;
-        private static final int ORIENTATION = 26;
-        private static final int RIGHT_MARGIN = 27;
-        private static final int RIGHT_TO_LEFT = 28;
-        private static final int RIGHT_TO_RIGHT = 29;
-        private static final int START_MARGIN = 30;
-        private static final int START_TO_END = 31;
-        private static final int START_TO_START = 32;
-        private static final int TOP_MARGIN = 33;
-        private static final int TOP_TO_BOTTOM = 34;
-        private static final int TOP_TO_TOP = 35;
-        public static final int UNSET = -1;
-        public static final int UNSET_GONE_MARGIN = Integer.MIN_VALUE;
-        private static final int UNUSED = 91;
-        private static final int VERTICAL_BIAS = 36;
-        private static final int VERTICAL_STYLE = 40;
-        private static final int VERTICAL_WEIGHT = 38;
-        private static final int WIDTH_DEFAULT = 81;
-        private static final int WIDTH_MAX = 84;
-        private static final int WIDTH_MIN = 86;
-        private static final int WIDTH_PERCENT = 69;
-        private static SparseIntArray mapToConstant;
-        public String mConstraintTag;
-        public int mHeight;
-        public String mReferenceIdString;
-        public int[] mReferenceIds;
-        public int mWidth;
-        public boolean mIsGuideline = false;
-        public boolean mApply = false;
-        public boolean mOverride = false;
-        public int guideBegin = -1;
-        public int guideEnd = -1;
-        public float guidePercent = -1.0f;
-        public boolean guidelineUseRtl = true;
-        public int leftToLeft = -1;
-        public int leftToRight = -1;
-        public int rightToLeft = -1;
-        public int rightToRight = -1;
-        public int topToTop = -1;
-        public int topToBottom = -1;
-        public int bottomToTop = -1;
-        public int bottomToBottom = -1;
-        public int baselineToBaseline = -1;
-        public int baselineToTop = -1;
-        public int baselineToBottom = -1;
-        public int startToEnd = -1;
-        public int startToStart = -1;
-        public int endToStart = -1;
-        public int endToEnd = -1;
-        public float horizontalBias = 0.5f;
-        public float verticalBias = 0.5f;
-        public String dimensionRatio = null;
-        public int circleConstraint = -1;
-        public int circleRadius = 0;
-        public float circleAngle = 0.0f;
-        public int editorAbsoluteX = -1;
-        public int editorAbsoluteY = -1;
-        public int orientation = -1;
-        public int leftMargin = 0;
-        public int rightMargin = 0;
-        public int topMargin = 0;
-        public int bottomMargin = 0;
-        public int endMargin = 0;
-        public int startMargin = 0;
-        public int baselineMargin = 0;
-        public int goneLeftMargin = Integer.MIN_VALUE;
-        public int goneTopMargin = Integer.MIN_VALUE;
-        public int goneRightMargin = Integer.MIN_VALUE;
-        public int goneBottomMargin = Integer.MIN_VALUE;
-        public int goneEndMargin = Integer.MIN_VALUE;
-        public int goneStartMargin = Integer.MIN_VALUE;
-        public int goneBaselineMargin = Integer.MIN_VALUE;
-        public float verticalWeight = -1.0f;
-        public float horizontalWeight = -1.0f;
-        public int horizontalChainStyle = 0;
-        public int verticalChainStyle = 0;
-        public int widthDefault = 0;
-        public int heightDefault = 0;
-        public int widthMax = 0;
-        public int heightMax = 0;
-        public int widthMin = 0;
-        public int heightMin = 0;
-        public float widthPercent = 1.0f;
-        public float heightPercent = 1.0f;
-        public int mBarrierDirection = -1;
-        public int mBarrierMargin = 0;
-        public int mHelperType = -1;
-        public boolean constrainedWidth = false;
-        public boolean constrainedHeight = false;
-        public boolean mBarrierAllowsGoneWidgets = true;
-        public int mWrapBehavior = 0;
-
-        static {
-            SparseIntArray sparseIntArray = new SparseIntArray();
-            mapToConstant = sparseIntArray;
-            sparseIntArray.append(C0923R.styleable.Layout_layout_constraintLeft_toLeftOf, 24);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintLeft_toRightOf, 25);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintRight_toLeftOf, 28);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintRight_toRightOf, 29);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintTop_toTopOf, 35);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintTop_toBottomOf, 34);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintBottom_toTopOf, 4);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintBottom_toBottomOf, 3);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintBaseline_toBaselineOf, 1);
-            mapToConstant.append(C0923R.styleable.Layout_layout_editor_absoluteX, 6);
-            mapToConstant.append(C0923R.styleable.Layout_layout_editor_absoluteY, 7);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintGuide_begin, 17);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintGuide_end, 18);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintGuide_percent, 19);
-            mapToConstant.append(C0923R.styleable.Layout_guidelineUseRtl, 90);
-            mapToConstant.append(C0923R.styleable.Layout_android_orientation, 26);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintStart_toEndOf, 31);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintStart_toStartOf, 32);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintEnd_toStartOf, 10);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintEnd_toEndOf, 9);
-            mapToConstant.append(C0923R.styleable.Layout_layout_goneMarginLeft, 13);
-            mapToConstant.append(C0923R.styleable.Layout_layout_goneMarginTop, 16);
-            mapToConstant.append(C0923R.styleable.Layout_layout_goneMarginRight, 14);
-            mapToConstant.append(C0923R.styleable.Layout_layout_goneMarginBottom, 11);
-            mapToConstant.append(C0923R.styleable.Layout_layout_goneMarginStart, 15);
-            mapToConstant.append(C0923R.styleable.Layout_layout_goneMarginEnd, 12);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintVertical_weight, 38);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintHorizontal_weight, 37);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintHorizontal_chainStyle, 39);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintVertical_chainStyle, 40);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintHorizontal_bias, 20);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintVertical_bias, 36);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintDimensionRatio, 5);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintLeft_creator, 91);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintTop_creator, 91);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintRight_creator, 91);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintBottom_creator, 91);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintBaseline_creator, 91);
-            mapToConstant.append(C0923R.styleable.Layout_android_layout_marginLeft, 23);
-            mapToConstant.append(C0923R.styleable.Layout_android_layout_marginRight, 27);
-            mapToConstant.append(C0923R.styleable.Layout_android_layout_marginStart, 30);
-            mapToConstant.append(C0923R.styleable.Layout_android_layout_marginEnd, 8);
-            mapToConstant.append(C0923R.styleable.Layout_android_layout_marginTop, 33);
-            mapToConstant.append(C0923R.styleable.Layout_android_layout_marginBottom, 2);
-            mapToConstant.append(C0923R.styleable.Layout_android_layout_width, 22);
-            mapToConstant.append(C0923R.styleable.Layout_android_layout_height, 21);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintWidth, 41);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintHeight, 42);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constrainedWidth, 41);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constrainedHeight, 42);
-            mapToConstant.append(C0923R.styleable.Layout_layout_wrapBehaviorInParent, 76);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintCircle, 61);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintCircleRadius, 62);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintCircleAngle, 63);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintWidth_percent, 69);
-            mapToConstant.append(C0923R.styleable.Layout_layout_constraintHeight_percent, 70);
-            mapToConstant.append(C0923R.styleable.Layout_chainUseRtl, 71);
-            mapToConstant.append(C0923R.styleable.Layout_barrierDirection, 72);
-            mapToConstant.append(C0923R.styleable.Layout_barrierMargin, 73);
-            mapToConstant.append(C0923R.styleable.Layout_constraint_referenced_ids, 74);
-            mapToConstant.append(C0923R.styleable.Layout_barrierAllowsGoneWidgets, 75);
-        }
-
-        public void copyFrom(Layout layout) {
-            this.mIsGuideline = layout.mIsGuideline;
-            this.mWidth = layout.mWidth;
-            this.mApply = layout.mApply;
-            this.mHeight = layout.mHeight;
-            this.guideBegin = layout.guideBegin;
-            this.guideEnd = layout.guideEnd;
-            this.guidePercent = layout.guidePercent;
-            this.guidelineUseRtl = layout.guidelineUseRtl;
-            this.leftToLeft = layout.leftToLeft;
-            this.leftToRight = layout.leftToRight;
-            this.rightToLeft = layout.rightToLeft;
-            this.rightToRight = layout.rightToRight;
-            this.topToTop = layout.topToTop;
-            this.topToBottom = layout.topToBottom;
-            this.bottomToTop = layout.bottomToTop;
-            this.bottomToBottom = layout.bottomToBottom;
-            this.baselineToBaseline = layout.baselineToBaseline;
-            this.baselineToTop = layout.baselineToTop;
-            this.baselineToBottom = layout.baselineToBottom;
-            this.startToEnd = layout.startToEnd;
-            this.startToStart = layout.startToStart;
-            this.endToStart = layout.endToStart;
-            this.endToEnd = layout.endToEnd;
-            this.horizontalBias = layout.horizontalBias;
-            this.verticalBias = layout.verticalBias;
-            this.dimensionRatio = layout.dimensionRatio;
-            this.circleConstraint = layout.circleConstraint;
-            this.circleRadius = layout.circleRadius;
-            this.circleAngle = layout.circleAngle;
-            this.editorAbsoluteX = layout.editorAbsoluteX;
-            this.editorAbsoluteY = layout.editorAbsoluteY;
-            this.orientation = layout.orientation;
-            this.leftMargin = layout.leftMargin;
-            this.rightMargin = layout.rightMargin;
-            this.topMargin = layout.topMargin;
-            this.bottomMargin = layout.bottomMargin;
-            this.endMargin = layout.endMargin;
-            this.startMargin = layout.startMargin;
-            this.baselineMargin = layout.baselineMargin;
-            this.goneLeftMargin = layout.goneLeftMargin;
-            this.goneTopMargin = layout.goneTopMargin;
-            this.goneRightMargin = layout.goneRightMargin;
-            this.goneBottomMargin = layout.goneBottomMargin;
-            this.goneEndMargin = layout.goneEndMargin;
-            this.goneStartMargin = layout.goneStartMargin;
-            this.goneBaselineMargin = layout.goneBaselineMargin;
-            this.verticalWeight = layout.verticalWeight;
-            this.horizontalWeight = layout.horizontalWeight;
-            this.horizontalChainStyle = layout.horizontalChainStyle;
-            this.verticalChainStyle = layout.verticalChainStyle;
-            this.widthDefault = layout.widthDefault;
-            this.heightDefault = layout.heightDefault;
-            this.widthMax = layout.widthMax;
-            this.heightMax = layout.heightMax;
-            this.widthMin = layout.widthMin;
-            this.heightMin = layout.heightMin;
-            this.widthPercent = layout.widthPercent;
-            this.heightPercent = layout.heightPercent;
-            this.mBarrierDirection = layout.mBarrierDirection;
-            this.mBarrierMargin = layout.mBarrierMargin;
-            this.mHelperType = layout.mHelperType;
-            this.mConstraintTag = layout.mConstraintTag;
-            int[] iArr = layout.mReferenceIds;
-            if (iArr == null || layout.mReferenceIdString != null) {
-                this.mReferenceIds = null;
-            } else {
-                this.mReferenceIds = Arrays.copyOf(iArr, iArr.length);
-            }
-            this.mReferenceIdString = layout.mReferenceIdString;
-            this.constrainedWidth = layout.constrainedWidth;
-            this.constrainedHeight = layout.constrainedHeight;
-            this.mBarrierAllowsGoneWidgets = layout.mBarrierAllowsGoneWidgets;
-            this.mWrapBehavior = layout.mWrapBehavior;
-        }
-
-        public void dump(MotionScene motionScene, StringBuilder sb) {
-            Field[] declaredFields = getClass().getDeclaredFields();
-            sb.append("\n");
-            for (Field field : declaredFields) {
-                String name = field.getName();
-                if (!Modifier.isStatic(field.getModifiers())) {
-                    try {
-                        Object obj = field.get(this);
-                        Class<?> type = field.getType();
-                        if (type == Integer.TYPE) {
-                            Integer num = (Integer) obj;
-                            if (num.intValue() != -1) {
-                                Object lookUpConstraintName = motionScene.lookUpConstraintName(num.intValue());
-                                sb.append("    ");
-                                sb.append(name);
-                                sb.append(" = \"");
-                                sb.append(lookUpConstraintName == null ? num : lookUpConstraintName);
-                                sb.append("\"\n");
-                            }
-                        } else if (type == Float.TYPE) {
-                            Float f = (Float) obj;
-                            if (f.floatValue() != -1.0f) {
-                                sb.append("    ");
-                                sb.append(name);
-                                sb.append(" = \"");
-                                sb.append(f);
-                                sb.append("\"\n");
-                            }
-                        }
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-        void fillFromAttributeList(Context context, AttributeSet attributeSet) {
-            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0923R.styleable.Layout);
-            this.mApply = true;
-            int indexCount = obtainStyledAttributes.getIndexCount();
-            for (int i = 0; i < indexCount; i++) {
-                int index = obtainStyledAttributes.getIndex(i);
-                int i2 = mapToConstant.get(index);
-                switch (i2) {
-                    case 1:
-                        this.baselineToBaseline = ConstraintSet.lookupID(obtainStyledAttributes, index, this.baselineToBaseline);
-                        break;
-                    case 2:
-                        this.bottomMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.bottomMargin);
-                        break;
-                    case 3:
-                        this.bottomToBottom = ConstraintSet.lookupID(obtainStyledAttributes, index, this.bottomToBottom);
-                        break;
-                    case 4:
-                        this.bottomToTop = ConstraintSet.lookupID(obtainStyledAttributes, index, this.bottomToTop);
-                        break;
-                    case 5:
-                        this.dimensionRatio = obtainStyledAttributes.getString(index);
-                        break;
-                    case 6:
-                        this.editorAbsoluteX = obtainStyledAttributes.getDimensionPixelOffset(index, this.editorAbsoluteX);
-                        break;
-                    case 7:
-                        this.editorAbsoluteY = obtainStyledAttributes.getDimensionPixelOffset(index, this.editorAbsoluteY);
-                        break;
-                    case 8:
-                        if (Build.VERSION.SDK_INT >= 17) {
-                            this.endMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.endMargin);
-                            break;
-                        } else {
-                            break;
-                        }
-                    case 9:
-                        this.endToEnd = ConstraintSet.lookupID(obtainStyledAttributes, index, this.endToEnd);
-                        break;
-                    case 10:
-                        this.endToStart = ConstraintSet.lookupID(obtainStyledAttributes, index, this.endToStart);
-                        break;
-                    case 11:
-                        this.goneBottomMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.goneBottomMargin);
-                        break;
-                    case 12:
-                        this.goneEndMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.goneEndMargin);
-                        break;
-                    case 13:
-                        this.goneLeftMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.goneLeftMargin);
-                        break;
-                    case 14:
-                        this.goneRightMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.goneRightMargin);
-                        break;
-                    case 15:
-                        this.goneStartMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.goneStartMargin);
-                        break;
-                    case 16:
-                        this.goneTopMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.goneTopMargin);
-                        break;
-                    case 17:
-                        this.guideBegin = obtainStyledAttributes.getDimensionPixelOffset(index, this.guideBegin);
-                        break;
-                    case 18:
-                        this.guideEnd = obtainStyledAttributes.getDimensionPixelOffset(index, this.guideEnd);
-                        break;
-                    case 19:
-                        this.guidePercent = obtainStyledAttributes.getFloat(index, this.guidePercent);
-                        break;
-                    case 20:
-                        this.horizontalBias = obtainStyledAttributes.getFloat(index, this.horizontalBias);
-                        break;
-                    case 21:
-                        this.mHeight = obtainStyledAttributes.getLayoutDimension(index, this.mHeight);
-                        break;
-                    case 22:
-                        this.mWidth = obtainStyledAttributes.getLayoutDimension(index, this.mWidth);
-                        break;
-                    case 23:
-                        this.leftMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.leftMargin);
-                        break;
-                    case 24:
-                        this.leftToLeft = ConstraintSet.lookupID(obtainStyledAttributes, index, this.leftToLeft);
-                        break;
-                    case 25:
-                        this.leftToRight = ConstraintSet.lookupID(obtainStyledAttributes, index, this.leftToRight);
-                        break;
-                    case 26:
-                        this.orientation = obtainStyledAttributes.getInt(index, this.orientation);
-                        break;
-                    case 27:
-                        this.rightMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.rightMargin);
-                        break;
-                    case 28:
-                        this.rightToLeft = ConstraintSet.lookupID(obtainStyledAttributes, index, this.rightToLeft);
-                        break;
-                    case 29:
-                        this.rightToRight = ConstraintSet.lookupID(obtainStyledAttributes, index, this.rightToRight);
-                        break;
-                    case 30:
-                        if (Build.VERSION.SDK_INT >= 17) {
-                            this.startMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.startMargin);
-                            break;
-                        } else {
-                            break;
-                        }
-                    case 31:
-                        this.startToEnd = ConstraintSet.lookupID(obtainStyledAttributes, index, this.startToEnd);
-                        break;
-                    case 32:
-                        this.startToStart = ConstraintSet.lookupID(obtainStyledAttributes, index, this.startToStart);
-                        break;
-                    case 33:
-                        this.topMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.topMargin);
-                        break;
-                    case 34:
-                        this.topToBottom = ConstraintSet.lookupID(obtainStyledAttributes, index, this.topToBottom);
-                        break;
-                    case 35:
-                        this.topToTop = ConstraintSet.lookupID(obtainStyledAttributes, index, this.topToTop);
-                        break;
-                    case 36:
-                        this.verticalBias = obtainStyledAttributes.getFloat(index, this.verticalBias);
-                        break;
-                    case 37:
-                        this.horizontalWeight = obtainStyledAttributes.getFloat(index, this.horizontalWeight);
-                        break;
-                    case 38:
-                        this.verticalWeight = obtainStyledAttributes.getFloat(index, this.verticalWeight);
-                        break;
-                    case 39:
-                        this.horizontalChainStyle = obtainStyledAttributes.getInt(index, this.horizontalChainStyle);
-                        break;
-                    case 40:
-                        this.verticalChainStyle = obtainStyledAttributes.getInt(index, this.verticalChainStyle);
-                        break;
-                    case 41:
-                        ConstraintSet.parseDimensionConstraints(this, obtainStyledAttributes, index, 0);
-                        break;
-                    case 42:
-                        ConstraintSet.parseDimensionConstraints(this, obtainStyledAttributes, index, 1);
-                        break;
-                    default:
-                        switch (i2) {
-                            case 61:
-                                this.circleConstraint = ConstraintSet.lookupID(obtainStyledAttributes, index, this.circleConstraint);
-                                break;
-                            case 62:
-                                this.circleRadius = obtainStyledAttributes.getDimensionPixelSize(index, this.circleRadius);
-                                break;
-                            case 63:
-                                this.circleAngle = obtainStyledAttributes.getFloat(index, this.circleAngle);
-                                break;
-                            default:
-                                switch (i2) {
-                                    case 69:
-                                        this.widthPercent = obtainStyledAttributes.getFloat(index, 1.0f);
-                                        break;
-                                    case 70:
-                                        this.heightPercent = obtainStyledAttributes.getFloat(index, 1.0f);
-                                        break;
-                                    case 71:
-                                        Log.e(ConstraintSet.TAG, "CURRENTLY UNSUPPORTED");
-                                        break;
-                                    case 72:
-                                        this.mBarrierDirection = obtainStyledAttributes.getInt(index, this.mBarrierDirection);
-                                        break;
-                                    case 73:
-                                        this.mBarrierMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.mBarrierMargin);
-                                        break;
-                                    case 74:
-                                        this.mReferenceIdString = obtainStyledAttributes.getString(index);
-                                        break;
-                                    case 75:
-                                        this.mBarrierAllowsGoneWidgets = obtainStyledAttributes.getBoolean(index, this.mBarrierAllowsGoneWidgets);
-                                        break;
-                                    case 76:
-                                        this.mWrapBehavior = obtainStyledAttributes.getInt(index, this.mWrapBehavior);
-                                        break;
-                                    case 77:
-                                        this.baselineToTop = ConstraintSet.lookupID(obtainStyledAttributes, index, this.baselineToTop);
-                                        break;
-                                    case 78:
-                                        this.baselineToBottom = ConstraintSet.lookupID(obtainStyledAttributes, index, this.baselineToBottom);
-                                        break;
-                                    case 79:
-                                        this.goneBaselineMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.goneBaselineMargin);
-                                        break;
-                                    case 80:
-                                        this.baselineMargin = obtainStyledAttributes.getDimensionPixelSize(index, this.baselineMargin);
-                                        break;
-                                    case 81:
-                                        this.widthDefault = obtainStyledAttributes.getInt(index, this.widthDefault);
-                                        break;
-                                    case 82:
-                                        this.heightDefault = obtainStyledAttributes.getInt(index, this.heightDefault);
-                                        break;
-                                    case 83:
-                                        this.heightMax = obtainStyledAttributes.getDimensionPixelSize(index, this.heightMax);
-                                        break;
-                                    case 84:
-                                        this.widthMax = obtainStyledAttributes.getDimensionPixelSize(index, this.widthMax);
-                                        break;
-                                    case 85:
-                                        this.heightMin = obtainStyledAttributes.getDimensionPixelSize(index, this.heightMin);
-                                        break;
-                                    case 86:
-                                        this.widthMin = obtainStyledAttributes.getDimensionPixelSize(index, this.widthMin);
-                                        break;
-                                    case 87:
-                                        this.constrainedWidth = obtainStyledAttributes.getBoolean(index, this.constrainedWidth);
-                                        break;
-                                    case 88:
-                                        this.constrainedHeight = obtainStyledAttributes.getBoolean(index, this.constrainedHeight);
-                                        break;
-                                    case 89:
-                                        this.mConstraintTag = obtainStyledAttributes.getString(index);
-                                        break;
-                                    case 90:
-                                        this.guidelineUseRtl = obtainStyledAttributes.getBoolean(index, this.guidelineUseRtl);
-                                        break;
-                                    case 91:
-                                        Log.w(ConstraintSet.TAG, "unused attribute 0x" + Integer.toHexString(index) + "   " + mapToConstant.get(index));
-                                        break;
-                                    default:
-                                        Log.w(ConstraintSet.TAG, "Unknown attribute 0x" + Integer.toHexString(index) + "   " + mapToConstant.get(index));
-                                        break;
-                                }
-                        }
-                }
-            }
-            obtainStyledAttributes.recycle();
-        }
-    }
-
-    /* compiled from: Taobao */
     public static class Motion {
         private static final int ANIMATE_CIRCLE_ANGLE_TO = 6;
         private static final int ANIMATE_RELATIVE_TO = 5;
@@ -1147,16 +589,16 @@ public class ConstraintSet {
         static {
             SparseIntArray sparseIntArray = new SparseIntArray();
             mapToConstant = sparseIntArray;
-            sparseIntArray.append(C0923R.styleable.Motion_motionPathRotate, 1);
-            mapToConstant.append(C0923R.styleable.Motion_pathMotionArc, 2);
-            mapToConstant.append(C0923R.styleable.Motion_transitionEasing, 3);
-            mapToConstant.append(C0923R.styleable.Motion_drawPath, 4);
-            mapToConstant.append(C0923R.styleable.Motion_animateRelativeTo, 5);
-            mapToConstant.append(C0923R.styleable.Motion_animateCircleAngleTo, 6);
-            mapToConstant.append(C0923R.styleable.Motion_motionStagger, 7);
-            mapToConstant.append(C0923R.styleable.Motion_quantizeMotionSteps, 8);
-            mapToConstant.append(C0923R.styleable.Motion_quantizeMotionPhase, 9);
-            mapToConstant.append(C0923R.styleable.Motion_quantizeMotionInterpolator, 10);
+            sparseIntArray.append(R.styleable.Motion_motionPathRotate, 1);
+            mapToConstant.append(R.styleable.Motion_pathMotionArc, 2);
+            mapToConstant.append(R.styleable.Motion_transitionEasing, 3);
+            mapToConstant.append(R.styleable.Motion_drawPath, 4);
+            mapToConstant.append(R.styleable.Motion_animateRelativeTo, 5);
+            mapToConstant.append(R.styleable.Motion_animateCircleAngleTo, 6);
+            mapToConstant.append(R.styleable.Motion_motionStagger, 7);
+            mapToConstant.append(R.styleable.Motion_quantizeMotionSteps, 8);
+            mapToConstant.append(R.styleable.Motion_quantizeMotionPhase, 9);
+            mapToConstant.append(R.styleable.Motion_quantizeMotionInterpolator, 10);
         }
 
         public void copyFrom(Motion motion) {
@@ -1171,7 +613,7 @@ public class ConstraintSet {
         }
 
         void fillFromAttributeList(Context context, AttributeSet attributeSet) {
-            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0923R.styleable.Motion);
+            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, R.styleable.Motion);
             this.mApply = true;
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
@@ -1258,19 +700,19 @@ public class ConstraintSet {
         }
 
         void fillFromAttributeList(Context context, AttributeSet attributeSet) {
-            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0923R.styleable.PropertySet);
+            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, R.styleable.PropertySet);
             this.mApply = true;
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
                 int index = obtainStyledAttributes.getIndex(i);
-                if (index == C0923R.styleable.PropertySet_android_alpha) {
+                if (index == R.styleable.PropertySet_android_alpha) {
                     this.alpha = obtainStyledAttributes.getFloat(index, this.alpha);
-                } else if (index == C0923R.styleable.PropertySet_android_visibility) {
+                } else if (index == R.styleable.PropertySet_android_visibility) {
                     this.visibility = obtainStyledAttributes.getInt(index, this.visibility);
                     this.visibility = ConstraintSet.VISIBILITY_FLAGS[this.visibility];
-                } else if (index == C0923R.styleable.PropertySet_visibilityMode) {
+                } else if (index == R.styleable.PropertySet_visibilityMode) {
                     this.mVisibilityMode = obtainStyledAttributes.getInt(index, this.mVisibilityMode);
-                } else if (index == C0923R.styleable.PropertySet_motionProgress) {
+                } else if (index == R.styleable.PropertySet_motionProgress) {
                     this.mProgress = obtainStyledAttributes.getFloat(index, this.mProgress);
                 }
             }
@@ -1311,18 +753,18 @@ public class ConstraintSet {
         static {
             SparseIntArray sparseIntArray = new SparseIntArray();
             mapToConstant = sparseIntArray;
-            sparseIntArray.append(C0923R.styleable.Transform_android_rotation, 1);
-            mapToConstant.append(C0923R.styleable.Transform_android_rotationX, 2);
-            mapToConstant.append(C0923R.styleable.Transform_android_rotationY, 3);
-            mapToConstant.append(C0923R.styleable.Transform_android_scaleX, 4);
-            mapToConstant.append(C0923R.styleable.Transform_android_scaleY, 5);
-            mapToConstant.append(C0923R.styleable.Transform_android_transformPivotX, 6);
-            mapToConstant.append(C0923R.styleable.Transform_android_transformPivotY, 7);
-            mapToConstant.append(C0923R.styleable.Transform_android_translationX, 8);
-            mapToConstant.append(C0923R.styleable.Transform_android_translationY, 9);
-            mapToConstant.append(C0923R.styleable.Transform_android_translationZ, 10);
-            mapToConstant.append(C0923R.styleable.Transform_android_elevation, 11);
-            mapToConstant.append(C0923R.styleable.Transform_transformPivotTarget, 12);
+            sparseIntArray.append(R.styleable.Transform_android_rotation, 1);
+            mapToConstant.append(R.styleable.Transform_android_rotationX, 2);
+            mapToConstant.append(R.styleable.Transform_android_rotationY, 3);
+            mapToConstant.append(R.styleable.Transform_android_scaleX, 4);
+            mapToConstant.append(R.styleable.Transform_android_scaleY, 5);
+            mapToConstant.append(R.styleable.Transform_android_transformPivotX, 6);
+            mapToConstant.append(R.styleable.Transform_android_transformPivotY, 7);
+            mapToConstant.append(R.styleable.Transform_android_translationX, 8);
+            mapToConstant.append(R.styleable.Transform_android_translationY, 9);
+            mapToConstant.append(R.styleable.Transform_android_translationZ, 10);
+            mapToConstant.append(R.styleable.Transform_android_elevation, 11);
+            mapToConstant.append(R.styleable.Transform_transformPivotTarget, 12);
         }
 
         public void copyFrom(Transform transform) {
@@ -1343,7 +785,7 @@ public class ConstraintSet {
         }
 
         void fillFromAttributeList(Context context, AttributeSet attributeSet) {
-            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0923R.styleable.Transform);
+            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, R.styleable.Transform);
             this.mApply = true;
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
@@ -1661,183 +1103,183 @@ public class ConstraintSet {
     }
 
     static {
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintLeft_toLeftOf, 25);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintLeft_toRightOf, 26);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintRight_toLeftOf, 29);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintRight_toRightOf, 30);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintTop_toTopOf, 36);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintTop_toBottomOf, 35);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintBottom_toTopOf, 4);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintBottom_toBottomOf, 3);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintBaseline_toBaselineOf, 1);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintBaseline_toTopOf, 91);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintBaseline_toBottomOf, 92);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_editor_absoluteX, 6);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_editor_absoluteY, 7);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintGuide_begin, 17);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintGuide_end, 18);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintGuide_percent, 19);
-        mapToConstant.append(C0923R.styleable.Constraint_guidelineUseRtl, 99);
-        mapToConstant.append(C0923R.styleable.Constraint_android_orientation, 27);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintStart_toEndOf, 32);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintStart_toStartOf, 33);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintEnd_toStartOf, 10);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintEnd_toEndOf, 9);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_goneMarginLeft, 13);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_goneMarginTop, 16);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_goneMarginRight, 14);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_goneMarginBottom, 11);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_goneMarginStart, 15);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_goneMarginEnd, 12);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintVertical_weight, 40);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintHorizontal_weight, 39);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintHorizontal_chainStyle, 41);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintVertical_chainStyle, 42);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintHorizontal_bias, 20);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintVertical_bias, 37);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintDimensionRatio, 5);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintLeft_creator, 87);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintTop_creator, 87);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintRight_creator, 87);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintBottom_creator, 87);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintBaseline_creator, 87);
-        mapToConstant.append(C0923R.styleable.Constraint_android_layout_marginLeft, 24);
-        mapToConstant.append(C0923R.styleable.Constraint_android_layout_marginRight, 28);
-        mapToConstant.append(C0923R.styleable.Constraint_android_layout_marginStart, 31);
-        mapToConstant.append(C0923R.styleable.Constraint_android_layout_marginEnd, 8);
-        mapToConstant.append(C0923R.styleable.Constraint_android_layout_marginTop, 34);
-        mapToConstant.append(C0923R.styleable.Constraint_android_layout_marginBottom, 2);
-        mapToConstant.append(C0923R.styleable.Constraint_android_layout_width, 23);
-        mapToConstant.append(C0923R.styleable.Constraint_android_layout_height, 21);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintWidth, 95);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintHeight, 96);
-        mapToConstant.append(C0923R.styleable.Constraint_android_visibility, 22);
-        mapToConstant.append(C0923R.styleable.Constraint_android_alpha, 43);
-        mapToConstant.append(C0923R.styleable.Constraint_android_elevation, 44);
-        mapToConstant.append(C0923R.styleable.Constraint_android_rotationX, 45);
-        mapToConstant.append(C0923R.styleable.Constraint_android_rotationY, 46);
-        mapToConstant.append(C0923R.styleable.Constraint_android_rotation, 60);
-        mapToConstant.append(C0923R.styleable.Constraint_android_scaleX, 47);
-        mapToConstant.append(C0923R.styleable.Constraint_android_scaleY, 48);
-        mapToConstant.append(C0923R.styleable.Constraint_android_transformPivotX, 49);
-        mapToConstant.append(C0923R.styleable.Constraint_android_transformPivotY, 50);
-        mapToConstant.append(C0923R.styleable.Constraint_android_translationX, 51);
-        mapToConstant.append(C0923R.styleable.Constraint_android_translationY, 52);
-        mapToConstant.append(C0923R.styleable.Constraint_android_translationZ, 53);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintWidth_default, 54);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintHeight_default, 55);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintWidth_max, 56);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintHeight_max, 57);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintWidth_min, 58);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintHeight_min, 59);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintCircle, 61);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintCircleRadius, 62);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintCircleAngle, 63);
-        mapToConstant.append(C0923R.styleable.Constraint_animateRelativeTo, 64);
-        mapToConstant.append(C0923R.styleable.Constraint_transitionEasing, 65);
-        mapToConstant.append(C0923R.styleable.Constraint_drawPath, 66);
-        mapToConstant.append(C0923R.styleable.Constraint_transitionPathRotate, 67);
-        mapToConstant.append(C0923R.styleable.Constraint_motionStagger, 79);
-        mapToConstant.append(C0923R.styleable.Constraint_android_id, 38);
-        mapToConstant.append(C0923R.styleable.Constraint_motionProgress, 68);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintWidth_percent, 69);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintHeight_percent, 70);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_wrapBehaviorInParent, 97);
-        mapToConstant.append(C0923R.styleable.Constraint_chainUseRtl, 71);
-        mapToConstant.append(C0923R.styleable.Constraint_barrierDirection, 72);
-        mapToConstant.append(C0923R.styleable.Constraint_barrierMargin, 73);
-        mapToConstant.append(C0923R.styleable.Constraint_constraint_referenced_ids, 74);
-        mapToConstant.append(C0923R.styleable.Constraint_barrierAllowsGoneWidgets, 75);
-        mapToConstant.append(C0923R.styleable.Constraint_pathMotionArc, 76);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constraintTag, 77);
-        mapToConstant.append(C0923R.styleable.Constraint_visibilityMode, 78);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constrainedWidth, 80);
-        mapToConstant.append(C0923R.styleable.Constraint_layout_constrainedHeight, 81);
-        mapToConstant.append(C0923R.styleable.Constraint_polarRelativeTo, 82);
-        mapToConstant.append(C0923R.styleable.Constraint_transformPivotTarget, 83);
-        mapToConstant.append(C0923R.styleable.Constraint_quantizeMotionSteps, 84);
-        mapToConstant.append(C0923R.styleable.Constraint_quantizeMotionPhase, 85);
-        mapToConstant.append(C0923R.styleable.Constraint_quantizeMotionInterpolator, 86);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintLeft_toLeftOf, 25);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintLeft_toRightOf, 26);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintRight_toLeftOf, 29);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintRight_toRightOf, 30);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintTop_toTopOf, 36);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintTop_toBottomOf, 35);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintBottom_toTopOf, 4);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintBottom_toBottomOf, 3);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintBaseline_toBaselineOf, 1);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintBaseline_toTopOf, 91);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintBaseline_toBottomOf, 92);
+        mapToConstant.append(R.styleable.Constraint_layout_editor_absoluteX, 6);
+        mapToConstant.append(R.styleable.Constraint_layout_editor_absoluteY, 7);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintGuide_begin, 17);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintGuide_end, 18);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintGuide_percent, 19);
+        mapToConstant.append(R.styleable.Constraint_guidelineUseRtl, 99);
+        mapToConstant.append(R.styleable.Constraint_android_orientation, 27);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintStart_toEndOf, 32);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintStart_toStartOf, 33);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintEnd_toStartOf, 10);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintEnd_toEndOf, 9);
+        mapToConstant.append(R.styleable.Constraint_layout_goneMarginLeft, 13);
+        mapToConstant.append(R.styleable.Constraint_layout_goneMarginTop, 16);
+        mapToConstant.append(R.styleable.Constraint_layout_goneMarginRight, 14);
+        mapToConstant.append(R.styleable.Constraint_layout_goneMarginBottom, 11);
+        mapToConstant.append(R.styleable.Constraint_layout_goneMarginStart, 15);
+        mapToConstant.append(R.styleable.Constraint_layout_goneMarginEnd, 12);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintVertical_weight, 40);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintHorizontal_weight, 39);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintHorizontal_chainStyle, 41);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintVertical_chainStyle, 42);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintHorizontal_bias, 20);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintVertical_bias, 37);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintDimensionRatio, 5);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintLeft_creator, 87);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintTop_creator, 87);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintRight_creator, 87);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintBottom_creator, 87);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintBaseline_creator, 87);
+        mapToConstant.append(R.styleable.Constraint_android_layout_marginLeft, 24);
+        mapToConstant.append(R.styleable.Constraint_android_layout_marginRight, 28);
+        mapToConstant.append(R.styleable.Constraint_android_layout_marginStart, 31);
+        mapToConstant.append(R.styleable.Constraint_android_layout_marginEnd, 8);
+        mapToConstant.append(R.styleable.Constraint_android_layout_marginTop, 34);
+        mapToConstant.append(R.styleable.Constraint_android_layout_marginBottom, 2);
+        mapToConstant.append(R.styleable.Constraint_android_layout_width, 23);
+        mapToConstant.append(R.styleable.Constraint_android_layout_height, 21);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintWidth, 95);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintHeight, 96);
+        mapToConstant.append(R.styleable.Constraint_android_visibility, 22);
+        mapToConstant.append(R.styleable.Constraint_android_alpha, 43);
+        mapToConstant.append(R.styleable.Constraint_android_elevation, 44);
+        mapToConstant.append(R.styleable.Constraint_android_rotationX, 45);
+        mapToConstant.append(R.styleable.Constraint_android_rotationY, 46);
+        mapToConstant.append(R.styleable.Constraint_android_rotation, 60);
+        mapToConstant.append(R.styleable.Constraint_android_scaleX, 47);
+        mapToConstant.append(R.styleable.Constraint_android_scaleY, 48);
+        mapToConstant.append(R.styleable.Constraint_android_transformPivotX, 49);
+        mapToConstant.append(R.styleable.Constraint_android_transformPivotY, 50);
+        mapToConstant.append(R.styleable.Constraint_android_translationX, 51);
+        mapToConstant.append(R.styleable.Constraint_android_translationY, 52);
+        mapToConstant.append(R.styleable.Constraint_android_translationZ, 53);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintWidth_default, 54);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintHeight_default, 55);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintWidth_max, 56);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintHeight_max, 57);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintWidth_min, 58);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintHeight_min, 59);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintCircle, 61);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintCircleRadius, 62);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintCircleAngle, 63);
+        mapToConstant.append(R.styleable.Constraint_animateRelativeTo, 64);
+        mapToConstant.append(R.styleable.Constraint_transitionEasing, 65);
+        mapToConstant.append(R.styleable.Constraint_drawPath, 66);
+        mapToConstant.append(R.styleable.Constraint_transitionPathRotate, 67);
+        mapToConstant.append(R.styleable.Constraint_motionStagger, 79);
+        mapToConstant.append(R.styleable.Constraint_android_id, 38);
+        mapToConstant.append(R.styleable.Constraint_motionProgress, 68);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintWidth_percent, 69);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintHeight_percent, 70);
+        mapToConstant.append(R.styleable.Constraint_layout_wrapBehaviorInParent, 97);
+        mapToConstant.append(R.styleable.Constraint_chainUseRtl, 71);
+        mapToConstant.append(R.styleable.Constraint_barrierDirection, 72);
+        mapToConstant.append(R.styleable.Constraint_barrierMargin, 73);
+        mapToConstant.append(R.styleable.Constraint_constraint_referenced_ids, 74);
+        mapToConstant.append(R.styleable.Constraint_barrierAllowsGoneWidgets, 75);
+        mapToConstant.append(R.styleable.Constraint_pathMotionArc, 76);
+        mapToConstant.append(R.styleable.Constraint_layout_constraintTag, 77);
+        mapToConstant.append(R.styleable.Constraint_visibilityMode, 78);
+        mapToConstant.append(R.styleable.Constraint_layout_constrainedWidth, 80);
+        mapToConstant.append(R.styleable.Constraint_layout_constrainedHeight, 81);
+        mapToConstant.append(R.styleable.Constraint_polarRelativeTo, 82);
+        mapToConstant.append(R.styleable.Constraint_transformPivotTarget, 83);
+        mapToConstant.append(R.styleable.Constraint_quantizeMotionSteps, 84);
+        mapToConstant.append(R.styleable.Constraint_quantizeMotionPhase, 85);
+        mapToConstant.append(R.styleable.Constraint_quantizeMotionInterpolator, 86);
         SparseIntArray sparseIntArray = overrideMapToConstant;
-        int i = C0923R.styleable.ConstraintOverride_layout_editor_absoluteY;
+        int i = R.styleable.ConstraintOverride_layout_editor_absoluteY;
         sparseIntArray.append(i, 6);
         overrideMapToConstant.append(i, 7);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_orientation, 27);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_goneMarginLeft, 13);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_goneMarginTop, 16);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_goneMarginRight, 14);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_goneMarginBottom, 11);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_goneMarginStart, 15);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_goneMarginEnd, 12);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintVertical_weight, 40);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintHorizontal_weight, 39);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintHorizontal_chainStyle, 41);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintVertical_chainStyle, 42);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintHorizontal_bias, 20);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintVertical_bias, 37);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintDimensionRatio, 5);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintLeft_creator, 87);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintTop_creator, 87);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintRight_creator, 87);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintBottom_creator, 87);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintBaseline_creator, 87);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_layout_marginLeft, 24);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_layout_marginRight, 28);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_layout_marginStart, 31);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_layout_marginEnd, 8);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_layout_marginTop, 34);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_layout_marginBottom, 2);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_layout_width, 23);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_layout_height, 21);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintWidth, 95);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintHeight, 96);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_visibility, 22);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_alpha, 43);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_elevation, 44);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_rotationX, 45);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_rotationY, 46);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_rotation, 60);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_scaleX, 47);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_scaleY, 48);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_transformPivotX, 49);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_transformPivotY, 50);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_translationX, 51);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_translationY, 52);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_translationZ, 53);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintWidth_default, 54);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintHeight_default, 55);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintWidth_max, 56);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintHeight_max, 57);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintWidth_min, 58);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintHeight_min, 59);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintCircleRadius, 62);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintCircleAngle, 63);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_animateRelativeTo, 64);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_transitionEasing, 65);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_drawPath, 66);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_transitionPathRotate, 67);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_motionStagger, 79);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_android_id, 38);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_motionTarget, 98);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_motionProgress, 68);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintWidth_percent, 69);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintHeight_percent, 70);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_chainUseRtl, 71);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_barrierDirection, 72);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_barrierMargin, 73);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_constraint_referenced_ids, 74);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_barrierAllowsGoneWidgets, 75);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_pathMotionArc, 76);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constraintTag, 77);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_visibilityMode, 78);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constrainedWidth, 80);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_constrainedHeight, 81);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_polarRelativeTo, 82);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_transformPivotTarget, 83);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_quantizeMotionSteps, 84);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_quantizeMotionPhase, 85);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_quantizeMotionInterpolator, 86);
-        overrideMapToConstant.append(C0923R.styleable.ConstraintOverride_layout_wrapBehaviorInParent, 97);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_orientation, 27);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_goneMarginLeft, 13);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_goneMarginTop, 16);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_goneMarginRight, 14);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_goneMarginBottom, 11);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_goneMarginStart, 15);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_goneMarginEnd, 12);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintVertical_weight, 40);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintHorizontal_weight, 39);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintHorizontal_chainStyle, 41);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintVertical_chainStyle, 42);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintHorizontal_bias, 20);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintVertical_bias, 37);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintDimensionRatio, 5);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintLeft_creator, 87);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintTop_creator, 87);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintRight_creator, 87);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintBottom_creator, 87);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintBaseline_creator, 87);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_layout_marginLeft, 24);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_layout_marginRight, 28);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_layout_marginStart, 31);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_layout_marginEnd, 8);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_layout_marginTop, 34);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_layout_marginBottom, 2);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_layout_width, 23);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_layout_height, 21);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintWidth, 95);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintHeight, 96);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_visibility, 22);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_alpha, 43);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_elevation, 44);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_rotationX, 45);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_rotationY, 46);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_rotation, 60);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_scaleX, 47);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_scaleY, 48);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_transformPivotX, 49);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_transformPivotY, 50);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_translationX, 51);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_translationY, 52);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_translationZ, 53);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintWidth_default, 54);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintHeight_default, 55);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintWidth_max, 56);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintHeight_max, 57);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintWidth_min, 58);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintHeight_min, 59);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintCircleRadius, 62);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintCircleAngle, 63);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_animateRelativeTo, 64);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_transitionEasing, 65);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_drawPath, 66);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_transitionPathRotate, 67);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_motionStagger, 79);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_android_id, 38);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_motionTarget, 98);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_motionProgress, 68);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintWidth_percent, 69);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintHeight_percent, 70);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_chainUseRtl, 71);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_barrierDirection, 72);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_barrierMargin, 73);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_constraint_referenced_ids, 74);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_barrierAllowsGoneWidgets, 75);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_pathMotionArc, 76);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constraintTag, 77);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_visibilityMode, 78);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constrainedWidth, 80);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_constrainedHeight, 81);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_polarRelativeTo, 82);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_transformPivotTarget, 83);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_quantizeMotionSteps, 84);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_quantizeMotionPhase, 85);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_quantizeMotionInterpolator, 86);
+        overrideMapToConstant.append(R.styleable.ConstraintOverride_layout_wrapBehaviorInParent, 97);
     }
 
     private void addAttributes(ConstraintAttribute.AttributeType attributeType, String... strArr) {
@@ -1856,7 +1298,7 @@ public class ConstraintSet {
     public static Constraint buildDelta(Context context, XmlPullParser xmlPullParser) {
         AttributeSet asAttributeSet = Xml.asAttributeSet(xmlPullParser);
         Constraint constraint = new Constraint();
-        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(asAttributeSet, C0923R.styleable.ConstraintOverride);
+        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(asAttributeSet, R.styleable.ConstraintOverride);
         populateOverride(context, constraint, obtainStyledAttributes);
         obtainStyledAttributes.recycle();
         return constraint;
@@ -1873,14 +1315,14 @@ public class ConstraintSet {
         while (i2 < split.length) {
             String trim = split[i2].trim();
             try {
-                i = C0923R.id.class.getField(trim).getInt(null);
+                i = R.id.class.getField(trim).getInt(null);
             } catch (Exception unused) {
                 i = 0;
             }
             if (i == 0) {
                 i = context.getResources().getIdentifier(trim, "id", context.getPackageName());
             }
-            if (i == 0 && view.isInEditMode() && (view.getParent() instanceof ConstraintLayout) && (designInformation = ((ConstraintLayout) view.getParent()).getDesignInformation(0, trim)) != null && (designInformation instanceof Integer)) {
+            if (i == 0 && view.isInEditMode() && (view.getParent() instanceof ConstraintLayout) && (designInformation = view.getParent().getDesignInformation(0, trim)) != null && (designInformation instanceof Integer)) {
                 i = ((Integer) designInformation).intValue();
             }
             iArr[i3] = i;
@@ -1892,7 +1334,7 @@ public class ConstraintSet {
 
     private Constraint fillFromAttributeList(Context context, AttributeSet attributeSet, boolean z) {
         Constraint constraint = new Constraint();
-        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, z ? C0923R.styleable.ConstraintOverride : C0923R.styleable.Constraint);
+        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, z ? R.styleable.ConstraintOverride : R.styleable.Constraint);
         populateConstraint(context, constraint, obtainStyledAttributes, z);
         obtainStyledAttributes.recycle();
         return constraint;
@@ -1952,15 +1394,15 @@ public class ConstraintSet {
         } else {
             i4 = typedArray.getDimensionPixelSize(i, 0);
         }
-        if (obj instanceof ConstraintLayout.LayoutParams) {
-            ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) obj;
+        if (obj instanceof ConstraintLayout$LayoutParams) {
+            ConstraintLayout$LayoutParams constraintLayout$LayoutParams = (ConstraintLayout$LayoutParams) obj;
             if (i2 == 0) {
-                ((ViewGroup.MarginLayoutParams) layoutParams).width = i4;
-                layoutParams.constrainedWidth = z;
+                ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).width = i4;
+                constraintLayout$LayoutParams.constrainedWidth = z;
                 return;
             } else {
-                ((ViewGroup.MarginLayoutParams) layoutParams).height = i4;
-                layoutParams.constrainedHeight = z;
+                ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).height = i4;
+                constraintLayout$LayoutParams.constrainedHeight = z;
                 return;
             }
         }
@@ -2003,14 +1445,14 @@ public class ConstraintSet {
             String trim = substring.trim();
             String trim2 = substring2.trim();
             if (KEY_RATIO.equalsIgnoreCase(trim)) {
-                if (obj instanceof ConstraintLayout.LayoutParams) {
-                    ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) obj;
+                if (obj instanceof ConstraintLayout$LayoutParams) {
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams = (ConstraintLayout$LayoutParams) obj;
                     if (i == 0) {
-                        ((ViewGroup.MarginLayoutParams) layoutParams).width = 0;
+                        ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).width = 0;
                     } else {
-                        ((ViewGroup.MarginLayoutParams) layoutParams).height = 0;
+                        ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).height = 0;
                     }
-                    parseDimensionRatioString(layoutParams, trim2);
+                    parseDimensionRatioString(constraintLayout$LayoutParams, trim2);
                     return;
                 }
                 if (obj instanceof Layout) {
@@ -2027,14 +1469,14 @@ public class ConstraintSet {
             try {
                 if (KEY_WEIGHT.equalsIgnoreCase(trim)) {
                     float parseFloat = Float.parseFloat(trim2);
-                    if (obj instanceof ConstraintLayout.LayoutParams) {
-                        ConstraintLayout.LayoutParams layoutParams2 = (ConstraintLayout.LayoutParams) obj;
+                    if (obj instanceof ConstraintLayout$LayoutParams) {
+                        ConstraintLayout$LayoutParams constraintLayout$LayoutParams2 = (ConstraintLayout$LayoutParams) obj;
                         if (i == 0) {
-                            ((ViewGroup.MarginLayoutParams) layoutParams2).width = 0;
-                            layoutParams2.horizontalWeight = parseFloat;
+                            ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams2).width = 0;
+                            constraintLayout$LayoutParams2.horizontalWeight = parseFloat;
                         } else {
-                            ((ViewGroup.MarginLayoutParams) layoutParams2).height = 0;
-                            layoutParams2.verticalWeight = parseFloat;
+                            ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams2).height = 0;
+                            constraintLayout$LayoutParams2.verticalWeight = parseFloat;
                         }
                     } else if (obj instanceof Layout) {
                         Layout layout = (Layout) obj;
@@ -2060,16 +1502,16 @@ public class ConstraintSet {
                         return;
                     }
                     float max = Math.max(0.0f, Math.min(1.0f, Float.parseFloat(trim2)));
-                    if (obj instanceof ConstraintLayout.LayoutParams) {
-                        ConstraintLayout.LayoutParams layoutParams3 = (ConstraintLayout.LayoutParams) obj;
+                    if (obj instanceof ConstraintLayout$LayoutParams) {
+                        ConstraintLayout$LayoutParams constraintLayout$LayoutParams3 = (ConstraintLayout$LayoutParams) obj;
                         if (i == 0) {
-                            ((ViewGroup.MarginLayoutParams) layoutParams3).width = 0;
-                            layoutParams3.matchConstraintPercentWidth = max;
-                            layoutParams3.matchConstraintDefaultWidth = 2;
+                            ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams3).width = 0;
+                            constraintLayout$LayoutParams3.matchConstraintPercentWidth = max;
+                            constraintLayout$LayoutParams3.matchConstraintDefaultWidth = 2;
                         } else {
-                            ((ViewGroup.MarginLayoutParams) layoutParams3).height = 0;
-                            layoutParams3.matchConstraintPercentHeight = max;
-                            layoutParams3.matchConstraintDefaultHeight = 2;
+                            ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams3).height = 0;
+                            constraintLayout$LayoutParams3.matchConstraintPercentHeight = max;
+                            constraintLayout$LayoutParams3.matchConstraintDefaultHeight = 2;
                         }
                     } else if (obj instanceof Layout) {
                         Layout layout2 = (Layout) obj;
@@ -2098,7 +1540,7 @@ public class ConstraintSet {
         }
     }
 
-    static void parseDimensionRatioString(ConstraintLayout.LayoutParams layoutParams, String str) {
+    static void parseDimensionRatioString(ConstraintLayout$LayoutParams constraintLayout$LayoutParams, String str) {
         float f = Float.NaN;
         int i = -1;
         if (str != null) {
@@ -2135,9 +1577,9 @@ public class ConstraintSet {
             } catch (NumberFormatException unused) {
             }
         }
-        layoutParams.dimensionRatio = str;
-        layoutParams.dimensionRatioValue = f;
-        layoutParams.dimensionRatioSide = i;
+        constraintLayout$LayoutParams.dimensionRatio = str;
+        constraintLayout$LayoutParams.dimensionRatioValue = f;
+        constraintLayout$LayoutParams.dimensionRatioSide = i;
     }
 
     private void populateConstraint(Context context, Constraint constraint, TypedArray typedArray, boolean z) {
@@ -2148,7 +1590,7 @@ public class ConstraintSet {
         int indexCount = typedArray.getIndexCount();
         for (int i = 0; i < indexCount; i++) {
             int index = typedArray.getIndex(i);
-            if (index != C0923R.styleable.Constraint_android_id && C0923R.styleable.Constraint_android_layout_marginStart != index && C0923R.styleable.Constraint_android_layout_marginEnd != index) {
+            if (index != R.styleable.Constraint_android_id && R.styleable.Constraint_android_layout_marginStart != index && R.styleable.Constraint_android_layout_marginEnd != index) {
                 constraint.motion.mApply = true;
                 constraint.layout.mApply = true;
                 constraint.propertySet.mApply = true;
@@ -3147,15 +2589,15 @@ public class ConstraintSet {
 
     public void applyTo(ConstraintLayout constraintLayout) {
         applyToInternal(constraintLayout, true);
-        constraintLayout.setConstraintSet(null);
+        constraintLayout.setConstraintSet((ConstraintSet) null);
         constraintLayout.requestLayout();
     }
 
-    public void applyToHelper(ConstraintHelper constraintHelper, ConstraintWidget constraintWidget, ConstraintLayout.LayoutParams layoutParams, SparseArray<ConstraintWidget> sparseArray) {
+    public void applyToHelper(ConstraintHelper constraintHelper, ConstraintWidget constraintWidget, ConstraintLayout$LayoutParams constraintLayout$LayoutParams, SparseArray<ConstraintWidget> sparseArray) {
         Constraint constraint;
         int id = constraintHelper.getId();
         if (this.mConstraints.containsKey(Integer.valueOf(id)) && (constraint = this.mConstraints.get(Integer.valueOf(id))) != null && (constraintWidget instanceof HelperWidget)) {
-            constraintHelper.loadParameters(constraint, (HelperWidget) constraintWidget, layoutParams, sparseArray);
+            constraintHelper.loadParameters(constraint, (HelperWidget) constraintWidget, constraintLayout$LayoutParams, sparseArray);
         }
     }
 
@@ -3195,13 +2637,13 @@ public class ConstraintSet {
                                     }
                                 }
                             }
-                            ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) childAt.getLayoutParams();
-                            layoutParams.validate();
-                            constraint.applyTo(layoutParams);
+                            ConstraintLayout$LayoutParams constraintLayout$LayoutParams = (ConstraintLayout$LayoutParams) childAt.getLayoutParams();
+                            constraintLayout$LayoutParams.validate();
+                            constraint.applyTo(constraintLayout$LayoutParams);
                             if (z) {
                                 ConstraintAttribute.setAttributes(childAt, constraint.mCustomConstraints);
                             }
-                            childAt.setLayoutParams(layoutParams);
+                            childAt.setLayoutParams(constraintLayout$LayoutParams);
                             PropertySet propertySet = constraint.propertySet;
                             if (propertySet.mVisibilityMode == 0) {
                                 childAt.setVisibility(propertySet.visibility);
@@ -3270,7 +2712,7 @@ public class ConstraintSet {
                     }
                     barrier2.setType(constraint2.layout.mBarrierDirection);
                     barrier2.setMargin(constraint2.layout.mBarrierMargin);
-                    ConstraintLayout.LayoutParams generateDefaultLayoutParams = constraintLayout.generateDefaultLayoutParams();
+                    ConstraintLayout$LayoutParams generateDefaultLayoutParams = constraintLayout.generateDefaultLayoutParams();
                     barrier2.validateParams();
                     constraint2.applyTo(generateDefaultLayoutParams);
                     constraintLayout.addView(barrier2, generateDefaultLayoutParams);
@@ -3278,7 +2720,7 @@ public class ConstraintSet {
                 if (constraint2.layout.mIsGuideline) {
                     View guideline = new Guideline(constraintLayout.getContext());
                     guideline.setId(num.intValue());
-                    ConstraintLayout.LayoutParams generateDefaultLayoutParams2 = constraintLayout.generateDefaultLayoutParams();
+                    ConstraintLayout$LayoutParams generateDefaultLayoutParams2 = constraintLayout.generateDefaultLayoutParams();
                     constraint2.applyTo(generateDefaultLayoutParams2);
                     constraintLayout.addView(guideline, generateDefaultLayoutParams2);
                 }
@@ -3292,17 +2734,17 @@ public class ConstraintSet {
         }
     }
 
-    public void applyToLayoutParams(int i, ConstraintLayout.LayoutParams layoutParams) {
+    public void applyToLayoutParams(int i, ConstraintLayout$LayoutParams constraintLayout$LayoutParams) {
         Constraint constraint;
         if (!this.mConstraints.containsKey(Integer.valueOf(i)) || (constraint = this.mConstraints.get(Integer.valueOf(i))) == null) {
             return;
         }
-        constraint.applyTo(layoutParams);
+        constraint.applyTo(constraintLayout$LayoutParams);
     }
 
     public void applyToWithoutCustom(ConstraintLayout constraintLayout) {
         applyToInternal(constraintLayout, false);
-        constraintLayout.setConstraintSet(null);
+        constraintLayout.setConstraintSet((ConstraintSet) null);
     }
 
     public void center(int i, int i2, int i3, int i4, int i5, int i6, int i7, float f) {
@@ -4124,7 +3566,7 @@ public class ConstraintSet {
         if ((i & 1) == 1) {
             new WriteXmlEngine(writer, constraintLayout, i).writeLayout();
         } else {
-            new WriteJsonEngine(writer, constraintLayout, i).writeLayout();
+            new WriteJsonEngine(this, writer, constraintLayout, i).writeLayout();
         }
         writer.write("\n---------------------------------------------\n");
     }
@@ -4225,255 +3667,8 @@ public class ConstraintSet {
         for (Integer num : constraintSet.mConstraints.keySet()) {
             Constraint constraint = constraintSet.mConstraints.get(num);
             if (constraint != null) {
-                this.mConstraints.put(num, constraint.m5576clone());
+                this.mConstraints.put(num, constraint.m2318clone());
             }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    class WriteJsonEngine {
-        private static final String SPACE = "       ";
-        Context context;
-        int flags;
-        ConstraintLayout layout;
-        Writer writer;
-        int unknownCount = 0;
-        final String LEFT = "'left'";
-        final String RIGHT = "'right'";
-        final String BASELINE = "'baseline'";
-        final String BOTTOM = "'bottom'";
-        final String TOP = "'top'";
-        final String START = "'start'";
-        final String END = "'end'";
-        HashMap<Integer, String> idMap = new HashMap<>();
-
-        WriteJsonEngine(Writer writer, ConstraintLayout constraintLayout, int i) throws IOException {
-            this.writer = writer;
-            this.layout = constraintLayout;
-            this.context = constraintLayout.getContext();
-            this.flags = i;
-        }
-
-        private void writeDimension(String str, int i, int i2, float f, int i3, int i4, boolean z) throws IOException {
-            if (i != 0) {
-                if (i == -2) {
-                    this.writer.write(SPACE + str + ": 'wrap'\n");
-                    return;
-                }
-                if (i == -1) {
-                    this.writer.write(SPACE + str + ": 'parent'\n");
-                    return;
-                }
-                this.writer.write(SPACE + str + ": " + i + ",\n");
-                return;
-            }
-            if (i4 == -1 && i3 == -1) {
-                if (i2 == 1) {
-                    this.writer.write(SPACE + str + ": '???????????',\n");
-                    return;
-                }
-                if (i2 != 2) {
-                    return;
-                }
-                this.writer.write(SPACE + str + ": '" + f + "%',\n");
-                return;
-            }
-            if (i2 == 0) {
-                this.writer.write(SPACE + str + ": {'spread' ," + i3 + ", " + i4 + "}\n");
-                return;
-            }
-            if (i2 == 1) {
-                this.writer.write(SPACE + str + ": {'wrap' ," + i3 + ", " + i4 + "}\n");
-                return;
-            }
-            if (i2 != 2) {
-                return;
-            }
-            this.writer.write(SPACE + str + ": {'" + f + "'% ," + i3 + ", " + i4 + "}\n");
-        }
-
-        private void writeGuideline(int i, int i2, int i3, float f) {
-        }
-
-        String getName(int i) {
-            if (this.idMap.containsKey(Integer.valueOf(i))) {
-                return "'" + this.idMap.get(Integer.valueOf(i)) + "'";
-            }
-            if (i == 0) {
-                return "'parent'";
-            }
-            String lookup = lookup(i);
-            this.idMap.put(Integer.valueOf(i), lookup);
-            return "'" + lookup + "'";
-        }
-
-        String lookup(int i) {
-            try {
-                if (i != -1) {
-                    return this.context.getResources().getResourceEntryName(i);
-                }
-                StringBuilder sb = new StringBuilder();
-                sb.append(EnvironmentCompat.MEDIA_UNKNOWN);
-                int i2 = this.unknownCount + 1;
-                this.unknownCount = i2;
-                sb.append(i2);
-                return sb.toString();
-            } catch (Exception unused) {
-                StringBuilder sb2 = new StringBuilder();
-                sb2.append(EnvironmentCompat.MEDIA_UNKNOWN);
-                int i3 = this.unknownCount + 1;
-                this.unknownCount = i3;
-                sb2.append(i3);
-                return sb2.toString();
-            }
-        }
-
-        void writeCircle(int i, float f, int i2) throws IOException {
-            if (i == -1) {
-                return;
-            }
-            this.writer.write("       circle");
-            this.writer.write(":[");
-            this.writer.write(getName(i));
-            this.writer.write(", " + f);
-            this.writer.write(i2 + "]");
-        }
-
-        void writeConstraint(String str, int i, String str2, int i2, int i3) throws IOException {
-            if (i == -1) {
-                return;
-            }
-            this.writer.write(SPACE + str);
-            this.writer.write(":[");
-            this.writer.write(getName(i));
-            this.writer.write(" , ");
-            this.writer.write(str2);
-            if (i2 != 0) {
-                this.writer.write(" , " + i2);
-            }
-            this.writer.write("],\n");
-        }
-
-        void writeLayout() throws IOException {
-            this.writer.write("\n'ConstraintSet':{\n");
-            for (Integer num : ConstraintSet.this.mConstraints.keySet()) {
-                Constraint constraint = (Constraint) ConstraintSet.this.mConstraints.get(num);
-                String name = getName(num.intValue());
-                this.writer.write(name + ":{\n");
-                Layout layout = constraint.layout;
-                writeDimension("height", layout.mHeight, layout.heightDefault, layout.heightPercent, layout.heightMin, layout.heightMax, layout.constrainedHeight);
-                writeDimension("width", layout.mWidth, layout.widthDefault, layout.widthPercent, layout.widthMin, layout.widthMax, layout.constrainedWidth);
-                writeConstraint("'left'", layout.leftToLeft, "'left'", layout.leftMargin, layout.goneLeftMargin);
-                writeConstraint("'left'", layout.leftToRight, "'right'", layout.leftMargin, layout.goneLeftMargin);
-                writeConstraint("'right'", layout.rightToLeft, "'left'", layout.rightMargin, layout.goneRightMargin);
-                writeConstraint("'right'", layout.rightToRight, "'right'", layout.rightMargin, layout.goneRightMargin);
-                writeConstraint("'baseline'", layout.baselineToBaseline, "'baseline'", -1, layout.goneBaselineMargin);
-                writeConstraint("'baseline'", layout.baselineToTop, "'top'", -1, layout.goneBaselineMargin);
-                writeConstraint("'baseline'", layout.baselineToBottom, "'bottom'", -1, layout.goneBaselineMargin);
-                writeConstraint("'top'", layout.topToBottom, "'bottom'", layout.topMargin, layout.goneTopMargin);
-                writeConstraint("'top'", layout.topToTop, "'top'", layout.topMargin, layout.goneTopMargin);
-                writeConstraint("'bottom'", layout.bottomToBottom, "'bottom'", layout.bottomMargin, layout.goneBottomMargin);
-                writeConstraint("'bottom'", layout.bottomToTop, "'top'", layout.bottomMargin, layout.goneBottomMargin);
-                writeConstraint("'start'", layout.startToStart, "'start'", layout.startMargin, layout.goneStartMargin);
-                writeConstraint("'start'", layout.startToEnd, "'end'", layout.startMargin, layout.goneStartMargin);
-                writeConstraint("'end'", layout.endToStart, "'start'", layout.endMargin, layout.goneEndMargin);
-                writeConstraint("'end'", layout.endToEnd, "'end'", layout.endMargin, layout.goneEndMargin);
-                writeVariable("'horizontalBias'", layout.horizontalBias, 0.5f);
-                writeVariable("'verticalBias'", layout.verticalBias, 0.5f);
-                writeCircle(layout.circleConstraint, layout.circleAngle, layout.circleRadius);
-                writeGuideline(layout.orientation, layout.guideBegin, layout.guideEnd, layout.guidePercent);
-                writeVariable("'dimensionRatio'", layout.dimensionRatio);
-                writeVariable("'barrierMargin'", layout.mBarrierMargin);
-                writeVariable("'type'", layout.mHelperType);
-                writeVariable("'ReferenceId'", layout.mReferenceIdString);
-                writeVariable("'mBarrierAllowsGoneWidgets'", layout.mBarrierAllowsGoneWidgets, true);
-                writeVariable("'WrapBehavior'", layout.mWrapBehavior);
-                writeVariable("'verticalWeight'", layout.verticalWeight);
-                writeVariable("'horizontalWeight'", layout.horizontalWeight);
-                writeVariable("'horizontalChainStyle'", layout.horizontalChainStyle);
-                writeVariable("'verticalChainStyle'", layout.verticalChainStyle);
-                writeVariable("'barrierDirection'", layout.mBarrierDirection);
-                int[] iArr = layout.mReferenceIds;
-                if (iArr != null) {
-                    writeVariable("'ReferenceIds'", iArr);
-                }
-                this.writer.write("}\n");
-            }
-            this.writer.write("}\n");
-        }
-
-        void writeVariable(String str, int i) throws IOException {
-            if (i == 0 || i == -1) {
-                return;
-            }
-            this.writer.write(SPACE + str);
-            this.writer.write(":");
-            this.writer.write(", " + i);
-            this.writer.write("\n");
-        }
-
-        void writeVariable(String str, float f) throws IOException {
-            if (f == -1.0f) {
-                return;
-            }
-            this.writer.write(SPACE + str);
-            this.writer.write(": " + f);
-            this.writer.write(",\n");
-        }
-
-        void writeVariable(String str, float f, float f2) throws IOException {
-            if (f == f2) {
-                return;
-            }
-            this.writer.write(SPACE + str);
-            this.writer.write(": " + f);
-            this.writer.write(",\n");
-        }
-
-        void writeVariable(String str, boolean z) throws IOException {
-            if (z) {
-                this.writer.write(SPACE + str);
-                this.writer.write(": " + z);
-                this.writer.write(",\n");
-            }
-        }
-
-        void writeVariable(String str, boolean z, boolean z2) throws IOException {
-            if (z == z2) {
-                return;
-            }
-            this.writer.write(SPACE + str);
-            this.writer.write(": " + z);
-            this.writer.write(",\n");
-        }
-
-        void writeVariable(String str, int[] iArr) throws IOException {
-            if (iArr == null) {
-                return;
-            }
-            this.writer.write(SPACE + str);
-            this.writer.write(": ");
-            int i = 0;
-            while (i < iArr.length) {
-                Writer writer = this.writer;
-                StringBuilder sb = new StringBuilder();
-                sb.append(i == 0 ? "[" : ", ");
-                sb.append(getName(iArr[i]));
-                writer.write(sb.toString());
-                i++;
-            }
-            this.writer.write("],\n");
-        }
-
-        void writeVariable(String str, String str2) throws IOException {
-            if (str2 == null) {
-                return;
-            }
-            this.writer.write(SPACE + str);
-            this.writer.write(":");
-            this.writer.write(", " + str2);
-            this.writer.write("\n");
         }
     }
 
@@ -4505,8 +3700,8 @@ public class ConstraintSet {
         int childCount = constraintLayout.getChildCount();
         this.mConstraints.clear();
         for (int i = 0; i < childCount; i++) {
-            View childAt = constraintLayout.getChildAt(i);
-            ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) childAt.getLayoutParams();
+            Barrier childAt = constraintLayout.getChildAt(i);
+            ConstraintLayout$LayoutParams constraintLayout$LayoutParams = (ConstraintLayout$LayoutParams) childAt.getLayoutParams();
             int id = childAt.getId();
             if (this.mForceId && id == -1) {
                 throw new RuntimeException("All children of ConstraintLayout must have ids to use ConstraintSet");
@@ -4517,7 +3712,7 @@ public class ConstraintSet {
             Constraint constraint = this.mConstraints.get(Integer.valueOf(id));
             if (constraint != null) {
                 constraint.mCustomConstraints = ConstraintAttribute.extractAttributes(this.mSavedAttributes, childAt);
-                constraint.fillFrom(id, layoutParams);
+                constraint.fillFrom(id, constraintLayout$LayoutParams);
                 constraint.propertySet.visibility = childAt.getVisibility();
                 int i2 = Build.VERSION.SDK_INT;
                 if (i2 >= 17) {
@@ -4545,7 +3740,7 @@ public class ConstraintSet {
                     }
                 }
                 if (childAt instanceof Barrier) {
-                    Barrier barrier = (Barrier) childAt;
+                    Barrier barrier = childAt;
                     constraint.layout.mBarrierAllowsGoneWidgets = barrier.getAllowsGoneWidget();
                     constraint.layout.mReferenceIds = barrier.getReferencedIds();
                     constraint.layout.mBarrierDirection = barrier.getType();
@@ -4568,12 +3763,12 @@ public class ConstraintSet {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void load(android.content.Context r10, org.xmlpull.v1.XmlPullParser r11) {
         /*
             Method dump skipped, instructions count: 558
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.constraintlayout.widget.ConstraintSet.load(android.content.Context, org.xmlpull.v1.XmlPullParser):void");
     }
@@ -4581,8 +3776,8 @@ public class ConstraintSet {
     public void readFallback(ConstraintLayout constraintLayout) {
         int childCount = constraintLayout.getChildCount();
         for (int i = 0; i < childCount; i++) {
-            View childAt = constraintLayout.getChildAt(i);
-            ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) childAt.getLayoutParams();
+            Barrier childAt = constraintLayout.getChildAt(i);
+            ConstraintLayout$LayoutParams constraintLayout$LayoutParams = (ConstraintLayout$LayoutParams) childAt.getLayoutParams();
             int id = childAt.getId();
             if (this.mForceId && id == -1) {
                 throw new RuntimeException("All children of ConstraintLayout must have ids to use ConstraintSet");
@@ -4593,11 +3788,11 @@ public class ConstraintSet {
             Constraint constraint = this.mConstraints.get(Integer.valueOf(id));
             if (constraint != null) {
                 if (!constraint.layout.mApply) {
-                    constraint.fillFrom(id, layoutParams);
+                    constraint.fillFrom(id, constraintLayout$LayoutParams);
                     if (childAt instanceof ConstraintHelper) {
                         constraint.layout.mReferenceIds = ((ConstraintHelper) childAt).getReferencedIds();
                         if (childAt instanceof Barrier) {
-                            Barrier barrier = (Barrier) childAt;
+                            Barrier barrier = childAt;
                             constraint.layout.mBarrierAllowsGoneWidgets = barrier.getAllowsGoneWidget();
                             constraint.layout.mBarrierDirection = barrier.getType();
                             constraint.layout.mBarrierMargin = barrier.getMargin();
@@ -4817,7 +4012,7 @@ public class ConstraintSet {
         this.mConstraints.clear();
         for (int i = 0; i < childCount; i++) {
             View childAt = constraints.getChildAt(i);
-            Constraints.LayoutParams layoutParams = (Constraints.LayoutParams) childAt.getLayoutParams();
+            Constraints.LayoutParams layoutParams = childAt.getLayoutParams();
             int id = childAt.getId();
             if (this.mForceId && id == -1) {
                 throw new RuntimeException("All children of ConstraintLayout must have ids to use ConstraintSet");

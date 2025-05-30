@@ -15,29 +15,18 @@ import android.taobao.windvane.service.WVEventService;
 import android.taobao.windvane.thread.WVThreadPool;
 import android.taobao.windvane.util.TaoLog;
 import android.text.TextUtils;
-import androidx.core.app.NotificationCompat;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVContacts extends WVApiPlugin {
     private static final String KEY_NAME = "name";
     private static final String KEY_PHONE = "phone";
     private static final String[] PHONES_PROJECTION = {"display_name", "data1"};
     private static final String TAG = "WVContacts";
     private WVCallBackContext mCallback = null;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private class ContactInfo {
-        String name;
-        String number;
-
-        private ContactInfo() {
-        }
-    }
 
     /* JADX INFO: Access modifiers changed from: private */
     public void authStatus(final WVCallBackContext wVCallBackContext) {
@@ -78,7 +67,7 @@ public class WVContacts extends WVApiPlugin {
             try {
                 ((Activity) context).startActivityForResult(intent, 4003);
             } catch (Exception e) {
-                TaoLog.m21e("WVContacts", "open pick activity fail, " + e.getMessage());
+                TaoLog.e(TAG, "open pick activity fail, " + e.getMessage());
                 wVCallBackContext.error();
             }
         }
@@ -89,7 +78,7 @@ public class WVContacts extends WVApiPlugin {
     /* JADX WARN: Removed duplicated region for block: B:14:0x004c  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void find(java.lang.String r9, android.taobao.windvane.jsbridge.WVCallBackContext r10) {
         /*
@@ -119,13 +108,13 @@ public class WVContacts extends WVApiPlugin {
             r4.append(r6)
             r4.append(r9)
             java.lang.String r9 = r4.toString()
-            android.taobao.windvane.util.TaoLog.m21e(r2, r9)
+            android.taobao.windvane.util.TaoLog.e(r2, r9)
             r9 = r3
         L38:
             java.util.List r9 = r8.getPhoneContacts(r3, r5, r9)
             if (r9 != 0) goto L4c
             java.lang.String r9 = "find contacts failed"
-            android.taobao.windvane.util.TaoLog.m30w(r2, r9)
+            android.taobao.windvane.util.TaoLog.w(r2, r9)
             android.taobao.windvane.jsbridge.WVResult r9 = new android.taobao.windvane.jsbridge.WVResult
             r9.<init>()
             r10.error(r9)
@@ -158,7 +147,7 @@ public class WVContacts extends WVApiPlugin {
             java.lang.String r9 = r9.getMessage()
             r0.append(r9)
             java.lang.String r9 = r0.toString()
-            android.taobao.windvane.util.TaoLog.m21e(r2, r9)
+            android.taobao.windvane.util.TaoLog.e(r2, r9)
         L93:
             java.lang.String r9 = "contacts"
             r3.addData(r9, r4)
@@ -176,16 +165,14 @@ public class WVContacts extends WVApiPlugin {
     /* JADX WARN: Type inference failed for: r6v0 */
     /* JADX WARN: Type inference failed for: r6v1, types: [android.database.Cursor] */
     /* JADX WARN: Type inference failed for: r6v2 */
-    /* JADX WARN: Type inference failed for: r6v3 */
-    /* JADX WARN: Type inference failed for: r6v4 */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private java.util.List<android.taobao.windvane.jsbridge.api.WVContacts.ContactInfo> getPhoneContacts(java.lang.String r17, java.lang.String r18, java.lang.String r19) {
         /*
             Method dump skipped, instructions count: 389
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.jsbridge.api.WVContacts.getPhoneContacts(java.lang.String, java.lang.String, java.lang.String):java.util.List");
     }
@@ -200,7 +187,7 @@ public class WVContacts extends WVApiPlugin {
                     WVThreadPool.getInstance().execute(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVContacts.2.1
                         @Override // java.lang.Runnable
                         public void run() {
-                            RunnableC01782 runnableC01782 = RunnableC01782.this;
+                            AnonymousClass2 anonymousClass2 = AnonymousClass2.this;
                             WVContacts.this.choose(str2, wVCallBackContext);
                         }
                     });
@@ -209,7 +196,7 @@ public class WVContacts extends WVApiPlugin {
                 @Override // java.lang.Runnable
                 public void run() {
                     WVResult wVResult = new WVResult();
-                    wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "NO_PERMISSION");
+                    wVResult.addData("msg", "NO_PERMISSION");
                     wVCallBackContext.error(wVResult);
                 }
             }).execute();
@@ -220,7 +207,7 @@ public class WVContacts extends WVApiPlugin {
                     WVThreadPool.getInstance().execute(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVContacts.4.1
                         @Override // java.lang.Runnable
                         public void run() {
-                            RunnableC01804 runnableC01804 = RunnableC01804.this;
+                            AnonymousClass4 anonymousClass4 = AnonymousClass4.this;
                             WVContacts.this.find(str2, wVCallBackContext);
                         }
                     });
@@ -229,7 +216,7 @@ public class WVContacts extends WVApiPlugin {
                 @Override // java.lang.Runnable
                 public void run() {
                     WVResult wVResult = new WVResult();
-                    wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "NO_PERMISSION");
+                    wVResult.addData("msg", "NO_PERMISSION");
                     wVCallBackContext.error(wVResult);
                 }
             }).execute();
@@ -240,7 +227,7 @@ public class WVContacts extends WVApiPlugin {
             try {
                 z = new JSONObject(str2).optBoolean("autoAskAuth", true);
             } catch (JSONException unused) {
-                TaoLog.m21e("WVContacts", "authStatus when parse params to JSON error, params=" + str2);
+                TaoLog.e(TAG, "authStatus when parse params to JSON error, params=" + str2);
                 z = true;
             }
             if (!z) {
@@ -251,19 +238,13 @@ public class WVContacts extends WVApiPlugin {
             PermissionProposer.buildPermissionTask(this.mContext, new String[]{"android.permission.READ_CONTACTS"}).setTaskOnPermissionGranted(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVContacts.6
                 @Override // java.lang.Runnable
                 public void run() {
-                    WVThreadPool.getInstance().execute(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVContacts.6.1
-                        @Override // java.lang.Runnable
-                        public void run() {
-                            RunnableC01826 runnableC01826 = RunnableC01826.this;
-                            WVContacts.this.authStatus(wVCallBackContext);
-                        }
-                    });
+                    WVThreadPool.getInstance().execute(new 1(this));
                 }
             }).setTaskOnPermissionDenied(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVContacts.5
                 @Override // java.lang.Runnable
                 public void run() {
                     WVResult wVResult = new WVResult();
-                    wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "NO_PERMISSION");
+                    wVResult.addData("msg", "NO_PERMISSION");
                     wVCallBackContext.error(wVResult);
                 }
             }).execute();
@@ -280,29 +261,29 @@ public class WVContacts extends WVApiPlugin {
         }
         if (i2 == -1) {
             if (intent == null || (data = intent.getData()) == null) {
-                TaoLog.m30w("WVContacts", "contact data is null");
+                TaoLog.w(TAG, "contact data is null");
                 return;
             }
             String lastPathSegment = data.getLastPathSegment();
             if (!TextUtils.isEmpty(lastPathSegment)) {
                 List<ContactInfo> phoneContacts = getPhoneContacts(lastPathSegment, null, null);
                 if (phoneContacts == null || phoneContacts.isEmpty()) {
-                    TaoLog.m30w("WVContacts", "contact result is empty");
+                    TaoLog.w(TAG, "contact result is empty");
                     this.mCallback.error(new WVResult());
                     return;
                 }
                 ContactInfo contactInfo = phoneContacts.get(0);
                 if (!TextUtils.isEmpty(contactInfo.number)) {
                     WVResult wVResult = new WVResult();
-                    wVResult.addData("name", contactInfo.name);
-                    wVResult.addData("phone", contactInfo.number);
+                    wVResult.addData(KEY_NAME, contactInfo.name);
+                    wVResult.addData(KEY_PHONE, contactInfo.number);
                     this.mCallback.success(wVResult);
                     return;
                 }
             }
         }
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("WVContacts", "choose contact failed");
+            TaoLog.d(TAG, "choose contact failed");
         }
         this.mCallback.error(new WVResult());
     }

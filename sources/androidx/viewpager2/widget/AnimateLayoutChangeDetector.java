@@ -7,10 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.Comparator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class AnimateLayoutChangeDetector {
     private static final ViewGroup.MarginLayoutParams ZERO_MARGIN_LAYOUT_PARAMS;
     private LinearLayoutManager mLayoutManager;
@@ -62,12 +61,7 @@ final class AnimateLayoutChangeDetector {
             }
             iArr3[1] = bottom + i2;
         }
-        Arrays.sort(iArr, new Comparator<int[]>() { // from class: androidx.viewpager2.widget.AnimateLayoutChangeDetector.1
-            @Override // java.util.Comparator
-            public int compare(int[] iArr4, int[] iArr5) {
-                return iArr4[0] - iArr5[0];
-            }
-        });
+        Arrays.sort(iArr, new 1(this));
         for (int i4 = 1; i4 < childCount; i4++) {
             if (iArr[i4 - 1][1] != iArr[i4][0]) {
                 return false;

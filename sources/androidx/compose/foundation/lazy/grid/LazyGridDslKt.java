@@ -1,17 +1,18 @@
 package androidx.compose.foundation.lazy.grid;
 
-import androidx.compose.foundation.layout.Arrangement;
+import androidx.compose.foundation.layout.Arrangement$Horizontal;
+import androidx.compose.foundation.layout.Arrangement$Vertical;
 import androidx.compose.foundation.layout.PaddingKt;
 import androidx.compose.foundation.layout.PaddingValues;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Constraints;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.internal.ComposableLambdaKt;
+import androidx.compose.ui.unit.Constraints;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
+import androidx.compose.ui.unit.LayoutDirection;
 import java.util.ArrayList;
 import java.util.List;
 import kotlin.Unit;
@@ -26,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyGridDslKt {
     /* JADX WARN: Removed duplicated region for block: B:101:0x01de  */
     /* JADX WARN: Removed duplicated region for block: B:103:0x01ee  */
@@ -69,12 +70,12 @@ public final class LazyGridDslKt {
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void LazyHorizontalGrid(@org.jetbrains.annotations.NotNull final androidx.compose.foundation.lazy.grid.GridCells r27, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.lazy.grid.LazyGridState r29, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r30, boolean r31, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Horizontal r32, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Vertical r33, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r34, boolean r35, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.grid.LazyGridScope, kotlin.Unit> r36, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r37, final int r38, final int r39) {
+    public static final void LazyHorizontalGrid(@org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.grid.GridCells r27, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.lazy.grid.LazyGridState r29, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r30, boolean r31, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement$Horizontal r32, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement$Vertical r33, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r34, boolean r35, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.grid.LazyGridScope, kotlin.Unit> r36, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r37, int r38, int r39) {
         /*
             Method dump skipped, instructions count: 674
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.grid.LazyGridDslKt.LazyHorizontalGrid(androidx.compose.foundation.lazy.grid.GridCells, androidx.compose.ui.Modifier, androidx.compose.foundation.lazy.grid.LazyGridState, androidx.compose.foundation.layout.PaddingValues, boolean, androidx.compose.foundation.layout.Arrangement$Horizontal, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.foundation.gestures.FlingBehavior, boolean, kotlin.jvm.functions.Function1, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -120,12 +121,12 @@ public final class LazyGridDslKt {
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void LazyVerticalGrid(@org.jetbrains.annotations.NotNull final androidx.compose.foundation.lazy.grid.GridCells r27, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.lazy.grid.LazyGridState r29, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r30, boolean r31, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Vertical r32, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Horizontal r33, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r34, boolean r35, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.grid.LazyGridScope, kotlin.Unit> r36, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r37, final int r38, final int r39) {
+    public static final void LazyVerticalGrid(@org.jetbrains.annotations.NotNull final androidx.compose.foundation.lazy.grid.GridCells r27, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.lazy.grid.LazyGridState r29, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r30, boolean r31, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement$Vertical r32, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement$Horizontal r33, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r34, boolean r35, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.grid.LazyGridScope, kotlin.Unit> r36, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r37, final int r38, final int r39) {
         /*
             Method dump skipped, instructions count: 670
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.grid.LazyGridDslKt.LazyVerticalGrid(androidx.compose.foundation.lazy.grid.GridCells, androidx.compose.ui.Modifier, androidx.compose.foundation.lazy.grid.LazyGridState, androidx.compose.foundation.layout.PaddingValues, boolean, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.foundation.layout.Arrangement$Horizontal, androidx.compose.foundation.gestures.FlingBehavior, boolean, kotlin.jvm.functions.Function1, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -150,7 +151,7 @@ public final class LazyGridDslKt {
         Intrinsics.checkNotNullParameter(list, "items");
         Intrinsics.checkNotNullParameter(function12, "contentType");
         Intrinsics.checkNotNullParameter(function4, "itemContent");
-        lazyGridScope.items(list.size(), function1 != null ? new LazyGridDslKt$items$2(function1, list) : null, function2 != null ? new LazyGridDslKt$items$3(function2, list) : null, new LazyGridDslKt$items$4(function12, list), ComposableLambdaKt.composableLambdaInstance(699646206, true, new LazyGridDslKt$items$5(function4, list)));
+        lazyGridScope.items(list.size(), function1 != null ? new items.2(function1, list) : null, function2 != null ? new items.3(function2, list) : null, new items.4(function12, list), ComposableLambdaKt.composableLambdaInstance(699646206, true, new items.5(function4, list)));
     }
 
     public static /* synthetic */ void items$default(LazyGridScope lazyGridScope, List list, Function1 function1, Function2 function2, Function1 function12, Function4 function4, int i, Object obj) {
@@ -161,23 +162,13 @@ public final class LazyGridDslKt {
             function2 = null;
         }
         if ((i & 8) != 0) {
-            function12 = new Function1() { // from class: androidx.compose.foundation.lazy.grid.LazyGridDslKt$items$1
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    return m1557invoke((LazyGridDslKt$items$1) obj2);
-                }
-
-                @Nullable
-                /* renamed from: invoke, reason: collision with other method in class */
-                public final Void m1557invoke(T t) {
-                    return null;
-                }
-            };
+            function12 = items.1.INSTANCE;
         }
         Intrinsics.checkNotNullParameter(lazyGridScope, "<this>");
         Intrinsics.checkNotNullParameter(list, "items");
         Intrinsics.checkNotNullParameter(function12, "contentType");
         Intrinsics.checkNotNullParameter(function4, "itemContent");
-        lazyGridScope.items(list.size(), function1 != null ? new LazyGridDslKt$items$2(function1, list) : null, function2 != null ? new LazyGridDslKt$items$3(function2, list) : null, new LazyGridDslKt$items$4(function12, list), ComposableLambdaKt.composableLambdaInstance(699646206, true, new LazyGridDslKt$items$5(function4, list)));
+        lazyGridScope.items(list.size(), function1 != null ? new items.2(function1, list) : null, function2 != null ? new items.3(function2, list) : null, new items.4(function12, list), ComposableLambdaKt.composableLambdaInstance(699646206, true, new items.5(function4, list)));
     }
 
     @ComposableInferredTarget(scheme = "[0[0]]")
@@ -186,7 +177,7 @@ public final class LazyGridDslKt {
         Intrinsics.checkNotNullParameter(list, "items");
         Intrinsics.checkNotNullParameter(function22, "contentType");
         Intrinsics.checkNotNullParameter(function5, "itemContent");
-        lazyGridScope.items(list.size(), function2 != null ? new LazyGridDslKt$itemsIndexed$2(function2, list) : null, function3 != null ? new LazyGridDslKt$itemsIndexed$3(function3, list) : null, new LazyGridDslKt$itemsIndexed$4(function22, list), ComposableLambdaKt.composableLambdaInstance(1229287273, true, new LazyGridDslKt$itemsIndexed$5(function5, list)));
+        lazyGridScope.items(list.size(), function2 != null ? new itemsIndexed.2(function2, list) : null, function3 != null ? new itemsIndexed.3(function3, list) : null, new itemsIndexed.4(function22, list), ComposableLambdaKt.composableLambdaInstance(1229287273, true, new itemsIndexed.5(function5, list)));
     }
 
     public static /* synthetic */ void itemsIndexed$default(LazyGridScope lazyGridScope, List list, Function2 function2, Function3 function3, Function2 function22, Function5 function5, int i, Object obj) {
@@ -197,31 +188,22 @@ public final class LazyGridDslKt {
             function3 = null;
         }
         if ((i & 8) != 0) {
-            function22 = new Function2() { // from class: androidx.compose.foundation.lazy.grid.LazyGridDslKt$itemsIndexed$1
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2, Object obj3) {
-                    return invoke(((Number) obj2).intValue(), (int) obj3);
-                }
-
-                @Nullable
-                public final Void invoke(int i2, T t) {
-                    return null;
-                }
-            };
+            function22 = itemsIndexed.1.INSTANCE;
         }
         Intrinsics.checkNotNullParameter(lazyGridScope, "<this>");
         Intrinsics.checkNotNullParameter(list, "items");
         Intrinsics.checkNotNullParameter(function22, "contentType");
         Intrinsics.checkNotNullParameter(function5, "itemContent");
-        lazyGridScope.items(list.size(), function2 != null ? new LazyGridDslKt$itemsIndexed$2(function2, list) : null, function3 != null ? new LazyGridDslKt$itemsIndexed$3(function3, list) : null, new LazyGridDslKt$itemsIndexed$4(function22, list), ComposableLambdaKt.composableLambdaInstance(1229287273, true, new LazyGridDslKt$itemsIndexed$5(function5, list)));
+        lazyGridScope.items(list.size(), function2 != null ? new itemsIndexed.2(function2, list) : null, function3 != null ? new itemsIndexed.3(function3, list) : null, new itemsIndexed.4(function22, list), ComposableLambdaKt.composableLambdaInstance(1229287273, true, new itemsIndexed.5(function5, list)));
     }
 
     @Composable
-    private static final Function2<Density, Constraints, List<Integer>> rememberColumnWidthSums(final GridCells gridCells, final Arrangement.Horizontal horizontal, final PaddingValues paddingValues, Composer composer, int i) {
+    private static final Function2<Density, Constraints, List<Integer>> rememberColumnWidthSums(final GridCells gridCells, final Arrangement$Horizontal arrangement$Horizontal, final PaddingValues paddingValues, Composer composer, int i) {
         composer.startReplaceableGroup(-1355301804);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-1355301804, i, -1, "androidx.compose.foundation.lazy.grid.rememberColumnWidthSums (LazyGridDsl.kt:148)");
         }
-        boolean z = ((((i & 14) ^ 6) > 4 && composer.changed(gridCells)) || (i & 6) == 4) | ((((i & 112) ^ 48) > 32 && composer.changed(horizontal)) || (i & 48) == 32) | ((((i & 896) ^ 384) > 256 && composer.changed(paddingValues)) || (i & 384) == 256);
+        boolean z = ((((i & 14) ^ 6) > 4 && composer.changed(gridCells)) || (i & 6) == 4) | ((((i & 112) ^ 48) > 32 && composer.changed(arrangement$Horizontal)) || (i & 48) == 32) | ((((i & 896) ^ 384) > 256 && composer.changed(paddingValues)) || (i & 384) == 256);
         Object rememberedValue = composer.rememberedValue();
         if (z || rememberedValue == Composer.Companion.getEmpty()) {
             rememberedValue = new Function2<Density, Constraints, List<Integer>>() { // from class: androidx.compose.foundation.lazy.grid.LazyGridDslKt$rememberColumnWidthSums$1$1
@@ -231,19 +213,19 @@ public final class LazyGridDslKt {
                 }
 
                 public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                    return m1563invoke0kLqBqw((Density) obj, ((Constraints) obj2).m5190unboximpl());
+                    return m452invoke0kLqBqw((Density) obj, ((Constraints) obj2).unbox-impl());
                 }
 
                 @NotNull
                 /* renamed from: invoke-0kLqBqw, reason: not valid java name */
-                public final List<Integer> m1563invoke0kLqBqw(@NotNull Density density, long j) {
+                public final List<Integer> m452invoke0kLqBqw(@NotNull Density density, long j) {
                     Intrinsics.checkNotNullParameter(density, "$this$null");
-                    if (!(Constraints.m5184getMaxWidthimpl(j) != Integer.MAX_VALUE)) {
+                    if (!(Constraints.getMaxWidth-impl(j) != Integer.MAX_VALUE)) {
                         throw new IllegalArgumentException("LazyVerticalGrid's width should be bound by parent.".toString());
                     }
-                    PaddingValues paddingValues2 = PaddingValues.this;
+                    PaddingValues paddingValues2 = paddingValues;
                     LayoutDirection layoutDirection = LayoutDirection.Ltr;
-                    List<Integer> mutableList = CollectionsKt.toMutableList(gridCells.calculateCrossAxisCellSizes(density, Constraints.m5184getMaxWidthimpl(j) - density.mo1277roundToPx0680j_4(C0856Dp.m5216constructorimpl(PaddingKt.calculateStartPadding(paddingValues2, layoutDirection) + PaddingKt.calculateEndPadding(PaddingValues.this, layoutDirection))), density.mo1277roundToPx0680j_4(horizontal.mo1347getSpacingD9Ej5fM())));
+                    List<Integer> mutableList = CollectionsKt.toMutableList(gridCells.calculateCrossAxisCellSizes(density, Constraints.getMaxWidth-impl(j) - density.roundToPx-0680j_4(Dp.constructor-impl(PaddingKt.calculateStartPadding(paddingValues2, layoutDirection) + PaddingKt.calculateEndPadding(paddingValues, layoutDirection))), density.roundToPx-0680j_4(arrangement$Horizontal.mo284getSpacingD9Ej5fM())));
                     int size = mutableList.size();
                     for (int i2 = 1; i2 < size; i2++) {
                         mutableList.set(i2, Integer.valueOf(mutableList.get(i2).intValue() + mutableList.get(i2 - 1).intValue()));
@@ -262,39 +244,15 @@ public final class LazyGridDslKt {
     }
 
     @Composable
-    private static final Function2<Density, Constraints, List<Integer>> rememberRowHeightSums(final GridCells gridCells, final Arrangement.Vertical vertical, final PaddingValues paddingValues, Composer composer, int i) {
+    private static final Function2<Density, Constraints, List<Integer>> rememberRowHeightSums(GridCells gridCells, Arrangement$Vertical arrangement$Vertical, PaddingValues paddingValues, Composer composer, int i) {
         composer.startReplaceableGroup(239683573);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(239683573, i, -1, "androidx.compose.foundation.lazy.grid.rememberRowHeightSums (LazyGridDsl.kt:180)");
         }
-        boolean z = ((((i & 14) ^ 6) > 4 && composer.changed(gridCells)) || (i & 6) == 4) | ((((i & 112) ^ 48) > 32 && composer.changed(vertical)) || (i & 48) == 32) | ((((i & 896) ^ 384) > 256 && composer.changed(paddingValues)) || (i & 384) == 256);
+        boolean z = ((((i & 14) ^ 6) > 4 && composer.changed(gridCells)) || (i & 6) == 4) | ((((i & 112) ^ 48) > 32 && composer.changed(arrangement$Vertical)) || (i & 48) == 32) | ((((i & 896) ^ 384) > 256 && composer.changed(paddingValues)) || (i & 384) == 256);
         Object rememberedValue = composer.rememberedValue();
         if (z || rememberedValue == Composer.Companion.getEmpty()) {
-            rememberedValue = new Function2<Density, Constraints, List<Integer>>() { // from class: androidx.compose.foundation.lazy.grid.LazyGridDslKt$rememberRowHeightSums$1$1
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                    return m1564invoke0kLqBqw((Density) obj, ((Constraints) obj2).m5190unboximpl());
-                }
-
-                @NotNull
-                /* renamed from: invoke-0kLqBqw, reason: not valid java name */
-                public final List<Integer> m1564invoke0kLqBqw(@NotNull Density density, long j) {
-                    Intrinsics.checkNotNullParameter(density, "$this$null");
-                    if (!(Constraints.m5183getMaxHeightimpl(j) != Integer.MAX_VALUE)) {
-                        throw new IllegalArgumentException("LazyHorizontalGrid's height should be bound by parent.".toString());
-                    }
-                    List<Integer> mutableList = CollectionsKt.toMutableList(gridCells.calculateCrossAxisCellSizes(density, Constraints.m5183getMaxHeightimpl(j) - density.mo1277roundToPx0680j_4(C0856Dp.m5216constructorimpl(PaddingValues.this.mo1377calculateTopPaddingD9Ej5fM() + PaddingValues.this.mo1374calculateBottomPaddingD9Ej5fM())), density.mo1277roundToPx0680j_4(vertical.mo1347getSpacingD9Ej5fM())));
-                    int size = mutableList.size();
-                    for (int i2 = 1; i2 < size; i2++) {
-                        mutableList.set(i2, Integer.valueOf(mutableList.get(i2).intValue() + mutableList.get(i2 - 1).intValue()));
-                    }
-                    return mutableList;
-                }
-            };
+            rememberedValue = new rememberRowHeightSums.1.1(paddingValues, gridCells, arrangement$Vertical);
             composer.updateRememberedValue(rememberedValue);
         }
         Function2<Density, Constraints, List<Integer>> function2 = (Function2) rememberedValue;
@@ -311,7 +269,7 @@ public final class LazyGridDslKt {
         Intrinsics.checkNotNullParameter(tArr, "items");
         Intrinsics.checkNotNullParameter(function12, "contentType");
         Intrinsics.checkNotNullParameter(function4, "itemContent");
-        lazyGridScope.items(tArr.length, function1 != null ? new LazyGridDslKt$items$7(function1, tArr) : null, function2 != null ? new LazyGridDslKt$items$8(function2, tArr) : null, new LazyGridDslKt$items$9(function12, tArr), ComposableLambdaKt.composableLambdaInstance(407562193, true, new LazyGridDslKt$items$10(function4, tArr)));
+        lazyGridScope.items(tArr.length, function1 != null ? new items.7(function1, tArr) : null, function2 != null ? new items.8(function2, tArr) : null, new items.9(function12, tArr), ComposableLambdaKt.composableLambdaInstance(407562193, true, new items.10(function4, tArr)));
     }
 
     @ComposableInferredTarget(scheme = "[0[0]]")
@@ -320,7 +278,7 @@ public final class LazyGridDslKt {
         Intrinsics.checkNotNullParameter(tArr, "items");
         Intrinsics.checkNotNullParameter(function22, "contentType");
         Intrinsics.checkNotNullParameter(function5, "itemContent");
-        lazyGridScope.items(tArr.length, function2 != null ? new LazyGridDslKt$itemsIndexed$7(function2, tArr) : null, function3 != null ? new LazyGridDslKt$itemsIndexed$8(function3, tArr) : null, new LazyGridDslKt$itemsIndexed$9(function22, tArr), ComposableLambdaKt.composableLambdaInstance(-911455938, true, new LazyGridDslKt$itemsIndexed$10(function5, tArr)));
+        lazyGridScope.items(tArr.length, function2 != null ? new itemsIndexed.7(function2, tArr) : null, function3 != null ? new itemsIndexed.8(function3, tArr) : null, new itemsIndexed.9(function22, tArr), ComposableLambdaKt.composableLambdaInstance(-911455938, true, new LazyGridDslKt$itemsIndexed$10(function5, tArr)));
     }
 
     public static /* synthetic */ void items$default(LazyGridScope lazyGridScope, Object[] objArr, Function1 function1, Function2 function2, Function1 function12, Function4 function4, int i, Object obj) {
@@ -331,23 +289,13 @@ public final class LazyGridDslKt {
             function2 = null;
         }
         if ((i & 8) != 0) {
-            function12 = new Function1() { // from class: androidx.compose.foundation.lazy.grid.LazyGridDslKt$items$6
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    return m1559invoke((LazyGridDslKt$items$6) obj2);
-                }
-
-                @Nullable
-                /* renamed from: invoke, reason: collision with other method in class */
-                public final Void m1559invoke(T t) {
-                    return null;
-                }
-            };
+            function12 = items.6.INSTANCE;
         }
         Intrinsics.checkNotNullParameter(lazyGridScope, "<this>");
         Intrinsics.checkNotNullParameter(objArr, "items");
         Intrinsics.checkNotNullParameter(function12, "contentType");
         Intrinsics.checkNotNullParameter(function4, "itemContent");
-        lazyGridScope.items(objArr.length, function1 != null ? new LazyGridDslKt$items$7(function1, objArr) : null, function2 != null ? new LazyGridDslKt$items$8(function2, objArr) : null, new LazyGridDslKt$items$9(function12, objArr), ComposableLambdaKt.composableLambdaInstance(407562193, true, new LazyGridDslKt$items$10(function4, objArr)));
+        lazyGridScope.items(objArr.length, function1 != null ? new items.7(function1, objArr) : null, function2 != null ? new items.8(function2, objArr) : null, new items.9(function12, objArr), ComposableLambdaKt.composableLambdaInstance(407562193, true, new items.10(function4, objArr)));
     }
 
     public static /* synthetic */ void itemsIndexed$default(LazyGridScope lazyGridScope, Object[] objArr, Function2 function2, Function3 function3, Function2 function22, Function5 function5, int i, Object obj) {
@@ -358,21 +306,12 @@ public final class LazyGridDslKt {
             function3 = null;
         }
         if ((i & 8) != 0) {
-            function22 = new Function2() { // from class: androidx.compose.foundation.lazy.grid.LazyGridDslKt$itemsIndexed$6
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2, Object obj3) {
-                    return invoke(((Number) obj2).intValue(), (int) obj3);
-                }
-
-                @Nullable
-                public final Void invoke(int i2, T t) {
-                    return null;
-                }
-            };
+            function22 = itemsIndexed.6.INSTANCE;
         }
         Intrinsics.checkNotNullParameter(lazyGridScope, "<this>");
         Intrinsics.checkNotNullParameter(objArr, "items");
         Intrinsics.checkNotNullParameter(function22, "contentType");
         Intrinsics.checkNotNullParameter(function5, "itemContent");
-        lazyGridScope.items(objArr.length, function2 != null ? new LazyGridDslKt$itemsIndexed$7(function2, objArr) : null, function3 != null ? new LazyGridDslKt$itemsIndexed$8(function3, objArr) : null, new LazyGridDslKt$itemsIndexed$9(function22, objArr), ComposableLambdaKt.composableLambdaInstance(-911455938, true, new LazyGridDslKt$itemsIndexed$10(function5, objArr)));
+        lazyGridScope.items(objArr.length, function2 != null ? new itemsIndexed.7(function2, objArr) : null, function3 != null ? new itemsIndexed.8(function3, objArr) : null, new itemsIndexed.9(function22, objArr), ComposableLambdaKt.composableLambdaInstance(-911455938, true, new LazyGridDslKt$itemsIndexed$10(function5, objArr)));
     }
 }

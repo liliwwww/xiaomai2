@@ -14,24 +14,11 @@ import androidx.core.graphics.BlendModeUtils;
 import androidx.core.util.Pair;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class PaintCompat {
     private static final String EM_STRING = "m";
     private static final String TOFU_STRING = "\udfffd";
     private static final ThreadLocal<Pair<Rect, Rect>> sRectThreadLocal = new ThreadLocal<>();
-
-    /* compiled from: Taobao */
-    @RequiresApi(23)
-    /* loaded from: classes.dex */
-    static class Api23Impl {
-        private Api23Impl() {
-        }
-
-        @DoNotInline
-        static boolean hasGlyph(Paint paint, String str) {
-            return paint.hasGlyph(str);
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(29)
@@ -81,9 +68,9 @@ public final class PaintCompat {
             return true;
         }
         Pair<Rect, Rect> obtainEmptyRects = obtainEmptyRects();
-        paint.getTextBounds(TOFU_STRING, 0, 2, obtainEmptyRects.first);
-        paint.getTextBounds(str, 0, length, obtainEmptyRects.second);
-        return !obtainEmptyRects.first.equals(obtainEmptyRects.second);
+        paint.getTextBounds(TOFU_STRING, 0, 2, (Rect) obtainEmptyRects.first);
+        paint.getTextBounds(str, 0, length, (Rect) obtainEmptyRects.second);
+        return !((Rect) obtainEmptyRects.first).equals(obtainEmptyRects.second);
     }
 
     private static Pair<Rect, Rect> obtainEmptyRects() {
@@ -94,8 +81,8 @@ public final class PaintCompat {
             threadLocal.set(pair2);
             return pair2;
         }
-        pair.first.setEmpty();
-        pair.second.setEmpty();
+        ((Rect) pair.first).setEmpty();
+        ((Rect) pair.second).setEmpty();
         return pair;
     }
 

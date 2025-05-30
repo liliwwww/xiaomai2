@@ -1,20 +1,19 @@
 package androidx.compose.foundation.lazy.grid;
 
 import androidx.compose.animation.core.FiniteAnimationSpec;
-import androidx.compose.p004ui.unit.Constraints;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntOffsetKt;
+import androidx.compose.foundation.lazy.grid.LazyGridItemPlacementAnimator$onMeasured$;
+import androidx.compose.ui.unit.Constraints;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntOffsetKt;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import kotlin.collections.CollectionsKt;
 import kotlin.collections.MapsKt;
-import kotlin.comparisons.ComparisonsKt;
+import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
-import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import kotlinx.coroutines.CoroutineScope;
 import kotlinx.coroutines.CoroutineStart;
@@ -22,7 +21,7 @@ import kotlinx.coroutines.d;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyGridItemPlacementAnimator {
     private int firstVisibleIndex;
     private final boolean isVertical;
@@ -66,17 +65,17 @@ public final class LazyGridItemPlacementAnimator {
 
     private final ItemInfo createItemInfo(LazyGridPositionedItem lazyGridPositionedItem, int i) {
         ItemInfo itemInfo = new ItemInfo(lazyGridPositionedItem.getCrossAxisSize(), lazyGridPositionedItem.getCrossAxisOffset());
-        long m5330copyiSbpLlY$default = this.isVertical ? IntOffset.m5330copyiSbpLlY$default(lazyGridPositionedItem.mo1565getOffsetnOccac(), 0, i, 1, null) : IntOffset.m5330copyiSbpLlY$default(lazyGridPositionedItem.mo1565getOffsetnOccac(), i, 0, 2, null);
+        long m2639copyiSbpLlY$default = this.isVertical ? IntOffset.m2639copyiSbpLlY$default(lazyGridPositionedItem.getOffset-nOcc-ac(), 0, i, 1, null) : IntOffset.m2639copyiSbpLlY$default(lazyGridPositionedItem.getOffset-nOcc-ac(), i, 0, 2, null);
         int placeablesCount = lazyGridPositionedItem.getPlaceablesCount();
         for (int i2 = 0; i2 < placeablesCount; i2++) {
-            itemInfo.getPlaceables().add(new PlaceableInfo(m5330copyiSbpLlY$default, lazyGridPositionedItem.getMainAxisSize(i2), null));
+            itemInfo.getPlaceables().add(new PlaceableInfo(m2639copyiSbpLlY$default, lazyGridPositionedItem.getMainAxisSize(i2), null));
         }
         return itemInfo;
     }
 
     static /* synthetic */ ItemInfo createItemInfo$default(LazyGridItemPlacementAnimator lazyGridItemPlacementAnimator, LazyGridPositionedItem lazyGridPositionedItem, int i, int i2, Object obj) {
         if ((i2 & 2) != 0) {
-            i = lazyGridItemPlacementAnimator.m1567getMainAxisgyyYBs(lazyGridPositionedItem.mo1565getOffsetnOccac());
+            i = lazyGridItemPlacementAnimator.m455getMainAxisgyyYBs(lazyGridPositionedItem.getOffset-nOcc-ac());
         }
         return lazyGridItemPlacementAnimator.createItemInfo(lazyGridPositionedItem, i);
     }
@@ -86,19 +85,19 @@ public final class LazyGridItemPlacementAnimator {
     }
 
     /* renamed from: getMainAxis--gyyYBs, reason: not valid java name */
-    private final int m1567getMainAxisgyyYBs(long j) {
-        return this.isVertical ? IntOffset.m5335getYimpl(j) : IntOffset.m5334getXimpl(j);
+    private final int m455getMainAxisgyyYBs(long j) {
+        return this.isVertical ? IntOffset.m2644getYimpl(j) : IntOffset.m2643getXimpl(j);
     }
 
     private final boolean isWithinBounds(ItemInfo itemInfo, int i) {
-        List<PlaceableInfo> placeables = itemInfo.getPlaceables();
+        List placeables = itemInfo.getPlaceables();
         int size = placeables.size();
         for (int i2 = 0; i2 < size; i2++) {
-            PlaceableInfo placeableInfo = placeables.get(i2);
-            long m1611getTargetOffsetnOccac = placeableInfo.m1611getTargetOffsetnOccac();
-            long m1555getNotAnimatableDeltanOccac = itemInfo.m1555getNotAnimatableDeltanOccac();
-            long IntOffset = IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1611getTargetOffsetnOccac) + IntOffset.m5334getXimpl(m1555getNotAnimatableDeltanOccac), IntOffset.m5335getYimpl(m1611getTargetOffsetnOccac) + IntOffset.m5335getYimpl(m1555getNotAnimatableDeltanOccac));
-            if (m1567getMainAxisgyyYBs(IntOffset) + placeableInfo.getMainAxisSize() > 0 && m1567getMainAxisgyyYBs(IntOffset) < i) {
+            PlaceableInfo placeableInfo = (PlaceableInfo) placeables.get(i2);
+            long m487getTargetOffsetnOccac = placeableInfo.m487getTargetOffsetnOccac();
+            long j = itemInfo.getNotAnimatableDelta-nOcc-ac();
+            long IntOffset = IntOffsetKt.IntOffset(IntOffset.m2643getXimpl(m487getTargetOffsetnOccac) + IntOffset.m2643getXimpl(j), IntOffset.m2644getYimpl(m487getTargetOffsetnOccac) + IntOffset.m2644getYimpl(j));
+            if (m455getMainAxisgyyYBs(IntOffset) + placeableInfo.getMainAxisSize() > 0 && m455getMainAxisgyyYBs(IntOffset) < i) {
                 return true;
             }
         }
@@ -109,40 +108,36 @@ public final class LazyGridItemPlacementAnimator {
         while (itemInfo.getPlaceables().size() > lazyGridPositionedItem.getPlaceablesCount()) {
             CollectionsKt.removeLast(itemInfo.getPlaceables());
         }
-        while (true) {
-            DefaultConstructorMarker defaultConstructorMarker = null;
-            if (itemInfo.getPlaceables().size() >= lazyGridPositionedItem.getPlaceablesCount()) {
-                break;
-            }
+        while (itemInfo.getPlaceables().size() < lazyGridPositionedItem.getPlaceablesCount()) {
             int size = itemInfo.getPlaceables().size();
-            long mo1565getOffsetnOccac = lazyGridPositionedItem.mo1565getOffsetnOccac();
-            List<PlaceableInfo> placeables = itemInfo.getPlaceables();
-            long m1555getNotAnimatableDeltanOccac = itemInfo.m1555getNotAnimatableDeltanOccac();
-            placeables.add(new PlaceableInfo(IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(mo1565getOffsetnOccac) - IntOffset.m5334getXimpl(m1555getNotAnimatableDeltanOccac), IntOffset.m5335getYimpl(mo1565getOffsetnOccac) - IntOffset.m5335getYimpl(m1555getNotAnimatableDeltanOccac)), lazyGridPositionedItem.getMainAxisSize(size), defaultConstructorMarker));
+            long j = lazyGridPositionedItem.getOffset-nOcc-ac();
+            List placeables = itemInfo.getPlaceables();
+            long j2 = itemInfo.getNotAnimatableDelta-nOcc-ac();
+            placeables.add(new PlaceableInfo(IntOffsetKt.IntOffset(IntOffset.m2643getXimpl(j) - IntOffset.m2643getXimpl(j2), IntOffset.m2644getYimpl(j) - IntOffset.m2644getYimpl(j2)), lazyGridPositionedItem.getMainAxisSize(size), null));
         }
-        List<PlaceableInfo> placeables2 = itemInfo.getPlaceables();
+        List placeables2 = itemInfo.getPlaceables();
         int size2 = placeables2.size();
         for (int i = 0; i < size2; i++) {
-            PlaceableInfo placeableInfo = placeables2.get(i);
-            long m1611getTargetOffsetnOccac = placeableInfo.m1611getTargetOffsetnOccac();
-            long m1555getNotAnimatableDeltanOccac2 = itemInfo.m1555getNotAnimatableDeltanOccac();
-            long IntOffset = IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1611getTargetOffsetnOccac) + IntOffset.m5334getXimpl(m1555getNotAnimatableDeltanOccac2), IntOffset.m5335getYimpl(m1611getTargetOffsetnOccac) + IntOffset.m5335getYimpl(m1555getNotAnimatableDeltanOccac2));
-            long mo1565getOffsetnOccac2 = lazyGridPositionedItem.mo1565getOffsetnOccac();
+            PlaceableInfo placeableInfo = (PlaceableInfo) placeables2.get(i);
+            long m487getTargetOffsetnOccac = placeableInfo.m487getTargetOffsetnOccac();
+            long j3 = itemInfo.getNotAnimatableDelta-nOcc-ac();
+            long IntOffset = IntOffsetKt.IntOffset(IntOffset.m2643getXimpl(m487getTargetOffsetnOccac) + IntOffset.m2643getXimpl(j3), IntOffset.m2644getYimpl(m487getTargetOffsetnOccac) + IntOffset.m2644getYimpl(j3));
+            long j4 = lazyGridPositionedItem.getOffset-nOcc-ac();
             placeableInfo.setMainAxisSize(lazyGridPositionedItem.getMainAxisSize(i));
-            FiniteAnimationSpec<IntOffset> animationSpec = lazyGridPositionedItem.getAnimationSpec(i);
-            if (!IntOffset.m5333equalsimpl0(IntOffset, mo1565getOffsetnOccac2)) {
-                long m1555getNotAnimatableDeltanOccac3 = itemInfo.m1555getNotAnimatableDeltanOccac();
-                placeableInfo.m1612setTargetOffsetgyyYBs(IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(mo1565getOffsetnOccac2) - IntOffset.m5334getXimpl(m1555getNotAnimatableDeltanOccac3), IntOffset.m5335getYimpl(mo1565getOffsetnOccac2) - IntOffset.m5335getYimpl(m1555getNotAnimatableDeltanOccac3)));
+            FiniteAnimationSpec animationSpec = lazyGridPositionedItem.getAnimationSpec(i);
+            if (!IntOffset.m2642equalsimpl0(IntOffset, j4)) {
+                long j5 = itemInfo.getNotAnimatableDelta-nOcc-ac();
+                placeableInfo.m488setTargetOffsetgyyYBs(IntOffsetKt.IntOffset(IntOffset.m2643getXimpl(j4) - IntOffset.m2643getXimpl(j5), IntOffset.m2644getYimpl(j4) - IntOffset.m2644getYimpl(j5)));
                 if (animationSpec != null) {
                     placeableInfo.setInProgress(true);
-                    d.d(this.scope, (CoroutineContext) null, (CoroutineStart) null, new LazyGridItemPlacementAnimator$startAnimationsIfNeeded$1$1(placeableInfo, animationSpec, null), 3, (Object) null);
+                    d.d(this.scope, (CoroutineContext) null, (CoroutineStart) null, new startAnimationsIfNeeded.1.1(placeableInfo, animationSpec, (Continuation) null), 3, (Object) null);
                 }
             }
         }
     }
 
     /* renamed from: toOffset-Bjo55l4, reason: not valid java name */
-    private final long m1568toOffsetBjo55l4(int i) {
+    private final long m456toOffsetBjo55l4(int i) {
         boolean z = this.isVertical;
         int i2 = z ? 0 : i;
         if (!z) {
@@ -152,20 +147,20 @@ public final class LazyGridItemPlacementAnimator {
     }
 
     /* renamed from: getAnimatedOffset-YT5a7pE, reason: not valid java name */
-    public final long m1569getAnimatedOffsetYT5a7pE(@NotNull Object obj, int i, int i2, int i3, long j) {
+    public final long m457getAnimatedOffsetYT5a7pE(@NotNull Object obj, int i, int i2, int i3, long j) {
         Intrinsics.checkNotNullParameter(obj, "key");
         ItemInfo itemInfo = this.keyToItemInfoMap.get(obj);
         if (itemInfo == null) {
             return j;
         }
-        PlaceableInfo placeableInfo = itemInfo.getPlaceables().get(i);
-        long m5343unboximpl = placeableInfo.getAnimatedOffset().getValue().m5343unboximpl();
-        long m1555getNotAnimatableDeltanOccac = itemInfo.m1555getNotAnimatableDeltanOccac();
-        long IntOffset = IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m5343unboximpl) + IntOffset.m5334getXimpl(m1555getNotAnimatableDeltanOccac), IntOffset.m5335getYimpl(m5343unboximpl) + IntOffset.m5335getYimpl(m1555getNotAnimatableDeltanOccac));
-        long m1611getTargetOffsetnOccac = placeableInfo.m1611getTargetOffsetnOccac();
-        long m1555getNotAnimatableDeltanOccac2 = itemInfo.m1555getNotAnimatableDeltanOccac();
-        long IntOffset2 = IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1611getTargetOffsetnOccac) + IntOffset.m5334getXimpl(m1555getNotAnimatableDeltanOccac2), IntOffset.m5335getYimpl(m1611getTargetOffsetnOccac) + IntOffset.m5335getYimpl(m1555getNotAnimatableDeltanOccac2));
-        if (placeableInfo.getInProgress() && ((m1567getMainAxisgyyYBs(IntOffset2) <= i2 && m1567getMainAxisgyyYBs(IntOffset) < i2) || (m1567getMainAxisgyyYBs(IntOffset2) >= i3 && m1567getMainAxisgyyYBs(IntOffset) > i3))) {
+        PlaceableInfo placeableInfo = (PlaceableInfo) itemInfo.getPlaceables().get(i);
+        long m2652unboximpl = ((IntOffset) placeableInfo.getAnimatedOffset().getValue()).m2652unboximpl();
+        long j2 = itemInfo.getNotAnimatableDelta-nOcc-ac();
+        long IntOffset = IntOffsetKt.IntOffset(IntOffset.m2643getXimpl(m2652unboximpl) + IntOffset.m2643getXimpl(j2), IntOffset.m2644getYimpl(m2652unboximpl) + IntOffset.m2644getYimpl(j2));
+        long m487getTargetOffsetnOccac = placeableInfo.m487getTargetOffsetnOccac();
+        long j3 = itemInfo.getNotAnimatableDelta-nOcc-ac();
+        long IntOffset2 = IntOffsetKt.IntOffset(IntOffset.m2643getXimpl(m487getTargetOffsetnOccac) + IntOffset.m2643getXimpl(j3), IntOffset.m2644getYimpl(m487getTargetOffsetnOccac) + IntOffset.m2644getYimpl(j3));
+        if (placeableInfo.getInProgress() && ((m455getMainAxisgyyYBs(IntOffset2) <= i2 && m455getMainAxisgyyYBs(IntOffset) < i2) || (m455getMainAxisgyyYBs(IntOffset2) >= i3 && m455getMainAxisgyyYBs(IntOffset) > i3))) {
             d.d(this.scope, (CoroutineContext) null, (CoroutineStart) null, new LazyGridItemPlacementAnimator$getAnimatedOffset$1(placeableInfo, null), 3, (Object) null);
         }
         return IntOffset;
@@ -200,10 +195,10 @@ public final class LazyGridItemPlacementAnimator {
         int i7 = this.firstVisibleIndex;
         LazyGridPositionedItem lazyGridPositionedItem = (LazyGridPositionedItem) CollectionsKt.firstOrNull(list);
         this.firstVisibleIndex = lazyGridPositionedItem != null ? lazyGridPositionedItem.getIndex() : 0;
-        final Map<Object, Integer> map = this.keyToIndexMap;
+        Map<Object, Integer> map = this.keyToIndexMap;
         this.keyToIndexMap = lazyMeasuredItemProvider.getKeyToIndexMap();
         int i8 = this.isVertical ? i3 : i2;
-        long m1568toOffsetBjo55l4 = m1568toOffsetBjo55l4(i);
+        long m456toOffsetBjo55l4 = m456toOffsetBjo55l4(i);
         this.movingAwayKeys.addAll(this.keyToItemInfoMap.keySet());
         int size2 = list.size();
         int i9 = 0;
@@ -227,8 +222,8 @@ public final class LazyGridItemPlacementAnimator {
                     }
                 } else {
                     i4 = i7;
-                    long m1555getNotAnimatableDeltanOccac = itemInfo.m1555getNotAnimatableDeltanOccac();
-                    itemInfo.m1556setNotAnimatableDeltagyyYBs(IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1555getNotAnimatableDeltanOccac) + IntOffset.m5334getXimpl(m1568toOffsetBjo55l4), IntOffset.m5335getYimpl(m1555getNotAnimatableDeltanOccac) + IntOffset.m5335getYimpl(m1568toOffsetBjo55l4)));
+                    long j = itemInfo.getNotAnimatableDelta-nOcc-ac();
+                    itemInfo.setNotAnimatableDelta--gyyYBs(IntOffsetKt.IntOffset(IntOffset.m2643getXimpl(j) + IntOffset.m2643getXimpl(m456toOffsetBjo55l4), IntOffset.m2644getYimpl(j) + IntOffset.m2644getYimpl(m456toOffsetBjo55l4)));
                     itemInfo.setCrossAxisSize(lazyGridPositionedItem2.getCrossAxisSize());
                     itemInfo.setCrossAxisOffset(lazyGridPositionedItem2.getCrossAxisOffset());
                     startAnimationsIfNeeded(lazyGridPositionedItem2, itemInfo);
@@ -243,13 +238,7 @@ public final class LazyGridItemPlacementAnimator {
         }
         List<LazyGridPositionedItem> list2 = this.movingInFromStartBound;
         if (list2.size() > 1) {
-            CollectionsKt.sortWith(list2, new Comparator() { // from class: androidx.compose.foundation.lazy.grid.LazyGridItemPlacementAnimator$onMeasured$$inlined$sortByDescending$1
-                /* JADX WARN: Multi-variable type inference failed */
-                @Override // java.util.Comparator
-                public final int compare(T t, T t2) {
-                    return ComparisonsKt.compareValues((Integer) map.get(((LazyGridPositionedItem) t2).getKey()), (Integer) map.get(((LazyGridPositionedItem) t).getKey()));
-                }
-            });
+            CollectionsKt.sortWith(list2, new LazyGridItemPlacementAnimator$onMeasured$.inlined.sortByDescending.1(map));
         }
         List<LazyGridPositionedItem> list3 = this.movingInFromStartBound;
         int size3 = list3.size();
@@ -276,13 +265,7 @@ public final class LazyGridItemPlacementAnimator {
         }
         List<LazyGridPositionedItem> list4 = this.movingInFromEndBound;
         if (list4.size() > 1) {
-            CollectionsKt.sortWith(list4, new Comparator() { // from class: androidx.compose.foundation.lazy.grid.LazyGridItemPlacementAnimator$onMeasured$$inlined$sortBy$1
-                /* JADX WARN: Multi-variable type inference failed */
-                @Override // java.util.Comparator
-                public final int compare(T t, T t2) {
-                    return ComparisonsKt.compareValues((Integer) map.get(((LazyGridPositionedItem) t).getKey()), (Integer) map.get(((LazyGridPositionedItem) t2).getKey()));
-                }
-            });
+            CollectionsKt.sortWith(list4, new LazyGridItemPlacementAnimator$onMeasured$.inlined.sortBy.1(map));
         }
         List<LazyGridPositionedItem> list5 = this.movingInFromEndBound;
         int size4 = list5.size();
@@ -306,7 +289,7 @@ public final class LazyGridItemPlacementAnimator {
         for (Object obj : this.movingAwayKeys) {
             ItemInfo itemInfo2 = (ItemInfo) MapsKt.getValue(this.keyToItemInfoMap, obj);
             Integer num2 = this.keyToIndexMap.get(obj);
-            List<PlaceableInfo> placeables = itemInfo2.getPlaceables();
+            List placeables = itemInfo2.getPlaceables();
             int size5 = placeables.size();
             int i19 = 0;
             while (true) {
@@ -314,7 +297,7 @@ public final class LazyGridItemPlacementAnimator {
                     z2 = false;
                     break;
                 } else {
-                    if (placeables.get(i19).getInProgress()) {
+                    if (((PlaceableInfo) placeables.get(i19)).getInProgress()) {
                         z2 = true;
                         break;
                     }
@@ -324,28 +307,17 @@ public final class LazyGridItemPlacementAnimator {
             if (itemInfo2.getPlaceables().isEmpty() || num2 == null || ((!z2 && Intrinsics.areEqual(num2, map.get(obj))) || !(z2 || isWithinBounds(itemInfo2, i8)))) {
                 this.keyToItemInfoMap.remove(obj);
             } else {
-                LazyMeasuredItem m1591getAndMeasureednRnyU$default = LazyMeasuredItemProvider.m1591getAndMeasureednRnyU$default(lazyMeasuredItemProvider, ItemIndex.m1544constructorimpl(num2.intValue()), 0, this.isVertical ? Constraints.Companion.m5194fixedWidthOenEA2s(itemInfo2.getCrossAxisSize()) : Constraints.Companion.m5193fixedHeightOenEA2s(itemInfo2.getCrossAxisSize()), 2, null);
+                LazyMeasuredItem lazyMeasuredItem = LazyMeasuredItemProvider.getAndMeasure-ednRnyU$default(lazyMeasuredItemProvider, ItemIndex.m441constructorimpl(num2.intValue()), 0, this.isVertical ? Constraints.Companion.fixedWidth-OenEA2s(itemInfo2.getCrossAxisSize()) : Constraints.Companion.fixedHeight-OenEA2s(itemInfo2.getCrossAxisSize()), 2, (Object) null);
                 if (num2.intValue() < this.firstVisibleIndex) {
-                    this.movingAwayToStartBound.add(m1591getAndMeasureednRnyU$default);
+                    this.movingAwayToStartBound.add(lazyMeasuredItem);
                 } else {
-                    this.movingAwayToEndBound.add(m1591getAndMeasureednRnyU$default);
+                    this.movingAwayToEndBound.add(lazyMeasuredItem);
                 }
             }
         }
         List<LazyMeasuredItem> list6 = this.movingAwayToStartBound;
         if (list6.size() > 1) {
-            CollectionsKt.sortWith(list6, new Comparator() { // from class: androidx.compose.foundation.lazy.grid.LazyGridItemPlacementAnimator$onMeasured$$inlined$sortByDescending$2
-                /* JADX WARN: Multi-variable type inference failed */
-                @Override // java.util.Comparator
-                public final int compare(T t, T t2) {
-                    Map map2;
-                    Map map3;
-                    map2 = LazyGridItemPlacementAnimator.this.keyToIndexMap;
-                    Integer num3 = (Integer) map2.get(((LazyMeasuredItem) t2).getKey());
-                    map3 = LazyGridItemPlacementAnimator.this.keyToIndexMap;
-                    return ComparisonsKt.compareValues(num3, (Integer) map3.get(((LazyMeasuredItem) t).getKey()));
-                }
-            });
+            CollectionsKt.sortWith(list6, new LazyGridItemPlacementAnimator$onMeasured$.inlined.sortByDescending.2(this));
         }
         List<LazyMeasuredItem> list7 = this.movingAwayToStartBound;
         int size6 = list7.size();
@@ -353,35 +325,24 @@ public final class LazyGridItemPlacementAnimator {
         int i21 = 0;
         int i22 = -1;
         for (int i23 = 0; i23 < size6; i23++) {
-            LazyMeasuredItem lazyMeasuredItem = list7.get(i23);
-            int m1587getLineIndexOfItem_Ze7BM = lazyGridSpanLayoutProvider.m1587getLineIndexOfItem_Ze7BM(lazyMeasuredItem.m1590getIndexVZbfaAc());
-            if (m1587getLineIndexOfItem_Ze7BM == -1 || m1587getLineIndexOfItem_Ze7BM != i22) {
+            LazyMeasuredItem lazyMeasuredItem2 = list7.get(i23);
+            int m467getLineIndexOfItem_Ze7BM = lazyGridSpanLayoutProvider.m467getLineIndexOfItem_Ze7BM(lazyMeasuredItem2.getIndex-VZbfaAc());
+            if (m467getLineIndexOfItem_Ze7BM == -1 || m467getLineIndexOfItem_Ze7BM != i22) {
                 i20 += i21;
-                i21 = lazyMeasuredItem.getMainAxisSize();
-                i22 = m1587getLineIndexOfItem_Ze7BM;
+                i21 = lazyMeasuredItem2.getMainAxisSize();
+                i22 = m467getLineIndexOfItem_Ze7BM;
             } else {
-                i21 = Math.max(i21, lazyMeasuredItem.getMainAxisSize());
+                i21 = Math.max(i21, lazyMeasuredItem2.getMainAxisSize());
             }
-            int mainAxisSize = (0 - i20) - lazyMeasuredItem.getMainAxisSize();
-            ItemInfo itemInfo3 = (ItemInfo) MapsKt.getValue(this.keyToItemInfoMap, lazyMeasuredItem.getKey());
-            LazyGridPositionedItem position = lazyMeasuredItem.position(mainAxisSize, itemInfo3.getCrossAxisOffset(), i2, i3, -1, -1);
+            int mainAxisSize = (0 - i20) - lazyMeasuredItem2.getMainAxisSize();
+            ItemInfo itemInfo3 = (ItemInfo) MapsKt.getValue(this.keyToItemInfoMap, lazyMeasuredItem2.getKey());
+            LazyGridPositionedItem position = lazyMeasuredItem2.position(mainAxisSize, itemInfo3.getCrossAxisOffset(), i2, i3, -1, -1);
             list.add(position);
             startAnimationsIfNeeded(position, itemInfo3);
         }
         List<LazyMeasuredItem> list8 = this.movingAwayToEndBound;
         if (list8.size() > 1) {
-            CollectionsKt.sortWith(list8, new Comparator() { // from class: androidx.compose.foundation.lazy.grid.LazyGridItemPlacementAnimator$onMeasured$$inlined$sortBy$2
-                /* JADX WARN: Multi-variable type inference failed */
-                @Override // java.util.Comparator
-                public final int compare(T t, T t2) {
-                    Map map2;
-                    Map map3;
-                    map2 = LazyGridItemPlacementAnimator.this.keyToIndexMap;
-                    Integer num3 = (Integer) map2.get(((LazyMeasuredItem) t).getKey());
-                    map3 = LazyGridItemPlacementAnimator.this.keyToIndexMap;
-                    return ComparisonsKt.compareValues(num3, (Integer) map3.get(((LazyMeasuredItem) t2).getKey()));
-                }
-            });
+            CollectionsKt.sortWith(list8, new LazyGridItemPlacementAnimator$onMeasured$.inlined.sortBy.2(this));
         }
         List<LazyMeasuredItem> list9 = this.movingAwayToEndBound;
         int size7 = list9.size();
@@ -389,17 +350,17 @@ public final class LazyGridItemPlacementAnimator {
         int i25 = 0;
         int i26 = 0;
         for (int i27 = 0; i27 < size7; i27++) {
-            LazyMeasuredItem lazyMeasuredItem2 = list9.get(i27);
-            int m1587getLineIndexOfItem_Ze7BM2 = lazyGridSpanLayoutProvider.m1587getLineIndexOfItem_Ze7BM(lazyMeasuredItem2.m1590getIndexVZbfaAc());
-            if (m1587getLineIndexOfItem_Ze7BM2 == -1 || m1587getLineIndexOfItem_Ze7BM2 != i24) {
+            LazyMeasuredItem lazyMeasuredItem3 = list9.get(i27);
+            int m467getLineIndexOfItem_Ze7BM2 = lazyGridSpanLayoutProvider.m467getLineIndexOfItem_Ze7BM(lazyMeasuredItem3.getIndex-VZbfaAc());
+            if (m467getLineIndexOfItem_Ze7BM2 == -1 || m467getLineIndexOfItem_Ze7BM2 != i24) {
                 i26 += i25;
-                i25 = lazyMeasuredItem2.getMainAxisSize();
-                i24 = m1587getLineIndexOfItem_Ze7BM2;
+                i25 = lazyMeasuredItem3.getMainAxisSize();
+                i24 = m467getLineIndexOfItem_Ze7BM2;
             } else {
-                i25 = Math.max(i25, lazyMeasuredItem2.getMainAxisSize());
+                i25 = Math.max(i25, lazyMeasuredItem3.getMainAxisSize());
             }
-            ItemInfo itemInfo4 = (ItemInfo) MapsKt.getValue(this.keyToItemInfoMap, lazyMeasuredItem2.getKey());
-            LazyGridPositionedItem position2 = lazyMeasuredItem2.position(i8 + i26, itemInfo4.getCrossAxisOffset(), i2, i3, -1, -1);
+            ItemInfo itemInfo4 = (ItemInfo) MapsKt.getValue(this.keyToItemInfoMap, lazyMeasuredItem3.getKey());
+            LazyGridPositionedItem position2 = lazyMeasuredItem3.position(i8 + i26, itemInfo4.getCrossAxisOffset(), i2, i3, -1, -1);
             list.add(position2);
             startAnimationsIfNeeded(position2, itemInfo4);
         }

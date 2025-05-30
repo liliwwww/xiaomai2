@@ -6,7 +6,7 @@ import kotlin.jvm.internal.markers.KMappedMarker;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PersistentOrderedMapValuesIterator<K, V> implements Iterator<V>, KMappedMarker {
 
     @NotNull
@@ -24,7 +24,7 @@ public final class PersistentOrderedMapValuesIterator<K, V> implements Iterator<
 
     @Override // java.util.Iterator
     public V next() {
-        return this.internal.next().getValue();
+        return (V) this.internal.next().getValue();
     }
 
     @Override // java.util.Iterator

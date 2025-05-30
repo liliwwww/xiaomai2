@@ -6,7 +6,7 @@ import androidx.constraintlayout.core.motion.utils.StopLogicEngine;
 import androidx.constraintlayout.motion.widget.MotionInterpolator;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class StopLogic extends MotionInterpolator {
     private StopEngine mEngine;
     private SpringStopEngine mSpringStopEngine;
@@ -28,7 +28,6 @@ public class StopLogic extends MotionInterpolator {
         return this.mEngine.debug(str, f);
     }
 
-    @Override // androidx.constraintlayout.motion.widget.MotionInterpolator, android.animation.TimeInterpolator
     public float getInterpolation(float f) {
         return this.mEngine.getInterpolation(f);
     }
@@ -50,7 +49,6 @@ public class StopLogic extends MotionInterpolator {
         springStopEngine.springConfig(f, f2, f3, f4, f5, f6, f7, i);
     }
 
-    @Override // androidx.constraintlayout.motion.widget.MotionInterpolator
     public float getVelocity() {
         return this.mEngine.getVelocity();
     }

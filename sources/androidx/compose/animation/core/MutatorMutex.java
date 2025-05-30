@@ -16,7 +16,7 @@ import tb.i80;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class MutatorMutex {
 
     @NotNull
@@ -25,9 +25,8 @@ public final class MutatorMutex {
     @NotNull
     private final Mutex mutex = MutexKt.b(false, 1, (Object) null);
 
-    /* JADX INFO: Access modifiers changed from: private */
     /* compiled from: Taobao */
-    static final class Mutator {
+    private static final class Mutator {
 
         @NotNull
         private final Job job;
@@ -92,11 +91,11 @@ public final class MutatorMutex {
 
     @Nullable
     public final <R> Object mutate(@NotNull MutatePriority mutatePriority, @NotNull Function1<? super Continuation<? super R>, ? extends Object> function1, @NotNull Continuation<? super R> continuation) {
-        return i80.g(new MutatorMutex$mutate$2(mutatePriority, this, function1, null), continuation);
+        return i80.g(new mutate.2(mutatePriority, this, function1, (Continuation) null), continuation);
     }
 
     @Nullable
     public final <T, R> Object mutateWith(T t, @NotNull MutatePriority mutatePriority, @NotNull Function2<? super T, ? super Continuation<? super R>, ? extends Object> function2, @NotNull Continuation<? super R> continuation) {
-        return i80.g(new MutatorMutex$mutateWith$2(mutatePriority, this, function2, t, null), continuation);
+        return i80.g(new mutateWith.2(mutatePriority, this, function2, t, (Continuation) null), continuation);
     }
 }

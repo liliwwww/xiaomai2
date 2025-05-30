@@ -2,20 +2,11 @@ package androidx.compose.material.internal;
 
 import android.annotation.SuppressLint;
 import android.graphics.Rect;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
-import androidx.compose.p004ui.C0756R;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.platform.AbstractComposeView;
-import androidx.compose.p004ui.platform.ViewRootForInspector;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntRect;
-import androidx.compose.p004ui.unit.IntSize;
-import androidx.compose.p004ui.unit.IntSizeKt;
-import androidx.compose.p004ui.unit.LayoutDirection;
-import androidx.compose.p004ui.window.PopupPositionProvider;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
@@ -23,6 +14,16 @@ import androidx.compose.runtime.CompositionContext;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.ScopeUpdateScope;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.R;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.platform.AbstractComposeView;
+import androidx.compose.ui.platform.ViewRootForInspector;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntRect;
+import androidx.compose.ui.unit.IntSize;
+import androidx.compose.ui.unit.IntSizeKt;
+import androidx.compose.ui.unit.LayoutDirection;
+import androidx.compose.ui.window.PopupPositionProvider;
 import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.ViewTreeLifecycleOwner;
 import kotlin.NoWhenBranchMatchedException;
@@ -36,7 +37,7 @@ import tb.r56;
 
 /* compiled from: Taobao */
 @SuppressLint({"ViewConstructor"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.OnGlobalLayoutListener, ViewRootForInspector {
 
     @NotNull
@@ -98,9 +99,9 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
     /* JADX WARN: Illegal instructions before constructor call */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public PopupLayout(@org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function0<kotlin.Unit> r8, @org.jetbrains.annotations.NotNull java.lang.String r9, @org.jetbrains.annotations.NotNull android.view.View r10, @org.jetbrains.annotations.NotNull androidx.compose.p004ui.unit.Density r11, @org.jetbrains.annotations.NotNull androidx.compose.p004ui.window.PopupPositionProvider r12, @org.jetbrains.annotations.NotNull java.util.UUID r13) {
+    public PopupLayout(@org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function0<kotlin.Unit> r8, @org.jetbrains.annotations.NotNull java.lang.String r9, @org.jetbrains.annotations.NotNull android.view.View r10, @org.jetbrains.annotations.NotNull androidx.compose.ui.unit.Density r11, @org.jetbrains.annotations.NotNull androidx.compose.ui.window.PopupPositionProvider r12, @org.jetbrains.annotations.NotNull java.util.UUID r13) {
         /*
             r7 = this;
             java.lang.String r0 = "testTag"
@@ -135,7 +136,7 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
             android.view.WindowManager$LayoutParams r8 = r7.createLayoutParams()
             r7.params = r8
             r7.positionProvider = r12
-            androidx.compose.ui.unit.LayoutDirection r8 = androidx.compose.p004ui.unit.LayoutDirection.Ltr
+            androidx.compose.ui.unit.LayoutDirection r8 = androidx.compose.ui.unit.LayoutDirection.Ltr
             r7.parentLayoutDirection = r8
             r8 = 0
             r9 = 2
@@ -144,12 +145,12 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
             androidx.compose.runtime.MutableState r12 = androidx.compose.runtime.SnapshotStateKt.mutableStateOf$default(r8, r8, r9, r8)
             r7.popupContentSize$delegate = r12
             androidx.compose.material.internal.PopupLayout$canCalculatePosition$2 r12 = new androidx.compose.material.internal.PopupLayout$canCalculatePosition$2
-            r12.<init>()
+            r12.<init>(r7)
             androidx.compose.runtime.State r12 = androidx.compose.runtime.SnapshotStateKt.derivedStateOf(r12)
             r7.canCalculatePosition$delegate = r12
             r12 = 8
             float r12 = (float) r12
-            float r12 = androidx.compose.p004ui.unit.C0856Dp.m5216constructorimpl(r12)
+            float r12 = androidx.compose.ui.unit.Dp.m2142constructorimpl(r12)
             r7.maxSupportedElevation = r12
             android.graphics.Rect r0 = new android.graphics.Rect
             r0.<init>()
@@ -157,7 +158,7 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
             android.graphics.Rect r0 = new android.graphics.Rect
             r0.<init>()
             r7.tmpWindowVisibleFrame = r0
-            androidx.compose.material.internal.PopupLayout$dismissOnOutsideClick$1 r0 = new kotlin.jvm.functions.Function2<androidx.compose.p004ui.geometry.Offset, androidx.compose.p004ui.unit.IntRect, java.lang.Boolean>() { // from class: androidx.compose.material.internal.PopupLayout$dismissOnOutsideClick$1
+            androidx.compose.material.internal.PopupLayout$dismissOnOutsideClick$1 r0 = new kotlin.jvm.functions.Function2<androidx.compose.ui.geometry.Offset, androidx.compose.ui.unit.IntRect, java.lang.Boolean>() { // from class: androidx.compose.material.internal.PopupLayout$dismissOnOutsideClick$1
                 static {
                     /*
                         androidx.compose.material.internal.PopupLayout$dismissOnOutsideClick$1 r0 = new androidx.compose.material.internal.PopupLayout$dismissOnOutsideClick$1
@@ -182,8 +183,8 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
                 public /* bridge */ /* synthetic */ java.lang.Object invoke(java.lang.Object r1, java.lang.Object r2) {
                     /*
                         r0 = this;
-                        androidx.compose.ui.geometry.Offset r1 = (androidx.compose.p004ui.geometry.Offset) r1
-                        androidx.compose.ui.unit.IntRect r2 = (androidx.compose.p004ui.unit.IntRect) r2
+                        androidx.compose.ui.geometry.Offset r1 = (androidx.compose.ui.geometry.Offset) r1
+                        androidx.compose.ui.unit.IntRect r2 = (androidx.compose.ui.unit.IntRect) r2
                         java.lang.Boolean r1 = r0.invoke(r1, r2)
                         return r1
                     */
@@ -192,7 +193,7 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
 
                 @org.jetbrains.annotations.NotNull
                 /* renamed from: invoke-KMgbckE, reason: not valid java name and merged with bridge method [inline-methods] */
-                public final java.lang.Boolean invoke(@org.jetbrains.annotations.Nullable androidx.compose.p004ui.geometry.Offset r4, @org.jetbrains.annotations.NotNull androidx.compose.p004ui.unit.IntRect r5) {
+                public final java.lang.Boolean invoke(@org.jetbrains.annotations.Nullable androidx.compose.ui.geometry.Offset r4, @org.jetbrains.annotations.NotNull androidx.compose.ui.unit.IntRect r5) {
                     /*
                         r3 = this;
                         java.lang.String r0 = "bounds"
@@ -201,26 +202,26 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
                         if (r4 != 0) goto L9
                         goto L4e
                     L9:
-                        long r1 = r4.m2566unboximpl()
-                        float r1 = androidx.compose.p004ui.geometry.Offset.m2556getXimpl(r1)
+                        long r1 = r4.m858unboximpl()
+                        float r1 = androidx.compose.ui.geometry.Offset.m848getXimpl(r1)
                         int r2 = r5.getLeft()
                         float r2 = (float) r2
                         int r1 = (r1 > r2 ? 1 : (r1 == r2 ? 0 : -1))
                         if (r1 < 0) goto L4d
-                        long r1 = r4.m2566unboximpl()
-                        float r1 = androidx.compose.p004ui.geometry.Offset.m2556getXimpl(r1)
+                        long r1 = r4.m858unboximpl()
+                        float r1 = androidx.compose.ui.geometry.Offset.m848getXimpl(r1)
                         int r2 = r5.getRight()
                         float r2 = (float) r2
                         int r1 = (r1 > r2 ? 1 : (r1 == r2 ? 0 : -1))
                         if (r1 > 0) goto L4d
-                        long r1 = r4.m2566unboximpl()
-                        float r1 = androidx.compose.p004ui.geometry.Offset.m2557getYimpl(r1)
+                        long r1 = r4.m858unboximpl()
+                        float r1 = androidx.compose.ui.geometry.Offset.m849getYimpl(r1)
                         int r2 = r5.getTop()
                         float r2 = (float) r2
                         int r1 = (r1 > r2 ? 1 : (r1 == r2 ? 0 : -1))
                         if (r1 < 0) goto L4d
-                        long r1 = r4.m2566unboximpl()
-                        float r4 = androidx.compose.p004ui.geometry.Offset.m2557getYimpl(r1)
+                        long r1 = r4.m858unboximpl()
+                        float r4 = androidx.compose.ui.geometry.Offset.m849getYimpl(r1)
                         int r5 = r5.getBottom()
                         float r5 = (float) r5
                         int r4 = (r4 > r5 ? 1 : (r4 == r5 ? 0 : -1))
@@ -245,7 +246,7 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
             androidx.savedstate.ViewTreeSavedStateRegistryOwner.set(r7, r0)
             android.view.ViewTreeObserver r10 = r10.getViewTreeObserver()
             r10.addOnGlobalLayoutListener(r7)
-            int r10 = androidx.compose.p004ui.C0756R.id.compose_view_saveable_id_tag
+            int r10 = androidx.compose.ui.R.id.compose_view_saveable_id_tag
             java.lang.StringBuilder r0 = new java.lang.StringBuilder
             r0.<init>()
             java.lang.String r1 = "Popup:"
@@ -255,13 +256,13 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
             r7.setTag(r10, r13)
             r10 = 0
             r7.setClipChildren(r10)
-            float r10 = r11.mo1283toPx0680j_4(r12)
+            float r10 = r11.mo321toPx0680j_4(r12)
             r7.setElevation(r10)
             androidx.compose.material.internal.PopupLayout$2 r10 = new androidx.compose.material.internal.PopupLayout$2
             r10.<init>()
             r7.setOutlineProvider(r10)
-            androidx.compose.material.internal.ComposableSingletons$ExposedDropdownMenuPopupKt r10 = androidx.compose.material.internal.ComposableSingletons$ExposedDropdownMenuPopupKt.INSTANCE
-            kotlin.jvm.functions.Function2 r10 = r10.m2338getLambda1$material_release()
+            androidx.compose.material.internal.ComposableSingletons$ExposedDropdownMenuPopupKt r10 = androidx.compose.material.internal.ComposableSingletons.ExposedDropdownMenuPopupKt.INSTANCE
+            kotlin.jvm.functions.Function2 r10 = r10.getLambda-1$material_release()
             androidx.compose.runtime.MutableState r8 = androidx.compose.runtime.SnapshotStateKt.mutableStateOf$default(r10, r8, r9, r8)
             r7.content$delegate = r8
             return
@@ -274,12 +275,12 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
         layoutParams.gravity = 8388659;
         layoutParams.flags = 393248;
         layoutParams.softInputMode = 1;
-        layoutParams.type = 1000;
+        layoutParams.type = WVURLRuleConstants.LOGIN;
         layoutParams.token = this.composeView.getApplicationWindowToken();
         layoutParams.width = -2;
         layoutParams.height = -2;
         layoutParams.format = -3;
-        layoutParams.setTitle(this.composeView.getContext().getResources().getString(C0756R.string.default_popup_window_title));
+        layoutParams.setTitle(this.composeView.getContext().getResources().getString(R.string.default_popup_window_title));
         return layoutParams;
     }
 
@@ -306,7 +307,7 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
         return new IntRect(rect.left, rect.top, rect.right, rect.bottom);
     }
 
-    @Override // androidx.compose.p004ui.platform.AbstractComposeView
+    @Override // androidx.compose.ui.platform.AbstractComposeView
     @Composable
     public void Content(@Nullable Composer composer, final int i) {
         Composer startRestartGroup = composer.startRestartGroup(-1288867704);
@@ -374,7 +375,6 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
         return ((Boolean) this.canCalculatePosition$delegate.getValue()).booleanValue();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     public final IntRect getParentBounds() {
         return (IntRect) this.parentBounds$delegate.getValue();
@@ -385,10 +385,9 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
         return this.parentLayoutDirection;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     /* renamed from: getPopupContentSize-bOM6tXw, reason: not valid java name */
-    public final IntSize m2345getPopupContentSizebOM6tXw() {
+    public final IntSize m705getPopupContentSizebOM6tXw() {
         return (IntSize) this.popupContentSize$delegate.getValue();
     }
 
@@ -397,12 +396,12 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
         return this.positionProvider;
     }
 
-    @Override // androidx.compose.p004ui.platform.AbstractComposeView
+    @Override // androidx.compose.ui.platform.AbstractComposeView
     protected boolean getShouldCreateCompositionOnAttachedToWindow() {
         return this.shouldCreateCompositionOnAttachedToWindow;
     }
 
-    @Override // androidx.compose.p004ui.platform.ViewRootForInspector
+    @Override // androidx.compose.ui.platform.ViewRootForInspector
     @NotNull
     public AbstractComposeView getSubCompositionView() {
         return this;
@@ -413,7 +412,7 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
         return this.testTag;
     }
 
-    @Override // androidx.compose.p004ui.platform.ViewRootForInspector
+    @Override // androidx.compose.ui.platform.ViewRootForInspector
     public /* synthetic */ View getViewRoot() {
         return r56.b(this);
     }
@@ -434,7 +433,7 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
     @Override // android.view.View
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public boolean onTouchEvent(@org.jetbrains.annotations.Nullable android.view.MotionEvent r8) {
         /*
@@ -505,8 +504,8 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
             float r5 = (float) r5
             float r6 = r8.getY()
             float r5 = r5 + r6
-            long r5 = androidx.compose.p004ui.geometry.OffsetKt.Offset(r1, r5)
-            androidx.compose.ui.geometry.Offset r1 = androidx.compose.p004ui.geometry.Offset.m2545boximpl(r5)
+            long r5 = androidx.compose.ui.geometry.OffsetKt.Offset(r1, r5)
+            androidx.compose.ui.geometry.Offset r1 = androidx.compose.ui.geometry.Offset.m837boximpl(r5)
         L82:
             java.lang.Object r0 = r4.invoke(r1, r0)
             java.lang.Boolean r0 = (java.lang.Boolean) r0
@@ -542,7 +541,7 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
     }
 
     /* renamed from: setPopupContentSize-fhxjrPA, reason: not valid java name */
-    public final void m2346setPopupContentSizefhxjrPA(@Nullable IntSize intSize) {
+    public final void m706setPopupContentSizefhxjrPA(@Nullable IntSize intSize) {
         this.popupContentSize$delegate.setValue(intSize);
     }
 
@@ -569,18 +568,18 @@ final class PopupLayout extends AbstractComposeView implements ViewTreeObserver.
     }
 
     public final void updatePosition() {
-        IntSize m2345getPopupContentSizebOM6tXw;
+        IntSize m705getPopupContentSizebOM6tXw;
         IntRect parentBounds = getParentBounds();
-        if (parentBounds == null || (m2345getPopupContentSizebOM6tXw = m2345getPopupContentSizebOM6tXw()) == null) {
+        if (parentBounds == null || (m705getPopupContentSizebOM6tXw = m705getPopupContentSizebOM6tXw()) == null) {
             return;
         }
-        long m5380unboximpl = m2345getPopupContentSizebOM6tXw.m5380unboximpl();
+        long j = m705getPopupContentSizebOM6tXw.unbox-impl();
         Rect rect = this.previousWindowVisibleFrame;
         this.composeView.getWindowVisibleDisplayFrame(rect);
         IntRect intBounds = toIntBounds(rect);
-        long mo1824calculatePositionllwVHH4 = this.positionProvider.mo1824calculatePositionllwVHH4(parentBounds, IntSizeKt.IntSize(intBounds.getWidth(), intBounds.getHeight()), this.parentLayoutDirection, m5380unboximpl);
-        this.params.x = IntOffset.m5334getXimpl(mo1824calculatePositionllwVHH4);
-        this.params.y = IntOffset.m5335getYimpl(mo1824calculatePositionllwVHH4);
+        long mo2247calculatePositionllwVHH4 = this.positionProvider.mo2247calculatePositionllwVHH4(parentBounds, IntSizeKt.IntSize(intBounds.getWidth(), intBounds.getHeight()), this.parentLayoutDirection, j);
+        this.params.x = IntOffset.getX-impl(mo2247calculatePositionllwVHH4);
+        this.params.y = IntOffset.getY-impl(mo2247calculatePositionllwVHH4);
         this.windowManager.updateViewLayout(this, this.params);
     }
 

@@ -10,7 +10,7 @@ import tb.fy5;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class VectorizedFloatAnimationSpec<V extends AnimationVector> implements VectorizedFiniteAnimationSpec<V> {
     public static final int $stable = 8;
 
@@ -25,7 +25,6 @@ public final class VectorizedFloatAnimationSpec<V extends AnimationVector> imple
         this.anims = animations;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     public long getDurationNanos(@NotNull V v, @NotNull V v2, @NotNull V v3) {
         Intrinsics.checkNotNullParameter(v, "initialValue");
         Intrinsics.checkNotNullParameter(v2, "targetValue");
@@ -39,7 +38,6 @@ public final class VectorizedFloatAnimationSpec<V extends AnimationVector> imple
         return j;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     @NotNull
     public V getEndVelocity(@NotNull V v, @NotNull V v2, @NotNull V v3) {
         Intrinsics.checkNotNullParameter(v, "initialValue");
@@ -70,7 +68,6 @@ public final class VectorizedFloatAnimationSpec<V extends AnimationVector> imple
         return null;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     @NotNull
     public V getValueFromNanos(long j, @NotNull V v, @NotNull V v2, @NotNull V v3) {
         Intrinsics.checkNotNullParameter(v, "initialValue");
@@ -101,7 +98,6 @@ public final class VectorizedFloatAnimationSpec<V extends AnimationVector> imple
         return null;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     @NotNull
     public V getVelocityFromNanos(long j, @NotNull V v, @NotNull V v2, @NotNull V v3) {
         Intrinsics.checkNotNullParameter(v, "initialValue");
@@ -132,20 +128,13 @@ public final class VectorizedFloatAnimationSpec<V extends AnimationVector> imple
         return null;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedFiniteAnimationSpec, androidx.compose.animation.core.VectorizedAnimationSpec
     public /* synthetic */ boolean isInfinite() {
         return fy5.a(this);
     }
 
     /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
-    public VectorizedFloatAnimationSpec(@NotNull final FloatAnimationSpec floatAnimationSpec) {
-        this(new Animations() { // from class: androidx.compose.animation.core.VectorizedFloatAnimationSpec.1
-            @Override // androidx.compose.animation.core.Animations
-            @NotNull
-            public FloatAnimationSpec get(int i) {
-                return FloatAnimationSpec.this;
-            }
-        });
+    public VectorizedFloatAnimationSpec(@NotNull FloatAnimationSpec floatAnimationSpec) {
+        this((Animations) new 1(floatAnimationSpec));
         Intrinsics.checkNotNullParameter(floatAnimationSpec, "anim");
     }
 }

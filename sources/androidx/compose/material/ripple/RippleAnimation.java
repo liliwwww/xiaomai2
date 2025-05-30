@@ -3,16 +3,19 @@ package androidx.compose.material.ripple;
 import androidx.compose.animation.core.Animatable;
 import androidx.compose.animation.core.AnimatableKt;
 import androidx.compose.animation.core.AnimationVector1D;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.geometry.OffsetKt;
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.graphics.ClipOp;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.graphics.drawscope.DrawContext;
-import androidx.compose.p004ui.graphics.drawscope.DrawScope;
-import androidx.compose.p004ui.util.MathHelpersKt;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.geometry.OffsetKt;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.graphics.ClipOp;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.graphics.ColorFilter;
+import androidx.compose.ui.graphics.drawscope.DrawContext;
+import androidx.compose.ui.graphics.drawscope.DrawScope;
+import androidx.compose.ui.graphics.drawscope.DrawStyle;
+import androidx.compose.ui.util.MathHelpersKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.intrinsics.IntrinsicsKt;
@@ -24,10 +27,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tb.i80;
 import tb.m40;
-import tb.w51;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class RippleAnimation {
 
     @NotNull
@@ -71,8 +73,8 @@ public final class RippleAnimation {
         this.animatedCenterPercent = AnimatableKt.Animatable$default(0.0f, 0.0f, 2, null);
         this.finishSignalDeferred = m40.a((Job) null);
         Boolean bool = Boolean.FALSE;
-        this.finishedFadingIn$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(bool, null, 2, null);
-        this.finishRequested$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(bool, null, 2, null);
+        this.finishedFadingIn$delegate = SnapshotStateKt.mutableStateOf$default(bool, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.finishRequested$delegate = SnapshotStateKt.mutableStateOf$default(bool, (SnapshotMutationPolicy) null, 2, (Object) null);
     }
 
     public /* synthetic */ RippleAnimation(Offset offset, float f, boolean z, DefaultConstructorMarker defaultConstructorMarker) {
@@ -81,7 +83,7 @@ public final class RippleAnimation {
 
     /* JADX INFO: Access modifiers changed from: private */
     public final Object fadeIn(Continuation<? super Unit> continuation) {
-        Object g = i80.g(new RippleAnimation$fadeIn$2(this, null), continuation);
+        Object g = i80.g(new fadeIn.2(this, (Continuation) null), continuation);
         return g == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? g : Unit.INSTANCE;
     }
 
@@ -91,12 +93,10 @@ public final class RippleAnimation {
         return g == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? g : Unit.INSTANCE;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     private final boolean getFinishRequested() {
         return ((Boolean) this.finishRequested$delegate.getValue()).booleanValue();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     private final boolean getFinishedFadingIn() {
         return ((Boolean) this.finishedFadingIn$delegate.getValue()).booleanValue();
     }
@@ -116,7 +116,7 @@ public final class RippleAnimation {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object animate(@org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r7) {
         /*
@@ -195,19 +195,19 @@ public final class RippleAnimation {
     }
 
     /* renamed from: draw-4WTKRHQ, reason: not valid java name */
-    public final void m2369draw4WTKRHQ(@NotNull DrawScope drawScope, long j) {
+    public final void m730draw4WTKRHQ(@NotNull DrawScope drawScope, long j) {
         Intrinsics.checkNotNullParameter(drawScope, "$this$draw");
         if (this.startRadius == null) {
-            this.startRadius = Float.valueOf(RippleAnimationKt.m2371getRippleStartRadiusuvyYCjk(drawScope.mo3205getSizeNHjbRc()));
+            this.startRadius = Float.valueOf(RippleAnimationKt.getRippleStartRadius-uvyYCjk(drawScope.mo1321getSizeNHjbRc()));
         }
         if (this.targetRadius == null) {
-            this.targetRadius = Float.isNaN(this.radius) ? Float.valueOf(RippleAnimationKt.m2370getRippleEndRadiuscSwnlzA(drawScope, this.bounded, drawScope.mo3205getSizeNHjbRc())) : Float.valueOf(drawScope.mo1283toPx0680j_4(this.radius));
+            this.targetRadius = Float.isNaN(this.radius) ? Float.valueOf(RippleAnimationKt.getRippleEndRadius-cSwnlzA(drawScope, this.bounded, drawScope.mo1321getSizeNHjbRc())) : Float.valueOf(drawScope.mo321toPx0680j_4(this.radius));
         }
         if (this.origin == null) {
-            this.origin = Offset.m2545boximpl(drawScope.mo3204getCenterF1C5BW0());
+            this.origin = Offset.m837boximpl(drawScope.mo1320getCenterF1C5BW0());
         }
         if (this.targetCenter == null) {
-            this.targetCenter = Offset.m2545boximpl(OffsetKt.Offset(Size.m2625getWidthimpl(drawScope.mo3205getSizeNHjbRc()) / 2.0f, Size.m2622getHeightimpl(drawScope.mo3205getSizeNHjbRc()) / 2.0f));
+            this.targetCenter = Offset.m837boximpl(OffsetKt.Offset(Size.m903getWidthimpl(drawScope.mo1321getSizeNHjbRc()) / 2.0f, Size.m900getHeightimpl(drawScope.mo1321getSizeNHjbRc()) / 2.0f));
         }
         float floatValue = (!getFinishRequested() || getFinishedFadingIn()) ? this.animatedAlpha.getValue().floatValue() : 1.0f;
         Float f = this.startRadius;
@@ -218,31 +218,31 @@ public final class RippleAnimation {
         float lerp = MathHelpersKt.lerp(floatValue2, f2.floatValue(), this.animatedRadiusPercent.getValue().floatValue());
         Offset offset = this.origin;
         Intrinsics.checkNotNull(offset);
-        float m2556getXimpl = Offset.m2556getXimpl(offset.m2566unboximpl());
+        float m848getXimpl = Offset.m848getXimpl(offset.m858unboximpl());
         Offset offset2 = this.targetCenter;
         Intrinsics.checkNotNull(offset2);
-        float lerp2 = MathHelpersKt.lerp(m2556getXimpl, Offset.m2556getXimpl(offset2.m2566unboximpl()), this.animatedCenterPercent.getValue().floatValue());
+        float lerp2 = MathHelpersKt.lerp(m848getXimpl, Offset.m848getXimpl(offset2.m858unboximpl()), this.animatedCenterPercent.getValue().floatValue());
         Offset offset3 = this.origin;
         Intrinsics.checkNotNull(offset3);
-        float m2557getYimpl = Offset.m2557getYimpl(offset3.m2566unboximpl());
+        float m849getYimpl = Offset.m849getYimpl(offset3.m858unboximpl());
         Offset offset4 = this.targetCenter;
         Intrinsics.checkNotNull(offset4);
-        long Offset = OffsetKt.Offset(lerp2, MathHelpersKt.lerp(m2557getYimpl, Offset.m2557getYimpl(offset4.m2566unboximpl()), this.animatedCenterPercent.getValue().floatValue()));
-        long m2786copywmQWz5c$default = Color.m2786copywmQWz5c$default(j, Color.m2789getAlphaimpl(j) * floatValue, 0.0f, 0.0f, 0.0f, 14, null);
+        long Offset = OffsetKt.Offset(lerp2, MathHelpersKt.lerp(m849getYimpl, Offset.m849getYimpl(offset4.m858unboximpl()), this.animatedCenterPercent.getValue().floatValue()));
+        long m1049copywmQWz5c$default = Color.m1049copywmQWz5c$default(j, Color.m1052getAlphaimpl(j) * floatValue, 0.0f, 0.0f, 0.0f, 14, null);
         if (!this.bounded) {
-            w51.x(drawScope, m2786copywmQWz5c$default, lerp, Offset, 0.0f, null, null, 0, 120, null);
+            DrawScope.DefaultImpls.drawCircle-VaOC9Bg$default(drawScope, m1049copywmQWz5c$default, lerp, Offset, 0.0f, (DrawStyle) null, (ColorFilter) null, 0, 120, (Object) null);
             return;
         }
-        float m2625getWidthimpl = Size.m2625getWidthimpl(drawScope.mo3205getSizeNHjbRc());
-        float m2622getHeightimpl = Size.m2622getHeightimpl(drawScope.mo3205getSizeNHjbRc());
-        int m2776getIntersectrtfAjoo = ClipOp.Companion.m2776getIntersectrtfAjoo();
+        float m903getWidthimpl = Size.m903getWidthimpl(drawScope.mo1321getSizeNHjbRc());
+        float m900getHeightimpl = Size.m900getHeightimpl(drawScope.mo1321getSizeNHjbRc());
+        int i = ClipOp.Companion.getIntersect-rtfAjoo();
         DrawContext drawContext = drawScope.getDrawContext();
-        long mo3211getSizeNHjbRc = drawContext.mo3211getSizeNHjbRc();
+        long j2 = drawContext.getSize-NH-jbRc();
         drawContext.getCanvas().save();
-        drawContext.getTransform().mo3214clipRectN_I0leg(0.0f, 0.0f, m2625getWidthimpl, m2622getHeightimpl, m2776getIntersectrtfAjoo);
-        w51.x(drawScope, m2786copywmQWz5c$default, lerp, Offset, 0.0f, null, null, 0, 120, null);
+        drawContext.getTransform().mo1328clipRectN_I0leg(0.0f, 0.0f, m903getWidthimpl, m900getHeightimpl, i);
+        DrawScope.DefaultImpls.drawCircle-VaOC9Bg$default(drawScope, m1049copywmQWz5c$default, lerp, Offset, 0.0f, (DrawStyle) null, (ColorFilter) null, 0, 120, (Object) null);
         drawContext.getCanvas().restore();
-        drawContext.mo3212setSizeuvyYCjk(mo3211getSizeNHjbRc);
+        drawContext.setSize-uvyYCjk(j2);
     }
 
     public final void finish() {

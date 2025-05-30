@@ -11,7 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVCookieConfig implements IConfig {
     private static final String TAG = "WVCookieConfig";
     private static volatile WVCookieConfig instance;
@@ -51,7 +51,7 @@ public class WVCookieConfig implements IConfig {
     public void init() {
         if (this.inited.compareAndSet(false, true)) {
             String stringVal = ConfigStorage.getStringVal(WVConfigManager.SPNAME_CONFIG, WVConfigManager.CONFIGNAME_COOKIE);
-            TaoLog.m24i(TAG, "get cookie config local = [" + stringVal + "]");
+            TaoLog.i(TAG, "get cookie config local = [" + stringVal + "]");
             parseConfig(stringVal);
             try {
                 OrangeConfig.getInstance().registerListener(new String[]{WVConfigManager.CONFIGNAME_COOKIE}, new OrangeConfigListenerV1() { // from class: android.taobao.windvane.config.WVCookieConfig.1
@@ -71,7 +71,7 @@ public class WVCookieConfig implements IConfig {
                             e.printStackTrace();
                         }
                         WVConfigManager.getInstance().updateConfigByKey(str, jSONObject.toString());
-                        TaoLog.m24i("WVConfig", "receive name=[" + str + "]; config=[" + jSONObject.toString() + "]");
+                        TaoLog.i("WVConfig", "receive name=[" + str + "]; config=[" + jSONObject.toString() + "]");
                     }
                 });
             } catch (Throwable unused) {
@@ -81,7 +81,7 @@ public class WVCookieConfig implements IConfig {
 
     @Override // android.taobao.windvane.config.IConfig
     public void setConfig(String str) {
-        TaoLog.m24i(TAG, "receive cookie config = [" + str + "]");
+        TaoLog.i(TAG, "receive cookie config = [" + str + "]");
         parseConfig(str);
         ConfigStorage.putStringVal(WVConfigManager.SPNAME_CONFIG, WVConfigManager.CONFIGNAME_COOKIE, str);
     }

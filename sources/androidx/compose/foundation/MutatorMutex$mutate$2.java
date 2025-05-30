@@ -1,7 +1,6 @@
 package androidx.compose.foundation;
 
-import androidx.compose.foundation.MutatorMutex;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.CancellationException;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -19,8 +18,8 @@ import org.jetbrains.annotations.Nullable;
 
 /* JADX INFO: Add missing generic type declarations: [R] */
 /* compiled from: Taobao */
-@DebugMetadata(c = "androidx.compose.foundation.MutatorMutex$mutate$2", f = "MutatorMutex.kt", i = {0, 0, 1, 1}, l = {173, 119}, m = "invokeSuspend", n = {"mutator", "$this$withLock_u24default$iv", "mutator", "$this$withLock_u24default$iv"}, s = {"L$0", "L$1", "L$0", "L$1"})
-/* loaded from: classes.dex */
+@DebugMetadata(c = "androidx.compose.foundation.MutatorMutex$mutate$2", f = "MutatorMutex.kt", i = {0, 0, 1, 1}, l = {173, androidx.appcompat.R.styleable.AppCompatTheme_windowActionModeOverlay}, m = "invokeSuspend", n = {"mutator", "$this$withLock_u24default$iv", "mutator", "$this$withLock_u24default$iv"}, s = {"L$0", "L$1", "L$0", "L$1"})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class MutatorMutex$mutate$2<R> extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super R>, Object> {
     final /* synthetic */ Function1<Continuation<? super R>, Object> $block;
     final /* synthetic */ MutatePriority $priority;
@@ -52,18 +51,17 @@ final class MutatorMutex$mutate$2<R> extends SuspendLambda implements Function2<
     }
 
     /* JADX WARN: Type inference failed for: r1v0, types: [int, kotlinx.coroutines.sync.Mutex] */
+    /* JADX WARN: Type inference failed for: r1v1, types: [androidx.compose.foundation.MutatorMutex$Mutator, java.lang.Object] */
     @Nullable
     public final Object invokeSuspend(@NotNull Object obj) {
-        Mutex mutex;
+        Mutex access$getMutex$p;
         Function1<Continuation<? super R>, Object> function1;
-        MutatorMutex.Mutator mutator;
+        MutatorMutex$Mutator mutatorMutex$Mutator;
         MutatorMutex mutatorMutex;
-        MutatorMutex.Mutator mutator2;
+        MutatorMutex$Mutator mutatorMutex$Mutator2;
         Throwable th;
         MutatorMutex mutatorMutex2;
-        Mutex mutex2;
-        AtomicReference atomicReference;
-        AtomicReference atomicReference2;
+        Mutex mutex;
         Object coroutine_suspended = IntrinsicsKt.getCOROUTINE_SUSPENDED();
         ?? r1 = this.label;
         try {
@@ -71,24 +69,58 @@ final class MutatorMutex$mutate$2<R> extends SuspendLambda implements Function2<
                 if (r1 == 0) {
                     ResultKt.throwOnFailure(obj);
                     CoroutineScope coroutineScope = (CoroutineScope) this.L$0;
-                    MutatePriority mutatePriority = this.$priority;
+                    final MutatePriority mutatePriority = this.$priority;
                     Job job = coroutineScope.getCoroutineContext().get(Job.Key);
                     Intrinsics.checkNotNull(job);
-                    MutatorMutex.Mutator mutator3 = new MutatorMutex.Mutator(mutatePriority, job);
-                    this.this$0.tryMutateOrCancel(mutator3);
-                    mutex = this.this$0.mutex;
+                    final Job job2 = job;
+                    ?? r12 = new Object(mutatePriority, job2) { // from class: androidx.compose.foundation.MutatorMutex$Mutator
+
+                        @NotNull
+                        private final Job job;
+
+                        @NotNull
+                        private final MutatePriority priority;
+
+                        {
+                            Intrinsics.checkNotNullParameter(mutatePriority, "priority");
+                            Intrinsics.checkNotNullParameter(job2, "job");
+                            this.priority = mutatePriority;
+                            this.job = job2;
+                        }
+
+                        public final boolean canInterrupt(@NotNull MutatorMutex$Mutator mutatorMutex$Mutator3) {
+                            Intrinsics.checkNotNullParameter(mutatorMutex$Mutator3, "other");
+                            return this.priority.compareTo(mutatorMutex$Mutator3.priority) >= 0;
+                        }
+
+                        public final void cancel() {
+                            Job.a.b(this.job, (CancellationException) null, 1, (Object) null);
+                        }
+
+                        @NotNull
+                        public final Job getJob() {
+                            return this.job;
+                        }
+
+                        @NotNull
+                        public final MutatePriority getPriority() {
+                            return this.priority;
+                        }
+                    };
+                    MutatorMutex.access$tryMutateOrCancel(this.this$0, (MutatorMutex$Mutator) r12);
+                    access$getMutex$p = MutatorMutex.access$getMutex$p(this.this$0);
                     Function1<Continuation<? super R>, Object> function12 = this.$block;
                     MutatorMutex mutatorMutex3 = this.this$0;
-                    this.L$0 = mutator3;
-                    this.L$1 = mutex;
+                    this.L$0 = r12;
+                    this.L$1 = access$getMutex$p;
                     this.L$2 = function12;
                     this.L$3 = mutatorMutex3;
                     this.label = 1;
-                    if (mutex.lock((Object) null, this) == coroutine_suspended) {
+                    if (access$getMutex$p.lock((Object) null, this) == coroutine_suspended) {
                         return coroutine_suspended;
                     }
                     function1 = function12;
-                    mutator = mutator3;
+                    mutatorMutex$Mutator = r12;
                     mutatorMutex = mutatorMutex3;
                 } else {
                     if (r1 != 1) {
@@ -96,30 +128,28 @@ final class MutatorMutex$mutate$2<R> extends SuspendLambda implements Function2<
                             throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
                         }
                         mutatorMutex2 = (MutatorMutex) this.L$2;
-                        mutex2 = (Mutex) this.L$1;
-                        mutator2 = (MutatorMutex.Mutator) this.L$0;
+                        mutex = (Mutex) this.L$1;
+                        mutatorMutex$Mutator2 = (MutatorMutex$Mutator) this.L$0;
                         try {
                             ResultKt.throwOnFailure(obj);
-                            atomicReference2 = mutatorMutex2.currentMutator;
-                            atomicReference2.compareAndSet(mutator2, null);
-                            mutex2.unlock((Object) null);
+                            MutatorMutex.access$getCurrentMutator$p(mutatorMutex2).compareAndSet(mutatorMutex$Mutator2, null);
+                            mutex.unlock((Object) null);
                             return obj;
                         } catch (Throwable th2) {
                             th = th2;
-                            atomicReference = mutatorMutex2.currentMutator;
-                            atomicReference.compareAndSet(mutator2, null);
+                            MutatorMutex.access$getCurrentMutator$p(mutatorMutex2).compareAndSet(mutatorMutex$Mutator2, null);
                             throw th;
                         }
                     }
                     mutatorMutex = (MutatorMutex) this.L$3;
                     function1 = (Function1) this.L$2;
-                    Mutex mutex3 = (Mutex) this.L$1;
-                    mutator = (MutatorMutex.Mutator) this.L$0;
+                    Mutex mutex2 = (Mutex) this.L$1;
+                    mutatorMutex$Mutator = (MutatorMutex$Mutator) this.L$0;
                     ResultKt.throwOnFailure(obj);
-                    mutex = mutex3;
+                    access$getMutex$p = mutex2;
                 }
-                this.L$0 = mutator;
-                this.L$1 = mutex;
+                this.L$0 = mutatorMutex$Mutator;
+                this.L$1 = access$getMutex$p;
                 this.L$2 = mutatorMutex;
                 this.L$3 = null;
                 this.label = 2;
@@ -128,19 +158,17 @@ final class MutatorMutex$mutate$2<R> extends SuspendLambda implements Function2<
                     return coroutine_suspended;
                 }
                 mutatorMutex2 = mutatorMutex;
-                mutex2 = mutex;
+                mutex = access$getMutex$p;
                 obj = invoke;
-                mutator2 = mutator;
-                atomicReference2 = mutatorMutex2.currentMutator;
-                atomicReference2.compareAndSet(mutator2, null);
-                mutex2.unlock((Object) null);
+                mutatorMutex$Mutator2 = mutatorMutex$Mutator;
+                MutatorMutex.access$getCurrentMutator$p(mutatorMutex2).compareAndSet(mutatorMutex$Mutator2, null);
+                mutex.unlock((Object) null);
                 return obj;
             } catch (Throwable th3) {
-                mutator2 = mutator;
+                mutatorMutex$Mutator2 = mutatorMutex$Mutator;
                 th = th3;
                 mutatorMutex2 = mutatorMutex;
-                atomicReference = mutatorMutex2.currentMutator;
-                atomicReference.compareAndSet(mutator2, null);
+                MutatorMutex.access$getCurrentMutator$p(mutatorMutex2).compareAndSet(mutatorMutex$Mutator2, null);
                 throw th;
             }
         } catch (Throwable th4) {

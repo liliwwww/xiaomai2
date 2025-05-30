@@ -5,6 +5,7 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.os.Build;
 import android.support.v4.media.session.PlaybackStateCompat;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
@@ -15,23 +16,9 @@ import java.io.RandomAccessFile;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class DeviceInfo {
-    private static final FileFilter CPU_FILTER = new FileFilter() { // from class: android.taobao.windvane.jsbridge.utils.DeviceInfo.1
-        @Override // java.io.FileFilter
-        public boolean accept(File file) {
-            String name = file.getName();
-            if (!name.startsWith("cpu")) {
-                return false;
-            }
-            for (int i = 3; i < name.length(); i++) {
-                if (name.charAt(i) < '0' || name.charAt(i) > '9') {
-                    return false;
-                }
-            }
-            return true;
-        }
-    };
+    private static final FileFilter CPU_FILTER = new 1();
     public static final int DEVICEINFO_UNKNOWN = -1;
 
     private static int extractValue(byte[] bArr, int i) {
@@ -80,7 +67,7 @@ public class DeviceInfo {
         if (i == -1) {
             FileInputStream fileInputStream2 = new FileInputStream("/proc/cpuinfo");
             try {
-                int parseFileForValue = parseFileForValue("cpu MHz", fileInputStream2) * 1000;
+                int parseFileForValue = parseFileForValue("cpu MHz", fileInputStream2) * WVURLRuleConstants.LOGIN;
                 if (parseFileForValue > i) {
                     i = parseFileForValue;
                 }

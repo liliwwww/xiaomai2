@@ -10,21 +10,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class RatingCompat implements Parcelable {
-    public static final Parcelable.Creator<RatingCompat> CREATOR = new Parcelable.Creator<RatingCompat>() { // from class: android.support.v4.media.RatingCompat.1
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // android.os.Parcelable.Creator
-        public RatingCompat createFromParcel(Parcel parcel) {
-            return new RatingCompat(parcel.readInt(), parcel.readFloat());
-        }
-
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // android.os.Parcelable.Creator
-        public RatingCompat[] newArray(int i) {
-            return new RatingCompat[i];
-        }
-    };
+    public static final Parcelable.Creator<RatingCompat> CREATOR = new 1();
     public static final int RATING_3_STARS = 3;
     public static final int RATING_4_STARS = 4;
     public static final int RATING_5_STARS = 5;

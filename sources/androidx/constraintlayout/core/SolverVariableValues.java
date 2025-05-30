@@ -1,11 +1,10 @@
 package androidx.constraintlayout.core;
 
-import android.taobao.windvane.util.NetWork;
 import androidx.constraintlayout.core.ArrayRow;
 import java.util.Arrays;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
     private static final boolean DEBUG = false;
     private static final boolean HASH = true;
@@ -32,7 +31,7 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
 
     private void addToHashMap(SolverVariable solverVariable, int i) {
         int[] iArr;
-        int i2 = solverVariable.f235id % this.HASH_SIZE;
+        int i2 = solverVariable.id % this.HASH_SIZE;
         int[] iArr2 = this.keys;
         int i3 = iArr2[i2];
         if (i3 == -1) {
@@ -52,7 +51,7 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
     }
 
     private void addVariable(int i, SolverVariable solverVariable, float f) {
-        this.variables[i] = solverVariable.f235id;
+        this.variables[i] = solverVariable.id;
         this.values[i] = f;
         this.previous[i] = -1;
         this.next[i] = -1;
@@ -73,7 +72,7 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
                     if (iArr[i2] != -1) {
                         i2 = iArr[i2];
                     } else {
-                        z = true;
+                        z = HASH;
                     }
                 }
                 System.out.println(str);
@@ -130,7 +129,7 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
 
     private void removeFromHashMap(SolverVariable solverVariable) {
         int[] iArr;
-        int i = solverVariable.f235id;
+        int i = solverVariable.id;
         int i2 = i % this.HASH_SIZE;
         int[] iArr2 = this.keys;
         int i3 = iArr2[i2];
@@ -159,7 +158,6 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
         iArr[i4] = -1;
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public void add(SolverVariable solverVariable, float f, boolean z) {
         float f2 = epsilon;
         if (f <= (-f2) || f >= f2) {
@@ -180,7 +178,6 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
         }
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public void clear() {
         int i = this.mCount;
         for (int i2 = 0; i2 < i; i2++) {
@@ -200,12 +197,13 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
         this.head = -1;
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public boolean contains(SolverVariable solverVariable) {
-        return indexOf(solverVariable) != -1;
+        if (indexOf(solverVariable) != -1) {
+            return HASH;
+        }
+        return false;
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public void display() {
         int i = this.mCount;
         System.out.print("{ ");
@@ -218,7 +216,6 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
         System.out.println(" }");
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public void divideByAmount(float f) {
         int i = this.mCount;
         int i2 = this.head;
@@ -232,7 +229,6 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
         }
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public float get(SolverVariable solverVariable) {
         int indexOf = indexOf(solverVariable);
         if (indexOf != -1) {
@@ -241,12 +237,10 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
         return 0.0f;
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public int getCurrentSize() {
         return this.mCount;
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public SolverVariable getVariable(int i) {
         int i2 = this.mCount;
         if (i2 == 0) {
@@ -265,7 +259,6 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
         return null;
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public float getVariableValue(int i) {
         int i2 = this.mCount;
         int i3 = this.head;
@@ -281,11 +274,10 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
         return 0.0f;
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public int indexOf(SolverVariable solverVariable) {
         int[] iArr;
         if (this.mCount != 0 && solverVariable != null) {
-            int i = solverVariable.f235id;
+            int i = solverVariable.id;
             int i2 = this.keys[i % this.HASH_SIZE];
             if (i2 == -1) {
                 return -1;
@@ -307,7 +299,6 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
         return -1;
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public void invert() {
         int i = this.mCount;
         int i2 = this.head;
@@ -321,11 +312,10 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
         }
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public void put(SolverVariable solverVariable, float f) {
         float f2 = epsilon;
         if (f > (-f2) && f < f2) {
-            remove(solverVariable, true);
+            remove(solverVariable, HASH);
             return;
         }
         if (this.mCount == 0) {
@@ -348,7 +338,7 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
         for (int i4 = 0; i4 < i; i4++) {
             int[] iArr = this.variables;
             int i5 = iArr[i2];
-            int i6 = solverVariable.f235id;
+            int i6 = solverVariable.id;
             if (i5 == i6) {
                 this.values[i2] = f;
                 return;
@@ -364,7 +354,6 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
         insertVariable(i3, solverVariable, f);
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public float remove(SolverVariable solverVariable, boolean z) {
         int indexOf = indexOf(solverVariable);
         if (indexOf == -1) {
@@ -393,7 +382,6 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
         return f;
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public int sizeInBytes() {
         return 0;
     }
@@ -407,14 +395,13 @@ public class SolverVariableValues implements ArrayRow.ArrayRowVariables {
                 String str2 = str + variable + " = " + getVariableValue(i2) + " ";
                 int indexOf = indexOf(variable);
                 String str3 = str2 + "[p: ";
-                String str4 = (this.previous[indexOf] != -1 ? str3 + this.mCache.mIndexedVariables[this.variables[this.previous[indexOf]]] : str3 + NetWork.CONN_TYPE_NONE) + ", n: ";
-                str = (this.next[indexOf] != -1 ? str4 + this.mCache.mIndexedVariables[this.variables[this.next[indexOf]]] : str4 + NetWork.CONN_TYPE_NONE) + "]";
+                String str4 = (this.previous[indexOf] != -1 ? str3 + this.mCache.mIndexedVariables[this.variables[this.previous[indexOf]]] : str3 + "none") + ", n: ";
+                str = (this.next[indexOf] != -1 ? str4 + this.mCache.mIndexedVariables[this.variables[this.next[indexOf]]] : str4 + "none") + "]";
             }
         }
         return str + " }";
     }
 
-    @Override // androidx.constraintlayout.core.ArrayRow.ArrayRowVariables
     public float use(ArrayRow arrayRow, boolean z) {
         float f = get(arrayRow.variable);
         remove(arrayRow.variable, z);

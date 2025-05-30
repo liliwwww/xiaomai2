@@ -1,19 +1,19 @@
 package androidx.compose.material;
 
 import androidx.compose.animation.core.AnimationSpec;
-import androidx.compose.animation.core.TweenSpec;
+import androidx.compose.animation.core.DurationBasedAnimationSpec;
 import androidx.compose.foundation.interaction.DragInteraction;
-import androidx.compose.foundation.interaction.FocusInteraction;
+import androidx.compose.foundation.interaction.FocusInteraction$Focus;
 import androidx.compose.foundation.interaction.HoverInteraction;
 import androidx.compose.foundation.interaction.Interaction;
-import androidx.compose.foundation.interaction.PressInteraction;
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.foundation.interaction.PressInteraction$Press;
+import androidx.compose.ui.unit.Dp;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class ElevationDefaults {
 
     @NotNull
@@ -23,54 +23,54 @@ final class ElevationDefaults {
     }
 
     @Nullable
-    public final AnimationSpec<C0856Dp> incomingAnimationSpecForInteraction(@NotNull Interaction interaction) {
-        TweenSpec tweenSpec;
-        TweenSpec tweenSpec2;
-        TweenSpec tweenSpec3;
-        TweenSpec tweenSpec4;
+    public final AnimationSpec<Dp> incomingAnimationSpecForInteraction(@NotNull Interaction interaction) {
+        DurationBasedAnimationSpec durationBasedAnimationSpec;
+        DurationBasedAnimationSpec durationBasedAnimationSpec2;
+        DurationBasedAnimationSpec durationBasedAnimationSpec3;
+        DurationBasedAnimationSpec durationBasedAnimationSpec4;
         Intrinsics.checkNotNullParameter(interaction, "interaction");
-        if (interaction instanceof PressInteraction.Press) {
-            tweenSpec4 = ElevationKt.DefaultIncomingSpec;
-            return tweenSpec4;
+        if (interaction instanceof PressInteraction$Press) {
+            durationBasedAnimationSpec4 = ElevationKt.DefaultIncomingSpec;
+            return durationBasedAnimationSpec4;
         }
         if (interaction instanceof DragInteraction.Start) {
-            tweenSpec3 = ElevationKt.DefaultIncomingSpec;
-            return tweenSpec3;
+            durationBasedAnimationSpec3 = ElevationKt.DefaultIncomingSpec;
+            return durationBasedAnimationSpec3;
         }
         if (interaction instanceof HoverInteraction.Enter) {
-            tweenSpec2 = ElevationKt.DefaultIncomingSpec;
-            return tweenSpec2;
+            durationBasedAnimationSpec2 = ElevationKt.DefaultIncomingSpec;
+            return durationBasedAnimationSpec2;
         }
-        if (!(interaction instanceof FocusInteraction.Focus)) {
+        if (!(interaction instanceof FocusInteraction$Focus)) {
             return null;
         }
-        tweenSpec = ElevationKt.DefaultIncomingSpec;
-        return tweenSpec;
+        durationBasedAnimationSpec = ElevationKt.DefaultIncomingSpec;
+        return durationBasedAnimationSpec;
     }
 
     @Nullable
-    public final AnimationSpec<C0856Dp> outgoingAnimationSpecForInteraction(@NotNull Interaction interaction) {
-        TweenSpec tweenSpec;
-        TweenSpec tweenSpec2;
-        TweenSpec tweenSpec3;
-        TweenSpec tweenSpec4;
+    public final AnimationSpec<Dp> outgoingAnimationSpecForInteraction(@NotNull Interaction interaction) {
+        DurationBasedAnimationSpec durationBasedAnimationSpec;
+        DurationBasedAnimationSpec durationBasedAnimationSpec2;
+        DurationBasedAnimationSpec durationBasedAnimationSpec3;
+        DurationBasedAnimationSpec durationBasedAnimationSpec4;
         Intrinsics.checkNotNullParameter(interaction, "interaction");
-        if (interaction instanceof PressInteraction.Press) {
-            tweenSpec4 = ElevationKt.DefaultOutgoingSpec;
-            return tweenSpec4;
+        if (interaction instanceof PressInteraction$Press) {
+            durationBasedAnimationSpec4 = ElevationKt.DefaultOutgoingSpec;
+            return durationBasedAnimationSpec4;
         }
         if (interaction instanceof DragInteraction.Start) {
-            tweenSpec3 = ElevationKt.DefaultOutgoingSpec;
-            return tweenSpec3;
+            durationBasedAnimationSpec3 = ElevationKt.DefaultOutgoingSpec;
+            return durationBasedAnimationSpec3;
         }
         if (interaction instanceof HoverInteraction.Enter) {
-            tweenSpec2 = ElevationKt.HoveredOutgoingSpec;
-            return tweenSpec2;
+            durationBasedAnimationSpec2 = ElevationKt.HoveredOutgoingSpec;
+            return durationBasedAnimationSpec2;
         }
-        if (!(interaction instanceof FocusInteraction.Focus)) {
+        if (!(interaction instanceof FocusInteraction$Focus)) {
             return null;
         }
-        tweenSpec = ElevationKt.DefaultOutgoingSpec;
-        return tweenSpec;
+        durationBasedAnimationSpec = ElevationKt.DefaultOutgoingSpec;
+        return durationBasedAnimationSpec;
     }
 }

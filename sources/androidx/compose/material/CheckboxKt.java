@@ -1,52 +1,39 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.geometry.CornerRadiusKt;
-import androidx.compose.p004ui.geometry.OffsetKt;
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.geometry.SizeKt;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.graphics.ColorFilter;
-import androidx.compose.p004ui.graphics.StrokeCap;
-import androidx.compose.p004ui.graphics.drawscope.DrawScope;
-import androidx.compose.p004ui.graphics.drawscope.Fill;
-import androidx.compose.p004ui.graphics.drawscope.Stroke;
-import androidx.compose.p004ui.state.ToggleableState;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.util.MathHelpersKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.geometry.CornerRadiusKt;
+import androidx.compose.ui.geometry.OffsetKt;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.geometry.SizeKt;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.graphics.ColorFilter;
+import androidx.compose.ui.graphics.PathEffect;
+import androidx.compose.ui.graphics.StrokeCap;
+import androidx.compose.ui.graphics.drawscope.DrawScope;
+import androidx.compose.ui.graphics.drawscope.Fill;
+import androidx.compose.ui.graphics.drawscope.Stroke;
+import androidx.compose.ui.unit.Dp;
+import androidx.compose.ui.util.MathHelpersKt;
+import kotlin.jvm.internal.DefaultConstructorMarker;
 import tb.w51;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class CheckboxKt {
     private static final int BoxInDuration = 50;
     private static final int BoxOutDuration = 100;
     private static final int CheckAnimationDuration = 100;
     private static final float CheckboxDefaultPadding;
-    private static final float CheckboxRippleRadius = C0856Dp.m5216constructorimpl(24);
-    private static final float CheckboxSize = C0856Dp.m5216constructorimpl(20);
+    private static final float CheckboxRippleRadius = Dp.m2142constructorimpl(24);
+    private static final float CheckboxSize = Dp.m2142constructorimpl(20);
     private static final float RadiusSize;
     private static final float StrokeWidth;
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public /* synthetic */ class WhenMappings {
-        public static final /* synthetic */ int[] $EnumSwitchMapping$0;
-
-        static {
-            int[] iArr = new int[ToggleableState.values().length];
-            iArr[ToggleableState.On.ordinal()] = 1;
-            iArr[ToggleableState.Off.ordinal()] = 2;
-            iArr[ToggleableState.Indeterminate.ordinal()] = 3;
-            $EnumSwitchMapping$0 = iArr;
-        }
-    }
-
     static {
         float f = 2;
-        CheckboxDefaultPadding = C0856Dp.m5216constructorimpl(f);
-        StrokeWidth = C0856Dp.m5216constructorimpl(f);
-        RadiusSize = C0856Dp.m5216constructorimpl(f);
+        CheckboxDefaultPadding = Dp.m2142constructorimpl(f);
+        StrokeWidth = Dp.m2142constructorimpl(f);
+        RadiusSize = Dp.m2142constructorimpl(f);
     }
 
     /* JADX WARN: Removed duplicated region for block: B:13:0x005d  */
@@ -73,12 +60,12 @@ public final class CheckboxKt {
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void Checkbox(final boolean r27, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function1<? super java.lang.Boolean, kotlin.Unit> r28, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r29, boolean r30, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r31, @org.jetbrains.annotations.Nullable androidx.compose.material.CheckboxColors r32, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r33, final int r34, final int r35) {
+    public static final void Checkbox(boolean r27, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super java.lang.Boolean, kotlin.Unit> r28, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r29, boolean r30, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r31, @org.jetbrains.annotations.Nullable androidx.compose.material.CheckboxColors r32, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r33, int r34, int r35) {
         /*
             Method dump skipped, instructions count: 465
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.CheckboxKt.Checkbox(boolean, kotlin.jvm.functions.Function1, androidx.compose.ui.Modifier, boolean, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.material.CheckboxColors, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -111,44 +98,44 @@ public final class CheckboxKt {
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void CheckboxImpl(final boolean r34, final androidx.compose.p004ui.state.ToggleableState r35, final androidx.compose.p004ui.Modifier r36, final androidx.compose.material.CheckboxColors r37, androidx.compose.runtime.Composer r38, final int r39) {
+    public static final void CheckboxImpl(boolean r34, androidx.compose.ui.state.ToggleableState r35, androidx.compose.ui.Modifier r36, androidx.compose.material.CheckboxColors r37, androidx.compose.runtime.Composer r38, int r39) {
         /*
             Method dump skipped, instructions count: 702
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.CheckboxKt.CheckboxImpl(boolean, androidx.compose.ui.state.ToggleableState, androidx.compose.ui.Modifier, androidx.compose.material.CheckboxColors, androidx.compose.runtime.Composer, int):void");
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: CheckboxImpl$lambda-10, reason: not valid java name */
-    public static final long m1981CheckboxImpl$lambda10(State<Color> state) {
-        return state.getValue().m2797unboximpl();
+    public static final long m535CheckboxImpl$lambda10(State<Color> state) {
+        return ((Color) state.getValue()).m1060unboximpl();
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: CheckboxImpl$lambda-4, reason: not valid java name */
-    public static final float m1982CheckboxImpl$lambda4(State<Float> state) {
-        return state.getValue().floatValue();
+    public static final float m536CheckboxImpl$lambda4(State<Float> state) {
+        return ((Number) state.getValue()).floatValue();
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: CheckboxImpl$lambda-6, reason: not valid java name */
-    public static final float m1983CheckboxImpl$lambda6(State<Float> state) {
-        return state.getValue().floatValue();
+    public static final float m537CheckboxImpl$lambda6(State<Float> state) {
+        return ((Number) state.getValue()).floatValue();
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: CheckboxImpl$lambda-8, reason: not valid java name */
-    public static final long m1984CheckboxImpl$lambda8(State<Color> state) {
-        return state.getValue().m2797unboximpl();
+    public static final long m538CheckboxImpl$lambda8(State<Color> state) {
+        return ((Color) state.getValue()).m1060unboximpl();
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: CheckboxImpl$lambda-9, reason: not valid java name */
-    public static final long m1985CheckboxImpl$lambda9(State<Color> state) {
-        return state.getValue().m2797unboximpl();
+    public static final long m539CheckboxImpl$lambda9(State<Color> state) {
+        return ((Color) state.getValue()).m1060unboximpl();
     }
 
     /* JADX WARN: Removed duplicated region for block: B:13:0x0063  */
@@ -178,45 +165,45 @@ public final class CheckboxKt {
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void TriStateCheckbox(@org.jetbrains.annotations.NotNull final androidx.compose.p004ui.state.ToggleableState r25, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function0<kotlin.Unit> r26, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r27, boolean r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r29, @org.jetbrains.annotations.Nullable androidx.compose.material.CheckboxColors r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, final int r32, final int r33) {
+    public static final void TriStateCheckbox(@org.jetbrains.annotations.NotNull final androidx.compose.ui.state.ToggleableState r25, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function0<kotlin.Unit> r26, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r27, boolean r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r29, @org.jetbrains.annotations.Nullable androidx.compose.material.CheckboxColors r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, final int r32, final int r33) {
         /*
             Method dump skipped, instructions count: 493
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.CheckboxKt.TriStateCheckbox(androidx.compose.ui.state.ToggleableState, kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, boolean, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.material.CheckboxColors, androidx.compose.runtime.Composer, int, int):void");
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: drawBox-1wkBAMs, reason: not valid java name */
-    public static final void m1993drawBox1wkBAMs(DrawScope drawScope, long j, long j2, float f, float f2) {
+    public static final void m547drawBox1wkBAMs(DrawScope drawScope, long j, long j2, float f, float f2) {
         float f3 = f2 / 2.0f;
-        Stroke stroke = new Stroke(f2, 0.0f, 0, 0, null, 30, null);
-        float m2625getWidthimpl = Size.m2625getWidthimpl(drawScope.mo3205getSizeNHjbRc());
-        if (Color.m2788equalsimpl0(j, j2)) {
-            w51.M(drawScope, j, 0L, SizeKt.Size(m2625getWidthimpl, m2625getWidthimpl), CornerRadiusKt.CornerRadius$default(f, 0.0f, 2, null), Fill.INSTANCE, 0.0f, (ColorFilter) null, 0, 226, (Object) null);
+        Stroke stroke = new Stroke(f2, 0.0f, 0, 0, (PathEffect) null, 30, (DefaultConstructorMarker) null);
+        float m903getWidthimpl = Size.m903getWidthimpl(drawScope.mo1321getSizeNHjbRc());
+        if (Color.m1051equalsimpl0(j, j2)) {
+            w51.M(drawScope, j, 0L, SizeKt.Size(m903getWidthimpl, m903getWidthimpl), CornerRadiusKt.CornerRadius$default(f, 0.0f, 2, null), Fill.INSTANCE, 0.0f, (ColorFilter) null, 0, 226, (Object) null);
             return;
         }
-        float f4 = m2625getWidthimpl - (2 * f2);
+        float f4 = m903getWidthimpl - (2 * f2);
         w51.M(drawScope, j, OffsetKt.Offset(f2, f2), SizeKt.Size(f4, f4), CornerRadiusKt.CornerRadius$default(Math.max(0.0f, f - f2), 0.0f, 2, null), Fill.INSTANCE, 0.0f, (ColorFilter) null, 0, 224, (Object) null);
-        float f5 = m2625getWidthimpl - f2;
+        float f5 = m903getWidthimpl - f2;
         w51.M(drawScope, j2, OffsetKt.Offset(f3, f3), SizeKt.Size(f5, f5), CornerRadiusKt.CornerRadius$default(f - f3, 0.0f, 2, null), stroke, 0.0f, (ColorFilter) null, 0, 224, (Object) null);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: drawCheck-3IgeMak, reason: not valid java name */
-    public static final void m1994drawCheck3IgeMak(DrawScope drawScope, long j, float f, float f2, float f3, CheckDrawingCache checkDrawingCache) {
-        Stroke stroke = new Stroke(f3, 0.0f, StrokeCap.Companion.m3094getSquareKaPHkGw(), 0, null, 26, null);
-        float m2625getWidthimpl = Size.m2625getWidthimpl(drawScope.mo3205getSizeNHjbRc());
+    public static final void m548drawCheck3IgeMak(DrawScope drawScope, long j, float f, float f2, float f3, CheckDrawingCache checkDrawingCache) {
+        Stroke stroke = new Stroke(f3, 0.0f, StrokeCap.Companion.getSquare-KaPHkGw(), 0, (PathEffect) null, 26, (DefaultConstructorMarker) null);
+        float m903getWidthimpl = Size.m903getWidthimpl(drawScope.mo1321getSizeNHjbRc());
         float lerp = MathHelpersKt.lerp(0.4f, 0.5f, f2);
         float lerp2 = MathHelpersKt.lerp(0.7f, 0.5f, f2);
         float lerp3 = MathHelpersKt.lerp(0.5f, 0.5f, f2);
         float lerp4 = MathHelpersKt.lerp(0.3f, 0.5f, f2);
         checkDrawingCache.getCheckPath().reset();
-        checkDrawingCache.getCheckPath().moveTo(0.2f * m2625getWidthimpl, lerp3 * m2625getWidthimpl);
-        checkDrawingCache.getCheckPath().lineTo(lerp * m2625getWidthimpl, lerp2 * m2625getWidthimpl);
-        checkDrawingCache.getCheckPath().lineTo(0.8f * m2625getWidthimpl, m2625getWidthimpl * lerp4);
+        checkDrawingCache.getCheckPath().moveTo(0.2f * m903getWidthimpl, lerp3 * m903getWidthimpl);
+        checkDrawingCache.getCheckPath().lineTo(lerp * m903getWidthimpl, lerp2 * m903getWidthimpl);
+        checkDrawingCache.getCheckPath().lineTo(0.8f * m903getWidthimpl, m903getWidthimpl * lerp4);
         checkDrawingCache.getPathMeasure().setPath(checkDrawingCache.getCheckPath(), false);
         checkDrawingCache.getPathToDraw().reset();
         checkDrawingCache.getPathMeasure().getSegment(0.0f, checkDrawingCache.getPathMeasure().getLength() * f, checkDrawingCache.getPathToDraw(), true);

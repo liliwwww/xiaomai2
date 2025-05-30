@@ -2,20 +2,11 @@ package androidx.compose.runtime.external.kotlinx.collections.immutable;
 
 import java.util.Collection;
 import kotlin.jvm.functions.Function1;
-import kotlin.jvm.internal.markers.KMutableCollection;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface PersistentCollection<E> extends ImmutableCollection<E> {
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface Builder<E> extends Collection<E>, KMutableCollection {
-        @NotNull
-        PersistentCollection<E> build();
-    }
-
     @Override // java.util.Collection
     @NotNull
     PersistentCollection<E> add(E e);

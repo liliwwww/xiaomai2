@@ -1,12 +1,12 @@
 package androidx.compose.foundation.lazy.grid;
 
 import androidx.compose.animation.core.FiniteAnimationSpec;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.ParentDataModifier;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.platform.InspectorValueInfo;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.IntOffset;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.ParentDataModifier;
+import androidx.compose.ui.platform.InspectorInfo;
+import androidx.compose.ui.platform.InspectorValueInfo;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.IntOffset;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
@@ -17,7 +17,7 @@ import tb.mt2;
 import tb.nt2;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class AnimateItemPlacementModifier extends InspectorValueInfo implements ParentDataModifier {
 
     @NotNull
@@ -31,12 +31,12 @@ final class AnimateItemPlacementModifier extends InspectorValueInfo implements P
         this.animationSpec = finiteAnimationSpec;
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
@@ -51,12 +51,12 @@ final class AnimateItemPlacementModifier extends InspectorValueInfo implements P
         return false;
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
@@ -70,14 +70,13 @@ final class AnimateItemPlacementModifier extends InspectorValueInfo implements P
         return this.animationSpec.hashCode();
     }
 
-    @Override // androidx.compose.p004ui.layout.ParentDataModifier
+    @Override // androidx.compose.ui.layout.ParentDataModifier
     @NotNull
     public Object modifyParentData(@NotNull Density density, @Nullable Object obj) {
         Intrinsics.checkNotNullParameter(density, "<this>");
         return this.animationSpec;
     }
 
-    @Override // androidx.compose.p004ui.Modifier
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }

@@ -1,6 +1,6 @@
 package androidx.compose.foundation.text;
 
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.input.pointer.PointerInputScope;
 import androidx.core.view.PointerIconCompat;
 import kotlin.ResultKt;
 import kotlin.Unit;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.text.CoreTextFieldKt$TextFieldCursorHandle$1", f = "CoreTextField.kt", i = {}, l = {PointerIconCompat.TYPE_GRAB}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class CoreTextFieldKt$TextFieldCursorHandle$1 extends SuspendLambda implements Function2<PointerInputScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ TextDragObserver $observer;
     private /* synthetic */ Object L$0;

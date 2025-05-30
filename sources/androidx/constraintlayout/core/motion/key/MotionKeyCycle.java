@@ -3,15 +3,16 @@ package androidx.constraintlayout.core.motion.key;
 import androidx.constraintlayout.core.motion.CustomVariable;
 import androidx.constraintlayout.core.motion.utils.KeyCycleOscillator;
 import androidx.constraintlayout.core.motion.utils.SplineSet;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
 import androidx.constraintlayout.core.motion.utils.Utils;
+import androidx.core.app.NotificationCompat;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import okhttp3.internal.http.e;
 import tb.zp5;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MotionKeyCycle extends MotionKey {
     public static final int KEY_TYPE = 4;
     static final String NAME = "KeyCycle";
@@ -56,7 +57,7 @@ public class MotionKeyCycle extends MotionKey {
         KeyCycleOscillator keyCycleOscillator;
         KeyCycleOscillator keyCycleOscillator2;
         for (String str : hashMap.keySet()) {
-            if (str.startsWith("CUSTOM")) {
+            if (str.startsWith(MotionKey.CUSTOM)) {
                 CustomVariable customVariable = this.mCustom.get(str.substring(7));
                 if (customVariable != null && customVariable.getType() == 901 && (keyCycleOscillator = hashMap.get(str)) != null) {
                     keyCycleOscillator.setPoint(this.mFramePosition, this.mWaveShape, this.mCustomWaveShape, -1, this.mWavePeriod, this.mWaveOffset, this.mWavePhase, customVariable.getValueToInterpolate(), customVariable);
@@ -76,7 +77,7 @@ public class MotionKeyCycle extends MotionKey {
 
     @Override // androidx.constraintlayout.core.motion.key.MotionKey
     /* renamed from: clone */
-    public MotionKey mo5574clone() {
+    public MotionKey mo2314clone() {
         return null;
     }
 
@@ -87,34 +88,34 @@ public class MotionKeyCycle extends MotionKey {
     @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public void getAttributeNames(HashSet<String> hashSet) {
         if (!Float.isNaN(this.mAlpha)) {
-            hashSet.add("alpha");
+            hashSet.add(MotionKey.ALPHA);
         }
         if (!Float.isNaN(this.mElevation)) {
-            hashSet.add("elevation");
+            hashSet.add(MotionKey.ELEVATION);
         }
         if (!Float.isNaN(this.mRotation)) {
-            hashSet.add("rotationZ");
+            hashSet.add(MotionKey.ROTATION);
         }
         if (!Float.isNaN(this.mRotationX)) {
-            hashSet.add("rotationX");
+            hashSet.add(MotionKey.ROTATION_X);
         }
         if (!Float.isNaN(this.mRotationY)) {
             hashSet.add("rotationY");
         }
         if (!Float.isNaN(this.mScaleX)) {
-            hashSet.add("scaleX");
+            hashSet.add(MotionKey.SCALE_X);
         }
         if (!Float.isNaN(this.mScaleY)) {
-            hashSet.add("scaleY");
+            hashSet.add(MotionKey.SCALE_Y);
         }
         if (!Float.isNaN(this.mTransitionPathRotate)) {
             hashSet.add("pathRotate");
         }
         if (!Float.isNaN(this.mTranslationX)) {
-            hashSet.add("translationX");
+            hashSet.add(MotionKey.TRANSLATION_X);
         }
         if (!Float.isNaN(this.mTranslationY)) {
-            hashSet.add("translationY");
+            hashSet.add(MotionKey.TRANSLATION_Y);
         }
         if (!Float.isNaN(this.mTranslationZ)) {
             hashSet.add("translationZ");
@@ -128,13 +129,12 @@ public class MotionKeyCycle extends MotionKey {
     }
 
     /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public int getId(String str) {
         char c;
         str.hashCode();
         switch (str.hashCode()) {
             case -1581616630:
-                if (str.equals(TypedValues.CycleType.S_CUSTOM_WAVE_SHAPE)) {
+                if (str.equals("customWave")) {
                     c = 0;
                     break;
                 }
@@ -148,7 +148,7 @@ public class MotionKeyCycle extends MotionKey {
                 c = 65535;
                 break;
             case -1249320806:
-                if (str.equals("rotationX")) {
+                if (str.equals(MotionKey.ROTATION_X)) {
                     c = 2;
                     break;
                 }
@@ -162,21 +162,21 @@ public class MotionKeyCycle extends MotionKey {
                 c = 65535;
                 break;
             case -1249320804:
-                if (str.equals("rotationZ")) {
+                if (str.equals(MotionKey.ROTATION)) {
                     c = 4;
                     break;
                 }
                 c = 65535;
                 break;
             case -1225497657:
-                if (str.equals("translationX")) {
+                if (str.equals(MotionKey.TRANSLATION_X)) {
                     c = 5;
                     break;
                 }
                 c = 65535;
                 break;
             case -1225497656:
-                if (str.equals("translationY")) {
+                if (str.equals(MotionKey.TRANSLATION_Y)) {
                     c = 6;
                     break;
                 }
@@ -190,21 +190,21 @@ public class MotionKeyCycle extends MotionKey {
                 c = 65535;
                 break;
             case -1019779949:
-                if (str.equals(TypedValues.CycleType.S_WAVE_OFFSET)) {
+                if (str.equals("offset")) {
                     c = '\b';
                     break;
                 }
                 c = 65535;
                 break;
             case -1001078227:
-                if (str.equals("progress")) {
+                if (str.equals(NotificationCompat.CATEGORY_PROGRESS)) {
                     c = '\t';
                     break;
                 }
                 c = 65535;
                 break;
             case -991726143:
-                if (str.equals(TypedValues.CycleType.S_WAVE_PERIOD)) {
+                if (str.equals("period")) {
                     c = '\n';
                     break;
                 }
@@ -225,28 +225,28 @@ public class MotionKeyCycle extends MotionKey {
                 c = 65535;
                 break;
             case -908189618:
-                if (str.equals("scaleX")) {
+                if (str.equals(MotionKey.SCALE_X)) {
                     c = '\r';
                     break;
                 }
                 c = 65535;
                 break;
             case -908189617:
-                if (str.equals("scaleY")) {
+                if (str.equals(MotionKey.SCALE_Y)) {
                     c = 14;
                     break;
                 }
                 c = 65535;
                 break;
             case 92909918:
-                if (str.equals("alpha")) {
+                if (str.equals(MotionKey.ALPHA)) {
                     c = 15;
                     break;
                 }
                 c = 65535;
                 break;
             case 106629499:
-                if (str.equals(TypedValues.CycleType.S_WAVE_PHASE)) {
+                if (str.equals("phase")) {
                     c = 16;
                     break;
                 }
@@ -274,7 +274,7 @@ public class MotionKeyCycle extends MotionKey {
                 c = 65535;
                 break;
             case 1941332754:
-                if (str.equals("visibility")) {
+                if (str.equals(MotionKey.VISIBILITY)) {
                     c = 20;
                     break;
                 }
@@ -286,11 +286,11 @@ public class MotionKeyCycle extends MotionKey {
         }
         switch (c) {
             case 0:
-                return TypedValues.CycleType.TYPE_CUSTOM_WAVE_SHAPE;
+                return 422;
             case 1:
-                return TypedValues.CycleType.TYPE_EASING;
+                return 420;
             case 2:
-                return 308;
+                return e.HTTP_PERM_REDIRECT;
             case 3:
                 return 309;
             case 4:
@@ -302,11 +302,11 @@ public class MotionKeyCycle extends MotionKey {
             case 7:
                 return 306;
             case '\b':
-                return TypedValues.CycleType.TYPE_WAVE_OFFSET;
+                return 424;
             case '\t':
                 return 315;
             case '\n':
-                return TypedValues.CycleType.TYPE_WAVE_PERIOD;
+                return 423;
             case 11:
                 return 313;
             case '\f':
@@ -318,13 +318,13 @@ public class MotionKeyCycle extends MotionKey {
             case 15:
                 return 403;
             case 16:
-                return TypedValues.CycleType.TYPE_WAVE_PHASE;
+                return 425;
             case 17:
                 return 401;
             case 18:
-                return TypedValues.CycleType.TYPE_PATH_ROTATE;
+                return 416;
             case 19:
-                return TypedValues.CycleType.TYPE_WAVE_SHAPE;
+                return 421;
             case 20:
                 return 402;
             default:
@@ -380,7 +380,7 @@ public class MotionKeyCycle extends MotionKey {
         }
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
+    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public boolean setValue(int i, int i2) {
         if (i == 401) {
             this.mCurveFit = i2;
@@ -396,7 +396,7 @@ public class MotionKeyCycle extends MotionKey {
         return super.setValue(i, i2);
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
+    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public boolean setValue(int i, String str) {
         if (i == 420) {
             this.mTransitionEasing = str;
@@ -409,7 +409,7 @@ public class MotionKeyCycle extends MotionKey {
         return true;
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
+    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public boolean setValue(int i, float f) {
         if (i == 315) {
             this.mProgress = f;
@@ -430,10 +430,10 @@ public class MotionKeyCycle extends MotionKey {
                 case 306:
                     this.mTranslationZ = f;
                     return true;
-                case 307:
+                case e.HTTP_TEMP_REDIRECT /* 307 */:
                     this.mElevation = f;
                     return true;
-                case 308:
+                case e.HTTP_PERM_REDIRECT /* 308 */:
                     this.mRotationX = f;
                     return true;
                 case 309:
@@ -450,13 +450,13 @@ public class MotionKeyCycle extends MotionKey {
                     return true;
                 default:
                     switch (i) {
-                        case TypedValues.CycleType.TYPE_WAVE_PERIOD /* 423 */:
+                        case 423:
                             this.mWavePeriod = f;
                             return true;
-                        case TypedValues.CycleType.TYPE_WAVE_OFFSET /* 424 */:
+                        case 424:
                             this.mWaveOffset = f;
                             return true;
-                        case TypedValues.CycleType.TYPE_WAVE_PHASE /* 425 */:
+                        case 425:
                             this.mWavePhase = f;
                             return true;
                         default:

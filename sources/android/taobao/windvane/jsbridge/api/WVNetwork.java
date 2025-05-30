@@ -4,7 +4,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.ScanResult;
 import android.taobao.windvane.config.WVCommonConfig;
-import android.taobao.windvane.connect.HttpRequest;
 import android.taobao.windvane.jsbridge.WVApiPlugin;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.taobao.windvane.jsbridge.WVResult;
@@ -13,7 +12,7 @@ import anet.channel.status.NetworkStatusHelper;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVNetwork extends WVApiPlugin {
     public static final int NETWORK_TYPE_IWLAN = 18;
     public static final int NETWORK_TYPE_LTE_CA = 19;
@@ -37,8 +36,8 @@ public class WVNetwork extends WVApiPlugin {
     private final int NETWORK_TYPE_NR = 20;
 
     /* compiled from: Taobao */
-    /* renamed from: android.taobao.windvane.jsbridge.api.WVNetwork$1 */
-    static /* synthetic */ class C01951 {
+    /* renamed from: android.taobao.windvane.jsbridge.api.WVNetwork$1, reason: invalid class name */
+    static /* synthetic */ class AnonymousClass1 {
         static final /* synthetic */ int[] $SwitchMap$anet$channel$status$NetworkStatusHelper$NetworkStatus;
 
         static {
@@ -78,14 +77,14 @@ public class WVNetwork extends WVApiPlugin {
     private boolean getNetworkInfoBySystem(WVCallBackContext wVCallBackContext, WVResult wVResult) {
         NetworkInfo networkInfo;
         try {
-            networkInfo = ((ConnectivityManager) this.mContext.getSystemService("connectivity")).getActiveNetworkInfo();
+            networkInfo = ((ConnectivityManager) ((WVApiPlugin) this).mContext.getSystemService("connectivity")).getActiveNetworkInfo();
         } catch (Throwable th) {
             wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, th.getMessage());
             wVCallBackContext.error(wVResult);
             networkInfo = null;
         }
         if (networkInfo == null) {
-            wVResult.addData("type", HttpRequest.DEFAULT_HTTPS_ERROR_NONE);
+            wVResult.addData("type", "NONE");
             wVCallBackContext.success(wVResult);
             return false;
         }
@@ -196,7 +195,6 @@ public class WVNetwork extends WVApiPlugin {
         }
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if (!"getNetworkType".equals(str)) {
             return false;
@@ -211,12 +209,12 @@ public class WVNetwork extends WVApiPlugin {
     /* JADX WARN: Removed duplicated region for block: B:46:0x0028 A[EXC_TOP_SPLITTER, SYNTHETIC] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final void getNetworkType(java.lang.String r11, android.taobao.windvane.jsbridge.WVCallBackContext r12) {
         /*
             Method dump skipped, instructions count: 294
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.jsbridge.api.WVNetwork.getNetworkType(java.lang.String, android.taobao.windvane.jsbridge.WVCallBackContext):void");
     }

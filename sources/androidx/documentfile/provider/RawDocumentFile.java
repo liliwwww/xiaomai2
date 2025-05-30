@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class RawDocumentFile extends DocumentFile {
     private File mFile;
 
@@ -44,17 +44,14 @@ class RawDocumentFile extends DocumentFile {
         return mimeTypeFromExtension != null ? mimeTypeFromExtension : "application/octet-stream";
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     public boolean canRead() {
         return this.mFile.canRead();
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     public boolean canWrite() {
         return this.mFile.canWrite();
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     @Nullable
     public DocumentFile createDirectory(String str) {
         File file = new File(this.mFile, str);
@@ -64,7 +61,6 @@ class RawDocumentFile extends DocumentFile {
         return null;
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     @Nullable
     public DocumentFile createFile(String str, String str2) {
         String extensionFromMimeType = MimeTypeMap.getSingleton().getExtensionFromMimeType(str);
@@ -81,23 +77,19 @@ class RawDocumentFile extends DocumentFile {
         }
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     public boolean delete() {
         deleteContents(this.mFile);
         return this.mFile.delete();
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     public boolean exists() {
         return this.mFile.exists();
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     public String getName() {
         return this.mFile.getName();
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     @Nullable
     public String getType() {
         if (this.mFile.isDirectory()) {
@@ -106,37 +98,30 @@ class RawDocumentFile extends DocumentFile {
         return getTypeForName(this.mFile.getName());
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     public Uri getUri() {
         return Uri.fromFile(this.mFile);
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     public boolean isDirectory() {
         return this.mFile.isDirectory();
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     public boolean isFile() {
         return this.mFile.isFile();
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     public boolean isVirtual() {
         return false;
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     public long lastModified() {
         return this.mFile.lastModified();
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     public long length() {
         return this.mFile.length();
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     public DocumentFile[] listFiles() {
         ArrayList arrayList = new ArrayList();
         File[] listFiles = this.mFile.listFiles();
@@ -148,7 +133,6 @@ class RawDocumentFile extends DocumentFile {
         return (DocumentFile[]) arrayList.toArray(new DocumentFile[arrayList.size()]);
     }
 
-    @Override // androidx.documentfile.provider.DocumentFile
     public boolean renameTo(String str) {
         File file = new File(this.mFile.getParentFile(), str);
         if (!this.mFile.renameTo(file)) {

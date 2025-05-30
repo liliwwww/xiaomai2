@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.DefaultFloatingActionButtonElevation$elevation$1$1", f = "FloatingActionButton.kt", i = {}, l = {273}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class DefaultFloatingActionButtonElevation$elevation$1$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ InteractionSource $interactionSource;
     final /* synthetic */ SnapshotStateList<Interaction> $interactions;
@@ -50,7 +50,7 @@ final class DefaultFloatingActionButtonElevation$elevation$1$1 extends SuspendLa
         int i = this.label;
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
-            Flow<Interaction> interactions = this.$interactionSource.getInteractions();
+            Flow interactions = this.$interactionSource.getInteractions();
             final SnapshotStateList<Interaction> snapshotStateList = this.$interactions;
             FlowCollector<Interaction> flowCollector = new FlowCollector<Interaction>() { // from class: androidx.compose.material.DefaultFloatingActionButtonElevation$elevation$1$1.1
                 public /* bridge */ /* synthetic */ Object emit(Object obj2, Continuation continuation) {

@@ -6,24 +6,24 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ComplexDoubleKt {
     @NotNull
     public static final Pair<ComplexDouble, ComplexDouble> complexQuadraticFormula(double d, double d2, double d3) {
         double d4 = -d2;
         double d5 = (d2 * d2) - ((4.0d * d) * d3);
         ComplexDouble complexSqrt = complexSqrt(d5);
-        complexSqrt._real += d4;
+        ComplexDouble.access$set_real$p(complexSqrt, ComplexDouble.access$get_real$p(complexSqrt) + d4);
         double d6 = d * 2.0d;
-        complexSqrt._real /= d6;
-        complexSqrt._imaginary /= d6;
+        ComplexDouble.access$set_real$p(complexSqrt, ComplexDouble.access$get_real$p(complexSqrt) / d6);
+        ComplexDouble.access$set_imaginary$p(complexSqrt, ComplexDouble.access$get_imaginary$p(complexSqrt) / d6);
         ComplexDouble complexSqrt2 = complexSqrt(d5);
         double d7 = -1;
-        complexSqrt2._real *= d7;
-        complexSqrt2._imaginary *= d7;
-        complexSqrt2._real += d4;
-        complexSqrt2._real /= d6;
-        complexSqrt2._imaginary /= d6;
+        ComplexDouble.access$set_real$p(complexSqrt2, ComplexDouble.access$get_real$p(complexSqrt2) * d7);
+        ComplexDouble.access$set_imaginary$p(complexSqrt2, ComplexDouble.access$get_imaginary$p(complexSqrt2) * d7);
+        ComplexDouble.access$set_real$p(complexSqrt2, ComplexDouble.access$get_real$p(complexSqrt2) + d4);
+        ComplexDouble.access$set_real$p(complexSqrt2, ComplexDouble.access$get_real$p(complexSqrt2) / d6);
+        ComplexDouble.access$set_imaginary$p(complexSqrt2, ComplexDouble.access$get_imaginary$p(complexSqrt2) / d6);
         return TuplesKt.to(complexSqrt, complexSqrt2);
     }
 
@@ -36,24 +36,24 @@ public final class ComplexDoubleKt {
     public static final ComplexDouble minus(double d, @NotNull ComplexDouble complexDouble) {
         Intrinsics.checkNotNullParameter(complexDouble, "other");
         double d2 = -1;
-        complexDouble._real *= d2;
-        complexDouble._imaginary *= d2;
-        complexDouble._real += d;
+        ComplexDouble.access$set_real$p(complexDouble, ComplexDouble.access$get_real$p(complexDouble) * d2);
+        ComplexDouble.access$set_imaginary$p(complexDouble, ComplexDouble.access$get_imaginary$p(complexDouble) * d2);
+        ComplexDouble.access$set_real$p(complexDouble, ComplexDouble.access$get_real$p(complexDouble) + d);
         return complexDouble;
     }
 
     @NotNull
     public static final ComplexDouble plus(double d, @NotNull ComplexDouble complexDouble) {
         Intrinsics.checkNotNullParameter(complexDouble, "other");
-        complexDouble._real += d;
+        ComplexDouble.access$set_real$p(complexDouble, ComplexDouble.access$get_real$p(complexDouble) + d);
         return complexDouble;
     }
 
     @NotNull
     public static final ComplexDouble times(double d, @NotNull ComplexDouble complexDouble) {
         Intrinsics.checkNotNullParameter(complexDouble, "other");
-        complexDouble._real *= d;
-        complexDouble._imaginary *= d;
+        ComplexDouble.access$set_real$p(complexDouble, ComplexDouble.access$get_real$p(complexDouble) * d);
+        ComplexDouble.access$set_imaginary$p(complexDouble, ComplexDouble.access$get_imaginary$p(complexDouble) * d);
         return complexDouble;
     }
 }

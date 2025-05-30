@@ -1,21 +1,21 @@
 package androidx.compose.animation.core;
 
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.geometry.Rect;
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntSize;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.EffectsKt;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.geometry.Rect;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.unit.Dp;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntSize;
 import kotlin.Deprecated;
 import kotlin.DeprecationLevel;
 import kotlin.Unit;
-import kotlin.jvm.functions.Function0;
+import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.FloatCompanionObject;
 import kotlin.jvm.internal.IntCompanionObject;
@@ -27,46 +27,46 @@ import org.jetbrains.annotations.Nullable;
 import tb.gs;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AnimateAsStateKt {
 
     @NotNull
-    private static final SpringSpec<Float> defaultAnimation = AnimationSpecKt.spring$default(0.0f, 0.0f, null, 7, null);
+    private static final SpringSpec<Float> defaultAnimation = AnimationSpecKt.spring$default(0.0f, 0.0f, (Object) null, 7, (Object) null);
 
     @NotNull
-    private static final SpringSpec<C0856Dp> dpDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, C0856Dp.m5214boximpl(VisibilityThresholdsKt.getVisibilityThreshold(C0856Dp.Companion)), 3, null);
+    private static final SpringSpec<Dp> dpDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, Dp.m2140boximpl(VisibilityThresholdsKt.getVisibilityThreshold(Dp.Companion)), 3, (Object) null);
 
     @NotNull
-    private static final SpringSpec<Size> sizeDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, Size.m2613boximpl(VisibilityThresholdsKt.getVisibilityThreshold(Size.Companion)), 3, null);
+    private static final SpringSpec<Size> sizeDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, Size.m891boximpl(VisibilityThresholdsKt.getVisibilityThreshold(Size.Companion)), 3, (Object) null);
 
     @NotNull
-    private static final SpringSpec<Offset> offsetDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, Offset.m2545boximpl(VisibilityThresholdsKt.getVisibilityThreshold(Offset.Companion)), 3, null);
+    private static final SpringSpec<Offset> offsetDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, Offset.m837boximpl(VisibilityThresholdsKt.getVisibilityThreshold(Offset.Companion)), 3, (Object) null);
 
     @NotNull
-    private static final SpringSpec<Rect> rectDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, VisibilityThresholdsKt.getVisibilityThreshold(Rect.Companion), 3, null);
+    private static final SpringSpec<Rect> rectDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, VisibilityThresholdsKt.getVisibilityThreshold(Rect.Companion), 3, (Object) null);
 
     @NotNull
-    private static final SpringSpec<Integer> intDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, Integer.valueOf(VisibilityThresholdsKt.getVisibilityThreshold(IntCompanionObject.INSTANCE)), 3, null);
+    private static final SpringSpec<Integer> intDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, Integer.valueOf(VisibilityThresholdsKt.getVisibilityThreshold(IntCompanionObject.INSTANCE)), 3, (Object) null);
 
     @NotNull
-    private static final SpringSpec<IntOffset> intOffsetDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, IntOffset.m5325boximpl(VisibilityThresholdsKt.getVisibilityThreshold(IntOffset.Companion)), 3, null);
+    private static final SpringSpec<IntOffset> intOffsetDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, IntOffset.box-impl(VisibilityThresholdsKt.getVisibilityThreshold(IntOffset.Companion)), 3, (Object) null);
 
     @NotNull
-    private static final SpringSpec<IntSize> intSizeDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, IntSize.m5368boximpl(VisibilityThresholdsKt.getVisibilityThreshold(IntSize.Companion)), 3, null);
+    private static final SpringSpec<IntSize> intSizeDefaultSpring = AnimationSpecKt.spring$default(0.0f, 0.0f, IntSize.box-impl(VisibilityThresholdsKt.getVisibilityThreshold(IntSize.Companion)), 3, (Object) null);
 
     @Composable
     @NotNull
     /* renamed from: animateDpAsState-AjpBEmI, reason: not valid java name */
-    public static final State<C0856Dp> m1034animateDpAsStateAjpBEmI(float f, @Nullable AnimationSpec<C0856Dp> animationSpec, @Nullable String str, @Nullable Function1<? super C0856Dp, Unit> function1, @Nullable Composer composer, int i, int i2) {
+    public static final State<Dp> m71animateDpAsStateAjpBEmI(float f, @Nullable AnimationSpec<Dp> animationSpec, @Nullable String str, @Nullable Function1<? super Dp, Unit> function1, @Nullable Composer composer, int i, int i2) {
         composer.startReplaceableGroup(-1407150062);
-        AnimationSpec<C0856Dp> animationSpec2 = (i2 & 2) != 0 ? dpDefaultSpring : animationSpec;
+        AnimationSpec<Dp> animationSpec2 = (i2 & 2) != 0 ? dpDefaultSpring : animationSpec;
         String str2 = (i2 & 4) != 0 ? "DpAnimation" : str;
-        Function1<? super C0856Dp, Unit> function12 = (i2 & 8) != 0 ? null : function1;
+        Function1<? super Dp, Unit> function12 = (i2 & 8) != 0 ? null : function1;
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-1407150062, i, -1, "androidx.compose.animation.core.animateDpAsState (AnimateAsState.kt:107)");
         }
         int i3 = i << 6;
-        State<C0856Dp> animateValueAsState = animateValueAsState(C0856Dp.m5214boximpl(f), VectorConvertersKt.getVectorConverter(C0856Dp.Companion), animationSpec2, null, str2, function12, composer, (i & 14) | ((i << 3) & 896) | (57344 & i3) | (i3 & 458752), 8);
+        State<Dp> animateValueAsState = animateValueAsState(Dp.m2140boximpl(f), VectorConvertersKt.getVectorConverter(Dp.Companion), animationSpec2, null, str2, function12, composer, (i & 14) | ((i << 3) & 896) | (57344 & i3) | (i3 & 458752), 8);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -77,7 +77,7 @@ public final class AnimateAsStateKt {
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "animate*AsState APIs now have a new label parameter added.")
     @Composable
     /* renamed from: animateDpAsState-Kz89ssw, reason: not valid java name */
-    public static final /* synthetic */ State m1035animateDpAsStateKz89ssw(float f, AnimationSpec animationSpec, Function1 function1, Composer composer, int i, int i2) {
+    public static final /* synthetic */ State m72animateDpAsStateKz89ssw(float f, AnimationSpec animationSpec, Function1 function1, Composer composer, int i, int i2) {
         composer.startReplaceableGroup(704104481);
         if ((i2 & 2) != 0) {
             animationSpec = dpDefaultSpring;
@@ -90,7 +90,7 @@ public final class AnimateAsStateKt {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(704104481, i, -1, "androidx.compose.animation.core.animateDpAsState (AnimateAsState.kt:456)");
         }
-        State animateValueAsState = animateValueAsState(C0856Dp.m5214boximpl(f), VectorConvertersKt.getVectorConverter(C0856Dp.Companion), animationSpec2, null, null, function12, composer, (i & 14) | ((i << 3) & 896) | (458752 & (i << 9)), 24);
+        State animateValueAsState = animateValueAsState(Dp.m2140boximpl(f), VectorConvertersKt.getVectorConverter(Dp.Companion), animationSpec2, null, null, function12, composer, (i & 14) | ((i << 3) & 896) | (458752 & (i << 9)), 24);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -116,7 +116,7 @@ public final class AnimateAsStateKt {
             boolean changed = composer.changed(valueOf);
             Object rememberedValue = composer.rememberedValue();
             if (changed || rememberedValue == Composer.Companion.getEmpty()) {
-                rememberedValue = AnimationSpecKt.spring$default(0.0f, 0.0f, Float.valueOf(f3), 3, null);
+                rememberedValue = AnimationSpecKt.spring$default(0.0f, 0.0f, Float.valueOf(f3), 3, (Object) null);
                 composer.updateRememberedValue(rememberedValue);
             }
             composer.endReplaceableGroup();
@@ -154,14 +154,14 @@ public final class AnimateAsStateKt {
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "animate*AsState APIs now have a new label parameter added.")
     @Composable
     /* renamed from: animateIntOffsetAsState-8f6pmRE, reason: not valid java name */
-    public static final /* synthetic */ State m1036animateIntOffsetAsState8f6pmRE(long j, AnimationSpec animationSpec, Function1 function1, Composer composer, int i, int i2) {
+    public static final /* synthetic */ State m73animateIntOffsetAsState8f6pmRE(long j, AnimationSpec animationSpec, Function1 function1, Composer composer, int i, int i2) {
         composer.startReplaceableGroup(1010307371);
         AnimationSpec animationSpec2 = (i2 & 2) != 0 ? intOffsetDefaultSpring : animationSpec;
         Function1 function12 = (i2 & 4) != 0 ? null : function1;
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(1010307371, i, -1, "androidx.compose.animation.core.animateIntOffsetAsState (AnimateAsState.kt:537)");
         }
-        State animateValueAsState = animateValueAsState(IntOffset.m5325boximpl(j), VectorConvertersKt.getVectorConverter(IntOffset.Companion), animationSpec2, null, null, function12, composer, (i & 14) | ((i << 3) & 896) | ((i << 9) & 458752), 24);
+        State animateValueAsState = animateValueAsState(IntOffset.box-impl(j), VectorConvertersKt.getVectorConverter(IntOffset.Companion), animationSpec2, null, null, function12, composer, (i & 14) | ((i << 3) & 896) | ((i << 9) & 458752), 24);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -172,7 +172,7 @@ public final class AnimateAsStateKt {
     @Composable
     @NotNull
     /* renamed from: animateIntOffsetAsState-HyPO7BM, reason: not valid java name */
-    public static final State<IntOffset> m1037animateIntOffsetAsStateHyPO7BM(long j, @Nullable AnimationSpec<IntOffset> animationSpec, @Nullable String str, @Nullable Function1<? super IntOffset, Unit> function1, @Nullable Composer composer, int i, int i2) {
+    public static final State<IntOffset> m74animateIntOffsetAsStateHyPO7BM(long j, @Nullable AnimationSpec<IntOffset> animationSpec, @Nullable String str, @Nullable Function1<? super IntOffset, Unit> function1, @Nullable Composer composer, int i, int i2) {
         composer.startReplaceableGroup(-696782904);
         AnimationSpec<IntOffset> animationSpec2 = (i2 & 2) != 0 ? intOffsetDefaultSpring : animationSpec;
         String str2 = (i2 & 4) != 0 ? "IntOffsetAnimation" : str;
@@ -181,7 +181,7 @@ public final class AnimateAsStateKt {
             ComposerKt.traceEventStart(-696782904, i, -1, "androidx.compose.animation.core.animateIntOffsetAsState (AnimateAsState.kt:307)");
         }
         int i3 = i << 6;
-        State<IntOffset> animateValueAsState = animateValueAsState(IntOffset.m5325boximpl(j), VectorConvertersKt.getVectorConverter(IntOffset.Companion), animationSpec2, null, str2, function12, composer, (i & 14) | ((i << 3) & 896) | (57344 & i3) | (i3 & 458752), 8);
+        State<IntOffset> animateValueAsState = animateValueAsState(IntOffset.box-impl(j), VectorConvertersKt.getVectorConverter(IntOffset.Companion), animationSpec2, null, str2, function12, composer, (i & 14) | ((i << 3) & 896) | (57344 & i3) | (i3 & 458752), 8);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -192,7 +192,7 @@ public final class AnimateAsStateKt {
     @Composable
     @NotNull
     /* renamed from: animateIntSizeAsState-4goxYXU, reason: not valid java name */
-    public static final State<IntSize> m1038animateIntSizeAsState4goxYXU(long j, @Nullable AnimationSpec<IntSize> animationSpec, @Nullable String str, @Nullable Function1<? super IntSize, Unit> function1, @Nullable Composer composer, int i, int i2) {
+    public static final State<IntSize> m75animateIntSizeAsState4goxYXU(long j, @Nullable AnimationSpec<IntSize> animationSpec, @Nullable String str, @Nullable Function1<? super IntSize, Unit> function1, @Nullable Composer composer, int i, int i2) {
         composer.startReplaceableGroup(582576328);
         AnimationSpec<IntSize> animationSpec2 = (i2 & 2) != 0 ? intSizeDefaultSpring : animationSpec;
         String str2 = (i2 & 4) != 0 ? "IntSizeAnimation" : str;
@@ -201,7 +201,7 @@ public final class AnimateAsStateKt {
             ComposerKt.traceEventStart(582576328, i, -1, "androidx.compose.animation.core.animateIntSizeAsState (AnimateAsState.kt:345)");
         }
         int i3 = i << 6;
-        State<IntSize> animateValueAsState = animateValueAsState(IntSize.m5368boximpl(j), VectorConvertersKt.getVectorConverter(IntSize.Companion), animationSpec2, null, str2, function12, composer, (i & 14) | ((i << 3) & 896) | (57344 & i3) | (i3 & 458752), 8);
+        State<IntSize> animateValueAsState = animateValueAsState(IntSize.box-impl(j), VectorConvertersKt.getVectorConverter(IntSize.Companion), animationSpec2, null, str2, function12, composer, (i & 14) | ((i << 3) & 896) | (57344 & i3) | (i3 & 458752), 8);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -212,14 +212,14 @@ public final class AnimateAsStateKt {
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "animate*AsState APIs now have a new label parameter added.")
     @Composable
     /* renamed from: animateIntSizeAsState-zTRF_AQ, reason: not valid java name */
-    public static final /* synthetic */ State m1039animateIntSizeAsStatezTRF_AQ(long j, AnimationSpec animationSpec, Function1 function1, Composer composer, int i, int i2) {
+    public static final /* synthetic */ State m76animateIntSizeAsStatezTRF_AQ(long j, AnimationSpec animationSpec, Function1 function1, Composer composer, int i, int i2) {
         composer.startReplaceableGroup(-1749239765);
         AnimationSpec animationSpec2 = (i2 & 2) != 0 ? intSizeDefaultSpring : animationSpec;
         Function1 function12 = (i2 & 4) != 0 ? null : function1;
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-1749239765, i, -1, "androidx.compose.animation.core.animateIntSizeAsState (AnimateAsState.kt:552)");
         }
-        State animateValueAsState = animateValueAsState(IntSize.m5368boximpl(j), VectorConvertersKt.getVectorConverter(IntSize.Companion), animationSpec2, null, null, function12, composer, (i & 14) | ((i << 3) & 896) | ((i << 9) & 458752), 24);
+        State animateValueAsState = animateValueAsState(IntSize.box-impl(j), VectorConvertersKt.getVectorConverter(IntSize.Companion), animationSpec2, null, null, function12, composer, (i & 14) | ((i << 3) & 896) | ((i << 9) & 458752), 24);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -230,7 +230,7 @@ public final class AnimateAsStateKt {
     @Composable
     @NotNull
     /* renamed from: animateOffsetAsState-7362WCg, reason: not valid java name */
-    public static final State<Offset> m1040animateOffsetAsState7362WCg(long j, @Nullable AnimationSpec<Offset> animationSpec, @Nullable String str, @Nullable Function1<? super Offset, Unit> function1, @Nullable Composer composer, int i, int i2) {
+    public static final State<Offset> m77animateOffsetAsState7362WCg(long j, @Nullable AnimationSpec<Offset> animationSpec, @Nullable String str, @Nullable Function1<? super Offset, Unit> function1, @Nullable Composer composer, int i, int i2) {
         composer.startReplaceableGroup(357896800);
         AnimationSpec<Offset> animationSpec2 = (i2 & 2) != 0 ? offsetDefaultSpring : animationSpec;
         String str2 = (i2 & 4) != 0 ? "OffsetAnimation" : str;
@@ -239,7 +239,7 @@ public final class AnimateAsStateKt {
             ComposerKt.traceEventStart(357896800, i, -1, "androidx.compose.animation.core.animateOffsetAsState (AnimateAsState.kt:188)");
         }
         int i3 = i << 6;
-        State<Offset> animateValueAsState = animateValueAsState(Offset.m2545boximpl(j), VectorConvertersKt.getVectorConverter(Offset.Companion), animationSpec2, null, str2, function12, composer, (i & 14) | ((i << 3) & 896) | (57344 & i3) | (i3 & 458752), 8);
+        State<Offset> animateValueAsState = animateValueAsState(Offset.m837boximpl(j), VectorConvertersKt.getVectorConverter(Offset.Companion), animationSpec2, null, str2, function12, composer, (i & 14) | ((i << 3) & 896) | (57344 & i3) | (i3 & 458752), 8);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -250,14 +250,14 @@ public final class AnimateAsStateKt {
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "animate*AsState APIs now have a new label parameter added.")
     @Composable
     /* renamed from: animateOffsetAsState-N6fFfp4, reason: not valid java name */
-    public static final /* synthetic */ State m1041animateOffsetAsStateN6fFfp4(long j, AnimationSpec animationSpec, Function1 function1, Composer composer, int i, int i2) {
+    public static final /* synthetic */ State m78animateOffsetAsStateN6fFfp4(long j, AnimationSpec animationSpec, Function1 function1, Composer composer, int i, int i2) {
         composer.startReplaceableGroup(-456513133);
         AnimationSpec animationSpec2 = (i2 & 2) != 0 ? offsetDefaultSpring : animationSpec;
         Function1 function12 = (i2 & 4) != 0 ? null : function1;
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-456513133, i, -1, "androidx.compose.animation.core.animateOffsetAsState (AnimateAsState.kt:492)");
         }
-        State animateValueAsState = animateValueAsState(Offset.m2545boximpl(j), VectorConvertersKt.getVectorConverter(Offset.Companion), animationSpec2, null, null, function12, composer, (i & 14) | ((i << 3) & 896) | ((i << 9) & 458752), 24);
+        State animateValueAsState = animateValueAsState(Offset.m837boximpl(j), VectorConvertersKt.getVectorConverter(Offset.Companion), animationSpec2, null, null, function12, composer, (i & 14) | ((i << 3) & 896) | ((i << 9) & 458752), 24);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -288,14 +288,14 @@ public final class AnimateAsStateKt {
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "animate*AsState APIs now have a new label parameter added.")
     @Composable
     /* renamed from: animateSizeAsState-LjSzlW0, reason: not valid java name */
-    public static final /* synthetic */ State m1042animateSizeAsStateLjSzlW0(long j, AnimationSpec animationSpec, Function1 function1, Composer composer, int i, int i2) {
+    public static final /* synthetic */ State m79animateSizeAsStateLjSzlW0(long j, AnimationSpec animationSpec, Function1 function1, Composer composer, int i, int i2) {
         composer.startReplaceableGroup(875212471);
         AnimationSpec animationSpec2 = (i2 & 2) != 0 ? sizeDefaultSpring : animationSpec;
         Function1 function12 = (i2 & 4) != 0 ? null : function1;
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(875212471, i, -1, "androidx.compose.animation.core.animateSizeAsState (AnimateAsState.kt:474)");
         }
-        State animateValueAsState = animateValueAsState(Size.m2613boximpl(j), VectorConvertersKt.getVectorConverter(Size.Companion), animationSpec2, null, null, function12, composer, (i & 14) | ((i << 3) & 896) | ((i << 9) & 458752), 24);
+        State animateValueAsState = animateValueAsState(Size.m891boximpl(j), VectorConvertersKt.getVectorConverter(Size.Companion), animationSpec2, null, null, function12, composer, (i & 14) | ((i << 3) & 896) | ((i << 9) & 458752), 24);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -306,7 +306,7 @@ public final class AnimateAsStateKt {
     @Composable
     @NotNull
     /* renamed from: animateSizeAsState-YLp_XPw, reason: not valid java name */
-    public static final State<Size> m1043animateSizeAsStateYLp_XPw(long j, @Nullable AnimationSpec<Size> animationSpec, @Nullable String str, @Nullable Function1<? super Size, Unit> function1, @Nullable Composer composer, int i, int i2) {
+    public static final State<Size> m80animateSizeAsStateYLp_XPw(long j, @Nullable AnimationSpec<Size> animationSpec, @Nullable String str, @Nullable Function1<? super Size, Unit> function1, @Nullable Composer composer, int i, int i2) {
         composer.startReplaceableGroup(1374633148);
         AnimationSpec<Size> animationSpec2 = (i2 & 2) != 0 ? sizeDefaultSpring : animationSpec;
         String str2 = (i2 & 4) != 0 ? "SizeAnimation" : str;
@@ -315,7 +315,7 @@ public final class AnimateAsStateKt {
             ComposerKt.traceEventStart(1374633148, i, -1, "androidx.compose.animation.core.animateSizeAsState (AnimateAsState.kt:148)");
         }
         int i3 = i << 6;
-        State<Size> animateValueAsState = animateValueAsState(Size.m2613boximpl(j), VectorConvertersKt.getVectorConverter(Size.Companion), animationSpec2, null, str2, function12, composer, (i & 14) | ((i << 3) & 896) | (57344 & i3) | (i3 & 458752), 8);
+        State<Size> animateValueAsState = animateValueAsState(Size.m891boximpl(j), VectorConvertersKt.getVectorConverter(Size.Companion), animationSpec2, null, str2, function12, composer, (i & 14) | ((i << 3) & 896) | (57344 & i3) | (i3 & 458752), 8);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -325,7 +325,7 @@ public final class AnimateAsStateKt {
 
     @Composable
     @NotNull
-    public static final <T, V extends AnimationVector> State<T> animateValueAsState(final T t, @NotNull TwoWayConverter<T, V> twoWayConverter, @Nullable AnimationSpec<T> animationSpec, @Nullable T t2, @Nullable String str, @Nullable Function1<? super T, Unit> function1, @Nullable Composer composer, int i, int i2) {
+    public static final <T, V extends AnimationVector> State<T> animateValueAsState(T t, @NotNull TwoWayConverter<T, V> twoWayConverter, @Nullable AnimationSpec<T> animationSpec, @Nullable T t2, @Nullable String str, @Nullable Function1<? super T, Unit> function1, @Nullable Composer composer, int i, int i2) {
         AnimationSpec<T> animationSpec2;
         Intrinsics.checkNotNullParameter(twoWayConverter, "typeConverter");
         composer.startReplaceableGroup(-1994373980);
@@ -333,7 +333,7 @@ public final class AnimateAsStateKt {
             composer.startReplaceableGroup(-492369756);
             Object rememberedValue = composer.rememberedValue();
             if (rememberedValue == Composer.Companion.getEmpty()) {
-                rememberedValue = AnimationSpecKt.spring$default(0.0f, 0.0f, null, 7, null);
+                rememberedValue = AnimationSpecKt.spring$default(0.0f, 0.0f, (Object) null, 7, (Object) null);
                 composer.updateRememberedValue(rememberedValue);
             }
             composer.endReplaceableGroup();
@@ -371,24 +371,9 @@ public final class AnimateAsStateKt {
             composer.updateRememberedValue(rememberedValue3);
         }
         composer.endReplaceableGroup();
-        final Channel channel = (Channel) rememberedValue3;
-        EffectsKt.SideEffect(new Function0<Unit>() { // from class: androidx.compose.animation.core.AnimateAsStateKt$animateValueAsState$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(0);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke() {
-                m1046invoke();
-                return Unit.INSTANCE;
-            }
-
-            /* renamed from: invoke, reason: collision with other method in class */
-            public final void m1046invoke() {
-                channel.trySend-JP2dKIU(t);
-            }
-        }, composer, 0);
-        EffectsKt.LaunchedEffect(channel, new AnimateAsStateKt$animateValueAsState$3(channel, animatable, rememberUpdatedState2, rememberUpdatedState, null), composer, 72);
+        Channel channel = (Channel) rememberedValue3;
+        EffectsKt.SideEffect(new animateValueAsState.2(channel, t), composer, 0);
+        EffectsKt.LaunchedEffect(channel, new animateValueAsState.3(channel, animatable, rememberUpdatedState2, rememberUpdatedState, (Continuation) null), composer, 72);
         State<T> asState = animatable.asState();
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
@@ -399,14 +384,14 @@ public final class AnimateAsStateKt {
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: animateValueAsState$lambda-3, reason: not valid java name */
-    public static final <T> Function1<T, Unit> m1044animateValueAsState$lambda3(State<? extends Function1<? super T, Unit>> state) {
-        return state.getValue();
+    public static final <T> Function1<T, Unit> m81animateValueAsState$lambda3(State<? extends Function1<? super T, Unit>> state) {
+        return (Function1) state.getValue();
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: animateValueAsState$lambda-5, reason: not valid java name */
-    public static final <T> AnimationSpec<T> m1045animateValueAsState$lambda5(State<? extends AnimationSpec<T>> state) {
-        return state.getValue();
+    public static final <T> AnimationSpec<T> m82animateValueAsState$lambda5(State<? extends AnimationSpec<T>> state) {
+        return (AnimationSpec) state.getValue();
     }
 
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "animate*AsState APIs now have a new label parameter added.")
@@ -490,7 +475,7 @@ public final class AnimateAsStateKt {
             composer.startReplaceableGroup(-492369756);
             Object rememberedValue = composer.rememberedValue();
             if (rememberedValue == Composer.Companion.getEmpty()) {
-                rememberedValue = AnimationSpecKt.spring$default(0.0f, 0.0f, null, 7, null);
+                rememberedValue = AnimationSpecKt.spring$default(0.0f, 0.0f, (Object) null, 7, (Object) null);
                 composer.updateRememberedValue(rememberedValue);
             }
             composer.endReplaceableGroup();

@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class ViewGroupOverlayApi14 extends ViewOverlayApi14 implements ViewGroupOverlayImpl {
     ViewGroupOverlayApi14(Context context, ViewGroup viewGroup, View view) {
         super(context, viewGroup, view);
@@ -18,11 +18,11 @@ class ViewGroupOverlayApi14 extends ViewOverlayApi14 implements ViewGroupOverlay
 
     @Override // androidx.transition.ViewGroupOverlayImpl
     public void add(@NonNull View view) {
-        this.mOverlayViewGroup.add(view);
+        ((ViewOverlayApi14) this).mOverlayViewGroup.add(view);
     }
 
     @Override // androidx.transition.ViewGroupOverlayImpl
     public void remove(@NonNull View view) {
-        this.mOverlayViewGroup.remove(view);
+        ((ViewOverlayApi14) this).mOverlayViewGroup.remove(view);
     }
 }

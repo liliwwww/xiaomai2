@@ -12,7 +12,7 @@ import android.view.animation.DecelerateInterpolator;
 import androidx.annotation.NonNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Explode extends Visibility {
     private static final String PROPNAME_SCREEN_BOUNDS = "android:explode:screenBounds";
     private int[] mTempLoc;
@@ -69,19 +69,16 @@ public class Explode extends Visibility {
         transitionValues.values.put(PROPNAME_SCREEN_BOUNDS, new Rect(i, i2, view.getWidth() + i, view.getHeight() + i2));
     }
 
-    @Override // androidx.transition.Visibility, androidx.transition.Transition
     public void captureEndValues(@NonNull TransitionValues transitionValues) {
         super.captureEndValues(transitionValues);
         captureValues(transitionValues);
     }
 
-    @Override // androidx.transition.Visibility, androidx.transition.Transition
     public void captureStartValues(@NonNull TransitionValues transitionValues) {
         super.captureStartValues(transitionValues);
         captureValues(transitionValues);
     }
 
-    @Override // androidx.transition.Visibility
     public Animator onAppear(ViewGroup viewGroup, View view, TransitionValues transitionValues, TransitionValues transitionValues2) {
         if (transitionValues2 == null) {
             return null;
@@ -94,7 +91,6 @@ public class Explode extends Visibility {
         return TranslationAnimationCreator.createAnimation(view, transitionValues2, rect.left, rect.top, translationX + iArr[0], translationY + iArr[1], translationX, translationY, sDecelerate, this);
     }
 
-    @Override // androidx.transition.Visibility
     public Animator onDisappear(ViewGroup viewGroup, View view, TransitionValues transitionValues, TransitionValues transitionValues2) {
         float f;
         float f2;
@@ -106,7 +102,7 @@ public class Explode extends Visibility {
         int i2 = rect.top;
         float translationX = view.getTranslationX();
         float translationY = view.getTranslationY();
-        int[] iArr = (int[]) transitionValues.view.getTag(C1345R.id.transition_position);
+        int[] iArr = (int[]) transitionValues.view.getTag(R$id.transition_position);
         if (iArr != null) {
             f = (iArr[0] - rect.left) + translationX;
             f2 = (iArr[1] - rect.top) + translationY;

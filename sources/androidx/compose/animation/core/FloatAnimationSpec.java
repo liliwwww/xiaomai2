@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import tb.qk1;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface FloatAnimationSpec extends AnimationSpec<Float> {
 
     /* compiled from: Taobao */
@@ -31,10 +31,9 @@ public interface FloatAnimationSpec extends AnimationSpec<Float> {
 
     float getVelocityFromNanos(long j, float f, float f2, float f3);
 
-    @Override // androidx.compose.animation.core.AnimationSpec
     /* bridge */ /* synthetic */ VectorizedAnimationSpec vectorize(TwoWayConverter twoWayConverter);
 
-    @Override // androidx.compose.animation.core.AnimationSpec
     @NotNull
-    <V extends AnimationVector> VectorizedFloatAnimationSpec<V> vectorize(@NotNull TwoWayConverter<Float, V> twoWayConverter);
+    /* renamed from: vectorize, reason: collision with other method in class */
+    <V extends AnimationVector> VectorizedFloatAnimationSpec<V> mo83vectorize(@NotNull TwoWayConverter<Float, V> twoWayConverter);
 }

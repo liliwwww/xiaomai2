@@ -15,7 +15,7 @@ import android.widget.FrameLayout;
 import androidx.annotation.RequiresApi;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.C1043R;
+import androidx.fragment.R$styleable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class FragmentContainerView extends FrameLayout {
 
     @Nullable
@@ -53,7 +53,7 @@ public final class FragmentContainerView extends FrameLayout {
         @NotNull
         public final WindowInsets onApplyWindowInsets(@NotNull View.OnApplyWindowInsetsListener onApplyWindowInsetsListener, @NotNull View view, @NotNull WindowInsets windowInsets) {
             Intrinsics.checkNotNullParameter(onApplyWindowInsetsListener, "onApplyWindowInsetsListener");
-            Intrinsics.checkNotNullParameter(view, ApiConstants.f5V);
+            Intrinsics.checkNotNullParameter(view, ApiConstants.V);
             Intrinsics.checkNotNullParameter(windowInsets, "insets");
             WindowInsets onApplyWindowInsets = onApplyWindowInsetsListener.onApplyWindowInsets(view, windowInsets);
             Intrinsics.checkNotNullExpressionValue(onApplyWindowInsets, "onApplyWindowInsetsListe…lyWindowInsets(v, insets)");
@@ -266,11 +266,11 @@ public final class FragmentContainerView extends FrameLayout {
         this.drawDisappearingViewsFirst = true;
         if (attributeSet != null) {
             String classAttribute = attributeSet.getClassAttribute();
-            int[] iArr = C1043R.styleable.FragmentContainerView;
+            int[] iArr = R$styleable.FragmentContainerView;
             Intrinsics.checkNotNullExpressionValue(iArr, "FragmentContainerView");
             TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, iArr, 0, 0);
             if (classAttribute == null) {
-                classAttribute = obtainStyledAttributes.getString(C1043R.styleable.FragmentContainerView_android_name);
+                classAttribute = obtainStyledAttributes.getString(R$styleable.FragmentContainerView_android_name);
                 str = "android:name";
             } else {
                 str = "class";
@@ -294,11 +294,11 @@ public final class FragmentContainerView extends FrameLayout {
         this.transitioningFragmentViews = new ArrayList();
         this.drawDisappearingViewsFirst = true;
         String classAttribute = attributeSet.getClassAttribute();
-        int[] iArr = C1043R.styleable.FragmentContainerView;
+        int[] iArr = R$styleable.FragmentContainerView;
         Intrinsics.checkNotNullExpressionValue(iArr, "FragmentContainerView");
         TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, iArr, 0, 0);
-        classAttribute = classAttribute == null ? obtainStyledAttributes.getString(C1043R.styleable.FragmentContainerView_android_name) : classAttribute;
-        String string = obtainStyledAttributes.getString(C1043R.styleable.FragmentContainerView_android_tag);
+        classAttribute = classAttribute == null ? obtainStyledAttributes.getString(R$styleable.FragmentContainerView_android_name) : classAttribute;
+        String string = obtainStyledAttributes.getString(R$styleable.FragmentContainerView_android_tag);
         obtainStyledAttributes.recycle();
         int id = getId();
         Fragment findFragmentById = fragmentManager.findFragmentById(id);

@@ -14,47 +14,9 @@ import java.util.Collections;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class DisplayCutoutCompat {
     private final DisplayCutout mDisplayCutout;
-
-    /* compiled from: Taobao */
-    @RequiresApi(28)
-    /* loaded from: classes2.dex */
-    static class Api28Impl {
-        private Api28Impl() {
-        }
-
-        @DoNotInline
-        static DisplayCutout createDisplayCutout(Rect rect, List<Rect> list) {
-            return new DisplayCutout(rect, list);
-        }
-
-        @DoNotInline
-        static List<Rect> getBoundingRects(DisplayCutout displayCutout) {
-            return displayCutout.getBoundingRects();
-        }
-
-        @DoNotInline
-        static int getSafeInsetBottom(DisplayCutout displayCutout) {
-            return displayCutout.getSafeInsetBottom();
-        }
-
-        @DoNotInline
-        static int getSafeInsetLeft(DisplayCutout displayCutout) {
-            return displayCutout.getSafeInsetLeft();
-        }
-
-        @DoNotInline
-        static int getSafeInsetRight(DisplayCutout displayCutout) {
-            return displayCutout.getSafeInsetRight();
-        }
-
-        @DoNotInline
-        static int getSafeInsetTop(DisplayCutout displayCutout) {
-            return displayCutout.getSafeInsetTop();
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(29)
@@ -65,24 +27,6 @@ public final class DisplayCutoutCompat {
         @DoNotInline
         static DisplayCutout createDisplayCutout(Insets insets, Rect rect, Rect rect2, Rect rect3, Rect rect4) {
             return new DisplayCutout(insets, rect, rect2, rect3, rect4);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(30)
-    /* loaded from: classes2.dex */
-    static class Api30Impl {
-        private Api30Impl() {
-        }
-
-        @DoNotInline
-        static DisplayCutout createDisplayCutout(Insets insets, Rect rect, Rect rect2, Rect rect3, Rect rect4, Insets insets2) {
-            return new DisplayCutout(insets, rect, rect2, rect3, rect4, insets2);
-        }
-
-        @DoNotInline
-        static Insets getWaterfallInsets(DisplayCutout displayCutout) {
-            return displayCutout.getWaterfallInsets();
         }
     }
 

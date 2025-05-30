@@ -15,10 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.collection.SimpleArrayMap;
-import androidx.core.view.WindowInsetsControllerCompat;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class WindowInsetsControllerCompat {
     public static final int BEHAVIOR_SHOW_BARS_BY_SWIPE = 1;
     public static final int BEHAVIOR_SHOW_BARS_BY_TOUCH = 0;
@@ -67,10 +67,9 @@ public final class WindowInsetsControllerCompat {
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     /* compiled from: Taobao */
     @RequiresApi(20)
-    static class Impl20 extends Impl {
+    private static class Impl20 extends Impl {
 
         @NonNull
         private final View mView;
@@ -104,7 +103,7 @@ public final class WindowInsetsControllerCompat {
         private void showForType(int i) {
             if (i == 1) {
                 unsetSystemUiFlag(4);
-                unsetWindowFlag(1024);
+                unsetWindowFlag(AccessibilityEventCompat.TYPE_TOUCH_EXPLORATION_GESTURE_END);
                 return;
             }
             if (i == 2) {
@@ -114,7 +113,7 @@ public final class WindowInsetsControllerCompat {
             if (i != 8) {
                 return;
             }
-            final View view = this.mView;
+            View view = this.mView;
             if (view.isInEditMode() || view.onCheckIsTextEditor()) {
                 view.requestFocus();
             } else {
@@ -126,12 +125,7 @@ public final class WindowInsetsControllerCompat {
             if (view == null || !view.hasWindowFocus()) {
                 return;
             }
-            view.post(new Runnable() { // from class: androidx.core.view.a
-                @Override // java.lang.Runnable
-                public final void run() {
-                    WindowInsetsControllerCompat.Impl20.lambda$showForType$0(view);
-                }
-            });
+            view.post(new a(view));
         }
 
         @Override // androidx.core.view.WindowInsetsControllerCompat.Impl
@@ -167,14 +161,14 @@ public final class WindowInsetsControllerCompat {
                 return;
             }
             if (i == 1) {
-                unsetSystemUiFlag(4096);
-                setSystemUiFlag(2048);
+                unsetSystemUiFlag(AccessibilityEventCompat.TYPE_VIEW_SCROLLED);
+                setSystemUiFlag(AccessibilityEventCompat.TYPE_WINDOW_CONTENT_CHANGED);
             } else {
                 if (i != 2) {
                     return;
                 }
-                unsetSystemUiFlag(2048);
-                setSystemUiFlag(4096);
+                unsetSystemUiFlag(AccessibilityEventCompat.TYPE_WINDOW_CONTENT_CHANGED);
+                setSystemUiFlag(AccessibilityEventCompat.TYPE_VIEW_SCROLLED);
             }
         }
 
@@ -215,18 +209,18 @@ public final class WindowInsetsControllerCompat {
 
         @Override // androidx.core.view.WindowInsetsControllerCompat.Impl
         public boolean isAppearanceLightStatusBars() {
-            return (this.mWindow.getDecorView().getSystemUiVisibility() & 8192) != 0;
+            return (this.mWindow.getDecorView().getSystemUiVisibility() & AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED) != 0;
         }
 
         @Override // androidx.core.view.WindowInsetsControllerCompat.Impl
         public void setAppearanceLightStatusBars(boolean z) {
             if (!z) {
-                unsetSystemUiFlag(8192);
+                unsetSystemUiFlag(AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED);
                 return;
             }
             unsetWindowFlag(67108864);
             setWindowFlag(Integer.MIN_VALUE);
-            setSystemUiFlag(8192);
+            setSystemUiFlag(AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED);
         }
     }
 
@@ -252,12 +246,6 @@ public final class WindowInsetsControllerCompat {
             setWindowFlag(Integer.MIN_VALUE);
             setSystemUiFlag(16);
         }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface OnControllableInsetsChangedListener {
-        void onControllableInsetsChanged(@NonNull WindowInsetsControllerCompat windowInsetsControllerCompat, int i);
     }
 
     @RequiresApi(30)
@@ -318,10 +306,9 @@ public final class WindowInsetsControllerCompat {
         this.mImpl.show(i);
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     /* compiled from: Taobao */
     @RequiresApi(30)
-    static class Impl30 extends Impl {
+    private static class Impl30 extends Impl {
         final WindowInsetsControllerCompat mCompatController;
         final WindowInsetsController mInsetsController;
         private final SimpleArrayMap<OnControllableInsetsChangedListener, WindowInsetsController.OnControllableInsetsChangedListener> mListeners;
@@ -340,18 +327,13 @@ public final class WindowInsetsControllerCompat {
         }
 
         @Override // androidx.core.view.WindowInsetsControllerCompat.Impl
-        void addOnControllableInsetsChangedListener(@NonNull final OnControllableInsetsChangedListener onControllableInsetsChangedListener) {
+        void addOnControllableInsetsChangedListener(@NonNull OnControllableInsetsChangedListener onControllableInsetsChangedListener) {
             if (this.mListeners.containsKey(onControllableInsetsChangedListener)) {
                 return;
             }
-            WindowInsetsController.OnControllableInsetsChangedListener onControllableInsetsChangedListener2 = new WindowInsetsController.OnControllableInsetsChangedListener() { // from class: androidx.core.view.b
-                @Override // android.view.WindowInsetsController.OnControllableInsetsChangedListener
-                public final void onControllableInsetsChanged(WindowInsetsController windowInsetsController, int i) {
-                    WindowInsetsControllerCompat.Impl30.this.lambda$addOnControllableInsetsChangedListener$0(onControllableInsetsChangedListener, windowInsetsController, i);
-                }
-            };
-            this.mListeners.put(onControllableInsetsChangedListener, onControllableInsetsChangedListener2);
-            this.mInsetsController.addOnControllableInsetsChangedListener(onControllableInsetsChangedListener2);
+            WindowInsetsController.OnControllableInsetsChangedListener bVar = new b(this, onControllableInsetsChangedListener);
+            this.mListeners.put(onControllableInsetsChangedListener, bVar);
+            this.mInsetsController.addOnControllableInsetsChangedListener(bVar);
         }
 
         @Override // androidx.core.view.WindowInsetsControllerCompat.Impl
@@ -426,12 +408,12 @@ public final class WindowInsetsControllerCompat {
         public void setAppearanceLightStatusBars(boolean z) {
             if (z) {
                 if (this.mWindow != null) {
-                    setSystemUiFlag(8192);
+                    setSystemUiFlag(AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED);
                 }
                 this.mInsetsController.setSystemBarsAppearance(8, 8);
             } else {
                 if (this.mWindow != null) {
-                    unsetSystemUiFlag(8192);
+                    unsetSystemUiFlag(AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED);
                 }
                 this.mInsetsController.setSystemBarsAppearance(0, 8);
             }

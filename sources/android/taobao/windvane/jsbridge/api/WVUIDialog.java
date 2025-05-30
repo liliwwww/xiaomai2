@@ -12,7 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVUIDialog extends WVApiPlugin {
     private static final String TAG = "WVUIDialog";
     private String _index;
@@ -20,23 +20,7 @@ public class WVUIDialog extends WVApiPlugin {
     private WVCallBackContext mCallback = null;
     private String okBtnText = "";
     private String cancelBtnText = "";
-    protected DialogInterface.OnClickListener confirmClickListener = new DialogInterface.OnClickListener() { // from class: android.taobao.windvane.jsbridge.api.WVUIDialog.1
-        @Override // android.content.DialogInterface.OnClickListener
-        public void onClick(DialogInterface dialogInterface, int i) {
-            WVResult wVResult = new WVResult();
-            String str = i == -1 ? WVUIDialog.this.okBtnText : i == -2 ? WVUIDialog.this.cancelBtnText : "";
-            wVResult.addData("type", str);
-            wVResult.addData("_index", WVUIDialog.this._index);
-            if (TaoLog.getLogStatus()) {
-                TaoLog.m18d("WVUIDialog", "click: " + str);
-            }
-            wVResult.setSuccess();
-            if (WVUIDialog.this.mCallback != null) {
-                WVUIDialog.this.mCallback.fireEvent("wv.dialog", wVResult.toJsonString());
-                WVUIDialog.this.mCallback.success(wVResult);
-            }
-        }
-    };
+    protected DialogInterface.OnClickListener confirmClickListener = new 1(this);
 
     /* compiled from: Taobao */
     protected class AlertListener implements DialogInterface.OnClickListener {
@@ -60,7 +44,7 @@ public class WVUIDialog extends WVApiPlugin {
     }
 
     public synchronized void alert(WVCallBackContext wVCallBackContext, String str) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this.mContext);
+        AlertDialog.Builder builder = new AlertDialog.Builder(((WVApiPlugin) this).mContext);
         if (!TextUtils.isEmpty(str)) {
             try {
                 JSONObject jSONObject = new JSONObject(str);
@@ -70,7 +54,7 @@ public class WVUIDialog extends WVApiPlugin {
                 this.identifier = jSONObject.optString("identifier");
                 builder.setPositiveButton(this.okBtnText, new AlertListener());
             } catch (JSONException unused) {
-                TaoLog.m21e("WVUIDialog", "WVUIDialog: param parse to JSON error, param=" + str);
+                TaoLog.e("WVUIDialog", "WVUIDialog: param parse to JSON error, param=" + str);
                 WVResult wVResult = new WVResult();
                 wVResult.setResult(WVResult.PARAM_ERR);
                 wVCallBackContext.error(wVResult);
@@ -84,11 +68,11 @@ public class WVUIDialog extends WVApiPlugin {
             create.show();
         } catch (Throwable unused2) {
         }
-        TaoLog.m18d("WVUIDialog", "alert: show");
+        TaoLog.d("WVUIDialog", "alert: show");
     }
 
     public synchronized void confirm(WVCallBackContext wVCallBackContext, String str) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this.mContext);
+        AlertDialog.Builder builder = new AlertDialog.Builder(((WVApiPlugin) this).mContext);
         if (!TextUtils.isEmpty(str)) {
             try {
                 JSONObject jSONObject = new JSONObject(str);
@@ -102,7 +86,7 @@ public class WVUIDialog extends WVApiPlugin {
                 builder.setNegativeButton(optString2, this.confirmClickListener);
                 this._index = jSONObject.optString("_index");
             } catch (JSONException unused) {
-                TaoLog.m21e("WVUIDialog", "WVUIDialog: param parse to JSON error, param=" + str);
+                TaoLog.e("WVUIDialog", "WVUIDialog: param parse to JSON error, param=" + str);
                 WVResult wVResult = new WVResult();
                 wVResult.setResult(WVResult.PARAM_ERR);
                 wVCallBackContext.error(wVResult);
@@ -116,12 +100,11 @@ public class WVUIDialog extends WVApiPlugin {
             create.show();
         } catch (Throwable unused2) {
         }
-        TaoLog.m18d("WVUIDialog", "confirm: show");
+        TaoLog.d("WVUIDialog", "confirm: show");
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
-        if (!(this.mContext instanceof Activity)) {
+        if (!(((WVApiPlugin) this).mContext instanceof Activity)) {
             WVResult wVResult = new WVResult();
             wVResult.addData("error", "Context must be Activity!!!");
             wVCallBackContext.error(wVResult);
@@ -139,7 +122,6 @@ public class WVUIDialog extends WVApiPlugin {
         return true;
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void onDestroy() {
         this.mCallback = null;
         this.cancelBtnText = "";

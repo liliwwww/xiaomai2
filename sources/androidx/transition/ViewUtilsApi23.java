@@ -8,14 +8,13 @@ import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
 @RequiresApi(23)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ViewUtilsApi23 extends ViewUtilsApi22 {
     private static boolean sTryHiddenSetTransitionVisibility = true;
 
     ViewUtilsApi23() {
     }
 
-    @Override // androidx.transition.ViewUtilsBase
     @SuppressLint({"NewApi"})
     public void setTransitionVisibility(@NonNull View view, int i) {
         if (Build.VERSION.SDK_INT == 28) {

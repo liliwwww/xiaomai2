@@ -1,6 +1,5 @@
 package android.taobao.windvane.config;
 
-import android.app.Activity;
 import android.os.Looper;
 import android.taobao.windvane.config.WVConfigUpdateCallback;
 import android.taobao.windvane.connect.ConnectManager;
@@ -13,21 +12,13 @@ import android.taobao.windvane.monitor.WVConfigMonitorInterface;
 import android.taobao.windvane.monitor.WVMonitorService;
 import android.taobao.windvane.packageapp.WVPackageAppService;
 import android.taobao.windvane.packageapp.zipapp.data.ZipAppInfo;
-import android.taobao.windvane.service.WVEventContext;
-import android.taobao.windvane.service.WVEventId;
-import android.taobao.windvane.service.WVEventListener;
-import android.taobao.windvane.service.WVEventResult;
 import android.taobao.windvane.service.WVEventService;
 import android.taobao.windvane.thread.WVThreadPool;
 import android.taobao.windvane.util.CommonUtils;
 import android.taobao.windvane.util.ConfigStorage;
 import android.taobao.windvane.util.EnvUtil;
 import android.taobao.windvane.util.TaoLog;
-import android.taobao.windvane.util.WVNativeCallbackUtil;
-import android.taobao.windvane.webview.IWVWebView;
 import android.text.TextUtils;
-import androidx.core.location.LocationRequestCompat;
-import androidx.exifinterface.media.ExifInterface;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Enumeration;
@@ -38,7 +29,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVConfigManager {
     public static final String CONFIGNAME_COMMON = "common";
     public static final String CONFIGNAME_COOKIE = "cookie_black_list";
@@ -66,8 +57,8 @@ public class WVConfigManager {
     private ConcurrentHashMap<String, IConfig> mOtherConfigMap = new ConcurrentHashMap<>();
 
     /* compiled from: Taobao */
-    /* renamed from: android.taobao.windvane.config.WVConfigManager$5 */
-    static /* synthetic */ class C00425 {
+    /* renamed from: android.taobao.windvane.config.WVConfigManager$5, reason: invalid class name */
+    static /* synthetic */ class AnonymousClass5 {
         static final /* synthetic */ int[] $SwitchMap$android$taobao$windvane$config$EnvEnum;
 
         static {
@@ -100,27 +91,6 @@ public class WVConfigManager {
         WVConfigUpdateFromZCache3_0
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class WVPageEventListener implements WVEventListener {
-        @Override // android.taobao.windvane.service.WVEventListener
-        public WVEventResult onEvent(int i, WVEventContext wVEventContext, Object... objArr) {
-            IWVWebView iWVWebView;
-            if (i != 3002 && i != 1002) {
-                return null;
-            }
-            if (WVConfigManager.launch && wVEventContext != null && (iWVWebView = wVEventContext.webView) != null && (iWVWebView._getContext() instanceof Activity) && !wVEventContext.webView._getContext().getClass().getSimpleName().equals("MainActivity3")) {
-                WVConfigManager.launch = false;
-            }
-            if (i == 3002) {
-                WVConfigManager.instance.updateConfig(WVConfigUpdateFromType.WVConfigUpdateFromTypeActive);
-                return null;
-            }
-            WVConfigManager.instance.updateConfig(WVConfigUpdateFromType.WVConfigUpdateFromTypeFinish);
-            return null;
-        }
-    }
-
     private WVConfigManager() {
         this.mConfigMap = null;
         this.mConfigMap = new ConcurrentHashMap<>();
@@ -139,7 +109,7 @@ public class WVConfigManager {
         if (TextUtils.isEmpty(str) || TextUtils.isEmpty(str2)) {
             return;
         }
-        if (!ExifInterface.GPS_MEASUREMENT_3D.equals(GlobalConfig.zType) || wVConfigUpdateFromType == WVConfigUpdateFromType.WVConfigUpdateFromZCache3_0) {
+        if (!"3".equals(GlobalConfig.zType) || wVConfigUpdateFromType == WVConfigUpdateFromType.WVConfigUpdateFromZCache3_0) {
             if (TextUtils.isEmpty(str3)) {
                 try {
                     z = WVConfigUtils.isNeedUpdate(str2, str);
@@ -149,10 +119,10 @@ public class WVConfigManager {
             } else {
                 z = true;
             }
-            if (ExifInterface.GPS_MEASUREMENT_3D.equals(GlobalConfig.zType)) {
+            if ("3".equals(GlobalConfig.zType)) {
                 z = true;
             }
-            TaoLog.m24i(TAG, "update key=[" + str + "],needUpdate=[" + z + "]");
+            TaoLog.i(TAG, "update key=[" + str + "],needUpdate=[" + z + "]");
             if (wVConfigUpdateFromType == WVConfigUpdateFromType.WVConfigUpdateFromTypeLocaleChange) {
                 z = true;
             }
@@ -180,9 +150,9 @@ public class WVConfigManager {
                             WVConfigManager.access$404(WVConfigManager.this);
                             if (WVConfigManager.this.updateConfigCount >= WVConfigManager.this.mConfigMap.size()) {
                                 WVConfigManager.this.updateConfigCount = 0;
-                                WVEventService.getInstance().onEvent(WVEventId.CONFIG_UPLOAD_COMPLETE);
+                                WVEventService.getInstance().onEvent(6002);
                             }
-                            if (str.equals(WVConfigManager.CONFIGNAME_COMMON) || str.equals(WVConfigManager.CONFIGNAME_DOMAIN) || str.equals(WVConfigManager.CONFIGNAME_MONITOR) || !ExifInterface.GPS_MEASUREMENT_3D.equals(GlobalConfig.zType)) {
+                            if (str.equals(WVConfigManager.CONFIGNAME_COMMON) || str.equals(WVConfigManager.CONFIGNAME_DOMAIN) || str.equals(WVConfigManager.CONFIGNAME_MONITOR) || !"3".equals(GlobalConfig.zType)) {
                                 boolean equals = WVConfigUpdateCallback.CONFIG_UPDATE_STATUS.SUCCESS.equals(config_update_status);
                                 WVConfigMonitorInterface configMonitor = WVMonitorService.getConfigMonitor();
                                 if (equals) {
@@ -197,7 +167,7 @@ public class WVConfigManager {
                                     WVMonitorService.getConfigMonitor().didUpdateConfig(str, wVConfigUpdateFromType.ordinal(), System.currentTimeMillis() - currentTimeMillis, equals ? 1 : 0, i);
                                 }
                             }
-                            TaoLog.m24i(WVConfigManager.TAG, "isUpdateSuccess " + str + " : " + config_update_status);
+                            TaoLog.i(WVConfigManager.TAG, "isUpdateSuccess " + str + " : " + config_update_status);
                         }
                     });
                 }
@@ -206,7 +176,7 @@ public class WVConfigManager {
             }
             if (this.updateConfigCount >= this.mConfigMap.size()) {
                 this.updateConfigCount = 0;
-                WVEventService.getInstance().onEvent(WVEventId.CONFIG_UPLOAD_COMPLETE);
+                WVEventService.getInstance().onEvent(6002);
             }
         }
     }
@@ -227,16 +197,14 @@ public class WVConfigManager {
         if (this.enableUpdateConfig && WVConfigUtils.checkAppKeyAvailable()) {
             final long currentTimeMillis = System.currentTimeMillis();
             ConnectManager.getInstance().connectSync(getConfigUrl("0", "0", WVConfigUtils.getTargetValue(), "0"), new HttpConnectListener<HttpResponse>() { // from class: android.taobao.windvane.config.WVConfigManager.1
-                @Override // android.taobao.windvane.connect.HttpConnectListener
                 public void onError(int i, String str) {
-                    TaoLog.m18d(WVConfigManager.TAG, "update entry failed! : " + str);
+                    TaoLog.d(WVConfigManager.TAG, "update entry failed! : " + str);
                     if (WVMonitorService.getConfigMonitor() != null) {
                         WVMonitorService.getConfigMonitor().didOccurUpdateConfigError("entry-NoNetwork", WVConfigUpdateCallback.CONFIG_UPDATE_STATUS.UNKNOWN_ERROR.ordinal(), str);
                     }
                     super.onError(i, str);
                 }
 
-                @Override // android.taobao.windvane.connect.HttpConnectListener
                 public void onFinish(HttpResponse httpResponse, int i) {
                     int i2;
                     long currentTimeMillis2 = System.currentTimeMillis() - currentTimeMillis;
@@ -265,7 +233,7 @@ public class WVConfigManager {
                                 }
                                 if (longValue != 0) {
                                     long j = currentTimeMillis3 - longValue;
-                                    TaoLog.m24i(WVConfigManager.TAG, "updateDiffTime by config : " + j);
+                                    TaoLog.i(WVConfigManager.TAG, "updateDiffTime by config : " + j);
                                     WVMonitorService.getPackageMonitorInterface().uploadDiffTimeTime(j);
                                 }
                             }
@@ -286,13 +254,13 @@ public class WVConfigManager {
                                 WVMonitorService.getConfigMonitor().didOccurUpdateConfigSuccess("entry");
                             }
                         }
-                        WVEventService.getInstance().onEvent(WVEventId.ORANGE_REGISTER);
+                        WVEventService.getInstance().onEvent(7001);
                         i2 = 1;
                     } catch (Exception e) {
                         if (WVMonitorService.getConfigMonitor() != null) {
                             WVMonitorService.getConfigMonitor().didOccurUpdateConfigError("entry", WVConfigUpdateCallback.CONFIG_UPDATE_STATUS.UNKNOWN_ERROR.ordinal(), "update entry error : " + e.getMessage());
                         }
-                        TaoLog.m18d(WVConfigManager.TAG, "updateImmediately failed!");
+                        TaoLog.d(WVConfigManager.TAG, "updateImmediately failed!");
                         i2 = 0;
                     }
                     if (WVMonitorService.getConfigMonitor() != null) {
@@ -305,7 +273,7 @@ public class WVConfigManager {
 
     public boolean checkIfUpdate(WVConfigUpdateFromType wVConfigUpdateFromType) {
         int i = 0;
-        if (ExifInterface.GPS_MEASUREMENT_3D.equals(GlobalConfig.zType) && wVConfigUpdateFromType != WVConfigUpdateFromType.WVConfigUpdateFromZCache3_0) {
+        if ("3".equals(GlobalConfig.zType) && wVConfigUpdateFromType != WVConfigUpdateFromType.WVConfigUpdateFromZCache3_0) {
             return false;
         }
         long currentTimeMillis = System.currentTimeMillis();
@@ -316,17 +284,17 @@ public class WVConfigManager {
         if (WVConfigUtils.checkAppKeyAvailable()) {
             String format = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(Calendar.getInstance().getTime());
             String stringVal = ConfigStorage.getStringVal(SPNAME_CONFIG, "package_uploadData", "0");
-            TaoLog.m18d("WVConfigManager.updateConfig ==> ", "uploadDate = " + stringVal);
+            TaoLog.d("WVConfigManager.updateConfig ==> ", "uploadDate = " + stringVal);
             if (!format.equals(stringVal) && WVCommonConfig.commonConfig.monitoredApps.length != 0) {
                 StringBuilder sb = new StringBuilder();
-                Map<String, ZipAppInfo> appsTable = WVPackageAppService.getWvPackageAppConfig().getGlobalConfig().getAppsTable();
+                Map appsTable = WVPackageAppService.getWvPackageAppConfig().getGlobalConfig().getAppsTable();
                 while (true) {
                     WVCommonConfigData wVCommonConfigData = WVCommonConfig.commonConfig;
                     String[] strArr = wVCommonConfigData.monitoredApps;
                     if (i >= strArr.length) {
                         break;
                     }
-                    ZipAppInfo zipAppInfo = appsTable.get(strArr[i]);
+                    ZipAppInfo zipAppInfo = (ZipAppInfo) appsTable.get(strArr[i]);
                     if (zipAppInfo != null && zipAppInfo.isAppInstalled()) {
                         sb.append(zipAppInfo.name);
                         sb.append(ApiConstants.SPLIT_LINE);
@@ -347,7 +315,7 @@ public class WVConfigManager {
     }
 
     public String configDomainByEnv() {
-        int i = C00425.$SwitchMap$android$taobao$windvane$config$EnvEnum[GlobalConfig.env.ordinal()];
+        int i = AnonymousClass5.$SwitchMap$android$taobao$windvane$config$EnvEnum[GlobalConfig.env.ordinal()];
         return i != 2 ? i != 3 ? "https://wvcfg.alicdn.com" : "https://h5.waptest.taobao.com" : "http://h5.wapa.taobao.com";
     }
 
@@ -362,11 +330,11 @@ public class WVConfigManager {
         }
         sb.append("/bizcache/5/windvane/");
         sb.append(str);
-        sb.append(WVNativeCallbackUtil.SEPERATER);
+        sb.append("/");
         sb.append(str2);
         sb.append(ApiConstants.SPLIT_LINE);
         sb.append(str4);
-        sb.append(WVNativeCallbackUtil.SEPERATER);
+        sb.append("/");
         sb.append(GlobalConfig.getInstance().getAppKey());
         sb.append(ApiConstants.SPLIT_LINE);
         sb.append(WVConfigUtils.dealAppVersion());
@@ -374,13 +342,13 @@ public class WVConfigManager {
             sb.append(ApiConstants.SPLIT_LINE);
             sb.append(str5);
         }
-        sb.append(WVNativeCallbackUtil.SEPERATER);
+        sb.append("/");
         if (str3 == null && ('a' > (charAt = (str3 = ConfigStorage.getStringVal(SPNAME_CONFIG, "abt", "a")).charAt(0)) || charAt > 'c')) {
             str3 = "a";
         }
         sb.append(str3);
         sb.append("/settings.json");
-        TaoLog.m30w("CONFIG_URL", sb.toString());
+        TaoLog.w("CONFIG_URL", sb.toString());
         return sb.toString();
     }
 
@@ -396,7 +364,7 @@ public class WVConfigManager {
                     Long valueOf = Long.valueOf(Long.parseLong(stringVal));
                     if (valueOf.longValue() == 0) {
                         stringVal = "NO VERSION";
-                    } else if (valueOf.longValue() == LocationRequestCompat.PASSIVE_INTERVAL) {
+                    } else if (valueOf.longValue() == Long.MAX_VALUE) {
                         stringVal = "CUSTOM VERION";
                     }
                 }
@@ -445,7 +413,7 @@ public class WVConfigManager {
         if (!TextUtils.isEmpty(str)) {
             this.configDomain = str;
         }
-        TaoLog.m30w(TAG, "changeConfigDomain : " + str);
+        TaoLog.w(TAG, "changeConfigDomain : " + str);
     }
 
     public void setUpdateConfigEnable(boolean z) {
@@ -460,12 +428,12 @@ public class WVConfigManager {
     @android.annotation.TargetApi(11)
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void updateConfig(final android.taobao.windvane.config.WVConfigManager.WVConfigUpdateFromType r14) {
         /*
             Method dump skipped, instructions count: 322
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.config.WVConfigManager.updateConfig(android.taobao.windvane.config.WVConfigManager$WVConfigUpdateFromType):void");
     }

@@ -1,17 +1,18 @@
 package androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableSet;
 
-import androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentSet;
+import androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentSet$Builder;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.internal.DeltaCounter;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.internal.MutabilityOwnership;
 import java.util.Collection;
 import java.util.Iterator;
 import kotlin.collections.AbstractMutableSet;
+import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
-public final class PersistentHashSetBuilder<E> extends AbstractMutableSet<E> implements PersistentSet.Builder<E> {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
+public final class PersistentHashSetBuilder<E> extends AbstractMutableSet<E> implements PersistentSet$Builder<E> {
     private int modCount;
 
     @NotNull
@@ -51,7 +52,7 @@ public final class PersistentHashSetBuilder<E> extends AbstractMutableSet<E> imp
         if (persistentHashSet == null) {
             return super/*java.util.AbstractSet*/.addAll(collection);
         }
-        DeltaCounter deltaCounter = new DeltaCounter(0, 1, null);
+        DeltaCounter deltaCounter = new DeltaCounter(0, 1, (DefaultConstructorMarker) null);
         int size = size();
         TrieNode<E> mutableAddAll = this.node.mutableAddAll(persistentHashSet.getNode$runtime_release(), 0, deltaCounter, this);
         int size2 = (collection.size() + size) - deltaCounter.getCount();
@@ -125,7 +126,7 @@ public final class PersistentHashSetBuilder<E> extends AbstractMutableSet<E> imp
         if (persistentHashSet == null) {
             return super/*java.util.AbstractSet*/.removeAll(collection);
         }
-        DeltaCounter deltaCounter = new DeltaCounter(0, 1, null);
+        DeltaCounter deltaCounter = new DeltaCounter(0, 1, (DefaultConstructorMarker) null);
         int size = size();
         Object mutableRemoveAll = this.node.mutableRemoveAll(persistentHashSet.getNode$runtime_release(), 0, deltaCounter, this);
         int count = size - deltaCounter.getCount();
@@ -151,7 +152,7 @@ public final class PersistentHashSetBuilder<E> extends AbstractMutableSet<E> imp
         if (persistentHashSet == null) {
             return super/*java.util.AbstractSet*/.retainAll(collection);
         }
-        DeltaCounter deltaCounter = new DeltaCounter(0, 1, null);
+        DeltaCounter deltaCounter = new DeltaCounter(0, 1, (DefaultConstructorMarker) null);
         int size = size();
         Object mutableRetainAll = this.node.mutableRetainAll(persistentHashSet.getNode$runtime_release(), 0, deltaCounter, this);
         int count = deltaCounter.getCount();
@@ -170,7 +171,7 @@ public final class PersistentHashSetBuilder<E> extends AbstractMutableSet<E> imp
         this.modCount++;
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentSet.Builder, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection.Builder
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentSet$Builder
     @NotNull
     public PersistentHashSet<E> build() {
         PersistentHashSet<E> persistentHashSet;

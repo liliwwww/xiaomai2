@@ -1,6 +1,7 @@
 package androidx.appcompat.app;
 
 import android.R;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -12,17 +13,15 @@ import android.view.MenuItem;
 import android.view.View;
 import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.ActionBarDrawerToggleHoneycomb;
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
     private final Delegate mActivityImpl;
     private final int mCloseDrawerContentDescRes;
@@ -50,13 +49,6 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface DelegateProvider {
-        @Nullable
-        Delegate getDrawerToggleDelegate();
-    }
-
-    /* compiled from: Taobao */
     private static class FrameworkActionBarDelegate implements Delegate {
         private final Activity mActivity;
         private ActionBarDrawerToggleHoneycomb.SetIndicatorInfo mSetIndicatorInfo;
@@ -68,12 +60,12 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
             }
 
             @DoNotInline
-            static void setHomeActionContentDescription(android.app.ActionBar actionBar, int i) {
+            static void setHomeActionContentDescription(ActionBar actionBar, int i) {
                 actionBar.setHomeActionContentDescription(i);
             }
 
             @DoNotInline
-            static void setHomeAsUpIndicator(android.app.ActionBar actionBar, Drawable drawable) {
+            static void setHomeAsUpIndicator(ActionBar actionBar, Drawable drawable) {
                 actionBar.setHomeAsUpIndicator(drawable);
             }
         }
@@ -84,7 +76,7 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 
         @Override // androidx.appcompat.app.ActionBarDrawerToggle.Delegate
         public Context getActionBarThemedContext() {
-            android.app.ActionBar actionBar = this.mActivity.getActionBar();
+            ActionBar actionBar = this.mActivity.getActionBar();
             return actionBar != null ? actionBar.getThemedContext() : this.mActivity;
         }
 
@@ -101,7 +93,7 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 
         @Override // androidx.appcompat.app.ActionBarDrawerToggle.Delegate
         public boolean isNavigationVisible() {
-            android.app.ActionBar actionBar = this.mActivity.getActionBar();
+            ActionBar actionBar = this.mActivity.getActionBar();
             return (actionBar == null || (actionBar.getDisplayOptions() & 4) == 0) ? false : true;
         }
 
@@ -111,7 +103,7 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
                 this.mSetIndicatorInfo = ActionBarDrawerToggleHoneycomb.setActionBarDescription(this.mSetIndicatorInfo, this.mActivity, i);
                 return;
             }
-            android.app.ActionBar actionBar = this.mActivity.getActionBar();
+            ActionBar actionBar = this.mActivity.getActionBar();
             if (actionBar != null) {
                 Api18Impl.setHomeActionContentDescription(actionBar, i);
             }
@@ -119,7 +111,7 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 
         @Override // androidx.appcompat.app.ActionBarDrawerToggle.Delegate
         public void setActionBarUpIndicator(Drawable drawable, int i) {
-            android.app.ActionBar actionBar = this.mActivity.getActionBar();
+            ActionBar actionBar = this.mActivity.getActionBar();
             if (actionBar != null) {
                 if (Build.VERSION.SDK_INT >= 18) {
                     Api18Impl.setHomeAsUpIndicator(actionBar, drawable);
@@ -130,50 +122,6 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
                     actionBar.setDisplayShowHomeEnabled(false);
                 }
             }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class ToolbarCompatDelegate implements Delegate {
-        final CharSequence mDefaultContentDescription;
-        final Drawable mDefaultUpIndicator;
-        final Toolbar mToolbar;
-
-        ToolbarCompatDelegate(Toolbar toolbar) {
-            this.mToolbar = toolbar;
-            this.mDefaultUpIndicator = toolbar.getNavigationIcon();
-            this.mDefaultContentDescription = toolbar.getNavigationContentDescription();
-        }
-
-        @Override // androidx.appcompat.app.ActionBarDrawerToggle.Delegate
-        public Context getActionBarThemedContext() {
-            return this.mToolbar.getContext();
-        }
-
-        @Override // androidx.appcompat.app.ActionBarDrawerToggle.Delegate
-        public Drawable getThemeUpIndicator() {
-            return this.mDefaultUpIndicator;
-        }
-
-        @Override // androidx.appcompat.app.ActionBarDrawerToggle.Delegate
-        public boolean isNavigationVisible() {
-            return true;
-        }
-
-        @Override // androidx.appcompat.app.ActionBarDrawerToggle.Delegate
-        public void setActionBarDescription(@StringRes int i) {
-            if (i == 0) {
-                this.mToolbar.setNavigationContentDescription(this.mDefaultContentDescription);
-            } else {
-                this.mToolbar.setNavigationContentDescription(i);
-            }
-        }
-
-        @Override // androidx.appcompat.app.ActionBarDrawerToggle.Delegate
-        public void setActionBarUpIndicator(Drawable drawable, @StringRes int i) {
-            this.mToolbar.setNavigationIcon(drawable);
-            setActionBarDescription(i);
         }
     }
 
@@ -275,7 +223,7 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
     public void setDrawerIndicatorEnabled(boolean z) {
         if (z != this.mDrawerIndicatorEnabled) {
             if (z) {
-                setActionBarUpIndicator(this.mSlider, this.mDrawerLayout.isDrawerOpen(GravityCompat.START) ? this.mCloseDrawerContentDescRes : this.mOpenDrawerContentDescRes);
+                setActionBarUpIndicator(this.mSlider, this.mDrawerLayout.isDrawerOpen(8388611) ? this.mCloseDrawerContentDescRes : this.mOpenDrawerContentDescRes);
             } else {
                 setActionBarUpIndicator(this.mHomeAsUpIndicator, 0);
             }
@@ -310,22 +258,22 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
     }
 
     public void syncState() {
-        if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+        if (this.mDrawerLayout.isDrawerOpen(8388611)) {
             setPosition(1.0f);
         } else {
             setPosition(0.0f);
         }
         if (this.mDrawerIndicatorEnabled) {
-            setActionBarUpIndicator(this.mSlider, this.mDrawerLayout.isDrawerOpen(GravityCompat.START) ? this.mCloseDrawerContentDescRes : this.mOpenDrawerContentDescRes);
+            setActionBarUpIndicator(this.mSlider, this.mDrawerLayout.isDrawerOpen(8388611) ? this.mCloseDrawerContentDescRes : this.mOpenDrawerContentDescRes);
         }
     }
 
     void toggle() {
-        int drawerLockMode = this.mDrawerLayout.getDrawerLockMode(GravityCompat.START);
-        if (this.mDrawerLayout.isDrawerVisible(GravityCompat.START) && drawerLockMode != 2) {
-            this.mDrawerLayout.closeDrawer(GravityCompat.START);
+        int drawerLockMode = this.mDrawerLayout.getDrawerLockMode(8388611);
+        if (this.mDrawerLayout.isDrawerVisible(8388611) && drawerLockMode != 2) {
+            this.mDrawerLayout.closeDrawer(8388611);
         } else if (drawerLockMode != 1) {
-            this.mDrawerLayout.openDrawer(GravityCompat.START);
+            this.mDrawerLayout.openDrawer(8388611);
         }
     }
 
@@ -333,7 +281,6 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
         this(activity, toolbar, drawerLayout, null, i, i2);
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     ActionBarDrawerToggle(Activity activity, Toolbar toolbar, DrawerLayout drawerLayout, DrawerArrowDrawable drawerArrowDrawable, @StringRes int i, @StringRes int i2) {
         this.mDrawerSlideAnimationEnabled = true;
         this.mDrawerIndicatorEnabled = true;

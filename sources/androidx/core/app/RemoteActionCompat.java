@@ -3,102 +3,40 @@ package androidx.core.app;
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.app.RemoteAction;
-import android.graphics.drawable.Icon;
 import android.os.Build;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.core.graphics.drawable.IconCompat;
 import androidx.core.util.Preconditions;
 import androidx.versionedparcelable.VersionedParcelable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class RemoteActionCompat implements VersionedParcelable {
 
     @NonNull
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     public PendingIntent mActionIntent;
 
     @NonNull
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     public CharSequence mContentDescription;
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     public boolean mEnabled;
 
     @NonNull
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     public IconCompat mIcon;
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     public boolean mShouldShowIcon;
 
     @NonNull
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     public CharSequence mTitle;
-
-    /* compiled from: Taobao */
-    @RequiresApi(26)
-    /* loaded from: classes2.dex */
-    static class Api26Impl {
-        private Api26Impl() {
-        }
-
-        @DoNotInline
-        static RemoteAction createRemoteAction(Icon icon, CharSequence charSequence, CharSequence charSequence2, PendingIntent pendingIntent) {
-            return new RemoteAction(icon, charSequence, charSequence2, pendingIntent);
-        }
-
-        @DoNotInline
-        static PendingIntent getActionIntent(RemoteAction remoteAction) {
-            return remoteAction.getActionIntent();
-        }
-
-        @DoNotInline
-        static CharSequence getContentDescription(RemoteAction remoteAction) {
-            return remoteAction.getContentDescription();
-        }
-
-        @DoNotInline
-        static Icon getIcon(RemoteAction remoteAction) {
-            return remoteAction.getIcon();
-        }
-
-        @DoNotInline
-        static CharSequence getTitle(RemoteAction remoteAction) {
-            return remoteAction.getTitle();
-        }
-
-        @DoNotInline
-        static boolean isEnabled(RemoteAction remoteAction) {
-            return remoteAction.isEnabled();
-        }
-
-        @DoNotInline
-        static void setEnabled(RemoteAction remoteAction, boolean z) {
-            remoteAction.setEnabled(z);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(28)
-    /* loaded from: classes2.dex */
-    static class Api28Impl {
-        private Api28Impl() {
-        }
-
-        @DoNotInline
-        static void setShouldShowIcon(RemoteAction remoteAction, boolean z) {
-            remoteAction.setShouldShowIcon(z);
-        }
-
-        @DoNotInline
-        static boolean shouldShowIcon(RemoteAction remoteAction) {
-            return remoteAction.shouldShowIcon();
-        }
-    }
 
     public RemoteActionCompat(@NonNull IconCompat iconCompat, @NonNull CharSequence charSequence, @NonNull CharSequence charSequence2, @NonNull PendingIntent pendingIntent) {
         this.mIcon = (IconCompat) Preconditions.checkNotNull(iconCompat);
@@ -169,7 +107,7 @@ public final class RemoteActionCompat implements VersionedParcelable {
         return createRemoteAction;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     public RemoteActionCompat() {
     }
 

@@ -7,7 +7,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SQLiteDatabaseKt {
     public static final <T> T transaction(@NotNull SQLiteDatabase sQLiteDatabase, boolean z, @NotNull Function1<? super SQLiteDatabase, ? extends T> function1) {
         Intrinsics.checkNotNullParameter(sQLiteDatabase, "<this>");

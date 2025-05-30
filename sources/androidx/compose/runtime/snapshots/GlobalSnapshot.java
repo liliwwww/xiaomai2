@@ -8,12 +8,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class GlobalSnapshot extends MutableSnapshot {
     /* JADX WARN: Illegal instructions before constructor call */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public GlobalSnapshot(int r5, @org.jetbrains.annotations.NotNull androidx.compose.runtime.snapshots.SnapshotIdSet r6) {
         /*
@@ -54,13 +54,11 @@ public final class GlobalSnapshot extends MutableSnapshot {
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.runtime.snapshots.GlobalSnapshot.<init>(int, androidx.compose.runtime.snapshots.SnapshotIdSet):void");
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot
     @NotNull
     public SnapshotApplyResult apply() {
         throw new IllegalStateException("Cannot apply the global snapshot directly. Call Snapshot.advanceGlobalSnapshot".toString());
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
     public void dispose() {
         synchronized (SnapshotKt.getLock()) {
             releasePinnedSnapshotLocked$runtime_release();
@@ -68,72 +66,35 @@ public final class GlobalSnapshot extends MutableSnapshot {
         }
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
     public void notifyObjectsInitialized$runtime_release() {
         SnapshotKt.advanceGlobalSnapshot();
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot
     @NotNull
-    public MutableSnapshot takeNestedMutableSnapshot(@Nullable final Function1<Object, Unit> function1, @Nullable final Function1<Object, Unit> function12) {
-        Snapshot takeNewSnapshot;
-        takeNewSnapshot = SnapshotKt.takeNewSnapshot(new Function1<SnapshotIdSet, MutableSnapshot>() { // from class: androidx.compose.runtime.snapshots.GlobalSnapshot$takeNestedMutableSnapshot$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            @NotNull
-            public final MutableSnapshot invoke(@NotNull SnapshotIdSet snapshotIdSet) {
-                int i;
-                Intrinsics.checkNotNullParameter(snapshotIdSet, "invalid");
-                synchronized (SnapshotKt.getLock()) {
-                    i = SnapshotKt.nextSnapshotId;
-                    SnapshotKt.nextSnapshotId = i + 1;
-                }
-                return new MutableSnapshot(i, snapshotIdSet, function1, function12);
-            }
-        });
-        return (MutableSnapshot) takeNewSnapshot;
-    }
-
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
-    @NotNull
-    public Snapshot takeNestedSnapshot(@Nullable final Function1<Object, Unit> function1) {
-        Snapshot takeNewSnapshot;
-        takeNewSnapshot = SnapshotKt.takeNewSnapshot(new Function1<SnapshotIdSet, ReadonlySnapshot>() { // from class: androidx.compose.runtime.snapshots.GlobalSnapshot$takeNestedSnapshot$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            @NotNull
-            public final ReadonlySnapshot invoke(@NotNull SnapshotIdSet snapshotIdSet) {
-                int i;
-                Intrinsics.checkNotNullParameter(snapshotIdSet, "invalid");
-                synchronized (SnapshotKt.getLock()) {
-                    i = SnapshotKt.nextSnapshotId;
-                    SnapshotKt.nextSnapshotId = i + 1;
-                }
-                return new ReadonlySnapshot(i, snapshotIdSet, function1);
-            }
-        });
+    public MutableSnapshot takeNestedMutableSnapshot(@Nullable Function1<Object, Unit> function1, @Nullable Function1<Object, Unit> function12) {
+        MutableSnapshot takeNewSnapshot;
+        takeNewSnapshot = SnapshotKt.takeNewSnapshot(new takeNestedMutableSnapshot.1(function1, function12));
         return takeNewSnapshot;
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
+    @NotNull
+    public Snapshot takeNestedSnapshot(@Nullable Function1<Object, Unit> function1) {
+        Snapshot takeNewSnapshot;
+        takeNewSnapshot = SnapshotKt.takeNewSnapshot(new takeNestedSnapshot.1(function1));
+        return takeNewSnapshot;
+    }
+
     @NotNull
     /* renamed from: nestedActivated$runtime_release, reason: merged with bridge method [inline-methods] */
-    public Void mo2438nestedActivated$runtime_release(@NotNull Snapshot snapshot) {
+    public Void m926nestedActivated$runtime_release(@NotNull Snapshot snapshot) {
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
         SnapshotStateMapKt.unsupported();
         throw new KotlinNothingValueException();
     }
 
-    @Override // androidx.compose.runtime.snapshots.MutableSnapshot, androidx.compose.runtime.snapshots.Snapshot
     @NotNull
     /* renamed from: nestedDeactivated$runtime_release, reason: merged with bridge method [inline-methods] */
-    public Void mo2439nestedDeactivated$runtime_release(@NotNull Snapshot snapshot) {
+    public Void m927nestedDeactivated$runtime_release(@NotNull Snapshot snapshot) {
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
         SnapshotStateMapKt.unsupported();
         throw new KotlinNothingValueException();

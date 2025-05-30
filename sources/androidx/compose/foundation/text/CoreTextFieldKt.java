@@ -7,32 +7,6 @@ import androidx.compose.foundation.text.selection.SelectionHandleInfo;
 import androidx.compose.foundation.text.selection.SelectionHandlesKt;
 import androidx.compose.foundation.text.selection.TextFieldSelectionManager;
 import androidx.compose.foundation.text.selection.TextFieldSelectionManagerKt;
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.focus.FocusRequester;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.geometry.Rect;
-import androidx.compose.p004ui.input.key.KeyEvent;
-import androidx.compose.p004ui.input.key.KeyInputModifierKt;
-import androidx.compose.p004ui.input.pointer.SuspendingPointerInputFilterKt;
-import androidx.compose.p004ui.layout.LayoutKt;
-import androidx.compose.p004ui.layout.MeasurePolicy;
-import androidx.compose.p004ui.node.ComposeUiNode;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.platform.ViewConfiguration;
-import androidx.compose.p004ui.semantics.SemanticsModifierKt;
-import androidx.compose.p004ui.semantics.SemanticsPropertyReceiver;
-import androidx.compose.p004ui.text.TextLayoutResult;
-import androidx.compose.p004ui.text.TextRange;
-import androidx.compose.p004ui.text.input.ImeOptions;
-import androidx.compose.p004ui.text.input.OffsetMapping;
-import androidx.compose.p004ui.text.input.TextFieldValue;
-import androidx.compose.p004ui.text.input.TextInputService;
-import androidx.compose.p004ui.text.input.TextInputSession;
-import androidx.compose.p004ui.text.style.ResolvedTextDirection;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.IntSize;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Applier;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
@@ -40,10 +14,37 @@ import androidx.compose.runtime.ComposableTarget;
 import androidx.compose.runtime.ComposablesKt;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
-import androidx.compose.runtime.RecomposeScopeImplKt;
 import androidx.compose.runtime.ScopeUpdateScope;
 import androidx.compose.runtime.SkippableUpdater;
 import androidx.compose.runtime.Updater;
+import androidx.compose.ui.Alignment;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.focus.FocusRequester;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.geometry.Rect;
+import androidx.compose.ui.input.key.KeyEvent;
+import androidx.compose.ui.input.key.KeyInputModifierKt;
+import androidx.compose.ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.input.pointer.SuspendingPointerInputFilterKt;
+import androidx.compose.ui.layout.LayoutKt;
+import androidx.compose.ui.layout.MeasurePolicy;
+import androidx.compose.ui.node.ComposeUiNode;
+import androidx.compose.ui.node.ComposeUiNode$Companion;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.platform.ViewConfiguration;
+import androidx.compose.ui.semantics.SemanticsModifierKt;
+import androidx.compose.ui.semantics.SemanticsPropertyReceiver;
+import androidx.compose.ui.text.TextLayoutResult;
+import androidx.compose.ui.text.TextRange;
+import androidx.compose.ui.text.input.ImeOptions;
+import androidx.compose.ui.text.input.OffsetMapping;
+import androidx.compose.ui.text.input.TextFieldValue;
+import androidx.compose.ui.text.input.TextInputService;
+import androidx.compose.ui.text.input.TextInputSession;
+import androidx.compose.ui.text.style.ResolvedTextDirection;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.IntSize;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.intrinsics.IntrinsicsKt;
@@ -51,18 +52,18 @@ import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.functions.Function3;
+import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class CoreTextFieldKt {
     /* JADX WARN: Code restructure failed: missing block: B:156:0x0456, code lost:
     
         if (r11 == null) goto L268;
      */
-    /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Removed duplicated region for block: B:102:0x0431  */
     /* JADX WARN: Removed duplicated region for block: B:107:0x0486  */
     /* JADX WARN: Removed duplicated region for block: B:110:0x04f5  */
@@ -146,17 +147,16 @@ public final class CoreTextFieldKt {
     /* JADX WARN: Removed duplicated region for block: B:90:0x03ba A[ADDED_TO_REGION] */
     /* JADX WARN: Removed duplicated region for block: B:95:0x03c7  */
     /* JADX WARN: Removed duplicated region for block: B:98:0x03ee  */
-    /* JADX WARN: Type inference failed for: r0v37, types: [androidx.compose.ui.Modifier] */
     @androidx.compose.runtime.Composable
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable]]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void CoreTextField(@org.jetbrains.annotations.NotNull final androidx.compose.p004ui.text.input.TextFieldValue r46, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.text.input.TextFieldValue, kotlin.Unit> r47, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r48, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.TextStyle r49, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.input.VisualTransformation r50, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.text.TextLayoutResult, kotlin.Unit> r51, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r52, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Brush r53, boolean r54, int r55, int r56, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.input.ImeOptions r57, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardActions r58, boolean r59, boolean r60, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function3<? super kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit>, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r61, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r62, final int r63, final int r64, final int r65) {
+    public static final void CoreTextField(@org.jetbrains.annotations.NotNull final androidx.compose.ui.text.input.TextFieldValue r46, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit> r47, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r48, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.TextStyle r49, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.input.VisualTransformation r50, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.ui.text.TextLayoutResult, kotlin.Unit> r51, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r52, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Brush r53, boolean r54, int r55, int r56, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.input.ImeOptions r57, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardActions r58, boolean r59, boolean r60, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function3<? super kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit>, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r61, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r62, final int r63, final int r64, final int r65) {
         /*
             Method dump skipped, instructions count: 1971
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.CoreTextFieldKt.CoreTextField(androidx.compose.ui.text.input.TextFieldValue, kotlin.jvm.functions.Function1, androidx.compose.ui.Modifier, androidx.compose.ui.text.TextStyle, androidx.compose.ui.text.input.VisualTransformation, kotlin.jvm.functions.Function1, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.ui.graphics.Brush, boolean, int, int, androidx.compose.ui.text.input.ImeOptions, androidx.compose.foundation.text.KeyboardActions, boolean, boolean, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int, int):void");
     }
@@ -164,7 +164,7 @@ public final class CoreTextFieldKt {
     /* JADX INFO: Access modifiers changed from: private */
     @Composable
     @ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable]]")
-    public static final void CoreTextFieldRootBox(final Modifier modifier, final TextFieldSelectionManager textFieldSelectionManager, final Function2<? super Composer, ? super Integer, Unit> function2, Composer composer, final int i) {
+    public static final void CoreTextFieldRootBox(Modifier modifier, TextFieldSelectionManager textFieldSelectionManager, Function2<? super Composer, ? super Integer, Unit> function2, Composer composer, int i) {
         Composer startRestartGroup = composer.startRestartGroup(-20551815);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-20551815, i, -1, "androidx.compose.foundation.text.CoreTextFieldRootBox (CoreTextField.kt:645)");
@@ -177,8 +177,8 @@ public final class CoreTextFieldKt {
         Density density = (Density) startRestartGroup.consume(CompositionLocalsKt.getLocalDensity());
         LayoutDirection layoutDirection = (LayoutDirection) startRestartGroup.consume(CompositionLocalsKt.getLocalLayoutDirection());
         ViewConfiguration viewConfiguration = (ViewConfiguration) startRestartGroup.consume(CompositionLocalsKt.getLocalViewConfiguration());
-        ComposeUiNode.Companion companion = ComposeUiNode.Companion;
-        Function0<ComposeUiNode> constructor = companion.getConstructor();
+        ComposeUiNode$Companion composeUiNode$Companion = ComposeUiNode.Companion;
+        Function0<ComposeUiNode> constructor = composeUiNode$Companion.getConstructor();
         Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf = LayoutKt.materializerOf(modifier);
         int i4 = ((((i2 << 3) & 112) << 9) & 7168) | 6;
         if (!(startRestartGroup.getApplier() instanceof Applier)) {
@@ -191,13 +191,13 @@ public final class CoreTextFieldKt {
             startRestartGroup.useNode();
         }
         startRestartGroup.disableReusing();
-        Composer m2410constructorimpl = Updater.m2410constructorimpl(startRestartGroup);
-        Updater.m2417setimpl(m2410constructorimpl, rememberBoxMeasurePolicy, companion.getSetMeasurePolicy());
-        Updater.m2417setimpl(m2410constructorimpl, density, companion.getSetDensity());
-        Updater.m2417setimpl(m2410constructorimpl, layoutDirection, companion.getSetLayoutDirection());
-        Updater.m2417setimpl(m2410constructorimpl, viewConfiguration, companion.getSetViewConfiguration());
+        Composer m747constructorimpl = Updater.m747constructorimpl(startRestartGroup);
+        Updater.m754setimpl(m747constructorimpl, rememberBoxMeasurePolicy, (Function2<? super T, ? super MeasurePolicy, Unit>) composeUiNode$Companion.getSetMeasurePolicy());
+        Updater.m754setimpl(m747constructorimpl, density, (Function2<? super T, ? super Density, Unit>) composeUiNode$Companion.getSetDensity());
+        Updater.m754setimpl(m747constructorimpl, layoutDirection, (Function2<? super T, ? super LayoutDirection, Unit>) composeUiNode$Companion.getSetLayoutDirection());
+        Updater.m754setimpl(m747constructorimpl, viewConfiguration, (Function2<? super T, ? super ViewConfiguration, Unit>) composeUiNode$Companion.getSetViewConfiguration());
         startRestartGroup.enableReusing();
-        materializerOf.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(startRestartGroup)), startRestartGroup, Integer.valueOf((i4 >> 3) & 112));
+        materializerOf.invoke(SkippableUpdater.box-impl(SkippableUpdater.constructor-impl(startRestartGroup)), startRestartGroup, Integer.valueOf((i4 >> 3) & 112));
         startRestartGroup.startReplaceableGroup(2058660585);
         startRestartGroup.startReplaceableGroup(-2137368960);
         if (((i4 >> 9) & 14 & 11) == 2 && startRestartGroup.getSkipping()) {
@@ -224,28 +224,13 @@ public final class CoreTextFieldKt {
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.text.CoreTextFieldKt$CoreTextFieldRootBox$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                invoke((Composer) obj, ((Number) obj2).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i5) {
-                CoreTextFieldKt.CoreTextFieldRootBox(Modifier.this, textFieldSelectionManager, function2, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
-            }
-        });
+        endRestartGroup.updateScope(new CoreTextFieldRootBox.2(modifier, textFieldSelectionManager, function2, i));
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     @ComposableTarget(applier = "androidx.compose.ui.UiComposable")
     @Composable
-    public static final void SelectionToolbarAndHandles(final TextFieldSelectionManager textFieldSelectionManager, final boolean z, Composer composer, final int i) {
+    public static final void SelectionToolbarAndHandles(TextFieldSelectionManager textFieldSelectionManager, boolean z, Composer composer, int i) {
         TextLayoutResultProxy layoutResult;
         TextLayoutResult value;
         Composer startRestartGroup = composer.startRestartGroup(626339208);
@@ -261,9 +246,9 @@ public final class CoreTextFieldKt {
                 }
             }
             if (textLayoutResult != null) {
-                if (!TextRange.m4743getCollapsedimpl(textFieldSelectionManager.getValue$foundation_release().m4956getSelectiond9O1mEE())) {
-                    int originalToTransformed = textFieldSelectionManager.getOffsetMapping$foundation_release().originalToTransformed(TextRange.m4749getStartimpl(textFieldSelectionManager.getValue$foundation_release().m4956getSelectiond9O1mEE()));
-                    int originalToTransformed2 = textFieldSelectionManager.getOffsetMapping$foundation_release().originalToTransformed(TextRange.m4744getEndimpl(textFieldSelectionManager.getValue$foundation_release().m4956getSelectiond9O1mEE()));
+                if (!TextRange.getCollapsed-impl(textFieldSelectionManager.getValue$foundation_release().m1985getSelectiond9O1mEE())) {
+                    int originalToTransformed = textFieldSelectionManager.getOffsetMapping$foundation_release().originalToTransformed(TextRange.getStart-impl(textFieldSelectionManager.getValue$foundation_release().m1985getSelectiond9O1mEE()));
+                    int originalToTransformed2 = textFieldSelectionManager.getOffsetMapping$foundation_release().originalToTransformed(TextRange.getEnd-impl(textFieldSelectionManager.getValue$foundation_release().m1985getSelectiond9O1mEE()));
                     ResolvedTextDirection bidiRunDirection = textLayoutResult.getBidiRunDirection(originalToTransformed);
                     ResolvedTextDirection bidiRunDirection2 = textLayoutResult.getBidiRunDirection(Math.max(originalToTransformed2 - 1, 0));
                     startRestartGroup.startReplaceableGroup(-498392718);
@@ -301,26 +286,12 @@ public final class CoreTextFieldKt {
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.text.CoreTextFieldKt$SelectionToolbarAndHandles$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                invoke((Composer) obj, ((Number) obj2).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i2) {
-                CoreTextFieldKt.SelectionToolbarAndHandles(TextFieldSelectionManager.this, z, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
-            }
-        });
+        endRestartGroup.updateScope(new SelectionToolbarAndHandles.2(textFieldSelectionManager, z, i));
     }
 
     @ComposableTarget(applier = "androidx.compose.ui.UiComposable")
     @Composable
-    public static final void TextFieldCursorHandle(@NotNull final TextFieldSelectionManager textFieldSelectionManager, @Nullable Composer composer, final int i) {
+    public static final void TextFieldCursorHandle(@NotNull TextFieldSelectionManager textFieldSelectionManager, @Nullable Composer composer, int i) {
         Intrinsics.checkNotNullParameter(textFieldSelectionManager, "manager");
         Composer startRestartGroup = composer.startRestartGroup(-1436003720);
         if (ComposerKt.isTraceInProgress()) {
@@ -337,11 +308,11 @@ public final class CoreTextFieldKt {
             }
             startRestartGroup.endReplaceableGroup();
             TextDragObserver textDragObserver = (TextDragObserver) rememberedValue;
-            final long m1898getCursorPositiontuRUvjQ$foundation_release = textFieldSelectionManager.m1898getCursorPositiontuRUvjQ$foundation_release((Density) startRestartGroup.consume(CompositionLocalsKt.getLocalDensity()));
-            Modifier pointerInput = SuspendingPointerInputFilterKt.pointerInput(Modifier.Companion, textDragObserver, new CoreTextFieldKt$TextFieldCursorHandle$1(textDragObserver, null));
-            Offset m2545boximpl = Offset.m2545boximpl(m1898getCursorPositiontuRUvjQ$foundation_release);
+            final long m485getCursorPositiontuRUvjQ$foundation_release = textFieldSelectionManager.m485getCursorPositiontuRUvjQ$foundation_release((Density) startRestartGroup.consume(CompositionLocalsKt.getLocalDensity()));
+            Modifier pointerInput = SuspendingPointerInputFilterKt.pointerInput((Modifier) Modifier.Companion, (Object) textDragObserver, (Function2<? super PointerInputScope, ? super Continuation<? super Unit>, ? extends Object>) new TextFieldCursorHandle.1(textDragObserver, (Continuation) null));
+            Offset m837boximpl = Offset.m837boximpl(m485getCursorPositiontuRUvjQ$foundation_release);
             startRestartGroup.startReplaceableGroup(1157296644);
-            boolean changed2 = startRestartGroup.changed(m2545boximpl);
+            boolean changed2 = startRestartGroup.changed(m837boximpl);
             Object rememberedValue2 = startRestartGroup.rememberedValue();
             if (changed2 || rememberedValue2 == Composer.Companion.getEmpty()) {
                 rememberedValue2 = new Function1<SemanticsPropertyReceiver, Unit>() { // from class: androidx.compose.foundation.text.CoreTextFieldKt$TextFieldCursorHandle$2$1
@@ -357,13 +328,13 @@ public final class CoreTextFieldKt {
 
                     public final void invoke(@NotNull SemanticsPropertyReceiver semanticsPropertyReceiver) {
                         Intrinsics.checkNotNullParameter(semanticsPropertyReceiver, "$this$semantics");
-                        semanticsPropertyReceiver.set(SelectionHandlesKt.getSelectionHandleInfoKey(), new SelectionHandleInfo(Handle.Cursor, m1898getCursorPositiontuRUvjQ$foundation_release, null));
+                        semanticsPropertyReceiver.set(SelectionHandlesKt.getSelectionHandleInfoKey(), new SelectionHandleInfo(Handle.Cursor, m485getCursorPositiontuRUvjQ$foundation_release, (DefaultConstructorMarker) null));
                     }
                 };
                 startRestartGroup.updateRememberedValue(rememberedValue2);
             }
             startRestartGroup.endReplaceableGroup();
-            AndroidCursorHandle_androidKt.m1697CursorHandleULxng0E(m1898getCursorPositiontuRUvjQ$foundation_release, SemanticsModifierKt.semantics$default(pointerInput, false, (Function1) rememberedValue2, 1, null), null, startRestartGroup, 384);
+            AndroidCursorHandle_androidKt.m375CursorHandleULxng0E(m485getCursorPositiontuRUvjQ$foundation_release, SemanticsModifierKt.semantics$default(pointerInput, false, (Function1) rememberedValue2, 1, null), null, startRestartGroup, 384);
         }
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
@@ -372,27 +343,13 @@ public final class CoreTextFieldKt {
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.text.CoreTextFieldKt$TextFieldCursorHandle$3
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                invoke((Composer) obj, ((Number) obj2).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i2) {
-                CoreTextFieldKt.TextFieldCursorHandle(TextFieldSelectionManager.this, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
-            }
-        });
+        endRestartGroup.updateScope(new TextFieldCursorHandle.3(textFieldSelectionManager, i));
     }
 
     @Nullable
     public static final Object bringSelectionEndIntoView(@NotNull BringIntoViewRequester bringIntoViewRequester, @NotNull TextFieldValue textFieldValue, @NotNull TextDelegate textDelegate, @NotNull TextLayoutResult textLayoutResult, @NotNull OffsetMapping offsetMapping, @NotNull Continuation<? super Unit> continuation) {
-        int originalToTransformed = offsetMapping.originalToTransformed(TextRange.m4746getMaximpl(textFieldValue.m4956getSelectiond9O1mEE()));
-        Object bringIntoView = bringIntoViewRequester.bringIntoView(originalToTransformed < textLayoutResult.getLayoutInput().getText().length() ? textLayoutResult.getBoundingBox(originalToTransformed) : originalToTransformed != 0 ? textLayoutResult.getBoundingBox(originalToTransformed - 1) : new Rect(0.0f, 0.0f, 1.0f, IntSize.m5375getHeightimpl(TextFieldDelegateKt.computeSizeForDefaultText$default(textDelegate.getStyle(), textDelegate.getDensity(), textDelegate.getFontFamilyResolver(), null, 0, 24, null))), continuation);
+        int originalToTransformed = offsetMapping.originalToTransformed(TextRange.getMax-impl(textFieldValue.m1985getSelectiond9O1mEE()));
+        Object bringIntoView = bringIntoViewRequester.bringIntoView(originalToTransformed < textLayoutResult.getLayoutInput().getText().length() ? textLayoutResult.getBoundingBox(originalToTransformed) : originalToTransformed != 0 ? textLayoutResult.getBoundingBox(originalToTransformed - 1) : new Rect(0.0f, 0.0f, 1.0f, IntSize.getHeight-impl(TextFieldDelegateKt.computeSizeForDefaultText$default(textDelegate.getStyle(), textDelegate.getDensity(), textDelegate.getFontFamilyResolver(), (String) null, 0, 24, (Object) null))), continuation);
         return bringIntoView == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? bringIntoView : Unit.INSTANCE;
     }
 
@@ -422,16 +379,16 @@ public final class CoreTextFieldKt {
             }
 
             public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                return m1721invokeZmokQxo(((KeyEvent) obj).m3953unboximpl());
+                return m392invokeZmokQxo(((KeyEvent) obj).unbox-impl());
             }
 
             @NotNull
             /* renamed from: invoke-ZmokQxo, reason: not valid java name */
-            public final Boolean m1721invokeZmokQxo(@NotNull android.view.KeyEvent keyEvent) {
+            public final Boolean m392invokeZmokQxo(@NotNull android.view.KeyEvent keyEvent) {
                 Intrinsics.checkNotNullParameter(keyEvent, "keyEvent");
                 boolean z = true;
-                if (TextFieldState.this.getHandleState() == HandleState.Selection && KeyEventHelpers_androidKt.m1727cancelsTextSelectionZmokQxo(keyEvent)) {
-                    TextFieldSelectionManager.m1893deselect_kEHs6E$foundation_release$default(textFieldSelectionManager, null, 1, null);
+                if (TextFieldState.this.getHandleState() == HandleState.Selection && KeyEventHelpers_androidKt.m395cancelsTextSelectionZmokQxo(keyEvent)) {
+                    TextFieldSelectionManager.m480deselect_kEHs6E$foundation_release$default(textFieldSelectionManager, null, 1, null);
                 } else {
                     z = false;
                 }

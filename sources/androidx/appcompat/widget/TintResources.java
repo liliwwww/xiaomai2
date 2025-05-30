@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import java.lang.ref.WeakReference;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class TintResources extends ResourcesWrapper {
     private final WeakReference<Context> mContextRef;
 
@@ -16,7 +16,6 @@ class TintResources extends ResourcesWrapper {
         this.mContextRef = new WeakReference<>(context);
     }
 
-    @Override // androidx.appcompat.widget.ResourcesWrapper, android.content.res.Resources
     public Drawable getDrawable(int i) throws Resources.NotFoundException {
         Drawable drawableCanonical = getDrawableCanonical(i);
         Context context = this.mContextRef.get();

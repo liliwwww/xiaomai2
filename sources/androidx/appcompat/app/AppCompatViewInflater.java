@@ -11,7 +11,6 @@ import android.view.InflateException;
 import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.C0257R;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.AppCompatButton;
@@ -35,7 +34,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class AppCompatViewInflater {
     private static final String LOG_TAG = "AppCompatViewInflater";
     private final Object[] mConstructorArgs = new Object[2];
@@ -136,7 +135,7 @@ public class AppCompatViewInflater {
     private View createViewByPrefix(Context context, String str, String str2) throws ClassNotFoundException, InflateException {
         String str3;
         SimpleArrayMap<String, Constructor<? extends View>> simpleArrayMap = sConstructorMap;
-        Constructor<? extends View> constructor = simpleArrayMap.get(str);
+        Constructor constructor = (Constructor) simpleArrayMap.get(str);
         if (constructor == null) {
             if (str2 != null) {
                 try {
@@ -151,7 +150,7 @@ public class AppCompatViewInflater {
             simpleArrayMap.put(str, constructor);
         }
         constructor.setAccessible(true);
-        return constructor.newInstance(this.mConstructorArgs);
+        return (View) constructor.newInstance(this.mConstructorArgs);
     }
 
     private View createViewFromTag(Context context, String str, AttributeSet attributeSet) {
@@ -187,9 +186,9 @@ public class AppCompatViewInflater {
     }
 
     private static Context themifyContext(Context context, AttributeSet attributeSet, boolean z, boolean z2) {
-        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0257R.styleable.View, 0, 0);
-        int resourceId = z ? obtainStyledAttributes.getResourceId(C0257R.styleable.View_android_theme, 0) : 0;
-        if (z2 && resourceId == 0 && (resourceId = obtainStyledAttributes.getResourceId(C0257R.styleable.View_theme, 0)) != 0) {
+        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, androidx.appcompat.R.styleable.View, 0, 0);
+        int resourceId = z ? obtainStyledAttributes.getResourceId(androidx.appcompat.R.styleable.View_android_theme, 0) : 0;
+        if (z2 && resourceId == 0 && (resourceId = obtainStyledAttributes.getResourceId(androidx.appcompat.R.styleable.View_theme, 0)) != 0) {
             Log.i(LOG_TAG, "app:theme is now deprecated. Please move to using android:theme instead.");
         }
         obtainStyledAttributes.recycle();

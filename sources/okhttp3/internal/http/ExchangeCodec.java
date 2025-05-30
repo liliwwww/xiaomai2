@@ -2,36 +2,36 @@ package okhttp3.internal.http;
 
 import java.io.IOException;
 import javax.annotation.Nullable;
-import okhttp3.C1471k;
-import okhttp3.C1474n;
-import okhttp3.C1476p;
-import okhttp3.internal.connection.C1429e;
+import okhttp3.internal.connection.e;
+import okhttp3.k;
+import okhttp3.n;
+import okhttp3.p;
 import okio.Sink;
 import okio.Source;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface ExchangeCodec {
     public static final int DISCARD_STREAM_TIMEOUT_MILLIS = 100;
 
     void cancel();
 
-    C1429e connection();
+    e connection();
 
-    Sink createRequestBody(C1474n c1474n, long j) throws IOException;
+    Sink createRequestBody(n nVar, long j) throws IOException;
 
     void finishRequest() throws IOException;
 
     void flushRequest() throws IOException;
 
-    Source openResponseBodySource(C1476p c1476p) throws IOException;
+    Source openResponseBodySource(p pVar) throws IOException;
 
     @Nullable
-    C1476p.a readResponseHeaders(boolean z) throws IOException;
+    p.a readResponseHeaders(boolean z) throws IOException;
 
-    long reportedContentLength(C1476p c1476p) throws IOException;
+    long reportedContentLength(p pVar) throws IOException;
 
-    C1471k trailers() throws IOException;
+    k trailers() throws IOException;
 
-    void writeRequestHeaders(C1474n c1474n) throws IOException;
+    void writeRequestHeaders(n nVar) throws IOException;
 }

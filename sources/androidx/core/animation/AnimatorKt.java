@@ -2,13 +2,15 @@ package androidx.core.animation;
 
 import android.animation.Animator;
 import androidx.annotation.RequiresApi;
+import androidx.core.animation.AnimatorKt$doOnEnd$;
+import androidx.core.animation.AnimatorKt$doOnRepeat$;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AnimatorKt {
     @NotNull
     public static final Animator.AnimatorListener addListener(@NotNull Animator animator, @NotNull Function1<? super Animator, Unit> function1, @NotNull Function1<? super Animator, Unit> function12, @NotNull Function1<? super Animator, Unit> function13, @NotNull Function1<? super Animator, Unit> function14) {
@@ -83,51 +85,21 @@ public final class AnimatorKt {
 
     @RequiresApi(19)
     @NotNull
-    public static final Animator.AnimatorPauseListener addPauseListener(@NotNull Animator animator, @NotNull final Function1<? super Animator, Unit> function1, @NotNull final Function1<? super Animator, Unit> function12) {
+    public static final Animator.AnimatorPauseListener addPauseListener(@NotNull Animator animator, @NotNull Function1<? super Animator, Unit> function1, @NotNull Function1<? super Animator, Unit> function12) {
         Intrinsics.checkNotNullParameter(animator, "<this>");
         Intrinsics.checkNotNullParameter(function1, "onResume");
         Intrinsics.checkNotNullParameter(function12, "onPause");
-        Animator.AnimatorPauseListener animatorPauseListener = new Animator.AnimatorPauseListener() { // from class: androidx.core.animation.AnimatorKt$addPauseListener$listener$1
-            @Override // android.animation.Animator.AnimatorPauseListener
-            public void onAnimationPause(@NotNull Animator animator2) {
-                Intrinsics.checkNotNullParameter(animator2, "animator");
-                function12.invoke(animator2);
-            }
-
-            @Override // android.animation.Animator.AnimatorPauseListener
-            public void onAnimationResume(@NotNull Animator animator2) {
-                Intrinsics.checkNotNullParameter(animator2, "animator");
-                function1.invoke(animator2);
-            }
-        };
-        Api19Impl.addPauseListener(animator, animatorPauseListener);
-        return animatorPauseListener;
+        addPauseListener.listener.1 r0 = new addPauseListener.listener.1(function12, function1);
+        Api19Impl.addPauseListener(animator, r0);
+        return r0;
     }
 
     public static /* synthetic */ Animator.AnimatorPauseListener addPauseListener$default(Animator animator, Function1 function1, Function1 function12, int i, Object obj) {
         if ((i & 1) != 0) {
-            function1 = new Function1<Animator, Unit>() { // from class: androidx.core.animation.AnimatorKt$addPauseListener$1
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    invoke((Animator) obj2);
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Animator animator2) {
-                    Intrinsics.checkNotNullParameter(animator2, "it");
-                }
-            };
+            function1 = addPauseListener.1.INSTANCE;
         }
         if ((i & 2) != 0) {
-            function12 = new Function1<Animator, Unit>() { // from class: androidx.core.animation.AnimatorKt$addPauseListener$2
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    invoke((Animator) obj2);
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Animator animator2) {
-                    Intrinsics.checkNotNullParameter(animator2, "it");
-                }
-            };
+            function12 = addPauseListener.2.INSTANCE;
         }
         return addPauseListener(animator, function1, function12);
     }
@@ -163,33 +135,12 @@ public final class AnimatorKt {
     }
 
     @NotNull
-    public static final Animator.AnimatorListener doOnEnd(@NotNull Animator animator, @NotNull final Function1<? super Animator, Unit> function1) {
+    public static final Animator.AnimatorListener doOnEnd(@NotNull Animator animator, @NotNull Function1<? super Animator, Unit> function1) {
         Intrinsics.checkNotNullParameter(animator, "<this>");
         Intrinsics.checkNotNullParameter(function1, "action");
-        Animator.AnimatorListener animatorListener = new Animator.AnimatorListener() { // from class: androidx.core.animation.AnimatorKt$doOnEnd$$inlined$addListener$default$1
-            @Override // android.animation.Animator.AnimatorListener
-            public void onAnimationCancel(@NotNull Animator animator2) {
-                Intrinsics.checkNotNullParameter(animator2, "animator");
-            }
-
-            @Override // android.animation.Animator.AnimatorListener
-            public void onAnimationEnd(@NotNull Animator animator2) {
-                Intrinsics.checkNotNullParameter(animator2, "animator");
-                function1.invoke(animator2);
-            }
-
-            @Override // android.animation.Animator.AnimatorListener
-            public void onAnimationRepeat(@NotNull Animator animator2) {
-                Intrinsics.checkNotNullParameter(animator2, "animator");
-            }
-
-            @Override // android.animation.Animator.AnimatorListener
-            public void onAnimationStart(@NotNull Animator animator2) {
-                Intrinsics.checkNotNullParameter(animator2, "animator");
-            }
-        };
-        animator.addListener(animatorListener);
-        return animatorListener;
+        AnimatorKt$doOnEnd$.inlined.addListener.default.1 r0 = new AnimatorKt$doOnEnd$.inlined.addListener.default.1(function1);
+        animator.addListener(r0);
+        return r0;
     }
 
     @RequiresApi(19)
@@ -201,33 +152,12 @@ public final class AnimatorKt {
     }
 
     @NotNull
-    public static final Animator.AnimatorListener doOnRepeat(@NotNull Animator animator, @NotNull final Function1<? super Animator, Unit> function1) {
+    public static final Animator.AnimatorListener doOnRepeat(@NotNull Animator animator, @NotNull Function1<? super Animator, Unit> function1) {
         Intrinsics.checkNotNullParameter(animator, "<this>");
         Intrinsics.checkNotNullParameter(function1, "action");
-        Animator.AnimatorListener animatorListener = new Animator.AnimatorListener() { // from class: androidx.core.animation.AnimatorKt$doOnRepeat$$inlined$addListener$default$1
-            @Override // android.animation.Animator.AnimatorListener
-            public void onAnimationCancel(@NotNull Animator animator2) {
-                Intrinsics.checkNotNullParameter(animator2, "animator");
-            }
-
-            @Override // android.animation.Animator.AnimatorListener
-            public void onAnimationEnd(@NotNull Animator animator2) {
-                Intrinsics.checkNotNullParameter(animator2, "animator");
-            }
-
-            @Override // android.animation.Animator.AnimatorListener
-            public void onAnimationRepeat(@NotNull Animator animator2) {
-                Intrinsics.checkNotNullParameter(animator2, "animator");
-                function1.invoke(animator2);
-            }
-
-            @Override // android.animation.Animator.AnimatorListener
-            public void onAnimationStart(@NotNull Animator animator2) {
-                Intrinsics.checkNotNullParameter(animator2, "animator");
-            }
-        };
-        animator.addListener(animatorListener);
-        return animatorListener;
+        AnimatorKt$doOnRepeat$.inlined.addListener.default.1 r0 = new AnimatorKt$doOnRepeat$.inlined.addListener.default.1(function1);
+        animator.addListener(r0);
+        return r0;
     }
 
     @RequiresApi(19)

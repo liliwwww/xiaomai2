@@ -18,7 +18,6 @@ import android.appwidget.AppWidgetManager;
 import android.bluetooth.BluetoothManager;
 import android.content.BroadcastReceiver;
 import android.content.ClipboardManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -76,23 +75,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.OptIn;
 import androidx.annotation.RequiresApi;
-import androidx.annotation.RestrictTo;
-import androidx.autofill.HintConstants;
-import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.os.BuildCompat;
 import androidx.core.os.ExecutorCompat;
 import androidx.core.util.ObjectsCompat;
 import java.io.File;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.util.HashMap;
 import java.util.concurrent.Executor;
 
 /* compiled from: Taobao */
 @SuppressLint({"PrivateConstructorForUtilityClass"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ContextCompat {
     private static final String DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION_SUFFIX = ".DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION";
     public static final int RECEIVER_EXPORTED = 2;
@@ -139,93 +133,6 @@ public class ContextCompat {
         @DoNotInline
         static File[] getObbDirs(Context context) {
             return context.getObbDirs();
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(21)
-    /* loaded from: classes.dex */
-    static class Api21Impl {
-        private Api21Impl() {
-        }
-
-        @DoNotInline
-        static File getCodeCacheDir(Context context) {
-            return context.getCodeCacheDir();
-        }
-
-        @DoNotInline
-        static Drawable getDrawable(Context context, int i) {
-            return context.getDrawable(i);
-        }
-
-        @DoNotInline
-        static File getNoBackupFilesDir(Context context) {
-            return context.getNoBackupFilesDir();
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(23)
-    /* loaded from: classes.dex */
-    static class Api23Impl {
-        private Api23Impl() {
-        }
-
-        @DoNotInline
-        static int getColor(Context context, int i) {
-            return context.getColor(i);
-        }
-
-        @DoNotInline
-        static <T> T getSystemService(Context context, Class<T> cls) {
-            return (T) context.getSystemService(cls);
-        }
-
-        @DoNotInline
-        static String getSystemServiceName(Context context, Class<?> cls) {
-            return context.getSystemServiceName(cls);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(24)
-    /* loaded from: classes.dex */
-    static class Api24Impl {
-        private Api24Impl() {
-        }
-
-        @DoNotInline
-        static Context createDeviceProtectedStorageContext(Context context) {
-            return context.createDeviceProtectedStorageContext();
-        }
-
-        @DoNotInline
-        static File getDataDir(Context context) {
-            return context.getDataDir();
-        }
-
-        @DoNotInline
-        static boolean isDeviceProtectedStorage(Context context) {
-            return context.isDeviceProtectedStorage();
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(26)
-    /* loaded from: classes.dex */
-    static class Api26Impl {
-        private Api26Impl() {
-        }
-
-        @DoNotInline
-        static Intent registerReceiver(Context context, @Nullable BroadcastReceiver broadcastReceiver, IntentFilter intentFilter, String str, Handler handler, int i) {
-            return ((i & 4) == 0 || str != null) ? context.registerReceiver(broadcastReceiver, intentFilter, str, handler, i & 1) : context.registerReceiver(broadcastReceiver, intentFilter, ContextCompat.obtainAndCheckReceiverPermission(context), handler);
-        }
-
-        @DoNotInline
-        static ComponentName startForegroundService(Context context, Intent intent) {
-            return context.startForegroundService(intent);
         }
     }
 
@@ -310,7 +217,7 @@ public class ContextCompat {
             hashMap.put(AccessibilityManager.class, "accessibility");
             hashMap.put(AccountManager.class, "account");
             hashMap.put(ActivityManager.class, "activity");
-            hashMap.put(AlarmManager.class, NotificationCompat.CATEGORY_ALARM);
+            hashMap.put(AlarmManager.class, "alarm");
             hashMap.put(AudioManager.class, "audio");
             hashMap.put(ClipboardManager.class, "clipboard");
             hashMap.put(ConnectivityManager.class, "connectivity");
@@ -327,7 +234,7 @@ public class ContextCompat {
             hashMap.put(SearchManager.class, "search");
             hashMap.put(SensorManager.class, "sensor");
             hashMap.put(StorageManager.class, "storage");
-            hashMap.put(TelephonyManager.class, HintConstants.AUTOFILL_HINT_PHONE);
+            hashMap.put(TelephonyManager.class, "phone");
             hashMap.put(TextServicesManager.class, "textservices");
             hashMap.put(UiModeManager.class, "uimode");
             hashMap.put(UsbManager.class, "usb");
@@ -340,13 +247,6 @@ public class ContextCompat {
 
         private LegacyServiceMapHolder() {
         }
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
-    /* loaded from: classes.dex */
-    public @interface RegisterReceiverFlags {
     }
 
     protected ContextCompat() {

@@ -14,7 +14,7 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class SSLTunnelSocketFactory extends SSLSocketFactory {
     private SSLSocketFactory dfactory;
     private String tunnelHost;
@@ -114,10 +114,10 @@ public class SSLTunnelSocketFactory extends SSLSocketFactory {
         sSLSocket.addHandshakeCompletedListener(new HandshakeCompletedListener() { // from class: android.taobao.windvane.security.SSLTunnelSocketFactory.1
             @Override // javax.net.ssl.HandshakeCompletedListener
             public void handshakeCompleted(HandshakeCompletedEvent handshakeCompletedEvent) {
-                TaoLog.m18d("tag", "Handshake finished!");
-                TaoLog.m18d("tag", "\t CipherSuite:" + handshakeCompletedEvent.getCipherSuite());
-                TaoLog.m18d("tag", "\t SessionId " + handshakeCompletedEvent.getSession());
-                TaoLog.m18d("tag", "\t PeerHost " + handshakeCompletedEvent.getSession().getPeerHost());
+                TaoLog.d("tag", "Handshake finished!");
+                TaoLog.d("tag", "\t CipherSuite:" + handshakeCompletedEvent.getCipherSuite());
+                TaoLog.d("tag", "\t SessionId " + handshakeCompletedEvent.getSession());
+                TaoLog.d("tag", "\t PeerHost " + handshakeCompletedEvent.getSession().getPeerHost());
             }
         });
         sSLSocket.startHandshake();

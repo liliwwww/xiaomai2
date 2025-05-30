@@ -8,14 +8,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface TransformableState {
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class DefaultImpls {
-    }
-
     boolean isTransformInProgress();
 
     @Nullable

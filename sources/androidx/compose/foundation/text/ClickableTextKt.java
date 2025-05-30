@@ -1,8 +1,12 @@
 package androidx.compose.foundation.text;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ClickableTextKt {
+    /* JADX WARN: Code restructure failed: missing block: B:69:0x01c1, code lost:
+    
+        if (r6 == r3.getEmpty()) goto L129;
+     */
     /* JADX WARN: Removed duplicated region for block: B:101:0x0094  */
     /* JADX WARN: Removed duplicated region for block: B:108:0x0073  */
     /* JADX WARN: Removed duplicated region for block: B:10:0x0054  */
@@ -40,13 +44,13 @@ public final class ClickableTextKt {
     /* renamed from: ClickableText-4YKlhWE, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m1705ClickableText4YKlhWE(@org.jetbrains.annotations.NotNull final androidx.compose.p004ui.text.AnnotatedString r26, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r27, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.TextStyle r28, boolean r29, int r30, int r31, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.text.TextLayoutResult, kotlin.Unit> r32, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super java.lang.Integer, kotlin.Unit> r33, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r34, final int r35, final int r36) {
+    public static final void m545ClickableText4YKlhWE(@org.jetbrains.annotations.NotNull androidx.compose.ui.text.AnnotatedString r26, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r27, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.TextStyle r28, boolean r29, int r30, int r31, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.ui.text.TextLayoutResult, kotlin.Unit> r32, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super java.lang.Integer, kotlin.Unit> r33, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r34, int r35, int r36) {
         /*
             Method dump skipped, instructions count: 562
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.ClickableTextKt.m1705ClickableText4YKlhWE(androidx.compose.ui.text.AnnotatedString, androidx.compose.ui.Modifier, androidx.compose.ui.text.TextStyle, boolean, int, int, kotlin.jvm.functions.Function1, kotlin.jvm.functions.Function1, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.ClickableTextKt.m545ClickableText4YKlhWE(androidx.compose.ui.text.AnnotatedString, androidx.compose.ui.Modifier, androidx.compose.ui.text.TextStyle, boolean, int, int, kotlin.jvm.functions.Function1, kotlin.jvm.functions.Function1, androidx.compose.runtime.Composer, int, int):void");
     }
 }

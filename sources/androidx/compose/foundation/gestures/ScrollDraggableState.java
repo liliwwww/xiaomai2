@@ -1,8 +1,8 @@
 package androidx.compose.foundation.gestures;
 
 import androidx.compose.foundation.MutatePriority;
-import androidx.compose.p004ui.input.nestedscroll.NestedScrollSource;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.intrinsics.IntrinsicsKt;
@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class ScrollDraggableState implements DragScope, DraggableState {
 
     @NotNull
@@ -22,30 +22,25 @@ final class ScrollDraggableState implements DragScope, DraggableState {
     private final State<ScrollingLogic> scrollLogic;
 
     public ScrollDraggableState(@NotNull State<ScrollingLogic> state) {
-        ScrollScope scrollScope;
         Intrinsics.checkNotNullParameter(state, "scrollLogic");
         this.scrollLogic = state;
-        scrollScope = ScrollableKt.NoOpScrollScope;
-        this.latestScrollScope = scrollScope;
+        this.latestScrollScope = ScrollableKt.access$getNoOpScrollScope$p();
     }
 
-    @Override // androidx.compose.foundation.gestures.DraggableState
     public void dispatchRawDelta(float f) {
         ScrollingLogic value = this.scrollLogic.getValue();
-        value.m1299performRawScrollMKHz9U(value.m1305toOffsettuRUvjQ(f));
+        value.m246performRawScrollMKHz9U(value.m252toOffsettuRUvjQ(f));
     }
 
-    @Override // androidx.compose.foundation.gestures.DraggableState
     @Nullable
     public Object drag(@NotNull MutatePriority mutatePriority, @NotNull Function2<? super DragScope, ? super Continuation<? super Unit>, ? extends Object> function2, @NotNull Continuation<? super Unit> continuation) {
-        Object scroll = this.scrollLogic.getValue().getScrollableState().scroll(mutatePriority, new ScrollDraggableState$drag$2(this, function2, null), continuation);
+        Object scroll = this.scrollLogic.getValue().getScrollableState().scroll(mutatePriority, new drag.2(this, function2, (Continuation) null), continuation);
         return scroll == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? scroll : Unit.INSTANCE;
     }
 
-    @Override // androidx.compose.foundation.gestures.DragScope
     public void dragBy(float f) {
         ScrollingLogic value = this.scrollLogic.getValue();
-        value.m1295dispatchScroll3eAAhYA(this.latestScrollScope, value.m1305toOffsettuRUvjQ(f), NestedScrollSource.Companion.m3993getDragWNlRxjI());
+        value.m242dispatchScroll3eAAhYA(this.latestScrollScope, value.m252toOffsettuRUvjQ(f), NestedScrollSource.Companion.getDrag-WNlRxjI());
     }
 
     @NotNull

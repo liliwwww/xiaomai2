@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat;
 
 /* compiled from: Taobao */
 @SuppressLint({"RestrictedAPI"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AppCompatResources {
     private AppCompatResources() {
     }

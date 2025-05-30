@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyListHeadersKt {
     @Nullable
     public static final LazyListPositionedItem findOrComposeLazyListHeader(@NotNull List<LazyListPositionedItem> list, @NotNull LazyMeasuredItemProvider lazyMeasuredItemProvider, @NotNull List<Integer> list2, int i, int i2, int i3) {
@@ -40,12 +40,12 @@ public final class LazyListHeadersKt {
         if (i5 == -1) {
             return null;
         }
-        LazyMeasuredItem m1526getAndMeasureZjPyQlc = lazyMeasuredItemProvider.m1526getAndMeasureZjPyQlc(DataIndex.m1483constructorimpl(i5));
+        LazyMeasuredItem lazyMeasuredItem = lazyMeasuredItemProvider.getAndMeasure-ZjPyQlc(DataIndex.constructor-impl(i5));
         int max = i7 != Integer.MIN_VALUE ? Math.max(-i, i7) : -i;
         if (i8 != Integer.MIN_VALUE) {
-            max = Math.min(max, i8 - m1526getAndMeasureZjPyQlc.getSize());
+            max = Math.min(max, i8 - lazyMeasuredItem.getSize());
         }
-        LazyListPositionedItem position = m1526getAndMeasureZjPyQlc.position(max, i2, i3);
+        LazyListPositionedItem position = lazyMeasuredItem.position(max, i2, i3);
         if (i9 != -1) {
             list.set(i9, position);
         } else {

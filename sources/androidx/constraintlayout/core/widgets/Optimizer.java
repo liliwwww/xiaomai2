@@ -4,7 +4,7 @@ import androidx.constraintlayout.core.LinearSystem;
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Optimizer {
     static final int FLAG_CHAIN_DANGLING = 1;
     static final int FLAG_RECOMPUTE_BOUNDS = 2;
@@ -24,6 +24,7 @@ public class Optimizer {
     public static final int OPTIMIZATION_STANDARD = 257;
     static boolean[] flags = new boolean[3];
 
+    /* JADX WARN: Multi-variable type inference failed */
     static void checkMatchParent(ConstraintWidgetContainer constraintWidgetContainer, LinearSystem linearSystem, ConstraintWidget constraintWidget) {
         constraintWidget.mHorizontalResolution = -1;
         constraintWidget.mVerticalResolution = -1;

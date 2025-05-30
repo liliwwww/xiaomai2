@@ -4,11 +4,8 @@ import android.app.Application;
 import androidx.annotation.MainThread;
 import androidx.annotation.RestrictTo;
 import androidx.lifecycle.viewmodel.CreationExtras;
-import androidx.lifecycle.viewmodel.InitializerViewModelFactory;
 import androidx.lifecycle.viewmodel.MutableCreationExtras;
-import androidx.lifecycle.viewmodel.ViewModelInitializer;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 import kotlin.jvm.JvmField;
 import kotlin.jvm.JvmOverloads;
 import kotlin.jvm.JvmStatic;
@@ -16,10 +13,9 @@ import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tb.j56;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ViewModelProvider {
 
     @NotNull
@@ -37,108 +33,11 @@ public class ViewModelProvider {
         @NotNull
         public static final Companion Companion = Companion.$$INSTANCE;
 
-        /* compiled from: Taobao */
-        /* loaded from: classes.dex */
-        public static final class Companion {
-            static final /* synthetic */ Companion $$INSTANCE = new Companion();
-
-            private Companion() {
-            }
-
-            @JvmStatic
-            @NotNull
-            public final Factory from(@NotNull ViewModelInitializer<?>... viewModelInitializerArr) {
-                Intrinsics.checkNotNullParameter(viewModelInitializerArr, "initializers");
-                return new InitializerViewModelFactory((ViewModelInitializer[]) Arrays.copyOf(viewModelInitializerArr, viewModelInitializerArr.length));
-            }
-        }
-
         @NotNull
         <T extends ViewModel> T create(@NotNull Class<T> cls);
 
         @NotNull
         <T extends ViewModel> T create(@NotNull Class<T> cls, @NotNull CreationExtras creationExtras);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class NewInstanceFactory implements Factory {
-
-        @NotNull
-        public static final Companion Companion = new Companion(null);
-
-        @JvmField
-        @NotNull
-        public static final CreationExtras.Key<String> VIEW_MODEL_KEY = Companion.ViewModelKeyImpl.INSTANCE;
-
-        @Nullable
-        private static NewInstanceFactory sInstance;
-
-        /* compiled from: Taobao */
-        /* loaded from: classes2.dex */
-        public static final class Companion {
-
-            /* compiled from: Taobao */
-            /* loaded from: classes.dex */
-            private static final class ViewModelKeyImpl implements CreationExtras.Key<String> {
-
-                @NotNull
-                public static final ViewModelKeyImpl INSTANCE = new ViewModelKeyImpl();
-
-                private ViewModelKeyImpl() {
-                }
-            }
-
-            private Companion() {
-            }
-
-            public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-                this();
-            }
-
-            @JvmStatic
-            public static /* synthetic */ void getInstance$annotations() {
-            }
-
-            @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-            @NotNull
-            public final NewInstanceFactory getInstance() {
-                if (NewInstanceFactory.sInstance == null) {
-                    NewInstanceFactory.sInstance = new NewInstanceFactory();
-                }
-                NewInstanceFactory newInstanceFactory = NewInstanceFactory.sInstance;
-                Intrinsics.checkNotNull(newInstanceFactory);
-                return newInstanceFactory;
-            }
-        }
-
-        @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-        @NotNull
-        public static final NewInstanceFactory getInstance() {
-            return Companion.getInstance();
-        }
-
-        @Override // androidx.lifecycle.ViewModelProvider.Factory
-        @NotNull
-        public <T extends ViewModel> T create(@NotNull Class<T> cls) {
-            Intrinsics.checkNotNullParameter(cls, "modelClass");
-            try {
-                T newInstance = cls.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-                Intrinsics.checkNotNullExpressionValue(newInstance, "{\n                modelC…wInstance()\n            }");
-                return newInstance;
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException("Cannot create an instance of " + cls, e);
-            } catch (InstantiationException e2) {
-                throw new RuntimeException("Cannot create an instance of " + cls, e2);
-            } catch (NoSuchMethodException e3) {
-                throw new RuntimeException("Cannot create an instance of " + cls, e3);
-            }
-        }
-
-        @Override // androidx.lifecycle.ViewModelProvider.Factory
-        public /* synthetic */ ViewModel create(Class cls, CreationExtras creationExtras) {
-            return j56.b(this, cls, creationExtras);
-        }
     }
 
     /* compiled from: Taobao */
@@ -199,18 +98,6 @@ public class ViewModelProvider {
 
         /* compiled from: Taobao */
         public static final class Companion {
-
-            /* compiled from: Taobao */
-            /* loaded from: classes.dex */
-            private static final class ApplicationKeyImpl implements CreationExtras.Key<Application> {
-
-                @NotNull
-                public static final ApplicationKeyImpl INSTANCE = new ApplicationKeyImpl();
-
-                private ApplicationKeyImpl() {
-                }
-            }
-
             private Companion() {
             }
 
@@ -252,7 +139,6 @@ public class ViewModelProvider {
             return Companion.getInstance(application);
         }
 
-        @Override // androidx.lifecycle.ViewModelProvider.NewInstanceFactory, androidx.lifecycle.ViewModelProvider.Factory
         @NotNull
         public <T extends ViewModel> T create(@NotNull Class<T> cls, @NotNull CreationExtras creationExtras) {
             Intrinsics.checkNotNullParameter(cls, "modelClass");
@@ -280,7 +166,6 @@ public class ViewModelProvider {
             Intrinsics.checkNotNullParameter(application, "application");
         }
 
-        @Override // androidx.lifecycle.ViewModelProvider.NewInstanceFactory, androidx.lifecycle.ViewModelProvider.Factory
         @NotNull
         public <T extends ViewModel> T create(@NotNull Class<T> cls) {
             Intrinsics.checkNotNullParameter(cls, "modelClass");
@@ -346,7 +231,7 @@ public class ViewModelProvider {
     /* JADX WARN: Illegal instructions before constructor call */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public ViewModelProvider(@org.jetbrains.annotations.NotNull androidx.lifecycle.ViewModelStoreOwner r3) {
         /*
@@ -368,7 +253,7 @@ public class ViewModelProvider {
     /* JADX WARN: Illegal instructions before constructor call */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public ViewModelProvider(@org.jetbrains.annotations.NotNull androidx.lifecycle.ViewModelStoreOwner r3, @org.jetbrains.annotations.NotNull androidx.lifecycle.ViewModelProvider.Factory r4) {
         /*

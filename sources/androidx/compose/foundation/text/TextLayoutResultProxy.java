@@ -1,15 +1,15 @@
 package androidx.compose.foundation.text;
 
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.geometry.OffsetKt;
-import androidx.compose.p004ui.layout.LayoutCoordinates;
-import androidx.compose.p004ui.text.TextLayoutResult;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.geometry.OffsetKt;
+import androidx.compose.ui.layout.LayoutCoordinates;
+import androidx.compose.ui.text.TextLayoutResult;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TextLayoutResultProxy {
 
     @Nullable
@@ -33,9 +33,9 @@ public final class TextLayoutResultProxy {
     /* renamed from: coercedInVisibleBoundsOfInputText-MK-Hz9U, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    private final long m1808coercedInVisibleBoundsOfInputTextMKHz9U(long r6) {
+    private final long m453coercedInVisibleBoundsOfInputTextMKHz9U(long r6) {
         /*
             r5 = this;
             androidx.compose.ui.layout.LayoutCoordinates r0 = r5.innerTextFieldCoordinates
@@ -50,18 +50,18 @@ public final class TextLayoutResultProxy {
             androidx.compose.ui.geometry.Rect r2 = tb.dd2.c(r1, r0, r3, r4, r2)
             goto L1c
         L16:
-            androidx.compose.ui.geometry.Rect$Companion r0 = androidx.compose.p004ui.geometry.Rect.Companion
+            androidx.compose.ui.geometry.Rect$Companion r0 = androidx.compose.ui.geometry.Rect.Companion
             androidx.compose.ui.geometry.Rect r2 = r0.getZero()
         L1c:
             if (r2 != 0) goto L24
         L1e:
-            androidx.compose.ui.geometry.Rect$Companion r0 = androidx.compose.p004ui.geometry.Rect.Companion
+            androidx.compose.ui.geometry.Rect$Companion r0 = androidx.compose.ui.geometry.Rect.Companion
             androidx.compose.ui.geometry.Rect r2 = r0.getZero()
         L24:
-            long r6 = androidx.compose.foundation.text.TextLayoutResultProxyKt.m1813access$coerceIn3MmeM6k(r6, r2)
+            long r6 = androidx.compose.foundation.text.TextLayoutResultProxyKt.access$coerceIn-3MmeM6k(r6, r2)
             return r6
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.TextLayoutResultProxy.m1808coercedInVisibleBoundsOfInputTextMKHz9U(long):long");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.TextLayoutResultProxy.m453coercedInVisibleBoundsOfInputTextMKHz9U(long):long");
     }
 
     public static /* synthetic */ int getLineEnd$default(TextLayoutResultProxy textLayoutResultProxy, int i, boolean z, int i2, Object obj) {
@@ -72,15 +72,15 @@ public final class TextLayoutResultProxy {
     }
 
     /* renamed from: getOffsetForPosition-3MmeM6k$default, reason: not valid java name */
-    public static /* synthetic */ int m1809getOffsetForPosition3MmeM6k$default(TextLayoutResultProxy textLayoutResultProxy, long j, boolean z, int i, Object obj) {
+    public static /* synthetic */ int m454getOffsetForPosition3MmeM6k$default(TextLayoutResultProxy textLayoutResultProxy, long j, boolean z, int i, Object obj) {
         if ((i & 2) != 0) {
             z = true;
         }
-        return textLayoutResultProxy.m1811getOffsetForPosition3MmeM6k(j, z);
+        return textLayoutResultProxy.m456getOffsetForPosition3MmeM6k(j, z);
     }
 
     /* renamed from: relativeToInputText-MK-Hz9U, reason: not valid java name */
-    private final long m1810relativeToInputTextMKHz9U(long j) {
+    private final long m455relativeToInputTextMKHz9U(long j) {
         Offset offset;
         LayoutCoordinates layoutCoordinates = this.innerTextFieldCoordinates;
         if (layoutCoordinates == null) {
@@ -88,11 +88,11 @@ public final class TextLayoutResultProxy {
         }
         LayoutCoordinates layoutCoordinates2 = this.decorationBoxCoordinates;
         if (layoutCoordinates2 != null) {
-            offset = Offset.m2545boximpl((layoutCoordinates.isAttached() && layoutCoordinates2.isAttached()) ? layoutCoordinates.mo4192localPositionOfR5De75A(layoutCoordinates2, j) : j);
+            offset = Offset.m837boximpl((layoutCoordinates.isAttached() && layoutCoordinates2.isAttached()) ? layoutCoordinates.mo1523localPositionOfR5De75A(layoutCoordinates2, j) : j);
         } else {
             offset = null;
         }
-        return offset != null ? offset.m2566unboximpl() : j;
+        return offset != null ? offset.m858unboximpl() : j;
     }
 
     @Nullable
@@ -110,15 +110,15 @@ public final class TextLayoutResultProxy {
     }
 
     public final int getLineForVerticalPosition(float f) {
-        return this.value.getLineForVerticalPosition(Offset.m2557getYimpl(m1810relativeToInputTextMKHz9U(m1808coercedInVisibleBoundsOfInputTextMKHz9U(OffsetKt.Offset(0.0f, f)))));
+        return this.value.getLineForVerticalPosition(Offset.m849getYimpl(m455relativeToInputTextMKHz9U(m453coercedInVisibleBoundsOfInputTextMKHz9U(OffsetKt.Offset(0.0f, f)))));
     }
 
     /* renamed from: getOffsetForPosition-3MmeM6k, reason: not valid java name */
-    public final int m1811getOffsetForPosition3MmeM6k(long j, boolean z) {
+    public final int m456getOffsetForPosition3MmeM6k(long j, boolean z) {
         if (z) {
-            j = m1808coercedInVisibleBoundsOfInputTextMKHz9U(j);
+            j = m453coercedInVisibleBoundsOfInputTextMKHz9U(j);
         }
-        return this.value.m4723getOffsetForPositionk4lQ0M(m1810relativeToInputTextMKHz9U(j));
+        return this.value.m1888getOffsetForPositionk4lQ0M(m455relativeToInputTextMKHz9U(j));
     }
 
     @NotNull
@@ -127,10 +127,10 @@ public final class TextLayoutResultProxy {
     }
 
     /* renamed from: isPositionOnText-k-4lQ0M, reason: not valid java name */
-    public final boolean m1812isPositionOnTextk4lQ0M(long j) {
-        long m1810relativeToInputTextMKHz9U = m1810relativeToInputTextMKHz9U(m1808coercedInVisibleBoundsOfInputTextMKHz9U(j));
-        int lineForVerticalPosition = this.value.getLineForVerticalPosition(Offset.m2557getYimpl(m1810relativeToInputTextMKHz9U));
-        return Offset.m2556getXimpl(m1810relativeToInputTextMKHz9U) >= this.value.getLineLeft(lineForVerticalPosition) && Offset.m2556getXimpl(m1810relativeToInputTextMKHz9U) <= this.value.getLineRight(lineForVerticalPosition);
+    public final boolean m457isPositionOnTextk4lQ0M(long j) {
+        long m455relativeToInputTextMKHz9U = m455relativeToInputTextMKHz9U(m453coercedInVisibleBoundsOfInputTextMKHz9U(j));
+        int lineForVerticalPosition = this.value.getLineForVerticalPosition(Offset.m849getYimpl(m455relativeToInputTextMKHz9U));
+        return Offset.m848getXimpl(m455relativeToInputTextMKHz9U) >= this.value.getLineLeft(lineForVerticalPosition) && Offset.m848getXimpl(m455relativeToInputTextMKHz9U) <= this.value.getLineRight(lineForVerticalPosition);
     }
 
     public final void setDecorationBoxCoordinates(@Nullable LayoutCoordinates layoutCoordinates) {

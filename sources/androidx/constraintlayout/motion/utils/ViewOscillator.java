@@ -5,12 +5,11 @@ import android.util.Log;
 import android.view.View;
 import androidx.constraintlayout.core.motion.utils.KeyCycleOscillator;
 import androidx.constraintlayout.motion.widget.MotionLayout;
-import androidx.constraintlayout.widget.ConstraintAttribute;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class ViewOscillator extends KeyCycleOscillator {
     private static final String TAG = "ViewOscillator";
 
@@ -22,27 +21,6 @@ public abstract class ViewOscillator extends KeyCycleOscillator {
         @Override // androidx.constraintlayout.motion.utils.ViewOscillator
         public void setProperty(View view, float f) {
             view.setAlpha(get(f));
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class CustomSet extends ViewOscillator {
-        protected ConstraintAttribute mCustom;
-        float[] value = new float[1];
-
-        CustomSet() {
-        }
-
-        @Override // androidx.constraintlayout.core.motion.utils.KeyCycleOscillator
-        protected void setCustom(Object obj) {
-            this.mCustom = (ConstraintAttribute) obj;
-        }
-
-        @Override // androidx.constraintlayout.motion.utils.ViewOscillator
-        public void setProperty(View view, float f) {
-            this.value[0] = get(f);
-            CustomSupport.setInterpolatedValue(this.mCustom, view, this.value);
         }
     }
 
@@ -105,30 +83,6 @@ public abstract class ViewOscillator extends KeyCycleOscillator {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class RotationSet extends ViewOscillator {
-        RotationSet() {
-        }
-
-        @Override // androidx.constraintlayout.motion.utils.ViewOscillator
-        public void setProperty(View view, float f) {
-            view.setRotation(get(f));
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class RotationXset extends ViewOscillator {
-        RotationXset() {
-        }
-
-        @Override // androidx.constraintlayout.motion.utils.ViewOscillator
-        public void setProperty(View view, float f) {
-            view.setRotationX(get(f));
-        }
-    }
-
-    /* compiled from: Taobao */
     static class RotationYset extends ViewOscillator {
         RotationYset() {
         }
@@ -136,18 +90,6 @@ public abstract class ViewOscillator extends KeyCycleOscillator {
         @Override // androidx.constraintlayout.motion.utils.ViewOscillator
         public void setProperty(View view, float f) {
             view.setRotationY(get(f));
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class ScaleXset extends ViewOscillator {
-        ScaleXset() {
-        }
-
-        @Override // androidx.constraintlayout.motion.utils.ViewOscillator
-        public void setProperty(View view, float f) {
-            view.setScaleX(get(f));
         }
     }
 
@@ -163,18 +105,6 @@ public abstract class ViewOscillator extends KeyCycleOscillator {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class TranslationXset extends ViewOscillator {
-        TranslationXset() {
-        }
-
-        @Override // androidx.constraintlayout.motion.utils.ViewOscillator
-        public void setProperty(View view, float f) {
-            view.setTranslationX(get(f));
-        }
-    }
-
-    /* compiled from: Taobao */
     static class TranslationYset extends ViewOscillator {
         TranslationYset() {
         }
@@ -182,20 +112,6 @@ public abstract class ViewOscillator extends KeyCycleOscillator {
         @Override // androidx.constraintlayout.motion.utils.ViewOscillator
         public void setProperty(View view, float f) {
             view.setTranslationY(get(f));
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class TranslationZset extends ViewOscillator {
-        TranslationZset() {
-        }
-
-        @Override // androidx.constraintlayout.motion.utils.ViewOscillator
-        public void setProperty(View view, float f) {
-            if (Build.VERSION.SDK_INT >= 21) {
-                view.setTranslationZ(get(f));
-            }
         }
     }
 

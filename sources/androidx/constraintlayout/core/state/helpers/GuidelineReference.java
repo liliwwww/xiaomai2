@@ -6,7 +6,7 @@ import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import androidx.constraintlayout.core.widgets.Guideline;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class GuidelineReference implements Reference, Facade {
     private Object key;
     private Guideline mGuidelineWidget;
@@ -20,7 +20,7 @@ public class GuidelineReference implements Reference, Facade {
         this.mState = state;
     }
 
-    @Override // androidx.constraintlayout.core.state.Reference
+    @Override // androidx.constraintlayout.core.state.helpers.Facade
     public void apply() {
         this.mGuidelineWidget.setOrientation(this.mOrientation);
         int i = this.mStart;
@@ -43,7 +43,7 @@ public class GuidelineReference implements Reference, Facade {
         return this;
     }
 
-    @Override // androidx.constraintlayout.core.state.Reference
+    @Override // androidx.constraintlayout.core.state.helpers.Facade
     public ConstraintWidget getConstraintWidget() {
         if (this.mGuidelineWidget == null) {
             this.mGuidelineWidget = new Guideline();
@@ -51,12 +51,10 @@ public class GuidelineReference implements Reference, Facade {
         return this.mGuidelineWidget;
     }
 
-    @Override // androidx.constraintlayout.core.state.Reference
     public Facade getFacade() {
         return null;
     }
 
-    @Override // androidx.constraintlayout.core.state.Reference
     public Object getKey() {
         return this.key;
     }
@@ -72,7 +70,6 @@ public class GuidelineReference implements Reference, Facade {
         return this;
     }
 
-    @Override // androidx.constraintlayout.core.state.Reference
     public void setConstraintWidget(ConstraintWidget constraintWidget) {
         if (constraintWidget instanceof Guideline) {
             this.mGuidelineWidget = (Guideline) constraintWidget;
@@ -81,7 +78,6 @@ public class GuidelineReference implements Reference, Facade {
         }
     }
 
-    @Override // androidx.constraintlayout.core.state.Reference
     public void setKey(Object obj) {
         this.key = obj;
     }

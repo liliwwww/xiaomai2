@@ -10,13 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
 import androidx.emoji2.text.flatbuffer.MetadataItem;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 
 /* compiled from: Taobao */
 @AnyThread
 @RequiresApi(19)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class TypefaceEmojiRasterizer {
 
     @RestrictTo({RestrictTo.Scope.LIBRARY})
@@ -33,13 +31,6 @@ public class TypefaceEmojiRasterizer {
 
     @NonNull
     private final MetadataRepo mMetadataRepo;
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    /* loaded from: classes.dex */
-    public @interface HasGlyph {
-    }
 
     @RestrictTo({RestrictTo.Scope.LIBRARY})
     TypefaceEmojiRasterizer(@NonNull MetadataRepo metadataRepo, @IntRange(from = 0) int i) {
@@ -91,7 +82,7 @@ public class TypefaceEmojiRasterizer {
 
     @RestrictTo({RestrictTo.Scope.LIBRARY})
     public int getId() {
-        return getMetadataItem().m259id();
+        return getMetadataItem().id();
     }
 
     @RestrictTo({RestrictTo.Scope.LIBRARY})

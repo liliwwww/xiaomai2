@@ -14,7 +14,6 @@ import android.taobao.windvane.config.GlobalConfig;
 import android.taobao.windvane.connect.HttpConnector;
 import android.taobao.windvane.connect.HttpRequest;
 import android.taobao.windvane.connect.HttpResponse;
-import android.taobao.windvane.connect.api.ApiConstants;
 import android.taobao.windvane.connect.api.ApiRequest;
 import android.taobao.windvane.connect.api.ApiResponse;
 import android.taobao.windvane.connect.api.WVApiWrapper;
@@ -29,7 +28,6 @@ import android.taobao.windvane.thread.LockObject;
 import android.taobao.windvane.util.EnvUtil;
 import android.taobao.windvane.util.TaoLog;
 import android.widget.Toast;
-import androidx.lifecycle.CoroutineLiveDataKt;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.Map;
@@ -41,7 +39,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVServer extends WVApiPlugin implements Handler.Callback {
     public static final String API_SERVER = "WVServer";
     private static final int NOTIFY_RESULT = 500;
@@ -75,7 +73,7 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
             ServerParams parseParams = WVServer.this.parseParams(this.params);
             if (parseParams == null) {
                 MtopResult mtopResult = WVServer.this.new MtopResult(this.context);
-                mtopResult.addData(ApiConstants.RET, new JSONArray().put(WVResult.PARAM_ERR));
+                mtopResult.addData("ret", new JSONArray().put(WVResult.PARAM_ERR));
                 WVServer.this.callResult(mtopResult);
                 return;
             }
@@ -85,7 +83,7 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
                     int size = WVServer.this.lockQueue.size();
                     lockObject = (LockObject) WVServer.this.lockQueue.peek();
                     if (TaoLog.getLogStatus()) {
-                        TaoLog.m18d("WVServer", "queue size: " + size + " lock: " + lockObject);
+                        TaoLog.d("WVServer", "queue size: " + size + " lock: " + lockObject);
                     }
                     if (WVServer.this.lockQueue.offer(new LockObject()) && size > 0) {
                         z = true;
@@ -99,7 +97,7 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
             WVServer.this.jsContext = this.context;
             HttpRequest wrapRequest = WVServer.this.wrapRequest(parseParams);
             if (wrapRequest == null) {
-                TaoLog.m30w("WVServer", "HttpRequest is null, and do nothing");
+                TaoLog.w("WVServer", "HttpRequest is null, and do nothing");
             } else {
                 WVServer.this.parseResult(this.context, new HttpConnector().syncConnect(wrapRequest));
             }
@@ -136,10 +134,10 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
         try {
             ServerParams serverParams = new ServerParams();
             JSONObject jSONObject = new JSONObject(str);
-            serverParams.api = jSONObject.getString(ApiConstants.API);
-            serverParams.f10v = jSONObject.optString(ApiConstants.f5V, "*");
+            serverParams.api = jSONObject.getString("api");
+            serverParams.v = jSONObject.optString("v", "*");
             serverParams.post = jSONObject.optInt("post", 0) != 0;
-            serverParams.ecode = jSONObject.optInt(ApiConstants.ECODE, 0) != 0;
+            serverParams.ecode = jSONObject.optInt("ecode", 0) != 0;
             serverParams.isSec = jSONObject.optInt("isSec", 1) != 0;
             JSONObject optJSONObject = jSONObject.optJSONObject("param");
             if (optJSONObject != null) {
@@ -151,7 +149,7 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
             }
             return serverParams;
         } catch (JSONException unused) {
-            TaoLog.m21e("WVServer", "parseParams error, param=" + str);
+            TaoLog.e("WVServer", "parseParams error, param=" + str);
             return null;
         }
     }
@@ -159,39 +157,29 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
     /* JADX INFO: Access modifiers changed from: private */
     public void parseResult(Object obj, HttpResponse httpResponse) {
         MtopResult mtopResult = new MtopResult(obj);
-        mtopResult.addData(ApiConstants.RET, new JSONArray().put(WVResult.FAIL));
+        mtopResult.addData("ret", new JSONArray().put(WVResult.FAIL));
         mtopResult.addData("code", String.valueOf(httpResponse.getHttpCode()));
         if (!httpResponse.isSuccess() || httpResponse.getData() == null) {
-            TaoLog.m18d("WVServer", "parseResult: request illegal, response is null");
+            TaoLog.d("WVServer", "parseResult: request illegal, response is null");
             int httpCode = httpResponse.getHttpCode();
             if (httpCode == 420 || httpCode == 499 || httpCode == 599) {
                 lastlocktime = System.currentTimeMillis();
                 NeedApiLock = true;
                 Handler handler = this.mHandler;
                 if (handler != null) {
-                    handler.post(new Runnable() { // from class: android.taobao.windvane.extra.jsbridge.WVServer.2
-                        @Override // java.lang.Runnable
-                        public void run() {
-                            Toast.makeText(((WVApiPlugin) WVServer.this).mContext, "哎呦喂，被挤爆啦，请稍后重试", 1).show();
-                        }
-                    });
+                    handler.post(new 2(this));
                 }
             } else if (httpCode >= 410 && httpCode <= 419) {
-                Map<String, String> headers = httpResponse.getHeaders();
-                String str = (headers == null || !headers.containsKey(HttpConnector.REDIRECT_LOCATION)) ? "http://h5.m.taobao.com/" : headers.get(HttpConnector.REDIRECT_LOCATION);
+                Map headers = httpResponse.getHeaders();
+                String str = (headers == null || !headers.containsKey("location")) ? "http://h5.m.taobao.com/" : (String) headers.get("location");
                 Intent intent = new Intent();
                 intent.setData(Uri.parse(str));
-                intent.setPackage(this.mContext.getPackageName());
+                intent.setPackage(((WVApiPlugin) this).mContext.getPackageName());
                 try {
-                    this.mContext.startActivity(intent);
+                    ((WVApiPlugin) this).mContext.startActivity(intent);
                     Handler handler2 = this.mHandler;
                     if (handler2 != null) {
-                        handler2.post(new Runnable() { // from class: android.taobao.windvane.extra.jsbridge.WVServer.3
-                            @Override // java.lang.Runnable
-                            public void run() {
-                                Toast.makeText(((WVApiPlugin) WVServer.this).mContext, " 哎呦喂，被挤爆啦，请稍后重试", 1).show();
-                            }
-                        });
+                        handler2.post(new 3(this));
                     }
                 } catch (Exception unused) {
                 }
@@ -202,12 +190,12 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
         try {
             String str2 = new String(httpResponse.getData(), "utf-8");
             if (TaoLog.getLogStatus()) {
-                TaoLog.m18d("WVServer", "parseResult: content=" + str2);
+                TaoLog.d("WVServer", "parseResult: content=" + str2);
             }
             try {
                 JSONObject jSONObject = new JSONObject(str2);
                 jSONObject.put("code", String.valueOf(httpResponse.getHttpCode()));
-                JSONArray jSONArray = jSONObject.getJSONArray(ApiConstants.RET);
+                JSONArray jSONArray = jSONObject.getJSONArray("ret");
                 int length = jSONArray.length();
                 int i = 0;
                 while (true) {
@@ -232,7 +220,7 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
                 mtopResult.setData(jSONObject);
                 callResult(mtopResult);
             } catch (Exception unused2) {
-                TaoLog.m21e("WVServer", "parseResult mtop response parse fail, content: " + str2);
+                TaoLog.e("WVServer", "parseResult mtop response parse fail, content: " + str2);
                 callResult(mtopResult);
             }
         } catch (UnsupportedEncodingException e) {
@@ -244,12 +232,12 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
     /* JADX INFO: Access modifiers changed from: private */
     public HttpRequest wrapRequest(ServerParams serverParams) {
         ApiRequest apiRequest = new ApiRequest();
-        apiRequest.addParam(ApiConstants.API, serverParams.api);
-        apiRequest.addParam(ApiConstants.f5V, serverParams.f10v);
+        apiRequest.addParam("api", serverParams.api);
+        apiRequest.addParam("v", serverParams.v);
         WVIAdapter wVIAdapter = WindVaneSDKForTB.wvAdapter;
         String str = null;
         if (wVIAdapter == null) {
-            TaoLog.m30w("WVServer", "wrapRequest wvAdapter is not exist.");
+            TaoLog.w("WVServer", "wrapRequest wvAdapter is not exist.");
             if (serverParams.ecode) {
                 this.mHandler.sendEmptyMessage(510);
                 return null;
@@ -259,16 +247,16 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
             Map<String, String> loginInfo = wVIAdapter.getLoginInfo(this.mHandler);
             if (serverParams.ecode) {
                 if (loginInfo == null) {
-                    TaoLog.m30w("WVServer", "wrapRequest loginInfo is null.");
+                    TaoLog.w("WVServer", "wrapRequest loginInfo is null.");
                 } else {
-                    apiRequest.addParam(ApiConstants.SID, loginInfo.get(ApiConstants.SID));
-                    apiRequest.addParam(ApiConstants.ECODE, loginInfo.get(ApiConstants.ECODE));
+                    apiRequest.addParam("sid", loginInfo.get("sid"));
+                    apiRequest.addParam("ecode", loginInfo.get("ecode"));
                     if (TaoLog.getLogStatus()) {
-                        TaoLog.m18d("WVServer", "login info, sid: " + loginInfo.get(ApiConstants.SID) + " ecode: " + loginInfo.get(ApiConstants.ECODE));
+                        TaoLog.d("WVServer", "login info, sid: " + loginInfo.get("sid") + " ecode: " + loginInfo.get("ecode"));
                     }
                 }
             } else if (loginInfo != null) {
-                apiRequest.addParam(ApiConstants.SID, loginInfo.get(ApiConstants.SID));
+                apiRequest.addParam("sid", loginInfo.get("sid"));
             }
         }
         apiRequest.addDataParams(serverParams.getData());
@@ -294,7 +282,6 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
         return httpRequest;
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         try {
             AppMonitorUtil.commitOffMonitor(wVCallBackContext.getWebview().getUrl(), "WVServer:" + str2, "101");
@@ -304,16 +291,12 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
             long currentTimeMillis = System.currentTimeMillis();
             if (currentTimeMillis - notiTime > 3600000) {
                 notiTime = currentTimeMillis;
-                if (this.mContext instanceof Activity) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this.mContext);
+                if (((WVApiPlugin) this).mContext instanceof Activity) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(((WVApiPlugin) this).mContext);
                     builder.setMessage("因安全原因，lib-mtop.js 需升级至1.5.0以上，WVServer接口已废弃，请使用MtopWVPlugin。 详询 ：益零");
                     builder.setTitle("警告(仅debug版本会弹出)");
                     builder.setCancelable(true);
-                    builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() { // from class: android.taobao.windvane.extra.jsbridge.WVServer.1
-                        @Override // android.content.DialogInterface.OnClickListener
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                        }
-                    });
+                    builder.setPositiveButton(R.string.ok, (DialogInterface.OnClickListener) new 1(this));
                     builder.create();
                     builder.show();
                 }
@@ -322,8 +305,8 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
         if (!"send".equals(str)) {
             return false;
         }
-        if (NeedApiLock && System.currentTimeMillis() - lastlocktime < CoroutineLiveDataKt.DEFAULT_TIMEOUT) {
-            Toast.makeText(this.mContext, "哎呦喂，被挤爆啦，请稍后重试", 1).show();
+        if (NeedApiLock && System.currentTimeMillis() - lastlocktime < 5000) {
+            Toast.makeText(((WVApiPlugin) this).mContext, "哎呦喂，被挤爆啦，请稍后重试", 1).show();
             return true;
         }
         NeedApiLock = false;
@@ -337,13 +320,13 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
         if (i == 0) {
             if (this.isUserLogin) {
                 MtopResult mtopResult = new MtopResult();
-                mtopResult.addData(ApiConstants.RET, new JSONArray().put(ApiResponse.ERR_SID_INVALID));
+                mtopResult.addData("ret", new JSONArray().put(ApiResponse.ERR_SID_INVALID));
                 Object obj = this.jsContext;
                 if (obj instanceof WVCallBackContext) {
                     ((WVCallBackContext) obj).error(mtopResult.toString());
                 }
                 if (TaoLog.getLogStatus()) {
-                    TaoLog.m18d("WVServer", "login fail, call result, " + mtopResult.toString());
+                    TaoLog.d("WVServer", "login fail, call result, " + mtopResult.toString());
                 }
                 this.isUserLogin = false;
             }
@@ -355,7 +338,7 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
             this.isUserLogin = false;
             this.singleExecutor.execute(new ServerRequestTask(this.jsContext, this.mParams));
             if (TaoLog.getLogStatus()) {
-                TaoLog.m18d("WVServer", "login success, execute task, mParams:" + this.mParams);
+                TaoLog.d("WVServer", "login success, execute task, mParams:" + this.mParams);
             }
             return true;
         }
@@ -364,14 +347,14 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
                 return false;
             }
             MtopResult mtopResult2 = new MtopResult();
-            mtopResult2.addData(ApiConstants.RET, new JSONArray().put(WVResult.FAIL));
+            mtopResult2.addData("ret", new JSONArray().put(WVResult.FAIL));
             mtopResult2.addData("code", "-1");
             Object obj2 = this.jsContext;
             if (obj2 instanceof WVCallBackContext) {
                 ((WVCallBackContext) obj2).error(mtopResult2.toString());
             }
             if (TaoLog.getLogStatus()) {
-                TaoLog.m18d("WVServer", "not reg login, call fail, " + mtopResult2.toString());
+                TaoLog.d("WVServer", "not reg login, call fail, " + mtopResult2.toString());
             }
             notifyNext();
             return true;
@@ -387,7 +370,7 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
                 ((WVCallBackContext) mtopResult3.getJsContext()).error(mtopResult3.toString());
             }
             if (TaoLog.getLogStatus()) {
-                TaoLog.m18d("WVServer", "call result, retString: " + mtopResult3.toString());
+                TaoLog.d("WVServer", "call result, retString: " + mtopResult3.toString());
             }
         }
         notifyNext();
@@ -398,7 +381,6 @@ public class WVServer extends WVApiPlugin implements Handler.Callback {
         return this.needLock;
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void onDestroy() {
         this.lockQueue.clear();
         this.jsContext = null;

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.taobao.windvane.service.WVEventId;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,11 +15,12 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.appcompat.R;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class TooltipPopup {
     private static final String TAG = "TooltipPopup";
     private final View mContentView;
@@ -36,16 +38,16 @@ class TooltipPopup {
         this.mTmpAnchorPos = new int[2];
         this.mTmpAppPos = new int[2];
         this.mContext = context;
-        View inflate = LayoutInflater.from(context).inflate(C0257R.layout.abc_tooltip, (ViewGroup) null);
+        View inflate = LayoutInflater.from(context).inflate(R.layout.abc_tooltip, (ViewGroup) null);
         this.mContentView = inflate;
-        this.mMessageView = (TextView) inflate.findViewById(C0257R.id.message);
+        this.mMessageView = (TextView) inflate.findViewById(R.id.message);
         layoutParams.setTitle(getClass().getSimpleName());
         layoutParams.packageName = context.getPackageName();
-        layoutParams.type = 1002;
+        layoutParams.type = WVEventId.PAGE_Finished;
         layoutParams.width = -2;
         layoutParams.height = -2;
         layoutParams.format = -3;
-        layoutParams.windowAnimations = C0257R.style.Animation_AppCompat_Tooltip;
+        layoutParams.windowAnimations = R.style.Animation_AppCompat_Tooltip;
         layoutParams.flags = 24;
     }
 
@@ -53,12 +55,12 @@ class TooltipPopup {
         int height;
         int i3;
         layoutParams.token = view.getApplicationWindowToken();
-        int dimensionPixelOffset = this.mContext.getResources().getDimensionPixelOffset(C0257R.dimen.tooltip_precise_anchor_threshold);
+        int dimensionPixelOffset = this.mContext.getResources().getDimensionPixelOffset(R.dimen.tooltip_precise_anchor_threshold);
         if (view.getWidth() < dimensionPixelOffset) {
             i = view.getWidth() / 2;
         }
         if (view.getHeight() >= dimensionPixelOffset) {
-            int dimensionPixelOffset2 = this.mContext.getResources().getDimensionPixelOffset(C0257R.dimen.tooltip_precise_anchor_extra_offset);
+            int dimensionPixelOffset2 = this.mContext.getResources().getDimensionPixelOffset(R.dimen.tooltip_precise_anchor_extra_offset);
             height = i2 + dimensionPixelOffset2;
             i3 = i2 - dimensionPixelOffset2;
         } else {
@@ -66,7 +68,7 @@ class TooltipPopup {
             i3 = 0;
         }
         layoutParams.gravity = 49;
-        int dimensionPixelOffset3 = this.mContext.getResources().getDimensionPixelOffset(z ? C0257R.dimen.tooltip_y_offset_touch : C0257R.dimen.tooltip_y_offset_non_touch);
+        int dimensionPixelOffset3 = this.mContext.getResources().getDimensionPixelOffset(z ? R.dimen.tooltip_y_offset_touch : R.dimen.tooltip_y_offset_non_touch);
         View appRootView = getAppRootView(view);
         if (appRootView == null) {
             Log.e(TAG, "Cannot find app view");

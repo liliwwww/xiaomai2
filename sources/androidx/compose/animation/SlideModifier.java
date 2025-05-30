@@ -2,16 +2,17 @@ package androidx.compose.animation;
 
 import androidx.compose.animation.core.AnimationVector2D;
 import androidx.compose.animation.core.FiniteAnimationSpec;
-import androidx.compose.animation.core.SpringSpec;
 import androidx.compose.animation.core.Transition;
-import androidx.compose.p004ui.layout.Measurable;
-import androidx.compose.p004ui.layout.MeasureResult;
-import androidx.compose.p004ui.layout.MeasureScope;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntSize;
-import androidx.compose.p004ui.unit.IntSizeKt;
+import androidx.compose.animation.core.Transition$Segment;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.layout.Measurable;
+import androidx.compose.ui.layout.MeasureResult;
+import androidx.compose.ui.layout.MeasureScope;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntSize;
+import androidx.compose.ui.unit.IntSizeKt;
+import java.util.Map;
 import kotlin.NoWhenBranchMatchedException;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -19,7 +20,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class SlideModifier extends LayoutModifierWithPassThroughIntrinsics {
 
     @NotNull
@@ -32,7 +33,7 @@ final class SlideModifier extends LayoutModifierWithPassThroughIntrinsics {
     private final State<Slide> slideOut;
 
     @NotNull
-    private final Function1<Transition.Segment<EnterExitState>, FiniteAnimationSpec<IntOffset>> transitionSpec;
+    private final Function1<Transition$Segment<EnterExitState>, FiniteAnimationSpec<IntOffset>> transitionSpec;
 
     /* compiled from: Taobao */
     public /* synthetic */ class WhenMappings {
@@ -54,41 +55,7 @@ final class SlideModifier extends LayoutModifierWithPassThroughIntrinsics {
         this.lazyAnimation = deferredAnimation;
         this.slideIn = state;
         this.slideOut = state2;
-        this.transitionSpec = new Function1<Transition.Segment<EnterExitState>, FiniteAnimationSpec<IntOffset>>() { // from class: androidx.compose.animation.SlideModifier$transitionSpec$1
-            {
-                super(1);
-            }
-
-            @NotNull
-            public final FiniteAnimationSpec<IntOffset> invoke(@NotNull Transition.Segment<EnterExitState> segment) {
-                SpringSpec springSpec;
-                SpringSpec springSpec2;
-                FiniteAnimationSpec<IntOffset> animationSpec;
-                SpringSpec springSpec3;
-                FiniteAnimationSpec<IntOffset> animationSpec2;
-                Intrinsics.checkNotNullParameter(segment, "$this$null");
-                EnterExitState enterExitState = EnterExitState.PreEnter;
-                EnterExitState enterExitState2 = EnterExitState.Visible;
-                if (segment.isTransitioningTo(enterExitState, enterExitState2)) {
-                    Slide value = SlideModifier.this.getSlideIn().getValue();
-                    if (value != null && (animationSpec2 = value.getAnimationSpec()) != null) {
-                        return animationSpec2;
-                    }
-                    springSpec3 = EnterExitTransitionKt.DefaultOffsetAnimationSpec;
-                    return springSpec3;
-                }
-                if (!segment.isTransitioningTo(enterExitState2, EnterExitState.PostExit)) {
-                    springSpec = EnterExitTransitionKt.DefaultOffsetAnimationSpec;
-                    return springSpec;
-                }
-                Slide value2 = SlideModifier.this.getSlideOut().getValue();
-                if (value2 != null && (animationSpec = value2.getAnimationSpec()) != null) {
-                    return animationSpec;
-                }
-                springSpec2 = EnterExitTransitionKt.DefaultOffsetAnimationSpec;
-                return springSpec2;
-            }
-        };
+        this.transitionSpec = new transitionSpec.1(this);
     }
 
     @NotNull
@@ -107,19 +74,18 @@ final class SlideModifier extends LayoutModifierWithPassThroughIntrinsics {
     }
 
     @NotNull
-    public final Function1<Transition.Segment<EnterExitState>, FiniteAnimationSpec<IntOffset>> getTransitionSpec() {
+    public final Function1<Transition$Segment<EnterExitState>, FiniteAnimationSpec<IntOffset>> getTransitionSpec() {
         return this.transitionSpec;
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     @NotNull
-    /* renamed from: measure-3p2s80s */
-    public MeasureResult mo959measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull Measurable measurable, long j) {
+    /* renamed from: measure-3p2s80s, reason: not valid java name */
+    public MeasureResult m67measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull Measurable measurable, long j) {
         Intrinsics.checkNotNullParameter(measureScope, "$this$measure");
         Intrinsics.checkNotNullParameter(measurable, "measurable");
-        final Placeable mo4187measureBRTryo0 = measurable.mo4187measureBRTryo0(j);
-        final long IntSize = IntSizeKt.IntSize(mo4187measureBRTryo0.getWidth(), mo4187measureBRTryo0.getHeight());
-        return MeasureScope.CC.m140p(measureScope, mo4187measureBRTryo0.getWidth(), mo4187measureBRTryo0.getHeight(), null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.animation.SlideModifier$measure$1
+        final Placeable mo1521measureBRTryo0 = measurable.mo1521measureBRTryo0(j);
+        final long IntSize = IntSizeKt.IntSize(mo1521measureBRTryo0.getWidth(), mo1521measureBRTryo0.getHeight());
+        return MeasureScope.-CC.p(measureScope, mo1521measureBRTryo0.getWidth(), mo1521measureBRTryo0.getHeight(), (Map) null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.animation.SlideModifier$measure$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             {
                 super(1);
@@ -132,48 +98,29 @@ final class SlideModifier extends LayoutModifierWithPassThroughIntrinsics {
 
             public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
                 Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
-                Transition<EnterExitState>.DeferredAnimation<IntOffset, AnimationVector2D> lazyAnimation = SlideModifier.this.getLazyAnimation();
-                Function1<Transition.Segment<EnterExitState>, FiniteAnimationSpec<IntOffset>> transitionSpec = SlideModifier.this.getTransitionSpec();
-                final SlideModifier slideModifier = SlideModifier.this;
-                final long j2 = IntSize;
-                Placeable.PlacementScope.m4226placeWithLayeraW9wM$default(placementScope, mo4187measureBRTryo0, lazyAnimation.animate(transitionSpec, new Function1<EnterExitState, IntOffset>() { // from class: androidx.compose.animation.SlideModifier$measure$1$slideOffset$1
-                    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                    {
-                        super(1);
-                    }
-
-                    public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                        return IntOffset.m5325boximpl(m1030invokeBjo55l4((EnterExitState) obj));
-                    }
-
-                    /* renamed from: invoke-Bjo55l4, reason: not valid java name */
-                    public final long m1030invokeBjo55l4(@NotNull EnterExitState enterExitState) {
-                        Intrinsics.checkNotNullParameter(enterExitState, "it");
-                        return SlideModifier.this.m1029targetValueByStateoFUgxo0(enterExitState, j2);
-                    }
-                }).getValue().m5343unboximpl(), 0.0f, null, 6, null);
+                Placeable.PlacementScope.placeWithLayer-aW-9-wM$default(placementScope, mo1521measureBRTryo0, ((IntOffset) SlideModifier.this.getLazyAnimation().animate(SlideModifier.this.getTransitionSpec(), new slideOffset.1(SlideModifier.this, IntSize)).getValue()).unbox-impl(), 0.0f, (Function1) null, 6, (Object) null);
             }
-        }, 4, null);
+        }, 4, (Object) null);
     }
 
     /* renamed from: targetValueByState-oFUgxo0, reason: not valid java name */
-    public final long m1029targetValueByStateoFUgxo0(@NotNull EnterExitState enterExitState, long j) {
+    public final long m68targetValueByStateoFUgxo0(@NotNull EnterExitState enterExitState, long j) {
         Function1<IntSize, IntOffset> slideOffset;
         Function1<IntSize, IntOffset> slideOffset2;
         Intrinsics.checkNotNullParameter(enterExitState, "targetState");
-        Slide value = this.slideIn.getValue();
-        long m5344getZeronOccac = (value == null || (slideOffset2 = value.getSlideOffset()) == null) ? IntOffset.Companion.m5344getZeronOccac() : ((IntOffset) slideOffset2.invoke(IntSize.m5368boximpl(j))).m5343unboximpl();
-        Slide value2 = this.slideOut.getValue();
-        long m5344getZeronOccac2 = (value2 == null || (slideOffset = value2.getSlideOffset()) == null) ? IntOffset.Companion.m5344getZeronOccac() : ((IntOffset) slideOffset.invoke(IntSize.m5368boximpl(j))).m5343unboximpl();
+        Slide slide = (Slide) this.slideIn.getValue();
+        long j2 = (slide == null || (slideOffset2 = slide.getSlideOffset()) == null) ? IntOffset.Companion.getZero-nOcc-ac() : ((IntOffset) slideOffset2.invoke(IntSize.box-impl(j))).unbox-impl();
+        Slide slide2 = (Slide) this.slideOut.getValue();
+        long j3 = (slide2 == null || (slideOffset = slide2.getSlideOffset()) == null) ? IntOffset.Companion.getZero-nOcc-ac() : ((IntOffset) slideOffset.invoke(IntSize.box-impl(j))).unbox-impl();
         int i = WhenMappings.$EnumSwitchMapping$0[enterExitState.ordinal()];
         if (i == 1) {
-            return IntOffset.Companion.m5344getZeronOccac();
+            return IntOffset.Companion.getZero-nOcc-ac();
         }
         if (i == 2) {
-            return m5344getZeronOccac;
+            return j2;
         }
         if (i == 3) {
-            return m5344getZeronOccac2;
+            return j3;
         }
         throw new NoWhenBranchMatchedException();
     }

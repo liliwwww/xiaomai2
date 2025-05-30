@@ -1,7 +1,7 @@
 package androidx.renderscript;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Element extends BaseObj {
     int[] mArraySizes;
     String[] mElementNames;
@@ -15,8 +15,8 @@ public class Element extends BaseObj {
     int[] mVisibleElementMap;
 
     /* compiled from: Taobao */
-    /* renamed from: androidx.renderscript.Element$1 */
-    static /* synthetic */ class C12411 {
+    /* renamed from: androidx.renderscript.Element$1, reason: invalid class name */
+    static /* synthetic */ class AnonymousClass1 {
         static final /* synthetic */ int[] $SwitchMap$android$support$v8$renderscript$Element$DataKind;
         static final /* synthetic */ int[] $SwitchMap$android$support$v8$renderscript$Element$DataType;
 
@@ -295,8 +295,7 @@ public class Element extends BaseObj {
         return renderScript.mElement_LONG_4;
     }
 
-    /* renamed from: I8 */
-    public static Element m293I8(RenderScript renderScript) {
+    public static Element I8(RenderScript renderScript) {
         if (renderScript.mElement_I8 == null) {
             renderScript.mElement_I8 = createUser(renderScript, DataType.SIGNED_8);
         }
@@ -485,8 +484,7 @@ public class Element extends BaseObj {
         return renderScript.mElement_ULONG_4;
     }
 
-    /* renamed from: U8 */
-    public static Element m294U8(RenderScript renderScript) {
+    public static Element U8(RenderScript renderScript) {
         if (renderScript.mElement_U8 == null) {
             renderScript.mElement_U8 = createUser(renderScript, DataType.UNSIGNED_8);
         }
@@ -533,7 +531,7 @@ public class Element extends BaseObj {
         if (dataType == DataType.UNSIGNED_16 && dataKind != DataKind.PIXEL_DEPTH) {
             throw new RSIllegalArgumentException("Bad kind and type combo");
         }
-        int i = C12411.$SwitchMap$android$support$v8$renderscript$Element$DataKind[dataKind.ordinal()];
+        int i = AnonymousClass1.$SwitchMap$android$support$v8$renderscript$Element$DataKind[dataKind.ordinal()];
         int i2 = i != 1 ? i != 2 ? i != 3 ? 1 : 4 : 3 : 2;
         return new Element(renderScript.nElementCreate(dataType.mID, dataKind.mID, true, i2), renderScript, dataType, dataKind, true, i2);
     }
@@ -547,7 +545,7 @@ public class Element extends BaseObj {
         if (i < 2 || i > 4) {
             throw new RSIllegalArgumentException("Vector size out of range 2-4.");
         }
-        switch (C12411.$SwitchMap$android$support$v8$renderscript$Element$DataType[dataType.ordinal()]) {
+        switch (AnonymousClass1.$SwitchMap$android$support$v8$renderscript$Element$DataType[dataType.ordinal()]) {
             case 1:
             case 2:
             case 3:
@@ -681,50 +679,6 @@ public class Element extends BaseObj {
                 return true;
             }
             i++;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public enum DataType {
-        NONE(0, 0),
-        FLOAT_32(2, 4),
-        FLOAT_64(3, 8),
-        SIGNED_8(4, 1),
-        SIGNED_16(5, 2),
-        SIGNED_32(6, 4),
-        SIGNED_64(7, 8),
-        UNSIGNED_8(8, 1),
-        UNSIGNED_16(9, 2),
-        UNSIGNED_32(10, 4),
-        UNSIGNED_64(11, 8),
-        BOOLEAN(12, 1),
-        UNSIGNED_5_6_5(13, 2),
-        UNSIGNED_5_5_5_1(14, 2),
-        UNSIGNED_4_4_4_4(15, 2),
-        MATRIX_4X4(16, 64),
-        MATRIX_3X3(17, 36),
-        MATRIX_2X2(18, 16),
-        RS_ELEMENT(1000),
-        RS_TYPE(1001),
-        RS_ALLOCATION(1002),
-        RS_SAMPLER(1003),
-        RS_SCRIPT(1004);
-
-        int mID;
-        int mSize;
-
-        DataType(int i, int i2) {
-            this.mID = i;
-            this.mSize = i2;
-        }
-
-        DataType(int i) {
-            this.mID = i;
-            this.mSize = 4;
-            if (RenderScript.sPointerSize == 8) {
-                this.mSize = 32;
-            }
         }
     }
 

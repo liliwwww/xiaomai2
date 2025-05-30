@@ -1,7 +1,6 @@
 package android.support.v4.app;
 
 import android.app.Notification;
-import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
@@ -9,7 +8,7 @@ import android.os.Parcelable;
 import android.os.RemoteException;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface INotificationSideChannel extends IInterface {
     public static final String DESCRIPTOR = "android.support.v4.app.INotificationSideChannel";
 
@@ -30,112 +29,6 @@ public interface INotificationSideChannel extends IInterface {
 
         @Override // android.support.v4.app.INotificationSideChannel
         public void notify(String str, int i, String str2, Notification notification) throws RemoteException {
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static abstract class Stub extends Binder implements INotificationSideChannel {
-        static final int TRANSACTION_cancel = 2;
-        static final int TRANSACTION_cancelAll = 3;
-        static final int TRANSACTION_notify = 1;
-
-        /* compiled from: Taobao */
-        private static class Proxy implements INotificationSideChannel {
-            private IBinder mRemote;
-
-            Proxy(IBinder iBinder) {
-                this.mRemote = iBinder;
-            }
-
-            @Override // android.os.IInterface
-            public IBinder asBinder() {
-                return this.mRemote;
-            }
-
-            @Override // android.support.v4.app.INotificationSideChannel
-            public void cancel(String str, int i, String str2) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(INotificationSideChannel.DESCRIPTOR);
-                    obtain.writeString(str);
-                    obtain.writeInt(i);
-                    obtain.writeString(str2);
-                    this.mRemote.transact(2, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            @Override // android.support.v4.app.INotificationSideChannel
-            public void cancelAll(String str) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(INotificationSideChannel.DESCRIPTOR);
-                    obtain.writeString(str);
-                    this.mRemote.transact(3, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            public String getInterfaceDescriptor() {
-                return INotificationSideChannel.DESCRIPTOR;
-            }
-
-            @Override // android.support.v4.app.INotificationSideChannel
-            public void notify(String str, int i, String str2, Notification notification) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(INotificationSideChannel.DESCRIPTOR);
-                    obtain.writeString(str);
-                    obtain.writeInt(i);
-                    obtain.writeString(str2);
-                    _Parcel.writeTypedObject(obtain, notification, 0);
-                    this.mRemote.transact(1, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-        }
-
-        public Stub() {
-            attachInterface(this, INotificationSideChannel.DESCRIPTOR);
-        }
-
-        public static INotificationSideChannel asInterface(IBinder iBinder) {
-            if (iBinder == null) {
-                return null;
-            }
-            IInterface queryLocalInterface = iBinder.queryLocalInterface(INotificationSideChannel.DESCRIPTOR);
-            return (queryLocalInterface == null || !(queryLocalInterface instanceof INotificationSideChannel)) ? new Proxy(iBinder) : (INotificationSideChannel) queryLocalInterface;
-        }
-
-        @Override // android.os.IInterface
-        public IBinder asBinder() {
-            return this;
-        }
-
-        @Override // android.os.Binder
-        public boolean onTransact(int i, Parcel parcel, Parcel parcel2, int i2) throws RemoteException {
-            if (i >= 1 && i <= 16777215) {
-                parcel.enforceInterface(INotificationSideChannel.DESCRIPTOR);
-            }
-            if (i == 1598968902) {
-                parcel2.writeString(INotificationSideChannel.DESCRIPTOR);
-                return true;
-            }
-            if (i == 1) {
-                notify(parcel.readString(), parcel.readInt(), parcel.readString(), (Notification) _Parcel.readTypedObject(parcel, Notification.CREATOR));
-            } else if (i == 2) {
-                cancel(parcel.readString(), parcel.readInt(), parcel.readString());
-            } else {
-                if (i != 3) {
-                    return super.onTransact(i, parcel, parcel2, i2);
-                }
-                cancelAll(parcel.readString());
-            }
-            return true;
         }
     }
 

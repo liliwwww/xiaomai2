@@ -10,17 +10,8 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 @Repeatable(Entries.class)
 @Retention(RetentionPolicy.CLASS)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public @interface DeleteColumn {
-
-    /* compiled from: Taobao */
-    @Target({ElementType.TYPE})
-    @Retention(RetentionPolicy.CLASS)
-    /* loaded from: classes.dex */
-    public @interface Entries {
-        DeleteColumn[] value();
-    }
-
     String columnName();
 
     String tableName();

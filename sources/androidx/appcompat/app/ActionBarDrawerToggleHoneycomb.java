@@ -1,6 +1,7 @@
 package androidx.appcompat.app;
 
 import android.R;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -12,7 +13,7 @@ import android.widget.ImageView;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class ActionBarDrawerToggleHoneycomb {
     private static final String TAG = "ActionBarDrawerToggleHC";
     private static final int[] THEME_ATTRS = {R.attr.homeAsUpIndicator};
@@ -25,8 +26,8 @@ class ActionBarDrawerToggleHoneycomb {
 
         SetIndicatorInfo(Activity activity) {
             try {
-                this.setHomeAsUpIndicator = android.app.ActionBar.class.getDeclaredMethod("setHomeAsUpIndicator", Drawable.class);
-                this.setHomeActionContentDescription = android.app.ActionBar.class.getDeclaredMethod("setHomeActionContentDescription", Integer.TYPE);
+                this.setHomeAsUpIndicator = ActionBar.class.getDeclaredMethod("setHomeAsUpIndicator", Drawable.class);
+                this.setHomeActionContentDescription = ActionBar.class.getDeclaredMethod("setHomeActionContentDescription", Integer.TYPE);
             } catch (NoSuchMethodException unused) {
                 View findViewById = activity.findViewById(R.id.home);
                 if (findViewById == null) {
@@ -61,7 +62,7 @@ class ActionBarDrawerToggleHoneycomb {
         }
         if (setIndicatorInfo.setHomeAsUpIndicator != null) {
             try {
-                android.app.ActionBar actionBar = activity.getActionBar();
+                ActionBar actionBar = activity.getActionBar();
                 setIndicatorInfo.setHomeActionContentDescription.invoke(actionBar, Integer.valueOf(i));
                 if (Build.VERSION.SDK_INT <= 19) {
                     actionBar.setSubtitle(actionBar.getSubtitle());
@@ -77,7 +78,7 @@ class ActionBarDrawerToggleHoneycomb {
         SetIndicatorInfo setIndicatorInfo = new SetIndicatorInfo(activity);
         if (setIndicatorInfo.setHomeAsUpIndicator != null) {
             try {
-                android.app.ActionBar actionBar = activity.getActionBar();
+                ActionBar actionBar = activity.getActionBar();
                 setIndicatorInfo.setHomeAsUpIndicator.invoke(actionBar, drawable);
                 setIndicatorInfo.setHomeActionContentDescription.invoke(actionBar, Integer.valueOf(i));
             } catch (Exception e) {

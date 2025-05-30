@@ -9,7 +9,7 @@ import tb.u8;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class DecayAnimation<T, V extends AnimationVector> implements Animation<T, V> {
     public static final int $stable = 0;
 
@@ -53,7 +53,6 @@ public final class DecayAnimation<T, V extends AnimationVector> implements Anima
         }
     }
 
-    @Override // androidx.compose.animation.core.Animation
     public long getDurationNanos() {
         return this.durationNanos;
     }
@@ -67,34 +66,28 @@ public final class DecayAnimation<T, V extends AnimationVector> implements Anima
         return this.initialVelocityVector;
     }
 
-    @Override // androidx.compose.animation.core.Animation
     public T getTargetValue() {
         return this.targetValue;
     }
 
-    @Override // androidx.compose.animation.core.Animation
     @NotNull
     public TwoWayConverter<T, V> getTypeConverter() {
         return this.typeConverter;
     }
 
-    @Override // androidx.compose.animation.core.Animation
     public T getValueFromNanos(long j) {
         return !isFinishedFromNanos(j) ? (T) getTypeConverter().getConvertFromVector().invoke(this.animationSpec.getValueFromNanos(j, this.initialValueVector, this.initialVelocityVector)) : getTargetValue();
     }
 
-    @Override // androidx.compose.animation.core.Animation
     @NotNull
     public V getVelocityVectorFromNanos(long j) {
         return !isFinishedFromNanos(j) ? this.animationSpec.getVelocityFromNanos(j, this.initialValueVector, this.initialVelocityVector) : this.endVelocity;
     }
 
-    @Override // androidx.compose.animation.core.Animation
     public /* synthetic */ boolean isFinishedFromNanos(long j) {
         return u8.a(this, j);
     }
 
-    @Override // androidx.compose.animation.core.Animation
     public boolean isInfinite() {
         return this.isInfinite;
     }
@@ -109,7 +102,7 @@ public final class DecayAnimation<T, V extends AnimationVector> implements Anima
 
     /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
     public DecayAnimation(@NotNull DecayAnimationSpec<T> decayAnimationSpec, @NotNull TwoWayConverter<T, V> twoWayConverter, T t, T t2) {
-        this(decayAnimationSpec.vectorize(twoWayConverter), twoWayConverter, t, (AnimationVector) twoWayConverter.getConvertToVector().invoke(t2));
+        this((VectorizedDecayAnimationSpec<AnimationVector>) decayAnimationSpec.vectorize(twoWayConverter), twoWayConverter, t, (AnimationVector) twoWayConverter.getConvertToVector().invoke(t2));
         Intrinsics.checkNotNullParameter(decayAnimationSpec, "animationSpec");
         Intrinsics.checkNotNullParameter(twoWayConverter, "typeConverter");
     }

@@ -3,7 +3,7 @@ package androidx.constraintlayout.motion.widget;
 import androidx.constraintlayout.motion.widget.MotionLayout;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class TransitionAdapter implements MotionLayout.TransitionListener {
     @Override // androidx.constraintlayout.motion.widget.MotionLayout.TransitionListener
     public void onTransitionChange(MotionLayout motionLayout, int i, int i2, float f) {

@@ -7,23 +7,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class ActivityResultContract<I, O> {
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class SynchronousResult<T> {
-        private final T value;
-
-        public SynchronousResult(T t) {
-            this.value = t;
-        }
-
-        public final T getValue() {
-            return this.value;
-        }
-    }
-
     @NotNull
     public abstract Intent createIntent(@NotNull Context context, I i);
 

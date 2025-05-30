@@ -1,11 +1,11 @@
 package androidx.compose.foundation.layout;
 
 import androidx.compose.foundation.layout.WindowInsets;
-import androidx.compose.p004ui.C0756R;
-import androidx.compose.p004ui.platform.ComposeView;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
+import androidx.compose.ui.R$id;
+import androidx.compose.ui.platform.ComposeView;
 import androidx.core.graphics.Insets;
 import kotlin.jvm.JvmName;
 import kotlin.jvm.internal.Intrinsics;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class WindowInsets_androidKt {
     @NotNull
     public static final ValueInsets ValueInsets(@NotNull Insets insets, @NotNull String str) {
@@ -126,7 +126,7 @@ public final class WindowInsets_androidKt {
 
     public static final boolean getConsumeWindowInsets(@NotNull ComposeView composeView) {
         Intrinsics.checkNotNullParameter(composeView, "<this>");
-        Object tag = composeView.getTag(C0756R.id.consume_window_insets_tag);
+        Object tag = composeView.getTag(R$id.consume_window_insets_tag);
         Boolean bool = tag instanceof Boolean ? (Boolean) tag : null;
         if (bool != null) {
             return bool.booleanValue();
@@ -535,7 +535,7 @@ public final class WindowInsets_androidKt {
 
     public static final void setConsumeWindowInsets(@NotNull ComposeView composeView, boolean z) {
         Intrinsics.checkNotNullParameter(composeView, "<this>");
-        composeView.setTag(C0756R.id.consume_window_insets_tag, Boolean.valueOf(z));
+        composeView.setTag(R$id.consume_window_insets_tag, Boolean.valueOf(z));
     }
 
     @NotNull

@@ -3,7 +3,7 @@ package androidx.constraintlayout.core.parser;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class CLObject extends CLContainer implements Iterable<CLKey> {
 
     /* compiled from: Taobao */
@@ -22,7 +22,7 @@ public class CLObject extends CLContainer implements Iterable<CLKey> {
 
         @Override // java.util.Iterator
         public Object next() {
-            CLKey cLKey = (CLKey) this.myObject.mElements.get(this.index);
+            CLKey cLKey = this.myObject.mElements.get(this.index);
             this.index++;
             return cLKey;
         }

@@ -9,39 +9,14 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class NavUtils {
     public static final String PARENT_ACTIVITY = "android.support.PARENT_ACTIVITY";
     private static final String TAG = "NavUtils";
-
-    /* compiled from: Taobao */
-    @RequiresApi(16)
-    /* loaded from: classes2.dex */
-    static class Api16Impl {
-        private Api16Impl() {
-        }
-
-        @DoNotInline
-        static Intent getParentActivityIntent(Activity activity) {
-            return activity.getParentActivityIntent();
-        }
-
-        @DoNotInline
-        static boolean navigateUpTo(Activity activity, Intent intent) {
-            return activity.navigateUpTo(intent);
-        }
-
-        @DoNotInline
-        static boolean shouldUpRecreateTask(Activity activity, Intent intent) {
-            return activity.shouldUpRecreateTask(intent);
-        }
-    }
 
     private NavUtils() {
     }

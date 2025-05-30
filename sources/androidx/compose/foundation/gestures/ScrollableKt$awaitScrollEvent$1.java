@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.ScrollableKt", f = "Scrollable.kt", i = {0}, l = {321}, m = "awaitScrollEvent", n = {"$this$awaitScrollEvent"}, s = {"L$0"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class ScrollableKt$awaitScrollEvent$1 extends ContinuationImpl {
     Object L$0;
     int label;

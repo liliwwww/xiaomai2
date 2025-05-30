@@ -8,10 +8,10 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
-import androidx.constraintlayout.widget.C0923R;
+import androidx.constraintlayout.widget.R$styleable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class MockView extends View {
     private int mDiagonalsColor;
     private boolean mDrawDiagonals;
@@ -43,21 +43,21 @@ public class MockView extends View {
 
     private void init(Context context, AttributeSet attributeSet) {
         if (attributeSet != null) {
-            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0923R.styleable.MockView);
+            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, R$styleable.MockView);
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
                 int index = obtainStyledAttributes.getIndex(i);
-                if (index == C0923R.styleable.MockView_mock_label) {
+                if (index == R$styleable.MockView_mock_label) {
                     this.mText = obtainStyledAttributes.getString(index);
-                } else if (index == C0923R.styleable.MockView_mock_showDiagonals) {
+                } else if (index == R$styleable.MockView_mock_showDiagonals) {
                     this.mDrawDiagonals = obtainStyledAttributes.getBoolean(index, this.mDrawDiagonals);
-                } else if (index == C0923R.styleable.MockView_mock_diagonalsColor) {
+                } else if (index == R$styleable.MockView_mock_diagonalsColor) {
                     this.mDiagonalsColor = obtainStyledAttributes.getColor(index, this.mDiagonalsColor);
-                } else if (index == C0923R.styleable.MockView_mock_labelBackgroundColor) {
+                } else if (index == R$styleable.MockView_mock_labelBackgroundColor) {
                     this.mTextBackgroundColor = obtainStyledAttributes.getColor(index, this.mTextBackgroundColor);
-                } else if (index == C0923R.styleable.MockView_mock_labelColor) {
+                } else if (index == R$styleable.MockView_mock_labelColor) {
                     this.mTextColor = obtainStyledAttributes.getColor(index, this.mTextColor);
-                } else if (index == C0923R.styleable.MockView_mock_showLabel) {
+                } else if (index == R$styleable.MockView_mock_showLabel) {
                     this.mDrawLabel = obtainStyledAttributes.getBoolean(index, this.mDrawLabel);
                 }
             }

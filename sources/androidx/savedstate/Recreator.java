@@ -9,14 +9,12 @@ import androidx.savedstate.SavedStateRegistry;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class Recreator implements LifecycleEventObserver {
 
     @NotNull
@@ -38,33 +36,6 @@ public final class Recreator implements LifecycleEventObserver {
 
         public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
             this();
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class SavedStateProvider implements SavedStateRegistry.SavedStateProvider {
-
-        @NotNull
-        private final Set<String> classes;
-
-        public SavedStateProvider(@NotNull SavedStateRegistry savedStateRegistry) {
-            Intrinsics.checkNotNullParameter(savedStateRegistry, "registry");
-            this.classes = new LinkedHashSet();
-            savedStateRegistry.registerSavedStateProvider(Recreator.COMPONENT_KEY, this);
-        }
-
-        public final void add(@NotNull String str) {
-            Intrinsics.checkNotNullParameter(str, "className");
-            this.classes.add(str);
-        }
-
-        @Override // androidx.savedstate.SavedStateRegistry.SavedStateProvider
-        @NotNull
-        public Bundle saveState() {
-            Bundle bundle = new Bundle();
-            bundle.putStringArrayList(Recreator.CLASSES_KEY, new ArrayList<>(this.classes));
-            return bundle;
         }
     }
 

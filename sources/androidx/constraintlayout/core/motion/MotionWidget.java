@@ -1,14 +1,17 @@
 package androidx.constraintlayout.core.motion;
 
 import androidx.constraintlayout.core.motion.utils.TypedValues;
+import androidx.constraintlayout.core.motion.utils.TypedValues$Custom;
+import androidx.constraintlayout.core.motion.utils.TypedValues$MotionType;
 import androidx.constraintlayout.core.state.WidgetFrame;
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import java.util.Set;
+import okhttp3.internal.http.e;
 import tb.bq5;
 import tb.zp5;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MotionWidget implements TypedValues {
     public static final int FILL_PARENT = -1;
     public static final int GONE_UNSET = Integer.MIN_VALUE;
@@ -36,36 +39,6 @@ public class MotionWidget implements TypedValues {
     Motion motion;
     PropertySet propertySet;
     WidgetFrame widgetFrame;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static class Motion {
-        private static final int INTERPOLATOR_REFERENCE_ID = -2;
-        private static final int INTERPOLATOR_UNDEFINED = -3;
-        private static final int SPLINE_STRING = -1;
-        public int mAnimateRelativeTo = -1;
-        public int mAnimateCircleAngleTo = 0;
-        public String mTransitionEasing = null;
-        public int mPathMotionArc = -1;
-        public int mDrawPath = 0;
-        public float mMotionStagger = Float.NaN;
-        public int mPolarRelativeTo = -1;
-        public float mPathRotate = Float.NaN;
-        public float mQuantizeMotionPhase = Float.NaN;
-        public int mQuantizeMotionSteps = -1;
-        public String mQuantizeInterpolatorString = null;
-        public int mQuantizeInterpolatorType = -3;
-        public int mQuantizeInterpolatorID = -1;
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static class PropertySet {
-        public int visibility = 4;
-        public int mVisibilityMode = 0;
-        public float alpha = 1.0f;
-        public float mProgress = Float.NaN;
-    }
 
     public MotionWidget() {
         this.widgetFrame = new WidgetFrame();
@@ -98,7 +71,6 @@ public class MotionWidget implements TypedValues {
         return widgetFrame.bottom - widgetFrame.top;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public int getId(String str) {
         int a = zp5.a(str);
         return a != -1 ? a : bq5.a(str);
@@ -174,10 +146,10 @@ public class MotionWidget implements TypedValues {
                 return this.widgetFrame.translationY;
             case 306:
                 return this.widgetFrame.translationZ;
-            case 307:
+            case e.HTTP_TEMP_REDIRECT /* 307 */:
             default:
                 return Float.NaN;
-            case 308:
+            case e.HTTP_PERM_REDIRECT /* 308 */:
                 return this.widgetFrame.rotationX;
             case 309:
                 return this.widgetFrame.rotationY;
@@ -193,7 +165,7 @@ public class MotionWidget implements TypedValues {
                 return this.widgetFrame.pivotY;
             case 315:
                 return this.mProgress;
-            case TypedValues.AttributesType.TYPE_PATH_ROTATE /* 316 */:
+            case 316:
                 return this.mTransitionPathRotate;
         }
     }
@@ -239,7 +211,7 @@ public class MotionWidget implements TypedValues {
     }
 
     public void setInterpolatedValue(CustomAttribute customAttribute, float[] fArr) {
-        this.widgetFrame.setCustomAttribute(customAttribute.mName, TypedValues.Custom.TYPE_FLOAT, fArr[0]);
+        this.widgetFrame.setCustomAttribute(customAttribute.mName, TypedValues$Custom.TYPE_FLOAT, fArr[0]);
     }
 
     public void setPivotX(float f) {
@@ -282,12 +254,10 @@ public class MotionWidget implements TypedValues {
         this.widgetFrame.translationZ = f;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, int i2) {
         return setValueAttributes(i, i2);
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, boolean z) {
         return false;
     }
@@ -306,10 +276,10 @@ public class MotionWidget implements TypedValues {
             case 306:
                 this.widgetFrame.translationZ = f;
                 return true;
-            case 307:
+            case e.HTTP_TEMP_REDIRECT /* 307 */:
             default:
                 return false;
-            case 308:
+            case e.HTTP_PERM_REDIRECT /* 308 */:
                 this.widgetFrame.rotationX = f;
                 return true;
             case 309:
@@ -333,7 +303,7 @@ public class MotionWidget implements TypedValues {
             case 315:
                 this.mProgress = f;
                 return true;
-            case TypedValues.AttributesType.TYPE_PATH_ROTATE /* 316 */:
+            case 316:
                 this.mTransitionPathRotate = f;
                 return true;
         }
@@ -341,28 +311,28 @@ public class MotionWidget implements TypedValues {
 
     public boolean setValueMotion(int i, int i2) {
         switch (i) {
-            case TypedValues.MotionType.TYPE_ANIMATE_RELATIVE_TO /* 605 */:
+            case TypedValues$MotionType.TYPE_ANIMATE_RELATIVE_TO /* 605 */:
                 this.motion.mAnimateRelativeTo = i2;
                 return true;
-            case TypedValues.MotionType.TYPE_ANIMATE_CIRCLEANGLE_TO /* 606 */:
+            case TypedValues$MotionType.TYPE_ANIMATE_CIRCLEANGLE_TO /* 606 */:
                 this.motion.mAnimateCircleAngleTo = i2;
                 return true;
-            case TypedValues.MotionType.TYPE_PATHMOTION_ARC /* 607 */:
+            case TypedValues$MotionType.TYPE_PATHMOTION_ARC /* 607 */:
                 this.motion.mPathMotionArc = i2;
                 return true;
-            case TypedValues.MotionType.TYPE_DRAW_PATH /* 608 */:
+            case TypedValues$MotionType.TYPE_DRAW_PATH /* 608 */:
                 this.motion.mDrawPath = i2;
                 return true;
-            case TypedValues.MotionType.TYPE_POLAR_RELATIVETO /* 609 */:
+            case TypedValues$MotionType.TYPE_POLAR_RELATIVETO /* 609 */:
                 this.motion.mPolarRelativeTo = i2;
                 return true;
-            case TypedValues.MotionType.TYPE_QUANTIZE_MOTIONSTEPS /* 610 */:
+            case TypedValues$MotionType.TYPE_QUANTIZE_MOTIONSTEPS /* 610 */:
                 this.motion.mQuantizeMotionSteps = i2;
                 return true;
-            case TypedValues.MotionType.TYPE_QUANTIZE_INTERPOLATOR_TYPE /* 611 */:
+            case TypedValues$MotionType.TYPE_QUANTIZE_INTERPOLATOR_TYPE /* 611 */:
                 this.motion.mQuantizeInterpolatorType = i2;
                 return true;
-            case TypedValues.MotionType.TYPE_QUANTIZE_INTERPOLATOR_ID /* 612 */:
+            case TypedValues$MotionType.TYPE_QUANTIZE_INTERPOLATOR_ID /* 612 */:
                 this.motion.mQuantizeInterpolatorID = i2;
                 return true;
             default:
@@ -382,7 +352,6 @@ public class MotionWidget implements TypedValues {
         this.widgetFrame.setCustomAttribute(str, i, i2);
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, float f) {
         if (setValueAttributes(i, f)) {
             return true;
@@ -398,7 +367,6 @@ public class MotionWidget implements TypedValues {
         this.widgetFrame.setCustomAttribute(str, i, str2);
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, String str) {
         return setValueMotion(i, str);
     }
@@ -427,10 +395,10 @@ public class MotionWidget implements TypedValues {
             case 600:
                 this.motion.mMotionStagger = f;
                 return true;
-            case 601:
+            case TypedValues$MotionType.TYPE_PATH_ROTATE /* 601 */:
                 this.motion.mPathRotate = f;
                 return true;
-            case TypedValues.MotionType.TYPE_QUANTIZE_MOTION_PHASE /* 602 */:
+            case TypedValues$MotionType.TYPE_QUANTIZE_MOTION_PHASE /* 602 */:
                 this.motion.mQuantizeMotionPhase = f;
                 return true;
             default:

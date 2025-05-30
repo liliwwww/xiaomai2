@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LocationCompat {
     public static final String EXTRA_BEARING_ACCURACY = "bearingAccuracy";
     public static final String EXTRA_IS_MOCK = "mockLocation";
@@ -36,19 +36,6 @@ public final class LocationCompat {
         @DoNotInline
         static long getElapsedRealtimeNanos(Location location) {
             return location.getElapsedRealtimeNanos();
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(18)
-    /* loaded from: classes.dex */
-    private static class Api18Impl {
-        private Api18Impl() {
-        }
-
-        @DoNotInline
-        static boolean isMock(Location location) {
-            return location.isFromMockProvider();
         }
     }
 

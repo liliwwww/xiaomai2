@@ -1,16 +1,17 @@
 package androidx.compose.foundation.lazy;
 
-import androidx.compose.p004ui.layout.PinnableContainer;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.snapshots.Snapshot;
+import androidx.compose.ui.layout.PinnableContainer;
 import kotlin.Unit;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class LazyListPinnableItem implements LazyListPinnedItem, PinnableContainer.PinnedHandle, PinnableContainer {
 
     @NotNull
@@ -31,17 +32,16 @@ final class LazyListPinnableItem implements LazyListPinnedItem, PinnableContaine
     public LazyListPinnableItem(@NotNull LazyListState lazyListState) {
         Intrinsics.checkNotNullParameter(lazyListState, "state");
         this.state = lazyListState;
-        this.index$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(-1, null, 2, null);
-        this.pinsCount$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(0, null, 2, null);
-        this.parentHandle$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
-        this._parentPinnableContainer$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
+        this.index$delegate = SnapshotStateKt.mutableStateOf$default(-1, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.pinsCount$delegate = SnapshotStateKt.mutableStateOf$default(0, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.parentHandle$delegate = SnapshotStateKt.mutableStateOf$default((Object) null, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this._parentPinnableContainer$delegate = SnapshotStateKt.mutableStateOf$default((Object) null, (SnapshotMutationPolicy) null, 2, (Object) null);
     }
 
     private final PinnableContainer.PinnedHandle getParentHandle() {
         return (PinnableContainer.PinnedHandle) this.parentHandle$delegate.getValue();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     private final int getPinsCount() {
         return ((Number) this.pinsCount$delegate.getValue()).intValue();
     }
@@ -62,8 +62,6 @@ final class LazyListPinnableItem implements LazyListPinnedItem, PinnableContaine
         this._parentPinnableContainer$delegate.setValue(pinnableContainer);
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    @Override // androidx.compose.foundation.lazy.LazyListPinnedItem
     public int getIndex() {
         return ((Number) this.index$delegate.getValue()).intValue();
     }
@@ -80,7 +78,6 @@ final class LazyListPinnableItem implements LazyListPinnedItem, PinnableContaine
         }
     }
 
-    @Override // androidx.compose.p004ui.layout.PinnableContainer
     @NotNull
     public PinnableContainer.PinnedHandle pin() {
         if (getPinsCount() == 0) {
@@ -120,7 +117,6 @@ final class LazyListPinnableItem implements LazyListPinnedItem, PinnableContaine
         }
     }
 
-    @Override // androidx.compose.ui.layout.PinnableContainer.PinnedHandle
     public void unpin() {
         if (!(getPinsCount() > 0)) {
             throw new IllegalStateException("Unpin should only be called once".toString());

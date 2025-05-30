@@ -4,23 +4,22 @@ import android.graphics.Rect;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import androidx.constraintlayout.motion.widget.ViewTransition;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.constraintlayout.widget.SharedValues;
+import androidx.constraintlayout.widget.SharedValues$SharedValuesListener;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ViewTransitionController {
-    ArrayList<ViewTransition.Animate> animations;
+    ArrayList<ViewTransition$Animate> animations;
     private final MotionLayout mMotionLayout;
     private HashSet<View> mRelatedViews;
     private ArrayList<ViewTransition> viewTransitions = new ArrayList<>();
     private String TAG = "ViewTransitionController";
-    ArrayList<ViewTransition.Animate> removeList = new ArrayList<>();
+    ArrayList<ViewTransition$Animate> removeList = new ArrayList<>();
 
     public ViewTransitionController(MotionLayout motionLayout) {
         this.mMotionLayout = motionLayout;
@@ -29,8 +28,8 @@ public class ViewTransitionController {
     private void listenForSharedVariable(final ViewTransition viewTransition, final boolean z) {
         final int sharedValueID = viewTransition.getSharedValueID();
         final int sharedValue = viewTransition.getSharedValue();
-        ConstraintLayout.getSharedValues().addListener(viewTransition.getSharedValueID(), new SharedValues.SharedValuesListener() { // from class: androidx.constraintlayout.motion.widget.ViewTransitionController.1
-            @Override // androidx.constraintlayout.widget.SharedValues.SharedValuesListener
+        ConstraintLayout.getSharedValues().addListener(viewTransition.getSharedValueID(), new SharedValues$SharedValuesListener() { // from class: androidx.constraintlayout.motion.widget.ViewTransitionController.1
+            @Override // androidx.constraintlayout.widget.SharedValues$SharedValuesListener
             public void onNewValue(int i, int i2, int i3) {
                 int sharedValueCurrent = viewTransition.getSharedValueCurrent();
                 viewTransition.setSharedValueCurrent(i2);
@@ -47,7 +46,7 @@ public class ViewTransitionController {
                                 ConstraintSet constraintSet = ViewTransitionController.this.mMotionLayout.getConstraintSet(currentState);
                                 ViewTransition viewTransition2 = viewTransition;
                                 ViewTransitionController viewTransitionController = ViewTransitionController.this;
-                                viewTransition2.applyTransition(viewTransitionController, viewTransitionController.mMotionLayout, currentState, constraintSet, childAt);
+                                viewTransition2.applyTransition(viewTransitionController, viewTransitionController.mMotionLayout, currentState, constraintSet, new View[]{childAt});
                             }
                         }
                         return;
@@ -63,7 +62,7 @@ public class ViewTransitionController {
                             ConstraintSet constraintSet2 = ViewTransitionController.this.mMotionLayout.getConstraintSet(currentState2);
                             ViewTransition viewTransition3 = viewTransition;
                             ViewTransitionController viewTransitionController2 = ViewTransitionController.this;
-                            viewTransition3.applyTransition(viewTransitionController2, viewTransitionController2.mMotionLayout, currentState2, constraintSet2, childAt2);
+                            viewTransition3.applyTransition(viewTransitionController2, viewTransitionController2.mMotionLayout, currentState2, constraintSet2, new View[]{childAt2});
                         }
                     }
                 }
@@ -74,7 +73,7 @@ public class ViewTransitionController {
     private void viewTransition(ViewTransition viewTransition, View... viewArr) {
         int currentState = this.mMotionLayout.getCurrentState();
         if (viewTransition.mViewTransitionMode == 2) {
-            viewTransition.applyTransition(this, this.mMotionLayout, currentState, null, viewArr);
+            viewTransition.applyTransition(this, this.mMotionLayout, currentState, (ConstraintSet) null, viewArr);
             return;
         }
         if (currentState != -1) {
@@ -98,19 +97,19 @@ public class ViewTransitionController {
         }
     }
 
-    void addAnimation(ViewTransition.Animate animate) {
+    void addAnimation(ViewTransition$Animate viewTransition$Animate) {
         if (this.animations == null) {
             this.animations = new ArrayList<>();
         }
-        this.animations.add(animate);
+        this.animations.add(viewTransition$Animate);
     }
 
     void animate() {
-        ArrayList<ViewTransition.Animate> arrayList = this.animations;
+        ArrayList<ViewTransition$Animate> arrayList = this.animations;
         if (arrayList == null) {
             return;
         }
-        Iterator<ViewTransition.Animate> it = arrayList.iterator();
+        Iterator<ViewTransition$Animate> it = arrayList.iterator();
         while (it.hasNext()) {
             it.next().mutate();
         }
@@ -179,8 +178,8 @@ public class ViewTransitionController {
         }
     }
 
-    void removeAnimation(ViewTransition.Animate animate) {
-        this.removeList.add(animate);
+    void removeAnimation(ViewTransition$Animate viewTransition$Animate) {
+        this.removeList.add(viewTransition$Animate);
     }
 
     void touchEvent(MotionEvent motionEvent) {
@@ -208,9 +207,9 @@ public class ViewTransitionController {
         float y = motionEvent.getY();
         Rect rect = new Rect();
         int action = motionEvent.getAction();
-        ArrayList<ViewTransition.Animate> arrayList = this.animations;
+        ArrayList<ViewTransition$Animate> arrayList = this.animations;
         if (arrayList != null && !arrayList.isEmpty()) {
-            Iterator<ViewTransition.Animate> it2 = this.animations.iterator();
+            Iterator<ViewTransition$Animate> it2 = this.animations.iterator();
             while (it2.hasNext()) {
                 it2.next().reactTo(action, x, y);
             }
@@ -228,7 +227,7 @@ public class ViewTransitionController {
                             next3.getHitRect(rect);
                             if (rect.contains((int) x, (int) y)) {
                                 viewTransition = next2;
-                                next2.applyTransition(this, this.mMotionLayout, currentState, constraintSet, next3);
+                                next2.applyTransition(this, this.mMotionLayout, currentState, constraintSet, new View[]{next3});
                             } else {
                                 viewTransition = next2;
                             }

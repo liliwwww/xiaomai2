@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.m11;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class BlockRunner<T> {
 
     @NotNull
@@ -39,7 +39,6 @@ public final class BlockRunner<T> {
     private final CoroutineScope scope;
     private final long timeoutInMs;
 
-    /* JADX WARN: Multi-variable type inference failed */
     public BlockRunner(@NotNull CoroutineLiveData<T> coroutineLiveData, @NotNull Function2<? super LiveDataScope<T>, ? super Continuation<? super Unit>, ? extends Object> function2, long j, @NotNull CoroutineScope coroutineScope, @NotNull Function0<Unit> function0) {
         Intrinsics.checkNotNullParameter(coroutineLiveData, "liveData");
         Intrinsics.checkNotNullParameter(function2, "block");

@@ -7,9 +7,10 @@ import androidx.collection.ArrayMap;
 import androidx.core.app.SharedElementCallback;
 import androidx.transition.FragmentTransitionSupport;
 import java.util.ArrayList;
+import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class FragmentTransition {
     static final FragmentTransitionImpl PLATFORM_IMPL;
     static final FragmentTransitionImpl SUPPORT_IMPL;
@@ -29,13 +30,13 @@ class FragmentTransition {
             ArrayList arrayList2 = new ArrayList();
             int size = arrayMap == null ? 0 : arrayMap.size();
             for (int i = 0; i < size; i++) {
-                arrayList2.add(arrayMap.keyAt(i));
-                arrayList.add(arrayMap.valueAt(i));
+                arrayList2.add((String) arrayMap.keyAt(i));
+                arrayList.add((View) arrayMap.valueAt(i));
             }
             if (z2) {
-                enterTransitionCallback.onSharedElementStart(arrayList2, arrayList, null);
+                enterTransitionCallback.onSharedElementStart(arrayList2, arrayList, (List) null);
             } else {
-                enterTransitionCallback.onSharedElementEnd(arrayList2, arrayList, null);
+                enterTransitionCallback.onSharedElementEnd(arrayList2, arrayList, (List) null);
             }
         }
     }
@@ -44,7 +45,7 @@ class FragmentTransition {
         int size = arrayMap.size();
         for (int i = 0; i < size; i++) {
             if (str.equals(arrayMap.valueAt(i))) {
-                return arrayMap.keyAt(i);
+                return (String) arrayMap.keyAt(i);
             }
         }
         return null;
@@ -60,7 +61,7 @@ class FragmentTransition {
 
     static void retainValues(@NonNull ArrayMap<String, String> arrayMap, @NonNull ArrayMap<String, View> arrayMap2) {
         for (int size = arrayMap.size() - 1; size >= 0; size--) {
-            if (!arrayMap2.containsKey(arrayMap.valueAt(size))) {
+            if (!arrayMap2.containsKey((String) arrayMap.valueAt(size))) {
                 arrayMap.removeAt(size);
             }
         }

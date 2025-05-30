@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
 @ExperimentalMaterialApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class PullRefreshState {
     public static final int $stable = 8;
 
@@ -45,6 +45,9 @@ public final class PullRefreshState {
     private final float threshold;
 
     public PullRefreshState(@NotNull CoroutineScope coroutineScope, @NotNull State<? extends Function0<Unit>> state, float f, float f2) {
+        MutableState mutableStateOf$default;
+        MutableState mutableStateOf$default2;
+        MutableState mutableStateOf$default3;
         Intrinsics.checkNotNullParameter(coroutineScope, "animationScope");
         Intrinsics.checkNotNullParameter(state, "onRefreshState");
         this.animationScope = coroutineScope;
@@ -58,16 +61,19 @@ public final class PullRefreshState {
 
             @NotNull
             /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Float m2363invoke() {
+            public final Float m889invoke() {
                 float distancePulled;
                 distancePulled = PullRefreshState.this.getDistancePulled();
                 return Float.valueOf(distancePulled * 0.5f);
             }
         });
-        this._refreshing$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
+        this._refreshing$delegate = mutableStateOf$default;
         Float valueOf = Float.valueOf(0.0f);
-        this._position$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(valueOf, null, 2, null);
-        this.distancePulled$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(valueOf, null, 2, null);
+        mutableStateOf$default2 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(valueOf, null, 2, null);
+        this._position$delegate = mutableStateOf$default2;
+        mutableStateOf$default3 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(valueOf, null, 2, null);
+        this.distancePulled$delegate = mutableStateOf$default3;
     }
 
     private final Job animateIndicatorTo(float f) {
@@ -89,18 +95,15 @@ public final class PullRefreshState {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    /* JADX WARN: Multi-variable type inference failed */
     public final float getDistancePulled() {
         return ((Number) this.distancePulled$delegate.getValue()).floatValue();
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    /* JADX WARN: Multi-variable type inference failed */
     public final float get_position() {
         return ((Number) this._position$delegate.getValue()).floatValue();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     private final boolean get_refreshing() {
         return ((Boolean) this._refreshing$delegate.getValue()).booleanValue();
     }

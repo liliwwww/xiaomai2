@@ -12,7 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
-import androidx.core.C0927R;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.core.R;
 import androidx.core.provider.FontRequest;
 import java.io.IOException;
 import java.lang.annotation.Retention;
@@ -24,8 +25,8 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class FontResourcesParserCompat {
     private static final int DEFAULT_TIMEOUT_MILLIS = 500;
     public static final int FETCH_STRATEGY_ASYNC = 1;
@@ -47,78 +48,8 @@ public class FontResourcesParserCompat {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public interface FamilyResourceEntry {
-    }
-
-    /* compiled from: Taobao */
     @Retention(RetentionPolicy.SOURCE)
     public @interface FetchStrategy {
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class FontFamilyFilesResourceEntry implements FamilyResourceEntry {
-
-        @NonNull
-        private final FontFileResourceEntry[] mEntries;
-
-        public FontFamilyFilesResourceEntry(@NonNull FontFileResourceEntry[] fontFileResourceEntryArr) {
-            this.mEntries = fontFileResourceEntryArr;
-        }
-
-        @NonNull
-        public FontFileResourceEntry[] getEntries() {
-            return this.mEntries;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class FontFileResourceEntry {
-
-        @NonNull
-        private final String mFileName;
-        private final boolean mItalic;
-        private final int mResourceId;
-        private final int mTtcIndex;
-        private final String mVariationSettings;
-        private final int mWeight;
-
-        public FontFileResourceEntry(@NonNull String str, int i, boolean z, @Nullable String str2, int i2, int i3) {
-            this.mFileName = str;
-            this.mWeight = i;
-            this.mItalic = z;
-            this.mVariationSettings = str2;
-            this.mTtcIndex = i2;
-            this.mResourceId = i3;
-        }
-
-        @NonNull
-        public String getFileName() {
-            return this.mFileName;
-        }
-
-        public int getResourceId() {
-            return this.mResourceId;
-        }
-
-        public int getTtcIndex() {
-            return this.mTtcIndex;
-        }
-
-        @Nullable
-        public String getVariationSettings() {
-            return this.mVariationSettings;
-        }
-
-        public int getWeight() {
-            return this.mWeight;
-        }
-
-        public boolean isItalic() {
-            return this.mItalic;
-        }
     }
 
     private FontResourcesParserCompat() {
@@ -187,14 +118,14 @@ public class FontResourcesParserCompat {
 
     @Nullable
     private static FamilyResourceEntry readFamily(XmlPullParser xmlPullParser, Resources resources) throws XmlPullParserException, IOException {
-        TypedArray obtainAttributes = resources.obtainAttributes(Xml.asAttributeSet(xmlPullParser), C0927R.styleable.FontFamily);
-        String string = obtainAttributes.getString(C0927R.styleable.FontFamily_fontProviderAuthority);
-        String string2 = obtainAttributes.getString(C0927R.styleable.FontFamily_fontProviderPackage);
-        String string3 = obtainAttributes.getString(C0927R.styleable.FontFamily_fontProviderQuery);
-        int resourceId = obtainAttributes.getResourceId(C0927R.styleable.FontFamily_fontProviderCerts, 0);
-        int integer = obtainAttributes.getInteger(C0927R.styleable.FontFamily_fontProviderFetchStrategy, 1);
-        int integer2 = obtainAttributes.getInteger(C0927R.styleable.FontFamily_fontProviderFetchTimeout, 500);
-        String string4 = obtainAttributes.getString(C0927R.styleable.FontFamily_fontProviderSystemFontFamily);
+        TypedArray obtainAttributes = resources.obtainAttributes(Xml.asAttributeSet(xmlPullParser), R.styleable.FontFamily);
+        String string = obtainAttributes.getString(R.styleable.FontFamily_fontProviderAuthority);
+        String string2 = obtainAttributes.getString(R.styleable.FontFamily_fontProviderPackage);
+        String string3 = obtainAttributes.getString(R.styleable.FontFamily_fontProviderQuery);
+        int resourceId = obtainAttributes.getResourceId(R.styleable.FontFamily_fontProviderCerts, 0);
+        int integer = obtainAttributes.getInteger(R.styleable.FontFamily_fontProviderFetchStrategy, 1);
+        int integer2 = obtainAttributes.getInteger(R.styleable.FontFamily_fontProviderFetchTimeout, 500);
+        String string4 = obtainAttributes.getString(R.styleable.FontFamily_fontProviderSystemFontFamily);
         obtainAttributes.recycle();
         if (string != null && string2 != null && string3 != null) {
             while (xmlPullParser.next() != 3) {
@@ -219,30 +150,30 @@ public class FontResourcesParserCompat {
     }
 
     private static FontFileResourceEntry readFont(XmlPullParser xmlPullParser, Resources resources) throws XmlPullParserException, IOException {
-        TypedArray obtainAttributes = resources.obtainAttributes(Xml.asAttributeSet(xmlPullParser), C0927R.styleable.FontFamilyFont);
-        int i = C0927R.styleable.FontFamilyFont_fontWeight;
+        TypedArray obtainAttributes = resources.obtainAttributes(Xml.asAttributeSet(xmlPullParser), R.styleable.FontFamilyFont);
+        int i = R.styleable.FontFamilyFont_fontWeight;
         if (!obtainAttributes.hasValue(i)) {
-            i = C0927R.styleable.FontFamilyFont_android_fontWeight;
+            i = R.styleable.FontFamilyFont_android_fontWeight;
         }
         int i2 = obtainAttributes.getInt(i, 400);
-        int i3 = C0927R.styleable.FontFamilyFont_fontStyle;
+        int i3 = R.styleable.FontFamilyFont_fontStyle;
         if (!obtainAttributes.hasValue(i3)) {
-            i3 = C0927R.styleable.FontFamilyFont_android_fontStyle;
+            i3 = R.styleable.FontFamilyFont_android_fontStyle;
         }
         boolean z = 1 == obtainAttributes.getInt(i3, 0);
-        int i4 = C0927R.styleable.FontFamilyFont_ttcIndex;
+        int i4 = R.styleable.FontFamilyFont_ttcIndex;
         if (!obtainAttributes.hasValue(i4)) {
-            i4 = C0927R.styleable.FontFamilyFont_android_ttcIndex;
+            i4 = R.styleable.FontFamilyFont_android_ttcIndex;
         }
-        int i5 = C0927R.styleable.FontFamilyFont_fontVariationSettings;
+        int i5 = R.styleable.FontFamilyFont_fontVariationSettings;
         if (!obtainAttributes.hasValue(i5)) {
-            i5 = C0927R.styleable.FontFamilyFont_android_fontVariationSettings;
+            i5 = R.styleable.FontFamilyFont_android_fontVariationSettings;
         }
         String string = obtainAttributes.getString(i5);
         int i6 = obtainAttributes.getInt(i4, 0);
-        int i7 = C0927R.styleable.FontFamilyFont_font;
+        int i7 = R.styleable.FontFamilyFont_font;
         if (!obtainAttributes.hasValue(i7)) {
-            i7 = C0927R.styleable.FontFamilyFont_android_font;
+            i7 = R.styleable.FontFamilyFont_android_font;
         }
         int resourceId = obtainAttributes.getResourceId(i7, 0);
         String string2 = obtainAttributes.getString(i7);
@@ -271,49 +202,5 @@ public class FontResourcesParserCompat {
             arrayList.add(Base64.decode(str, 0));
         }
         return arrayList;
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class ProviderResourceEntry implements FamilyResourceEntry {
-
-        @NonNull
-        private final FontRequest mRequest;
-        private final int mStrategy;
-
-        @Nullable
-        private final String mSystemFontFamilyName;
-        private final int mTimeoutMs;
-
-        @RestrictTo({RestrictTo.Scope.LIBRARY})
-        public ProviderResourceEntry(@NonNull FontRequest fontRequest, int i, int i2, @Nullable String str) {
-            this.mRequest = fontRequest;
-            this.mStrategy = i;
-            this.mTimeoutMs = i2;
-            this.mSystemFontFamilyName = str;
-        }
-
-        public int getFetchStrategy() {
-            return this.mStrategy;
-        }
-
-        @NonNull
-        public FontRequest getRequest() {
-            return this.mRequest;
-        }
-
-        @Nullable
-        @RestrictTo({RestrictTo.Scope.LIBRARY})
-        public String getSystemFontFamilyName() {
-            return this.mSystemFontFamilyName;
-        }
-
-        public int getTimeout() {
-            return this.mTimeoutMs;
-        }
-
-        public ProviderResourceEntry(@NonNull FontRequest fontRequest, int i, int i2) {
-            this(fontRequest, i, i2, null);
-        }
     }
 }

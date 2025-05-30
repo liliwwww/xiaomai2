@@ -1,7 +1,6 @@
 package androidx.compose.foundation.lazy;
 
-import androidx.compose.p004ui.layout.PinnableContainer;
-import androidx.compose.p004ui.layout.PinnableContainerKt;
+import androidx.compose.foundation.lazy.LazyListPinnableContainerProviderKt$LazyListPinnableContainerProvider$1$1$invoke$;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
 import androidx.compose.runtime.Composer;
@@ -11,8 +10,9 @@ import androidx.compose.runtime.DisposableEffectResult;
 import androidx.compose.runtime.DisposableEffectScope;
 import androidx.compose.runtime.EffectsKt;
 import androidx.compose.runtime.ProvidedValue;
-import androidx.compose.runtime.RecomposeScopeImplKt;
 import androidx.compose.runtime.ScopeUpdateScope;
+import androidx.compose.ui.layout.PinnableContainer;
+import androidx.compose.ui.layout.PinnableContainerKt;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
@@ -21,11 +21,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyListPinnableContainerProviderKt {
     @Composable
     @ComposableInferredTarget(scheme = "[0[0]]")
-    public static final void LazyListPinnableContainerProvider(@NotNull final LazyListState lazyListState, final int i, @NotNull final Function2<? super Composer, ? super Integer, Unit> function2, @Nullable Composer composer, final int i2) {
+    public static final void LazyListPinnableContainerProvider(@NotNull LazyListState lazyListState, int i, @NotNull Function2<? super Composer, ? super Integer, Unit> function2, @Nullable Composer composer, int i2) {
         int i3;
         Intrinsics.checkNotNullParameter(lazyListState, "state");
         Intrinsics.checkNotNullParameter(function2, "content");
@@ -68,20 +68,14 @@ public final class LazyListPinnableContainerProviderKt {
                     @NotNull
                     public final DisposableEffectResult invoke(@NotNull DisposableEffectScope disposableEffectScope) {
                         Intrinsics.checkNotNullParameter(disposableEffectScope, "$this$DisposableEffect");
-                        final LazyListPinnableItem lazyListPinnableItem2 = LazyListPinnableItem.this;
-                        return new DisposableEffectResult() { // from class: androidx.compose.foundation.lazy.LazyListPinnableContainerProviderKt$LazyListPinnableContainerProvider$1$1$invoke$$inlined$onDispose$1
-                            @Override // androidx.compose.runtime.DisposableEffectResult
-                            public void dispose() {
-                                LazyListPinnableItem.this.onDisposed();
-                            }
-                        };
+                        return new LazyListPinnableContainerProviderKt$LazyListPinnableContainerProvider$1$1$invoke$.inlined.onDispose.1(LazyListPinnableItem.this);
                     }
                 };
                 startRestartGroup.updateRememberedValue(rememberedValue2);
             }
             startRestartGroup.endReplaceableGroup();
-            EffectsKt.DisposableEffect(lazyListPinnableItem, (Function1<? super DisposableEffectScope, ? extends DisposableEffectResult>) rememberedValue2, startRestartGroup, 0);
-            CompositionLocalKt.CompositionLocalProvider((ProvidedValue<?>[]) new ProvidedValue[]{PinnableContainerKt.getLocalPinnableContainer().provides(lazyListPinnableItem)}, function2, startRestartGroup, ((i3 >> 3) & 112) | 8);
+            EffectsKt.DisposableEffect(lazyListPinnableItem, (Function1) rememberedValue2, startRestartGroup, 0);
+            CompositionLocalKt.CompositionLocalProvider(new ProvidedValue[]{PinnableContainerKt.getLocalPinnableContainer().provides(lazyListPinnableItem)}, function2, startRestartGroup, ((i3 >> 3) & 112) | 8);
             if (ComposerKt.isTraceInProgress()) {
                 ComposerKt.traceEventEnd();
             }
@@ -90,21 +84,6 @@ public final class LazyListPinnableContainerProviderKt {
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.lazy.LazyListPinnableContainerProviderKt$LazyListPinnableContainerProvider$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                invoke((Composer) obj, ((Number) obj2).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i4) {
-                LazyListPinnableContainerProviderKt.LazyListPinnableContainerProvider(LazyListState.this, i, function2, composer2, RecomposeScopeImplKt.updateChangedFlags(i2 | 1));
-            }
-        });
+        endRestartGroup.updateScope(new LazyListPinnableContainerProvider.2(lazyListState, i, function2, i2));
     }
 }

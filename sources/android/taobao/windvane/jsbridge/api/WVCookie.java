@@ -1,8 +1,6 @@
 package android.taobao.windvane.jsbridge.api;
 
 import android.taobao.windvane.WVCookieManager;
-import android.taobao.windvane.config.WVConfigManager;
-import android.taobao.windvane.connect.HttpConnector;
 import android.taobao.windvane.jsbridge.WVApiPlugin;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.taobao.windvane.jsbridge.WVResult;
@@ -17,11 +15,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVCookie extends WVApiPlugin {
     private static final String TAG = "WVCookie";
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if ("readCookies".equals(str)) {
             readCookies(wVCallBackContext, str2);
@@ -51,12 +48,12 @@ public class WVCookie extends WVApiPlugin {
             try {
                 str = URLDecoder.decode(str, "utf-8");
             } catch (Exception unused) {
-                TaoLog.m21e("WVCookie", "readCookies: param decode error, param=" + str);
+                TaoLog.e("WVCookie", "readCookies: param decode error, param=" + str);
             }
             try {
-                string = new JSONObject(str).getString(HttpConnector.URL);
+                string = new JSONObject(str).getString("url");
             } catch (JSONException unused2) {
-                TaoLog.m21e("WVCookie", "readCookies: param parse to JSON error, param=" + str);
+                TaoLog.e("WVCookie", "readCookies: param parse to JSON error, param=" + str);
                 wVResult.setResult(WVResult.PARAM_ERR);
                 wVCallBackContext.error(wVResult);
                 return;
@@ -64,7 +61,7 @@ public class WVCookie extends WVApiPlugin {
         }
         String cookie = WVCookieManager.getCookie(string);
         if (cookie == null) {
-            TaoLog.m30w("WVCookie", "readCookies: cookieStr is null");
+            TaoLog.w("WVCookie", "readCookies: cookieStr is null");
             cookie = "";
         }
         String[] split = cookie.replace("\"", "\\\\\"").split(";");
@@ -101,12 +98,12 @@ public class WVCookie extends WVApiPlugin {
             try {
                 str = URLDecoder.decode(str, "utf-8");
             } catch (Exception unused) {
-                TaoLog.m21e("WVCookie", "readCookies: param decode error, param=" + str);
+                TaoLog.e("WVCookie", "readCookies: param decode error, param=" + str);
             }
             try {
-                string = new JSONObject(str).getString(HttpConnector.URL);
+                string = new JSONObject(str).getString("url");
             } catch (JSONException unused2) {
-                TaoLog.m21e("WVCookie", "readCookies: param parse to JSON error, param=" + str);
+                TaoLog.e("WVCookie", "readCookies: param parse to JSON error, param=" + str);
                 wVResult.setResult(WVResult.PARAM_ERR);
                 wVCallBackContext.error(wVResult);
                 return;
@@ -114,7 +111,7 @@ public class WVCookie extends WVApiPlugin {
         }
         String cookie = WVCookieManager.getCookie(string);
         if (cookie == null) {
-            TaoLog.m30w("WVCookie", "readCookies: cookieStr is null");
+            TaoLog.w("WVCookie", "readCookies: cookieStr is null");
             cookie = "";
         }
         String replace = cookie.replace("\"", "\\\\\"");
@@ -133,7 +130,7 @@ public class WVCookie extends WVApiPlugin {
             try {
                 str = URLDecoder.decode(str, "utf-8");
             } catch (Exception unused) {
-                TaoLog.m21e("WVCookie", "writeCookies: param decode error, param=" + str);
+                TaoLog.e("WVCookie", "writeCookies: param decode error, param=" + str);
             }
             try {
                 JSONObject jSONObject = new JSONObject(str);
@@ -148,9 +145,9 @@ public class WVCookie extends WVApiPlugin {
                         sb.append("; ");
                     }
                 }
-                string = jSONObject.getString(WVConfigManager.CONFIGNAME_DOMAIN);
+                string = jSONObject.getString("domain");
             } catch (JSONException unused2) {
-                TaoLog.m21e("WVCookie", "writeCookies: param parse to JSON error, param=" + str);
+                TaoLog.e("WVCookie", "writeCookies: param parse to JSON error, param=" + str);
                 wVResult.setResult(WVResult.PARAM_ERR);
                 wVCallBackContext.error(wVResult);
                 return;
@@ -163,7 +160,7 @@ public class WVCookie extends WVApiPlugin {
             return;
         }
         if (TaoLog.getLogStatus()) {
-            TaoLog.m30w("WVCookie", "writeCookies: Illegal param: cookieStr=" + sb2 + ";domain=" + string);
+            TaoLog.w("WVCookie", "writeCookies: Illegal param: cookieStr=" + sb2 + ";domain=" + string);
         }
         wVCallBackContext.error(wVResult);
     }
@@ -178,7 +175,7 @@ public class WVCookie extends WVApiPlugin {
             try {
                 str = URLDecoder.decode(str, "utf-8");
             } catch (Exception unused) {
-                TaoLog.m21e("WVCookie", "writeCookies: param decode error, param=" + str);
+                TaoLog.e("WVCookie", "writeCookies: param decode error, param=" + str);
             }
             try {
                 JSONObject jSONObject = new JSONObject(str);
@@ -187,10 +184,10 @@ public class WVCookie extends WVApiPlugin {
                 try {
                     string3 = URLEncoder.encode(string3, "utf-8");
                 } catch (UnsupportedEncodingException unused2) {
-                    TaoLog.m21e("WVCookie", "writeCookies: URLEncoder.encode error: value=" + string3);
+                    TaoLog.e("WVCookie", "writeCookies: URLEncoder.encode error: value=" + string3);
                 }
-                string = jSONObject.getString(WVConfigManager.CONFIGNAME_DOMAIN);
-                String optString = jSONObject.optString(HttpConnector.EXPIRES);
+                string = jSONObject.getString("domain");
+                String optString = jSONObject.optString("expires");
                 String optString2 = jSONObject.optString("path");
                 String optString3 = jSONObject.optString("secure");
                 sb.append(string2);
@@ -214,7 +211,7 @@ public class WVCookie extends WVApiPlugin {
                     sb.append("Secure");
                 }
             } catch (JSONException unused3) {
-                TaoLog.m21e("WVCookie", "writeCookies: param parse to JSON error, param=" + str);
+                TaoLog.e("WVCookie", "writeCookies: param parse to JSON error, param=" + str);
                 wVResult.setResult(WVResult.PARAM_ERR);
                 wVCallBackContext.error(wVResult);
                 return;
@@ -227,7 +224,7 @@ public class WVCookie extends WVApiPlugin {
             return;
         }
         if (TaoLog.getLogStatus()) {
-            TaoLog.m30w("WVCookie", "writeCookies: Illegal param: cookieStr=" + sb2 + ";domain=" + string);
+            TaoLog.w("WVCookie", "writeCookies: Illegal param: cookieStr=" + sb2 + ";domain=" + string);
         }
         wVCallBackContext.error(wVResult);
     }

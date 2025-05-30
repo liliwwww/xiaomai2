@@ -7,7 +7,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import java.util.Locale;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class PageTransformerAdapter extends ViewPager2.OnPageChangeCallback {
     private final LinearLayoutManager mLayoutManager;
     private ViewPager2.PageTransformer mPageTransformer;

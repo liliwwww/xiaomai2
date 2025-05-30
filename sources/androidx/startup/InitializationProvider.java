@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class InitializationProvider extends ContentProvider {
     @Override // android.content.ContentProvider
     public final int delete(@NonNull Uri uri, @Nullable String str, @Nullable String[] strArr) {

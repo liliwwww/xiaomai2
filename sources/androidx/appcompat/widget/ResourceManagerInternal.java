@@ -18,15 +18,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat;
-import androidx.appcompat.resources.C0290R;
-import androidx.appcompat.resources.Compatibility;
+import androidx.appcompat.resources.R;
 import androidx.collection.LongSparseArray;
-import androidx.collection.LruCache;
 import androidx.collection.SimpleArrayMap;
 import androidx.collection.SparseArrayCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 import java.lang.ref.WeakReference;
 import java.util.WeakHashMap;
@@ -35,7 +32,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ResourceManagerInternal {
     private static final boolean DEBUG = false;
     private static ResourceManagerInternal INSTANCE = null;
@@ -69,69 +66,6 @@ public final class ResourceManagerInternal {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static class AvdcInflateDelegate implements InflateDelegate {
-        AvdcInflateDelegate() {
-        }
-
-        @Override // androidx.appcompat.widget.ResourceManagerInternal.InflateDelegate
-        public Drawable createFromXmlInner(@NonNull Context context, @NonNull XmlPullParser xmlPullParser, @NonNull AttributeSet attributeSet, @Nullable Resources.Theme theme) {
-            try {
-                return AnimatedVectorDrawableCompat.createFromXmlInner(context, context.getResources(), xmlPullParser, attributeSet, theme);
-            } catch (Exception e) {
-                Log.e("AvdcInflateDelegate", "Exception while inflating <animated-vector>", e);
-                return null;
-            }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static class ColorFilterLruCache extends LruCache<Integer, PorterDuffColorFilter> {
-        public ColorFilterLruCache(int i) {
-            super(i);
-        }
-
-        private static int generateCacheKey(int i, PorterDuff.Mode mode) {
-            return ((i + 31) * 31) + mode.hashCode();
-        }
-
-        PorterDuffColorFilter get(int i, PorterDuff.Mode mode) {
-            return get(Integer.valueOf(generateCacheKey(i, mode)));
-        }
-
-        PorterDuffColorFilter put(int i, PorterDuff.Mode mode, PorterDuffColorFilter porterDuffColorFilter) {
-            return put(Integer.valueOf(generateCacheKey(i, mode)), porterDuffColorFilter);
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class DrawableDelegate implements InflateDelegate {
-        DrawableDelegate() {
-        }
-
-        @Override // androidx.appcompat.widget.ResourceManagerInternal.InflateDelegate
-        public Drawable createFromXmlInner(@NonNull Context context, @NonNull XmlPullParser xmlPullParser, @NonNull AttributeSet attributeSet, @Nullable Resources.Theme theme) {
-            String classAttribute = attributeSet.getClassAttribute();
-            if (classAttribute != null) {
-                try {
-                    Drawable drawable = (Drawable) DrawableDelegate.class.getClassLoader().loadClass(classAttribute).asSubclass(Drawable.class).getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-                    if (Build.VERSION.SDK_INT >= 21) {
-                        Compatibility.Api21Impl.inflate(drawable, context.getResources(), xmlPullParser, attributeSet, theme);
-                    } else {
-                        drawable.inflate(context.getResources(), xmlPullParser, attributeSet);
-                    }
-                    return drawable;
-                } catch (Exception e) {
-                    Log.e("DrawableDelegate", "Exception while inflating <drawable>", e);
-                }
-            }
-            return null;
-        }
-    }
-
-    /* compiled from: Taobao */
     private interface InflateDelegate {
         Drawable createFromXmlInner(@NonNull Context context, @NonNull XmlPullParser xmlPullParser, @NonNull AttributeSet attributeSet, @Nullable Resources.Theme theme);
     }
@@ -151,23 +85,6 @@ public final class ResourceManagerInternal {
         boolean tintDrawable(@NonNull Context context, @DrawableRes int i, @NonNull Drawable drawable);
 
         boolean tintDrawableUsingColorFilter(@NonNull Context context, @DrawableRes int i, @NonNull Drawable drawable);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static class VdcInflateDelegate implements InflateDelegate {
-        VdcInflateDelegate() {
-        }
-
-        @Override // androidx.appcompat.widget.ResourceManagerInternal.InflateDelegate
-        public Drawable createFromXmlInner(@NonNull Context context, @NonNull XmlPullParser xmlPullParser, @NonNull AttributeSet attributeSet, @Nullable Resources.Theme theme) {
-            try {
-                return VectorDrawableCompat.createFromXmlInner(context.getResources(), xmlPullParser, attributeSet, theme);
-            } catch (Exception e) {
-                Log.e("VdcInflateDelegate", "Exception while inflating <vector>", e);
-                return null;
-            }
-        }
     }
 
     private void addDelegate(@NonNull String str, @NonNull InflateDelegate inflateDelegate) {
@@ -208,7 +125,7 @@ public final class ResourceManagerInternal {
             return;
         }
         this.mHasCheckedVectorDrawableSetup = true;
-        Drawable drawable = getDrawable(context, C0290R.drawable.abc_vector_test);
+        Drawable drawable = getDrawable(context, R.drawable.abc_vector_test);
         if (drawable == null || !isVectorDrawable(drawable)) {
             this.mHasCheckedVectorDrawableSetup = false;
             throw new IllegalStateException("This app has been built with an incorrect configuration. Please configure your build for VectorDrawableCompat.");

@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.m11;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LiveDataScopeImpl<T> implements LiveDataScope<T> {
 
     @NotNull
@@ -30,7 +30,6 @@ public final class LiveDataScopeImpl<T> implements LiveDataScope<T> {
         this.coroutineContext = coroutineContext.plus(m11.c().a());
     }
 
-    @Override // androidx.lifecycle.LiveDataScope
     @SuppressLint({"NullSafeMutableLiveData"})
     @Nullable
     public Object emit(T t, @NotNull Continuation<? super Unit> continuation) {
@@ -38,16 +37,14 @@ public final class LiveDataScopeImpl<T> implements LiveDataScope<T> {
         return g == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? g : Unit.INSTANCE;
     }
 
-    @Override // androidx.lifecycle.LiveDataScope
     @Nullable
     public Object emitSource(@NotNull LiveData<T> liveData, @NotNull Continuation<? super DisposableHandle> continuation) {
         return d.g(this.coroutineContext, new LiveDataScopeImpl$emitSource$2(this, liveData, null), continuation);
     }
 
-    @Override // androidx.lifecycle.LiveDataScope
     @Nullable
     public T getLatestValue() {
-        return this.target.getValue();
+        return (T) this.target.getValue();
     }
 
     @NotNull

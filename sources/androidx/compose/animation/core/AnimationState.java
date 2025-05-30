@@ -2,7 +2,8 @@ package androidx.compose.animation.core;
 
 import androidx.compose.animation.core.AnimationVector;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
 import androidx.compose.runtime.internal.StabilityInferred;
 import kotlin.jvm.internal.DefaultConstructorMarker;
@@ -12,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AnimationState<T, V extends AnimationVector> implements State<T> {
     public static final int $stable = 0;
     private long finishedTimeNanos;
@@ -32,7 +33,7 @@ public final class AnimationState<T, V extends AnimationVector> implements State
         V v2;
         Intrinsics.checkNotNullParameter(twoWayConverter, "typeConverter");
         this.typeConverter = twoWayConverter;
-        this.value$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(t, null, 2, null);
+        this.value$delegate = SnapshotStateKt.mutableStateOf$default(t, (SnapshotMutationPolicy) null, 2, (Object) null);
         this.velocityVector = (v == null || (v2 = (V) AnimationVectorsKt.copy(v)) == null) ? (V) AnimationStateKt.createZeroVectorFrom(twoWayConverter, t) : v2;
         this.lastFrameTimeNanos = j;
         this.finishedTimeNanos = j2;
@@ -52,9 +53,8 @@ public final class AnimationState<T, V extends AnimationVector> implements State
         return this.typeConverter;
     }
 
-    @Override // androidx.compose.runtime.State
     public T getValue() {
-        return this.value$delegate.getValue();
+        return (T) this.value$delegate.getValue();
     }
 
     public final T getVelocity() {

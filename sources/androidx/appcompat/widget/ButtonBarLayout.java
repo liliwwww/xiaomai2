@@ -8,13 +8,14 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.appcompat.R;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ButtonBarLayout extends LinearLayout {
     private static final int PEEK_BUTTON_DP = 16;
     private boolean mAllowStacking;
@@ -24,10 +25,10 @@ public class ButtonBarLayout extends LinearLayout {
     public ButtonBarLayout(@NonNull Context context, @Nullable AttributeSet attributeSet) {
         super(context, attributeSet);
         this.mLastWidthSize = -1;
-        int[] iArr = C0257R.styleable.ButtonBarLayout;
+        int[] iArr = R.styleable.ButtonBarLayout;
         TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, iArr);
         ViewCompat.saveAttributeDataForStyleable(this, context, iArr, attributeSet, obtainStyledAttributes, 0, 0);
-        this.mAllowStacking = obtainStyledAttributes.getBoolean(C0257R.styleable.ButtonBarLayout_allowStacking, true);
+        this.mAllowStacking = obtainStyledAttributes.getBoolean(R.styleable.ButtonBarLayout_allowStacking, true);
         obtainStyledAttributes.recycle();
         if (getOrientation() == 1) {
             setStacked(this.mAllowStacking);
@@ -55,7 +56,7 @@ public class ButtonBarLayout extends LinearLayout {
                 this.mStacked = z;
                 setOrientation(z ? 1 : 0);
                 setGravity(z ? GravityCompat.END : 80);
-                View findViewById = findViewById(C0257R.id.spacer);
+                View findViewById = findViewById(R.id.spacer);
                 if (findViewById != null) {
                     findViewById.setVisibility(z ? 8 : 4);
                 }
@@ -87,7 +88,7 @@ public class ButtonBarLayout extends LinearLayout {
         }
         super.onMeasure(i3, i2);
         if (this.mAllowStacking && !isStacked()) {
-            if ((getMeasuredWidthAndState() & ViewCompat.MEASURED_STATE_MASK) == 16777216) {
+            if ((getMeasuredWidthAndState() & (-16777216)) == 16777216) {
                 setStacked(true);
                 z = true;
             }

@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyGridIntervalContent implements LazyLayoutIntervalContent {
 
     @NotNull
@@ -42,7 +42,6 @@ public final class LazyGridIntervalContent implements LazyLayoutIntervalContent 
         return this.item;
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.LazyLayoutIntervalContent
     @Nullable
     public Function1<Integer, Object> getKey() {
         return this.key;
@@ -53,7 +52,6 @@ public final class LazyGridIntervalContent implements LazyLayoutIntervalContent 
         return this.span;
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.LazyLayoutIntervalContent
     @NotNull
     public Function1<Integer, Object> getType() {
         return this.type;

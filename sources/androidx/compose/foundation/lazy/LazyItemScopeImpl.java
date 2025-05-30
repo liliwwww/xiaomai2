@@ -2,26 +2,37 @@ package androidx.compose.foundation.lazy;
 
 import androidx.compose.animation.core.FiniteAnimationSpec;
 import androidx.compose.foundation.ExperimentalFoundationApi;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.platform.InspectableValueKt;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.unit.IntOffset;
+import androidx.compose.foundation.lazy.LazyItemScopeImpl$fillParentMaxHeight$;
+import androidx.compose.foundation.lazy.LazyItemScopeImpl$fillParentMaxWidth$;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.platform.InspectableValueKt;
+import androidx.compose.ui.platform.InspectorInfo;
+import androidx.compose.ui.unit.IntOffset;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyItemScopeImpl implements LazyItemScope {
 
     @NotNull
-    private MutableState<Integer> maxWidthState = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Integer.MAX_VALUE, null, 2, null);
+    private MutableState<Integer> maxHeightState;
 
     @NotNull
-    private MutableState<Integer> maxHeightState = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Integer.MAX_VALUE, null, 2, null);
+    private MutableState<Integer> maxWidthState;
+
+    public LazyItemScopeImpl() {
+        MutableState<Integer> mutableStateOf$default;
+        MutableState<Integer> mutableStateOf$default2;
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Integer.MAX_VALUE, null, 2, null);
+        this.maxWidthState = mutableStateOf$default;
+        mutableStateOf$default2 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Integer.MAX_VALUE, null, 2, null);
+        this.maxHeightState = mutableStateOf$default2;
+    }
 
     @Override // androidx.compose.foundation.lazy.LazyItemScope
     @ExperimentalFoundationApi
@@ -49,25 +60,9 @@ public final class LazyItemScopeImpl implements LazyItemScope {
 
     @Override // androidx.compose.foundation.lazy.LazyItemScope
     @NotNull
-    public Modifier fillParentMaxHeight(@NotNull Modifier modifier, final float f) {
+    public Modifier fillParentMaxHeight(@NotNull Modifier modifier, float f) {
         Intrinsics.checkNotNullParameter(modifier, "<this>");
-        return modifier.then(new ParentSizeModifier(f, InspectableValueKt.isDebugInspectorInfoEnabled() ? new Function1<InspectorInfo, Unit>() { // from class: androidx.compose.foundation.lazy.LazyItemScopeImpl$fillParentMaxHeight$$inlined$debugInspectorInfo$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((InspectorInfo) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull InspectorInfo inspectorInfo) {
-                Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
-                inspectorInfo.setName("fillParentMaxHeight");
-                inspectorInfo.setValue(Float.valueOf(f));
-            }
-        } : InspectableValueKt.getNoInspectorInfo(), null, this.maxHeightState, 4, null));
+        return modifier.then(new ParentSizeModifier(f, InspectableValueKt.isDebugInspectorInfoEnabled() ? new LazyItemScopeImpl$fillParentMaxHeight$.inlined.debugInspectorInfo.1(f) : InspectableValueKt.getNoInspectorInfo(), null, this.maxHeightState, 4, null));
     }
 
     @Override // androidx.compose.foundation.lazy.LazyItemScope
@@ -95,25 +90,9 @@ public final class LazyItemScopeImpl implements LazyItemScope {
 
     @Override // androidx.compose.foundation.lazy.LazyItemScope
     @NotNull
-    public Modifier fillParentMaxWidth(@NotNull Modifier modifier, final float f) {
+    public Modifier fillParentMaxWidth(@NotNull Modifier modifier, float f) {
         Intrinsics.checkNotNullParameter(modifier, "<this>");
-        return modifier.then(new ParentSizeModifier(f, InspectableValueKt.isDebugInspectorInfoEnabled() ? new Function1<InspectorInfo, Unit>() { // from class: androidx.compose.foundation.lazy.LazyItemScopeImpl$fillParentMaxWidth$$inlined$debugInspectorInfo$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((InspectorInfo) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull InspectorInfo inspectorInfo) {
-                Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
-                inspectorInfo.setName("fillParentMaxWidth");
-                inspectorInfo.setValue(Float.valueOf(f));
-            }
-        } : InspectableValueKt.getNoInspectorInfo(), this.maxWidthState, null, 8, null));
+        return modifier.then(new ParentSizeModifier(f, InspectableValueKt.isDebugInspectorInfoEnabled() ? new LazyItemScopeImpl$fillParentMaxWidth$.inlined.debugInspectorInfo.1(f) : InspectableValueKt.getNoInspectorInfo(), this.maxWidthState, null, 8, null));
     }
 
     public final void setMaxSize(int i, int i2) {

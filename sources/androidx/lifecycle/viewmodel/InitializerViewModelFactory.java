@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import tb.j56;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class InitializerViewModelFactory implements ViewModelProvider.Factory {
 
     @NotNull
@@ -18,12 +18,10 @@ public final class InitializerViewModelFactory implements ViewModelProvider.Fact
         this.initializers = viewModelInitializerArr;
     }
 
-    @Override // androidx.lifecycle.ViewModelProvider.Factory
     public /* synthetic */ ViewModel create(Class cls) {
         return j56.a(this, cls);
     }
 
-    @Override // androidx.lifecycle.ViewModelProvider.Factory
     @NotNull
     public <T extends ViewModel> T create(@NotNull Class<T> cls, @NotNull CreationExtras creationExtras) {
         Intrinsics.checkNotNullParameter(cls, "modelClass");

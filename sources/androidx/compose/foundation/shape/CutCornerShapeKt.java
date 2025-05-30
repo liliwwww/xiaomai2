@@ -1,11 +1,11 @@
 package androidx.compose.foundation.shape;
 
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.ui.unit.Dp;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class CutCornerShapeKt {
     @NotNull
     public static final CutCornerShape CutCornerShape(@NotNull CornerSize cornerSize) {
@@ -31,31 +31,31 @@ public final class CutCornerShapeKt {
 
     @NotNull
     /* renamed from: CutCornerShape-0680j_4, reason: not valid java name */
-    public static final CutCornerShape m1687CutCornerShape0680j_4(float f) {
-        return CutCornerShape(CornerSizeKt.m1686CornerSize0680j_4(f));
+    public static final CutCornerShape m372CutCornerShape0680j_4(float f) {
+        return CutCornerShape(CornerSizeKt.CornerSize-0680j_4(f));
     }
 
     @NotNull
     /* renamed from: CutCornerShape-a9UjIt4, reason: not valid java name */
-    public static final CutCornerShape m1688CutCornerShapea9UjIt4(float f, float f2, float f3, float f4) {
-        return new CutCornerShape(CornerSizeKt.m1686CornerSize0680j_4(f), CornerSizeKt.m1686CornerSize0680j_4(f2), CornerSizeKt.m1686CornerSize0680j_4(f3), CornerSizeKt.m1686CornerSize0680j_4(f4));
+    public static final CutCornerShape m373CutCornerShapea9UjIt4(float f, float f2, float f3, float f4) {
+        return new CutCornerShape(CornerSizeKt.CornerSize-0680j_4(f), CornerSizeKt.CornerSize-0680j_4(f2), CornerSizeKt.CornerSize-0680j_4(f3), CornerSizeKt.CornerSize-0680j_4(f4));
     }
 
     /* renamed from: CutCornerShape-a9UjIt4$default, reason: not valid java name */
-    public static /* synthetic */ CutCornerShape m1689CutCornerShapea9UjIt4$default(float f, float f2, float f3, float f4, int i, Object obj) {
+    public static /* synthetic */ CutCornerShape m374CutCornerShapea9UjIt4$default(float f, float f2, float f3, float f4, int i, Object obj) {
         if ((i & 1) != 0) {
-            f = C0856Dp.m5216constructorimpl(0);
+            f = Dp.m2142constructorimpl(0);
         }
         if ((i & 2) != 0) {
-            f2 = C0856Dp.m5216constructorimpl(0);
+            f2 = Dp.m2142constructorimpl(0);
         }
         if ((i & 4) != 0) {
-            f3 = C0856Dp.m5216constructorimpl(0);
+            f3 = Dp.m2142constructorimpl(0);
         }
         if ((i & 8) != 0) {
-            f4 = C0856Dp.m5216constructorimpl(0);
+            f4 = Dp.m2142constructorimpl(0);
         }
-        return m1688CutCornerShapea9UjIt4(f, f2, f3, f4);
+        return m373CutCornerShapea9UjIt4(f, f2, f3, f4);
     }
 
     @NotNull

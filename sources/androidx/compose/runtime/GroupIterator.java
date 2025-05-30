@@ -8,7 +8,7 @@ import kotlin.jvm.internal.markers.KMappedMarker;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class GroupIterator implements Iterator<CompositionGroup>, KMappedMarker {
     private final int end;
     private int index;
@@ -57,11 +57,9 @@ final class GroupIterator implements Iterator<CompositionGroup>, KMappedMarker {
     @Override // java.util.Iterator
     @NotNull
     public CompositionGroup next() {
-        int groupSize;
         validateRead();
         int i = this.index;
-        groupSize = SlotTableKt.groupSize(this.table.getGroups(), i);
-        this.index = groupSize + i;
+        this.index = SlotTableKt.access$groupSize(this.table.getGroups(), i) + i;
         return new SlotTableGroup(this.table, i, this.version);
     }
 }

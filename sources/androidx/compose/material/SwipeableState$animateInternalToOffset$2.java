@@ -3,7 +3,6 @@ package androidx.compose.material;
 import androidx.compose.animation.core.Animatable;
 import androidx.compose.animation.core.AnimatableKt;
 import androidx.compose.animation.core.AnimationSpec;
-import androidx.compose.animation.core.AnimationVector1D;
 import androidx.compose.foundation.gestures.DragScope;
 import androidx.compose.runtime.MutableState;
 import kotlin.ResultKt;
@@ -13,16 +12,14 @@ import kotlin.coroutines.intrinsics.IntrinsicsKt;
 import kotlin.coroutines.jvm.internal.Boxing;
 import kotlin.coroutines.jvm.internal.DebugMetadata;
 import kotlin.coroutines.jvm.internal.SuspendLambda;
-import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
-import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Ref;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.SwipeableState$animateInternalToOffset$2", f = "Swipeable.kt", i = {}, l = {223}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class SwipeableState$animateInternalToOffset$2 extends SuspendLambda implements Function2<DragScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ AnimationSpec<Float> $spec;
     final /* synthetic */ float $target;
@@ -61,8 +58,8 @@ final class SwipeableState$animateInternalToOffset$2 extends SuspendLambda imple
         try {
             if (i == 0) {
                 ResultKt.throwOnFailure(obj);
-                final DragScope dragScope = (DragScope) this.L$0;
-                final Ref.FloatRef floatRef = new Ref.FloatRef();
+                DragScope dragScope = (DragScope) this.L$0;
+                Ref.FloatRef floatRef = new Ref.FloatRef();
                 mutableState2 = ((SwipeableState) this.this$0).absoluteOffset;
                 floatRef.element = ((Number) mutableState2.getValue()).floatValue();
                 mutableState3 = ((SwipeableState) this.this$0).animationTarget;
@@ -71,25 +68,9 @@ final class SwipeableState$animateInternalToOffset$2 extends SuspendLambda imple
                 Animatable Animatable$default = AnimatableKt.Animatable$default(floatRef.element, 0.0f, 2, null);
                 Float boxFloat = Boxing.boxFloat(this.$target);
                 AnimationSpec<Float> animationSpec = this.$spec;
-                Function1<Animatable<Float, AnimationVector1D>, Unit> function1 = new Function1<Animatable<Float, AnimationVector1D>, Unit>() { // from class: androidx.compose.material.SwipeableState$animateInternalToOffset$2.1
-                    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                    {
-                        super(1);
-                    }
-
-                    public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                        invoke((Animatable<Float, AnimationVector1D>) obj2);
-                        return Unit.INSTANCE;
-                    }
-
-                    public final void invoke(@NotNull Animatable<Float, AnimationVector1D> animatable) {
-                        Intrinsics.checkNotNullParameter(animatable, "$this$animateTo");
-                        DragScope.this.dragBy(animatable.getValue().floatValue() - floatRef.element);
-                        floatRef.element = animatable.getValue().floatValue();
-                    }
-                };
+                1 r8 = new 1(dragScope, floatRef);
                 this.label = 1;
-                if (Animatable.animateTo$default(Animatable$default, boxFloat, animationSpec, null, function1, this, 4, null) == coroutine_suspended) {
+                if (Animatable.animateTo$default(Animatable$default, boxFloat, animationSpec, null, r8, this, 4, null) == coroutine_suspended) {
                     return coroutine_suspended;
                 }
             } else {

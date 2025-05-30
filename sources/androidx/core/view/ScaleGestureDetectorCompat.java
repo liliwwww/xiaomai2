@@ -2,32 +2,11 @@ package androidx.core.view;
 
 import android.os.Build;
 import android.view.ScaleGestureDetector;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ScaleGestureDetectorCompat {
-
-    /* compiled from: Taobao */
-    @RequiresApi(19)
-    /* loaded from: classes.dex */
-    static class Api19Impl {
-        private Api19Impl() {
-        }
-
-        @DoNotInline
-        static boolean isQuickScaleEnabled(ScaleGestureDetector scaleGestureDetector) {
-            return scaleGestureDetector.isQuickScaleEnabled();
-        }
-
-        @DoNotInline
-        static void setQuickScaleEnabled(ScaleGestureDetector scaleGestureDetector, boolean z) {
-            scaleGestureDetector.setQuickScaleEnabled(z);
-        }
-    }
-
     private ScaleGestureDetectorCompat() {
     }
 

@@ -1,12 +1,12 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.graphics.Color;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.Immutable;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.graphics.Color;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Reflection;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DefaultButtonColors implements ButtonColors {
     private final long backgroundColor;
     private final long contentColor;
@@ -33,7 +33,6 @@ final class DefaultButtonColors implements ButtonColors {
         this(j, j2, j3, j4);
     }
 
-    @Override // androidx.compose.material.ButtonColors
     @Composable
     @NotNull
     public State<Color> backgroundColor(boolean z, @Nullable Composer composer, int i) {
@@ -41,7 +40,7 @@ final class DefaultButtonColors implements ButtonColors {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-655254499, i, -1, "androidx.compose.material.DefaultButtonColors.backgroundColor (Button.kt:583)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(z ? this.backgroundColor : this.disabledBackgroundColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.box-impl(z ? this.backgroundColor : this.disabledBackgroundColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -49,7 +48,6 @@ final class DefaultButtonColors implements ButtonColors {
         return rememberUpdatedState;
     }
 
-    @Override // androidx.compose.material.ButtonColors
     @Composable
     @NotNull
     public State<Color> contentColor(boolean z, @Nullable Composer composer, int i) {
@@ -57,7 +55,7 @@ final class DefaultButtonColors implements ButtonColors {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-2133647540, i, -1, "androidx.compose.material.DefaultButtonColors.contentColor (Button.kt:588)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(z ? this.contentColor : this.disabledContentColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.box-impl(z ? this.contentColor : this.disabledContentColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -73,10 +71,10 @@ final class DefaultButtonColors implements ButtonColors {
             return false;
         }
         DefaultButtonColors defaultButtonColors = (DefaultButtonColors) obj;
-        return Color.m2788equalsimpl0(this.backgroundColor, defaultButtonColors.backgroundColor) && Color.m2788equalsimpl0(this.contentColor, defaultButtonColors.contentColor) && Color.m2788equalsimpl0(this.disabledBackgroundColor, defaultButtonColors.disabledBackgroundColor) && Color.m2788equalsimpl0(this.disabledContentColor, defaultButtonColors.disabledContentColor);
+        return Color.equals-impl0(this.backgroundColor, defaultButtonColors.backgroundColor) && Color.equals-impl0(this.contentColor, defaultButtonColors.contentColor) && Color.equals-impl0(this.disabledBackgroundColor, defaultButtonColors.disabledBackgroundColor) && Color.equals-impl0(this.disabledContentColor, defaultButtonColors.disabledContentColor);
     }
 
     public int hashCode() {
-        return (((((Color.m2794hashCodeimpl(this.backgroundColor) * 31) + Color.m2794hashCodeimpl(this.contentColor)) * 31) + Color.m2794hashCodeimpl(this.disabledBackgroundColor)) * 31) + Color.m2794hashCodeimpl(this.disabledContentColor);
+        return (((((Color.hashCode-impl(this.backgroundColor) * 31) + Color.hashCode-impl(this.contentColor)) * 31) + Color.hashCode-impl(this.disabledBackgroundColor)) * 31) + Color.hashCode-impl(this.disabledContentColor);
     }
 }

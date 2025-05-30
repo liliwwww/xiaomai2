@@ -1,9 +1,9 @@
 package androidx.compose.foundation.text.selection;
 
 import androidx.compose.foundation.gestures.TapGestureDetectorKt;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.input.pointer.AwaitPointerEventScope;
-import androidx.compose.p004ui.input.pointer.PointerInputChange;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope;
+import androidx.compose.ui.input.pointer.PointerInputChange;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -17,14 +17,13 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.text.selection.SelectionManager$detectNonConsumingTap$2", f = "SelectionManager.kt", i = {}, l = {618}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SelectionManager$detectNonConsumingTap$2 extends RestrictedSuspendLambda implements Function2<AwaitPointerEventScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ Function1<Offset, Unit> $onTap;
     private /* synthetic */ Object L$0;
     int label;
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    /* JADX WARN: Multi-variable type inference failed */
     SelectionManager$detectNonConsumingTap$2(Function1<? super Offset, Unit> function1, Continuation<? super SelectionManager$detectNonConsumingTap$2> continuation) {
         super(2, continuation);
         this.$onTap = function1;
@@ -62,7 +61,7 @@ final class SelectionManager$detectNonConsumingTap$2 extends RestrictedSuspendLa
         }
         PointerInputChange pointerInputChange = (PointerInputChange) obj;
         if (pointerInputChange != null) {
-            this.$onTap.invoke(Offset.m2545boximpl(pointerInputChange.m4081getPositionF1C5BW0()));
+            this.$onTap.invoke(Offset.box-impl(pointerInputChange.getPosition-F1C5BW0()));
         }
         return Unit.INSTANCE;
     }

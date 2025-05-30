@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.emoji2.text.SpannableBuilder;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class EmojiEditableFactory extends Editable.Factory {
     private static final Object INSTANCE_LOCK = new Object();
 

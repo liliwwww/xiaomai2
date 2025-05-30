@@ -1,14 +1,14 @@
 package androidx.compose.foundation.text;
 
-import androidx.compose.p004ui.platform.AndroidComposeViewAccessibilityDelegateCompat;
-import androidx.compose.p004ui.text.input.TextFieldValue;
+import androidx.compose.ui.platform.AndroidComposeViewAccessibilityDelegateCompat;
+import androidx.compose.ui.text.input.TextFieldValue;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class UndoManager {
     private boolean forceNextSnapshot;
 
@@ -35,7 +35,7 @@ public final class UndoManager {
     /* JADX WARN: Removed duplicated region for block: B:13:0x0023 A[EDGE_INSN: B:13:0x0023->B:14:0x0023 BREAK  A[LOOP:0: B:7:0x000e->B:12:0x001e], SYNTHETIC] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private final void removeLastUndo() {
         /*

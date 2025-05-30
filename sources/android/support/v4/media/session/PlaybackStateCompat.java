@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.SystemClock;
-import android.support.v4.media.session.PlaybackStateCompatApi21;
 import android.text.TextUtils;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PlaybackStateCompat implements Parcelable {
     public static final long ACTION_FAST_FORWARD = 64;
     public static final long ACTION_PAUSE = 2;
@@ -42,19 +42,7 @@ public final class PlaybackStateCompat implements Parcelable {
     public static final long ACTION_SKIP_TO_PREVIOUS = 16;
     public static final long ACTION_SKIP_TO_QUEUE_ITEM = 4096;
     public static final long ACTION_STOP = 1;
-    public static final Parcelable.Creator<PlaybackStateCompat> CREATOR = new Parcelable.Creator<PlaybackStateCompat>() { // from class: android.support.v4.media.session.PlaybackStateCompat.1
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // android.os.Parcelable.Creator
-        public PlaybackStateCompat createFromParcel(Parcel parcel) {
-            return new PlaybackStateCompat(parcel);
-        }
-
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // android.os.Parcelable.Creator
-        public PlaybackStateCompat[] newArray(int i) {
-            return new PlaybackStateCompat[i];
-        }
-    };
+    public static final Parcelable.Creator<PlaybackStateCompat> CREATOR = new 1();
     public static final int ERROR_CODE_ACTION_ABORTED = 10;
     public static final int ERROR_CODE_APP_ERROR = 1;
     public static final int ERROR_CODE_AUTHENTICATION_EXPIRED = 3;
@@ -106,7 +94,7 @@ public final class PlaybackStateCompat implements Parcelable {
 
     /* compiled from: Taobao */
     @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     public @interface Actions {
     }
 
@@ -130,7 +118,7 @@ public final class PlaybackStateCompat implements Parcelable {
         }
 
         public Builder addCustomAction(String str, String str2, int i) {
-            return addCustomAction(new CustomAction(str, str2, i, null));
+            return addCustomAction(new CustomAction(str, str2, i, (Bundle) null));
         }
 
         public PlaybackStateCompat build() {
@@ -211,36 +199,8 @@ public final class PlaybackStateCompat implements Parcelable {
 
     /* compiled from: Taobao */
     @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    /* loaded from: classes2.dex */
-    public @interface ErrorCode {
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     public @interface MediaKeyAction {
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    /* loaded from: classes2.dex */
-    public @interface RepeatMode {
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    /* loaded from: classes2.dex */
-    public @interface ShuffleMode {
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    /* loaded from: classes2.dex */
-    public @interface State {
     }
 
     PlaybackStateCompat(int i, long j, long j2, float f, long j3, int i2, CharSequence charSequence, long j4, List<CustomAction> list, long j5, Bundle bundle) {
@@ -262,10 +222,10 @@ public final class PlaybackStateCompat implements Parcelable {
         if (obj == null || Build.VERSION.SDK_INT < 21) {
             return null;
         }
-        List<Object> customActions = PlaybackStateCompatApi21.getCustomActions(obj);
+        List customActions = PlaybackStateCompatApi21.getCustomActions(obj);
         if (customActions != null) {
             ArrayList arrayList2 = new ArrayList(customActions.size());
-            Iterator<Object> it = customActions.iterator();
+            Iterator it = customActions.iterator();
             while (it.hasNext()) {
                 arrayList2.add(CustomAction.fromCustomAction(it.next()));
             }
@@ -320,7 +280,7 @@ public final class PlaybackStateCompat implements Parcelable {
         return this.mBufferedPosition;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     public long getCurrentPosition(Long l) {
         return Math.max(0L, this.mPosition + ((long) (this.mSpeed * (l != null ? l.longValue() : SystemClock.elapsedRealtime() - this.mUpdateTime))));
     }
@@ -395,128 +355,6 @@ public final class PlaybackStateCompat implements Parcelable {
         parcel.writeLong(this.mActiveItemId);
         parcel.writeBundle(this.mExtras);
         parcel.writeInt(this.mErrorCode);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class CustomAction implements Parcelable {
-        public static final Parcelable.Creator<CustomAction> CREATOR = new Parcelable.Creator<CustomAction>() { // from class: android.support.v4.media.session.PlaybackStateCompat.CustomAction.1
-            /* JADX WARN: Can't rename method to resolve collision */
-            @Override // android.os.Parcelable.Creator
-            public CustomAction createFromParcel(Parcel parcel) {
-                return new CustomAction(parcel);
-            }
-
-            /* JADX WARN: Can't rename method to resolve collision */
-            @Override // android.os.Parcelable.Creator
-            public CustomAction[] newArray(int i) {
-                return new CustomAction[i];
-            }
-        };
-        private final String mAction;
-        private Object mCustomActionObj;
-        private final Bundle mExtras;
-        private final int mIcon;
-        private final CharSequence mName;
-
-        /* compiled from: Taobao */
-        /* loaded from: classes.dex */
-        public static final class Builder {
-            private final String mAction;
-            private Bundle mExtras;
-            private final int mIcon;
-            private final CharSequence mName;
-
-            public Builder(String str, CharSequence charSequence, int i) {
-                if (TextUtils.isEmpty(str)) {
-                    throw new IllegalArgumentException("You must specify an action to build a CustomAction.");
-                }
-                if (TextUtils.isEmpty(charSequence)) {
-                    throw new IllegalArgumentException("You must specify a name to build a CustomAction.");
-                }
-                if (i == 0) {
-                    throw new IllegalArgumentException("You must specify an icon resource id to build a CustomAction.");
-                }
-                this.mAction = str;
-                this.mName = charSequence;
-                this.mIcon = i;
-            }
-
-            public CustomAction build() {
-                return new CustomAction(this.mAction, this.mName, this.mIcon, this.mExtras);
-            }
-
-            public Builder setExtras(Bundle bundle) {
-                this.mExtras = bundle;
-                return this;
-            }
-        }
-
-        CustomAction(String str, CharSequence charSequence, int i, Bundle bundle) {
-            this.mAction = str;
-            this.mName = charSequence;
-            this.mIcon = i;
-            this.mExtras = bundle;
-        }
-
-        public static CustomAction fromCustomAction(Object obj) {
-            if (obj == null || Build.VERSION.SDK_INT < 21) {
-                return null;
-            }
-            CustomAction customAction = new CustomAction(PlaybackStateCompatApi21.CustomAction.getAction(obj), PlaybackStateCompatApi21.CustomAction.getName(obj), PlaybackStateCompatApi21.CustomAction.getIcon(obj), PlaybackStateCompatApi21.CustomAction.getExtras(obj));
-            customAction.mCustomActionObj = obj;
-            return customAction;
-        }
-
-        @Override // android.os.Parcelable
-        public int describeContents() {
-            return 0;
-        }
-
-        public String getAction() {
-            return this.mAction;
-        }
-
-        public Object getCustomAction() {
-            Object obj = this.mCustomActionObj;
-            if (obj != null || Build.VERSION.SDK_INT < 21) {
-                return obj;
-            }
-            Object newInstance = PlaybackStateCompatApi21.CustomAction.newInstance(this.mAction, this.mName, this.mIcon, this.mExtras);
-            this.mCustomActionObj = newInstance;
-            return newInstance;
-        }
-
-        public Bundle getExtras() {
-            return this.mExtras;
-        }
-
-        public int getIcon() {
-            return this.mIcon;
-        }
-
-        public CharSequence getName() {
-            return this.mName;
-        }
-
-        public String toString() {
-            return "Action:mName='" + ((Object) this.mName) + ", mIcon=" + this.mIcon + ", mExtras=" + this.mExtras;
-        }
-
-        @Override // android.os.Parcelable
-        public void writeToParcel(Parcel parcel, int i) {
-            parcel.writeString(this.mAction);
-            TextUtils.writeToParcel(this.mName, parcel, i);
-            parcel.writeInt(this.mIcon);
-            parcel.writeBundle(this.mExtras);
-        }
-
-        CustomAction(Parcel parcel) {
-            this.mAction = parcel.readString();
-            this.mName = (CharSequence) TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(parcel);
-            this.mIcon = parcel.readInt();
-            this.mExtras = parcel.readBundle(MediaSessionCompat.class.getClassLoader());
-        }
     }
 
     PlaybackStateCompat(Parcel parcel) {

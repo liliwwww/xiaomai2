@@ -1,7 +1,7 @@
 package androidx.compose.foundation.text.selection;
 
 import androidx.compose.foundation.gestures.ForEachGestureKt;
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.input.pointer.PointerInputScope;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.intrinsics.IntrinsicsKt;
@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TextSelectionMouseDetectorKt {
     public static final double ClicksSlop = 100.0d;
 
@@ -25,14 +25,14 @@ public final class TextSelectionMouseDetectorKt {
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:13:0x0042 -> B:10:0x0045). Please report as a decompilation issue!!! */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object awaitMouseEventDown(androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r10, kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerEvent> r11) {
+    public static final java.lang.Object awaitMouseEventDown(androidx.compose.ui.input.pointer.AwaitPointerEventScope r10, kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerEvent> r11) {
         /*
-            boolean r0 = r11 instanceof androidx.compose.foundation.text.selection.TextSelectionMouseDetectorKt$awaitMouseEventDown$1
+            boolean r0 = r11 instanceof androidx.compose.foundation.text.selection.TextSelectionMouseDetectorKt.awaitMouseEventDown.1
             if (r0 == 0) goto L13
             r0 = r11
-            androidx.compose.foundation.text.selection.TextSelectionMouseDetectorKt$awaitMouseEventDown$1 r0 = (androidx.compose.foundation.text.selection.TextSelectionMouseDetectorKt$awaitMouseEventDown$1) r0
+            androidx.compose.foundation.text.selection.TextSelectionMouseDetectorKt$awaitMouseEventDown$1 r0 = (androidx.compose.foundation.text.selection.TextSelectionMouseDetectorKt.awaitMouseEventDown.1) r0
             int r1 = r0.label
             r2 = -2147483648(0xffffffff80000000, float:-0.0)
             r3 = r1 & r2
@@ -51,7 +51,7 @@ public final class TextSelectionMouseDetectorKt {
             if (r2 == 0) goto L35
             if (r2 != r3) goto L2d
             java.lang.Object r10 = r0.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r10 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r10
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r10 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r10
             kotlin.ResultKt.throwOnFailure(r11)
             goto L45
         L2d:
@@ -62,16 +62,16 @@ public final class TextSelectionMouseDetectorKt {
         L35:
             kotlin.ResultKt.throwOnFailure(r11)
         L38:
-            androidx.compose.ui.input.pointer.PointerEventPass r11 = androidx.compose.p004ui.input.pointer.PointerEventPass.Main
+            androidx.compose.ui.input.pointer.PointerEventPass r11 = androidx.compose.ui.input.pointer.PointerEventPass.Main
             r0.L$0 = r10
             r0.label = r3
             java.lang.Object r11 = r10.awaitPointerEvent(r11, r0)
             if (r11 != r1) goto L45
             return r1
         L45:
-            androidx.compose.ui.input.pointer.PointerEvent r11 = (androidx.compose.p004ui.input.pointer.PointerEvent) r11
-            int r2 = r11.m4024getButtonsry648PA()
-            boolean r2 = androidx.compose.p004ui.input.pointer.PointerEvent_androidKt.m4057isPrimaryPressedaHzCxE(r2)
+            androidx.compose.ui.input.pointer.PointerEvent r11 = (androidx.compose.ui.input.pointer.PointerEvent) r11
+            int r2 = r11.m1982getButtonsry648PA()
+            boolean r2 = androidx.compose.ui.input.pointer.PointerEvent_androidKt.isPrimaryPressed-aHzCx-E(r2)
             if (r2 == 0) goto L38
             java.util.List r2 = r11.getChanges()
             int r4 = r2.size()
@@ -80,13 +80,13 @@ public final class TextSelectionMouseDetectorKt {
         L5b:
             if (r6 >= r4) goto L82
             java.lang.Object r7 = r2.get(r6)
-            androidx.compose.ui.input.pointer.PointerInputChange r7 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r7
-            int r8 = r7.m4084getTypeT8wyACA()
-            androidx.compose.ui.input.pointer.PointerType$Companion r9 = androidx.compose.p004ui.input.pointer.PointerType.Companion
-            int r9 = r9.m4144getMouseT8wyACA()
-            boolean r8 = androidx.compose.p004ui.input.pointer.PointerType.m4139equalsimpl0(r8, r9)
+            androidx.compose.ui.input.pointer.PointerInputChange r7 = (androidx.compose.ui.input.pointer.PointerInputChange) r7
+            int r8 = r7.getType-T8wyACA()
+            androidx.compose.ui.input.pointer.PointerType$Companion r9 = androidx.compose.ui.input.pointer.PointerType.Companion
+            int r9 = r9.getMouse-T8wyACA()
+            boolean r8 = androidx.compose.ui.input.pointer.PointerType.m2036equalsimpl0(r8, r9)
             if (r8 == 0) goto L7b
-            boolean r7 = androidx.compose.p004ui.input.pointer.PointerEventKt.changedToDown(r7)
+            boolean r7 = androidx.compose.ui.input.pointer.PointerEventKt.changedToDown(r7)
             if (r7 == 0) goto L7b
             r7 = 1
             goto L7c

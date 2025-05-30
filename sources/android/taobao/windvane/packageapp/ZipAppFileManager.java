@@ -15,17 +15,11 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ZipAppFileManager {
     private static ZipAppFileManager zipAppFileManager;
     private String TAG = "PackageApp-ZipAppFileManager";
     private ZipDegradeDecider mDecider;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public interface ZipDegradeDecider {
-        boolean needDegrade();
-    }
 
     private boolean deleteDir(String str, String str2) {
         try {
@@ -79,7 +73,7 @@ public class ZipAppFileManager {
         try {
             return FileAccesser.write(str, ByteBuffer.wrap(bArr));
         } catch (Exception e) {
-            TaoLog.m21e(this.TAG, "write file:[" + str + "]  exception:" + e.getMessage());
+            TaoLog.e(this.TAG, "write file:[" + str + "]  exception:" + e.getMessage());
             return false;
         }
     }
@@ -97,7 +91,7 @@ public class ZipAppFileManager {
     }
 
     public boolean copyZipApp(ZipAppInfo zipAppInfo) {
-        return FileManager.copyDir(getZipRootDir(zipAppInfo, true), getFileAbsolutePath(zipAppInfo.name + WVNativeCallbackUtil.SEPERATER + zipAppInfo.f26v, false, ZipAppTypeEnum.ZIP_APP_TYPE_PACKAGEAPP == zipAppInfo.getAppType()));
+        return FileManager.copyDir(getZipRootDir(zipAppInfo, true), getFileAbsolutePath(zipAppInfo.name + WVNativeCallbackUtil.SEPERATER + zipAppInfo.v, false, ZipAppTypeEnum.ZIP_APP_TYPE_PACKAGEAPP == zipAppInfo.getAppType()));
     }
 
     public boolean createZipAppInitDir() {
@@ -106,17 +100,17 @@ public class ZipAppFileManager {
             return false;
         }
         File createFolder = FileManager.createFolder(application, ZipAppConstants.ZIPAPP_ROOT_APPS_DIR);
-        TaoLog.m18d(this.TAG, "createDir: dir[" + createFolder.getAbsolutePath() + "]:" + createFolder.exists());
+        TaoLog.d(this.TAG, "createDir: dir[" + createFolder.getAbsolutePath() + "]:" + createFolder.exists());
         if (!createFolder.exists()) {
             return false;
         }
         File createFolder2 = FileManager.createFolder(GlobalConfig.context, ZipAppConstants.ZIPAPP_ROOT_TMP_DIR);
-        TaoLog.m18d(this.TAG, "createDir: dir[" + createFolder2.getAbsolutePath() + "]:" + createFolder2.exists());
+        TaoLog.d(this.TAG, "createDir: dir[" + createFolder2.getAbsolutePath() + "]:" + createFolder2.exists());
         return createFolder2.exists();
     }
 
     public boolean deleteHisZipApp(ZipAppInfo zipAppInfo) {
-        return deleteDir(getFileAbsolutePath(zipAppInfo.name, false, ZipAppTypeEnum.ZIP_APP_TYPE_PACKAGEAPP == zipAppInfo.getAppType()), zipAppInfo.f26v);
+        return deleteDir(getFileAbsolutePath(zipAppInfo.name, false, ZipAppTypeEnum.ZIP_APP_TYPE_PACKAGEAPP == zipAppInfo.getAppType()), zipAppInfo.v);
     }
 
     public boolean deleteZipApp(ZipAppInfo zipAppInfo, boolean z) {
@@ -150,7 +144,7 @@ public class ZipAppFileManager {
         try {
             return GlobalConfig.context.getResources().getAssets().open(str);
         } catch (FileNotFoundException unused) {
-            TaoLog.m24i(this.TAG, "preload package not exists");
+            TaoLog.i(this.TAG, "preload package not exists");
             return null;
         } catch (Exception unused2) {
             return null;
@@ -193,17 +187,17 @@ public class ZipAppFileManager {
     public String readFile(String str) {
         try {
             if (!FileAccesser.exists(str)) {
-                TaoLog.m24i(this.TAG, "file[" + str + "] not found");
+                TaoLog.i(this.TAG, "file[" + str + "] not found");
                 return null;
             }
             byte[] read = FileAccesser.read(str);
             if (read != null && read.length >= 1) {
                 return new String(read, ZipAppConstants.DEFAULT_ENCODING);
             }
-            TaoLog.m30w(this.TAG, "readConfig:[" + str + "] data is null");
+            TaoLog.w(this.TAG, "readConfig:[" + str + "] data is null");
             return null;
         } catch (Exception e) {
-            TaoLog.m21e(this.TAG, "readFile:[" + str + "] exception:" + e.getMessage());
+            TaoLog.e(this.TAG, "readFile:[" + str + "] exception:" + e.getMessage());
             return null;
         }
     }
@@ -243,7 +237,7 @@ public class ZipAppFileManager {
     /* JADX WARN: Removed duplicated region for block: B:13:0x0045 A[Catch: Exception -> 0x005f, TRY_LEAVE, TryCatch #0 {Exception -> 0x005f, blocks: (B:3:0x000b, B:5:0x0014, B:7:0x001c, B:10:0x0023, B:11:0x003f, B:13:0x0045, B:17:0x0032), top: B:2:0x000b }] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public java.lang.String unZipToTmp(android.taobao.windvane.packageapp.zipapp.data.ZipAppInfo r6, java.lang.String r7) {
         /*
@@ -289,14 +283,14 @@ public class ZipAppFileManager {
             r3.append(r4)     // Catch: java.lang.Exception -> L5f
             r3.append(r7)     // Catch: java.lang.Exception -> L5f
             java.lang.String r7 = r3.toString()     // Catch: java.lang.Exception -> L5f
-            android.taobao.windvane.util.TaoLog.m18d(r0, r7)     // Catch: java.lang.Exception -> L5f
+            android.taobao.windvane.util.TaoLog.d(r0, r7)     // Catch: java.lang.Exception -> L5f
             goto L84
         L5f:
             r7 = move-exception
             java.lang.String r0 = r5.TAG
             java.lang.Object[] r2 = new java.lang.Object[r2]
             java.lang.String r3 = "unZipToTemp"
-            android.taobao.windvane.util.TaoLog.m31w(r0, r3, r7, r2)
+            android.taobao.windvane.util.TaoLog.w(r0, r3, r7, r2)
             android.taobao.windvane.config.WVCommonConfigData r0 = android.taobao.windvane.config.WVCommonConfig.commonConfig
             boolean r0 = r0.needZipDegrade
             if (r0 == 0) goto L72

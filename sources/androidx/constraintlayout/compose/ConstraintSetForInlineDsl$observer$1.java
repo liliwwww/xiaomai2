@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @Metadata(bv = {1, 0, 3}, d1 = {"\u0000\f\n\u0002\u0018\u0002\n\u0002\u0010\u0002\n\u0002\b\u0002\u0010\u0003\u001a\u00020\u00012\f\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00010\u0000H\n"}, d2 = {"Lkotlin/Function0;", "", "it", "<anonymous>"}, k = 3, mv = {1, 5, 1})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class ConstraintSetForInlineDsl$observer$1 extends Lambda implements Function1<Function0<? extends Unit>, Unit> {
     final /* synthetic */ ConstraintSetForInlineDsl this$0;
 
@@ -24,7 +24,7 @@ final class ConstraintSetForInlineDsl$observer$1 extends Lambda implements Funct
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: invoke$lambda-1, reason: not valid java name */
-    public static final void m5525invoke$lambda1(Function0 function0) {
+    public static final void m2750invoke$lambda1(Function0 function0) {
         Intrinsics.checkNotNullParameter(function0, "$tmp0");
         function0.invoke();
     }
@@ -34,23 +34,17 @@ final class ConstraintSetForInlineDsl$observer$1 extends Lambda implements Funct
         return Unit.INSTANCE;
     }
 
-    public final void invoke(@NotNull final Function0<Unit> function0) {
-        Handler handler;
+    public final void invoke(@NotNull Function0<Unit> function0) {
         Intrinsics.checkNotNullParameter(function0, "it");
         if (Intrinsics.areEqual(Looper.myLooper(), Looper.getMainLooper())) {
             function0.invoke();
             return;
         }
-        handler = this.this$0.handler;
-        if (handler == null) {
-            handler = new Handler(Looper.getMainLooper());
-            this.this$0.handler = handler;
+        Handler access$getHandler$p = ConstraintSetForInlineDsl.access$getHandler$p(this.this$0);
+        if (access$getHandler$p == null) {
+            access$getHandler$p = new Handler(Looper.getMainLooper());
+            ConstraintSetForInlineDsl.access$setHandler$p(this.this$0, access$getHandler$p);
         }
-        handler.post(new Runnable() { // from class: androidx.constraintlayout.compose.a
-            @Override // java.lang.Runnable
-            public final void run() {
-                ConstraintSetForInlineDsl$observer$1.m5525invoke$lambda1(function0);
-            }
-        });
+        access$getHandler$p.post(new a(function0));
     }
 }

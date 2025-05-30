@@ -6,13 +6,12 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class CompositionLocalContext {
 
     @NotNull
     private final PersistentMap<CompositionLocal<Object>, State<Object>> compositionLocals;
 
-    /* JADX WARN: Multi-variable type inference failed */
     public CompositionLocalContext(@NotNull PersistentMap<CompositionLocal<Object>, ? extends State<? extends Object>> persistentMap) {
         Intrinsics.checkNotNullParameter(persistentMap, "compositionLocals");
         this.compositionLocals = persistentMap;

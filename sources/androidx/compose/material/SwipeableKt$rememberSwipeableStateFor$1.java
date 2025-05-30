@@ -1,5 +1,6 @@
 package androidx.compose.material;
 
+import androidx.compose.animation.core.AnimationSpec;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -14,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.SwipeableKt$rememberSwipeableStateFor$1", f = "Swipeable.kt", i = {}, l = {512}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SwipeableKt$rememberSwipeableStateFor$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ SwipeableState<T> $swipeableState;
     final /* synthetic */ T $value;
@@ -47,7 +48,7 @@ final class SwipeableKt$rememberSwipeableStateFor$1 extends SuspendLambda implem
                 SwipeableState<T> swipeableState = this.$swipeableState;
                 T t = this.$value;
                 this.label = 1;
-                if (SwipeableState.animateTo$default(swipeableState, t, null, this, 2, null) == coroutine_suspended) {
+                if (SwipeableState.animateTo$default(swipeableState, t, (AnimationSpec) null, this, 2, (Object) null) == coroutine_suspended) {
                     return coroutine_suspended;
                 }
             }

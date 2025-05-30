@@ -3,19 +3,17 @@ package androidx.constraintlayout.utils.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Outline;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.view.View;
 import android.view.ViewOutlineProvider;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.constraintlayout.widget.C0923R;
+import androidx.constraintlayout.widget.R;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MotionButton extends AppCompatButton {
     private Path mPath;
     RectF mRect;
@@ -30,18 +28,19 @@ public class MotionButton extends AppCompatButton {
         init(context, null);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     private void init(Context context, AttributeSet attributeSet) {
         setPadding(0, 0, 0, 0);
         if (attributeSet != null) {
-            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, C0923R.styleable.ImageFilterView);
+            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.ImageFilterView);
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
                 int index = obtainStyledAttributes.getIndex(i);
-                if (index == C0923R.styleable.ImageFilterView_round) {
+                if (index == R.styleable.ImageFilterView_round) {
                     if (Build.VERSION.SDK_INT >= 21) {
                         setRound(obtainStyledAttributes.getDimension(index, 0.0f));
                     }
-                } else if (index == C0923R.styleable.ImageFilterView_roundPercent && Build.VERSION.SDK_INT >= 21) {
+                } else if (index == R.styleable.ImageFilterView_roundPercent && Build.VERSION.SDK_INT >= 21) {
                     setRoundPercent(obtainStyledAttributes.getFloat(index, 0.0f));
                 }
             }
@@ -49,7 +48,7 @@ public class MotionButton extends AppCompatButton {
         }
     }
 
-    @Override // android.view.View
+    /* JADX WARN: Multi-variable type inference failed */
     public void draw(Canvas canvas) {
         boolean z;
         if (Build.VERSION.SDK_INT >= 21 || this.mRound == 0.0f || this.mPath == null) {
@@ -59,7 +58,7 @@ public class MotionButton extends AppCompatButton {
             canvas.save();
             canvas.clipPath(this.mPath);
         }
-        super.draw(canvas);
+        super/*android.widget.Button*/.draw(canvas);
         if (z) {
             canvas.restore();
         }
@@ -73,6 +72,7 @@ public class MotionButton extends AppCompatButton {
         return this.mRoundPercent;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     @RequiresApi(21)
     public void setRound(float f) {
         if (Float.isNaN(f)) {
@@ -93,14 +93,9 @@ public class MotionButton extends AppCompatButton {
             }
             if (Build.VERSION.SDK_INT >= 21) {
                 if (this.mViewOutlineProvider == null) {
-                    ViewOutlineProvider viewOutlineProvider = new ViewOutlineProvider() { // from class: androidx.constraintlayout.utils.widget.MotionButton.2
-                        @Override // android.view.ViewOutlineProvider
-                        public void getOutline(View view, Outline outline) {
-                            outline.setRoundRect(0, 0, MotionButton.this.getWidth(), MotionButton.this.getHeight(), MotionButton.this.mRound);
-                        }
-                    };
-                    this.mViewOutlineProvider = viewOutlineProvider;
-                    setOutlineProvider(viewOutlineProvider);
+                    2 r6 = new 2(this);
+                    this.mViewOutlineProvider = r6;
+                    setOutlineProvider(r6);
                 }
                 setClipToOutline(true);
             }
@@ -119,6 +114,7 @@ public class MotionButton extends AppCompatButton {
         invalidateOutline();
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     @RequiresApi(21)
     public void setRoundPercent(float f) {
         boolean z = this.mRoundPercent != f;
@@ -132,14 +128,9 @@ public class MotionButton extends AppCompatButton {
             }
             if (Build.VERSION.SDK_INT >= 21) {
                 if (this.mViewOutlineProvider == null) {
-                    ViewOutlineProvider viewOutlineProvider = new ViewOutlineProvider() { // from class: androidx.constraintlayout.utils.widget.MotionButton.1
-                        @Override // android.view.ViewOutlineProvider
-                        public void getOutline(View view, Outline outline) {
-                            outline.setRoundRect(0, 0, MotionButton.this.getWidth(), MotionButton.this.getHeight(), (Math.min(r3, r4) * MotionButton.this.mRoundPercent) / 2.0f);
-                        }
-                    };
-                    this.mViewOutlineProvider = viewOutlineProvider;
-                    setOutlineProvider(viewOutlineProvider);
+                    1 r7 = new 1(this);
+                    this.mViewOutlineProvider = r7;
+                    setOutlineProvider(r7);
                 }
                 setClipToOutline(true);
             }

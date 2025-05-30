@@ -20,15 +20,17 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.Lifecycle$Event;
 import androidx.lifecycle.LifecycleEventObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView$Adapter;
 import androidx.viewpager2.widget.ViewPager2;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
-public abstract class FragmentStateAdapter extends RecyclerView.Adapter<FragmentViewHolder> implements StatefulAdapter {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
+public abstract class FragmentStateAdapter extends RecyclerView$Adapter<FragmentViewHolder> implements StatefulAdapter {
     private static final long GRACE_WINDOW_TIME_MS = 10000;
     private static final String KEY_PREFIX_FRAGMENT = "f#";
     private static final String KEY_PREFIX_STATE = "s#";
@@ -46,30 +48,24 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
         private DataSetChangeObserver() {
         }
 
-        @Override // androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
         public abstract void onChanged();
 
-        @Override // androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
         public final void onItemRangeChanged(int i, int i2) {
             onChanged();
         }
 
-        @Override // androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
         public final void onItemRangeInserted(int i, int i2) {
             onChanged();
         }
 
-        @Override // androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
         public final void onItemRangeMoved(int i, int i2, int i3) {
             onChanged();
         }
 
-        @Override // androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
         public final void onItemRangeRemoved(int i, int i2) {
             onChanged();
         }
 
-        @Override // androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
         public final void onItemRangeChanged(int i, int i2, @Nullable Object obj) {
             onChanged();
         }
@@ -88,9 +84,9 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
 
         @NonNull
         private ViewPager2 inferViewPager(@NonNull RecyclerView recyclerView) {
-            ViewParent parent = recyclerView.getParent();
+            ViewPager2 parent = recyclerView.getParent();
             if (parent instanceof ViewPager2) {
-                return (ViewPager2) parent;
+                return parent;
             }
             throw new IllegalStateException("Expected ViewPager2 instance. Got: " + parent);
         }
@@ -98,12 +94,10 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
         void register(@NonNull RecyclerView recyclerView) {
             this.mViewPager = inferViewPager(recyclerView);
             ViewPager2.OnPageChangeCallback onPageChangeCallback = new ViewPager2.OnPageChangeCallback() { // from class: androidx.viewpager2.adapter.FragmentStateAdapter.FragmentMaxLifecycleEnforcer.1
-                @Override // androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
                 public void onPageScrollStateChanged(int i) {
                     FragmentMaxLifecycleEnforcer.this.updateFragmentMaxLifecycle(false);
                 }
 
-                @Override // androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
                 public void onPageSelected(int i) {
                     FragmentMaxLifecycleEnforcer.this.updateFragmentMaxLifecycle(false);
                 }
@@ -111,7 +105,7 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
             this.mPageChangeCallback = onPageChangeCallback;
             this.mViewPager.registerOnPageChangeCallback(onPageChangeCallback);
             DataSetChangeObserver dataSetChangeObserver = new DataSetChangeObserver() { // from class: androidx.viewpager2.adapter.FragmentStateAdapter.FragmentMaxLifecycleEnforcer.2
-                @Override // androidx.viewpager2.adapter.FragmentStateAdapter.DataSetChangeObserver, androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
+                @Override // androidx.viewpager2.adapter.FragmentStateAdapter.DataSetChangeObserver
                 public void onChanged() {
                     FragmentMaxLifecycleEnforcer.this.updateFragmentMaxLifecycle(true);
                 }
@@ -119,8 +113,7 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
             this.mDataObserver = dataSetChangeObserver;
             FragmentStateAdapter.this.registerAdapterDataObserver(dataSetChangeObserver);
             LifecycleEventObserver lifecycleEventObserver = new LifecycleEventObserver() { // from class: androidx.viewpager2.adapter.FragmentStateAdapter.FragmentMaxLifecycleEnforcer.3
-                @Override // androidx.lifecycle.LifecycleEventObserver
-                public void onStateChanged(@NonNull LifecycleOwner lifecycleOwner, @NonNull Lifecycle.Event event) {
+                public void onStateChanged(@NonNull LifecycleOwner lifecycleOwner, @NonNull Lifecycle$Event lifecycle$Event) {
                     FragmentMaxLifecycleEnforcer.this.updateFragmentMaxLifecycle(false);
                 }
             };
@@ -256,9 +249,9 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
             }
         };
         this.mLifecycle.addObserver(new LifecycleEventObserver() { // from class: androidx.viewpager2.adapter.FragmentStateAdapter.5
-            @Override // androidx.lifecycle.LifecycleEventObserver
-            public void onStateChanged(@NonNull LifecycleOwner lifecycleOwner, @NonNull Lifecycle.Event event) {
-                if (event == Lifecycle.Event.ON_DESTROY) {
+            /* JADX WARN: Multi-variable type inference failed */
+            public void onStateChanged(@NonNull LifecycleOwner lifecycleOwner, @NonNull Lifecycle$Event lifecycle$Event) {
+                if (lifecycle$Event == Lifecycle$Event.ON_DESTROY) {
                     handler.removeCallbacks(runnable);
                     lifecycleOwner.getLifecycle().removeObserver(this);
                 }
@@ -269,7 +262,6 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
 
     private void scheduleViewAttach(final Fragment fragment, @NonNull final FrameLayout frameLayout) {
         this.mFragmentManager.registerFragmentLifecycleCallbacks(new FragmentManager.FragmentLifecycleCallbacks() { // from class: androidx.viewpager2.adapter.FragmentStateAdapter.3
-            @Override // androidx.fragment.app.FragmentManager.FragmentLifecycleCallbacks
             public void onFragmentViewCreated(@NonNull FragmentManager fragmentManager, @NonNull Fragment fragment2, @NonNull View view, @Nullable Bundle bundle) {
                 if (fragment2 == fragment) {
                     fragmentManager.unregisterFragmentLifecycleCallbacks(this);
@@ -323,18 +315,18 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
                 }
             }
         }
-        Iterator<E> it = arraySet.iterator();
+        Iterator it = arraySet.iterator();
         while (it.hasNext()) {
             removeFragment(((Long) it.next()).longValue());
         }
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+    @Override // androidx.recyclerview.widget.RecyclerView$Adapter
     public long getItemId(int i) {
         return i;
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+    @Override // androidx.recyclerview.widget.RecyclerView$Adapter
     @CallSuper
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         Preconditions.checkArgument(this.mFragmentMaxLifecycleEnforcer == null);
@@ -343,14 +335,14 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
         fragmentMaxLifecycleEnforcer.register(recyclerView);
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+    @Override // androidx.recyclerview.widget.RecyclerView$Adapter
     @CallSuper
     public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
         this.mFragmentMaxLifecycleEnforcer.unregister(recyclerView);
         this.mFragmentMaxLifecycleEnforcer = null;
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+    @Override // androidx.recyclerview.widget.RecyclerView$Adapter
     public final boolean onFailedToRecycleView(@NonNull FragmentViewHolder fragmentViewHolder) {
         return true;
     }
@@ -385,8 +377,8 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
                 return;
             }
             this.mLifecycle.addObserver(new LifecycleEventObserver() { // from class: androidx.viewpager2.adapter.FragmentStateAdapter.2
-                @Override // androidx.lifecycle.LifecycleEventObserver
-                public void onStateChanged(@NonNull LifecycleOwner lifecycleOwner, @NonNull Lifecycle.Event event) {
+                /* JADX WARN: Multi-variable type inference failed */
+                public void onStateChanged(@NonNull LifecycleOwner lifecycleOwner, @NonNull Lifecycle$Event lifecycle$Event) {
                     if (FragmentStateAdapter.this.shouldDelayFragmentTransactions()) {
                         return;
                     }
@@ -403,7 +395,6 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
         this.mFragmentMaxLifecycleEnforcer.updateFragmentMaxLifecycle(false);
     }
 
-    @Override // androidx.viewpager2.adapter.StatefulAdapter
     public final void restoreState(@NonNull Parcelable parcelable) {
         if (!this.mSavedStates.isEmpty() || !this.mFragments.isEmpty()) {
             throw new IllegalStateException("Expected the adapter to be 'fresh' while restoring state.");
@@ -420,9 +411,9 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
                     throw new IllegalArgumentException("Unexpected key in savedState: " + str);
                 }
                 long parseIdFromKey = parseIdFromKey(str, KEY_PREFIX_STATE);
-                Fragment.SavedState savedState = (Fragment.SavedState) bundle.getParcelable(str);
+                Fragment.SavedState parcelable2 = bundle.getParcelable(str);
                 if (containsItem(parseIdFromKey)) {
-                    this.mSavedStates.put(parseIdFromKey, savedState);
+                    this.mSavedStates.put(parseIdFromKey, parcelable2);
                 }
             }
         }
@@ -435,7 +426,6 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
         scheduleGracePeriodEnd();
     }
 
-    @Override // androidx.viewpager2.adapter.StatefulAdapter
     @NonNull
     public final Parcelable saveState() {
         Bundle bundle = new Bundle(this.mFragments.size() + this.mSavedStates.size());
@@ -449,13 +439,13 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
         for (int i2 = 0; i2 < this.mSavedStates.size(); i2++) {
             long keyAt2 = this.mSavedStates.keyAt(i2);
             if (containsItem(keyAt2)) {
-                bundle.putParcelable(createKey(KEY_PREFIX_STATE, keyAt2), this.mSavedStates.get(keyAt2));
+                bundle.putParcelable(createKey(KEY_PREFIX_STATE, keyAt2), (Parcelable) this.mSavedStates.get(keyAt2));
             }
         }
         return bundle;
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+    @Override // androidx.recyclerview.widget.RecyclerView$Adapter
     public final void setHasStableIds(boolean z) {
         throw new UnsupportedOperationException("Stable Ids are required for the adapter to function properly, and the adapter takes care of setting the flag.");
     }
@@ -468,7 +458,7 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
         this(fragment.getChildFragmentManager(), fragment.getLifecycle());
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+    @Override // androidx.recyclerview.widget.RecyclerView$Adapter
     public final void onBindViewHolder(@NonNull final FragmentViewHolder fragmentViewHolder, int i) {
         long itemId = fragmentViewHolder.getItemId();
         int id = fragmentViewHolder.getContainer().getId();
@@ -497,19 +487,19 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
         gcFragments();
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+    @Override // androidx.recyclerview.widget.RecyclerView$Adapter
     @NonNull
     public final FragmentViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         return FragmentViewHolder.create(viewGroup);
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+    @Override // androidx.recyclerview.widget.RecyclerView$Adapter
     public final void onViewAttachedToWindow(@NonNull FragmentViewHolder fragmentViewHolder) {
         placeFragmentInViewHolder(fragmentViewHolder);
         gcFragments();
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+    @Override // androidx.recyclerview.widget.RecyclerView$Adapter
     public final void onViewRecycled(@NonNull FragmentViewHolder fragmentViewHolder) {
         Long itemForViewHolder = itemForViewHolder(fragmentViewHolder.getContainer().getId());
         if (itemForViewHolder != null) {

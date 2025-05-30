@@ -1,10 +1,11 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
 import androidx.core.graphics.Insets;
 import androidx.core.view.WindowInsetsCompat;
 import kotlin.jvm.internal.Intrinsics;
@@ -13,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AndroidWindowInsets implements WindowInsets {
 
     @NotNull
@@ -30,8 +31,8 @@ public final class AndroidWindowInsets implements WindowInsets {
         Intrinsics.checkNotNullParameter(str, "name");
         this.type = i;
         this.name = str;
-        this.insets$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Insets.NONE, null, 2, null);
-        this.isVisible$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.TRUE, null, 2, null);
+        this.insets$delegate = SnapshotStateKt.mutableStateOf$default(Insets.NONE, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.isVisible$delegate = SnapshotStateKt.mutableStateOf$default(Boolean.TRUE, (SnapshotMutationPolicy) null, 2, (Object) null);
     }
 
     private final void setVisible(boolean z) {
@@ -45,33 +46,28 @@ public final class AndroidWindowInsets implements WindowInsets {
         return (obj instanceof AndroidWindowInsets) && this.type == ((AndroidWindowInsets) obj).type;
     }
 
-    @Override // androidx.compose.foundation.layout.WindowInsets
     public int getBottom(@NotNull Density density) {
         Intrinsics.checkNotNullParameter(density, "density");
         return getInsets$foundation_layout_release().bottom;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @NotNull
     public final Insets getInsets$foundation_layout_release() {
         return (Insets) this.insets$delegate.getValue();
     }
 
-    @Override // androidx.compose.foundation.layout.WindowInsets
     public int getLeft(@NotNull Density density, @NotNull LayoutDirection layoutDirection) {
         Intrinsics.checkNotNullParameter(density, "density");
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
         return getInsets$foundation_layout_release().left;
     }
 
-    @Override // androidx.compose.foundation.layout.WindowInsets
     public int getRight(@NotNull Density density, @NotNull LayoutDirection layoutDirection) {
         Intrinsics.checkNotNullParameter(density, "density");
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
         return getInsets$foundation_layout_release().right;
     }
 
-    @Override // androidx.compose.foundation.layout.WindowInsets
     public int getTop(@NotNull Density density) {
         Intrinsics.checkNotNullParameter(density, "density");
         return getInsets$foundation_layout_release().top;
@@ -85,7 +81,6 @@ public final class AndroidWindowInsets implements WindowInsets {
         return this.type;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final boolean isVisible() {
         return ((Boolean) this.isVisible$delegate.getValue()).booleanValue();
     }

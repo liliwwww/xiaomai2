@@ -2,7 +2,6 @@ package androidx.constraintlayout.motion.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Rect;
 import android.taobao.windvane.util.WVNativeCallbackUtil;
 import android.util.Log;
 import android.util.Xml;
@@ -16,12 +15,11 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.OvershootInterpolator;
 import androidx.constraintlayout.core.motion.utils.Easing;
-import androidx.constraintlayout.core.motion.utils.KeyCache;
 import androidx.constraintlayout.motion.widget.MotionScene;
-import androidx.constraintlayout.widget.C0923R;
 import androidx.constraintlayout.widget.ConstraintAttribute;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintLayout$LayoutParams;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.constraintlayout.widget.R;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,7 +28,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import tb.v56;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ViewTransition {
     static final int ANTICIPATE = 6;
     static final int BOUNCE = 4;
@@ -79,138 +77,6 @@ public class ViewTransition {
     private int mSharedValueTarget = -1;
     private int mSharedValueID = -1;
     private int mSharedValueCurrent = -1;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static class Animate {
-        boolean hold_at_100;
-        private final int mClearsTag;
-        float mDpositionDt;
-        int mDuration;
-        Interpolator mInterpolator;
-        long mLastRender;
-        MotionController mMC;
-        float mPosition;
-        private final int mSetsTag;
-        long mStart;
-        int mUpDuration;
-        ViewTransitionController mVtController;
-        KeyCache mCache = new KeyCache();
-        boolean reverse = false;
-        Rect mTempRec = new Rect();
-
-        Animate(ViewTransitionController viewTransitionController, MotionController motionController, int i, int i2, int i3, Interpolator interpolator, int i4, int i5) {
-            this.hold_at_100 = false;
-            this.mVtController = viewTransitionController;
-            this.mMC = motionController;
-            this.mDuration = i;
-            this.mUpDuration = i2;
-            long nanoTime = System.nanoTime();
-            this.mStart = nanoTime;
-            this.mLastRender = nanoTime;
-            this.mVtController.addAnimation(this);
-            this.mInterpolator = interpolator;
-            this.mSetsTag = i4;
-            this.mClearsTag = i5;
-            if (i3 == 3) {
-                this.hold_at_100 = true;
-            }
-            this.mDpositionDt = i == 0 ? Float.MAX_VALUE : 1.0f / i;
-            mutate();
-        }
-
-        void mutate() {
-            if (this.reverse) {
-                mutateReverse();
-            } else {
-                mutateForward();
-            }
-        }
-
-        void mutateForward() {
-            long nanoTime = System.nanoTime();
-            long j = nanoTime - this.mLastRender;
-            this.mLastRender = nanoTime;
-            float f = this.mPosition + (((float) (j * 1.0E-6d)) * this.mDpositionDt);
-            this.mPosition = f;
-            if (f >= 1.0f) {
-                this.mPosition = 1.0f;
-            }
-            Interpolator interpolator = this.mInterpolator;
-            float interpolation = interpolator == null ? this.mPosition : interpolator.getInterpolation(this.mPosition);
-            MotionController motionController = this.mMC;
-            boolean interpolate = motionController.interpolate(motionController.mView, interpolation, nanoTime, this.mCache);
-            if (this.mPosition >= 1.0f) {
-                if (this.mSetsTag != -1) {
-                    this.mMC.getView().setTag(this.mSetsTag, Long.valueOf(System.nanoTime()));
-                }
-                if (this.mClearsTag != -1) {
-                    this.mMC.getView().setTag(this.mClearsTag, null);
-                }
-                if (!this.hold_at_100) {
-                    this.mVtController.removeAnimation(this);
-                }
-            }
-            if (this.mPosition < 1.0f || interpolate) {
-                this.mVtController.invalidate();
-            }
-        }
-
-        void mutateReverse() {
-            long nanoTime = System.nanoTime();
-            long j = nanoTime - this.mLastRender;
-            this.mLastRender = nanoTime;
-            float f = this.mPosition - (((float) (j * 1.0E-6d)) * this.mDpositionDt);
-            this.mPosition = f;
-            if (f < 0.0f) {
-                this.mPosition = 0.0f;
-            }
-            Interpolator interpolator = this.mInterpolator;
-            float interpolation = interpolator == null ? this.mPosition : interpolator.getInterpolation(this.mPosition);
-            MotionController motionController = this.mMC;
-            boolean interpolate = motionController.interpolate(motionController.mView, interpolation, nanoTime, this.mCache);
-            if (this.mPosition <= 0.0f) {
-                if (this.mSetsTag != -1) {
-                    this.mMC.getView().setTag(this.mSetsTag, Long.valueOf(System.nanoTime()));
-                }
-                if (this.mClearsTag != -1) {
-                    this.mMC.getView().setTag(this.mClearsTag, null);
-                }
-                this.mVtController.removeAnimation(this);
-            }
-            if (this.mPosition > 0.0f || interpolate) {
-                this.mVtController.invalidate();
-            }
-        }
-
-        public void reactTo(int i, float f, float f2) {
-            if (i == 1) {
-                if (this.reverse) {
-                    return;
-                }
-                reverse(true);
-            } else {
-                if (i != 2) {
-                    return;
-                }
-                this.mMC.getView().getHitRect(this.mTempRec);
-                if (this.mTempRec.contains((int) f, (int) f2) || this.reverse) {
-                    return;
-                }
-                reverse(true);
-            }
-        }
-
-        void reverse(boolean z) {
-            int i;
-            this.reverse = z;
-            if (z && (i = this.mUpDuration) != -1) {
-                this.mDpositionDt = i == 0 ? Float.MAX_VALUE : 1.0f / i;
-            }
-            this.mVtController.invalidate();
-            this.mLastRender = System.nanoTime();
-        }
-    }
 
     ViewTransition(Context context, XmlPullParser xmlPullParser) {
         char c;
@@ -301,13 +167,13 @@ public class ViewTransition {
     }
 
     private void parseViewTransitionTags(Context context, XmlPullParser xmlPullParser) {
-        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(Xml.asAttributeSet(xmlPullParser), C0923R.styleable.ViewTransition);
+        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(Xml.asAttributeSet(xmlPullParser), R.styleable.ViewTransition);
         int indexCount = obtainStyledAttributes.getIndexCount();
         for (int i = 0; i < indexCount; i++) {
             int index = obtainStyledAttributes.getIndex(i);
-            if (index == C0923R.styleable.ViewTransition_android_id) {
+            if (index == R.styleable.ViewTransition_android_id) {
                 this.mId = obtainStyledAttributes.getResourceId(index, this.mId);
-            } else if (index == C0923R.styleable.ViewTransition_motionTarget) {
+            } else if (index == R.styleable.ViewTransition_motionTarget) {
                 if (MotionLayout.IS_IN_EDIT_MODE) {
                     int resourceId = obtainStyledAttributes.getResourceId(index, this.mTargetId);
                     this.mTargetId = resourceId;
@@ -319,19 +185,19 @@ public class ViewTransition {
                 } else {
                     this.mTargetId = obtainStyledAttributes.getResourceId(index, this.mTargetId);
                 }
-            } else if (index == C0923R.styleable.ViewTransition_onStateTransition) {
+            } else if (index == R.styleable.ViewTransition_onStateTransition) {
                 this.mOnStateTransition = obtainStyledAttributes.getInt(index, this.mOnStateTransition);
-            } else if (index == C0923R.styleable.ViewTransition_transitionDisable) {
+            } else if (index == R.styleable.ViewTransition_transitionDisable) {
                 this.mDisabled = obtainStyledAttributes.getBoolean(index, this.mDisabled);
-            } else if (index == C0923R.styleable.ViewTransition_pathMotionArc) {
+            } else if (index == R.styleable.ViewTransition_pathMotionArc) {
                 this.mPathMotionArc = obtainStyledAttributes.getInt(index, this.mPathMotionArc);
-            } else if (index == C0923R.styleable.ViewTransition_duration) {
+            } else if (index == R.styleable.ViewTransition_duration) {
                 this.mDuration = obtainStyledAttributes.getInt(index, this.mDuration);
-            } else if (index == C0923R.styleable.ViewTransition_upDuration) {
+            } else if (index == R.styleable.ViewTransition_upDuration) {
                 this.mUpDuration = obtainStyledAttributes.getInt(index, this.mUpDuration);
-            } else if (index == C0923R.styleable.ViewTransition_viewTransitionMode) {
+            } else if (index == R.styleable.ViewTransition_viewTransitionMode) {
                 this.mViewTransitionMode = obtainStyledAttributes.getInt(index, this.mViewTransitionMode);
-            } else if (index == C0923R.styleable.ViewTransition_motionInterpolator) {
+            } else if (index == R.styleable.ViewTransition_motionInterpolator) {
                 int i2 = obtainStyledAttributes.peekValue(index).type;
                 if (i2 == 1) {
                     int resourceId2 = obtainStyledAttributes.getResourceId(index, -1);
@@ -351,17 +217,17 @@ public class ViewTransition {
                 } else {
                     this.mDefaultInterpolator = obtainStyledAttributes.getInteger(index, this.mDefaultInterpolator);
                 }
-            } else if (index == C0923R.styleable.ViewTransition_setsTag) {
+            } else if (index == R.styleable.ViewTransition_setsTag) {
                 this.mSetsTag = obtainStyledAttributes.getResourceId(index, this.mSetsTag);
-            } else if (index == C0923R.styleable.ViewTransition_clearsTag) {
+            } else if (index == R.styleable.ViewTransition_clearsTag) {
                 this.mClearsTag = obtainStyledAttributes.getResourceId(index, this.mClearsTag);
-            } else if (index == C0923R.styleable.ViewTransition_ifTagSet) {
+            } else if (index == R.styleable.ViewTransition_ifTagSet) {
                 this.mIfTagSet = obtainStyledAttributes.getResourceId(index, this.mIfTagSet);
-            } else if (index == C0923R.styleable.ViewTransition_ifTagNotSet) {
+            } else if (index == R.styleable.ViewTransition_ifTagNotSet) {
                 this.mIfTagNotSet = obtainStyledAttributes.getResourceId(index, this.mIfTagNotSet);
-            } else if (index == C0923R.styleable.ViewTransition_SharedValueId) {
+            } else if (index == R.styleable.ViewTransition_SharedValueId) {
                 this.mSharedValueID = obtainStyledAttributes.getResourceId(index, this.mSharedValueID);
-            } else if (index == C0923R.styleable.ViewTransition_SharedValue) {
+            } else if (index == R.styleable.ViewTransition_SharedValue) {
                 this.mSharedValueTarget = obtainStyledAttributes.getInteger(index, this.mSharedValueTarget);
             }
         }
@@ -378,11 +244,11 @@ public class ViewTransition {
         int id = view.getId();
         KeyFrames keyFrames = this.mKeyFrames;
         if (keyFrames != null) {
-            ArrayList<Key> keyFramesForView = keyFrames.getKeyFramesForView(-1);
+            ArrayList keyFramesForView = keyFrames.getKeyFramesForView(-1);
             KeyFrames keyFrames2 = new KeyFrames();
-            Iterator<Key> it = keyFramesForView.iterator();
+            Iterator it = keyFramesForView.iterator();
             while (it.hasNext()) {
-                keyFrames2.addKey(it.next().mo5575clone().setViewId(id));
+                keyFrames2.addKey(((Key) it.next()).clone().setViewId(id));
             }
             transition.addKeyFrame(keyFrames2);
         }
@@ -431,7 +297,7 @@ public class ViewTransition {
             }
         }
         motionLayout.updateState(i, constraintSet3);
-        int i4 = C0923R.id.view_transition;
+        int i4 = R.id.view_transition;
         motionLayout.updateState(i4, constraintSet);
         motionLayout.setState(i4, -1, -1);
         MotionScene.Transition transition = new MotionScene.Transition(-1, motionLayout.mScene, i4, i);
@@ -459,13 +325,7 @@ public class ViewTransition {
             return AnimationUtils.loadInterpolator(context, this.mDefaultInterpolatorID);
         }
         if (i == -1) {
-            final Easing interpolator = Easing.getInterpolator(this.mDefaultInterpolatorString);
-            return new Interpolator(this) { // from class: androidx.constraintlayout.motion.widget.ViewTransition.1
-                @Override // android.animation.TimeInterpolator
-                public float getInterpolation(float f) {
-                    return (float) interpolator.get(f);
-                }
-            };
+            return new 1(this, Easing.getInterpolator(this.mDefaultInterpolatorString));
         }
         if (i == 0) {
             return new AccelerateDecelerateInterpolator();
@@ -519,7 +379,7 @@ public class ViewTransition {
         if (view.getId() == this.mTargetId) {
             return true;
         }
-        return this.mTargetString != null && (view.getLayoutParams() instanceof ConstraintLayout.LayoutParams) && (str = ((ConstraintLayout.LayoutParams) view.getLayoutParams()).constraintTag) != null && str.matches(this.mTargetString);
+        return this.mTargetString != null && (view.getLayoutParams() instanceof ConstraintLayout$LayoutParams) && (str = ((ConstraintLayout$LayoutParams) view.getLayoutParams()).constraintTag) != null && str.matches(this.mTargetString);
     }
 
     void setEnabled(boolean z) {

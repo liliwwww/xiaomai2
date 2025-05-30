@@ -2,7 +2,6 @@ package androidx.compose.foundation.gestures;
 
 import androidx.compose.animation.core.AnimationSpecKt;
 import androidx.compose.animation.core.AnimationVector1D;
-import androidx.compose.animation.core.TwoWayConverter;
 import androidx.compose.animation.core.VectorConvertersKt;
 import androidx.compose.animation.core.VectorizedSpringSpec;
 import kotlin.jvm.internal.DefaultConstructorMarker;
@@ -10,7 +9,7 @@ import kotlin.jvm.internal.FloatCompanionObject;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class UpdatableAnimationState {
 
     @Deprecated
@@ -23,7 +22,7 @@ public final class UpdatableAnimationState {
     private float value;
 
     @NotNull
-    private static final Companion Companion = new Companion(null);
+    private static final Companion Companion = new Companion((DefaultConstructorMarker) null);
 
     @Deprecated
     @NotNull
@@ -31,33 +30,7 @@ public final class UpdatableAnimationState {
 
     @Deprecated
     @NotNull
-    private static final VectorizedSpringSpec<AnimationVector1D> RebasableAnimationSpec = AnimationSpecKt.spring$default(0.0f, 0.0f, null, 7, null).vectorize((TwoWayConverter) VectorConvertersKt.getVectorConverter(FloatCompanionObject.INSTANCE));
-
-    /* JADX INFO: Access modifiers changed from: private */
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static final class Companion {
-        private Companion() {
-        }
-
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-
-        @NotNull
-        public final VectorizedSpringSpec<AnimationVector1D> getRebasableAnimationSpec() {
-            return UpdatableAnimationState.RebasableAnimationSpec;
-        }
-
-        @NotNull
-        public final AnimationVector1D getZeroVector() {
-            return UpdatableAnimationState.ZeroVector;
-        }
-
-        public final boolean isZeroish(float f) {
-            return Math.abs(f) < 0.01f;
-        }
-    }
+    private static final VectorizedSpringSpec<AnimationVector1D> RebasableAnimationSpec = AnimationSpecKt.spring$default(0.0f, 0.0f, (Object) null, 7, (Object) null).vectorize(VectorConvertersKt.getVectorConverter(FloatCompanionObject.INSTANCE));
 
     /* JADX WARN: Code restructure failed: missing block: B:29:0x00af, code lost:
     
@@ -82,12 +55,12 @@ public final class UpdatableAnimationState {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public final java.lang.Object animateToZero(@org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super java.lang.Float, kotlin.Unit> r13, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r14, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r15) {
+    public final java.lang.Object animateToZero(@org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super java.lang.Float, kotlin.Unit> r13, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function0<kotlin.Unit> r14, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r15) {
         /*
             Method dump skipped, instructions count: 255
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.UpdatableAnimationState.animateToZero(kotlin.jvm.functions.Function1, kotlin.jvm.functions.Function0, kotlin.coroutines.Continuation):java.lang.Object");
     }

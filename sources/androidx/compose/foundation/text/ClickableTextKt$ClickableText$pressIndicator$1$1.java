@@ -1,10 +1,11 @@
 package androidx.compose.foundation.text;
 
+import androidx.appcompat.R;
 import androidx.compose.foundation.gestures.TapGestureDetectorKt;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
-import androidx.compose.p004ui.text.TextLayoutResult;
 import androidx.compose.runtime.MutableState;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.text.TextLayoutResult;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -13,12 +14,13 @@ import kotlin.coroutines.jvm.internal.DebugMetadata;
 import kotlin.coroutines.jvm.internal.SuspendLambda;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
+import kotlin.jvm.functions.Function3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-@DebugMetadata(c = "androidx.compose.foundation.text.ClickableTextKt$ClickableText$pressIndicator$1$1", f = "ClickableText.kt", i = {}, l = {76}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+@DebugMetadata(c = "androidx.compose.foundation.text.ClickableTextKt$ClickableText$pressIndicator$1$1", f = "ClickableText.kt", i = {}, l = {R.styleable.AppCompatTheme_listDividerAlertDialog}, m = "invokeSuspend", n = {}, s = {})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class ClickableTextKt$ClickableText$pressIndicator$1$1 extends SuspendLambda implements Function2<PointerInputScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ MutableState<TextLayoutResult> $layoutResult;
     final /* synthetic */ Function1<Integer, Unit> $onClick;
@@ -62,20 +64,20 @@ final class ClickableTextKt$ClickableText$pressIndicator$1$1 extends SuspendLamb
                 }
 
                 public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    m1706invokek4lQ0M(((Offset) obj2).m2566unboximpl());
+                    m383invokek4lQ0M(((Offset) obj2).m858unboximpl());
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke-k-4lQ0M, reason: not valid java name */
-                public final void m1706invokek4lQ0M(long j) {
+                public final void m383invokek4lQ0M(long j) {
                     TextLayoutResult value = mutableState.getValue();
                     if (value != null) {
-                        function1.invoke(Integer.valueOf(value.m4723getOffsetForPositionk4lQ0M(j)));
+                        function1.invoke(Integer.valueOf(value.m1888getOffsetForPositionk4lQ0M(j)));
                     }
                 }
             };
             this.label = 1;
-            if (TapGestureDetectorKt.detectTapGestures$default(pointerInputScope, null, null, null, function12, this, 7, null) == coroutine_suspended) {
+            if (TapGestureDetectorKt.detectTapGestures$default(pointerInputScope, (Function1) null, (Function1) null, (Function3) null, function12, this, 7, (Object) null) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

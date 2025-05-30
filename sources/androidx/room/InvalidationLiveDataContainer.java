@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.concurrent.Callable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class InvalidationLiveDataContainer {
     private final RoomDatabase mDatabase;
 

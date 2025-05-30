@@ -1,16 +1,16 @@
 package androidx.compose.foundation.lazy.grid;
 
-import androidx.compose.p004ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntOffset;
 import java.util.ArrayList;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class ItemInfo {
     private int crossAxisOffset;
     private int crossAxisSize;
-    private long notAnimatableDelta = IntOffset.Companion.m5344getZeronOccac();
+    private long notAnimatableDelta = IntOffset.Companion.getZero-nOcc-ac();
 
     @NotNull
     private final List<PlaceableInfo> placeables = new ArrayList();
@@ -29,7 +29,7 @@ final class ItemInfo {
     }
 
     /* renamed from: getNotAnimatableDelta-nOcc-ac, reason: not valid java name */
-    public final long m1555getNotAnimatableDeltanOccac() {
+    public final long m282getNotAnimatableDeltanOccac() {
         return this.notAnimatableDelta;
     }
 
@@ -47,7 +47,7 @@ final class ItemInfo {
     }
 
     /* renamed from: setNotAnimatableDelta--gyyYBs, reason: not valid java name */
-    public final void m1556setNotAnimatableDeltagyyYBs(long j) {
+    public final void m283setNotAnimatableDeltagyyYBs(long j) {
         this.notAnimatableDelta = j;
     }
 }

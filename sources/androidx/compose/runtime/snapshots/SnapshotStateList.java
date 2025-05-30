@@ -19,78 +19,25 @@ import tb.k65;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SnapshotStateList<T> implements List<T>, StateObject, KMutableList {
 
     @NotNull
     private StateRecord firstStateRecord = new StateListStateRecord(ExtensionsKt.persistentListOf());
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class StateListStateRecord<T> extends StateRecord {
-
-        @NotNull
-        private PersistentList<? extends T> list;
-        private int modification;
-
-        public StateListStateRecord(@NotNull PersistentList<? extends T> persistentList) {
-            Intrinsics.checkNotNullParameter(persistentList, "list");
-            this.list = persistentList;
-        }
-
-        @Override // androidx.compose.runtime.snapshots.StateRecord
-        public void assign(@NotNull StateRecord stateRecord) {
-            Object obj;
-            Intrinsics.checkNotNullParameter(stateRecord, "value");
-            obj = SnapshotStateListKt.sync;
-            synchronized (obj) {
-                this.list = ((StateListStateRecord) stateRecord).list;
-                this.modification = ((StateListStateRecord) stateRecord).modification;
-                Unit unit = Unit.INSTANCE;
-            }
-        }
-
-        @Override // androidx.compose.runtime.snapshots.StateRecord
-        @NotNull
-        public StateRecord create() {
-            return new StateListStateRecord(this.list);
-        }
-
-        @NotNull
-        public final PersistentList<T> getList$runtime_release() {
-            return this.list;
-        }
-
-        public final int getModification$runtime_release() {
-            return this.modification;
-        }
-
-        public final void setList$runtime_release(@NotNull PersistentList<? extends T> persistentList) {
-            Intrinsics.checkNotNullParameter(persistentList, "<set-?>");
-            this.list = persistentList;
-        }
-
-        public final void setModification$runtime_release(int i) {
-            this.modification = i;
-        }
-    }
-
     private final boolean conditionalUpdate(Function1<? super PersistentList<? extends T>, ? extends PersistentList<? extends T>> function1) {
-        Object obj;
         int modification$runtime_release;
-        PersistentList<T> list$runtime_release;
+        PersistentList list$runtime_release;
         boolean z;
-        Object obj2;
         Snapshot current;
         do {
-            obj = SnapshotStateListKt.sync;
-            synchronized (obj) {
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
                 try {
-                    StateRecord firstStateRecord = getFirstStateRecord();
+                    StateListStateRecord firstStateRecord = getFirstStateRecord();
                     Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                    StateListStateRecord stateListStateRecord = (StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord);
-                    modification$runtime_release = stateListStateRecord.getModification$runtime_release();
-                    list$runtime_release = stateListStateRecord.getList$runtime_release();
+                    StateListStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                    modification$runtime_release = current2.getModification$runtime_release();
+                    list$runtime_release = current2.getList$runtime_release();
                     Unit unit = Unit.INSTANCE;
                     InlineMarker.finallyStart(1);
                 } catch (Throwable th) {
@@ -101,25 +48,24 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
             }
             InlineMarker.finallyEnd(1);
             Intrinsics.checkNotNull(list$runtime_release);
-            PersistentList<? extends T> persistentList = (PersistentList) function1.invoke(list$runtime_release);
+            PersistentList persistentList = (PersistentList) function1.invoke(list$runtime_release);
             z = false;
             if (Intrinsics.areEqual(persistentList, list$runtime_release)) {
                 return false;
             }
-            obj2 = SnapshotStateListKt.sync;
-            synchronized (obj2) {
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
                 try {
-                    StateRecord firstStateRecord2 = getFirstStateRecord();
+                    StateListStateRecord firstStateRecord2 = getFirstStateRecord();
                     Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                    StateListStateRecord stateListStateRecord2 = (StateListStateRecord) firstStateRecord2;
+                    StateListStateRecord stateListStateRecord = firstStateRecord2;
                     SnapshotKt.getSnapshotInitializer();
                     synchronized (SnapshotKt.getLock()) {
                         try {
                             current = Snapshot.Companion.getCurrent();
-                            StateListStateRecord stateListStateRecord3 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord2, this, current);
-                            if (stateListStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                                stateListStateRecord3.setList$runtime_release(persistentList);
-                                stateListStateRecord3.setModification$runtime_release(stateListStateRecord3.getModification$runtime_release() + 1);
+                            StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
+                            if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                                writableRecord.setList$runtime_release(persistentList);
+                                writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                                 z = true;
                             }
                             InlineMarker.finallyStart(1);
@@ -150,22 +96,19 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
     }
 
     private final <R> R mutate(Function1<? super List<T>, ? extends R> function1) {
-        Object obj;
         int modification$runtime_release;
-        PersistentList<T> list$runtime_release;
+        PersistentList list$runtime_release;
         R r;
-        Object obj2;
         Snapshot current;
         boolean z;
         do {
-            obj = SnapshotStateListKt.sync;
-            synchronized (obj) {
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
                 try {
-                    StateRecord firstStateRecord = getFirstStateRecord();
+                    StateListStateRecord firstStateRecord = getFirstStateRecord();
                     Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                    StateListStateRecord stateListStateRecord = (StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord);
-                    modification$runtime_release = stateListStateRecord.getModification$runtime_release();
-                    list$runtime_release = stateListStateRecord.getList$runtime_release();
+                    StateListStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                    modification$runtime_release = current2.getModification$runtime_release();
+                    list$runtime_release = current2.getList$runtime_release();
                     Unit unit = Unit.INSTANCE;
                     InlineMarker.finallyStart(1);
                 } catch (Throwable th) {
@@ -176,26 +119,25 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
             }
             InlineMarker.finallyEnd(1);
             Intrinsics.checkNotNull(list$runtime_release);
-            PersistentList.Builder<T> builder = list$runtime_release.builder();
+            PersistentList.Builder builder = list$runtime_release.builder();
             r = (R) function1.invoke(builder);
-            PersistentList<T> build = builder.build();
+            PersistentList build = builder.build();
             if (Intrinsics.areEqual(build, list$runtime_release)) {
                 break;
             }
-            obj2 = SnapshotStateListKt.sync;
-            synchronized (obj2) {
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
                 try {
-                    StateRecord firstStateRecord2 = getFirstStateRecord();
+                    StateListStateRecord firstStateRecord2 = getFirstStateRecord();
                     Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                    StateListStateRecord stateListStateRecord2 = (StateListStateRecord) firstStateRecord2;
+                    StateListStateRecord stateListStateRecord = firstStateRecord2;
                     SnapshotKt.getSnapshotInitializer();
                     synchronized (SnapshotKt.getLock()) {
                         try {
                             current = Snapshot.Companion.getCurrent();
-                            StateListStateRecord stateListStateRecord3 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord2, this, current);
-                            if (stateListStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                                stateListStateRecord3.setList$runtime_release(build);
-                                stateListStateRecord3.setModification$runtime_release(stateListStateRecord3.getModification$runtime_release() + 1);
+                            StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
+                            if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                                writableRecord.setList$runtime_release(build);
+                                writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                                 z = true;
                             } else {
                                 z = false;
@@ -219,43 +161,39 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
     }
 
     private final boolean mutateBoolean(Function1<? super List<T>, Boolean> function1) {
-        Object obj;
         int modification$runtime_release;
-        PersistentList<T> list$runtime_release;
+        PersistentList list$runtime_release;
         Object invoke;
-        Object obj2;
         Snapshot current;
         boolean z;
         do {
-            obj = SnapshotStateListKt.sync;
-            synchronized (obj) {
-                StateRecord firstStateRecord = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord = (StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord);
-                modification$runtime_release = stateListStateRecord.getModification$runtime_release();
-                list$runtime_release = stateListStateRecord.getList$runtime_release();
+                StateListStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                modification$runtime_release = current2.getModification$runtime_release();
+                list$runtime_release = current2.getList$runtime_release();
                 Unit unit = Unit.INSTANCE;
             }
             Intrinsics.checkNotNull(list$runtime_release);
-            PersistentList.Builder<T> builder = list$runtime_release.builder();
+            PersistentList.Builder builder = list$runtime_release.builder();
             invoke = function1.invoke(builder);
-            PersistentList<T> build = builder.build();
+            PersistentList build = builder.build();
             if (Intrinsics.areEqual(build, list$runtime_release)) {
                 break;
             }
-            obj2 = SnapshotStateListKt.sync;
-            synchronized (obj2) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord2 = (StateListStateRecord) firstStateRecord2;
+                StateListStateRecord stateListStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateListStateRecord stateListStateRecord3 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord2, this, current);
+                    StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
                     z = true;
-                    if (stateListStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                        stateListStateRecord3.setList$runtime_release(build);
-                        stateListStateRecord3.setModification$runtime_release(stateListStateRecord3.getModification$runtime_release() + 1);
+                    if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                        writableRecord.setList$runtime_release(build);
+                        writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                     } else {
                         z = false;
                     }
@@ -267,21 +205,18 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
     }
 
     private final void update(Function1<? super PersistentList<? extends T>, ? extends PersistentList<? extends T>> function1) {
-        Object obj;
         int modification$runtime_release;
-        PersistentList<T> list$runtime_release;
-        Object obj2;
+        PersistentList list$runtime_release;
         Snapshot current;
         boolean z;
         do {
-            obj = SnapshotStateListKt.sync;
-            synchronized (obj) {
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
                 try {
-                    StateRecord firstStateRecord = getFirstStateRecord();
+                    StateListStateRecord firstStateRecord = getFirstStateRecord();
                     Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                    StateListStateRecord stateListStateRecord = (StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord);
-                    modification$runtime_release = stateListStateRecord.getModification$runtime_release();
-                    list$runtime_release = stateListStateRecord.getList$runtime_release();
+                    StateListStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                    modification$runtime_release = current2.getModification$runtime_release();
+                    list$runtime_release = current2.getList$runtime_release();
                     Unit unit = Unit.INSTANCE;
                     InlineMarker.finallyStart(1);
                 } catch (Throwable th) {
@@ -292,24 +227,23 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
             }
             InlineMarker.finallyEnd(1);
             Intrinsics.checkNotNull(list$runtime_release);
-            PersistentList<? extends T> persistentList = (PersistentList) function1.invoke(list$runtime_release);
+            PersistentList persistentList = (PersistentList) function1.invoke(list$runtime_release);
             if (Intrinsics.areEqual(persistentList, list$runtime_release)) {
                 return;
             }
-            obj2 = SnapshotStateListKt.sync;
-            synchronized (obj2) {
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
                 try {
-                    StateRecord firstStateRecord2 = getFirstStateRecord();
+                    StateListStateRecord firstStateRecord2 = getFirstStateRecord();
                     Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                    StateListStateRecord stateListStateRecord2 = (StateListStateRecord) firstStateRecord2;
+                    StateListStateRecord stateListStateRecord = firstStateRecord2;
                     SnapshotKt.getSnapshotInitializer();
                     synchronized (SnapshotKt.getLock()) {
                         try {
                             current = Snapshot.Companion.getCurrent();
-                            StateListStateRecord stateListStateRecord3 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord2, this, current);
-                            if (stateListStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                                stateListStateRecord3.setList$runtime_release(persistentList);
-                                stateListStateRecord3.setModification$runtime_release(stateListStateRecord3.getModification$runtime_release() + 1);
+                            StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
+                            if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                                writableRecord.setList$runtime_release(persistentList);
+                                writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                                 z = true;
                             } else {
                                 z = false;
@@ -335,17 +269,17 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
     }
 
     private final <R> R withCurrent(Function1<? super StateListStateRecord<T>, ? extends R> function1) {
-        StateRecord firstStateRecord = getFirstStateRecord();
+        StateListStateRecord firstStateRecord = getFirstStateRecord();
         Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-        return (R) function1.invoke(SnapshotKt.current((StateListStateRecord) firstStateRecord));
+        return (R) function1.invoke(SnapshotKt.current(firstStateRecord));
     }
 
     private final <R> R writable(Function1<? super StateListStateRecord<T>, ? extends R> function1) {
         Snapshot current;
         R r;
-        StateRecord firstStateRecord = getFirstStateRecord();
+        StateListStateRecord firstStateRecord = getFirstStateRecord();
         Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-        StateListStateRecord stateListStateRecord = (StateListStateRecord) firstStateRecord;
+        StateListStateRecord stateListStateRecord = firstStateRecord;
         SnapshotKt.getSnapshotInitializer();
         synchronized (SnapshotKt.getLock()) {
             try {
@@ -365,40 +299,36 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
 
     @Override // java.util.List, java.util.Collection
     public boolean add(T t) {
-        Object obj;
         int modification$runtime_release;
-        PersistentList<T> list$runtime_release;
+        PersistentList list$runtime_release;
         boolean z;
-        Object obj2;
         Snapshot current;
         do {
-            obj = SnapshotStateListKt.sync;
-            synchronized (obj) {
-                StateRecord firstStateRecord = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord = (StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord);
-                modification$runtime_release = stateListStateRecord.getModification$runtime_release();
-                list$runtime_release = stateListStateRecord.getList$runtime_release();
+                StateListStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                modification$runtime_release = current2.getModification$runtime_release();
+                list$runtime_release = current2.getList$runtime_release();
                 Unit unit = Unit.INSTANCE;
             }
             Intrinsics.checkNotNull(list$runtime_release);
-            PersistentList<T> add = list$runtime_release.add((PersistentList<T>) t);
+            PersistentList add = list$runtime_release.add((PersistentList) t);
             z = false;
             if (Intrinsics.areEqual(add, list$runtime_release)) {
                 return false;
             }
-            obj2 = SnapshotStateListKt.sync;
-            synchronized (obj2) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord2 = (StateListStateRecord) firstStateRecord2;
+                StateListStateRecord stateListStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateListStateRecord stateListStateRecord3 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord2, this, current);
-                    if (stateListStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                        stateListStateRecord3.setList$runtime_release(add);
-                        stateListStateRecord3.setModification$runtime_release(stateListStateRecord3.getModification$runtime_release() + 1);
+                    StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
+                    if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                        writableRecord.setList$runtime_release(add);
+                        writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                         z = true;
                     }
                 }
@@ -428,19 +358,17 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
 
     @Override // java.util.List, java.util.Collection
     public void clear() {
-        Object obj;
         Snapshot current;
-        obj = SnapshotStateListKt.sync;
-        synchronized (obj) {
-            StateRecord firstStateRecord = getFirstStateRecord();
+        synchronized (SnapshotStateListKt.access$getSync$p()) {
+            StateListStateRecord firstStateRecord = getFirstStateRecord();
             Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-            StateListStateRecord stateListStateRecord = (StateListStateRecord) firstStateRecord;
+            StateListStateRecord stateListStateRecord = firstStateRecord;
             SnapshotKt.getSnapshotInitializer();
             synchronized (SnapshotKt.getLock()) {
                 current = Snapshot.Companion.getCurrent();
-                StateListStateRecord stateListStateRecord2 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord, this, current);
-                stateListStateRecord2.setList$runtime_release(ExtensionsKt.persistentListOf());
-                stateListStateRecord2.setModification$runtime_release(stateListStateRecord2.getModification$runtime_release() + 1);
+                StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
+                writableRecord.setList$runtime_release(ExtensionsKt.persistentListOf());
+                writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
             }
             SnapshotKt.notifyWrite(current, this);
         }
@@ -459,15 +387,15 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
 
     @Override // java.util.List
     public T get(int i) {
-        return getReadable$runtime_release().getList$runtime_release().get(i);
+        return (T) getReadable$runtime_release().getList$runtime_release().get(i);
     }
 
     @JvmName(name = "getDebuggerDisplayValue")
     @NotNull
     public final List<T> getDebuggerDisplayValue() {
-        StateRecord firstStateRecord = getFirstStateRecord();
+        StateListStateRecord firstStateRecord = getFirstStateRecord();
         Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-        return ((StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord)).getList$runtime_release();
+        return (List<T>) SnapshotKt.current(firstStateRecord).getList$runtime_release();
     }
 
     @Override // androidx.compose.runtime.snapshots.StateObject
@@ -477,16 +405,16 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
     }
 
     public final int getModification$runtime_release() {
-        StateRecord firstStateRecord = getFirstStateRecord();
+        StateListStateRecord firstStateRecord = getFirstStateRecord();
         Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-        return ((StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord)).getModification$runtime_release();
+        return SnapshotKt.current(firstStateRecord).getModification$runtime_release();
     }
 
     @NotNull
     public final StateListStateRecord<T> getReadable$runtime_release() {
-        StateRecord firstStateRecord = getFirstStateRecord();
+        StateListStateRecord firstStateRecord = getFirstStateRecord();
         Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-        return (StateListStateRecord) SnapshotKt.readable((StateListStateRecord) firstStateRecord, this);
+        return SnapshotKt.readable(firstStateRecord, this);
     }
 
     public int getSize() {
@@ -539,41 +467,37 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
 
     @Override // java.util.List, java.util.Collection
     public boolean removeAll(@NotNull Collection<? extends Object> collection) {
-        Object obj;
         int modification$runtime_release;
-        PersistentList<T> list$runtime_release;
+        PersistentList list$runtime_release;
         boolean z;
-        Object obj2;
         Snapshot current;
         Intrinsics.checkNotNullParameter(collection, "elements");
         do {
-            obj = SnapshotStateListKt.sync;
-            synchronized (obj) {
-                StateRecord firstStateRecord = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord = (StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord);
-                modification$runtime_release = stateListStateRecord.getModification$runtime_release();
-                list$runtime_release = stateListStateRecord.getList$runtime_release();
+                StateListStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                modification$runtime_release = current2.getModification$runtime_release();
+                list$runtime_release = current2.getList$runtime_release();
                 Unit unit = Unit.INSTANCE;
             }
             Intrinsics.checkNotNull(list$runtime_release);
-            PersistentList<T> removeAll = list$runtime_release.removeAll((Collection<? extends T>) collection);
+            PersistentList removeAll = list$runtime_release.removeAll((Collection) collection);
             z = false;
             if (Intrinsics.areEqual(removeAll, list$runtime_release)) {
                 return false;
             }
-            obj2 = SnapshotStateListKt.sync;
-            synchronized (obj2) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord2 = (StateListStateRecord) firstStateRecord2;
+                StateListStateRecord stateListStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateListStateRecord stateListStateRecord3 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord2, this, current);
-                    if (stateListStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                        stateListStateRecord3.setList$runtime_release(removeAll);
-                        stateListStateRecord3.setModification$runtime_release(stateListStateRecord3.getModification$runtime_release() + 1);
+                    StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
+                    if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                        writableRecord.setList$runtime_release(removeAll);
+                        writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                         z = true;
                     }
                 }
@@ -584,41 +508,37 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
     }
 
     public T removeAt(int i) {
-        Object obj;
         int modification$runtime_release;
-        PersistentList<T> list$runtime_release;
-        Object obj2;
+        PersistentList list$runtime_release;
         Snapshot current;
         boolean z;
         T t = get(i);
         do {
-            obj = SnapshotStateListKt.sync;
-            synchronized (obj) {
-                StateRecord firstStateRecord = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord = (StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord);
-                modification$runtime_release = stateListStateRecord.getModification$runtime_release();
-                list$runtime_release = stateListStateRecord.getList$runtime_release();
+                StateListStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                modification$runtime_release = current2.getModification$runtime_release();
+                list$runtime_release = current2.getList$runtime_release();
                 Unit unit = Unit.INSTANCE;
             }
             Intrinsics.checkNotNull(list$runtime_release);
-            PersistentList<T> removeAt = list$runtime_release.removeAt(i);
+            PersistentList removeAt = list$runtime_release.removeAt(i);
             if (Intrinsics.areEqual(removeAt, list$runtime_release)) {
                 break;
             }
-            obj2 = SnapshotStateListKt.sync;
-            synchronized (obj2) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord2 = (StateListStateRecord) firstStateRecord2;
+                StateListStateRecord stateListStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateListStateRecord stateListStateRecord3 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord2, this, current);
+                    StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
                     z = true;
-                    if (stateListStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                        stateListStateRecord3.setList$runtime_release(removeAt);
-                        stateListStateRecord3.setModification$runtime_release(stateListStateRecord3.getModification$runtime_release() + 1);
+                    if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                        writableRecord.setList$runtime_release(removeAt);
+                        writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                     } else {
                         z = false;
                     }
@@ -630,42 +550,38 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
     }
 
     public final void removeRange(int i, int i2) {
-        Object obj;
         int modification$runtime_release;
-        PersistentList<T> list$runtime_release;
-        Object obj2;
+        PersistentList list$runtime_release;
         Snapshot current;
         boolean z;
         do {
-            obj = SnapshotStateListKt.sync;
-            synchronized (obj) {
-                StateRecord firstStateRecord = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord = (StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord);
-                modification$runtime_release = stateListStateRecord.getModification$runtime_release();
-                list$runtime_release = stateListStateRecord.getList$runtime_release();
+                StateListStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                modification$runtime_release = current2.getModification$runtime_release();
+                list$runtime_release = current2.getList$runtime_release();
                 Unit unit = Unit.INSTANCE;
             }
             Intrinsics.checkNotNull(list$runtime_release);
-            PersistentList.Builder<T> builder = list$runtime_release.builder();
+            PersistentList.Builder builder = list$runtime_release.builder();
             builder.subList(i, i2).clear();
-            PersistentList<T> build = builder.build();
+            PersistentList build = builder.build();
             if (Intrinsics.areEqual(build, list$runtime_release)) {
                 return;
             }
-            obj2 = SnapshotStateListKt.sync;
-            synchronized (obj2) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord2 = (StateListStateRecord) firstStateRecord2;
+                StateListStateRecord stateListStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateListStateRecord stateListStateRecord3 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord2, this, current);
+                    StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
                     z = true;
-                    if (stateListStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                        stateListStateRecord3.setList$runtime_release(build);
-                        stateListStateRecord3.setModification$runtime_release(stateListStateRecord3.getModification$runtime_release() + 1);
+                    if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                        writableRecord.setList$runtime_release(build);
+                        writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                     } else {
                         z = false;
                     }
@@ -694,44 +610,40 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
     }
 
     public final int retainAllInRange$runtime_release(@NotNull Collection<? extends T> collection, int i, int i2) {
-        Object obj;
         int modification$runtime_release;
-        PersistentList<T> list$runtime_release;
-        Object obj2;
+        PersistentList list$runtime_release;
         Snapshot current;
         boolean z;
         Intrinsics.checkNotNullParameter(collection, "elements");
         int size = size();
         do {
-            obj = SnapshotStateListKt.sync;
-            synchronized (obj) {
-                StateRecord firstStateRecord = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord = (StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord);
-                modification$runtime_release = stateListStateRecord.getModification$runtime_release();
-                list$runtime_release = stateListStateRecord.getList$runtime_release();
+                StateListStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                modification$runtime_release = current2.getModification$runtime_release();
+                list$runtime_release = current2.getList$runtime_release();
                 Unit unit = Unit.INSTANCE;
             }
             Intrinsics.checkNotNull(list$runtime_release);
-            PersistentList.Builder<T> builder = list$runtime_release.builder();
+            PersistentList.Builder builder = list$runtime_release.builder();
             builder.subList(i, i2).retainAll(collection);
-            PersistentList<T> build = builder.build();
+            PersistentList build = builder.build();
             if (Intrinsics.areEqual(build, list$runtime_release)) {
                 break;
             }
-            obj2 = SnapshotStateListKt.sync;
-            synchronized (obj2) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord2 = (StateListStateRecord) firstStateRecord2;
+                StateListStateRecord stateListStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateListStateRecord stateListStateRecord3 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord2, this, current);
+                    StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
                     z = true;
-                    if (stateListStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                        stateListStateRecord3.setList$runtime_release(build);
-                        stateListStateRecord3.setModification$runtime_release(stateListStateRecord3.getModification$runtime_release() + 1);
+                    if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                        writableRecord.setList$runtime_release(build);
+                        writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                     } else {
                         z = false;
                     }
@@ -744,41 +656,37 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
 
     @Override // java.util.List
     public T set(int i, T t) {
-        Object obj;
         int modification$runtime_release;
-        PersistentList<T> list$runtime_release;
-        Object obj2;
+        PersistentList list$runtime_release;
         Snapshot current;
         boolean z;
         T t2 = get(i);
         do {
-            obj = SnapshotStateListKt.sync;
-            synchronized (obj) {
-                StateRecord firstStateRecord = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord = (StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord);
-                modification$runtime_release = stateListStateRecord.getModification$runtime_release();
-                list$runtime_release = stateListStateRecord.getList$runtime_release();
+                StateListStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                modification$runtime_release = current2.getModification$runtime_release();
+                list$runtime_release = current2.getList$runtime_release();
                 Unit unit = Unit.INSTANCE;
             }
             Intrinsics.checkNotNull(list$runtime_release);
-            PersistentList<T> persistentList = list$runtime_release.set(i, (int) t);
+            PersistentList persistentList = list$runtime_release.set(i, t);
             if (Intrinsics.areEqual(persistentList, list$runtime_release)) {
                 break;
             }
-            obj2 = SnapshotStateListKt.sync;
-            synchronized (obj2) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord2 = (StateListStateRecord) firstStateRecord2;
+                StateListStateRecord stateListStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateListStateRecord stateListStateRecord3 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord2, this, current);
+                    StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
                     z = true;
-                    if (stateListStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                        stateListStateRecord3.setList$runtime_release(persistentList);
-                        stateListStateRecord3.setModification$runtime_release(stateListStateRecord3.getModification$runtime_release() + 1);
+                    if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                        writableRecord.setList$runtime_release(persistentList);
+                        writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                     } else {
                         z = false;
                     }
@@ -816,46 +724,42 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
 
     @NotNull
     public final List<T> toList() {
-        return getReadable$runtime_release().getList$runtime_release();
+        return (List<T>) getReadable$runtime_release().getList$runtime_release();
     }
 
     @Override // java.util.List, java.util.Collection
     public boolean addAll(@NotNull Collection<? extends T> collection) {
-        Object obj;
         int modification$runtime_release;
-        PersistentList<T> list$runtime_release;
+        PersistentList list$runtime_release;
         boolean z;
-        Object obj2;
         Snapshot current;
         Intrinsics.checkNotNullParameter(collection, "elements");
         do {
-            obj = SnapshotStateListKt.sync;
-            synchronized (obj) {
-                StateRecord firstStateRecord = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord = (StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord);
-                modification$runtime_release = stateListStateRecord.getModification$runtime_release();
-                list$runtime_release = stateListStateRecord.getList$runtime_release();
+                StateListStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                modification$runtime_release = current2.getModification$runtime_release();
+                list$runtime_release = current2.getList$runtime_release();
                 Unit unit = Unit.INSTANCE;
             }
             Intrinsics.checkNotNull(list$runtime_release);
-            PersistentList<T> addAll = list$runtime_release.addAll(collection);
+            PersistentList addAll = list$runtime_release.addAll((Collection) collection);
             z = false;
             if (Intrinsics.areEqual(addAll, list$runtime_release)) {
                 return false;
             }
-            obj2 = SnapshotStateListKt.sync;
-            synchronized (obj2) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord2 = (StateListStateRecord) firstStateRecord2;
+                StateListStateRecord stateListStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateListStateRecord stateListStateRecord3 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord2, this, current);
-                    if (stateListStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                        stateListStateRecord3.setList$runtime_release(addAll);
-                        stateListStateRecord3.setModification$runtime_release(stateListStateRecord3.getModification$runtime_release() + 1);
+                    StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
+                    if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                        writableRecord.setList$runtime_release(addAll);
+                        writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                         z = true;
                     }
                 }
@@ -873,40 +777,36 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
 
     @Override // java.util.List, java.util.Collection
     public boolean remove(Object obj) {
-        Object obj2;
         int modification$runtime_release;
-        PersistentList<T> list$runtime_release;
+        PersistentList list$runtime_release;
         boolean z;
-        Object obj3;
         Snapshot current;
         do {
-            obj2 = SnapshotStateListKt.sync;
-            synchronized (obj2) {
-                StateRecord firstStateRecord = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord = (StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord);
-                modification$runtime_release = stateListStateRecord.getModification$runtime_release();
-                list$runtime_release = stateListStateRecord.getList$runtime_release();
+                StateListStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                modification$runtime_release = current2.getModification$runtime_release();
+                list$runtime_release = current2.getList$runtime_release();
                 Unit unit = Unit.INSTANCE;
             }
             Intrinsics.checkNotNull(list$runtime_release);
-            PersistentList<T> remove = list$runtime_release.remove((PersistentList<T>) obj);
+            PersistentList remove = list$runtime_release.remove((PersistentList) obj);
             z = false;
             if (Intrinsics.areEqual(remove, list$runtime_release)) {
                 return false;
             }
-            obj3 = SnapshotStateListKt.sync;
-            synchronized (obj3) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord2 = (StateListStateRecord) firstStateRecord2;
+                StateListStateRecord stateListStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateListStateRecord stateListStateRecord3 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord2, this, current);
-                    if (stateListStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                        stateListStateRecord3.setList$runtime_release(remove);
-                        stateListStateRecord3.setModification$runtime_release(stateListStateRecord3.getModification$runtime_release() + 1);
+                    StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
+                    if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                        writableRecord.setList$runtime_release(remove);
+                        writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                         z = true;
                     }
                 }
@@ -918,40 +818,36 @@ public final class SnapshotStateList<T> implements List<T>, StateObject, KMutabl
 
     @Override // java.util.List
     public void add(int i, T t) {
-        Object obj;
         int modification$runtime_release;
-        PersistentList<T> list$runtime_release;
-        Object obj2;
+        PersistentList list$runtime_release;
         Snapshot current;
         boolean z;
         do {
-            obj = SnapshotStateListKt.sync;
-            synchronized (obj) {
-                StateRecord firstStateRecord = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord = (StateListStateRecord) SnapshotKt.current((StateListStateRecord) firstStateRecord);
-                modification$runtime_release = stateListStateRecord.getModification$runtime_release();
-                list$runtime_release = stateListStateRecord.getList$runtime_release();
+                StateListStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                modification$runtime_release = current2.getModification$runtime_release();
+                list$runtime_release = current2.getList$runtime_release();
                 Unit unit = Unit.INSTANCE;
             }
             Intrinsics.checkNotNull(list$runtime_release);
-            PersistentList<T> add = list$runtime_release.add(i, (int) t);
+            PersistentList add = list$runtime_release.add(i, t);
             if (Intrinsics.areEqual(add, list$runtime_release)) {
                 return;
             }
-            obj2 = SnapshotStateListKt.sync;
-            synchronized (obj2) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+            synchronized (SnapshotStateListKt.access$getSync$p()) {
+                StateListStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateList.StateListStateRecord<T of androidx.compose.runtime.snapshots.SnapshotStateList>");
-                StateListStateRecord stateListStateRecord2 = (StateListStateRecord) firstStateRecord2;
+                StateListStateRecord stateListStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateListStateRecord stateListStateRecord3 = (StateListStateRecord) SnapshotKt.writableRecord(stateListStateRecord2, this, current);
+                    StateListStateRecord writableRecord = SnapshotKt.writableRecord(stateListStateRecord, this, current);
                     z = true;
-                    if (stateListStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                        stateListStateRecord3.setList$runtime_release(add);
-                        stateListStateRecord3.setModification$runtime_release(stateListStateRecord3.getModification$runtime_release() + 1);
+                    if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                        writableRecord.setList$runtime_release(add);
+                        writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                     } else {
                         z = false;
                     }

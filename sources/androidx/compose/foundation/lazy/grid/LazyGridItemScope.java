@@ -2,15 +2,15 @@ package androidx.compose.foundation.lazy.grid;
 
 import androidx.compose.animation.core.FiniteAnimationSpec;
 import androidx.compose.foundation.ExperimentalFoundationApi;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.unit.IntOffset;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.unit.IntOffset;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @Stable
 @LazyGridScopeMarker
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface LazyGridItemScope {
     @ExperimentalFoundationApi
     @NotNull

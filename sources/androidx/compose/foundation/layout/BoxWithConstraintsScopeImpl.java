@@ -1,18 +1,18 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Constraints;
-import androidx.compose.p004ui.unit.Density;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.Alignment;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.unit.Constraints;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class BoxWithConstraintsScopeImpl implements BoxScope, BoxWithConstraintsScope {
     private final /* synthetic */ BoxScopeInstance $$delegate_0;
     private final long constraints;
@@ -35,17 +35,16 @@ final class BoxWithConstraintsScopeImpl implements BoxScope, BoxWithConstraintsS
     }
 
     /* renamed from: copy-0kLqBqw$default, reason: not valid java name */
-    public static /* synthetic */ BoxWithConstraintsScopeImpl m1370copy0kLqBqw$default(BoxWithConstraintsScopeImpl boxWithConstraintsScopeImpl, Density density, long j, int i, Object obj) {
+    public static /* synthetic */ BoxWithConstraintsScopeImpl m199copy0kLqBqw$default(BoxWithConstraintsScopeImpl boxWithConstraintsScopeImpl, Density density, long j, int i, Object obj) {
         if ((i & 1) != 0) {
             density = boxWithConstraintsScopeImpl.density;
         }
         if ((i & 2) != 0) {
-            j = boxWithConstraintsScopeImpl.mo1365getConstraintsmsEJaDk();
+            j = boxWithConstraintsScopeImpl.m202getConstraintsmsEJaDk();
         }
-        return boxWithConstraintsScopeImpl.m1372copy0kLqBqw(density, j);
+        return boxWithConstraintsScopeImpl.m201copy0kLqBqw(density, j);
     }
 
-    @Override // androidx.compose.foundation.layout.BoxScope
     @Stable
     @NotNull
     public Modifier align(@NotNull Modifier modifier, @NotNull Alignment alignment) {
@@ -55,13 +54,13 @@ final class BoxWithConstraintsScopeImpl implements BoxScope, BoxWithConstraintsS
     }
 
     /* renamed from: component2-msEJaDk, reason: not valid java name */
-    public final long m1371component2msEJaDk() {
-        return mo1365getConstraintsmsEJaDk();
+    public final long m200component2msEJaDk() {
+        return m202getConstraintsmsEJaDk();
     }
 
     @NotNull
     /* renamed from: copy-0kLqBqw, reason: not valid java name */
-    public final BoxWithConstraintsScopeImpl m1372copy0kLqBqw(@NotNull Density density, long j) {
+    public final BoxWithConstraintsScopeImpl m201copy0kLqBqw(@NotNull Density density, long j) {
         Intrinsics.checkNotNullParameter(density, "density");
         return new BoxWithConstraintsScopeImpl(density, j, null);
     }
@@ -74,44 +73,38 @@ final class BoxWithConstraintsScopeImpl implements BoxScope, BoxWithConstraintsS
             return false;
         }
         BoxWithConstraintsScopeImpl boxWithConstraintsScopeImpl = (BoxWithConstraintsScopeImpl) obj;
-        return Intrinsics.areEqual(this.density, boxWithConstraintsScopeImpl.density) && Constraints.m5177equalsimpl0(mo1365getConstraintsmsEJaDk(), boxWithConstraintsScopeImpl.mo1365getConstraintsmsEJaDk());
+        return Intrinsics.areEqual(this.density, boxWithConstraintsScopeImpl.density) && Constraints.m2115equalsimpl0(m202getConstraintsmsEJaDk(), boxWithConstraintsScopeImpl.m202getConstraintsmsEJaDk());
     }
 
-    @Override // androidx.compose.foundation.layout.BoxWithConstraintsScope
-    /* renamed from: getConstraints-msEJaDk */
-    public long mo1365getConstraintsmsEJaDk() {
+    /* renamed from: getConstraints-msEJaDk, reason: not valid java name */
+    public long m202getConstraintsmsEJaDk() {
         return this.constraints;
     }
 
-    @Override // androidx.compose.foundation.layout.BoxWithConstraintsScope
-    /* renamed from: getMaxHeight-D9Ej5fM */
-    public float mo1366getMaxHeightD9Ej5fM() {
-        return Constraints.m5179getHasBoundedHeightimpl(mo1365getConstraintsmsEJaDk()) ? this.density.mo1280toDpu2uoSUM(Constraints.m5183getMaxHeightimpl(mo1365getConstraintsmsEJaDk())) : C0856Dp.Companion.m5235getInfinityD9Ej5fM();
+    /* renamed from: getMaxHeight-D9Ej5fM, reason: not valid java name */
+    public float m203getMaxHeightD9Ej5fM() {
+        return Constraints.m2117getHasBoundedHeightimpl(m202getConstraintsmsEJaDk()) ? this.density.mo312toDpu2uoSUM(Constraints.m2121getMaxHeightimpl(m202getConstraintsmsEJaDk())) : Dp.Companion.m2161getInfinityD9Ej5fM();
     }
 
-    @Override // androidx.compose.foundation.layout.BoxWithConstraintsScope
-    /* renamed from: getMaxWidth-D9Ej5fM */
-    public float mo1367getMaxWidthD9Ej5fM() {
-        return Constraints.m5180getHasBoundedWidthimpl(mo1365getConstraintsmsEJaDk()) ? this.density.mo1280toDpu2uoSUM(Constraints.m5184getMaxWidthimpl(mo1365getConstraintsmsEJaDk())) : C0856Dp.Companion.m5235getInfinityD9Ej5fM();
+    /* renamed from: getMaxWidth-D9Ej5fM, reason: not valid java name */
+    public float m204getMaxWidthD9Ej5fM() {
+        return Constraints.m2118getHasBoundedWidthimpl(m202getConstraintsmsEJaDk()) ? this.density.mo312toDpu2uoSUM(Constraints.m2122getMaxWidthimpl(m202getConstraintsmsEJaDk())) : Dp.Companion.m2161getInfinityD9Ej5fM();
     }
 
-    @Override // androidx.compose.foundation.layout.BoxWithConstraintsScope
-    /* renamed from: getMinHeight-D9Ej5fM */
-    public float mo1368getMinHeightD9Ej5fM() {
-        return this.density.mo1280toDpu2uoSUM(Constraints.m5185getMinHeightimpl(mo1365getConstraintsmsEJaDk()));
+    /* renamed from: getMinHeight-D9Ej5fM, reason: not valid java name */
+    public float m205getMinHeightD9Ej5fM() {
+        return this.density.mo312toDpu2uoSUM(Constraints.m2123getMinHeightimpl(m202getConstraintsmsEJaDk()));
     }
 
-    @Override // androidx.compose.foundation.layout.BoxWithConstraintsScope
-    /* renamed from: getMinWidth-D9Ej5fM */
-    public float mo1369getMinWidthD9Ej5fM() {
-        return this.density.mo1280toDpu2uoSUM(Constraints.m5186getMinWidthimpl(mo1365getConstraintsmsEJaDk()));
+    /* renamed from: getMinWidth-D9Ej5fM, reason: not valid java name */
+    public float m206getMinWidthD9Ej5fM() {
+        return this.density.mo312toDpu2uoSUM(Constraints.m2124getMinWidthimpl(m202getConstraintsmsEJaDk()));
     }
 
     public int hashCode() {
-        return (this.density.hashCode() * 31) + Constraints.m5187hashCodeimpl(mo1365getConstraintsmsEJaDk());
+        return (this.density.hashCode() * 31) + Constraints.m2125hashCodeimpl(m202getConstraintsmsEJaDk());
     }
 
-    @Override // androidx.compose.foundation.layout.BoxScope
     @Stable
     @NotNull
     public Modifier matchParentSize(@NotNull Modifier modifier) {
@@ -121,6 +114,6 @@ final class BoxWithConstraintsScopeImpl implements BoxScope, BoxWithConstraintsS
 
     @NotNull
     public String toString() {
-        return "BoxWithConstraintsScopeImpl(density=" + this.density + ", constraints=" + ((Object) Constraints.m5189toStringimpl(mo1365getConstraintsmsEJaDk())) + ')';
+        return "BoxWithConstraintsScopeImpl(density=" + this.density + ", constraints=" + ((Object) Constraints.m2127toStringimpl(m202getConstraintsmsEJaDk())) + ')';
     }
 }

@@ -1,6 +1,5 @@
 package androidx.appcompat.widget;
 
-import android.R;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.Layout;
@@ -8,11 +7,11 @@ import android.util.AttributeSet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class DialogTitle extends AppCompatTextView {
     public DialogTitle(@NonNull Context context, @Nullable AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
@@ -28,8 +27,8 @@ public class DialogTitle extends AppCompatTextView {
         }
         setSingleLine(false);
         setMaxLines(2);
-        TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(null, C0257R.styleable.TextAppearance, R.attr.textAppearanceMedium, R.style.TextAppearance.Medium);
-        int dimensionPixelSize = obtainStyledAttributes.getDimensionPixelSize(C0257R.styleable.TextAppearance_android_textSize, 0);
+        TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(null, R.styleable.TextAppearance, android.R.attr.textAppearanceMedium, android.R.style.TextAppearance.Medium);
+        int dimensionPixelSize = obtainStyledAttributes.getDimensionPixelSize(R.styleable.TextAppearance_android_textSize, 0);
         if (dimensionPixelSize != 0) {
             setTextSize(0, dimensionPixelSize);
         }

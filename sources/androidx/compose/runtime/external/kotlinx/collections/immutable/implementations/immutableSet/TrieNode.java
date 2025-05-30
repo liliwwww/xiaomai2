@@ -12,11 +12,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TrieNode<E> {
 
     @NotNull
-    public static final Companion Companion = new Companion(null);
+    public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
 
     @NotNull
     private static final TrieNode EMPTY = new TrieNode(0, new Object[0]);
@@ -27,22 +27,6 @@ public final class TrieNode<E> {
 
     @Nullable
     private MutabilityOwnership ownedBy;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class Companion {
-        private Companion() {
-        }
-
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-
-        @NotNull
-        public final TrieNode getEMPTY$runtime_release() {
-            return TrieNode.EMPTY;
-        }
-    }
 
     public TrieNode(int i, @NotNull Object[] objArr, @Nullable MutabilityOwnership mutabilityOwnership) {
         Intrinsics.checkNotNullParameter(objArr, "buffer");
@@ -185,11 +169,11 @@ public final class TrieNode<E> {
         int i = 0;
         int i2 = 0;
         while (i < objArr2.length) {
-            CommonFunctionsKt.m2432assert(i2 <= i);
+            CommonFunctionsKt.assert(i2 <= i);
             if (!collisionContainsElement(objArr2[i])) {
                 copyOf[length + i2] = objArr2[i];
                 i2++;
-                CommonFunctionsKt.m2432assert(length + i2 <= copyOf.length);
+                CommonFunctionsKt.assert(length + i2 <= copyOf.length);
             }
             i++;
         }
@@ -235,11 +219,11 @@ public final class TrieNode<E> {
             if (i >= objArr2.length) {
                 break;
             }
-            CommonFunctionsKt.m2432assert(i2 <= i);
+            CommonFunctionsKt.assert(i2 <= i);
             if (!trieNode.collisionContainsElement(objArr2[i])) {
                 objArr[0 + i2] = objArr2[i];
                 i2++;
-                CommonFunctionsKt.m2432assert(0 + i2 <= objArr.length);
+                CommonFunctionsKt.assert(0 + i2 <= objArr.length);
             }
             i++;
         }
@@ -287,11 +271,11 @@ public final class TrieNode<E> {
             if (i >= objArr2.length) {
                 break;
             }
-            CommonFunctionsKt.m2432assert(i2 <= i);
+            CommonFunctionsKt.assert(i2 <= i);
             if (trieNode.collisionContainsElement(objArr2[i])) {
                 objArr[0 + i2] = objArr2[i];
                 i2++;
-                CommonFunctionsKt.m2432assert(0 + i2 <= objArr.length);
+                CommonFunctionsKt.assert(0 + i2 <= objArr.length);
             }
             i++;
         }
@@ -692,11 +676,11 @@ public final class TrieNode<E> {
         int i5 = 0;
         int i6 = 0;
         while (i5 < objArr4.length) {
-            CommonFunctionsKt.m2432assert(i6 <= i5);
+            CommonFunctionsKt.assert(i6 <= i5);
             if (objArr4[i5] != Companion.getEMPTY$runtime_release()) {
                 objArr3[0 + i6] = objArr4[i5];
                 i6++;
-                CommonFunctionsKt.m2432assert(0 + i6 <= bitCount);
+                CommonFunctionsKt.assert(0 + i6 <= bitCount);
             }
             i5++;
         }
@@ -777,11 +761,11 @@ public final class TrieNode<E> {
             int i6 = 0;
             int i7 = 0;
             while (i6 < objArr2.length) {
-                CommonFunctionsKt.m2432assert(i7 <= i6);
+                CommonFunctionsKt.assert(i7 <= i6);
                 if (objArr2[i6] != Companion.getEMPTY$runtime_release()) {
                     objArr[0 + i7] = objArr2[i6];
                     i7++;
-                    CommonFunctionsKt.m2432assert(0 + i7 <= bitCount);
+                    CommonFunctionsKt.assert(0 + i7 <= bitCount);
                 }
                 i6++;
             }

@@ -1,5 +1,6 @@
 package androidx.emoji2.text.flatbuffer;
 
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.BufferUnderflowException;
@@ -8,12 +9,10 @@ import java.nio.ByteOrder;
 import java.util.Arrays;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class FlatBufferBuilder {
     static final /* synthetic */ boolean $assertionsDisabled = false;
-
-    /* renamed from: bb */
-    ByteBuffer f360bb;
+    ByteBuffer bb;
     ByteBufferFactory bb_factory;
     boolean finished;
     boolean force_defaults;
@@ -47,19 +46,9 @@ public class FlatBufferBuilder {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static abstract class ByteBufferFactory {
-        public abstract ByteBuffer newByteBuffer(int i);
-
-        public void releaseByteBuffer(ByteBuffer byteBuffer) {
-        }
-    }
-
-    /* compiled from: Taobao */
     public static final class HeapByteBufferFactory extends ByteBufferFactory {
         public static final HeapByteBufferFactory INSTANCE = new HeapByteBufferFactory();
 
-        @Override // androidx.emoji2.text.flatbuffer.FlatBufferBuilder.ByteBufferFactory
         public ByteBuffer newByteBuffer(int i) {
             return ByteBuffer.allocate(i).order(ByteOrder.LITTLE_ENDIAN);
         }
@@ -146,8 +135,8 @@ public class FlatBufferBuilder {
     }
 
     public void clear() {
-        this.space = this.f360bb.capacity();
-        this.f360bb.clear();
+        this.space = this.bb.capacity();
+        this.bb.clear();
         this.minalign = 1;
         while (true) {
             int i = this.vtable_in_use;
@@ -170,16 +159,16 @@ public class FlatBufferBuilder {
     public int createByteVector(byte[] bArr) {
         int length = bArr.length;
         startVector(1, length, 1);
-        ByteBuffer byteBuffer = this.f360bb;
+        ByteBuffer byteBuffer = this.bb;
         int i = this.space - length;
         this.space = i;
         byteBuffer.position(i);
-        this.f360bb.put(bArr);
+        this.bb.put(bArr);
         return endVector();
     }
 
     public <T extends Table> int createSortedVectorOfTables(T t, int[] iArr) {
-        t.sortTables(iArr, this.f360bb);
+        t.sortTables(iArr, this.bb);
         return createVectorOfTables(iArr);
     }
 
@@ -187,22 +176,22 @@ public class FlatBufferBuilder {
         int encodedLength = this.utf8.encodedLength(charSequence);
         addByte((byte) 0);
         startVector(1, encodedLength, 1);
-        ByteBuffer byteBuffer = this.f360bb;
+        ByteBuffer byteBuffer = this.bb;
         int i = this.space - encodedLength;
         this.space = i;
         byteBuffer.position(i);
-        this.utf8.encodeUtf8(charSequence, this.f360bb);
+        this.utf8.encodeUtf8(charSequence, this.bb);
         return endVector();
     }
 
     public ByteBuffer createUnintializedVector(int i, int i2, int i3) {
         int i4 = i * i2;
         startVector(i, i2, i3);
-        ByteBuffer byteBuffer = this.f360bb;
+        ByteBuffer byteBuffer = this.bb;
         int i5 = this.space - i4;
         this.space = i5;
         byteBuffer.position(i5);
-        ByteBuffer order = this.f360bb.slice().order(ByteOrder.LITTLE_ENDIAN);
+        ByteBuffer order = this.bb.slice().order(ByteOrder.LITTLE_ENDIAN);
         order.limit(i4);
         return order;
     }
@@ -218,7 +207,7 @@ public class FlatBufferBuilder {
 
     public ByteBuffer dataBuffer() {
         finished();
-        return this.f360bb;
+        return this.bb;
     }
 
     public int endTable() {
@@ -246,12 +235,12 @@ public class FlatBufferBuilder {
                 i = 0;
                 break;
             }
-            int capacity = this.f360bb.capacity() - this.vtables[i4];
+            int capacity = this.bb.capacity() - this.vtables[i4];
             int i5 = this.space;
-            short s = this.f360bb.getShort(capacity);
-            if (s == this.f360bb.getShort(i5)) {
+            short s = this.bb.getShort(capacity);
+            if (s == this.bb.getShort(i5)) {
                 for (int i6 = 2; i6 < s; i6 += 2) {
-                    if (this.f360bb.getShort(capacity + i6) != this.f360bb.getShort(i5 + i6)) {
+                    if (this.bb.getShort(capacity + i6) != this.bb.getShort(i5 + i6)) {
                         break;
                     }
                 }
@@ -261,9 +250,9 @@ public class FlatBufferBuilder {
             i4++;
         }
         if (i != 0) {
-            int capacity2 = this.f360bb.capacity() - offset;
+            int capacity2 = this.bb.capacity() - offset;
             this.space = capacity2;
-            this.f360bb.putInt(capacity2, i - offset);
+            this.bb.putInt(capacity2, i - offset);
         } else {
             int i7 = this.num_vtables;
             int[] iArr2 = this.vtables;
@@ -274,7 +263,7 @@ public class FlatBufferBuilder {
             int i8 = this.num_vtables;
             this.num_vtables = i8 + 1;
             iArr3[i8] = offset();
-            ByteBuffer byteBuffer = this.f360bb;
+            ByteBuffer byteBuffer = this.bb;
             byteBuffer.putInt(byteBuffer.capacity() - offset, offset() - offset);
         }
         this.nested = false;
@@ -294,9 +283,9 @@ public class FlatBufferBuilder {
         prep(this.minalign, (z ? 4 : 0) + 4);
         addOffset(i);
         if (z) {
-            addInt(this.f360bb.capacity() - this.space);
+            addInt(this.bb.capacity() - this.space);
         }
-        this.f360bb.position(this.space);
+        this.bb.position(this.space);
         this.finished = true;
     }
 
@@ -317,11 +306,11 @@ public class FlatBufferBuilder {
 
     public FlatBufferBuilder init(ByteBuffer byteBuffer, ByteBufferFactory byteBufferFactory) {
         this.bb_factory = byteBufferFactory;
-        this.f360bb = byteBuffer;
+        this.bb = byteBuffer;
         byteBuffer.clear();
-        this.f360bb.order(ByteOrder.LITTLE_ENDIAN);
+        this.bb.order(ByteOrder.LITTLE_ENDIAN);
         this.minalign = 1;
-        this.space = this.f360bb.capacity();
+        this.space = this.bb.capacity();
         this.vtable_in_use = 0;
         this.nested = false;
         this.finished = false;
@@ -338,12 +327,12 @@ public class FlatBufferBuilder {
     }
 
     public int offset() {
-        return this.f360bb.capacity() - this.space;
+        return this.bb.capacity() - this.space;
     }
 
     public void pad(int i) {
         for (int i2 = 0; i2 < i; i2++) {
-            ByteBuffer byteBuffer = this.f360bb;
+            ByteBuffer byteBuffer = this.bb;
             int i3 = this.space - 1;
             this.space = i3;
             byteBuffer.put(i3, (byte) 0);
@@ -354,72 +343,72 @@ public class FlatBufferBuilder {
         if (i > this.minalign) {
             this.minalign = i;
         }
-        int i3 = ((~((this.f360bb.capacity() - this.space) + i2)) + 1) & (i - 1);
+        int i3 = ((~((this.bb.capacity() - this.space) + i2)) + 1) & (i - 1);
         while (this.space < i3 + i + i2) {
-            int capacity = this.f360bb.capacity();
-            ByteBuffer byteBuffer = this.f360bb;
+            int capacity = this.bb.capacity();
+            ByteBuffer byteBuffer = this.bb;
             ByteBuffer growByteBuffer = growByteBuffer(byteBuffer, this.bb_factory);
-            this.f360bb = growByteBuffer;
+            this.bb = growByteBuffer;
             if (byteBuffer != growByteBuffer) {
                 this.bb_factory.releaseByteBuffer(byteBuffer);
             }
-            this.space += this.f360bb.capacity() - capacity;
+            this.space += this.bb.capacity() - capacity;
         }
         pad(i3);
     }
 
     public void putBoolean(boolean z) {
-        ByteBuffer byteBuffer = this.f360bb;
+        ByteBuffer byteBuffer = this.bb;
         int i = this.space - 1;
         this.space = i;
         byteBuffer.put(i, z ? (byte) 1 : (byte) 0);
     }
 
     public void putByte(byte b) {
-        ByteBuffer byteBuffer = this.f360bb;
+        ByteBuffer byteBuffer = this.bb;
         int i = this.space - 1;
         this.space = i;
         byteBuffer.put(i, b);
     }
 
     public void putDouble(double d) {
-        ByteBuffer byteBuffer = this.f360bb;
+        ByteBuffer byteBuffer = this.bb;
         int i = this.space - 8;
         this.space = i;
         byteBuffer.putDouble(i, d);
     }
 
     public void putFloat(float f) {
-        ByteBuffer byteBuffer = this.f360bb;
+        ByteBuffer byteBuffer = this.bb;
         int i = this.space - 4;
         this.space = i;
         byteBuffer.putFloat(i, f);
     }
 
     public void putInt(int i) {
-        ByteBuffer byteBuffer = this.f360bb;
+        ByteBuffer byteBuffer = this.bb;
         int i2 = this.space - 4;
         this.space = i2;
         byteBuffer.putInt(i2, i);
     }
 
     public void putLong(long j) {
-        ByteBuffer byteBuffer = this.f360bb;
+        ByteBuffer byteBuffer = this.bb;
         int i = this.space - 8;
         this.space = i;
         byteBuffer.putLong(i, j);
     }
 
     public void putShort(short s) {
-        ByteBuffer byteBuffer = this.f360bb;
+        ByteBuffer byteBuffer = this.bb;
         int i = this.space - 2;
         this.space = i;
         byteBuffer.putShort(i, s);
     }
 
     public void required(int i, int i2) {
-        int capacity = this.f360bb.capacity() - i;
-        if (this.f360bb.getShort((capacity - this.f360bb.getInt(capacity)) + i2) != 0) {
+        int capacity = this.bb.capacity() - i;
+        if (this.bb.getShort((capacity - this.bb.getInt(capacity)) + i2) != 0) {
             return;
         }
         throw new AssertionError("FlatBuffers: field " + i2 + " must be set");
@@ -428,16 +417,16 @@ public class FlatBufferBuilder {
     public byte[] sizedByteArray(int i, int i2) {
         finished();
         byte[] bArr = new byte[i2];
-        this.f360bb.position(i);
-        this.f360bb.get(bArr);
+        this.bb.position(i);
+        this.bb.get(bArr);
         return bArr;
     }
 
     public InputStream sizedInputStream() {
         finished();
-        ByteBuffer duplicate = this.f360bb.duplicate();
+        ByteBuffer duplicate = this.bb.duplicate();
         duplicate.position(this.space);
-        duplicate.limit(this.f360bb.capacity());
+        duplicate.limit(this.bb.capacity());
         return new ByteBufferBackedInputStream(duplicate);
     }
 
@@ -479,14 +468,14 @@ public class FlatBufferBuilder {
         i = i <= 0 ? 1 : i;
         this.bb_factory = byteBufferFactory;
         if (byteBuffer != null) {
-            this.f360bb = byteBuffer;
+            this.bb = byteBuffer;
             byteBuffer.clear();
-            this.f360bb.order(ByteOrder.LITTLE_ENDIAN);
+            this.bb.order(ByteOrder.LITTLE_ENDIAN);
         } else {
-            this.f360bb = byteBufferFactory.newByteBuffer(i);
+            this.bb = byteBufferFactory.newByteBuffer(i);
         }
         this.utf8 = utf8;
-        this.space = this.f360bb.capacity();
+        this.space = this.bb.capacity();
     }
 
     public void addBoolean(int i, boolean z, boolean z2) {
@@ -550,16 +539,16 @@ public class FlatBufferBuilder {
     }
 
     public byte[] sizedByteArray() {
-        return sizedByteArray(this.space, this.f360bb.capacity() - this.space);
+        return sizedByteArray(this.space, this.bb.capacity() - this.space);
     }
 
     public int createByteVector(byte[] bArr, int i, int i2) {
         startVector(1, i2, 1);
-        ByteBuffer byteBuffer = this.f360bb;
+        ByteBuffer byteBuffer = this.bb;
         int i3 = this.space - i2;
         this.space = i3;
         byteBuffer.position(i3);
-        this.f360bb.put(bArr, i, i2);
+        this.bb.put(bArr, i, i2);
         return endVector();
     }
 
@@ -571,11 +560,11 @@ public class FlatBufferBuilder {
         int remaining = byteBuffer.remaining();
         addByte((byte) 0);
         startVector(1, remaining, 1);
-        ByteBuffer byteBuffer2 = this.f360bb;
+        ByteBuffer byteBuffer2 = this.bb;
         int i = this.space - remaining;
         this.space = i;
         byteBuffer2.position(i);
-        this.f360bb.put(byteBuffer);
+        this.bb.put(byteBuffer);
         return endVector();
     }
 
@@ -594,11 +583,11 @@ public class FlatBufferBuilder {
     public int createByteVector(ByteBuffer byteBuffer) {
         int remaining = byteBuffer.remaining();
         startVector(1, remaining, 1);
-        ByteBuffer byteBuffer2 = this.f360bb;
+        ByteBuffer byteBuffer2 = this.bb;
         int i = this.space - remaining;
         this.space = i;
         byteBuffer2.position(i);
-        this.f360bb.put(byteBuffer);
+        this.bb.put(byteBuffer);
         return endVector();
     }
 
@@ -611,7 +600,7 @@ public class FlatBufferBuilder {
     }
 
     public FlatBufferBuilder() {
-        this(1024);
+        this(AccessibilityEventCompat.TYPE_TOUCH_EXPLORATION_GESTURE_END);
     }
 
     public FlatBufferBuilder(ByteBuffer byteBuffer, ByteBufferFactory byteBufferFactory) {

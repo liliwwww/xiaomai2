@@ -5,6 +5,7 @@ import androidx.constraintlayout.core.Metrics;
 import androidx.constraintlayout.core.SolverVariable;
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import androidx.constraintlayout.core.widgets.analyzer.BasicMeasure;
+import androidx.constraintlayout.core.widgets.analyzer.BasicMeasure$Measurer;
 import androidx.constraintlayout.core.widgets.analyzer.DependencyGraph;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ConstraintWidgetContainer extends WidgetContainer {
     private static final boolean DEBUG = false;
     static final boolean DEBUG_GRAPH = false;
@@ -32,7 +33,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
     public boolean mHorizontalWrapOptimized;
     private boolean mIsRtl;
     public BasicMeasure.Measure mMeasure;
-    protected BasicMeasure.Measurer mMeasurer;
+    protected BasicMeasure$Measurer mMeasurer;
     public Metrics mMetrics;
     private int mOptimizationLevel;
     int mPaddingBottom;
@@ -121,13 +122,14 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         }
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public boolean addChildrenToSolver(LinearSystem linearSystem) {
         boolean optimizeFor = optimizeFor(64);
         addToSolver(linearSystem, optimizeFor);
-        int size = this.mChildren.size();
+        int size = ((WidgetContainer) this).mChildren.size();
         boolean z = false;
         for (int i = 0; i < size; i++) {
-            ConstraintWidget constraintWidget = this.mChildren.get(i);
+            ConstraintWidget constraintWidget = (ConstraintWidget) ((WidgetContainer) this).mChildren.get(i);
             constraintWidget.setInBarrier(0, false);
             constraintWidget.setInBarrier(1, false);
             if (constraintWidget instanceof Barrier) {
@@ -136,20 +138,20 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         }
         if (z) {
             for (int i2 = 0; i2 < size; i2++) {
-                ConstraintWidget constraintWidget2 = this.mChildren.get(i2);
-                if (constraintWidget2 instanceof Barrier) {
-                    ((Barrier) constraintWidget2).markWidgets();
+                Barrier barrier = (ConstraintWidget) ((WidgetContainer) this).mChildren.get(i2);
+                if (barrier instanceof Barrier) {
+                    barrier.markWidgets();
                 }
             }
         }
         this.widgetsToAdd.clear();
         for (int i3 = 0; i3 < size; i3++) {
-            ConstraintWidget constraintWidget3 = this.mChildren.get(i3);
-            if (constraintWidget3.addFirst()) {
-                if (constraintWidget3 instanceof VirtualLayout) {
-                    this.widgetsToAdd.add(constraintWidget3);
+            ConstraintWidget constraintWidget2 = (ConstraintWidget) ((WidgetContainer) this).mChildren.get(i3);
+            if (constraintWidget2.addFirst()) {
+                if (constraintWidget2 instanceof VirtualLayout) {
+                    this.widgetsToAdd.add(constraintWidget2);
                 } else {
-                    constraintWidget3.addToSolver(linearSystem, optimizeFor);
+                    constraintWidget2.addToSolver(linearSystem, optimizeFor);
                 }
             }
         }
@@ -160,7 +162,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
                 if (!it.hasNext()) {
                     break;
                 }
-                VirtualLayout virtualLayout = (VirtualLayout) it.next();
+                VirtualLayout virtualLayout = (ConstraintWidget) it.next();
                 if (virtualLayout.contains(this.widgetsToAdd)) {
                     virtualLayout.addToSolver(linearSystem, optimizeFor);
                     this.widgetsToAdd.remove(virtualLayout);
@@ -176,23 +178,23 @@ public class ConstraintWidgetContainer extends WidgetContainer {
             }
         }
         if (LinearSystem.USE_DEPENDENCY_ORDERING) {
-            HashSet<ConstraintWidget> hashSet = new HashSet<>();
+            HashSet hashSet = new HashSet();
             for (int i4 = 0; i4 < size; i4++) {
-                ConstraintWidget constraintWidget4 = this.mChildren.get(i4);
-                if (!constraintWidget4.addFirst()) {
-                    hashSet.add(constraintWidget4);
+                ConstraintWidget constraintWidget3 = (ConstraintWidget) ((WidgetContainer) this).mChildren.get(i4);
+                if (!constraintWidget3.addFirst()) {
+                    hashSet.add(constraintWidget3);
                 }
             }
             addChildrenToSolverByDependency(this, linearSystem, hashSet, getHorizontalDimensionBehaviour() == ConstraintWidget.DimensionBehaviour.WRAP_CONTENT ? 0 : 1, false);
-            Iterator<ConstraintWidget> it3 = hashSet.iterator();
+            Iterator it3 = hashSet.iterator();
             while (it3.hasNext()) {
-                ConstraintWidget next = it3.next();
-                Optimizer.checkMatchParent(this, linearSystem, next);
-                next.addToSolver(linearSystem, optimizeFor);
+                ConstraintWidget constraintWidget4 = (ConstraintWidget) it3.next();
+                Optimizer.checkMatchParent(this, linearSystem, constraintWidget4);
+                constraintWidget4.addToSolver(linearSystem, optimizeFor);
             }
         } else {
             for (int i5 = 0; i5 < size; i5++) {
-                ConstraintWidget constraintWidget5 = this.mChildren.get(i5);
+                ConstraintWidget constraintWidget5 = (ConstraintWidget) ((WidgetContainer) this).mChildren.get(i5);
                 if (constraintWidget5 instanceof ConstraintWidgetContainer) {
                     ConstraintWidget.DimensionBehaviour[] dimensionBehaviourArr = constraintWidget5.mListDimensionBehaviors;
                     ConstraintWidget.DimensionBehaviour dimensionBehaviour = dimensionBehaviourArr[0];
@@ -256,6 +258,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         }
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void defineTerminalWidgets() {
         this.mDependencyGraph.defineTerminalWidgets(getHorizontalDimensionBehaviour(), getVerticalDimensionBehaviour());
     }
@@ -279,9 +282,9 @@ public class ConstraintWidgetContainer extends WidgetContainer {
 
     public ArrayList<Guideline> getHorizontalGuidelines() {
         ArrayList<Guideline> arrayList = new ArrayList<>();
-        int size = this.mChildren.size();
+        int size = ((WidgetContainer) this).mChildren.size();
         for (int i = 0; i < size; i++) {
-            ConstraintWidget constraintWidget = this.mChildren.get(i);
+            ConstraintWidget constraintWidget = (ConstraintWidget) ((WidgetContainer) this).mChildren.get(i);
             if (constraintWidget instanceof Guideline) {
                 Guideline guideline = (Guideline) constraintWidget;
                 if (guideline.getOrientation() == 0) {
@@ -292,7 +295,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         return arrayList;
     }
 
-    public BasicMeasure.Measurer getMeasurer() {
+    public BasicMeasure$Measurer getMeasurer() {
         return this.mMeasurer;
     }
 
@@ -300,16 +303,16 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         return this.mOptimizationLevel;
     }
 
-    @Override // androidx.constraintlayout.core.widgets.ConstraintWidget
+    /* JADX WARN: Multi-variable type inference failed */
     public void getSceneString(StringBuilder sb) {
         sb.append(this.stringId + ":{\n");
         sb.append("  actualWidth:" + this.mWidth);
         sb.append("\n");
         sb.append("  actualHeight:" + this.mHeight);
         sb.append("\n");
-        Iterator<ConstraintWidget> it = getChildren().iterator();
+        Iterator it = getChildren().iterator();
         while (it.hasNext()) {
-            it.next().getSceneString(sb);
+            ((ConstraintWidget) it.next()).getSceneString(sb);
             sb.append(",\n");
         }
         sb.append("}");
@@ -319,16 +322,15 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         return this.mSystem;
     }
 
-    @Override // androidx.constraintlayout.core.widgets.ConstraintWidget
     public String getType() {
         return "ConstraintLayout";
     }
 
     public ArrayList<Guideline> getVerticalGuidelines() {
         ArrayList<Guideline> arrayList = new ArrayList<>();
-        int size = this.mChildren.size();
+        int size = ((WidgetContainer) this).mChildren.size();
         for (int i = 0; i < size; i++) {
-            ConstraintWidget constraintWidget = this.mChildren.get(i);
+            ConstraintWidget constraintWidget = (ConstraintWidget) ((WidgetContainer) this).mChildren.get(i);
             if (constraintWidget instanceof Guideline) {
                 Guideline guideline = (Guideline) constraintWidget;
                 if (guideline.getOrientation() == 1) {
@@ -363,20 +365,20 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         return this.mWidthMeasuredTooSmall;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Removed duplicated region for block: B:155:0x031b  */
     /* JADX WARN: Removed duplicated region for block: B:158:0x031d  */
     /* JADX WARN: Type inference failed for: r6v3 */
     /* JADX WARN: Type inference failed for: r6v4, types: [boolean] */
     /* JADX WARN: Type inference failed for: r6v6 */
-    @Override // androidx.constraintlayout.core.widgets.WidgetContainer
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void layout() {
         /*
             Method dump skipped, instructions count: 826
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.constraintlayout.core.widgets.ConstraintWidgetContainer.layout():void");
     }
@@ -391,7 +393,6 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         return (this.mOptimizationLevel & i) == i;
     }
 
-    @Override // androidx.constraintlayout.core.widgets.WidgetContainer, androidx.constraintlayout.core.widgets.ConstraintWidget
     public void reset() {
         this.mSystem.reset();
         this.mPaddingLeft = 0;
@@ -402,9 +403,9 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         super.reset();
     }
 
-    public void setMeasurer(BasicMeasure.Measurer measurer) {
-        this.mMeasurer = measurer;
-        this.mDependencyGraph.setMeasurer(measurer);
+    public void setMeasurer(BasicMeasure$Measurer basicMeasure$Measurer) {
+        this.mMeasurer = basicMeasure$Measurer;
+        this.mDependencyGraph.setMeasurer(basicMeasure$Measurer);
     }
 
     public void setOptimizationLevel(int i) {
@@ -427,14 +428,15 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         this.mIsRtl = z;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public boolean updateChildrenFromSolver(LinearSystem linearSystem, boolean[] zArr) {
         zArr[2] = false;
         boolean optimizeFor = optimizeFor(64);
         updateFromSolver(linearSystem, optimizeFor);
-        int size = this.mChildren.size();
+        int size = ((WidgetContainer) this).mChildren.size();
         boolean z = false;
         for (int i = 0; i < size; i++) {
-            ConstraintWidget constraintWidget = this.mChildren.get(i);
+            ConstraintWidget constraintWidget = (ConstraintWidget) ((WidgetContainer) this).mChildren.get(i);
             constraintWidget.updateFromSolver(linearSystem, optimizeFor);
             if (constraintWidget.hasDimensionOverride()) {
                 z = true;
@@ -443,12 +445,12 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         return z;
     }
 
-    @Override // androidx.constraintlayout.core.widgets.ConstraintWidget
+    /* JADX WARN: Multi-variable type inference failed */
     public void updateFromRuns(boolean z, boolean z2) {
-        super.updateFromRuns(z, z2);
-        int size = this.mChildren.size();
+        super/*androidx.constraintlayout.core.widgets.ConstraintWidget*/.updateFromRuns(z, z2);
+        int size = ((WidgetContainer) this).mChildren.size();
         for (int i = 0; i < size; i++) {
-            this.mChildren.get(i).updateFromRuns(z, z2);
+            ((ConstraintWidget) ((WidgetContainer) this).mChildren.get(i)).updateFromRuns(z, z2);
         }
     }
 
@@ -456,10 +458,10 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         this.mBasicMeasureSolver.updateHierarchy(this);
     }
 
-    public static boolean measure(int i, ConstraintWidget constraintWidget, BasicMeasure.Measurer measurer, BasicMeasure.Measure measure, int i2) {
+    public static boolean measure(int i, ConstraintWidget constraintWidget, BasicMeasure$Measurer basicMeasure$Measurer, BasicMeasure.Measure measure, int i2) {
         int i3;
         int i4;
-        if (measurer == null) {
+        if (basicMeasure$Measurer == null) {
             return false;
         }
         if (constraintWidget.getVisibility() != 8 && !(constraintWidget instanceof Guideline) && !(constraintWidget instanceof Barrier)) {
@@ -507,7 +509,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
                         i4 = measure.verticalDimension;
                     } else {
                         measure.horizontalBehavior = ConstraintWidget.DimensionBehaviour.WRAP_CONTENT;
-                        measurer.measure(constraintWidget, measure);
+                        basicMeasure$Measurer.measure(constraintWidget, measure);
                         i4 = measure.measuredHeight;
                     }
                     measure.horizontalBehavior = dimensionBehaviour4;
@@ -524,7 +526,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
                         i3 = measure.horizontalDimension;
                     } else {
                         measure.verticalBehavior = ConstraintWidget.DimensionBehaviour.WRAP_CONTENT;
-                        measurer.measure(constraintWidget, measure);
+                        basicMeasure$Measurer.measure(constraintWidget, measure);
                         i3 = measure.measuredWidth;
                     }
                     measure.verticalBehavior = dimensionBehaviour6;
@@ -535,7 +537,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
                     }
                 }
             }
-            measurer.measure(constraintWidget, measure);
+            basicMeasure$Measurer.measure(constraintWidget, measure);
             constraintWidget.setWidth(measure.measuredWidth);
             constraintWidget.setHeight(measure.measuredHeight);
             constraintWidget.setHasBaseline(measure.measuredHasBaseline);
@@ -606,6 +608,7 @@ public class ConstraintWidgetContainer extends WidgetContainer {
         this.mMeasure = new BasicMeasure.Measure();
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public ConstraintWidgetContainer(String str, int i, int i2) {
         super(i, i2);
         this.mBasicMeasureSolver = new BasicMeasure(this);

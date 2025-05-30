@@ -1,35 +1,31 @@
 package androidx.compose.material;
 
-import androidx.compose.foundation.BorderStroke;
 import androidx.compose.foundation.interaction.InteractionSource;
 import androidx.compose.foundation.layout.PaddingKt;
 import androidx.compose.foundation.layout.PaddingValues;
 import androidx.compose.foundation.shape.CornerBasedShape;
 import androidx.compose.foundation.shape.CornerSizeKt;
-import androidx.compose.p004ui.ComposedModifierKt;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.graphics.Shape;
-import androidx.compose.p004ui.platform.InspectableValueKt;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.material.TextFieldDefaults$indicatorLine-gv0btCI$;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.Immutable;
 import androidx.compose.runtime.ReadOnlyComposable;
-import androidx.compose.runtime.State;
-import kotlin.Unit;
+import androidx.compose.ui.ComposedModifierKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.graphics.Shape;
+import androidx.compose.ui.platform.InspectableValueKt;
+import androidx.compose.ui.unit.Dp;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 import kotlin.jvm.JvmName;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TextFieldDefaults {
     public static final float BackgroundOpacity = 0.12f;
     public static final float IconOpacity = 0.54f;
@@ -37,16 +33,16 @@ public final class TextFieldDefaults {
 
     @NotNull
     public static final TextFieldDefaults INSTANCE = new TextFieldDefaults();
-    private static final float MinHeight = C0856Dp.m5216constructorimpl(56);
-    private static final float MinWidth = C0856Dp.m5216constructorimpl(280);
-    private static final float UnfocusedBorderThickness = C0856Dp.m5216constructorimpl(1);
-    private static final float FocusedBorderThickness = C0856Dp.m5216constructorimpl(2);
+    private static final float MinHeight = Dp.constructor-impl(56);
+    private static final float MinWidth = Dp.constructor-impl(280);
+    private static final float UnfocusedBorderThickness = Dp.constructor-impl(1);
+    private static final float FocusedBorderThickness = Dp.constructor-impl(2);
 
     private TextFieldDefaults() {
     }
 
     /* renamed from: outlinedTextFieldPadding-a9UjIt4$default, reason: not valid java name */
-    public static /* synthetic */ PaddingValues m2301outlinedTextFieldPaddinga9UjIt4$default(TextFieldDefaults textFieldDefaults, float f, float f2, float f3, float f4, int i, Object obj) {
+    public static /* synthetic */ PaddingValues m852outlinedTextFieldPaddinga9UjIt4$default(TextFieldDefaults textFieldDefaults, float f, float f2, float f3, float f4, int i, Object obj) {
         if ((i & 1) != 0) {
             f = TextFieldImplKt.getTextFieldPadding();
         }
@@ -59,11 +55,11 @@ public final class TextFieldDefaults {
         if ((i & 8) != 0) {
             f4 = TextFieldImplKt.getTextFieldPadding();
         }
-        return textFieldDefaults.m2311outlinedTextFieldPaddinga9UjIt4(f, f2, f3, f4);
+        return textFieldDefaults.m862outlinedTextFieldPaddinga9UjIt4(f, f2, f3, f4);
     }
 
     /* renamed from: textFieldWithLabelPadding-a9UjIt4$default, reason: not valid java name */
-    public static /* synthetic */ PaddingValues m2302textFieldWithLabelPaddinga9UjIt4$default(TextFieldDefaults textFieldDefaults, float f, float f2, float f3, float f4, int i, Object obj) {
+    public static /* synthetic */ PaddingValues m853textFieldWithLabelPaddinga9UjIt4$default(TextFieldDefaults textFieldDefaults, float f, float f2, float f3, float f4, int i, Object obj) {
         if ((i & 1) != 0) {
             f = TextFieldImplKt.getTextFieldPadding();
         }
@@ -76,11 +72,11 @@ public final class TextFieldDefaults {
         if ((i & 8) != 0) {
             f4 = TextFieldKt.getTextFieldBottomPadding();
         }
-        return textFieldDefaults.m2313textFieldWithLabelPaddinga9UjIt4(f, f2, f3, f4);
+        return textFieldDefaults.m864textFieldWithLabelPaddinga9UjIt4(f, f2, f3, f4);
     }
 
     /* renamed from: textFieldWithoutLabelPadding-a9UjIt4$default, reason: not valid java name */
-    public static /* synthetic */ PaddingValues m2303textFieldWithoutLabelPaddinga9UjIt4$default(TextFieldDefaults textFieldDefaults, float f, float f2, float f3, float f4, int i, Object obj) {
+    public static /* synthetic */ PaddingValues m854textFieldWithoutLabelPaddinga9UjIt4$default(TextFieldDefaults textFieldDefaults, float f, float f2, float f3, float f4, int i, Object obj) {
         if ((i & 1) != 0) {
             f = TextFieldImplKt.getTextFieldPadding();
         }
@@ -93,7 +89,7 @@ public final class TextFieldDefaults {
         if ((i & 8) != 0) {
             f4 = TextFieldImplKt.getTextFieldPadding();
         }
-        return textFieldDefaults.m2314textFieldWithoutLabelPaddinga9UjIt4(f, f2, f3, f4);
+        return textFieldDefaults.m865textFieldWithoutLabelPaddinga9UjIt4(f, f2, f3, f4);
     }
 
     /* JADX WARN: Removed duplicated region for block: B:48:0x01ba  */
@@ -109,14 +105,14 @@ public final class TextFieldDefaults {
     /* renamed from: BorderBox-nbWgWpA, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public final void m2304BorderBoxnbWgWpA(final boolean r20, final boolean r21, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.interaction.InteractionSource r22, @org.jetbrains.annotations.NotNull final androidx.compose.material.TextFieldColors r23, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r24, float r25, float r26, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r27, final int r28, final int r29) {
+    public final void m855BorderBoxnbWgWpA(boolean r20, boolean r21, @org.jetbrains.annotations.NotNull androidx.compose.foundation.interaction.InteractionSource r22, @org.jetbrains.annotations.NotNull androidx.compose.material.TextFieldColors r23, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r24, float r25, float r26, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r27, int r28, int r29) {
         /*
             Method dump skipped, instructions count: 467
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.TextFieldDefaults.m2304BorderBoxnbWgWpA(boolean, boolean, androidx.compose.foundation.interaction.InteractionSource, androidx.compose.material.TextFieldColors, androidx.compose.ui.graphics.Shape, float, float, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.TextFieldDefaults.m855BorderBoxnbWgWpA(boolean, boolean, androidx.compose.foundation.interaction.InteractionSource, androidx.compose.material.TextFieldColors, androidx.compose.ui.graphics.Shape, float, float, androidx.compose.runtime.Composer, int, int):void");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:100:0x0255  */
@@ -169,12 +165,12 @@ public final class TextFieldDefaults {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public final void OutlinedTextFieldDecorationBox(@org.jetbrains.annotations.NotNull final java.lang.String r68, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r69, final boolean r70, final boolean r71, @org.jetbrains.annotations.NotNull final androidx.compose.p004ui.text.input.VisualTransformation r72, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.interaction.InteractionSource r73, boolean r74, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r75, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r76, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable androidx.compose.material.TextFieldColors r79, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r80, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r81, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r82, final int r83, final int r84, final int r85) {
+    public final void OutlinedTextFieldDecorationBox(@org.jetbrains.annotations.NotNull final java.lang.String r68, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r69, final boolean r70, final boolean r71, @org.jetbrains.annotations.NotNull final androidx.compose.ui.text.input.VisualTransformation r72, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.interaction.InteractionSource r73, boolean r74, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r75, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r76, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable androidx.compose.material.TextFieldColors r79, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r80, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r81, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r82, final int r83, final int r84, final int r85) {
         /*
             Method dump skipped, instructions count: 973
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.TextFieldDefaults.OutlinedTextFieldDecorationBox(java.lang.String, kotlin.jvm.functions.Function2, boolean, boolean, androidx.compose.ui.text.input.VisualTransformation, androidx.compose.foundation.interaction.InteractionSource, boolean, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, androidx.compose.material.TextFieldColors, androidx.compose.foundation.layout.PaddingValues, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int, int):void");
     }
@@ -225,28 +221,28 @@ public final class TextFieldDefaults {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public final void TextFieldDecorationBox(@org.jetbrains.annotations.NotNull final java.lang.String r70, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r71, final boolean r72, final boolean r73, @org.jetbrains.annotations.NotNull final androidx.compose.p004ui.text.input.VisualTransformation r74, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.interaction.InteractionSource r75, boolean r76, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r79, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r80, @org.jetbrains.annotations.Nullable androidx.compose.material.TextFieldColors r81, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r82, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r83, final int r84, final int r85, final int r86) {
+    public final void TextFieldDecorationBox(@org.jetbrains.annotations.NotNull final java.lang.String r70, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r71, final boolean r72, final boolean r73, @org.jetbrains.annotations.NotNull final androidx.compose.ui.text.input.VisualTransformation r74, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.interaction.InteractionSource r75, boolean r76, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r79, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r80, @org.jetbrains.annotations.Nullable androidx.compose.material.TextFieldColors r81, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r82, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r83, final int r84, final int r85, final int r86) {
         /*
             Method dump skipped, instructions count: 912
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.TextFieldDefaults.TextFieldDecorationBox(java.lang.String, kotlin.jvm.functions.Function2, boolean, boolean, androidx.compose.ui.text.input.VisualTransformation, androidx.compose.foundation.interaction.InteractionSource, boolean, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, androidx.compose.material.TextFieldColors, androidx.compose.foundation.layout.PaddingValues, androidx.compose.runtime.Composer, int, int, int):void");
     }
 
     /* renamed from: getFocusedBorderThickness-D9Ej5fM, reason: not valid java name */
-    public final float m2305getFocusedBorderThicknessD9Ej5fM() {
+    public final float m856getFocusedBorderThicknessD9Ej5fM() {
         return FocusedBorderThickness;
     }
 
     /* renamed from: getMinHeight-D9Ej5fM, reason: not valid java name */
-    public final float m2306getMinHeightD9Ej5fM() {
+    public final float m857getMinHeightD9Ej5fM() {
         return MinHeight;
     }
 
     /* renamed from: getMinWidth-D9Ej5fM, reason: not valid java name */
-    public final float m2307getMinWidthD9Ej5fM() {
+    public final float m858getMinWidthD9Ej5fM() {
         return MinWidth;
     }
 
@@ -281,98 +277,50 @@ public final class TextFieldDefaults {
     }
 
     /* renamed from: getUnfocusedBorderThickness-D9Ej5fM, reason: not valid java name */
-    public final float m2308getUnfocusedBorderThicknessD9Ej5fM() {
+    public final float m859getUnfocusedBorderThicknessD9Ej5fM() {
         return UnfocusedBorderThickness;
     }
 
     @ExperimentalMaterialApi
     @NotNull
     /* renamed from: indicatorLine-gv0btCI, reason: not valid java name */
-    public final Modifier m2309indicatorLinegv0btCI(@NotNull Modifier modifier, final boolean z, final boolean z2, @NotNull final InteractionSource interactionSource, @NotNull final TextFieldColors textFieldColors, final float f, final float f2) {
+    public final Modifier m860indicatorLinegv0btCI(@NotNull Modifier modifier, boolean z, boolean z2, @NotNull InteractionSource interactionSource, @NotNull TextFieldColors textFieldColors, float f, float f2) {
         Intrinsics.checkNotNullParameter(modifier, "$this$indicatorLine");
         Intrinsics.checkNotNullParameter(interactionSource, "interactionSource");
         Intrinsics.checkNotNullParameter(textFieldColors, "colors");
-        return ComposedModifierKt.composed(modifier, InspectableValueKt.isDebugInspectorInfoEnabled() ? new Function1<InspectorInfo, Unit>() { // from class: androidx.compose.material.TextFieldDefaults$indicatorLine-gv0btCI$$inlined$debugInspectorInfo$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((InspectorInfo) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull InspectorInfo inspectorInfo) {
-                Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
-                inspectorInfo.setName("indicatorLine");
-                inspectorInfo.getProperties().set("enabled", Boolean.valueOf(z));
-                inspectorInfo.getProperties().set("isError", Boolean.valueOf(z2));
-                inspectorInfo.getProperties().set("interactionSource", interactionSource);
-                inspectorInfo.getProperties().set("colors", textFieldColors);
-                inspectorInfo.getProperties().set("focusedIndicatorLineThickness", C0856Dp.m5214boximpl(f));
-                inspectorInfo.getProperties().set("unfocusedIndicatorLineThickness", C0856Dp.m5214boximpl(f2));
-            }
-        } : InspectableValueKt.getNoInspectorInfo(), new Function3<Modifier, Composer, Integer, Modifier>() { // from class: androidx.compose.material.TextFieldDefaults$indicatorLine$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(3);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-                return invoke((Modifier) obj, (Composer) obj2, ((Number) obj3).intValue());
-            }
-
-            @Composable
-            @NotNull
-            public final Modifier invoke(@NotNull Modifier modifier2, @Nullable Composer composer, int i) {
-                State m2316animateBorderStrokeAsStateNuRrP5Q;
-                Intrinsics.checkNotNullParameter(modifier2, "$this$composed");
-                composer.startReplaceableGroup(1398930845);
-                if (ComposerKt.isTraceInProgress()) {
-                    ComposerKt.traceEventStart(1398930845, i, -1, "androidx.compose.material.TextFieldDefaults.indicatorLine.<anonymous> (TextFieldDefaults.kt:279)");
-                }
-                m2316animateBorderStrokeAsStateNuRrP5Q = TextFieldDefaultsKt.m2316animateBorderStrokeAsStateNuRrP5Q(z, z2, interactionSource, textFieldColors, f, f2, composer, 0);
-                Modifier drawIndicatorLine = TextFieldKt.drawIndicatorLine(Modifier.Companion, (BorderStroke) m2316animateBorderStrokeAsStateNuRrP5Q.getValue());
-                if (ComposerKt.isTraceInProgress()) {
-                    ComposerKt.traceEventEnd();
-                }
-                composer.endReplaceableGroup();
-                return drawIndicatorLine;
-            }
-        });
+        return ComposedModifierKt.composed(modifier, InspectableValueKt.isDebugInspectorInfoEnabled() ? new TextFieldDefaults$indicatorLine-gv0btCI$.inlined.debugInspectorInfo.1(z, z2, interactionSource, textFieldColors, f, f2) : InspectableValueKt.getNoInspectorInfo(), new indicatorLine.2(z, z2, interactionSource, textFieldColors, f, f2));
     }
 
     @Composable
     @NotNull
     /* renamed from: outlinedTextFieldColors-dx8h9Zs, reason: not valid java name */
-    public final TextFieldColors m2310outlinedTextFieldColorsdx8h9Zs(long j, long j2, long j3, long j4, long j5, long j6, long j7, long j8, long j9, long j10, long j11, long j12, long j13, long j14, long j15, long j16, long j17, long j18, long j19, long j20, long j21, @Nullable Composer composer, int i, int i2, int i3, int i4) {
+    public final TextFieldColors m861outlinedTextFieldColorsdx8h9Zs(long j, long j2, long j3, long j4, long j5, long j6, long j7, long j8, long j9, long j10, long j11, long j12, long j13, long j14, long j15, long j16, long j17, long j18, long j19, long j20, long j21, @Nullable Composer composer, int i, int i2, int i3, int i4) {
         composer.startReplaceableGroup(1762667317);
-        long m2786copywmQWz5c$default = (i4 & 1) != 0 ? Color.m2786copywmQWz5c$default(((Color) composer.consume(ContentColorKt.getLocalContentColor())).m2797unboximpl(), ((Number) composer.consume(ContentAlphaKt.getLocalContentAlpha())).floatValue(), 0.0f, 0.0f, 0.0f, 14, null) : j;
-        long m2786copywmQWz5c$default2 = (i4 & 2) != 0 ? Color.m2786copywmQWz5c$default(m2786copywmQWz5c$default, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j2;
-        long m2822getTransparent0d7_KjU = (i4 & 4) != 0 ? Color.Companion.m2822getTransparent0d7_KjU() : j3;
-        long m2016getPrimary0d7_KjU = (i4 & 8) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m2016getPrimary0d7_KjU() : j4;
-        long m2010getError0d7_KjU = (i4 & 16) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m2010getError0d7_KjU() : j5;
-        long m2786copywmQWz5c$default3 = (i4 & 32) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2016getPrimary0d7_KjU(), ContentAlpha.INSTANCE.getHigh(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j6;
-        long m2786copywmQWz5c$default4 = (i4 & 64) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2015getOnSurface0d7_KjU(), ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j7;
-        long m2786copywmQWz5c$default5 = (i4 & 128) != 0 ? Color.m2786copywmQWz5c$default(m2786copywmQWz5c$default4, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j8;
-        long m2010getError0d7_KjU2 = (i4 & 256) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m2010getError0d7_KjU() : j9;
-        long m2786copywmQWz5c$default6 = (i4 & 512) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2015getOnSurface0d7_KjU(), 0.54f, 0.0f, 0.0f, 0.0f, 14, null) : j10;
-        long m2786copywmQWz5c$default7 = (i4 & 1024) != 0 ? Color.m2786copywmQWz5c$default(m2786copywmQWz5c$default6, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j11;
-        long j22 = (i4 & 2048) != 0 ? m2786copywmQWz5c$default6 : j12;
-        long m2786copywmQWz5c$default8 = (i4 & 4096) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2015getOnSurface0d7_KjU(), 0.54f, 0.0f, 0.0f, 0.0f, 14, null) : j13;
-        long m2786copywmQWz5c$default9 = (i4 & 8192) != 0 ? Color.m2786copywmQWz5c$default(m2786copywmQWz5c$default8, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j14;
-        long m2010getError0d7_KjU3 = (i4 & 16384) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m2010getError0d7_KjU() : j15;
-        long m2786copywmQWz5c$default10 = (32768 & i4) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2016getPrimary0d7_KjU(), ContentAlpha.INSTANCE.getHigh(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j16;
-        long m2786copywmQWz5c$default11 = (65536 & i4) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2015getOnSurface0d7_KjU(), ContentAlpha.INSTANCE.getMedium(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j17;
-        long m2786copywmQWz5c$default12 = (131072 & i4) != 0 ? Color.m2786copywmQWz5c$default(m2786copywmQWz5c$default11, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j18;
-        long m2010getError0d7_KjU4 = (262144 & i4) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m2010getError0d7_KjU() : j19;
-        long m2786copywmQWz5c$default13 = (524288 & i4) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2015getOnSurface0d7_KjU(), ContentAlpha.INSTANCE.getMedium(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j20;
-        long m2786copywmQWz5c$default14 = (i4 & 1048576) != 0 ? Color.m2786copywmQWz5c$default(m2786copywmQWz5c$default13, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j21;
+        long j22 = (i4 & 1) != 0 ? Color.copy-wmQWz5c$default(((Color) composer.consume(ContentColorKt.getLocalContentColor())).unbox-impl(), ((Number) composer.consume(ContentAlphaKt.getLocalContentAlpha())).floatValue(), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j;
+        long j23 = (i4 & 2) != 0 ? Color.copy-wmQWz5c$default(j22, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j2;
+        long m1083getTransparent0d7_KjU = (i4 & 4) != 0 ? Color.Companion.m1083getTransparent0d7_KjU() : j3;
+        long m695getPrimary0d7_KjU = (i4 & 8) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m695getPrimary0d7_KjU() : j4;
+        long m689getError0d7_KjU = (i4 & 16) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m689getError0d7_KjU() : j5;
+        long j24 = (i4 & 32) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m695getPrimary0d7_KjU(), ContentAlpha.INSTANCE.getHigh(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j6;
+        long j25 = (i4 & 64) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m694getOnSurface0d7_KjU(), ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j7;
+        long j26 = (i4 & 128) != 0 ? Color.copy-wmQWz5c$default(j25, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j8;
+        long m689getError0d7_KjU2 = (i4 & 256) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m689getError0d7_KjU() : j9;
+        long j27 = (i4 & 512) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m694getOnSurface0d7_KjU(), 0.54f, 0.0f, 0.0f, 0.0f, 14, (Object) null) : j10;
+        long j28 = (i4 & AccessibilityEventCompat.TYPE_TOUCH_EXPLORATION_GESTURE_END) != 0 ? Color.copy-wmQWz5c$default(j27, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j11;
+        long j29 = (i4 & AccessibilityEventCompat.TYPE_WINDOW_CONTENT_CHANGED) != 0 ? j27 : j12;
+        long j30 = (i4 & AccessibilityEventCompat.TYPE_VIEW_SCROLLED) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m694getOnSurface0d7_KjU(), 0.54f, 0.0f, 0.0f, 0.0f, 14, (Object) null) : j13;
+        long j31 = (i4 & AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED) != 0 ? Color.copy-wmQWz5c$default(j30, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j14;
+        long m689getError0d7_KjU3 = (i4 & AccessibilityEventCompat.TYPE_ANNOUNCEMENT) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m689getError0d7_KjU() : j15;
+        long j32 = (32768 & i4) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m695getPrimary0d7_KjU(), ContentAlpha.INSTANCE.getHigh(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j16;
+        long j33 = (65536 & i4) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m694getOnSurface0d7_KjU(), ContentAlpha.INSTANCE.getMedium(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j17;
+        long j34 = (131072 & i4) != 0 ? Color.copy-wmQWz5c$default(j33, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j18;
+        long m689getError0d7_KjU4 = (262144 & i4) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m689getError0d7_KjU() : j19;
+        long j35 = (524288 & i4) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m694getOnSurface0d7_KjU(), ContentAlpha.INSTANCE.getMedium(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j20;
+        long j36 = (i4 & AccessibilityEventCompat.TYPE_TOUCH_INTERACTION_START) != 0 ? Color.copy-wmQWz5c$default(j35, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j21;
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(1762667317, i, i2, "androidx.compose.material.TextFieldDefaults.outlinedTextFieldColors (TextFieldDefaults.kt:433)");
         }
-        DefaultTextFieldColors defaultTextFieldColors = new DefaultTextFieldColors(m2786copywmQWz5c$default, m2786copywmQWz5c$default2, m2016getPrimary0d7_KjU, m2010getError0d7_KjU, m2786copywmQWz5c$default3, m2786copywmQWz5c$default4, m2010getError0d7_KjU2, m2786copywmQWz5c$default5, m2786copywmQWz5c$default6, m2786copywmQWz5c$default7, j22, m2786copywmQWz5c$default8, m2786copywmQWz5c$default9, m2010getError0d7_KjU3, m2822getTransparent0d7_KjU, m2786copywmQWz5c$default10, m2786copywmQWz5c$default11, m2786copywmQWz5c$default12, m2010getError0d7_KjU4, m2786copywmQWz5c$default13, m2786copywmQWz5c$default14, null);
+        DefaultTextFieldColors defaultTextFieldColors = new DefaultTextFieldColors(j22, j23, m695getPrimary0d7_KjU, m689getError0d7_KjU, j24, j25, m689getError0d7_KjU2, j26, j27, j28, j29, j30, j31, m689getError0d7_KjU3, m1083getTransparent0d7_KjU, j32, j33, j34, m689getError0d7_KjU4, j35, j36, null);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -383,40 +331,40 @@ public final class TextFieldDefaults {
     @ExperimentalMaterialApi
     @NotNull
     /* renamed from: outlinedTextFieldPadding-a9UjIt4, reason: not valid java name */
-    public final PaddingValues m2311outlinedTextFieldPaddinga9UjIt4(float f, float f2, float f3, float f4) {
-        return PaddingKt.m1390PaddingValuesa9UjIt4(f, f2, f3, f4);
+    public final PaddingValues m862outlinedTextFieldPaddinga9UjIt4(float f, float f2, float f3, float f4) {
+        return PaddingKt.m328PaddingValuesa9UjIt4(f, f2, f3, f4);
     }
 
     @Composable
     @NotNull
     /* renamed from: textFieldColors-dx8h9Zs, reason: not valid java name */
-    public final TextFieldColors m2312textFieldColorsdx8h9Zs(long j, long j2, long j3, long j4, long j5, long j6, long j7, long j8, long j9, long j10, long j11, long j12, long j13, long j14, long j15, long j16, long j17, long j18, long j19, long j20, long j21, @Nullable Composer composer, int i, int i2, int i3, int i4) {
+    public final TextFieldColors m863textFieldColorsdx8h9Zs(long j, long j2, long j3, long j4, long j5, long j6, long j7, long j8, long j9, long j10, long j11, long j12, long j13, long j14, long j15, long j16, long j17, long j18, long j19, long j20, long j21, @Nullable Composer composer, int i, int i2, int i3, int i4) {
         composer.startReplaceableGroup(231892599);
-        long m2786copywmQWz5c$default = (i4 & 1) != 0 ? Color.m2786copywmQWz5c$default(((Color) composer.consume(ContentColorKt.getLocalContentColor())).m2797unboximpl(), ((Number) composer.consume(ContentAlphaKt.getLocalContentAlpha())).floatValue(), 0.0f, 0.0f, 0.0f, 14, null) : j;
-        long m2786copywmQWz5c$default2 = (i4 & 2) != 0 ? Color.m2786copywmQWz5c$default(m2786copywmQWz5c$default, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j2;
-        long m2786copywmQWz5c$default3 = (i4 & 4) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2015getOnSurface0d7_KjU(), 0.12f, 0.0f, 0.0f, 0.0f, 14, null) : j3;
-        long m2016getPrimary0d7_KjU = (i4 & 8) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m2016getPrimary0d7_KjU() : j4;
-        long m2010getError0d7_KjU = (i4 & 16) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m2010getError0d7_KjU() : j5;
-        long m2786copywmQWz5c$default4 = (i4 & 32) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2016getPrimary0d7_KjU(), ContentAlpha.INSTANCE.getHigh(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j6;
-        long m2786copywmQWz5c$default5 = (i4 & 64) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2015getOnSurface0d7_KjU(), 0.42f, 0.0f, 0.0f, 0.0f, 14, null) : j7;
-        long m2786copywmQWz5c$default6 = (i4 & 128) != 0 ? Color.m2786copywmQWz5c$default(m2786copywmQWz5c$default5, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j8;
-        long m2010getError0d7_KjU2 = (i4 & 256) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m2010getError0d7_KjU() : j9;
-        long m2786copywmQWz5c$default7 = (i4 & 512) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2015getOnSurface0d7_KjU(), 0.54f, 0.0f, 0.0f, 0.0f, 14, null) : j10;
-        long m2786copywmQWz5c$default8 = (i4 & 1024) != 0 ? Color.m2786copywmQWz5c$default(m2786copywmQWz5c$default7, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j11;
-        long j22 = (i4 & 2048) != 0 ? m2786copywmQWz5c$default7 : j12;
-        long m2786copywmQWz5c$default9 = (i4 & 4096) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2015getOnSurface0d7_KjU(), 0.54f, 0.0f, 0.0f, 0.0f, 14, null) : j13;
-        long m2786copywmQWz5c$default10 = (i4 & 8192) != 0 ? Color.m2786copywmQWz5c$default(m2786copywmQWz5c$default9, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j14;
-        long m2010getError0d7_KjU3 = (i4 & 16384) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m2010getError0d7_KjU() : j15;
-        long m2786copywmQWz5c$default11 = (32768 & i4) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2016getPrimary0d7_KjU(), ContentAlpha.INSTANCE.getHigh(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j16;
-        long m2786copywmQWz5c$default12 = (65536 & i4) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2015getOnSurface0d7_KjU(), ContentAlpha.INSTANCE.getMedium(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j17;
-        long m2786copywmQWz5c$default13 = (131072 & i4) != 0 ? Color.m2786copywmQWz5c$default(m2786copywmQWz5c$default12, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j18;
-        long m2010getError0d7_KjU4 = (262144 & i4) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m2010getError0d7_KjU() : j19;
-        long m2786copywmQWz5c$default14 = (524288 & i4) != 0 ? Color.m2786copywmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m2015getOnSurface0d7_KjU(), ContentAlpha.INSTANCE.getMedium(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j20;
-        long m2786copywmQWz5c$default15 = (i4 & 1048576) != 0 ? Color.m2786copywmQWz5c$default(m2786copywmQWz5c$default14, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, null) : j21;
+        long j22 = (i4 & 1) != 0 ? Color.copy-wmQWz5c$default(((Color) composer.consume(ContentColorKt.getLocalContentColor())).unbox-impl(), ((Number) composer.consume(ContentAlphaKt.getLocalContentAlpha())).floatValue(), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j;
+        long j23 = (i4 & 2) != 0 ? Color.copy-wmQWz5c$default(j22, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j2;
+        long j24 = (i4 & 4) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m694getOnSurface0d7_KjU(), 0.12f, 0.0f, 0.0f, 0.0f, 14, (Object) null) : j3;
+        long m695getPrimary0d7_KjU = (i4 & 8) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m695getPrimary0d7_KjU() : j4;
+        long m689getError0d7_KjU = (i4 & 16) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m689getError0d7_KjU() : j5;
+        long j25 = (i4 & 32) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m695getPrimary0d7_KjU(), ContentAlpha.INSTANCE.getHigh(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j6;
+        long j26 = (i4 & 64) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m694getOnSurface0d7_KjU(), 0.42f, 0.0f, 0.0f, 0.0f, 14, (Object) null) : j7;
+        long j27 = (i4 & 128) != 0 ? Color.copy-wmQWz5c$default(j26, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j8;
+        long m689getError0d7_KjU2 = (i4 & 256) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m689getError0d7_KjU() : j9;
+        long j28 = (i4 & 512) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m694getOnSurface0d7_KjU(), 0.54f, 0.0f, 0.0f, 0.0f, 14, (Object) null) : j10;
+        long j29 = (i4 & AccessibilityEventCompat.TYPE_TOUCH_EXPLORATION_GESTURE_END) != 0 ? Color.copy-wmQWz5c$default(j28, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j11;
+        long j30 = (i4 & AccessibilityEventCompat.TYPE_WINDOW_CONTENT_CHANGED) != 0 ? j28 : j12;
+        long j31 = (i4 & AccessibilityEventCompat.TYPE_VIEW_SCROLLED) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m694getOnSurface0d7_KjU(), 0.54f, 0.0f, 0.0f, 0.0f, 14, (Object) null) : j13;
+        long j32 = (i4 & AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED) != 0 ? Color.copy-wmQWz5c$default(j31, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j14;
+        long m689getError0d7_KjU3 = (i4 & AccessibilityEventCompat.TYPE_ANNOUNCEMENT) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m689getError0d7_KjU() : j15;
+        long j33 = (32768 & i4) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m695getPrimary0d7_KjU(), ContentAlpha.INSTANCE.getHigh(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j16;
+        long j34 = (65536 & i4) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m694getOnSurface0d7_KjU(), ContentAlpha.INSTANCE.getMedium(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j17;
+        long j35 = (131072 & i4) != 0 ? Color.copy-wmQWz5c$default(j34, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j18;
+        long m689getError0d7_KjU4 = (262144 & i4) != 0 ? MaterialTheme.INSTANCE.getColors(composer, 6).m689getError0d7_KjU() : j19;
+        long j36 = (524288 & i4) != 0 ? Color.copy-wmQWz5c$default(MaterialTheme.INSTANCE.getColors(composer, 6).m694getOnSurface0d7_KjU(), ContentAlpha.INSTANCE.getMedium(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j20;
+        long j37 = (i4 & AccessibilityEventCompat.TYPE_TOUCH_INTERACTION_START) != 0 ? Color.copy-wmQWz5c$default(j36, ContentAlpha.INSTANCE.getDisabled(composer, 6), 0.0f, 0.0f, 0.0f, 14, (Object) null) : j21;
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(231892599, i, i2, "androidx.compose.material.TextFieldDefaults.textFieldColors (TextFieldDefaults.kt:375)");
         }
-        DefaultTextFieldColors defaultTextFieldColors = new DefaultTextFieldColors(m2786copywmQWz5c$default, m2786copywmQWz5c$default2, m2016getPrimary0d7_KjU, m2010getError0d7_KjU, m2786copywmQWz5c$default4, m2786copywmQWz5c$default5, m2010getError0d7_KjU2, m2786copywmQWz5c$default6, m2786copywmQWz5c$default7, m2786copywmQWz5c$default8, j22, m2786copywmQWz5c$default9, m2786copywmQWz5c$default10, m2010getError0d7_KjU3, m2786copywmQWz5c$default3, m2786copywmQWz5c$default11, m2786copywmQWz5c$default12, m2786copywmQWz5c$default13, m2010getError0d7_KjU4, m2786copywmQWz5c$default14, m2786copywmQWz5c$default15, null);
+        DefaultTextFieldColors defaultTextFieldColors = new DefaultTextFieldColors(j22, j23, m695getPrimary0d7_KjU, m689getError0d7_KjU, j25, j26, m689getError0d7_KjU2, j27, j28, j29, j30, j31, j32, m689getError0d7_KjU3, j24, j33, j34, j35, m689getError0d7_KjU4, j36, j37, null);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -427,14 +375,14 @@ public final class TextFieldDefaults {
     @ExperimentalMaterialApi
     @NotNull
     /* renamed from: textFieldWithLabelPadding-a9UjIt4, reason: not valid java name */
-    public final PaddingValues m2313textFieldWithLabelPaddinga9UjIt4(float f, float f2, float f3, float f4) {
-        return PaddingKt.m1390PaddingValuesa9UjIt4(f, f3, f2, f4);
+    public final PaddingValues m864textFieldWithLabelPaddinga9UjIt4(float f, float f2, float f3, float f4) {
+        return PaddingKt.m328PaddingValuesa9UjIt4(f, f3, f2, f4);
     }
 
     @ExperimentalMaterialApi
     @NotNull
     /* renamed from: textFieldWithoutLabelPadding-a9UjIt4, reason: not valid java name */
-    public final PaddingValues m2314textFieldWithoutLabelPaddinga9UjIt4(float f, float f2, float f3, float f4) {
-        return PaddingKt.m1390PaddingValuesa9UjIt4(f, f2, f3, f4);
+    public final PaddingValues m865textFieldWithoutLabelPaddinga9UjIt4(float f, float f2, float f3, float f4) {
+        return PaddingKt.m328PaddingValuesa9UjIt4(f, f2, f3, f4);
     }
 }

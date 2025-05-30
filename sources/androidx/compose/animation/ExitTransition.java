@@ -9,30 +9,14 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class ExitTransition {
 
     @NotNull
-    public static final Companion Companion = new Companion(null);
+    public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
 
     @NotNull
     private static final ExitTransition None = new ExitTransitionImpl(new TransitionData(null, null, null, null, 15, null));
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class Companion {
-        private Companion() {
-        }
-
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-
-        @NotNull
-        public final ExitTransition getNone() {
-            return ExitTransition.None;
-        }
-    }
 
     private ExitTransition() {
     }

@@ -5,7 +5,7 @@ import androidx.versionedparcelable.VersionedParcel;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AudioAttributesImplBaseParcelizer {
     public static AudioAttributesImplBase read(VersionedParcel versionedParcel) {
         AudioAttributesImplBase audioAttributesImplBase = new AudioAttributesImplBase();

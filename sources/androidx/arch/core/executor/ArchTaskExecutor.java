@@ -3,13 +3,14 @@ package androidx.arch.core.executor;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import java.util.concurrent.Executor;
 import tb.la;
 import tb.ma;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ArchTaskExecutor extends TaskExecutor {
     private static volatile ArchTaskExecutor sInstance;
 
@@ -64,17 +65,14 @@ public class ArchTaskExecutor extends TaskExecutor {
         getInstance().executeOnDiskIO(runnable);
     }
 
-    @Override // androidx.arch.core.executor.TaskExecutor
     public void executeOnDiskIO(@NonNull Runnable runnable) {
         this.mDelegate.executeOnDiskIO(runnable);
     }
 
-    @Override // androidx.arch.core.executor.TaskExecutor
     public boolean isMainThread() {
         return this.mDelegate.isMainThread();
     }
 
-    @Override // androidx.arch.core.executor.TaskExecutor
     public void postToMainThread(@NonNull Runnable runnable) {
         this.mDelegate.postToMainThread(runnable);
     }

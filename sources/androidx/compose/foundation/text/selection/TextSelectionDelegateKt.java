@@ -1,12 +1,12 @@
 package androidx.compose.foundation.text.selection;
 
-import androidx.compose.p004ui.geometry.OffsetKt;
-import androidx.compose.p004ui.text.TextLayoutResult;
+import androidx.compose.ui.geometry.OffsetKt;
+import androidx.compose.ui.text.TextLayoutResult;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TextSelectionDelegateKt {
     public static final float getHorizontalPosition(@NotNull TextLayoutResult textLayoutResult, int i, boolean z, boolean z2) {
         Intrinsics.checkNotNullParameter(textLayoutResult, "<this>");

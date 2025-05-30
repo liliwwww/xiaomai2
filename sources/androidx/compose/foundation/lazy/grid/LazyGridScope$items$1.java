@@ -5,7 +5,7 @@ import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class LazyGridScope$items$1 extends Lambda implements Function1 {
     public static final LazyGridScope$items$1 INSTANCE = new LazyGridScope$items$1();
 

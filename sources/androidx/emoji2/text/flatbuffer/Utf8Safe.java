@@ -4,7 +4,7 @@ import androidx.emoji2.text.flatbuffer.Utf8;
 import java.nio.ByteBuffer;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class Utf8Safe extends Utf8 {
 
     /* compiled from: Taobao */
@@ -174,12 +174,12 @@ public final class Utf8Safe extends Utf8 {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private static int encodeUtf8Array(java.lang.CharSequence r7, byte[] r8, int r9, int r10) {
         /*
             Method dump skipped, instructions count: 254
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.emoji2.text.flatbuffer.Utf8Safe.encodeUtf8Array(java.lang.CharSequence, byte[], int, int):int");
     }

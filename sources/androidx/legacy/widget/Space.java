@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Space extends View {
     @Deprecated
     public Space(@NonNull Context context, @Nullable AttributeSet attributeSet, int i) {

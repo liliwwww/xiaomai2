@@ -1,6 +1,6 @@
 package android.taobao.windvane.jsbridge;
 
-import android.taobao.windvane.p003ha.WVHAManager;
+import android.taobao.windvane.ha.WVHAManager;
 import android.text.TextUtils;
 import androidx.core.app.NotificationCompat;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVHAReport extends WVApiPlugin {
     private Map<String, Object> obtainMap(String str) {
         HashMap hashMap = new HashMap();
@@ -26,7 +26,6 @@ public class WVHAReport extends WVApiPlugin {
         return hashMap;
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if (TextUtils.equals(str, "stage")) {
             try {

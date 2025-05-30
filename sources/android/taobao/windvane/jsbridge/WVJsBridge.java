@@ -8,7 +8,6 @@ import android.taobao.windvane.util.TaoLog;
 import android.taobao.windvane.webview.IWVWebView;
 import android.text.TextUtils;
 import android.webkit.ValueCallback;
-import androidx.core.app.NotificationCompat;
 import com.alibaba.fastjson.JSON;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVJsBridge implements Handler.Callback {
     public static final int CALL_ALIAS = 7;
     public static final int CALL_DESTROY = 8;
@@ -54,18 +53,18 @@ public class WVJsBridge implements Handler.Callback {
     }
 
     public static void aftercallMethod(WVCallMethodContext wVCallMethodContext, String str) {
-        Map<String, String> originalPlugin = WVPluginManager.getOriginalPlugin(wVCallMethodContext.objectName, wVCallMethodContext.methodName);
+        Map originalPlugin = WVPluginManager.getOriginalPlugin(wVCallMethodContext.objectName, wVCallMethodContext.methodName);
         if (originalPlugin != null) {
             if (TaoLog.getLogStatus()) {
-                TaoLog.m24i(TAG, "call method through alias name. newObject: " + originalPlugin.get("name") + " newMethod: " + originalPlugin.get(WVPluginManager.KEY_METHOD));
+                TaoLog.i(TAG, "call method through alias name. newObject: " + ((String) originalPlugin.get("name")) + " newMethod: " + ((String) originalPlugin.get("method")));
             }
-            wVCallMethodContext.objectName = originalPlugin.get("name");
-            wVCallMethodContext.methodName = originalPlugin.get(WVPluginManager.KEY_METHOD);
+            wVCallMethodContext.objectName = (String) originalPlugin.get("name");
+            wVCallMethodContext.methodName = (String) originalPlugin.get("method");
             startCall(7, wVCallMethodContext);
         }
         Object jsObject = wVCallMethodContext.webview.getJsObject(wVCallMethodContext.objectName);
         if (jsObject == null) {
-            TaoLog.m30w(TAG, "callMethod: Plugin " + wVCallMethodContext.objectName + " didn't found, you should call WVPluginManager.registerPlugin first.");
+            TaoLog.w(TAG, "callMethod: Plugin " + wVCallMethodContext.objectName + " didn't found, you should call WVPluginManager.registerPlugin first.");
             startCall(5, wVCallMethodContext);
             return;
         }
@@ -75,7 +74,7 @@ public class WVJsBridge implements Handler.Callback {
             return;
         }
         if (jsObject instanceof String) {
-            TaoLog.m21e(TAG, "cannot call method for context is null");
+            TaoLog.e(TAG, "cannot call method for context is null");
             startCall(8, wVCallMethodContext);
             return;
         }
@@ -87,11 +86,11 @@ public class WVJsBridge implements Handler.Callback {
                     wVCallMethodContext.method = method;
                     startCall(1, wVCallMethodContext);
                 } else {
-                    TaoLog.m30w(TAG, "callMethod: Method " + wVCallMethodContext.methodName + " didn't has @WindVaneInterface annotation, obj=" + wVCallMethodContext.objectName);
+                    TaoLog.w(TAG, "callMethod: Method " + wVCallMethodContext.methodName + " didn't has @WindVaneInterface annotation, obj=" + wVCallMethodContext.objectName);
                 }
             }
         } catch (NoSuchMethodException unused) {
-            TaoLog.m21e(TAG, "callMethod: Method " + wVCallMethodContext.methodName + " didn't found. It must has two parameter, Object.class and String.class, obj=" + wVCallMethodContext.objectName);
+            TaoLog.e(TAG, "callMethod: Method " + wVCallMethodContext.methodName + " didn't found. It must has two parameter, Object.class and String.class, obj=" + wVCallMethodContext.objectName);
         }
     }
 
@@ -154,7 +153,7 @@ public class WVJsBridge implements Handler.Callback {
             if (TextUtils.isEmpty(wVCallMethodContext.params)) {
                 wVCallMethodContext.params = "{}";
             }
-            TaoLog.m24i(TAG, "before call object=[" + wVCallMethodContext.objectName + "].");
+            TaoLog.i(TAG, "before call object=[" + wVCallMethodContext.objectName + "].");
             String str = wVCallMethodContext.objectName;
             if (str != null) {
                 Object entry = wVPluginEntryManager.getEntry(str);
@@ -173,7 +172,7 @@ public class WVJsBridge implements Handler.Callback {
         String str;
         WVCallMethodContext wVCallMethodContext = (WVCallMethodContext) message.obj;
         if (wVCallMethodContext == null) {
-            TaoLog.m21e(TAG, "CallMethodContext is null, and do nothing.");
+            TaoLog.e(TAG, "CallMethodContext is null, and do nothing.");
             return false;
         }
         WVCallBackContext wVCallBackContext = new WVCallBackContext(wVCallMethodContext.webview, wVCallMethodContext.token, wVCallMethodContext.objectName, wVCallMethodContext.methodName, wVCallMethodContext.succeedCallBack, wVCallMethodContext.failedCallBack);
@@ -193,10 +192,10 @@ public class WVJsBridge implements Handler.Callback {
                 sb.append("], object=[");
                 sb.append(obj2 == null ? null : obj2.getClass().getSimpleName());
                 sb.append("].");
-                TaoLog.m24i(TAG, sb.toString());
+                TaoLog.i(TAG, sb.toString());
                 if (!((WVApiPlugin) obj2).executeSafe(wVCallMethodContext.methodName, TextUtils.isEmpty(wVCallMethodContext.params) ? "{}" : wVCallMethodContext.params, wVCallBackContext)) {
                     if (TaoLog.getLogStatus()) {
-                        TaoLog.m30w(TAG, "WVApiPlugin execute failed.object:" + wVCallMethodContext.objectName + ", method: " + wVCallMethodContext.methodName);
+                        TaoLog.w(TAG, "WVApiPlugin execute failed.object:" + wVCallMethodContext.objectName + ", method: " + wVCallMethodContext.methodName);
                     }
                     startCall(6, wVCallMethodContext);
                     break;
@@ -223,12 +222,12 @@ public class WVJsBridge implements Handler.Callback {
                     method.invoke(obj3, objArr);
                     break;
                 } catch (Exception e) {
-                    TaoLog.m21e(TAG, "call method " + wVCallMethodContext.method + " exception. " + e.getMessage());
+                    TaoLog.e(TAG, "call method " + wVCallMethodContext.method + " exception. " + e.getMessage());
                     break;
                 }
             case 2:
                 WVResult wVResult = new WVResult();
-                wVResult.setResult(WVResult.NO_METHOD);
+                wVResult.setResult("HY_NO_HANDLER");
                 StringBuilder sb2 = new StringBuilder();
                 sb2.append("No Method Error: method=[");
                 sb2.append(wVCallMethodContext.objectName);
@@ -237,12 +236,12 @@ public class WVJsBridge implements Handler.Callback {
                 sb2.append("],url=[");
                 sb2.append(wVCallBackContext.getWebview() != null ? wVCallBackContext.getWebview().getUrl() : "");
                 sb2.append("]");
-                wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, sb2.toString());
+                wVResult.addData("msg", sb2.toString());
                 wVCallBackContext.error(wVResult);
                 break;
             case 3:
                 WVResult wVResult2 = new WVResult();
-                wVResult2.setResult(WVResult.NO_PERMISSION);
+                wVResult2.setResult("HY_NO_PERMISSION");
                 StringBuilder sb3 = new StringBuilder();
                 sb3.append("method=[");
                 sb3.append(wVCallMethodContext.objectName);
@@ -251,12 +250,12 @@ public class WVJsBridge implements Handler.Callback {
                 sb3.append("],url=[");
                 sb3.append(wVCallBackContext.getWebview() != null ? wVCallBackContext.getWebview().getUrl() : "");
                 sb3.append("]");
-                wVResult2.addData(NotificationCompat.CATEGORY_MESSAGE, sb3.toString());
+                wVResult2.addData("msg", sb3.toString());
                 wVCallBackContext.error(wVResult2);
                 break;
             case 4:
                 WVResult wVResult3 = new WVResult();
-                wVResult3.setResult(WVResult.CLOSED);
+                wVResult3.setResult("HY_CLOSED");
                 StringBuilder sb4 = new StringBuilder();
                 sb4.append("method=[");
                 sb4.append(wVCallMethodContext.objectName);
@@ -265,12 +264,12 @@ public class WVJsBridge implements Handler.Callback {
                 sb4.append("],url=[");
                 sb4.append(wVCallBackContext.getWebview() != null ? wVCallBackContext.getWebview().getUrl() : "");
                 sb4.append("]");
-                wVResult3.addData(NotificationCompat.CATEGORY_MESSAGE, sb4.toString());
+                wVResult3.addData("msg", sb4.toString());
                 wVCallBackContext.error(wVResult3);
                 break;
             case 5:
                 WVResult wVResult4 = new WVResult();
-                wVResult4.setResult(WVResult.NO_METHOD);
+                wVResult4.setResult("HY_NO_HANDLER");
                 StringBuilder sb5 = new StringBuilder();
                 sb5.append("No Class Error: method=[");
                 sb5.append(wVCallMethodContext.objectName);
@@ -279,12 +278,12 @@ public class WVJsBridge implements Handler.Callback {
                 sb5.append("],url=[");
                 sb5.append(wVCallBackContext.getWebview() != null ? wVCallBackContext.getWebview().getUrl() : "");
                 sb5.append("]");
-                wVResult4.addData(NotificationCompat.CATEGORY_MESSAGE, sb5.toString());
+                wVResult4.addData("msg", sb5.toString());
                 wVCallBackContext.error(wVResult4);
                 break;
             case 6:
                 WVResult wVResult5 = new WVResult();
-                wVResult5.setResult(WVResult.NO_METHOD);
+                wVResult5.setResult("HY_NO_HANDLER");
                 StringBuilder sb6 = new StringBuilder();
                 sb6.append("Execute error:method=[");
                 sb6.append(wVCallMethodContext.objectName);
@@ -293,23 +292,23 @@ public class WVJsBridge implements Handler.Callback {
                 sb6.append("],url=[");
                 sb6.append(wVCallBackContext.getWebview() != null ? wVCallBackContext.getWebview().getUrl() : "");
                 sb6.append("]");
-                wVResult5.addData(NotificationCompat.CATEGORY_MESSAGE, sb6.toString());
+                wVResult5.addData("msg", sb6.toString());
                 wVCallBackContext.error(wVResult5);
                 break;
             case 7:
                 WVResult wVResult6 = new WVResult();
                 wVResult6.setResult("CALL_ALIAS");
-                wVResult6.addData(NotificationCompat.CATEGORY_MESSAGE, wVCallBackContext.getWebview() != null ? wVCallBackContext.getWebview().getUrl() : "");
+                wVResult6.addData("msg", wVCallBackContext.getWebview() != null ? wVCallBackContext.getWebview().getUrl() : "");
                 wVResult6.setSuccess();
                 wVCallBackContext.commitJsBridgeReturn(wVResult6);
                 break;
             case 8:
                 WVResult wVResult7 = new WVResult();
-                wVResult7.setResult(WVResult.FAIL);
+                wVResult7.setResult("HY_FAILED");
                 StringBuilder sb7 = new StringBuilder();
                 sb7.append("Null Context Error:");
                 sb7.append(wVCallBackContext.getWebview() != null ? wVCallBackContext.getWebview().getUrl() : "");
-                wVResult7.addData(NotificationCompat.CATEGORY_MESSAGE, sb7.toString());
+                wVResult7.addData("msg", sb7.toString());
                 wVCallBackContext.error(wVResult7);
                 break;
         }
@@ -337,7 +336,7 @@ public class WVJsBridge implements Handler.Callback {
             while (it.hasNext()) {
                 WVCallMethodContext next = it.next();
                 aftercallMethod(next, "");
-                TaoLog.m24i(TAG, "excute TailJSBridge : " + next.objectName + " : " + next.methodName);
+                TaoLog.i(TAG, "excute TailJSBridge : " + next.objectName + " : " + next.methodName);
             }
             this.mTailBridges.clear();
             this.mTailBridges = null;
@@ -347,15 +346,15 @@ public class WVJsBridge implements Handler.Callback {
     private void callMethod(IWVWebView iWVWebView, String str, IJsApiSucceedCallBack iJsApiSucceedCallBack, IJsApiFailedCallBack iJsApiFailedCallBack) {
         boolean z;
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(TAG, "callMethod: url=" + str);
+            TaoLog.d(TAG, "callMethod: url=" + str);
         }
         if (!this.isInit) {
-            TaoLog.m30w(TAG, "jsbridge is not init.");
+            TaoLog.w(TAG, "jsbridge is not init.");
             return;
         }
         final WVCallMethodContext request = getRequest(str);
         if (request == null) {
-            TaoLog.m30w(TAG, "url format error and call canceled. url=" + str);
+            TaoLog.w(TAG, "url format error and call canceled. url=" + str);
             return;
         }
         request.webview = iWVWebView;
@@ -389,7 +388,7 @@ public class WVJsBridge implements Handler.Callback {
                         WVJsBridge.sExecutors.submit(new Runnable() { // from class: android.taobao.windvane.jsbridge.WVJsBridge.1.1
                             @Override // java.lang.Runnable
                             public void run() {
-                                C01611 c01611 = C01611.this;
+                                AnonymousClass1 anonymousClass1 = AnonymousClass1.this;
                                 WVJsBridge.this.callMethod(request, url);
                             }
                         });
@@ -408,7 +407,7 @@ public class WVJsBridge implements Handler.Callback {
 
     public void callMethod(WVCallMethodContext wVCallMethodContext, String str) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(TAG, "callMethod-obj:" + wVCallMethodContext.objectName + " method:" + wVCallMethodContext.methodName + " param:" + wVCallMethodContext.params + " sid:" + wVCallMethodContext.token);
+            TaoLog.d(TAG, "callMethod-obj:" + wVCallMethodContext.objectName + " method:" + wVCallMethodContext.methodName + " param:" + wVCallMethodContext.params + " sid:" + wVCallMethodContext.token);
         }
         if (this.enabled && wVCallMethodContext.webview != null) {
             if (!this.mSkipPreprocess) {
@@ -429,7 +428,7 @@ public class WVJsBridge implements Handler.Callback {
                     Iterator<WVJSAPIAuthCheck> it = WVJsbridgeService.getJSBridgePreprocessors().iterator();
                     while (it.hasNext()) {
                         if (!it.next().apiAuthCheck(str, wVCallMethodContext.objectName, wVCallMethodContext.methodName, wVCallMethodContext.params)) {
-                            TaoLog.m30w(TAG, "preprocessor call fail, callMethod cancel.");
+                            TaoLog.w(TAG, "preprocessor call fail, callMethod cancel.");
                             startCall(3, wVCallMethodContext);
                             return;
                         }
@@ -439,7 +438,7 @@ public class WVJsBridge implements Handler.Callback {
                     Iterator<WVAsyncAuthCheck> it2 = WVJsbridgeService.getJSBridgeayncPreprocessors().iterator();
                     while (it2.hasNext()) {
                         if (it2.next().AsyncapiAuthCheck(str, wVCallMethodContext, new WVAsyncAuthCheckCallBackforJsBridge())) {
-                            TaoLog.m30w(TAG, "enter  WVAsyncAuthCheck preprocessor  ");
+                            TaoLog.w(TAG, "enter  WVAsyncAuthCheck preprocessor  ");
                             return;
                         }
                     }
@@ -448,7 +447,7 @@ public class WVJsBridge implements Handler.Callback {
             aftercallMethod(wVCallMethodContext, str);
             return;
         }
-        TaoLog.m30w(TAG, "jsbridge is closed.");
+        TaoLog.w(TAG, "jsbridge is closed.");
         startCall(4, wVCallMethodContext);
     }
 }

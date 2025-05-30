@@ -15,13 +15,12 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import androidx.core.view.ViewCompat;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class PopupWindowController {
     private int cancelIndex;
     private boolean isHideByBackButton;
@@ -93,7 +92,7 @@ public class PopupWindowController {
                 button2.setText(str2);
                 button2.setTag(str2);
                 button2.setBackgroundColor(-657931);
-                button2.setTextColor(ViewCompat.MEASURED_STATE_MASK);
+                button2.setTextColor(-16777216);
                 button2.setLayoutParams(layoutParams2);
                 button2.setOnClickListener(onClickListener);
                 this.popupLayout.addView(button2);

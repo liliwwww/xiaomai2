@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.SwipeableV2State$animateTo$2", f = "SwipeableV2.kt", i = {}, l = {254}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class SwipeableV2State$animateTo$2 extends SuspendLambda implements Function2<DragScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ float $targetOffset;
     final /* synthetic */ float $velocity;
@@ -53,35 +53,18 @@ final class SwipeableV2State$animateTo$2 extends SuspendLambda implements Functi
         try {
             if (i == 0) {
                 ResultKt.throwOnFailure(obj);
-                final DragScope dragScope = (DragScope) this.L$0;
+                DragScope dragScope = (DragScope) this.L$0;
                 this.this$0.setAnimationRunning(true);
-                final Ref.FloatRef floatRef = new Ref.FloatRef();
+                Ref.FloatRef floatRef = new Ref.FloatRef();
                 mutableState = ((SwipeableV2State) this.this$0).dragPosition;
                 float floatValue = ((Number) mutableState.getValue()).floatValue();
                 floatRef.element = floatValue;
                 float f = this.$targetOffset;
                 float f2 = this.$velocity;
                 AnimationSpec<Float> animationSpec = this.this$0.getAnimationSpec();
-                final SwipeableV2State<T> swipeableV2State = this.this$0;
-                Function2<Float, Float, Unit> function2 = new Function2<Float, Float, Unit>() { // from class: androidx.compose.material.SwipeableV2State$animateTo$2.1
-                    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                    {
-                        super(2);
-                    }
-
-                    public /* bridge */ /* synthetic */ Object invoke(Object obj2, Object obj3) {
-                        invoke(((Number) obj2).floatValue(), ((Number) obj3).floatValue());
-                        return Unit.INSTANCE;
-                    }
-
-                    public final void invoke(float f3, float f4) {
-                        DragScope.this.dragBy(f3 - floatRef.element);
-                        floatRef.element = f3;
-                        swipeableV2State.setLastVelocity(f4);
-                    }
-                };
+                1 r9 = new 1(dragScope, floatRef, this.this$0);
                 this.label = 1;
-                if (SuspendAnimationKt.animate(floatValue, f, f2, animationSpec, function2, this) == coroutine_suspended) {
+                if (SuspendAnimationKt.animate(floatValue, f, f2, animationSpec, r9, this) == coroutine_suspended) {
                     return coroutine_suspended;
                 }
             } else {

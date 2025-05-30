@@ -23,7 +23,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class ActivityChooserModel extends DataSetObservable {
     static final String ATTRIBUTE_ACTIVITY = "activity";
     static final String ATTRIBUTE_TIME = "time";
@@ -90,12 +90,6 @@ class ActivityChooserModel extends DataSetObservable {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface ActivitySorter {
-        void sort(Intent intent, List<ActivityResolveInfo> list, List<HistoricalRecord> list2);
-    }
-
-    /* compiled from: Taobao */
     private static final class DefaultSorter implements ActivitySorter {
         private static final float WEIGHT_DECAY_COEFFICIENT = 0.95f;
         private final Map<ComponentName, ActivityResolveInfo> mPackageNameToActivityMap = new HashMap();
@@ -103,7 +97,6 @@ class ActivityChooserModel extends DataSetObservable {
         DefaultSorter() {
         }
 
-        @Override // androidx.appcompat.widget.ActivityChooserModel.ActivitySorter
         public void sort(Intent intent, List<ActivityResolveInfo> list, List<HistoricalRecord> list2) {
             Map<ComponentName, ActivityResolveInfo> map = this.mPackageNameToActivityMap;
             map.clear();
@@ -207,12 +200,12 @@ class ActivityChooserModel extends DataSetObservable {
         @Override // android.os.AsyncTask
         /*
             Code decompiled incorrectly, please refer to instructions dump.
-            To view partially-correct code enable 'Show inconsistent code' option in preferences
+            To view partially-correct add '--show-bad-code' argument
         */
         public java.lang.Void doInBackground(java.lang.Object... r15) {
             /*
                 Method dump skipped, instructions count: 246
-                To view this dump change 'Code comments level' option to 'DEBUG'
+                To view this dump add '--comments-level debug' option
             */
             throw new UnsupportedOperationException("Method not decompiled: androidx.appcompat.widget.ActivityChooserModel.PersistHistoryAsyncTask.doInBackground(java.lang.Object[]):java.lang.Void");
         }
@@ -353,16 +346,16 @@ class ActivityChooserModel extends DataSetObservable {
                     openFileInput.close();
                 } catch (IOException unused) {
                 }
-            } catch (Throwable th) {
-                if (openFileInput != null) {
-                    try {
-                        openFileInput.close();
-                    } catch (IOException unused2) {
-                    }
-                }
-                throw th;
+            } catch (FileNotFoundException unused2) {
             }
-        } catch (FileNotFoundException unused3) {
+        } catch (Throwable th) {
+            if (openFileInput != null) {
+                try {
+                    openFileInput.close();
+                } catch (IOException unused3) {
+                }
+            }
+            throw th;
         }
     }
 

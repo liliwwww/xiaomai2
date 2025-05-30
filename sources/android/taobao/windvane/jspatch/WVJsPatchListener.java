@@ -8,7 +8,7 @@ import android.taobao.windvane.webview.IWVWebView;
 import java.lang.ref.WeakReference;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVJsPatchListener implements WVEventListener {
     private WeakReference<IWVWebView> webviewReference;
 
@@ -30,7 +30,7 @@ public class WVJsPatchListener implements WVEventListener {
                     if (!TaoLog.getLogStatus()) {
                         return null;
                     }
-                    TaoLog.m24i("WVJsPatchListener", "WVJsPatchListener is free");
+                    TaoLog.i("WVJsPatchListener", "WVJsPatchListener is free");
                     return null;
                 }
                 iWVWebView.fireEvent((String) objArr[0], (String) objArr[1]);
@@ -43,7 +43,7 @@ public class WVJsPatchListener implements WVEventListener {
                     if (!TaoLog.getLogStatus()) {
                         return null;
                     }
-                    TaoLog.m24i("WVJsPatchListener", "WVJsPatchListener is free");
+                    TaoLog.i("WVJsPatchListener", "WVJsPatchListener is free");
                     return null;
                 }
                 iWVWebView2.fireEvent("WV.Event.APP.TakeScreenshot", "{}");

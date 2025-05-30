@@ -8,7 +8,7 @@ import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
 @RequiresApi(18)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ViewOverlayApi18 implements ViewOverlayImpl {
     private final ViewOverlay mViewOverlay;
 
@@ -16,12 +16,10 @@ class ViewOverlayApi18 implements ViewOverlayImpl {
         this.mViewOverlay = view.getOverlay();
     }
 
-    @Override // androidx.transition.ViewOverlayImpl
     public void add(@NonNull Drawable drawable) {
         this.mViewOverlay.add(drawable);
     }
 
-    @Override // androidx.transition.ViewOverlayImpl
     public void remove(@NonNull Drawable drawable) {
         this.mViewOverlay.remove(drawable);
     }

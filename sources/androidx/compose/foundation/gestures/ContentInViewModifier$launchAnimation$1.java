@@ -2,7 +2,7 @@ package androidx.compose.foundation.gestures;
 
 import androidx.compose.foundation.MutatePriority;
 import androidx.compose.foundation.gestures.ContentInViewModifier;
-import androidx.compose.p004ui.geometry.Rect;
+import androidx.compose.ui.geometry.Rect;
 import java.util.concurrent.CancellationException;
 import kotlin.Result;
 import kotlin.ResultKt;
@@ -24,7 +24,7 @@ import tb.eo4;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.ContentInViewModifier$launchAnimation$1", f = "ContentInViewModifier.kt", i = {}, l = {193}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class ContentInViewModifier$launchAnimation$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     private /* synthetic */ Object L$0;
     int label;
@@ -32,15 +32,15 @@ final class ContentInViewModifier$launchAnimation$1 extends SuspendLambda implem
 
     /* compiled from: Taobao */
     @DebugMetadata(c = "androidx.compose.foundation.gestures.ContentInViewModifier$launchAnimation$1$1", f = "ContentInViewModifier.kt", i = {}, l = {198}, m = "invokeSuspend", n = {}, s = {})
-    /* renamed from: androidx.compose.foundation.gestures.ContentInViewModifier$launchAnimation$1$1 */
-    static final class C04201 extends SuspendLambda implements Function2<ScrollScope, Continuation<? super Unit>, Object> {
+    /* renamed from: androidx.compose.foundation.gestures.ContentInViewModifier$launchAnimation$1$1, reason: invalid class name */
+    static final class AnonymousClass1 extends SuspendLambda implements Function2<ScrollScope, Continuation<? super Unit>, Object> {
         final /* synthetic */ Job $animationJob;
         private /* synthetic */ Object L$0;
         int label;
         final /* synthetic */ ContentInViewModifier this$0;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        C04201(ContentInViewModifier contentInViewModifier, Job job, Continuation<? super C04201> continuation) {
+        AnonymousClass1(ContentInViewModifier contentInViewModifier, Job job, Continuation<? super AnonymousClass1> continuation) {
             super(2, continuation);
             this.this$0 = contentInViewModifier;
             this.$animationJob = job;
@@ -48,9 +48,9 @@ final class ContentInViewModifier$launchAnimation$1 extends SuspendLambda implem
 
         @NotNull
         public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
-            C04201 c04201 = new C04201(this.this$0, this.$animationJob, continuation);
-            c04201.L$0 = obj;
-            return c04201;
+            AnonymousClass1 anonymousClass1 = new AnonymousClass1(this.this$0, this.$animationJob, continuation);
+            anonymousClass1.L$0 = obj;
+            return anonymousClass1;
         }
 
         @Nullable
@@ -102,12 +102,12 @@ final class ContentInViewModifier$launchAnimation$1 extends SuspendLambda implem
                     }
 
                     public /* bridge */ /* synthetic */ Object invoke() {
-                        m1209invoke();
+                        m162invoke();
                         return Unit.INSTANCE;
                     }
 
                     /* renamed from: invoke, reason: collision with other method in class */
-                    public final void m1209invoke() {
+                    public final void m162invoke() {
                         boolean z;
                         UpdatableAnimationState updatableAnimationState3;
                         float calculateScrollDelta2;
@@ -115,14 +115,14 @@ final class ContentInViewModifier$launchAnimation$1 extends SuspendLambda implem
                         BringIntoViewRequestPriorityQueue bringIntoViewRequestPriorityQueue = ContentInViewModifier.this.bringIntoViewRequests;
                         ContentInViewModifier contentInViewModifier3 = ContentInViewModifier.this;
                         while (true) {
-                            if (!bringIntoViewRequestPriorityQueue.requests.isNotEmpty()) {
+                            if (!BringIntoViewRequestPriorityQueue.access$getRequests$p(bringIntoViewRequestPriorityQueue).isNotEmpty()) {
                                 break;
                             }
-                            Rect rect = (Rect) ((ContentInViewModifier.Request) bringIntoViewRequestPriorityQueue.requests.last()).getCurrentBounds().invoke();
-                            if (!(rect == null ? true : ContentInViewModifier.m1206isMaxVisibleO0kMr_c$default(contentInViewModifier3, rect, 0L, 1, null))) {
+                            Rect rect = (Rect) ((ContentInViewModifier.Request) BringIntoViewRequestPriorityQueue.access$getRequests$p(bringIntoViewRequestPriorityQueue).last()).getCurrentBounds().invoke();
+                            if (!(rect == null ? true : ContentInViewModifier.m159isMaxVisibleO0kMr_c$default(contentInViewModifier3, rect, 0L, 1, null))) {
                                 break;
                             }
-                            CancellableContinuation<Unit> continuation = ((ContentInViewModifier.Request) bringIntoViewRequestPriorityQueue.requests.removeAt(bringIntoViewRequestPriorityQueue.requests.getSize() - 1)).getContinuation();
+                            CancellableContinuation continuation = ((ContentInViewModifier.Request) BringIntoViewRequestPriorityQueue.access$getRequests$p(bringIntoViewRequestPriorityQueue).removeAt(BringIntoViewRequestPriorityQueue.access$getRequests$p(bringIntoViewRequestPriorityQueue).getSize() - 1)).getContinuation();
                             Unit unit = Unit.INSTANCE;
                             Result.Companion companion = Result.Companion;
                             continuation.resumeWith(Result.constructor-impl(unit));
@@ -130,7 +130,7 @@ final class ContentInViewModifier$launchAnimation$1 extends SuspendLambda implem
                         z = ContentInViewModifier.this.trackingFocusedChild;
                         if (z) {
                             focusedChildBounds = ContentInViewModifier.this.getFocusedChildBounds();
-                            if (focusedChildBounds != null && ContentInViewModifier.m1206isMaxVisibleO0kMr_c$default(ContentInViewModifier.this, focusedChildBounds, 0L, 1, null)) {
+                            if (focusedChildBounds != null && ContentInViewModifier.m159isMaxVisibleO0kMr_c$default(ContentInViewModifier.this, focusedChildBounds, 0L, 1, null)) {
                                 ContentInViewModifier.this.trackingFocusedChild = false;
                             }
                         }
@@ -183,9 +183,9 @@ final class ContentInViewModifier$launchAnimation$1 extends SuspendLambda implem
                     Job l = bb2.l(((CoroutineScope) this.L$0).getCoroutineContext());
                     this.this$0.isAnimationRunning = true;
                     scrollableState = this.this$0.scrollState;
-                    C04201 c04201 = new C04201(this.this$0, l, null);
+                    AnonymousClass1 anonymousClass1 = new AnonymousClass1(this.this$0, l, null);
                     this.label = 1;
-                    if (eo4.e(scrollableState, (MutatePriority) null, c04201, this, 1, (Object) null) == coroutine_suspended) {
+                    if (eo4.e(scrollableState, (MutatePriority) null, anonymousClass1, this, 1, (Object) null) == coroutine_suspended) {
                         return coroutine_suspended;
                     }
                 } else {
@@ -196,7 +196,7 @@ final class ContentInViewModifier$launchAnimation$1 extends SuspendLambda implem
                 }
                 this.this$0.bringIntoViewRequests.resumeAndRemoveAll();
                 this.this$0.isAnimationRunning = false;
-                this.this$0.bringIntoViewRequests.cancelAndRemoveAll(null);
+                this.this$0.bringIntoViewRequests.cancelAndRemoveAll((Throwable) null);
                 this.this$0.trackingFocusedChild = false;
                 return Unit.INSTANCE;
             } catch (CancellationException e) {
@@ -204,7 +204,7 @@ final class ContentInViewModifier$launchAnimation$1 extends SuspendLambda implem
             }
         } catch (Throwable th) {
             this.this$0.isAnimationRunning = false;
-            this.this$0.bringIntoViewRequests.cancelAndRemoveAll(null);
+            this.this$0.bringIntoViewRequests.cancelAndRemoveAll((Throwable) null);
             this.this$0.trackingFocusedChild = false;
             throw th;
         }

@@ -1,6 +1,5 @@
 package androidx.lifecycle;
 
-import androidx.compose.runtime.ComposerKt;
 import androidx.lifecycle.Lifecycle;
 import kotlin.ResultKt;
 import kotlin.Unit;
@@ -17,8 +16,8 @@ import org.jetbrains.annotations.Nullable;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
 /* compiled from: Taobao */
-@DebugMetadata(c = "androidx.lifecycle.PausingDispatcherKt$whenStateAtLeast$2", f = "PausingDispatcher.kt", i = {0}, l = {ComposerKt.providerValuesKey}, m = "invokeSuspend", n = {"controller"}, s = {"L$0"})
-/* loaded from: classes.dex */
+@DebugMetadata(c = "androidx.lifecycle.PausingDispatcherKt$whenStateAtLeast$2", f = "PausingDispatcher.kt", i = {0}, l = {203}, m = "invokeSuspend", n = {"controller"}, s = {"L$0"})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class PausingDispatcherKt$whenStateAtLeast$2<T> extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super T>, Object> {
     final /* synthetic */ Function2<CoroutineScope, Continuation<? super T>, Object> $block;
     final /* synthetic */ Lifecycle.State $minState;

@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     private static final int[] ATTRS = {R.attr.listDivider};
     public static final int HORIZONTAL = 0;
@@ -85,8 +85,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         return this.mDivider;
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.ItemDecoration
-    public void getItemOffsets(Rect rect, View view, RecyclerView recyclerView, RecyclerView.State state) {
+    public void getItemOffsets(Rect rect, View view, RecyclerView recyclerView, RecyclerView$State recyclerView$State) {
         Drawable drawable = this.mDivider;
         if (drawable == null) {
             rect.set(0, 0, 0, 0);
@@ -97,8 +96,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         }
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.ItemDecoration
-    public void onDraw(Canvas canvas, RecyclerView recyclerView, RecyclerView.State state) {
+    public void onDraw(Canvas canvas, RecyclerView recyclerView, RecyclerView$State recyclerView$State) {
         if (recyclerView.getLayoutManager() == null || this.mDivider == null) {
             return;
         }

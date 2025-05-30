@@ -8,7 +8,7 @@ import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class TimeCycleSplineSet {
     protected static final int CURVE_OFFSET = 2;
     protected static final int CURVE_PERIOD = 1;
@@ -30,13 +30,13 @@ public abstract class TimeCycleSplineSet {
     public static class CustomSet extends TimeCycleSplineSet {
         String mAttributeName;
         float[] mCache;
-        KeyFrameArray.CustomArray mConstraintAttributeList;
+        KeyFrameArray$CustomArray mConstraintAttributeList;
         float[] mTempValues;
-        KeyFrameArray.FloatArray mWaveProperties = new KeyFrameArray.FloatArray();
+        KeyFrameArray$FloatArray mWaveProperties = new KeyFrameArray$FloatArray();
 
-        public CustomSet(String str, KeyFrameArray.CustomArray customArray) {
+        public CustomSet(String str, KeyFrameArray$CustomArray keyFrameArray$CustomArray) {
             this.mAttributeName = str.split(",")[1];
-            this.mConstraintAttributeList = customArray;
+            this.mConstraintAttributeList = keyFrameArray$CustomArray;
         }
 
         @Override // androidx.constraintlayout.core.motion.utils.TimeCycleSplineSet
@@ -122,7 +122,7 @@ public abstract class TimeCycleSplineSet {
         float[] mCache;
         KeyFrameArray.CustomVar mConstraintAttributeList;
         float[] mTempValues;
-        KeyFrameArray.FloatArray mWaveProperties = new KeyFrameArray.FloatArray();
+        KeyFrameArray$FloatArray mWaveProperties = new KeyFrameArray$FloatArray();
 
         public CustomVarSet(String str, KeyFrameArray.CustomVar customVar) {
             this.mAttributeName = str.split(",")[1];

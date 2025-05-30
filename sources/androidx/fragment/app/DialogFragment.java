@@ -28,7 +28,7 @@ import androidx.lifecycle.ViewTreeViewModelStoreOwner;
 import androidx.savedstate.ViewTreeSavedStateRegistryOwner;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class DialogFragment extends Fragment implements DialogInterface.OnCancelListener, DialogInterface.OnDismissListener {
     private static final String SAVED_BACK_STACK_ID = "android:backStackId";
     private static final String SAVED_CANCELABLE = "android:cancelable";
@@ -61,23 +61,8 @@ public class DialogFragment extends Fragment implements DialogInterface.OnCancel
     private boolean mViewDestroyed;
 
     public DialogFragment() {
-        this.mDismissRunnable = new Runnable() { // from class: androidx.fragment.app.DialogFragment.1
-            @Override // java.lang.Runnable
-            @SuppressLint({"SyntheticAccessor"})
-            public void run() {
-                DialogFragment.this.mOnDismissListener.onDismiss(DialogFragment.this.mDialog);
-            }
-        };
-        this.mOnCancelListener = new DialogInterface.OnCancelListener() { // from class: androidx.fragment.app.DialogFragment.2
-            @Override // android.content.DialogInterface.OnCancelListener
-            @SuppressLint({"SyntheticAccessor"})
-            public void onCancel(@Nullable DialogInterface dialogInterface) {
-                if (DialogFragment.this.mDialog != null) {
-                    DialogFragment dialogFragment = DialogFragment.this;
-                    dialogFragment.onCancel(dialogFragment.mDialog);
-                }
-            }
-        };
+        this.mDismissRunnable = new 1(this);
+        this.mOnCancelListener = new 2(this);
         this.mOnDismissListener = new DialogInterface.OnDismissListener() { // from class: androidx.fragment.app.DialogFragment.3
             @Override // android.content.DialogInterface.OnDismissListener
             @SuppressLint({"SyntheticAccessor"})
@@ -93,25 +78,7 @@ public class DialogFragment extends Fragment implements DialogInterface.OnCancel
         this.mCancelable = true;
         this.mShowsDialog = true;
         this.mBackStackId = -1;
-        this.mObserver = new Observer<LifecycleOwner>() { // from class: androidx.fragment.app.DialogFragment.4
-            @Override // androidx.lifecycle.Observer
-            @SuppressLint({"SyntheticAccessor"})
-            public void onChanged(LifecycleOwner lifecycleOwner) {
-                if (lifecycleOwner == null || !DialogFragment.this.mShowsDialog) {
-                    return;
-                }
-                View requireView = DialogFragment.this.requireView();
-                if (requireView.getParent() != null) {
-                    throw new IllegalStateException("DialogFragment can not be attached to a container view");
-                }
-                if (DialogFragment.this.mDialog != null) {
-                    if (FragmentManager.isLoggingEnabled(3)) {
-                        Log.d(FragmentManager.TAG, "DialogFragment " + this + " setting the content view on " + DialogFragment.this.mDialog);
-                    }
-                    DialogFragment.this.mDialog.setContentView(requireView);
-                }
-            }
-        };
+        this.mObserver = new 4(this);
         this.mDialogCreated = false;
     }
 
@@ -183,19 +150,7 @@ public class DialogFragment extends Fragment implements DialogInterface.OnCancel
     @Override // androidx.fragment.app.Fragment
     @NonNull
     FragmentContainer createFragmentContainer() {
-        final FragmentContainer createFragmentContainer = super.createFragmentContainer();
-        return new FragmentContainer() { // from class: androidx.fragment.app.DialogFragment.5
-            @Override // androidx.fragment.app.FragmentContainer
-            @Nullable
-            public View onFindViewById(int i) {
-                return createFragmentContainer.onHasView() ? createFragmentContainer.onFindViewById(i) : DialogFragment.this.onFindViewById(i);
-            }
-
-            @Override // androidx.fragment.app.FragmentContainer
-            public boolean onHasView() {
-                return createFragmentContainer.onHasView() || DialogFragment.this.onHasView();
-            }
-        };
+        return new 5(this, super.createFragmentContainer());
     }
 
     public void dismiss() {
@@ -505,23 +460,8 @@ public class DialogFragment extends Fragment implements DialogInterface.OnCancel
 
     public DialogFragment(@LayoutRes int i) {
         super(i);
-        this.mDismissRunnable = new Runnable() { // from class: androidx.fragment.app.DialogFragment.1
-            @Override // java.lang.Runnable
-            @SuppressLint({"SyntheticAccessor"})
-            public void run() {
-                DialogFragment.this.mOnDismissListener.onDismiss(DialogFragment.this.mDialog);
-            }
-        };
-        this.mOnCancelListener = new DialogInterface.OnCancelListener() { // from class: androidx.fragment.app.DialogFragment.2
-            @Override // android.content.DialogInterface.OnCancelListener
-            @SuppressLint({"SyntheticAccessor"})
-            public void onCancel(@Nullable DialogInterface dialogInterface) {
-                if (DialogFragment.this.mDialog != null) {
-                    DialogFragment dialogFragment = DialogFragment.this;
-                    dialogFragment.onCancel(dialogFragment.mDialog);
-                }
-            }
-        };
+        this.mDismissRunnable = new 1(this);
+        this.mOnCancelListener = new 2(this);
         this.mOnDismissListener = new DialogInterface.OnDismissListener() { // from class: androidx.fragment.app.DialogFragment.3
             @Override // android.content.DialogInterface.OnDismissListener
             @SuppressLint({"SyntheticAccessor"})
@@ -537,25 +477,7 @@ public class DialogFragment extends Fragment implements DialogInterface.OnCancel
         this.mCancelable = true;
         this.mShowsDialog = true;
         this.mBackStackId = -1;
-        this.mObserver = new Observer<LifecycleOwner>() { // from class: androidx.fragment.app.DialogFragment.4
-            @Override // androidx.lifecycle.Observer
-            @SuppressLint({"SyntheticAccessor"})
-            public void onChanged(LifecycleOwner lifecycleOwner) {
-                if (lifecycleOwner == null || !DialogFragment.this.mShowsDialog) {
-                    return;
-                }
-                View requireView = DialogFragment.this.requireView();
-                if (requireView.getParent() != null) {
-                    throw new IllegalStateException("DialogFragment can not be attached to a container view");
-                }
-                if (DialogFragment.this.mDialog != null) {
-                    if (FragmentManager.isLoggingEnabled(3)) {
-                        Log.d(FragmentManager.TAG, "DialogFragment " + this + " setting the content view on " + DialogFragment.this.mDialog);
-                    }
-                    DialogFragment.this.mDialog.setContentView(requireView);
-                }
-            }
-        };
+        this.mObserver = new 4(this);
         this.mDialogCreated = false;
     }
 }

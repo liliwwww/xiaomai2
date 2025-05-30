@@ -7,7 +7,7 @@ import tb.qk1;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class FloatSpringSpec implements FloatAnimationSpec {
     public static final int $stable = 8;
     private final float dampingRatio;
@@ -35,7 +35,6 @@ public final class FloatSpringSpec implements FloatAnimationSpec {
         return this.dampingRatio;
     }
 
-    @Override // androidx.compose.animation.core.FloatAnimationSpec
     public long getDurationNanos(float f, float f2, float f3) {
         float stiffness = this.spring.getStiffness();
         float dampingRatio = this.spring.getDampingRatio();
@@ -44,7 +43,6 @@ public final class FloatSpringSpec implements FloatAnimationSpec {
         return SpringEstimationKt.estimateAnimationDurationMillis(stiffness, dampingRatio, f3 / f5, f4 / f5, 1.0f) * AnimationKt.MillisToNanos;
     }
 
-    @Override // androidx.compose.animation.core.FloatAnimationSpec
     public float getEndVelocity(float f, float f2, float f3) {
         return 0.0f;
     }
@@ -53,27 +51,24 @@ public final class FloatSpringSpec implements FloatAnimationSpec {
         return this.stiffness;
     }
 
-    @Override // androidx.compose.animation.core.FloatAnimationSpec
     public float getValueFromNanos(long j, float f, float f2, float f3) {
         long j2 = j / AnimationKt.MillisToNanos;
         this.spring.setFinalPosition(f2);
-        return Motion.m1060getValueimpl(this.spring.m1067updateValuesIJZedt4$animation_core_release(f, f3, j2));
+        return Motion.m78getValueimpl(this.spring.updateValues-IJZedt4$animation_core_release(f, f3, j2));
     }
 
-    @Override // androidx.compose.animation.core.FloatAnimationSpec
     public float getVelocityFromNanos(long j, float f, float f2, float f3) {
         long j2 = j / AnimationKt.MillisToNanos;
         this.spring.setFinalPosition(f2);
-        return Motion.m1061getVelocityimpl(this.spring.m1067updateValuesIJZedt4$animation_core_release(f, f3, j2));
+        return Motion.m79getVelocityimpl(this.spring.updateValues-IJZedt4$animation_core_release(f, f3, j2));
     }
 
-    @Override // androidx.compose.animation.core.FloatAnimationSpec, androidx.compose.animation.core.AnimationSpec
     public /* bridge */ /* synthetic */ VectorizedAnimationSpec vectorize(TwoWayConverter twoWayConverter) {
         return qk1.b(this, twoWayConverter);
     }
 
-    @Override // androidx.compose.animation.core.FloatAnimationSpec, androidx.compose.animation.core.AnimationSpec
-    public /* synthetic */ VectorizedFloatAnimationSpec vectorize(TwoWayConverter twoWayConverter) {
+    /* renamed from: vectorize, reason: collision with other method in class */
+    public /* synthetic */ VectorizedFloatAnimationSpec m67vectorize(TwoWayConverter twoWayConverter) {
         return qk1.c(this, twoWayConverter);
     }
 

@@ -4,13 +4,14 @@ import androidx.compose.animation.core.AnimationSpecKt;
 import androidx.compose.animation.core.FiniteAnimationSpec;
 import androidx.compose.animation.core.SpringSpec;
 import androidx.compose.animation.core.VisibilityThresholdsKt;
-import androidx.compose.p004ui.unit.IntSize;
+import androidx.compose.ui.unit.IntSize;
 import kotlin.jvm.functions.Function2;
+import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AnimatedContentKt {
     /* JADX WARN: Removed duplicated region for block: B:10:0x004b  */
     /* JADX WARN: Removed duplicated region for block: B:14:0x0067  */
@@ -33,12 +34,12 @@ public final class AnimatedContentKt {
     @androidx.compose.animation.ExperimentalAnimationApi
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final <S> void AnimatedContent(final S r17, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r18, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.animation.AnimatedContentScope<S>, androidx.compose.animation.ContentTransform> r19, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Alignment r20, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function4<? super androidx.compose.animation.AnimatedVisibilityScope, ? super S, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r21, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r22, final int r23, final int r24) {
+    public static final <S> void AnimatedContent(final S r17, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r18, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.animation.AnimatedContentScope<S>, androidx.compose.animation.ContentTransform> r19, @org.jetbrains.annotations.Nullable androidx.compose.ui.Alignment r20, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function4<? super androidx.compose.animation.AnimatedVisibilityScope, ? super S, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r21, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r22, final int r23, final int r24) {
         /*
             Method dump skipped, instructions count: 294
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.AnimatedContentKt.AnimatedContent(java.lang.Object, androidx.compose.ui.Modifier, kotlin.jvm.functions.Function1, androidx.compose.ui.Alignment, kotlin.jvm.functions.Function4, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -57,13 +58,13 @@ public final class AnimatedContentKt {
         if ((i & 2) != 0) {
             function2 = new Function2<IntSize, IntSize, SpringSpec<IntSize>>() { // from class: androidx.compose.animation.AnimatedContentKt$SizeTransform$1
                 public /* bridge */ /* synthetic */ Object invoke(Object obj2, Object obj3) {
-                    return m943invokeTemP2vQ(((IntSize) obj2).m5380unboximpl(), ((IntSize) obj3).m5380unboximpl());
+                    return m15invokeTemP2vQ(((IntSize) obj2).unbox-impl(), ((IntSize) obj3).unbox-impl());
                 }
 
                 @NotNull
                 /* renamed from: invoke-TemP2vQ, reason: not valid java name */
-                public final SpringSpec<IntSize> m943invokeTemP2vQ(long j, long j2) {
-                    return AnimationSpecKt.spring$default(0.0f, 0.0f, IntSize.m5368boximpl(VisibilityThresholdsKt.getVisibilityThreshold(IntSize.Companion)), 3, null);
+                public final SpringSpec<IntSize> m15invokeTemP2vQ(long j, long j2) {
+                    return AnimationSpecKt.spring$default(0.0f, 0.0f, IntSize.box-impl(VisibilityThresholdsKt.getVisibilityThreshold(IntSize.Companion)), 3, (Object) null);
                 }
             };
         }
@@ -75,7 +76,7 @@ public final class AnimatedContentKt {
     public static final ContentTransform with(@NotNull EnterTransition enterTransition, @NotNull ExitTransition exitTransition) {
         Intrinsics.checkNotNullParameter(enterTransition, "<this>");
         Intrinsics.checkNotNullParameter(exitTransition, "exit");
-        return new ContentTransform(enterTransition, exitTransition, 0.0f, null, 12, null);
+        return new ContentTransform(enterTransition, exitTransition, 0.0f, (SizeTransform) null, 12, (DefaultConstructorMarker) null);
     }
 
     /* JADX WARN: Removed duplicated region for block: B:101:0x02c9  */
@@ -117,12 +118,12 @@ public final class AnimatedContentKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final <S> void AnimatedContent(@org.jetbrains.annotations.NotNull final androidx.compose.animation.core.Transition<S> r23, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r24, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.animation.AnimatedContentScope<S>, androidx.compose.animation.ContentTransform> r25, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Alignment r26, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super S, ? extends java.lang.Object> r27, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function4<? super androidx.compose.animation.AnimatedVisibilityScope, ? super S, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r28, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r29, final int r30, final int r31) {
+    public static final <S> void AnimatedContent(@org.jetbrains.annotations.NotNull final androidx.compose.animation.core.Transition<S> r23, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r24, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.animation.AnimatedContentScope<S>, androidx.compose.animation.ContentTransform> r25, @org.jetbrains.annotations.Nullable androidx.compose.ui.Alignment r26, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super S, ? extends java.lang.Object> r27, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function4<? super androidx.compose.animation.AnimatedVisibilityScope, ? super S, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r28, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r29, final int r30, final int r31) {
         /*
             Method dump skipped, instructions count: 961
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.AnimatedContentKt.AnimatedContent(androidx.compose.animation.core.Transition, androidx.compose.ui.Modifier, kotlin.jvm.functions.Function1, androidx.compose.ui.Alignment, kotlin.jvm.functions.Function1, kotlin.jvm.functions.Function4, androidx.compose.runtime.Composer, int, int):void");
     }

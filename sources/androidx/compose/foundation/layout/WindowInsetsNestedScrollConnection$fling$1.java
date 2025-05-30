@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.layout.WindowInsetsNestedScrollConnection", f = "WindowInsetsConnection.android.kt", i = {0, 0, 0, 1, 1, 1, 2, 2}, l = {304, 330, 355}, m = "fling-huYlsQE", n = {"this", "available", "flingAmount", "this", "endVelocity", "available", "this", "available"}, s = {"L$0", "J$0", "F$0", "L$0", "L$1", "J$0", "L$0", "J$0"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class WindowInsetsNestedScrollConnection$fling$1 extends ContinuationImpl {
     float F$0;
     long J$0;
@@ -26,10 +26,10 @@ final class WindowInsetsNestedScrollConnection$fling$1 extends ContinuationImpl 
 
     @Nullable
     public final Object invokeSuspend(@NotNull Object obj) {
-        Object m1456flinghuYlsQE;
+        Object m391flinghuYlsQE;
         this.result = obj;
         this.label |= Integer.MIN_VALUE;
-        m1456flinghuYlsQE = this.this$0.m1456flinghuYlsQE(0L, 0.0f, false, this);
-        return m1456flinghuYlsQE;
+        m391flinghuYlsQE = this.this$0.m391flinghuYlsQE(0L, 0.0f, false, this);
+        return m391flinghuYlsQE;
     }
 }

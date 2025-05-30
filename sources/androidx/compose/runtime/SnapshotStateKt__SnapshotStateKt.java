@@ -12,12 +12,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final /* synthetic */ class SnapshotStateKt__SnapshotStateKt {
     public static final <T> T getValue(@NotNull State<? extends T> state, @Nullable Object obj, @NotNull KProperty<?> kProperty) {
         Intrinsics.checkNotNullParameter(state, "<this>");
         Intrinsics.checkNotNullParameter(kProperty, "property");
-        return state.getValue();
+        return (T) state.getValue();
     }
 
     @NotNull
@@ -52,7 +52,7 @@ final /* synthetic */ class SnapshotStateKt__SnapshotStateKt {
         }
         Object rememberedValue = composer.rememberedValue();
         if (rememberedValue == Composer.Companion.getEmpty()) {
-            rememberedValue = mutableStateOf$default(t, null, 2, null);
+            rememberedValue = SnapshotStateKt.mutableStateOf$default(t, (SnapshotMutationPolicy) null, 2, (Object) null);
             composer.updateRememberedValue(rememberedValue);
         }
         MutableState mutableState = (MutableState) rememberedValue;

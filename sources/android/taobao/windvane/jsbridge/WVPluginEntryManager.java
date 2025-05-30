@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVPluginEntryManager {
     private Map<String, Object> entryMap = new HashMap();
     private ReentrantReadWriteLock lock = new ReentrantReadWriteLock(true);

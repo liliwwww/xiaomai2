@@ -4,7 +4,7 @@ import android.animation.TypeEvaluator;
 import android.graphics.Rect;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class RectEvaluator implements TypeEvaluator<Rect> {
     private Rect mRect;
 

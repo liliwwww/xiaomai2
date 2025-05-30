@@ -11,10 +11,11 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityCompat$OnRequestPermissionsResultCallback;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
-public class PermissionActivity extends Activity implements ActivityCompat.OnRequestPermissionsResultCallback {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
+public class PermissionActivity extends Activity implements ActivityCompat$OnRequestPermissionsResultCallback {
     private static final int OVERLAY_PERMISSION_REQ_CODE = 123;
     private static final int PERMISSION_REQUEST = 0;
     public static final String TAG = "PermissionActivity";
@@ -31,7 +32,7 @@ public class PermissionActivity extends Activity implements ActivityCompat.OnReq
         } else if (strArr != null) {
             ActivityCompat.requestPermissions(this, strArr, 0);
         } else {
-            TaoLog.m21e(TAG, "permissions==null,abort!");
+            TaoLog.e(TAG, "permissions==null,abort!");
         }
     }
 
@@ -83,7 +84,7 @@ public class PermissionActivity extends Activity implements ActivityCompat.OnReq
         return true;
     }
 
-    @Override // android.app.Activity, androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback
+    @Override // android.app.Activity, androidx.core.app.ActivityCompat$OnRequestPermissionsResultCallback
     public void onRequestPermissionsResult(int i, String[] strArr, int[] iArr) {
         if (i == 0) {
             PermissionProposer.onRequestPermissionsResult(i, strArr, iArr);

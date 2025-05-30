@@ -2,7 +2,6 @@ package androidx.core.widget;
 
 import android.content.res.Resources;
 import android.os.SystemClock;
-import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -13,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class AutoScrollHelper implements View.OnTouchListener {
     private static final int DEFAULT_ACTIVATION_DELAY = ViewConfiguration.getTapTimeout();
     private static final int DEFAULT_EDGE_TYPE = 1;
@@ -149,37 +148,6 @@ public abstract class AutoScrollHelper implements View.OnTouchListener {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private class ScrollAnimationRunnable implements Runnable {
-        ScrollAnimationRunnable() {
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            AutoScrollHelper autoScrollHelper = AutoScrollHelper.this;
-            if (autoScrollHelper.mAnimating) {
-                if (autoScrollHelper.mNeedsReset) {
-                    autoScrollHelper.mNeedsReset = false;
-                    autoScrollHelper.mScroller.start();
-                }
-                ClampedScroller clampedScroller = AutoScrollHelper.this.mScroller;
-                if (clampedScroller.isFinished() || !AutoScrollHelper.this.shouldAnimate()) {
-                    AutoScrollHelper.this.mAnimating = false;
-                    return;
-                }
-                AutoScrollHelper autoScrollHelper2 = AutoScrollHelper.this;
-                if (autoScrollHelper2.mNeedsCancel) {
-                    autoScrollHelper2.mNeedsCancel = false;
-                    autoScrollHelper2.cancelTargetTouch();
-                }
-                clampedScroller.computeScrollDelta();
-                AutoScrollHelper.this.scrollTargetBy(clampedScroller.getDeltaX(), clampedScroller.getDeltaY());
-                ViewCompat.postOnAnimation(AutoScrollHelper.this.mTarget, this);
-            }
-        }
-    }
-
     public AutoScrollHelper(@NonNull View view) {
         this.mTarget = view;
         float f = Resources.getSystem().getDisplayMetrics().density;
@@ -192,8 +160,8 @@ public abstract class AutoScrollHelper implements View.OnTouchListener {
         setRelativeEdges(0.2f, 0.2f);
         setRelativeVelocity(1.0f, 1.0f);
         setActivationDelay(DEFAULT_ACTIVATION_DELAY);
-        setRampUpDuration(WVURLRuleConstants.ORDER_LIST);
-        setRampDownDuration(WVURLRuleConstants.ORDER_LIST);
+        setRampUpDuration(500);
+        setRampDownDuration(500);
     }
 
     private float computeTargetVelocity(int i, float f, float f2, float f3) {
@@ -262,7 +230,7 @@ public abstract class AutoScrollHelper implements View.OnTouchListener {
     private void startAnimating() {
         int i;
         if (this.mRunnable == null) {
-            this.mRunnable = new ScrollAnimationRunnable();
+            this.mRunnable = new ScrollAnimationRunnable(this);
         }
         this.mAnimating = true;
         this.mNeedsReset = true;
@@ -300,7 +268,7 @@ public abstract class AutoScrollHelper implements View.OnTouchListener {
     @Override // android.view.View.OnTouchListener
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public boolean onTouch(android.view.View r6, android.view.MotionEvent r7) {
         /*

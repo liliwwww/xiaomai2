@@ -4,7 +4,7 @@ import android.content.Context;
 import android.taobao.windvane.webview.IWVWebView;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVEventContext {
     public Context context;
     public String url;

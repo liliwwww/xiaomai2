@@ -17,10 +17,11 @@ import androidx.annotation.RestrictTo;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.internal.view.SupportMenuItem;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ActionMenuItem implements SupportMenuItem {
     private static final int CHECKABLE = 1;
     private static final int CHECKED = 2;
@@ -40,8 +41,8 @@ public class ActionMenuItem implements SupportMenuItem {
     private CharSequence mTitle;
     private CharSequence mTitleCondensed;
     private CharSequence mTooltipText;
-    private int mShortcutNumericModifiers = 4096;
-    private int mShortcutAlphabeticModifiers = 4096;
+    private int mShortcutNumericModifiers = AccessibilityEventCompat.TYPE_VIEW_SCROLLED;
+    private int mShortcutAlphabeticModifiers = AccessibilityEventCompat.TYPE_VIEW_SCROLLED;
     private ColorStateList mIconTintList = null;
     private PorterDuff.Mode mIconTintMode = null;
     private boolean mHasIconTint = false;

@@ -1,6 +1,6 @@
 package androidx.compose.runtime;
 
-import java.util.List;
+import androidx.compose.runtime.collection.IdentityArraySet;
 import kotlin.Result;
 import kotlin.ResultKt;
 import kotlin.Unit;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.runtime.Recomposer$runRecomposeConcurrentlyAndApplyChanges$2$2$1$1", f = "Recomposer.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class Recomposer$runRecomposeConcurrentlyAndApplyChanges$2$2$1$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ ControlledComposition $composition;
     int label;
@@ -41,34 +41,29 @@ final class Recomposer$runRecomposeConcurrentlyAndApplyChanges$2$2$1$1 extends S
 
     @Nullable
     public final Object invokeSuspend(@NotNull Object obj) {
-        ControlledComposition performRecompose;
-        List list;
-        int i;
-        CancellableContinuation deriveStateLocked;
+        CancellableContinuation access$deriveStateLocked;
         IntrinsicsKt.getCOROUTINE_SUSPENDED();
         if (this.label != 0) {
             throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
         }
         ResultKt.throwOnFailure(obj);
-        performRecompose = this.this$0.performRecompose(this.$composition, null);
-        Object obj2 = this.this$0.stateLock;
+        ControlledComposition access$performRecompose = Recomposer.access$performRecompose(this.this$0, this.$composition, (IdentityArraySet) null);
+        Object access$getStateLock$p = Recomposer.access$getStateLock$p(this.this$0);
         Recomposer recomposer = this.this$0;
-        synchronized (obj2) {
-            if (performRecompose != null) {
+        synchronized (access$getStateLock$p) {
+            if (access$performRecompose != null) {
                 try {
-                    list = recomposer.compositionsAwaitingApply;
-                    list.add(performRecompose);
+                    Recomposer.access$getCompositionsAwaitingApply$p(recomposer).add(access$performRecompose);
                 } catch (Throwable th) {
                     throw th;
                 }
             }
-            i = recomposer.concurrentCompositionsOutstanding;
-            recomposer.concurrentCompositionsOutstanding = i - 1;
-            deriveStateLocked = recomposer.deriveStateLocked();
+            Recomposer.access$setConcurrentCompositionsOutstanding$p(recomposer, Recomposer.access$getConcurrentCompositionsOutstanding$p(recomposer) - 1);
+            access$deriveStateLocked = Recomposer.access$deriveStateLocked(recomposer);
         }
-        if (deriveStateLocked != null) {
+        if (access$deriveStateLocked != null) {
             Result.Companion companion = Result.Companion;
-            deriveStateLocked.resumeWith(Result.constructor-impl(Unit.INSTANCE));
+            access$deriveStateLocked.resumeWith(Result.constructor-impl(Unit.INSTANCE));
         }
         return Unit.INSTANCE;
     }

@@ -1,8 +1,12 @@
 package androidx.compose.material;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AndroidMenu_androidKt {
+    /* JADX WARN: Code restructure failed: missing block: B:65:0x01c4, code lost:
+    
+        if (r4 == r3.getEmpty()) goto L107;
+     */
     /* JADX WARN: Removed duplicated region for block: B:13:0x006d  */
     /* JADX WARN: Removed duplicated region for block: B:16:0x008a  */
     /* JADX WARN: Removed duplicated region for block: B:24:0x00a5  */
@@ -29,14 +33,14 @@ public final class AndroidMenu_androidKt {
     /* renamed from: DropdownMenu-ILWXrKs, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m1915DropdownMenuILWXrKs(final boolean r25, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r26, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r27, long r28, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.window.PopupProperties r30, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.ColumnScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r31, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r32, final int r33, final int r34) {
+    public static final void m656DropdownMenuILWXrKs(final boolean r25, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r26, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r27, long r28, @org.jetbrains.annotations.Nullable androidx.compose.ui.window.PopupProperties r30, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.ColumnScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r31, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r32, final int r33, final int r34) {
         /*
             Method dump skipped, instructions count: 560
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.AndroidMenu_androidKt.m1915DropdownMenuILWXrKs(boolean, kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, long, androidx.compose.ui.window.PopupProperties, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.AndroidMenu_androidKt.m656DropdownMenuILWXrKs(boolean, kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, long, androidx.compose.ui.window.PopupProperties, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:10:0x0051  */
@@ -63,12 +67,12 @@ public final class AndroidMenu_androidKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void DropdownMenuItem(@org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r18, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r19, boolean r20, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r21, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r22, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r23, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r24, final int r25, final int r26) {
+    public static final void DropdownMenuItem(@org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function0<kotlin.Unit> r18, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r19, boolean r20, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r21, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r22, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r23, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r24, int r25, int r26) {
         /*
             Method dump skipped, instructions count: 359
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.AndroidMenu_androidKt.DropdownMenuItem(kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, boolean, androidx.compose.foundation.layout.PaddingValues, androidx.compose.foundation.interaction.MutableInteractionSource, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }

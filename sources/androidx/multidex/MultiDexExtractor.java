@@ -22,7 +22,7 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class MultiDexExtractor implements Closeable {
     private static final int BUFFER_SIZE = 16384;
     private static final String DEX_PREFIX = "classes";
@@ -91,12 +91,7 @@ final class MultiDexExtractor implements Closeable {
     }
 
     private void clearDexDir() {
-        File[] listFiles = this.dexDir.listFiles(new FileFilter() { // from class: androidx.multidex.MultiDexExtractor.1
-            @Override // java.io.FileFilter
-            public boolean accept(File file) {
-                return !file.getName().equals(MultiDexExtractor.LOCK_FILENAME);
-            }
-        });
+        File[] listFiles = this.dexDir.listFiles((FileFilter) new 1(this));
         if (listFiles == null) {
             Log.w(TAG, "Failed to list secondary dex dir content (" + this.dexDir.getPath() + ").");
             return;

@@ -1,6 +1,5 @@
 package androidx.compose.foundation.interaction;
 
-import androidx.compose.foundation.interaction.PressInteraction;
 import androidx.compose.runtime.MutableState;
 import java.util.ArrayList;
 import kotlin.ResultKt;
@@ -19,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.interaction.PressInteractionKt$collectIsPressedAsState$1$1", f = "PressInteraction.kt", i = {}, l = {88}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class PressInteractionKt$collectIsPressedAsState$1$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ MutableState<Boolean> $isPressed;
     final /* synthetic */ InteractionSource $this_collectIsPressedAsState;
@@ -56,14 +55,15 @@ final class PressInteractionKt$collectIsPressedAsState$1$1 extends SuspendLambda
                     return emit((Interaction) obj2, (Continuation<? super Unit>) continuation);
                 }
 
+                /* JADX WARN: Multi-variable type inference failed */
                 @Nullable
                 public final Object emit(@NotNull Interaction interaction, @NotNull Continuation<? super Unit> continuation) {
-                    if (interaction instanceof PressInteraction.Press) {
+                    if (interaction instanceof PressInteraction$Press) {
                         arrayList.add(interaction);
-                    } else if (interaction instanceof PressInteraction.Release) {
-                        arrayList.remove(((PressInteraction.Release) interaction).getPress());
-                    } else if (interaction instanceof PressInteraction.Cancel) {
-                        arrayList.remove(((PressInteraction.Cancel) interaction).getPress());
+                    } else if (interaction instanceof PressInteraction$Release) {
+                        arrayList.remove(((PressInteraction$Release) interaction).getPress());
+                    } else if (interaction instanceof PressInteraction$Cancel) {
+                        arrayList.remove(((PressInteraction$Cancel) interaction).getPress());
                     }
                     mutableState.setValue(Boxing.boxBoolean(!arrayList.isEmpty()));
                     return Unit.INSTANCE;

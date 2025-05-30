@@ -16,17 +16,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class BaseEmbedView extends WVApiPlugin implements IEmbedView, IEmbedViewContainer.OnParamChangedListener, IEmbedViewContainer.OnStateChangedListener, IEmbedViewContainer.OnVisibilityChangedListener {
     Context context;
     public IWVWebView webView;
     public View view = null;
     public EmbedViewConfig params = null;
+    public String id = "";
 
-    /* renamed from: id */
-    public String f7id = "";
-
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         return false;
     }
@@ -80,14 +77,13 @@ public abstract class BaseEmbedView extends WVApiPlugin implements IEmbedView, I
         }
         this.webView = iWVWebView;
         this.params = embedViewConfig;
-        this.f7id = str;
+        this.id = str;
         return true;
     }
 
     public void onAttachedToWebView() {
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void onDestroy() {
         this.view = null;
         this.context = null;

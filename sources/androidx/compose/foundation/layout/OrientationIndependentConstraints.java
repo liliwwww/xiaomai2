@@ -1,13 +1,13 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.unit.ConstraintsKt;
+import androidx.compose.ui.unit.ConstraintsKt;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class OrientationIndependentConstraints {
     private final int crossAxisMax;
     private final int crossAxisMin;
@@ -112,7 +112,7 @@ public final class OrientationIndependentConstraints {
     }
 
     /* renamed from: toBoxConstraints-OenEA2s, reason: not valid java name */
-    public final long m1386toBoxConstraintsOenEA2s(@NotNull LayoutOrientation layoutOrientation) {
+    public final long m215toBoxConstraintsOenEA2s(@NotNull LayoutOrientation layoutOrientation) {
         Intrinsics.checkNotNullParameter(layoutOrientation, "orientation");
         return layoutOrientation == LayoutOrientation.Horizontal ? ConstraintsKt.Constraints(this.mainAxisMin, this.mainAxisMax, this.crossAxisMin, this.crossAxisMax) : ConstraintsKt.Constraints(this.crossAxisMin, this.crossAxisMax, this.mainAxisMin, this.mainAxisMax);
     }
@@ -125,35 +125,35 @@ public final class OrientationIndependentConstraints {
     /* JADX WARN: Illegal instructions before constructor call */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private OrientationIndependentConstraints(long r5, androidx.compose.foundation.layout.LayoutOrientation r7) {
         /*
             r4 = this;
             androidx.compose.foundation.layout.LayoutOrientation r0 = androidx.compose.foundation.layout.LayoutOrientation.Horizontal
             if (r7 != r0) goto L9
-            int r1 = androidx.compose.p004ui.unit.Constraints.m5186getMinWidthimpl(r5)
+            int r1 = androidx.compose.ui.unit.Constraints.m2124getMinWidthimpl(r5)
             goto Ld
         L9:
-            int r1 = androidx.compose.p004ui.unit.Constraints.m5185getMinHeightimpl(r5)
+            int r1 = androidx.compose.ui.unit.Constraints.m2123getMinHeightimpl(r5)
         Ld:
             if (r7 != r0) goto L14
-            int r2 = androidx.compose.p004ui.unit.Constraints.m5184getMaxWidthimpl(r5)
+            int r2 = androidx.compose.ui.unit.Constraints.m2122getMaxWidthimpl(r5)
             goto L18
         L14:
-            int r2 = androidx.compose.p004ui.unit.Constraints.m5183getMaxHeightimpl(r5)
+            int r2 = androidx.compose.ui.unit.Constraints.m2121getMaxHeightimpl(r5)
         L18:
             if (r7 != r0) goto L1f
-            int r3 = androidx.compose.p004ui.unit.Constraints.m5185getMinHeightimpl(r5)
+            int r3 = androidx.compose.ui.unit.Constraints.m2123getMinHeightimpl(r5)
             goto L23
         L1f:
-            int r3 = androidx.compose.p004ui.unit.Constraints.m5186getMinWidthimpl(r5)
+            int r3 = androidx.compose.ui.unit.Constraints.m2124getMinWidthimpl(r5)
         L23:
             if (r7 != r0) goto L2a
-            int r5 = androidx.compose.p004ui.unit.Constraints.m5183getMaxHeightimpl(r5)
+            int r5 = androidx.compose.ui.unit.Constraints.m2121getMaxHeightimpl(r5)
             goto L2e
         L2a:
-            int r5 = androidx.compose.p004ui.unit.Constraints.m5184getMaxWidthimpl(r5)
+            int r5 = androidx.compose.ui.unit.Constraints.m2122getMaxWidthimpl(r5)
         L2e:
             r4.<init>(r1, r2, r3, r5)
             return

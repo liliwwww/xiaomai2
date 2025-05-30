@@ -2,7 +2,7 @@ package androidx.compose.foundation.lazy.grid;
 
 import androidx.compose.animation.core.Animatable;
 import androidx.compose.animation.core.AnimationVector2D;
-import androidx.compose.p004ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntOffset;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.lazy.grid.LazyGridItemPlacementAnimator$getAnimatedOffset$1", f = "LazyGridItemPlacementAnimator.kt", i = {}, l = {281}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class LazyGridItemPlacementAnimator$getAnimatedOffset$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ PlaceableInfo $item;
     int label;
@@ -44,9 +44,9 @@ final class LazyGridItemPlacementAnimator$getAnimatedOffset$1 extends SuspendLam
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
             Animatable<IntOffset, AnimationVector2D> animatedOffset = this.$item.getAnimatedOffset();
-            IntOffset m5325boximpl = IntOffset.m5325boximpl(this.$item.m1611getTargetOffsetnOccac());
+            IntOffset m2634boximpl = IntOffset.m2634boximpl(this.$item.m487getTargetOffsetnOccac());
             this.label = 1;
-            if (animatedOffset.snapTo(m5325boximpl, this) == coroutine_suspended) {
+            if (animatedOffset.snapTo(m2634boximpl, this) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

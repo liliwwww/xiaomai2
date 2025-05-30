@@ -1,25 +1,25 @@
 package androidx.compose.foundation.text;
 
 import androidx.compose.foundation.layout.SizeKt;
-import androidx.compose.p004ui.ComposedModifierKt;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.platform.InspectableValueKt;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.text.TextStyle;
-import androidx.compose.p004ui.text.TextStyleKt;
-import androidx.compose.p004ui.text.font.FontFamily;
-import androidx.compose.p004ui.text.font.FontStyle;
-import androidx.compose.p004ui.text.font.FontSynthesis;
-import androidx.compose.p004ui.text.font.FontWeight;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.IntSize;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.ComposedModifierKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.platform.InspectableValueKt;
+import androidx.compose.ui.platform.InspectorInfo;
+import androidx.compose.ui.text.TextStyle;
+import androidx.compose.ui.text.TextStyleKt;
+import androidx.compose.ui.text.font.FontFamily;
+import androidx.compose.ui.text.font.FontStyle;
+import androidx.compose.ui.text.font.FontSynthesis;
+import androidx.compose.ui.text.font.FontWeight;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
+import androidx.compose.ui.unit.IntSize;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function3;
@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class HeightInLinesModifierKt {
     public static final int DefaultMinLines = 1;
 
@@ -103,10 +103,10 @@ public final class HeightInLinesModifierKt {
                     if (fontWeight == null) {
                         fontWeight = FontWeight.Companion.getNormal();
                     }
-                    FontStyle m4769getFontStyle4Lr2A7w = textStyle3.m4769getFontStyle4Lr2A7w();
-                    int m4837unboximpl = m4769getFontStyle4Lr2A7w != null ? m4769getFontStyle4Lr2A7w.m4837unboximpl() : FontStyle.Companion.m4839getNormal_LCdwA();
-                    FontSynthesis m4770getFontSynthesisZQGJjVo = textStyle3.m4770getFontSynthesisZQGJjVo();
-                    rememberedValue2 = resolver.mo4809resolveDPcqOEQ(fontFamily, fontWeight, m4837unboximpl, m4770getFontSynthesisZQGJjVo != null ? m4770getFontSynthesisZQGJjVo.m4848unboximpl() : FontSynthesis.Companion.m4849getAllGVVA2EU());
+                    FontStyle fontStyle = textStyle3.getFontStyle-4Lr2A7w();
+                    int m1930unboximpl = fontStyle != null ? fontStyle.m1930unboximpl() : FontStyle.Companion.getNormal-_-LCdwA();
+                    FontSynthesis fontSynthesis = textStyle3.getFontSynthesis-ZQGJjVo();
+                    rememberedValue2 = resolver.m1918resolveDPcqOEQ(fontFamily, fontWeight, m1930unboximpl, fontSynthesis != null ? fontSynthesis.unbox-impl() : FontSynthesis.Companion.getAll-GVVA2EU());
                     composer.updateRememberedValue(rememberedValue2);
                 }
                 composer.endReplaceableGroup();
@@ -119,7 +119,7 @@ public final class HeightInLinesModifierKt {
                 }
                 Object rememberedValue3 = composer.rememberedValue();
                 if (z || rememberedValue3 == Composer.Companion.getEmpty()) {
-                    rememberedValue3 = Integer.valueOf(IntSize.m5375getHeightimpl(TextFieldDelegateKt.computeSizeForDefaultText(textStyle3, density, resolver, TextFieldDelegateKt.getEmptyTextReplacement(), 1)));
+                    rememberedValue3 = Integer.valueOf(IntSize.getHeight-impl(TextFieldDelegateKt.computeSizeForDefaultText(textStyle3, density, resolver, TextFieldDelegateKt.getEmptyTextReplacement(), 1)));
                     composer.updateRememberedValue(rememberedValue3);
                 }
                 composer.endReplaceableGroup();
@@ -132,7 +132,7 @@ public final class HeightInLinesModifierKt {
                 }
                 Object rememberedValue4 = composer.rememberedValue();
                 if (z2 || rememberedValue4 == Composer.Companion.getEmpty()) {
-                    rememberedValue4 = Integer.valueOf(IntSize.m5375getHeightimpl(TextFieldDelegateKt.computeSizeForDefaultText(textStyle3, density, resolver, TextFieldDelegateKt.getEmptyTextReplacement() + '\n' + TextFieldDelegateKt.getEmptyTextReplacement(), 2)));
+                    rememberedValue4 = Integer.valueOf(IntSize.getHeight-impl(TextFieldDelegateKt.computeSizeForDefaultText(textStyle3, density, resolver, TextFieldDelegateKt.getEmptyTextReplacement() + '\n' + TextFieldDelegateKt.getEmptyTextReplacement(), 2)));
                     composer.updateRememberedValue(rememberedValue4);
                 }
                 composer.endReplaceableGroup();
@@ -141,12 +141,12 @@ public final class HeightInLinesModifierKt {
                 Integer valueOf = i6 == 1 ? null : Integer.valueOf(((i6 - 1) * intValue2) + intValue);
                 int i7 = i2;
                 Integer valueOf2 = i7 != Integer.MAX_VALUE ? Integer.valueOf(intValue + (intValue2 * (i7 - 1))) : null;
-                Modifier m1424heightInVpY3zN4 = SizeKt.m1424heightInVpY3zN4(Modifier.Companion, valueOf != null ? density.mo1280toDpu2uoSUM(valueOf.intValue()) : C0856Dp.Companion.m5236getUnspecifiedD9Ej5fM(), valueOf2 != null ? density.mo1280toDpu2uoSUM(valueOf2.intValue()) : C0856Dp.Companion.m5236getUnspecifiedD9Ej5fM());
+                Modifier modifier3 = SizeKt.heightIn-VpY3zN4(Modifier.Companion, valueOf != null ? density.mo312toDpu2uoSUM(valueOf.intValue()) : Dp.Companion.m2162getUnspecifiedD9Ej5fM(), valueOf2 != null ? density.mo312toDpu2uoSUM(valueOf2.intValue()) : Dp.Companion.m2162getUnspecifiedD9Ej5fM());
                 if (ComposerKt.isTraceInProgress()) {
                     ComposerKt.traceEventEnd();
                 }
                 composer.endReplaceableGroup();
-                return m1424heightInVpY3zN4;
+                return modifier3;
             }
         });
     }

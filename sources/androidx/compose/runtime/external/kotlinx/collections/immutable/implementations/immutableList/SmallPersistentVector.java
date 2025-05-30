@@ -16,11 +16,11 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SmallPersistentVector<E> extends AbstractPersistentList<E> implements ImmutableList<E> {
 
     @NotNull
-    public static final Companion Companion = new Companion(null);
+    public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
 
     @NotNull
     private static final SmallPersistentVector EMPTY = new SmallPersistentVector(new Object[0]);
@@ -28,26 +28,10 @@ public final class SmallPersistentVector<E> extends AbstractPersistentList<E> im
     @NotNull
     private final Object[] buffer;
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class Companion {
-        private Companion() {
-        }
-
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-
-        @NotNull
-        public final SmallPersistentVector getEMPTY() {
-            return SmallPersistentVector.EMPTY;
-        }
-    }
-
     public SmallPersistentVector(@NotNull Object[] objArr) {
         Intrinsics.checkNotNullParameter(objArr, "buffer");
         this.buffer = objArr;
-        CommonFunctionsKt.m2432assert(objArr.length <= 32);
+        CommonFunctionsKt.assert(objArr.length <= 32);
     }
 
     private final Object[] bufferOfSize(int i) {
@@ -55,7 +39,7 @@ public final class SmallPersistentVector<E> extends AbstractPersistentList<E> im
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // java.util.List, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // java.util.List, java.util.Collection
     public /* bridge */ /* synthetic */ PersistentCollection add(Object obj) {
         return add((SmallPersistentVector<E>) obj);
     }
@@ -87,7 +71,6 @@ public final class SmallPersistentVector<E> extends AbstractPersistentList<E> im
         return new BufferIterator(this.buffer, i, size());
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentList
     @NotNull
     public PersistentList<E> removeAt(int i) {
         ListImplementation.checkElementIndex$runtime_release(i, size());
@@ -100,7 +83,7 @@ public final class SmallPersistentVector<E> extends AbstractPersistentList<E> im
         return new SmallPersistentVector(copyOf);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentList, java.util.List
+    @Override // java.util.List
     @NotNull
     public PersistentList<E> set(int i, E e) {
         ListImplementation.checkElementIndex$runtime_release(i, size());
@@ -111,7 +94,7 @@ public final class SmallPersistentVector<E> extends AbstractPersistentList<E> im
         return new SmallPersistentVector(copyOf);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentList, java.util.List, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // java.util.List, java.util.Collection
     @NotNull
     public PersistentList<E> add(E e) {
         if (size() >= 32) {
@@ -123,12 +106,12 @@ public final class SmallPersistentVector<E> extends AbstractPersistentList<E> im
         return new SmallPersistentVector(copyOf);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableList.AbstractPersistentList, java.util.List, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableList.AbstractPersistentList, java.util.List, java.util.Collection
     @NotNull
     public PersistentList<E> addAll(@NotNull Collection<? extends E> collection) {
         Intrinsics.checkNotNullParameter(collection, "elements");
         if (size() + collection.size() > 32) {
-            PersistentList.Builder<E> builder = builder();
+            PersistentList.Builder builder = builder();
             builder.addAll(collection);
             return builder.build();
         }
@@ -143,13 +126,11 @@ public final class SmallPersistentVector<E> extends AbstractPersistentList<E> im
         return new SmallPersistentVector(copyOf);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
     @NotNull
     public PersistentList.Builder<E> builder() {
         return new PersistentVectorBuilder(this, null, this.buffer, 0);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
     @NotNull
     public PersistentList<E> removeAll(@NotNull Function1<? super E, Boolean> function1) {
         Intrinsics.checkNotNullParameter(function1, "predicate");
@@ -175,7 +156,7 @@ public final class SmallPersistentVector<E> extends AbstractPersistentList<E> im
         return size == size() ? this : size == 0 ? EMPTY : new SmallPersistentVector(ArraysKt.copyOfRange(objArr, 0, size));
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentList, java.util.List
+    @Override // java.util.List
     @NotNull
     public PersistentList<E> add(int i, E e) {
         ListImplementation.checkPositionIndex$runtime_release(i, size());
@@ -197,7 +178,7 @@ public final class SmallPersistentVector<E> extends AbstractPersistentList<E> im
         return new PersistentVector(copyOf, UtilsKt.presizedBufferWith(this.buffer[31]), size() + 1, 0);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableList.AbstractPersistentList, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentList, java.util.List
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableList.AbstractPersistentList, java.util.List
     @NotNull
     public PersistentList<E> addAll(int i, @NotNull Collection<? extends E> collection) {
         Intrinsics.checkNotNullParameter(collection, "c");
@@ -213,7 +194,7 @@ public final class SmallPersistentVector<E> extends AbstractPersistentList<E> im
             }
             return new SmallPersistentVector(bufferOfSize);
         }
-        PersistentList.Builder<E> builder = builder();
+        PersistentList.Builder builder = builder();
         builder.addAll(i, collection);
         return builder.build();
     }

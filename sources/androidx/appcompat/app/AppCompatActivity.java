@@ -1,5 +1,6 @@
 package androidx.appcompat.app;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -37,8 +38,8 @@ import androidx.savedstate.SavedStateRegistry;
 import androidx.savedstate.ViewTreeSavedStateRegistryOwner;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
-public class AppCompatActivity extends FragmentActivity implements ActionBarDrawerToggle.DelegateProvider, AppCompatCallback, TaskStackBuilder.SupportParentable {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
+public class AppCompatActivity extends FragmentActivity implements ActionBarDrawerToggle$DelegateProvider, AppCompatCallback, TaskStackBuilder.SupportParentable {
     private static final String DELEGATE_TAG = "androidx:appcompat";
     private AppCompatDelegate mDelegate;
     private Resources mResources;
@@ -49,7 +50,6 @@ public class AppCompatActivity extends FragmentActivity implements ActionBarDraw
 
     private void initDelegate() {
         getSavedStateRegistry().registerSavedStateProvider(DELEGATE_TAG, new SavedStateRegistry.SavedStateProvider() { // from class: androidx.appcompat.app.AppCompatActivity.1
-            @Override // androidx.savedstate.SavedStateRegistry.SavedStateProvider
             @NonNull
             public Bundle saveState() {
                 Bundle bundle = new Bundle();
@@ -67,6 +67,7 @@ public class AppCompatActivity extends FragmentActivity implements ActionBarDraw
         });
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     private void initViewTreeOwners() {
         ViewTreeLifecycleOwner.set(getWindow().getDecorView(), this);
         ViewTreeViewModelStoreOwner.set(getWindow().getDecorView(), this);
@@ -74,74 +75,73 @@ public class AppCompatActivity extends FragmentActivity implements ActionBarDraw
         ViewTreeOnBackPressedDispatcherOwner.set(getWindow().getDecorView(), this);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     private boolean performMenuItemShortcut(KeyEvent keyEvent) {
         Window window;
         return (Build.VERSION.SDK_INT >= 26 || keyEvent.isCtrlPressed() || KeyEvent.metaStateHasNoModifiers(keyEvent.getMetaState()) || keyEvent.getRepeatCount() != 0 || KeyEvent.isModifierKey(keyEvent.getKeyCode()) || (window = getWindow()) == null || window.getDecorView() == null || !window.getDecorView().dispatchKeyShortcutEvent(keyEvent)) ? false : true;
     }
 
-    @Override // androidx.activity.ComponentActivity, android.app.Activity
     public void addContentView(View view, ViewGroup.LayoutParams layoutParams) {
         initViewTreeOwners();
         getDelegate().addContentView(view, layoutParams);
     }
 
-    @Override // android.app.Activity, android.view.ContextThemeWrapper, android.content.ContextWrapper
+    /* JADX WARN: Multi-variable type inference failed */
     protected void attachBaseContext(Context context) {
-        super.attachBaseContext(getDelegate().attachBaseContext2(context));
+        super/*android.app.Activity*/.attachBaseContext(getDelegate().attachBaseContext2(context));
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     public void closeOptionsMenu() {
         ActionBar supportActionBar = getSupportActionBar();
         if (getWindow().hasFeature(0)) {
             if (supportActionBar == null || !supportActionBar.closeOptionsMenu()) {
-                super.closeOptionsMenu();
+                super/*android.app.Activity*/.closeOptionsMenu();
             }
         }
     }
 
-    @Override // androidx.core.app.ComponentActivity, android.app.Activity, android.view.Window.Callback
+    /* JADX WARN: Multi-variable type inference failed */
     public boolean dispatchKeyEvent(KeyEvent keyEvent) {
         int keyCode = keyEvent.getKeyCode();
         ActionBar supportActionBar = getSupportActionBar();
         if (keyCode == 82 && supportActionBar != null && supportActionBar.onMenuKeyEvent(keyEvent)) {
             return true;
         }
-        return super.dispatchKeyEvent(keyEvent);
+        return super/*androidx.core.app.ComponentActivity*/.dispatchKeyEvent(keyEvent);
     }
 
-    @Override // android.app.Activity
     public <T extends View> T findViewById(@IdRes int i) {
         return (T) getDelegate().findViewById(i);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     @NonNull
     public AppCompatDelegate getDelegate() {
         if (this.mDelegate == null) {
-            this.mDelegate = AppCompatDelegate.create(this, this);
+            this.mDelegate = AppCompatDelegate.create((Activity) this, (AppCompatCallback) this);
         }
         return this.mDelegate;
     }
 
-    @Override // androidx.appcompat.app.ActionBarDrawerToggle.DelegateProvider
+    @Override // androidx.appcompat.app.ActionBarDrawerToggle$DelegateProvider
     @Nullable
     public ActionBarDrawerToggle.Delegate getDrawerToggleDelegate() {
         return getDelegate().getDrawerToggleDelegate();
     }
 
-    @Override // android.app.Activity
     @NonNull
     public MenuInflater getMenuInflater() {
         return getDelegate().getMenuInflater();
     }
 
-    @Override // android.view.ContextThemeWrapper, android.content.ContextWrapper, android.content.Context
+    /* JADX WARN: Multi-variable type inference failed */
     public Resources getResources() {
         if (this.mResources == null && VectorEnabledTintResources.shouldBeUsed()) {
-            this.mResources = new VectorEnabledTintResources(this, super.getResources());
+            this.mResources = new VectorEnabledTintResources(this, super/*android.app.Activity*/.getResources());
         }
         Resources resources = this.mResources;
-        return resources == null ? super.getResources() : resources;
+        return resources == null ? super/*android.app.Activity*/.getResources() : resources;
     }
 
     @Nullable
@@ -149,53 +149,50 @@ public class AppCompatActivity extends FragmentActivity implements ActionBarDraw
         return getDelegate().getSupportActionBar();
     }
 
-    @Override // androidx.core.app.TaskStackBuilder.SupportParentable
+    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     public Intent getSupportParentActivityIntent() {
         return NavUtils.getParentActivityIntent(this);
     }
 
-    @Override // android.app.Activity
     public void invalidateOptionsMenu() {
         getDelegate().invalidateOptionsMenu();
     }
 
-    @Override // androidx.activity.ComponentActivity, android.app.Activity, android.content.ComponentCallbacks
+    /* JADX WARN: Multi-variable type inference failed */
     public void onConfigurationChanged(@NonNull Configuration configuration) {
-        super.onConfigurationChanged(configuration);
+        super/*androidx.activity.ComponentActivity*/.onConfigurationChanged(configuration);
         getDelegate().onConfigurationChanged(configuration);
         if (this.mResources != null) {
-            this.mResources.updateConfiguration(super.getResources().getConfiguration(), super.getResources().getDisplayMetrics());
+            this.mResources.updateConfiguration(super/*android.app.Activity*/.getResources().getConfiguration(), super/*android.app.Activity*/.getResources().getDisplayMetrics());
         }
     }
 
-    @Override // android.app.Activity, android.view.Window.Callback
     public void onContentChanged() {
         onSupportContentChanged();
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void onCreateSupportNavigateUpTaskStack(@NonNull TaskStackBuilder taskStackBuilder) {
         taskStackBuilder.addParentStack(this);
     }
 
-    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
     protected void onDestroy() {
         super.onDestroy();
         getDelegate().onDestroy();
     }
 
-    @Override // android.app.Activity, android.view.KeyEvent.Callback
+    /* JADX WARN: Multi-variable type inference failed */
     public boolean onKeyDown(int i, KeyEvent keyEvent) {
         if (performMenuItemShortcut(keyEvent)) {
             return true;
         }
-        return super.onKeyDown(i, keyEvent);
+        return super/*android.app.Activity*/.onKeyDown(i, keyEvent);
     }
 
     protected void onLocalesChanged(@NonNull LocaleListCompat localeListCompat) {
     }
 
-    @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, android.app.Activity, android.view.Window.Callback
     public final boolean onMenuItemSelected(int i, @NonNull MenuItem menuItem) {
         if (super.onMenuItemSelected(i, menuItem)) {
             return true;
@@ -207,26 +204,24 @@ public class AppCompatActivity extends FragmentActivity implements ActionBarDraw
         return onSupportNavigateUp();
     }
 
-    @Override // android.app.Activity, android.view.Window.Callback
+    /* JADX WARN: Multi-variable type inference failed */
     public boolean onMenuOpened(int i, Menu menu) {
-        return super.onMenuOpened(i, menu);
+        return super/*android.app.Activity*/.onMenuOpened(i, menu);
     }
 
     protected void onNightModeChanged(int i) {
     }
 
-    @Override // androidx.activity.ComponentActivity, android.app.Activity, android.view.Window.Callback
     public void onPanelClosed(int i, @NonNull Menu menu) {
-        super.onPanelClosed(i, menu);
+        super/*androidx.activity.ComponentActivity*/.onPanelClosed(i, menu);
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     protected void onPostCreate(@Nullable Bundle bundle) {
-        super.onPostCreate(bundle);
+        super/*android.app.Activity*/.onPostCreate(bundle);
         getDelegate().onPostCreate(bundle);
     }
 
-    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
     protected void onPostResume() {
         super.onPostResume();
         getDelegate().onPostResume();
@@ -235,24 +230,20 @@ public class AppCompatActivity extends FragmentActivity implements ActionBarDraw
     public void onPrepareSupportNavigateUpTaskStack(@NonNull TaskStackBuilder taskStackBuilder) {
     }
 
-    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
     protected void onStart() {
         super.onStart();
         getDelegate().onStart();
     }
 
-    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
     protected void onStop() {
         super.onStop();
         getDelegate().onStop();
     }
 
-    @Override // androidx.appcompat.app.AppCompatCallback
     @CallSuper
     public void onSupportActionModeFinished(@NonNull ActionMode actionMode) {
     }
 
-    @Override // androidx.appcompat.app.AppCompatCallback
     @CallSuper
     public void onSupportActionModeStarted(@NonNull ActionMode actionMode) {
     }
@@ -261,6 +252,7 @@ public class AppCompatActivity extends FragmentActivity implements ActionBarDraw
     public void onSupportContentChanged() {
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public boolean onSupportNavigateUp() {
         Intent supportParentActivityIntent = getSupportParentActivityIntent();
         if (supportParentActivityIntent == null) {
@@ -283,29 +275,27 @@ public class AppCompatActivity extends FragmentActivity implements ActionBarDraw
         }
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     protected void onTitleChanged(CharSequence charSequence, int i) {
-        super.onTitleChanged(charSequence, i);
+        super/*android.app.Activity*/.onTitleChanged(charSequence, i);
         getDelegate().setTitle(charSequence);
     }
 
-    @Override // androidx.appcompat.app.AppCompatCallback
     @Nullable
     public ActionMode onWindowStartingSupportActionMode(@NonNull ActionMode.Callback callback) {
         return null;
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     public void openOptionsMenu() {
         ActionBar supportActionBar = getSupportActionBar();
         if (getWindow().hasFeature(0)) {
             if (supportActionBar == null || !supportActionBar.openOptionsMenu()) {
-                super.openOptionsMenu();
+                super/*android.app.Activity*/.openOptionsMenu();
             }
         }
     }
 
-    @Override // androidx.activity.ComponentActivity, android.app.Activity
     public void setContentView(@LayoutRes int i) {
         initViewTreeOwners();
         getDelegate().setContentView(i);
@@ -331,9 +321,9 @@ public class AppCompatActivity extends FragmentActivity implements ActionBarDraw
     public void setSupportProgressBarVisibility(boolean z) {
     }
 
-    @Override // android.app.Activity, android.view.ContextThemeWrapper, android.content.ContextWrapper, android.content.Context
+    /* JADX WARN: Multi-variable type inference failed */
     public void setTheme(@StyleRes int i) {
-        super.setTheme(i);
+        super/*android.app.Activity*/.setTheme(i);
         getDelegate().setTheme(i);
     }
 
@@ -342,11 +332,11 @@ public class AppCompatActivity extends FragmentActivity implements ActionBarDraw
         return getDelegate().startSupportActionMode(callback);
     }
 
-    @Override // androidx.fragment.app.FragmentActivity
     public void supportInvalidateOptionsMenu() {
         getDelegate().invalidateOptionsMenu();
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void supportNavigateUpTo(@NonNull Intent intent) {
         NavUtils.navigateUpTo(this, intent);
     }
@@ -355,6 +345,7 @@ public class AppCompatActivity extends FragmentActivity implements ActionBarDraw
         return getDelegate().requestWindowFeature(i);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public boolean supportShouldUpRecreateTask(@NonNull Intent intent) {
         return NavUtils.shouldUpRecreateTask(this, intent);
     }
@@ -365,13 +356,11 @@ public class AppCompatActivity extends FragmentActivity implements ActionBarDraw
         initDelegate();
     }
 
-    @Override // androidx.activity.ComponentActivity, android.app.Activity
     public void setContentView(View view) {
         initViewTreeOwners();
         getDelegate().setContentView(view);
     }
 
-    @Override // androidx.activity.ComponentActivity, android.app.Activity
     public void setContentView(View view, ViewGroup.LayoutParams layoutParams) {
         initViewTreeOwners();
         getDelegate().setContentView(view, layoutParams);

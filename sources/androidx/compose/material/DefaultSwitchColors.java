@@ -1,12 +1,12 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.graphics.Color;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.Immutable;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.graphics.Color;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Reflection;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class DefaultSwitchColors implements SwitchColors {
     private final long checkedThumbColor;
     private final long checkedTrackColor;
@@ -49,14 +49,13 @@ final class DefaultSwitchColors implements SwitchColors {
             return false;
         }
         DefaultSwitchColors defaultSwitchColors = (DefaultSwitchColors) obj;
-        return Color.m2788equalsimpl0(this.checkedThumbColor, defaultSwitchColors.checkedThumbColor) && Color.m2788equalsimpl0(this.checkedTrackColor, defaultSwitchColors.checkedTrackColor) && Color.m2788equalsimpl0(this.uncheckedThumbColor, defaultSwitchColors.uncheckedThumbColor) && Color.m2788equalsimpl0(this.uncheckedTrackColor, defaultSwitchColors.uncheckedTrackColor) && Color.m2788equalsimpl0(this.disabledCheckedThumbColor, defaultSwitchColors.disabledCheckedThumbColor) && Color.m2788equalsimpl0(this.disabledCheckedTrackColor, defaultSwitchColors.disabledCheckedTrackColor) && Color.m2788equalsimpl0(this.disabledUncheckedThumbColor, defaultSwitchColors.disabledUncheckedThumbColor) && Color.m2788equalsimpl0(this.disabledUncheckedTrackColor, defaultSwitchColors.disabledUncheckedTrackColor);
+        return Color.m1051equalsimpl0(this.checkedThumbColor, defaultSwitchColors.checkedThumbColor) && Color.m1051equalsimpl0(this.checkedTrackColor, defaultSwitchColors.checkedTrackColor) && Color.m1051equalsimpl0(this.uncheckedThumbColor, defaultSwitchColors.uncheckedThumbColor) && Color.m1051equalsimpl0(this.uncheckedTrackColor, defaultSwitchColors.uncheckedTrackColor) && Color.m1051equalsimpl0(this.disabledCheckedThumbColor, defaultSwitchColors.disabledCheckedThumbColor) && Color.m1051equalsimpl0(this.disabledCheckedTrackColor, defaultSwitchColors.disabledCheckedTrackColor) && Color.m1051equalsimpl0(this.disabledUncheckedThumbColor, defaultSwitchColors.disabledUncheckedThumbColor) && Color.m1051equalsimpl0(this.disabledUncheckedTrackColor, defaultSwitchColors.disabledUncheckedTrackColor);
     }
 
     public int hashCode() {
-        return (((((((((((((Color.m2794hashCodeimpl(this.checkedThumbColor) * 31) + Color.m2794hashCodeimpl(this.checkedTrackColor)) * 31) + Color.m2794hashCodeimpl(this.uncheckedThumbColor)) * 31) + Color.m2794hashCodeimpl(this.uncheckedTrackColor)) * 31) + Color.m2794hashCodeimpl(this.disabledCheckedThumbColor)) * 31) + Color.m2794hashCodeimpl(this.disabledCheckedTrackColor)) * 31) + Color.m2794hashCodeimpl(this.disabledUncheckedThumbColor)) * 31) + Color.m2794hashCodeimpl(this.disabledUncheckedTrackColor);
+        return (((((((((((((Color.m1057hashCodeimpl(this.checkedThumbColor) * 31) + Color.m1057hashCodeimpl(this.checkedTrackColor)) * 31) + Color.m1057hashCodeimpl(this.uncheckedThumbColor)) * 31) + Color.m1057hashCodeimpl(this.uncheckedTrackColor)) * 31) + Color.m1057hashCodeimpl(this.disabledCheckedThumbColor)) * 31) + Color.m1057hashCodeimpl(this.disabledCheckedTrackColor)) * 31) + Color.m1057hashCodeimpl(this.disabledUncheckedThumbColor)) * 31) + Color.m1057hashCodeimpl(this.disabledUncheckedTrackColor);
     }
 
-    @Override // androidx.compose.material.SwitchColors
     @Composable
     @NotNull
     public State<Color> thumbColor(boolean z, boolean z2, @Nullable Composer composer, int i) {
@@ -64,7 +63,7 @@ final class DefaultSwitchColors implements SwitchColors {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-66424183, i, -1, "androidx.compose.material.DefaultSwitchColors.thumbColor (Switch.kt:324)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(z ? z2 ? this.checkedThumbColor : this.uncheckedThumbColor : z2 ? this.disabledCheckedThumbColor : this.disabledUncheckedThumbColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(z ? z2 ? this.checkedThumbColor : this.uncheckedThumbColor : z2 ? this.disabledCheckedThumbColor : this.disabledUncheckedThumbColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -72,7 +71,6 @@ final class DefaultSwitchColors implements SwitchColors {
         return rememberUpdatedState;
     }
 
-    @Override // androidx.compose.material.SwitchColors
     @Composable
     @NotNull
     public State<Color> trackColor(boolean z, boolean z2, @Nullable Composer composer, int i) {
@@ -80,7 +78,7 @@ final class DefaultSwitchColors implements SwitchColors {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-1176343362, i, -1, "androidx.compose.material.DefaultSwitchColors.trackColor (Switch.kt:335)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(z ? z2 ? this.checkedTrackColor : this.uncheckedTrackColor : z2 ? this.disabledCheckedTrackColor : this.disabledUncheckedTrackColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(z ? z2 ? this.checkedTrackColor : this.uncheckedTrackColor : z2 ? this.disabledCheckedTrackColor : this.disabledUncheckedTrackColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }

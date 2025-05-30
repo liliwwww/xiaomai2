@@ -10,14 +10,15 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.appcompat.R;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.view.ViewCompat;
 import androidx.core.widget.ImageViewCompat;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class AppCompatImageHelper {
     private TintInfo mImageTint;
     private TintInfo mInternalImageTint;
@@ -109,23 +110,23 @@ public class AppCompatImageHelper {
     public void loadFromAttributes(AttributeSet attributeSet, int i) {
         int resourceId;
         Context context = this.mView.getContext();
-        int[] iArr = C0257R.styleable.AppCompatImageView;
+        int[] iArr = R.styleable.AppCompatImageView;
         TintTypedArray obtainStyledAttributes = TintTypedArray.obtainStyledAttributes(context, attributeSet, iArr, i, 0);
         ImageView imageView = this.mView;
         ViewCompat.saveAttributeDataForStyleable(imageView, imageView.getContext(), iArr, attributeSet, obtainStyledAttributes.getWrappedTypeArray(), i, 0);
         try {
             Drawable drawable = this.mView.getDrawable();
-            if (drawable == null && (resourceId = obtainStyledAttributes.getResourceId(C0257R.styleable.AppCompatImageView_srcCompat, -1)) != -1 && (drawable = AppCompatResources.getDrawable(this.mView.getContext(), resourceId)) != null) {
+            if (drawable == null && (resourceId = obtainStyledAttributes.getResourceId(R.styleable.AppCompatImageView_srcCompat, -1)) != -1 && (drawable = AppCompatResources.getDrawable(this.mView.getContext(), resourceId)) != null) {
                 this.mView.setImageDrawable(drawable);
             }
             if (drawable != null) {
                 DrawableUtils.fixDrawable(drawable);
             }
-            int i2 = C0257R.styleable.AppCompatImageView_tint;
+            int i2 = R.styleable.AppCompatImageView_tint;
             if (obtainStyledAttributes.hasValue(i2)) {
                 ImageViewCompat.setImageTintList(this.mView, obtainStyledAttributes.getColorStateList(i2));
             }
-            int i3 = C0257R.styleable.AppCompatImageView_tintMode;
+            int i3 = R.styleable.AppCompatImageView_tintMode;
             if (obtainStyledAttributes.hasValue(i3)) {
                 ImageViewCompat.setImageTintMode(this.mView, DrawableUtils.parseTintMode(obtainStyledAttributes.getInt(i3, -1), null));
             }

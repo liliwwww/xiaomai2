@@ -10,12 +10,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.constraintlayout.motion.widget.MotionLayout;
-import androidx.constraintlayout.widget.C0923R;
+import androidx.constraintlayout.widget.R;
 import androidx.core.widget.NestedScrollView;
 import org.xmlpull.v1.XmlPullParser;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class TouchResponse {
     public static final int COMPLETE_MODE_CONTINUOUS_VELOCITY = 0;
     public static final int COMPLETE_MODE_SPRING = 1;
@@ -112,15 +112,15 @@ class TouchResponse {
         int indexCount = typedArray.getIndexCount();
         for (int i = 0; i < indexCount; i++) {
             int index = typedArray.getIndex(i);
-            if (index == C0923R.styleable.OnSwipe_touchAnchorId) {
+            if (index == R.styleable.OnSwipe_touchAnchorId) {
                 this.mTouchAnchorId = typedArray.getResourceId(index, this.mTouchAnchorId);
-            } else if (index == C0923R.styleable.OnSwipe_touchAnchorSide) {
+            } else if (index == R.styleable.OnSwipe_touchAnchorSide) {
                 int i2 = typedArray.getInt(index, this.mTouchAnchorSide);
                 this.mTouchAnchorSide = i2;
                 float[][] fArr = TOUCH_SIDES;
                 this.mTouchAnchorX = fArr[i2][0];
                 this.mTouchAnchorY = fArr[i2][1];
-            } else if (index == C0923R.styleable.OnSwipe_dragDirection) {
+            } else if (index == R.styleable.OnSwipe_dragDirection) {
                 int i3 = typedArray.getInt(index, this.mTouchSide);
                 this.mTouchSide = i3;
                 float[][] fArr2 = TOUCH_DIRECTION;
@@ -132,44 +132,44 @@ class TouchResponse {
                     this.mTouchDirectionX = Float.NaN;
                     this.mIsRotateMode = true;
                 }
-            } else if (index == C0923R.styleable.OnSwipe_maxVelocity) {
+            } else if (index == R.styleable.OnSwipe_maxVelocity) {
                 this.mMaxVelocity = typedArray.getFloat(index, this.mMaxVelocity);
-            } else if (index == C0923R.styleable.OnSwipe_maxAcceleration) {
+            } else if (index == R.styleable.OnSwipe_maxAcceleration) {
                 this.mMaxAcceleration = typedArray.getFloat(index, this.mMaxAcceleration);
-            } else if (index == C0923R.styleable.OnSwipe_moveWhenScrollAtTop) {
+            } else if (index == R.styleable.OnSwipe_moveWhenScrollAtTop) {
                 this.mMoveWhenScrollAtTop = typedArray.getBoolean(index, this.mMoveWhenScrollAtTop);
-            } else if (index == C0923R.styleable.OnSwipe_dragScale) {
+            } else if (index == R.styleable.OnSwipe_dragScale) {
                 this.mDragScale = typedArray.getFloat(index, this.mDragScale);
-            } else if (index == C0923R.styleable.OnSwipe_dragThreshold) {
+            } else if (index == R.styleable.OnSwipe_dragThreshold) {
                 this.mDragThreshold = typedArray.getFloat(index, this.mDragThreshold);
-            } else if (index == C0923R.styleable.OnSwipe_touchRegionId) {
+            } else if (index == R.styleable.OnSwipe_touchRegionId) {
                 this.mTouchRegionId = typedArray.getResourceId(index, this.mTouchRegionId);
-            } else if (index == C0923R.styleable.OnSwipe_onTouchUp) {
+            } else if (index == R.styleable.OnSwipe_onTouchUp) {
                 this.mOnTouchUp = typedArray.getInt(index, this.mOnTouchUp);
-            } else if (index == C0923R.styleable.OnSwipe_nestedScrollFlags) {
+            } else if (index == R.styleable.OnSwipe_nestedScrollFlags) {
                 this.mFlags = typedArray.getInteger(index, 0);
-            } else if (index == C0923R.styleable.OnSwipe_limitBoundsTo) {
+            } else if (index == R.styleable.OnSwipe_limitBoundsTo) {
                 this.mLimitBoundsTo = typedArray.getResourceId(index, 0);
-            } else if (index == C0923R.styleable.OnSwipe_rotationCenterId) {
+            } else if (index == R.styleable.OnSwipe_rotationCenterId) {
                 this.mRotationCenterId = typedArray.getResourceId(index, this.mRotationCenterId);
-            } else if (index == C0923R.styleable.OnSwipe_springDamping) {
+            } else if (index == R.styleable.OnSwipe_springDamping) {
                 this.mSpringDamping = typedArray.getFloat(index, this.mSpringDamping);
-            } else if (index == C0923R.styleable.OnSwipe_springMass) {
+            } else if (index == R.styleable.OnSwipe_springMass) {
                 this.mSpringMass = typedArray.getFloat(index, this.mSpringMass);
-            } else if (index == C0923R.styleable.OnSwipe_springStiffness) {
+            } else if (index == R.styleable.OnSwipe_springStiffness) {
                 this.mSpringStiffness = typedArray.getFloat(index, this.mSpringStiffness);
-            } else if (index == C0923R.styleable.OnSwipe_springStopThreshold) {
+            } else if (index == R.styleable.OnSwipe_springStopThreshold) {
                 this.mSpringStopThreshold = typedArray.getFloat(index, this.mSpringStopThreshold);
-            } else if (index == C0923R.styleable.OnSwipe_springBoundary) {
+            } else if (index == R.styleable.OnSwipe_springBoundary) {
                 this.mSpringBoundary = typedArray.getInt(index, this.mSpringBoundary);
-            } else if (index == C0923R.styleable.OnSwipe_autoCompleteMode) {
+            } else if (index == R.styleable.OnSwipe_autoCompleteMode) {
                 this.mAutoCompleteMode = typedArray.getInt(index, this.mAutoCompleteMode);
             }
         }
     }
 
     private void fillFromAttributeList(Context context, AttributeSet attributeSet) {
-        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0923R.styleable.OnSwipe);
+        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, R.styleable.OnSwipe);
         fill(obtainStyledAttributes);
         obtainStyledAttributes.recycle();
     }
@@ -359,7 +359,7 @@ class TouchResponse {
         float f6 = !Float.isNaN(f5) ? (f5 / 3.0f) + progress3 : progress3;
         if (f6 == 0.0f || f6 == 1.0f || (i2 = this.mOnTouchUp) == 3) {
             if (0.0f >= f6 || 1.0f <= f6) {
-                this.mMotionLayout.setState(MotionLayout.TransitionState.FINISHED);
+                this.mMotionLayout.setState(MotionLayout$TransitionState.FINISHED);
                 return;
             }
             return;
@@ -379,7 +379,7 @@ class TouchResponse {
         }
         this.mMotionLayout.touchAnimateTo(this.mOnTouchUp, f7, f5);
         if (0.0f >= progress3 || 1.0f <= progress3) {
-            this.mMotionLayout.setState(MotionLayout.TransitionState.FINISHED);
+            this.mMotionLayout.setState(MotionLayout$TransitionState.FINISHED);
         }
     }
 
@@ -389,12 +389,12 @@ class TouchResponse {
     /* JADX WARN: Removed duplicated region for block: B:97:0x0297  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     void processTouchRotateEvent(android.view.MotionEvent r24, androidx.constraintlayout.motion.widget.MotionLayout.MotionTracker r25, int r26, androidx.constraintlayout.motion.widget.MotionScene r27) {
         /*
             Method dump skipped, instructions count: 840
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.constraintlayout.motion.widget.TouchResponse.processTouchRotateEvent(android.view.MotionEvent, androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker, int, androidx.constraintlayout.motion.widget.MotionScene):void");
     }
@@ -526,17 +526,13 @@ class TouchResponse {
                     return false;
                 }
             });
-            nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener(this) { // from class: androidx.constraintlayout.motion.widget.TouchResponse.2
-                @Override // androidx.core.widget.NestedScrollView.OnScrollChangeListener
-                public void onScrollChange(NestedScrollView nestedScrollView2, int i2, int i3, int i4, int i5) {
-                }
-            });
+            nestedScrollView.setOnScrollChangeListener(new 2(this));
         }
     }
 
     public String toString() {
         if (Float.isNaN(this.mTouchDirectionX)) {
-            return Key.ROTATION;
+            return "rotation";
         }
         return this.mTouchDirectionX + " , " + this.mTouchDirectionY;
     }

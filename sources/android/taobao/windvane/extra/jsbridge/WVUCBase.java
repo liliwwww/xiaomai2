@@ -1,13 +1,13 @@
 package android.taobao.windvane.extra.jsbridge;
 
-import android.taobao.windvane.extra.p002uc.WVUCWebView;
+import android.taobao.windvane.extra.uc.WVUCWebView;
 import android.taobao.windvane.jsbridge.WVApiPlugin;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.taobao.windvane.util.TaoLog;
 import com.uc.webview.export.extension.UCCore;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVUCBase extends WVApiPlugin {
     @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
@@ -20,7 +20,7 @@ public class WVUCBase extends WVApiPlugin {
             return true;
         } catch (Exception e) {
             wVCallBackContext.error("Only UCSDKSupport !");
-            TaoLog.m18d("WVUCBase", "UCCore :: onLowMemory error : " + e.getMessage());
+            TaoLog.d("WVUCBase", "UCCore :: onLowMemory error : " + e.getMessage());
             return false;
         }
     }

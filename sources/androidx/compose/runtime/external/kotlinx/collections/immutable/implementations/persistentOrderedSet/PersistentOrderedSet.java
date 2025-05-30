@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class PersistentOrderedSet<E> extends AbstractSet<E> implements PersistentSet<E> {
 
     @NotNull
@@ -61,12 +61,12 @@ public final class PersistentOrderedSet<E> extends AbstractSet<E> implements Per
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // java.util.Set, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     public /* bridge */ /* synthetic */ PersistentCollection add(Object obj) {
         return add((PersistentOrderedSet<E>) obj);
     }
 
-    @Override // java.util.Set, java.util.Collection
+    @Override // java.util.Collection
     public boolean contains(Object obj) {
         return this.hashMap.containsKey(obj);
     }
@@ -90,34 +90,34 @@ public final class PersistentOrderedSet<E> extends AbstractSet<E> implements Per
         return this.hashMap.size();
     }
 
-    @Override // java.util.Set, java.util.Collection, java.lang.Iterable
+    @Override // java.util.Collection, java.lang.Iterable
     @NotNull
     public Iterator<E> iterator() {
         return new PersistentOrderedSetIterator(this.firstElement, this.hashMap);
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // java.util.Set, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     public /* bridge */ /* synthetic */ PersistentCollection remove(Object obj) {
         return remove((PersistentOrderedSet<E>) obj);
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentSet, java.util.Set, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentSet, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     @NotNull
     public PersistentSet<E> add(E e) {
         if (this.hashMap.containsKey(e)) {
             return this;
         }
         if (isEmpty()) {
-            return new PersistentOrderedSet(e, e, this.hashMap.put((PersistentHashMap<E, Links>) e, (E) new Links()));
+            return new PersistentOrderedSet(e, e, this.hashMap.put(e, new Links()));
         }
         Object obj = this.lastElement;
-        Links links = this.hashMap.get(obj);
-        Intrinsics.checkNotNull(links);
-        return new PersistentOrderedSet(this.firstElement, e, this.hashMap.put((PersistentHashMap<E, Links>) obj, (Object) links.withNext(e)).put((PersistentHashMap) e, (E) new Links(obj)));
+        Object obj2 = this.hashMap.get(obj);
+        Intrinsics.checkNotNull(obj2);
+        return new PersistentOrderedSet(this.firstElement, e, this.hashMap.put(obj, ((Links) obj2).withNext(e)).put(e, new Links(obj)));
     }
 
-    @Override // java.util.Set, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     @NotNull
     public PersistentSet<E> addAll(@NotNull Collection<? extends E> collection) {
         Intrinsics.checkNotNullParameter(collection, "elements");
@@ -132,35 +132,34 @@ public final class PersistentOrderedSet<E> extends AbstractSet<E> implements Per
         return new PersistentOrderedSetBuilder(this);
     }
 
-    @Override // java.util.Set, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     @NotNull
     public PersistentSet<E> clear() {
         return Companion.emptyOf$runtime_release();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentSet, java.util.Set, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentSet, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     @NotNull
     public PersistentSet<E> remove(E e) {
-        Links links = this.hashMap.get(e);
+        Links links = (Links) this.hashMap.get(e);
         if (links == null) {
             return this;
         }
-        PersistentHashMap remove = this.hashMap.remove((PersistentHashMap<E, Links>) e);
+        PersistentHashMap remove = this.hashMap.remove(e);
         if (links.getHasPrevious()) {
-            V v = remove.get(links.getPrevious());
-            Intrinsics.checkNotNull(v);
-            remove = remove.put((PersistentHashMap) links.getPrevious(), (Object) ((Links) v).withNext(links.getNext()));
+            Object obj = remove.get(links.getPrevious());
+            Intrinsics.checkNotNull(obj);
+            remove = remove.put(links.getPrevious(), ((Links) obj).withNext(links.getNext()));
         }
         if (links.getHasNext()) {
-            V v2 = remove.get(links.getNext());
-            Intrinsics.checkNotNull(v2);
-            remove = remove.put((PersistentHashMap) links.getNext(), (Object) ((Links) v2).withPrevious(links.getPrevious()));
+            Object obj2 = remove.get(links.getNext());
+            Intrinsics.checkNotNull(obj2);
+            remove = remove.put(links.getNext(), ((Links) obj2).withPrevious(links.getPrevious()));
         }
         return new PersistentOrderedSet(!links.getHasPrevious() ? links.getNext() : this.firstElement, !links.getHasNext() ? links.getPrevious() : this.lastElement, remove);
     }
 
-    @Override // java.util.Set, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     @NotNull
     public PersistentSet<E> retainAll(@NotNull Collection<? extends E> collection) {
         Intrinsics.checkNotNullParameter(collection, "elements");
@@ -169,7 +168,7 @@ public final class PersistentOrderedSet<E> extends AbstractSet<E> implements Per
         return builder.build();
     }
 
-    @Override // java.util.Set, java.util.Collection, androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection
+    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection, java.util.Collection
     @NotNull
     public PersistentSet<E> removeAll(@NotNull Collection<? extends E> collection) {
         Intrinsics.checkNotNullParameter(collection, "elements");

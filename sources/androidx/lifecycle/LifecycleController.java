@@ -10,7 +10,7 @@ import tb.wd2;
 
 /* compiled from: Taobao */
 @MainThread
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LifecycleController {
 
     @NotNull

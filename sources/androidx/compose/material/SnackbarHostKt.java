@@ -3,9 +3,6 @@ package androidx.compose.material;
 import androidx.compose.animation.core.Animatable;
 import androidx.compose.animation.core.AnimatableKt;
 import androidx.compose.animation.core.AnimationSpec;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.platform.AccessibilityManager;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
 import androidx.compose.runtime.Composer;
@@ -13,18 +10,21 @@ import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.EffectsKt;
 import androidx.compose.runtime.ScopeUpdateScope;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.platform.AccessibilityManager;
+import androidx.compose.ui.platform.CompositionLocalsKt;
 import androidx.core.location.LocationRequestCompat;
 import kotlin.NoWhenBranchMatchedException;
 import kotlin.Unit;
+import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function0;
-import kotlin.jvm.functions.Function2;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SnackbarHostKt {
     private static final int SnackbarFadeInMillis = 150;
     private static final int SnackbarFadeOutMillis = 75;
@@ -62,19 +62,19 @@ public final class SnackbarHostKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void FadeInFadeOutWithScale(final androidx.compose.material.SnackbarData r18, androidx.compose.p004ui.Modifier r19, final kotlin.jvm.functions.Function3<? super androidx.compose.material.SnackbarData, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r20, androidx.compose.runtime.Composer r21, final int r22, final int r23) {
+    public static final void FadeInFadeOutWithScale(final androidx.compose.material.SnackbarData r18, androidx.compose.ui.Modifier r19, final kotlin.jvm.functions.Function3<? super androidx.compose.material.SnackbarData, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r20, androidx.compose.runtime.Composer r21, final int r22, final int r23) {
         /*
             Method dump skipped, instructions count: 630
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SnackbarHostKt.FadeInFadeOutWithScale(androidx.compose.material.SnackbarData, androidx.compose.ui.Modifier, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
 
     @Composable
     @ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable]]")
-    public static final void SnackbarHost(@NotNull final SnackbarHostState snackbarHostState, @Nullable Modifier modifier, @Nullable Function3<? super SnackbarData, ? super Composer, ? super Integer, Unit> function3, @Nullable Composer composer, final int i, final int i2) {
+    public static final void SnackbarHost(@NotNull SnackbarHostState snackbarHostState, @Nullable Modifier modifier, @Nullable Function3<? super SnackbarData, ? super Composer, ? super Integer, Unit> function3, @Nullable Composer composer, int i, int i2) {
         int i3;
         Intrinsics.checkNotNullParameter(snackbarHostState, "hostState");
         Composer startRestartGroup = composer.startRestartGroup(431012348);
@@ -104,40 +104,25 @@ public final class SnackbarHostKt {
                 modifier = Modifier.Companion;
             }
             if (i5 != 0) {
-                function3 = ComposableSingletons$SnackbarHostKt.INSTANCE.m2047getLambda1$material_release();
+                function3 = ComposableSingletons$SnackbarHostKt.INSTANCE.m573getLambda1$material_release();
             }
             if (ComposerKt.isTraceInProgress()) {
                 ComposerKt.traceEventStart(431012348, i3, -1, "androidx.compose.material.SnackbarHost (SnackbarHost.kt:150)");
             }
             SnackbarData currentSnackbarData = snackbarHostState.getCurrentSnackbarData();
-            EffectsKt.LaunchedEffect(currentSnackbarData, new SnackbarHostKt$SnackbarHost$1(currentSnackbarData, (AccessibilityManager) startRestartGroup.consume(CompositionLocalsKt.getLocalAccessibilityManager()), null), startRestartGroup, 64);
+            EffectsKt.LaunchedEffect(currentSnackbarData, new SnackbarHost.1(currentSnackbarData, (AccessibilityManager) startRestartGroup.consume(CompositionLocalsKt.getLocalAccessibilityManager()), (Continuation) null), startRestartGroup, 64);
             FadeInFadeOutWithScale(snackbarHostState.getCurrentSnackbarData(), modifier, function3, startRestartGroup, (i3 & 112) | (i3 & 896), 0);
             if (ComposerKt.isTraceInProgress()) {
                 ComposerKt.traceEventEnd();
             }
         }
-        final Modifier modifier2 = modifier;
-        final Function3<? super SnackbarData, ? super Composer, ? super Integer, Unit> function32 = function3;
+        Modifier modifier2 = modifier;
+        Function3<? super SnackbarData, ? super Composer, ? super Integer, Unit> function32 = function3;
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.material.SnackbarHostKt$SnackbarHost$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                invoke((Composer) obj, ((Number) obj2).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i6) {
-                SnackbarHostKt.SnackbarHost(SnackbarHostState.this, modifier2, function32, composer2, i | 1, i2);
-            }
-        });
+        endRestartGroup.updateScope(new SnackbarHost.2(snackbarHostState, modifier2, function32, i, i2));
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -145,16 +130,7 @@ public final class SnackbarHostKt {
     public static final State<Float> animatedOpacity(AnimationSpec<Float> animationSpec, boolean z, Function0<Unit> function0, Composer composer, int i, int i2) {
         composer.startReplaceableGroup(1016418159);
         if ((i2 & 4) != 0) {
-            function0 = new Function0<Unit>() { // from class: androidx.compose.material.SnackbarHostKt$animatedOpacity$1
-                public /* bridge */ /* synthetic */ Object invoke() {
-                    m2222invoke();
-                    return Unit.INSTANCE;
-                }
-
-                /* renamed from: invoke, reason: collision with other method in class */
-                public final void m2222invoke() {
-                }
-            };
+            function0 = animatedOpacity.1.INSTANCE;
         }
         Function0<Unit> function02 = function0;
         if (ComposerKt.isTraceInProgress()) {
@@ -168,7 +144,7 @@ public final class SnackbarHostKt {
         }
         composer.endReplaceableGroup();
         Animatable animatable = (Animatable) rememberedValue;
-        EffectsKt.LaunchedEffect(Boolean.valueOf(z), new SnackbarHostKt$animatedOpacity$2(animatable, z, animationSpec, function02, null), composer, ((i >> 3) & 14) | 64);
+        EffectsKt.LaunchedEffect(Boolean.valueOf(z), new animatedOpacity.2(animatable, z, animationSpec, function02, (Continuation) null), composer, ((i >> 3) & 14) | 64);
         State<Float> asState = animatable.asState();
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();

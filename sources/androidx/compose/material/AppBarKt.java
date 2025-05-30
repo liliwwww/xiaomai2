@@ -1,16 +1,16 @@
 package androidx.compose.material;
 
 import androidx.compose.foundation.layout.SizeKt;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.unit.Dp;
 import kotlin.Pair;
 import kotlin.TuplesKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AppBarKt {
-    private static final float AppBarHeight = C0856Dp.m5216constructorimpl(56);
+    private static final float AppBarHeight = Dp.constructor-impl(56);
     private static final float AppBarHorizontalPadding;
     private static final float BottomAppBarCutoutOffset;
     private static final float BottomAppBarRoundedEdgeRadius;
@@ -23,13 +23,13 @@ public final class AppBarKt {
 
     static {
         float f = 4;
-        float m5216constructorimpl = C0856Dp.m5216constructorimpl(f);
-        AppBarHorizontalPadding = m5216constructorimpl;
+        float f2 = Dp.constructor-impl(f);
+        AppBarHorizontalPadding = f2;
         Modifier.Companion companion = Modifier.Companion;
-        TitleInsetWithoutIcon = SizeKt.m1442width3ABfNKs(companion, C0856Dp.m5216constructorimpl(C0856Dp.m5216constructorimpl(16) - m5216constructorimpl));
-        TitleIconModifier = SizeKt.m1442width3ABfNKs(SizeKt.fillMaxHeight$default(companion, 0.0f, 1, null), C0856Dp.m5216constructorimpl(C0856Dp.m5216constructorimpl(72) - m5216constructorimpl));
-        BottomAppBarCutoutOffset = C0856Dp.m5216constructorimpl(8);
-        BottomAppBarRoundedEdgeRadius = C0856Dp.m5216constructorimpl(f);
+        TitleInsetWithoutIcon = SizeKt.m379width3ABfNKs(companion, Dp.constructor-impl(Dp.constructor-impl(16) - f2));
+        TitleIconModifier = SizeKt.m379width3ABfNKs(SizeKt.fillMaxHeight$default(companion, 0.0f, 1, null), Dp.constructor-impl(Dp.constructor-impl(72) - f2));
+        BottomAppBarCutoutOffset = Dp.constructor-impl(8);
+        BottomAppBarRoundedEdgeRadius = Dp.constructor-impl(f);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -53,14 +53,14 @@ public final class AppBarKt {
     /* renamed from: AppBar-celAv9A, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m1918AppBarcelAv9A(final long r24, final long r26, final float r28, final androidx.compose.foundation.layout.PaddingValues r29, final androidx.compose.p004ui.graphics.Shape r30, androidx.compose.p004ui.Modifier r31, final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r32, androidx.compose.runtime.Composer r33, final int r34, final int r35) {
+    public static final void m657AppBarcelAv9A(long r24, long r26, float r28, androidx.compose.foundation.layout.PaddingValues r29, androidx.compose.ui.graphics.Shape r30, androidx.compose.ui.Modifier r31, kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r32, androidx.compose.runtime.Composer r33, int r34, int r35) {
         /*
             Method dump skipped, instructions count: 354
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.AppBarKt.m1918AppBarcelAv9A(long, long, float, androidx.compose.foundation.layout.PaddingValues, androidx.compose.ui.graphics.Shape, androidx.compose.ui.Modifier, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.AppBarKt.m657AppBarcelAv9A(long, long, float, androidx.compose.foundation.layout.PaddingValues, androidx.compose.ui.graphics.Shape, androidx.compose.ui.Modifier, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:104:0x0089  */
@@ -89,14 +89,14 @@ public final class AppBarKt {
     /* renamed from: BottomAppBar-Y1yfwus, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m1919BottomAppBarY1yfwus(@org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r25, long r26, long r28, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r30, float r31, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r32, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r33, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r34, final int r35, final int r36) {
+    public static final void m658BottomAppBarY1yfwus(@org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r25, long r26, long r28, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r30, float r31, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r32, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r33, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r34, int r35, int r36) {
         /*
             Method dump skipped, instructions count: 502
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.AppBarKt.m1919BottomAppBarY1yfwus(androidx.compose.ui.Modifier, long, long, androidx.compose.ui.graphics.Shape, float, androidx.compose.foundation.layout.PaddingValues, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.AppBarKt.m658BottomAppBarY1yfwus(androidx.compose.ui.Modifier, long, long, androidx.compose.ui.graphics.Shape, float, androidx.compose.foundation.layout.PaddingValues, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:26:0x0086  */
@@ -120,14 +120,14 @@ public final class AppBarKt {
     /* renamed from: TopAppBar-HsRjFd4, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m1920TopAppBarHsRjFd4(@org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r23, long r24, long r26, float r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r29, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, final int r32, final int r33) {
+    public static final void m659TopAppBarHsRjFd4(@org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r23, long r24, long r26, float r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r29, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, int r32, int r33) {
         /*
             Method dump skipped, instructions count: 428
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.AppBarKt.m1920TopAppBarHsRjFd4(androidx.compose.ui.Modifier, long, long, float, androidx.compose.foundation.layout.PaddingValues, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.AppBarKt.m659TopAppBarHsRjFd4(androidx.compose.ui.Modifier, long, long, float, androidx.compose.foundation.layout.PaddingValues, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:104:0x004d  */
@@ -163,14 +163,14 @@ public final class AppBarKt {
     /* renamed from: TopAppBar-xWeB9-s, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m1921TopAppBarxWeB9s(@org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r25, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r26, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r27, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r28, long r29, long r31, float r33, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r34, final int r35, final int r36) {
+    public static final void m660TopAppBarxWeB9s(@org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r25, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r26, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r27, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r28, long r29, long r31, float r33, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r34, int r35, int r36) {
         /*
             Method dump skipped, instructions count: 475
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.AppBarKt.m1921TopAppBarxWeB9s(kotlin.jvm.functions.Function2, androidx.compose.ui.Modifier, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function3, long, long, float, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.AppBarKt.m660TopAppBarxWeB9s(kotlin.jvm.functions.Function2, androidx.compose.ui.Modifier, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function3, long, long, float, androidx.compose.runtime.Composer, int, int):void");
     }
 
     public static final float calculateCutoutCircleYIntercept(float f, float f2) {

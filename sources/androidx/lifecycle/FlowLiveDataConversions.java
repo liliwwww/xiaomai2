@@ -1,13 +1,14 @@
 package androidx.lifecycle;
 
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
 import androidx.annotation.RequiresApi;
 import androidx.arch.core.executor.ArchTaskExecutor;
 import java.time.Duration;
+import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
 import kotlin.coroutines.EmptyCoroutineContext;
 import kotlin.jvm.JvmName;
 import kotlin.jvm.JvmOverloads;
+import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
 import kotlinx.coroutines.flow.Flow;
 import kotlinx.coroutines.flow.StateFlow;
@@ -16,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @JvmName(name = "FlowLiveDataConversions")
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class FlowLiveDataConversions {
     @NotNull
     public static final <T> Flow<T> asFlow(@NotNull LiveData<T> liveData) {
@@ -39,21 +40,20 @@ public final class FlowLiveDataConversions {
         return asLiveData$default(flow, coroutineContext, 0L, 2, (Object) null);
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @JvmOverloads
     @NotNull
     public static final <T> LiveData<T> asLiveData(@NotNull Flow<? extends T> flow, @NotNull CoroutineContext coroutineContext, long j) {
         Intrinsics.checkNotNullParameter(flow, "<this>");
         Intrinsics.checkNotNullParameter(coroutineContext, "context");
-        ComputableLiveData$_liveData$1 computableLiveData$_liveData$1 = (LiveData<T>) CoroutineLiveDataKt.liveData(coroutineContext, j, new FlowLiveDataConversions$asLiveData$1(flow, null));
+        LiveData<T> liveData = CoroutineLiveDataKt.liveData(coroutineContext, j, (Function2) new asLiveData.1(flow, (Continuation) null));
         if (flow instanceof StateFlow) {
             if (ArchTaskExecutor.getInstance().isMainThread()) {
-                computableLiveData$_liveData$1.setValue(((StateFlow) flow).getValue());
+                liveData.setValue(((StateFlow) flow).getValue());
             } else {
-                computableLiveData$_liveData$1.postValue(((StateFlow) flow).getValue());
+                liveData.postValue(((StateFlow) flow).getValue());
             }
         }
-        return computableLiveData$_liveData$1;
+        return liveData;
     }
 
     public static /* synthetic */ LiveData asLiveData$default(Flow flow, CoroutineContext coroutineContext, long j, int i, Object obj) {
@@ -78,7 +78,7 @@ public final class FlowLiveDataConversions {
     public static final <T> LiveData<T> asLiveData(@NotNull Flow<? extends T> flow, @NotNull CoroutineContext coroutineContext, @NotNull Duration duration) {
         Intrinsics.checkNotNullParameter(flow, "<this>");
         Intrinsics.checkNotNullParameter(coroutineContext, "context");
-        Intrinsics.checkNotNullParameter(duration, BasePreInitManager.TIMEOUT);
+        Intrinsics.checkNotNullParameter(duration, "timeout");
         return asLiveData(flow, coroutineContext, Api26Impl.INSTANCE.toMillis(duration));
     }
 }

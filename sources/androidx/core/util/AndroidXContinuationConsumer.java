@@ -7,7 +7,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class AndroidXContinuationConsumer<T> extends AtomicBoolean implements Consumer<T> {
 
     @NotNull
@@ -21,7 +21,6 @@ final class AndroidXContinuationConsumer<T> extends AtomicBoolean implements Con
         this.continuation = continuation;
     }
 
-    @Override // androidx.core.util.Consumer
     public void accept(T t) {
         if (compareAndSet(false, true)) {
             Continuation<T> continuation = this.continuation;

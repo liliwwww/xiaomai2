@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ViewModelLazy<VM extends ViewModel> implements Lazy<VM> {
 
     @Nullable
@@ -60,7 +60,7 @@ public final class ViewModelLazy<VM extends ViewModel> implements Lazy<VM> {
 
     @NotNull
     /* renamed from: getValue, reason: merged with bridge method [inline-methods] */
-    public VM m5611getValue() {
+    public VM m2342getValue() {
         VM vm = this.cached;
         if (vm != null) {
             return vm;
@@ -74,7 +74,7 @@ public final class ViewModelLazy<VM extends ViewModel> implements Lazy<VM> {
         this(kClass, function0, function02, (i & 8) != 0 ? new Function0<CreationExtras.Empty>() { // from class: androidx.lifecycle.ViewModelLazy.1
             @NotNull
             /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final CreationExtras.Empty m5612invoke() {
+            public final CreationExtras.Empty m2343invoke() {
                 return CreationExtras.Empty.INSTANCE;
             }
         } : function03);

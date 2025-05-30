@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.core.content.ContextCompat;
 import androidx.core.internal.view.SupportMenu;
 import androidx.core.view.ActionProvider;
@@ -31,8 +32,8 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MenuBuilder implements SupportMenu {
     private static final String ACTION_VIEW_STATES_KEY = "android:menu:actionviewstates";
     private static final String EXPANDED_ACTION_VIEW_ID = "android:menu:expandedactionview";
@@ -65,22 +66,6 @@ public class MenuBuilder implements SupportMenu {
     private ArrayList<MenuItemImpl> mActionItems = new ArrayList<>();
     private ArrayList<MenuItemImpl> mNonActionItems = new ArrayList<>();
     private boolean mIsActionItemsStale = true;
-
-    /* compiled from: Taobao */
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes2.dex */
-    public interface Callback {
-        boolean onMenuItemSelected(@NonNull MenuBuilder menuBuilder, @NonNull MenuItem menuItem);
-
-        void onMenuModeChange(@NonNull MenuBuilder menuBuilder);
-    }
-
-    /* compiled from: Taobao */
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes2.dex */
-    public interface ItemInvoker {
-        boolean invokeItem(MenuItemImpl menuItemImpl);
-    }
 
     public MenuBuilder(Context context) {
         this.mContext = context;
@@ -947,9 +932,9 @@ public class MenuBuilder implements SupportMenu {
 
     @Override // android.view.Menu
     public SubMenu addSubMenu(int i, int i2, int i3, CharSequence charSequence) {
-        MenuItemImpl menuItemImpl = (MenuItemImpl) addInternal(i, i2, i3, charSequence);
-        SubMenuBuilder subMenuBuilder = new SubMenuBuilder(this.mContext, this, menuItemImpl);
-        menuItemImpl.setSubMenu(subMenuBuilder);
+        MenuItemImpl addInternal = addInternal(i, i2, i3, charSequence);
+        SubMenuBuilder subMenuBuilder = new SubMenuBuilder(this.mContext, this, addInternal);
+        addInternal.setSubMenu(subMenuBuilder);
         return subMenuBuilder;
     }
 

@@ -1,18 +1,15 @@
 package android.taobao.windvane.monitor;
 
 import android.net.Uri;
-import android.taobao.windvane.connect.HttpConnector;
-import android.taobao.windvane.monitor.WVPerformanceMonitorInterface;
 import android.text.TextUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVMonitorData {
     public String url;
     public boolean isInit = false;
@@ -20,28 +17,15 @@ public class WVMonitorData {
     public long init = 0;
     public String performanceInfo = "";
     public int wvAppMonitor = 1;
-    public stat stat = new stat();
-    public extra args = new extra();
+    public stat stat = new stat(this);
+    public extra args = new extra(this);
     public String protocolType = "";
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public class extra {
-        public int statusCode;
-        public String via;
-        public WVPerformanceMonitorInterface.NetStat netStat = null;
-        public Map<String, Long> selfDefine = new ConcurrentHashMap();
-        public Map<String, resStat> resStat = new ConcurrentHashMap();
-
-        public extra() {
-        }
-    }
 
     /* compiled from: Taobao */
     public static class resStat {
         public long end;
         public int fromType;
-        public WVPerformanceMonitorInterface.NetStat netStat;
+        public WVPerformanceMonitorInterface$NetStat netStat;
         public long start;
         public int statusCode;
         public String via;
@@ -52,8 +36,8 @@ public class WVMonitorData {
         public String protocolType = "";
 
         public Map<String, String> toUtMap() {
-            WVPerformanceMonitorInterface.NetStat netStat = this.netStat;
-            Map<String, String> hashMap = netStat == null ? new HashMap<>() : WVMonitorData.toUtMap(netStat);
+            WVPerformanceMonitorInterface$NetStat wVPerformanceMonitorInterface$NetStat = this.netStat;
+            Map<String, String> hashMap = wVPerformanceMonitorInterface$NetStat == null ? new HashMap<>() : WVMonitorData.toUtMap(wVPerformanceMonitorInterface$NetStat);
             int i = this.statusCode;
             if (i > 0) {
                 hashMap.put("statusCode", String.valueOf(i));
@@ -80,58 +64,37 @@ public class WVMonitorData {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public class stat {
-        public long onLoad = 0;
-        public long onDomLoad = 0;
-        public int finish = 0;
-        public int fromType = 1;
-        public long firstByteTime = 0;
-        public String packageAppVersion = "";
-        public String packageAppName = "";
-        public String appSeq = "";
-        public long matchCost = -1;
-        public int verifyError = 0;
-        public long verifyResTime = 0;
-        public long verifyTime = 0;
-        public long allVerifyTime = 0;
-        public int verifyCacheSize = 0;
-
-        public stat() {
-        }
-    }
-
     public static resStat createNewResStatInstance() {
         return new resStat();
     }
 
-    public static ArrayList<String> toUtArray(WVPerformanceMonitorInterface.NetStat netStat) {
+    public static ArrayList<String> toUtArray(WVPerformanceMonitorInterface$NetStat wVPerformanceMonitorInterface$NetStat) {
         ArrayList<String> arrayList = new ArrayList<>();
-        for (Map.Entry<String, String> entry : toUtMap(netStat).entrySet()) {
+        for (Map.Entry<String, String> entry : toUtMap(wVPerformanceMonitorInterface$NetStat).entrySet()) {
             arrayList.add(entry.getKey() + "=" + entry.getValue());
         }
         return arrayList;
     }
 
-    public static Map<String, String> toUtMap(WVPerformanceMonitorInterface.NetStat netStat) {
+    public static Map<String, String> toUtMap(WVPerformanceMonitorInterface$NetStat wVPerformanceMonitorInterface$NetStat) {
         HashMap hashMap = new HashMap();
-        hashMap.put("net_dnsTime", String.valueOf(netStat.dnsTime));
-        hashMap.put("net_isDNSTimeout", String.valueOf((int) netStat.isDNSTimeout));
-        hashMap.put("net_oneWayTime", String.valueOf(netStat.oneWayTime));
-        hashMap.put("net_tcpLinkDate", String.valueOf(netStat.tcpLinkDate));
-        hashMap.put("net_waitTime", String.valueOf(netStat.waitTime));
-        hashMap.put("net_postBodyTime", String.valueOf(netStat.postBodyTime));
-        hashMap.put("net_firstDataTime", String.valueOf(netStat.firstDataTime));
-        hashMap.put("net_serverRT", String.valueOf(netStat.serverRT));
-        hashMap.put("net_totalSize", String.valueOf(netStat.totalSize));
-        hashMap.put("net_recDataTime", String.valueOf(netStat.recDataTime));
-        hashMap.put("net_isSSL", String.valueOf(netStat.isSSL));
-        hashMap.put("net_dataSpeed", String.valueOf(netStat.dataSpeed));
-        hashMap.put("net_spdy", String.valueOf(netStat.spdy));
+        hashMap.put("net_dnsTime", String.valueOf(wVPerformanceMonitorInterface$NetStat.dnsTime));
+        hashMap.put("net_isDNSTimeout", String.valueOf((int) wVPerformanceMonitorInterface$NetStat.isDNSTimeout));
+        hashMap.put("net_oneWayTime", String.valueOf(wVPerformanceMonitorInterface$NetStat.oneWayTime));
+        hashMap.put("net_tcpLinkDate", String.valueOf(wVPerformanceMonitorInterface$NetStat.tcpLinkDate));
+        hashMap.put("net_waitTime", String.valueOf(wVPerformanceMonitorInterface$NetStat.waitTime));
+        hashMap.put("net_postBodyTime", String.valueOf(wVPerformanceMonitorInterface$NetStat.postBodyTime));
+        hashMap.put("net_firstDataTime", String.valueOf(wVPerformanceMonitorInterface$NetStat.firstDataTime));
+        hashMap.put("net_serverRT", String.valueOf(wVPerformanceMonitorInterface$NetStat.serverRT));
+        hashMap.put("net_totalSize", String.valueOf(wVPerformanceMonitorInterface$NetStat.totalSize));
+        hashMap.put("net_recDataTime", String.valueOf(wVPerformanceMonitorInterface$NetStat.recDataTime));
+        hashMap.put("net_isSSL", String.valueOf(wVPerformanceMonitorInterface$NetStat.isSSL));
+        hashMap.put("net_dataSpeed", String.valueOf(wVPerformanceMonitorInterface$NetStat.dataSpeed));
+        hashMap.put("net_spdy", String.valueOf(wVPerformanceMonitorInterface$NetStat.spdy));
         return hashMap;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public String[] toJsonStringDict() {
         ArrayList arrayList = new ArrayList();
         arrayList.add("fromType=" + this.stat.fromType);
@@ -145,10 +108,10 @@ public class WVMonitorData {
         }
         if (((int) Math.ceil((Math.random() * 100.0d) + 0.5d)) <= WVMonitorConfigManager.getInstance().config.stat.resSample && !this.args.resStat.isEmpty()) {
             JSONArray jSONArray = new JSONArray();
-            for (Map.Entry<String, resStat> entry : this.args.resStat.entrySet()) {
-                if (entry.getValue().end - entry.getValue().start >= WVMonitorConfigManager.getInstance().config.stat.resTime) {
-                    Map<String, String> utMap = entry.getValue().toUtMap();
-                    utMap.put(HttpConnector.URL, entry.getKey());
+            for (Map.Entry entry : this.args.resStat.entrySet()) {
+                if (((resStat) entry.getValue()).end - ((resStat) entry.getValue()).start >= WVMonitorConfigManager.getInstance().config.stat.resTime) {
+                    Map<String, String> utMap = ((resStat) entry.getValue()).toUtMap();
+                    utMap.put("url", entry.getKey());
                     jSONArray.put(new JSONObject(utMap));
                 }
             }
@@ -159,7 +122,7 @@ public class WVMonitorData {
 
     public HashMap<String, Object> toJsonStringMap() {
         HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put(HttpConnector.URL, this.url);
+        hashMap.put("url", this.url);
         hashMap.put("loadTime", Long.valueOf(this.stat.onLoad));
         hashMap.put("isFinish", Integer.valueOf(this.stat.finish));
         hashMap.put("firstByte", Long.valueOf(this.stat.firstByteTime));
@@ -175,19 +138,19 @@ public class WVMonitorData {
         hashMap.put("verifyResTime", Long.valueOf(this.stat.verifyResTime));
         hashMap.put("verifyTime", Long.valueOf(this.stat.verifyTime));
         hashMap.put("allVerifyTime", Long.valueOf(this.stat.allVerifyTime));
-        WVPerformanceMonitorInterface.NetStat netStat = this.args.netStat;
-        if (netStat != null) {
-            hashMap.put("netStat", toUtArray(netStat));
+        WVPerformanceMonitorInterface$NetStat wVPerformanceMonitorInterface$NetStat = this.args.netStat;
+        if (wVPerformanceMonitorInterface$NetStat != null) {
+            hashMap.put("netStat", toUtArray(wVPerformanceMonitorInterface$NetStat));
         }
         if (!this.args.resStat.isEmpty() && ((int) Math.ceil((Math.random() * 100.0d) + 0.5d)) <= WVMonitorConfigManager.getInstance().config.stat.resSample) {
             ArrayList arrayList = new ArrayList();
-            for (Map.Entry<String, resStat> entry : this.args.resStat.entrySet()) {
-                if (entry.getValue().end - entry.getValue().start > WVMonitorConfigManager.getInstance().config.stat.resTime) {
-                    Map<String, String> utMap = entry.getValue().toUtMap();
-                    String key = entry.getKey();
-                    Uri parse = Uri.parse(key);
+            for (Map.Entry entry : this.args.resStat.entrySet()) {
+                if (((resStat) entry.getValue()).end - ((resStat) entry.getValue()).start > WVMonitorConfigManager.getInstance().config.stat.resTime) {
+                    Map<String, String> utMap = ((resStat) entry.getValue()).toUtMap();
+                    String str = (String) entry.getKey();
+                    Uri parse = Uri.parse(str);
                     if (parse != null && parse.isHierarchical()) {
-                        utMap.put(HttpConnector.URL, key);
+                        utMap.put("url", str);
                         arrayList.add(utMap);
                     }
                 }

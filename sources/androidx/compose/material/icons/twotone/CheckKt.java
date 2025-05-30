@@ -1,21 +1,22 @@
 package androidx.compose.material.icons.twotone;
 
 import androidx.compose.material.icons.Icons;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.graphics.SolidColor;
-import androidx.compose.p004ui.graphics.StrokeCap;
-import androidx.compose.p004ui.graphics.StrokeJoin;
-import androidx.compose.p004ui.graphics.vector.ImageVector;
-import androidx.compose.p004ui.graphics.vector.PathBuilder;
-import androidx.compose.p004ui.graphics.vector.VectorKt;
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.ui.graphics.Brush;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.graphics.SolidColor;
+import androidx.compose.ui.graphics.StrokeCap;
+import androidx.compose.ui.graphics.StrokeJoin;
+import androidx.compose.ui.graphics.vector.ImageVector;
+import androidx.compose.ui.graphics.vector.PathBuilder;
+import androidx.compose.ui.graphics.vector.VectorKt;
+import androidx.compose.ui.unit.Dp;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class CheckKt {
 
     @Nullable
@@ -29,11 +30,11 @@ public final class CheckKt {
             Intrinsics.checkNotNull(imageVector);
             return imageVector;
         }
-        ImageVector.Builder builder = new ImageVector.Builder("TwoTone.Check", C0856Dp.m5216constructorimpl(24.0f), C0856Dp.m5216constructorimpl(24.0f), 24.0f, 24.0f, 0L, 0, 96, (DefaultConstructorMarker) null);
+        ImageVector.Builder builder = new ImageVector.Builder("TwoTone.Check", Dp.m2142constructorimpl(24.0f), Dp.m2142constructorimpl(24.0f), 24.0f, 24.0f, 0L, 0, 96, (DefaultConstructorMarker) null);
         int defaultFillType = VectorKt.getDefaultFillType();
-        SolidColor solidColor = new SolidColor(Color.Companion.m2813getBlack0d7_KjU(), null);
-        int m3092getButtKaPHkGw = StrokeCap.Companion.m3092getButtKaPHkGw();
-        int m3102getBevelLxFBmk8 = StrokeJoin.Companion.m3102getBevelLxFBmk8();
+        SolidColor solidColor = new SolidColor(Color.Companion.getBlack-0d7_KjU(), null);
+        int i = StrokeCap.Companion.getButt-KaPHkGw();
+        int i2 = StrokeJoin.Companion.getBevel-LxFBmk8();
         PathBuilder pathBuilder = new PathBuilder();
         pathBuilder.moveTo(9.0f, 16.17f);
         pathBuilder.lineTo(4.83f, 12.0f);
@@ -43,7 +44,7 @@ public final class CheckKt {
         pathBuilder.lineToRelative(-1.41f, -1.41f);
         pathBuilder.lineTo(9.0f, 16.17f);
         pathBuilder.close();
-        ImageVector build = ImageVector.Builder.m3310addPathoIyEayM$default(builder, pathBuilder.getNodes(), defaultFillType, "", solidColor, 1.0f, null, 1.0f, 1.0f, m3092getButtKaPHkGw, m3102getBevelLxFBmk8, 1.0f, 0.0f, 0.0f, 0.0f, 14336, null).build();
+        ImageVector build = ImageVector.Builder.addPath-oIyEayM$default(builder, pathBuilder.getNodes(), defaultFillType, "", solidColor, 1.0f, (Brush) null, 1.0f, 1.0f, i, i2, 1.0f, 0.0f, 0.0f, 0.0f, 14336, (Object) null).build();
         _check = build;
         Intrinsics.checkNotNull(build);
         return build;

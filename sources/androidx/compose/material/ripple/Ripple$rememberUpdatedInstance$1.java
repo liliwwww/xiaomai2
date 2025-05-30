@@ -2,7 +2,7 @@ package androidx.compose.material.ripple;
 
 import androidx.compose.foundation.interaction.Interaction;
 import androidx.compose.foundation.interaction.InteractionSource;
-import androidx.compose.foundation.interaction.PressInteraction;
+import androidx.compose.material.ripple.Ripple$rememberUpdatedInstance$1$invokeSuspend$;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -12,13 +12,12 @@ import kotlin.coroutines.jvm.internal.SuspendLambda;
 import kotlin.jvm.functions.Function2;
 import kotlinx.coroutines.CoroutineScope;
 import kotlinx.coroutines.flow.Flow;
-import kotlinx.coroutines.flow.FlowCollector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.ripple.Ripple$rememberUpdatedInstance$1", f = "Ripple.kt", i = {}, l = {356}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class Ripple$rememberUpdatedInstance$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ RippleIndicationInstance $instance;
     final /* synthetic */ InteractionSource $interactionSource;
@@ -50,27 +49,11 @@ final class Ripple$rememberUpdatedInstance$1 extends SuspendLambda implements Fu
         int i = this.label;
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
-            final CoroutineScope coroutineScope = (CoroutineScope) this.L$0;
+            CoroutineScope coroutineScope = (CoroutineScope) this.L$0;
             Flow<Interaction> interactions = this.$interactionSource.getInteractions();
-            final RippleIndicationInstance rippleIndicationInstance = this.$instance;
-            FlowCollector<Interaction> flowCollector = new FlowCollector<Interaction>() { // from class: androidx.compose.material.ripple.Ripple$rememberUpdatedInstance$1$invokeSuspend$$inlined$collect$1
-                @Nullable
-                public Object emit(Interaction interaction, @NotNull Continuation<? super Unit> continuation) {
-                    Interaction interaction2 = interaction;
-                    if (interaction2 instanceof PressInteraction.Press) {
-                        RippleIndicationInstance.this.addRipple((PressInteraction.Press) interaction2, coroutineScope);
-                    } else if (interaction2 instanceof PressInteraction.Release) {
-                        RippleIndicationInstance.this.removeRipple(((PressInteraction.Release) interaction2).getPress());
-                    } else if (interaction2 instanceof PressInteraction.Cancel) {
-                        RippleIndicationInstance.this.removeRipple(((PressInteraction.Cancel) interaction2).getPress());
-                    } else {
-                        RippleIndicationInstance.this.updateStateLayer$material_ripple_release(interaction2, coroutineScope);
-                    }
-                    return Unit.INSTANCE;
-                }
-            };
+            Ripple$rememberUpdatedInstance$1$invokeSuspend$.inlined.collect.1 r4 = new Ripple$rememberUpdatedInstance$1$invokeSuspend$.inlined.collect.1(this.$instance, coroutineScope);
             this.label = 1;
-            if (interactions.collect(flowCollector, this) == coroutine_suspended) {
+            if (interactions.collect(r4, this) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

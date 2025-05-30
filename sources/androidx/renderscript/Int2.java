@@ -1,20 +1,16 @@
 package androidx.renderscript;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Int2 {
-
-    /* renamed from: x */
-    public int f408x;
-
-    /* renamed from: y */
-    public int f409y;
+    public int x;
+    public int y;
 
     public Int2() {
     }
 
     public Int2(int i, int i2) {
-        this.f408x = i;
-        this.f409y = i2;
+        this.x = i;
+        this.y = i2;
     }
 }

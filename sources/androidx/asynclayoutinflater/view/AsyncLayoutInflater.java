@@ -3,10 +3,8 @@ package androidx.asynclayoutinflater.view;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
@@ -17,67 +15,13 @@ import java.util.Objects;
 import java.util.concurrent.ArrayBlockingQueue;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AsyncLayoutInflater {
     private static final String TAG = "AsyncLayoutInflater";
     LayoutInflater mInflater;
-    private Handler.Callback mHandlerCallback = new Handler.Callback() { // from class: androidx.asynclayoutinflater.view.AsyncLayoutInflater.1
-        @Override // android.os.Handler.Callback
-        public boolean handleMessage(Message message) {
-            InflateRequest inflateRequest = (InflateRequest) message.obj;
-            if (inflateRequest.view == null) {
-                inflateRequest.view = AsyncLayoutInflater.this.mInflater.inflate(inflateRequest.resid, inflateRequest.parent, false);
-            }
-            inflateRequest.callback.onInflateFinished(inflateRequest.view, inflateRequest.resid, inflateRequest.parent);
-            AsyncLayoutInflater.this.mInflateThread.releaseRequest(inflateRequest);
-            return true;
-        }
-    };
+    private Handler.Callback mHandlerCallback = new 1(this);
     Handler mHandler = new Handler(this.mHandlerCallback);
     InflateThread mInflateThread = InflateThread.getInstance();
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static class BasicInflater extends LayoutInflater {
-        private static final String[] sClassPrefixList = {"android.widget.", "android.webkit.", "android.app."};
-
-        BasicInflater(Context context) {
-            super(context);
-        }
-
-        @Override // android.view.LayoutInflater
-        public LayoutInflater cloneInContext(Context context) {
-            return new BasicInflater(context);
-        }
-
-        @Override // android.view.LayoutInflater
-        protected View onCreateView(String str, AttributeSet attributeSet) throws ClassNotFoundException {
-            View createView;
-            for (String str2 : sClassPrefixList) {
-                try {
-                    createView = createView(str, str2, attributeSet);
-                } catch (ClassNotFoundException unused) {
-                }
-                if (createView != null) {
-                    return createView;
-                }
-            }
-            return super.onCreateView(str, attributeSet);
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static class InflateRequest {
-        OnInflateFinishedListener callback;
-        AsyncLayoutInflater inflater;
-        ViewGroup parent;
-        int resid;
-        View view;
-
-        InflateRequest() {
-        }
-    }
 
     /* compiled from: Taobao */
     private static class InflateThread extends Thread {
@@ -107,8 +51,8 @@ public final class AsyncLayoutInflater {
         }
 
         public InflateRequest obtainRequest() {
-            InflateRequest acquire = this.mRequestPool.acquire();
-            return acquire == null ? new InflateRequest() : acquire;
+            InflateRequest inflateRequest = (InflateRequest) this.mRequestPool.acquire();
+            return inflateRequest == null ? new InflateRequest() : inflateRequest;
         }
 
         public void releaseRequest(InflateRequest inflateRequest) {
@@ -140,12 +84,6 @@ public final class AsyncLayoutInflater {
                 Log.w(AsyncLayoutInflater.TAG, e2);
             }
         }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public interface OnInflateFinishedListener {
-        void onInflateFinished(@NonNull View view, @LayoutRes int i, @Nullable ViewGroup viewGroup);
     }
 
     public AsyncLayoutInflater(@NonNull Context context) {

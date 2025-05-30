@@ -1,11 +1,11 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.ParentDataModifier;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.platform.InspectorValueInfo;
-import androidx.compose.p004ui.unit.Density;
+import androidx.compose.ui.Alignment$Vertical;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.ParentDataModifier;
+import androidx.compose.ui.platform.InspectorInfo;
+import androidx.compose.ui.platform.InspectorValueInfo;
+import androidx.compose.ui.unit.Density;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
@@ -16,26 +16,26 @@ import tb.mt2;
 import tb.nt2;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class VerticalAlignModifier extends InspectorValueInfo implements ParentDataModifier {
 
     @NotNull
-    private final Alignment.Vertical vertical;
+    private final Alignment$Vertical vertical;
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public VerticalAlignModifier(@NotNull Alignment.Vertical vertical, @NotNull Function1<? super InspectorInfo, Unit> function1) {
+    public VerticalAlignModifier(@NotNull Alignment$Vertical alignment$Vertical, @NotNull Function1<? super InspectorInfo, Unit> function1) {
         super(function1);
-        Intrinsics.checkNotNullParameter(vertical, "vertical");
+        Intrinsics.checkNotNullParameter(alignment$Vertical, "vertical");
         Intrinsics.checkNotNullParameter(function1, "inspectorInfo");
-        this.vertical = vertical;
+        this.vertical = alignment$Vertical;
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
@@ -51,18 +51,18 @@ public final class VerticalAlignModifier extends InspectorValueInfo implements P
         return Intrinsics.areEqual(this.vertical, verticalAlignModifier.vertical);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
 
     @NotNull
-    public final Alignment.Vertical getVertical() {
+    public final Alignment$Vertical getVertical() {
         return this.vertical;
     }
 
@@ -70,7 +70,6 @@ public final class VerticalAlignModifier extends InspectorValueInfo implements P
         return this.vertical.hashCode();
     }
 
-    @Override // androidx.compose.p004ui.Modifier
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }
@@ -80,7 +79,7 @@ public final class VerticalAlignModifier extends InspectorValueInfo implements P
         return "VerticalAlignModifier(vertical=" + this.vertical + ')';
     }
 
-    @Override // androidx.compose.p004ui.layout.ParentDataModifier
+    @Override // androidx.compose.ui.layout.ParentDataModifier
     @NotNull
     public RowColumnParentData modifyParentData(@NotNull Density density, @Nullable Object obj) {
         Intrinsics.checkNotNullParameter(density, "<this>");

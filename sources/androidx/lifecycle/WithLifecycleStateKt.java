@@ -1,20 +1,14 @@
 package androidx.lifecycle;
 
-import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.Lifecycle;
 import kotlin.PublishedApi;
-import kotlin.Result;
-import kotlin.ResultKt;
-import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.EmptyCoroutineContext;
 import kotlin.coroutines.intrinsics.IntrinsicsKt;
 import kotlin.coroutines.jvm.internal.DebugProbesKt;
 import kotlin.jvm.functions.Function0;
-import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.InlineMarker;
 import kotlin.jvm.internal.Intrinsics;
-import kotlinx.coroutines.CancellableContinuation;
 import kotlinx.coroutines.CancellableContinuationImpl;
 import kotlinx.coroutines.CoroutineDispatcher;
 import org.jetbrains.annotations.NotNull;
@@ -23,83 +17,20 @@ import tb.m11;
 import tb.xl2;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class WithLifecycleStateKt {
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r1v1, types: [androidx.lifecycle.LifecycleObserver, androidx.lifecycle.WithLifecycleStateKt$suspendWithStateAtLeastUnchecked$2$observer$1] */
     @PublishedApi
     @Nullable
-    public static final <R> Object suspendWithStateAtLeastUnchecked(@NotNull final Lifecycle lifecycle, @NotNull final Lifecycle.State state, boolean z, @NotNull final CoroutineDispatcher coroutineDispatcher, @NotNull final Function0<? extends R> function0, @NotNull Continuation<? super R> continuation) {
-        final CancellableContinuationImpl cancellableContinuationImpl = new CancellableContinuationImpl(IntrinsicsKt.intercepted(continuation), 1);
+    public static final <R> Object suspendWithStateAtLeastUnchecked(@NotNull Lifecycle lifecycle, @NotNull Lifecycle.State state, boolean z, @NotNull CoroutineDispatcher coroutineDispatcher, @NotNull Function0<? extends R> function0, @NotNull Continuation<? super R> continuation) {
+        CancellableContinuationImpl cancellableContinuationImpl = new CancellableContinuationImpl(IntrinsicsKt.intercepted(continuation), 1);
         cancellableContinuationImpl.initCancellability();
-        final ?? r1 = new LifecycleEventObserver() { // from class: androidx.lifecycle.WithLifecycleStateKt$suspendWithStateAtLeastUnchecked$2$observer$1
-            @Override // androidx.lifecycle.LifecycleEventObserver
-            public void onStateChanged(@NotNull LifecycleOwner lifecycleOwner, @NotNull Lifecycle.Event event) {
-                Object obj;
-                Intrinsics.checkNotNullParameter(lifecycleOwner, "source");
-                Intrinsics.checkNotNullParameter(event, NotificationCompat.CATEGORY_EVENT);
-                if (event != Lifecycle.Event.Companion.upTo(Lifecycle.State.this)) {
-                    if (event == Lifecycle.Event.ON_DESTROY) {
-                        lifecycle.removeObserver(this);
-                        CancellableContinuation<R> cancellableContinuation = cancellableContinuationImpl;
-                        Result.Companion companion = Result.Companion;
-                        cancellableContinuation.resumeWith(Result.constructor-impl(ResultKt.createFailure(new LifecycleDestroyedException())));
-                        return;
-                    }
-                    return;
-                }
-                lifecycle.removeObserver(this);
-                CancellableContinuation<R> cancellableContinuation2 = cancellableContinuationImpl;
-                Function0<R> function02 = function0;
-                try {
-                    Result.Companion companion2 = Result.Companion;
-                    obj = Result.constructor-impl(function02.invoke());
-                } catch (Throwable th) {
-                    Result.Companion companion3 = Result.Companion;
-                    obj = Result.constructor-impl(ResultKt.createFailure(th));
-                }
-                cancellableContinuation2.resumeWith(obj);
-            }
-        };
+        suspendWithStateAtLeastUnchecked.2.observer.1 r1 = new suspendWithStateAtLeastUnchecked.2.observer.1(state, lifecycle, cancellableContinuationImpl, function0);
         if (z) {
-            coroutineDispatcher.dispatch(EmptyCoroutineContext.INSTANCE, new Runnable() { // from class: androidx.lifecycle.WithLifecycleStateKt$suspendWithStateAtLeastUnchecked$2$1
-                @Override // java.lang.Runnable
-                public final void run() {
-                    Lifecycle.this.addObserver(r1);
-                }
-            });
+            coroutineDispatcher.dispatch(EmptyCoroutineContext.INSTANCE, new suspendWithStateAtLeastUnchecked.2.1(lifecycle, r1));
         } else {
             lifecycle.addObserver(r1);
         }
-        cancellableContinuationImpl.invokeOnCancellation(new Function1<Throwable, Unit>() { // from class: androidx.lifecycle.WithLifecycleStateKt$suspendWithStateAtLeastUnchecked$2$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((Throwable) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Throwable th) {
-                CoroutineDispatcher coroutineDispatcher2 = coroutineDispatcher;
-                EmptyCoroutineContext emptyCoroutineContext = EmptyCoroutineContext.INSTANCE;
-                if (!coroutineDispatcher2.isDispatchNeeded(emptyCoroutineContext)) {
-                    lifecycle.removeObserver(r1);
-                    return;
-                }
-                CoroutineDispatcher coroutineDispatcher3 = coroutineDispatcher;
-                final Lifecycle lifecycle2 = lifecycle;
-                final C1126xfdb59cc4 c1126xfdb59cc4 = r1;
-                coroutineDispatcher3.dispatch(emptyCoroutineContext, new Runnable() { // from class: androidx.lifecycle.WithLifecycleStateKt$suspendWithStateAtLeastUnchecked$2$2.1
-                    @Override // java.lang.Runnable
-                    public final void run() {
-                        Lifecycle.this.removeObserver(c1126xfdb59cc4);
-                    }
-                });
-            }
-        });
+        cancellableContinuationImpl.invokeOnCancellation(new suspendWithStateAtLeastUnchecked.2.2(coroutineDispatcher, lifecycle, r1));
         Object result = cancellableContinuationImpl.getResult();
         if (result == IntrinsicsKt.getCOROUTINE_SUSPENDED()) {
             DebugProbesKt.probeCoroutineSuspended(continuation);

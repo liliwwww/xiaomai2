@@ -1,11 +1,10 @@
 package androidx.constraintlayout.core.widgets;
 
-import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import androidx.constraintlayout.core.widgets.analyzer.BasicMeasure;
 import java.util.HashSet;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class VirtualLayout extends HelperWidget {
     private int mPaddingTop = 0;
     private int mPaddingBottom = 0;
@@ -79,13 +78,13 @@ public class VirtualLayout extends HelperWidget {
     public void measure(int i, int i2, int i3, int i4) {
     }
 
-    protected void measure(ConstraintWidget constraintWidget, ConstraintWidget.DimensionBehaviour dimensionBehaviour, int i, ConstraintWidget.DimensionBehaviour dimensionBehaviour2, int i2) {
+    protected void measure(ConstraintWidget constraintWidget, ConstraintWidget$DimensionBehaviour constraintWidget$DimensionBehaviour, int i, ConstraintWidget$DimensionBehaviour constraintWidget$DimensionBehaviour2, int i2) {
         while (this.mMeasurer == null && getParent() != null) {
-            this.mMeasurer = ((ConstraintWidgetContainer) getParent()).getMeasurer();
+            this.mMeasurer = getParent().getMeasurer();
         }
         BasicMeasure.Measure measure = this.mMeasure;
-        measure.horizontalBehavior = dimensionBehaviour;
-        measure.verticalBehavior = dimensionBehaviour2;
+        measure.horizontalBehavior = constraintWidget$DimensionBehaviour;
+        measure.verticalBehavior = constraintWidget$DimensionBehaviour2;
         measure.horizontalDimension = i;
         measure.verticalDimension = i2;
         this.mMeasurer.measure(constraintWidget, measure);
@@ -96,8 +95,8 @@ public class VirtualLayout extends HelperWidget {
     }
 
     protected boolean measureChildren() {
-        ConstraintWidget constraintWidget = this.mParent;
-        BasicMeasure.Measurer measurer = constraintWidget != null ? ((ConstraintWidgetContainer) constraintWidget).getMeasurer() : null;
+        ConstraintWidgetContainer constraintWidgetContainer = ((ConstraintWidget) this).mParent;
+        BasicMeasure.Measurer measurer = constraintWidgetContainer != null ? constraintWidgetContainer.getMeasurer() : null;
         if (measurer == null) {
             return false;
         }
@@ -106,27 +105,27 @@ public class VirtualLayout extends HelperWidget {
             if (i >= this.mWidgetsCount) {
                 return true;
             }
-            ConstraintWidget constraintWidget2 = this.mWidgets[i];
-            if (constraintWidget2 != null && !(constraintWidget2 instanceof Guideline)) {
-                ConstraintWidget.DimensionBehaviour dimensionBehaviour = constraintWidget2.getDimensionBehaviour(0);
-                ConstraintWidget.DimensionBehaviour dimensionBehaviour2 = constraintWidget2.getDimensionBehaviour(1);
-                ConstraintWidget.DimensionBehaviour dimensionBehaviour3 = ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT;
-                if (!(dimensionBehaviour == dimensionBehaviour3 && constraintWidget2.mMatchConstraintDefaultWidth != 1 && dimensionBehaviour2 == dimensionBehaviour3 && constraintWidget2.mMatchConstraintDefaultHeight != 1)) {
-                    if (dimensionBehaviour == dimensionBehaviour3) {
-                        dimensionBehaviour = ConstraintWidget.DimensionBehaviour.WRAP_CONTENT;
+            ConstraintWidget constraintWidget = this.mWidgets[i];
+            if (constraintWidget != null && !(constraintWidget instanceof Guideline)) {
+                ConstraintWidget$DimensionBehaviour dimensionBehaviour = constraintWidget.getDimensionBehaviour(0);
+                ConstraintWidget$DimensionBehaviour dimensionBehaviour2 = constraintWidget.getDimensionBehaviour(1);
+                ConstraintWidget$DimensionBehaviour constraintWidget$DimensionBehaviour = ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT;
+                if (!(dimensionBehaviour == constraintWidget$DimensionBehaviour && constraintWidget.mMatchConstraintDefaultWidth != 1 && dimensionBehaviour2 == constraintWidget$DimensionBehaviour && constraintWidget.mMatchConstraintDefaultHeight != 1)) {
+                    if (dimensionBehaviour == constraintWidget$DimensionBehaviour) {
+                        dimensionBehaviour = ConstraintWidget$DimensionBehaviour.WRAP_CONTENT;
                     }
-                    if (dimensionBehaviour2 == dimensionBehaviour3) {
-                        dimensionBehaviour2 = ConstraintWidget.DimensionBehaviour.WRAP_CONTENT;
+                    if (dimensionBehaviour2 == constraintWidget$DimensionBehaviour) {
+                        dimensionBehaviour2 = ConstraintWidget$DimensionBehaviour.WRAP_CONTENT;
                     }
                     BasicMeasure.Measure measure = this.mMeasure;
                     measure.horizontalBehavior = dimensionBehaviour;
                     measure.verticalBehavior = dimensionBehaviour2;
-                    measure.horizontalDimension = constraintWidget2.getWidth();
-                    this.mMeasure.verticalDimension = constraintWidget2.getHeight();
-                    measurer.measure(constraintWidget2, this.mMeasure);
-                    constraintWidget2.setWidth(this.mMeasure.measuredWidth);
-                    constraintWidget2.setHeight(this.mMeasure.measuredHeight);
-                    constraintWidget2.setBaselineDistance(this.mMeasure.measuredBaseline);
+                    measure.horizontalDimension = constraintWidget.getWidth();
+                    this.mMeasure.verticalDimension = constraintWidget.getHeight();
+                    measurer.measure(constraintWidget, this.mMeasure);
+                    constraintWidget.setWidth(this.mMeasure.measuredWidth);
+                    constraintWidget.setHeight(this.mMeasure.measuredHeight);
+                    constraintWidget.setBaselineDistance(this.mMeasure.measuredBaseline);
                 }
             }
             i++;

@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.taobao.aboat.ReceivePerformance;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class AtsTools {
     private static boolean needSendPerformance;
 

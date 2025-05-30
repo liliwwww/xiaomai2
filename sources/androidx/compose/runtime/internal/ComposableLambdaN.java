@@ -7,6 +7,6 @@ import kotlin.jvm.functions.FunctionN;
 /* compiled from: Taobao */
 @Stable
 @ComposeCompilerApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface ComposableLambdaN extends FunctionN<Object> {
 }

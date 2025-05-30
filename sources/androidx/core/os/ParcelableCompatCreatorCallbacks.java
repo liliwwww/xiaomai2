@@ -4,7 +4,7 @@ import android.os.Parcel;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface ParcelableCompatCreatorCallbacks<T> {
     T createFromParcel(Parcel parcel, ClassLoader classLoader);
 

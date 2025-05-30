@@ -1,22 +1,5 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.IntrinsicMeasureScope;
-import androidx.compose.p004ui.layout.LayoutKt;
-import androidx.compose.p004ui.layout.Measurable;
-import androidx.compose.p004ui.layout.MeasurePolicy;
-import androidx.compose.p004ui.layout.MeasureResult;
-import androidx.compose.p004ui.layout.MeasureScope;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.node.ComposeUiNode;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.platform.ViewConfiguration;
-import androidx.compose.p004ui.unit.Constraints;
-import androidx.compose.p004ui.unit.ConstraintsKt;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.IntSizeKt;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Applier;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
@@ -27,12 +10,29 @@ import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.ScopeUpdateScope;
 import androidx.compose.runtime.SkippableUpdater;
 import androidx.compose.runtime.Updater;
+import androidx.compose.ui.Alignment;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.IntrinsicMeasureScope;
+import androidx.compose.ui.layout.LayoutKt;
+import androidx.compose.ui.layout.Measurable;
+import androidx.compose.ui.layout.MeasurePolicy;
+import androidx.compose.ui.layout.MeasureResult;
+import androidx.compose.ui.layout.MeasureScope;
+import androidx.compose.ui.layout.MeasureScope$CC;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.layout.Placeable$PlacementScope;
+import androidx.compose.ui.node.ComposeUiNode;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.platform.ViewConfiguration;
+import androidx.compose.ui.unit.Constraints;
+import androidx.compose.ui.unit.ConstraintsKt;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.IntSizeKt;
+import androidx.compose.ui.unit.LayoutDirection;
 import java.util.List;
-import kotlin.PublishedApi;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
-import kotlin.jvm.functions.Function2;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Ref;
@@ -41,7 +41,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.on2;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class BoxKt {
 
     @NotNull
@@ -49,40 +49,26 @@ public final class BoxKt {
 
     @NotNull
     private static final MeasurePolicy EmptyBoxMeasurePolicy = new MeasurePolicy() { // from class: androidx.compose.foundation.layout.BoxKt$EmptyBoxMeasurePolicy$1
-        @Override // androidx.compose.p004ui.layout.MeasurePolicy
         public /* synthetic */ int maxIntrinsicHeight(IntrinsicMeasureScope intrinsicMeasureScope, List list, int i) {
             return on2.a(this, intrinsicMeasureScope, list, i);
         }
 
-        @Override // androidx.compose.p004ui.layout.MeasurePolicy
         public /* synthetic */ int maxIntrinsicWidth(IntrinsicMeasureScope intrinsicMeasureScope, List list, int i) {
             return on2.b(this, intrinsicMeasureScope, list, i);
         }
 
-        @Override // androidx.compose.p004ui.layout.MeasurePolicy
         @NotNull
-        /* renamed from: measure-3p2s80s */
-        public final MeasureResult mo944measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull List<? extends Measurable> list, long j) {
+        /* renamed from: measure-3p2s80s, reason: not valid java name */
+        public final MeasureResult m301measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull List<? extends Measurable> list, long j) {
             Intrinsics.checkNotNullParameter(measureScope, "$this$MeasurePolicy");
             Intrinsics.checkNotNullParameter(list, "<anonymous parameter 0>");
-            return MeasureScope.CC.m140p(measureScope, Constraints.m5186getMinWidthimpl(j), Constraints.m5185getMinHeightimpl(j), null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.foundation.layout.BoxKt$EmptyBoxMeasurePolicy$1$measure$1
-                public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                    invoke((Placeable.PlacementScope) obj);
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
-                    Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
-                }
-            }, 4, null);
+            return MeasureScope$CC.p(measureScope, Constraints.getMinWidth-impl(j), Constraints.getMinHeight-impl(j), null, measure.1.INSTANCE, 4, null);
         }
 
-        @Override // androidx.compose.p004ui.layout.MeasurePolicy
         public /* synthetic */ int minIntrinsicHeight(IntrinsicMeasureScope intrinsicMeasureScope, List list, int i) {
             return on2.c(this, intrinsicMeasureScope, list, i);
         }
 
-        @Override // androidx.compose.p004ui.layout.MeasurePolicy
         public /* synthetic */ int minIntrinsicWidth(IntrinsicMeasureScope intrinsicMeasureScope, List list, int i) {
             return on2.d(this, intrinsicMeasureScope, list, i);
         }
@@ -109,8 +95,8 @@ public final class BoxKt {
         LayoutDirection layoutDirection = (LayoutDirection) composer.consume(CompositionLocalsKt.getLocalLayoutDirection());
         ViewConfiguration viewConfiguration = (ViewConfiguration) composer.consume(CompositionLocalsKt.getLocalViewConfiguration());
         ComposeUiNode.Companion companion = ComposeUiNode.Companion;
-        Function0<ComposeUiNode> constructor = companion.getConstructor();
-        Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf = LayoutKt.materializerOf(modifier);
+        Function0 constructor = companion.getConstructor();
+        Function3 materializerOf = LayoutKt.materializerOf(modifier);
         int i4 = ((((i << 3) & 112) << 9) & 7168) | 6;
         if (!(composer.getApplier() instanceof Applier)) {
             ComposablesKt.invalidApplier();
@@ -122,13 +108,13 @@ public final class BoxKt {
             composer.useNode();
         }
         composer.disableReusing();
-        Composer m2410constructorimpl = Updater.m2410constructorimpl(composer);
-        Updater.m2417setimpl(m2410constructorimpl, rememberBoxMeasurePolicy, companion.getSetMeasurePolicy());
-        Updater.m2417setimpl(m2410constructorimpl, density, companion.getSetDensity());
-        Updater.m2417setimpl(m2410constructorimpl, layoutDirection, companion.getSetLayoutDirection());
-        Updater.m2417setimpl(m2410constructorimpl, viewConfiguration, companion.getSetViewConfiguration());
+        Composer composer2 = Updater.constructor-impl(composer);
+        Updater.set-impl(composer2, rememberBoxMeasurePolicy, companion.getSetMeasurePolicy());
+        Updater.set-impl(composer2, density, companion.getSetDensity());
+        Updater.set-impl(composer2, layoutDirection, companion.getSetLayoutDirection());
+        Updater.set-impl(composer2, viewConfiguration, companion.getSetViewConfiguration());
         composer.enableReusing();
-        materializerOf.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(composer)), composer, Integer.valueOf((i4 >> 3) & 112));
+        materializerOf.invoke(SkippableUpdater.m907boximpl(SkippableUpdater.m908constructorimpl(composer)), composer, Integer.valueOf((i4 >> 3) & 112));
         composer.startReplaceableGroup(2058660585);
         composer.startReplaceableGroup(-2137368960);
         if (((i4 >> 9) & 14 & 11) == 2 && composer.getSkipping()) {
@@ -147,126 +133,122 @@ public final class BoxKt {
     public static final MeasurePolicy boxMeasurePolicy(@NotNull final Alignment alignment, final boolean z) {
         Intrinsics.checkNotNullParameter(alignment, "alignment");
         return new MeasurePolicy() { // from class: androidx.compose.foundation.layout.BoxKt$boxMeasurePolicy$1
-            @Override // androidx.compose.p004ui.layout.MeasurePolicy
             public /* synthetic */ int maxIntrinsicHeight(IntrinsicMeasureScope intrinsicMeasureScope, List list, int i) {
                 return on2.a(this, intrinsicMeasureScope, list, i);
             }
 
-            @Override // androidx.compose.p004ui.layout.MeasurePolicy
             public /* synthetic */ int maxIntrinsicWidth(IntrinsicMeasureScope intrinsicMeasureScope, List list, int i) {
                 return on2.b(this, intrinsicMeasureScope, list, i);
             }
 
-            @Override // androidx.compose.p004ui.layout.MeasurePolicy
             @NotNull
-            /* renamed from: measure-3p2s80s */
-            public final MeasureResult mo944measure3p2s80s(@NotNull final MeasureScope measureScope, @NotNull final List<? extends Measurable> list, long j) {
+            /* renamed from: measure-3p2s80s, reason: not valid java name */
+            public final MeasureResult m302measure3p2s80s(@NotNull final MeasureScope measureScope, @NotNull final List<? extends Measurable> list, long j) {
                 boolean matchesParentSize;
                 boolean matchesParentSize2;
                 boolean matchesParentSize3;
-                int m5186getMinWidthimpl;
-                final Placeable mo4187measureBRTryo0;
                 int i;
+                final Placeable placeable;
+                int i2;
                 Intrinsics.checkNotNullParameter(measureScope, "$this$MeasurePolicy");
                 Intrinsics.checkNotNullParameter(list, "measurables");
                 if (list.isEmpty()) {
-                    return MeasureScope.CC.m140p(measureScope, Constraints.m5186getMinWidthimpl(j), Constraints.m5185getMinHeightimpl(j), null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.foundation.layout.BoxKt$boxMeasurePolicy$1$measure$1
+                    return MeasureScope$CC.p(measureScope, Constraints.getMinWidth-impl(j), Constraints.getMinHeight-impl(j), null, new Function1<Placeable$PlacementScope, Unit>() { // from class: androidx.compose.foundation.layout.BoxKt$boxMeasurePolicy$1$measure$1
                         public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                            invoke((Placeable.PlacementScope) obj);
+                            invoke((Placeable$PlacementScope) obj);
                             return Unit.INSTANCE;
                         }
 
-                        public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
-                            Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
+                        public final void invoke(@NotNull Placeable$PlacementScope placeable$PlacementScope) {
+                            Intrinsics.checkNotNullParameter(placeable$PlacementScope, "$this$layout");
                         }
                     }, 4, null);
                 }
-                long m5175copyZbe2FdA$default = z ? j : Constraints.m5175copyZbe2FdA$default(j, 0, 0, 0, 0, 10, null);
+                long j2 = z ? j : Constraints.copy-Zbe2FdA$default(j, 0, 0, 0, 0, 10, (Object) null);
                 if (list.size() == 1) {
                     final Measurable measurable = list.get(0);
                     matchesParentSize3 = BoxKt.getMatchesParentSize(measurable);
                     if (matchesParentSize3) {
-                        m5186getMinWidthimpl = Constraints.m5186getMinWidthimpl(j);
-                        int m5185getMinHeightimpl = Constraints.m5185getMinHeightimpl(j);
-                        mo4187measureBRTryo0 = measurable.mo4187measureBRTryo0(Constraints.Companion.m5192fixedJhjzzOo(Constraints.m5186getMinWidthimpl(j), Constraints.m5185getMinHeightimpl(j)));
-                        i = m5185getMinHeightimpl;
+                        i = Constraints.getMinWidth-impl(j);
+                        int i3 = Constraints.getMinHeight-impl(j);
+                        placeable = measurable.measure-BRTryo0(Constraints.Companion.fixed-JhjzzOo(Constraints.getMinWidth-impl(j), Constraints.getMinHeight-impl(j)));
+                        i2 = i3;
                     } else {
-                        Placeable mo4187measureBRTryo02 = measurable.mo4187measureBRTryo0(m5175copyZbe2FdA$default);
-                        int max = Math.max(Constraints.m5186getMinWidthimpl(j), mo4187measureBRTryo02.getWidth());
-                        i = Math.max(Constraints.m5185getMinHeightimpl(j), mo4187measureBRTryo02.getHeight());
-                        mo4187measureBRTryo0 = mo4187measureBRTryo02;
-                        m5186getMinWidthimpl = max;
+                        Placeable placeable2 = measurable.measure-BRTryo0(j2);
+                        int max = Math.max(Constraints.getMinWidth-impl(j), placeable2.getWidth());
+                        i2 = Math.max(Constraints.getMinHeight-impl(j), placeable2.getHeight());
+                        placeable = placeable2;
+                        i = max;
                     }
                     final Alignment alignment2 = alignment;
-                    final int i2 = m5186getMinWidthimpl;
-                    final int i3 = i;
-                    return MeasureScope.CC.m140p(measureScope, m5186getMinWidthimpl, i, null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.foundation.layout.BoxKt$boxMeasurePolicy$1$measure$2
+                    final int i4 = i;
+                    final int i5 = i2;
+                    return MeasureScope$CC.p(measureScope, i, i2, null, new Function1<Placeable$PlacementScope, Unit>() { // from class: androidx.compose.foundation.layout.BoxKt$boxMeasurePolicy$1$measure$2
                         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
                         {
                             super(1);
                         }
 
                         public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                            invoke((Placeable.PlacementScope) obj);
+                            invoke((Placeable$PlacementScope) obj);
                             return Unit.INSTANCE;
                         }
 
-                        public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
-                            Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
-                            BoxKt.placeInBox(placementScope, Placeable.this, measurable, measureScope.getLayoutDirection(), i2, i3, alignment2);
+                        public final void invoke(@NotNull Placeable$PlacementScope placeable$PlacementScope) {
+                            Intrinsics.checkNotNullParameter(placeable$PlacementScope, "$this$layout");
+                            BoxKt.placeInBox(placeable$PlacementScope, placeable, measurable, measureScope.getLayoutDirection(), i4, i5, alignment2);
                         }
                     }, 4, null);
                 }
                 final Placeable[] placeableArr = new Placeable[list.size()];
                 final Ref.IntRef intRef = new Ref.IntRef();
-                intRef.element = Constraints.m5186getMinWidthimpl(j);
+                intRef.element = Constraints.getMinWidth-impl(j);
                 final Ref.IntRef intRef2 = new Ref.IntRef();
-                intRef2.element = Constraints.m5185getMinHeightimpl(j);
+                intRef2.element = Constraints.getMinHeight-impl(j);
                 int size = list.size();
                 boolean z2 = false;
-                for (int i4 = 0; i4 < size; i4++) {
-                    Measurable measurable2 = list.get(i4);
+                for (int i6 = 0; i6 < size; i6++) {
+                    Measurable measurable2 = list.get(i6);
                     matchesParentSize2 = BoxKt.getMatchesParentSize(measurable2);
                     if (matchesParentSize2) {
                         z2 = true;
                     } else {
-                        Placeable mo4187measureBRTryo03 = measurable2.mo4187measureBRTryo0(m5175copyZbe2FdA$default);
-                        placeableArr[i4] = mo4187measureBRTryo03;
-                        intRef.element = Math.max(intRef.element, mo4187measureBRTryo03.getWidth());
-                        intRef2.element = Math.max(intRef2.element, mo4187measureBRTryo03.getHeight());
+                        Placeable placeable3 = measurable2.measure-BRTryo0(j2);
+                        placeableArr[i6] = placeable3;
+                        intRef.element = Math.max(intRef.element, placeable3.getWidth());
+                        intRef2.element = Math.max(intRef2.element, placeable3.getHeight());
                     }
                 }
                 if (z2) {
-                    int i5 = intRef.element;
-                    int i6 = i5 != Integer.MAX_VALUE ? i5 : 0;
-                    int i7 = intRef2.element;
-                    long Constraints = ConstraintsKt.Constraints(i6, i5, i7 != Integer.MAX_VALUE ? i7 : 0, i7);
+                    int i7 = intRef.element;
+                    int i8 = i7 != Integer.MAX_VALUE ? i7 : 0;
+                    int i9 = intRef2.element;
+                    long Constraints = ConstraintsKt.Constraints(i8, i7, i9 != Integer.MAX_VALUE ? i9 : 0, i9);
                     int size2 = list.size();
-                    for (int i8 = 0; i8 < size2; i8++) {
-                        Measurable measurable3 = list.get(i8);
+                    for (int i10 = 0; i10 < size2; i10++) {
+                        Measurable measurable3 = list.get(i10);
                         matchesParentSize = BoxKt.getMatchesParentSize(measurable3);
                         if (matchesParentSize) {
-                            placeableArr[i8] = measurable3.mo4187measureBRTryo0(Constraints);
+                            placeableArr[i10] = measurable3.measure-BRTryo0(Constraints);
                         }
                     }
                 }
-                int i9 = intRef.element;
-                int i10 = intRef2.element;
+                int i11 = intRef.element;
+                int i12 = intRef2.element;
                 final Alignment alignment3 = alignment;
-                return MeasureScope.CC.m140p(measureScope, i9, i10, null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.foundation.layout.BoxKt$boxMeasurePolicy$1$measure$5
+                return MeasureScope$CC.p(measureScope, i11, i12, null, new Function1<Placeable$PlacementScope, Unit>() { // from class: androidx.compose.foundation.layout.BoxKt$boxMeasurePolicy$1$measure$5
                     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                    /* JADX WARN: Multi-variable type inference failed */
                     {
                         super(1);
                     }
 
                     public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                        invoke((Placeable.PlacementScope) obj);
+                        invoke((Placeable$PlacementScope) obj);
                         return Unit.INSTANCE;
                     }
 
-                    public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
-                        Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
+                    public final void invoke(@NotNull Placeable$PlacementScope placeable$PlacementScope) {
+                        Intrinsics.checkNotNullParameter(placeable$PlacementScope, "$this$layout");
                         Placeable[] placeableArr2 = placeableArr;
                         List<Measurable> list2 = list;
                         MeasureScope measureScope2 = measureScope;
@@ -274,25 +256,23 @@ public final class BoxKt {
                         Ref.IntRef intRef4 = intRef2;
                         Alignment alignment4 = alignment3;
                         int length = placeableArr2.length;
-                        int i11 = 0;
-                        int i12 = 0;
-                        while (i12 < length) {
-                            Placeable placeable = placeableArr2[i12];
-                            Intrinsics.checkNotNull(placeable, "null cannot be cast to non-null type androidx.compose.ui.layout.Placeable");
-                            BoxKt.placeInBox(placementScope, placeable, list2.get(i11), measureScope2.getLayoutDirection(), intRef3.element, intRef4.element, alignment4);
-                            i12++;
-                            i11++;
+                        int i13 = 0;
+                        int i14 = 0;
+                        while (i14 < length) {
+                            Placeable placeable4 = placeableArr2[i14];
+                            Intrinsics.checkNotNull(placeable4, "null cannot be cast to non-null type androidx.compose.ui.layout.Placeable");
+                            BoxKt.placeInBox(placeable$PlacementScope, placeable4, list2.get(i13), measureScope2.getLayoutDirection(), intRef3.element, intRef4.element, alignment4);
+                            i14++;
+                            i13++;
                         }
                     }
                 }, 4, null);
             }
 
-            @Override // androidx.compose.p004ui.layout.MeasurePolicy
             public /* synthetic */ int minIntrinsicHeight(IntrinsicMeasureScope intrinsicMeasureScope, List list, int i) {
                 return on2.c(this, intrinsicMeasureScope, list, i);
             }
 
-            @Override // androidx.compose.p004ui.layout.MeasurePolicy
             public /* synthetic */ int minIntrinsicWidth(IntrinsicMeasureScope intrinsicMeasureScope, List list, int i) {
                 return on2.d(this, intrinsicMeasureScope, list, i);
             }
@@ -327,46 +307,75 @@ public final class BoxKt {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public static final void placeInBox(Placeable.PlacementScope placementScope, Placeable placeable, Measurable measurable, LayoutDirection layoutDirection, int i, int i2, Alignment alignment) {
+    public static final void placeInBox(Placeable$PlacementScope placeable$PlacementScope, Placeable placeable, Measurable measurable, LayoutDirection layoutDirection, int i, int i2, Alignment alignment) {
         Alignment alignment2;
         BoxChildData boxChildData = getBoxChildData(measurable);
-        Placeable.PlacementScope.m4223place70tqf50$default(placementScope, placeable, ((boxChildData == null || (alignment2 = boxChildData.getAlignment()) == null) ? alignment : alignment2).mo2450alignKFBX0sM(IntSizeKt.IntSize(placeable.getWidth(), placeable.getHeight()), IntSizeKt.IntSize(i, i2), layoutDirection), 0.0f, 2, null);
+        Placeable$PlacementScope.m2068place70tqf50$default(placeable$PlacementScope, placeable, ((boxChildData == null || (alignment2 = boxChildData.getAlignment()) == null) ? alignment : alignment2).mo935alignKFBX0sM(IntSizeKt.IntSize(placeable.getWidth(), placeable.getHeight()), IntSizeKt.IntSize(i, i2), layoutDirection), 0.0f, 2, null);
     }
 
-    @Composable
-    @PublishedApi
-    @NotNull
-    public static final MeasurePolicy rememberBoxMeasurePolicy(@NotNull Alignment alignment, boolean z, @Nullable Composer composer, int i) {
-        MeasurePolicy measurePolicy;
-        Intrinsics.checkNotNullParameter(alignment, "alignment");
-        composer.startReplaceableGroup(56522820);
-        if (ComposerKt.isTraceInProgress()) {
-            ComposerKt.traceEventStart(56522820, i, -1, "androidx.compose.foundation.layout.rememberBoxMeasurePolicy (Box.kt:80)");
-        }
-        if (!Intrinsics.areEqual(alignment, Alignment.Companion.getTopStart()) || z) {
-            Boolean valueOf = Boolean.valueOf(z);
-            composer.startReplaceableGroup(511388516);
-            boolean changed = composer.changed(valueOf) | composer.changed(alignment);
-            Object rememberedValue = composer.rememberedValue();
-            if (changed || rememberedValue == Composer.Companion.getEmpty()) {
-                rememberedValue = boxMeasurePolicy(alignment, z);
-                composer.updateRememberedValue(rememberedValue);
-            }
-            composer.endReplaceableGroup();
-            measurePolicy = (MeasurePolicy) rememberedValue;
-        } else {
-            measurePolicy = DefaultBoxMeasurePolicy;
-        }
-        if (ComposerKt.isTraceInProgress()) {
-            ComposerKt.traceEventEnd();
-        }
-        composer.endReplaceableGroup();
-        return measurePolicy;
+    /* JADX WARN: Code restructure failed: missing block: B:17:0x0047, code lost:
+    
+        if (r0 == androidx.compose.runtime.Composer.Companion.getEmpty()) goto L13;
+     */
+    @androidx.compose.runtime.Composable
+    @kotlin.PublishedApi
+    @org.jetbrains.annotations.NotNull
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+        To view partially-correct add '--show-bad-code' argument
+    */
+    public static final androidx.compose.ui.layout.MeasurePolicy rememberBoxMeasurePolicy(@org.jetbrains.annotations.NotNull androidx.compose.ui.Alignment r3, boolean r4, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r5, int r6) {
+        /*
+            java.lang.String r0 = "alignment"
+            kotlin.jvm.internal.Intrinsics.checkNotNullParameter(r3, r0)
+            r0 = 56522820(0x35e7844, float:6.5377995E-37)
+            r5.startReplaceableGroup(r0)
+            boolean r1 = androidx.compose.runtime.ComposerKt.isTraceInProgress()
+            if (r1 == 0) goto L17
+            r1 = -1
+            java.lang.String r2 = "androidx.compose.foundation.layout.rememberBoxMeasurePolicy (Box.kt:80)"
+            androidx.compose.runtime.ComposerKt.traceEventStart(r0, r6, r1, r2)
+        L17:
+            androidx.compose.ui.Alignment$Companion r6 = androidx.compose.ui.Alignment.Companion
+            androidx.compose.ui.Alignment r6 = r6.getTopStart()
+            boolean r6 = kotlin.jvm.internal.Intrinsics.areEqual(r3, r6)
+            if (r6 == 0) goto L28
+            if (r4 != 0) goto L28
+            androidx.compose.ui.layout.MeasurePolicy r3 = androidx.compose.foundation.layout.BoxKt.DefaultBoxMeasurePolicy
+            goto L56
+        L28:
+            java.lang.Boolean r6 = java.lang.Boolean.valueOf(r4)
+            r0 = 511388516(0x1e7b2b64, float:1.3296802E-20)
+            r5.startReplaceableGroup(r0)
+            boolean r0 = r5.changed(r3)
+            boolean r6 = r5.changed(r6)
+            r6 = r6 | r0
+            java.lang.Object r0 = r5.rememberedValue()
+            if (r6 != 0) goto L49
+            androidx.compose.runtime.Composer$Companion r6 = androidx.compose.runtime.Composer.Companion
+            java.lang.Object r6 = r6.getEmpty()
+            if (r0 != r6) goto L50
+        L49:
+            androidx.compose.ui.layout.MeasurePolicy r0 = boxMeasurePolicy(r3, r4)
+            r5.updateRememberedValue(r0)
+        L50:
+            r5.endReplaceableGroup()
+            r3 = r0
+            androidx.compose.ui.layout.MeasurePolicy r3 = (androidx.compose.ui.layout.MeasurePolicy) r3
+        L56:
+            boolean r4 = androidx.compose.runtime.ComposerKt.isTraceInProgress()
+            if (r4 == 0) goto L5f
+            androidx.compose.runtime.ComposerKt.traceEventEnd()
+        L5f:
+            r5.endReplaceableGroup()
+            return r3
+        */
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.layout.BoxKt.rememberBoxMeasurePolicy(androidx.compose.ui.Alignment, boolean, androidx.compose.runtime.Composer, int):androidx.compose.ui.layout.MeasurePolicy");
     }
 
     @ComposableTarget(applier = "androidx.compose.ui.UiComposable")
     @Composable
-    public static final void Box(@NotNull final Modifier modifier, @Nullable Composer composer, final int i) {
+    public static final void Box(@NotNull Modifier modifier, @Nullable Composer composer, int i) {
         int i2;
         Intrinsics.checkNotNullParameter(modifier, "modifier");
         Composer startRestartGroup = composer.startRestartGroup(-211209833);
@@ -387,8 +396,8 @@ public final class BoxKt {
             LayoutDirection layoutDirection = (LayoutDirection) startRestartGroup.consume(CompositionLocalsKt.getLocalLayoutDirection());
             ViewConfiguration viewConfiguration = (ViewConfiguration) startRestartGroup.consume(CompositionLocalsKt.getLocalViewConfiguration());
             ComposeUiNode.Companion companion = ComposeUiNode.Companion;
-            Function0<ComposeUiNode> constructor = companion.getConstructor();
-            Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf = LayoutKt.materializerOf(modifier);
+            Function0 constructor = companion.getConstructor();
+            Function3 materializerOf = LayoutKt.materializerOf(modifier);
             int i3 = (((((i2 << 3) & 112) | 384) << 9) & 7168) | 6;
             if (!(startRestartGroup.getApplier() instanceof Applier)) {
                 ComposablesKt.invalidApplier();
@@ -400,13 +409,13 @@ public final class BoxKt {
                 startRestartGroup.useNode();
             }
             startRestartGroup.disableReusing();
-            Composer m2410constructorimpl = Updater.m2410constructorimpl(startRestartGroup);
-            Updater.m2417setimpl(m2410constructorimpl, measurePolicy, companion.getSetMeasurePolicy());
-            Updater.m2417setimpl(m2410constructorimpl, density, companion.getSetDensity());
-            Updater.m2417setimpl(m2410constructorimpl, layoutDirection, companion.getSetLayoutDirection());
-            Updater.m2417setimpl(m2410constructorimpl, viewConfiguration, companion.getSetViewConfiguration());
+            Composer composer2 = Updater.constructor-impl(startRestartGroup);
+            Updater.set-impl(composer2, measurePolicy, companion.getSetMeasurePolicy());
+            Updater.set-impl(composer2, density, companion.getSetDensity());
+            Updater.set-impl(composer2, layoutDirection, companion.getSetLayoutDirection());
+            Updater.set-impl(composer2, viewConfiguration, companion.getSetViewConfiguration());
             startRestartGroup.enableReusing();
-            materializerOf.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(startRestartGroup)), startRestartGroup, Integer.valueOf((i3 >> 3) & 112));
+            materializerOf.invoke(SkippableUpdater.m907boximpl(SkippableUpdater.m908constructorimpl(startRestartGroup)), startRestartGroup, Integer.valueOf((i3 >> 3) & 112));
             startRestartGroup.startReplaceableGroup(2058660585);
             startRestartGroup.startReplaceableGroup(1021196736);
             if (((i3 >> 9) & 14 & 11) == 2 && startRestartGroup.getSkipping()) {
@@ -424,20 +433,6 @@ public final class BoxKt {
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.layout.BoxKt$Box$3
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                invoke((Composer) obj, ((Number) obj2).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i4) {
-                BoxKt.Box(Modifier.this, composer2, i | 1);
-            }
-        });
+        endRestartGroup.updateScope(new Box.3(modifier, i));
     }
 }

@@ -11,11 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 
 /* compiled from: Taobao */
 @RequiresApi(19)
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TypefaceEmojiSpan extends EmojiSpan {
 
     @Nullable

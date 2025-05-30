@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* JADX INFO: Add missing generic type declarations: [V, K] */
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LruCacheKt$lruCache$4<K, V> extends LruCache<K, V> {
     final /* synthetic */ Function1<K, V> $create;
     final /* synthetic */ Function4<Boolean, K, V, V, Unit> $onEntryRemoved;

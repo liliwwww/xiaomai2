@@ -5,7 +5,7 @@ import kotlin.jvm.functions.Function1;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface TwoWayConverter<T, V extends AnimationVector> {
     @NotNull
     Function1<V, T> getConvertFromVector();

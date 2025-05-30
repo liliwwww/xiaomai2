@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.CancellationSignal;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.core.content.res.FontResourcesParserCompat;
-import androidx.core.provider.FontsContractCompat;
+import androidx.core.provider.FontsContractCompat$FontInfo;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,8 +20,8 @@ import java.lang.reflect.Field;
 import java.util.concurrent.ConcurrentHashMap;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class TypefaceCompatBaseImpl {
     private static final int INVALID_KEY = 0;
     private static final String TAG = "TypefaceCompatBaseImpl";
@@ -59,7 +61,7 @@ class TypefaceCompatBaseImpl {
     }
 
     private static <T> T findBestFont(T[] tArr, int i, StyleExtractor<T> styleExtractor) {
-        return (T) findBestFont(tArr, (i & 1) == 0 ? 400 : 700, (i & 2) != 0, styleExtractor);
+        return (T) findBestFont(tArr, (i & 1) == 0 ? WVURLRuleConstants.CART : 700, (i & 2) != 0, styleExtractor);
     }
 
     private static long getUniqueKey(@Nullable Typeface typeface) {
@@ -91,31 +93,31 @@ class TypefaceCompatBaseImpl {
     }
 
     @Nullable
-    public Typeface createFromFontInfo(Context context, @Nullable CancellationSignal cancellationSignal, @NonNull FontsContractCompat.FontInfo[] fontInfoArr, int i) {
+    public Typeface createFromFontInfo(Context context, @Nullable CancellationSignal cancellationSignal, @NonNull FontsContractCompat$FontInfo[] fontsContractCompat$FontInfoArr, int i) {
         InputStream inputStream;
         InputStream inputStream2 = null;
-        if (fontInfoArr.length < 1) {
+        if (fontsContractCompat$FontInfoArr.length < 1) {
             return null;
         }
         try {
-            inputStream = context.getContentResolver().openInputStream(findBestInfo(fontInfoArr, i).getUri());
-            try {
-                Typeface createFromInputStream = createFromInputStream(context, inputStream);
-                TypefaceCompatUtil.closeQuietly(inputStream);
-                return createFromInputStream;
-            } catch (IOException unused) {
-                TypefaceCompatUtil.closeQuietly(inputStream);
-                return null;
-            } catch (Throwable th) {
-                th = th;
-                inputStream2 = inputStream;
-                TypefaceCompatUtil.closeQuietly(inputStream2);
-                throw th;
-            }
-        } catch (IOException unused2) {
+            inputStream = context.getContentResolver().openInputStream(findBestInfo(fontsContractCompat$FontInfoArr, i).getUri());
+        } catch (IOException unused) {
             inputStream = null;
+        } catch (Throwable th) {
+            th = th;
+        }
+        try {
+            Typeface createFromInputStream = createFromInputStream(context, inputStream);
+            TypefaceCompatUtil.closeQuietly(inputStream);
+            return createFromInputStream;
+        } catch (IOException unused2) {
+            TypefaceCompatUtil.closeQuietly(inputStream);
+            return null;
         } catch (Throwable th2) {
             th = th2;
+            inputStream2 = inputStream;
+            TypefaceCompatUtil.closeQuietly(inputStream2);
+            throw th;
         }
     }
 
@@ -165,16 +167,16 @@ class TypefaceCompatBaseImpl {
         return typeface2 == null ? typeface : typeface2;
     }
 
-    protected FontsContractCompat.FontInfo findBestInfo(FontsContractCompat.FontInfo[] fontInfoArr, int i) {
-        return (FontsContractCompat.FontInfo) findBestFont(fontInfoArr, i, new StyleExtractor<FontsContractCompat.FontInfo>() { // from class: androidx.core.graphics.TypefaceCompatBaseImpl.1
+    protected FontsContractCompat$FontInfo findBestInfo(FontsContractCompat$FontInfo[] fontsContractCompat$FontInfoArr, int i) {
+        return (FontsContractCompat$FontInfo) findBestFont(fontsContractCompat$FontInfoArr, i, new StyleExtractor<FontsContractCompat$FontInfo>() { // from class: androidx.core.graphics.TypefaceCompatBaseImpl.1
             @Override // androidx.core.graphics.TypefaceCompatBaseImpl.StyleExtractor
-            public int getWeight(FontsContractCompat.FontInfo fontInfo) {
-                return fontInfo.getWeight();
+            public int getWeight(FontsContractCompat$FontInfo fontsContractCompat$FontInfo) {
+                return fontsContractCompat$FontInfo.getWeight();
             }
 
             @Override // androidx.core.graphics.TypefaceCompatBaseImpl.StyleExtractor
-            public boolean isItalic(FontsContractCompat.FontInfo fontInfo) {
-                return fontInfo.isItalic();
+            public boolean isItalic(FontsContractCompat$FontInfo fontsContractCompat$FontInfo) {
+                return fontsContractCompat$FontInfo.isItalic();
             }
         });
     }

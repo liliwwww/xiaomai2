@@ -1,34 +1,16 @@
 package androidx.core.graphics;
 
-import android.graphics.BlendMode;
-import android.graphics.BlendModeColorFilter;
 import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.os.Build;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.core.graphics.BlendModeUtils;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class BlendModeColorFilterCompat {
-
-    /* compiled from: Taobao */
-    @RequiresApi(29)
-    /* loaded from: classes.dex */
-    static class Api29Impl {
-        private Api29Impl() {
-        }
-
-        @DoNotInline
-        static ColorFilter createBlendModeColorFilter(int i, Object obj) {
-            return new BlendModeColorFilter(i, (BlendMode) obj);
-        }
-    }
-
     private BlendModeColorFilterCompat() {
     }
 

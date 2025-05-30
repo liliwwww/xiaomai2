@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class FixedSizeLinkedHashMap<K, V> extends LinkedHashMap<K, V> {
     private static final long serialVersionUID = 2230704826523879449L;
     private Object lock;

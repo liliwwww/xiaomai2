@@ -4,14 +4,14 @@ import java.net.Socket;
 import javax.annotation.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface Connection {
     @Nullable
-    C1470j handshake();
+    j handshake();
 
     Protocol protocol();
 
-    C1478r route();
+    r route();
 
     Socket socket();
 }

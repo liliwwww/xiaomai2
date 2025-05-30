@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ComposableSingletons$LazyStaggeredGridItemProviderKt {
 
     @NotNull
@@ -20,7 +20,7 @@ public final class ComposableSingletons$LazyStaggeredGridItemProviderKt {
 
     /* renamed from: lambda-1, reason: not valid java name */
     @NotNull
-    public static Function4<IntervalList.Interval<LazyStaggeredGridIntervalContent>, Integer, Composer, Integer, Unit> f1007lambda1 = ComposableLambdaKt.composableLambdaInstance(539390666, false, new Function4<IntervalList.Interval<? extends LazyStaggeredGridIntervalContent>, Integer, Composer, Integer, Unit>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.ComposableSingletons$LazyStaggeredGridItemProviderKt$lambda-1$1
+    public static Function4<IntervalList.Interval<LazyStaggeredGridIntervalContent>, Integer, Composer, Integer, Unit> f1lambda1 = ComposableLambdaKt.composableLambdaInstance(539390666, false, new Function4<IntervalList.Interval<? extends LazyStaggeredGridIntervalContent>, Integer, Composer, Integer, Unit>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.ComposableSingletons$LazyStaggeredGridItemProviderKt$lambda-1$1
         public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3, Object obj4) {
             invoke((IntervalList.Interval<LazyStaggeredGridIntervalContent>) obj, ((Number) obj2).intValue(), (Composer) obj3, ((Number) obj4).intValue());
             return Unit.INSTANCE;
@@ -54,7 +54,7 @@ public final class ComposableSingletons$LazyStaggeredGridItemProviderKt {
 
     @NotNull
     /* renamed from: getLambda-1$foundation_release, reason: not valid java name */
-    public final Function4<IntervalList.Interval<LazyStaggeredGridIntervalContent>, Integer, Composer, Integer, Unit> m1623getLambda1$foundation_release() {
-        return f1007lambda1;
+    public final Function4<IntervalList.Interval<LazyStaggeredGridIntervalContent>, Integer, Composer, Integer, Unit> m324getLambda1$foundation_release() {
+        return f1lambda1;
     }
 }

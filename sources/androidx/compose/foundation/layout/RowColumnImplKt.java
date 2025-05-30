@@ -1,27 +1,28 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.layout.IntrinsicMeasurable;
-import androidx.compose.p004ui.layout.IntrinsicMeasureScope;
-import androidx.compose.p004ui.layout.Measurable;
-import androidx.compose.p004ui.layout.MeasurePolicy;
-import androidx.compose.p004ui.layout.MeasureResult;
-import androidx.compose.p004ui.layout.MeasureScope;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
+import androidx.compose.ui.layout.IntrinsicMeasurable;
+import androidx.compose.ui.layout.IntrinsicMeasureScope;
+import androidx.compose.ui.layout.Measurable;
+import androidx.compose.ui.layout.MeasurePolicy;
+import androidx.compose.ui.layout.MeasureResult;
+import androidx.compose.ui.layout.MeasureScope;
+import androidx.compose.ui.layout.MeasureScope$CC;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
 import java.util.List;
 import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.functions.Function5;
+import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.math.MathKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class RowColumnImplKt {
     /* JADX INFO: Access modifiers changed from: private */
     public static final Function3<List<? extends IntrinsicMeasurable>, Integer, Integer, Integer> MaxIntrinsicHeightMeasureBlock(LayoutOrientation layoutOrientation) {
@@ -141,81 +142,61 @@ public final class RowColumnImplKt {
 
     @NotNull
     /* renamed from: rowColumnMeasurePolicy-TDGSqEk, reason: not valid java name */
-    public static final MeasurePolicy m1415rowColumnMeasurePolicyTDGSqEk(@NotNull final LayoutOrientation layoutOrientation, @NotNull final Function5<? super Integer, ? super int[], ? super LayoutDirection, ? super Density, ? super int[], Unit> function5, final float f, @NotNull final SizeMode sizeMode, @NotNull final CrossAxisAlignment crossAxisAlignment) {
+    public static final MeasurePolicy m349rowColumnMeasurePolicyTDGSqEk(@NotNull final LayoutOrientation layoutOrientation, @NotNull final Function5<? super Integer, ? super int[], ? super LayoutDirection, ? super Density, ? super int[], Unit> function5, final float f, @NotNull final SizeMode sizeMode, @NotNull final CrossAxisAlignment crossAxisAlignment) {
         Intrinsics.checkNotNullParameter(layoutOrientation, "orientation");
         Intrinsics.checkNotNullParameter(function5, "arrangement");
         Intrinsics.checkNotNullParameter(sizeMode, "crossAxisSize");
         Intrinsics.checkNotNullParameter(crossAxisAlignment, "crossAxisAlignment");
         return new MeasurePolicy() { // from class: androidx.compose.foundation.layout.RowColumnImplKt$rowColumnMeasurePolicy$1
-            @Override // androidx.compose.p004ui.layout.MeasurePolicy
             public int maxIntrinsicHeight(@NotNull IntrinsicMeasureScope intrinsicMeasureScope, @NotNull List<? extends IntrinsicMeasurable> list, int i) {
                 Function3 MaxIntrinsicHeightMeasureBlock;
                 Intrinsics.checkNotNullParameter(intrinsicMeasureScope, "<this>");
                 Intrinsics.checkNotNullParameter(list, "measurables");
-                MaxIntrinsicHeightMeasureBlock = RowColumnImplKt.MaxIntrinsicHeightMeasureBlock(LayoutOrientation.this);
-                return ((Number) MaxIntrinsicHeightMeasureBlock.invoke(list, Integer.valueOf(i), Integer.valueOf(intrinsicMeasureScope.mo1277roundToPx0680j_4(f)))).intValue();
+                MaxIntrinsicHeightMeasureBlock = RowColumnImplKt.MaxIntrinsicHeightMeasureBlock(layoutOrientation);
+                return ((Number) MaxIntrinsicHeightMeasureBlock.invoke(list, Integer.valueOf(i), Integer.valueOf(intrinsicMeasureScope.roundToPx-0680j_4(f)))).intValue();
             }
 
-            @Override // androidx.compose.p004ui.layout.MeasurePolicy
             public int maxIntrinsicWidth(@NotNull IntrinsicMeasureScope intrinsicMeasureScope, @NotNull List<? extends IntrinsicMeasurable> list, int i) {
                 Function3 MaxIntrinsicWidthMeasureBlock;
                 Intrinsics.checkNotNullParameter(intrinsicMeasureScope, "<this>");
                 Intrinsics.checkNotNullParameter(list, "measurables");
-                MaxIntrinsicWidthMeasureBlock = RowColumnImplKt.MaxIntrinsicWidthMeasureBlock(LayoutOrientation.this);
-                return ((Number) MaxIntrinsicWidthMeasureBlock.invoke(list, Integer.valueOf(i), Integer.valueOf(intrinsicMeasureScope.mo1277roundToPx0680j_4(f)))).intValue();
+                MaxIntrinsicWidthMeasureBlock = RowColumnImplKt.MaxIntrinsicWidthMeasureBlock(layoutOrientation);
+                return ((Number) MaxIntrinsicWidthMeasureBlock.invoke(list, Integer.valueOf(i), Integer.valueOf(intrinsicMeasureScope.roundToPx-0680j_4(f)))).intValue();
             }
 
-            @Override // androidx.compose.p004ui.layout.MeasurePolicy
             @NotNull
-            /* renamed from: measure-3p2s80s */
-            public MeasureResult mo944measure3p2s80s(@NotNull final MeasureScope measureScope, @NotNull List<? extends Measurable> list, long j) {
+            /* renamed from: measure-3p2s80s, reason: not valid java name */
+            public MeasureResult m350measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull List<? extends Measurable> list, long j) {
                 int crossAxisSize;
                 int mainAxisSize;
                 Intrinsics.checkNotNullParameter(measureScope, "$this$measure");
                 Intrinsics.checkNotNullParameter(list, "measurables");
-                final RowColumnMeasurementHelper rowColumnMeasurementHelper = new RowColumnMeasurementHelper(LayoutOrientation.this, function5, f, sizeMode, crossAxisAlignment, list, new Placeable[list.size()], null);
-                final RowColumnMeasureHelperResult m1417measureWithoutPlacing_EkL_Y = rowColumnMeasurementHelper.m1417measureWithoutPlacing_EkL_Y(measureScope, j, 0, list.size());
-                if (LayoutOrientation.this == LayoutOrientation.Horizontal) {
-                    crossAxisSize = m1417measureWithoutPlacing_EkL_Y.getMainAxisSize();
-                    mainAxisSize = m1417measureWithoutPlacing_EkL_Y.getCrossAxisSize();
+                RowColumnMeasurementHelper rowColumnMeasurementHelper = new RowColumnMeasurementHelper(layoutOrientation, function5, f, sizeMode, crossAxisAlignment, list, new Placeable[list.size()], (DefaultConstructorMarker) null);
+                RowColumnMeasureHelperResult rowColumnMeasureHelperResult = rowColumnMeasurementHelper.measureWithoutPlacing-_EkL_-Y(measureScope, j, 0, list.size());
+                if (layoutOrientation == LayoutOrientation.Horizontal) {
+                    crossAxisSize = rowColumnMeasureHelperResult.getMainAxisSize();
+                    mainAxisSize = rowColumnMeasureHelperResult.getCrossAxisSize();
                 } else {
-                    crossAxisSize = m1417measureWithoutPlacing_EkL_Y.getCrossAxisSize();
-                    mainAxisSize = m1417measureWithoutPlacing_EkL_Y.getMainAxisSize();
+                    crossAxisSize = rowColumnMeasureHelperResult.getCrossAxisSize();
+                    mainAxisSize = rowColumnMeasureHelperResult.getMainAxisSize();
                 }
-                return MeasureScope.CC.m140p(measureScope, crossAxisSize, mainAxisSize, null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.foundation.layout.RowColumnImplKt$rowColumnMeasurePolicy$1$measure$1
-                    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                    {
-                        super(1);
-                    }
-
-                    public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                        invoke((Placeable.PlacementScope) obj);
-                        return Unit.INSTANCE;
-                    }
-
-                    public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
-                        Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
-                        RowColumnMeasurementHelper.this.placeHelper(placementScope, m1417measureWithoutPlacing_EkL_Y, 0, measureScope.getLayoutDirection());
-                    }
-                }, 4, null);
+                return MeasureScope$CC.p(measureScope, crossAxisSize, mainAxisSize, null, new measure.1(rowColumnMeasurementHelper, rowColumnMeasureHelperResult, measureScope), 4, null);
             }
 
-            @Override // androidx.compose.p004ui.layout.MeasurePolicy
             public int minIntrinsicHeight(@NotNull IntrinsicMeasureScope intrinsicMeasureScope, @NotNull List<? extends IntrinsicMeasurable> list, int i) {
                 Function3 MinIntrinsicHeightMeasureBlock;
                 Intrinsics.checkNotNullParameter(intrinsicMeasureScope, "<this>");
                 Intrinsics.checkNotNullParameter(list, "measurables");
-                MinIntrinsicHeightMeasureBlock = RowColumnImplKt.MinIntrinsicHeightMeasureBlock(LayoutOrientation.this);
-                return ((Number) MinIntrinsicHeightMeasureBlock.invoke(list, Integer.valueOf(i), Integer.valueOf(intrinsicMeasureScope.mo1277roundToPx0680j_4(f)))).intValue();
+                MinIntrinsicHeightMeasureBlock = RowColumnImplKt.MinIntrinsicHeightMeasureBlock(layoutOrientation);
+                return ((Number) MinIntrinsicHeightMeasureBlock.invoke(list, Integer.valueOf(i), Integer.valueOf(intrinsicMeasureScope.roundToPx-0680j_4(f)))).intValue();
             }
 
-            @Override // androidx.compose.p004ui.layout.MeasurePolicy
             public int minIntrinsicWidth(@NotNull IntrinsicMeasureScope intrinsicMeasureScope, @NotNull List<? extends IntrinsicMeasurable> list, int i) {
                 Function3 MinIntrinsicWidthMeasureBlock;
                 Intrinsics.checkNotNullParameter(intrinsicMeasureScope, "<this>");
                 Intrinsics.checkNotNullParameter(list, "measurables");
-                MinIntrinsicWidthMeasureBlock = RowColumnImplKt.MinIntrinsicWidthMeasureBlock(LayoutOrientation.this);
-                return ((Number) MinIntrinsicWidthMeasureBlock.invoke(list, Integer.valueOf(i), Integer.valueOf(intrinsicMeasureScope.mo1277roundToPx0680j_4(f)))).intValue();
+                MinIntrinsicWidthMeasureBlock = RowColumnImplKt.MinIntrinsicWidthMeasureBlock(layoutOrientation);
+                return ((Number) MinIntrinsicWidthMeasureBlock.invoke(list, Integer.valueOf(i), Integer.valueOf(intrinsicMeasureScope.roundToPx-0680j_4(f)))).intValue();
             }
         };
     }

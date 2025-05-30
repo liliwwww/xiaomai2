@@ -4,59 +4,27 @@ import androidx.constraintlayout.core.LinearSystem;
 import androidx.constraintlayout.core.widgets.Chain;
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import androidx.constraintlayout.core.widgets.ConstraintWidgetContainer;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WidgetGroup {
     private static final boolean DEBUG = false;
     static int count;
-
-    /* renamed from: id */
-    int f271id;
+    int id;
     int orientation;
     ArrayList<ConstraintWidget> widgets = new ArrayList<>();
     boolean authoritative = false;
     ArrayList<MeasureResult> results = null;
     private int moveTo = -1;
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    class MeasureResult {
-        int baseline;
-        int bottom;
-        int left;
-        int orientation;
-        int right;
-        int top;
-        WeakReference<ConstraintWidget> widgetRef;
-
-        public MeasureResult(ConstraintWidget constraintWidget, LinearSystem linearSystem, int i) {
-            this.widgetRef = new WeakReference<>(constraintWidget);
-            this.left = linearSystem.getObjectVariableValue(constraintWidget.mLeft);
-            this.top = linearSystem.getObjectVariableValue(constraintWidget.mTop);
-            this.right = linearSystem.getObjectVariableValue(constraintWidget.mRight);
-            this.bottom = linearSystem.getObjectVariableValue(constraintWidget.mBottom);
-            this.baseline = linearSystem.getObjectVariableValue(constraintWidget.mBaseline);
-            this.orientation = i;
-        }
-
-        public void apply() {
-            ConstraintWidget constraintWidget = this.widgetRef.get();
-            if (constraintWidget != null) {
-                constraintWidget.setFinalFrame(this.left, this.top, this.right, this.bottom, this.baseline, this.orientation);
-            }
-        }
-    }
-
     public WidgetGroup(int i) {
-        this.f271id = -1;
+        this.id = -1;
         this.orientation = 0;
         int i2 = count;
         count = i2 + 1;
-        this.f271id = i2;
+        this.id = i2;
         this.orientation = i;
     }
 
@@ -77,20 +45,21 @@ public class WidgetGroup {
         return -1;
     }
 
+    /* JADX WARN: Type inference failed for: r1v3, types: [androidx.constraintlayout.core.widgets.ConstraintWidget, androidx.constraintlayout.core.widgets.ConstraintWidgetContainer] */
     private int solverMeasure(LinearSystem linearSystem, ArrayList<ConstraintWidget> arrayList, int i) {
         int objectVariableValue;
         int objectVariableValue2;
-        ConstraintWidgetContainer constraintWidgetContainer = (ConstraintWidgetContainer) arrayList.get(0).getParent();
+        ?? r1 = (ConstraintWidgetContainer) arrayList.get(0).getParent();
         linearSystem.reset();
-        constraintWidgetContainer.addToSolver(linearSystem, false);
+        r1.addToSolver(linearSystem, false);
         for (int i2 = 0; i2 < arrayList.size(); i2++) {
             arrayList.get(i2).addToSolver(linearSystem, false);
         }
-        if (i == 0 && constraintWidgetContainer.mHorizontalChainsSize > 0) {
-            Chain.applyChainConstraints(constraintWidgetContainer, linearSystem, arrayList, 0);
+        if (i == 0 && r1.mHorizontalChainsSize > 0) {
+            Chain.applyChainConstraints(r1, linearSystem, arrayList, 0);
         }
-        if (i == 1 && constraintWidgetContainer.mVerticalChainsSize > 0) {
-            Chain.applyChainConstraints(constraintWidgetContainer, linearSystem, arrayList, 1);
+        if (i == 1 && r1.mVerticalChainsSize > 0) {
+            Chain.applyChainConstraints(r1, linearSystem, arrayList, 1);
         }
         try {
             linearSystem.minimize();
@@ -99,15 +68,15 @@ public class WidgetGroup {
         }
         this.results = new ArrayList<>();
         for (int i3 = 0; i3 < arrayList.size(); i3++) {
-            this.results.add(new MeasureResult(arrayList.get(i3), linearSystem, i));
+            this.results.add(new MeasureResult(this, arrayList.get(i3), linearSystem, i));
         }
         if (i == 0) {
-            objectVariableValue = linearSystem.getObjectVariableValue(constraintWidgetContainer.mLeft);
-            objectVariableValue2 = linearSystem.getObjectVariableValue(constraintWidgetContainer.mRight);
+            objectVariableValue = linearSystem.getObjectVariableValue(r1.mLeft);
+            objectVariableValue2 = linearSystem.getObjectVariableValue(r1.mRight);
             linearSystem.reset();
         } else {
-            objectVariableValue = linearSystem.getObjectVariableValue(constraintWidgetContainer.mTop);
-            objectVariableValue2 = linearSystem.getObjectVariableValue(constraintWidgetContainer.mBottom);
+            objectVariableValue = linearSystem.getObjectVariableValue(r1.mTop);
+            objectVariableValue2 = linearSystem.getObjectVariableValue(r1.mBottom);
             linearSystem.reset();
         }
         return objectVariableValue2 - objectVariableValue;
@@ -134,7 +103,7 @@ public class WidgetGroup {
         if (this.moveTo != -1 && size > 0) {
             for (int i = 0; i < arrayList.size(); i++) {
                 WidgetGroup widgetGroup = arrayList.get(i);
-                if (this.moveTo == widgetGroup.f271id) {
+                if (this.moveTo == widgetGroup.id) {
                     moveTo(this.orientation, widgetGroup);
                 }
             }
@@ -149,7 +118,7 @@ public class WidgetGroup {
     }
 
     public int getId() {
-        return this.f271id;
+        return this.id;
     }
 
     public int getOrientation() {
@@ -180,7 +149,7 @@ public class WidgetGroup {
                 next.verticalGroup = widgetGroup.getId();
             }
         }
-        this.moveTo = widgetGroup.f271id;
+        this.moveTo = widgetGroup.id;
     }
 
     public void setAuthoritative(boolean z) {
@@ -196,7 +165,7 @@ public class WidgetGroup {
     }
 
     public String toString() {
-        String str = getOrientationString() + " [" + this.f271id + "] <";
+        String str = getOrientationString() + " [" + this.id + "] <";
         Iterator<ConstraintWidget> it = this.widgets.iterator();
         while (it.hasNext()) {
             str = str + " " + it.next().getDebugName();

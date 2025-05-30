@@ -1,17 +1,17 @@
 package androidx.compose.animation;
 
-import androidx.compose.animation.AnimatedVisibilityScope;
 import androidx.compose.animation.core.Transition;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.unit.IntSize;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.unit.IntSize;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @ExperimentalAnimationApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AnimatedVisibilityScopeImpl implements AnimatedVisibilityScope {
 
     @NotNull
@@ -23,12 +23,11 @@ public final class AnimatedVisibilityScopeImpl implements AnimatedVisibilityScop
     public AnimatedVisibilityScopeImpl(@NotNull Transition<EnterExitState> transition) {
         Intrinsics.checkNotNullParameter(transition, "transition");
         this.transition = transition;
-        this.targetSize = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(IntSize.m5368boximpl(IntSize.Companion.m5381getZeroYbymL2g()), null, 2, null);
+        this.targetSize = SnapshotStateKt.mutableStateOf$default(IntSize.box-impl(IntSize.Companion.getZero-YbymL2g()), (SnapshotMutationPolicy) null, 2, (Object) null);
     }
 
-    @Override // androidx.compose.animation.AnimatedVisibilityScope
     public /* synthetic */ Modifier animateEnterExit(Modifier modifier, EnterTransition enterTransition, ExitTransition exitTransition, String str) {
-        return AnimatedVisibilityScope.CC.m52a(this, modifier, enterTransition, exitTransition, str);
+        return AnimatedVisibilityScope$CC.a(this, modifier, enterTransition, exitTransition, str);
     }
 
     @NotNull
@@ -36,7 +35,6 @@ public final class AnimatedVisibilityScopeImpl implements AnimatedVisibilityScop
         return this.targetSize;
     }
 
-    @Override // androidx.compose.animation.AnimatedVisibilityScope
     @NotNull
     public Transition<EnterExitState> getTransition() {
         return this.transition;

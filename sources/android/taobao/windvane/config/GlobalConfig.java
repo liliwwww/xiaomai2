@@ -3,11 +3,10 @@ package android.taobao.windvane.config;
 import android.app.Application;
 import android.taobao.windvane.config.UCHASettings;
 import android.text.TextUtils;
-import androidx.exifinterface.media.ExifInterface;
 import java.util.concurrent.Callable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class GlobalConfig {
     public static final String DEFAULT_TTID = "hybrid@windvane_android_8.5.0";
     public static final String DEFAULT_UA = " WindVane/8.5.0";
@@ -16,7 +15,7 @@ public class GlobalConfig {
     public static Application context;
     public static EnvEnum env = EnvEnum.ONLINE;
     public static boolean isBackground = false;
-    public static String zType = ExifInterface.GPS_MEASUREMENT_2D;
+    public static String zType = "2";
     private String appKey;
     private String appSecret;
     private String appTag;

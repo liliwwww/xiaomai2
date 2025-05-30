@@ -1,5 +1,6 @@
 package androidx.constraintlayout.core.motion;
 
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import androidx.constraintlayout.core.motion.key.MotionKey;
 import androidx.constraintlayout.core.motion.key.MotionKeyAttributes;
 import androidx.constraintlayout.core.motion.key.MotionKeyCycle;
@@ -29,7 +30,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Motion implements TypedValues {
     static final int BOUNCE = 4;
     private static final boolean DEBUG = false;
@@ -148,23 +149,7 @@ public class Motion implements TypedValues {
         if (i != -1) {
             return null;
         }
-        final Easing interpolator = Easing.getInterpolator(str);
-        return new DifferentialInterpolator() { // from class: androidx.constraintlayout.core.motion.Motion.1
-
-            /* renamed from: mX */
-            float f237mX;
-
-            @Override // androidx.constraintlayout.core.motion.utils.DifferentialInterpolator
-            public float getInterpolation(float f) {
-                this.f237mX = f;
-                return (float) Easing.this.get(f);
-            }
-
-            @Override // androidx.constraintlayout.core.motion.utils.DifferentialInterpolator
-            public float getVelocity() {
-                return (float) Easing.this.getDiff(this.f237mX);
-            }
-        };
+        return new 1(Easing.getInterpolator(str));
     }
 
     private float getPreCycleDistance() {
@@ -255,19 +240,19 @@ public class Motion implements TypedValues {
         float f = 1.0f / (i - 1);
         HashMap<String, SplineSet> hashMap = this.mAttributesMap;
         if (hashMap != null) {
-            hashMap.get("translationX");
+            hashMap.get(MotionKey.TRANSLATION_X);
         }
         HashMap<String, SplineSet> hashMap2 = this.mAttributesMap;
         if (hashMap2 != null) {
-            hashMap2.get("translationY");
+            hashMap2.get(MotionKey.TRANSLATION_Y);
         }
         HashMap<String, KeyCycleOscillator> hashMap3 = this.mCycleMap;
         if (hashMap3 != null) {
-            hashMap3.get("translationX");
+            hashMap3.get(MotionKey.TRANSLATION_X);
         }
         HashMap<String, KeyCycleOscillator> hashMap4 = this.mCycleMap;
         if (hashMap4 != null) {
-            hashMap4.get("translationY");
+            hashMap4.get(MotionKey.TRANSLATION_Y);
         }
         for (int i2 = 0; i2 < i; i2++) {
             float f2 = i2 * f;
@@ -374,13 +359,13 @@ public class Motion implements TypedValues {
         float f = 1.0f;
         float f2 = 1.0f / (i - 1);
         HashMap<String, SplineSet> hashMap = this.mAttributesMap;
-        SplineSet splineSet = hashMap == null ? null : hashMap.get("translationX");
+        SplineSet splineSet = hashMap == null ? null : hashMap.get(MotionKey.TRANSLATION_X);
         HashMap<String, SplineSet> hashMap2 = this.mAttributesMap;
-        SplineSet splineSet2 = hashMap2 == null ? null : hashMap2.get("translationY");
+        SplineSet splineSet2 = hashMap2 == null ? null : hashMap2.get(MotionKey.TRANSLATION_Y);
         HashMap<String, KeyCycleOscillator> hashMap3 = this.mCycleMap;
-        KeyCycleOscillator keyCycleOscillator = hashMap3 == null ? null : hashMap3.get("translationX");
+        KeyCycleOscillator keyCycleOscillator = hashMap3 == null ? null : hashMap3.get(MotionKey.TRANSLATION_X);
         HashMap<String, KeyCycleOscillator> hashMap4 = this.mCycleMap;
-        KeyCycleOscillator keyCycleOscillator2 = hashMap4 != null ? hashMap4.get("translationY") : null;
+        KeyCycleOscillator keyCycleOscillator2 = hashMap4 != null ? hashMap4.get(MotionKey.TRANSLATION_Y) : null;
         int i2 = 0;
         while (i2 < i) {
             float f3 = i2 * f2;
@@ -507,10 +492,10 @@ public class Motion implements TypedValues {
         int i = 0;
         if (curveFitArr == null) {
             MotionPaths motionPaths = this.mEndMotionPath;
-            float f4 = motionPaths.f240x;
+            float f4 = motionPaths.x;
             MotionPaths motionPaths2 = this.mStartMotionPath;
-            float f5 = f4 - motionPaths2.f240x;
-            float f6 = motionPaths.f241y - motionPaths2.f241y;
+            float f5 = f4 - motionPaths2.x;
+            float f6 = motionPaths.y - motionPaths2.y;
             float f7 = (motionPaths.width - motionPaths2.width) + f5;
             float f8 = (motionPaths.height - motionPaths2.height) + f6;
             fArr[0] = (f5 * (1.0f - f2)) + (f7 * f2);
@@ -560,14 +545,13 @@ public class Motion implements TypedValues {
     }
 
     public float getFinalX() {
-        return this.mEndMotionPath.f240x;
+        return this.mEndMotionPath.x;
     }
 
     public float getFinalY() {
-        return this.mEndMotionPath.f241y;
+        return this.mEndMotionPath.y;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public int getId(String str) {
         return 0;
     }
@@ -618,12 +602,12 @@ public class Motion implements TypedValues {
 
     float getKeyFrameParameter(int i, float f, float f2) {
         MotionPaths motionPaths = this.mEndMotionPath;
-        float f3 = motionPaths.f240x;
+        float f3 = motionPaths.x;
         MotionPaths motionPaths2 = this.mStartMotionPath;
-        float f4 = motionPaths2.f240x;
+        float f4 = motionPaths2.x;
         float f5 = f3 - f4;
-        float f6 = motionPaths.f241y;
-        float f7 = motionPaths2.f241y;
+        float f6 = motionPaths.y;
+        float f7 = motionPaths2.y;
         float f8 = f6 - f7;
         float f9 = f4 + (motionPaths2.width / 2.0f);
         float f10 = f7 + (motionPaths2.height / 2.0f);
@@ -665,7 +649,7 @@ public class Motion implements TypedValues {
         while (it.hasNext()) {
             MotionKey next = it.next();
             int i3 = next.mFramePosition;
-            iArr[i] = (next.mType * 1000) + i3;
+            iArr[i] = (next.mType * WVURLRuleConstants.LOGIN) + i3;
             double d = i3 / 100.0f;
             this.mSpline[0].getPos(d, this.mInterpolateData);
             this.mStartMotionPath.getCenter(d, this.mInterpolateVariables, this.mInterpolateData, fArr, i2);
@@ -690,17 +674,17 @@ public class Motion implements TypedValues {
     MotionKeyPosition getPositionKeyframe(int i, int i2, float f, float f2) {
         FloatRect floatRect = new FloatRect();
         MotionPaths motionPaths = this.mStartMotionPath;
-        float f3 = motionPaths.f240x;
+        float f3 = motionPaths.x;
         floatRect.left = f3;
-        float f4 = motionPaths.f241y;
+        float f4 = motionPaths.y;
         floatRect.top = f4;
         floatRect.right = f3 + motionPaths.width;
         floatRect.bottom = f4 + motionPaths.height;
         FloatRect floatRect2 = new FloatRect();
         MotionPaths motionPaths2 = this.mEndMotionPath;
-        float f5 = motionPaths2.f240x;
+        float f5 = motionPaths2.x;
         floatRect2.left = f5;
-        float f6 = motionPaths2.f241y;
+        float f6 = motionPaths2.y;
         floatRect2.top = f6;
         floatRect2.right = f5 + motionPaths2.width;
         floatRect2.bottom = f6 + motionPaths2.height;
@@ -720,25 +704,25 @@ public class Motion implements TypedValues {
     void getPostLayoutDvDp(float f, int i, int i2, float f2, float f3, float[] fArr) {
         float adjustedPosition = getAdjustedPosition(f, this.mVelocity);
         HashMap<String, SplineSet> hashMap = this.mAttributesMap;
-        SplineSet splineSet = hashMap == null ? null : hashMap.get("translationX");
+        SplineSet splineSet = hashMap == null ? null : hashMap.get(MotionKey.TRANSLATION_X);
         HashMap<String, SplineSet> hashMap2 = this.mAttributesMap;
-        SplineSet splineSet2 = hashMap2 == null ? null : hashMap2.get("translationY");
+        SplineSet splineSet2 = hashMap2 == null ? null : hashMap2.get(MotionKey.TRANSLATION_Y);
         HashMap<String, SplineSet> hashMap3 = this.mAttributesMap;
-        SplineSet splineSet3 = hashMap3 == null ? null : hashMap3.get("rotationZ");
+        SplineSet splineSet3 = hashMap3 == null ? null : hashMap3.get(MotionKey.ROTATION);
         HashMap<String, SplineSet> hashMap4 = this.mAttributesMap;
-        SplineSet splineSet4 = hashMap4 == null ? null : hashMap4.get("scaleX");
+        SplineSet splineSet4 = hashMap4 == null ? null : hashMap4.get(MotionKey.SCALE_X);
         HashMap<String, SplineSet> hashMap5 = this.mAttributesMap;
-        SplineSet splineSet5 = hashMap5 == null ? null : hashMap5.get("scaleY");
+        SplineSet splineSet5 = hashMap5 == null ? null : hashMap5.get(MotionKey.SCALE_Y);
         HashMap<String, KeyCycleOscillator> hashMap6 = this.mCycleMap;
-        KeyCycleOscillator keyCycleOscillator = hashMap6 == null ? null : hashMap6.get("translationX");
+        KeyCycleOscillator keyCycleOscillator = hashMap6 == null ? null : hashMap6.get(MotionKey.TRANSLATION_X);
         HashMap<String, KeyCycleOscillator> hashMap7 = this.mCycleMap;
-        KeyCycleOscillator keyCycleOscillator2 = hashMap7 == null ? null : hashMap7.get("translationY");
+        KeyCycleOscillator keyCycleOscillator2 = hashMap7 == null ? null : hashMap7.get(MotionKey.TRANSLATION_Y);
         HashMap<String, KeyCycleOscillator> hashMap8 = this.mCycleMap;
-        KeyCycleOscillator keyCycleOscillator3 = hashMap8 == null ? null : hashMap8.get("rotationZ");
+        KeyCycleOscillator keyCycleOscillator3 = hashMap8 == null ? null : hashMap8.get(MotionKey.ROTATION);
         HashMap<String, KeyCycleOscillator> hashMap9 = this.mCycleMap;
-        KeyCycleOscillator keyCycleOscillator4 = hashMap9 == null ? null : hashMap9.get("scaleX");
+        KeyCycleOscillator keyCycleOscillator4 = hashMap9 == null ? null : hashMap9.get(MotionKey.SCALE_X);
         HashMap<String, KeyCycleOscillator> hashMap10 = this.mCycleMap;
-        KeyCycleOscillator keyCycleOscillator5 = hashMap10 != null ? hashMap10.get("scaleY") : null;
+        KeyCycleOscillator keyCycleOscillator5 = hashMap10 != null ? hashMap10.get(MotionKey.SCALE_Y) : null;
         VelocityMatrix velocityMatrix = new VelocityMatrix();
         velocityMatrix.clear();
         velocityMatrix.setRotationVelocity(splineSet3, adjustedPosition);
@@ -762,11 +746,11 @@ public class Motion implements TypedValues {
         int i3 = 0;
         if (this.mSpline == null) {
             MotionPaths motionPaths = this.mEndMotionPath;
-            float f4 = motionPaths.f240x;
+            float f4 = motionPaths.x;
             MotionPaths motionPaths2 = this.mStartMotionPath;
-            float f5 = f4 - motionPaths2.f240x;
+            float f5 = f4 - motionPaths2.x;
             KeyCycleOscillator keyCycleOscillator6 = keyCycleOscillator5;
-            float f6 = motionPaths.f241y - motionPaths2.f241y;
+            float f6 = motionPaths.y - motionPaths2.y;
             KeyCycleOscillator keyCycleOscillator7 = keyCycleOscillator4;
             float f7 = (motionPaths.width - motionPaths2.width) + f5;
             float f8 = (motionPaths.height - motionPaths2.height) + f6;
@@ -808,11 +792,11 @@ public class Motion implements TypedValues {
     }
 
     public float getStartX() {
-        return this.mStartMotionPath.f240x;
+        return this.mStartMotionPath.x;
     }
 
     public float getStartY() {
-        return this.mStartMotionPath.f241y;
+        return this.mStartMotionPath.y;
     }
 
     public int getTransformPivotTarget() {
@@ -862,7 +846,7 @@ public class Motion implements TypedValues {
                 d = d2;
             } else {
                 d = d2;
-                this.mStartMotionPath.setView(f4, motionWidget, this.mInterpolateVariables, this.mInterpolateData, this.mInterpolateVelocity, null);
+                this.mStartMotionPath.setView(f4, motionWidget, this.mInterpolateVariables, this.mInterpolateData, this.mInterpolateVelocity, (double[]) null);
             }
             if (this.mTransformPivotTarget != -1) {
                 if (this.mTransformPivotView == null) {
@@ -884,7 +868,7 @@ public class Motion implements TypedValues {
                     break;
                 }
                 curveFitArr2[i2].getPos(d, this.mValuesBuff);
-                this.mStartMotionPath.customAttributes.get(this.mAttributeNames[i2 - 1]).setInterpolatedValue(motionWidget, this.mValuesBuff);
+                ((CustomVariable) this.mStartMotionPath.customAttributes.get(this.mAttributeNames[i2 - 1])).setInterpolatedValue(motionWidget, this.mValuesBuff);
                 i2++;
             }
             MotionConstrainedPoint motionConstrainedPoint = this.mStartPoint;
@@ -910,11 +894,11 @@ public class Motion implements TypedValues {
             }
         } else {
             MotionPaths motionPaths = this.mStartMotionPath;
-            float f5 = motionPaths.f240x;
+            float f5 = motionPaths.x;
             MotionPaths motionPaths2 = this.mEndMotionPath;
-            float f6 = f5 + ((motionPaths2.f240x - f5) * f4);
-            float f7 = motionPaths.f241y;
-            float f8 = f7 + ((motionPaths2.f241y - f7) * f4);
+            float f6 = f5 + ((motionPaths2.x - f5) * f4);
+            float f7 = motionPaths.y;
+            float f8 = f7 + ((motionPaths2.y - f7) * f4);
             float f9 = motionPaths.width;
             float f10 = f9 + ((motionPaths2.width - f9) * f4);
             float f11 = motionPaths.height;
@@ -926,12 +910,14 @@ public class Motion implements TypedValues {
         if (hashMap2 == null) {
             return false;
         }
-        for (KeyCycleOscillator keyCycleOscillator : hashMap2.values()) {
-            if (keyCycleOscillator instanceof KeyCycleOscillator.PathRotateSet) {
+        Iterator<KeyCycleOscillator> it2 = hashMap2.values().iterator();
+        while (it2.hasNext()) {
+            KeyCycleOscillator.PathRotateSet pathRotateSet = (KeyCycleOscillator) it2.next();
+            if (pathRotateSet instanceof KeyCycleOscillator.PathRotateSet) {
                 double[] dArr2 = this.mInterpolateVelocity;
-                ((KeyCycleOscillator.PathRotateSet) keyCycleOscillator).setPathRotate(motionWidget, f4, dArr2[0], dArr2[1]);
+                pathRotateSet.setPathRotate(motionWidget, f4, dArr2[0], dArr2[1]);
             } else {
-                keyCycleOscillator.setProperty(motionWidget, f4);
+                pathRotateSet.setProperty(motionWidget, f4);
             }
         }
         return false;
@@ -944,17 +930,17 @@ public class Motion implements TypedValues {
     void positionKeyframe(MotionWidget motionWidget, MotionKeyPosition motionKeyPosition, float f, float f2, String[] strArr, float[] fArr) {
         FloatRect floatRect = new FloatRect();
         MotionPaths motionPaths = this.mStartMotionPath;
-        float f3 = motionPaths.f240x;
+        float f3 = motionPaths.x;
         floatRect.left = f3;
-        float f4 = motionPaths.f241y;
+        float f4 = motionPaths.y;
         floatRect.top = f4;
         floatRect.right = f3 + motionPaths.width;
         floatRect.bottom = f4 + motionPaths.height;
         FloatRect floatRect2 = new FloatRect();
         MotionPaths motionPaths2 = this.mEndMotionPath;
-        float f5 = motionPaths2.f240x;
+        float f5 = motionPaths2.x;
         floatRect2.left = f5;
-        float f6 = motionPaths2.f241y;
+        float f6 = motionPaths2.y;
         floatRect2.top = f6;
         floatRect2.right = f5 + motionPaths2.width;
         floatRect2.bottom = f6 + motionPaths2.height;
@@ -1061,12 +1047,10 @@ public class Motion implements TypedValues {
         this.mTransformPivotView = null;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, float f) {
         return false;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, int i2) {
         if (i != 509) {
             return i == 704;
@@ -1075,7 +1059,6 @@ public class Motion implements TypedValues {
         return true;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, boolean z) {
         return false;
     }
@@ -1112,26 +1095,26 @@ public class Motion implements TypedValues {
             Iterator<MotionKey> it2 = arrayList2.iterator();
             arrayList = null;
             while (it2.hasNext()) {
-                MotionKey next = it2.next();
-                if (next instanceof MotionKeyPosition) {
-                    MotionKeyPosition motionKeyPosition = (MotionKeyPosition) next;
+                MotionKeyTrigger motionKeyTrigger = (MotionKey) it2.next();
+                if (motionKeyTrigger instanceof MotionKeyPosition) {
+                    MotionKeyPosition motionKeyPosition = (MotionKeyPosition) motionKeyTrigger;
                     insertKey(new MotionPaths(i, i2, motionKeyPosition, this.mStartMotionPath, this.mEndMotionPath));
                     int i5 = motionKeyPosition.mCurveFit;
                     if (i5 != -1) {
                         this.mCurveFitType = i5;
                     }
-                } else if (next instanceof MotionKeyCycle) {
-                    next.getAttributeNames(hashSet3);
-                } else if (next instanceof MotionKeyTimeCycle) {
-                    next.getAttributeNames(hashSet);
-                } else if (next instanceof MotionKeyTrigger) {
+                } else if (motionKeyTrigger instanceof MotionKeyCycle) {
+                    motionKeyTrigger.getAttributeNames(hashSet3);
+                } else if (motionKeyTrigger instanceof MotionKeyTimeCycle) {
+                    motionKeyTrigger.getAttributeNames(hashSet);
+                } else if (motionKeyTrigger instanceof MotionKeyTrigger) {
                     if (arrayList == null) {
                         arrayList = new ArrayList();
                     }
-                    arrayList.add((MotionKeyTrigger) next);
+                    arrayList.add(motionKeyTrigger);
                 } else {
-                    next.setInterpolation(hashMap);
-                    next.getAttributeNames(hashSet2);
+                    motionKeyTrigger.setInterpolation(hashMap);
+                    motionKeyTrigger.getAttributeNames(hashSet2);
                 }
             }
         } else {
@@ -1145,29 +1128,29 @@ public class Motion implements TypedValues {
             this.mAttributesMap = new HashMap<>();
             Iterator<String> it3 = hashSet2.iterator();
             while (it3.hasNext()) {
-                String next2 = it3.next();
-                if (next2.startsWith("CUSTOM,")) {
+                String next = it3.next();
+                if (next.startsWith("CUSTOM,")) {
                     KeyFrameArray.CustomVar customVar = new KeyFrameArray.CustomVar();
-                    String str = next2.split(",")[c];
+                    String str = next.split(",")[c];
                     Iterator<MotionKey> it4 = this.mKeyList.iterator();
                     while (it4.hasNext()) {
-                        MotionKey next3 = it4.next();
+                        MotionKey next2 = it4.next();
                         Iterator<String> it5 = it3;
-                        HashMap<String, CustomVariable> hashMap2 = next3.mCustom;
+                        HashMap<String, CustomVariable> hashMap2 = next2.mCustom;
                         if (hashMap2 != null && (customVariable3 = hashMap2.get(str)) != null) {
-                            customVar.append(next3.mFramePosition, customVariable3);
+                            customVar.append(next2.mFramePosition, customVariable3);
                         }
                         it3 = it5;
                     }
                     it = it3;
-                    makeSpline2 = SplineSet.makeCustomSplineSet(next2, customVar);
+                    makeSpline2 = SplineSet.makeCustomSplineSet(next, customVar);
                 } else {
                     it = it3;
-                    makeSpline2 = SplineSet.makeSpline(next2, j);
+                    makeSpline2 = SplineSet.makeSpline(next, j);
                 }
                 if (makeSpline2 != null) {
-                    makeSpline2.setType(next2);
-                    this.mAttributesMap.put(next2, makeSpline2);
+                    makeSpline2.setType(next);
+                    this.mAttributesMap.put(next, makeSpline2);
                 }
                 it3 = it;
                 c = 1;
@@ -1176,9 +1159,9 @@ public class Motion implements TypedValues {
             if (arrayList3 != null) {
                 Iterator<MotionKey> it6 = arrayList3.iterator();
                 while (it6.hasNext()) {
-                    MotionKey next4 = it6.next();
-                    if (next4 instanceof MotionKeyAttributes) {
-                        next4.addValues(this.mAttributesMap);
+                    MotionKey next3 = it6.next();
+                    if (next3 instanceof MotionKeyAttributes) {
+                        next3.addValues(this.mAttributesMap);
                     }
                 }
             }
@@ -1198,25 +1181,25 @@ public class Motion implements TypedValues {
             }
             Iterator<String> it7 = hashSet.iterator();
             while (it7.hasNext()) {
-                String next5 = it7.next();
-                if (!this.mTimeCycleAttributesMap.containsKey(next5)) {
-                    if (next5.startsWith("CUSTOM,")) {
+                String next4 = it7.next();
+                if (!this.mTimeCycleAttributesMap.containsKey(next4)) {
+                    if (next4.startsWith("CUSTOM,")) {
                         KeyFrameArray.CustomVar customVar2 = new KeyFrameArray.CustomVar();
-                        String str3 = next5.split(",")[1];
+                        String str3 = next4.split(",")[1];
                         Iterator<MotionKey> it8 = this.mKeyList.iterator();
                         while (it8.hasNext()) {
-                            MotionKey next6 = it8.next();
-                            HashMap<String, CustomVariable> hashMap3 = next6.mCustom;
+                            MotionKey next5 = it8.next();
+                            HashMap<String, CustomVariable> hashMap3 = next5.mCustom;
                             if (hashMap3 != null && (customVariable2 = hashMap3.get(str3)) != null) {
-                                customVar2.append(next6.mFramePosition, customVariable2);
+                                customVar2.append(next5.mFramePosition, customVariable2);
                             }
                         }
-                        makeSpline = SplineSet.makeCustomSplineSet(next5, customVar2);
+                        makeSpline = SplineSet.makeCustomSplineSet(next4, customVar2);
                     } else {
-                        makeSpline = SplineSet.makeSpline(next5, j);
+                        makeSpline = SplineSet.makeSpline(next4, j);
                     }
                     if (makeSpline != null) {
-                        makeSpline.setType(next5);
+                        makeSpline.setType(next4);
                     }
                 }
             }
@@ -1224,9 +1207,9 @@ public class Motion implements TypedValues {
             if (arrayList4 != null) {
                 Iterator<MotionKey> it9 = arrayList4.iterator();
                 while (it9.hasNext()) {
-                    MotionKey next7 = it9.next();
-                    if (next7 instanceof MotionKeyTimeCycle) {
-                        ((MotionKeyTimeCycle) next7).addTimeValues(this.mTimeCycleAttributesMap);
+                    MotionKeyTimeCycle motionKeyTimeCycle = (MotionKey) it9.next();
+                    if (motionKeyTimeCycle instanceof MotionKeyTimeCycle) {
+                        motionKeyTimeCycle.addTimeValues(this.mTimeCycleAttributesMap);
                     }
                 }
             }
@@ -1272,7 +1255,7 @@ public class Motion implements TypedValues {
                 if (i9 >= size) {
                     break;
                 }
-                if (motionPathsArr[i9].customAttributes.containsKey(str6) && (customVariable = motionPathsArr[i9].customAttributes.get(str6)) != null) {
+                if (motionPathsArr[i9].customAttributes.containsKey(str6) && (customVariable = (CustomVariable) motionPathsArr[i9].customAttributes.get(str6)) != null) {
                     int[] iArr = this.mAttributeInterpolatorCount;
                     iArr[i8] = iArr[i8] + customVariable.numberOfInterpolatedValues();
                     break;
@@ -1373,8 +1356,8 @@ public class Motion implements TypedValues {
             for (int i21 = 0; i21 < size; i21++) {
                 iArr4[i21] = motionPathsArr[i21].mPathMotionArc;
                 dArr5[i21] = motionPathsArr[i21].time;
-                dArr6[i21][0] = motionPathsArr[i21].f240x;
-                dArr6[i21][1] = motionPathsArr[i21].f241y;
+                dArr6[i21][0] = motionPathsArr[i21].x;
+                dArr6[i21][1] = motionPathsArr[i21].y;
             }
             this.mArcSpline = CurveFit.getArc(iArr4, dArr5, dArr6);
         }
@@ -1383,21 +1366,21 @@ public class Motion implements TypedValues {
         if (this.mKeyList != null) {
             Iterator<String> it11 = hashSet3.iterator();
             while (it11.hasNext()) {
-                String next8 = it11.next();
-                KeyCycleOscillator makeWidgetCycle = KeyCycleOscillator.makeWidgetCycle(next8);
+                String next6 = it11.next();
+                KeyCycleOscillator makeWidgetCycle = KeyCycleOscillator.makeWidgetCycle(next6);
                 if (makeWidgetCycle != null) {
                     if (makeWidgetCycle.variesByPath() && Float.isNaN(f2)) {
                         f2 = getPreCycleDistance();
                     }
-                    makeWidgetCycle.setType(next8);
-                    this.mCycleMap.put(next8, makeWidgetCycle);
+                    makeWidgetCycle.setType(next6);
+                    this.mCycleMap.put(next6, makeWidgetCycle);
                 }
             }
             Iterator<MotionKey> it12 = this.mKeyList.iterator();
             while (it12.hasNext()) {
-                MotionKey next9 = it12.next();
-                if (next9 instanceof MotionKeyCycle) {
-                    ((MotionKeyCycle) next9).addCycleValues(this.mCycleMap);
+                MotionKey next7 = it12.next();
+                if (next7 instanceof MotionKeyCycle) {
+                    ((MotionKeyCycle) next7).addCycleValues(this.mCycleMap);
                 }
             }
             Iterator<KeyCycleOscillator> it13 = this.mCycleMap.values().iterator();
@@ -1413,10 +1396,9 @@ public class Motion implements TypedValues {
     }
 
     public String toString() {
-        return " start: x: " + this.mStartMotionPath.f240x + " y: " + this.mStartMotionPath.f241y + " end: x: " + this.mEndMotionPath.f240x + " y: " + this.mEndMotionPath.f241y;
+        return " start: x: " + this.mStartMotionPath.x + " y: " + this.mStartMotionPath.y + " end: x: " + this.mEndMotionPath.x + " y: " + this.mEndMotionPath.y;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, String str) {
         if (705 == i) {
             System.out.println("TYPE_INTERPOLATOR  " + str);

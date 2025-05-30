@@ -1,10 +1,11 @@
 package androidx.compose.foundation.lazy;
 
 import androidx.compose.foundation.ExperimentalFoundationApi;
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.unit.IntOffsetKt;
-import androidx.compose.p004ui.unit.LayoutDirection;
+import androidx.compose.ui.Alignment$Horizontal;
+import androidx.compose.ui.Alignment$Vertical;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.unit.IntOffsetKt;
+import androidx.compose.ui.unit.LayoutDirection;
 import java.util.ArrayList;
 import java.util.List;
 import kotlin.jvm.internal.DefaultConstructorMarker;
@@ -13,14 +14,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyMeasuredItem {
     private final int afterContentPadding;
     private final int beforeContentPadding;
     private final int crossAxisSize;
 
     @Nullable
-    private final Alignment.Horizontal horizontalAlignment;
+    private final Alignment$Horizontal horizontalAlignment;
     private final int index;
     private final boolean isVertical;
 
@@ -41,16 +42,16 @@ public final class LazyMeasuredItem {
     private final int spacing;
 
     @Nullable
-    private final Alignment.Vertical verticalAlignment;
+    private final Alignment$Vertical verticalAlignment;
     private final long visualOffset;
 
     /* JADX WARN: Multi-variable type inference failed */
-    private LazyMeasuredItem(int i, List<? extends Placeable> list, boolean z, Alignment.Horizontal horizontal, Alignment.Vertical vertical, LayoutDirection layoutDirection, boolean z2, int i2, int i3, LazyListItemPlacementAnimator lazyListItemPlacementAnimator, int i4, long j, Object obj) {
+    private LazyMeasuredItem(int i, List<? extends Placeable> list, boolean z, Alignment$Horizontal alignment$Horizontal, Alignment$Vertical alignment$Vertical, LayoutDirection layoutDirection, boolean z2, int i2, int i3, LazyListItemPlacementAnimator lazyListItemPlacementAnimator, int i4, long j, Object obj) {
         this.index = i;
         this.placeables = list;
         this.isVertical = z;
-        this.horizontalAlignment = horizontal;
-        this.verticalAlignment = vertical;
+        this.horizontalAlignment = alignment$Horizontal;
+        this.verticalAlignment = alignment$Vertical;
         this.layoutDirection = layoutDirection;
         this.reverseLayout = z2;
         this.beforeContentPadding = i2;
@@ -73,8 +74,8 @@ public final class LazyMeasuredItem {
     }
 
     @ExperimentalFoundationApi
-    public /* synthetic */ LazyMeasuredItem(int i, List list, boolean z, Alignment.Horizontal horizontal, Alignment.Vertical vertical, LayoutDirection layoutDirection, boolean z2, int i2, int i3, LazyListItemPlacementAnimator lazyListItemPlacementAnimator, int i4, long j, Object obj, DefaultConstructorMarker defaultConstructorMarker) {
-        this(i, list, z, horizontal, vertical, layoutDirection, z2, i2, i3, lazyListItemPlacementAnimator, i4, j, obj);
+    public /* synthetic */ LazyMeasuredItem(int i, List list, boolean z, Alignment$Horizontal alignment$Horizontal, Alignment$Vertical alignment$Vertical, LayoutDirection layoutDirection, boolean z2, int i2, int i3, LazyListItemPlacementAnimator lazyListItemPlacementAnimator, int i4, long j, Object obj, DefaultConstructorMarker defaultConstructorMarker) {
+        this(i, list, z, alignment$Horizontal, alignment$Vertical, layoutDirection, z2, i2, i3, lazyListItemPlacementAnimator, i4, j, obj);
     }
 
     public final int getCrossAxisSize() {
@@ -109,17 +110,17 @@ public final class LazyMeasuredItem {
         for (int i6 = 0; i6 < size; i6++) {
             Placeable placeable = list.get(i6);
             if (this.isVertical) {
-                Alignment.Horizontal horizontal = this.horizontalAlignment;
-                if (horizontal == null) {
+                Alignment$Horizontal alignment$Horizontal = this.horizontalAlignment;
+                if (alignment$Horizontal == null) {
                     throw new IllegalArgumentException("Required value was null.".toString());
                 }
-                IntOffset = IntOffsetKt.IntOffset(horizontal.align(placeable.getWidth(), i2, this.layoutDirection), i5);
+                IntOffset = IntOffsetKt.IntOffset(alignment$Horizontal.align(placeable.getWidth(), i2, this.layoutDirection), i5);
             } else {
-                Alignment.Vertical vertical = this.verticalAlignment;
-                if (vertical == null) {
+                Alignment$Vertical alignment$Vertical = this.verticalAlignment;
+                if (alignment$Vertical == null) {
                     throw new IllegalArgumentException("Required value was null.".toString());
                 }
-                IntOffset = IntOffsetKt.IntOffset(i5, vertical.align(placeable.getHeight(), i3));
+                IntOffset = IntOffsetKt.IntOffset(i5, alignment$Vertical.align(placeable.getHeight(), i3));
             }
             i5 += this.isVertical ? placeable.getHeight() : placeable.getWidth();
             arrayList.add(new LazyListPlaceableWrapper(IntOffset, placeable, null));

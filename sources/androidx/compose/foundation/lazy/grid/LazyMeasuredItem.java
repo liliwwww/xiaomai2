@@ -1,16 +1,16 @@
 package androidx.compose.foundation.lazy.grid;
 
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.unit.IntOffsetKt;
-import androidx.compose.p004ui.unit.IntSizeKt;
-import androidx.compose.p004ui.unit.LayoutDirection;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.unit.IntOffsetKt;
+import androidx.compose.ui.unit.IntSizeKt;
+import androidx.compose.ui.unit.LayoutDirection;
 import java.util.List;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyMeasuredItem {
     private final int afterContentPadding;
     private final int beforeContentPadding;
@@ -68,7 +68,7 @@ public final class LazyMeasuredItem {
     }
 
     /* renamed from: getIndex-VZbfaAc, reason: not valid java name */
-    public final int m1590getIndexVZbfaAc() {
+    public final int m303getIndexVZbfaAc() {
         return this.index;
     }
 

@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.SwipeableKt$swipeable$3$4$1", f = "Swipeable.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class SwipeableKt$swipeable$3$4$1 extends SuspendLambda implements Function3<CoroutineScope, Float, Continuation<? super Unit>, Object> {
     final /* synthetic */ SwipeableState<T> $state;
     /* synthetic */ float F$0;
@@ -26,14 +26,14 @@ final class SwipeableKt$swipeable$3$4$1 extends SuspendLambda implements Functio
 
     /* compiled from: Taobao */
     @DebugMetadata(c = "androidx.compose.material.SwipeableKt$swipeable$3$4$1$1", f = "Swipeable.kt", i = {}, l = {616}, m = "invokeSuspend", n = {}, s = {})
-    /* renamed from: androidx.compose.material.SwipeableKt$swipeable$3$4$1$1 */
-    static final class C07101 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
+    /* renamed from: androidx.compose.material.SwipeableKt$swipeable$3$4$1$1, reason: invalid class name */
+    static final class AnonymousClass1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
         final /* synthetic */ SwipeableState<T> $state;
         final /* synthetic */ float $velocity;
         int label;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        C07101(SwipeableState<T> swipeableState, float f, Continuation<? super C07101> continuation) {
+        AnonymousClass1(SwipeableState<T> swipeableState, float f, Continuation<? super AnonymousClass1> continuation) {
             super(2, continuation);
             this.$state = swipeableState;
             this.$velocity = f;
@@ -41,7 +41,7 @@ final class SwipeableKt$swipeable$3$4$1 extends SuspendLambda implements Functio
 
         @NotNull
         public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
-            return new C07101(this.$state, this.$velocity, continuation);
+            return new AnonymousClass1(this.$state, this.$velocity, continuation);
         }
 
         @Nullable
@@ -96,7 +96,7 @@ final class SwipeableKt$swipeable$3$4$1 extends SuspendLambda implements Functio
             throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
         }
         ResultKt.throwOnFailure(obj);
-        d.d((CoroutineScope) this.L$0, (CoroutineContext) null, (CoroutineStart) null, new C07101(this.$state, this.F$0, null), 3, (Object) null);
+        d.d((CoroutineScope) this.L$0, (CoroutineContext) null, (CoroutineStart) null, new AnonymousClass1(this.$state, this.F$0, null), 3, (Object) null);
         return Unit.INSTANCE;
     }
 }

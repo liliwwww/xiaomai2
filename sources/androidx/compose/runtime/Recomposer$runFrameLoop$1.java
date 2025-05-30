@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.runtime.Recomposer", f = "Recomposer.kt", i = {0, 0, 0, 0, 0, 1, 1, 1, 1, 1}, l = {778, 785}, m = "runFrameLoop", n = {"this", "parentFrameClock", "frameSignal", "toRecompose", "toApply", "this", "parentFrameClock", "frameSignal", "toRecompose", "toApply"}, s = {"L$0", "L$1", "L$2", "L$3", "L$4", "L$0", "L$1", "L$2", "L$3", "L$4"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class Recomposer$runFrameLoop$1 extends ContinuationImpl {
     Object L$0;
     Object L$1;
@@ -27,10 +27,8 @@ final class Recomposer$runFrameLoop$1 extends ContinuationImpl {
 
     @Nullable
     public final Object invokeSuspend(@NotNull Object obj) {
-        Object runFrameLoop;
         this.result = obj;
         this.label |= Integer.MIN_VALUE;
-        runFrameLoop = this.this$0.runFrameLoop(null, null, this);
-        return runFrameLoop;
+        return Recomposer.access$runFrameLoop(this.this$0, (MonotonicFrameClock) null, (ProduceFrameSignal) null, this);
     }
 }

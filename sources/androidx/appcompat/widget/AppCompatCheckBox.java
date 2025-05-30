@@ -12,14 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.appcompat.R;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.view.TintableBackgroundView;
 import androidx.core.widget.TintableCompoundButton;
 import androidx.core.widget.TintableCompoundDrawablesView;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class AppCompatCheckBox extends CheckBox implements EmojiCompatConfigurationView, TintableBackgroundView, TintableCompoundButton, TintableCompoundDrawablesView {
     private AppCompatEmojiTextHelper mAppCompatEmojiTextHelper;
     private final AppCompatBackgroundHelper mBackgroundTintHelper;
@@ -60,7 +61,7 @@ public class AppCompatCheckBox extends CheckBox implements EmojiCompatConfigurat
 
     @Override // androidx.core.view.TintableBackgroundView
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public ColorStateList getSupportBackgroundTintList() {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
         if (appCompatBackgroundHelper != null) {
@@ -71,7 +72,7 @@ public class AppCompatCheckBox extends CheckBox implements EmojiCompatConfigurat
 
     @Override // androidx.core.view.TintableBackgroundView
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public PorterDuff.Mode getSupportBackgroundTintMode() {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
         if (appCompatBackgroundHelper != null) {
@@ -82,7 +83,7 @@ public class AppCompatCheckBox extends CheckBox implements EmojiCompatConfigurat
 
     @Override // androidx.core.widget.TintableCompoundButton
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public ColorStateList getSupportButtonTintList() {
         AppCompatCompoundButtonHelper appCompatCompoundButtonHelper = this.mCompoundButtonHelper;
         if (appCompatCompoundButtonHelper != null) {
@@ -93,7 +94,7 @@ public class AppCompatCheckBox extends CheckBox implements EmojiCompatConfigurat
 
     @Override // androidx.core.widget.TintableCompoundButton
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public PorterDuff.Mode getSupportButtonTintMode() {
         AppCompatCompoundButtonHelper appCompatCompoundButtonHelper = this.mCompoundButtonHelper;
         if (appCompatCompoundButtonHelper != null) {
@@ -104,19 +105,18 @@ public class AppCompatCheckBox extends CheckBox implements EmojiCompatConfigurat
 
     @Override // androidx.core.widget.TintableCompoundDrawablesView
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public ColorStateList getSupportCompoundDrawablesTintList() {
         return this.mTextHelper.getCompoundDrawableTintList();
     }
 
     @Override // androidx.core.widget.TintableCompoundDrawablesView
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public PorterDuff.Mode getSupportCompoundDrawablesTintMode() {
         return this.mTextHelper.getCompoundDrawableTintMode();
     }
 
-    @Override // androidx.appcompat.widget.EmojiCompatConfigurationView
     public boolean isEmojiCompatEnabled() {
         return getEmojiTextViewHelper().isEnabled();
     }
@@ -173,7 +173,6 @@ public class AppCompatCheckBox extends CheckBox implements EmojiCompatConfigurat
         }
     }
 
-    @Override // androidx.appcompat.widget.EmojiCompatConfigurationView
     public void setEmojiCompatEnabled(boolean z) {
         getEmojiTextViewHelper().setEnabled(z);
     }
@@ -184,7 +183,7 @@ public class AppCompatCheckBox extends CheckBox implements EmojiCompatConfigurat
     }
 
     @Override // androidx.core.view.TintableBackgroundView
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportBackgroundTintList(@Nullable ColorStateList colorStateList) {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
         if (appCompatBackgroundHelper != null) {
@@ -193,7 +192,7 @@ public class AppCompatCheckBox extends CheckBox implements EmojiCompatConfigurat
     }
 
     @Override // androidx.core.view.TintableBackgroundView
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportBackgroundTintMode(@Nullable PorterDuff.Mode mode) {
         AppCompatBackgroundHelper appCompatBackgroundHelper = this.mBackgroundTintHelper;
         if (appCompatBackgroundHelper != null) {
@@ -202,7 +201,7 @@ public class AppCompatCheckBox extends CheckBox implements EmojiCompatConfigurat
     }
 
     @Override // androidx.core.widget.TintableCompoundButton
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportButtonTintList(@Nullable ColorStateList colorStateList) {
         AppCompatCompoundButtonHelper appCompatCompoundButtonHelper = this.mCompoundButtonHelper;
         if (appCompatCompoundButtonHelper != null) {
@@ -211,7 +210,7 @@ public class AppCompatCheckBox extends CheckBox implements EmojiCompatConfigurat
     }
 
     @Override // androidx.core.widget.TintableCompoundButton
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportButtonTintMode(@Nullable PorterDuff.Mode mode) {
         AppCompatCompoundButtonHelper appCompatCompoundButtonHelper = this.mCompoundButtonHelper;
         if (appCompatCompoundButtonHelper != null) {
@@ -220,21 +219,21 @@ public class AppCompatCheckBox extends CheckBox implements EmojiCompatConfigurat
     }
 
     @Override // androidx.core.widget.TintableCompoundDrawablesView
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportCompoundDrawablesTintList(@Nullable ColorStateList colorStateList) {
         this.mTextHelper.setCompoundDrawableTintList(colorStateList);
         this.mTextHelper.applyCompoundDrawablesTints();
     }
 
     @Override // androidx.core.widget.TintableCompoundDrawablesView
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setSupportCompoundDrawablesTintMode(@Nullable PorterDuff.Mode mode) {
         this.mTextHelper.setCompoundDrawableTintMode(mode);
         this.mTextHelper.applyCompoundDrawablesTints();
     }
 
     public AppCompatCheckBox(@NonNull Context context, @Nullable AttributeSet attributeSet) {
-        this(context, attributeSet, C0257R.attr.checkboxStyle);
+        this(context, attributeSet, R.attr.checkboxStyle);
     }
 
     public AppCompatCheckBox(@NonNull Context context, @Nullable AttributeSet attributeSet, int i) {

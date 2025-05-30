@@ -5,7 +5,7 @@ import com.taobao.orange.OrangeConfig;
 import com.taobao.orange.OrangeConfigListenerV1;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class TBConfigManager {
     public static final String ANDROID_WINDVANE_CONFIG = "android_windvane_config";
     public static final String WINDVANE_COMMMON_CONFIG = "WindVane_common_config";

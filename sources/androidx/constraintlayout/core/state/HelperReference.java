@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class HelperReference extends ConstraintReference implements Facade {
     private HelperWidget mHelperWidget;
     protected ArrayList<Object> mReferences;
@@ -27,11 +27,9 @@ public class HelperReference extends ConstraintReference implements Facade {
         return this;
     }
 
-    @Override // androidx.constraintlayout.core.state.ConstraintReference, androidx.constraintlayout.core.state.Reference
     public void apply() {
     }
 
-    @Override // androidx.constraintlayout.core.state.ConstraintReference, androidx.constraintlayout.core.state.Reference
     public ConstraintWidget getConstraintWidget() {
         return getHelperWidget();
     }

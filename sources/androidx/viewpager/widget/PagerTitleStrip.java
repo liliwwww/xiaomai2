@@ -6,25 +6,21 @@ import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.text.method.SingleLineTransformationMethod;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.TextView;
 import androidx.annotation.ColorInt;
 import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
 import androidx.core.widget.TextViewCompat;
 import androidx.viewpager.widget.ViewPager;
 import java.lang.ref.WeakReference;
-import java.util.Locale;
 
 /* compiled from: Taobao */
 @ViewPager.DecorView
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class PagerTitleStrip extends ViewGroup {
     private static final float SIDE_ALPHA = 0.6f;
     private static final int TEXT_SPACING = 16;
@@ -46,13 +42,13 @@ public class PagerTitleStrip extends ViewGroup {
     private static final int[] TEXT_ATTRS = {R.attr.textAllCaps};
 
     /* compiled from: Taobao */
-    private class PageListener extends DataSetObserver implements ViewPager.OnAdapterChangeListener, ViewPager.OnPageChangeListener {
+    private class PageListener extends DataSetObserver implements ViewPager$OnAdapterChangeListener, ViewPager.OnPageChangeListener {
         private int mScrollState;
 
         PageListener() {
         }
 
-        @Override // androidx.viewpager.widget.ViewPager.OnAdapterChangeListener
+        @Override // androidx.viewpager.widget.ViewPager$OnAdapterChangeListener
         public void onAdapterChanged(ViewPager viewPager, PagerAdapter pagerAdapter, PagerAdapter pagerAdapter2) {
             PagerTitleStrip.this.updateAdapter(pagerAdapter, pagerAdapter2);
         }
@@ -69,12 +65,10 @@ public class PagerTitleStrip extends ViewGroup {
             pagerTitleStrip2.updateTextPositions(pagerTitleStrip2.mPager.getCurrentItem(), f, true);
         }
 
-        @Override // androidx.viewpager.widget.ViewPager.OnPageChangeListener
         public void onPageScrollStateChanged(int i) {
             this.mScrollState = i;
         }
 
-        @Override // androidx.viewpager.widget.ViewPager.OnPageChangeListener
         public void onPageScrolled(int i, float f, int i2) {
             if (f > 0.5f) {
                 i++;
@@ -82,7 +76,6 @@ public class PagerTitleStrip extends ViewGroup {
             PagerTitleStrip.this.updateTextPositions(i, f, false);
         }
 
-        @Override // androidx.viewpager.widget.ViewPager.OnPageChangeListener
         public void onPageSelected(int i) {
             if (this.mScrollState == 0) {
                 PagerTitleStrip pagerTitleStrip = PagerTitleStrip.this;
@@ -94,25 +87,6 @@ public class PagerTitleStrip extends ViewGroup {
                 }
                 pagerTitleStrip2.updateTextPositions(pagerTitleStrip2.mPager.getCurrentItem(), f, true);
             }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static class SingleLineAllCapsTransform extends SingleLineTransformationMethod {
-        private Locale mLocale;
-
-        SingleLineAllCapsTransform(Context context) {
-            this.mLocale = context.getResources().getConfiguration().locale;
-        }
-
-        @Override // android.text.method.ReplacementTransformationMethod, android.text.method.TransformationMethod
-        public CharSequence getTransformation(CharSequence charSequence, View view) {
-            CharSequence transformation = super.getTransformation(charSequence, view);
-            if (transformation != null) {
-                return transformation.toString().toUpperCase(this.mLocale);
-            }
-            return null;
         }
     }
 
@@ -139,11 +113,11 @@ public class PagerTitleStrip extends ViewGroup {
     @Override // android.view.ViewGroup, android.view.View
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        ViewParent parent = getParent();
+        ViewPager parent = getParent();
         if (!(parent instanceof ViewPager)) {
             throw new IllegalStateException("PagerTitleStrip must be a direct child of a ViewPager.");
         }
-        ViewPager viewPager = (ViewPager) parent;
+        ViewPager viewPager = parent;
         PagerAdapter adapter = viewPager.getAdapter();
         viewPager.setInternalPageChangeListener(this.mPageListener);
         viewPager.addOnAdapterChangeListener(this.mPageListener);
@@ -158,7 +132,7 @@ public class PagerTitleStrip extends ViewGroup {
         ViewPager viewPager = this.mPager;
         if (viewPager != null) {
             updateAdapter(viewPager.getAdapter(), null);
-            this.mPager.setInternalPageChangeListener(null);
+            this.mPager.setInternalPageChangeListener((ViewPager.OnPageChangeListener) null);
             this.mPager.removeOnAdapterChangeListener(this.mPageListener);
             this.mPager = null;
         }
@@ -209,10 +183,10 @@ public class PagerTitleStrip extends ViewGroup {
         requestLayout();
     }
 
-    public void setNonPrimaryAlpha(@FloatRange(from = 0.0d, m42to = 1.0d) float f) {
+    public void setNonPrimaryAlpha(@FloatRange(from = 0.0d, to = 1.0d) float f) {
         int i = ((int) (f * 255.0f)) & 255;
         this.mNonPrimaryAlpha = i;
-        int i2 = (i << 24) | (this.mTextColor & ViewCompat.MEASURED_SIZE_MASK);
+        int i2 = (i << 24) | (this.mTextColor & 16777215);
         this.mPrevText.setTextColor(i2);
         this.mNextText.setTextColor(i2);
     }
@@ -220,7 +194,7 @@ public class PagerTitleStrip extends ViewGroup {
     public void setTextColor(@ColorInt int i) {
         this.mTextColor = i;
         this.mCurrText.setTextColor(i);
-        int i2 = (this.mNonPrimaryAlpha << 24) | (this.mTextColor & ViewCompat.MEASURED_SIZE_MASK);
+        int i2 = (this.mNonPrimaryAlpha << 24) | (this.mTextColor & 16777215);
         this.mPrevText.setTextColor(i2);
         this.mNextText.setTextColor(i2);
     }
@@ -385,7 +359,7 @@ public class PagerTitleStrip extends ViewGroup {
         this.mGravity = obtainStyledAttributes.getInteger(3, 80);
         obtainStyledAttributes.recycle();
         this.mTextColor = this.mCurrText.getTextColors().getDefaultColor();
-        setNonPrimaryAlpha(0.6f);
+        setNonPrimaryAlpha(SIDE_ALPHA);
         this.mPrevText.setEllipsize(TextUtils.TruncateAt.END);
         this.mCurrText.setEllipsize(TextUtils.TruncateAt.END);
         this.mNextText.setEllipsize(TextUtils.TruncateAt.END);

@@ -4,7 +4,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final /* synthetic */ class SnapshotStateKt__SnapshotMutationPolicyKt {
     @NotNull
     public static final <T> SnapshotMutationPolicy<T> neverEqualPolicy() {

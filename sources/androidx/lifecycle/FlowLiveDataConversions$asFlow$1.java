@@ -22,7 +22,7 @@ import tb.xl2;
 /* JADX INFO: Add missing generic type declarations: [T] */
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.lifecycle.FlowLiveDataConversions$asFlow$1", f = "FlowLiveData.kt", i = {0, 0}, l = {110, 114}, m = "invokeSuspend", n = {"$this$callbackFlow", "observer"}, s = {"L$0", "L$1"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class FlowLiveDataConversions$asFlow$1<T> extends SuspendLambda implements Function2<ProducerScope<? super T>, Continuation<? super Unit>, Object> {
     final /* synthetic */ LiveData<T> $this_asFlow;
     private /* synthetic */ Object L$0;
@@ -31,14 +31,14 @@ final class FlowLiveDataConversions$asFlow$1<T> extends SuspendLambda implements
 
     /* compiled from: Taobao */
     @DebugMetadata(c = "androidx.lifecycle.FlowLiveDataConversions$asFlow$1$1", f = "FlowLiveData.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-    /* renamed from: androidx.lifecycle.FlowLiveDataConversions$asFlow$1$1 */
-    static final class C11111 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
+    /* renamed from: androidx.lifecycle.FlowLiveDataConversions$asFlow$1$1, reason: invalid class name */
+    static final class AnonymousClass1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
         final /* synthetic */ Observer<T> $observer;
         final /* synthetic */ LiveData<T> $this_asFlow;
         int label;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        C11111(LiveData<T> liveData, Observer<T> observer, Continuation<? super C11111> continuation) {
+        AnonymousClass1(LiveData<T> liveData, Observer<T> observer, Continuation<? super AnonymousClass1> continuation) {
             super(2, continuation);
             this.$this_asFlow = liveData;
             this.$observer = observer;
@@ -46,7 +46,7 @@ final class FlowLiveDataConversions$asFlow$1<T> extends SuspendLambda implements
 
         @NotNull
         public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
-            return new C11111(this.$this_asFlow, this.$observer, continuation);
+            return new AnonymousClass1(this.$this_asFlow, this.$observer, continuation);
         }
 
         @Nullable
@@ -86,25 +86,20 @@ final class FlowLiveDataConversions$asFlow$1<T> extends SuspendLambda implements
 
     @Nullable
     public final Object invokeSuspend(@NotNull Object obj) {
-        final Observer observer;
+        final Observer bVar;
         ProducerScope producerScope;
         Object coroutine_suspended = IntrinsicsKt.getCOROUTINE_SUSPENDED();
         int i = this.label;
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
-            final ProducerScope producerScope2 = (ProducerScope) this.L$0;
-            observer = new Observer() { // from class: androidx.lifecycle.b
-                @Override // androidx.lifecycle.Observer
-                public final void onChanged(Object obj2) {
-                    producerScope2.trySend-JP2dKIU(obj2);
-                }
-            };
+            ProducerScope producerScope2 = (ProducerScope) this.L$0;
+            bVar = new b(producerScope2);
             xl2 a = m11.c().a();
-            C11111 c11111 = new C11111(this.$this_asFlow, observer, null);
+            AnonymousClass1 anonymousClass1 = new AnonymousClass1(this.$this_asFlow, bVar, null);
             this.L$0 = producerScope2;
-            this.L$1 = observer;
+            this.L$1 = bVar;
             this.label = 1;
-            if (d.g(a, c11111, this) == coroutine_suspended) {
+            if (d.g(a, anonymousClass1, this) == coroutine_suspended) {
                 return coroutine_suspended;
             }
             producerScope = producerScope2;
@@ -116,7 +111,7 @@ final class FlowLiveDataConversions$asFlow$1<T> extends SuspendLambda implements
                 ResultKt.throwOnFailure(obj);
                 return Unit.INSTANCE;
             }
-            observer = (Observer) this.L$1;
+            bVar = (Observer) this.L$1;
             producerScope = (ProducerScope) this.L$0;
             ResultKt.throwOnFailure(obj);
         }
@@ -166,13 +161,13 @@ final class FlowLiveDataConversions$asFlow$1<T> extends SuspendLambda implements
             }
 
             public /* bridge */ /* synthetic */ Object invoke() {
-                m5609invoke();
+                m2806invoke();
                 return Unit.INSTANCE;
             }
 
             /* renamed from: invoke, reason: collision with other method in class */
-            public final void m5609invoke() {
-                d.d(iw1.INSTANCE, m11.c().a(), (CoroutineStart) null, new AnonymousClass1(liveData, observer, null), 2, (Object) null);
+            public final void m2806invoke() {
+                d.d(iw1.INSTANCE, m11.c().a(), (CoroutineStart) null, new AnonymousClass1(liveData, bVar, null), 2, (Object) null);
             }
         };
         this.L$0 = null;

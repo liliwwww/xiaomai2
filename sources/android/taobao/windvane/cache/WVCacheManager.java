@@ -13,7 +13,7 @@ import java.io.File;
 import java.nio.ByteBuffer;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVCacheManager {
     private static final String TAG = "WVCacheManager";
     private static WVCacheManager cacheManager;
@@ -94,19 +94,19 @@ public class WVCacheManager {
         if (context == null) {
             throw new NullPointerException("CacheManager init error, context is null");
         }
-        TaoLog.m18d(TAG, "start init.");
+        TaoLog.d(TAG, "start init.");
         long currentTimeMillis = System.currentTimeMillis();
         try {
             WMLPrefetch.getInstance().registerHandler(new WVPrefetchHandler());
         } catch (Throwable th) {
-            TaoLog.m21e(TAG, "failed to call prefetch: " + th.getMessage());
+            TaoLog.e(TAG, "failed to call prefetch: " + th.getMessage());
         }
         if (this.fileCache == null) {
             this.fileCache = WVFileCacheFactory.getInstance().createFileCache(str, WVConstants.WEBCACHE_FOLDER, 250, true);
             this.imagePool = WVFileCacheFactory.getInstance().createFileCache(str, WVConstants.IMAGE_CACHE_FOLDER, 300, true);
         }
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(TAG, "init finish.  cost time: " + (System.currentTimeMillis() - currentTimeMillis));
+            TaoLog.d(TAG, "init finish.  cost time: " + (System.currentTimeMillis() - currentTimeMillis));
         }
     }
 }

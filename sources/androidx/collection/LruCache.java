@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class LruCache<K, V> {
     private int createCount;
     private int evictionCount;
@@ -177,7 +177,7 @@ public class LruCache<K, V> {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void trimToSize(int r5) {
         /*

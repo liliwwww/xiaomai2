@@ -8,13 +8,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.taobao.windvane.config.WVUrlMatchUtils;
 import android.taobao.windvane.connect.HttpConnector;
-import android.taobao.windvane.extra.p002uc.WVUCWebView;
+import android.taobao.windvane.extra.uc.WVUCWebView;
 import android.taobao.windvane.util.TaoLog;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVURLFilter {
     private static final String TAG = "WVURLFilter";
 
@@ -33,7 +32,7 @@ public class WVURLFilter {
         String scheme = parse.getScheme();
         String host = parse.getHost();
         if (!WVUrlMatchUtils.getInstance().isBrowserOpen(str)) {
-            TaoLog.m18d(TAG, "doFilter() called with: url = [" + str + "] allow");
+            TaoLog.d(TAG, "doFilter() called with: url = [" + str + "] allow");
             return false;
         }
         if (!(context instanceof Activity)) {
@@ -42,7 +41,7 @@ public class WVURLFilter {
         Intent intent = new Intent("NON_WHITELIST_URL_VISIT");
         intent.putExtra(HttpConnector.URL, str);
         intent.putExtra("whitelistAvailable", 1);
-        intent.putExtra(TypedValues.TransitionType.S_FROM, WVUCWebView.WINDVANE);
+        intent.putExtra("from", WVUCWebView.WINDVANE);
         if (context != null) {
             LocalBroadcastManager.getInstance(context.getApplicationContext()).sendBroadcast(intent);
         }
@@ -75,7 +74,7 @@ public class WVURLFilter {
         sb.append("doFilter() called with: url = [");
         sb.append(str);
         sb.append("] block");
-        TaoLog.m18d(TAG, sb.toString());
+        TaoLog.d(TAG, sb.toString());
         return true;
     }
 }

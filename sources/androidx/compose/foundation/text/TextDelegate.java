@@ -1,23 +1,21 @@
 package androidx.compose.foundation.text;
 
-import androidx.compose.p004ui.graphics.Canvas;
-import androidx.compose.p004ui.text.AnnotatedString;
-import androidx.compose.p004ui.text.MultiParagraph;
-import androidx.compose.p004ui.text.MultiParagraphIntrinsics;
-import androidx.compose.p004ui.text.Placeholder;
-import androidx.compose.p004ui.text.TextLayoutInput;
-import androidx.compose.p004ui.text.TextLayoutResult;
-import androidx.compose.p004ui.text.TextPainter;
-import androidx.compose.p004ui.text.TextStyle;
-import androidx.compose.p004ui.text.TextStyleKt;
-import androidx.compose.p004ui.text.font.FontFamily;
-import androidx.compose.p004ui.text.style.TextOverflow;
-import androidx.compose.p004ui.unit.Constraints;
-import androidx.compose.p004ui.unit.ConstraintsKt;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.IntSizeKt;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.text.AnnotatedString;
+import androidx.compose.ui.text.MultiParagraph;
+import androidx.compose.ui.text.MultiParagraphIntrinsics;
+import androidx.compose.ui.text.Placeholder;
+import androidx.compose.ui.text.TextLayoutInput;
+import androidx.compose.ui.text.TextLayoutResult;
+import androidx.compose.ui.text.TextStyle;
+import androidx.compose.ui.text.TextStyleKt;
+import androidx.compose.ui.text.font.FontFamily;
+import androidx.compose.ui.text.style.TextOverflow;
+import androidx.compose.ui.unit.Constraints;
+import androidx.compose.ui.unit.ConstraintsKt;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.IntSizeKt;
+import androidx.compose.ui.unit.LayoutDirection;
 import java.util.List;
 import kotlin.collections.CollectionsKt;
 import kotlin.jvm.internal.DefaultConstructorMarker;
@@ -29,11 +27,11 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @Stable
 @InternalFoundationTextApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TextDelegate {
 
     @NotNull
-    public static final Companion Companion = new Companion(null);
+    public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
 
     @NotNull
     private final Density density;
@@ -59,23 +57,6 @@ public final class TextDelegate {
 
     @NotNull
     private final AnnotatedString text;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class Companion {
-        private Companion() {
-        }
-
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-
-        public final void paint(@NotNull Canvas canvas, @NotNull TextLayoutResult textLayoutResult) {
-            Intrinsics.checkNotNullParameter(canvas, "canvas");
-            Intrinsics.checkNotNullParameter(textLayoutResult, "textLayoutResult");
-            TextPainter.INSTANCE.paint(canvas, textLayoutResult);
-        }
-    }
 
     private TextDelegate(AnnotatedString annotatedString, TextStyle textStyle, int i, int i2, boolean z, int i3, Density density, FontFamily.Resolver resolver, List<AnnotatedString.Range<Placeholder>> list) {
         this.text = annotatedString;
@@ -111,27 +92,27 @@ public final class TextDelegate {
     }
 
     /* renamed from: layout-NN6Ew-U$default, reason: not valid java name */
-    public static /* synthetic */ TextLayoutResult m1778layoutNN6EwU$default(TextDelegate textDelegate, long j, LayoutDirection layoutDirection, TextLayoutResult textLayoutResult, int i, Object obj) {
+    public static /* synthetic */ TextLayoutResult m569layoutNN6EwU$default(TextDelegate textDelegate, long j, LayoutDirection layoutDirection, TextLayoutResult textLayoutResult, int i, Object obj) {
         if ((i & 4) != 0) {
             textLayoutResult = null;
         }
-        return textDelegate.m1781layoutNN6EwU(j, layoutDirection, textLayoutResult);
+        return textDelegate.m572layoutNN6EwU(j, layoutDirection, textLayoutResult);
     }
 
     /* renamed from: layoutText-K40F9xA, reason: not valid java name */
-    private final MultiParagraph m1779layoutTextK40F9xA(long j, LayoutDirection layoutDirection) {
+    private final MultiParagraph m570layoutTextK40F9xA(long j, LayoutDirection layoutDirection) {
         layoutIntrinsics(layoutDirection);
-        int m5186getMinWidthimpl = Constraints.m5186getMinWidthimpl(j);
+        int i = Constraints.getMinWidth-impl(j);
         boolean z = false;
-        int m5184getMaxWidthimpl = ((this.softWrap || TextOverflow.m5121equalsimpl0(this.overflow, TextOverflow.Companion.m5129getEllipsisgIe3tQ8())) && Constraints.m5180getHasBoundedWidthimpl(j)) ? Constraints.m5184getMaxWidthimpl(j) : Integer.MAX_VALUE;
-        if (!this.softWrap && TextOverflow.m5121equalsimpl0(this.overflow, TextOverflow.Companion.m5129getEllipsisgIe3tQ8())) {
+        int i2 = ((this.softWrap || TextOverflow.m2531equalsimpl0(this.overflow, TextOverflow.Companion.m2539getEllipsisgIe3tQ8())) && Constraints.getHasBoundedWidth-impl(j)) ? Constraints.getMaxWidth-impl(j) : Integer.MAX_VALUE;
+        if (!this.softWrap && TextOverflow.m2531equalsimpl0(this.overflow, TextOverflow.Companion.m2539getEllipsisgIe3tQ8())) {
             z = true;
         }
-        int i = z ? 1 : this.maxLines;
-        if (m5186getMinWidthimpl != m5184getMaxWidthimpl) {
-            m5184getMaxWidthimpl = RangesKt.coerceIn(getMaxIntrinsicWidth(), m5186getMinWidthimpl, m5184getMaxWidthimpl);
+        int i3 = z ? 1 : this.maxLines;
+        if (i != i2) {
+            i2 = RangesKt.coerceIn(getMaxIntrinsicWidth(), i, i2);
         }
-        return new MultiParagraph(getNonNullIntrinsics(), ConstraintsKt.Constraints$default(0, m5184getMaxWidthimpl, 0, Constraints.m5183getMaxHeightimpl(j), 5, null), i, TextOverflow.m5121equalsimpl0(this.overflow, TextOverflow.Companion.m5129getEllipsisgIe3tQ8()), null);
+        return new MultiParagraph(getNonNullIntrinsics(), ConstraintsKt.Constraints$default(0, i2, 0, Constraints.getMaxHeight-impl(j), 5, (Object) null), i3, TextOverflow.m2531equalsimpl0(this.overflow, TextOverflow.Companion.m2539getEllipsisgIe3tQ8()), (DefaultConstructorMarker) null);
     }
 
     @NotNull
@@ -166,7 +147,7 @@ public final class TextDelegate {
     }
 
     /* renamed from: getOverflow-gIe3tQ8, reason: not valid java name */
-    public final int m1780getOverflowgIe3tQ8() {
+    public final int m571getOverflowgIe3tQ8() {
         return this.overflow;
     }
 
@@ -196,13 +177,13 @@ public final class TextDelegate {
 
     @NotNull
     /* renamed from: layout-NN6Ew-U, reason: not valid java name */
-    public final TextLayoutResult m1781layoutNN6EwU(long j, @NotNull LayoutDirection layoutDirection, @Nullable TextLayoutResult textLayoutResult) {
+    public final TextLayoutResult m572layoutNN6EwU(long j, @NotNull LayoutDirection layoutDirection, @Nullable TextLayoutResult textLayoutResult) {
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-        if (textLayoutResult != null && TextLayoutHelperKt.m1807canReuse7_7YC6M(textLayoutResult, this.text, this.style, this.placeholders, this.maxLines, this.softWrap, this.overflow, this.density, layoutDirection, this.fontFamilyResolver, j)) {
-            return textLayoutResult.m4722copyO0kMr_c(new TextLayoutInput(textLayoutResult.getLayoutInput().getText(), this.style, textLayoutResult.getLayoutInput().getPlaceholders(), textLayoutResult.getLayoutInput().getMaxLines(), textLayoutResult.getLayoutInput().getSoftWrap(), textLayoutResult.getLayoutInput().m4720getOverflowgIe3tQ8(), textLayoutResult.getLayoutInput().getDensity(), textLayoutResult.getLayoutInput().getLayoutDirection(), textLayoutResult.getLayoutInput().getFontFamilyResolver(), j, (DefaultConstructorMarker) null), ConstraintsKt.m5195constrain4WqzIAM(j, IntSizeKt.IntSize(TextDelegateKt.ceilToIntPx(textLayoutResult.getMultiParagraph().getWidth()), TextDelegateKt.ceilToIntPx(textLayoutResult.getMultiParagraph().getHeight()))));
+        if (textLayoutResult != null && TextLayoutHelperKt.canReuse-7_7YC6M(textLayoutResult, this.text, this.style, this.placeholders, this.maxLines, this.softWrap, this.overflow, this.density, layoutDirection, this.fontFamilyResolver, j)) {
+            return textLayoutResult.copy-O0kMr_c(new TextLayoutInput(textLayoutResult.getLayoutInput().getText(), this.style, textLayoutResult.getLayoutInput().getPlaceholders(), textLayoutResult.getLayoutInput().getMaxLines(), textLayoutResult.getLayoutInput().getSoftWrap(), textLayoutResult.getLayoutInput().m2308getOverflowgIe3tQ8(), textLayoutResult.getLayoutInput().getDensity(), textLayoutResult.getLayoutInput().getLayoutDirection(), textLayoutResult.getLayoutInput().getFontFamilyResolver(), j, (DefaultConstructorMarker) null), ConstraintsKt.constrain-4WqzIAM(j, IntSizeKt.IntSize(TextDelegateKt.ceilToIntPx(textLayoutResult.getMultiParagraph().getWidth()), TextDelegateKt.ceilToIntPx(textLayoutResult.getMultiParagraph().getHeight()))));
         }
-        MultiParagraph m1779layoutTextK40F9xA = m1779layoutTextK40F9xA(j, layoutDirection);
-        return new TextLayoutResult(new TextLayoutInput(this.text, this.style, this.placeholders, this.maxLines, this.softWrap, this.overflow, this.density, layoutDirection, this.fontFamilyResolver, j, (DefaultConstructorMarker) null), m1779layoutTextK40F9xA, ConstraintsKt.m5195constrain4WqzIAM(j, IntSizeKt.IntSize(TextDelegateKt.ceilToIntPx(m1779layoutTextK40F9xA.getWidth()), TextDelegateKt.ceilToIntPx(m1779layoutTextK40F9xA.getHeight()))), null);
+        MultiParagraph m570layoutTextK40F9xA = m570layoutTextK40F9xA(j, layoutDirection);
+        return new TextLayoutResult(new TextLayoutInput(this.text, this.style, this.placeholders, this.maxLines, this.softWrap, this.overflow, this.density, layoutDirection, this.fontFamilyResolver, j, (DefaultConstructorMarker) null), m570layoutTextK40F9xA, ConstraintsKt.constrain-4WqzIAM(j, IntSizeKt.IntSize(TextDelegateKt.ceilToIntPx(m570layoutTextK40F9xA.getWidth()), TextDelegateKt.ceilToIntPx(m570layoutTextK40F9xA.getHeight()))), (DefaultConstructorMarker) null);
     }
 
     public final void layoutIntrinsics(@NotNull LayoutDirection layoutDirection) {
@@ -224,6 +205,6 @@ public final class TextDelegate {
     }
 
     public /* synthetic */ TextDelegate(AnnotatedString annotatedString, TextStyle textStyle, int i, int i2, boolean z, int i3, Density density, FontFamily.Resolver resolver, List list, int i4, DefaultConstructorMarker defaultConstructorMarker) {
-        this(annotatedString, textStyle, (i4 & 4) != 0 ? Integer.MAX_VALUE : i, (i4 & 8) != 0 ? 1 : i2, (i4 & 16) != 0 ? true : z, (i4 & 32) != 0 ? TextOverflow.Companion.m5128getClipgIe3tQ8() : i3, density, resolver, (i4 & 256) != 0 ? CollectionsKt.emptyList() : list, null);
+        this(annotatedString, textStyle, (i4 & 4) != 0 ? Integer.MAX_VALUE : i, (i4 & 8) != 0 ? 1 : i2, (i4 & 16) != 0 ? true : z, (i4 & 32) != 0 ? TextOverflow.Companion.m2538getClipgIe3tQ8() : i3, density, resolver, (i4 & 256) != 0 ? CollectionsKt.emptyList() : list, null);
     }
 }

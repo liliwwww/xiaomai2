@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DefaultLazyLayoutItemsProvider<IntervalContent extends LazyLayoutIntervalContent> implements LazyLayoutItemProvider {
 
     @NotNull
@@ -46,59 +46,24 @@ final class DefaultLazyLayoutItemsProvider<IntervalContent extends LazyLayoutInt
 
     @ExperimentalFoundationApi
     private final Map<Object, Integer> generateKeyToIndexMap(IntRange intRange, IntervalList<? extends LazyLayoutIntervalContent> intervalList) {
-        final int first = intRange.getFirst();
+        int first = intRange.getFirst();
         if (!(first >= 0)) {
             throw new IllegalStateException("Check failed.".toString());
         }
-        final int min = Math.min(intRange.getLast(), intervalList.getSize() - 1);
+        int min = Math.min(intRange.getLast(), intervalList.getSize() - 1);
         if (min < first) {
             return MapsKt.emptyMap();
         }
-        final HashMap hashMap = new HashMap();
-        intervalList.forEach(first, min, new Function1<IntervalList.Interval<? extends LazyLayoutIntervalContent>, Unit>() { // from class: androidx.compose.foundation.lazy.layout.DefaultLazyLayoutItemsProvider$generateKeyToIndexMap$1$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((IntervalList.Interval<? extends LazyLayoutIntervalContent>) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull IntervalList.Interval<? extends LazyLayoutIntervalContent> interval) {
-                Intrinsics.checkNotNullParameter(interval, "it");
-                if (interval.getValue().getKey() == null) {
-                    return;
-                }
-                Function1<Integer, Object> key = interval.getValue().getKey();
-                if (key == null) {
-                    throw new IllegalArgumentException("Required value was null.".toString());
-                }
-                int max = Math.max(first, interval.getStartIndex());
-                int min2 = Math.min(min, (interval.getStartIndex() + interval.getSize()) - 1);
-                if (max > min2) {
-                    return;
-                }
-                while (true) {
-                    hashMap.put(key.invoke(Integer.valueOf(max - interval.getStartIndex())), Integer.valueOf(max));
-                    if (max == min2) {
-                        return;
-                    } else {
-                        max++;
-                    }
-                }
-            }
-        });
+        HashMap hashMap = new HashMap();
+        intervalList.forEach(first, min, new generateKeyToIndexMap.1.1(first, min, hashMap));
         return hashMap;
     }
 
     private final <T> T withLocalIntervalIndex(int i, Function2<? super Integer, ? super IntervalContent, ? extends T> function2) {
-        IntervalList.Interval<IntervalContent> interval = this.intervals.get(i);
+        IntervalList.Interval interval = this.intervals.get(i);
         return (T) function2.invoke(Integer.valueOf(i - interval.getStartIndex()), interval.getValue());
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider
     @Composable
     public void Item(final int i, @Nullable Composer composer, final int i2) {
         int i3;
@@ -146,11 +111,10 @@ final class DefaultLazyLayoutItemsProvider<IntervalContent extends LazyLayoutInt
         });
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider
     @Nullable
     public Object getContentType(int i) {
-        IntervalList.Interval<IntervalContent> interval = this.intervals.get(i);
-        return interval.getValue().getType().invoke(Integer.valueOf(i - interval.getStartIndex()));
+        IntervalList.Interval interval = this.intervals.get(i);
+        return ((LazyLayoutIntervalContent) interval.getValue()).getType().invoke(Integer.valueOf(i - interval.getStartIndex()));
     }
 
     @NotNull
@@ -163,22 +127,19 @@ final class DefaultLazyLayoutItemsProvider<IntervalContent extends LazyLayoutInt
         return this.itemContentProvider;
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider
     public int getItemCount() {
         return this.intervals.getSize();
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider
     @NotNull
     public Object getKey(int i) {
         Object invoke;
-        IntervalList.Interval<IntervalContent> interval = this.intervals.get(i);
+        IntervalList.Interval interval = this.intervals.get(i);
         int startIndex = i - interval.getStartIndex();
-        Function1<Integer, Object> key = interval.getValue().getKey();
+        Function1 key = ((LazyLayoutIntervalContent) interval.getValue()).getKey();
         return (key == null || (invoke = key.invoke(Integer.valueOf(startIndex))) == null) ? Lazy_androidKt.getDefaultLazyLayoutKey(i) : invoke;
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider
     @NotNull
     public Map<Object, Integer> getKeyToIndexMap() {
         return this.keyToIndexMap;

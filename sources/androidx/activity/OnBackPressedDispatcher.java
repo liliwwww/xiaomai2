@@ -3,7 +3,6 @@ package androidx.activity;
 import android.annotation.SuppressLint;
 import android.window.OnBackInvokedCallback;
 import android.window.OnBackInvokedDispatcher;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,17 +11,16 @@ import androidx.annotation.RequiresApi;
 import androidx.core.os.BuildCompat;
 import androidx.core.util.Consumer;
 import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.Lifecycle$Event;
 import androidx.lifecycle.LifecycleEventObserver;
 import androidx.lifecycle.LifecycleOwner;
 import java.util.ArrayDeque;
 import java.util.Iterator;
-import java.util.Objects;
 import tb.p43;
 import tb.q43;
-import tb.r43;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class OnBackPressedDispatcher {
     private boolean mBackInvokedCallbackRegistered;
     private Consumer<Boolean> mEnabledConsumer;
@@ -34,30 +32,6 @@ public final class OnBackPressedDispatcher {
     final ArrayDeque<OnBackPressedCallback> mOnBackPressedCallbacks;
 
     /* compiled from: Taobao */
-    @RequiresApi(33)
-    /* loaded from: classes.dex */
-    static class Api33Impl {
-        private Api33Impl() {
-        }
-
-        @DoNotInline
-        static OnBackInvokedCallback createOnBackInvokedCallback(Runnable runnable) {
-            Objects.requireNonNull(runnable);
-            return new r43(runnable);
-        }
-
-        @DoNotInline
-        static void registerOnBackInvokedCallback(Object obj, int i, Object obj2) {
-            ((OnBackInvokedDispatcher) obj).registerOnBackInvokedCallback(i, (OnBackInvokedCallback) obj2);
-        }
-
-        @DoNotInline
-        static void unregisterOnBackInvokedCallback(Object obj, Object obj2) {
-            ((OnBackInvokedDispatcher) obj).unregisterOnBackInvokedCallback((OnBackInvokedCallback) obj2);
-        }
-    }
-
-    /* compiled from: Taobao */
     private class LifecycleOnBackPressedCancellable implements Cancellable, LifecycleEventObserver {
 
         @Nullable
@@ -65,13 +39,14 @@ public final class OnBackPressedDispatcher {
         private final Lifecycle mLifecycle;
         private final OnBackPressedCallback mOnBackPressedCallback;
 
+        /* JADX WARN: Multi-variable type inference failed */
         LifecycleOnBackPressedCancellable(@NonNull Lifecycle lifecycle, @NonNull OnBackPressedCallback onBackPressedCallback) {
             this.mLifecycle = lifecycle;
             this.mOnBackPressedCallback = onBackPressedCallback;
             lifecycle.addObserver(this);
         }
 
-        @Override // androidx.activity.Cancellable
+        /* JADX WARN: Multi-variable type inference failed */
         public void cancel() {
             this.mLifecycle.removeObserver(this);
             this.mOnBackPressedCallback.removeCancellable(this);
@@ -82,14 +57,13 @@ public final class OnBackPressedDispatcher {
             }
         }
 
-        @Override // androidx.lifecycle.LifecycleEventObserver
-        public void onStateChanged(@NonNull LifecycleOwner lifecycleOwner, @NonNull Lifecycle.Event event) {
-            if (event == Lifecycle.Event.ON_START) {
+        public void onStateChanged(@NonNull LifecycleOwner lifecycleOwner, @NonNull Lifecycle$Event lifecycle$Event) {
+            if (lifecycle$Event == Lifecycle$Event.ON_START) {
                 this.mCurrentCancellable = OnBackPressedDispatcher.this.addCancellableCallback(this.mOnBackPressedCallback);
                 return;
             }
-            if (event != Lifecycle.Event.ON_STOP) {
-                if (event == Lifecycle.Event.ON_DESTROY) {
+            if (lifecycle$Event != Lifecycle$Event.ON_STOP) {
+                if (lifecycle$Event == Lifecycle$Event.ON_DESTROY) {
                     cancel();
                 }
             } else {
@@ -97,27 +71,6 @@ public final class OnBackPressedDispatcher {
                 if (cancellable != null) {
                     cancellable.cancel();
                 }
-            }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private class OnBackPressedCancellable implements Cancellable {
-        private final OnBackPressedCallback mOnBackPressedCallback;
-
-        OnBackPressedCancellable(OnBackPressedCallback onBackPressedCallback) {
-            this.mOnBackPressedCallback = onBackPressedCallback;
-        }
-
-        @Override // androidx.activity.Cancellable
-        @OptIn(markerClass = {BuildCompat.PrereleaseSdkCheck.class})
-        public void cancel() {
-            OnBackPressedDispatcher.this.mOnBackPressedCallbacks.remove(this.mOnBackPressedCallback);
-            this.mOnBackPressedCallback.removeCancellable(this);
-            if (BuildCompat.isAtLeastT()) {
-                this.mOnBackPressedCallback.setIsEnabledConsumer(null);
-                OnBackPressedDispatcher.this.updateBackInvokedCallbackState();
             }
         }
     }
@@ -143,7 +96,7 @@ public final class OnBackPressedDispatcher {
     @MainThread
     Cancellable addCancellableCallback(@NonNull OnBackPressedCallback onBackPressedCallback) {
         this.mOnBackPressedCallbacks.add(onBackPressedCallback);
-        OnBackPressedCancellable onBackPressedCancellable = new OnBackPressedCancellable(onBackPressedCallback);
+        OnBackPressedCancellable onBackPressedCancellable = new OnBackPressedCancellable(this, onBackPressedCallback);
         onBackPressedCallback.addCancellable(onBackPressedCancellable);
         if (BuildCompat.isAtLeastT()) {
             updateBackInvokedCallbackState();

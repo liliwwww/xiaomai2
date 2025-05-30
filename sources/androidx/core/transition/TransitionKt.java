@@ -3,6 +3,9 @@ package androidx.core.transition;
 import android.annotation.SuppressLint;
 import android.transition.Transition;
 import androidx.annotation.RequiresApi;
+import androidx.core.transition.TransitionKt$doOnCancel$;
+import androidx.core.transition.TransitionKt$doOnPause$;
+import androidx.core.transition.TransitionKt$doOnStart$;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
@@ -10,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @SuppressLint({"ClassVerificationFailure"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TransitionKt {
     @RequiresApi(19)
     @NotNull
@@ -21,9 +24,9 @@ public final class TransitionKt {
         Intrinsics.checkNotNullParameter(function13, "onCancel");
         Intrinsics.checkNotNullParameter(function14, "onResume");
         Intrinsics.checkNotNullParameter(function15, "onPause");
-        TransitionKt$addListener$listener$1 transitionKt$addListener$listener$1 = new TransitionKt$addListener$listener$1(function1, function14, function15, function13, function12);
-        transition.addListener(transitionKt$addListener$listener$1);
-        return transitionKt$addListener$listener$1;
+        addListener.listener.1 r0 = new addListener.listener.1(function1, function14, function15, function13, function12);
+        transition.addListener(r0);
+        return r0;
     }
 
     public static /* synthetic */ Transition.TransitionListener addListener$default(Transition transition, Function1 function1, Function1 function12, Function1 function13, Function1 function14, Function1 function15, int i, Object obj) {
@@ -95,45 +98,19 @@ public final class TransitionKt {
         Intrinsics.checkNotNullParameter(function17, "onCancel");
         Intrinsics.checkNotNullParameter(function14, "onResume");
         Intrinsics.checkNotNullParameter(function15, "onPause");
-        TransitionKt$addListener$listener$1 transitionKt$addListener$listener$1 = new TransitionKt$addListener$listener$1(function1, function14, function15, function17, function16);
-        transition.addListener(transitionKt$addListener$listener$1);
-        return transitionKt$addListener$listener$1;
+        addListener.listener.1 r1 = new addListener.listener.1(function1, function14, function15, function17, function16);
+        transition.addListener(r1);
+        return r1;
     }
 
     @RequiresApi(19)
     @NotNull
-    public static final Transition.TransitionListener doOnCancel(@NotNull Transition transition, @NotNull final Function1<? super Transition, Unit> function1) {
+    public static final Transition.TransitionListener doOnCancel(@NotNull Transition transition, @NotNull Function1<? super Transition, Unit> function1) {
         Intrinsics.checkNotNullParameter(transition, "<this>");
         Intrinsics.checkNotNullParameter(function1, "action");
-        Transition.TransitionListener transitionListener = new Transition.TransitionListener() { // from class: androidx.core.transition.TransitionKt$doOnCancel$$inlined$addListener$default$1
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionCancel(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-                function1.invoke(transition2);
-            }
-
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionEnd(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-            }
-
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionPause(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-            }
-
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionResume(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-            }
-
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionStart(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-            }
-        };
-        transition.addListener(transitionListener);
-        return transitionListener;
+        TransitionKt$doOnCancel$.inlined.addListener.default.1 r0 = new TransitionKt$doOnCancel$.inlined.addListener.default.1(function1);
+        transition.addListener(r0);
+        return r0;
     }
 
     @RequiresApi(19)
@@ -174,38 +151,12 @@ public final class TransitionKt {
 
     @RequiresApi(19)
     @NotNull
-    public static final Transition.TransitionListener doOnPause(@NotNull Transition transition, @NotNull final Function1<? super Transition, Unit> function1) {
+    public static final Transition.TransitionListener doOnPause(@NotNull Transition transition, @NotNull Function1<? super Transition, Unit> function1) {
         Intrinsics.checkNotNullParameter(transition, "<this>");
         Intrinsics.checkNotNullParameter(function1, "action");
-        Transition.TransitionListener transitionListener = new Transition.TransitionListener() { // from class: androidx.core.transition.TransitionKt$doOnPause$$inlined$addListener$default$1
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionCancel(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-            }
-
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionEnd(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-            }
-
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionPause(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-                function1.invoke(transition2);
-            }
-
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionResume(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-            }
-
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionStart(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-            }
-        };
-        transition.addListener(transitionListener);
-        return transitionListener;
+        TransitionKt$doOnPause$.inlined.addListener.default.1 r0 = new TransitionKt$doOnPause$.inlined.addListener.default.1(function1);
+        transition.addListener(r0);
+        return r0;
     }
 
     @RequiresApi(19)
@@ -246,37 +197,11 @@ public final class TransitionKt {
 
     @RequiresApi(19)
     @NotNull
-    public static final Transition.TransitionListener doOnStart(@NotNull Transition transition, @NotNull final Function1<? super Transition, Unit> function1) {
+    public static final Transition.TransitionListener doOnStart(@NotNull Transition transition, @NotNull Function1<? super Transition, Unit> function1) {
         Intrinsics.checkNotNullParameter(transition, "<this>");
         Intrinsics.checkNotNullParameter(function1, "action");
-        Transition.TransitionListener transitionListener = new Transition.TransitionListener() { // from class: androidx.core.transition.TransitionKt$doOnStart$$inlined$addListener$default$1
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionCancel(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-            }
-
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionEnd(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-            }
-
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionPause(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-            }
-
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionResume(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-            }
-
-            @Override // android.transition.Transition.TransitionListener
-            public void onTransitionStart(@NotNull Transition transition2) {
-                Intrinsics.checkNotNullParameter(transition2, "transition");
-                function1.invoke(transition2);
-            }
-        };
-        transition.addListener(transitionListener);
-        return transitionListener;
+        TransitionKt$doOnStart$.inlined.addListener.default.1 r0 = new TransitionKt$doOnStart$.inlined.addListener.default.1(function1);
+        transition.addListener(r0);
+        return r0;
     }
 }

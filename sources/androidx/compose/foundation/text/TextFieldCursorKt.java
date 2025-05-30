@@ -1,19 +1,18 @@
 package androidx.compose.foundation.text;
 
-import android.taobao.windvane.urlintercept.WVURLRuleConstants;
+import androidx.appcompat.R;
 import androidx.compose.animation.core.Animatable;
 import androidx.compose.animation.core.AnimationSpec;
 import androidx.compose.animation.core.AnimationSpecKt;
 import androidx.compose.animation.core.AnimationVector1D;
-import androidx.compose.animation.core.KeyframesSpec;
-import androidx.compose.p004ui.ComposedModifierKt;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.graphics.Brush;
-import androidx.compose.p004ui.text.input.OffsetMapping;
-import androidx.compose.p004ui.text.input.TextFieldValue;
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.animation.core.RepeatMode;
 import androidx.compose.runtime.Composer;
-import androidx.room.RoomDatabase;
+import androidx.compose.ui.ComposedModifierKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.graphics.Brush;
+import androidx.compose.ui.text.input.OffsetMapping;
+import androidx.compose.ui.text.input.TextFieldValue;
+import androidx.compose.ui.unit.Dp;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -30,28 +29,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TextFieldCursorKt {
 
     @NotNull
-    private static final AnimationSpec<Float> cursorAnimationSpec = AnimationSpecKt.m1048infiniteRepeatable9IiC70o$default(AnimationSpecKt.keyframes(new Function1<KeyframesSpec.KeyframesSpecConfig<Float>, Unit>() { // from class: androidx.compose.foundation.text.TextFieldCursorKt$cursorAnimationSpec$1
-        public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            invoke((KeyframesSpec.KeyframesSpecConfig<Float>) obj);
-            return Unit.INSTANCE;
-        }
-
-        public final void invoke(@NotNull KeyframesSpec.KeyframesSpecConfig<Float> keyframesSpecConfig) {
-            Intrinsics.checkNotNullParameter(keyframesSpecConfig, "$this$keyframes");
-            keyframesSpecConfig.setDurationMillis(1000);
-            Float valueOf = Float.valueOf(1.0f);
-            keyframesSpecConfig.m55at(valueOf, 0);
-            keyframesSpecConfig.m55at(valueOf, 499);
-            Float valueOf2 = Float.valueOf(0.0f);
-            keyframesSpecConfig.m55at(valueOf2, WVURLRuleConstants.ORDER_LIST);
-            keyframesSpecConfig.m55at(valueOf2, RoomDatabase.MAX_BIND_PARAMETER_CNT);
-        }
-    }), null, 0, 6, null);
-    private static final float DefaultCursorThickness = C0856Dp.m5216constructorimpl(2);
+    private static final AnimationSpec<Float> cursorAnimationSpec = AnimationSpecKt.infiniteRepeatable-9IiC70o$default(AnimationSpecKt.keyframes(cursorAnimationSpec.1.INSTANCE), (RepeatMode) null, 0, 6, (Object) null);
+    private static final float DefaultCursorThickness = Dp.m2142constructorimpl(2);
 
     @NotNull
     public static final Modifier cursor(@NotNull Modifier modifier, @NotNull final TextFieldState textFieldState, @NotNull final TextFieldValue textFieldValue, @NotNull final OffsetMapping offsetMapping, @NotNull final Brush brush, boolean z) {
@@ -60,24 +43,24 @@ public final class TextFieldCursorKt {
         Intrinsics.checkNotNullParameter(textFieldValue, "value");
         Intrinsics.checkNotNullParameter(offsetMapping, "offsetMapping");
         Intrinsics.checkNotNullParameter(brush, "cursorBrush");
-        return z ? ComposedModifierKt.composed$default(modifier, null, new Function3<Modifier, Composer, Integer, Modifier>() { // from class: androidx.compose.foundation.text.TextFieldCursorKt$cursor$1
+        return z ? ComposedModifierKt.composed$default(modifier, (Function1) null, new Function3<Modifier, Composer, Integer, Modifier>() { // from class: androidx.compose.foundation.text.TextFieldCursorKt$cursor$1
 
             /* compiled from: Taobao */
-            @DebugMetadata(c = "androidx.compose.foundation.text.TextFieldCursorKt$cursor$1$1", f = "TextFieldCursor.kt", i = {}, l = {50, 52}, m = "invokeSuspend", n = {}, s = {})
-            /* renamed from: androidx.compose.foundation.text.TextFieldCursorKt$cursor$1$1 */
-            static final class C05881 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
+            @DebugMetadata(c = "androidx.compose.foundation.text.TextFieldCursorKt$cursor$1$1", f = "TextFieldCursor.kt", i = {}, l = {R.styleable.AppCompatTheme_colorAccent, R.styleable.AppCompatTheme_colorButtonNormal}, m = "invokeSuspend", n = {}, s = {})
+            /* renamed from: androidx.compose.foundation.text.TextFieldCursorKt$cursor$1$1, reason: invalid class name */
+            static final class AnonymousClass1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
                 final /* synthetic */ Animatable<Float, AnimationVector1D> $cursorAlpha;
                 int label;
 
                 /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                C05881(Animatable<Float, AnimationVector1D> animatable, Continuation<? super C05881> continuation) {
+                AnonymousClass1(Animatable<Float, AnimationVector1D> animatable, Continuation<? super AnonymousClass1> continuation) {
                     super(2, continuation);
                     this.$cursorAlpha = animatable;
                 }
 
                 @NotNull
                 public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
-                    return new C05881(this.$cursorAlpha, continuation);
+                    return new AnonymousClass1(this.$cursorAlpha, continuation);
                 }
 
                 @Nullable
@@ -130,15 +113,15 @@ public final class TextFieldCursorKt {
 
             /* JADX WARN: Code restructure failed: missing block: B:12:0x004d, code lost:
             
-                if ((((androidx.compose.p004ui.graphics.SolidColor) r12).m3074getValue0d7_KjU() == androidx.compose.p004ui.graphics.Color.Companion.m2823getUnspecified0d7_KjU()) == false) goto L15;
+                if ((((androidx.compose.ui.graphics.SolidColor) r12).m1233getValue0d7_KjU() == androidx.compose.ui.graphics.Color.Companion.getUnspecified-0d7_KjU()) == false) goto L15;
              */
             @androidx.compose.runtime.Composable
             @org.jetbrains.annotations.NotNull
             /*
                 Code decompiled incorrectly, please refer to instructions dump.
-                To view partially-correct code enable 'Show inconsistent code' option in preferences
+                To view partially-correct add '--show-bad-code' argument
             */
-            public final androidx.compose.p004ui.Modifier invoke(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.Modifier r10, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r11, int r12) {
+            public final androidx.compose.ui.Modifier invoke(@org.jetbrains.annotations.NotNull androidx.compose.ui.Modifier r10, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r11, int r12) {
                 /*
                     r9 = this;
                     java.lang.String r0 = "$this$composed"
@@ -164,15 +147,15 @@ public final class TextFieldCursorKt {
                 L2f:
                     r3 = r12
                     androidx.compose.animation.core.Animatable r3 = (androidx.compose.animation.core.Animatable) r3
-                    androidx.compose.ui.graphics.Brush r12 = androidx.compose.p004ui.graphics.Brush.this
-                    boolean r0 = r12 instanceof androidx.compose.p004ui.graphics.SolidColor
+                    androidx.compose.ui.graphics.Brush r12 = r1
+                    boolean r0 = r12 instanceof androidx.compose.ui.graphics.SolidColor
                     r2 = 0
                     r4 = 1
                     if (r0 == 0) goto L4f
-                    androidx.compose.ui.graphics.SolidColor r12 = (androidx.compose.p004ui.graphics.SolidColor) r12
-                    long r5 = r12.m3074getValue0d7_KjU()
-                    androidx.compose.ui.graphics.Color$Companion r12 = androidx.compose.p004ui.graphics.Color.Companion
-                    long r7 = r12.m2823getUnspecified0d7_KjU()
+                    androidx.compose.ui.graphics.SolidColor r12 = (androidx.compose.ui.graphics.SolidColor) r12
+                    long r5 = r12.m1233getValue0d7_KjU()
+                    androidx.compose.ui.graphics.Color$Companion r12 = androidx.compose.ui.graphics.Color.Companion
+                    long r7 = r12.getUnspecified-0d7_KjU()
                     int r12 = (r5 > r7 ? 1 : (r5 == r7 ? 0 : -1))
                     if (r12 != 0) goto L4c
                     r12 = 1
@@ -188,30 +171,30 @@ public final class TextFieldCursorKt {
                     boolean r12 = r12.getHasFocus()
                     if (r12 == 0) goto L93
                     androidx.compose.ui.text.input.TextFieldValue r12 = r3
-                    long r4 = r12.m4956getSelectiond9O1mEE()
-                    boolean r12 = androidx.compose.p004ui.text.TextRange.m4743getCollapsedimpl(r4)
+                    long r4 = r12.m1985getSelectiond9O1mEE()
+                    boolean r12 = androidx.compose.ui.text.TextRange.getCollapsed-impl(r4)
                     if (r12 == 0) goto L93
                     if (r2 == 0) goto L93
                     androidx.compose.ui.text.input.TextFieldValue r12 = r3
                     androidx.compose.ui.text.AnnotatedString r12 = r12.getAnnotatedString()
                     androidx.compose.ui.text.input.TextFieldValue r0 = r3
-                    long r4 = r0.m4956getSelectiond9O1mEE()
-                    androidx.compose.ui.text.TextRange r0 = androidx.compose.p004ui.text.TextRange.m4737boximpl(r4)
+                    long r4 = r0.m1985getSelectiond9O1mEE()
+                    androidx.compose.ui.text.TextRange r0 = androidx.compose.ui.text.TextRange.box-impl(r4)
                     androidx.compose.foundation.text.TextFieldCursorKt$cursor$1$1 r2 = new androidx.compose.foundation.text.TextFieldCursorKt$cursor$1$1
                     r2.<init>(r3, r1)
-                    r1 = 512(0x200, float:7.17E-43)
+                    r1 = 512(0x200, float:7.175E-43)
                     androidx.compose.runtime.EffectsKt.LaunchedEffect(r12, r0, r2, r11, r1)
                     androidx.compose.foundation.text.TextFieldCursorKt$cursor$1$2 r12 = new androidx.compose.foundation.text.TextFieldCursorKt$cursor$1$2
                     androidx.compose.ui.text.input.OffsetMapping r4 = r4
                     androidx.compose.ui.text.input.TextFieldValue r5 = r3
                     androidx.compose.foundation.text.TextFieldState r6 = r2
-                    androidx.compose.ui.graphics.Brush r7 = androidx.compose.p004ui.graphics.Brush.this
+                    androidx.compose.ui.graphics.Brush r7 = r1
                     r2 = r12
                     r2.<init>()
-                    androidx.compose.ui.Modifier r10 = androidx.compose.p004ui.draw.DrawModifierKt.drawWithContent(r10, r12)
+                    androidx.compose.ui.Modifier r10 = androidx.compose.ui.draw.DrawModifierKt.drawWithContent(r10, r12)
                     goto L95
                 L93:
-                    androidx.compose.ui.Modifier$Companion r10 = androidx.compose.p004ui.Modifier.Companion
+                    androidx.compose.ui.Modifier$Companion r10 = androidx.compose.ui.Modifier.Companion
                 L95:
                     boolean r12 = androidx.compose.runtime.ComposerKt.isTraceInProgress()
                     if (r12 == 0) goto L9e
@@ -222,7 +205,7 @@ public final class TextFieldCursorKt {
                 */
                 throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.TextFieldCursorKt$cursor$1.invoke(androidx.compose.ui.Modifier, androidx.compose.runtime.Composer, int):androidx.compose.ui.Modifier");
             }
-        }, 1, null) : modifier;
+        }, 1, (Object) null) : modifier;
     }
 
     public static final float getDefaultCursorThickness() {

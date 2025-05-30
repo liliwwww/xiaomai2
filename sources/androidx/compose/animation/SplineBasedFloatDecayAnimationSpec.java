@@ -2,14 +2,14 @@ package androidx.compose.animation;
 
 import androidx.compose.animation.core.AnimationKt;
 import androidx.compose.animation.core.FloatDecayAnimationSpec;
-import androidx.compose.p004ui.unit.Density;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.unit.Density;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SplineBasedFloatDecayAnimationSpec implements FloatDecayAnimationSpec {
     public static final int $stable = 0;
 

@@ -5,13 +5,14 @@ import android.text.TextPaint;
 import androidx.annotation.AnyThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.core.graphics.PaintCompat;
 import androidx.emoji2.text.EmojiCompat;
 
 /* compiled from: Taobao */
 @AnyThread
-@RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class DefaultGlyphChecker implements EmojiCompat.GlyphChecker {
     private static final int PAINT_TEXT_SIZE = 10;
     private static final ThreadLocal<StringBuilder> sStringBuilder = new ThreadLocal<>();

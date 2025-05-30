@@ -6,9 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Preconditions;
 import androidx.recyclerview.widget.ConcatAdapter;
-import androidx.recyclerview.widget.NestedAdapterWrapper;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StableIdStorage;
 import androidx.recyclerview.widget.ViewTypeStorage;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -18,8 +16,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
-class ConcatAdapterController implements NestedAdapterWrapper.Callback {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
+class ConcatAdapterController implements NestedAdapterWrapper$Callback {
     private final ConcatAdapter mConcatAdapter;
 
     @NonNull
@@ -51,36 +49,68 @@ class ConcatAdapterController implements NestedAdapterWrapper.Callback {
         ConcatAdapter.Config.StableIdMode stableIdMode = config.stableIdMode;
         this.mStableIdMode = stableIdMode;
         if (stableIdMode == ConcatAdapter.Config.StableIdMode.NO_STABLE_IDS) {
-            this.mStableIdStorage = new StableIdStorage.NoStableIdStorage();
+            this.mStableIdStorage = new StableIdStorage() { // from class: androidx.recyclerview.widget.StableIdStorage$NoStableIdStorage
+                private final StableIdStorage$StableIdLookup mNoIdLookup = new 1(this);
+
+                @NonNull
+                public StableIdStorage$StableIdLookup createStableIdLookup() {
+                    return this.mNoIdLookup;
+                }
+            };
         } else if (stableIdMode == ConcatAdapter.Config.StableIdMode.ISOLATED_STABLE_IDS) {
-            this.mStableIdStorage = new StableIdStorage.IsolatedStableIdStorage();
+            this.mStableIdStorage = new StableIdStorage() { // from class: androidx.recyclerview.widget.StableIdStorage$IsolatedStableIdStorage
+                long mNextStableId = 0;
+
+                @NonNull
+                public StableIdStorage$StableIdLookup createStableIdLookup() {
+                    return new WrapperStableIdLookup(this);
+                }
+
+                long obtainId() {
+                    long j = this.mNextStableId;
+                    this.mNextStableId = 1 + j;
+                    return j;
+                }
+            };
         } else {
             if (stableIdMode != ConcatAdapter.Config.StableIdMode.SHARED_STABLE_IDS) {
                 throw new IllegalArgumentException("unknown stable id mode");
             }
-            this.mStableIdStorage = new StableIdStorage.SharedPoolStableIdStorage();
+            this.mStableIdStorage = new StableIdStorage() { // from class: androidx.recyclerview.widget.StableIdStorage$SharedPoolStableIdStorage
+                private final StableIdStorage$StableIdLookup mSameIdLookup = new StableIdStorage$StableIdLookup() { // from class: androidx.recyclerview.widget.StableIdStorage$SharedPoolStableIdStorage.1
+                    @Override // androidx.recyclerview.widget.StableIdStorage$StableIdLookup
+                    public long localToGlobal(long j) {
+                        return j;
+                    }
+                };
+
+                @NonNull
+                public StableIdStorage$StableIdLookup createStableIdLookup() {
+                    return this.mSameIdLookup;
+                }
+            };
         }
     }
 
     private void calculateAndUpdateStateRestorationPolicy() {
-        RecyclerView.Adapter.StateRestorationPolicy computeStateRestorationPolicy = computeStateRestorationPolicy();
+        RecyclerView$Adapter$StateRestorationPolicy computeStateRestorationPolicy = computeStateRestorationPolicy();
         if (computeStateRestorationPolicy != this.mConcatAdapter.getStateRestorationPolicy()) {
             this.mConcatAdapter.internalSetStateRestorationPolicy(computeStateRestorationPolicy);
         }
     }
 
-    private RecyclerView.Adapter.StateRestorationPolicy computeStateRestorationPolicy() {
+    private RecyclerView$Adapter$StateRestorationPolicy computeStateRestorationPolicy() {
         for (NestedAdapterWrapper nestedAdapterWrapper : this.mWrappers) {
-            RecyclerView.Adapter.StateRestorationPolicy stateRestorationPolicy = nestedAdapterWrapper.adapter.getStateRestorationPolicy();
-            RecyclerView.Adapter.StateRestorationPolicy stateRestorationPolicy2 = RecyclerView.Adapter.StateRestorationPolicy.PREVENT;
-            if (stateRestorationPolicy == stateRestorationPolicy2) {
-                return stateRestorationPolicy2;
+            RecyclerView$Adapter$StateRestorationPolicy stateRestorationPolicy = nestedAdapterWrapper.adapter.getStateRestorationPolicy();
+            RecyclerView$Adapter$StateRestorationPolicy recyclerView$Adapter$StateRestorationPolicy = RecyclerView$Adapter$StateRestorationPolicy.PREVENT;
+            if (stateRestorationPolicy == recyclerView$Adapter$StateRestorationPolicy) {
+                return recyclerView$Adapter$StateRestorationPolicy;
             }
-            if (stateRestorationPolicy == RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY && nestedAdapterWrapper.getCachedItemCount() == 0) {
-                return stateRestorationPolicy2;
+            if (stateRestorationPolicy == RecyclerView$Adapter$StateRestorationPolicy.PREVENT_WHEN_EMPTY && nestedAdapterWrapper.getCachedItemCount() == 0) {
+                return recyclerView$Adapter$StateRestorationPolicy;
             }
         }
-        return RecyclerView.Adapter.StateRestorationPolicy.ALLOW;
+        return RecyclerView$Adapter$StateRestorationPolicy.ALLOW;
     }
 
     private int countItemsBefore(NestedAdapterWrapper nestedAdapterWrapper) {
@@ -259,7 +289,7 @@ class ConcatAdapterController implements NestedAdapterWrapper.Callback {
         releaseWrapperAndLocalPosition(findWrapperAndLocalPosition);
     }
 
-    @Override // androidx.recyclerview.widget.NestedAdapterWrapper.Callback
+    @Override // androidx.recyclerview.widget.NestedAdapterWrapper$Callback
     public void onChanged(@NonNull NestedAdapterWrapper nestedAdapterWrapper) {
         this.mConcatAdapter.notifyDataSetChanged();
         calculateAndUpdateStateRestorationPolicy();
@@ -300,28 +330,28 @@ class ConcatAdapterController implements NestedAdapterWrapper.Callback {
         throw new IllegalStateException("Cannot find wrapper for " + viewHolder + ", seems like it is not bound by this adapter: " + this);
     }
 
-    @Override // androidx.recyclerview.widget.NestedAdapterWrapper.Callback
+    @Override // androidx.recyclerview.widget.NestedAdapterWrapper$Callback
     public void onItemRangeChanged(@NonNull NestedAdapterWrapper nestedAdapterWrapper, int i, int i2) {
         this.mConcatAdapter.notifyItemRangeChanged(i + countItemsBefore(nestedAdapterWrapper), i2);
     }
 
-    @Override // androidx.recyclerview.widget.NestedAdapterWrapper.Callback
+    @Override // androidx.recyclerview.widget.NestedAdapterWrapper$Callback
     public void onItemRangeInserted(@NonNull NestedAdapterWrapper nestedAdapterWrapper, int i, int i2) {
         this.mConcatAdapter.notifyItemRangeInserted(i + countItemsBefore(nestedAdapterWrapper), i2);
     }
 
-    @Override // androidx.recyclerview.widget.NestedAdapterWrapper.Callback
+    @Override // androidx.recyclerview.widget.NestedAdapterWrapper$Callback
     public void onItemRangeMoved(@NonNull NestedAdapterWrapper nestedAdapterWrapper, int i, int i2) {
         int countItemsBefore = countItemsBefore(nestedAdapterWrapper);
         this.mConcatAdapter.notifyItemMoved(i + countItemsBefore, i2 + countItemsBefore);
     }
 
-    @Override // androidx.recyclerview.widget.NestedAdapterWrapper.Callback
+    @Override // androidx.recyclerview.widget.NestedAdapterWrapper$Callback
     public void onItemRangeRemoved(@NonNull NestedAdapterWrapper nestedAdapterWrapper, int i, int i2) {
         this.mConcatAdapter.notifyItemRangeRemoved(i + countItemsBefore(nestedAdapterWrapper), i2);
     }
 
-    @Override // androidx.recyclerview.widget.NestedAdapterWrapper.Callback
+    @Override // androidx.recyclerview.widget.NestedAdapterWrapper$Callback
     public void onStateRestorationPolicyChanged(NestedAdapterWrapper nestedAdapterWrapper) {
         calculateAndUpdateStateRestorationPolicy();
     }
@@ -393,7 +423,7 @@ class ConcatAdapterController implements NestedAdapterWrapper.Callback {
         return true;
     }
 
-    @Override // androidx.recyclerview.widget.NestedAdapterWrapper.Callback
+    @Override // androidx.recyclerview.widget.NestedAdapterWrapper$Callback
     public void onItemRangeChanged(@NonNull NestedAdapterWrapper nestedAdapterWrapper, int i, int i2, @Nullable Object obj) {
         this.mConcatAdapter.notifyItemRangeChanged(i + countItemsBefore(nestedAdapterWrapper), i2, obj);
     }

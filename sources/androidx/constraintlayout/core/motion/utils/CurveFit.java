@@ -1,7 +1,7 @@
 package androidx.constraintlayout.core.motion.utils;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class CurveFit {
     public static final int CONSTANT = 2;
     public static final int LINEAR = 1;

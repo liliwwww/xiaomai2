@@ -1,7 +1,8 @@
 package androidx.compose.foundation.text;
 
+import androidx.compose.foundation.text.TextController;
 import androidx.compose.foundation.text.selection.TextSelectionMouseDetectorKt;
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.input.pointer.PointerInputScope;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -14,16 +15,16 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.text.TextController$update$3", f = "CoreText.kt", i = {}, l = {282}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class TextController$update$3 extends SuspendLambda implements Function2<PointerInputScope, Continuation<? super Unit>, Object> {
-    final /* synthetic */ TextController$update$mouseSelectionObserver$1 $mouseSelectionObserver;
+    final /* synthetic */ TextController.update.mouseSelectionObserver.1 $mouseSelectionObserver;
     private /* synthetic */ Object L$0;
     int label;
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    TextController$update$3(TextController$update$mouseSelectionObserver$1 textController$update$mouseSelectionObserver$1, Continuation<? super TextController$update$3> continuation) {
+    TextController$update$3(TextController.update.mouseSelectionObserver.1 r1, Continuation<? super TextController$update$3> continuation) {
         super(2, continuation);
-        this.$mouseSelectionObserver = textController$update$mouseSelectionObserver$1;
+        this.$mouseSelectionObserver = r1;
     }
 
     @NotNull
@@ -45,9 +46,9 @@ final class TextController$update$3 extends SuspendLambda implements Function2<P
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
             PointerInputScope pointerInputScope = (PointerInputScope) this.L$0;
-            TextController$update$mouseSelectionObserver$1 textController$update$mouseSelectionObserver$1 = this.$mouseSelectionObserver;
+            TextController.update.mouseSelectionObserver.1 r1 = this.$mouseSelectionObserver;
             this.label = 1;
-            if (TextSelectionMouseDetectorKt.mouseSelectionDetector(pointerInputScope, textController$update$mouseSelectionObserver$1, this) == coroutine_suspended) {
+            if (TextSelectionMouseDetectorKt.mouseSelectionDetector(pointerInputScope, r1, this) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

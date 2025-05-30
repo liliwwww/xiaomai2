@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyGridItemProviderKt$rememberLazyGridItemProvider$1$1 implements LazyGridItemProvider, LazyLayoutItemProvider {
     private final /* synthetic */ LazyLayoutItemProvider $$delegate_0;
     final /* synthetic */ State<LazyGridItemProvider> $itemProviderState;
@@ -45,7 +45,7 @@ public final class LazyGridItemProviderKt$rememberLazyGridItemProvider$1$1 imple
 
     @Override // androidx.compose.foundation.lazy.grid.LazyGridItemProvider
     public boolean getHasCustomSpans() {
-        return this.$itemProviderState.getValue().getHasCustomSpans();
+        return ((LazyGridItemProvider) this.$itemProviderState.getValue()).getHasCustomSpans();
     }
 
     @Override // androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider
@@ -67,14 +67,14 @@ public final class LazyGridItemProviderKt$rememberLazyGridItemProvider$1$1 imple
 
     @Override // androidx.compose.foundation.lazy.grid.LazyGridItemProvider
     /* renamed from: getSpan-_-orMbw */
-    public long mo1570getSpan_orMbw(@NotNull LazyGridItemSpanScope lazyGridItemSpanScope, int i) {
+    public long mo291getSpan_orMbw(@NotNull LazyGridItemSpanScope lazyGridItemSpanScope, int i) {
         Intrinsics.checkNotNullParameter(lazyGridItemSpanScope, "$this$getSpan");
-        return this.$itemProviderState.getValue().mo1570getSpan_orMbw(lazyGridItemSpanScope, i);
+        return ((LazyGridItemProvider) this.$itemProviderState.getValue()).mo291getSpan_orMbw(lazyGridItemSpanScope, i);
     }
 
     @Override // androidx.compose.foundation.lazy.grid.LazyGridItemProvider
     @NotNull
     public LazyGridSpanLayoutProvider getSpanLayoutProvider() {
-        return this.$itemProviderState.getValue().getSpanLayoutProvider();
+        return ((LazyGridItemProvider) this.$itemProviderState.getValue()).getSpanLayoutProvider();
     }
 }

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.LocaleList;
-import android.taobao.windvane.config.WVConfigManager;
 import androidx.annotation.AnyThread;
 import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
@@ -14,37 +13,10 @@ import androidx.annotation.RequiresApi;
 import androidx.annotation.VisibleForTesting;
 import androidx.core.os.BuildCompat;
 import androidx.core.os.LocaleListCompat;
-import java.util.Locale;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LocaleManagerCompat {
-
-    /* compiled from: Taobao */
-    @RequiresApi(21)
-    /* loaded from: classes2.dex */
-    static class Api21Impl {
-        private Api21Impl() {
-        }
-
-        @DoNotInline
-        static String toLanguageTag(Locale locale) {
-            return locale.toLanguageTag();
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(24)
-    /* loaded from: classes2.dex */
-    static class Api24Impl {
-        private Api24Impl() {
-        }
-
-        @DoNotInline
-        static LocaleListCompat getLocales(Configuration configuration) {
-            return LocaleListCompat.forLanguageTags(configuration.getLocales().toLanguageTags());
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(33)
@@ -69,7 +41,7 @@ public final class LocaleManagerCompat {
 
     @RequiresApi(33)
     private static Object getLocaleManagerForApplication(Context context) {
-        return context.getSystemService(WVConfigManager.CONFIGNAME_LOCALE);
+        return context.getSystemService("locale");
     }
 
     @NonNull

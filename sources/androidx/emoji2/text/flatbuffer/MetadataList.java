@@ -5,7 +5,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class MetadataList extends Table {
 
     /* compiled from: Taobao */
@@ -20,7 +20,7 @@ public final class MetadataList extends Table {
         }
 
         public MetadataList get(MetadataList metadataList, int i) {
-            return metadataList.__assign(Table.__indirect(__element(i), this.f359bb), this.f359bb);
+            return metadataList.__assign(Table.__indirect(__element(i), ((BaseVector) this).bb), ((BaseVector) this).bb);
         }
     }
 
@@ -124,7 +124,7 @@ public final class MetadataList extends Table {
     public int version() {
         int __offset = __offset(4);
         if (__offset != 0) {
-            return this.f365bb.getInt(__offset + this.bb_pos);
+            return this.bb.getInt(__offset + this.bb_pos);
         }
         return 0;
     }
@@ -137,7 +137,7 @@ public final class MetadataList extends Table {
     public MetadataItem list(MetadataItem metadataItem, int i) {
         int __offset = __offset(6);
         if (__offset != 0) {
-            return metadataItem.__assign(__indirect(__vector(__offset) + (i * 4)), this.f365bb);
+            return metadataItem.__assign(__indirect(__vector(__offset) + (i * 4)), this.bb);
         }
         return null;
     }
@@ -145,7 +145,7 @@ public final class MetadataList extends Table {
     public MetadataItem.Vector listVector(MetadataItem.Vector vector) {
         int __offset = __offset(6);
         if (__offset != 0) {
-            return vector.__assign(__vector(__offset), 4, this.f365bb);
+            return vector.__assign(__vector(__offset), 4, this.bb);
         }
         return null;
     }

@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.SwipeableKt$PreUpPostDownNestedScrollConnection$1", f = "Swipeable.kt", i = {0}, l = {882}, m = "onPostFling-RZ2iAVY", n = {"available"}, s = {"J$0"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SwipeableKt$PreUpPostDownNestedScrollConnection$1$onPostFling$1 extends ContinuationImpl {
     long J$0;
     int label;
@@ -25,6 +25,6 @@ final class SwipeableKt$PreUpPostDownNestedScrollConnection$1$onPostFling$1 exte
     public final Object invokeSuspend(@NotNull Object obj) {
         this.result = obj;
         this.label |= Integer.MIN_VALUE;
-        return this.this$0.mo1290onPostFlingRZ2iAVY(0L, 0L, this);
+        return this.this$0.mo309onPostFlingRZ2iAVY(0L, 0L, this);
     }
 }

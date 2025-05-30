@@ -7,14 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager.widget.PagerAdapter;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class FragmentStatePagerAdapter extends PagerAdapter {
     public static final int BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT = 1;
 
@@ -28,14 +27,13 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
     private boolean mExecutingFinishUpdate;
     private final FragmentManager mFragmentManager;
     private ArrayList<Fragment> mFragments;
-    private ArrayList<Fragment.SavedState> mSavedState;
+    private ArrayList<Fragment$SavedState> mSavedState;
 
     @Deprecated
     public FragmentStatePagerAdapter(@NonNull FragmentManager fragmentManager) {
         this(fragmentManager, 0);
     }
 
-    @Override // androidx.viewpager.widget.PagerAdapter
     public void destroyItem(@NonNull ViewGroup viewGroup, int i, @NonNull Object obj) {
         Fragment fragment = (Fragment) obj;
         if (this.mCurTransaction == null) {
@@ -52,7 +50,6 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
         }
     }
 
-    @Override // androidx.viewpager.widget.PagerAdapter
     public void finishUpdate(@NonNull ViewGroup viewGroup) {
         FragmentTransaction fragmentTransaction = this.mCurTransaction;
         if (fragmentTransaction != null) {
@@ -71,10 +68,9 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
     @NonNull
     public abstract Fragment getItem(int i);
 
-    @Override // androidx.viewpager.widget.PagerAdapter
     @NonNull
     public Object instantiateItem(@NonNull ViewGroup viewGroup, int i) {
-        Fragment.SavedState savedState;
+        Fragment$SavedState fragment$SavedState;
         Fragment fragment;
         if (this.mFragments.size() > i && (fragment = this.mFragments.get(i)) != null) {
             return fragment;
@@ -83,8 +79,8 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
             this.mCurTransaction = this.mFragmentManager.beginTransaction();
         }
         Fragment item = getItem(i);
-        if (this.mSavedState.size() > i && (savedState = this.mSavedState.get(i)) != null) {
-            item.setInitialSavedState(savedState);
+        if (this.mSavedState.size() > i && (fragment$SavedState = this.mSavedState.get(i)) != null) {
+            item.setInitialSavedState(fragment$SavedState);
         }
         while (this.mFragments.size() <= i) {
             this.mFragments.add(null);
@@ -101,12 +97,10 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
         return item;
     }
 
-    @Override // androidx.viewpager.widget.PagerAdapter
     public boolean isViewFromObject(@NonNull View view, @NonNull Object obj) {
         return ((Fragment) obj).getView() == view;
     }
 
-    @Override // androidx.viewpager.widget.PagerAdapter
     public void restoreState(@Nullable Parcelable parcelable, @Nullable ClassLoader classLoader) {
         if (parcelable != null) {
             Bundle bundle = (Bundle) parcelable;
@@ -116,7 +110,7 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
             this.mFragments.clear();
             if (parcelableArray != null) {
                 for (Parcelable parcelable2 : parcelableArray) {
-                    this.mSavedState.add((Fragment.SavedState) parcelable2);
+                    this.mSavedState.add((Fragment$SavedState) parcelable2);
                 }
             }
             for (String str : bundle.keySet()) {
@@ -137,15 +131,14 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
         }
     }
 
-    @Override // androidx.viewpager.widget.PagerAdapter
     @Nullable
     public Parcelable saveState() {
         Bundle bundle;
         if (this.mSavedState.size() > 0) {
             bundle = new Bundle();
-            Fragment.SavedState[] savedStateArr = new Fragment.SavedState[this.mSavedState.size()];
-            this.mSavedState.toArray(savedStateArr);
-            bundle.putParcelableArray("states", savedStateArr);
+            Fragment$SavedState[] fragment$SavedStateArr = new Fragment$SavedState[this.mSavedState.size()];
+            this.mSavedState.toArray(fragment$SavedStateArr);
+            bundle.putParcelableArray("states", fragment$SavedStateArr);
         } else {
             bundle = null;
         }
@@ -161,7 +154,6 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
         return bundle;
     }
 
-    @Override // androidx.viewpager.widget.PagerAdapter
     public void setPrimaryItem(@NonNull ViewGroup viewGroup, int i, @NonNull Object obj) {
         Fragment fragment = (Fragment) obj;
         Fragment fragment2 = this.mCurrentPrimaryItem;
@@ -190,7 +182,6 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
         }
     }
 
-    @Override // androidx.viewpager.widget.PagerAdapter
     public void startUpdate(@NonNull ViewGroup viewGroup) {
         if (viewGroup.getId() != -1) {
             return;

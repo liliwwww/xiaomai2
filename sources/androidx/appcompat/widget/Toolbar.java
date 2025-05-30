@@ -5,13 +5,11 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Layout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ContextThemeWrapper;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,27 +23,26 @@ import android.widget.TextView;
 import android.window.OnBackInvokedCallback;
 import android.window.OnBackInvokedDispatcher;
 import androidx.annotation.ColorInt;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.MainThread;
 import androidx.annotation.MenuRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.StringRes;
 import androidx.annotation.StyleRes;
-import androidx.appcompat.C0257R;
-import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.R;
+import androidx.appcompat.R$attr;
+import androidx.appcompat.app.ActionBar$LayoutParams;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.view.CollapsibleActionView;
 import androidx.appcompat.view.SupportMenuInflater;
 import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.view.menu.MenuBuilder$Callback;
 import androidx.appcompat.view.menu.MenuItemImpl;
 import androidx.appcompat.view.menu.MenuPresenter;
 import androidx.appcompat.view.menu.MenuView;
 import androidx.appcompat.view.menu.SubMenuBuilder;
-import androidx.appcompat.widget.ActionMenuView;
 import androidx.constraintlayout.core.widgets.analyzer.BasicMeasure;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.MarginLayoutParamsCompat;
@@ -53,19 +50,16 @@ import androidx.core.view.MenuHost;
 import androidx.core.view.MenuHostHelper;
 import androidx.core.view.MenuProvider;
 import androidx.core.view.ViewCompat;
-import androidx.customview.view.AbsSavedState;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import tb.gn5;
 import tb.hn5;
-import tb.r43;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Toolbar extends ViewGroup implements MenuHost {
     private static final String TAG = "Toolbar";
     private MenuPresenter.Callback mActionMenuPresenterCallback;
@@ -88,10 +82,10 @@ public class Toolbar extends ViewGroup implements MenuHost {
     private final ArrayList<View> mHiddenViews;
     private ImageView mLogoView;
     private int mMaxButtonHeight;
-    MenuBuilder.Callback mMenuBuilderCallback;
+    MenuBuilder$Callback mMenuBuilderCallback;
     final MenuHostHelper mMenuHostHelper;
     ActionMenuView mMenuView;
-    private final ActionMenuView.OnMenuItemClickListener mMenuViewItemClickListener;
+    private final ActionMenuView$OnMenuItemClickListener mMenuViewItemClickListener;
     private ImageButton mNavButtonView;
     OnMenuItemClickListener mOnMenuItemClickListener;
     private ActionMenuPresenter mOuterActionMenuPresenter;
@@ -116,37 +110,6 @@ public class Toolbar extends ViewGroup implements MenuHost {
     private ToolbarWidgetWrapper mWrapper;
 
     /* compiled from: Taobao */
-    @RequiresApi(33)
-    /* loaded from: classes.dex */
-    static class Api33Impl {
-        private Api33Impl() {
-        }
-
-        @Nullable
-        @DoNotInline
-        static OnBackInvokedDispatcher findOnBackInvokedDispatcher(@NonNull View view) {
-            return view.findOnBackInvokedDispatcher();
-        }
-
-        @NonNull
-        @DoNotInline
-        static OnBackInvokedCallback newOnBackInvokedCallback(@NonNull Runnable runnable) {
-            Objects.requireNonNull(runnable);
-            return new r43(runnable);
-        }
-
-        @DoNotInline
-        static void tryRegisterOnBackInvokedCallback(@NonNull Object obj, @NonNull Object obj2) {
-            ((OnBackInvokedDispatcher) obj).registerOnBackInvokedCallback(1000000, (OnBackInvokedCallback) obj2);
-        }
-
-        @DoNotInline
-        static void tryUnregisterOnBackInvokedCallback(@NonNull Object obj, @NonNull Object obj2) {
-            ((OnBackInvokedDispatcher) obj).unregisterOnBackInvokedCallback((OnBackInvokedCallback) obj2);
-        }
-    }
-
-    /* compiled from: Taobao */
     private class ExpandedActionViewMenuPresenter implements MenuPresenter {
         MenuItemImpl mCurrentExpandedItem;
         MenuBuilder mMenu;
@@ -156,9 +119,9 @@ public class Toolbar extends ViewGroup implements MenuHost {
 
         @Override // androidx.appcompat.view.menu.MenuPresenter
         public boolean collapseItemActionView(MenuBuilder menuBuilder, MenuItemImpl menuItemImpl) {
-            KeyEvent.Callback callback = Toolbar.this.mExpandedActionView;
-            if (callback instanceof CollapsibleActionView) {
-                ((CollapsibleActionView) callback).onActionViewCollapsed();
+            CollapsibleActionView collapsibleActionView = Toolbar.this.mExpandedActionView;
+            if (collapsibleActionView instanceof CollapsibleActionView) {
+                collapsibleActionView.onActionViewCollapsed();
             }
             Toolbar toolbar = Toolbar.this;
             toolbar.removeView(toolbar.mExpandedActionView);
@@ -205,9 +168,9 @@ public class Toolbar extends ViewGroup implements MenuHost {
             Toolbar.this.removeChildrenForExpandedActionView();
             Toolbar.this.requestLayout();
             menuItemImpl.setActionViewExpanded(true);
-            KeyEvent.Callback callback = Toolbar.this.mExpandedActionView;
-            if (callback instanceof CollapsibleActionView) {
-                ((CollapsibleActionView) callback).onActionViewExpanded();
+            CollapsibleActionView collapsibleActionView = Toolbar.this.mExpandedActionView;
+            if (collapsibleActionView instanceof CollapsibleActionView) {
+                collapsibleActionView.onActionViewExpanded();
             }
             Toolbar.this.updateBackInvokedCallbackState();
             return true;
@@ -287,57 +250,6 @@ public class Toolbar extends ViewGroup implements MenuHost {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface OnMenuItemClickListener {
-        boolean onMenuItemClick(MenuItem menuItem);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class SavedState extends AbsSavedState {
-        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator<SavedState>() { // from class: androidx.appcompat.widget.Toolbar.SavedState.1
-            @Override // android.os.Parcelable.Creator
-            public SavedState[] newArray(int i) {
-                return new SavedState[i];
-            }
-
-            /* JADX WARN: Can't rename method to resolve collision */
-            @Override // android.os.Parcelable.ClassLoaderCreator
-            public SavedState createFromParcel(Parcel parcel, ClassLoader classLoader) {
-                return new SavedState(parcel, classLoader);
-            }
-
-            @Override // android.os.Parcelable.Creator
-            public SavedState createFromParcel(Parcel parcel) {
-                return new SavedState(parcel, null);
-            }
-        };
-        int expandedMenuItemId;
-        boolean isOverflowOpen;
-
-        public SavedState(Parcel parcel) {
-            this(parcel, null);
-        }
-
-        @Override // androidx.customview.view.AbsSavedState, android.os.Parcelable
-        public void writeToParcel(Parcel parcel, int i) {
-            super.writeToParcel(parcel, i);
-            parcel.writeInt(this.expandedMenuItemId);
-            parcel.writeInt(this.isOverflowOpen ? 1 : 0);
-        }
-
-        public SavedState(Parcel parcel, ClassLoader classLoader) {
-            super(parcel, classLoader);
-            this.expandedMenuItemId = parcel.readInt();
-            this.isOverflowOpen = parcel.readInt() != 0;
-        }
-
-        public SavedState(Parcelable parcelable) {
-            super(parcelable);
-        }
-    }
-
     public Toolbar(@NonNull Context context) {
         this(context, null);
     }
@@ -393,12 +305,12 @@ public class Toolbar extends ViewGroup implements MenuHost {
     private void ensureMenu() {
         ensureMenuView();
         if (this.mMenuView.peekMenu() == null) {
-            MenuBuilder menuBuilder = (MenuBuilder) this.mMenuView.getMenu();
+            MenuBuilder menu = this.mMenuView.getMenu();
             if (this.mExpandedMenuPresenter == null) {
                 this.mExpandedMenuPresenter = new ExpandedActionViewMenuPresenter();
             }
             this.mMenuView.setExpandedActionViewsExclusive(true);
-            menuBuilder.addMenuPresenter(this.mExpandedMenuPresenter, this.mPopupContext);
+            menu.addMenuPresenter(this.mExpandedMenuPresenter, this.mPopupContext);
             updateBackInvokedCallbackState();
         }
     }
@@ -409,21 +321,21 @@ public class Toolbar extends ViewGroup implements MenuHost {
             this.mMenuView = actionMenuView;
             actionMenuView.setPopupTheme(this.mPopupTheme);
             this.mMenuView.setOnMenuItemClickListener(this.mMenuViewItemClickListener);
-            this.mMenuView.setMenuCallbacks(this.mActionMenuPresenterCallback, new MenuBuilder.Callback() { // from class: androidx.appcompat.widget.Toolbar.3
-                @Override // androidx.appcompat.view.menu.MenuBuilder.Callback
+            this.mMenuView.setMenuCallbacks(this.mActionMenuPresenterCallback, new MenuBuilder$Callback() { // from class: androidx.appcompat.widget.Toolbar.3
+                @Override // androidx.appcompat.view.menu.MenuBuilder$Callback
                 public boolean onMenuItemSelected(@NonNull MenuBuilder menuBuilder, @NonNull MenuItem menuItem) {
-                    MenuBuilder.Callback callback = Toolbar.this.mMenuBuilderCallback;
-                    return callback != null && callback.onMenuItemSelected(menuBuilder, menuItem);
+                    MenuBuilder$Callback menuBuilder$Callback = Toolbar.this.mMenuBuilderCallback;
+                    return menuBuilder$Callback != null && menuBuilder$Callback.onMenuItemSelected(menuBuilder, menuItem);
                 }
 
-                @Override // androidx.appcompat.view.menu.MenuBuilder.Callback
+                @Override // androidx.appcompat.view.menu.MenuBuilder$Callback
                 public void onMenuModeChange(@NonNull MenuBuilder menuBuilder) {
                     if (!Toolbar.this.mMenuView.isOverflowMenuShowing()) {
                         Toolbar.this.mMenuHostHelper.onPrepareMenu(menuBuilder);
                     }
-                    MenuBuilder.Callback callback = Toolbar.this.mMenuBuilderCallback;
-                    if (callback != null) {
-                        callback.onMenuModeChange(menuBuilder);
+                    MenuBuilder$Callback menuBuilder$Callback = Toolbar.this.mMenuBuilderCallback;
+                    if (menuBuilder$Callback != null) {
+                        menuBuilder$Callback.onMenuModeChange(menuBuilder);
                     }
                 }
             });
@@ -436,7 +348,7 @@ public class Toolbar extends ViewGroup implements MenuHost {
 
     private void ensureNavButtonView() {
         if (this.mNavButtonView == null) {
-            this.mNavButtonView = new AppCompatImageButton(getContext(), null, C0257R.attr.toolbarNavigationButtonStyle);
+            this.mNavButtonView = new AppCompatImageButton(getContext(), (AttributeSet) null, R$attr.toolbarNavigationButtonStyle);
             LayoutParams generateDefaultLayoutParams = generateDefaultLayoutParams();
             generateDefaultLayoutParams.gravity = 8388611 | (this.mButtonGravity & 112);
             this.mNavButtonView.setLayoutParams(generateDefaultLayoutParams);
@@ -652,7 +564,7 @@ public class Toolbar extends ViewGroup implements MenuHost {
 
     void ensureCollapseButtonView() {
         if (this.mCollapseButtonView == null) {
-            AppCompatImageButton appCompatImageButton = new AppCompatImageButton(getContext(), null, C0257R.attr.toolbarNavigationButtonStyle);
+            AppCompatImageButton appCompatImageButton = new AppCompatImageButton(getContext(), (AttributeSet) null, R$attr.toolbarNavigationButtonStyle);
             this.mCollapseButtonView = appCompatImageButton;
             appCompatImageButton.setImageDrawable(this.mCollapseIcon);
             this.mCollapseButtonView.setContentDescription(this.mCollapseDescription);
@@ -964,12 +876,12 @@ public class Toolbar extends ViewGroup implements MenuHost {
     @Override // android.view.ViewGroup, android.view.View
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     protected void onLayout(boolean r20, int r21, int r22, int r23, int r24) {
         /*
             Method dump skipped, instructions count: 783
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.appcompat.widget.Toolbar.onLayout(boolean, int, int, int, int):void");
     }
@@ -1229,12 +1141,12 @@ public class Toolbar extends ViewGroup implements MenuHost {
     }
 
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    public void setMenuCallbacks(MenuPresenter.Callback callback, MenuBuilder.Callback callback2) {
+    public void setMenuCallbacks(MenuPresenter.Callback callback, MenuBuilder$Callback menuBuilder$Callback) {
         this.mActionMenuPresenterCallback = callback;
-        this.mMenuBuilderCallback = callback2;
+        this.mMenuBuilderCallback = menuBuilder$Callback;
         ActionMenuView actionMenuView = this.mMenuView;
         if (actionMenuView != null) {
-            actionMenuView.setMenuCallbacks(callback, callback2);
+            actionMenuView.setMenuCallbacks(callback, menuBuilder$Callback);
         }
     }
 
@@ -1358,7 +1270,7 @@ public class Toolbar extends ViewGroup implements MenuHost {
     }
 
     /* compiled from: Taobao */
-    public static class LayoutParams extends ActionBar.LayoutParams {
+    public static class LayoutParams extends ActionBar$LayoutParams {
         static final int CUSTOM = 0;
         static final int EXPANDED = 2;
         static final int SYSTEM = 1;
@@ -1393,13 +1305,13 @@ public class Toolbar extends ViewGroup implements MenuHost {
         }
 
         public LayoutParams(LayoutParams layoutParams) {
-            super((ActionBar.LayoutParams) layoutParams);
+            super((ActionBar$LayoutParams) layoutParams);
             this.mViewType = 0;
             this.mViewType = layoutParams.mViewType;
         }
 
-        public LayoutParams(ActionBar.LayoutParams layoutParams) {
-            super(layoutParams);
+        public LayoutParams(ActionBar$LayoutParams actionBar$LayoutParams) {
+            super(actionBar$LayoutParams);
             this.mViewType = 0;
         }
 
@@ -1416,7 +1328,7 @@ public class Toolbar extends ViewGroup implements MenuHost {
     }
 
     public Toolbar(@NonNull Context context, @Nullable AttributeSet attributeSet) {
-        this(context, attributeSet, C0257R.attr.toolbarStyle);
+        this(context, attributeSet, R$attr.toolbarStyle);
     }
 
     @Override // androidx.core.view.MenuHost
@@ -1604,8 +1516,8 @@ public class Toolbar extends ViewGroup implements MenuHost {
         this.mTempMargins = new int[2];
         this.mMenuHostHelper = new MenuHostHelper(new hn5(this));
         this.mProvidedMenuItems = new ArrayList<>();
-        this.mMenuViewItemClickListener = new ActionMenuView.OnMenuItemClickListener() { // from class: androidx.appcompat.widget.Toolbar.1
-            @Override // androidx.appcompat.widget.ActionMenuView.OnMenuItemClickListener
+        this.mMenuViewItemClickListener = new ActionMenuView$OnMenuItemClickListener() { // from class: androidx.appcompat.widget.Toolbar.1
+            @Override // androidx.appcompat.widget.ActionMenuView$OnMenuItemClickListener
             public boolean onMenuItemClick(MenuItem menuItem) {
                 if (Toolbar.this.mMenuHostHelper.onMenuItemSelected(menuItem)) {
                     return true;
@@ -1624,85 +1536,85 @@ public class Toolbar extends ViewGroup implements MenuHost {
             }
         };
         Context context2 = getContext();
-        int[] iArr = C0257R.styleable.Toolbar;
+        int[] iArr = R.styleable.Toolbar;
         TintTypedArray obtainStyledAttributes = TintTypedArray.obtainStyledAttributes(context2, attributeSet, iArr, i, 0);
         ViewCompat.saveAttributeDataForStyleable(this, context, iArr, attributeSet, obtainStyledAttributes.getWrappedTypeArray(), i, 0);
-        this.mTitleTextAppearance = obtainStyledAttributes.getResourceId(C0257R.styleable.Toolbar_titleTextAppearance, 0);
-        this.mSubtitleTextAppearance = obtainStyledAttributes.getResourceId(C0257R.styleable.Toolbar_subtitleTextAppearance, 0);
-        this.mGravity = obtainStyledAttributes.getInteger(C0257R.styleable.Toolbar_android_gravity, this.mGravity);
-        this.mButtonGravity = obtainStyledAttributes.getInteger(C0257R.styleable.Toolbar_buttonGravity, 48);
-        int dimensionPixelOffset = obtainStyledAttributes.getDimensionPixelOffset(C0257R.styleable.Toolbar_titleMargin, 0);
-        int i2 = C0257R.styleable.Toolbar_titleMargins;
+        this.mTitleTextAppearance = obtainStyledAttributes.getResourceId(R.styleable.Toolbar_titleTextAppearance, 0);
+        this.mSubtitleTextAppearance = obtainStyledAttributes.getResourceId(R.styleable.Toolbar_subtitleTextAppearance, 0);
+        this.mGravity = obtainStyledAttributes.getInteger(R.styleable.Toolbar_android_gravity, this.mGravity);
+        this.mButtonGravity = obtainStyledAttributes.getInteger(R.styleable.Toolbar_buttonGravity, 48);
+        int dimensionPixelOffset = obtainStyledAttributes.getDimensionPixelOffset(R.styleable.Toolbar_titleMargin, 0);
+        int i2 = R.styleable.Toolbar_titleMargins;
         dimensionPixelOffset = obtainStyledAttributes.hasValue(i2) ? obtainStyledAttributes.getDimensionPixelOffset(i2, dimensionPixelOffset) : dimensionPixelOffset;
         this.mTitleMarginBottom = dimensionPixelOffset;
         this.mTitleMarginTop = dimensionPixelOffset;
         this.mTitleMarginEnd = dimensionPixelOffset;
         this.mTitleMarginStart = dimensionPixelOffset;
-        int dimensionPixelOffset2 = obtainStyledAttributes.getDimensionPixelOffset(C0257R.styleable.Toolbar_titleMarginStart, -1);
+        int dimensionPixelOffset2 = obtainStyledAttributes.getDimensionPixelOffset(R.styleable.Toolbar_titleMarginStart, -1);
         if (dimensionPixelOffset2 >= 0) {
             this.mTitleMarginStart = dimensionPixelOffset2;
         }
-        int dimensionPixelOffset3 = obtainStyledAttributes.getDimensionPixelOffset(C0257R.styleable.Toolbar_titleMarginEnd, -1);
+        int dimensionPixelOffset3 = obtainStyledAttributes.getDimensionPixelOffset(R.styleable.Toolbar_titleMarginEnd, -1);
         if (dimensionPixelOffset3 >= 0) {
             this.mTitleMarginEnd = dimensionPixelOffset3;
         }
-        int dimensionPixelOffset4 = obtainStyledAttributes.getDimensionPixelOffset(C0257R.styleable.Toolbar_titleMarginTop, -1);
+        int dimensionPixelOffset4 = obtainStyledAttributes.getDimensionPixelOffset(R.styleable.Toolbar_titleMarginTop, -1);
         if (dimensionPixelOffset4 >= 0) {
             this.mTitleMarginTop = dimensionPixelOffset4;
         }
-        int dimensionPixelOffset5 = obtainStyledAttributes.getDimensionPixelOffset(C0257R.styleable.Toolbar_titleMarginBottom, -1);
+        int dimensionPixelOffset5 = obtainStyledAttributes.getDimensionPixelOffset(R.styleable.Toolbar_titleMarginBottom, -1);
         if (dimensionPixelOffset5 >= 0) {
             this.mTitleMarginBottom = dimensionPixelOffset5;
         }
-        this.mMaxButtonHeight = obtainStyledAttributes.getDimensionPixelSize(C0257R.styleable.Toolbar_maxButtonHeight, -1);
-        int dimensionPixelOffset6 = obtainStyledAttributes.getDimensionPixelOffset(C0257R.styleable.Toolbar_contentInsetStart, Integer.MIN_VALUE);
-        int dimensionPixelOffset7 = obtainStyledAttributes.getDimensionPixelOffset(C0257R.styleable.Toolbar_contentInsetEnd, Integer.MIN_VALUE);
-        int dimensionPixelSize = obtainStyledAttributes.getDimensionPixelSize(C0257R.styleable.Toolbar_contentInsetLeft, 0);
-        int dimensionPixelSize2 = obtainStyledAttributes.getDimensionPixelSize(C0257R.styleable.Toolbar_contentInsetRight, 0);
+        this.mMaxButtonHeight = obtainStyledAttributes.getDimensionPixelSize(R.styleable.Toolbar_maxButtonHeight, -1);
+        int dimensionPixelOffset6 = obtainStyledAttributes.getDimensionPixelOffset(R.styleable.Toolbar_contentInsetStart, Integer.MIN_VALUE);
+        int dimensionPixelOffset7 = obtainStyledAttributes.getDimensionPixelOffset(R.styleable.Toolbar_contentInsetEnd, Integer.MIN_VALUE);
+        int dimensionPixelSize = obtainStyledAttributes.getDimensionPixelSize(R.styleable.Toolbar_contentInsetLeft, 0);
+        int dimensionPixelSize2 = obtainStyledAttributes.getDimensionPixelSize(R.styleable.Toolbar_contentInsetRight, 0);
         ensureContentInsets();
         this.mContentInsets.setAbsolute(dimensionPixelSize, dimensionPixelSize2);
         if (dimensionPixelOffset6 != Integer.MIN_VALUE || dimensionPixelOffset7 != Integer.MIN_VALUE) {
             this.mContentInsets.setRelative(dimensionPixelOffset6, dimensionPixelOffset7);
         }
-        this.mContentInsetStartWithNavigation = obtainStyledAttributes.getDimensionPixelOffset(C0257R.styleable.Toolbar_contentInsetStartWithNavigation, Integer.MIN_VALUE);
-        this.mContentInsetEndWithActions = obtainStyledAttributes.getDimensionPixelOffset(C0257R.styleable.Toolbar_contentInsetEndWithActions, Integer.MIN_VALUE);
-        this.mCollapseIcon = obtainStyledAttributes.getDrawable(C0257R.styleable.Toolbar_collapseIcon);
-        this.mCollapseDescription = obtainStyledAttributes.getText(C0257R.styleable.Toolbar_collapseContentDescription);
-        CharSequence text = obtainStyledAttributes.getText(C0257R.styleable.Toolbar_title);
+        this.mContentInsetStartWithNavigation = obtainStyledAttributes.getDimensionPixelOffset(R.styleable.Toolbar_contentInsetStartWithNavigation, Integer.MIN_VALUE);
+        this.mContentInsetEndWithActions = obtainStyledAttributes.getDimensionPixelOffset(R.styleable.Toolbar_contentInsetEndWithActions, Integer.MIN_VALUE);
+        this.mCollapseIcon = obtainStyledAttributes.getDrawable(R.styleable.Toolbar_collapseIcon);
+        this.mCollapseDescription = obtainStyledAttributes.getText(R.styleable.Toolbar_collapseContentDescription);
+        CharSequence text = obtainStyledAttributes.getText(R.styleable.Toolbar_title);
         if (!TextUtils.isEmpty(text)) {
             setTitle(text);
         }
-        CharSequence text2 = obtainStyledAttributes.getText(C0257R.styleable.Toolbar_subtitle);
+        CharSequence text2 = obtainStyledAttributes.getText(R.styleable.Toolbar_subtitle);
         if (!TextUtils.isEmpty(text2)) {
             setSubtitle(text2);
         }
         this.mPopupContext = getContext();
-        setPopupTheme(obtainStyledAttributes.getResourceId(C0257R.styleable.Toolbar_popupTheme, 0));
-        Drawable drawable = obtainStyledAttributes.getDrawable(C0257R.styleable.Toolbar_navigationIcon);
+        setPopupTheme(obtainStyledAttributes.getResourceId(R.styleable.Toolbar_popupTheme, 0));
+        Drawable drawable = obtainStyledAttributes.getDrawable(R.styleable.Toolbar_navigationIcon);
         if (drawable != null) {
             setNavigationIcon(drawable);
         }
-        CharSequence text3 = obtainStyledAttributes.getText(C0257R.styleable.Toolbar_navigationContentDescription);
+        CharSequence text3 = obtainStyledAttributes.getText(R.styleable.Toolbar_navigationContentDescription);
         if (!TextUtils.isEmpty(text3)) {
             setNavigationContentDescription(text3);
         }
-        Drawable drawable2 = obtainStyledAttributes.getDrawable(C0257R.styleable.Toolbar_logo);
+        Drawable drawable2 = obtainStyledAttributes.getDrawable(R.styleable.Toolbar_logo);
         if (drawable2 != null) {
             setLogo(drawable2);
         }
-        CharSequence text4 = obtainStyledAttributes.getText(C0257R.styleable.Toolbar_logoDescription);
+        CharSequence text4 = obtainStyledAttributes.getText(R.styleable.Toolbar_logoDescription);
         if (!TextUtils.isEmpty(text4)) {
             setLogoDescription(text4);
         }
-        int i3 = C0257R.styleable.Toolbar_titleTextColor;
+        int i3 = R.styleable.Toolbar_titleTextColor;
         if (obtainStyledAttributes.hasValue(i3)) {
             setTitleTextColor(obtainStyledAttributes.getColorStateList(i3));
         }
-        int i4 = C0257R.styleable.Toolbar_subtitleTextColor;
+        int i4 = R.styleable.Toolbar_subtitleTextColor;
         if (obtainStyledAttributes.hasValue(i4)) {
             setSubtitleTextColor(obtainStyledAttributes.getColorStateList(i4));
         }
-        int i5 = C0257R.styleable.Toolbar_menu;
+        int i5 = R.styleable.Toolbar_menu;
         if (obtainStyledAttributes.hasValue(i5)) {
             inflateMenu(obtainStyledAttributes.getResourceId(i5, 0));
         }
@@ -1727,8 +1639,8 @@ public class Toolbar extends ViewGroup implements MenuHost {
         if (layoutParams instanceof LayoutParams) {
             return new LayoutParams((LayoutParams) layoutParams);
         }
-        if (layoutParams instanceof ActionBar.LayoutParams) {
-            return new LayoutParams((ActionBar.LayoutParams) layoutParams);
+        if (layoutParams instanceof ActionBar$LayoutParams) {
+            return new LayoutParams((ActionBar$LayoutParams) layoutParams);
         }
         if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
             return new LayoutParams((ViewGroup.MarginLayoutParams) layoutParams);

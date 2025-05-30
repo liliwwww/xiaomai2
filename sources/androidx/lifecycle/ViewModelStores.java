@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ViewModelStores {
     private ViewModelStores() {
     }
@@ -15,16 +15,14 @@ public class ViewModelStores {
     @NonNull
     @MainThread
     @Deprecated
-    /* renamed from: of */
-    public static ViewModelStore m285of(@NonNull FragmentActivity fragmentActivity) {
+    public static ViewModelStore of(@NonNull FragmentActivity fragmentActivity) {
         return fragmentActivity.getViewModelStore();
     }
 
     @NonNull
     @MainThread
     @Deprecated
-    /* renamed from: of */
-    public static ViewModelStore m284of(@NonNull Fragment fragment) {
+    public static ViewModelStore of(@NonNull Fragment fragment) {
         return fragment.getViewModelStore();
     }
 }

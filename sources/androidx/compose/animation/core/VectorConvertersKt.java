@@ -1,17 +1,16 @@
 package androidx.compose.animation.core;
 
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.geometry.OffsetKt;
-import androidx.compose.p004ui.geometry.Rect;
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.geometry.SizeKt;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.DpKt;
-import androidx.compose.p004ui.unit.DpOffset;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntOffsetKt;
-import androidx.compose.p004ui.unit.IntSize;
-import androidx.compose.p004ui.unit.IntSizeKt;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.geometry.Offset$Companion;
+import androidx.compose.ui.geometry.Rect;
+import androidx.compose.ui.geometry.Rect$Companion;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.geometry.SizeKt;
+import androidx.compose.ui.unit.Dp;
+import androidx.compose.ui.unit.DpOffset;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntSize;
+import androidx.compose.ui.unit.IntSizeKt;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.FloatCompanionObject;
 import kotlin.jvm.internal.IntCompanionObject;
@@ -20,7 +19,7 @@ import kotlin.math.MathKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class VectorConvertersKt {
 
     @NotNull
@@ -42,156 +41,81 @@ public final class VectorConvertersKt {
     });
 
     @NotNull
-    private static final TwoWayConverter<Integer, AnimationVector1D> IntToVector = TwoWayConverter(new Function1<Integer, AnimationVector1D>() { // from class: androidx.compose.animation.core.VectorConvertersKt$IntToVector$1
-        @NotNull
-        public final AnimationVector1D invoke(int i) {
-            return new AnimationVector1D(i);
-        }
-
-        public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return invoke(((Number) obj).intValue());
-        }
-    }, new Function1<AnimationVector1D, Integer>() { // from class: androidx.compose.animation.core.VectorConvertersKt$IntToVector$2
-        @NotNull
-        public final Integer invoke(@NotNull AnimationVector1D animationVector1D) {
-            Intrinsics.checkNotNullParameter(animationVector1D, "it");
-            return Integer.valueOf((int) animationVector1D.getValue());
-        }
-    });
+    private static final TwoWayConverter<Integer, AnimationVector1D> IntToVector = TwoWayConverter(IntToVector.1.INSTANCE, IntToVector.2.INSTANCE);
 
     @NotNull
-    private static final TwoWayConverter<C0856Dp, AnimationVector1D> DpToVector = TwoWayConverter(new Function1<C0856Dp, AnimationVector1D>() { // from class: androidx.compose.animation.core.VectorConvertersKt$DpToVector$1
+    private static final TwoWayConverter<Dp, AnimationVector1D> DpToVector = TwoWayConverter(new Function1<Dp, AnimationVector1D>() { // from class: androidx.compose.animation.core.VectorConvertersKt$DpToVector$1
         public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return m1093invoke0680j_4(((C0856Dp) obj).m5230unboximpl());
+            return m101invoke0680j_4(((Dp) obj).unbox-impl());
         }
 
         @NotNull
         /* renamed from: invoke-0680j_4, reason: not valid java name */
-        public final AnimationVector1D m1093invoke0680j_4(float f) {
+        public final AnimationVector1D m101invoke0680j_4(float f) {
             return new AnimationVector1D(f);
         }
-    }, new Function1<AnimationVector1D, C0856Dp>() { // from class: androidx.compose.animation.core.VectorConvertersKt$DpToVector$2
+    }, new Function1<AnimationVector1D, Dp>() { // from class: androidx.compose.animation.core.VectorConvertersKt$DpToVector$2
         public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return C0856Dp.m5214boximpl(m1094invokeu2uoSUM((AnimationVector1D) obj));
+            return Dp.box-impl(m102invokeu2uoSUM((AnimationVector1D) obj));
         }
 
         /* renamed from: invoke-u2uoSUM, reason: not valid java name */
-        public final float m1094invokeu2uoSUM(@NotNull AnimationVector1D animationVector1D) {
+        public final float m102invokeu2uoSUM(@NotNull AnimationVector1D animationVector1D) {
             Intrinsics.checkNotNullParameter(animationVector1D, "it");
-            return C0856Dp.m5216constructorimpl(animationVector1D.getValue());
+            return Dp.constructor-impl(animationVector1D.getValue());
         }
     });
 
     @NotNull
-    private static final TwoWayConverter<DpOffset, AnimationVector2D> DpOffsetToVector = TwoWayConverter(new Function1<DpOffset, AnimationVector2D>() { // from class: androidx.compose.animation.core.VectorConvertersKt$DpOffsetToVector$1
-        public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return m1091invokejoFl9I(((DpOffset) obj).m5285unboximpl());
-        }
-
-        @NotNull
-        /* renamed from: invoke-jo-Fl9I, reason: not valid java name */
-        public final AnimationVector2D m1091invokejoFl9I(long j) {
-            return new AnimationVector2D(DpOffset.m5277getXD9Ej5fM(j), DpOffset.m5279getYD9Ej5fM(j));
-        }
-    }, new Function1<AnimationVector2D, DpOffset>() { // from class: androidx.compose.animation.core.VectorConvertersKt$DpOffsetToVector$2
-        public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return DpOffset.m5271boximpl(m1092invokegVRvYmI((AnimationVector2D) obj));
-        }
-
-        /* renamed from: invoke-gVRvYmI, reason: not valid java name */
-        public final long m1092invokegVRvYmI(@NotNull AnimationVector2D animationVector2D) {
-            Intrinsics.checkNotNullParameter(animationVector2D, "it");
-            return DpKt.m5237DpOffsetYgX7TsA(C0856Dp.m5216constructorimpl(animationVector2D.getV1()), C0856Dp.m5216constructorimpl(animationVector2D.getV2()));
-        }
-    });
+    private static final TwoWayConverter<DpOffset, AnimationVector2D> DpOffsetToVector = TwoWayConverter(DpOffsetToVector.1.INSTANCE, DpOffsetToVector.2.INSTANCE);
 
     @NotNull
     private static final TwoWayConverter<Size, AnimationVector2D> SizeToVector = TwoWayConverter(new Function1<Size, AnimationVector2D>() { // from class: androidx.compose.animation.core.VectorConvertersKt$SizeToVector$1
         public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return m1101invokeuvyYCjk(((Size) obj).m2630unboximpl());
+            return m105invokeuvyYCjk(((Size) obj).unbox-impl());
         }
 
         @NotNull
         /* renamed from: invoke-uvyYCjk, reason: not valid java name */
-        public final AnimationVector2D m1101invokeuvyYCjk(long j) {
-            return new AnimationVector2D(Size.m2625getWidthimpl(j), Size.m2622getHeightimpl(j));
+        public final AnimationVector2D m105invokeuvyYCjk(long j) {
+            return new AnimationVector2D(Size.getWidth-impl(j), Size.getHeight-impl(j));
         }
     }, new Function1<AnimationVector2D, Size>() { // from class: androidx.compose.animation.core.VectorConvertersKt$SizeToVector$2
         public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return Size.m2613boximpl(m1102invoke7Ah8Wj8((AnimationVector2D) obj));
+            return Size.box-impl(m106invoke7Ah8Wj8((AnimationVector2D) obj));
         }
 
         /* renamed from: invoke-7Ah8Wj8, reason: not valid java name */
-        public final long m1102invoke7Ah8Wj8(@NotNull AnimationVector2D animationVector2D) {
+        public final long m106invoke7Ah8Wj8(@NotNull AnimationVector2D animationVector2D) {
             Intrinsics.checkNotNullParameter(animationVector2D, "it");
             return SizeKt.Size(animationVector2D.getV1(), animationVector2D.getV2());
         }
     });
 
     @NotNull
-    private static final TwoWayConverter<Offset, AnimationVector2D> OffsetToVector = TwoWayConverter(new Function1<Offset, AnimationVector2D>() { // from class: androidx.compose.animation.core.VectorConvertersKt$OffsetToVector$1
-        public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return m1099invokek4lQ0M(((Offset) obj).m2566unboximpl());
-        }
-
-        @NotNull
-        /* renamed from: invoke-k-4lQ0M, reason: not valid java name */
-        public final AnimationVector2D m1099invokek4lQ0M(long j) {
-            return new AnimationVector2D(Offset.m2556getXimpl(j), Offset.m2557getYimpl(j));
-        }
-    }, new Function1<AnimationVector2D, Offset>() { // from class: androidx.compose.animation.core.VectorConvertersKt$OffsetToVector$2
-        public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return Offset.m2545boximpl(m1100invoketuRUvjQ((AnimationVector2D) obj));
-        }
-
-        /* renamed from: invoke-tuRUvjQ, reason: not valid java name */
-        public final long m1100invoketuRUvjQ(@NotNull AnimationVector2D animationVector2D) {
-            Intrinsics.checkNotNullParameter(animationVector2D, "it");
-            return OffsetKt.Offset(animationVector2D.getV1(), animationVector2D.getV2());
-        }
-    });
+    private static final TwoWayConverter<Offset, AnimationVector2D> OffsetToVector = TwoWayConverter(OffsetToVector.1.INSTANCE, OffsetToVector.2.INSTANCE);
 
     @NotNull
-    private static final TwoWayConverter<IntOffset, AnimationVector2D> IntOffsetToVector = TwoWayConverter(new Function1<IntOffset, AnimationVector2D>() { // from class: androidx.compose.animation.core.VectorConvertersKt$IntOffsetToVector$1
-        public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return m1095invokegyyYBs(((IntOffset) obj).m5343unboximpl());
-        }
-
-        @NotNull
-        /* renamed from: invoke--gyyYBs, reason: not valid java name */
-        public final AnimationVector2D m1095invokegyyYBs(long j) {
-            return new AnimationVector2D(IntOffset.m5334getXimpl(j), IntOffset.m5335getYimpl(j));
-        }
-    }, new Function1<AnimationVector2D, IntOffset>() { // from class: androidx.compose.animation.core.VectorConvertersKt$IntOffsetToVector$2
-        public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return IntOffset.m5325boximpl(m1096invokeBjo55l4((AnimationVector2D) obj));
-        }
-
-        /* renamed from: invoke-Bjo55l4, reason: not valid java name */
-        public final long m1096invokeBjo55l4(@NotNull AnimationVector2D animationVector2D) {
-            Intrinsics.checkNotNullParameter(animationVector2D, "it");
-            return IntOffsetKt.IntOffset(MathKt.roundToInt(animationVector2D.getV1()), MathKt.roundToInt(animationVector2D.getV2()));
-        }
-    });
+    private static final TwoWayConverter<IntOffset, AnimationVector2D> IntOffsetToVector = TwoWayConverter(IntOffsetToVector.1.INSTANCE, IntOffsetToVector.2.INSTANCE);
 
     @NotNull
     private static final TwoWayConverter<IntSize, AnimationVector2D> IntSizeToVector = TwoWayConverter(new Function1<IntSize, AnimationVector2D>() { // from class: androidx.compose.animation.core.VectorConvertersKt$IntSizeToVector$1
         public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return m1097invokeozmzZPI(((IntSize) obj).m5380unboximpl());
+            return m103invokeozmzZPI(((IntSize) obj).m2689unboximpl());
         }
 
         @NotNull
         /* renamed from: invoke-ozmzZPI, reason: not valid java name */
-        public final AnimationVector2D m1097invokeozmzZPI(long j) {
-            return new AnimationVector2D(IntSize.m5376getWidthimpl(j), IntSize.m5375getHeightimpl(j));
+        public final AnimationVector2D m103invokeozmzZPI(long j) {
+            return new AnimationVector2D(IntSize.m2685getWidthimpl(j), IntSize.m2684getHeightimpl(j));
         }
     }, new Function1<AnimationVector2D, IntSize>() { // from class: androidx.compose.animation.core.VectorConvertersKt$IntSizeToVector$2
         public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-            return IntSize.m5368boximpl(m1098invokeYEO4UFw((AnimationVector2D) obj));
+            return IntSize.m2677boximpl(m104invokeYEO4UFw((AnimationVector2D) obj));
         }
 
         /* renamed from: invoke-YEO4UFw, reason: not valid java name */
-        public final long m1098invokeYEO4UFw(@NotNull AnimationVector2D animationVector2D) {
+        public final long m104invokeYEO4UFw(@NotNull AnimationVector2D animationVector2D) {
             Intrinsics.checkNotNullParameter(animationVector2D, "it");
             return IntSizeKt.IntSize(MathKt.roundToInt(animationVector2D.getV1()), MathKt.roundToInt(animationVector2D.getV2()));
         }
@@ -236,13 +160,13 @@ public final class VectorConvertersKt {
     }
 
     @NotNull
-    public static final TwoWayConverter<Rect, AnimationVector4D> getVectorConverter(@NotNull Rect.Companion companion) {
-        Intrinsics.checkNotNullParameter(companion, "<this>");
+    public static final TwoWayConverter<Rect, AnimationVector4D> getVectorConverter(@NotNull Rect$Companion rect$Companion) {
+        Intrinsics.checkNotNullParameter(rect$Companion, "<this>");
         return RectToVector;
     }
 
     @NotNull
-    public static final TwoWayConverter<C0856Dp, AnimationVector1D> getVectorConverter(@NotNull C0856Dp.Companion companion) {
+    public static final TwoWayConverter<Dp, AnimationVector1D> getVectorConverter(@NotNull Dp.Companion companion) {
         Intrinsics.checkNotNullParameter(companion, "<this>");
         return DpToVector;
     }
@@ -260,8 +184,8 @@ public final class VectorConvertersKt {
     }
 
     @NotNull
-    public static final TwoWayConverter<Offset, AnimationVector2D> getVectorConverter(@NotNull Offset.Companion companion) {
-        Intrinsics.checkNotNullParameter(companion, "<this>");
+    public static final TwoWayConverter<Offset, AnimationVector2D> getVectorConverter(@NotNull Offset$Companion offset$Companion) {
+        Intrinsics.checkNotNullParameter(offset$Companion, "<this>");
         return OffsetToVector;
     }
 

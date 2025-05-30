@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyDslKt$items$8 extends Lambda implements Function4<LazyItemScope, Integer, Composer, Integer, Unit> {
     final /* synthetic */ Function4<LazyItemScope, T, Composer, Integer, Unit> $itemContent;
     final /* synthetic */ T[] $items;

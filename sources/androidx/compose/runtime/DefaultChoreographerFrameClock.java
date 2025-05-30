@@ -4,7 +4,6 @@ import android.view.Choreographer;
 import androidx.compose.runtime.MonotonicFrameClock;
 import kotlin.Result;
 import kotlin.ResultKt;
-import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
 import kotlin.coroutines.intrinsics.IntrinsicsKt;
@@ -20,7 +19,7 @@ import tb.hu2;
 import tb.m11;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class DefaultChoreographerFrameClock implements MonotonicFrameClock {
 
     @NotNull
@@ -39,7 +38,6 @@ final class DefaultChoreographerFrameClock implements MonotonicFrameClock {
         return (E) MonotonicFrameClock.DefaultImpls.get(this, key);
     }
 
-    @Override // androidx.compose.runtime.MonotonicFrameClock
     public /* synthetic */ CoroutineContext.Key getKey() {
         return hu2.a(this);
     }
@@ -54,12 +52,11 @@ final class DefaultChoreographerFrameClock implements MonotonicFrameClock {
         return MonotonicFrameClock.DefaultImpls.plus(this, coroutineContext);
     }
 
-    @Override // androidx.compose.runtime.MonotonicFrameClock
     @Nullable
     public <R> Object withFrameNanos(@NotNull final Function1<? super Long, ? extends R> function1, @NotNull Continuation<? super R> continuation) {
         final CancellableContinuationImpl cancellableContinuationImpl = new CancellableContinuationImpl(IntrinsicsKt.intercepted(continuation), 1);
         cancellableContinuationImpl.initCancellability();
-        final Choreographer.FrameCallback frameCallback = new Choreographer.FrameCallback() { // from class: androidx.compose.runtime.DefaultChoreographerFrameClock$withFrameNanos$2$callback$1
+        Choreographer.FrameCallback frameCallback = new Choreographer.FrameCallback() { // from class: androidx.compose.runtime.DefaultChoreographerFrameClock$withFrameNanos$2$callback$1
             @Override // android.view.Choreographer.FrameCallback
             public final void doFrame(long j) {
                 Object obj;
@@ -77,21 +74,7 @@ final class DefaultChoreographerFrameClock implements MonotonicFrameClock {
             }
         };
         choreographer.postFrameCallback(frameCallback);
-        cancellableContinuationImpl.invokeOnCancellation(new Function1<Throwable, Unit>() { // from class: androidx.compose.runtime.DefaultChoreographerFrameClock$withFrameNanos$2$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((Throwable) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Throwable th) {
-                DefaultChoreographerFrameClock.choreographer.removeFrameCallback(frameCallback);
-            }
-        });
+        cancellableContinuationImpl.invokeOnCancellation(new withFrameNanos.2.1(frameCallback));
         Object result = cancellableContinuationImpl.getResult();
         if (result == IntrinsicsKt.getCOROUTINE_SUSPENDED()) {
             DebugProbesKt.probeCoroutineSuspended(continuation);

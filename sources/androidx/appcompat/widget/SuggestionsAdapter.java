@@ -12,7 +12,6 @@ import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.taobao.windvane.util.WVNativeCallbackUtil;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.TextAppearanceSpan;
@@ -22,7 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R$attr;
 import androidx.core.content.ContextCompat;
 import androidx.cursoradapter.widget.ResourceCursorAdapter;
 import java.io.FileNotFoundException;
@@ -32,7 +31,7 @@ import java.util.List;
 import java.util.WeakHashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class SuggestionsAdapter extends ResourceCursorAdapter implements View.OnClickListener {
     private static final boolean DBG = false;
     static final int INVALID_INDEX = -1;
@@ -69,7 +68,7 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements View.OnClickLi
             this.mText2 = (TextView) view.findViewById(R.id.text2);
             this.mIcon1 = (ImageView) view.findViewById(R.id.icon1);
             this.mIcon2 = (ImageView) view.findViewById(R.id.icon2);
-            this.mIconRefine = (ImageView) view.findViewById(C0257R.id.edit_query);
+            this.mIconRefine = (ImageView) view.findViewById(androidx.appcompat.R.id.edit_query);
         }
     }
 
@@ -101,7 +100,7 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements View.OnClickLi
     private CharSequence formatUrl(CharSequence charSequence) {
         if (this.mUrlColor == null) {
             TypedValue typedValue = new TypedValue();
-            this.mProviderContext.getTheme().resolveAttribute(C0257R.attr.textColorSearchUrl, typedValue, true);
+            this.mProviderContext.getTheme().resolveAttribute(R$attr.textColorSearchUrl, typedValue, true);
             this.mUrlColor = this.mProviderContext.getResources().getColorStateList(typedValue.resourceId);
         }
         SpannableString spannableString = new SpannableString(charSequence);
@@ -188,7 +187,7 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements View.OnClickLi
         }
         try {
             int parseInt = Integer.parseInt(str);
-            String str2 = "android.resource://" + this.mProviderContext.getPackageName() + WVNativeCallbackUtil.SEPERATER + parseInt;
+            String str2 = "android.resource://" + this.mProviderContext.getPackageName() + "/" + parseInt;
             Drawable checkIconCache = checkIconCache(str2);
             if (checkIconCache != null) {
                 return checkIconCache;
@@ -272,7 +271,6 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements View.OnClickLi
         }
     }
 
-    @Override // androidx.cursoradapter.widget.CursorAdapter
     public void bindView(View view, Context context, Cursor cursor) {
         ChildViewCache childViewCache = (ChildViewCache) view.getTag();
         int i = this.mFlagsCol;
@@ -316,7 +314,6 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements View.OnClickLi
         childViewCache.mIconRefine.setOnClickListener(this);
     }
 
-    @Override // androidx.cursoradapter.widget.CursorAdapter, androidx.cursoradapter.widget.CursorFilter.CursorFilterClient
     public void changeCursor(Cursor cursor) {
         if (this.mClosed) {
             Log.w(LOG_TAG, "Tried to change cursor after adapter was closed.");
@@ -346,7 +343,6 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements View.OnClickLi
         this.mClosed = true;
     }
 
-    @Override // androidx.cursoradapter.widget.CursorAdapter, androidx.cursoradapter.widget.CursorFilter.CursorFilterClient
     public CharSequence convertToString(Cursor cursor) {
         String columnString;
         String columnString2;
@@ -400,7 +396,6 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements View.OnClickLi
         }
     }
 
-    @Override // androidx.cursoradapter.widget.CursorAdapter, android.widget.BaseAdapter, android.widget.SpinnerAdapter
     public View getDropDownView(int i, View view, ViewGroup viewGroup) {
         try {
             return super.getDropDownView(i, view, viewGroup);
@@ -443,7 +438,6 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements View.OnClickLi
         return this.mProviderContext.getContentResolver().query(fragment.build(), null, suggestSelection, strArr2, null);
     }
 
-    @Override // androidx.cursoradapter.widget.CursorAdapter, android.widget.Adapter
     public View getView(int i, View view, ViewGroup viewGroup) {
         try {
             return super.getView(i, view, viewGroup);
@@ -457,28 +451,27 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements View.OnClickLi
         }
     }
 
-    @Override // androidx.cursoradapter.widget.CursorAdapter, android.widget.BaseAdapter, android.widget.Adapter
     public boolean hasStableIds() {
         return false;
     }
 
-    @Override // androidx.cursoradapter.widget.ResourceCursorAdapter, androidx.cursoradapter.widget.CursorAdapter
+    @Override // androidx.cursoradapter.widget.ResourceCursorAdapter
     public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
         View newView = super.newView(context, cursor, viewGroup);
         newView.setTag(new ChildViewCache(newView));
-        ((ImageView) newView.findViewById(C0257R.id.edit_query)).setImageResource(this.mCommitIconResId);
+        ((ImageView) newView.findViewById(androidx.appcompat.R.id.edit_query)).setImageResource(this.mCommitIconResId);
         return newView;
     }
 
-    @Override // android.widget.BaseAdapter
+    /* JADX WARN: Multi-variable type inference failed */
     public void notifyDataSetChanged() {
-        super.notifyDataSetChanged();
+        super/*android.widget.BaseAdapter*/.notifyDataSetChanged();
         updateSpinnerState(getCursor());
     }
 
-    @Override // android.widget.BaseAdapter
+    /* JADX WARN: Multi-variable type inference failed */
     public void notifyDataSetInvalidated() {
-        super.notifyDataSetInvalidated();
+        super/*android.widget.BaseAdapter*/.notifyDataSetInvalidated();
         updateSpinnerState(getCursor());
     }
 
@@ -490,7 +483,6 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements View.OnClickLi
         }
     }
 
-    @Override // androidx.cursoradapter.widget.CursorAdapter, androidx.cursoradapter.widget.CursorFilter.CursorFilterClient
     public Cursor runQueryOnBackgroundThread(CharSequence charSequence) {
         String charSequence2 = charSequence == null ? "" : charSequence.toString();
         if (this.mSearchView.getVisibility() == 0 && this.mSearchView.getWindowVisibility() == 0) {

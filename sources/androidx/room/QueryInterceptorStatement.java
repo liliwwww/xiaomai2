@@ -2,14 +2,14 @@ package androidx.room;
 
 import androidx.annotation.NonNull;
 import androidx.room.RoomDatabase;
-import androidx.sqlite.p008db.SupportSQLiteStatement;
+import androidx.sqlite.db.SupportSQLiteStatement;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class QueryInterceptorStatement implements SupportSQLiteStatement {
     private final List<Object> mBindArgsCache = new ArrayList();
     private final SupportSQLiteStatement mDelegate;
@@ -59,48 +59,40 @@ final class QueryInterceptorStatement implements SupportSQLiteStatement {
         this.mBindArgsCache.set(i2, obj);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteProgram
     public void bindBlob(int i, byte[] bArr) {
         saveArgsToCache(i, bArr);
         this.mDelegate.bindBlob(i, bArr);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteProgram
     public void bindDouble(int i, double d) {
         saveArgsToCache(i, Double.valueOf(d));
         this.mDelegate.bindDouble(i, d);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteProgram
     public void bindLong(int i, long j) {
         saveArgsToCache(i, Long.valueOf(j));
         this.mDelegate.bindLong(i, j);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteProgram
     public void bindNull(int i) {
         saveArgsToCache(i, this.mBindArgsCache.toArray());
         this.mDelegate.bindNull(i);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteProgram
     public void bindString(int i, String str) {
         saveArgsToCache(i, str);
         this.mDelegate.bindString(i, str);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteProgram
     public void clearBindings() {
         this.mBindArgsCache.clear();
         this.mDelegate.clearBindings();
     }
 
-    @Override // java.io.Closeable, java.lang.AutoCloseable
     public void close() throws IOException {
         this.mDelegate.close();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteStatement
     public void execute() {
         this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.f0
             @Override // java.lang.Runnable
@@ -111,40 +103,21 @@ final class QueryInterceptorStatement implements SupportSQLiteStatement {
         this.mDelegate.execute();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteStatement
     public long executeInsert() {
-        this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.g0
-            @Override // java.lang.Runnable
-            public final void run() {
-                QueryInterceptorStatement.this.lambda$executeInsert$2();
-            }
-        });
+        this.mQueryCallbackExecutor.execute(new g0(this));
         return this.mDelegate.executeInsert();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteStatement
     public int executeUpdateDelete() {
-        this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.h0
-            @Override // java.lang.Runnable
-            public final void run() {
-                QueryInterceptorStatement.this.lambda$executeUpdateDelete$1();
-            }
-        });
+        this.mQueryCallbackExecutor.execute(new h0(this));
         return this.mDelegate.executeUpdateDelete();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteStatement
     public long simpleQueryForLong() {
-        this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.i0
-            @Override // java.lang.Runnable
-            public final void run() {
-                QueryInterceptorStatement.this.lambda$simpleQueryForLong$3();
-            }
-        });
+        this.mQueryCallbackExecutor.execute(new i0(this));
         return this.mDelegate.simpleQueryForLong();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteStatement
     public String simpleQueryForString() {
         this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.e0
             @Override // java.lang.Runnable

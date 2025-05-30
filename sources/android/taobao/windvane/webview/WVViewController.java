@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVViewController extends LinearLayout {
     protected boolean isInited;
     protected Context mContext;
@@ -67,7 +67,7 @@ public class WVViewController extends LinearLayout {
 
     protected void initWithParams(ParamsParcelable paramsParcelable) {
         if (paramsParcelable.isNavBarEnabled()) {
-            WebNaviBar webNaviBar = new WebNaviBar(this.mContext, this.mWebView);
+            AbstractNaviBar webNaviBar = new WebNaviBar(this.mContext, this.mWebView);
             addView(webNaviBar);
             this.mWebView.getWvUIModel().setNaviBar(webNaviBar);
         }

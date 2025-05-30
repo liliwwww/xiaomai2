@@ -13,21 +13,9 @@ import java.util.Map;
 
 /* compiled from: Taobao */
 @SuppressLint({"BanParcelableUsage"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class BackStackRecordState implements Parcelable {
-    public static final Parcelable.Creator<BackStackRecordState> CREATOR = new Parcelable.Creator<BackStackRecordState>() { // from class: androidx.fragment.app.BackStackRecordState.1
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // android.os.Parcelable.Creator
-        public BackStackRecordState createFromParcel(Parcel parcel) {
-            return new BackStackRecordState(parcel);
-        }
-
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // android.os.Parcelable.Creator
-        public BackStackRecordState[] newArray(int i) {
-            return new BackStackRecordState[i];
-        }
-    };
+    public static final Parcelable.Creator<BackStackRecordState> CREATOR = new 1();
     private static final String TAG = "FragmentManager";
     final int mBreadCrumbShortTitleRes;
     final CharSequence mBreadCrumbShortTitleText;
@@ -56,24 +44,24 @@ final class BackStackRecordState implements Parcelable {
         int i = 0;
         int i2 = 0;
         while (i < size) {
-            FragmentTransaction.C1090Op c1090Op = backStackRecord.mOps.get(i);
+            FragmentTransaction.Op op = backStackRecord.mOps.get(i);
             int i3 = i2 + 1;
-            this.mOps[i2] = c1090Op.mCmd;
+            this.mOps[i2] = op.mCmd;
             ArrayList<String> arrayList = this.mFragmentWhos;
-            Fragment fragment = c1090Op.mFragment;
+            Fragment fragment = op.mFragment;
             arrayList.add(fragment != null ? fragment.mWho : null);
             int[] iArr = this.mOps;
             int i4 = i3 + 1;
-            iArr[i3] = c1090Op.mFromExpandedOp ? 1 : 0;
+            iArr[i3] = op.mFromExpandedOp ? 1 : 0;
             int i5 = i4 + 1;
-            iArr[i4] = c1090Op.mEnterAnim;
+            iArr[i4] = op.mEnterAnim;
             int i6 = i5 + 1;
-            iArr[i5] = c1090Op.mExitAnim;
+            iArr[i5] = op.mExitAnim;
             int i7 = i6 + 1;
-            iArr[i6] = c1090Op.mPopEnterAnim;
-            iArr[i7] = c1090Op.mPopExitAnim;
-            this.mOldMaxLifecycleStates[i] = c1090Op.mOldMaxState.ordinal();
-            this.mCurrentMaxLifecycleStates[i] = c1090Op.mCurrentMaxState.ordinal();
+            iArr[i6] = op.mPopEnterAnim;
+            iArr[i7] = op.mPopExitAnim;
+            this.mOldMaxLifecycleStates[i] = op.mOldMaxState.ordinal();
+            this.mCurrentMaxLifecycleStates[i] = op.mCurrentMaxState.ordinal();
             i++;
             i2 = i7 + 1;
         }
@@ -107,36 +95,36 @@ final class BackStackRecordState implements Parcelable {
                 backStackRecord.mReorderingAllowed = this.mReorderingAllowed;
                 return;
             }
-            FragmentTransaction.C1090Op c1090Op = new FragmentTransaction.C1090Op();
+            FragmentTransaction.Op op = new FragmentTransaction.Op();
             int i3 = i + 1;
-            c1090Op.mCmd = this.mOps[i];
+            op.mCmd = this.mOps[i];
             if (FragmentManager.isLoggingEnabled(2)) {
-                Log.v("FragmentManager", "Instantiate " + backStackRecord + " op #" + i2 + " base fragment #" + this.mOps[i3]);
+                Log.v(TAG, "Instantiate " + backStackRecord + " op #" + i2 + " base fragment #" + this.mOps[i3]);
             }
-            c1090Op.mOldMaxState = Lifecycle.State.values()[this.mOldMaxLifecycleStates[i2]];
-            c1090Op.mCurrentMaxState = Lifecycle.State.values()[this.mCurrentMaxLifecycleStates[i2]];
+            op.mOldMaxState = Lifecycle.State.values()[this.mOldMaxLifecycleStates[i2]];
+            op.mCurrentMaxState = Lifecycle.State.values()[this.mCurrentMaxLifecycleStates[i2]];
             int[] iArr = this.mOps;
             int i4 = i3 + 1;
             if (iArr[i3] == 0) {
                 z = false;
             }
-            c1090Op.mFromExpandedOp = z;
+            op.mFromExpandedOp = z;
             int i5 = i4 + 1;
             int i6 = iArr[i4];
-            c1090Op.mEnterAnim = i6;
+            op.mEnterAnim = i6;
             int i7 = i5 + 1;
             int i8 = iArr[i5];
-            c1090Op.mExitAnim = i8;
+            op.mExitAnim = i8;
             int i9 = i7 + 1;
             int i10 = iArr[i7];
-            c1090Op.mPopEnterAnim = i10;
+            op.mPopEnterAnim = i10;
             int i11 = iArr[i9];
-            c1090Op.mPopExitAnim = i11;
+            op.mPopExitAnim = i11;
             backStackRecord.mEnterAnim = i6;
             backStackRecord.mExitAnim = i8;
             backStackRecord.mPopEnterAnim = i10;
             backStackRecord.mPopExitAnim = i11;
-            backStackRecord.addOp(c1090Op);
+            backStackRecord.addOp(op);
             i2++;
             i = i9 + 1;
         }

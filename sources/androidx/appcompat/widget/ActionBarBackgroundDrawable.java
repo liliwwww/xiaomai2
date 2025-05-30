@@ -8,21 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ActionBarBackgroundDrawable extends Drawable {
     final ActionBarContainer mContainer;
-
-    /* compiled from: Taobao */
-    @RequiresApi(21)
-    /* loaded from: classes2.dex */
-    private static class Api21Impl {
-        private Api21Impl() {
-        }
-
-        public static void getOutline(Drawable drawable, Outline outline) {
-            drawable.getOutline(outline);
-        }
-    }
 
     public ActionBarBackgroundDrawable(ActionBarContainer actionBarContainer) {
         this.mContainer = actionBarContainer;

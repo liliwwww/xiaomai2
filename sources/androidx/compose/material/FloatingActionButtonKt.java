@@ -1,14 +1,14 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.ui.unit.Dp;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FloatingActionButtonKt {
-    private static final float FabSize = C0856Dp.m5216constructorimpl(56);
-    private static final float ExtendedFabSize = C0856Dp.m5216constructorimpl(48);
-    private static final float ExtendedFabIconPadding = C0856Dp.m5216constructorimpl(12);
-    private static final float ExtendedFabTextPadding = C0856Dp.m5216constructorimpl(20);
+    private static final float FabSize = Dp.m2142constructorimpl(56);
+    private static final float ExtendedFabSize = Dp.m2142constructorimpl(48);
+    private static final float ExtendedFabIconPadding = Dp.m2142constructorimpl(12);
+    private static final float ExtendedFabTextPadding = Dp.m2142constructorimpl(20);
 
     /* JADX WARN: Removed duplicated region for block: B:100:0x01d0  */
     /* JADX WARN: Removed duplicated region for block: B:103:0x01e2  */
@@ -46,14 +46,14 @@ public final class FloatingActionButtonKt {
     /* renamed from: ExtendedFloatingActionButton-wqdebIU, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m2127ExtendedFloatingActionButtonwqdebIU(@org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r29, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r31, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r32, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r33, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r34, long r35, long r37, @org.jetbrains.annotations.Nullable androidx.compose.material.FloatingActionButtonElevation r39, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r40, final int r41, final int r42) {
+    public static final void m599ExtendedFloatingActionButtonwqdebIU(@org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r29, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r31, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r32, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r33, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r34, long r35, long r37, @org.jetbrains.annotations.Nullable androidx.compose.material.FloatingActionButtonElevation r39, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r40, final int r41, final int r42) {
         /*
             Method dump skipped, instructions count: 715
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.FloatingActionButtonKt.m2127ExtendedFloatingActionButtonwqdebIU(kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, kotlin.jvm.functions.Function2, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.material.FloatingActionButtonElevation, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.FloatingActionButtonKt.m599ExtendedFloatingActionButtonwqdebIU(kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, kotlin.jvm.functions.Function2, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.material.FloatingActionButtonElevation, androidx.compose.runtime.Composer, int, int):void");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:102:0x01b8  */
@@ -85,13 +85,13 @@ public final class FloatingActionButtonKt {
     /* renamed from: FloatingActionButton-bogVsAg, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m2128FloatingActionButtonbogVsAg(@org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r28, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r29, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r30, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r31, long r32, long r34, @org.jetbrains.annotations.Nullable androidx.compose.material.FloatingActionButtonElevation r36, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r37, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r38, final int r39, final int r40) {
+    public static final void m600FloatingActionButtonbogVsAg(@org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function0<kotlin.Unit> r28, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r29, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r30, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r31, long r32, long r34, @org.jetbrains.annotations.Nullable androidx.compose.material.FloatingActionButtonElevation r36, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r37, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r38, int r39, int r40) {
         /*
             Method dump skipped, instructions count: 654
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.FloatingActionButtonKt.m2128FloatingActionButtonbogVsAg(kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.material.FloatingActionButtonElevation, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.FloatingActionButtonKt.m600FloatingActionButtonbogVsAg(kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.material.FloatingActionButtonElevation, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int):void");
     }
 }

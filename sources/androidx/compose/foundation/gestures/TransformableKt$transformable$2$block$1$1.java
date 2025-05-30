@@ -1,7 +1,7 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.input.pointer.PointerInputScope;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -14,67 +14,12 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.TransformableKt$transformable$2$block$1$1", f = "Transformable.kt", i = {}, l = {79}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class TransformableKt$transformable$2$block$1$1 extends SuspendLambda implements Function2<PointerInputScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ State<Boolean> $updatePanZoomLock;
     final /* synthetic */ State<TransformableState> $updatedState;
     private /* synthetic */ Object L$0;
     int label;
-
-    /* compiled from: Taobao */
-    @DebugMetadata(c = "androidx.compose.foundation.gestures.TransformableKt$transformable$2$block$1$1$1", f = "Transformable.kt", i = {}, l = {80}, m = "invokeSuspend", n = {}, s = {})
-    /* renamed from: androidx.compose.foundation.gestures.TransformableKt$transformable$2$block$1$1$1 */
-    /* loaded from: classes.dex */
-    static final class C04361 extends SuspendLambda implements Function2<PointerInputScope, Continuation<? super Unit>, Object> {
-        final /* synthetic */ State<Boolean> $updatePanZoomLock;
-        final /* synthetic */ State<TransformableState> $updatedState;
-        private /* synthetic */ Object L$0;
-        int label;
-
-        /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        /* JADX WARN: Multi-variable type inference failed */
-        C04361(State<Boolean> state, State<? extends TransformableState> state2, Continuation<? super C04361> continuation) {
-            super(2, continuation);
-            this.$updatePanZoomLock = state;
-            this.$updatedState = state2;
-        }
-
-        @NotNull
-        public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
-            C04361 c04361 = new C04361(this.$updatePanZoomLock, this.$updatedState, continuation);
-            c04361.L$0 = obj;
-            return c04361;
-        }
-
-        @Nullable
-        public final Object invoke(@NotNull PointerInputScope pointerInputScope, @Nullable Continuation<? super Unit> continuation) {
-            return create(pointerInputScope, continuation).invokeSuspend(Unit.INSTANCE);
-        }
-
-        @Nullable
-        public final Object invokeSuspend(@NotNull Object obj) {
-            Object detectZoom;
-            Object coroutine_suspended = IntrinsicsKt.getCOROUTINE_SUSPENDED();
-            int i = this.label;
-            if (i == 0) {
-                ResultKt.throwOnFailure(obj);
-                PointerInputScope pointerInputScope = (PointerInputScope) this.L$0;
-                State<Boolean> state = this.$updatePanZoomLock;
-                State<TransformableState> state2 = this.$updatedState;
-                this.label = 1;
-                detectZoom = TransformableKt.detectZoom(pointerInputScope, state, state2, this);
-                if (detectZoom == coroutine_suspended) {
-                    return coroutine_suspended;
-                }
-            } else {
-                if (i != 1) {
-                    throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-                }
-                ResultKt.throwOnFailure(obj);
-            }
-            return Unit.INSTANCE;
-        }
-    }
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
     /* JADX WARN: Multi-variable type inference failed */
@@ -103,9 +48,9 @@ final class TransformableKt$transformable$2$block$1$1 extends SuspendLambda impl
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
             PointerInputScope pointerInputScope = (PointerInputScope) this.L$0;
-            C04361 c04361 = new C04361(this.$updatePanZoomLock, this.$updatedState, null);
+            1 r1 = new 1(this.$updatePanZoomLock, this.$updatedState, (Continuation) null);
             this.label = 1;
-            if (ForEachGestureKt.forEachGesture(pointerInputScope, c04361, this) == coroutine_suspended) {
+            if (ForEachGestureKt.forEachGesture(pointerInputScope, r1, this) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

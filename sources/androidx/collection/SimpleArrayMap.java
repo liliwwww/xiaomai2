@@ -6,7 +6,7 @@ import java.util.ConcurrentModificationException;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class SimpleArrayMap<K, V> {
     private static final int BASE_SIZE = 4;
     private static final int CACHE_SIZE = 10;

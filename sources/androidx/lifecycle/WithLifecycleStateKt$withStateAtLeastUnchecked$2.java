@@ -5,7 +5,7 @@ import kotlin.jvm.internal.Lambda;
 
 /* JADX INFO: Add missing generic type declarations: [R] */
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class WithLifecycleStateKt$withStateAtLeastUnchecked$2<R> extends Lambda implements Function0<R> {
     final /* synthetic */ Function0<R> $block;
 

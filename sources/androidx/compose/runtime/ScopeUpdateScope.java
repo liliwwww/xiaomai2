@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @ComposeCompilerApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface ScopeUpdateScope {
     void updateScope(@NotNull Function2<? super Composer, ? super Integer, Unit> function2);
 }

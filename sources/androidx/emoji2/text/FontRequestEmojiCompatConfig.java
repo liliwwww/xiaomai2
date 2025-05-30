@@ -5,8 +5,8 @@ import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.CancellationSignal;
 import android.os.Handler;
-import android.os.SystemClock;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,33 +25,9 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class FontRequestEmojiCompatConfig extends EmojiCompat.Config {
     private static final FontProviderHelper DEFAULT_FONTS_CONTRACT = new FontProviderHelper();
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class ExponentialBackoffRetryPolicy extends RetryPolicy {
-        private long mRetryOrigin;
-        private final long mTotalMs;
-
-        public ExponentialBackoffRetryPolicy(long j) {
-            this.mTotalMs = j;
-        }
-
-        @Override // androidx.emoji2.text.FontRequestEmojiCompatConfig.RetryPolicy
-        public long getRetryDelay() {
-            if (this.mRetryOrigin == 0) {
-                this.mRetryOrigin = SystemClock.uptimeMillis();
-                return 0L;
-            }
-            long uptimeMillis = SystemClock.uptimeMillis() - this.mRetryOrigin;
-            if (uptimeMillis > this.mTotalMs) {
-                return -1L;
-            }
-            return Math.min(Math.max(uptimeMillis, 1000L), this.mTotalMs - uptimeMillis);
-        }
-    }
 
     /* compiled from: Taobao */
     @RestrictTo({RestrictTo.Scope.LIBRARY})
@@ -82,7 +58,7 @@ public class FontRequestEmojiCompatConfig extends EmojiCompat.Config {
 
         @Nullable
         @GuardedBy("mLock")
-        EmojiCompat.MetadataRepoLoaderCallback mCallback;
+        EmojiCompat$MetadataRepoLoaderCallback mCallback;
 
         @NonNull
         private final Context mContext;
@@ -177,12 +153,7 @@ public class FontRequestEmojiCompatConfig extends EmojiCompat.Config {
                     this.mMainHandler = handler;
                 }
                 if (this.mObserver == null) {
-                    ContentObserver contentObserver = new ContentObserver(handler) { // from class: androidx.emoji2.text.FontRequestEmojiCompatConfig.FontRequestMetadataLoader.1
-                        @Override // android.database.ContentObserver
-                        public void onChange(boolean z, Uri uri2) {
-                            FontRequestMetadataLoader.this.loadInternal();
-                        }
-                    };
+                    ContentObserver contentObserver = new 1(this, handler);
                     this.mObserver = contentObserver;
                     this.mFontProviderHelper.registerObserver(this.mContext, uri, contentObserver);
                 }
@@ -226,16 +197,16 @@ public class FontRequestEmojiCompatConfig extends EmojiCompat.Config {
                     try {
                         TraceCompat.beginSection(S_TRACE_BUILD_TYPEFACE);
                         Typeface buildTypeface = this.mFontProviderHelper.buildTypeface(this.mContext, retrieveFontInfo);
-                        ByteBuffer mmap = TypefaceCompatUtil.mmap(this.mContext, null, retrieveFontInfo.getUri());
+                        ByteBuffer mmap = TypefaceCompatUtil.mmap(this.mContext, (CancellationSignal) null, retrieveFontInfo.getUri());
                         if (mmap == null || buildTypeface == null) {
                             throw new RuntimeException("Unable to open file.");
                         }
                         MetadataRepo create = MetadataRepo.create(buildTypeface, mmap);
                         TraceCompat.endSection();
                         synchronized (this.mLock) {
-                            EmojiCompat.MetadataRepoLoaderCallback metadataRepoLoaderCallback = this.mCallback;
-                            if (metadataRepoLoaderCallback != null) {
-                                metadataRepoLoaderCallback.onLoaded(create);
+                            EmojiCompat$MetadataRepoLoaderCallback emojiCompat$MetadataRepoLoaderCallback = this.mCallback;
+                            if (emojiCompat$MetadataRepoLoaderCallback != null) {
+                                emojiCompat$MetadataRepoLoaderCallback.onLoaded(create);
                             }
                         }
                         cleanUp();
@@ -245,9 +216,9 @@ public class FontRequestEmojiCompatConfig extends EmojiCompat.Config {
                     }
                 } catch (Throwable th2) {
                     synchronized (this.mLock) {
-                        EmojiCompat.MetadataRepoLoaderCallback metadataRepoLoaderCallback2 = this.mCallback;
-                        if (metadataRepoLoaderCallback2 != null) {
-                            metadataRepoLoaderCallback2.onFailed(th2);
+                        EmojiCompat$MetadataRepoLoaderCallback emojiCompat$MetadataRepoLoaderCallback2 = this.mCallback;
+                        if (emojiCompat$MetadataRepoLoaderCallback2 != null) {
+                            emojiCompat$MetadataRepoLoaderCallback2.onFailed(th2);
                         }
                         cleanUp();
                     }
@@ -255,12 +226,11 @@ public class FontRequestEmojiCompatConfig extends EmojiCompat.Config {
             }
         }
 
-        @Override // androidx.emoji2.text.EmojiCompat.MetadataRepoLoader
         @RequiresApi(19)
-        public void load(@NonNull EmojiCompat.MetadataRepoLoaderCallback metadataRepoLoaderCallback) {
-            Preconditions.checkNotNull(metadataRepoLoaderCallback, "LoaderCallback cannot be null");
+        public void load(@NonNull EmojiCompat$MetadataRepoLoaderCallback emojiCompat$MetadataRepoLoaderCallback) {
+            Preconditions.checkNotNull(emojiCompat$MetadataRepoLoaderCallback, "LoaderCallback cannot be null");
             synchronized (this.mLock) {
-                this.mCallback = metadataRepoLoaderCallback;
+                this.mCallback = emojiCompat$MetadataRepoLoaderCallback;
             }
             loadInternal();
         }

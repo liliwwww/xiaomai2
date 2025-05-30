@@ -4,13 +4,13 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class StepCurve extends Easing {
     private static final boolean DEBUG = false;
     MonotonicCurveFit mCurveFit;
 
     StepCurve(String str) {
-        this.str = str;
+        ((Easing) this).str = str;
         double[] dArr = new double[str.length() / 2];
         int indexOf = str.indexOf(40) + 1;
         int indexOf2 = str.indexOf(44, indexOf);
@@ -35,12 +35,10 @@ public class StepCurve extends Easing {
         return genSpline(dArr);
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.Easing
     public double get(double d) {
         return this.mCurveFit.getPos(d, 0);
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.Easing
     public double getDiff(double d) {
         return this.mCurveFit.getSlope(d, 0);
     }

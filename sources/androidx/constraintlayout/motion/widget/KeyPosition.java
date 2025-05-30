@@ -1,21 +1,16 @@
 package androidx.constraintlayout.motion.widget;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.util.SparseIntArray;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.constraintlayout.core.motion.utils.Easing;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
 import androidx.constraintlayout.motion.utils.ViewSpline;
-import androidx.constraintlayout.widget.C0923R;
+import androidx.constraintlayout.widget.R;
 import java.util.HashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class KeyPosition extends KeyPositionBase {
     public static final String DRAWPATH = "drawPath";
     static final int KEY_TYPE = 2;
@@ -43,119 +38,8 @@ public class KeyPosition extends KeyPositionBase {
     private float mCalculatedPositionX = Float.NaN;
     private float mCalculatedPositionY = Float.NaN;
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static class Loader {
-        private static final int CURVE_FIT = 4;
-        private static final int DRAW_PATH = 5;
-        private static final int FRAME_POSITION = 2;
-        private static final int PATH_MOTION_ARC = 10;
-        private static final int PERCENT_HEIGHT = 12;
-        private static final int PERCENT_WIDTH = 11;
-        private static final int PERCENT_X = 6;
-        private static final int PERCENT_Y = 7;
-        private static final int SIZE_PERCENT = 8;
-        private static final int TARGET_ID = 1;
-        private static final int TRANSITION_EASING = 3;
-        private static final int TYPE = 9;
-        private static SparseIntArray mAttrMap;
-
-        static {
-            SparseIntArray sparseIntArray = new SparseIntArray();
-            mAttrMap = sparseIntArray;
-            sparseIntArray.append(C0923R.styleable.KeyPosition_motionTarget, 1);
-            mAttrMap.append(C0923R.styleable.KeyPosition_framePosition, 2);
-            mAttrMap.append(C0923R.styleable.KeyPosition_transitionEasing, 3);
-            mAttrMap.append(C0923R.styleable.KeyPosition_curveFit, 4);
-            mAttrMap.append(C0923R.styleable.KeyPosition_drawPath, 5);
-            mAttrMap.append(C0923R.styleable.KeyPosition_percentX, 6);
-            mAttrMap.append(C0923R.styleable.KeyPosition_percentY, 7);
-            mAttrMap.append(C0923R.styleable.KeyPosition_keyPositionType, 9);
-            mAttrMap.append(C0923R.styleable.KeyPosition_sizePercent, 8);
-            mAttrMap.append(C0923R.styleable.KeyPosition_percentWidth, 11);
-            mAttrMap.append(C0923R.styleable.KeyPosition_percentHeight, 12);
-            mAttrMap.append(C0923R.styleable.KeyPosition_pathMotionArc, 10);
-        }
-
-        private Loader() {
-        }
-
-        /* JADX INFO: Access modifiers changed from: private */
-        public static void read(KeyPosition keyPosition, TypedArray typedArray) {
-            int indexCount = typedArray.getIndexCount();
-            for (int i = 0; i < indexCount; i++) {
-                int index = typedArray.getIndex(i);
-                switch (mAttrMap.get(index)) {
-                    case 1:
-                        if (MotionLayout.IS_IN_EDIT_MODE) {
-                            int resourceId = typedArray.getResourceId(index, keyPosition.mTargetId);
-                            keyPosition.mTargetId = resourceId;
-                            if (resourceId == -1) {
-                                keyPosition.mTargetString = typedArray.getString(index);
-                                break;
-                            } else {
-                                break;
-                            }
-                        } else if (typedArray.peekValue(index).type == 3) {
-                            keyPosition.mTargetString = typedArray.getString(index);
-                            break;
-                        } else {
-                            keyPosition.mTargetId = typedArray.getResourceId(index, keyPosition.mTargetId);
-                            break;
-                        }
-                    case 2:
-                        keyPosition.mFramePosition = typedArray.getInt(index, keyPosition.mFramePosition);
-                        break;
-                    case 3:
-                        if (typedArray.peekValue(index).type == 3) {
-                            keyPosition.mTransitionEasing = typedArray.getString(index);
-                            break;
-                        } else {
-                            keyPosition.mTransitionEasing = Easing.NAMED_EASING[typedArray.getInteger(index, 0)];
-                            break;
-                        }
-                    case 4:
-                        keyPosition.mCurveFit = typedArray.getInteger(index, keyPosition.mCurveFit);
-                        break;
-                    case 5:
-                        keyPosition.mDrawPath = typedArray.getInt(index, keyPosition.mDrawPath);
-                        break;
-                    case 6:
-                        keyPosition.mPercentX = typedArray.getFloat(index, keyPosition.mPercentX);
-                        break;
-                    case 7:
-                        keyPosition.mPercentY = typedArray.getFloat(index, keyPosition.mPercentY);
-                        break;
-                    case 8:
-                        float f = typedArray.getFloat(index, keyPosition.mPercentHeight);
-                        keyPosition.mPercentWidth = f;
-                        keyPosition.mPercentHeight = f;
-                        break;
-                    case 9:
-                        keyPosition.mPositionType = typedArray.getInt(index, keyPosition.mPositionType);
-                        break;
-                    case 10:
-                        keyPosition.mPathMotionArc = typedArray.getInt(index, keyPosition.mPathMotionArc);
-                        break;
-                    case 11:
-                        keyPosition.mPercentWidth = typedArray.getFloat(index, keyPosition.mPercentWidth);
-                        break;
-                    case 12:
-                        keyPosition.mPercentHeight = typedArray.getFloat(index, keyPosition.mPercentHeight);
-                        break;
-                    default:
-                        Log.e(TypedValues.PositionType.NAME, "unused attribute 0x" + Integer.toHexString(index) + "   " + mAttrMap.get(index));
-                        break;
-                }
-            }
-            if (keyPosition.mFramePosition == -1) {
-                Log.e(TypedValues.PositionType.NAME, "no frame position");
-            }
-        }
-    }
-
     public KeyPosition() {
-        this.mType = 2;
+        ((Key) this).mType = 2;
     }
 
     private void calcCartesianPosition(float f, float f2, float f3, float f4) {
@@ -184,11 +68,9 @@ public class KeyPosition extends KeyPositionBase {
         this.mCalculatedPositionY = ((i2 - 0) * f) + f2;
     }
 
-    @Override // androidx.constraintlayout.motion.widget.Key
     public void addValues(HashMap<String, ViewSpline> hashMap) {
     }
 
-    @Override // androidx.constraintlayout.motion.widget.KeyPositionBase
     void calcPosition(int i, int i2, float f, float f2, float f3, float f4) {
         int i3 = this.mPositionType;
         if (i3 == 1) {
@@ -200,9 +82,8 @@ public class KeyPosition extends KeyPositionBase {
         }
     }
 
-    @Override // androidx.constraintlayout.motion.widget.Key
     public Key copy(Key key) {
-        super.copy(key);
+        super/*androidx.constraintlayout.motion.widget.Key*/.copy(key);
         KeyPosition keyPosition = (KeyPosition) key;
         this.mTransitionEasing = keyPosition.mTransitionEasing;
         this.mPathMotionArc = keyPosition.mPathMotionArc;
@@ -218,28 +99,23 @@ public class KeyPosition extends KeyPositionBase {
         return this;
     }
 
-    @Override // androidx.constraintlayout.motion.widget.KeyPositionBase
     float getPositionX() {
         return this.mCalculatedPositionX;
     }
 
-    @Override // androidx.constraintlayout.motion.widget.KeyPositionBase
     float getPositionY() {
         return this.mCalculatedPositionY;
     }
 
-    @Override // androidx.constraintlayout.motion.widget.KeyPositionBase
     public boolean intersects(int i, int i2, RectF rectF, RectF rectF2, float f, float f2) {
         calcPosition(i, i2, rectF.centerX(), rectF.centerY(), rectF2.centerX(), rectF2.centerY());
         return Math.abs(f - this.mCalculatedPositionX) < 20.0f && Math.abs(f2 - this.mCalculatedPositionY) < 20.0f;
     }
 
-    @Override // androidx.constraintlayout.motion.widget.Key
     public void load(Context context, AttributeSet attributeSet) {
-        Loader.read(this, context.obtainStyledAttributes(attributeSet, C0923R.styleable.KeyPosition));
+        Loader.access$000(this, context.obtainStyledAttributes(attributeSet, R.styleable.KeyPosition));
     }
 
-    @Override // androidx.constraintlayout.motion.widget.KeyPositionBase
     public void positionAttributes(View view, RectF rectF, RectF rectF2, float f, float f2, String[] strArr, float[] fArr) {
         int i = this.mPositionType;
         if (i == 1) {
@@ -332,7 +208,6 @@ public class KeyPosition extends KeyPositionBase {
         this.mPositionType = i;
     }
 
-    @Override // androidx.constraintlayout.motion.widget.Key
     public void setValue(String str, Object obj) {
         str.hashCode();
         switch (str) {
@@ -362,9 +237,8 @@ public class KeyPosition extends KeyPositionBase {
         }
     }
 
-    @Override // androidx.constraintlayout.motion.widget.Key
-    /* renamed from: clone */
-    public Key mo5575clone() {
+    /* renamed from: clone, reason: merged with bridge method [inline-methods] */
+    public Key m2316clone() {
         return new KeyPosition().copy(this);
     }
 }

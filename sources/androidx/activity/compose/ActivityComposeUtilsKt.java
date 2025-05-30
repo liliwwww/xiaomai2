@@ -6,7 +6,7 @@ import androidx.exifinterface.media.ExifInterface;
 import kotlin.jvm.internal.Intrinsics;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ActivityComposeUtilsKt {
     public static final /* synthetic */ <T> T findOwner(Context context) {
         Intrinsics.checkNotNullParameter(context, "context");

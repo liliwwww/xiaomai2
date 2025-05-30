@@ -1,11 +1,9 @@
 package android.taobao.windvane.extra.performance2;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVUserPPManager {
-
-    /* renamed from: FP */
-    private long f11FP;
+    private long FP;
     private long TTI;
 
     public String jsCodeForUserPP() {

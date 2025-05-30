@@ -3,10 +3,9 @@ package androidx.constraintlayout.widget;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ConstraintProperties {
     public static final int BASELINE = 5;
     public static final int BOTTOM = 4;
@@ -21,15 +20,15 @@ public class ConstraintProperties {
     public static final int TOP = 3;
     public static final int UNSET = -1;
     public static final int WRAP_CONTENT = -2;
-    ConstraintLayout.LayoutParams mParams;
+    ConstraintLayout$LayoutParams mParams;
     View mView;
 
     public ConstraintProperties(View view) {
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        if (!(layoutParams instanceof ConstraintLayout.LayoutParams)) {
+        if (!(layoutParams instanceof ConstraintLayout$LayoutParams)) {
             throw new RuntimeException("Only children of ConstraintLayout.LayoutParams supported");
         }
-        this.mParams = (ConstraintLayout.LayoutParams) layoutParams;
+        this.mParams = (ConstraintLayout$LayoutParams) layoutParams;
         this.mView = view;
     }
 
@@ -149,117 +148,117 @@ public class ConstraintProperties {
         switch (i) {
             case 1:
                 if (i3 == 1) {
-                    ConstraintLayout.LayoutParams layoutParams = this.mParams;
-                    layoutParams.leftToLeft = i2;
-                    layoutParams.leftToRight = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams = this.mParams;
+                    constraintLayout$LayoutParams.leftToLeft = i2;
+                    constraintLayout$LayoutParams.leftToRight = -1;
                 } else {
                     if (i3 != 2) {
                         throw new IllegalArgumentException("Left to " + sideToString(i3) + " undefined");
                     }
-                    ConstraintLayout.LayoutParams layoutParams2 = this.mParams;
-                    layoutParams2.leftToRight = i2;
-                    layoutParams2.leftToLeft = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams2 = this.mParams;
+                    constraintLayout$LayoutParams2.leftToRight = i2;
+                    constraintLayout$LayoutParams2.leftToLeft = -1;
                 }
                 ((ViewGroup.MarginLayoutParams) this.mParams).leftMargin = i4;
                 return this;
             case 2:
                 if (i3 == 1) {
-                    ConstraintLayout.LayoutParams layoutParams3 = this.mParams;
-                    layoutParams3.rightToLeft = i2;
-                    layoutParams3.rightToRight = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams3 = this.mParams;
+                    constraintLayout$LayoutParams3.rightToLeft = i2;
+                    constraintLayout$LayoutParams3.rightToRight = -1;
                 } else {
                     if (i3 != 2) {
                         throw new IllegalArgumentException("right to " + sideToString(i3) + " undefined");
                     }
-                    ConstraintLayout.LayoutParams layoutParams4 = this.mParams;
-                    layoutParams4.rightToRight = i2;
-                    layoutParams4.rightToLeft = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams4 = this.mParams;
+                    constraintLayout$LayoutParams4.rightToRight = i2;
+                    constraintLayout$LayoutParams4.rightToLeft = -1;
                 }
                 ((ViewGroup.MarginLayoutParams) this.mParams).rightMargin = i4;
                 return this;
             case 3:
                 if (i3 == 3) {
-                    ConstraintLayout.LayoutParams layoutParams5 = this.mParams;
-                    layoutParams5.topToTop = i2;
-                    layoutParams5.topToBottom = -1;
-                    layoutParams5.baselineToBaseline = -1;
-                    layoutParams5.baselineToTop = -1;
-                    layoutParams5.baselineToBottom = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams5 = this.mParams;
+                    constraintLayout$LayoutParams5.topToTop = i2;
+                    constraintLayout$LayoutParams5.topToBottom = -1;
+                    constraintLayout$LayoutParams5.baselineToBaseline = -1;
+                    constraintLayout$LayoutParams5.baselineToTop = -1;
+                    constraintLayout$LayoutParams5.baselineToBottom = -1;
                 } else {
                     if (i3 != 4) {
                         throw new IllegalArgumentException("right to " + sideToString(i3) + " undefined");
                     }
-                    ConstraintLayout.LayoutParams layoutParams6 = this.mParams;
-                    layoutParams6.topToBottom = i2;
-                    layoutParams6.topToTop = -1;
-                    layoutParams6.baselineToBaseline = -1;
-                    layoutParams6.baselineToTop = -1;
-                    layoutParams6.baselineToBottom = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams6 = this.mParams;
+                    constraintLayout$LayoutParams6.topToBottom = i2;
+                    constraintLayout$LayoutParams6.topToTop = -1;
+                    constraintLayout$LayoutParams6.baselineToBaseline = -1;
+                    constraintLayout$LayoutParams6.baselineToTop = -1;
+                    constraintLayout$LayoutParams6.baselineToBottom = -1;
                 }
                 ((ViewGroup.MarginLayoutParams) this.mParams).topMargin = i4;
                 return this;
             case 4:
                 if (i3 == 4) {
-                    ConstraintLayout.LayoutParams layoutParams7 = this.mParams;
-                    layoutParams7.bottomToBottom = i2;
-                    layoutParams7.bottomToTop = -1;
-                    layoutParams7.baselineToBaseline = -1;
-                    layoutParams7.baselineToTop = -1;
-                    layoutParams7.baselineToBottom = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams7 = this.mParams;
+                    constraintLayout$LayoutParams7.bottomToBottom = i2;
+                    constraintLayout$LayoutParams7.bottomToTop = -1;
+                    constraintLayout$LayoutParams7.baselineToBaseline = -1;
+                    constraintLayout$LayoutParams7.baselineToTop = -1;
+                    constraintLayout$LayoutParams7.baselineToBottom = -1;
                 } else {
                     if (i3 != 3) {
                         throw new IllegalArgumentException("right to " + sideToString(i3) + " undefined");
                     }
-                    ConstraintLayout.LayoutParams layoutParams8 = this.mParams;
-                    layoutParams8.bottomToTop = i2;
-                    layoutParams8.bottomToBottom = -1;
-                    layoutParams8.baselineToBaseline = -1;
-                    layoutParams8.baselineToTop = -1;
-                    layoutParams8.baselineToBottom = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams8 = this.mParams;
+                    constraintLayout$LayoutParams8.bottomToTop = i2;
+                    constraintLayout$LayoutParams8.bottomToBottom = -1;
+                    constraintLayout$LayoutParams8.baselineToBaseline = -1;
+                    constraintLayout$LayoutParams8.baselineToTop = -1;
+                    constraintLayout$LayoutParams8.baselineToBottom = -1;
                 }
                 ((ViewGroup.MarginLayoutParams) this.mParams).bottomMargin = i4;
                 return this;
             case 5:
                 if (i3 == 5) {
-                    ConstraintLayout.LayoutParams layoutParams9 = this.mParams;
-                    layoutParams9.baselineToBaseline = i2;
-                    layoutParams9.bottomToBottom = -1;
-                    layoutParams9.bottomToTop = -1;
-                    layoutParams9.topToTop = -1;
-                    layoutParams9.topToBottom = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams9 = this.mParams;
+                    constraintLayout$LayoutParams9.baselineToBaseline = i2;
+                    constraintLayout$LayoutParams9.bottomToBottom = -1;
+                    constraintLayout$LayoutParams9.bottomToTop = -1;
+                    constraintLayout$LayoutParams9.topToTop = -1;
+                    constraintLayout$LayoutParams9.topToBottom = -1;
                 }
                 if (i3 == 3) {
-                    ConstraintLayout.LayoutParams layoutParams10 = this.mParams;
-                    layoutParams10.baselineToTop = i2;
-                    layoutParams10.bottomToBottom = -1;
-                    layoutParams10.bottomToTop = -1;
-                    layoutParams10.topToTop = -1;
-                    layoutParams10.topToBottom = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams10 = this.mParams;
+                    constraintLayout$LayoutParams10.baselineToTop = i2;
+                    constraintLayout$LayoutParams10.bottomToBottom = -1;
+                    constraintLayout$LayoutParams10.bottomToTop = -1;
+                    constraintLayout$LayoutParams10.topToTop = -1;
+                    constraintLayout$LayoutParams10.topToBottom = -1;
                 } else {
                     if (i3 != 4) {
                         throw new IllegalArgumentException("right to " + sideToString(i3) + " undefined");
                     }
-                    ConstraintLayout.LayoutParams layoutParams11 = this.mParams;
-                    layoutParams11.baselineToBottom = i2;
-                    layoutParams11.bottomToBottom = -1;
-                    layoutParams11.bottomToTop = -1;
-                    layoutParams11.topToTop = -1;
-                    layoutParams11.topToBottom = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams11 = this.mParams;
+                    constraintLayout$LayoutParams11.baselineToBottom = i2;
+                    constraintLayout$LayoutParams11.bottomToBottom = -1;
+                    constraintLayout$LayoutParams11.bottomToTop = -1;
+                    constraintLayout$LayoutParams11.topToTop = -1;
+                    constraintLayout$LayoutParams11.topToBottom = -1;
                 }
                 this.mParams.baselineMargin = i4;
                 return this;
             case 6:
                 if (i3 == 6) {
-                    ConstraintLayout.LayoutParams layoutParams12 = this.mParams;
-                    layoutParams12.startToStart = i2;
-                    layoutParams12.startToEnd = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams12 = this.mParams;
+                    constraintLayout$LayoutParams12.startToStart = i2;
+                    constraintLayout$LayoutParams12.startToEnd = -1;
                 } else {
                     if (i3 != 7) {
                         throw new IllegalArgumentException("right to " + sideToString(i3) + " undefined");
                     }
-                    ConstraintLayout.LayoutParams layoutParams13 = this.mParams;
-                    layoutParams13.startToEnd = i2;
-                    layoutParams13.startToStart = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams13 = this.mParams;
+                    constraintLayout$LayoutParams13.startToEnd = i2;
+                    constraintLayout$LayoutParams13.startToStart = -1;
                 }
                 if (Build.VERSION.SDK_INT >= 17) {
                     this.mParams.setMarginStart(i4);
@@ -267,16 +266,16 @@ public class ConstraintProperties {
                 return this;
             case 7:
                 if (i3 == 7) {
-                    ConstraintLayout.LayoutParams layoutParams14 = this.mParams;
-                    layoutParams14.endToEnd = i2;
-                    layoutParams14.endToStart = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams14 = this.mParams;
+                    constraintLayout$LayoutParams14.endToEnd = i2;
+                    constraintLayout$LayoutParams14.endToStart = -1;
                 } else {
                     if (i3 != 6) {
                         throw new IllegalArgumentException("right to " + sideToString(i3) + " undefined");
                     }
-                    ConstraintLayout.LayoutParams layoutParams15 = this.mParams;
-                    layoutParams15.endToStart = i2;
-                    layoutParams15.endToEnd = -1;
+                    ConstraintLayout$LayoutParams constraintLayout$LayoutParams15 = this.mParams;
+                    constraintLayout$LayoutParams15.endToStart = i2;
+                    constraintLayout$LayoutParams15.endToEnd = -1;
                 }
                 if (Build.VERSION.SDK_INT >= 17) {
                     this.mParams.setMarginEnd(i4);
@@ -411,48 +410,48 @@ public class ConstraintProperties {
     public ConstraintProperties removeConstraints(int i) {
         switch (i) {
             case 1:
-                ConstraintLayout.LayoutParams layoutParams = this.mParams;
-                layoutParams.leftToRight = -1;
-                layoutParams.leftToLeft = -1;
-                ((ViewGroup.MarginLayoutParams) layoutParams).leftMargin = -1;
-                layoutParams.goneLeftMargin = Integer.MIN_VALUE;
+                ConstraintLayout$LayoutParams constraintLayout$LayoutParams = this.mParams;
+                constraintLayout$LayoutParams.leftToRight = -1;
+                constraintLayout$LayoutParams.leftToLeft = -1;
+                ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams).leftMargin = -1;
+                constraintLayout$LayoutParams.goneLeftMargin = Integer.MIN_VALUE;
                 return this;
             case 2:
-                ConstraintLayout.LayoutParams layoutParams2 = this.mParams;
-                layoutParams2.rightToRight = -1;
-                layoutParams2.rightToLeft = -1;
-                ((ViewGroup.MarginLayoutParams) layoutParams2).rightMargin = -1;
-                layoutParams2.goneRightMargin = Integer.MIN_VALUE;
+                ConstraintLayout$LayoutParams constraintLayout$LayoutParams2 = this.mParams;
+                constraintLayout$LayoutParams2.rightToRight = -1;
+                constraintLayout$LayoutParams2.rightToLeft = -1;
+                ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams2).rightMargin = -1;
+                constraintLayout$LayoutParams2.goneRightMargin = Integer.MIN_VALUE;
                 return this;
             case 3:
-                ConstraintLayout.LayoutParams layoutParams3 = this.mParams;
-                layoutParams3.topToBottom = -1;
-                layoutParams3.topToTop = -1;
-                ((ViewGroup.MarginLayoutParams) layoutParams3).topMargin = -1;
-                layoutParams3.goneTopMargin = Integer.MIN_VALUE;
+                ConstraintLayout$LayoutParams constraintLayout$LayoutParams3 = this.mParams;
+                constraintLayout$LayoutParams3.topToBottom = -1;
+                constraintLayout$LayoutParams3.topToTop = -1;
+                ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams3).topMargin = -1;
+                constraintLayout$LayoutParams3.goneTopMargin = Integer.MIN_VALUE;
                 return this;
             case 4:
-                ConstraintLayout.LayoutParams layoutParams4 = this.mParams;
-                layoutParams4.bottomToTop = -1;
-                layoutParams4.bottomToBottom = -1;
-                ((ViewGroup.MarginLayoutParams) layoutParams4).bottomMargin = -1;
-                layoutParams4.goneBottomMargin = Integer.MIN_VALUE;
+                ConstraintLayout$LayoutParams constraintLayout$LayoutParams4 = this.mParams;
+                constraintLayout$LayoutParams4.bottomToTop = -1;
+                constraintLayout$LayoutParams4.bottomToBottom = -1;
+                ((ViewGroup.MarginLayoutParams) constraintLayout$LayoutParams4).bottomMargin = -1;
+                constraintLayout$LayoutParams4.goneBottomMargin = Integer.MIN_VALUE;
                 return this;
             case 5:
                 this.mParams.baselineToBaseline = -1;
                 return this;
             case 6:
-                ConstraintLayout.LayoutParams layoutParams5 = this.mParams;
-                layoutParams5.startToEnd = -1;
-                layoutParams5.startToStart = -1;
-                layoutParams5.setMarginStart(-1);
+                ConstraintLayout$LayoutParams constraintLayout$LayoutParams5 = this.mParams;
+                constraintLayout$LayoutParams5.startToEnd = -1;
+                constraintLayout$LayoutParams5.startToStart = -1;
+                constraintLayout$LayoutParams5.setMarginStart(-1);
                 this.mParams.goneStartMargin = Integer.MIN_VALUE;
                 return this;
             case 7:
-                ConstraintLayout.LayoutParams layoutParams6 = this.mParams;
-                layoutParams6.endToStart = -1;
-                layoutParams6.endToEnd = -1;
-                layoutParams6.setMarginEnd(-1);
+                ConstraintLayout$LayoutParams constraintLayout$LayoutParams6 = this.mParams;
+                constraintLayout$LayoutParams6.endToStart = -1;
+                constraintLayout$LayoutParams6.endToEnd = -1;
+                constraintLayout$LayoutParams6.setMarginEnd(-1);
                 this.mParams.goneEndMargin = Integer.MIN_VALUE;
                 return this;
             default:
@@ -461,25 +460,25 @@ public class ConstraintProperties {
     }
 
     public ConstraintProperties removeFromHorizontalChain() {
-        ConstraintLayout.LayoutParams layoutParams = this.mParams;
-        int i = layoutParams.leftToRight;
-        int i2 = layoutParams.rightToLeft;
+        ConstraintLayout$LayoutParams constraintLayout$LayoutParams = this.mParams;
+        int i = constraintLayout$LayoutParams.leftToRight;
+        int i2 = constraintLayout$LayoutParams.rightToLeft;
         if (i == -1 && i2 == -1) {
-            int i3 = layoutParams.startToEnd;
-            int i4 = layoutParams.endToStart;
+            int i3 = constraintLayout$LayoutParams.startToEnd;
+            int i4 = constraintLayout$LayoutParams.endToStart;
             if (i3 != -1 || i4 != -1) {
                 ConstraintProperties constraintProperties = new ConstraintProperties(((ViewGroup) this.mView.getParent()).findViewById(i3));
                 ConstraintProperties constraintProperties2 = new ConstraintProperties(((ViewGroup) this.mView.getParent()).findViewById(i4));
-                ConstraintLayout.LayoutParams layoutParams2 = this.mParams;
+                ConstraintLayout$LayoutParams constraintLayout$LayoutParams2 = this.mParams;
                 if (i3 != -1 && i4 != -1) {
                     constraintProperties.connect(7, i4, 6, 0);
                     constraintProperties2.connect(6, i, 7, 0);
                 } else if (i != -1 || i4 != -1) {
-                    int i5 = layoutParams2.rightToRight;
+                    int i5 = constraintLayout$LayoutParams2.rightToRight;
                     if (i5 != -1) {
                         constraintProperties.connect(7, i5, 7, 0);
                     } else {
-                        int i6 = layoutParams2.leftToLeft;
+                        int i6 = constraintLayout$LayoutParams2.leftToLeft;
                         if (i6 != -1) {
                             constraintProperties2.connect(6, i6, 6, 0);
                         }
@@ -491,16 +490,16 @@ public class ConstraintProperties {
         } else {
             ConstraintProperties constraintProperties3 = new ConstraintProperties(((ViewGroup) this.mView.getParent()).findViewById(i));
             ConstraintProperties constraintProperties4 = new ConstraintProperties(((ViewGroup) this.mView.getParent()).findViewById(i2));
-            ConstraintLayout.LayoutParams layoutParams3 = this.mParams;
+            ConstraintLayout$LayoutParams constraintLayout$LayoutParams3 = this.mParams;
             if (i != -1 && i2 != -1) {
                 constraintProperties3.connect(2, i2, 1, 0);
                 constraintProperties4.connect(1, i, 2, 0);
             } else if (i != -1 || i2 != -1) {
-                int i7 = layoutParams3.rightToRight;
+                int i7 = constraintLayout$LayoutParams3.rightToRight;
                 if (i7 != -1) {
                     constraintProperties3.connect(2, i7, 2, 0);
                 } else {
-                    int i8 = layoutParams3.leftToLeft;
+                    int i8 = constraintLayout$LayoutParams3.leftToLeft;
                     if (i8 != -1) {
                         constraintProperties4.connect(1, i8, 1, 0);
                     }
@@ -513,22 +512,22 @@ public class ConstraintProperties {
     }
 
     public ConstraintProperties removeFromVerticalChain() {
-        ConstraintLayout.LayoutParams layoutParams = this.mParams;
-        int i = layoutParams.topToBottom;
-        int i2 = layoutParams.bottomToTop;
+        ConstraintLayout$LayoutParams constraintLayout$LayoutParams = this.mParams;
+        int i = constraintLayout$LayoutParams.topToBottom;
+        int i2 = constraintLayout$LayoutParams.bottomToTop;
         if (i != -1 || i2 != -1) {
             ConstraintProperties constraintProperties = new ConstraintProperties(((ViewGroup) this.mView.getParent()).findViewById(i));
             ConstraintProperties constraintProperties2 = new ConstraintProperties(((ViewGroup) this.mView.getParent()).findViewById(i2));
-            ConstraintLayout.LayoutParams layoutParams2 = this.mParams;
+            ConstraintLayout$LayoutParams constraintLayout$LayoutParams2 = this.mParams;
             if (i != -1 && i2 != -1) {
                 constraintProperties.connect(4, i2, 3, 0);
                 constraintProperties2.connect(3, i, 4, 0);
             } else if (i != -1 || i2 != -1) {
-                int i3 = layoutParams2.bottomToBottom;
+                int i3 = constraintLayout$LayoutParams2.bottomToBottom;
                 if (i3 != -1) {
                     constraintProperties.connect(4, i3, 4, 0);
                 } else {
-                    int i4 = layoutParams2.topToTop;
+                    int i4 = constraintLayout$LayoutParams2.topToTop;
                     if (i4 != -1) {
                         constraintProperties2.connect(3, i4, 3, 0);
                     }

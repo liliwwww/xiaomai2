@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.animation.core.AnimateAsStateKt$animateValueAsState$3", f = "AnimateAsState.kt", i = {0}, l = {417}, m = "invokeSuspend", n = {"$this$LaunchedEffect"}, s = {"L$0"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class AnimateAsStateKt$animateValueAsState$3 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ State<AnimationSpec<T>> $animSpec$delegate;
     final /* synthetic */ Animatable<T, V> $animatable;
@@ -29,8 +29,8 @@ final class AnimateAsStateKt$animateValueAsState$3 extends SuspendLambda impleme
 
     /* compiled from: Taobao */
     @DebugMetadata(c = "androidx.compose.animation.core.AnimateAsStateKt$animateValueAsState$3$1", f = "AnimateAsState.kt", i = {}, l = {426}, m = "invokeSuspend", n = {}, s = {})
-    /* renamed from: androidx.compose.animation.core.AnimateAsStateKt$animateValueAsState$3$1 */
-    static final class C03731 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
+    /* renamed from: androidx.compose.animation.core.AnimateAsStateKt$animateValueAsState$3$1, reason: invalid class name */
+    static final class AnonymousClass1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
         final /* synthetic */ State<AnimationSpec<T>> $animSpec$delegate;
         final /* synthetic */ Animatable<T, V> $animatable;
         final /* synthetic */ State<Function1<T, Unit>> $listener$delegate;
@@ -39,7 +39,7 @@ final class AnimateAsStateKt$animateValueAsState$3 extends SuspendLambda impleme
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
         /* JADX WARN: Multi-variable type inference failed */
-        C03731(T t, Animatable<T, V> animatable, State<? extends AnimationSpec<T>> state, State<? extends Function1<? super T, Unit>> state2, Continuation<? super C03731> continuation) {
+        AnonymousClass1(T t, Animatable<T, V> animatable, State<? extends AnimationSpec<T>> state, State<? extends Function1<? super T, Unit>> state2, Continuation<? super AnonymousClass1> continuation) {
             super(2, continuation);
             this.$newTarget = t;
             this.$animatable = animatable;
@@ -49,7 +49,7 @@ final class AnimateAsStateKt$animateValueAsState$3 extends SuspendLambda impleme
 
         @NotNull
         public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
-            return new C03731(this.$newTarget, this.$animatable, this.$animSpec$delegate, this.$listener$delegate, continuation);
+            return new AnonymousClass1(this.$newTarget, this.$animatable, this.$animSpec$delegate, this.$listener$delegate, continuation);
         }
 
         @Nullable
@@ -59,8 +59,6 @@ final class AnimateAsStateKt$animateValueAsState$3 extends SuspendLambda impleme
 
         @Nullable
         public final Object invokeSuspend(@NotNull Object obj) {
-            AnimationSpec m1045animateValueAsState$lambda5;
-            Function1 m1044animateValueAsState$lambda3;
             Object coroutine_suspended = IntrinsicsKt.getCOROUTINE_SUSPENDED();
             int i = this.label;
             if (i == 0) {
@@ -68,9 +66,9 @@ final class AnimateAsStateKt$animateValueAsState$3 extends SuspendLambda impleme
                 if (!Intrinsics.areEqual(this.$newTarget, this.$animatable.getTargetValue())) {
                     Animatable<T, V> animatable = this.$animatable;
                     T t = this.$newTarget;
-                    m1045animateValueAsState$lambda5 = AnimateAsStateKt.m1045animateValueAsState$lambda5(this.$animSpec$delegate);
+                    AnimationSpec animationSpec = AnimateAsStateKt.access$animateValueAsState$lambda-5(this.$animSpec$delegate);
                     this.label = 1;
-                    if (Animatable.animateTo$default(animatable, t, m1045animateValueAsState$lambda5, null, null, this, 12, null) == coroutine_suspended) {
+                    if (Animatable.animateTo$default(animatable, t, animationSpec, (Object) null, (Function1) null, this, 12, (Object) null) == coroutine_suspended) {
                         return coroutine_suspended;
                     }
                 }
@@ -80,9 +78,9 @@ final class AnimateAsStateKt$animateValueAsState$3 extends SuspendLambda impleme
                 throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
             }
             ResultKt.throwOnFailure(obj);
-            m1044animateValueAsState$lambda3 = AnimateAsStateKt.m1044animateValueAsState$lambda3(this.$listener$delegate);
-            if (m1044animateValueAsState$lambda3 != null) {
-                m1044animateValueAsState$lambda3.invoke(this.$animatable.getValue());
+            Function1 function1 = AnimateAsStateKt.access$animateValueAsState$lambda-3(this.$listener$delegate);
+            if (function1 != null) {
+                function1.invoke(this.$animatable.getValue());
             }
             return Unit.INSTANCE;
         }
@@ -117,7 +115,7 @@ final class AnimateAsStateKt$animateValueAsState$3 extends SuspendLambda impleme
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object invokeSuspend(@org.jetbrains.annotations.NotNull java.lang.Object r18) {
         /*

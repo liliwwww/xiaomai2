@@ -2,123 +2,27 @@ package androidx.renderscript;
 
 import android.os.Build;
 import android.util.Log;
-import android.util.Pair;
 import androidx.renderscript.Allocation;
 import androidx.renderscript.Script;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ScriptGroup extends BaseObj {
     private static final int MIN_API_VERSION = 23;
     private static final String TAG = "ScriptGroup";
     private List<Closure> mClosures;
-    C1243IO[] mInputs;
+    IO[] mInputs;
     private List<Input> mInputs2;
     private String mName;
     private ArrayList<Node> mNodes;
-    C1243IO[] mOutputs;
+    IO[] mOutputs;
     private Future[] mOutputs2;
     private boolean mUseIncSupp;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class Binding {
-        private final Script.FieldID mField;
-        private final Object mValue;
-
-        public Binding(Script.FieldID fieldID, Object obj) {
-            this.mField = fieldID;
-            this.mValue = obj;
-        }
-
-        public Script.FieldID getField() {
-            return this.mField;
-        }
-
-        public Object getValue() {
-            return this.mValue;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class Builder2 {
-        private static final String TAG = "ScriptGroup.Builder2";
-        List<Closure> mClosures = new ArrayList();
-        List<Input> mInputs = new ArrayList();
-        RenderScript mRS;
-
-        public Builder2(RenderScript renderScript) {
-            this.mRS = renderScript;
-        }
-
-        private Closure addInvokeInternal(Script.InvokeID invokeID, Object[] objArr, Map<Script.FieldID, Object> map) {
-            Closure closure = new Closure(this.mRS, invokeID, objArr, map);
-            this.mClosures.add(closure);
-            return closure;
-        }
-
-        private Closure addKernelInternal(Script.KernelID kernelID, Type type, Object[] objArr, Map<Script.FieldID, Object> map) {
-            Closure closure = new Closure(this.mRS, kernelID, type, objArr, map);
-            this.mClosures.add(closure);
-            return closure;
-        }
-
-        private boolean seperateArgsAndBindings(Object[] objArr, ArrayList<Object> arrayList, Map<Script.FieldID, Object> map) {
-            int i = 0;
-            while (i < objArr.length && !(objArr[i] instanceof Binding)) {
-                arrayList.add(objArr[i]);
-                i++;
-            }
-            while (i < objArr.length) {
-                if (!(objArr[i] instanceof Binding)) {
-                    return false;
-                }
-                Binding binding = (Binding) objArr[i];
-                map.put(binding.getField(), binding.getValue());
-                i++;
-            }
-            return true;
-        }
-
-        public Input addInput() {
-            Input input = new Input();
-            this.mInputs.add(input);
-            return input;
-        }
-
-        public Closure addInvoke(Script.InvokeID invokeID, Object... objArr) {
-            ArrayList<Object> arrayList = new ArrayList<>();
-            HashMap hashMap = new HashMap();
-            if (seperateArgsAndBindings(objArr, arrayList, hashMap)) {
-                return addInvokeInternal(invokeID, arrayList.toArray(), hashMap);
-            }
-            return null;
-        }
-
-        public Closure addKernel(Script.KernelID kernelID, Type type, Object... objArr) {
-            ArrayList<Object> arrayList = new ArrayList<>();
-            HashMap hashMap = new HashMap();
-            if (seperateArgsAndBindings(objArr, arrayList, hashMap)) {
-                return addKernelInternal(kernelID, type, arrayList.toArray(), hashMap);
-            }
-            return null;
-        }
-
-        public ScriptGroup create(String str, Future... futureArr) {
-            if (str == null || str.isEmpty() || str.length() > 100 || !str.equals(str.replaceAll("[^a-zA-Z0-9-]", "_"))) {
-                throw new RSIllegalArgumentException("invalid script group name");
-            }
-            return new ScriptGroup(this.mRS, str, this.mClosures, this.mInputs, futureArr);
-        }
-    }
 
     /* compiled from: Taobao */
     public static final class Closure extends BaseObj {
@@ -212,7 +116,7 @@ public final class ScriptGroup extends BaseObj {
 
         public Future getReturn() {
             if (this.mReturnFuture == null) {
-                this.mReturnFuture = new Future(this, null, this.mReturnValue);
+                this.mReturnFuture = new Future(this, (Script.FieldID) null, this.mReturnValue);
             }
             return this.mReturnFuture;
         }
@@ -222,8 +126,8 @@ public final class ScriptGroup extends BaseObj {
                 obj = ((Future) obj).getValue();
             }
             this.mArgs[i] = obj;
-            ValueAndSize valueAndSize = new ValueAndSize(this.mRS, obj);
-            RenderScript renderScript = this.mRS;
+            ValueAndSize valueAndSize = new ValueAndSize(((BaseObj) this).mRS, obj);
+            RenderScript renderScript = ((BaseObj) this).mRS;
             renderScript.nClosureSetArg(getID(renderScript), i, valueAndSize.value, valueAndSize.size);
         }
 
@@ -232,9 +136,9 @@ public final class ScriptGroup extends BaseObj {
                 obj = ((Future) obj).getValue();
             }
             this.mBindings.put(fieldID, obj);
-            ValueAndSize valueAndSize = new ValueAndSize(this.mRS, obj);
-            RenderScript renderScript = this.mRS;
-            renderScript.nClosureSetGlobal(getID(renderScript), fieldID.getID(this.mRS), valueAndSize.value, valueAndSize.size);
+            ValueAndSize valueAndSize = new ValueAndSize(((BaseObj) this).mRS, obj);
+            RenderScript renderScript = ((BaseObj) this).mRS;
+            renderScript.nClosureSetGlobal(getID(renderScript), fieldID.getID(((BaseObj) this).mRS), valueAndSize.value, valueAndSize.size);
         }
 
         Closure(RenderScript renderScript, Script.KernelID kernelID, Type type, Object[] objArr, Map<Script.FieldID, Object> map) {
@@ -306,94 +210,6 @@ public final class ScriptGroup extends BaseObj {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class Future {
-        Closure mClosure;
-        Script.FieldID mFieldID;
-        Object mValue;
-
-        Future(Closure closure, Script.FieldID fieldID, Object obj) {
-            this.mClosure = closure;
-            this.mFieldID = fieldID;
-            this.mValue = obj;
-        }
-
-        Closure getClosure() {
-            return this.mClosure;
-        }
-
-        Script.FieldID getFieldID() {
-            return this.mFieldID;
-        }
-
-        Object getValue() {
-            return this.mValue;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* renamed from: androidx.renderscript.ScriptGroup$IO */
-    /* loaded from: classes.dex */
-    static class C1243IO {
-        Allocation mAllocation;
-        Script.KernelID mKID;
-
-        C1243IO(Script.KernelID kernelID) {
-            this.mKID = kernelID;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class Input {
-        Object mValue;
-        List<Pair<Closure, Script.FieldID>> mFieldID = new ArrayList();
-        List<Pair<Closure, Integer>> mArgIndex = new ArrayList();
-
-        Input() {
-        }
-
-        void addReference(Closure closure, int i) {
-            this.mArgIndex.add(Pair.create(closure, Integer.valueOf(i)));
-        }
-
-        Object get() {
-            return this.mValue;
-        }
-
-        void set(Object obj) {
-            this.mValue = obj;
-            for (Pair<Closure, Integer> pair : this.mArgIndex) {
-                ((Closure) pair.first).setArg(((Integer) pair.second).intValue(), obj);
-            }
-            for (Pair<Closure, Script.FieldID> pair2 : this.mFieldID) {
-                ((Closure) pair2.first).setGlobal((Script.FieldID) pair2.second, obj);
-            }
-        }
-
-        void addReference(Closure closure, Script.FieldID fieldID) {
-            this.mFieldID.add(Pair.create(closure, fieldID));
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class Node {
-        int dagNumber;
-        Node mNext;
-        int mOrder;
-        Script mScript;
-        boolean mSeen;
-        ArrayList<Script.KernelID> mKernels = new ArrayList<>();
-        ArrayList<ConnectLine> mInputs = new ArrayList<>();
-        ArrayList<ConnectLine> mOutputs = new ArrayList<>();
-
-        Node(Script script) {
-            this.mScript = script;
-        }
-    }
-
     ScriptGroup(long j, RenderScript renderScript) {
         super(j, renderScript);
         this.mUseIncSupp = false;
@@ -417,7 +233,7 @@ public final class ScriptGroup extends BaseObj {
             }
             this.mInputs2.get(i2).set(obj);
         }
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         renderScript.nScriptGroup2Execute(getID(renderScript));
         Future[] futureArr = this.mOutputs2;
         Object[] objArr2 = new Object[futureArr.length];
@@ -438,17 +254,17 @@ public final class ScriptGroup extends BaseObj {
     public void setInput(Script.KernelID kernelID, Allocation allocation) {
         int i = 0;
         while (true) {
-            C1243IO[] c1243ioArr = this.mInputs;
-            if (i >= c1243ioArr.length) {
+            IO[] ioArr = this.mInputs;
+            if (i >= ioArr.length) {
                 throw new RSIllegalArgumentException("Script not found");
             }
-            if (c1243ioArr[i].mKID == kernelID) {
-                c1243ioArr[i].mAllocation = allocation;
+            if (ioArr[i].mKID == kernelID) {
+                ioArr[i].mAllocation = allocation;
                 if (this.mUseIncSupp) {
                     return;
                 }
-                RenderScript renderScript = this.mRS;
-                renderScript.nScriptGroupSetInput(getID(renderScript), kernelID.getID(this.mRS), this.mRS.safeID(allocation));
+                RenderScript renderScript = ((BaseObj) this).mRS;
+                renderScript.nScriptGroupSetInput(getID(renderScript), kernelID.getID(((BaseObj) this).mRS), ((BaseObj) this).mRS.safeID(allocation));
                 return;
             }
             i++;
@@ -458,325 +274,20 @@ public final class ScriptGroup extends BaseObj {
     public void setOutput(Script.KernelID kernelID, Allocation allocation) {
         int i = 0;
         while (true) {
-            C1243IO[] c1243ioArr = this.mOutputs;
-            if (i >= c1243ioArr.length) {
+            IO[] ioArr = this.mOutputs;
+            if (i >= ioArr.length) {
                 throw new RSIllegalArgumentException("Script not found");
             }
-            if (c1243ioArr[i].mKID == kernelID) {
-                c1243ioArr[i].mAllocation = allocation;
+            if (ioArr[i].mKID == kernelID) {
+                ioArr[i].mAllocation = allocation;
                 if (this.mUseIncSupp) {
                     return;
                 }
-                RenderScript renderScript = this.mRS;
-                renderScript.nScriptGroupSetOutput(getID(renderScript), kernelID.getID(this.mRS), this.mRS.safeID(allocation));
+                RenderScript renderScript = ((BaseObj) this).mRS;
+                renderScript.nScriptGroupSetOutput(getID(renderScript), kernelID.getID(((BaseObj) this).mRS), ((BaseObj) this).mRS.safeID(allocation));
                 return;
             }
             i++;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class Builder {
-        private int mKernelCount;
-        private RenderScript mRS;
-        private ArrayList<Node> mNodes = new ArrayList<>();
-        private ArrayList<ConnectLine> mLines = new ArrayList<>();
-        private boolean mUseIncSupp = false;
-
-        public Builder(RenderScript renderScript) {
-            this.mRS = renderScript;
-        }
-
-        private boolean calcOrder() {
-            Iterator<Node> it = this.mNodes.iterator();
-            boolean z = true;
-            while (it.hasNext()) {
-                Node next = it.next();
-                if (next.mInputs.size() == 0) {
-                    Iterator<Node> it2 = this.mNodes.iterator();
-                    while (it2.hasNext()) {
-                        it2.next().mSeen = false;
-                    }
-                    z &= calcOrderRecurse(next, 1);
-                }
-            }
-            Collections.sort(this.mNodes, new Comparator<Node>() { // from class: androidx.renderscript.ScriptGroup.Builder.1
-                @Override // java.util.Comparator
-                public int compare(Node node, Node node2) {
-                    return node.mOrder - node2.mOrder;
-                }
-            });
-            return z;
-        }
-
-        private boolean calcOrderRecurse(Node node, int i) {
-            node.mSeen = true;
-            if (node.mOrder < i) {
-                node.mOrder = i;
-            }
-            Iterator<ConnectLine> it = node.mOutputs.iterator();
-            boolean z = true;
-            while (it.hasNext()) {
-                ConnectLine next = it.next();
-                Script.FieldID fieldID = next.mToF;
-                Node findNode = fieldID != null ? findNode(fieldID.mScript) : findNode(next.mToK.mScript);
-                if (findNode.mSeen) {
-                    return false;
-                }
-                z &= calcOrderRecurse(findNode, node.mOrder + 1);
-            }
-            return z;
-        }
-
-        private Node findNode(Script script) {
-            for (int i = 0; i < this.mNodes.size(); i++) {
-                if (script == this.mNodes.get(i).mScript) {
-                    return this.mNodes.get(i);
-                }
-            }
-            return null;
-        }
-
-        private void mergeDAGs(int i, int i2) {
-            for (int i3 = 0; i3 < this.mNodes.size(); i3++) {
-                if (this.mNodes.get(i3).dagNumber == i2) {
-                    this.mNodes.get(i3).dagNumber = i;
-                }
-            }
-        }
-
-        private void validateCycle(Node node, Node node2) {
-            for (int i = 0; i < node.mOutputs.size(); i++) {
-                ConnectLine connectLine = node.mOutputs.get(i);
-                Script.KernelID kernelID = connectLine.mToK;
-                if (kernelID != null) {
-                    Node findNode = findNode(kernelID.mScript);
-                    if (findNode.equals(node2)) {
-                        throw new RSInvalidStateException("Loops in group not allowed.");
-                    }
-                    validateCycle(findNode, node2);
-                }
-                Script.FieldID fieldID = connectLine.mToF;
-                if (fieldID != null) {
-                    Node findNode2 = findNode(fieldID.mScript);
-                    if (findNode2.equals(node2)) {
-                        throw new RSInvalidStateException("Loops in group not allowed.");
-                    }
-                    validateCycle(findNode2, node2);
-                }
-            }
-        }
-
-        private void validateDAG() {
-            for (int i = 0; i < this.mNodes.size(); i++) {
-                Node node = this.mNodes.get(i);
-                if (node.mInputs.size() == 0) {
-                    if (node.mOutputs.size() == 0 && this.mNodes.size() > 1) {
-                        throw new RSInvalidStateException("Groups cannot contain unconnected scripts");
-                    }
-                    validateDAGRecurse(node, i + 1);
-                }
-            }
-            int i2 = this.mNodes.get(0).dagNumber;
-            for (int i3 = 0; i3 < this.mNodes.size(); i3++) {
-                if (this.mNodes.get(i3).dagNumber != i2) {
-                    throw new RSInvalidStateException("Multiple DAGs in group not allowed.");
-                }
-            }
-        }
-
-        private void validateDAGRecurse(Node node, int i) {
-            int i2 = node.dagNumber;
-            if (i2 != 0 && i2 != i) {
-                mergeDAGs(i2, i);
-                return;
-            }
-            node.dagNumber = i;
-            for (int i3 = 0; i3 < node.mOutputs.size(); i3++) {
-                ConnectLine connectLine = node.mOutputs.get(i3);
-                Script.KernelID kernelID = connectLine.mToK;
-                if (kernelID != null) {
-                    validateDAGRecurse(findNode(kernelID.mScript), i);
-                }
-                Script.FieldID fieldID = connectLine.mToF;
-                if (fieldID != null) {
-                    validateDAGRecurse(findNode(fieldID.mScript), i);
-                }
-            }
-        }
-
-        public Builder addConnection(Type type, Script.KernelID kernelID, Script.FieldID fieldID) {
-            Node findNode = findNode(kernelID);
-            if (findNode == null) {
-                throw new RSInvalidStateException("From script not found.");
-            }
-            Node findNode2 = findNode(fieldID.mScript);
-            if (findNode2 == null) {
-                throw new RSInvalidStateException("To script not found.");
-            }
-            ConnectLine connectLine = new ConnectLine(type, kernelID, fieldID);
-            this.mLines.add(new ConnectLine(type, kernelID, fieldID));
-            findNode.mOutputs.add(connectLine);
-            findNode2.mInputs.add(connectLine);
-            validateCycle(findNode, findNode);
-            return this;
-        }
-
-        public Builder addKernel(Script.KernelID kernelID) {
-            if (this.mLines.size() != 0) {
-                throw new RSInvalidStateException("Kernels may not be added once connections exist.");
-            }
-            if (kernelID.mScript.isIncSupp()) {
-                this.mUseIncSupp = true;
-            }
-            if (findNode(kernelID) != null) {
-                return this;
-            }
-            this.mKernelCount++;
-            Node findNode = findNode(kernelID.mScript);
-            if (findNode == null) {
-                findNode = new Node(kernelID.mScript);
-                this.mNodes.add(findNode);
-            }
-            findNode.mKernels.add(kernelID);
-            return this;
-        }
-
-        public ScriptGroup create() {
-            if (this.mNodes.size() == 0) {
-                throw new RSInvalidStateException("Empty script groups are not allowed");
-            }
-            for (int i = 0; i < this.mNodes.size(); i++) {
-                this.mNodes.get(i).dagNumber = 0;
-            }
-            validateDAG();
-            ArrayList arrayList = new ArrayList();
-            ArrayList arrayList2 = new ArrayList();
-            long[] jArr = new long[this.mKernelCount];
-            int i2 = 0;
-            for (int i3 = 0; i3 < this.mNodes.size(); i3++) {
-                Node node = this.mNodes.get(i3);
-                int i4 = 0;
-                while (i4 < node.mKernels.size()) {
-                    Script.KernelID kernelID = node.mKernels.get(i4);
-                    int i5 = i2 + 1;
-                    jArr[i2] = kernelID.getID(this.mRS);
-                    boolean z = false;
-                    for (int i6 = 0; i6 < node.mInputs.size(); i6++) {
-                        if (node.mInputs.get(i6).mToK == kernelID) {
-                            z = true;
-                        }
-                    }
-                    boolean z2 = false;
-                    for (int i7 = 0; i7 < node.mOutputs.size(); i7++) {
-                        if (node.mOutputs.get(i7).mFrom == kernelID) {
-                            z2 = true;
-                        }
-                    }
-                    if (!z) {
-                        arrayList.add(new C1243IO(kernelID));
-                    }
-                    if (!z2) {
-                        arrayList2.add(new C1243IO(kernelID));
-                    }
-                    i4++;
-                    i2 = i5;
-                }
-            }
-            if (i2 != this.mKernelCount) {
-                throw new RSRuntimeException("Count mismatch, should not happen.");
-            }
-            long j = 0;
-            if (this.mUseIncSupp) {
-                calcOrder();
-            } else {
-                long[] jArr2 = new long[this.mLines.size()];
-                long[] jArr3 = new long[this.mLines.size()];
-                long[] jArr4 = new long[this.mLines.size()];
-                long[] jArr5 = new long[this.mLines.size()];
-                for (int i8 = 0; i8 < this.mLines.size(); i8++) {
-                    ConnectLine connectLine = this.mLines.get(i8);
-                    jArr2[i8] = connectLine.mFrom.getID(this.mRS);
-                    Script.KernelID kernelID2 = connectLine.mToK;
-                    if (kernelID2 != null) {
-                        jArr3[i8] = kernelID2.getID(this.mRS);
-                    }
-                    Script.FieldID fieldID = connectLine.mToF;
-                    if (fieldID != null) {
-                        jArr4[i8] = fieldID.getID(this.mRS);
-                    }
-                    jArr5[i8] = connectLine.mAllocationType.getID(this.mRS);
-                }
-                long nScriptGroupCreate = this.mRS.nScriptGroupCreate(jArr, jArr2, jArr3, jArr4, jArr5);
-                if (nScriptGroupCreate == 0) {
-                    throw new RSRuntimeException("Object creation error, should not happen.");
-                }
-                j = nScriptGroupCreate;
-            }
-            ScriptGroup scriptGroup = new ScriptGroup(j, this.mRS);
-            scriptGroup.mOutputs = new C1243IO[arrayList2.size()];
-            for (int i9 = 0; i9 < arrayList2.size(); i9++) {
-                scriptGroup.mOutputs[i9] = (C1243IO) arrayList2.get(i9);
-            }
-            scriptGroup.mInputs = new C1243IO[arrayList.size()];
-            for (int i10 = 0; i10 < arrayList.size(); i10++) {
-                scriptGroup.mInputs[i10] = (C1243IO) arrayList.get(i10);
-            }
-            scriptGroup.mNodes = this.mNodes;
-            scriptGroup.mUseIncSupp = this.mUseIncSupp;
-            return scriptGroup;
-        }
-
-        private Node findNode(Script.KernelID kernelID) {
-            for (int i = 0; i < this.mNodes.size(); i++) {
-                Node node = this.mNodes.get(i);
-                for (int i2 = 0; i2 < node.mKernels.size(); i2++) {
-                    if (kernelID == node.mKernels.get(i2)) {
-                        return node;
-                    }
-                }
-            }
-            return null;
-        }
-
-        public Builder addConnection(Type type, Script.KernelID kernelID, Script.KernelID kernelID2) {
-            Node findNode = findNode(kernelID);
-            if (findNode != null) {
-                Node findNode2 = findNode(kernelID2);
-                if (findNode2 != null) {
-                    ConnectLine connectLine = new ConnectLine(type, kernelID, kernelID2);
-                    this.mLines.add(new ConnectLine(type, kernelID, kernelID2));
-                    findNode.mOutputs.add(connectLine);
-                    findNode2.mInputs.add(connectLine);
-                    validateCycle(findNode, findNode);
-                    return this;
-                }
-                throw new RSInvalidStateException("To script not found.");
-            }
-            throw new RSInvalidStateException("From script not found.");
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class ConnectLine {
-        Allocation mAllocation;
-        Type mAllocationType;
-        Script.KernelID mFrom;
-        Script.FieldID mToF;
-        Script.KernelID mToK;
-
-        ConnectLine(Type type, Script.KernelID kernelID, Script.KernelID kernelID2) {
-            this.mFrom = kernelID;
-            this.mToK = kernelID2;
-            this.mAllocationType = type;
-        }
-
-        ConnectLine(Type type, Script.KernelID kernelID, Script.FieldID fieldID) {
-            this.mFrom = kernelID;
-            this.mToF = fieldID;
-            this.mAllocationType = type;
         }
     }
 
@@ -801,20 +312,20 @@ public final class ScriptGroup extends BaseObj {
 
     public void execute() {
         if (!this.mUseIncSupp) {
-            RenderScript renderScript = this.mRS;
+            RenderScript renderScript = ((BaseObj) this).mRS;
             renderScript.nScriptGroupExecute(getID(renderScript));
             return;
         }
         for (int i = 0; i < this.mNodes.size(); i++) {
             Node node = this.mNodes.get(i);
             for (int i2 = 0; i2 < node.mOutputs.size(); i2++) {
-                ConnectLine connectLine = node.mOutputs.get(i2);
+                ConnectLine connectLine = (ConnectLine) node.mOutputs.get(i2);
                 if (connectLine.mAllocation == null) {
-                    Allocation createTyped = Allocation.createTyped(this.mRS, connectLine.mAllocationType, Allocation.MipmapControl.MIPMAP_NONE, 1);
+                    Allocation createTyped = Allocation.createTyped(((BaseObj) this).mRS, connectLine.mAllocationType, Allocation.MipmapControl.MIPMAP_NONE, 1);
                     connectLine.mAllocation = createTyped;
                     for (int i3 = i2 + 1; i3 < node.mOutputs.size(); i3++) {
-                        if (node.mOutputs.get(i3).mFrom == connectLine.mFrom) {
-                            node.mOutputs.get(i3).mAllocation = createTyped;
+                        if (((ConnectLine) node.mOutputs.get(i3)).mFrom == connectLine.mFrom) {
+                            ((ConnectLine) node.mOutputs.get(i3)).mAllocation = createTyped;
                         }
                     }
                 }
@@ -823,36 +334,36 @@ public final class ScriptGroup extends BaseObj {
         Iterator<Node> it = this.mNodes.iterator();
         while (it.hasNext()) {
             Node next = it.next();
-            Iterator<Script.KernelID> it2 = next.mKernels.iterator();
+            Iterator it2 = next.mKernels.iterator();
             while (it2.hasNext()) {
-                Script.KernelID next2 = it2.next();
-                Iterator<ConnectLine> it3 = next.mInputs.iterator();
+                Script.KernelID kernelID = (Script.KernelID) it2.next();
+                Iterator it3 = next.mInputs.iterator();
                 Allocation allocation = null;
                 while (it3.hasNext()) {
-                    ConnectLine next3 = it3.next();
-                    if (next3.mToK == next2) {
-                        allocation = next3.mAllocation;
+                    ConnectLine connectLine2 = (ConnectLine) it3.next();
+                    if (connectLine2.mToK == kernelID) {
+                        allocation = connectLine2.mAllocation;
                     }
                 }
-                for (C1243IO c1243io : this.mInputs) {
-                    if (c1243io.mKID == next2) {
-                        allocation = c1243io.mAllocation;
+                for (IO io : this.mInputs) {
+                    if (io.mKID == kernelID) {
+                        allocation = io.mAllocation;
                     }
                 }
-                Iterator<ConnectLine> it4 = next.mOutputs.iterator();
+                Iterator it4 = next.mOutputs.iterator();
                 Allocation allocation2 = null;
                 while (it4.hasNext()) {
-                    ConnectLine next4 = it4.next();
-                    if (next4.mFrom == next2) {
-                        allocation2 = next4.mAllocation;
+                    ConnectLine connectLine3 = (ConnectLine) it4.next();
+                    if (connectLine3.mFrom == kernelID) {
+                        allocation2 = connectLine3.mAllocation;
                     }
                 }
-                for (C1243IO c1243io2 : this.mOutputs) {
-                    if (c1243io2.mKID == next2) {
-                        allocation2 = c1243io2.mAllocation;
+                for (IO io2 : this.mOutputs) {
+                    if (io2.mKID == kernelID) {
+                        allocation2 = io2.mAllocation;
                     }
                 }
-                next2.mScript.forEach(next2.mSlot, allocation, allocation2, null);
+                kernelID.mScript.forEach(kernelID.mSlot, allocation, allocation2, null);
             }
         }
     }

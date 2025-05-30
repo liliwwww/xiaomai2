@@ -8,7 +8,7 @@ import androidx.compose.foundation.text.selection.TextSelectionMouseDetectorKt;
 import androidx.core.graphics.ColorUtils;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class CamColor {
     private static final float CHROMA_SEARCH_ENDPOINT = 0.4f;
     private static final float DE_MAX = 1.0f;
@@ -18,40 +18,32 @@ class CamColor {
     private final float mBstar;
     private final float mChroma;
     private final float mHue;
-
-    /* renamed from: mJ */
-    private final float f291mJ;
+    private final float mJ;
     private final float mJstar;
-
-    /* renamed from: mM */
-    private final float f292mM;
-
-    /* renamed from: mQ */
-    private final float f293mQ;
-
-    /* renamed from: mS */
-    private final float f294mS;
+    private final float mM;
+    private final float mQ;
+    private final float mS;
 
     CamColor(float f, float f2, float f3, float f4, float f5, float f6, float f7, float f8, float f9) {
         this.mHue = f;
         this.mChroma = f2;
-        this.f291mJ = f3;
-        this.f293mQ = f4;
-        this.f292mM = f5;
-        this.f294mS = f6;
+        this.mJ = f3;
+        this.mQ = f4;
+        this.mM = f5;
+        this.mS = f6;
         this.mJstar = f7;
         this.mAstar = f8;
         this.mBstar = f9;
     }
 
     @Nullable
-    private static CamColor findCamByJ(@FloatRange(from = 0.0d, m42to = 360.0d) float f, @FloatRange(from = 0.0d, m42to = Double.POSITIVE_INFINITY, toInclusive = false) float f2, @FloatRange(from = 0.0d, m42to = 100.0d) float f3) {
+    private static CamColor findCamByJ(@FloatRange(from = 0.0d, to = 360.0d) float f, @FloatRange(from = 0.0d, to = Double.POSITIVE_INFINITY, toInclusive = false) float f2, @FloatRange(from = 0.0d, to = 100.0d) float f3) {
         float f4 = 1000.0f;
         CamColor camColor = null;
         float f5 = 1000.0f;
         float f6 = 100.0f;
         float f7 = 0.0f;
-        while (Math.abs(f7 - f6) > 0.01f) {
+        while (Math.abs(f7 - f6) > LIGHTNESS_SEARCH_ENDPOINT) {
             float f8 = ((f6 - f7) / 2.0f) + f7;
             int viewedInSrgb = fromJch(f8, f2, f).viewedInSrgb();
             float lStarFromInt = CamUtils.lStarFromInt(viewedInSrgb);
@@ -124,12 +116,12 @@ class CamColor {
     }
 
     @NonNull
-    private static CamColor fromJch(@FloatRange(from = 0.0d, m42to = 100.0d) float f, @FloatRange(from = 0.0d, m42to = Double.POSITIVE_INFINITY, toInclusive = false) float f2, @FloatRange(from = 0.0d, m42to = 360.0d) float f3) {
+    private static CamColor fromJch(@FloatRange(from = 0.0d, to = 100.0d) float f, @FloatRange(from = 0.0d, to = Double.POSITIVE_INFINITY, toInclusive = false) float f2, @FloatRange(from = 0.0d, to = 360.0d) float f3) {
         return fromJchInFrame(f, f2, f3, ViewingConditions.DEFAULT);
     }
 
     @NonNull
-    private static CamColor fromJchInFrame(@FloatRange(from = 0.0d, m42to = 100.0d) float f, @FloatRange(from = 0.0d, m42to = Double.POSITIVE_INFINITY, toInclusive = false) float f2, @FloatRange(from = 0.0d, m42to = 360.0d) float f3, ViewingConditions viewingConditions) {
+    private static CamColor fromJchInFrame(@FloatRange(from = 0.0d, to = 100.0d) float f, @FloatRange(from = 0.0d, to = Double.POSITIVE_INFINITY, toInclusive = false) float f2, @FloatRange(from = 0.0d, to = 360.0d) float f3, ViewingConditions viewingConditions) {
         float c = (4.0f / viewingConditions.getC()) * ((float) Math.sqrt(f / 100.0d)) * (viewingConditions.getAw() + 4.0f) * viewingConditions.getFlRoot();
         float flRoot = f2 * viewingConditions.getFlRoot();
         float sqrt = ((float) Math.sqrt(((f2 / ((float) Math.sqrt(r4))) * viewingConditions.getC()) / (viewingConditions.getAw() + 4.0f))) * 50.0f;
@@ -139,7 +131,7 @@ class CamColor {
         return new CamColor(f3, f2, f, c, flRoot, sqrt, f4, log * ((float) Math.cos(d)), log * ((float) Math.sin(d)));
     }
 
-    static int toColor(@FloatRange(from = 0.0d, m42to = 360.0d) float f, @FloatRange(from = 0.0d, m42to = Double.POSITIVE_INFINITY, toInclusive = false) float f2, @FloatRange(from = 0.0d, m42to = 100.0d) float f3) {
+    static int toColor(@FloatRange(from = 0.0d, to = 360.0d) float f, @FloatRange(from = 0.0d, to = Double.POSITIVE_INFINITY, toInclusive = false) float f2, @FloatRange(from = 0.0d, to = 100.0d) float f3) {
         return toColor(f, f2, f3, ViewingConditions.DEFAULT);
     }
 
@@ -150,49 +142,49 @@ class CamColor {
         return (float) (Math.pow(Math.sqrt((jStar * jStar) + (aStar * aStar) + (bStar * bStar)), 0.63d) * 1.41d);
     }
 
-    @FloatRange(from = Double.NEGATIVE_INFINITY, fromInclusive = false, m42to = Double.POSITIVE_INFINITY, toInclusive = false)
+    @FloatRange(from = Double.NEGATIVE_INFINITY, fromInclusive = false, to = Double.POSITIVE_INFINITY, toInclusive = false)
     float getAStar() {
         return this.mAstar;
     }
 
-    @FloatRange(from = Double.NEGATIVE_INFINITY, fromInclusive = false, m42to = Double.POSITIVE_INFINITY, toInclusive = false)
+    @FloatRange(from = Double.NEGATIVE_INFINITY, fromInclusive = false, to = Double.POSITIVE_INFINITY, toInclusive = false)
     float getBStar() {
         return this.mBstar;
     }
 
-    @FloatRange(from = 0.0d, m42to = Double.POSITIVE_INFINITY, toInclusive = false)
+    @FloatRange(from = 0.0d, to = Double.POSITIVE_INFINITY, toInclusive = false)
     float getChroma() {
         return this.mChroma;
     }
 
-    @FloatRange(from = 0.0d, m42to = 360.0d, toInclusive = false)
+    @FloatRange(from = 0.0d, to = 360.0d, toInclusive = false)
     float getHue() {
         return this.mHue;
     }
 
-    @FloatRange(from = 0.0d, m42to = TextSelectionMouseDetectorKt.ClicksSlop)
+    @FloatRange(from = 0.0d, to = TextSelectionMouseDetectorKt.ClicksSlop)
     float getJ() {
-        return this.f291mJ;
+        return this.mJ;
     }
 
-    @FloatRange(from = 0.0d, m42to = TextSelectionMouseDetectorKt.ClicksSlop)
+    @FloatRange(from = 0.0d, to = TextSelectionMouseDetectorKt.ClicksSlop)
     float getJStar() {
         return this.mJstar;
     }
 
-    @FloatRange(from = 0.0d, m42to = Double.POSITIVE_INFINITY, toInclusive = false)
+    @FloatRange(from = 0.0d, to = Double.POSITIVE_INFINITY, toInclusive = false)
     float getM() {
-        return this.f292mM;
+        return this.mM;
     }
 
-    @FloatRange(from = 0.0d, m42to = Double.POSITIVE_INFINITY, toInclusive = false)
+    @FloatRange(from = 0.0d, to = Double.POSITIVE_INFINITY, toInclusive = false)
     float getQ() {
-        return this.f293mQ;
+        return this.mQ;
     }
 
-    @FloatRange(from = 0.0d, m42to = Double.POSITIVE_INFINITY, toInclusive = false)
+    @FloatRange(from = 0.0d, to = Double.POSITIVE_INFINITY, toInclusive = false)
     float getS() {
-        return this.f294mS;
+        return this.mS;
     }
 
     @ColorInt
@@ -227,7 +219,7 @@ class CamColor {
     }
 
     @ColorInt
-    static int toColor(@FloatRange(from = 0.0d, m42to = 360.0d) float f, @FloatRange(from = 0.0d, m42to = Double.POSITIVE_INFINITY, toInclusive = false) float f2, @FloatRange(from = 0.0d, m42to = 100.0d) float f3, @NonNull ViewingConditions viewingConditions) {
+    static int toColor(@FloatRange(from = 0.0d, to = 360.0d) float f, @FloatRange(from = 0.0d, to = Double.POSITIVE_INFINITY, toInclusive = false) float f2, @FloatRange(from = 0.0d, to = 100.0d) float f3, @NonNull ViewingConditions viewingConditions) {
         if (f2 < 1.0d || Math.round(f3) <= 0.0d || Math.round(f3) >= 100.0d) {
             return CamUtils.intFromLStar(f3);
         }

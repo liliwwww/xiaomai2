@@ -1,18 +1,18 @@
 package androidx.compose.foundation.lazy;
 
 import androidx.compose.foundation.gestures.Orientation;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyBeyondBoundsModifierKt {
     @Composable
     @NotNull

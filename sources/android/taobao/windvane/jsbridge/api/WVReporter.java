@@ -3,13 +3,12 @@ package android.taobao.windvane.jsbridge.api;
 import android.taobao.windvane.jsbridge.WVApiPlugin;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.taobao.windvane.monitor.WVMonitorService;
-import androidx.core.app.NotificationCompat;
 import java.util.Iterator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVReporter extends WVApiPlugin {
     @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
@@ -55,7 +54,7 @@ public class WVReporter extends WVApiPlugin {
             JSONObject jSONObject = new JSONObject(str);
             String url = wVCallBackContext.getWebview().getUrl();
             if (WVMonitorService.getErrorMonitor() != null) {
-                WVMonitorService.getErrorMonitor().didOccurJSError(url, jSONObject.optString(NotificationCompat.CATEGORY_MESSAGE), jSONObject.optString("file"), jSONObject.optString("line"));
+                WVMonitorService.getErrorMonitor().didOccurJSError(url, jSONObject.optString("msg"), jSONObject.optString("file"), jSONObject.optString("line"));
             }
             wVCallBackContext.success();
         } catch (JSONException e) {

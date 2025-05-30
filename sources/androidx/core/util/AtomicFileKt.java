@@ -2,6 +2,7 @@ package androidx.core.util;
 
 import android.annotation.SuppressLint;
 import android.taobao.windvane.util.WVConstants;
+import android.util.AtomicFile;
 import androidx.annotation.RequiresApi;
 import java.io.FileOutputStream;
 import java.nio.charset.Charset;
@@ -14,11 +15,11 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @SuppressLint({"ClassVerificationFailure"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AtomicFileKt {
     @RequiresApi(17)
     @NotNull
-    public static final byte[] readBytes(@NotNull android.util.AtomicFile atomicFile) {
+    public static final byte[] readBytes(@NotNull AtomicFile atomicFile) {
         Intrinsics.checkNotNullParameter(atomicFile, "<this>");
         byte[] readFully = atomicFile.readFully();
         Intrinsics.checkNotNullExpressionValue(readFully, "readFully()");
@@ -27,7 +28,7 @@ public final class AtomicFileKt {
 
     @RequiresApi(17)
     @NotNull
-    public static final String readText(@NotNull android.util.AtomicFile atomicFile, @NotNull Charset charset) {
+    public static final String readText(@NotNull AtomicFile atomicFile, @NotNull Charset charset) {
         Intrinsics.checkNotNullParameter(atomicFile, "<this>");
         Intrinsics.checkNotNullParameter(charset, WVConstants.CHARSET);
         byte[] readFully = atomicFile.readFully();
@@ -35,7 +36,7 @@ public final class AtomicFileKt {
         return new String(readFully, charset);
     }
 
-    public static /* synthetic */ String readText$default(android.util.AtomicFile atomicFile, Charset charset, int i, Object obj) {
+    public static /* synthetic */ String readText$default(AtomicFile atomicFile, Charset charset, int i, Object obj) {
         if ((i & 1) != 0) {
             charset = Charsets.UTF_8;
         }
@@ -43,7 +44,7 @@ public final class AtomicFileKt {
     }
 
     @RequiresApi(17)
-    public static final void tryWrite(@NotNull android.util.AtomicFile atomicFile, @NotNull Function1<? super FileOutputStream, Unit> function1) {
+    public static final void tryWrite(@NotNull AtomicFile atomicFile, @NotNull Function1<? super FileOutputStream, Unit> function1) {
         Intrinsics.checkNotNullParameter(atomicFile, "<this>");
         Intrinsics.checkNotNullParameter(function1, "block");
         FileOutputStream startWrite = atomicFile.startWrite();
@@ -62,7 +63,7 @@ public final class AtomicFileKt {
     }
 
     @RequiresApi(17)
-    public static final void writeBytes(@NotNull android.util.AtomicFile atomicFile, @NotNull byte[] bArr) {
+    public static final void writeBytes(@NotNull AtomicFile atomicFile, @NotNull byte[] bArr) {
         Intrinsics.checkNotNullParameter(atomicFile, "<this>");
         Intrinsics.checkNotNullParameter(bArr, "array");
         FileOutputStream startWrite = atomicFile.startWrite();
@@ -77,7 +78,7 @@ public final class AtomicFileKt {
     }
 
     @RequiresApi(17)
-    public static final void writeText(@NotNull android.util.AtomicFile atomicFile, @NotNull String str, @NotNull Charset charset) {
+    public static final void writeText(@NotNull AtomicFile atomicFile, @NotNull String str, @NotNull Charset charset) {
         Intrinsics.checkNotNullParameter(atomicFile, "<this>");
         Intrinsics.checkNotNullParameter(str, "text");
         Intrinsics.checkNotNullParameter(charset, WVConstants.CHARSET);
@@ -86,7 +87,7 @@ public final class AtomicFileKt {
         writeBytes(atomicFile, bytes);
     }
 
-    public static /* synthetic */ void writeText$default(android.util.AtomicFile atomicFile, String str, Charset charset, int i, Object obj) {
+    public static /* synthetic */ void writeText$default(AtomicFile atomicFile, String str, Charset charset, int i, Object obj) {
         if ((i & 2) != 0) {
             charset = Charsets.UTF_8;
         }

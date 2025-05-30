@@ -13,7 +13,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.internal.view.SupportMenuItem;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class MenuItemCompat {
 
     @Deprecated
@@ -102,15 +102,6 @@ public final class MenuItemCompat {
         static MenuItem setTooltipText(MenuItem menuItem, CharSequence charSequence) {
             return menuItem.setTooltipText(charSequence);
         }
-    }
-
-    /* compiled from: Taobao */
-    @Deprecated
-    /* loaded from: classes2.dex */
-    public interface OnActionExpandListener {
-        boolean onMenuItemActionCollapse(MenuItem menuItem);
-
-        boolean onMenuItemActionExpand(MenuItem menuItem);
     }
 
     private MenuItemCompat() {
@@ -268,12 +259,12 @@ public final class MenuItemCompat {
         return menuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() { // from class: androidx.core.view.MenuItemCompat.1
             @Override // android.view.MenuItem.OnActionExpandListener
             public boolean onMenuItemActionCollapse(MenuItem menuItem2) {
-                return OnActionExpandListener.this.onMenuItemActionCollapse(menuItem2);
+                return onActionExpandListener.onMenuItemActionCollapse(menuItem2);
             }
 
             @Override // android.view.MenuItem.OnActionExpandListener
             public boolean onMenuItemActionExpand(MenuItem menuItem2) {
-                return OnActionExpandListener.this.onMenuItemActionExpand(menuItem2);
+                return onActionExpandListener.onMenuItemActionExpand(menuItem2);
             }
         });
     }

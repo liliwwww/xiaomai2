@@ -5,48 +5,19 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.RequiresPermission;
 import androidx.annotation.RestrictTo;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ConnectivityManagerCompat {
     public static final int RESTRICT_BACKGROUND_STATUS_DISABLED = 1;
     public static final int RESTRICT_BACKGROUND_STATUS_ENABLED = 3;
     public static final int RESTRICT_BACKGROUND_STATUS_WHITELISTED = 2;
-
-    /* compiled from: Taobao */
-    @RequiresApi(16)
-    /* loaded from: classes.dex */
-    static class Api16Impl {
-        private Api16Impl() {
-        }
-
-        @RequiresPermission("android.permission.ACCESS_NETWORK_STATE")
-        @DoNotInline
-        static boolean isActiveNetworkMetered(ConnectivityManager connectivityManager) {
-            return connectivityManager.isActiveNetworkMetered();
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(24)
-    /* loaded from: classes.dex */
-    static class Api24Impl {
-        private Api24Impl() {
-        }
-
-        @DoNotInline
-        static int getRestrictBackgroundStatus(ConnectivityManager connectivityManager) {
-            return connectivityManager.getRestrictBackgroundStatus();
-        }
-    }
 
     /* compiled from: Taobao */
     @Retention(RetentionPolicy.SOURCE)

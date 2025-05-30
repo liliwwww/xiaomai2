@@ -1,19 +1,21 @@
 package androidx.compose.foundation.shape;
 
-import androidx.compose.p004ui.geometry.CornerRadiusKt;
-import androidx.compose.p004ui.geometry.Rect;
-import androidx.compose.p004ui.geometry.RoundRectKt;
-import androidx.compose.p004ui.geometry.SizeKt;
-import androidx.compose.p004ui.graphics.Outline;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.geometry.CornerRadiusKt;
+import androidx.compose.ui.geometry.Rect;
+import androidx.compose.ui.geometry.RoundRectKt;
+import androidx.compose.ui.geometry.SizeKt;
+import androidx.compose.ui.graphics.Outline;
+import androidx.compose.ui.graphics.Outline$Rectangle;
+import androidx.compose.ui.graphics.Outline$Rounded;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class RoundedCornerShape extends CornerBasedShape {
     public static final int $stable = 0;
 
@@ -29,14 +31,14 @@ public final class RoundedCornerShape extends CornerBasedShape {
     @Override // androidx.compose.foundation.shape.CornerBasedShape
     @NotNull
     /* renamed from: createOutline-LjSzlW0 */
-    public Outline mo1677createOutlineLjSzlW0(long j, float f, float f2, float f3, float f4, @NotNull LayoutDirection layoutDirection) {
+    public Outline mo534createOutlineLjSzlW0(long j, float f, float f2, float f3, float f4, @NotNull LayoutDirection layoutDirection) {
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
         if (((f + f2) + f3) + f4 == 0.0f) {
-            return new Outline.Rectangle(SizeKt.m2646toRectuvyYCjk(j));
+            return new Outline$Rectangle(SizeKt.toRect-uvyYCjk(j));
         }
-        Rect m2646toRectuvyYCjk = SizeKt.m2646toRectuvyYCjk(j);
+        Rect rect = SizeKt.toRect-uvyYCjk(j);
         LayoutDirection layoutDirection2 = LayoutDirection.Ltr;
-        return new Outline.Rounded(RoundRectKt.m2608RoundRectZAM2FJo(m2646toRectuvyYCjk, CornerRadiusKt.CornerRadius$default(layoutDirection == layoutDirection2 ? f : f2, 0.0f, 2, null), CornerRadiusKt.CornerRadius$default(layoutDirection == layoutDirection2 ? f2 : f, 0.0f, 2, null), CornerRadiusKt.CornerRadius$default(layoutDirection == layoutDirection2 ? f3 : f4, 0.0f, 2, null), CornerRadiusKt.CornerRadius$default(layoutDirection == layoutDirection2 ? f4 : f3, 0.0f, 2, null)));
+        return new Outline$Rounded(RoundRectKt.RoundRect-ZAM2FJo(rect, CornerRadiusKt.CornerRadius$default(layoutDirection == layoutDirection2 ? f : f2, 0.0f, 2, (Object) null), CornerRadiusKt.CornerRadius$default(layoutDirection == layoutDirection2 ? f2 : f, 0.0f, 2, (Object) null), CornerRadiusKt.CornerRadius$default(layoutDirection == layoutDirection2 ? f3 : f4, 0.0f, 2, (Object) null), CornerRadiusKt.CornerRadius$default(layoutDirection == layoutDirection2 ? f4 : f3, 0.0f, 2, (Object) null)));
     }
 
     public boolean equals(@Nullable Object obj) {

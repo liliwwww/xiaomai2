@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> implements PersistentList.Builder<E> {
 
     @NotNull
@@ -339,7 +339,7 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
     private final int removeAllFromTail(Function1<? super E, Boolean> function1, int i, ObjectRef objectRef) {
         int removeAll = removeAll(function1, this.tail, i, objectRef);
         if (removeAll == i) {
-            CommonFunctionsKt.m2432assert(objectRef.getValue() == this.tail);
+            CommonFunctionsKt.assert(objectRef.getValue() == this.tail);
             return i;
         }
         Object value = objectRef.getValue();
@@ -383,7 +383,7 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
 
     private final Object removeFromTailAt(Object[] objArr, int i, int i2, int i3) {
         int size = size() - i;
-        CommonFunctionsKt.m2432assert(i3 < size);
+        CommonFunctionsKt.assert(i3 < size);
         if (size == 1) {
             Object obj = this.tail[0];
             pullLastBufferFromRoot(objArr, i, i2);
@@ -500,7 +500,6 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // java.util.List, java.util.Collection
     public boolean add(E e) {
         ((AbstractList) this).modCount++;
         int tailSize = tailSize();
@@ -516,7 +515,6 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // java.util.List, java.util.Collection
     public boolean addAll(@NotNull Collection<? extends E> collection) {
         Intrinsics.checkNotNullParameter(collection, "elements");
         if (collection.isEmpty()) {
@@ -542,7 +540,6 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
         return true;
     }
 
-    @Override // java.util.List
     public E get(int i) {
         ListImplementation.checkElementIndex$runtime_release(i, size());
         return (E) bufferFor(i)[i & 31];
@@ -571,19 +568,16 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
         return this.tail;
     }
 
-    @Override // java.util.List, java.util.Collection, java.lang.Iterable
     @NotNull
     public Iterator<E> iterator() {
         return listIterator();
     }
 
-    @Override // java.util.List
     @NotNull
     public ListIterator<E> listIterator() {
         return listIterator(0);
     }
 
-    @Override // java.util.List, java.util.Collection
     public boolean removeAll(@NotNull final Collection<? extends Object> collection) {
         Intrinsics.checkNotNullParameter(collection, "elements");
         return removeAllWithPredicate(new Function1<E, Boolean>() { // from class: androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableList.PersistentVectorBuilder$removeAll$1
@@ -600,7 +594,7 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
 
             /* JADX WARN: Multi-variable type inference failed */
             /* renamed from: invoke, reason: collision with other method in class */
-            public /* bridge */ /* synthetic */ Object m2424invoke(Object obj) {
+            public /* bridge */ /* synthetic */ Object m770invoke(Object obj) {
                 return invoke((PersistentVectorBuilder$removeAll$1<E>) obj);
             }
         });
@@ -632,7 +626,6 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // java.util.List
     public E set(int i, E e) {
         ListImplementation.checkElementIndex$runtime_release(i, size());
         if (rootSize() > i) {
@@ -670,7 +663,7 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
             i = removeAll(function1, leafBufferIterator.next(), 32, objectRef);
         }
         if (i == 32) {
-            CommonFunctionsKt.m2432assert(!leafBufferIterator.hasNext());
+            CommonFunctionsKt.assert(!leafBufferIterator.hasNext());
             int removeAllFromTail = removeAllFromTail(function1, tailSize, objectRef);
             if (removeAllFromTail == 0) {
                 pullLastBufferFromRoot(this.root, size(), this.rootShift);
@@ -708,7 +701,6 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
         return tailSize(size());
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentCollection.Builder
     @NotNull
     public PersistentList<E> build() {
         PersistentVector persistentVector;
@@ -738,11 +730,10 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
         return (PersistentList<E>) persistentVector;
     }
 
-    @Override // java.util.List
     @NotNull
     public ListIterator<E> listIterator(int i) {
         ListImplementation.checkPositionIndex$runtime_release(i, size());
-        return new PersistentVectorMutableIterator(this, i);
+        return (ListIterator<E>) new PersistentVectorMutableIterator(this, i);
     }
 
     private final void insertIntoRoot(Collection<? extends E> collection, int i, int i2, Object[][] objArr, int i3, Object[] objArr2) {
@@ -761,7 +752,6 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // java.util.List
     public void add(int i, E e) {
         ListImplementation.checkPositionIndex$runtime_release(i, size());
         if (i == size()) {
@@ -781,7 +771,6 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // java.util.List
     public boolean addAll(int i, @NotNull Collection<? extends E> collection) {
         Object[] copyInto;
         Intrinsics.checkNotNullParameter(collection, "elements");
@@ -796,7 +785,7 @@ public final class PersistentVectorBuilder<E> extends AbstractMutableList<E> imp
         int i2 = (i >> 5) << 5;
         int size = (((size() - i2) + collection.size()) - 1) / 32;
         if (size == 0) {
-            CommonFunctionsKt.m2432assert(i >= rootSize());
+            CommonFunctionsKt.assert(i >= rootSize());
             int i3 = i & 31;
             int size2 = ((i + collection.size()) - 1) & 31;
             Object[] objArr = this.tail;

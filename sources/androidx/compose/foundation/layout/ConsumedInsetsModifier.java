@@ -1,11 +1,11 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.modifier.ModifierLocalConsumer;
-import androidx.compose.p004ui.modifier.ModifierLocalReadScope;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.platform.InspectorValueInfo;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.modifier.ModifierLocalConsumer;
+import androidx.compose.ui.modifier.ModifierLocalReadScope;
+import androidx.compose.ui.platform.InspectorInfo;
+import androidx.compose.ui.platform.InspectorValueInfo;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
@@ -17,7 +17,7 @@ import tb.nt2;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class ConsumedInsetsModifier extends InspectorValueInfo implements ModifierLocalConsumer {
 
     @NotNull
@@ -27,7 +27,6 @@ final class ConsumedInsetsModifier extends InspectorValueInfo implements Modifie
     private WindowInsets oldWindowInsets;
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    /* JADX WARN: Multi-variable type inference failed */
     public ConsumedInsetsModifier(@NotNull Function1<? super WindowInsets, Unit> function1, @NotNull Function1<? super InspectorInfo, Unit> function12) {
         super(function12);
         Intrinsics.checkNotNullParameter(function1, "block");
@@ -35,12 +34,12 @@ final class ConsumedInsetsModifier extends InspectorValueInfo implements Modifie
         this.block = function1;
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
@@ -55,12 +54,12 @@ final class ConsumedInsetsModifier extends InspectorValueInfo implements Modifie
         return false;
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
@@ -69,7 +68,7 @@ final class ConsumedInsetsModifier extends InspectorValueInfo implements Modifie
         return this.block.hashCode();
     }
 
-    @Override // androidx.compose.p004ui.modifier.ModifierLocalConsumer
+    @Override // androidx.compose.ui.modifier.ModifierLocalConsumer
     public void onModifierLocalsUpdated(@NotNull ModifierLocalReadScope modifierLocalReadScope) {
         Intrinsics.checkNotNullParameter(modifierLocalReadScope, "scope");
         WindowInsets windowInsets = (WindowInsets) modifierLocalReadScope.getCurrent(WindowInsetsPaddingKt.getModifierLocalConsumedWindowInsets());
@@ -80,7 +79,6 @@ final class ConsumedInsetsModifier extends InspectorValueInfo implements Modifie
         this.block.invoke(windowInsets);
     }
 
-    @Override // androidx.compose.p004ui.Modifier
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }

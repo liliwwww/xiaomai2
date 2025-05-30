@@ -16,7 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVJsPatch implements WVEventListener {
     private static final String TAG = "WVJsPatch";
     private static WVJsPatch jsPatch;
@@ -40,23 +40,23 @@ public class WVJsPatch implements WVEventListener {
 
     private boolean tryJsPatch(Map<String, WVPatchConfig> map, IWVWebView iWVWebView, String str) {
         if (map == null || map.isEmpty() || iWVWebView == null || TextUtils.isEmpty(str)) {
-            TaoLog.m18d(TAG, "no jspatch need execute");
+            TaoLog.d(TAG, "no jspatch need execute");
             return false;
         }
         for (Map.Entry<String, WVPatchConfig> entry : map.entrySet()) {
             String key = entry.getKey();
             WVPatchConfig value = entry.getValue();
             if (value == null) {
-                TaoLog.m30w(TAG, "config is null");
+                TaoLog.w(TAG, "config is null");
             } else {
                 if (TaoLog.getLogStatus()) {
-                    TaoLog.m18d(TAG, "start match rules, rule: " + key);
+                    TaoLog.d(TAG, "start match rules, rule: " + key);
                 }
                 if (value.pattern == null) {
                     try {
                         value.pattern = Pattern.compile(key);
                     } catch (PatternSyntaxException unused) {
-                        TaoLog.m21e(TAG, "compile rule error, pattern: " + key);
+                        TaoLog.e(TAG, "compile rule error, pattern: " + key);
                     }
                 }
                 Pattern pattern = value.pattern;
@@ -68,7 +68,7 @@ public class WVJsPatch implements WVEventListener {
                     if (!TaoLog.getLogStatus()) {
                         return true;
                     }
-                    TaoLog.m18d(TAG, "url matched, start execute jspatch, jsString: " + value.jsString);
+                    TaoLog.d(TAG, "url matched, start execute jspatch, jsString: " + value.jsString);
                     return true;
                 }
             }
@@ -85,7 +85,7 @@ public class WVJsPatch implements WVEventListener {
     public synchronized void config(String str) {
         removeAllConfigRules();
         if (TextUtils.isEmpty(str)) {
-            TaoLog.m18d(TAG, "no jspatch");
+            TaoLog.d(TAG, "no jspatch");
             return;
         }
         try {
@@ -101,20 +101,20 @@ public class WVJsPatch implements WVEventListener {
                 }
             }
             if (this.ruleMap.isEmpty()) {
-                TaoLog.m18d(TAG, "jspatch config is Empty");
+                TaoLog.d(TAG, "jspatch config is Empty");
                 return;
             }
             if (TaoLog.getLogStatus()) {
-                TaoLog.m18d(TAG, "config success, config: " + str);
+                TaoLog.d(TAG, "config success, config: " + str);
             }
         } catch (JSONException unused) {
-            TaoLog.m21e(TAG, "get config error, config: " + str);
+            TaoLog.e(TAG, "get config error, config: " + str);
         }
     }
 
     public synchronized void execute(IWVWebView iWVWebView, String str) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(TAG, "start execute jspatch, url: " + str);
+            TaoLog.d(TAG, "start execute jspatch, url: " + str);
         }
         tryJsPatch(this.ruleMap, iWVWebView, str);
         tryJsPatch(this.configRuleMap, iWVWebView, str);
@@ -128,7 +128,6 @@ public class WVJsPatch implements WVEventListener {
         return this.ruleMap;
     }
 
-    @Override // android.taobao.windvane.service.WVEventListener
     public WVEventResult onEvent(int i, WVEventContext wVEventContext, Object... objArr) {
         if (i == 1002) {
             execute(wVEventContext.webView, wVEventContext.url);
@@ -141,7 +140,7 @@ public class WVJsPatch implements WVEventListener {
             WVPatchConfig wVPatchConfig = new WVPatchConfig();
             wVPatchConfig.jsString = str2;
             this.configRuleMap.put(str, wVPatchConfig);
-            TaoLog.m18d(TAG, "putConfig, url: " + str + " js: " + wVPatchConfig.jsString);
+            TaoLog.d(TAG, "putConfig, url: " + str + " js: " + wVPatchConfig.jsString);
         }
     }
 
@@ -157,7 +156,7 @@ public class WVJsPatch implements WVEventListener {
         String str2;
         Map<String, WVPatchConfig> map = this.ruleMap;
         if (map == null || map.isEmpty() || str == null) {
-            TaoLog.m30w(TAG, "not need removeRuleWithKey");
+            TaoLog.w(TAG, "not need removeRuleWithKey");
             return;
         }
         for (Map.Entry<String, WVPatchConfig> entry : this.ruleMap.entrySet()) {
@@ -165,7 +164,7 @@ public class WVJsPatch implements WVEventListener {
             if (value != null && (str2 = value.key) != null && str.equals(str2)) {
                 String key = entry.getKey();
                 this.ruleMap.remove(key);
-                TaoLog.m24i(TAG, "removeRuleWithKey : " + key);
+                TaoLog.i(TAG, "removeRuleWithKey : " + key);
             }
         }
     }

@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.SwipeableV2State", f = "SwipeableV2.kt", i = {0}, l = {250}, m = "animateTo", n = {"this"}, s = {"L$0"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class SwipeableV2State$animateTo$1 extends ContinuationImpl {
     Object L$0;
     int label;

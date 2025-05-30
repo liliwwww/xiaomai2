@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class LongSparseArray<E> implements Cloneable {
     private static final Object DELETED = new Object();
     private boolean mGarbage;
@@ -16,8 +16,7 @@ public class LongSparseArray<E> implements Cloneable {
         this(10);
     }
 
-    /* renamed from: gc */
-    private void m50gc() {
+    private void gc() {
         int i = this.mSize;
         long[] jArr = this.mKeys;
         Object[] objArr = this.mValues;
@@ -44,7 +43,7 @@ public class LongSparseArray<E> implements Cloneable {
             return;
         }
         if (this.mGarbage && i >= this.mKeys.length) {
-            m50gc();
+            gc();
         }
         int i2 = this.mSize;
         if (i2 >= this.mKeys.length) {
@@ -93,14 +92,14 @@ public class LongSparseArray<E> implements Cloneable {
 
     public int indexOfKey(long j) {
         if (this.mGarbage) {
-            m50gc();
+            gc();
         }
         return ContainerHelpers.binarySearch(this.mKeys, this.mSize, j);
     }
 
     public int indexOfValue(E e) {
         if (this.mGarbage) {
-            m50gc();
+            gc();
         }
         for (int i = 0; i < this.mSize; i++) {
             if (this.mValues[i] == e) {
@@ -116,7 +115,7 @@ public class LongSparseArray<E> implements Cloneable {
 
     public long keyAt(int i) {
         if (this.mGarbage) {
-            m50gc();
+            gc();
         }
         return this.mKeys[i];
     }
@@ -138,7 +137,7 @@ public class LongSparseArray<E> implements Cloneable {
             }
         }
         if (this.mGarbage && i2 >= this.mKeys.length) {
-            m50gc();
+            gc();
             i = ~ContainerHelpers.binarySearch(this.mKeys, this.mSize, j);
         }
         int i3 = this.mSize;
@@ -219,14 +218,14 @@ public class LongSparseArray<E> implements Cloneable {
 
     public void setValueAt(int i, E e) {
         if (this.mGarbage) {
-            m50gc();
+            gc();
         }
         this.mValues[i] = e;
     }
 
     public int size() {
         if (this.mGarbage) {
-            m50gc();
+            gc();
         }
         return this.mSize;
     }
@@ -256,7 +255,7 @@ public class LongSparseArray<E> implements Cloneable {
 
     public E valueAt(int i) {
         if (this.mGarbage) {
-            m50gc();
+            gc();
         }
         return (E) this.mValues[i];
     }
@@ -274,7 +273,7 @@ public class LongSparseArray<E> implements Cloneable {
     }
 
     /* renamed from: clone, reason: merged with bridge method [inline-methods] */
-    public LongSparseArray<E> m938clone() {
+    public LongSparseArray<E> m20clone() {
         try {
             LongSparseArray<E> longSparseArray = (LongSparseArray) super.clone();
             longSparseArray.mKeys = (long[]) this.mKeys.clone();

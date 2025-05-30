@@ -3,7 +3,7 @@ package android.taobao.windvane.monitor;
 import android.taobao.windvane.packageapp.zipapp.data.ZipAppInfo;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface WVPackageMonitorInterface {
     public static final String CONFIG_CLOSED_FAILED = "23";
     public static final String CREATE_STREAM_FAILED = "11";

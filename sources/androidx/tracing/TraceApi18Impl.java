@@ -1,20 +1,21 @@
 package androidx.tracing;
 
+import android.os.Trace;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
 @RequiresApi(18)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class TraceApi18Impl {
     private TraceApi18Impl() {
     }
 
     public static void beginSection(@NonNull String str) {
-        android.os.Trace.beginSection(str);
+        Trace.beginSection(str);
     }
 
     public static void endSection() {
-        android.os.Trace.endSection();
+        Trace.endSection();
     }
 }

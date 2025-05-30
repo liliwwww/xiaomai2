@@ -5,34 +5,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class BundleCompat {
-
-    /* compiled from: Taobao */
-    @RequiresApi(18)
-    /* loaded from: classes2.dex */
-    static class Api18Impl {
-        private Api18Impl() {
-        }
-
-        @DoNotInline
-        static IBinder getBinder(Bundle bundle, String str) {
-            return bundle.getBinder(str);
-        }
-
-        @DoNotInline
-        static void putBinder(Bundle bundle, String str, IBinder iBinder) {
-            bundle.putBinder(str, iBinder);
-        }
-    }
 
     /* compiled from: Taobao */
     @SuppressLint({"BanUncheckedReflection"})

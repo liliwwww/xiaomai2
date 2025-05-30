@@ -1,10 +1,11 @@
 package androidx.renderscript;
 
 import android.os.Build;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 import androidx.renderscript.Script;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ScriptIntrinsicLUT extends ScriptIntrinsic {
     private static final int INTRINSIC_API_LEVEL = 19;
     private final byte[] mCache;
@@ -15,24 +16,25 @@ public class ScriptIntrinsicLUT extends ScriptIntrinsic {
     protected ScriptIntrinsicLUT(long j, RenderScript renderScript) {
         super(j, renderScript);
         this.mMatrix = new Matrix4f();
-        this.mCache = new byte[1024];
+        this.mCache = new byte[AccessibilityEventCompat.TYPE_TOUCH_EXPLORATION_GESTURE_END];
         this.mDirty = true;
     }
 
+    /* JADX WARN: Type inference failed for: r6v1, types: [androidx.renderscript.Script, androidx.renderscript.ScriptIntrinsicLUT] */
     public static ScriptIntrinsicLUT create(RenderScript renderScript, Element element) {
         boolean z = renderScript.isUseNative() && Build.VERSION.SDK_INT < 19;
-        ScriptIntrinsicLUT scriptIntrinsicLUT = new ScriptIntrinsicLUT(renderScript.nScriptIntrinsicCreate(3, element.getID(renderScript), z), renderScript);
+        ?? scriptIntrinsicLUT = new ScriptIntrinsicLUT(renderScript.nScriptIntrinsicCreate(3, element.getID(renderScript), z), renderScript);
         scriptIntrinsicLUT.setIncSupp(z);
-        scriptIntrinsicLUT.mTables = Allocation.createSized(renderScript, Element.m294U8(renderScript), 1024);
+        ((ScriptIntrinsicLUT) scriptIntrinsicLUT).mTables = Allocation.createSized(renderScript, Element.U8(renderScript), AccessibilityEventCompat.TYPE_TOUCH_EXPLORATION_GESTURE_END);
         for (int i = 0; i < 256; i++) {
-            byte[] bArr = scriptIntrinsicLUT.mCache;
+            byte[] bArr = ((ScriptIntrinsicLUT) scriptIntrinsicLUT).mCache;
             byte b = (byte) i;
             bArr[i] = b;
             bArr[i + 256] = b;
             bArr[i + 512] = b;
             bArr[i + 768] = b;
         }
-        scriptIntrinsicLUT.setVar(0, scriptIntrinsicLUT.mTables);
+        scriptIntrinsicLUT.setVar(0, ((ScriptIntrinsicLUT) scriptIntrinsicLUT).mTables);
         return scriptIntrinsicLUT;
     }
 
@@ -45,6 +47,7 @@ public class ScriptIntrinsicLUT extends ScriptIntrinsic {
         }
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void forEach(Allocation allocation, Allocation allocation2) {
         if (this.mDirty) {
             this.mDirty = false;
@@ -53,6 +56,7 @@ public class ScriptIntrinsicLUT extends ScriptIntrinsic {
         forEach(0, allocation, allocation2, null);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public Script.KernelID getKernelID() {
         return createKernelID(0, 3, null, null);
     }

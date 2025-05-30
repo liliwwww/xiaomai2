@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class FragmentTabHost extends TabHost implements TabHost.OnTabChangeListener {
     private boolean mAttached;
     private int mContainerId;
@@ -31,38 +31,8 @@ public class FragmentTabHost extends TabHost implements TabHost.OnTabChangeListe
     private final ArrayList<TabInfo> mTabs;
 
     /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static class DummyTabFactory implements TabHost.TabContentFactory {
-        private final Context mContext;
-
-        public DummyTabFactory(Context context) {
-            this.mContext = context;
-        }
-
-        @Override // android.widget.TabHost.TabContentFactory
-        public View createTabContent(String str) {
-            View view = new View(this.mContext);
-            view.setMinimumWidth(0);
-            view.setMinimumHeight(0);
-            return view;
-        }
-    }
-
-    /* compiled from: Taobao */
     static class SavedState extends View.BaseSavedState {
-        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() { // from class: androidx.fragment.app.FragmentTabHost.SavedState.1
-            /* JADX WARN: Can't rename method to resolve collision */
-            @Override // android.os.Parcelable.Creator
-            public SavedState createFromParcel(Parcel parcel) {
-                return new SavedState(parcel);
-            }
-
-            /* JADX WARN: Can't rename method to resolve collision */
-            @Override // android.os.Parcelable.Creator
-            public SavedState[] newArray(int i) {
-                return new SavedState[i];
-            }
-        };
+        public static final Parcelable.Creator<SavedState> CREATOR = new 1();
         String curTab;
 
         SavedState(Parcelable parcelable) {
@@ -192,7 +162,7 @@ public class FragmentTabHost extends TabHost implements TabHost.OnTabChangeListe
 
     @Deprecated
     public void addTab(@NonNull TabHost.TabSpec tabSpec, @NonNull Class<?> cls, @Nullable Bundle bundle) {
-        tabSpec.setContent(new DummyTabFactory(this.mContext));
+        tabSpec.setContent((TabHost.TabContentFactory) new DummyTabFactory(this.mContext));
         String tag = tabSpec.getTag();
         TabInfo tabInfo = new TabInfo(tag, cls, bundle);
         if (this.mAttached) {

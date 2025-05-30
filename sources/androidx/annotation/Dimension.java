@@ -17,33 +17,21 @@ import org.jetbrains.annotations.NotNull;
 @Documented
 @Retention(RetentionPolicy.CLASS)
 @kotlin.annotation.Retention(AnnotationRetention.BINARY)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public @interface Dimension {
 
     @NotNull
     public static final Companion Companion = Companion.$$INSTANCE;
-
-    /* renamed from: DP */
-    public static final int f39DP = 0;
-
-    /* renamed from: PX */
-    public static final int f40PX = 1;
-
-    /* renamed from: SP */
-    public static final int f41SP = 2;
+    public static final int DP = 0;
+    public static final int PX = 1;
+    public static final int SP = 2;
 
     /* compiled from: Taobao */
     public static final class Companion {
         static final /* synthetic */ Companion $$INSTANCE = new Companion();
-
-        /* renamed from: DP */
-        public static final int f42DP = 0;
-
-        /* renamed from: PX */
-        public static final int f43PX = 1;
-
-        /* renamed from: SP */
-        public static final int f44SP = 2;
+        public static final int DP = 0;
+        public static final int PX = 1;
+        public static final int SP = 2;
 
         private Companion() {
         }

@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.taobao.windvane.connect.HttpConnector;
 import android.taobao.windvane.jsbridge.WVApiPlugin;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.taobao.windvane.jsbridge.WVResult;
@@ -18,7 +17,6 @@ import android.taobao.windvane.runtimepermission.PermissionProposer;
 import android.taobao.windvane.thread.WVThreadPool;
 import android.taobao.windvane.util.TaoLog;
 import android.text.TextUtils;
-import androidx.core.app.NotificationCompat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -26,7 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVLocation extends WVApiPlugin implements LocationListener, Handler.Callback {
     private static final int GPS_TIMEOUT = 15000;
     private static final String TAG = "WVLocation";
@@ -46,106 +44,44 @@ public class WVLocation extends WVApiPlugin implements LocationListener, Handler
     /* JADX INFO: Access modifiers changed from: private */
     public Address getAddress(double d, double d2) {
         try {
-            List<Address> fromLocation = new Geocoder(this.mContext).getFromLocation(d, d2, 1);
+            List<Address> fromLocation = new Geocoder(((WVApiPlugin) this).mContext).getFromLocation(d, d2, 1);
             if (fromLocation == null || fromLocation.size() <= 0) {
                 return null;
             }
             return fromLocation.get(0);
         } catch (Exception e) {
-            TaoLog.m21e("WVLocation", "getAddress: getFromLocation error. " + e.getMessage());
+            TaoLog.e("WVLocation", "getAddress: getFromLocation error. " + e.getMessage());
             return null;
         }
     }
 
     private void registerLocation(boolean z) {
         if (this.locationManager == null) {
-            this.locationManager = (LocationManager) this.mContext.getSystemService(HttpConnector.REDIRECT_LOCATION);
+            this.locationManager = (LocationManager) ((WVApiPlugin) this).mContext.getSystemService("location");
         }
         try {
             this.getLocationSuccess = false;
             com.alibaba.wireless.security.aopsdk.replace.android.location.LocationManager.requestLocationUpdates(this.locationManager, "network", this.MIN_TIME, this.MIN_DISTANCE, this);
             com.alibaba.wireless.security.aopsdk.replace.android.location.LocationManager.requestLocationUpdates(this.locationManager, "gps", this.MIN_TIME, this.MIN_DISTANCE, this);
             if (TaoLog.getLogStatus()) {
-                TaoLog.m18d("WVLocation", " registerLocation start provider GPS and NETWORK");
+                TaoLog.d("WVLocation", " registerLocation start provider GPS and NETWORK");
             }
         } catch (Exception e) {
-            TaoLog.m21e("WVLocation", "registerLocation error: " + e.getMessage());
+            TaoLog.e("WVLocation", "registerLocation error: " + e.getMessage());
         }
     }
 
-    private void wrapResult(final Location location) {
+    private void wrapResult(Location location) {
         ArrayList<WVCallBackContext> arrayList = this.mCallbacks;
         if (arrayList == null || arrayList.isEmpty()) {
-            TaoLog.m18d("WVLocation", "GetLocation wrapResult callbackContext is null");
+            TaoLog.d("WVLocation", "GetLocation wrapResult callbackContext is null");
             return;
         }
         if (location != null) {
-            AsyncTask.execute(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVLocation.4
-                @Override // java.lang.Runnable
-                public void run() {
-                    WVResult wVResult = new WVResult();
-                    JSONObject jSONObject = new JSONObject();
-                    double longitude = com.alibaba.wireless.security.aopsdk.replace.android.location.Location.getLongitude(location);
-                    double latitude = com.alibaba.wireless.security.aopsdk.replace.android.location.Location.getLatitude(location);
-                    try {
-                        jSONObject.put("longitude", longitude);
-                        jSONObject.put("latitude", latitude);
-                        jSONObject.put("altitude", com.alibaba.wireless.security.aopsdk.replace.android.location.Location.getAltitude(location));
-                        jSONObject.put("accuracy", location.getAccuracy());
-                        jSONObject.put("heading", location.getBearing());
-                        jSONObject.put("speed", location.getSpeed());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    wVResult.addData("coords", jSONObject);
-                    if (TaoLog.getLogStatus()) {
-                        TaoLog.m18d("WVLocation", " getLocation success. latitude: " + latitude + "; longitude: " + longitude);
-                    }
-                    if (WVLocation.this.enableAddress) {
-                        Address address = WVLocation.this.getAddress(latitude, longitude);
-                        JSONObject jSONObject2 = new JSONObject();
-                        if (address != null) {
-                            try {
-                                jSONObject2.put("country", address.getCountryName());
-                                jSONObject2.put("province", address.getAdminArea());
-                                jSONObject2.put("city", address.getLocality());
-                                jSONObject2.put("cityCode", address.getPostalCode());
-                                jSONObject2.put("area", address.getSubLocality());
-                                jSONObject2.put("road", address.getThoroughfare());
-                                StringBuilder sb = new StringBuilder();
-                                for (int i = 1; i <= 2; i++) {
-                                    if (!TextUtils.isEmpty(address.getAddressLine(i))) {
-                                        sb.append(address.getAddressLine(i));
-                                    }
-                                }
-                                jSONObject2.put("addressLine", sb.toString());
-                                if (TaoLog.getLogStatus()) {
-                                    TaoLog.m18d("WVLocation", " getAddress success. " + address.getAddressLine(0));
-                                }
-                            } catch (JSONException e2) {
-                                e2.printStackTrace();
-                            }
-                        } else if (TaoLog.getLogStatus()) {
-                            TaoLog.m30w("WVLocation", " getAddress fail. ");
-                        }
-                        wVResult.addData("address", jSONObject2);
-                    }
-                    try {
-                        Iterator it = WVLocation.this.mCallbacks.iterator();
-                        while (it.hasNext()) {
-                            ((WVCallBackContext) it.next()).success(wVResult);
-                        }
-                        WVLocation.this.mCallbacks.clear();
-                        if (TaoLog.getLogStatus()) {
-                            TaoLog.m18d("WVLocation", "callback success. retString: " + wVResult.toJsonString());
-                        }
-                    } catch (Throwable unused) {
-                    }
-                }
-            });
+            AsyncTask.execute((Runnable) new 4(this, location));
             return;
         }
-        TaoLog.m30w("WVLocation", "getLocation: location is null");
+        TaoLog.w("WVLocation", "getLocation: location is null");
         Iterator<WVCallBackContext> it = this.mCallbacks.iterator();
         while (it.hasNext()) {
             it.next().error(new WVResult());
@@ -153,7 +89,6 @@ public class WVLocation extends WVApiPlugin implements LocationListener, Handler
         this.mCallbacks.clear();
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if (!"getLocation".equals(str)) {
             return false;
@@ -162,21 +97,9 @@ public class WVLocation extends WVApiPlugin implements LocationListener, Handler
         return true;
     }
 
-    public synchronized void getLocation(final WVCallBackContext wVCallBackContext, final String str) {
+    public synchronized void getLocation(WVCallBackContext wVCallBackContext, String str) {
         try {
-            PermissionProposer.buildPermissionTask(this.mContext, new String[]{"android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION"}).setTaskOnPermissionGranted(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVLocation.2
-                @Override // java.lang.Runnable
-                public void run() {
-                    WVLocation.this.requestLocation(wVCallBackContext, str);
-                }
-            }).setTaskOnPermissionDenied(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVLocation.1
-                @Override // java.lang.Runnable
-                public void run() {
-                    WVResult wVResult = new WVResult();
-                    wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "no permission");
-                    wVCallBackContext.error(wVResult);
-                }
-            }).execute();
+            PermissionProposer.buildPermissionTask(((WVApiPlugin) this).mContext, new String[]{"android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION"}).setTaskOnPermissionGranted(new 2(this, wVCallBackContext, str)).setTaskOnPermissionDenied(new 1(this, wVCallBackContext)).execute();
         } catch (Exception unused) {
         }
     }
@@ -200,10 +123,10 @@ public class WVLocation extends WVApiPlugin implements LocationListener, Handler
                         this.mCallbacks.clear();
                     }
                 }
-                TaoLog.m18d("WVLocation", "GetLocation wrapResult callbackContext is null");
+                TaoLog.d("WVLocation", "GetLocation wrapResult callbackContext is null");
                 return false;
             } catch (Exception e) {
-                TaoLog.m21e("WVLocation", "GetLocation timeout" + e.getMessage());
+                TaoLog.e("WVLocation", "GetLocation timeout" + e.getMessage());
                 Iterator<WVCallBackContext> it2 = this.mCallbacks.iterator();
                 while (it2.hasNext()) {
                     it2.next().error(new WVResult());
@@ -214,7 +137,6 @@ public class WVLocation extends WVApiPlugin implements LocationListener, Handler
         return true;
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void onDestroy() {
         LocationManager locationManager = this.locationManager;
         if (locationManager != null) {
@@ -235,7 +157,7 @@ public class WVLocation extends WVApiPlugin implements LocationListener, Handler
     @Override // android.location.LocationListener
     public void onLocationChanged(Location location) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("WVLocation", " onLocationChanged. ");
+            TaoLog.d("WVLocation", " onLocationChanged. ");
         }
         if (this.locationManager == null) {
             return;
@@ -248,21 +170,21 @@ public class WVLocation extends WVApiPlugin implements LocationListener, Handler
     @Override // android.location.LocationListener
     public void onProviderDisabled(String str) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("WVLocation", " onProviderDisabled. provider: " + str);
+            TaoLog.d("WVLocation", " onProviderDisabled. provider: " + str);
         }
     }
 
     @Override // android.location.LocationListener
     public void onProviderEnabled(String str) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("WVLocation", " onProviderEnabled. provider: " + str);
+            TaoLog.d("WVLocation", " onProviderEnabled. provider: " + str);
         }
     }
 
     @Override // android.location.LocationListener
     public void onStatusChanged(String str, int i, Bundle bundle) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("WVLocation", " onStatusChanged. provider: " + str + ";status: " + i);
+            TaoLog.d("WVLocation", " onStatusChanged. provider: " + str + ";status: " + i);
         }
     }
 
@@ -276,7 +198,7 @@ public class WVLocation extends WVApiPlugin implements LocationListener, Handler
                 optBoolean = jSONObject.optBoolean("enableHighAcuracy");
                 this.enableAddress = jSONObject.optBoolean("address");
             } catch (JSONException unused) {
-                TaoLog.m21e("WVLocation", "getLocation: param parse to JSON error, param=" + str);
+                TaoLog.e("WVLocation", "getLocation: param parse to JSON error, param=" + str);
                 WVResult wVResult = new WVResult();
                 wVResult.setResult(WVResult.PARAM_ERR);
                 wVCallBackContext.error(wVResult);
@@ -288,11 +210,6 @@ public class WVLocation extends WVApiPlugin implements LocationListener, Handler
         }
         this.mCallbacks.add(wVCallBackContext);
         registerLocation(optBoolean);
-        WVThreadPool.getInstance().execute(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVLocation.3
-            @Override // java.lang.Runnable
-            public void run() {
-                WVLocation.this.mHandler.sendEmptyMessageDelayed(1, 15000L);
-            }
-        });
+        WVThreadPool.getInstance().execute(new 3(this));
     }
 }

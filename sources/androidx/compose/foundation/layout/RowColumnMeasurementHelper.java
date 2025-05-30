@@ -1,10 +1,10 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.layout.Measurable;
-import androidx.compose.p004ui.layout.MeasureScope;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
+import androidx.compose.ui.layout.Measurable;
+import androidx.compose.ui.layout.MeasureScope;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
 import java.util.List;
 import kotlin.Unit;
 import kotlin.collections.IntIterator;
@@ -16,7 +16,7 @@ import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class RowColumnMeasurementHelper {
 
     @NotNull
@@ -90,7 +90,7 @@ public final class RowColumnMeasurementHelper {
     }
 
     /* renamed from: getArrangementSpacing-D9Ej5fM, reason: not valid java name */
-    public final float m1416getArrangementSpacingD9Ej5fM() {
+    public final float m235getArrangementSpacingD9Ej5fM() {
         return this.arrangementSpacing;
     }
 
@@ -126,7 +126,7 @@ public final class RowColumnMeasurementHelper {
 
     @NotNull
     /* renamed from: measureWithoutPlacing-_EkL_-Y, reason: not valid java name */
-    public final RowColumnMeasureHelperResult m1417measureWithoutPlacing_EkL_Y(@NotNull MeasureScope measureScope, long j, int i, int i2) {
+    public final RowColumnMeasureHelperResult m236measureWithoutPlacing_EkL_Y(@NotNull MeasureScope measureScope, long j, int i, int i2) {
         int i3;
         int coerceAtMost;
         float f;
@@ -140,7 +140,7 @@ public final class RowColumnMeasurementHelper {
         int i10;
         Intrinsics.checkNotNullParameter(measureScope, "measureScope");
         OrientationIndependentConstraints orientationIndependentConstraints = new OrientationIndependentConstraints(j, this.orientation, null);
-        int mo1277roundToPx0680j_4 = measureScope.mo1277roundToPx0680j_4(this.arrangementSpacing);
+        int mo319roundToPx0680j_4 = measureScope.mo319roundToPx0680j_4(this.arrangementSpacing);
         int i11 = i2 - i;
         int i12 = i;
         int i13 = 0;
@@ -164,13 +164,13 @@ public final class RowColumnMeasurementHelper {
                     i8 = mainAxisMax;
                     i9 = i14;
                     i10 = i12;
-                    placeable = measurable.mo4187measureBRTryo0(OrientationIndependentConstraints.copy$default(orientationIndependentConstraints, 0, mainAxisMax == Integer.MAX_VALUE ? Integer.MAX_VALUE : mainAxisMax - i16, 0, 0, 8, null).m1386toBoxConstraintsOenEA2s(this.orientation));
+                    placeable = measurable.mo1521measureBRTryo0(OrientationIndependentConstraints.copy$default(orientationIndependentConstraints, 0, mainAxisMax == Integer.MAX_VALUE ? Integer.MAX_VALUE : mainAxisMax - i16, 0, 0, 8, null).m215toBoxConstraintsOenEA2s(this.orientation));
                 } else {
                     i8 = mainAxisMax;
                     i9 = i14;
                     i10 = i12;
                 }
-                int min = Math.min(mo1277roundToPx0680j_4, (i8 - i16) - mainAxisSize(placeable));
+                int min = Math.min(mo319roundToPx0680j_4, (i8 - i16) - mainAxisSize(placeable));
                 i16 += mainAxisSize(placeable) + min;
                 i14 = Math.max(i9, crossAxisSize(placeable));
                 z = z || RowColumnImplKt.isRelative(rowColumnParentData);
@@ -185,7 +185,7 @@ public final class RowColumnMeasurementHelper {
             i3 = i17;
             coerceAtMost = 0;
         } else {
-            int i18 = mo1277roundToPx0680j_4 * (i15 - 1);
+            int i18 = mo319roundToPx0680j_4 * (i15 - 1);
             int mainAxisMin = (((f3 <= 0.0f || orientationIndependentConstraints.getMainAxisMax() == Integer.MAX_VALUE) ? orientationIndependentConstraints.getMainAxisMin() : orientationIndependentConstraints.getMainAxisMax()) - i16) - i18;
             float f4 = 0;
             float f5 = f3 > f4 ? mainAxisMin / f3 : 0.0f;
@@ -215,11 +215,11 @@ public final class RowColumnMeasurementHelper {
                             f = f4;
                             i5 = max;
                             f2 = f5;
-                            Placeable mo4187measureBRTryo0 = measurable2.mo4187measureBRTryo0(new OrientationIndependentConstraints(i5, max, 0, orientationIndependentConstraints.getCrossAxisMax()).m1386toBoxConstraintsOenEA2s(this.orientation));
-                            i22 += mainAxisSize(mo4187measureBRTryo0);
-                            i3 = Math.max(i3, crossAxisSize(mo4187measureBRTryo0));
+                            Placeable mo1521measureBRTryo0 = measurable2.mo1521measureBRTryo0(new OrientationIndependentConstraints(i5, max, 0, orientationIndependentConstraints.getCrossAxisMax()).m215toBoxConstraintsOenEA2s(this.orientation));
+                            i22 += mainAxisSize(mo1521measureBRTryo0);
+                            i3 = Math.max(i3, crossAxisSize(mo1521measureBRTryo0));
                             boolean z2 = !z || RowColumnImplKt.isRelative(rowColumnParentData2);
-                            this.placeables[i21] = mo4187measureBRTryo0;
+                            this.placeables[i21] = mo1521measureBRTryo0;
                             z = z2;
                             i20 = i4;
                         }
@@ -229,12 +229,12 @@ public final class RowColumnMeasurementHelper {
                     f = f4;
                     i5 = 0;
                     f2 = f5;
-                    Placeable mo4187measureBRTryo02 = measurable2.mo4187measureBRTryo0(new OrientationIndependentConstraints(i5, max, 0, orientationIndependentConstraints.getCrossAxisMax()).m1386toBoxConstraintsOenEA2s(this.orientation));
-                    i22 += mainAxisSize(mo4187measureBRTryo02);
-                    i3 = Math.max(i3, crossAxisSize(mo4187measureBRTryo02));
+                    Placeable mo1521measureBRTryo02 = measurable2.mo1521measureBRTryo0(new OrientationIndependentConstraints(i5, max, 0, orientationIndependentConstraints.getCrossAxisMax()).m215toBoxConstraintsOenEA2s(this.orientation));
+                    i22 += mainAxisSize(mo1521measureBRTryo02);
+                    i3 = Math.max(i3, crossAxisSize(mo1521measureBRTryo02));
                     if (z) {
                     }
-                    this.placeables[i21] = mo4187measureBRTryo02;
+                    this.placeables[i21] = mo1521measureBRTryo02;
                     z = z2;
                     i20 = i4;
                 } else {
@@ -301,9 +301,9 @@ public final class RowColumnMeasurementHelper {
             Object parentData = this.measurables.get(startIndex).getParentData();
             int crossAxisPosition = getCrossAxisPosition(placeable, parentData instanceof RowColumnParentData ? (RowColumnParentData) parentData : null, rowColumnMeasureHelperResult.getCrossAxisSize(), layoutDirection, rowColumnMeasureHelperResult.getBeforeCrossAxisAlignmentLine()) + i;
             if (this.orientation == LayoutOrientation.Horizontal) {
-                Placeable.PlacementScope.place$default(placementScope, placeable, mainAxisPositions[startIndex - rowColumnMeasureHelperResult.getStartIndex()], crossAxisPosition, 0.0f, 4, null);
+                Placeable.PlacementScope.place$default(placementScope, placeable, mainAxisPositions[startIndex - rowColumnMeasureHelperResult.getStartIndex()], crossAxisPosition, 0.0f, 4, (Object) null);
             } else {
-                Placeable.PlacementScope.place$default(placementScope, placeable, crossAxisPosition, mainAxisPositions[startIndex - rowColumnMeasureHelperResult.getStartIndex()], 0.0f, 4, null);
+                Placeable.PlacementScope.place$default(placementScope, placeable, crossAxisPosition, mainAxisPositions[startIndex - rowColumnMeasureHelperResult.getStartIndex()], 0.0f, 4, (Object) null);
             }
         }
     }

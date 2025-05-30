@@ -13,26 +13,23 @@ import tb.bz4;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class MutableInteractionSourceImpl implements MutableInteractionSource {
 
     @NotNull
     private final MutableSharedFlow<Interaction> interactions = bz4.b(0, 16, BufferOverflow.DROP_OLDEST, 1, (Object) null);
 
-    @Override // androidx.compose.foundation.interaction.MutableInteractionSource
     @Nullable
     public Object emit(@NotNull Interaction interaction, @NotNull Continuation<? super Unit> continuation) {
         Object emit = getInteractions().emit(interaction, continuation);
         return emit == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? emit : Unit.INSTANCE;
     }
 
-    @Override // androidx.compose.foundation.interaction.MutableInteractionSource
     public boolean tryEmit(@NotNull Interaction interaction) {
         Intrinsics.checkNotNullParameter(interaction, "interaction");
         return getInteractions().tryEmit(interaction);
     }
 
-    @Override // androidx.compose.foundation.interaction.InteractionSource
     @NotNull
     public MutableSharedFlow<Interaction> getInteractions() {
         return this.interactions;

@@ -11,7 +11,7 @@ import androidx.core.text.PrecomputedTextCompat;
 import java.util.stream.IntStream;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class UnprecomputeTextOnModificationSpannable implements Spannable {
 
     @NonNull
@@ -34,23 +34,11 @@ class UnprecomputeTextOnModificationSpannable implements Spannable {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class PrecomputedTextDetector {
-        PrecomputedTextDetector() {
-        }
-
-        boolean isPrecomputedText(CharSequence charSequence) {
-            return charSequence instanceof PrecomputedTextCompat;
-        }
-    }
-
-    /* compiled from: Taobao */
     @RequiresApi(28)
     static class PrecomputedTextDetector_28 extends PrecomputedTextDetector {
         PrecomputedTextDetector_28() {
         }
 
-        @Override // androidx.emoji2.text.UnprecomputeTextOnModificationSpannable.PrecomputedTextDetector
         boolean isPrecomputedText(CharSequence charSequence) {
             return (charSequence instanceof PrecomputedText) || (charSequence instanceof PrecomputedTextCompat);
         }

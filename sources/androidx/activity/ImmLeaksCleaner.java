@@ -14,7 +14,7 @@ import java.lang.reflect.Field;
 
 /* compiled from: Taobao */
 @RequiresApi(19)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class ImmLeaksCleaner implements LifecycleEventObserver {
     private static final int INIT_FAILED = 2;
     private static final int INIT_SUCCESS = 1;
@@ -78,11 +78,11 @@ final class ImmLeaksCleaner implements LifecycleEventObserver {
                                 inputMethodManager.isActive();
                             } catch (IllegalAccessException unused) {
                             }
-                        } catch (ClassCastException unused2) {
-                        } catch (IllegalAccessException unused3) {
+                        } catch (Throwable th) {
+                            throw th;
                         }
-                    } catch (Throwable th) {
-                        throw th;
+                    } catch (ClassCastException unused2) {
+                    } catch (IllegalAccessException unused3) {
                     }
                 }
             } catch (IllegalAccessException unused4) {

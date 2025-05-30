@@ -4,10 +4,11 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class StartupLogger {
     static final boolean DEBUG = false;
     private static final String TAG = "StartupLogger";
@@ -15,18 +16,15 @@ public final class StartupLogger {
     private StartupLogger() {
     }
 
-    /* renamed from: e */
-    public static void m332e(@NonNull String str, @Nullable Throwable th) {
+    public static void e(@NonNull String str, @Nullable Throwable th) {
         Log.e(TAG, str, th);
     }
 
-    /* renamed from: i */
-    public static void m333i(@NonNull String str) {
+    public static void i(@NonNull String str) {
         Log.i(TAG, str);
     }
 
-    /* renamed from: w */
-    public static void m334w(@NonNull String str) {
+    public static void w(@NonNull String str) {
         Log.w(TAG, str);
     }
 }

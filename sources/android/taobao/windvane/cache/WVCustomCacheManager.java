@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVCustomCacheManager {
     private static final String TAG = "WVCustomCacheManager";
     private static WVCustomCacheManager sInstance;
@@ -37,13 +37,13 @@ public class WVCustomCacheManager {
                 } catch (Throwable unused) {
                 }
                 if (loadRequest != null) {
-                    TaoLog.m18d(TAG, "hit custom cache by " + wVCustomCacheHandler.toString() + " with url " + str);
+                    TaoLog.d(TAG, "hit custom cache by " + wVCustomCacheHandler.toString() + " with url " + str);
                     return loadRequest;
                 }
                 continue;
             }
         }
-        TaoLog.m18d(TAG, "custom cache not hit " + str);
+        TaoLog.d(TAG, "custom cache not hit " + str);
         return null;
     }
 

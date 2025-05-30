@@ -1,5 +1,6 @@
 package androidx.compose.foundation.interaction;
 
+import androidx.appcompat.R;
 import androidx.compose.foundation.interaction.DragInteraction;
 import androidx.compose.runtime.MutableState;
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-@DebugMetadata(c = "androidx.compose.foundation.interaction.DragInteractionKt$collectIsDraggedAsState$1$1", f = "DragInteraction.kt", i = {}, l = {84}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+@DebugMetadata(c = "androidx.compose.foundation.interaction.DragInteractionKt$collectIsDraggedAsState$1$1", f = "DragInteraction.kt", i = {}, l = {R.styleable.AppCompatTheme_listPreferredItemPaddingRight}, m = "invokeSuspend", n = {}, s = {})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class DragInteractionKt$collectIsDraggedAsState$1$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ MutableState<Boolean> $isDragged;
     final /* synthetic */ InteractionSource $this_collectIsDraggedAsState;
@@ -49,7 +50,7 @@ final class DragInteractionKt$collectIsDraggedAsState$1$1 extends SuspendLambda 
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
             final ArrayList arrayList = new ArrayList();
-            Flow<Interaction> interactions = this.$this_collectIsDraggedAsState.getInteractions();
+            Flow interactions = this.$this_collectIsDraggedAsState.getInteractions();
             final MutableState<Boolean> mutableState = this.$isDragged;
             FlowCollector<Interaction> flowCollector = new FlowCollector<Interaction>() { // from class: androidx.compose.foundation.interaction.DragInteractionKt$collectIsDraggedAsState$1$1.1
                 public /* bridge */ /* synthetic */ Object emit(Object obj2, Continuation continuation) {
@@ -60,10 +61,10 @@ final class DragInteractionKt$collectIsDraggedAsState$1$1 extends SuspendLambda 
                 public final Object emit(@NotNull Interaction interaction, @NotNull Continuation<? super Unit> continuation) {
                     if (interaction instanceof DragInteraction.Start) {
                         arrayList.add(interaction);
-                    } else if (interaction instanceof DragInteraction.Stop) {
-                        arrayList.remove(((DragInteraction.Stop) interaction).getStart());
-                    } else if (interaction instanceof DragInteraction.Cancel) {
-                        arrayList.remove(((DragInteraction.Cancel) interaction).getStart());
+                    } else if (interaction instanceof DragInteraction$Stop) {
+                        arrayList.remove(((DragInteraction$Stop) interaction).getStart());
+                    } else if (interaction instanceof DragInteraction$Cancel) {
+                        arrayList.remove(((DragInteraction$Cancel) interaction).getStart());
                     }
                     mutableState.setValue(Boxing.boxBoolean(!arrayList.isEmpty()));
                     return Unit.INSTANCE;

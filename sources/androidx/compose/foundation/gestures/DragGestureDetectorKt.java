@@ -1,17 +1,17 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.geometry.OffsetKt;
-import androidx.compose.p004ui.input.pointer.AwaitPointerEventScope;
-import androidx.compose.p004ui.input.pointer.PointerEvent;
-import androidx.compose.p004ui.input.pointer.PointerEventKt;
-import androidx.compose.p004ui.input.pointer.PointerEventPass;
-import androidx.compose.p004ui.input.pointer.PointerId;
-import androidx.compose.p004ui.input.pointer.PointerInputChange;
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
-import androidx.compose.p004ui.input.pointer.PointerType;
-import androidx.compose.p004ui.platform.ViewConfiguration;
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.geometry.OffsetKt;
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope;
+import androidx.compose.ui.input.pointer.PointerEvent;
+import androidx.compose.ui.input.pointer.PointerEventKt;
+import androidx.compose.ui.input.pointer.PointerEventPass;
+import androidx.compose.ui.input.pointer.PointerId;
+import androidx.compose.ui.input.pointer.PointerInputChange;
+import androidx.compose.ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.input.pointer.PointerType;
+import androidx.compose.ui.platform.ViewConfiguration;
+import androidx.compose.ui.unit.Dp;
 import java.util.List;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -27,47 +27,29 @@ import org.jetbrains.annotations.Nullable;
 import tb.je;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class DragGestureDetectorKt {
 
     @NotNull
-    private static final PointerDirectionConfig HorizontalPointerDirectionConfig = new PointerDirectionConfig() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$HorizontalPointerDirectionConfig$1
-        @Override // androidx.compose.foundation.gestures.PointerDirectionConfig
-        /* renamed from: crossAxisDelta-k-4lQ0M, reason: not valid java name */
-        public float mo1235crossAxisDeltak4lQ0M(long j) {
-            return Offset.m2557getYimpl(j);
-        }
-
-        @Override // androidx.compose.foundation.gestures.PointerDirectionConfig
-        /* renamed from: mainAxisDelta-k-4lQ0M, reason: not valid java name */
-        public float mo1236mainAxisDeltak4lQ0M(long j) {
-            return Offset.m2556getXimpl(j);
-        }
-
-        @Override // androidx.compose.foundation.gestures.PointerDirectionConfig
-        /* renamed from: offsetFromChanges-dBAh8RU, reason: not valid java name */
-        public long mo1237offsetFromChangesdBAh8RU(float f, float f2) {
-            return OffsetKt.Offset(f, f2);
-        }
-    };
+    private static final PointerDirectionConfig HorizontalPointerDirectionConfig = new HorizontalPointerDirectionConfig.1();
 
     @NotNull
     private static final PointerDirectionConfig VerticalPointerDirectionConfig = new PointerDirectionConfig() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$VerticalPointerDirectionConfig$1
         @Override // androidx.compose.foundation.gestures.PointerDirectionConfig
-        /* renamed from: crossAxisDelta-k-4lQ0M */
-        public float mo1235crossAxisDeltak4lQ0M(long j) {
-            return Offset.m2556getXimpl(j);
+        /* renamed from: crossAxisDelta-k-4lQ0M, reason: not valid java name */
+        public float mo192crossAxisDeltak4lQ0M(long j) {
+            return Offset.getX-impl(j);
         }
 
         @Override // androidx.compose.foundation.gestures.PointerDirectionConfig
-        /* renamed from: mainAxisDelta-k-4lQ0M */
-        public float mo1236mainAxisDeltak4lQ0M(long j) {
-            return Offset.m2557getYimpl(j);
+        /* renamed from: mainAxisDelta-k-4lQ0M, reason: not valid java name */
+        public float mo193mainAxisDeltak4lQ0M(long j) {
+            return Offset.getY-impl(j);
         }
 
         @Override // androidx.compose.foundation.gestures.PointerDirectionConfig
-        /* renamed from: offsetFromChanges-dBAh8RU */
-        public long mo1237offsetFromChangesdBAh8RU(float f, float f2) {
+        /* renamed from: offsetFromChanges-dBAh8RU, reason: not valid java name */
+        public long mo194offsetFromChangesdBAh8RU(float f, float f2) {
             return OffsetKt.Offset(f2, f);
         }
     };
@@ -76,16 +58,16 @@ public final class DragGestureDetectorKt {
     private static final float mouseToTouchSlopRatio;
 
     static {
-        float m5216constructorimpl = C0856Dp.m5216constructorimpl((float) 0.125d);
-        mouseSlop = m5216constructorimpl;
-        float m5216constructorimpl2 = C0856Dp.m5216constructorimpl(18);
-        defaultTouchSlop = m5216constructorimpl2;
-        mouseToTouchSlopRatio = m5216constructorimpl / m5216constructorimpl2;
+        float f = Dp.constructor-impl((float) 0.125d);
+        mouseSlop = f;
+        float f2 = Dp.constructor-impl(18);
+        defaultTouchSlop = f2;
+        mouseToTouchSlopRatio = f / f2;
     }
 
     /* JADX WARN: Code restructure failed: missing block: B:47:0x00cb, code lost:
     
-        if (androidx.compose.p004ui.input.pointer.PointerEventKt.positionChangedIgnoreConsumed(r11) != false) goto L47;
+        if (androidx.compose.ui.input.pointer.PointerEventKt.positionChangedIgnoreConsumed(r11) != false) goto L47;
      */
     /* JADX WARN: Removed duplicated region for block: B:12:0x007a  */
     /* JADX WARN: Removed duplicated region for block: B:18:0x0096  */
@@ -100,18 +82,18 @@ public final class DragGestureDetectorKt {
     /* renamed from: awaitDragOrCancellation-rnUCldI, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1215awaitDragOrCancellationrnUCldI(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r17, long r18, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerInputChange> r20) {
+    public static final java.lang.Object m172awaitDragOrCancellationrnUCldI(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r17, long r18, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerInputChange> r20) {
         /*
             Method dump skipped, instructions count: 222
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1215awaitDragOrCancellationrnUCldI(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m172awaitDragOrCancellationrnUCldI(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     /* renamed from: awaitDragOrUp-jO51t88, reason: not valid java name */
-    private static final Object m1216awaitDragOrUpjO51t88(AwaitPointerEventScope awaitPointerEventScope, long j, Function1<? super PointerInputChange, Boolean> function1, Continuation<? super PointerInputChange> continuation) {
+    private static final Object m173awaitDragOrUpjO51t88(AwaitPointerEventScope awaitPointerEventScope, long j, Function1<? super PointerInputChange, Boolean> function1, Continuation<? super PointerInputChange> continuation) {
         PointerInputChange pointerInputChange;
         Ref.LongRef longRef = new Ref.LongRef();
         longRef.element = j;
@@ -131,7 +113,7 @@ public final class DragGestureDetectorKt {
                     break;
                 }
                 pointerInputChange = changes.get(i2);
-                if (Boolean.valueOf(PointerId.m4066equalsimpl0(pointerInputChange.m4080getIdJ3iCeTQ(), longRef.element)).booleanValue()) {
+                if (Boolean.valueOf(PointerId.equals-impl0(pointerInputChange.getId-J3iCeTQ(), longRef.element)).booleanValue()) {
                     break;
                 }
                 i2++;
@@ -158,7 +140,7 @@ public final class DragGestureDetectorKt {
                 if (pointerInputChange5 == null) {
                     return pointerInputChange3;
                 }
-                longRef.element = pointerInputChange5.m4080getIdJ3iCeTQ();
+                longRef.element = pointerInputChange5.getId-J3iCeTQ();
             } else if (((Boolean) function1.invoke(pointerInputChange3)).booleanValue()) {
                 return pointerInputChange3;
             }
@@ -167,7 +149,7 @@ public final class DragGestureDetectorKt {
 
     /* JADX WARN: Code restructure failed: missing block: B:50:0x00d8, code lost:
     
-        if ((!(androidx.compose.p004ui.geometry.Offset.m2556getXimpl(androidx.compose.p004ui.input.pointer.PointerEventKt.positionChangeIgnoreConsumed(r11)) == 0.0f)) != false) goto L51;
+        if ((!(androidx.compose.ui.geometry.Offset.getX-impl(androidx.compose.ui.input.pointer.PointerEventKt.positionChangeIgnoreConsumed(r11)) == 0.0f)) != false) goto L51;
      */
     /* JADX WARN: Removed duplicated region for block: B:12:0x007a  */
     /* JADX WARN: Removed duplicated region for block: B:18:0x0096  */
@@ -182,14 +164,14 @@ public final class DragGestureDetectorKt {
     /* renamed from: awaitHorizontalDragOrCancellation-rnUCldI, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1217awaitHorizontalDragOrCancellationrnUCldI(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r17, long r18, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerInputChange> r20) {
+    public static final java.lang.Object m174awaitHorizontalDragOrCancellationrnUCldI(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r17, long r18, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerInputChange> r20) {
         /*
             Method dump skipped, instructions count: 235
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1217awaitHorizontalDragOrCancellationrnUCldI(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m174awaitHorizontalDragOrCancellationrnUCldI(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:15:0x01b9  */
@@ -208,14 +190,14 @@ public final class DragGestureDetectorKt {
     /* renamed from: awaitHorizontalPointerSlopOrCancellation-gDDlDlE, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1218awaitHorizontalPointerSlopOrCancellationgDDlDlE(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r21, long r22, int r24, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.p004ui.input.pointer.PointerInputChange, ? super java.lang.Float, kotlin.Unit> r25, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerInputChange> r26) {
+    public static final java.lang.Object m175awaitHorizontalPointerSlopOrCancellationgDDlDlE(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r21, long r22, int r24, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.ui.input.pointer.PointerInputChange, ? super java.lang.Float, kotlin.Unit> r25, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerInputChange> r26) {
         /*
             Method dump skipped, instructions count: 504
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1218awaitHorizontalPointerSlopOrCancellationgDDlDlE(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, int, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m175awaitHorizontalPointerSlopOrCancellationgDDlDlE(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, int, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:15:0x01bf  */
@@ -234,14 +216,14 @@ public final class DragGestureDetectorKt {
     /* renamed from: awaitHorizontalTouchSlopOrCancellation-jO51t88, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1219awaitHorizontalTouchSlopOrCancellationjO51t88(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r20, long r21, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.p004ui.input.pointer.PointerInputChange, ? super java.lang.Float, kotlin.Unit> r23, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerInputChange> r24) {
+    public static final java.lang.Object m176awaitHorizontalTouchSlopOrCancellationjO51t88(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r20, long r21, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.ui.input.pointer.PointerInputChange, ? super java.lang.Float, kotlin.Unit> r23, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerInputChange> r24) {
         /*
             Method dump skipped, instructions count: 514
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1219awaitHorizontalTouchSlopOrCancellationjO51t88(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m176awaitHorizontalTouchSlopOrCancellationjO51t88(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:18:0x00a2  */
@@ -252,14 +234,14 @@ public final class DragGestureDetectorKt {
     /* renamed from: awaitLongPressOrCancellation-rnUCldI, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1220awaitLongPressOrCancellationrnUCldI(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r9, long r10, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerInputChange> r12) {
+    public static final java.lang.Object m177awaitLongPressOrCancellationrnUCldI(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r9, long r10, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerInputChange> r12) {
         /*
-            boolean r0 = r12 instanceof androidx.compose.foundation.gestures.DragGestureDetectorKt$awaitLongPressOrCancellation$1
+            boolean r0 = r12 instanceof androidx.compose.foundation.gestures.DragGestureDetectorKt.awaitLongPressOrCancellation.1
             if (r0 == 0) goto L13
             r0 = r12
-            androidx.compose.foundation.gestures.DragGestureDetectorKt$awaitLongPressOrCancellation$1 r0 = (androidx.compose.foundation.gestures.DragGestureDetectorKt$awaitLongPressOrCancellation$1) r0
+            androidx.compose.foundation.gestures.DragGestureDetectorKt$awaitLongPressOrCancellation$1 r0 = (androidx.compose.foundation.gestures.DragGestureDetectorKt.awaitLongPressOrCancellation.1) r0
             int r1 = r0.label
             r2 = -2147483648(0xffffffff80000000, float:-0.0)
             r3 = r1 & r2
@@ -281,8 +263,8 @@ public final class DragGestureDetectorKt {
             java.lang.Object r9 = r0.L$1
             kotlin.jvm.internal.Ref$ObjectRef r9 = (kotlin.jvm.internal.Ref.ObjectRef) r9
             java.lang.Object r10 = r0.L$0
-            androidx.compose.ui.input.pointer.PointerInputChange r10 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r10
-            kotlin.ResultKt.throwOnFailure(r12)     // Catch: androidx.compose.p004ui.input.pointer.PointerEventTimeoutCancellationException -> L32
+            androidx.compose.ui.input.pointer.PointerInputChange r10 = (androidx.compose.ui.input.pointer.PointerInputChange) r10
+            kotlin.ResultKt.throwOnFailure(r12)     // Catch: androidx.compose.ui.input.pointer.PointerEventTimeoutCancellationException -> L32
             goto La5
         L32:
             goto L9c
@@ -294,7 +276,7 @@ public final class DragGestureDetectorKt {
         L3c:
             kotlin.ResultKt.throwOnFailure(r12)
             androidx.compose.ui.input.pointer.PointerEvent r12 = r9.getCurrentEvent()
-            boolean r12 = m1232isPointerUpDmW0f2w(r12, r10)
+            boolean r12 = m189isPointerUpDmW0f2w(r12, r10)
             if (r12 == 0) goto L4a
             return r4
         L4a:
@@ -306,9 +288,9 @@ public final class DragGestureDetectorKt {
             if (r2 >= r5) goto L6e
             java.lang.Object r6 = r12.get(r2)
             r7 = r6
-            androidx.compose.ui.input.pointer.PointerInputChange r7 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r7
-            long r7 = r7.m4080getIdJ3iCeTQ()
-            boolean r7 = androidx.compose.p004ui.input.pointer.PointerId.m4066equalsimpl0(r7, r10)
+            androidx.compose.ui.input.pointer.PointerInputChange r7 = (androidx.compose.ui.input.pointer.PointerInputChange) r7
+            long r7 = r7.getId-J3iCeTQ()
+            boolean r7 = androidx.compose.ui.input.pointer.PointerId.equals-impl0(r7, r10)
             if (r7 == 0) goto L6b
             goto L6f
         L6b:
@@ -318,7 +300,7 @@ public final class DragGestureDetectorKt {
             r6 = r4
         L6f:
             r10 = r6
-            androidx.compose.ui.input.pointer.PointerInputChange r10 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r10
+            androidx.compose.ui.input.pointer.PointerInputChange r10 = (androidx.compose.ui.input.pointer.PointerInputChange) r10
             if (r10 != 0) goto L75
             return r4
         L75:
@@ -329,19 +311,19 @@ public final class DragGestureDetectorKt {
             r12.element = r10
             androidx.compose.ui.platform.ViewConfiguration r2 = r9.getViewConfiguration()
             long r5 = r2.getLongPressTimeoutMillis()
-            androidx.compose.foundation.gestures.DragGestureDetectorKt$awaitLongPressOrCancellation$2 r2 = new androidx.compose.foundation.gestures.DragGestureDetectorKt$awaitLongPressOrCancellation$2     // Catch: androidx.compose.p004ui.input.pointer.PointerEventTimeoutCancellationException -> L9b
-            r2.<init>(r12, r11, r4)     // Catch: androidx.compose.p004ui.input.pointer.PointerEventTimeoutCancellationException -> L9b
-            r0.L$0 = r10     // Catch: androidx.compose.p004ui.input.pointer.PointerEventTimeoutCancellationException -> L9b
-            r0.L$1 = r11     // Catch: androidx.compose.p004ui.input.pointer.PointerEventTimeoutCancellationException -> L9b
-            r0.label = r3     // Catch: androidx.compose.p004ui.input.pointer.PointerEventTimeoutCancellationException -> L9b
-            java.lang.Object r9 = r9.withTimeout(r5, r2, r0)     // Catch: androidx.compose.p004ui.input.pointer.PointerEventTimeoutCancellationException -> L9b
+            androidx.compose.foundation.gestures.DragGestureDetectorKt$awaitLongPressOrCancellation$2 r2 = new androidx.compose.foundation.gestures.DragGestureDetectorKt$awaitLongPressOrCancellation$2     // Catch: androidx.compose.ui.input.pointer.PointerEventTimeoutCancellationException -> L9b
+            r2.<init>(r12, r11, r4)     // Catch: androidx.compose.ui.input.pointer.PointerEventTimeoutCancellationException -> L9b
+            r0.L$0 = r10     // Catch: androidx.compose.ui.input.pointer.PointerEventTimeoutCancellationException -> L9b
+            r0.L$1 = r11     // Catch: androidx.compose.ui.input.pointer.PointerEventTimeoutCancellationException -> L9b
+            r0.label = r3     // Catch: androidx.compose.ui.input.pointer.PointerEventTimeoutCancellationException -> L9b
+            java.lang.Object r9 = r9.withTimeout(r5, r2, r0)     // Catch: androidx.compose.ui.input.pointer.PointerEventTimeoutCancellationException -> L9b
             if (r9 != r1) goto La5
             return r1
         L9b:
             r9 = r11
         L9c:
             java.lang.Object r9 = r9.element
-            androidx.compose.ui.input.pointer.PointerInputChange r9 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r9
+            androidx.compose.ui.input.pointer.PointerInputChange r9 = (androidx.compose.ui.input.pointer.PointerInputChange) r9
             if (r9 != 0) goto La4
             r4 = r10
             goto La5
@@ -350,7 +332,7 @@ public final class DragGestureDetectorKt {
         La5:
             return r4
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1220awaitLongPressOrCancellationrnUCldI(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m177awaitLongPressOrCancellationrnUCldI(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:13:0x01ae A[RETURN] */
@@ -369,26 +351,26 @@ public final class DragGestureDetectorKt {
     /* renamed from: awaitPointerSlopOrCancellation-wtdNQyU, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1221awaitPointerSlopOrCancellationwtdNQyU(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r21, long r22, int r24, @org.jetbrains.annotations.NotNull androidx.compose.foundation.gestures.PointerDirectionConfig r25, boolean r26, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.p004ui.input.pointer.PointerInputChange, ? super androidx.compose.p004ui.geometry.Offset, kotlin.Unit> r27, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerInputChange> r28) {
+    public static final java.lang.Object m178awaitPointerSlopOrCancellationwtdNQyU(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r21, long r22, int r24, @org.jetbrains.annotations.NotNull androidx.compose.foundation.gestures.PointerDirectionConfig r25, boolean r26, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.ui.input.pointer.PointerInputChange, ? super androidx.compose.ui.geometry.Offset, kotlin.Unit> r27, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerInputChange> r28) {
         /*
             Method dump skipped, instructions count: 496
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1221awaitPointerSlopOrCancellationwtdNQyU(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, int, androidx.compose.foundation.gestures.PointerDirectionConfig, boolean, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m178awaitPointerSlopOrCancellationwtdNQyU(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, int, androidx.compose.foundation.gestures.PointerDirectionConfig, boolean, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     /* renamed from: awaitPointerSlopOrCancellation-wtdNQyU$$forInline, reason: not valid java name */
-    private static final Object m1222awaitPointerSlopOrCancellationwtdNQyU$$forInline(AwaitPointerEventScope awaitPointerEventScope, long j, int i, PointerDirectionConfig pointerDirectionConfig, boolean z, Function2<? super PointerInputChange, ? super Offset, Unit> function2, Continuation<? super PointerInputChange> continuation) {
+    private static final Object m179awaitPointerSlopOrCancellationwtdNQyU$$forInline(AwaitPointerEventScope awaitPointerEventScope, long j, int i, PointerDirectionConfig pointerDirectionConfig, boolean z, Function2<? super PointerInputChange, ? super Offset, Unit> function2, Continuation<? super PointerInputChange> continuation) {
         float f;
         PointerInputChange pointerInputChange;
-        long m2560minusMKHz9U;
+        long j2;
         PointerInputChange pointerInputChange2;
-        if (m1232isPointerUpDmW0f2w(awaitPointerEventScope.getCurrentEvent(), j)) {
+        if (m189isPointerUpDmW0f2w(awaitPointerEventScope.getCurrentEvent(), j)) {
             return null;
         }
-        float m1233pointerSlopE8SPZFQ = m1233pointerSlopE8SPZFQ(awaitPointerEventScope.getViewConfiguration(), i);
+        float m190pointerSlopE8SPZFQ = m190pointerSlopE8SPZFQ(awaitPointerEventScope.getViewConfiguration(), i);
         Ref.LongRef longRef = new Ref.LongRef();
         longRef.element = j;
         float f2 = 0.0f;
@@ -409,7 +391,7 @@ public final class DragGestureDetectorKt {
                 }
                 pointerInputChange = changes.get(i2);
                 f = f2;
-                if (Boolean.valueOf(PointerId.m4066equalsimpl0(pointerInputChange.m4080getIdJ3iCeTQ(), longRef.element)).booleanValue()) {
+                if (Boolean.valueOf(PointerId.equals-impl0(pointerInputChange.getId-J3iCeTQ(), longRef.element)).booleanValue()) {
                     break;
                 }
                 i2++;
@@ -438,14 +420,14 @@ public final class DragGestureDetectorKt {
                 if (pointerInputChange4 == null) {
                     return null;
                 }
-                longRef.element = pointerInputChange4.m4080getIdJ3iCeTQ();
+                longRef.element = pointerInputChange4.getId-J3iCeTQ();
             } else {
-                long m4081getPositionF1C5BW0 = pointerInputChange3.m4081getPositionF1C5BW0();
-                long m4082getPreviousPositionF1C5BW0 = pointerInputChange3.m4082getPreviousPositionF1C5BW0();
-                float mo1236mainAxisDeltak4lQ0M = f + (pointerDirectionConfig.mo1236mainAxisDeltak4lQ0M(m4081getPositionF1C5BW0) - pointerDirectionConfig.mo1236mainAxisDeltak4lQ0M(m4082getPreviousPositionF1C5BW0));
-                f3 += pointerDirectionConfig.mo1235crossAxisDeltak4lQ0M(m4081getPositionF1C5BW0) - pointerDirectionConfig.mo1235crossAxisDeltak4lQ0M(m4082getPreviousPositionF1C5BW0);
-                float abs = z ? Math.abs(mo1236mainAxisDeltak4lQ0M) : Offset.m2554getDistanceimpl(pointerDirectionConfig.mo1237offsetFromChangesdBAh8RU(mo1236mainAxisDeltak4lQ0M, f3));
-                if (abs < m1233pointerSlopE8SPZFQ) {
+                long j3 = pointerInputChange3.getPosition-F1C5BW0();
+                long j4 = pointerInputChange3.getPreviousPosition-F1C5BW0();
+                float mo193mainAxisDeltak4lQ0M = f + (pointerDirectionConfig.mo193mainAxisDeltak4lQ0M(j3) - pointerDirectionConfig.mo193mainAxisDeltak4lQ0M(j4));
+                f3 += pointerDirectionConfig.mo192crossAxisDeltak4lQ0M(j3) - pointerDirectionConfig.mo192crossAxisDeltak4lQ0M(j4);
+                float abs = z ? Math.abs(mo193mainAxisDeltak4lQ0M) : Offset.getDistance-impl(pointerDirectionConfig.mo194offsetFromChangesdBAh8RU(mo193mainAxisDeltak4lQ0M, f3));
+                if (abs < m190pointerSlopE8SPZFQ) {
                     PointerEventPass pointerEventPass = PointerEventPass.Final;
                     InlineMarker.mark(0);
                     awaitPointerEventScope.awaitPointerEvent(pointerEventPass, continuation);
@@ -453,15 +435,15 @@ public final class DragGestureDetectorKt {
                     if (pointerInputChange3.isConsumed()) {
                         return null;
                     }
-                    f = mo1236mainAxisDeltak4lQ0M;
+                    f = mo193mainAxisDeltak4lQ0M;
                 } else {
                     if (z) {
-                        m2560minusMKHz9U = pointerDirectionConfig.mo1237offsetFromChangesdBAh8RU(mo1236mainAxisDeltak4lQ0M - (Math.signum(mo1236mainAxisDeltak4lQ0M) * m1233pointerSlopE8SPZFQ), f3);
+                        j2 = pointerDirectionConfig.mo194offsetFromChangesdBAh8RU(mo193mainAxisDeltak4lQ0M - (Math.signum(mo193mainAxisDeltak4lQ0M) * m190pointerSlopE8SPZFQ), f3);
                     } else {
-                        long mo1237offsetFromChangesdBAh8RU = pointerDirectionConfig.mo1237offsetFromChangesdBAh8RU(mo1236mainAxisDeltak4lQ0M, f3);
-                        m2560minusMKHz9U = Offset.m2560minusMKHz9U(mo1237offsetFromChangesdBAh8RU, Offset.m2563timestuRUvjQ(Offset.m2551divtuRUvjQ(mo1237offsetFromChangesdBAh8RU, abs), m1233pointerSlopE8SPZFQ));
+                        long mo194offsetFromChangesdBAh8RU = pointerDirectionConfig.mo194offsetFromChangesdBAh8RU(mo193mainAxisDeltak4lQ0M, f3);
+                        j2 = Offset.minus-MK-Hz9U(mo194offsetFromChangesdBAh8RU, Offset.times-tuRUvjQ(Offset.div-tuRUvjQ(mo194offsetFromChangesdBAh8RU, abs), m190pointerSlopE8SPZFQ));
                     }
-                    function2.invoke(pointerInputChange3, Offset.m2545boximpl(m2560minusMKHz9U));
+                    function2.invoke(pointerInputChange3, Offset.box-impl(j2));
                     if (pointerInputChange3.isConsumed()) {
                         return pointerInputChange3;
                     }
@@ -480,12 +462,12 @@ public final class DragGestureDetectorKt {
      */
     /* JADX WARN: Code restructure failed: missing block: B:41:0x00f1, code lost:
     
-        r9 = r2.mo1237offsetFromChangesdBAh8RU(r10 - (java.lang.Math.signum(r10) * r23), r11);
+        r9 = r2.mo194offsetFromChangesdBAh8RU(r10 - (java.lang.Math.signum(r10) * r23), r11);
         r5 = r23;
      */
     /* JADX WARN: Code restructure failed: missing block: B:42:0x0111, code lost:
     
-        r24.invoke(r4, androidx.compose.p004ui.geometry.Offset.m2545boximpl(r9));
+        r24.invoke(r4, androidx.compose.ui.geometry.Offset.box-impl(r9));
      */
     /* JADX WARN: Code restructure failed: missing block: B:43:0x011e, code lost:
     
@@ -497,22 +479,22 @@ public final class DragGestureDetectorKt {
      */
     /* JADX WARN: Code restructure failed: missing block: B:47:0x00ff, code lost:
     
-        r9 = r2.mo1237offsetFromChangesdBAh8RU(r10, r11);
-        r11 = androidx.compose.p004ui.geometry.Offset.m2551divtuRUvjQ(r9, r5);
+        r9 = r2.mo194offsetFromChangesdBAh8RU(r10, r11);
+        r11 = androidx.compose.ui.geometry.Offset.div-tuRUvjQ(r9, r5);
         r5 = r23;
-        r9 = androidx.compose.p004ui.geometry.Offset.m2560minusMKHz9U(r9, androidx.compose.p004ui.geometry.Offset.m2563timestuRUvjQ(r11, r5));
+        r9 = androidx.compose.ui.geometry.Offset.minus-MK-Hz9U(r9, androidx.compose.ui.geometry.Offset.times-tuRUvjQ(r11, r5));
      */
     /* renamed from: awaitPointerSlopOrCancellation-wtdNQyU$default, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static /* synthetic */ java.lang.Object m1223awaitPointerSlopOrCancellationwtdNQyU$default(androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r18, long r19, int r21, androidx.compose.foundation.gestures.PointerDirectionConfig r22, boolean r23, kotlin.jvm.functions.Function2 r24, kotlin.coroutines.Continuation r25, int r26, java.lang.Object r27) {
+    public static /* synthetic */ java.lang.Object m180awaitPointerSlopOrCancellationwtdNQyU$default(androidx.compose.ui.input.pointer.AwaitPointerEventScope r18, long r19, int r21, androidx.compose.foundation.gestures.PointerDirectionConfig r22, boolean r23, kotlin.jvm.functions.Function2 r24, kotlin.coroutines.Continuation r25, int r26, java.lang.Object r27) {
         /*
             Method dump skipped, instructions count: 295
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1223awaitPointerSlopOrCancellationwtdNQyU$default(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, int, androidx.compose.foundation.gestures.PointerDirectionConfig, boolean, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation, int, java.lang.Object):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m180awaitPointerSlopOrCancellationwtdNQyU$default(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, int, androidx.compose.foundation.gestures.PointerDirectionConfig, boolean, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation, int, java.lang.Object):java.lang.Object");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:15:0x01c7  */
@@ -531,19 +513,19 @@ public final class DragGestureDetectorKt {
     /* renamed from: awaitTouchSlopOrCancellation-jO51t88, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1224awaitTouchSlopOrCancellationjO51t88(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r19, long r20, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.p004ui.input.pointer.PointerInputChange, ? super androidx.compose.p004ui.geometry.Offset, kotlin.Unit> r22, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerInputChange> r23) {
+    public static final java.lang.Object m181awaitTouchSlopOrCancellationjO51t88(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r19, long r20, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.ui.input.pointer.PointerInputChange, ? super androidx.compose.ui.geometry.Offset, kotlin.Unit> r22, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerInputChange> r23) {
         /*
             Method dump skipped, instructions count: 520
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1224awaitTouchSlopOrCancellationjO51t88(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m181awaitTouchSlopOrCancellationjO51t88(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     /* JADX WARN: Code restructure failed: missing block: B:50:0x00d8, code lost:
     
-        if ((!(androidx.compose.p004ui.geometry.Offset.m2557getYimpl(androidx.compose.p004ui.input.pointer.PointerEventKt.positionChangeIgnoreConsumed(r11)) == 0.0f)) != false) goto L51;
+        if ((!(androidx.compose.ui.geometry.Offset.getY-impl(androidx.compose.ui.input.pointer.PointerEventKt.positionChangeIgnoreConsumed(r11)) == 0.0f)) != false) goto L51;
      */
     /* JADX WARN: Removed duplicated region for block: B:12:0x007a  */
     /* JADX WARN: Removed duplicated region for block: B:18:0x0096  */
@@ -558,14 +540,14 @@ public final class DragGestureDetectorKt {
     /* renamed from: awaitVerticalDragOrCancellation-rnUCldI, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1225awaitVerticalDragOrCancellationrnUCldI(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r17, long r18, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerInputChange> r20) {
+    public static final java.lang.Object m182awaitVerticalDragOrCancellationrnUCldI(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r17, long r18, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerInputChange> r20) {
         /*
             Method dump skipped, instructions count: 235
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1225awaitVerticalDragOrCancellationrnUCldI(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m182awaitVerticalDragOrCancellationrnUCldI(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:15:0x01b9  */
@@ -584,14 +566,14 @@ public final class DragGestureDetectorKt {
     /* renamed from: awaitVerticalPointerSlopOrCancellation-gDDlDlE, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1226awaitVerticalPointerSlopOrCancellationgDDlDlE(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r21, long r22, int r24, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.p004ui.input.pointer.PointerInputChange, ? super java.lang.Float, kotlin.Unit> r25, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerInputChange> r26) {
+    public static final java.lang.Object m183awaitVerticalPointerSlopOrCancellationgDDlDlE(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r21, long r22, int r24, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.ui.input.pointer.PointerInputChange, ? super java.lang.Float, kotlin.Unit> r25, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerInputChange> r26) {
         /*
             Method dump skipped, instructions count: 504
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1226awaitVerticalPointerSlopOrCancellationgDDlDlE(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, int, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m183awaitVerticalPointerSlopOrCancellationgDDlDlE(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, int, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:15:0x01bf  */
@@ -610,14 +592,14 @@ public final class DragGestureDetectorKt {
     /* renamed from: awaitVerticalTouchSlopOrCancellation-jO51t88, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1227awaitVerticalTouchSlopOrCancellationjO51t88(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r20, long r21, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.p004ui.input.pointer.PointerInputChange, ? super java.lang.Float, kotlin.Unit> r23, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerInputChange> r24) {
+    public static final java.lang.Object m184awaitVerticalTouchSlopOrCancellationjO51t88(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r20, long r21, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.ui.input.pointer.PointerInputChange, ? super java.lang.Float, kotlin.Unit> r23, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerInputChange> r24) {
         /*
             Method dump skipped, instructions count: 514
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1227awaitVerticalTouchSlopOrCancellationjO51t88(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m184awaitVerticalTouchSlopOrCancellationjO51t88(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function2, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     @Nullable
@@ -630,12 +612,12 @@ public final class DragGestureDetectorKt {
         if ((i & 1) != 0) {
             function1 = new Function1<Offset, Unit>() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$detectDragGestures$2
                 public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    m1238invokek4lQ0M(((Offset) obj2).m2566unboximpl());
+                    m195invokek4lQ0M(((Offset) obj2).unbox-impl());
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke-k-4lQ0M, reason: not valid java name */
-                public final void m1238invokek4lQ0M(long j) {
+                public final void m195invokek4lQ0M(long j) {
                 }
             };
         }
@@ -643,12 +625,12 @@ public final class DragGestureDetectorKt {
         if ((i & 2) != 0) {
             function0 = new Function0<Unit>() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$detectDragGestures$3
                 public /* bridge */ /* synthetic */ Object invoke() {
-                    m1239invoke();
+                    m196invoke();
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke, reason: collision with other method in class */
-                public final void m1239invoke() {
+                public final void m196invoke() {
                 }
             };
         }
@@ -656,12 +638,12 @@ public final class DragGestureDetectorKt {
         if ((i & 4) != 0) {
             function02 = new Function0<Unit>() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$detectDragGestures$4
                 public /* bridge */ /* synthetic */ Object invoke() {
-                    m1240invoke();
+                    m197invoke();
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke, reason: collision with other method in class */
-                public final void m1240invoke() {
+                public final void m197invoke() {
                 }
             };
         }
@@ -678,12 +660,12 @@ public final class DragGestureDetectorKt {
         if ((i & 1) != 0) {
             function1 = new Function1<Offset, Unit>() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$detectDragGesturesAfterLongPress$2
                 public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    m1241invokek4lQ0M(((Offset) obj2).m2566unboximpl());
+                    m198invokek4lQ0M(((Offset) obj2).unbox-impl());
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke-k-4lQ0M, reason: not valid java name */
-                public final void m1241invokek4lQ0M(long j) {
+                public final void m198invokek4lQ0M(long j) {
                 }
             };
         }
@@ -691,12 +673,12 @@ public final class DragGestureDetectorKt {
         if ((i & 2) != 0) {
             function0 = new Function0<Unit>() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$detectDragGesturesAfterLongPress$3
                 public /* bridge */ /* synthetic */ Object invoke() {
-                    m1242invoke();
+                    m199invoke();
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke, reason: collision with other method in class */
-                public final void m1242invoke() {
+                public final void m199invoke() {
                 }
             };
         }
@@ -704,12 +686,12 @@ public final class DragGestureDetectorKt {
         if ((i & 4) != 0) {
             function02 = new Function0<Unit>() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$detectDragGesturesAfterLongPress$4
                 public /* bridge */ /* synthetic */ Object invoke() {
-                    m1243invoke();
+                    m200invoke();
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke, reason: collision with other method in class */
-                public final void m1243invoke() {
+                public final void m200invoke() {
                 }
             };
         }
@@ -726,12 +708,12 @@ public final class DragGestureDetectorKt {
         if ((i & 1) != 0) {
             function1 = new Function1<Offset, Unit>() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$detectHorizontalDragGestures$2
                 public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    m1244invokek4lQ0M(((Offset) obj2).m2566unboximpl());
+                    m201invokek4lQ0M(((Offset) obj2).unbox-impl());
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke-k-4lQ0M, reason: not valid java name */
-                public final void m1244invokek4lQ0M(long j) {
+                public final void m201invokek4lQ0M(long j) {
                 }
             };
         }
@@ -739,12 +721,12 @@ public final class DragGestureDetectorKt {
         if ((i & 2) != 0) {
             function0 = new Function0<Unit>() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$detectHorizontalDragGestures$3
                 public /* bridge */ /* synthetic */ Object invoke() {
-                    m1245invoke();
+                    m202invoke();
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke, reason: collision with other method in class */
-                public final void m1245invoke() {
+                public final void m202invoke() {
                 }
             };
         }
@@ -752,12 +734,12 @@ public final class DragGestureDetectorKt {
         if ((i & 4) != 0) {
             function02 = new Function0<Unit>() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$detectHorizontalDragGestures$4
                 public /* bridge */ /* synthetic */ Object invoke() {
-                    m1246invoke();
+                    m203invoke();
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke, reason: collision with other method in class */
-                public final void m1246invoke() {
+                public final void m203invoke() {
                 }
             };
         }
@@ -774,12 +756,12 @@ public final class DragGestureDetectorKt {
         if ((i & 1) != 0) {
             function1 = new Function1<Offset, Unit>() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$detectVerticalDragGestures$2
                 public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    m1247invokek4lQ0M(((Offset) obj2).m2566unboximpl());
+                    m204invokek4lQ0M(((Offset) obj2).unbox-impl());
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke-k-4lQ0M, reason: not valid java name */
-                public final void m1247invokek4lQ0M(long j) {
+                public final void m204invokek4lQ0M(long j) {
                 }
             };
         }
@@ -787,12 +769,12 @@ public final class DragGestureDetectorKt {
         if ((i & 2) != 0) {
             function0 = new Function0<Unit>() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$detectVerticalDragGestures$3
                 public /* bridge */ /* synthetic */ Object invoke() {
-                    m1248invoke();
+                    m205invoke();
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke, reason: collision with other method in class */
-                public final void m1248invoke() {
+                public final void m205invoke() {
                 }
             };
         }
@@ -800,12 +782,12 @@ public final class DragGestureDetectorKt {
         if ((i & 4) != 0) {
             function02 = new Function0<Unit>() { // from class: androidx.compose.foundation.gestures.DragGestureDetectorKt$detectVerticalDragGestures$4
                 public /* bridge */ /* synthetic */ Object invoke() {
-                    m1249invoke();
+                    m206invoke();
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke, reason: collision with other method in class */
-                public final void m1249invoke() {
+                public final void m206invoke() {
                 }
             };
         }
@@ -829,24 +811,24 @@ public final class DragGestureDetectorKt {
     /* renamed from: drag-VnAYq1g, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1228dragVnAYq1g(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r19, long r20, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.input.pointer.PointerInputChange, kotlin.Unit> r22, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.input.pointer.PointerInputChange, java.lang.Float> r23, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.input.pointer.PointerInputChange, java.lang.Boolean> r24, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.p004ui.input.pointer.PointerInputChange> r25) {
+    public static final java.lang.Object m185dragVnAYq1g(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r19, long r20, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.ui.input.pointer.PointerInputChange, kotlin.Unit> r22, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.ui.input.pointer.PointerInputChange, java.lang.Float> r23, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.ui.input.pointer.PointerInputChange, java.lang.Boolean> r24, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super androidx.compose.ui.input.pointer.PointerInputChange> r25) {
         /*
             Method dump skipped, instructions count: 315
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1228dragVnAYq1g(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function1, kotlin.jvm.functions.Function1, kotlin.jvm.functions.Function1, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m185dragVnAYq1g(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function1, kotlin.jvm.functions.Function1, kotlin.jvm.functions.Function1, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     /* JADX WARN: Multi-variable type inference failed */
     /* renamed from: drag-VnAYq1g$$forInline, reason: not valid java name */
-    private static final Object m1229dragVnAYq1g$$forInline(AwaitPointerEventScope awaitPointerEventScope, long j, Function1<? super PointerInputChange, Unit> function1, Function1<? super PointerInputChange, Float> function12, Function1<? super PointerInputChange, Boolean> function13, Continuation<? super PointerInputChange> continuation) {
+    private static final Object m186dragVnAYq1g$$forInline(AwaitPointerEventScope awaitPointerEventScope, long j, Function1<? super PointerInputChange, Unit> function1, Function1<? super PointerInputChange, Float> function12, Function1<? super PointerInputChange, Boolean> function13, Continuation<? super PointerInputChange> continuation) {
         PointerInputChange pointerInputChange;
         PointerInputChange pointerInputChange2;
         PointerInputChange pointerInputChange3;
         long j2 = j;
-        if (m1232isPointerUpDmW0f2w(awaitPointerEventScope.getCurrentEvent(), j2)) {
+        if (m189isPointerUpDmW0f2w(awaitPointerEventScope.getCurrentEvent(), j2)) {
             return null;
         }
         while (true) {
@@ -866,7 +848,7 @@ public final class DragGestureDetectorKt {
                         break;
                     }
                     pointerInputChange = changes.get(i);
-                    if (Boolean.valueOf(PointerId.m4066equalsimpl0(pointerInputChange.m4080getIdJ3iCeTQ(), longRef.element)).booleanValue()) {
+                    if (Boolean.valueOf(PointerId.equals-impl0(pointerInputChange.getId-J3iCeTQ(), longRef.element)).booleanValue()) {
                         break;
                     }
                     i++;
@@ -894,7 +876,7 @@ public final class DragGestureDetectorKt {
                     if (pointerInputChange4 == null) {
                         break;
                     }
-                    longRef.element = pointerInputChange4.m4080getIdJ3iCeTQ();
+                    longRef.element = pointerInputChange4.getId-J3iCeTQ();
                 } else {
                     if (Boolean.valueOf((((Number) function12.invoke(pointerInputChange2)).floatValue() == 0.0f ? 1 : 0) ^ 1).booleanValue()) {
                         break;
@@ -908,7 +890,7 @@ public final class DragGestureDetectorKt {
                 return pointerInputChange2;
             }
             function1.invoke(pointerInputChange2);
-            j2 = pointerInputChange2.m4080getIdJ3iCeTQ();
+            j2 = pointerInputChange2.getId-J3iCeTQ();
         }
     }
 
@@ -922,9 +904,9 @@ public final class DragGestureDetectorKt {
     /* renamed from: drag-jO51t88, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1230dragjO51t88(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r4, long r5, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.input.pointer.PointerInputChange, kotlin.Unit> r7, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super java.lang.Boolean> r8) {
+    public static final java.lang.Object m187dragjO51t88(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r4, long r5, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.ui.input.pointer.PointerInputChange, kotlin.Unit> r7, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super java.lang.Boolean> r8) {
         /*
             boolean r0 = r8 instanceof androidx.compose.foundation.gestures.DragGestureDetectorKt$drag$1
             if (r0 == 0) goto L13
@@ -950,7 +932,7 @@ public final class DragGestureDetectorKt {
             java.lang.Object r4 = r0.L$1
             kotlin.jvm.functions.Function1 r4 = (kotlin.jvm.functions.Function1) r4
             java.lang.Object r5 = r0.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r5 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r5
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r5 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r5
             kotlin.ResultKt.throwOnFailure(r8)
             r7 = r4
             r4 = r5
@@ -966,26 +948,26 @@ public final class DragGestureDetectorKt {
             r0.L$0 = r4
             r0.L$1 = r7
             r0.label = r3
-            java.lang.Object r8 = m1215awaitDragOrCancellationrnUCldI(r4, r5, r0)
+            java.lang.Object r8 = m172awaitDragOrCancellationrnUCldI(r4, r5, r0)
             if (r8 != r1) goto L4b
             return r1
         L4b:
-            androidx.compose.ui.input.pointer.PointerInputChange r8 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r8
+            androidx.compose.ui.input.pointer.PointerInputChange r8 = (androidx.compose.ui.input.pointer.PointerInputChange) r8
             if (r8 != 0) goto L55
             r4 = 0
             java.lang.Boolean r4 = kotlin.coroutines.jvm.internal.Boxing.boxBoolean(r4)
             return r4
         L55:
-            boolean r5 = androidx.compose.p004ui.input.pointer.PointerEventKt.changedToUpIgnoreConsumed(r8)
+            boolean r5 = androidx.compose.ui.input.pointer.PointerEventKt.changedToUpIgnoreConsumed(r8)
             if (r5 == 0) goto L60
             java.lang.Boolean r4 = kotlin.coroutines.jvm.internal.Boxing.boxBoolean(r3)
             return r4
         L60:
             r7.invoke(r8)
-            long r5 = r8.m4080getIdJ3iCeTQ()
+            long r5 = r8.getId-J3iCeTQ()
             goto L3e
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1230dragjO51t88(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function1, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m187dragjO51t88(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function1, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     @NotNull
@@ -1000,9 +982,8 @@ public final class DragGestureDetectorKt {
 
     /* JADX WARN: Code restructure failed: missing block: B:56:0x00ef, code lost:
     
-        if ((!r0) != false) goto L52;
+        if ((!(androidx.compose.ui.geometry.Offset.getX-impl(androidx.compose.ui.input.pointer.PointerEventKt.positionChangeIgnoreConsumed(r13)) == 0.0f)) != false) goto L52;
      */
-    /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Removed duplicated region for block: B:12:0x0090  */
     /* JADX WARN: Removed duplicated region for block: B:18:0x00ad  */
     /* JADX WARN: Removed duplicated region for block: B:22:0x0105  */
@@ -1018,19 +999,19 @@ public final class DragGestureDetectorKt {
     /* renamed from: horizontalDrag-jO51t88, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1231horizontalDragjO51t88(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r18, long r19, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.input.pointer.PointerInputChange, kotlin.Unit> r21, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super java.lang.Boolean> r22) {
+    public static final java.lang.Object m188horizontalDragjO51t88(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r18, long r19, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.ui.input.pointer.PointerInputChange, kotlin.Unit> r21, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super java.lang.Boolean> r22) {
         /*
             Method dump skipped, instructions count: 290
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1231horizontalDragjO51t88(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function1, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m188horizontalDragjO51t88(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function1, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: isPointerUp-DmW0f2w, reason: not valid java name */
-    public static final boolean m1232isPointerUpDmW0f2w(PointerEvent pointerEvent, long j) {
+    public static final boolean m189isPointerUpDmW0f2w(PointerEvent pointerEvent, long j) {
         PointerInputChange pointerInputChange;
         List<PointerInputChange> changes = pointerEvent.getChanges();
         int size = changes.size();
@@ -1042,7 +1023,7 @@ public final class DragGestureDetectorKt {
                 break;
             }
             pointerInputChange = changes.get(i);
-            if (PointerId.m4066equalsimpl0(pointerInputChange.m4080getIdJ3iCeTQ(), j)) {
+            if (PointerId.equals-impl0(pointerInputChange.getId-J3iCeTQ(), j)) {
                 break;
             }
             i++;
@@ -1055,9 +1036,9 @@ public final class DragGestureDetectorKt {
     }
 
     /* renamed from: pointerSlop-E8SPZFQ, reason: not valid java name */
-    public static final float m1233pointerSlopE8SPZFQ(@NotNull ViewConfiguration viewConfiguration, int i) {
+    public static final float m190pointerSlopE8SPZFQ(@NotNull ViewConfiguration viewConfiguration, int i) {
         Intrinsics.checkNotNullParameter(viewConfiguration, "$this$pointerSlop");
-        return PointerType.m4139equalsimpl0(i, PointerType.Companion.m4144getMouseT8wyACA()) ? viewConfiguration.getTouchSlop() * mouseToTouchSlopRatio : viewConfiguration.getTouchSlop();
+        return PointerType.m2036equalsimpl0(i, PointerType.Companion.getMouse-T8wyACA()) ? viewConfiguration.getTouchSlop() * mouseToTouchSlopRatio : viewConfiguration.getTouchSlop();
     }
 
     @NotNull
@@ -1068,9 +1049,8 @@ public final class DragGestureDetectorKt {
 
     /* JADX WARN: Code restructure failed: missing block: B:56:0x00ef, code lost:
     
-        if ((!r0) != false) goto L52;
+        if ((!(androidx.compose.ui.geometry.Offset.getY-impl(androidx.compose.ui.input.pointer.PointerEventKt.positionChangeIgnoreConsumed(r13)) == 0.0f)) != false) goto L52;
      */
-    /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Removed duplicated region for block: B:12:0x0090  */
     /* JADX WARN: Removed duplicated region for block: B:18:0x00ad  */
     /* JADX WARN: Removed duplicated region for block: B:22:0x0105  */
@@ -1086,13 +1066,13 @@ public final class DragGestureDetectorKt {
     /* renamed from: verticalDrag-jO51t88, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object m1234verticalDragjO51t88(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r18, long r19, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.input.pointer.PointerInputChange, kotlin.Unit> r21, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super java.lang.Boolean> r22) {
+    public static final java.lang.Object m191verticalDragjO51t88(@org.jetbrains.annotations.NotNull androidx.compose.ui.input.pointer.AwaitPointerEventScope r18, long r19, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.ui.input.pointer.PointerInputChange, kotlin.Unit> r21, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super java.lang.Boolean> r22) {
         /*
             Method dump skipped, instructions count: 290
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m1234verticalDragjO51t88(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function1, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragGestureDetectorKt.m191verticalDragjO51t88(androidx.compose.ui.input.pointer.AwaitPointerEventScope, long, kotlin.jvm.functions.Function1, kotlin.coroutines.Continuation):java.lang.Object");
     }
 }

@@ -11,19 +11,19 @@ import androidx.compose.foundation.interaction.MutableInteractionSource;
 import androidx.compose.foundation.lazy.layout.LazyAnimateScrollKt;
 import androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider;
 import androidx.compose.foundation.lazy.layout.LazyLayoutPrefetchState;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.Remeasurement;
-import androidx.compose.p004ui.layout.RemeasurementModifier;
-import androidx.compose.p004ui.unit.Constraints;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.DensityKt;
-import androidx.compose.p004ui.unit.IntOffset;
+import androidx.compose.foundation.lazy.layout.LazyLayoutPrefetchState$PrefetchHandle;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.internal.StabilityInferred;
 import androidx.compose.runtime.saveable.ListSaverKt;
 import androidx.compose.runtime.saveable.Saver;
-import androidx.compose.runtime.saveable.SaverScope;
+import androidx.compose.ui.layout.Remeasurement;
+import androidx.compose.ui.layout.RemeasurementModifier;
+import androidx.compose.ui.unit.Constraints;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.DensityKt;
+import androidx.compose.ui.unit.IntOffset;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -44,13 +44,11 @@ import kotlin.ranges.IntRange;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tb.eo4;
-import tb.mt2;
-import tb.nt2;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
 @ExperimentalFoundationApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyStaggeredGridState implements ScrollableState {
 
     @NotNull
@@ -63,7 +61,7 @@ public final class LazyStaggeredGridState implements ScrollableState {
     private final MutableState canScrollForward$delegate;
 
     @NotNull
-    private final Map<Integer, LazyLayoutPrefetchState.PrefetchHandle> currentItemPrefetchHandles;
+    private final Map<Integer, LazyLayoutPrefetchState$PrefetchHandle> currentItemPrefetchHandles;
 
     @NotNull
     private Density density;
@@ -105,20 +103,7 @@ public final class LazyStaggeredGridState implements ScrollableState {
     public static final int $stable = 8;
 
     @NotNull
-    private static final Saver<LazyStaggeredGridState, Object> Saver = ListSaverKt.listSaver(new Function2<SaverScope, LazyStaggeredGridState, List<? extends int[]>>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState$Companion$Saver$1
-        @NotNull
-        public final List<int[]> invoke(@NotNull SaverScope saverScope, @NotNull LazyStaggeredGridState lazyStaggeredGridState) {
-            Intrinsics.checkNotNullParameter(saverScope, "$this$listSaver");
-            Intrinsics.checkNotNullParameter(lazyStaggeredGridState, "state");
-            return CollectionsKt.listOf(new int[][]{lazyStaggeredGridState.getScrollPosition$foundation_release().getIndices(), lazyStaggeredGridState.getScrollPosition$foundation_release().getOffsets()});
-        }
-    }, new Function1<List<? extends int[]>, LazyStaggeredGridState>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState$Companion$Saver$2
-        @Nullable
-        public final LazyStaggeredGridState invoke(@NotNull List<int[]> list) {
-            Intrinsics.checkNotNullParameter(list, "it");
-            return new LazyStaggeredGridState(list.get(0), list.get(1), null);
-        }
-    });
+    private static final Saver<LazyStaggeredGridState, Object> Saver = ListSaverKt.listSaver(Companion.Saver.1.INSTANCE, Companion.Saver.2.INSTANCE);
 
     /* compiled from: Taobao */
     public static final class Companion {
@@ -136,45 +121,14 @@ public final class LazyStaggeredGridState implements ScrollableState {
     }
 
     private LazyStaggeredGridState(int[] iArr, int[] iArr2) {
-        this.scrollPosition = new LazyStaggeredGridScrollPosition(iArr, iArr2, new LazyStaggeredGridState$scrollPosition$1(this));
-        this.layoutInfoState = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(EmptyLazyStaggeredGridLayoutInfo.INSTANCE, null, 2, null);
+        this.scrollPosition = new LazyStaggeredGridScrollPosition(iArr, iArr2, new scrollPosition.1(this));
+        this.layoutInfoState = SnapshotStateKt.mutableStateOf$default(EmptyLazyStaggeredGridLayoutInfo.INSTANCE, (SnapshotMutationPolicy) null, 2, (Object) null);
         this.spans = new LazyStaggeredGridSpans();
         Boolean bool = Boolean.FALSE;
-        this.canScrollForward$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(bool, null, 2, null);
-        this.canScrollBackward$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(bool, null, 2, null);
+        this.canScrollForward$delegate = SnapshotStateKt.mutableStateOf$default(bool, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.canScrollBackward$delegate = SnapshotStateKt.mutableStateOf$default(bool, (SnapshotMutationPolicy) null, 2, (Object) null);
         this.animateScrollScope = new LazyStaggeredGridAnimateScrollScope(this);
-        this.remeasurementModifier = new RemeasurementModifier() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState$remeasurementModifier$1
-            @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
-            public /* synthetic */ boolean all(Function1 function1) {
-                return nt2.a(this, function1);
-            }
-
-            @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
-            public /* synthetic */ boolean any(Function1 function1) {
-                return nt2.b(this, function1);
-            }
-
-            @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
-            public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
-                return nt2.c(this, obj, function2);
-            }
-
-            @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
-            public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
-                return nt2.d(this, obj, function2);
-            }
-
-            @Override // androidx.compose.p004ui.layout.RemeasurementModifier
-            public void onRemeasurementAvailable(@NotNull Remeasurement remeasurement) {
-                Intrinsics.checkNotNullParameter(remeasurement, "remeasurement");
-                LazyStaggeredGridState.this.remeasurement = remeasurement;
-            }
-
-            @Override // androidx.compose.p004ui.Modifier
-            public /* synthetic */ Modifier then(Modifier modifier) {
-                return mt2.a(this, modifier);
-            }
-        };
+        this.remeasurementModifier = new remeasurementModifier.1(this);
         this.prefetchingEnabled = true;
         this.prefetchState = new LazyLayoutPrefetchState();
         this.scrollableState = ScrollableStateKt.ScrollableState(new Function1<Float, Float>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState$scrollableState$1
@@ -224,7 +178,7 @@ public final class LazyStaggeredGridState implements ScrollableState {
                 this.prefetchBaseIndex = -1;
                 Iterator<T> it = this.currentItemPrefetchHandles.values().iterator();
                 while (it.hasNext()) {
-                    ((LazyLayoutPrefetchState.PrefetchHandle) it.next()).cancel();
+                    ((LazyLayoutPrefetchState$PrefetchHandle) it.next()).cancel();
                 }
                 this.currentItemPrefetchHandles.clear();
             }
@@ -232,9 +186,9 @@ public final class LazyStaggeredGridState implements ScrollableState {
     }
 
     private final void clearLeftoverPrefetchHandles(Set<Integer> set) {
-        Iterator<Map.Entry<Integer, LazyLayoutPrefetchState.PrefetchHandle>> it = this.currentItemPrefetchHandles.entrySet().iterator();
+        Iterator<Map.Entry<Integer, LazyLayoutPrefetchState$PrefetchHandle>> it = this.currentItemPrefetchHandles.entrySet().iterator();
         while (it.hasNext()) {
-            Map.Entry<Integer, LazyLayoutPrefetchState.PrefetchHandle> next = it.next();
+            Map.Entry<Integer, LazyLayoutPrefetchState$PrefetchHandle> next = it.next();
             if (!set.contains(next.getKey())) {
                 next.getValue().cancel();
                 it.remove();
@@ -294,7 +248,7 @@ public final class LazyStaggeredGridState implements ScrollableState {
                 if (!this.currentItemPrefetchHandles.containsKey(Integer.valueOf(findNextItemIndex))) {
                     int[] iArr = this.laneWidthsPrefixSum;
                     int i2 = iArr[i] - (i == 0 ? 0 : iArr[i - 1]);
-                    this.currentItemPrefetchHandles.put(Integer.valueOf(findNextItemIndex), this.prefetchState.m1616schedulePrefetch0kLqBqw(findNextItemIndex, this.isVertical ? Constraints.Companion.m5194fixedWidthOenEA2s(i2) : Constraints.Companion.m5193fixedHeightOenEA2s(i2)));
+                    this.currentItemPrefetchHandles.put(Integer.valueOf(findNextItemIndex), this.prefetchState.schedulePrefetch-0kLqBqw(findNextItemIndex, this.isVertical ? Constraints.Companion.m2132fixedWidthOenEA2s(i2) : Constraints.Companion.m2131fixedHeightOenEA2s(i2)));
                 }
                 i++;
                 index = findNextItemIndex;
@@ -363,19 +317,14 @@ public final class LazyStaggeredGridState implements ScrollableState {
         this.measurePassCount++;
     }
 
-    @Override // androidx.compose.foundation.gestures.ScrollableState
     public float dispatchRawDelta(float f) {
         return this.scrollableState.dispatchRawDelta(f);
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    @Override // androidx.compose.foundation.gestures.ScrollableState
     public boolean getCanScrollBackward() {
         return ((Boolean) this.canScrollBackward$delegate.getValue()).booleanValue();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    @Override // androidx.compose.foundation.gestures.ScrollableState
     public boolean getCanScrollForward() {
         return ((Boolean) this.canScrollForward$delegate.getValue()).booleanValue();
     }
@@ -480,7 +429,6 @@ public final class LazyStaggeredGridState implements ScrollableState {
         return this.spans;
     }
 
-    @Override // androidx.compose.foundation.gestures.ScrollableState
     public boolean isScrollInProgress() {
         return this.scrollableState.isScrollInProgress();
     }
@@ -489,7 +437,6 @@ public final class LazyStaggeredGridState implements ScrollableState {
         return this.isVertical;
     }
 
-    @Override // androidx.compose.foundation.gestures.ScrollableState
     @Nullable
     public Object scroll(@NotNull MutatePriority mutatePriority, @NotNull Function2<? super ScrollScope, ? super Continuation<? super Unit>, ? extends Object> function2, @NotNull Continuation<? super Unit> continuation) {
         Object scroll = this.scrollableState.scroll(mutatePriority, function2, continuation);
@@ -498,7 +445,7 @@ public final class LazyStaggeredGridState implements ScrollableState {
 
     @Nullable
     public final Object scrollToItem(int i, int i2, @NotNull Continuation<? super Unit> continuation) {
-        Object e = eo4.e(this, (MutatePriority) null, new LazyStaggeredGridState$scrollToItem$2(this, i, i2, null), continuation, 1, (Object) null);
+        Object e = eo4.e(this, (MutatePriority) null, new scrollToItem.2(this, i, i2, (Continuation) null), continuation, 1, (Object) null);
         return e == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? e : Unit.INSTANCE;
     }
 
@@ -529,8 +476,8 @@ public final class LazyStaggeredGridState implements ScrollableState {
         LazyStaggeredGridItemInfo findVisibleItem = LazyStaggeredGridMeasureResultKt.findVisibleItem(getLayoutInfo(), i);
         if (findVisibleItem != null) {
             boolean z = this.isVertical;
-            long mo1629getOffsetnOccac = findVisibleItem.mo1629getOffsetnOccac();
-            scrollScope.scrollBy((z ? IntOffset.m5335getYimpl(mo1629getOffsetnOccac) : IntOffset.m5334getXimpl(mo1629getOffsetnOccac)) + i2);
+            long j = findVisibleItem.getOffset-nOcc-ac();
+            scrollScope.scrollBy((z ? IntOffset.getY-impl(j) : IntOffset.getX-impl(j)) + i2);
         } else {
             this.scrollPosition.requestPosition(i, i2);
             Remeasurement remeasurement = this.remeasurement;

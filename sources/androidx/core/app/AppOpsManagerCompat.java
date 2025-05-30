@@ -10,30 +10,12 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AppOpsManagerCompat {
     public static final int MODE_ALLOWED = 0;
     public static final int MODE_DEFAULT = 3;
     public static final int MODE_ERRORED = 2;
     public static final int MODE_IGNORED = 1;
-
-    /* compiled from: Taobao */
-    @RequiresApi(19)
-    /* loaded from: classes.dex */
-    static class Api19Impl {
-        private Api19Impl() {
-        }
-
-        @DoNotInline
-        static int noteOp(AppOpsManager appOpsManager, String str, int i, String str2) {
-            return appOpsManager.noteOp(str, i, str2);
-        }
-
-        @DoNotInline
-        static int noteOpNoThrow(AppOpsManager appOpsManager, String str, int i, String str2) {
-            return appOpsManager.noteOpNoThrow(str, i, str2);
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(23)

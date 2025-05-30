@@ -1,14 +1,15 @@
 package okhttp3;
 
 import java.io.IOException;
+import okio.o;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface Call extends Cloneable {
 
     /* compiled from: Taobao */
     public interface Factory {
-        Call newCall(C1474n c1474n);
+        Call newCall(n nVar);
     }
 
     void cancel();
@@ -17,13 +18,13 @@ public interface Call extends Cloneable {
 
     void enqueue(Callback callback);
 
-    C1476p execute() throws IOException;
+    p execute() throws IOException;
 
     boolean isCanceled();
 
     boolean isExecuted();
 
-    C1474n request();
+    n request();
 
-    okio.o timeout();
+    o timeout();
 }

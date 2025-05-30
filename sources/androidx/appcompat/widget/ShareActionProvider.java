@@ -9,13 +9,15 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R$attr;
+import androidx.appcompat.R$string;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.ActivityChooserModel;
 import androidx.core.view.ActionProvider;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ShareActionProvider extends ActionProvider {
     private static final int DEFAULT_INITIAL_ACTIVITY_COUNT = 4;
     public static final String DEFAULT_SHARE_HISTORY_FILE_NAME = "share_history.xml";
@@ -25,30 +27,6 @@ public class ShareActionProvider extends ActionProvider {
     private final ShareMenuItemOnMenuItemClickListener mOnMenuItemClickListener;
     OnShareTargetSelectedListener mOnShareTargetSelectedListener;
     String mShareHistoryFileName;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface OnShareTargetSelectedListener {
-        boolean onShareTargetSelected(ShareActionProvider shareActionProvider, Intent intent);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private class ShareActivityChooserModelPolicy implements ActivityChooserModel.OnChooseActivityListener {
-        ShareActivityChooserModelPolicy() {
-        }
-
-        @Override // androidx.appcompat.widget.ActivityChooserModel.OnChooseActivityListener
-        public boolean onChooseActivity(ActivityChooserModel activityChooserModel, Intent intent) {
-            ShareActionProvider shareActionProvider = ShareActionProvider.this;
-            OnShareTargetSelectedListener onShareTargetSelectedListener = shareActionProvider.mOnShareTargetSelectedListener;
-            if (onShareTargetSelectedListener == null) {
-                return false;
-            }
-            onShareTargetSelectedListener.onShareTargetSelected(shareActionProvider, intent);
-            return false;
-        }
-    }
 
     /* compiled from: Taobao */
     private class ShareMenuItemOnMenuItemClickListener implements MenuItem.OnMenuItemClickListener {
@@ -84,32 +62,29 @@ public class ShareActionProvider extends ActionProvider {
             return;
         }
         if (this.mOnChooseActivityListener == null) {
-            this.mOnChooseActivityListener = new ShareActivityChooserModelPolicy();
+            this.mOnChooseActivityListener = new ShareActivityChooserModelPolicy(this);
         }
         ActivityChooserModel.get(this.mContext, this.mShareHistoryFileName).setOnChooseActivityListener(this.mOnChooseActivityListener);
     }
 
-    @Override // androidx.core.view.ActionProvider
     public boolean hasSubMenu() {
         return true;
     }
 
-    @Override // androidx.core.view.ActionProvider
     public View onCreateActionView() {
         ActivityChooserView activityChooserView = new ActivityChooserView(this.mContext);
         if (!activityChooserView.isInEditMode()) {
             activityChooserView.setActivityChooserModel(ActivityChooserModel.get(this.mContext, this.mShareHistoryFileName));
         }
         TypedValue typedValue = new TypedValue();
-        this.mContext.getTheme().resolveAttribute(C0257R.attr.actionModeShareDrawable, typedValue, true);
+        this.mContext.getTheme().resolveAttribute(R$attr.actionModeShareDrawable, typedValue, true);
         activityChooserView.setExpandActivityOverflowButtonDrawable(AppCompatResources.getDrawable(this.mContext, typedValue.resourceId));
         activityChooserView.setProvider(this);
-        activityChooserView.setDefaultActionButtonContentDescription(C0257R.string.abc_shareactionprovider_share_with_application);
-        activityChooserView.setExpandActivityOverflowButtonContentDescription(C0257R.string.abc_shareactionprovider_share_with);
+        activityChooserView.setDefaultActionButtonContentDescription(R$string.abc_shareactionprovider_share_with_application);
+        activityChooserView.setExpandActivityOverflowButtonContentDescription(R$string.abc_shareactionprovider_share_with);
         return activityChooserView;
     }
 
-    @Override // androidx.core.view.ActionProvider
     public void onPrepareSubMenu(SubMenu subMenu) {
         subMenu.clear();
         ActivityChooserModel activityChooserModel = ActivityChooserModel.get(this.mContext, this.mShareHistoryFileName);
@@ -121,7 +96,7 @@ public class ShareActionProvider extends ActionProvider {
             subMenu.add(0, i, i, activity.loadLabel(packageManager)).setIcon(activity.loadIcon(packageManager)).setOnMenuItemClickListener(this.mOnMenuItemClickListener);
         }
         if (min < activityCount) {
-            SubMenu addSubMenu = subMenu.addSubMenu(0, min, min, this.mContext.getString(C0257R.string.abc_activity_chooser_view_see_all));
+            SubMenu addSubMenu = subMenu.addSubMenu(0, min, min, this.mContext.getString(R$string.abc_activity_chooser_view_see_all));
             for (int i2 = 0; i2 < activityCount; i2++) {
                 ResolveInfo activity2 = activityChooserModel.getActivity(i2);
                 addSubMenu.add(0, i2, i2, activity2.loadLabel(packageManager)).setIcon(activity2.loadIcon(packageManager)).setOnMenuItemClickListener(this.mOnMenuItemClickListener);
@@ -153,7 +128,7 @@ public class ShareActionProvider extends ActionProvider {
         if (Build.VERSION.SDK_INT >= 21) {
             intent.addFlags(134742016);
         } else {
-            intent.addFlags(524288);
+            intent.addFlags(AccessibilityEventCompat.TYPE_GESTURE_DETECTION_END);
         }
     }
 }

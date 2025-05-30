@@ -1,9 +1,15 @@
 package androidx.compose.runtime.snapshots;
 
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.runtime.snapshots.SnapshotApplyResult;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
+import kotlin.KotlinNothingValueException;
+import kotlin.Pair;
+import kotlin.TuplesKt;
 import kotlin.Unit;
 import kotlin.collections.ArraysKt;
 import kotlin.collections.CollectionsKt;
@@ -16,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MutableSnapshot extends Snapshot {
     public static final int $stable = 8;
     private boolean applied;
@@ -81,8 +87,6 @@ public class MutableSnapshot extends Snapshot {
     }
 
     public final <T> T advance$runtime_release(@NotNull Function0<? extends T> function0) {
-        int i;
-        SnapshotIdSet snapshotIdSet;
         Intrinsics.checkNotNullParameter(function0, "block");
         recordPrevious$runtime_release(getId());
         T t = (T) function0.invoke();
@@ -90,11 +94,10 @@ public class MutableSnapshot extends Snapshot {
             int id = getId();
             synchronized (SnapshotKt.getLock()) {
                 try {
-                    i = SnapshotKt.nextSnapshotId;
-                    SnapshotKt.nextSnapshotId = i + 1;
-                    setId$runtime_release(i);
-                    snapshotIdSet = SnapshotKt.openSnapshots;
-                    SnapshotKt.openSnapshots = snapshotIdSet.set(getId());
+                    int access$getNextSnapshotId$p = SnapshotKt.access$getNextSnapshotId$p();
+                    SnapshotKt.access$setNextSnapshotId$p(access$getNextSnapshotId$p + 1);
+                    setId$runtime_release(access$getNextSnapshotId$p);
+                    SnapshotKt.access$setOpenSnapshots$p(SnapshotKt.access$getOpenSnapshots$p().set(getId()));
                     Unit unit = Unit.INSTANCE;
                     InlineMarker.finallyStart(1);
                 } catch (Throwable th) {
@@ -115,21 +118,19 @@ public class MutableSnapshot extends Snapshot {
     @org.jetbrains.annotations.NotNull
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public androidx.compose.runtime.snapshots.SnapshotApplyResult apply() {
         /*
             Method dump skipped, instructions count: 298
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.runtime.snapshots.MutableSnapshot.apply():androidx.compose.runtime.snapshots.SnapshotApplyResult");
     }
 
     @Override // androidx.compose.runtime.snapshots.Snapshot
     public void closeLocked$runtime_release() {
-        SnapshotIdSet snapshotIdSet;
-        snapshotIdSet = SnapshotKt.openSnapshots;
-        SnapshotKt.openSnapshots = snapshotIdSet.clear(getId()).andNot(this.previousIds);
+        SnapshotKt.access$setOpenSnapshots$p(SnapshotKt.access$getOpenSnapshots$p().clear(getId()).andNot(this.previousIds));
     }
 
     @Override // androidx.compose.runtime.snapshots.Snapshot
@@ -138,7 +139,7 @@ public class MutableSnapshot extends Snapshot {
             return;
         }
         super.dispose();
-        mo2439nestedDeactivated$runtime_release(this);
+        mo798nestedDeactivated$runtime_release(this);
     }
 
     public final boolean getApplied$runtime_release() {
@@ -190,148 +191,81 @@ public class MutableSnapshot extends Snapshot {
         return modified$runtime_release != null && (modified$runtime_release.isEmpty() ^ true);
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:7:0x003b, code lost:
-    
-        r8 = androidx.compose.runtime.snapshots.SnapshotKt.readable(r6, getId(), r0);
-     */
-    @org.jetbrains.annotations.NotNull
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
-    */
-    public final androidx.compose.runtime.snapshots.SnapshotApplyResult innerApplyLocked$runtime_release(int r12, @org.jetbrains.annotations.Nullable java.util.Map<androidx.compose.runtime.snapshots.StateRecord, ? extends androidx.compose.runtime.snapshots.StateRecord> r13, @org.jetbrains.annotations.NotNull androidx.compose.runtime.snapshots.SnapshotIdSet r14) {
-        /*
-            r11 = this;
-            java.lang.String r0 = "invalidSnapshots"
-            kotlin.jvm.internal.Intrinsics.checkNotNullParameter(r14, r0)
-            androidx.compose.runtime.snapshots.SnapshotIdSet r0 = r11.getInvalid$runtime_release()
-            int r1 = r11.getId()
-            androidx.compose.runtime.snapshots.SnapshotIdSet r0 = r0.set(r1)
-            androidx.compose.runtime.snapshots.SnapshotIdSet r1 = r11.previousIds
-            androidx.compose.runtime.snapshots.SnapshotIdSet r0 = r0.m88or(r1)
-            java.util.Set r1 = r11.getModified$runtime_release()
-            kotlin.jvm.internal.Intrinsics.checkNotNull(r1)
-            java.util.Iterator r2 = r1.iterator()
-            r3 = 0
-            r4 = r3
-        L24:
-            boolean r5 = r2.hasNext()
-            if (r5 == 0) goto Lc1
-            java.lang.Object r5 = r2.next()
-            androidx.compose.runtime.snapshots.StateObject r5 = (androidx.compose.runtime.snapshots.StateObject) r5
-            androidx.compose.runtime.snapshots.StateRecord r6 = r5.getFirstStateRecord()
-            androidx.compose.runtime.snapshots.StateRecord r7 = androidx.compose.runtime.snapshots.SnapshotKt.access$readable(r6, r12, r14)
-            if (r7 != 0) goto L3b
-            goto L24
-        L3b:
-            int r8 = r11.getId()
-            androidx.compose.runtime.snapshots.StateRecord r8 = androidx.compose.runtime.snapshots.SnapshotKt.access$readable(r6, r8, r0)
-            if (r8 != 0) goto L46
-            goto L24
-        L46:
-            boolean r9 = kotlin.jvm.internal.Intrinsics.areEqual(r7, r8)
-            if (r9 != 0) goto L24
-            int r9 = r11.getId()
-            androidx.compose.runtime.snapshots.SnapshotIdSet r10 = r11.getInvalid$runtime_release()
-            androidx.compose.runtime.snapshots.StateRecord r6 = androidx.compose.runtime.snapshots.SnapshotKt.access$readable(r6, r9, r10)
-            if (r6 == 0) goto Lb8
-            if (r13 == 0) goto L64
-            java.lang.Object r9 = r13.get(r7)
-            androidx.compose.runtime.snapshots.StateRecord r9 = (androidx.compose.runtime.snapshots.StateRecord) r9
-            if (r9 != 0) goto L68
-        L64:
-            androidx.compose.runtime.snapshots.StateRecord r9 = r5.mergeRecords(r8, r7, r6)
-        L68:
-            if (r9 != 0) goto L70
-            androidx.compose.runtime.snapshots.SnapshotApplyResult$Failure r12 = new androidx.compose.runtime.snapshots.SnapshotApplyResult$Failure
-            r12.<init>(r11)
-            return r12
-        L70:
-            boolean r6 = kotlin.jvm.internal.Intrinsics.areEqual(r9, r6)
-            if (r6 != 0) goto L24
-            boolean r6 = kotlin.jvm.internal.Intrinsics.areEqual(r9, r7)
-            if (r6 == 0) goto L99
-            if (r3 != 0) goto L83
-            java.util.ArrayList r3 = new java.util.ArrayList
-            r3.<init>()
-        L83:
-            androidx.compose.runtime.snapshots.StateRecord r6 = r7.create()
-            kotlin.Pair r6 = kotlin.TuplesKt.to(r5, r6)
-            r3.add(r6)
-            if (r4 != 0) goto L95
-            java.util.ArrayList r4 = new java.util.ArrayList
-            r4.<init>()
-        L95:
-            r4.add(r5)
-            goto L24
-        L99:
-            if (r3 != 0) goto La0
-            java.util.ArrayList r3 = new java.util.ArrayList
-            r3.<init>()
-        La0:
-            boolean r6 = kotlin.jvm.internal.Intrinsics.areEqual(r9, r8)
-            if (r6 != 0) goto Lab
-            kotlin.Pair r5 = kotlin.TuplesKt.to(r5, r9)
-            goto Lb3
-        Lab:
-            androidx.compose.runtime.snapshots.StateRecord r6 = r8.create()
-            kotlin.Pair r5 = kotlin.TuplesKt.to(r5, r6)
-        Lb3:
-            r3.add(r5)
-            goto L24
-        Lb8:
-            androidx.compose.runtime.snapshots.SnapshotKt.access$readError()
-            kotlin.KotlinNothingValueException r12 = new kotlin.KotlinNothingValueException
-            r12.<init>()
-            throw r12
-        Lc1:
-            if (r3 == 0) goto Lfe
-            r11.advance$runtime_release()
-            r12 = 0
-            int r13 = r3.size()
-        Lcb:
-            if (r12 >= r13) goto Lfe
-            java.lang.Object r14 = r3.get(r12)
-            kotlin.Pair r14 = (kotlin.Pair) r14
-            java.lang.Object r0 = r14.component1()
-            androidx.compose.runtime.snapshots.StateObject r0 = (androidx.compose.runtime.snapshots.StateObject) r0
-            java.lang.Object r14 = r14.component2()
-            androidx.compose.runtime.snapshots.StateRecord r14 = (androidx.compose.runtime.snapshots.StateRecord) r14
-            int r2 = r11.getId()
-            r14.setSnapshotId$runtime_release(r2)
-            java.lang.Object r2 = androidx.compose.runtime.snapshots.SnapshotKt.getLock()
-            monitor-enter(r2)
-            androidx.compose.runtime.snapshots.StateRecord r5 = r0.getFirstStateRecord()     // Catch: java.lang.Throwable -> Lfb
-            r14.setNext$runtime_release(r5)     // Catch: java.lang.Throwable -> Lfb
-            r0.prependStateRecord(r14)     // Catch: java.lang.Throwable -> Lfb
-            kotlin.Unit r14 = kotlin.Unit.INSTANCE     // Catch: java.lang.Throwable -> Lfb
-            monitor-exit(r2)
-            int r12 = r12 + 1
-            goto Lcb
-        Lfb:
-            r12 = move-exception
-            monitor-exit(r2)
-            throw r12
-        Lfe:
-            if (r4 == 0) goto L103
-            r1.removeAll(r4)
-        L103:
-            androidx.compose.runtime.snapshots.SnapshotApplyResult$Success r12 = androidx.compose.runtime.snapshots.SnapshotApplyResult.Success.INSTANCE
-            return r12
-        */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.runtime.snapshots.MutableSnapshot.innerApplyLocked$runtime_release(int, java.util.Map, androidx.compose.runtime.snapshots.SnapshotIdSet):androidx.compose.runtime.snapshots.SnapshotApplyResult");
+    @NotNull
+    public final SnapshotApplyResult innerApplyLocked$runtime_release(int i, @Nullable Map<StateRecord, ? extends StateRecord> map, @NotNull SnapshotIdSet snapshotIdSet) {
+        StateRecord access$readable;
+        StateRecord mergeRecords;
+        Intrinsics.checkNotNullParameter(snapshotIdSet, "invalidSnapshots");
+        SnapshotIdSet or = getInvalid$runtime_release().set(getId()).or(this.previousIds);
+        Set<StateObject> modified$runtime_release = getModified$runtime_release();
+        Intrinsics.checkNotNull(modified$runtime_release);
+        ArrayList arrayList = null;
+        ArrayList arrayList2 = null;
+        for (StateObject stateObject : modified$runtime_release) {
+            StateRecord firstStateRecord = stateObject.getFirstStateRecord();
+            StateRecord access$readable2 = SnapshotKt.access$readable(firstStateRecord, i, snapshotIdSet);
+            if (access$readable2 != null && (access$readable = SnapshotKt.access$readable(firstStateRecord, getId(), or)) != null && !Intrinsics.areEqual(access$readable2, access$readable)) {
+                StateRecord access$readable3 = SnapshotKt.access$readable(firstStateRecord, getId(), getInvalid$runtime_release());
+                if (access$readable3 == null) {
+                    SnapshotKt.access$readError();
+                    throw new KotlinNothingValueException();
+                }
+                if (map == null || (mergeRecords = map.get(access$readable2)) == null) {
+                    mergeRecords = stateObject.mergeRecords(access$readable, access$readable2, access$readable3);
+                }
+                if (mergeRecords == null) {
+                    return new SnapshotApplyResult$Failure(this);
+                }
+                if (!Intrinsics.areEqual(mergeRecords, access$readable3)) {
+                    if (Intrinsics.areEqual(mergeRecords, access$readable2)) {
+                        if (arrayList == null) {
+                            arrayList = new ArrayList();
+                        }
+                        arrayList.add(TuplesKt.to(stateObject, access$readable2.create()));
+                        if (arrayList2 == null) {
+                            arrayList2 = new ArrayList();
+                        }
+                        arrayList2.add(stateObject);
+                    } else {
+                        if (arrayList == null) {
+                            arrayList = new ArrayList();
+                        }
+                        arrayList.add(!Intrinsics.areEqual(mergeRecords, access$readable) ? TuplesKt.to(stateObject, mergeRecords) : TuplesKt.to(stateObject, access$readable.create()));
+                    }
+                }
+            }
+        }
+        if (arrayList != null) {
+            advance$runtime_release();
+            int size = arrayList.size();
+            for (int i2 = 0; i2 < size; i2++) {
+                Pair pair = (Pair) arrayList.get(i2);
+                StateObject stateObject2 = (StateObject) pair.component1();
+                StateRecord stateRecord = (StateRecord) pair.component2();
+                stateRecord.setSnapshotId$runtime_release(getId());
+                synchronized (SnapshotKt.getLock()) {
+                    stateRecord.setNext$runtime_release(stateObject2.getFirstStateRecord());
+                    stateObject2.prependStateRecord(stateRecord);
+                    Unit unit = Unit.INSTANCE;
+                }
+            }
+        }
+        if (arrayList2 != null) {
+            modified$runtime_release.removeAll(arrayList2);
+        }
+        return SnapshotApplyResult.Success.INSTANCE;
     }
 
     @Override // androidx.compose.runtime.snapshots.Snapshot
     /* renamed from: nestedActivated$runtime_release */
-    public void mo2438nestedActivated$runtime_release(@NotNull Snapshot snapshot) {
+    public void mo797nestedActivated$runtime_release(@NotNull Snapshot snapshot) {
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
         this.snapshots++;
     }
 
     @Override // androidx.compose.runtime.snapshots.Snapshot
     /* renamed from: nestedDeactivated$runtime_release */
-    public void mo2439nestedDeactivated$runtime_release(@NotNull Snapshot snapshot) {
+    public void mo798nestedDeactivated$runtime_release(@NotNull Snapshot snapshot) {
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
         int i = this.snapshots;
         if (!(i > 0)) {
@@ -355,7 +289,7 @@ public class MutableSnapshot extends Snapshot {
 
     @Override // androidx.compose.runtime.snapshots.Snapshot
     /* renamed from: recordModified$runtime_release */
-    public void mo2441recordModified$runtime_release(@NotNull StateObject stateObject) {
+    public void mo799recordModified$runtime_release(@NotNull StateObject stateObject) {
         Intrinsics.checkNotNullParameter(stateObject, "state");
         Set<StateObject> modified$runtime_release = getModified$runtime_release();
         if (modified$runtime_release == null) {
@@ -375,7 +309,7 @@ public class MutableSnapshot extends Snapshot {
     public final void recordPreviousList$runtime_release(@NotNull SnapshotIdSet snapshotIdSet) {
         Intrinsics.checkNotNullParameter(snapshotIdSet, "snapshots");
         synchronized (SnapshotKt.getLock()) {
-            this.previousIds = this.previousIds.m88or(snapshotIdSet);
+            this.previousIds = this.previousIds.or(snapshotIdSet);
             Unit unit = Unit.INSTANCE;
         }
     }
@@ -432,35 +366,25 @@ public class MutableSnapshot extends Snapshot {
 
     @NotNull
     public MutableSnapshot takeNestedMutableSnapshot(@Nullable Function1<Object, Unit> function1, @Nullable Function1<Object, Unit> function12) {
-        int i;
-        SnapshotIdSet snapshotIdSet;
         NestedMutableSnapshot nestedMutableSnapshot;
-        Function1 mergedWriteObserver;
-        int i2;
-        SnapshotIdSet snapshotIdSet2;
         validateNotDisposed$runtime_release();
         validateNotAppliedOrPinned$runtime_release();
         recordPrevious$runtime_release(getId());
         synchronized (SnapshotKt.getLock()) {
-            i = SnapshotKt.nextSnapshotId;
-            SnapshotKt.nextSnapshotId = i + 1;
-            snapshotIdSet = SnapshotKt.openSnapshots;
-            SnapshotKt.openSnapshots = snapshotIdSet.set(i);
+            int access$getNextSnapshotId$p = SnapshotKt.access$getNextSnapshotId$p();
+            SnapshotKt.access$setNextSnapshotId$p(access$getNextSnapshotId$p + 1);
+            SnapshotKt.access$setOpenSnapshots$p(SnapshotKt.access$getOpenSnapshots$p().set(access$getNextSnapshotId$p));
             SnapshotIdSet invalid$runtime_release = getInvalid$runtime_release();
-            setInvalid$runtime_release(invalid$runtime_release.set(i));
-            SnapshotIdSet addRange = SnapshotKt.addRange(invalid$runtime_release, getId() + 1, i);
-            Function1 mergedReadObserver$default = SnapshotKt.mergedReadObserver$default(function1, getReadObserver$runtime_release(), false, 4, null);
-            mergedWriteObserver = SnapshotKt.mergedWriteObserver(function12, getWriteObserver$runtime_release());
-            nestedMutableSnapshot = new NestedMutableSnapshot(i, addRange, mergedReadObserver$default, mergedWriteObserver, this);
+            setInvalid$runtime_release(invalid$runtime_release.set(access$getNextSnapshotId$p));
+            nestedMutableSnapshot = new NestedMutableSnapshot(access$getNextSnapshotId$p, SnapshotKt.addRange(invalid$runtime_release, getId() + 1, access$getNextSnapshotId$p), SnapshotKt.mergedReadObserver$default(function1, getReadObserver$runtime_release(), false, 4, (Object) null), SnapshotKt.access$mergedWriteObserver(function12, getWriteObserver$runtime_release()), this);
         }
         if (!getApplied$runtime_release() && !getDisposed$runtime_release()) {
             int id = getId();
             synchronized (SnapshotKt.getLock()) {
-                i2 = SnapshotKt.nextSnapshotId;
-                SnapshotKt.nextSnapshotId = i2 + 1;
-                setId$runtime_release(i2);
-                snapshotIdSet2 = SnapshotKt.openSnapshots;
-                SnapshotKt.openSnapshots = snapshotIdSet2.set(getId());
+                int access$getNextSnapshotId$p2 = SnapshotKt.access$getNextSnapshotId$p();
+                SnapshotKt.access$setNextSnapshotId$p(access$getNextSnapshotId$p2 + 1);
+                setId$runtime_release(access$getNextSnapshotId$p2);
+                SnapshotKt.access$setOpenSnapshots$p(SnapshotKt.access$getOpenSnapshots$p().set(getId()));
                 Unit unit = Unit.INSTANCE;
             }
             setInvalid$runtime_release(SnapshotKt.addRange(getInvalid$runtime_release(), id + 1, getId()));
@@ -471,30 +395,24 @@ public class MutableSnapshot extends Snapshot {
     @Override // androidx.compose.runtime.snapshots.Snapshot
     @NotNull
     public Snapshot takeNestedSnapshot(@Nullable Function1<Object, Unit> function1) {
-        int i;
-        SnapshotIdSet snapshotIdSet;
         NestedReadonlySnapshot nestedReadonlySnapshot;
-        int i2;
-        SnapshotIdSet snapshotIdSet2;
         validateNotDisposed$runtime_release();
         validateNotAppliedOrPinned$runtime_release();
         int id = getId();
         recordPrevious$runtime_release(getId());
         synchronized (SnapshotKt.getLock()) {
-            i = SnapshotKt.nextSnapshotId;
-            SnapshotKt.nextSnapshotId = i + 1;
-            snapshotIdSet = SnapshotKt.openSnapshots;
-            SnapshotKt.openSnapshots = snapshotIdSet.set(i);
-            nestedReadonlySnapshot = new NestedReadonlySnapshot(i, SnapshotKt.addRange(getInvalid$runtime_release(), id + 1, i), function1, this);
+            int access$getNextSnapshotId$p = SnapshotKt.access$getNextSnapshotId$p();
+            SnapshotKt.access$setNextSnapshotId$p(access$getNextSnapshotId$p + 1);
+            SnapshotKt.access$setOpenSnapshots$p(SnapshotKt.access$getOpenSnapshots$p().set(access$getNextSnapshotId$p));
+            nestedReadonlySnapshot = new NestedReadonlySnapshot(access$getNextSnapshotId$p, SnapshotKt.addRange(getInvalid$runtime_release(), id + 1, access$getNextSnapshotId$p), function1, this);
         }
         if (!getApplied$runtime_release() && !getDisposed$runtime_release()) {
             int id2 = getId();
             synchronized (SnapshotKt.getLock()) {
-                i2 = SnapshotKt.nextSnapshotId;
-                SnapshotKt.nextSnapshotId = i2 + 1;
-                setId$runtime_release(i2);
-                snapshotIdSet2 = SnapshotKt.openSnapshots;
-                SnapshotKt.openSnapshots = snapshotIdSet2.set(getId());
+                int access$getNextSnapshotId$p2 = SnapshotKt.access$getNextSnapshotId$p();
+                SnapshotKt.access$setNextSnapshotId$p(access$getNextSnapshotId$p2 + 1);
+                setId$runtime_release(access$getNextSnapshotId$p2);
+                SnapshotKt.access$setOpenSnapshots$p(SnapshotKt.access$getOpenSnapshots$p().set(getId()));
                 Unit unit = Unit.INSTANCE;
             }
             setInvalid$runtime_release(SnapshotKt.addRange(getInvalid$runtime_release(), id2 + 1, getId()));
@@ -514,7 +432,7 @@ public class MutableSnapshot extends Snapshot {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final void validateNotAppliedOrPinned$runtime_release() {
         /*
@@ -547,8 +465,6 @@ public class MutableSnapshot extends Snapshot {
     }
 
     public final void advance$runtime_release() {
-        int i;
-        SnapshotIdSet snapshotIdSet;
         recordPrevious$runtime_release(getId());
         Unit unit = Unit.INSTANCE;
         if (getApplied$runtime_release() || getDisposed$runtime_release()) {
@@ -556,11 +472,10 @@ public class MutableSnapshot extends Snapshot {
         }
         int id = getId();
         synchronized (SnapshotKt.getLock()) {
-            i = SnapshotKt.nextSnapshotId;
-            SnapshotKt.nextSnapshotId = i + 1;
-            setId$runtime_release(i);
-            snapshotIdSet = SnapshotKt.openSnapshots;
-            SnapshotKt.openSnapshots = snapshotIdSet.set(getId());
+            int access$getNextSnapshotId$p = SnapshotKt.access$getNextSnapshotId$p();
+            SnapshotKt.access$setNextSnapshotId$p(access$getNextSnapshotId$p + 1);
+            setId$runtime_release(access$getNextSnapshotId$p);
+            SnapshotKt.access$setOpenSnapshots$p(SnapshotKt.access$getOpenSnapshots$p().set(getId()));
         }
         setInvalid$runtime_release(SnapshotKt.addRange(getInvalid$runtime_release(), id + 1, getId()));
     }

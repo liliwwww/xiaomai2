@@ -7,7 +7,6 @@ import androidx.compose.foundation.interaction.HoverInteraction;
 import androidx.compose.foundation.interaction.Interaction;
 import androidx.compose.foundation.interaction.InteractionSource;
 import androidx.compose.foundation.interaction.PressInteraction;
-import androidx.compose.p004ui.unit.C0856Dp;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
@@ -16,19 +15,18 @@ import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.Stable;
 import androidx.compose.runtime.State;
 import androidx.compose.runtime.snapshots.SnapshotStateList;
-import kotlin.Unit;
+import androidx.compose.ui.unit.Dp;
 import kotlin.collections.CollectionsKt;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
-import kotlinx.coroutines.CoroutineScope;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class DefaultButtonElevation implements ButtonElevation {
     private final float defaultElevation;
     private final float disabledElevation;
@@ -51,7 +49,7 @@ final class DefaultButtonElevation implements ButtonElevation {
     @Override // androidx.compose.material.ButtonElevation
     @Composable
     @NotNull
-    public State<C0856Dp> elevation(boolean z, @NotNull InteractionSource interactionSource, @Nullable Composer composer, int i) {
+    public State<Dp> elevation(boolean z, @NotNull InteractionSource interactionSource, @Nullable Composer composer, int i) {
         Intrinsics.checkNotNullParameter(interactionSource, "interactionSource");
         composer.startReplaceableGroup(-1588756907);
         if (ComposerKt.isTraceInProgress()) {
@@ -71,31 +69,31 @@ final class DefaultButtonElevation implements ButtonElevation {
         boolean changed = composer.changed(interactionSource) | composer.changed(snapshotStateList);
         Object rememberedValue2 = composer.rememberedValue();
         if (changed || rememberedValue2 == companion.getEmpty()) {
-            rememberedValue2 = new DefaultButtonElevation$elevation$1$1(interactionSource, snapshotStateList, null);
+            rememberedValue2 = new elevation.1.1(interactionSource, snapshotStateList, (Continuation) null);
             composer.updateRememberedValue(rememberedValue2);
         }
         composer.endReplaceableGroup();
-        EffectsKt.LaunchedEffect(interactionSource, (Function2<? super CoroutineScope, ? super Continuation<? super Unit>, ? extends Object>) rememberedValue2, composer, i2 | 64);
+        EffectsKt.LaunchedEffect(interactionSource, (Function2) rememberedValue2, composer, i2 | 64);
         Interaction interaction = (Interaction) CollectionsKt.lastOrNull(snapshotStateList);
         float f = !z ? this.disabledElevation : interaction instanceof PressInteraction.Press ? this.pressedElevation : interaction instanceof HoverInteraction.Enter ? this.hoveredElevation : interaction instanceof FocusInteraction.Focus ? this.focusedElevation : this.defaultElevation;
         composer.startReplaceableGroup(-492369756);
         Object rememberedValue3 = composer.rememberedValue();
         if (rememberedValue3 == companion.getEmpty()) {
-            rememberedValue3 = new Animatable(C0856Dp.m5214boximpl(f), VectorConvertersKt.getVectorConverter(C0856Dp.Companion), null, 4, null);
+            rememberedValue3 = new Animatable(Dp.m2140boximpl(f), VectorConvertersKt.getVectorConverter(Dp.Companion), null, 4, null);
             composer.updateRememberedValue(rememberedValue3);
         }
         composer.endReplaceableGroup();
         Animatable animatable = (Animatable) rememberedValue3;
         if (z) {
             composer.startReplaceableGroup(-1598807310);
-            EffectsKt.LaunchedEffect(C0856Dp.m5214boximpl(f), new DefaultButtonElevation$elevation$3(animatable, this, f, interaction, null), composer, 64);
+            EffectsKt.LaunchedEffect(Dp.m2140boximpl(f), new elevation.3(animatable, this, f, interaction, (Continuation) null), composer, 64);
             composer.endReplaceableGroup();
         } else {
             composer.startReplaceableGroup(-1598807481);
-            EffectsKt.LaunchedEffect(C0856Dp.m5214boximpl(f), new DefaultButtonElevation$elevation$2(animatable, f, null), composer, 64);
+            EffectsKt.LaunchedEffect(Dp.m2140boximpl(f), new elevation.2(animatable, f, (Continuation) null), composer, 64);
             composer.endReplaceableGroup();
         }
-        State<C0856Dp> asState = animatable.asState();
+        State<Dp> asState = animatable.asState();
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }

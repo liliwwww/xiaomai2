@@ -1,45 +1,17 @@
 package androidx.core.view;
 
-import android.content.Context;
 import android.os.Build;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import androidx.annotation.NonNull;
 import java.lang.reflect.Field;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LayoutInflaterCompat {
     private static final String TAG = "LayoutInflaterCompatHC";
     private static boolean sCheckedField;
     private static Field sLayoutInflaterFactory2Field;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static class Factory2Wrapper implements LayoutInflater.Factory2 {
-        final LayoutInflaterFactory mDelegateFactory;
-
-        Factory2Wrapper(LayoutInflaterFactory layoutInflaterFactory) {
-            this.mDelegateFactory = layoutInflaterFactory;
-        }
-
-        @Override // android.view.LayoutInflater.Factory
-        public View onCreateView(String str, Context context, AttributeSet attributeSet) {
-            return this.mDelegateFactory.onCreateView(null, str, context, attributeSet);
-        }
-
-        @NonNull
-        public String toString() {
-            return getClass().getName() + "{" + this.mDelegateFactory + "}";
-        }
-
-        @Override // android.view.LayoutInflater.Factory2
-        public View onCreateView(View view, String str, Context context, AttributeSet attributeSet) {
-            return this.mDelegateFactory.onCreateView(view, str, context, attributeSet);
-        }
-    }
 
     private LayoutInflaterCompat() {
     }
@@ -67,9 +39,9 @@ public final class LayoutInflaterCompat {
 
     @Deprecated
     public static LayoutInflaterFactory getFactory(LayoutInflater layoutInflater) {
-        LayoutInflater.Factory factory = layoutInflater.getFactory();
+        Factory2Wrapper factory = layoutInflater.getFactory();
         if (factory instanceof Factory2Wrapper) {
-            return ((Factory2Wrapper) factory).mDelegateFactory;
+            return factory.mDelegateFactory;
         }
         return null;
     }

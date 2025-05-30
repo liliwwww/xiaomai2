@@ -5,7 +5,7 @@ import android.util.AndroidRuntimeException;
 import androidx.dynamicanimation.animation.DynamicAnimation;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SpringAnimation extends DynamicAnimation<SpringAnimation> {
     private static final float UNSET = Float.MAX_VALUE;
     private boolean mEndRequested;
@@ -15,7 +15,7 @@ public final class SpringAnimation extends DynamicAnimation<SpringAnimation> {
     public SpringAnimation(FloatValueHolder floatValueHolder) {
         super(floatValueHolder);
         this.mSpring = null;
-        this.mPendingPosition = Float.MAX_VALUE;
+        this.mPendingPosition = UNSET;
         this.mEndRequested = false;
     }
 
@@ -95,21 +95,21 @@ public final class SpringAnimation extends DynamicAnimation<SpringAnimation> {
     boolean updateValueAndVelocity(long j) {
         if (this.mEndRequested) {
             float f = this.mPendingPosition;
-            if (f != Float.MAX_VALUE) {
+            if (f != UNSET) {
                 this.mSpring.setFinalPosition(f);
-                this.mPendingPosition = Float.MAX_VALUE;
+                this.mPendingPosition = UNSET;
             }
             this.mValue = this.mSpring.getFinalPosition();
             this.mVelocity = 0.0f;
             this.mEndRequested = false;
             return true;
         }
-        if (this.mPendingPosition != Float.MAX_VALUE) {
+        if (this.mPendingPosition != UNSET) {
             this.mSpring.getFinalPosition();
             long j2 = j / 2;
             DynamicAnimation.MassState updateValues = this.mSpring.updateValues(this.mValue, this.mVelocity, j2);
             this.mSpring.setFinalPosition(this.mPendingPosition);
-            this.mPendingPosition = Float.MAX_VALUE;
+            this.mPendingPosition = UNSET;
             DynamicAnimation.MassState updateValues2 = this.mSpring.updateValues(updateValues.mValue, updateValues.mVelocity, j2);
             this.mValue = updateValues2.mValue;
             this.mVelocity = updateValues2.mVelocity;
@@ -133,14 +133,14 @@ public final class SpringAnimation extends DynamicAnimation<SpringAnimation> {
     public <K> SpringAnimation(K k, FloatPropertyCompat<K> floatPropertyCompat) {
         super(k, floatPropertyCompat);
         this.mSpring = null;
-        this.mPendingPosition = Float.MAX_VALUE;
+        this.mPendingPosition = UNSET;
         this.mEndRequested = false;
     }
 
     public <K> SpringAnimation(K k, FloatPropertyCompat<K> floatPropertyCompat, float f) {
         super(k, floatPropertyCompat);
         this.mSpring = null;
-        this.mPendingPosition = Float.MAX_VALUE;
+        this.mPendingPosition = UNSET;
         this.mEndRequested = false;
         this.mSpring = new SpringForce(f);
     }

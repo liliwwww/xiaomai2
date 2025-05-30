@@ -10,13 +10,11 @@ import android.taobao.windvane.connect.ConnectManager;
 import android.taobao.windvane.connect.HttpConnectListener;
 import android.taobao.windvane.connect.HttpResponse;
 import android.taobao.windvane.connect.api.ApiResponse;
-import android.taobao.windvane.urlintercept.WVURLInterceptData;
 import android.taobao.windvane.util.ConfigStorage;
 import android.taobao.windvane.util.TaoLog;
 import android.taobao.windvane.util.WVUrlUtil;
 import android.taobao.windvane.webview.IWVWebView;
 import android.text.TextUtils;
-import androidx.exifinterface.media.ExifInterface;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
@@ -24,7 +22,7 @@ import java.util.Map;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVURLIntercepterDefault implements WVURLIntercepterInterface {
     private static final String ADDRESS = "http://my.m.taobao.com/deliver/wap_deliver_address_list.htm";
     private static final String CART = "http://h5.m.taobao.com/awp/base/cart.htm";
@@ -51,56 +49,56 @@ public class WVURLIntercepterDefault implements WVURLIntercepterInterface {
     }
 
     public static String hitURLInterceptRules(String str) {
-        WVURLInterceptData.URLInfo parse;
+        WVURLInterceptData$URLInfo parse;
         if (TextUtils.isEmpty(str) || (parse = parse(str)) == null || parse.code == 0) {
             return null;
         }
         return WVUrlUtil.rebuildWVurl(str, toUri(parse));
     }
 
-    public static WVURLInterceptData.URLInfo parse(String str) {
+    public static WVURLInterceptData$URLInfo parse(String str) {
         if (TextUtils.isEmpty(str)) {
             return null;
         }
         if (WVURLInterceptService.getWVURLinterceptRules() != null && WVURLInterceptService.getWVURLinterceptRules().isEmpty()) {
             return null;
         }
-        WVURLInterceptData.URLInfo parseByTag = WVURLInterceptHelper.parseByTag(str);
+        WVURLInterceptData$URLInfo parseByTag = WVURLInterceptHelper.parseByTag(str);
         if (parseByTag == null || parseByTag.code <= 0) {
             return WVURLInterceptHelper.parseByRule(str, WVURLInterceptService.getWVURLinterceptRules(), WVURLInterceptService.getWVURLInterceptRulePats());
         }
-        TaoLog.m18d(TAG, "parse url success through tag.");
+        TaoLog.d(TAG, "parse url success through tag.");
         return parseByTag;
     }
 
-    private void refreshConfig(List<WVURLInterceptData.RuleData> list) {
+    private void refreshConfig(List<WVURLInterceptData$RuleData> list) {
         if (list == null) {
             list = WVURLInterceptHelper.parseRuleData(readConfigFile());
         }
         if (WVCommonConfig.commonConfig.urlRuleStatus == 2 && list != null && WVServerConfig.URL_FILTER) {
             WVURLInterceptService.resetRulesAndPat();
-            Iterator<WVURLInterceptData.RuleData> it = list.iterator();
+            Iterator<WVURLInterceptData$RuleData> it = list.iterator();
             while (it.hasNext()) {
                 WVURLInterceptService.getWVURLinterceptRules().add(it.next());
             }
         }
     }
 
-    public static String toUri(WVURLInterceptData.URLInfo uRLInfo) {
-        if (uRLInfo == null) {
+    public static String toUri(WVURLInterceptData$URLInfo wVURLInterceptData$URLInfo) {
+        if (wVURLInterceptData$URLInfo == null) {
             return null;
         }
-        int i = uRLInfo.code;
-        Map<String, String> map = uRLInfo.params;
+        int i = wVURLInterceptData$URLInfo.code;
+        Map<String, String> map = wVURLInterceptData$URLInfo.params;
         if (i == 100) {
-            return DETAIL + map.get(WVURLRuleConstants.WV_PARAM_HY_ITM_ID) + ".htm";
+            return DETAIL + map.get("HY_ITM_ID") + ".htm";
         }
         if (i == 200) {
-            return SEARCH + map.get(WVURLRuleConstants.WV_PARAM_HY_S_Q);
+            return SEARCH + map.get("HY_S_Q");
         }
         if (i == 300) {
-            String str = map.get(WVURLRuleConstants.WV_PARAM_HY_SHOP_ID);
-            String str2 = map.get(WVURLRuleConstants.WV_PARAM_HY_USER_ID);
+            String str = map.get("HY_SHOP_ID");
+            String str2 = map.get("HY_USER_ID");
             if (!TextUtils.isEmpty(str2)) {
                 return "http://shop.m.taobao.com/shop/shop_index.htm?user_id=" + str2;
             }
@@ -127,11 +125,11 @@ public class WVURLIntercepterDefault implements WVURLIntercepterInterface {
                 return LOGIN;
             }
         }
-        return uRLInfo.url;
+        return wVURLInterceptData$URLInfo.url;
     }
 
     protected String getConfigUrl() {
-        return ApiUrlManager.getConfigUrl("urlRule.json", ExifInterface.GPS_MEASUREMENT_2D);
+        return ApiUrlManager.getConfigUrl("urlRule.json", "2");
     }
 
     @Override // android.taobao.windvane.urlintercept.WVURLIntercepterInterface
@@ -148,7 +146,7 @@ public class WVURLIntercepterDefault implements WVURLIntercepterInterface {
     }
 
     protected boolean needSaveConfig(String str) {
-        List<WVURLInterceptData.RuleData> parseRuleData;
+        List<WVURLInterceptData$RuleData> parseRuleData;
         if (TextUtils.isEmpty(str)) {
             return false;
         }
@@ -171,7 +169,7 @@ public class WVURLIntercepterDefault implements WVURLIntercepterInterface {
 
     @Override // android.taobao.windvane.urlintercept.WVURLIntercepterInterface
     public boolean shouldOverrideUrlLoading(Context context, IWVWebView iWVWebView, String str) {
-        WVURLInterceptData.URLInfo parse = parse(str);
+        WVURLInterceptData$URLInfo parse = parse(str);
         if (parse == null || WVURLInterceptService.getWVURLInterceptHandler() == null) {
             return false;
         }
@@ -184,11 +182,10 @@ public class WVURLIntercepterDefault implements WVURLIntercepterInterface {
             return;
         }
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(TAG, "doUpdateConfig: " + getConfigUrl());
+            TaoLog.d(TAG, "doUpdateConfig: " + getConfigUrl());
         }
         this.isUpdating = true;
         ConnectManager.getInstance().connect(getConfigUrl(), new HttpConnectListener<HttpResponse>() { // from class: android.taobao.windvane.urlintercept.WVURLIntercepterDefault.1
-            @Override // android.taobao.windvane.connect.HttpConnectListener
             public void onFinish(HttpResponse httpResponse, int i) {
                 if (httpResponse != null) {
                     try {
@@ -196,14 +193,14 @@ public class WVURLIntercepterDefault implements WVURLIntercepterInterface {
                             try {
                                 String str = new String(httpResponse.getData(), "utf-8");
                                 if (TaoLog.getLogStatus()) {
-                                    TaoLog.m18d(WVURLIntercepterDefault.TAG, "callback: Download config successfully.\nclass = " + getClass().getName() + "\ncontent=" + str);
+                                    TaoLog.d(WVURLIntercepterDefault.TAG, "callback: Download config successfully.\nclass = " + getClass().getName() + "\ncontent=" + str);
                                 }
                                 if (WVURLIntercepterDefault.this.needSaveConfig(str)) {
                                     ConfigStorage.putLongVal(WVConfigUtils.SPNAME, WVURLIntercepterDefault.this.getStorageKeyPrefix() + ConfigStorage.KEY_TIME, System.currentTimeMillis());
                                     WVURLIntercepterDefault.this.saveConfigFile(str);
                                 }
                             } catch (UnsupportedEncodingException e) {
-                                TaoLog.m21e(WVURLIntercepterDefault.TAG, "config encoding error. " + e.getMessage());
+                                TaoLog.e(WVURLIntercepterDefault.TAG, "config encoding error. " + e.getMessage());
                             }
                         }
                     } finally {

@@ -1,27 +1,19 @@
 package androidx.compose.runtime;
 
-import android.os.Looper;
 import android.util.Log;
 import androidx.compose.runtime.snapshots.SnapshotMutableState;
 import kotlin.Deprecated;
 import kotlin.Lazy;
 import kotlin.LazyKt;
-import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ActualAndroid_androidKt {
 
     @NotNull
-    private static final Lazy DefaultMonotonicFrameClock$delegate = LazyKt.lazy(new Function0<MonotonicFrameClock>() { // from class: androidx.compose.runtime.ActualAndroid_androidKt$DefaultMonotonicFrameClock$2
-        @NotNull
-        /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-        public final MonotonicFrameClock m2383invoke() {
-            return Looper.getMainLooper() != null ? DefaultChoreographerFrameClock.INSTANCE : SdkStubsFallbackFrameClock.INSTANCE;
-        }
-    });
+    private static final Lazy DefaultMonotonicFrameClock$delegate = LazyKt.lazy(DefaultMonotonicFrameClock.2.INSTANCE);
     private static final boolean DisallowDefaultMonotonicFrameClock = false;
 
     @NotNull

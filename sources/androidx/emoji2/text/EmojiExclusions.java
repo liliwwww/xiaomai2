@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class EmojiExclusions {
 
     /* compiled from: Taobao */

@@ -1,6 +1,6 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.input.pointer.AwaitPointerEventScope;
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.ForEachGestureKt$awaitEachGesture$2", f = "ForEachGesture.kt", i = {0, 1, 2}, l = {104, 107, 112}, m = "invokeSuspend", n = {"$this$awaitPointerEventScope", "$this$awaitPointerEventScope", "$this$awaitPointerEventScope"}, s = {"L$0", "L$0", "L$0"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class ForEachGestureKt$awaitEachGesture$2 extends RestrictedSuspendLambda implements Function2<AwaitPointerEventScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ Function2<AwaitPointerEventScope, Continuation<? super Unit>, Object> $block;
     final /* synthetic */ CoroutineContext $currentContext;
@@ -20,7 +20,6 @@ final class ForEachGestureKt$awaitEachGesture$2 extends RestrictedSuspendLambda 
     int label;
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    /* JADX WARN: Multi-variable type inference failed */
     ForEachGestureKt$awaitEachGesture$2(CoroutineContext coroutineContext, Function2<? super AwaitPointerEventScope, ? super Continuation<? super Unit>, ? extends Object> function2, Continuation<? super ForEachGestureKt$awaitEachGesture$2> continuation) {
         super(2, continuation);
         this.$currentContext = coroutineContext;
@@ -51,7 +50,7 @@ final class ForEachGestureKt$awaitEachGesture$2 extends RestrictedSuspendLambda 
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object invokeSuspend(@org.jetbrains.annotations.NotNull java.lang.Object r9) {
         /*
@@ -66,7 +65,7 @@ final class ForEachGestureKt$awaitEachGesture$2 extends RestrictedSuspendLambda 
             if (r1 == r3) goto L21
             if (r1 != r2) goto L19
             java.lang.Object r1 = r8.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r1 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r1
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r1 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r1
             kotlin.ResultKt.throwOnFailure(r9)
             goto L28
         L19:
@@ -76,14 +75,14 @@ final class ForEachGestureKt$awaitEachGesture$2 extends RestrictedSuspendLambda 
             throw r9
         L21:
             java.lang.Object r1 = r8.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r1 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r1
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r1 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r1
             kotlin.ResultKt.throwOnFailure(r9)     // Catch: java.util.concurrent.CancellationException -> L33
         L28:
             r9 = r1
             goto L3e
         L2a:
             java.lang.Object r1 = r8.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r1 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r1
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r1 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r1
             kotlin.ResultKt.throwOnFailure(r9)     // Catch: java.util.concurrent.CancellationException -> L33
             r9 = r8
             goto L57
@@ -95,7 +94,7 @@ final class ForEachGestureKt$awaitEachGesture$2 extends RestrictedSuspendLambda 
         L37:
             kotlin.ResultKt.throwOnFailure(r9)
             java.lang.Object r9 = r8.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r9 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r9
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r9 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r9
         L3e:
             r1 = r8
         L3f:

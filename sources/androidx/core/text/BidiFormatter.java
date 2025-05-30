@@ -4,7 +4,7 @@ import android.text.SpannableStringBuilder;
 import java.util.Locale;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class BidiFormatter {
     private static final int DEFAULT_FLAGS = 2;
     static final BidiFormatter DEFAULT_LTR_INSTANCE;

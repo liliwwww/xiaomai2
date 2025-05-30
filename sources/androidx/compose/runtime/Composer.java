@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface Composer {
 
     @NotNull
@@ -41,7 +41,7 @@ public interface Composer {
         @InternalComposeTracingApi
         public final void setTracer(@NotNull CompositionTracer compositionTracer) {
             Intrinsics.checkNotNullParameter(compositionTracer, "tracer");
-            ComposerKt.compositionTracer = compositionTracer;
+            ComposerKt.access$setCompositionTracer$p(compositionTracer);
         }
     }
 

@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class HoverInteractionKt {
     @Composable
     @NotNull
@@ -38,7 +38,7 @@ public final class HoverInteractionKt {
         boolean changed = composer.changed(interactionSource) | composer.changed(mutableState);
         Object rememberedValue2 = composer.rememberedValue();
         if (changed || rememberedValue2 == companion.getEmpty()) {
-            rememberedValue2 = new HoverInteractionKt$collectIsHoveredAsState$1$1(interactionSource, mutableState, null);
+            rememberedValue2 = new collectIsHoveredAsState.1.1(interactionSource, mutableState, (Continuation) null);
             composer.updateRememberedValue(rememberedValue2);
         }
         composer.endReplaceableGroup();

@@ -7,7 +7,7 @@ import kotlin.jvm.internal.markers.KMappedMarker;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class TrieNodeBaseIterator<K, V, T> implements Iterator<T>, KMappedMarker {
 
     @NotNull
@@ -16,13 +16,13 @@ public abstract class TrieNodeBaseIterator<K, V, T> implements Iterator<T>, KMap
     private int index;
 
     public final K currentKey() {
-        CommonFunctionsKt.m2432assert(hasNextKey());
+        CommonFunctionsKt.assert(hasNextKey());
         return (K) this.buffer[this.index];
     }
 
     @NotNull
     public final TrieNode<? extends K, ? extends V> currentNode() {
-        CommonFunctionsKt.m2432assert(hasNextNode());
+        CommonFunctionsKt.assert(hasNextNode());
         Object obj = this.buffer[this.index];
         Intrinsics.checkNotNull(obj, "null cannot be cast to non-null type androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableMap.TrieNode<K of androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableMap.TrieNodeBaseIterator, V of androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableMap.TrieNodeBaseIterator>");
         return (TrieNode) obj;
@@ -47,17 +47,17 @@ public abstract class TrieNodeBaseIterator<K, V, T> implements Iterator<T>, KMap
     }
 
     public final boolean hasNextNode() {
-        CommonFunctionsKt.m2432assert(this.index >= this.dataSize);
+        CommonFunctionsKt.assert(this.index >= this.dataSize);
         return this.index < this.buffer.length;
     }
 
     public final void moveToNextKey() {
-        CommonFunctionsKt.m2432assert(hasNextKey());
+        CommonFunctionsKt.assert(hasNextKey());
         this.index += 2;
     }
 
     public final void moveToNextNode() {
-        CommonFunctionsKt.m2432assert(hasNextNode());
+        CommonFunctionsKt.assert(hasNextNode());
         this.index++;
     }
 

@@ -2,27 +2,15 @@ package androidx.appcompat.view;
 
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class ActionMode {
     private Object mTag;
     private boolean mTitleOptionalHint;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public interface Callback {
-        boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem);
-
-        boolean onCreateActionMode(ActionMode actionMode, Menu menu);
-
-        void onDestroyActionMode(ActionMode actionMode);
-
-        boolean onPrepareActionMode(ActionMode actionMode, Menu menu);
-    }
 
     public abstract void finish();
 
@@ -50,7 +38,7 @@ public abstract class ActionMode {
         return false;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public boolean isUiFocusable() {
         return true;
     }

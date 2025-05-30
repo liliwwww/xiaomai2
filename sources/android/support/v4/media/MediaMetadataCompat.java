@@ -12,12 +12,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import androidx.annotation.RestrictTo;
 import androidx.collection.ArrayMap;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.util.Set;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class MediaMetadataCompat implements Parcelable {
     public static final Parcelable.Creator<MediaMetadataCompat> CREATOR;
     static final ArrayMap<String, Integer> METADATA_KEYS_TYPE;
@@ -63,34 +61,6 @@ public final class MediaMetadataCompat implements Parcelable {
     final Bundle mBundle;
     private MediaDescriptionCompat mDescription;
     private Object mMetadataObj;
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    /* loaded from: classes.dex */
-    public @interface BitmapKey {
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    /* loaded from: classes.dex */
-    public @interface LongKey {
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    /* loaded from: classes.dex */
-    public @interface RatingKey {
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    /* loaded from: classes.dex */
-    public @interface TextKey {
-    }
 
     static {
         ArrayMap<String, Integer> arrayMap = new ArrayMap<>();
@@ -337,7 +307,7 @@ public final class MediaMetadataCompat implements Parcelable {
 
         public Builder putBitmap(String str, Bitmap bitmap) {
             ArrayMap<String, Integer> arrayMap = MediaMetadataCompat.METADATA_KEYS_TYPE;
-            if (!arrayMap.containsKey(str) || arrayMap.get(str).intValue() == 2) {
+            if (!arrayMap.containsKey(str) || ((Integer) arrayMap.get(str)).intValue() == 2) {
                 this.mBundle.putParcelable(str, bitmap);
                 return this;
             }
@@ -346,7 +316,7 @@ public final class MediaMetadataCompat implements Parcelable {
 
         public Builder putLong(String str, long j) {
             ArrayMap<String, Integer> arrayMap = MediaMetadataCompat.METADATA_KEYS_TYPE;
-            if (!arrayMap.containsKey(str) || arrayMap.get(str).intValue() == 0) {
+            if (!arrayMap.containsKey(str) || ((Integer) arrayMap.get(str)).intValue() == 0) {
                 this.mBundle.putLong(str, j);
                 return this;
             }
@@ -355,7 +325,7 @@ public final class MediaMetadataCompat implements Parcelable {
 
         public Builder putRating(String str, RatingCompat ratingCompat) {
             ArrayMap<String, Integer> arrayMap = MediaMetadataCompat.METADATA_KEYS_TYPE;
-            if (!arrayMap.containsKey(str) || arrayMap.get(str).intValue() == 3) {
+            if (!arrayMap.containsKey(str) || ((Integer) arrayMap.get(str)).intValue() == 3) {
                 if (Build.VERSION.SDK_INT >= 19) {
                     this.mBundle.putParcelable(str, (Parcelable) ratingCompat.getRating());
                 } else {
@@ -368,7 +338,7 @@ public final class MediaMetadataCompat implements Parcelable {
 
         public Builder putString(String str, String str2) {
             ArrayMap<String, Integer> arrayMap = MediaMetadataCompat.METADATA_KEYS_TYPE;
-            if (!arrayMap.containsKey(str) || arrayMap.get(str).intValue() == 1) {
+            if (!arrayMap.containsKey(str) || ((Integer) arrayMap.get(str)).intValue() == 1) {
                 this.mBundle.putCharSequence(str, str2);
                 return this;
             }
@@ -377,7 +347,7 @@ public final class MediaMetadataCompat implements Parcelable {
 
         public Builder putText(String str, CharSequence charSequence) {
             ArrayMap<String, Integer> arrayMap = MediaMetadataCompat.METADATA_KEYS_TYPE;
-            if (!arrayMap.containsKey(str) || arrayMap.get(str).intValue() == 1) {
+            if (!arrayMap.containsKey(str) || ((Integer) arrayMap.get(str)).intValue() == 1) {
                 this.mBundle.putCharSequence(str, charSequence);
                 return this;
             }

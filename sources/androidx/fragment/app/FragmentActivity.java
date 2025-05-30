@@ -7,15 +7,9 @@ import android.content.IntentSender;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import androidx.activity.ComponentActivity;
-import androidx.activity.OnBackPressedDispatcher;
-import androidx.activity.OnBackPressedDispatcherOwner;
-import androidx.activity.result.ActivityResultRegistry;
-import androidx.activity.result.ActivityResultRegistryOwner;
 import androidx.annotation.CallSuper;
 import androidx.annotation.ContentView;
 import androidx.annotation.LayoutRes;
@@ -23,24 +17,13 @@ import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
-import androidx.core.app.MultiWindowModeChangedInfo;
-import androidx.core.app.OnMultiWindowModeChangedProvider;
-import androidx.core.app.OnPictureInPictureModeChangedProvider;
-import androidx.core.app.PictureInPictureModeChangedInfo;
+import androidx.core.app.ActivityCompat$OnRequestPermissionsResultCallback;
+import androidx.core.app.ActivityCompat$RequestPermissionsRequestCodeValidator;
 import androidx.core.app.SharedElementCallback;
-import androidx.core.content.OnConfigurationChangedProvider;
-import androidx.core.content.OnTrimMemoryProvider;
-import androidx.core.util.Consumer;
-import androidx.core.view.MenuHost;
-import androidx.core.view.MenuProvider;
 import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Lifecycle$Event;
 import androidx.lifecycle.LifecycleRegistry;
-import androidx.lifecycle.ViewModelStore;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.loader.app.LoaderManager;
-import androidx.savedstate.SavedStateRegistry;
-import androidx.savedstate.SavedStateRegistryOwner;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import tb.vo1;
@@ -49,8 +32,8 @@ import tb.xo1;
 import tb.yo1;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
-public class FragmentActivity extends ComponentActivity implements ActivityCompat.OnRequestPermissionsResultCallback, ActivityCompat.RequestPermissionsRequestCodeValidator {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
+public class FragmentActivity extends ComponentActivity implements ActivityCompat$OnRequestPermissionsResultCallback, ActivityCompat$RequestPermissionsRequestCodeValidator {
     static final String LIFECYCLE_TAG = "android:support:lifecycle";
     boolean mCreated;
     final LifecycleRegistry mFragmentLifecycleRegistry;
@@ -58,174 +41,8 @@ public class FragmentActivity extends ComponentActivity implements ActivityCompa
     boolean mResumed;
     boolean mStopped;
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    class HostCallbacks extends FragmentHostCallback<FragmentActivity> implements OnConfigurationChangedProvider, OnTrimMemoryProvider, OnMultiWindowModeChangedProvider, OnPictureInPictureModeChangedProvider, ViewModelStoreOwner, OnBackPressedDispatcherOwner, ActivityResultRegistryOwner, SavedStateRegistryOwner, FragmentOnAttachListener, MenuHost {
-        public HostCallbacks() {
-            super(FragmentActivity.this);
-        }
-
-        @Override // androidx.core.view.MenuHost
-        public void addMenuProvider(@NonNull MenuProvider menuProvider) {
-            FragmentActivity.this.addMenuProvider(menuProvider);
-        }
-
-        @Override // androidx.core.content.OnConfigurationChangedProvider
-        public void addOnConfigurationChangedListener(@NonNull Consumer<Configuration> consumer) {
-            FragmentActivity.this.addOnConfigurationChangedListener(consumer);
-        }
-
-        @Override // androidx.core.app.OnMultiWindowModeChangedProvider
-        public void addOnMultiWindowModeChangedListener(@NonNull Consumer<MultiWindowModeChangedInfo> consumer) {
-            FragmentActivity.this.addOnMultiWindowModeChangedListener(consumer);
-        }
-
-        @Override // androidx.core.app.OnPictureInPictureModeChangedProvider
-        public void addOnPictureInPictureModeChangedListener(@NonNull Consumer<PictureInPictureModeChangedInfo> consumer) {
-            FragmentActivity.this.addOnPictureInPictureModeChangedListener(consumer);
-        }
-
-        @Override // androidx.core.content.OnTrimMemoryProvider
-        public void addOnTrimMemoryListener(@NonNull Consumer<Integer> consumer) {
-            FragmentActivity.this.addOnTrimMemoryListener(consumer);
-        }
-
-        @Override // androidx.activity.result.ActivityResultRegistryOwner
-        @NonNull
-        public ActivityResultRegistry getActivityResultRegistry() {
-            return FragmentActivity.this.getActivityResultRegistry();
-        }
-
-        @Override // androidx.lifecycle.LifecycleOwner
-        @NonNull
-        public Lifecycle getLifecycle() {
-            return FragmentActivity.this.mFragmentLifecycleRegistry;
-        }
-
-        @Override // androidx.activity.OnBackPressedDispatcherOwner
-        @NonNull
-        public OnBackPressedDispatcher getOnBackPressedDispatcher() {
-            return FragmentActivity.this.getOnBackPressedDispatcher();
-        }
-
-        @Override // androidx.savedstate.SavedStateRegistryOwner
-        @NonNull
-        public SavedStateRegistry getSavedStateRegistry() {
-            return FragmentActivity.this.getSavedStateRegistry();
-        }
-
-        @Override // androidx.lifecycle.ViewModelStoreOwner
-        @NonNull
-        public ViewModelStore getViewModelStore() {
-            return FragmentActivity.this.getViewModelStore();
-        }
-
-        @Override // androidx.core.view.MenuHost
-        public void invalidateMenu() {
-            FragmentActivity.this.invalidateOptionsMenu();
-        }
-
-        @Override // androidx.fragment.app.FragmentOnAttachListener
-        public void onAttachFragment(@NonNull FragmentManager fragmentManager, @NonNull Fragment fragment) {
-            FragmentActivity.this.onAttachFragment(fragment);
-        }
-
-        @Override // androidx.fragment.app.FragmentHostCallback
-        public void onDump(@NonNull String str, @Nullable FileDescriptor fileDescriptor, @NonNull PrintWriter printWriter, @Nullable String[] strArr) {
-            FragmentActivity.this.dump(str, fileDescriptor, printWriter, strArr);
-        }
-
-        @Override // androidx.fragment.app.FragmentHostCallback, androidx.fragment.app.FragmentContainer
-        @Nullable
-        public View onFindViewById(int i) {
-            return FragmentActivity.this.findViewById(i);
-        }
-
-        @Override // androidx.fragment.app.FragmentHostCallback
-        @NonNull
-        public LayoutInflater onGetLayoutInflater() {
-            return FragmentActivity.this.getLayoutInflater().cloneInContext(FragmentActivity.this);
-        }
-
-        @Override // androidx.fragment.app.FragmentHostCallback
-        public int onGetWindowAnimations() {
-            Window window = FragmentActivity.this.getWindow();
-            if (window == null) {
-                return 0;
-            }
-            return window.getAttributes().windowAnimations;
-        }
-
-        @Override // androidx.fragment.app.FragmentHostCallback, androidx.fragment.app.FragmentContainer
-        public boolean onHasView() {
-            Window window = FragmentActivity.this.getWindow();
-            return (window == null || window.peekDecorView() == null) ? false : true;
-        }
-
-        @Override // androidx.fragment.app.FragmentHostCallback
-        public boolean onHasWindowAnimations() {
-            return FragmentActivity.this.getWindow() != null;
-        }
-
-        @Override // androidx.fragment.app.FragmentHostCallback
-        public boolean onShouldSaveFragmentState(@NonNull Fragment fragment) {
-            return !FragmentActivity.this.isFinishing();
-        }
-
-        @Override // androidx.fragment.app.FragmentHostCallback
-        public boolean onShouldShowRequestPermissionRationale(@NonNull String str) {
-            return ActivityCompat.shouldShowRequestPermissionRationale(FragmentActivity.this, str);
-        }
-
-        @Override // androidx.fragment.app.FragmentHostCallback
-        public void onSupportInvalidateOptionsMenu() {
-            invalidateMenu();
-        }
-
-        @Override // androidx.core.view.MenuHost
-        public void removeMenuProvider(@NonNull MenuProvider menuProvider) {
-            FragmentActivity.this.removeMenuProvider(menuProvider);
-        }
-
-        @Override // androidx.core.content.OnConfigurationChangedProvider
-        public void removeOnConfigurationChangedListener(@NonNull Consumer<Configuration> consumer) {
-            FragmentActivity.this.removeOnConfigurationChangedListener(consumer);
-        }
-
-        @Override // androidx.core.app.OnMultiWindowModeChangedProvider
-        public void removeOnMultiWindowModeChangedListener(@NonNull Consumer<MultiWindowModeChangedInfo> consumer) {
-            FragmentActivity.this.removeOnMultiWindowModeChangedListener(consumer);
-        }
-
-        @Override // androidx.core.app.OnPictureInPictureModeChangedProvider
-        public void removeOnPictureInPictureModeChangedListener(@NonNull Consumer<PictureInPictureModeChangedInfo> consumer) {
-            FragmentActivity.this.removeOnPictureInPictureModeChangedListener(consumer);
-        }
-
-        @Override // androidx.core.content.OnTrimMemoryProvider
-        public void removeOnTrimMemoryListener(@NonNull Consumer<Integer> consumer) {
-            FragmentActivity.this.removeOnTrimMemoryListener(consumer);
-        }
-
-        @Override // androidx.core.view.MenuHost
-        public void addMenuProvider(@NonNull MenuProvider menuProvider, @NonNull LifecycleOwner lifecycleOwner) {
-            FragmentActivity.this.addMenuProvider(menuProvider, lifecycleOwner);
-        }
-
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // androidx.fragment.app.FragmentHostCallback
-        public FragmentActivity onGetHost() {
-            return FragmentActivity.this;
-        }
-
-        @Override // androidx.core.view.MenuHost
-        public void addMenuProvider(@NonNull MenuProvider menuProvider, @NonNull LifecycleOwner lifecycleOwner, @NonNull Lifecycle.State state) {
-            FragmentActivity.this.addMenuProvider(menuProvider, lifecycleOwner, state);
-        }
-    }
-
     public FragmentActivity() {
-        this.mFragments = FragmentController.createController(new HostCallbacks());
+        this.mFragments = FragmentController.createController(new HostCallbacks(this));
         this.mFragmentLifecycleRegistry = new LifecycleRegistry(this);
         this.mStopped = true;
         init();
@@ -241,7 +58,7 @@ public class FragmentActivity extends ComponentActivity implements ActivityCompa
     /* JADX INFO: Access modifiers changed from: private */
     public /* synthetic */ Bundle lambda$init$0() {
         markFragmentsCreated();
-        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
+        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle$Event.ON_STOP);
         return new Bundle();
     }
 
@@ -286,9 +103,9 @@ public class FragmentActivity extends ComponentActivity implements ActivityCompa
         return this.mFragments.onCreateView(view, str, context, attributeSet);
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     public void dump(@NonNull String str, @Nullable FileDescriptor fileDescriptor, @NonNull PrintWriter printWriter, @Nullable String[] strArr) {
-        super.dump(str, fileDescriptor, printWriter, strArr);
+        super/*android.app.Activity*/.dump(str, fileDescriptor, printWriter, strArr);
         if (shouldDumpInternalState(strArr)) {
             printWriter.print(str);
             printWriter.print("Local FragmentActivity ");
@@ -325,7 +142,7 @@ public class FragmentActivity extends ComponentActivity implements ActivityCompa
         }
     }
 
-    @Override // androidx.activity.ComponentActivity, android.app.Activity
+    @Override // androidx.activity.ComponentActivity
     @CallSuper
     protected void onActivityResult(int i, int i2, @Nullable Intent intent) {
         this.mFragments.noteStateNotSaved();
@@ -337,28 +154,28 @@ public class FragmentActivity extends ComponentActivity implements ActivityCompa
     public void onAttachFragment(@NonNull Fragment fragment) {
     }
 
-    @Override // androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    @Override // androidx.activity.ComponentActivity
     protected void onCreate(@Nullable Bundle bundle) {
         super.onCreate(bundle);
-        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle$Event.ON_CREATE);
         this.mFragments.dispatchCreate();
     }
 
-    @Override // android.app.Activity, android.view.LayoutInflater.Factory2
+    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     public View onCreateView(@Nullable View view, @NonNull String str, @NonNull Context context, @NonNull AttributeSet attributeSet) {
         View dispatchFragmentsOnCreateView = dispatchFragmentsOnCreateView(view, str, context, attributeSet);
-        return dispatchFragmentsOnCreateView == null ? super.onCreateView(view, str, context, attributeSet) : dispatchFragmentsOnCreateView;
+        return dispatchFragmentsOnCreateView == null ? super/*android.app.Activity*/.onCreateView(view, str, context, attributeSet) : dispatchFragmentsOnCreateView;
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     protected void onDestroy() {
-        super.onDestroy();
+        super/*android.app.Activity*/.onDestroy();
         this.mFragments.dispatchDestroy();
-        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
+        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle$Event.ON_DESTROY);
     }
 
-    @Override // androidx.activity.ComponentActivity, android.app.Activity, android.view.Window.Callback
+    @Override // androidx.activity.ComponentActivity
     public boolean onMenuItemSelected(int i, @NonNull MenuItem menuItem) {
         if (super.onMenuItemSelected(i, menuItem)) {
             return true;
@@ -369,80 +186,82 @@ public class FragmentActivity extends ComponentActivity implements ActivityCompa
         return false;
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     protected void onPause() {
-        super.onPause();
+        super/*android.app.Activity*/.onPause();
         this.mResumed = false;
         this.mFragments.dispatchPause();
-        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
+        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle$Event.ON_PAUSE);
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     protected void onPostResume() {
-        super.onPostResume();
+        super/*android.app.Activity*/.onPostResume();
         onResumeFragments();
     }
 
-    @Override // androidx.activity.ComponentActivity, android.app.Activity
+    @Override // androidx.activity.ComponentActivity, androidx.core.app.ActivityCompat$OnRequestPermissionsResultCallback
     @CallSuper
     public void onRequestPermissionsResult(int i, @NonNull String[] strArr, @NonNull int[] iArr) {
         this.mFragments.noteStateNotSaved();
         super.onRequestPermissionsResult(i, strArr, iArr);
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     protected void onResume() {
         this.mFragments.noteStateNotSaved();
-        super.onResume();
+        super/*android.app.Activity*/.onResume();
         this.mResumed = true;
         this.mFragments.execPendingActions();
     }
 
     protected void onResumeFragments() {
-        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle$Event.ON_RESUME);
         this.mFragments.dispatchResume();
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     protected void onStart() {
         this.mFragments.noteStateNotSaved();
-        super.onStart();
+        super/*android.app.Activity*/.onStart();
         this.mStopped = false;
         if (!this.mCreated) {
             this.mCreated = true;
             this.mFragments.dispatchActivityCreated();
         }
         this.mFragments.execPendingActions();
-        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
+        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle$Event.ON_START);
         this.mFragments.dispatchStart();
     }
 
-    @Override // android.app.Activity
     public void onStateNotSaved() {
         this.mFragments.noteStateNotSaved();
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     protected void onStop() {
-        super.onStop();
+        super/*android.app.Activity*/.onStop();
         this.mStopped = true;
         markFragmentsCreated();
         this.mFragments.dispatchStop();
-        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
+        this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle$Event.ON_STOP);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void setEnterSharedElementCallback(@Nullable SharedElementCallback sharedElementCallback) {
         ActivityCompat.setEnterSharedElementCallback(this, sharedElementCallback);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void setExitSharedElementCallback(@Nullable SharedElementCallback sharedElementCallback) {
         ActivityCompat.setExitSharedElementCallback(this, sharedElementCallback);
     }
 
     public void startActivityFromFragment(@NonNull Fragment fragment, @SuppressLint({"UnknownNullness"}) Intent intent, int i) {
-        startActivityFromFragment(fragment, intent, i, (Bundle) null);
+        startActivityFromFragment(fragment, intent, i, null);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     @Deprecated
     public void startIntentSenderFromFragment(@NonNull Fragment fragment, @SuppressLint({"UnknownNullness"}) IntentSender intentSender, int i, @Nullable Intent intent, int i2, int i3, int i4, @Nullable Bundle bundle) throws IntentSender.SendIntentException {
         if (i == -1) {
@@ -452,28 +271,33 @@ public class FragmentActivity extends ComponentActivity implements ActivityCompa
         }
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void supportFinishAfterTransition() {
         ActivityCompat.finishAfterTransition(this);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     @Deprecated
     public void supportInvalidateOptionsMenu() {
         invalidateOptionsMenu();
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void supportPostponeEnterTransition() {
         ActivityCompat.postponeEnterTransition(this);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void supportStartPostponedEnterTransition() {
         ActivityCompat.startPostponedEnterTransition(this);
     }
 
-    @Override // androidx.core.app.ActivityCompat.RequestPermissionsRequestCodeValidator
+    @Override // androidx.core.app.ActivityCompat$RequestPermissionsRequestCodeValidator
     @Deprecated
     public final void validateRequestPermissionsRequestCode(int i) {
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void startActivityFromFragment(@NonNull Fragment fragment, @SuppressLint({"UnknownNullness"}) Intent intent, int i, @Nullable Bundle bundle) {
         if (i == -1) {
             ActivityCompat.startActivityForResult(this, intent, -1, bundle);
@@ -482,17 +306,17 @@ public class FragmentActivity extends ComponentActivity implements ActivityCompa
         }
     }
 
-    @Override // android.app.Activity, android.view.LayoutInflater.Factory
+    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     public View onCreateView(@NonNull String str, @NonNull Context context, @NonNull AttributeSet attributeSet) {
         View dispatchFragmentsOnCreateView = dispatchFragmentsOnCreateView(null, str, context, attributeSet);
-        return dispatchFragmentsOnCreateView == null ? super.onCreateView(str, context, attributeSet) : dispatchFragmentsOnCreateView;
+        return dispatchFragmentsOnCreateView == null ? super/*android.app.Activity*/.onCreateView(str, context, attributeSet) : dispatchFragmentsOnCreateView;
     }
 
     @ContentView
     public FragmentActivity(@LayoutRes int i) {
         super(i);
-        this.mFragments = FragmentController.createController(new HostCallbacks());
+        this.mFragments = FragmentController.createController(new HostCallbacks(this));
         this.mFragmentLifecycleRegistry = new LifecycleRegistry(this);
         this.mStopped = true;
         init();

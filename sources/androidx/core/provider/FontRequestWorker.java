@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
-import android.media.IVivoSpatializer;
+import android.os.CancellationSignal;
 import android.taobao.windvane.connect.api.ApiConstants;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
@@ -20,10 +20,10 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class FontRequestWorker {
     static final LruCache<String, Typeface> sTypefaceCache = new LruCache<>(16);
-    private static final ExecutorService DEFAULT_EXECUTOR_SERVICE = RequestExecutor.createDefaultExecutor("fonts-androidx", 10, IVivoSpatializer.V_SDK_MIN_VERSION);
+    private static final ExecutorService DEFAULT_EXECUTOR_SERVICE = RequestExecutor.createDefaultExecutor("fonts-androidx", 10, 10000);
     static final Object LOCK = new Object();
 
     @GuardedBy("LOCK")
@@ -66,7 +66,7 @@ class FontRequestWorker {
             return new TypefaceResult(typeface);
         }
         try {
-            FontsContractCompat.FontFamilyResult fontFamilyResult = FontProvider.getFontFamilyResult(context, fontRequest, null);
+            FontsContractCompat.FontFamilyResult fontFamilyResult = FontProvider.getFontFamilyResult(context, fontRequest, (CancellationSignal) null);
             int fontFamilyResultStatus = getFontFamilyResultStatus(fontFamilyResult);
             if (fontFamilyResultStatus != 0) {
                 return new TypefaceResult(fontFamilyResultStatus);
@@ -95,7 +95,7 @@ class FontRequestWorker {
                 if (typefaceResult == null) {
                     typefaceResult = new TypefaceResult(-3);
                 }
-                CallbackWithHandler.this.onTypefaceResult(typefaceResult);
+                callbackWithHandler.onTypefaceResult(typefaceResult);
             }
         };
         synchronized (LOCK) {
@@ -172,28 +172,5 @@ class FontRequestWorker {
 
     static void resetTypefaceCache() {
         sTypefaceCache.evictAll();
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static final class TypefaceResult {
-        final int mResult;
-        final Typeface mTypeface;
-
-        TypefaceResult(int i) {
-            this.mTypeface = null;
-            this.mResult = i;
-        }
-
-        @SuppressLint({"WrongConstant"})
-        boolean isSuccess() {
-            return this.mResult == 0;
-        }
-
-        @SuppressLint({"WrongConstant"})
-        TypefaceResult(@NonNull Typeface typeface) {
-            this.mTypeface = typeface;
-            this.mResult = 0;
-        }
     }
 }

@@ -3,7 +3,7 @@ package androidx.compose.animation.core;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class EasingKt {
     private static final float CubicErrorBound = 0.001f;
 
@@ -17,12 +17,7 @@ public final class EasingKt {
     private static final Easing FastOutLinearInEasing = new CubicBezierEasing(0.4f, 0.0f, 1.0f, 1.0f);
 
     @NotNull
-    private static final Easing LinearEasing = new Easing() { // from class: androidx.compose.animation.core.EasingKt$LinearEasing$1
-        @Override // androidx.compose.animation.core.Easing
-        public final float transform(float f) {
-            return f;
-        }
-    };
+    private static final Easing LinearEasing = LinearEasing.1.INSTANCE;
 
     @NotNull
     public static final Easing getFastOutLinearInEasing() {

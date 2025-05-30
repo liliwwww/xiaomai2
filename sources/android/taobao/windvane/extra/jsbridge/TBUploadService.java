@@ -1,45 +1,28 @@
 package android.taobao.windvane.extra.jsbridge;
 
-import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.taobao.windvane.WindVaneSDKForTB;
 import android.taobao.windvane.cache.WVCacheManager;
-import android.taobao.windvane.connect.HttpConnectListener;
-import android.taobao.windvane.connect.HttpConnector;
 import android.taobao.windvane.extra.WVIAdapter;
-import android.taobao.windvane.extra.p002uc.WVUCWebView;
 import android.taobao.windvane.extra.upload.UploadFileConnection;
-import android.taobao.windvane.extra.upload.UploadFileData;
 import android.taobao.windvane.file.FileManager;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.taobao.windvane.jsbridge.WVResult;
 import android.taobao.windvane.jsbridge.api.WVCamera;
 import android.taobao.windvane.jsbridge.api.WVUploadService;
-import android.taobao.windvane.jsbridge.utils.WVUtils;
 import android.taobao.windvane.monitor.AppMonitorUtil;
 import android.taobao.windvane.thread.WVThreadPool;
-import android.taobao.windvane.util.ImageTool;
 import android.taobao.windvane.util.MimeTypeEnum;
 import android.taobao.windvane.util.TaoLog;
-import android.taobao.windvane.util.WVNativeCallbackUtil;
-import com.uploader.export.ITaskListener;
-import com.uploader.export.ITaskResult;
-import com.uploader.export.IUploaderTask;
 import com.uploader.export.a;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import mtopsdk.mtop.upload.FileUploadBaseListener;
 import mtopsdk.mtop.upload.FileUploadMgr;
 import mtopsdk.mtop.upload.domain.UploadFileInfo;
-import tb.bg5;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class TBUploadService extends WVUploadService implements Handler.Callback {
     private static final String LAST_PIC = "\"isLastPic\":\"true\"";
     private static final String MUTI_SELECTION = "\"mutipleSelection\":\"1\"";
@@ -56,97 +39,21 @@ public class TBUploadService extends WVUploadService implements Handler.Callback
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public void doMtopUpload(final WVCamera.UploadParams uploadParams) {
+    public void doMtopUpload(WVCamera.UploadParams uploadParams) {
         try {
-            final File createTempFile = File.createTempFile(WVUCWebView.WINDVANE, "." + MimeTypeEnum.JPG.getSuffix(), WVCacheManager.getInstance().getTempDir(true));
+            File createTempFile = File.createTempFile("windvane", "." + MimeTypeEnum.JPG.getSuffix(), WVCacheManager.getInstance().getTempDir(true));
             if (!FileManager.copy(new File(uploadParams.filePath), createTempFile)) {
                 WVResult wVResult = new WVResult();
                 wVResult.addData("errorInfo", "Failed to copy file!");
                 this.mCallback.error(wVResult);
                 return;
             }
-            final WVResult wVResult2 = new WVResult();
+            WVResult wVResult2 = new WVResult();
             try {
-                a.a().uploadAsync(new IUploaderTask() { // from class: android.taobao.windvane.extra.jsbridge.TBUploadService.3
-                    public String getBizType() {
-                        return uploadParams.bizCode;
-                    }
-
-                    public String getFilePath() {
-                        return createTempFile.getAbsolutePath();
-                    }
-
-                    public String getFileType() {
-                        return ".jpg";
-                    }
-
-                    public Map<String, String> getMetaInfo() {
-                        if (uploadParams.extraInfo == null) {
-                            return null;
-                        }
-                        HashMap hashMap = new HashMap();
-                        Iterator<String> keys = uploadParams.extraInfo.keys();
-                        while (keys.hasNext()) {
-                            String next = keys.next();
-                            hashMap.put(next, uploadParams.extraInfo.optString(next));
-                        }
-                        return hashMap;
-                    }
-                }, new ITaskListener() { // from class: android.taobao.windvane.extra.jsbridge.TBUploadService.4
-                    public void onCancel(IUploaderTask iUploaderTask) {
-                    }
-
-                    public void onFailure(IUploaderTask iUploaderTask, bg5 bg5Var) {
-                        wVResult2.addData("subCode", bg5Var.b);
-                        wVResult2.addData("errorCode", bg5Var.a);
-                        wVResult2.addData("errorMsg", bg5Var.c);
-                        wVResult2.addData("localPath", uploadParams.filePath);
-                        Message.obtain(TBUploadService.this.mHandler, 2003, wVResult2).sendToTarget();
-                    }
-
-                    public void onPause(IUploaderTask iUploaderTask) {
-                    }
-
-                    public void onProgress(IUploaderTask iUploaderTask, int i) {
-                        TaoLog.m21e(TBUploadService.TAG, "uploadFile onProgress " + String.valueOf(i));
-                    }
-
-                    public void onResume(IUploaderTask iUploaderTask) {
-                    }
-
-                    public void onStart(IUploaderTask iUploaderTask) {
-                    }
-
-                    public void onSuccess(IUploaderTask iUploaderTask, ITaskResult iTaskResult) {
-                        Bitmap readZoomImage;
-                        wVResult2.setSuccess();
-                        wVResult2.addData(HttpConnector.URL, uploadParams.localUrl);
-                        wVResult2.addData("localPath", uploadParams.filePath);
-                        String fileUrl = iTaskResult.getFileUrl();
-                        wVResult2.addData("resourceURL", fileUrl);
-                        wVResult2.addData("isLastPic", String.valueOf(uploadParams.isLastPic));
-                        wVResult2.addData("mutipleSelection", uploadParams.mutipleSelection);
-                        WVCamera.UploadParams uploadParams2 = uploadParams;
-                        if (uploadParams2.needBase64 && (readZoomImage = ImageTool.readZoomImage(uploadParams2.filePath, 1024)) != null) {
-                            wVResult2.addData("base64Data", WVUtils.bitmapToBase64(readZoomImage));
-                        }
-                        int lastIndexOf = fileUrl.lastIndexOf(WVNativeCallbackUtil.SEPERATER) + 1;
-                        if (lastIndexOf != 0) {
-                            wVResult2.addData("tfsKey", fileUrl.substring(lastIndexOf));
-                        }
-                        WVCamera.UploadParams uploadParams3 = uploadParams;
-                        if (uploadParams3.isLastPic) {
-                            wVResult2.addData("images", uploadParams3.images);
-                        }
-                        Message.obtain(TBUploadService.this.mHandler, 2002, wVResult2).sendToTarget();
-                    }
-
-                    public void onWait(IUploaderTask iUploaderTask) {
-                    }
-                }, this.mHandler);
-                TaoLog.m24i(TAG, "do aus upload " + uploadParams.filePath);
+                a.a().uploadAsync(new 3(this, uploadParams, createTempFile), new 4(this, wVResult2, uploadParams), this.mHandler);
+                TaoLog.i(TAG, "do aus upload " + uploadParams.filePath);
             } catch (Throwable th) {
-                TaoLog.m30w(TAG, "try aus upload error : " + th.getMessage());
+                TaoLog.w(TAG, "try aus upload error : " + th.getMessage());
                 try {
                     UploadFileInfo uploadFileInfo = new UploadFileInfo();
                     uploadFileInfo.setFilePath(createTempFile.getAbsolutePath());
@@ -155,76 +62,10 @@ public class TBUploadService extends WVUploadService implements Handler.Callback
                     wVResult2.addData("identifier", uploadParams.identifier);
                     wVResult2.addData("isLastPic", String.valueOf(uploadParams.isLastPic));
                     wVResult2.addData("mutipleSelection", uploadParams.mutipleSelection);
-                    FileUploadMgr.getInstance().addTask(uploadFileInfo, new FileUploadBaseListener() { // from class: android.taobao.windvane.extra.jsbridge.TBUploadService.5
-                        public void onError(String str, String str2) {
-                            if (TaoLog.getLogStatus()) {
-                                TaoLog.m30w(TBUploadService.TAG, "mtop upload file error. code: " + str + ";msg: " + str2);
-                            }
-                            wVResult2.addData("errorCode", str);
-                            wVResult2.addData("errorMsg", str2);
-                            wVResult2.addData("localPath", uploadParams.filePath);
-                            Message.obtain(TBUploadService.this.mHandler, 2003, wVResult2).sendToTarget();
-                        }
-
-                        public void onFinish(UploadFileInfo uploadFileInfo2, String str) {
-                            Bitmap readZoomImage;
-                            wVResult2.setSuccess();
-                            wVResult2.addData(HttpConnector.URL, uploadParams.localUrl);
-                            wVResult2.addData("localPath", uploadParams.filePath);
-                            wVResult2.addData("resourceURL", str);
-                            WVCamera.UploadParams uploadParams2 = uploadParams;
-                            if (uploadParams2.needBase64 && (readZoomImage = ImageTool.readZoomImage(uploadParams2.filePath, 1024)) != null) {
-                                wVResult2.addData("base64Data", WVUtils.bitmapToBase64(readZoomImage));
-                            }
-                            int lastIndexOf = str.lastIndexOf(WVNativeCallbackUtil.SEPERATER) + 1;
-                            if (lastIndexOf != 0) {
-                                wVResult2.addData("tfsKey", str.substring(lastIndexOf));
-                            }
-                            WVCamera.UploadParams uploadParams3 = uploadParams;
-                            if (uploadParams3.isLastPic) {
-                                wVResult2.addData("images", uploadParams3.images);
-                            }
-                            Message.obtain(TBUploadService.this.mHandler, 2002, wVResult2).sendToTarget();
-                        }
-
-                        public void onProgress(int i) {
-                        }
-
-                        public void onStart() {
-                            wVResult2.setResult("");
-                            Message.obtain(TBUploadService.this.mHandler, 2001, wVResult2).sendToTarget();
-                        }
-
-                        public void onError(String str, String str2, String str3) {
-                            if (TaoLog.getLogStatus()) {
-                                TaoLog.m30w(TBUploadService.TAG, "mtop upload file error. code: " + str2 + ";msg: " + str3 + ";type: " + str);
-                            }
-                            wVResult2.addData("errorType", str);
-                            wVResult2.addData("errorCode", str2);
-                            wVResult2.addData("errorMsg", str3);
-                            wVResult2.addData("localPath", uploadParams.filePath);
-                            Message.obtain(TBUploadService.this.mHandler, 2003, wVResult2).sendToTarget();
-                        }
-
-                        public void onFinish(String str) {
-                            wVResult2.setSuccess();
-                            wVResult2.addData(HttpConnector.URL, uploadParams.localUrl);
-                            wVResult2.addData("localPath", uploadParams.filePath);
-                            wVResult2.addData("resourceURL", str);
-                            int lastIndexOf = str.lastIndexOf(WVNativeCallbackUtil.SEPERATER) + 1;
-                            if (lastIndexOf != 0) {
-                                wVResult2.addData("tfsKey", str.substring(lastIndexOf));
-                            }
-                            WVCamera.UploadParams uploadParams2 = uploadParams;
-                            if (uploadParams2.isLastPic) {
-                                wVResult2.addData("images", uploadParams2.images);
-                            }
-                            Message.obtain(TBUploadService.this.mHandler, 2002, wVResult2).sendToTarget();
-                        }
-                    }, uploadParams.needLogin);
-                    TaoLog.m24i(TAG, "do mtop upload " + uploadParams.filePath);
+                    FileUploadMgr.getInstance().addTask(uploadFileInfo, new 5(this, wVResult2, uploadParams), uploadParams.needLogin);
+                    TaoLog.i(TAG, "do mtop upload " + uploadParams.filePath);
                 } catch (Throwable th2) {
-                    TaoLog.m21e(TAG, "mtop sdk not exist." + th2.getMessage());
+                    TaoLog.e(TAG, "mtop sdk not exist." + th2.getMessage());
                 }
             }
         } catch (IOException e) {
@@ -232,73 +73,23 @@ public class TBUploadService extends WVUploadService implements Handler.Callback
         }
     }
 
-    private void doNormalUpload(final WVCamera.UploadParams uploadParams) {
-        WVThreadPool.getInstance().execute(new UploadFileConnection(uploadParams.filePath, MimeTypeEnum.JPG.getSuffix(), new HttpConnectListener<UploadFileData>() { // from class: android.taobao.windvane.extra.jsbridge.TBUploadService.2
-            @Override // android.taobao.windvane.connect.HttpConnectListener
-            public void onError(int i, String str) {
-                if (TaoLog.getLogStatus()) {
-                    TaoLog.m18d(TBUploadService.TAG, "upload file error. code: " + i + ";msg: " + str);
-                }
-                WVResult wVResult = new WVResult();
-                wVResult.addData("errorCode", Integer.valueOf(i));
-                wVResult.addData("errorMsg", str);
-                wVResult.addData("localPath", uploadParams.filePath);
-                wVResult.addData("isLastPic", String.valueOf(uploadParams.isLastPic));
-                wVResult.addData("mutipleSelection", uploadParams.mutipleSelection);
-                Message obtain = Message.obtain();
-                obtain.what = 2003;
-                obtain.obj = wVResult;
-                TBUploadService.this.mHandler.sendMessage(obtain);
-            }
-
-            @Override // android.taobao.windvane.connect.HttpConnectListener
-            public void onStart() {
-                TBUploadService.this.mHandler.sendEmptyMessage(2001);
-            }
-
-            @Override // android.taobao.windvane.connect.HttpConnectListener
-            public void onFinish(UploadFileData uploadFileData, int i) {
-                Bitmap readZoomImage;
-                if (uploadFileData == null) {
-                    return;
-                }
-                Message obtain = Message.obtain();
-                obtain.what = 2002;
-                WVResult wVResult = new WVResult();
-                wVResult.setSuccess();
-                WVCamera.UploadParams uploadParams2 = uploadParams;
-                if (uploadParams2.needBase64 && (readZoomImage = ImageTool.readZoomImage(uploadParams2.filePath, 1024)) != null) {
-                    wVResult.addData("base64Data", WVUtils.bitmapToBase64(readZoomImage));
-                }
-                wVResult.addData(HttpConnector.URL, uploadParams.localUrl);
-                wVResult.addData("localPath", uploadParams.filePath);
-                wVResult.addData("resourceURL", uploadFileData.resourceUri);
-                wVResult.addData("isLastPic", String.valueOf(uploadParams.isLastPic));
-                wVResult.addData("mutipleSelection", uploadParams.mutipleSelection);
-                wVResult.addData("tfsKey", uploadFileData.tfsKey);
-                WVCamera.UploadParams uploadParams3 = uploadParams;
-                if (uploadParams3.isLastPic) {
-                    wVResult.addData("images", uploadParams3.images);
-                }
-                obtain.obj = wVResult;
-                TBUploadService.this.mHandler.sendMessage(obtain);
-            }
-        }));
+    private void doNormalUpload(WVCamera.UploadParams uploadParams) {
+        WVThreadPool.getInstance().execute(new UploadFileConnection(uploadParams.filePath, MimeTypeEnum.JPG.getSuffix(), new 2(this, uploadParams)));
     }
 
     @Override // android.taobao.windvane.jsbridge.api.WVUploadService
-    public void doUpload(final WVCamera.UploadParams uploadParams, WVCallBackContext wVCallBackContext) {
+    public void doUpload(WVCamera.UploadParams uploadParams, WVCallBackContext wVCallBackContext) {
         if (uploadParams == null) {
-            TaoLog.m18d(TAG, "UploadParams is null.");
+            TaoLog.d(TAG, "UploadParams is null.");
             wVCallBackContext.error(new WVResult());
             return;
         }
         this.mCallback = wVCallBackContext;
         try {
-            AppMonitorUtil.commitOffMonitor(wVCallBackContext.getWebview().getUrl(), "TBUploadService bizCode:" + uploadParams.bizCode, uploadParams.f19v);
+            AppMonitorUtil.commitOffMonitor(wVCallBackContext.getWebview().getUrl(), "TBUploadService bizCode:" + uploadParams.bizCode, uploadParams.v);
         } catch (Throwable unused) {
         }
-        if (!"2.0".equals(uploadParams.f19v)) {
+        if (!"2.0".equals(uploadParams.v)) {
             doNormalUpload(uploadParams);
             return;
         }
@@ -306,15 +97,10 @@ public class TBUploadService extends WVUploadService implements Handler.Callback
         if (wVIAdapter != null) {
             wVIAdapter.getLoginInfo(null);
         }
-        WVThreadPool.getInstance().execute(new Runnable() { // from class: android.taobao.windvane.extra.jsbridge.TBUploadService.1
-            @Override // java.lang.Runnable
-            public void run() {
-                TBUploadService.this.doMtopUpload(uploadParams);
-            }
-        });
+        WVThreadPool.getInstance().execute(new 1(this, uploadParams));
     }
 
-    /* JADX WARN: Can't wrap try/catch for region: R(13:17|(1:19)|20|(2:21|22)|(11:23|24|26|27|28|29|30|31|32|33|(2:35|36))|38|39|40|(1:42)|44|(1:46)(3:49|(1:(1:52)(1:53))|54)|47|48) */
+    /* JADX WARN: Can't wrap try/catch for region: R(16:17|(1:19)|20|21|22|23|24|(9:26|27|28|29|30|31|32|33|(2:35|36))|38|39|40|(1:42)|44|(1:46)(3:49|(1:(1:52)(1:53))|54)|47|48) */
     /* JADX WARN: Code restructure failed: missing block: B:55:0x00dd, code lost:
     
         r0 = move-exception;
@@ -329,12 +115,12 @@ public class TBUploadService extends WVUploadService implements Handler.Callback
     @Override // android.os.Handler.Callback
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public boolean handleMessage(android.os.Message r20) {
         /*
             Method dump skipped, instructions count: 328
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.extra.jsbridge.TBUploadService.handleMessage(android.os.Message):boolean");
     }

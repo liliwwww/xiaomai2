@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class DynamicProvidableCompositionLocal<T> extends ProvidableCompositionLocal<T> {
 
     @NotNull
@@ -20,7 +20,6 @@ public final class DynamicProvidableCompositionLocal<T> extends ProvidableCompos
         this.policy = snapshotMutationPolicy;
     }
 
-    @Override // androidx.compose.runtime.CompositionLocal
     @Composable
     @NotNull
     public State<T> provided$runtime_release(T t, @Nullable Composer composer, int i) {

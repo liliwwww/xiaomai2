@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyLayoutItemProviderKt {
     @ExperimentalFoundationApi
     @NotNull
@@ -34,6 +34,6 @@ public final class LazyLayoutItemProviderKt {
     public static final int findIndexByKey(@NotNull LazyLayoutItemProvider lazyLayoutItemProvider, @Nullable Object obj, int i) {
         Integer num;
         Intrinsics.checkNotNullParameter(lazyLayoutItemProvider, "<this>");
-        return obj == null ? i : ((i >= lazyLayoutItemProvider.getItemCount() || !Intrinsics.areEqual(obj, lazyLayoutItemProvider.getKey(i))) && (num = lazyLayoutItemProvider.getKeyToIndexMap().get(obj)) != null) ? num.intValue() : i;
+        return obj == null ? i : ((i >= lazyLayoutItemProvider.getItemCount() || !Intrinsics.areEqual(obj, lazyLayoutItemProvider.getKey(i))) && (num = (Integer) lazyLayoutItemProvider.getKeyToIndexMap().get(obj)) != null) ? num.intValue() : i;
     }
 }

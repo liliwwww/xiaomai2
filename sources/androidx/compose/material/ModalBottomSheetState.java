@@ -1,11 +1,11 @@
 package androidx.compose.material;
 
 import androidx.compose.animation.core.AnimationSpec;
-import androidx.compose.p004ui.input.nestedscroll.NestedScrollConnection;
 import androidx.compose.runtime.internal.StabilityInferred;
 import androidx.compose.runtime.saveable.Saver;
 import androidx.compose.runtime.saveable.SaverKt;
 import androidx.compose.runtime.saveable.SaverScope;
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection;
 import kotlin.Deprecated;
 import kotlin.ReplaceWith;
 import kotlin.Unit;
@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
 @ExperimentalMaterialApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ModalBottomSheetState extends SwipeableState<ModalBottomSheetValue> {
     public static final int $stable = 0;
 
@@ -42,7 +42,7 @@ public final class ModalBottomSheetState extends SwipeableState<ModalBottomSheet
         }
 
         @NotNull
-        public final Saver<ModalBottomSheetState, ?> Saver(@NotNull final AnimationSpec<Float> animationSpec, final boolean z, @NotNull final Function1<? super ModalBottomSheetValue, Boolean> function1) {
+        public final Saver<ModalBottomSheetState, ?> Saver(@NotNull AnimationSpec<Float> animationSpec, boolean z, @NotNull Function1<? super ModalBottomSheetValue, Boolean> function1) {
             Intrinsics.checkNotNullParameter(animationSpec, "animationSpec");
             Intrinsics.checkNotNullParameter(function1, "confirmStateChange");
             return SaverKt.Saver(new Function2<SaverScope, ModalBottomSheetState, ModalBottomSheetValue>() { // from class: androidx.compose.material.ModalBottomSheetState$Companion$Saver$1
@@ -52,19 +52,7 @@ public final class ModalBottomSheetState extends SwipeableState<ModalBottomSheet
                     Intrinsics.checkNotNullParameter(modalBottomSheetState, "it");
                     return modalBottomSheetState.getCurrentValue();
                 }
-            }, new Function1<ModalBottomSheetValue, ModalBottomSheetState>() { // from class: androidx.compose.material.ModalBottomSheetState$Companion$Saver$2
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                /* JADX WARN: Multi-variable type inference failed */
-                {
-                    super(1);
-                }
-
-                @Nullable
-                public final ModalBottomSheetState invoke(@NotNull ModalBottomSheetValue modalBottomSheetValue) {
-                    Intrinsics.checkNotNullParameter(modalBottomSheetValue, "it");
-                    return new ModalBottomSheetState(modalBottomSheetValue, animationSpec, z, function1);
-                }
-            });
+            }, new Saver.2(animationSpec, z, function1));
         }
 
         @Deprecated(message = "Please specify the skipHalfExpanded parameter", replaceWith = @ReplaceWith(expression = "ModalBottomSheetState.Saver(animationSpec = animationSpec,skipHalfExpanded = ,confirmStateChange = confirmStateChange)", imports = {}))
@@ -77,13 +65,7 @@ public final class ModalBottomSheetState extends SwipeableState<ModalBottomSheet
     }
 
     public /* synthetic */ ModalBottomSheetState(ModalBottomSheetValue modalBottomSheetValue, AnimationSpec animationSpec, boolean z, Function1 function1, int i, DefaultConstructorMarker defaultConstructorMarker) {
-        this(modalBottomSheetValue, (i & 2) != 0 ? SwipeableDefaults.INSTANCE.getAnimationSpec() : animationSpec, z, (i & 8) != 0 ? new Function1<ModalBottomSheetValue, Boolean>() { // from class: androidx.compose.material.ModalBottomSheetState.1
-            @NotNull
-            public final Boolean invoke(@NotNull ModalBottomSheetValue modalBottomSheetValue2) {
-                Intrinsics.checkNotNullParameter(modalBottomSheetValue2, "it");
-                return Boolean.TRUE;
-            }
-        } : function1);
+        this(modalBottomSheetValue, (i & 2) != 0 ? SwipeableDefaults.INSTANCE.getAnimationSpec() : animationSpec, z, (i & 8) != 0 ? 1.INSTANCE : function1);
     }
 
     @Nullable
@@ -146,13 +128,7 @@ public final class ModalBottomSheetState extends SwipeableState<ModalBottomSheet
     }
 
     public /* synthetic */ ModalBottomSheetState(ModalBottomSheetValue modalBottomSheetValue, AnimationSpec animationSpec, Function1 function1, int i, DefaultConstructorMarker defaultConstructorMarker) {
-        this(modalBottomSheetValue, (i & 2) != 0 ? SwipeableDefaults.INSTANCE.getAnimationSpec() : animationSpec, (i & 4) != 0 ? new Function1<ModalBottomSheetValue, Boolean>() { // from class: androidx.compose.material.ModalBottomSheetState.2
-            @NotNull
-            public final Boolean invoke(@NotNull ModalBottomSheetValue modalBottomSheetValue2) {
-                Intrinsics.checkNotNullParameter(modalBottomSheetValue2, "it");
-                return Boolean.TRUE;
-            }
-        } : function1);
+        this(modalBottomSheetValue, (i & 2) != 0 ? SwipeableDefaults.INSTANCE.getAnimationSpec() : animationSpec, (i & 4) != 0 ? 2.INSTANCE : function1);
     }
 
     /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */

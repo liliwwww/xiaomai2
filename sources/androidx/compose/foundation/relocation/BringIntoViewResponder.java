@@ -1,7 +1,7 @@
 package androidx.compose.foundation.relocation;
 
 import androidx.compose.foundation.ExperimentalFoundationApi;
-import androidx.compose.p004ui.geometry.Rect;
+import androidx.compose.ui.geometry.Rect;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function0;
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface BringIntoViewResponder {
     @ExperimentalFoundationApi
     @Nullable

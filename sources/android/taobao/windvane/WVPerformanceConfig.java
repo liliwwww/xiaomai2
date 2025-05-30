@@ -1,16 +1,14 @@
 package android.taobao.windvane;
 
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
-
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVPerformanceConfig {
     private String jsErrorRatio = "1.00";
     private boolean isOpenFSP = false;
     private boolean isOpenH5PP = true;
     private boolean isOpenUserPP = true;
     private boolean isOpenH5_2 = true;
-    private String fSPFilterAnimation = BasePreInitManager.PRE_RENDER_URL_ADDITION_VALUE;
+    private String fSPFilterAnimation = "true";
     private boolean openHA = true;
     private boolean onlyBkpg = false;
     private boolean closeUCHA = false;

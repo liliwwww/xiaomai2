@@ -1,19 +1,9 @@
 package androidx.compose.foundation.text.selection;
 
 import androidx.compose.foundation.text.ContextMenu_androidKt;
-import androidx.compose.foundation.text.TextDragObserver;
 import androidx.compose.foundation.text.TouchMode_androidKt;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.hapticfeedback.HapticFeedback;
-import androidx.compose.p004ui.input.pointer.SuspendingPointerInputFilterKt;
-import androidx.compose.p004ui.platform.ClipboardManager;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.platform.TextToolbar;
-import androidx.compose.p004ui.text.style.ResolvedTextDirection;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
-import androidx.compose.runtime.ComposableTarget;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.CompositionLocalKt;
@@ -24,11 +14,14 @@ import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.ProvidedValue;
 import androidx.compose.runtime.RecomposeScopeImplKt;
 import androidx.compose.runtime.ScopeUpdateScope;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
 import androidx.compose.runtime.internal.ComposableLambdaKt;
-import java.util.List;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.hapticfeedback.HapticFeedback;
+import androidx.compose.ui.platform.ClipboardManager;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.platform.TextToolbar;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 import kotlin.Unit;
-import kotlin.collections.CollectionsKt;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
@@ -36,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SelectionContainerKt {
     @Composable
     @ComposableInferredTarget(scheme = "[0[0]]")
@@ -55,7 +48,7 @@ public final class SelectionContainerKt {
             if (ComposerKt.isTraceInProgress()) {
                 ComposerKt.traceEventStart(336063542, i2, -1, "androidx.compose.foundation.text.selection.DisableSelection (SelectionContainer.kt:60)");
             }
-            CompositionLocalKt.CompositionLocalProvider((ProvidedValue<?>[]) new ProvidedValue[]{SelectionRegistrarKt.getLocalSelectionRegistrar().provides(null)}, function2, startRestartGroup, ((i2 << 3) & 112) | 8);
+            CompositionLocalKt.CompositionLocalProvider((ProvidedValue<?>[]) new ProvidedValue[]{SelectionRegistrarKt.getLocalSelectionRegistrar().provides((Object) null)}, function2, startRestartGroup, ((i2 << 3) & 112) | 8);
             if (ComposerKt.isTraceInProgress()) {
                 ComposerKt.traceEventEnd();
             }
@@ -66,7 +59,6 @@ public final class SelectionContainerKt {
         }
         endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.text.selection.SelectionContainerKt$DisableSelection$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
             {
                 super(2);
             }
@@ -82,98 +74,136 @@ public final class SelectionContainerKt {
         });
     }
 
-    @Composable
-    @ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable]]")
-    public static final void SelectionContainer(@Nullable final Modifier modifier, @NotNull final Function2<? super Composer, ? super Integer, Unit> function2, @Nullable Composer composer, final int i, final int i2) {
-        int i3;
-        Intrinsics.checkNotNullParameter(function2, "content");
-        Composer startRestartGroup = composer.startRestartGroup(-1075498320);
-        int i4 = i2 & 1;
-        if (i4 != 0) {
-            i3 = i | 6;
-        } else if ((i & 14) == 0) {
-            i3 = (startRestartGroup.changed(modifier) ? 4 : 2) | i;
-        } else {
-            i3 = i;
-        }
-        if ((i2 & 2) != 0) {
-            i3 |= 48;
-        } else if ((i & 112) == 0) {
-            i3 |= startRestartGroup.changedInstance(function2) ? 32 : 16;
-        }
-        if ((i3 & 91) == 18 && startRestartGroup.getSkipping()) {
-            startRestartGroup.skipToGroupEnd();
-        } else {
-            if (i4 != 0) {
-                modifier = Modifier.Companion;
-            }
-            if (ComposerKt.isTraceInProgress()) {
-                ComposerKt.traceEventStart(-1075498320, i3, -1, "androidx.compose.foundation.text.selection.SelectionContainer (SelectionContainer.kt:41)");
-            }
-            Object rememberedValue = startRestartGroup.rememberedValue();
-            Composer.Companion companion = Composer.Companion;
-            if (rememberedValue == companion.getEmpty()) {
-                rememberedValue = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
-                startRestartGroup.updateRememberedValue(rememberedValue);
-            }
-            final MutableState mutableState = (MutableState) rememberedValue;
-            Selection SelectionContainer$lambda$1 = SelectionContainer$lambda$1(mutableState);
-            startRestartGroup.startReplaceableGroup(1157296644);
-            boolean changed = startRestartGroup.changed(mutableState);
-            Object rememberedValue2 = startRestartGroup.rememberedValue();
-            if (changed || rememberedValue2 == companion.getEmpty()) {
-                rememberedValue2 = new Function1<Selection, Unit>() { // from class: androidx.compose.foundation.text.selection.SelectionContainerKt$SelectionContainer$1$1
-                    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                    {
-                        super(1);
-                    }
-
-                    public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                        invoke((Selection) obj);
-                        return Unit.INSTANCE;
-                    }
-
-                    public final void invoke(@Nullable Selection selection) {
-                        mutableState.setValue(selection);
-                    }
-                };
-                startRestartGroup.updateRememberedValue(rememberedValue2);
-            }
-            startRestartGroup.endReplaceableGroup();
-            SelectionContainer(modifier, SelectionContainer$lambda$1, (Function1) rememberedValue2, function2, startRestartGroup, (i3 & 14) | ((i3 << 6) & 7168), 0);
-            if (ComposerKt.isTraceInProgress()) {
-                ComposerKt.traceEventEnd();
-            }
-        }
-        ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
-        if (endRestartGroup == null) {
-            return;
-        }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.text.selection.SelectionContainerKt$SelectionContainer$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                invoke((Composer) obj, ((Number) obj2).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i5) {
-                SelectionContainerKt.SelectionContainer(Modifier.this, function2, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1), i2);
-            }
-        });
+    /* JADX WARN: Code restructure failed: missing block: B:29:0x008a, code lost:
+    
+        if (r5 == r1.getEmpty()) goto L41;
+     */
+    @androidx.compose.runtime.Composable
+    @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable]]")
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+        To view partially-correct add '--show-bad-code' argument
+    */
+    public static final void SelectionContainer(@org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r8, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r9, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r10, int r11, int r12) {
+        /*
+            java.lang.String r0 = "content"
+            kotlin.jvm.internal.Intrinsics.checkNotNullParameter(r9, r0)
+            r0 = -1075498320(0xffffffffbfe532b0, float:-1.7906094)
+            androidx.compose.runtime.Composer r10 = r10.startRestartGroup(r0)
+            r1 = r12 & 1
+            r2 = 2
+            if (r1 == 0) goto L14
+            r3 = r11 | 6
+            goto L24
+        L14:
+            r3 = r11 & 14
+            if (r3 != 0) goto L23
+            boolean r3 = r10.changed(r8)
+            if (r3 == 0) goto L20
+            r3 = 4
+            goto L21
+        L20:
+            r3 = 2
+        L21:
+            r3 = r3 | r11
+            goto L24
+        L23:
+            r3 = r11
+        L24:
+            r4 = r12 & 2
+            if (r4 == 0) goto L2b
+            r3 = r3 | 48
+            goto L3b
+        L2b:
+            r4 = r11 & 112(0x70, float:1.57E-43)
+            if (r4 != 0) goto L3b
+            boolean r4 = r10.changedInstance(r9)
+            if (r4 == 0) goto L38
+            r4 = 32
+            goto L3a
+        L38:
+            r4 = 16
+        L3a:
+            r3 = r3 | r4
+        L3b:
+            r4 = r3 & 91
+            r5 = 18
+            if (r4 != r5) goto L4c
+            boolean r4 = r10.getSkipping()
+            if (r4 != 0) goto L48
+            goto L4c
+        L48:
+            r10.skipToGroupEnd()
+            goto Lb3
+        L4c:
+            if (r1 == 0) goto L50
+            androidx.compose.ui.Modifier$Companion r8 = androidx.compose.ui.Modifier.Companion
+        L50:
+            boolean r1 = androidx.compose.runtime.ComposerKt.isTraceInProgress()
+            if (r1 == 0) goto L5c
+            r1 = -1
+            java.lang.String r4 = "androidx.compose.foundation.text.selection.SelectionContainer (SelectionContainer.kt:41)"
+            androidx.compose.runtime.ComposerKt.traceEventStart(r0, r3, r1, r4)
+        L5c:
+            java.lang.Object r0 = r10.rememberedValue()
+            androidx.compose.runtime.Composer$Companion r1 = androidx.compose.runtime.Composer.Companion
+            java.lang.Object r4 = r1.getEmpty()
+            if (r0 != r4) goto L70
+            r0 = 0
+            androidx.compose.runtime.MutableState r0 = androidx.compose.runtime.SnapshotStateKt.mutableStateOf$default(r0, r0, r2, r0)
+            r10.updateRememberedValue(r0)
+        L70:
+            androidx.compose.runtime.MutableState r0 = (androidx.compose.runtime.MutableState) r0
+            androidx.compose.foundation.text.selection.Selection r2 = SelectionContainer$lambda$1(r0)
+            r4 = 1157296644(0x44faf204, float:2007.563)
+            r10.startReplaceableGroup(r4)
+            boolean r4 = r10.changed(r0)
+            java.lang.Object r5 = r10.rememberedValue()
+            if (r4 != 0) goto L8c
+            java.lang.Object r1 = r1.getEmpty()
+            if (r5 != r1) goto L94
+        L8c:
+            androidx.compose.foundation.text.selection.SelectionContainerKt$SelectionContainer$1$1 r5 = new androidx.compose.foundation.text.selection.SelectionContainerKt$SelectionContainer$1$1
+            r5.<init>(r0)
+            r10.updateRememberedValue(r5)
+        L94:
+            r10.endReplaceableGroup()
+            r0 = r5
+            kotlin.jvm.functions.Function1 r0 = (kotlin.jvm.functions.Function1) r0
+            r1 = r3 & 14
+            int r3 = r3 << 6
+            r3 = r3 & 7168(0x1c00, float:1.0045E-41)
+            r6 = r1 | r3
+            r7 = 0
+            r1 = r8
+            r3 = r0
+            r4 = r9
+            r5 = r10
+            SelectionContainer(r1, r2, r3, r4, r5, r6, r7)
+            boolean r0 = androidx.compose.runtime.ComposerKt.isTraceInProgress()
+            if (r0 == 0) goto Lb3
+            androidx.compose.runtime.ComposerKt.traceEventEnd()
+        Lb3:
+            androidx.compose.runtime.ScopeUpdateScope r10 = r10.endRestartGroup()
+            if (r10 != 0) goto Lba
+            goto Lc2
+        Lba:
+            androidx.compose.foundation.text.selection.SelectionContainerKt$SelectionContainer$2 r0 = new androidx.compose.foundation.text.selection.SelectionContainerKt$SelectionContainer$2
+            r0.<init>(r8, r9, r11, r12)
+            r10.updateScope(r0)
+        Lc2:
+            return
+        */
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.selection.SelectionContainerKt.SelectionContainer(androidx.compose.ui.Modifier, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int):void");
     }
 
     private static final Selection SelectionContainer$lambda$1(MutableState<Selection> mutableState) {
-        return mutableState.getValue();
+        return (Selection) mutableState.getValue();
     }
 
     @Composable
     @ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable]]")
-    public static final void SelectionContainer(@Nullable Modifier modifier, @Nullable final Selection selection, @NotNull final Function1<? super Selection, Unit> function1, @NotNull final Function2<? super Composer, ? super Integer, Unit> function2, @Nullable Composer composer, final int i, final int i2) {
+    public static final void SelectionContainer(@Nullable Modifier modifier, @Nullable Selection selection, @NotNull Function1<? super Selection, Unit> function1, @NotNull Function2<? super Composer, ? super Integer, Unit> function2, @Nullable Composer composer, int i, int i2) {
         int i3;
         Intrinsics.checkNotNullParameter(function1, "onSelectionChange");
         Intrinsics.checkNotNullParameter(function2, "children");
@@ -199,9 +229,9 @@ public final class SelectionContainerKt {
         if ((i2 & 8) != 0) {
             i3 |= 3072;
         } else if ((i & 7168) == 0) {
-            i3 |= startRestartGroup.changedInstance(function2) ? 2048 : 1024;
+            i3 |= startRestartGroup.changedInstance(function2) ? AccessibilityEventCompat.TYPE_WINDOW_CONTENT_CHANGED : AccessibilityEventCompat.TYPE_TOUCH_EXPLORATION_GESTURE_END;
         }
-        final int i5 = i3;
+        int i5 = i3;
         if ((i5 & 5851) == 1170 && startRestartGroup.getSkipping()) {
             startRestartGroup.skipToGroupEnd();
         } else {
@@ -217,176 +247,30 @@ public final class SelectionContainerKt {
                 rememberedValue = new SelectionRegistrarImpl();
                 startRestartGroup.updateRememberedValue(rememberedValue);
             }
-            final SelectionRegistrarImpl selectionRegistrarImpl = (SelectionRegistrarImpl) rememberedValue;
+            SelectionRegistrarImpl selectionRegistrarImpl = (SelectionRegistrarImpl) rememberedValue;
             Object rememberedValue2 = startRestartGroup.rememberedValue();
             if (rememberedValue2 == companion.getEmpty()) {
                 rememberedValue2 = new SelectionManager(selectionRegistrarImpl);
                 startRestartGroup.updateRememberedValue(rememberedValue2);
             }
-            final SelectionManager selectionManager = (SelectionManager) rememberedValue2;
+            SelectionManager selectionManager = (SelectionManager) rememberedValue2;
             selectionManager.setHapticFeedBack((HapticFeedback) startRestartGroup.consume(CompositionLocalsKt.getLocalHapticFeedback()));
             selectionManager.setClipboardManager((ClipboardManager) startRestartGroup.consume(CompositionLocalsKt.getLocalClipboardManager()));
             selectionManager.setTextToolbar((TextToolbar) startRestartGroup.consume(CompositionLocalsKt.getLocalTextToolbar()));
             selectionManager.setOnSelectionChange(function1);
             selectionManager.setSelection(selection);
             selectionManager.setTouchMode(TouchMode_androidKt.isInTouchMode());
-            final Modifier modifier2 = modifier;
-            ContextMenu_androidKt.ContextMenuArea(selectionManager, ComposableLambdaKt.composableLambda(startRestartGroup, -123806316, true, new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.text.selection.SelectionContainerKt$SelectionContainer$3
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                /* JADX WARN: Multi-variable type inference failed */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                    invoke((Composer) obj, ((Number) obj2).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                @ComposableTarget(applier = "androidx.compose.ui.UiComposable")
-                @Composable
-                public final void invoke(@Nullable Composer composer2, int i6) {
-                    if ((i6 & 11) == 2 && composer2.getSkipping()) {
-                        composer2.skipToGroupEnd();
-                        return;
-                    }
-                    if (ComposerKt.isTraceInProgress()) {
-                        ComposerKt.traceEventStart(-123806316, i6, -1, "androidx.compose.foundation.text.selection.SelectionContainer.<anonymous> (SelectionContainer.kt:94)");
-                    }
-                    ProvidedValue[] providedValueArr = {SelectionRegistrarKt.getLocalSelectionRegistrar().provides(SelectionRegistrarImpl.this)};
-                    final Modifier modifier3 = modifier2;
-                    final SelectionManager selectionManager2 = selectionManager;
-                    final Function2<Composer, Integer, Unit> function22 = function2;
-                    final int i7 = i5;
-                    CompositionLocalKt.CompositionLocalProvider((ProvidedValue<?>[]) providedValueArr, ComposableLambdaKt.composableLambda(composer2, 935424596, true, new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.text.selection.SelectionContainerKt$SelectionContainer$3.1
-                        /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                        /* JADX WARN: Multi-variable type inference failed */
-                        {
-                            super(2);
-                        }
-
-                        public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                            invoke((Composer) obj, ((Number) obj2).intValue());
-                            return Unit.INSTANCE;
-                        }
-
-                        @ComposableTarget(applier = "androidx.compose.ui.UiComposable")
-                        @Composable
-                        public final void invoke(@Nullable Composer composer3, int i8) {
-                            if ((i8 & 11) == 2 && composer3.getSkipping()) {
-                                composer3.skipToGroupEnd();
-                                return;
-                            }
-                            if (ComposerKt.isTraceInProgress()) {
-                                ComposerKt.traceEventStart(935424596, i8, -1, "androidx.compose.foundation.text.selection.SelectionContainer.<anonymous>.<anonymous> (SelectionContainer.kt:95)");
-                            }
-                            Modifier then = Modifier.this.then(selectionManager2.getModifier());
-                            final Function2<Composer, Integer, Unit> function23 = function22;
-                            final int i9 = i7;
-                            final SelectionManager selectionManager3 = selectionManager2;
-                            SimpleLayoutKt.SimpleLayout(then, ComposableLambdaKt.composableLambda(composer3, 1375295262, true, new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.text.selection.SelectionContainerKt.SelectionContainer.3.1.1
-                                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                                /* JADX WARN: Multi-variable type inference failed */
-                                {
-                                    super(2);
-                                }
-
-                                public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                                    invoke((Composer) obj, ((Number) obj2).intValue());
-                                    return Unit.INSTANCE;
-                                }
-
-                                @ComposableTarget(applier = "androidx.compose.ui.UiComposable")
-                                @Composable
-                                public final void invoke(@Nullable Composer composer4, int i10) {
-                                    Selection selection2;
-                                    if ((i10 & 11) == 2 && composer4.getSkipping()) {
-                                        composer4.skipToGroupEnd();
-                                        return;
-                                    }
-                                    if (ComposerKt.isTraceInProgress()) {
-                                        ComposerKt.traceEventStart(1375295262, i10, -1, "androidx.compose.foundation.text.selection.SelectionContainer.<anonymous>.<anonymous>.<anonymous> (SelectionContainer.kt:98)");
-                                    }
-                                    function23.invoke(composer4, Integer.valueOf((i9 >> 9) & 14));
-                                    if (TouchMode_androidKt.isInTouchMode() && selectionManager3.getHasFocus() && (selection2 = selectionManager3.getSelection()) != null) {
-                                        SelectionManager selectionManager4 = selectionManager3;
-                                        List listOf = CollectionsKt.listOf(new Boolean[]{Boolean.TRUE, Boolean.FALSE});
-                                        int size = listOf.size();
-                                        for (int i11 = 0; i11 < size; i11++) {
-                                            boolean booleanValue = ((Boolean) listOf.get(i11)).booleanValue();
-                                            Boolean valueOf = Boolean.valueOf(booleanValue);
-                                            composer4.startReplaceableGroup(1157296644);
-                                            boolean changed = composer4.changed(valueOf);
-                                            Object rememberedValue3 = composer4.rememberedValue();
-                                            if (changed || rememberedValue3 == Composer.Companion.getEmpty()) {
-                                                rememberedValue3 = selectionManager4.handleDragObserver(booleanValue);
-                                                composer4.updateRememberedValue(rememberedValue3);
-                                            }
-                                            composer4.endReplaceableGroup();
-                                            TextDragObserver textDragObserver = (TextDragObserver) rememberedValue3;
-                                            Offset m1868getStartHandlePosition_m7T9E = booleanValue ? selectionManager4.m1868getStartHandlePosition_m7T9E() : selectionManager4.m1867getEndHandlePosition_m7T9E();
-                                            ResolvedTextDirection direction = booleanValue ? selection2.getStart().getDirection() : selection2.getEnd().getDirection();
-                                            if (m1868getStartHandlePosition_m7T9E != null) {
-                                                AndroidSelectionHandles_androidKt.m1820SelectionHandle8fL75g(m1868getStartHandlePosition_m7T9E.m2566unboximpl(), booleanValue, direction, selection2.getHandlesCrossed(), SuspendingPointerInputFilterKt.pointerInput(Modifier.Companion, textDragObserver, new SelectionContainerKt$SelectionContainer$3$1$1$1$1$1(textDragObserver, null)), null, composer4, 196608);
-                                            }
-                                        }
-                                    }
-                                    if (ComposerKt.isTraceInProgress()) {
-                                        ComposerKt.traceEventEnd();
-                                    }
-                                }
-                            }), composer3, 48, 0);
-                            if (ComposerKt.isTraceInProgress()) {
-                                ComposerKt.traceEventEnd();
-                            }
-                        }
-                    }), composer2, 56);
-                    if (ComposerKt.isTraceInProgress()) {
-                        ComposerKt.traceEventEnd();
-                    }
-                }
-            }), startRestartGroup, 56);
-            EffectsKt.DisposableEffect(selectionManager, new Function1<DisposableEffectScope, DisposableEffectResult>() { // from class: androidx.compose.foundation.text.selection.SelectionContainerKt$SelectionContainer$4
-                {
-                    super(1);
-                }
-
-                @NotNull
-                public final DisposableEffectResult invoke(@NotNull DisposableEffectScope disposableEffectScope) {
-                    Intrinsics.checkNotNullParameter(disposableEffectScope, "$this$DisposableEffect");
-                    final SelectionManager selectionManager2 = SelectionManager.this;
-                    return new DisposableEffectResult() { // from class: androidx.compose.foundation.text.selection.SelectionContainerKt$SelectionContainer$4$invoke$$inlined$onDispose$1
-                        @Override // androidx.compose.runtime.DisposableEffectResult
-                        public void dispose() {
-                            SelectionManager.this.hideSelectionToolbar$foundation_release();
-                        }
-                    };
-                }
-            }, startRestartGroup, 8);
+            ContextMenu_androidKt.ContextMenuArea(selectionManager, (Function2<? super Composer, ? super Integer, Unit>) ComposableLambdaKt.composableLambda(startRestartGroup, -123806316, true, new SelectionContainer.3(selectionRegistrarImpl, modifier, selectionManager, function2, i5)), startRestartGroup, 56);
+            EffectsKt.DisposableEffect(selectionManager, (Function1<? super DisposableEffectScope, ? extends DisposableEffectResult>) new SelectionContainer.4(selectionManager), startRestartGroup, 8);
             if (ComposerKt.isTraceInProgress()) {
                 ComposerKt.traceEventEnd();
             }
         }
-        final Modifier modifier3 = modifier;
+        Modifier modifier2 = modifier;
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.text.selection.SelectionContainerKt$SelectionContainer$5
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                invoke((Composer) obj, ((Number) obj2).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i6) {
-                SelectionContainerKt.SelectionContainer(Modifier.this, selection, function1, function2, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1), i2);
-            }
-        });
+        endRestartGroup.updateScope(new SelectionContainer.5(modifier2, selection, function1, function2, i, i2));
     }
 }

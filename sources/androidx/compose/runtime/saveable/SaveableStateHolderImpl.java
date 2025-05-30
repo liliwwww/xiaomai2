@@ -10,7 +10,7 @@ import androidx.compose.runtime.EffectsKt;
 import androidx.compose.runtime.ProvidedValue;
 import androidx.compose.runtime.RecomposeScopeImplKt;
 import androidx.compose.runtime.ScopeUpdateScope;
-import androidx.compose.runtime.saveable.SaveableStateHolderImpl;
+import androidx.compose.runtime.saveable.SaveableStateHolderImpl$SaveableStateProvider$1$1$invoke$;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -25,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class SaveableStateHolderImpl implements SaveableStateHolder {
 
     @NotNull
@@ -73,73 +73,10 @@ final class SaveableStateHolderImpl implements SaveableStateHolder {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public final class RegistryHolder {
-
-        @NotNull
-        private final Object key;
-
-        @NotNull
-        private final SaveableStateRegistry registry;
-        private boolean shouldSave;
-        final /* synthetic */ SaveableStateHolderImpl this$0;
-
-        public RegistryHolder(@NotNull final SaveableStateHolderImpl saveableStateHolderImpl, Object obj) {
-            Intrinsics.checkNotNullParameter(obj, "key");
-            this.this$0 = saveableStateHolderImpl;
-            this.key = obj;
-            this.shouldSave = true;
-            this.registry = SaveableStateRegistryKt.SaveableStateRegistry((Map) saveableStateHolderImpl.savedStates.get(obj), new Function1<Object, Boolean>() { // from class: androidx.compose.runtime.saveable.SaveableStateHolderImpl$RegistryHolder$registry$1
-                {
-                    super(1);
-                }
-
-                @NotNull
-                /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-                public final Boolean m2435invoke(@NotNull Object obj2) {
-                    Intrinsics.checkNotNullParameter(obj2, "it");
-                    SaveableStateRegistry parentSaveableStateRegistry = SaveableStateHolderImpl.this.getParentSaveableStateRegistry();
-                    return Boolean.valueOf(parentSaveableStateRegistry != null ? parentSaveableStateRegistry.canBeSaved(obj2) : true);
-                }
-            });
-        }
-
-        @NotNull
-        public final Object getKey() {
-            return this.key;
-        }
-
-        @NotNull
-        public final SaveableStateRegistry getRegistry() {
-            return this.registry;
-        }
-
-        public final boolean getShouldSave() {
-            return this.shouldSave;
-        }
-
-        public final void saveTo(@NotNull Map<Object, Map<String, List<Object>>> map) {
-            Intrinsics.checkNotNullParameter(map, "map");
-            if (this.shouldSave) {
-                Map<String, List<Object>> performSave = this.registry.performSave();
-                if (performSave.isEmpty()) {
-                    map.remove(this.key);
-                } else {
-                    map.put(this.key, performSave);
-                }
-            }
-        }
-
-        public final void setShouldSave(boolean z) {
-            this.shouldSave = z;
-        }
-    }
-
     /* JADX WARN: Illegal instructions before constructor call */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public SaveableStateHolderImpl() {
         /*
@@ -181,7 +118,7 @@ final class SaveableStateHolderImpl implements SaveableStateHolder {
             ComposerKt.traceEventStart(-1198538093, i, -1, "androidx.compose.runtime.saveable.SaveableStateHolderImpl.SaveableStateProvider (SaveableStateHolder.kt:74)");
         }
         startRestartGroup.startReplaceableGroup(444418301);
-        startRestartGroup.startReusableGroup(ComposerKt.reuseKey, obj);
+        startRestartGroup.startReusableGroup(207, obj);
         startRestartGroup.startReplaceableGroup(-642722479);
         startRestartGroup.startReplaceableGroup(-492369756);
         Object rememberedValue = startRestartGroup.rememberedValue();
@@ -195,7 +132,7 @@ final class SaveableStateHolderImpl implements SaveableStateHolder {
         }
         startRestartGroup.endReplaceableGroup();
         final RegistryHolder registryHolder = (RegistryHolder) rememberedValue;
-        CompositionLocalKt.CompositionLocalProvider((ProvidedValue<?>[]) new ProvidedValue[]{SaveableStateRegistryKt.getLocalSaveableStateRegistry().provides(registryHolder.getRegistry())}, function2, startRestartGroup, (i & 112) | 8);
+        CompositionLocalKt.CompositionLocalProvider(new ProvidedValue[]{SaveableStateRegistryKt.getLocalSaveableStateRegistry().provides(registryHolder.getRegistry())}, function2, startRestartGroup, (i & 112) | 8);
         EffectsKt.DisposableEffect(Unit.INSTANCE, new Function1<DisposableEffectScope, DisposableEffectResult>() { // from class: androidx.compose.runtime.saveable.SaveableStateHolderImpl$SaveableStateProvider$1$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             {
@@ -206,28 +143,19 @@ final class SaveableStateHolderImpl implements SaveableStateHolder {
             public final DisposableEffectResult invoke(@NotNull DisposableEffectScope disposableEffectScope) {
                 Map map;
                 Map map2;
+                Map map3;
                 Intrinsics.checkNotNullParameter(disposableEffectScope, "$this$DisposableEffect");
                 map = SaveableStateHolderImpl.this.registryHolders;
                 boolean z = !map.containsKey(obj);
                 Object obj2 = obj;
-                if (!z) {
-                    throw new IllegalArgumentException(("Key " + obj2 + " was used multiple times ").toString());
+                if (z) {
+                    map2 = SaveableStateHolderImpl.this.savedStates;
+                    map2.remove(obj);
+                    map3 = SaveableStateHolderImpl.this.registryHolders;
+                    map3.put(obj, registryHolder);
+                    return new SaveableStateHolderImpl$SaveableStateProvider$1$1$invoke$.inlined.onDispose.1(registryHolder, SaveableStateHolderImpl.this, obj);
                 }
-                SaveableStateHolderImpl.this.savedStates.remove(obj);
-                map2 = SaveableStateHolderImpl.this.registryHolders;
-                map2.put(obj, registryHolder);
-                final SaveableStateHolderImpl.RegistryHolder registryHolder2 = registryHolder;
-                final SaveableStateHolderImpl saveableStateHolderImpl = SaveableStateHolderImpl.this;
-                final Object obj3 = obj;
-                return new DisposableEffectResult() { // from class: androidx.compose.runtime.saveable.SaveableStateHolderImpl$SaveableStateProvider$1$1$invoke$$inlined$onDispose$1
-                    @Override // androidx.compose.runtime.DisposableEffectResult
-                    public void dispose() {
-                        Map map3;
-                        SaveableStateHolderImpl.RegistryHolder.this.saveTo(saveableStateHolderImpl.savedStates);
-                        map3 = saveableStateHolderImpl.registryHolders;
-                        map3.remove(obj3);
-                    }
-                };
+                throw new IllegalArgumentException(("Key " + obj2 + " was used multiple times ").toString());
             }
         }, startRestartGroup, 6);
         startRestartGroup.endReplaceableGroup();

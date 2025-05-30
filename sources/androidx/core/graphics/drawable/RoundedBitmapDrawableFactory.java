@@ -13,7 +13,7 @@ import androidx.core.view.GravityCompat;
 import java.io.InputStream;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class RoundedBitmapDrawableFactory {
     private static final String TAG = "RoundedBitmapDrawableFa";
 
@@ -23,20 +23,18 @@ public final class RoundedBitmapDrawableFactory {
             super(resources, bitmap);
         }
 
-        @Override // androidx.core.graphics.drawable.RoundedBitmapDrawable
         void gravityCompatApply(int i, int i2, int i3, Rect rect, Rect rect2) {
             GravityCompat.apply(i, i2, i3, rect, rect2, 0);
         }
 
-        @Override // androidx.core.graphics.drawable.RoundedBitmapDrawable
         public boolean hasMipMap() {
-            Bitmap bitmap = this.mBitmap;
+            Bitmap bitmap = ((RoundedBitmapDrawable) this).mBitmap;
             return bitmap != null && BitmapCompat.hasMipMap(bitmap);
         }
 
-        @Override // androidx.core.graphics.drawable.RoundedBitmapDrawable
+        /* JADX WARN: Multi-variable type inference failed */
         public void setMipMap(boolean z) {
-            Bitmap bitmap = this.mBitmap;
+            Bitmap bitmap = ((RoundedBitmapDrawable) this).mBitmap;
             if (bitmap != null) {
                 BitmapCompat.setHasMipMap(bitmap, z);
                 invalidateSelf();

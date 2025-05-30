@@ -6,8 +6,6 @@ import java.util.concurrent.atomic.AtomicReference;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
-import kotlin.jvm.internal.Intrinsics;
-import kotlinx.coroutines.Job;
 import kotlinx.coroutines.sync.Mutex;
 import kotlinx.coroutines.sync.MutexKt;
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +14,7 @@ import tb.i80;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class MutatorMutex {
 
     @NotNull
@@ -24,44 +22,6 @@ public final class MutatorMutex {
 
     @NotNull
     private final Mutex mutex = MutexKt.b(false, 1, (Object) null);
-
-    /* JADX INFO: Access modifiers changed from: private */
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static final class Mutator {
-
-        @NotNull
-        private final Job job;
-
-        @NotNull
-        private final MutatePriority priority;
-
-        public Mutator(@NotNull MutatePriority mutatePriority, @NotNull Job job) {
-            Intrinsics.checkNotNullParameter(mutatePriority, "priority");
-            Intrinsics.checkNotNullParameter(job, "job");
-            this.priority = mutatePriority;
-            this.job = job;
-        }
-
-        public final boolean canInterrupt(@NotNull Mutator mutator) {
-            Intrinsics.checkNotNullParameter(mutator, "other");
-            return this.priority.compareTo(mutator.priority) >= 0;
-        }
-
-        public final void cancel() {
-            Job.a.b(this.job, (CancellationException) null, 1, (Object) null);
-        }
-
-        @NotNull
-        public final Job getJob() {
-            return this.job;
-        }
-
-        @NotNull
-        public final MutatePriority getPriority() {
-            return this.priority;
-        }
-    }
 
     public static /* synthetic */ Object mutate$default(MutatorMutex mutatorMutex, MutatePriority mutatePriority, Function1 function1, Continuation continuation, int i, Object obj) {
         if ((i & 1) != 0) {
@@ -93,7 +53,7 @@ public final class MutatorMutex {
 
     @Nullable
     public final <R> Object mutate(@NotNull MutatePriority mutatePriority, @NotNull Function1<? super Continuation<? super R>, ? extends Object> function1, @NotNull Continuation<? super R> continuation) {
-        return i80.g(new MutatorMutex$mutate$2(mutatePriority, this, function1, null), continuation);
+        return i80.g(new mutate.2(mutatePriority, this, function1, (Continuation) null), continuation);
     }
 
     @Nullable

@@ -1,27 +1,24 @@
 package androidx.room.util;
 
 import android.database.Cursor;
-import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
-import androidx.room.ColumnInfo;
-import androidx.room.Index;
-import androidx.sqlite.p008db.SupportSQLiteDatabase;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.constraintlayout.core.motion.utils.TypedValues$TransitionType;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TableInfo {
     public static final int CREATED_FROM_DATABASE = 2;
     public static final int CREATED_FROM_ENTITY = 1;
@@ -34,129 +31,7 @@ public final class TableInfo {
     public final String name;
 
     /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class Column {
-
-        @ColumnInfo.SQLiteTypeAffinity
-        public final int affinity;
-        public final String defaultValue;
-        private final int mCreatedFrom;
-        public final String name;
-        public final boolean notNull;
-        public final int primaryKeyPosition;
-        public final String type;
-
-        @Deprecated
-        public Column(String str, String str2, boolean z, int i) {
-            this(str, str2, z, i, null, 0);
-        }
-
-        private static boolean containsSurroundingParenthesis(@NonNull String str) {
-            if (str.length() == 0) {
-                return false;
-            }
-            int i = 0;
-            for (int i2 = 0; i2 < str.length(); i2++) {
-                char charAt = str.charAt(i2);
-                if (i2 == 0 && charAt != '(') {
-                    return false;
-                }
-                if (charAt == '(') {
-                    i++;
-                } else if (charAt == ')' && i - 1 == 0 && i2 != str.length() - 1) {
-                    return false;
-                }
-            }
-            return i == 0;
-        }
-
-        public static boolean defaultValueEquals(@NonNull String str, @Nullable String str2) {
-            if (str2 == null) {
-                return false;
-            }
-            if (str.equals(str2)) {
-                return true;
-            }
-            if (containsSurroundingParenthesis(str)) {
-                return str.substring(1, str.length() - 1).trim().equals(str2);
-            }
-            return false;
-        }
-
-        @ColumnInfo.SQLiteTypeAffinity
-        private static int findAffinity(@Nullable String str) {
-            if (str == null) {
-                return 5;
-            }
-            String upperCase = str.toUpperCase(Locale.US);
-            if (upperCase.contains("INT")) {
-                return 3;
-            }
-            if (upperCase.contains("CHAR") || upperCase.contains("CLOB") || upperCase.contains("TEXT")) {
-                return 2;
-            }
-            if (upperCase.contains("BLOB")) {
-                return 5;
-            }
-            return (upperCase.contains("REAL") || upperCase.contains("FLOA") || upperCase.contains("DOUB")) ? 4 : 1;
-        }
-
-        public boolean equals(Object obj) {
-            String str;
-            String str2;
-            String str3;
-            if (this == obj) {
-                return true;
-            }
-            if (!(obj instanceof Column)) {
-                return false;
-            }
-            Column column = (Column) obj;
-            if (Build.VERSION.SDK_INT >= 20) {
-                if (this.primaryKeyPosition != column.primaryKeyPosition) {
-                    return false;
-                }
-            } else if (isPrimaryKey() != column.isPrimaryKey()) {
-                return false;
-            }
-            if (!this.name.equals(column.name) || this.notNull != column.notNull) {
-                return false;
-            }
-            if (this.mCreatedFrom == 1 && column.mCreatedFrom == 2 && (str3 = this.defaultValue) != null && !defaultValueEquals(str3, column.defaultValue)) {
-                return false;
-            }
-            if (this.mCreatedFrom == 2 && column.mCreatedFrom == 1 && (str2 = column.defaultValue) != null && !defaultValueEquals(str2, this.defaultValue)) {
-                return false;
-            }
-            int i = this.mCreatedFrom;
-            return (i == 0 || i != column.mCreatedFrom || ((str = this.defaultValue) == null ? column.defaultValue == null : defaultValueEquals(str, column.defaultValue))) && this.affinity == column.affinity;
-        }
-
-        public int hashCode() {
-            return (((((this.name.hashCode() * 31) + this.affinity) * 31) + (this.notNull ? 1231 : 1237)) * 31) + this.primaryKeyPosition;
-        }
-
-        public boolean isPrimaryKey() {
-            return this.primaryKeyPosition > 0;
-        }
-
-        public String toString() {
-            return "Column{name='" + this.name + "', type='" + this.type + "', affinity='" + this.affinity + "', notNull=" + this.notNull + ", primaryKeyPosition=" + this.primaryKeyPosition + ", defaultValue='" + this.defaultValue + "'}";
-        }
-
-        public Column(String str, String str2, boolean z, int i, String str3, int i2) {
-            this.name = str;
-            this.type = str2;
-            this.notNull = z;
-            this.primaryKeyPosition = i;
-            this.affinity = findAffinity(str2);
-            this.defaultValue = str3;
-            this.mCreatedFrom = i2;
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public static final class ForeignKey {
 
         @NonNull
@@ -206,7 +81,7 @@ public final class TableInfo {
     }
 
     /* compiled from: Taobao */
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     static class ForeignKeyWithSequence implements Comparable<ForeignKeyWithSequence> {
         final String mFrom;
         final int mId;
@@ -224,50 +99,6 @@ public final class TableInfo {
         public int compareTo(@NonNull ForeignKeyWithSequence foreignKeyWithSequence) {
             int i = this.mId - foreignKeyWithSequence.mId;
             return i == 0 ? this.mSequence - foreignKeyWithSequence.mSequence : i;
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes2.dex */
-    public static final class Index {
-        public static final String DEFAULT_PREFIX = "index_";
-        public final List<String> columns;
-        public final String name;
-        public final List<String> orders;
-        public final boolean unique;
-
-        public Index(String str, boolean z, List<String> list) {
-            this(str, z, list, null);
-        }
-
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (!(obj instanceof Index)) {
-                return false;
-            }
-            Index index = (Index) obj;
-            if (this.unique == index.unique && this.columns.equals(index.columns) && this.orders.equals(index.orders)) {
-                return this.name.startsWith(DEFAULT_PREFIX) ? index.name.startsWith(DEFAULT_PREFIX) : this.name.equals(index.name);
-            }
-            return false;
-        }
-
-        public int hashCode() {
-            return ((((((this.name.startsWith(DEFAULT_PREFIX) ? -1184239155 : this.name.hashCode()) * 31) + (this.unique ? 1 : 0)) * 31) + this.columns.hashCode()) * 31) + this.orders.hashCode();
-        }
-
-        public String toString() {
-            return "Index{name='" + this.name + "', unique=" + this.unique + ", columns=" + this.columns + ", orders=" + this.orders + '}';
-        }
-
-        public Index(String str, boolean z, List<String> list, List<String> list2) {
-            this.name = str;
-            this.unique = z;
-            this.columns = list;
-            this.orders = (list2 == null || list2.size() == 0) ? Collections.nCopies(list.size(), Index.Order.ASC.name()) : list2;
         }
     }
 
@@ -306,8 +137,8 @@ public final class TableInfo {
     private static List<ForeignKeyWithSequence> readForeignKeyFieldMappings(Cursor cursor) {
         int columnIndex = cursor.getColumnIndex("id");
         int columnIndex2 = cursor.getColumnIndex("seq");
-        int columnIndex3 = cursor.getColumnIndex(TypedValues.TransitionType.S_FROM);
-        int columnIndex4 = cursor.getColumnIndex(TypedValues.TransitionType.S_TO);
+        int columnIndex3 = cursor.getColumnIndex(TypedValues$TransitionType.S_FROM);
+        int columnIndex4 = cursor.getColumnIndex(TypedValues$TransitionType.S_TO);
         int count = cursor.getCount();
         ArrayList arrayList = new ArrayList();
         for (int i = 0; i < count; i++) {

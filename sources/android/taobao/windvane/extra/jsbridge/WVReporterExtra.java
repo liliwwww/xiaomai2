@@ -1,19 +1,17 @@
 package android.taobao.windvane.extra.jsbridge;
 
-import android.taobao.windvane.extra.p002uc.preRender.PreRenderWebView;
-import android.taobao.windvane.file.FileManager;
+import android.taobao.windvane.extra.uc.preRender.PreRenderWebView;
+import android.taobao.windvane.jsbridge.WVApiPlugin;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.taobao.windvane.jsbridge.WVResult;
 import android.taobao.windvane.jsbridge.api.WVReporter;
-import android.taobao.windvane.webview.IWVWebView;
 import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVReporterExtra extends WVReporter {
-    @Override // android.taobao.windvane.jsbridge.api.WVReporter, android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if ("reportPerformanceCheckResult".equals(str)) {
             reportPerformanceCheckResult(wVCallBackContext, str2);
@@ -30,7 +28,7 @@ public class WVReporterExtra extends WVReporter {
     /* JADX WARN: Removed duplicated region for block: B:22:0x006f A[Catch: Exception -> 0x008e, TryCatch #0 {Exception -> 0x008e, blocks: (B:3:0x0002, B:10:0x003e, B:12:0x0044, B:14:0x004a, B:17:0x005a, B:19:0x0060, B:20:0x0069, B:22:0x006f, B:23:0x008a), top: B:2:0x0002 }] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void reportPerformanceCheckResult(android.taobao.windvane.jsbridge.WVCallBackContext r12, java.lang.String r13) {
         /*
@@ -57,9 +55,9 @@ public class WVReporterExtra extends WVReporter {
             java.lang.String r1 = r4.bizCode     // Catch: java.lang.Throwable -> L3e
             goto L3e
         L36:
-            boolean r5 = r4 instanceof android.taobao.windvane.extra.p002uc.WVUCWebView     // Catch: java.lang.Throwable -> L3e
+            boolean r5 = r4 instanceof android.taobao.windvane.extra.uc.WVUCWebView     // Catch: java.lang.Throwable -> L3e
             if (r5 == 0) goto L3e
-            android.taobao.windvane.extra.uc.WVUCWebView r4 = (android.taobao.windvane.extra.p002uc.WVUCWebView) r4     // Catch: java.lang.Throwable -> L3e
+            android.taobao.windvane.extra.uc.WVUCWebView r4 = (android.taobao.windvane.extra.uc.WVUCWebView) r4     // Catch: java.lang.Throwable -> L3e
             java.lang.String r1 = r4.bizCode     // Catch: java.lang.Throwable -> L3e
         L3e:
             android.net.Uri r4 = android.net.Uri.parse(r0)     // Catch: java.lang.Exception -> L8e
@@ -116,11 +114,11 @@ public class WVReporterExtra extends WVReporter {
 
     public void reportPrerenderStatus(WVCallBackContext wVCallBackContext, String str) {
         try {
-            boolean optBoolean = new JSONObject(str).optBoolean(FileManager.UNZIP_SUCCESS, true);
+            boolean optBoolean = new JSONObject(str).optBoolean("success", true);
             try {
-                IWVWebView iWVWebView = this.mWebView;
-                if (iWVWebView instanceof PreRenderWebView) {
-                    ((PreRenderWebView) iWVWebView).setPreRenderSuccess(optBoolean);
+                PreRenderWebView preRenderWebView = ((WVApiPlugin) this).mWebView;
+                if (preRenderWebView instanceof PreRenderWebView) {
+                    preRenderWebView.setPreRenderSuccess(optBoolean);
                 }
             } catch (Throwable th) {
                 th.printStackTrace();

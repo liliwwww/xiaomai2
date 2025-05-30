@@ -4,7 +4,7 @@ import android.os.Build;
 import androidx.renderscript.Script;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ScriptIntrinsicColorMatrix extends ScriptIntrinsic {
     private static final int INTRINSIC_API_LEVEL = 19;
     private final Float4 mAdd;
@@ -17,41 +17,46 @@ public class ScriptIntrinsicColorMatrix extends ScriptIntrinsic {
         this.mAdd = new Float4();
     }
 
+    /* JADX WARN: Type inference failed for: r5v2, types: [androidx.renderscript.Script, androidx.renderscript.ScriptIntrinsicColorMatrix] */
     public static ScriptIntrinsicColorMatrix create(RenderScript renderScript, Element element) {
         if (!element.isCompatible(Element.U8_4(renderScript))) {
             throw new RSIllegalArgumentException("Unsuported element type.");
         }
         boolean z = renderScript.isUseNative() && Build.VERSION.SDK_INT < 19;
-        ScriptIntrinsicColorMatrix scriptIntrinsicColorMatrix = new ScriptIntrinsicColorMatrix(renderScript.nScriptIntrinsicCreate(2, element.getID(renderScript), z), renderScript);
+        ?? scriptIntrinsicColorMatrix = new ScriptIntrinsicColorMatrix(renderScript.nScriptIntrinsicCreate(2, element.getID(renderScript), z), renderScript);
         scriptIntrinsicColorMatrix.setIncSupp(z);
         return scriptIntrinsicColorMatrix;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     private void setMatrix() {
         FieldPacker fieldPacker = new FieldPacker(64);
         fieldPacker.addMatrix(this.mMatrix);
         setVar(0, fieldPacker);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void forEach(Allocation allocation, Allocation allocation2) {
         forEach(0, allocation, allocation2, null);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public Script.KernelID getKernelID() {
         return createKernelID(0, 3, null, null);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void setAdd(Float4 float4) {
         Float4 float42 = this.mAdd;
-        float42.f405x = float4.f405x;
-        float42.f406y = float4.f406y;
-        float42.f407z = float4.f407z;
-        float42.f404w = float4.f404w;
+        float42.x = float4.x;
+        float42.y = float4.y;
+        float42.z = float4.z;
+        float42.w = float4.w;
         FieldPacker fieldPacker = new FieldPacker(16);
-        fieldPacker.addF32(float4.f405x);
-        fieldPacker.addF32(float4.f406y);
-        fieldPacker.addF32(float4.f407z);
-        fieldPacker.addF32(float4.f404w);
+        fieldPacker.addF32(float4.x);
+        fieldPacker.addF32(float4.y);
+        fieldPacker.addF32(float4.z);
+        fieldPacker.addF32(float4.w);
         setVar(1, fieldPacker);
     }
 
@@ -102,11 +107,12 @@ public class ScriptIntrinsicColorMatrix extends ScriptIntrinsic {
         setMatrix();
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void forEach(Allocation allocation, Allocation allocation2, Script.LaunchOptions launchOptions) {
-        if (!allocation.getElement().isCompatible(Element.m294U8(this.mRS)) && !allocation.getElement().isCompatible(Element.U8_2(this.mRS)) && !allocation.getElement().isCompatible(Element.U8_3(this.mRS)) && !allocation.getElement().isCompatible(Element.U8_4(this.mRS)) && !allocation.getElement().isCompatible(Element.F32(this.mRS)) && !allocation.getElement().isCompatible(Element.F32_2(this.mRS)) && !allocation.getElement().isCompatible(Element.F32_3(this.mRS)) && !allocation.getElement().isCompatible(Element.F32_4(this.mRS))) {
+        if (!allocation.getElement().isCompatible(Element.U8(((BaseObj) this).mRS)) && !allocation.getElement().isCompatible(Element.U8_2(((BaseObj) this).mRS)) && !allocation.getElement().isCompatible(Element.U8_3(((BaseObj) this).mRS)) && !allocation.getElement().isCompatible(Element.U8_4(((BaseObj) this).mRS)) && !allocation.getElement().isCompatible(Element.F32(((BaseObj) this).mRS)) && !allocation.getElement().isCompatible(Element.F32_2(((BaseObj) this).mRS)) && !allocation.getElement().isCompatible(Element.F32_3(((BaseObj) this).mRS)) && !allocation.getElement().isCompatible(Element.F32_4(((BaseObj) this).mRS))) {
             throw new RSIllegalArgumentException("Unsuported element type.");
         }
-        if (!allocation2.getElement().isCompatible(Element.m294U8(this.mRS)) && !allocation2.getElement().isCompatible(Element.U8_2(this.mRS)) && !allocation2.getElement().isCompatible(Element.U8_3(this.mRS)) && !allocation2.getElement().isCompatible(Element.U8_4(this.mRS)) && !allocation2.getElement().isCompatible(Element.F32(this.mRS)) && !allocation2.getElement().isCompatible(Element.F32_2(this.mRS)) && !allocation2.getElement().isCompatible(Element.F32_3(this.mRS)) && !allocation2.getElement().isCompatible(Element.F32_4(this.mRS))) {
+        if (!allocation2.getElement().isCompatible(Element.U8(((BaseObj) this).mRS)) && !allocation2.getElement().isCompatible(Element.U8_2(((BaseObj) this).mRS)) && !allocation2.getElement().isCompatible(Element.U8_3(((BaseObj) this).mRS)) && !allocation2.getElement().isCompatible(Element.U8_4(((BaseObj) this).mRS)) && !allocation2.getElement().isCompatible(Element.F32(((BaseObj) this).mRS)) && !allocation2.getElement().isCompatible(Element.F32_2(((BaseObj) this).mRS)) && !allocation2.getElement().isCompatible(Element.F32_3(((BaseObj) this).mRS)) && !allocation2.getElement().isCompatible(Element.F32_4(((BaseObj) this).mRS))) {
             throw new RSIllegalArgumentException("Unsuported element type.");
         }
         forEach(0, allocation, allocation2, null, launchOptions);
@@ -117,17 +123,18 @@ public class ScriptIntrinsicColorMatrix extends ScriptIntrinsic {
         setMatrix();
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void setAdd(float f, float f2, float f3, float f4) {
         Float4 float4 = this.mAdd;
-        float4.f405x = f;
-        float4.f406y = f2;
-        float4.f407z = f3;
-        float4.f404w = f4;
+        float4.x = f;
+        float4.y = f2;
+        float4.z = f3;
+        float4.w = f4;
         FieldPacker fieldPacker = new FieldPacker(16);
-        fieldPacker.addF32(this.mAdd.f405x);
-        fieldPacker.addF32(this.mAdd.f406y);
-        fieldPacker.addF32(this.mAdd.f407z);
-        fieldPacker.addF32(this.mAdd.f404w);
+        fieldPacker.addF32(this.mAdd.x);
+        fieldPacker.addF32(this.mAdd.y);
+        fieldPacker.addF32(this.mAdd.z);
+        fieldPacker.addF32(this.mAdd.w);
         setVar(1, fieldPacker);
     }
 }

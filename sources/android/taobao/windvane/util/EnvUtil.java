@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.taobao.windvane.config.GlobalConfig;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class EnvUtil {
     private static boolean DEBUG;
     private static boolean inited;

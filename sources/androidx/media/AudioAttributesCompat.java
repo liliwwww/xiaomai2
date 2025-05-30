@@ -3,7 +3,6 @@ package androidx.media;
 import android.media.AudioAttributes;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.SparseIntArray;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,7 +12,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class AudioAttributesCompat implements VersionedParcelable {
     static final String AUDIO_ATTRIBUTES_CONTENT_TYPE = "androidx.media.audio_attrs.CONTENT_TYPE";
     static final String AUDIO_ATTRIBUTES_FLAGS = "androidx.media.audio_attrs.FLAGS";
@@ -66,26 +65,7 @@ public class AudioAttributesCompat implements VersionedParcelable {
     /* compiled from: Taobao */
     @Retention(RetentionPolicy.SOURCE)
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    /* loaded from: classes.dex */
-    public @interface AttributeContentType {
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
     public @interface AttributeUsage {
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static abstract class AudioManagerHidden {
-        public static final int STREAM_ACCESSIBILITY = 10;
-        public static final int STREAM_BLUETOOTH_SCO = 6;
-        public static final int STREAM_SYSTEM_ENFORCED = 7;
-        public static final int STREAM_TTS = 9;
-
-        private AudioManagerHidden() {
-        }
     }
 
     static {
@@ -273,149 +253,6 @@ public class AudioAttributesCompat implements VersionedParcelable {
                     return 3;
                 }
                 throw new IllegalArgumentException("Unknown usage value " + i2 + " in audio attributes");
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class Builder {
-        private int mContentType;
-        private int mFlags;
-        private int mLegacyStream;
-        private int mUsage;
-
-        public Builder() {
-            this.mUsage = 0;
-            this.mContentType = 0;
-            this.mFlags = 0;
-            this.mLegacyStream = -1;
-        }
-
-        public AudioAttributesCompat build() {
-            AudioAttributesImpl audioAttributesImplBase;
-            if (AudioAttributesCompat.sForceLegacyBehavior || Build.VERSION.SDK_INT < 21) {
-                audioAttributesImplBase = new AudioAttributesImplBase(this.mContentType, this.mFlags, this.mUsage, this.mLegacyStream);
-            } else {
-                AudioAttributes.Builder usage = new AudioAttributes.Builder().setContentType(this.mContentType).setFlags(this.mFlags).setUsage(this.mUsage);
-                int i = this.mLegacyStream;
-                if (i != -1) {
-                    usage.setLegacyStreamType(i);
-                }
-                audioAttributesImplBase = new AudioAttributesImplApi21(usage.build(), this.mLegacyStream);
-            }
-            return new AudioAttributesCompat(audioAttributesImplBase);
-        }
-
-        public Builder setContentType(int i) {
-            if (i == 0 || i == 1 || i == 2 || i == 3 || i == 4) {
-                this.mContentType = i;
-            } else {
-                this.mUsage = 0;
-            }
-            return this;
-        }
-
-        public Builder setFlags(int i) {
-            this.mFlags = (i & AudioAttributesCompat.FLAG_ALL) | this.mFlags;
-            return this;
-        }
-
-        /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-        Builder setInternalLegacyStreamType(int i) {
-            switch (i) {
-                case 0:
-                    this.mContentType = 1;
-                    break;
-                case 1:
-                    this.mContentType = 4;
-                    break;
-                case 2:
-                    this.mContentType = 4;
-                    break;
-                case 3:
-                    this.mContentType = 2;
-                    break;
-                case 4:
-                    this.mContentType = 4;
-                    break;
-                case 5:
-                    this.mContentType = 4;
-                    break;
-                case 6:
-                    this.mContentType = 1;
-                    this.mFlags |= 4;
-                    break;
-                case 7:
-                    this.mFlags = 1 | this.mFlags;
-                    this.mContentType = 4;
-                    break;
-                case 8:
-                    this.mContentType = 4;
-                    break;
-                case 9:
-                    this.mContentType = 4;
-                    break;
-                case 10:
-                    this.mContentType = 1;
-                    break;
-                default:
-                    Log.e(AudioAttributesCompat.TAG, "Invalid stream type " + i + " for AudioAttributesCompat");
-                    break;
-            }
-            this.mUsage = AudioAttributesCompat.usageForStreamType(i);
-            return this;
-        }
-
-        public Builder setLegacyStreamType(int i) {
-            if (i == 10) {
-                throw new IllegalArgumentException("STREAM_ACCESSIBILITY is not a legacy stream type that was used for audio playback");
-            }
-            this.mLegacyStream = i;
-            return Build.VERSION.SDK_INT >= 21 ? setInternalLegacyStreamType(i) : this;
-        }
-
-        public Builder setUsage(int i) {
-            switch (i) {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                case 13:
-                case 14:
-                case 15:
-                    this.mUsage = i;
-                    return this;
-                case 16:
-                    if (AudioAttributesCompat.sForceLegacyBehavior || Build.VERSION.SDK_INT <= 25) {
-                        this.mUsage = 12;
-                    } else {
-                        this.mUsage = i;
-                    }
-                    return this;
-                default:
-                    this.mUsage = 0;
-                    return this;
-            }
-        }
-
-        public Builder(AudioAttributesCompat audioAttributesCompat) {
-            this.mUsage = 0;
-            this.mContentType = 0;
-            this.mFlags = 0;
-            this.mLegacyStream = -1;
-            this.mUsage = audioAttributesCompat.getUsage();
-            this.mContentType = audioAttributesCompat.getContentType();
-            this.mFlags = audioAttributesCompat.getFlags();
-            this.mLegacyStream = audioAttributesCompat.getRawLegacyStreamType();
         }
     }
 }

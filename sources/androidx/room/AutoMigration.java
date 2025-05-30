@@ -8,12 +8,11 @@ import java.lang.annotation.Target;
 /* compiled from: Taobao */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.CLASS)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public @interface AutoMigration {
     int from();
 
     Class<?> spec() default Object.class;
 
-    /* renamed from: to */
-    int m311to();
+    int to();
 }

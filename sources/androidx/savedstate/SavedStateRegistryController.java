@@ -10,11 +10,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SavedStateRegistryController {
 
     @NotNull
-    public static final Companion Companion = new Companion(null);
+    public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
     private boolean attached;
 
     @NotNull
@@ -22,24 +22,6 @@ public final class SavedStateRegistryController {
 
     @NotNull
     private final SavedStateRegistry savedStateRegistry;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class Companion {
-        private Companion() {
-        }
-
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-
-        @JvmStatic
-        @NotNull
-        public final SavedStateRegistryController create(@NotNull SavedStateRegistryOwner savedStateRegistryOwner) {
-            Intrinsics.checkNotNullParameter(savedStateRegistryOwner, "owner");
-            return new SavedStateRegistryController(savedStateRegistryOwner, null);
-        }
-    }
 
     private SavedStateRegistryController(SavedStateRegistryOwner savedStateRegistryOwner) {
         this.owner = savedStateRegistryOwner;

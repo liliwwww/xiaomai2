@@ -16,14 +16,13 @@ import kotlin.annotation.MustBeDocumented;
 @Documented
 @Retention(RetentionPolicy.CLASS)
 @kotlin.annotation.Retention(AnnotationRetention.BINARY)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public @interface FloatRange {
     double from() default Double.NEGATIVE_INFINITY;
 
     boolean fromInclusive() default true;
 
-    /* renamed from: to */
-    double m42to() default Double.POSITIVE_INFINITY;
+    double to() default Double.POSITIVE_INFINITY;
 
     boolean toInclusive() default true;
 }

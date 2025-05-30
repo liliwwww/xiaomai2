@@ -1,22 +1,22 @@
 package androidx.compose.foundation.text;
 
-import androidx.compose.p004ui.focus.FocusManager;
-import androidx.compose.p004ui.graphics.AndroidPaint_androidKt;
-import androidx.compose.p004ui.graphics.Paint;
-import androidx.compose.p004ui.layout.LayoutCoordinates;
-import androidx.compose.p004ui.text.AnnotatedString;
-import androidx.compose.p004ui.text.TextStyle;
-import androidx.compose.p004ui.text.font.FontFamily;
-import androidx.compose.p004ui.text.input.EditProcessor;
-import androidx.compose.p004ui.text.input.ImeAction;
-import androidx.compose.p004ui.text.input.TextFieldValue;
-import androidx.compose.p004ui.text.input.TextInputSession;
-import androidx.compose.p004ui.text.style.TextOverflow;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Density;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.RecomposeScope;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
+import androidx.compose.ui.focus.FocusManager;
+import androidx.compose.ui.graphics.AndroidPaint_androidKt;
+import androidx.compose.ui.graphics.Paint;
+import androidx.compose.ui.layout.LayoutCoordinates;
+import androidx.compose.ui.text.AnnotatedString;
+import androidx.compose.ui.text.TextStyle;
+import androidx.compose.ui.text.font.FontFamily;
+import androidx.compose.ui.text.input.EditProcessor;
+import androidx.compose.ui.text.input.ImeAction;
+import androidx.compose.ui.text.input.TextFieldValue;
+import androidx.compose.ui.text.input.TextInputSession;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
 import kotlin.Unit;
 import kotlin.collections.CollectionsKt;
 import kotlin.jvm.functions.Function1;
@@ -25,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TextFieldState {
 
     @NotNull
@@ -91,13 +91,13 @@ public final class TextFieldState {
         this.recomposeScope = recomposeScope;
         this.processor = new EditProcessor();
         Boolean bool = Boolean.FALSE;
-        this.hasFocus$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(bool, null, 2, null);
-        this.minHeightForSingleLineField$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(C0856Dp.m5214boximpl(C0856Dp.m5216constructorimpl(0)), null, 2, null);
-        this.layoutResultState = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
-        this.handleState$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(HandleState.None, null, 2, null);
-        this.showSelectionHandleStart$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(bool, null, 2, null);
-        this.showSelectionHandleEnd$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(bool, null, 2, null);
-        this.showCursorHandle$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(bool, null, 2, null);
+        this.hasFocus$delegate = SnapshotStateKt.mutableStateOf$default(bool, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.minHeightForSingleLineField$delegate = SnapshotStateKt.mutableStateOf$default(Dp.m2140boximpl(Dp.m2142constructorimpl(0)), (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.layoutResultState = SnapshotStateKt.mutableStateOf$default((Object) null, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.handleState$delegate = SnapshotStateKt.mutableStateOf$default(HandleState.None, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.showSelectionHandleStart$delegate = SnapshotStateKt.mutableStateOf$default(bool, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.showSelectionHandleEnd$delegate = SnapshotStateKt.mutableStateOf$default(bool, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.showCursorHandle$delegate = SnapshotStateKt.mutableStateOf$default(bool, (SnapshotMutationPolicy) null, 2, (Object) null);
         this.isLayoutResultStale = true;
         this.keyboardActionRunner = new KeyboardActionRunner();
         this.onValueChangeOriginal = new Function1<TextFieldValue, Unit>() { // from class: androidx.compose.foundation.text.TextFieldState$onValueChangeOriginal$1
@@ -133,33 +133,15 @@ public final class TextFieldState {
                 TextFieldState.this.getRecomposeScope().invalidate();
             }
         };
-        this.onImeActionPerformed = new Function1<ImeAction, Unit>() { // from class: androidx.compose.foundation.text.TextFieldState$onImeActionPerformed$1
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                m1806invokeKlQnJC8(((ImeAction) obj).m4886unboximpl());
-                return Unit.INSTANCE;
-            }
-
-            /* renamed from: invoke-KlQnJC8, reason: not valid java name */
-            public final void m1806invokeKlQnJC8(int i) {
-                KeyboardActionRunner keyboardActionRunner;
-                keyboardActionRunner = TextFieldState.this.keyboardActionRunner;
-                keyboardActionRunner.m1730runActionKlQnJC8(i);
-            }
-        };
+        this.onImeActionPerformed = new onImeActionPerformed.1(this);
         this.selectionPaint = AndroidPaint_androidKt.Paint();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @NotNull
     public final HandleState getHandleState() {
         return (HandleState) this.handleState$delegate.getValue();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final boolean getHasFocus() {
         return ((Boolean) this.hasFocus$delegate.getValue()).booleanValue();
     }
@@ -179,10 +161,9 @@ public final class TextFieldState {
         return this.layoutResultState.getValue();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     /* renamed from: getMinHeightForSingleLineField-D9Ej5fM, reason: not valid java name */
-    public final float m1803getMinHeightForSingleLineFieldD9Ej5fM() {
-        return ((C0856Dp) this.minHeightForSingleLineField$delegate.getValue()).m5230unboximpl();
+    public final float m449getMinHeightForSingleLineFieldD9Ej5fM() {
+        return ((Dp) this.minHeightForSingleLineField$delegate.getValue()).m2156unboximpl();
     }
 
     @NotNull
@@ -210,7 +191,6 @@ public final class TextFieldState {
         return this.selectionPaint;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final boolean getShowCursorHandle() {
         return ((Boolean) this.showCursorHandle$delegate.getValue()).booleanValue();
     }
@@ -219,12 +199,10 @@ public final class TextFieldState {
         return this.showFloatingToolbar;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final boolean getShowSelectionHandleEnd() {
         return ((Boolean) this.showSelectionHandleEnd$delegate.getValue()).booleanValue();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final boolean getShowSelectionHandleStart() {
         return ((Boolean) this.showSelectionHandleStart$delegate.getValue()).booleanValue();
     }
@@ -266,8 +244,8 @@ public final class TextFieldState {
     }
 
     /* renamed from: setMinHeightForSingleLineField-0680j_4, reason: not valid java name */
-    public final void m1804setMinHeightForSingleLineField0680j_4(float f) {
-        this.minHeightForSingleLineField$delegate.setValue(C0856Dp.m5214boximpl(f));
+    public final void m450setMinHeightForSingleLineField0680j_4(float f) {
+        this.minHeightForSingleLineField$delegate.setValue(Dp.m2140boximpl(f));
     }
 
     public final void setShowCursorHandle(boolean z) {
@@ -296,8 +274,7 @@ public final class TextFieldState {
     }
 
     /* renamed from: update-fnh65Uc, reason: not valid java name */
-    public final void m1805updatefnh65Uc(@NotNull AnnotatedString annotatedString, @NotNull AnnotatedString annotatedString2, @NotNull TextStyle textStyle, boolean z, @NotNull Density density, @NotNull FontFamily.Resolver resolver, @NotNull Function1<? super TextFieldValue, Unit> function1, @NotNull KeyboardActions keyboardActions, @NotNull FocusManager focusManager, long j) {
-        TextDelegate m1722updateTextDelegaterm0N8CA;
+    public final void m451updatefnh65Uc(@NotNull AnnotatedString annotatedString, @NotNull AnnotatedString annotatedString2, @NotNull TextStyle textStyle, boolean z, @NotNull Density density, @NotNull FontFamily.Resolver resolver, @NotNull Function1<? super TextFieldValue, Unit> function1, @NotNull KeyboardActions keyboardActions, @NotNull FocusManager focusManager, long j) {
         Intrinsics.checkNotNullParameter(annotatedString, "untransformedText");
         Intrinsics.checkNotNullParameter(annotatedString2, "visualText");
         Intrinsics.checkNotNullParameter(textStyle, "textStyle");
@@ -307,16 +284,16 @@ public final class TextFieldState {
         Intrinsics.checkNotNullParameter(keyboardActions, "keyboardActions");
         Intrinsics.checkNotNullParameter(focusManager, "focusManager");
         this.onValueChangeOriginal = function1;
-        this.selectionPaint.mo2677setColor8_81llA(j);
+        this.selectionPaint.setColor-8_81llA(j);
         KeyboardActionRunner keyboardActionRunner = this.keyboardActionRunner;
         keyboardActionRunner.setKeyboardActions(keyboardActions);
         keyboardActionRunner.setFocusManager(focusManager);
         keyboardActionRunner.setInputSession(this.inputSession);
         this.untransformedText = annotatedString;
-        m1722updateTextDelegaterm0N8CA = CoreTextKt.m1722updateTextDelegaterm0N8CA(this.textDelegate, annotatedString2, textStyle, density, resolver, (r23 & 32) != 0 ? true : z, (r23 & 64) != 0 ? TextOverflow.Companion.m5128getClipgIe3tQ8() : 0, (r23 & 128) != 0 ? Integer.MAX_VALUE : 0, (r23 & 256) != 0 ? 1 : 0, CollectionsKt.emptyList());
-        if (this.textDelegate != m1722updateTextDelegaterm0N8CA) {
+        TextDelegate textDelegate = CoreTextKt.updateTextDelegate-rm0N8CA$default(this.textDelegate, annotatedString2, textStyle, density, resolver, z, 0, 0, 0, CollectionsKt.emptyList(), 448, (Object) null);
+        if (this.textDelegate != textDelegate) {
             this.isLayoutResultStale = true;
         }
-        this.textDelegate = m1722updateTextDelegaterm0N8CA;
+        this.textDelegate = textDelegate;
     }
 }

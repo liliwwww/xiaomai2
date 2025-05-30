@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AnimationSpecKt {
     /* JADX INFO: Access modifiers changed from: private */
     public static final <T, V extends AnimationVector> V convert(TwoWayConverter<T, V> twoWayConverter, T t) {
@@ -27,7 +27,7 @@ public final class AnimationSpecKt {
     public static final /* synthetic */ InfiniteRepeatableSpec infiniteRepeatable(DurationBasedAnimationSpec durationBasedAnimationSpec, RepeatMode repeatMode) {
         Intrinsics.checkNotNullParameter(durationBasedAnimationSpec, "animation");
         Intrinsics.checkNotNullParameter(repeatMode, "repeatMode");
-        return new InfiniteRepeatableSpec(durationBasedAnimationSpec, repeatMode, StartOffset.m1071constructorimpl$default(0, 0, 2, null), (DefaultConstructorMarker) null);
+        return new InfiniteRepeatableSpec(durationBasedAnimationSpec, repeatMode, StartOffset.m88constructorimpl$default(0, 0, 2, null), (DefaultConstructorMarker) null);
     }
 
     public static /* synthetic */ InfiniteRepeatableSpec infiniteRepeatable$default(DurationBasedAnimationSpec durationBasedAnimationSpec, RepeatMode repeatMode, int i, Object obj) {
@@ -40,21 +40,21 @@ public final class AnimationSpecKt {
     @Stable
     @NotNull
     /* renamed from: infiniteRepeatable-9IiC70o, reason: not valid java name */
-    public static final <T> InfiniteRepeatableSpec<T> m1047infiniteRepeatable9IiC70o(@NotNull DurationBasedAnimationSpec<T> durationBasedAnimationSpec, @NotNull RepeatMode repeatMode, long j) {
+    public static final <T> InfiniteRepeatableSpec<T> m63infiniteRepeatable9IiC70o(@NotNull DurationBasedAnimationSpec<T> durationBasedAnimationSpec, @NotNull RepeatMode repeatMode, long j) {
         Intrinsics.checkNotNullParameter(durationBasedAnimationSpec, "animation");
         Intrinsics.checkNotNullParameter(repeatMode, "repeatMode");
         return new InfiniteRepeatableSpec<>(durationBasedAnimationSpec, repeatMode, j, (DefaultConstructorMarker) null);
     }
 
     /* renamed from: infiniteRepeatable-9IiC70o$default, reason: not valid java name */
-    public static /* synthetic */ InfiniteRepeatableSpec m1048infiniteRepeatable9IiC70o$default(DurationBasedAnimationSpec durationBasedAnimationSpec, RepeatMode repeatMode, long j, int i, Object obj) {
+    public static /* synthetic */ InfiniteRepeatableSpec m64infiniteRepeatable9IiC70o$default(DurationBasedAnimationSpec durationBasedAnimationSpec, RepeatMode repeatMode, long j, int i, Object obj) {
         if ((i & 2) != 0) {
             repeatMode = RepeatMode.Restart;
         }
         if ((i & 4) != 0) {
-            j = StartOffset.m1071constructorimpl$default(0, 0, 2, null);
+            j = StartOffset.m88constructorimpl$default(0, 0, 2, null);
         }
-        return m1047infiniteRepeatable9IiC70o(durationBasedAnimationSpec, repeatMode, j);
+        return m63infiniteRepeatable9IiC70o(durationBasedAnimationSpec, repeatMode, j);
     }
 
     @Stable
@@ -71,7 +71,7 @@ public final class AnimationSpecKt {
     public static final /* synthetic */ RepeatableSpec repeatable(int i, DurationBasedAnimationSpec durationBasedAnimationSpec, RepeatMode repeatMode) {
         Intrinsics.checkNotNullParameter(durationBasedAnimationSpec, "animation");
         Intrinsics.checkNotNullParameter(repeatMode, "repeatMode");
-        return new RepeatableSpec(i, durationBasedAnimationSpec, repeatMode, StartOffset.m1071constructorimpl$default(0, 0, 2, null), (DefaultConstructorMarker) null);
+        return new RepeatableSpec(i, durationBasedAnimationSpec, repeatMode, StartOffset.m88constructorimpl$default(0, 0, 2, null), (DefaultConstructorMarker) null);
     }
 
     public static /* synthetic */ RepeatableSpec repeatable$default(int i, DurationBasedAnimationSpec durationBasedAnimationSpec, RepeatMode repeatMode, int i2, Object obj) {
@@ -84,21 +84,21 @@ public final class AnimationSpecKt {
     @Stable
     @NotNull
     /* renamed from: repeatable-91I0pcU, reason: not valid java name */
-    public static final <T> RepeatableSpec<T> m1049repeatable91I0pcU(int i, @NotNull DurationBasedAnimationSpec<T> durationBasedAnimationSpec, @NotNull RepeatMode repeatMode, long j) {
+    public static final <T> RepeatableSpec<T> m65repeatable91I0pcU(int i, @NotNull DurationBasedAnimationSpec<T> durationBasedAnimationSpec, @NotNull RepeatMode repeatMode, long j) {
         Intrinsics.checkNotNullParameter(durationBasedAnimationSpec, "animation");
         Intrinsics.checkNotNullParameter(repeatMode, "repeatMode");
         return new RepeatableSpec<>(i, durationBasedAnimationSpec, repeatMode, j, (DefaultConstructorMarker) null);
     }
 
     /* renamed from: repeatable-91I0pcU$default, reason: not valid java name */
-    public static /* synthetic */ RepeatableSpec m1050repeatable91I0pcU$default(int i, DurationBasedAnimationSpec durationBasedAnimationSpec, RepeatMode repeatMode, long j, int i2, Object obj) {
+    public static /* synthetic */ RepeatableSpec m66repeatable91I0pcU$default(int i, DurationBasedAnimationSpec durationBasedAnimationSpec, RepeatMode repeatMode, long j, int i2, Object obj) {
         if ((i2 & 4) != 0) {
             repeatMode = RepeatMode.Restart;
         }
         if ((i2 & 8) != 0) {
-            j = StartOffset.m1071constructorimpl$default(0, 0, 2, null);
+            j = StartOffset.m88constructorimpl$default(0, 0, 2, null);
         }
-        return m1049repeatable91I0pcU(i, durationBasedAnimationSpec, repeatMode, j);
+        return m65repeatable91I0pcU(i, durationBasedAnimationSpec, repeatMode, j);
     }
 
     @Stable

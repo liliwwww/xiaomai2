@@ -1,7 +1,7 @@
 package androidx.constraintlayout.core.motion.utils;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class VelocityMatrix {
     private static String TAG = "VelocityMatrix";
     float mDRotate;

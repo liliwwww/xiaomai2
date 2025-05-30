@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 import kotlin.jvm.internal.markers.KMappedMarker;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class AbstractListIterator<E> implements ListIterator<E>, KMappedMarker {
     private int index;
     private int size;

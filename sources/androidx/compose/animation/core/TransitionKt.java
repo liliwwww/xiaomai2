@@ -1,14 +1,7 @@
 package androidx.compose.animation.core;
 
 import androidx.compose.animation.core.Transition;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.geometry.Rect;
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntOffsetKt;
-import androidx.compose.p004ui.unit.IntSize;
-import androidx.compose.p004ui.unit.IntSizeKt;
+import androidx.compose.animation.core.TransitionKt$updateTransition$2$1$invoke$;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
 import androidx.compose.runtime.Composer;
@@ -17,6 +10,13 @@ import androidx.compose.runtime.DisposableEffectResult;
 import androidx.compose.runtime.DisposableEffectScope;
 import androidx.compose.runtime.EffectsKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.geometry.Rect;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.unit.Dp;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntOffsetKt;
+import androidx.compose.ui.unit.IntSize;
 import kotlin.PublishedApi;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function3;
@@ -27,32 +27,32 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TransitionKt {
     public static final int AnimationDebugDurationScale = 1;
 
     @Composable
     @ComposableInferredTarget(scheme = "[0[0][0]]")
     @NotNull
-    public static final <S> State<C0856Dp> animateDp(@NotNull Transition<S> transition, @Nullable Function3<? super Transition.Segment<S>, ? super Composer, ? super Integer, ? extends FiniteAnimationSpec<C0856Dp>> function3, @Nullable String str, @NotNull Function3<? super S, ? super Composer, ? super Integer, C0856Dp> function32, @Nullable Composer composer, int i, int i2) {
+    public static final <S> State<Dp> animateDp(@NotNull Transition<S> transition, @Nullable Function3<? super Transition.Segment<S>, ? super Composer, ? super Integer, ? extends FiniteAnimationSpec<Dp>> function3, @Nullable String str, @NotNull Function3<? super S, ? super Composer, ? super Integer, Dp> function32, @Nullable Composer composer, int i, int i2) {
         Intrinsics.checkNotNullParameter(transition, "<this>");
         Intrinsics.checkNotNullParameter(function32, "targetValueByState");
         composer.startReplaceableGroup(184732935);
         if ((i2 & 1) != 0) {
-            function3 = new Function3<Transition.Segment<S>, Composer, Integer, SpringSpec<C0856Dp>>() { // from class: androidx.compose.animation.core.TransitionKt$animateDp$1
+            function3 = new Function3<Transition.Segment<S>, Composer, Integer, SpringSpec<Dp>>() { // from class: androidx.compose.animation.core.TransitionKt$animateDp$1
                 public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
                     return invoke((Transition.Segment) obj, (Composer) obj2, ((Number) obj3).intValue());
                 }
 
                 @Composable
                 @NotNull
-                public final SpringSpec<C0856Dp> invoke(@NotNull Transition.Segment<S> segment, @Nullable Composer composer2, int i3) {
+                public final SpringSpec<Dp> invoke(@NotNull Transition.Segment<S> segment, @Nullable Composer composer2, int i3) {
                     Intrinsics.checkNotNullParameter(segment, "$this$null");
                     composer2.startReplaceableGroup(-575880366);
                     if (ComposerKt.isTraceInProgress()) {
                         ComposerKt.traceEventStart(-575880366, i3, -1, "androidx.compose.animation.core.animateDp.<anonymous> (Transition.kt:963)");
                     }
-                    SpringSpec<C0856Dp> spring$default = AnimationSpecKt.spring$default(0.0f, 0.0f, C0856Dp.m5214boximpl(VisibilityThresholdsKt.getVisibilityThreshold(C0856Dp.Companion)), 3, null);
+                    SpringSpec<Dp> spring$default = AnimationSpecKt.spring$default(0.0f, 0.0f, Dp.box-impl(VisibilityThresholdsKt.getVisibilityThreshold(Dp.Companion)), 3, null);
                     if (ComposerKt.isTraceInProgress()) {
                         ComposerKt.traceEventEnd();
                     }
@@ -65,13 +65,13 @@ public final class TransitionKt {
             str = "DpAnimation";
         }
         String str2 = str;
-        TwoWayConverter<C0856Dp, AnimationVector1D> vectorConverter = VectorConvertersKt.getVectorConverter(C0856Dp.Companion);
+        TwoWayConverter<Dp, AnimationVector1D> vectorConverter = VectorConvertersKt.getVectorConverter(Dp.Companion);
         int i3 = i & 14;
         int i4 = i << 3;
         int i5 = i3 | (i4 & 896) | (i4 & 7168) | (i4 & 57344);
         composer.startReplaceableGroup(-142660079);
         int i6 = (i5 >> 9) & 112;
-        State<C0856Dp> createTransitionAnimation = createTransitionAnimation(transition, function32.invoke(transition.getCurrentState(), composer, Integer.valueOf(i6)), function32.invoke(transition.getTargetState(), composer, Integer.valueOf(i6)), (FiniteAnimationSpec) function3.invoke(transition.getSegment(), composer, Integer.valueOf((i5 >> 3) & 112)), vectorConverter, str2, composer, (i5 & 14) | ((i5 << 9) & 57344) | ((i5 << 6) & 458752));
+        State<Dp> createTransitionAnimation = createTransitionAnimation(transition, function32.invoke(transition.getCurrentState(), composer, Integer.valueOf(i6)), function32.invoke(transition.getTargetState(), composer, Integer.valueOf(i6)), (FiniteAnimationSpec) function3.invoke(transition.getSegment(), composer, Integer.valueOf((i5 >> 3) & 112)), vectorConverter, str2, composer, (i5 & 14) | ((i5 << 9) & 57344) | ((i5 << 6) & 458752));
         composer.endReplaceableGroup();
         composer.endReplaceableGroup();
         return createTransitionAnimation;
@@ -186,7 +186,7 @@ public final class TransitionKt {
                     if (ComposerKt.isTraceInProgress()) {
                         ComposerKt.traceEventStart(-1953479610, i3, -1, "androidx.compose.animation.core.animateIntOffset.<anonymous> (Transition.kt:1058)");
                     }
-                    SpringSpec<IntOffset> spring$default = AnimationSpecKt.spring$default(0.0f, 0.0f, IntOffset.m5325boximpl(IntOffsetKt.IntOffset(1, 1)), 3, null);
+                    SpringSpec<IntOffset> spring$default = AnimationSpecKt.spring$default(0.0f, 0.0f, IntOffset.m2634boximpl(IntOffsetKt.IntOffset(1, 1)), 3, null);
                     if (ComposerKt.isTraceInProgress()) {
                         ComposerKt.traceEventEnd();
                     }
@@ -223,27 +223,7 @@ public final class TransitionKt {
         Intrinsics.checkNotNullParameter(function32, "targetValueByState");
         composer.startReplaceableGroup(-2104123233);
         if ((i2 & 1) != 0) {
-            function3 = new Function3<Transition.Segment<S>, Composer, Integer, SpringSpec<IntSize>>() { // from class: androidx.compose.animation.core.TransitionKt$animateIntSize$1
-                @Composable
-                @NotNull
-                public final SpringSpec<IntSize> invoke(@NotNull Transition.Segment<S> segment, @Nullable Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(segment, "$this$null");
-                    composer2.startReplaceableGroup(967893300);
-                    if (ComposerKt.isTraceInProgress()) {
-                        ComposerKt.traceEventStart(967893300, i3, -1, "androidx.compose.animation.core.animateIntSize.<anonymous> (Transition.kt:1119)");
-                    }
-                    SpringSpec<IntSize> spring$default = AnimationSpecKt.spring$default(0.0f, 0.0f, IntSize.m5368boximpl(IntSizeKt.IntSize(1, 1)), 3, null);
-                    if (ComposerKt.isTraceInProgress()) {
-                        ComposerKt.traceEventEnd();
-                    }
-                    composer2.endReplaceableGroup();
-                    return spring$default;
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-                    return invoke((Transition.Segment) obj, (Composer) obj2, ((Number) obj3).intValue());
-                }
-            };
+            function3 = animateIntSize.1.INSTANCE;
         }
         if ((i2 & 2) != 0) {
             str = "IntSizeAnimation";
@@ -269,27 +249,7 @@ public final class TransitionKt {
         Intrinsics.checkNotNullParameter(function32, "targetValueByState");
         composer.startReplaceableGroup(2078477582);
         if ((i2 & 1) != 0) {
-            function3 = new Function3<Transition.Segment<S>, Composer, Integer, SpringSpec<Offset>>() { // from class: androidx.compose.animation.core.TransitionKt$animateOffset$1
-                public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-                    return invoke((Transition.Segment) obj, (Composer) obj2, ((Number) obj3).intValue());
-                }
-
-                @Composable
-                @NotNull
-                public final SpringSpec<Offset> invoke(@NotNull Transition.Segment<S> segment, @Nullable Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(segment, "$this$null");
-                    composer2.startReplaceableGroup(1623385561);
-                    if (ComposerKt.isTraceInProgress()) {
-                        ComposerKt.traceEventStart(1623385561, i3, -1, "androidx.compose.animation.core.animateOffset.<anonymous> (Transition.kt:994)");
-                    }
-                    SpringSpec<Offset> spring$default = AnimationSpecKt.spring$default(0.0f, 0.0f, Offset.m2545boximpl(VisibilityThresholdsKt.getVisibilityThreshold(Offset.Companion)), 3, null);
-                    if (ComposerKt.isTraceInProgress()) {
-                        ComposerKt.traceEventEnd();
-                    }
-                    composer2.endReplaceableGroup();
-                    return spring$default;
-                }
-            };
+            function3 = animateOffset.1.INSTANCE;
         }
         if ((i2 & 2) != 0) {
             str = "OffsetAnimation";
@@ -315,27 +275,7 @@ public final class TransitionKt {
         Intrinsics.checkNotNullParameter(function32, "targetValueByState");
         composer.startReplaceableGroup(1496278239);
         if ((i2 & 1) != 0) {
-            function3 = new Function3<Transition.Segment<S>, Composer, Integer, SpringSpec<Rect>>() { // from class: androidx.compose.animation.core.TransitionKt$animateRect$1
-                @Composable
-                @NotNull
-                public final SpringSpec<Rect> invoke(@NotNull Transition.Segment<S> segment, @Nullable Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(segment, "$this$null");
-                    composer2.startReplaceableGroup(691336298);
-                    if (ComposerKt.isTraceInProgress()) {
-                        ComposerKt.traceEventStart(691336298, i3, -1, "androidx.compose.animation.core.animateRect.<anonymous> (Transition.kt:1149)");
-                    }
-                    SpringSpec<Rect> spring$default = AnimationSpecKt.spring$default(0.0f, 0.0f, VisibilityThresholdsKt.getVisibilityThreshold(Rect.Companion), 3, null);
-                    if (ComposerKt.isTraceInProgress()) {
-                        ComposerKt.traceEventEnd();
-                    }
-                    composer2.endReplaceableGroup();
-                    return spring$default;
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-                    return invoke((Transition.Segment) obj, (Composer) obj2, ((Number) obj3).intValue());
-                }
-            };
+            function3 = animateRect.1.INSTANCE;
         }
         if ((i2 & 2) != 0) {
             str = "RectAnimation";
@@ -361,27 +301,7 @@ public final class TransitionKt {
         Intrinsics.checkNotNullParameter(function32, "targetValueByState");
         composer.startReplaceableGroup(-802210820);
         if ((i2 & 1) != 0) {
-            function3 = new Function3<Transition.Segment<S>, Composer, Integer, SpringSpec<Size>>() { // from class: androidx.compose.animation.core.TransitionKt$animateSize$1
-                public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-                    return invoke((Transition.Segment) obj, (Composer) obj2, ((Number) obj3).intValue());
-                }
-
-                @Composable
-                @NotNull
-                public final SpringSpec<Size> invoke(@NotNull Transition.Segment<S> segment, @Nullable Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(segment, "$this$null");
-                    composer2.startReplaceableGroup(-1607152761);
-                    if (ComposerKt.isTraceInProgress()) {
-                        ComposerKt.traceEventStart(-1607152761, i3, -1, "androidx.compose.animation.core.animateSize.<anonymous> (Transition.kt:1025)");
-                    }
-                    SpringSpec<Size> spring$default = AnimationSpecKt.spring$default(0.0f, 0.0f, Size.m2613boximpl(VisibilityThresholdsKt.getVisibilityThreshold(Size.Companion)), 3, null);
-                    if (ComposerKt.isTraceInProgress()) {
-                        ComposerKt.traceEventEnd();
-                    }
-                    composer2.endReplaceableGroup();
-                    return spring$default;
-                }
-            };
+            function3 = animateSize.1.INSTANCE;
         }
         if ((i2 & 2) != 0) {
             str = "SizeAnimation";
@@ -408,27 +328,7 @@ public final class TransitionKt {
         Intrinsics.checkNotNullParameter(function32, "targetValueByState");
         composer.startReplaceableGroup(-142660079);
         if ((i2 & 2) != 0) {
-            function3 = new Function3<Transition.Segment<S>, Composer, Integer, SpringSpec<T>>() { // from class: androidx.compose.animation.core.TransitionKt$animateValue$1
-                @Composable
-                @NotNull
-                public final SpringSpec<T> invoke(@NotNull Transition.Segment<S> segment, @Nullable Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(segment, "$this$null");
-                    composer2.startReplaceableGroup(-895531546);
-                    if (ComposerKt.isTraceInProgress()) {
-                        ComposerKt.traceEventStart(-895531546, i3, -1, "androidx.compose.animation.core.animateValue.<anonymous> (Transition.kt:851)");
-                    }
-                    SpringSpec<T> spring$default = AnimationSpecKt.spring$default(0.0f, 0.0f, null, 7, null);
-                    if (ComposerKt.isTraceInProgress()) {
-                        ComposerKt.traceEventEnd();
-                    }
-                    composer2.endReplaceableGroup();
-                    return spring$default;
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-                    return invoke((Transition.Segment) obj, (Composer) obj2, ((Number) obj3).intValue());
-                }
-            };
+            function3 = animateValue.1.INSTANCE;
         }
         if ((i2 & 4) != 0) {
             str = "ValueAnimation";
@@ -505,7 +405,6 @@ public final class TransitionKt {
                     final Transition<S> transition3 = transition;
                     final Transition<T> transition4 = transition2;
                     return new DisposableEffectResult() { // from class: androidx.compose.animation.core.TransitionKt$createChildTransitionInternal$1$1$invoke$$inlined$onDispose$1
-                        @Override // androidx.compose.runtime.DisposableEffectResult
                         public void dispose() {
                             Transition.this.removeTransition$animation_core_release(transition4);
                         }
@@ -532,7 +431,7 @@ public final class TransitionKt {
     @Composable
     @InternalAnimationApi
     @NotNull
-    public static final <S, T, V extends AnimationVector> Transition<S>.DeferredAnimation<T, V> createDeferredAnimation(@NotNull final Transition<S> transition, @NotNull TwoWayConverter<T, V> twoWayConverter, @Nullable String str, @Nullable Composer composer, int i, int i2) {
+    public static final <S, T, V extends AnimationVector> Transition<S>.DeferredAnimation<T, V> createDeferredAnimation(@NotNull Transition<S> transition, @NotNull TwoWayConverter<T, V> twoWayConverter, @Nullable String str, @Nullable Composer composer, int i, int i2) {
         Intrinsics.checkNotNullParameter(transition, "<this>");
         Intrinsics.checkNotNullParameter(twoWayConverter, "typeConverter");
         composer.startReplaceableGroup(-1714122528);
@@ -550,26 +449,8 @@ public final class TransitionKt {
             composer.updateRememberedValue(rememberedValue);
         }
         composer.endReplaceableGroup();
-        final Transition<S>.DeferredAnimation<T, V> deferredAnimation = (Transition.DeferredAnimation) rememberedValue;
-        EffectsKt.DisposableEffect(deferredAnimation, new Function1<DisposableEffectScope, DisposableEffectResult>() { // from class: androidx.compose.animation.core.TransitionKt$createDeferredAnimation$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            @NotNull
-            public final DisposableEffectResult invoke(@NotNull DisposableEffectScope disposableEffectScope) {
-                Intrinsics.checkNotNullParameter(disposableEffectScope, "$this$DisposableEffect");
-                final Transition<S> transition2 = transition;
-                final Transition<S>.DeferredAnimation<T, V> deferredAnimation2 = deferredAnimation;
-                return new DisposableEffectResult() { // from class: androidx.compose.animation.core.TransitionKt$createDeferredAnimation$1$invoke$$inlined$onDispose$1
-                    @Override // androidx.compose.runtime.DisposableEffectResult
-                    public void dispose() {
-                        Transition.this.removeAnimation$animation_core_release(deferredAnimation2);
-                    }
-                };
-            }
-        }, composer, 0);
+        Transition<S>.DeferredAnimation<T, V> deferredAnimation = (Transition.DeferredAnimation) rememberedValue;
+        EffectsKt.DisposableEffect(deferredAnimation, (Function1<? super DisposableEffectScope, ? extends DisposableEffectResult>) new createDeferredAnimation.1(transition, deferredAnimation), composer, 0);
         if (transition.isSeeking()) {
             deferredAnimation.setupSeeking$animation_core_release();
         }
@@ -583,7 +464,7 @@ public final class TransitionKt {
     @Composable
     @PublishedApi
     @NotNull
-    public static final <S, T, V extends AnimationVector> State<T> createTransitionAnimation(@NotNull final Transition<S> transition, T t, T t2, @NotNull FiniteAnimationSpec<T> finiteAnimationSpec, @NotNull TwoWayConverter<T, V> twoWayConverter, @NotNull String str, @Nullable Composer composer, int i) {
+    public static final <S, T, V extends AnimationVector> State<T> createTransitionAnimation(@NotNull Transition<S> transition, T t, T t2, @NotNull FiniteAnimationSpec<T> finiteAnimationSpec, @NotNull TwoWayConverter<T, V> twoWayConverter, @NotNull String str, @Nullable Composer composer, int i) {
         Intrinsics.checkNotNullParameter(transition, "<this>");
         Intrinsics.checkNotNullParameter(finiteAnimationSpec, "animationSpec");
         Intrinsics.checkNotNullParameter(twoWayConverter, "typeConverter");
@@ -600,7 +481,7 @@ public final class TransitionKt {
             composer.updateRememberedValue(rememberedValue);
         }
         composer.endReplaceableGroup();
-        final Transition.TransitionAnimationState transitionAnimationState = (Transition.TransitionAnimationState) rememberedValue;
+        Transition.TransitionAnimationState transitionAnimationState = (Transition.TransitionAnimationState) rememberedValue;
         if (transition.isSeeking()) {
             transitionAnimationState.updateInitialAndTargetValue$animation_core_release(t, t2, finiteAnimationSpec);
         } else {
@@ -610,26 +491,7 @@ public final class TransitionKt {
         boolean changed2 = composer.changed(transition) | composer.changed(transitionAnimationState);
         Object rememberedValue2 = composer.rememberedValue();
         if (changed2 || rememberedValue2 == Composer.Companion.getEmpty()) {
-            rememberedValue2 = new Function1<DisposableEffectScope, DisposableEffectResult>() { // from class: androidx.compose.animation.core.TransitionKt$createTransitionAnimation$1$1
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(1);
-                }
-
-                @NotNull
-                public final DisposableEffectResult invoke(@NotNull DisposableEffectScope disposableEffectScope) {
-                    Intrinsics.checkNotNullParameter(disposableEffectScope, "$this$DisposableEffect");
-                    transition.addAnimation$animation_core_release(transitionAnimationState);
-                    final Transition<S> transition2 = transition;
-                    final Transition<S>.TransitionAnimationState<T, V> transitionAnimationState2 = transitionAnimationState;
-                    return new DisposableEffectResult() { // from class: androidx.compose.animation.core.TransitionKt$createTransitionAnimation$1$1$invoke$$inlined$onDispose$1
-                        @Override // androidx.compose.runtime.DisposableEffectResult
-                        public void dispose() {
-                            Transition.this.removeAnimation$animation_core_release(transitionAnimationState2);
-                        }
-                    };
-                }
-            };
+            rememberedValue2 = new createTransitionAnimation.1.1(transition, transitionAnimationState);
             composer.updateRememberedValue(rememberedValue2);
         }
         composer.endReplaceableGroup();
@@ -676,7 +538,6 @@ public final class TransitionKt {
                     Intrinsics.checkNotNullParameter(disposableEffectScope, "$this$DisposableEffect");
                     final Transition<T> transition2 = transition;
                     return new DisposableEffectResult() { // from class: androidx.compose.animation.core.TransitionKt$updateTransition$1$1$invoke$$inlined$onDispose$1
-                        @Override // androidx.compose.runtime.DisposableEffectResult
                         public void dispose() {
                             Transition.this.onTransitionEnd$animation_core_release();
                         }
@@ -694,6 +555,7 @@ public final class TransitionKt {
         return transition;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     @Composable
     @NotNull
     public static final <T> Transition<T> updateTransition(@NotNull MutableTransitionState<T> mutableTransitionState, @Nullable String str, @Nullable Composer composer, int i, int i2) {
@@ -713,7 +575,7 @@ public final class TransitionKt {
             composer.updateRememberedValue(rememberedValue);
         }
         composer.endReplaceableGroup();
-        final Transition<T> transition = (Transition) rememberedValue;
+        final Transition<T> transition = (Transition<T>) ((Transition) rememberedValue);
         transition.animateTo$animation_core_release(mutableTransitionState.getTargetState(), composer, 0);
         composer.startReplaceableGroup(1157296644);
         boolean changed2 = composer.changed(transition);
@@ -728,13 +590,7 @@ public final class TransitionKt {
                 @NotNull
                 public final DisposableEffectResult invoke(@NotNull DisposableEffectScope disposableEffectScope) {
                     Intrinsics.checkNotNullParameter(disposableEffectScope, "$this$DisposableEffect");
-                    final Transition<T> transition2 = transition;
-                    return new DisposableEffectResult() { // from class: androidx.compose.animation.core.TransitionKt$updateTransition$2$1$invoke$$inlined$onDispose$1
-                        @Override // androidx.compose.runtime.DisposableEffectResult
-                        public void dispose() {
-                            Transition.this.onTransitionEnd$animation_core_release();
-                        }
-                    };
+                    return new TransitionKt$updateTransition$2$1$invoke$.inlined.onDispose.1(transition);
                 }
             };
             composer.updateRememberedValue(rememberedValue2);

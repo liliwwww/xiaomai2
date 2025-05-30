@@ -11,7 +11,7 @@ import com.alibaba.fastjson.JSON;
 import java.util.HashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVLocPerformanceMonitor implements WVEventListener {
     public static final int APP_STATUS = 1;
     public static final int LOADURL_STATUS = 3;
@@ -53,7 +53,6 @@ public class WVLocPerformanceMonitor implements WVEventListener {
         return this.monitorData;
     }
 
-    @Override // android.taobao.windvane.service.WVEventListener
     public WVEventResult onEvent(int i, WVEventContext wVEventContext, Object... objArr) {
         if (3009 == i) {
             setCpuAndMemery(GlobalConfig.context, 1);
@@ -102,7 +101,7 @@ public class WVLocPerformanceMonitor implements WVEventListener {
 
     public void setCpuAndMemery(Context context, int i) {
         if (!isOpenLocPerformanceMonitor()) {
-            TaoLog.m18d(TAG, "非debug状态，不开启性能数据采集模式");
+            TaoLog.d(TAG, "非debug状态，不开启性能数据采集模式");
             return;
         }
         if (i == 1) {
@@ -125,16 +124,16 @@ public class WVLocPerformanceMonitor implements WVEventListener {
 
     public String toString() {
         if (!this.isInit) {
-            TaoLog.m18d(TAG, "性能数据未初始化");
+            TaoLog.d(TAG, "性能数据未初始化");
             return null;
         }
         try {
             String jSONString = JSON.toJSONString(getInstance());
-            TaoLog.m18d(TAG, "data: " + jSONString);
+            TaoLog.d(TAG, "data: " + jSONString);
             return jSONString;
         } catch (Exception e) {
             e.printStackTrace();
-            TaoLog.m18d(TAG, "性能数据采集失败，json解析异常 json 解析异常：" + e.getMessage());
+            TaoLog.d(TAG, "性能数据采集失败，json解析异常 json 解析异常：" + e.getMessage());
             return null;
         }
     }

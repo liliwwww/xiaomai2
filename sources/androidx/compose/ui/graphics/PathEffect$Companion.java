@@ -1,0 +1,45 @@
+package androidx.compose.ui.graphics;
+
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+/* compiled from: Taobao */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
+public final class PathEffect$Companion {
+    static final /* synthetic */ PathEffect$Companion $$INSTANCE = new PathEffect$Companion();
+
+    private PathEffect$Companion() {
+    }
+
+    public static /* synthetic */ PathEffect dashPathEffect$default(PathEffect$Companion pathEffect$Companion, float[] fArr, float f, int i, Object obj) {
+        if ((i & 2) != 0) {
+            f = 0.0f;
+        }
+        return pathEffect$Companion.dashPathEffect(fArr, f);
+    }
+
+    @NotNull
+    public final PathEffect chainPathEffect(@NotNull PathEffect pathEffect, @NotNull PathEffect pathEffect2) {
+        Intrinsics.checkNotNullParameter(pathEffect, "outer");
+        Intrinsics.checkNotNullParameter(pathEffect2, "inner");
+        return AndroidPathEffect_androidKt.actualChainPathEffect(pathEffect, pathEffect2);
+    }
+
+    @NotNull
+    public final PathEffect cornerPathEffect(float f) {
+        return AndroidPathEffect_androidKt.actualCornerPathEffect(f);
+    }
+
+    @NotNull
+    public final PathEffect dashPathEffect(@NotNull float[] fArr, float f) {
+        Intrinsics.checkNotNullParameter(fArr, "intervals");
+        return AndroidPathEffect_androidKt.actualDashPathEffect(fArr, f);
+    }
+
+    @NotNull
+    /* renamed from: stampedPathEffect-7aD1DOk, reason: not valid java name */
+    public final PathEffect m1179stampedPathEffect7aD1DOk(@NotNull Path path, float f, float f2, int i) {
+        Intrinsics.checkNotNullParameter(path, "shape");
+        return AndroidPathEffect_androidKt.actualStampedPathEffect-7aD1DOk(path, f, f2, i);
+    }
+}

@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
     public static final int CONJ_TRANSPOSE = 113;
     private static final int INTRINSIC_API_LEVEL = 23;
@@ -169,19 +169,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
 
     /* compiled from: Taobao */
     @Retention(RetentionPolicy.SOURCE)
-    /* loaded from: classes2.dex */
-    public @interface Side {
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
     public @interface Transpose {
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    /* loaded from: classes2.dex */
-    public @interface Uplo {
     }
 
     private ScriptIntrinsicBLAS(long j, RenderScript renderScript) {
@@ -692,11 +680,12 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         }
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void BNNM(Allocation allocation, int i, Allocation allocation2, int i2, Allocation allocation3, int i3, int i4) {
         long j;
         long j2;
         long j3;
-        validateL3(Element.m294U8(this.mRS), 111, 112, 0, allocation, allocation2, allocation3);
+        validateL3(Element.U8(this.mRS), 111, 112, 0, allocation, allocation2, allocation3);
         if (i < 0 || i > 255) {
             throw new RSRuntimeException("Invalid a_offset passed to BNNM");
         }
@@ -725,6 +714,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_BNNM(getID(renderScript), y, y2, x, j, i, j2, i2, j3, i3, i4, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CGBMV(int i, int i2, int i3, Float2 float2, Allocation allocation, Allocation allocation2, int i4, Float2 float22, Allocation allocation3, int i5) {
         validateGEMV(Element.F32_2(this.mRS), i, allocation, allocation2, i4, allocation3, i5);
         if (i2 < 0 || i3 < 0) {
@@ -742,9 +732,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             id3 = getDummyAlloc(allocation3);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 64, i, 0, 0, 0, 0, y, x, 0, float2.f399x, float2.f400y, id, id2, float22.f399x, float22.f400y, id3, i4, i5, i2, i3, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 64, i, 0, 0, 0, 0, y, x, 0, float2.x, float2.y, id, id2, float22.x, float22.y, id3, i4, i5, i2, i3, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CGEMM(int i, int i2, Float2 float2, Allocation allocation, Allocation allocation2, Float2 float22, Allocation allocation3) {
         int y;
         int x;
@@ -778,9 +769,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             j3 = id3;
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 125, i, i2, 0, 0, 0, i3, y2, i4, float2.f399x, float2.f400y, j, j2, float22.f399x, float22.f400y, j3, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 125, i, i2, 0, 0, 0, i3, y2, i4, float2.x, float2.y, j, j2, float22.x, float22.y, j3, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CGEMV(int i, Float2 float2, Allocation allocation, Allocation allocation2, int i2, Float2 float22, Allocation allocation3, int i3) {
         validateGEMV(Element.F32_2(this.mRS), i, allocation, allocation2, i2, allocation3, i3);
         int y = allocation.getType().getY();
@@ -795,9 +787,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             id3 = getDummyAlloc(allocation3);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 63, i, 0, 0, 0, 0, y, x, 0, float2.f399x, float2.f400y, id, id2, float22.f399x, float22.f400y, id3, i2, i3, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 63, i, 0, 0, 0, 0, y, x, 0, float2.x, float2.y, id, id2, float22.x, float22.y, id3, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CGERC(Float2 float2, Allocation allocation, int i, Allocation allocation2, int i2, Allocation allocation3) {
         validateGERU(Element.F32_2(this.mRS), allocation, i, allocation2, i2, allocation3);
         int y = allocation3.getType().getY();
@@ -813,9 +806,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         }
         long j = id;
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 99, 0, 0, 0, 0, 0, y, x, 0, float2.f399x, float2.f400y, id2, id3, 0.0f, 0.0f, j, i, i2, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 99, 0, 0, 0, 0, 0, y, x, 0, float2.x, float2.y, id2, id3, 0.0f, 0.0f, j, i, i2, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CGERU(Float2 float2, Allocation allocation, int i, Allocation allocation2, int i2, Allocation allocation3) {
         validateGERU(Element.F32_2(this.mRS), allocation, i, allocation2, i2, allocation3);
         int y = allocation3.getType().getY();
@@ -831,9 +825,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         }
         long j = id;
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 98, 0, 0, 0, 0, 0, y, x, 0, float2.f399x, float2.f400y, id2, id3, 0.0f, 0.0f, j, i, i2, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 98, 0, 0, 0, 0, 0, y, x, 0, float2.x, float2.y, id2, id3, 0.0f, 0.0f, j, i, i2, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CHBMV(int i, int i2, Float2 float2, Allocation allocation, Allocation allocation2, int i3, Float2 float22, Allocation allocation3, int i4) {
         int validateSYR2 = validateSYR2(Element.F32_2(this.mRS), i, allocation2, i3, allocation3, i4, allocation);
         if (i2 < 0) {
@@ -849,9 +844,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             id3 = getDummyAlloc(allocation3);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 96, 0, 0, 0, i, 0, 0, validateSYR2, i2, float2.f399x, float2.f400y, id, id2, float22.f399x, float22.f400y, id3, i3, i4, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 96, 0, 0, 0, i, 0, 0, validateSYR2, i2, float2.x, float2.y, id, id2, float22.x, float22.y, id3, i3, i4, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CHEMM(int i, int i2, Float2 float2, Allocation allocation, Allocation allocation2, Float2 float22, Allocation allocation3) {
         long j;
         long j2;
@@ -873,9 +869,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             j3 = id3;
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), RsBlas_chemm, 0, 0, i, i2, 0, allocation3.getType().getY(), allocation3.getType().getX(), 0, float2.f399x, float2.f400y, j, j2, float22.f399x, float22.f400y, j3, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), RsBlas_chemm, 0, 0, i, i2, 0, allocation3.getType().getY(), allocation3.getType().getX(), 0, float2.x, float2.y, j, j2, float22.x, float22.y, j3, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CHEMV(int i, Float2 float2, Allocation allocation, Allocation allocation2, int i2, Float2 float22, Allocation allocation3, int i3) {
         int validateSYR2 = validateSYR2(Element.F32_2(this.mRS), i, allocation2, i2, allocation3, i3, allocation);
         boolean isIncSupp = isIncSupp();
@@ -888,9 +885,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             id3 = getDummyAlloc(allocation3);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 95, 0, 0, 0, i, 0, 0, validateSYR2, 0, float2.f399x, float2.f400y, id, id2, float22.f399x, float22.f400y, id3, i2, i3, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 95, 0, 0, 0, i, 0, 0, validateSYR2, 0, float2.x, float2.y, id, id2, float22.x, float22.y, id3, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CHER(int i, float f, Allocation allocation, int i2, Allocation allocation2) {
         long j;
         long j2;
@@ -910,6 +908,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 100, 0, 0, 0, i, 0, 0, validateSYR, 0, f, 0.0f, j2, 0L, 0.0f, 0.0f, j, i2, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CHER2(int i, Float2 float2, Allocation allocation, int i2, Allocation allocation2, int i3, Allocation allocation3) {
         int validateSYR2 = validateSYR2(Element.F32_2(this.mRS), i, allocation, i2, allocation2, i3, allocation3);
         boolean isIncSupp = isIncSupp();
@@ -923,9 +922,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         }
         long j = id;
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 102, 0, 0, 0, i, 0, 0, validateSYR2, 0, float2.f399x, float2.f400y, id2, id3, 0.0f, 0.0f, j, i2, i3, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 102, 0, 0, 0, i, 0, 0, validateSYR2, 0, float2.x, float2.y, id2, id3, 0.0f, 0.0f, j, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CHER2K(int i, int i2, Float2 float2, Allocation allocation, Allocation allocation2, float f, Allocation allocation3) {
         long j;
         long j2;
@@ -945,9 +945,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             j2 = id2;
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), RsBlas_cher2k, i2, 0, 0, i, 0, 0, allocation3.getType().getX(), x, float2.f399x, float2.f400y, allocation.getID(this.mRS), j, f, 0.0f, j2, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), RsBlas_cher2k, i2, 0, 0, i, 0, 0, allocation3.getType().getX(), x, float2.x, float2.y, allocation.getID(this.mRS), j, f, 0.0f, j2, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CHERK(int i, int i2, float f, Allocation allocation, float f2, Allocation allocation2) {
         long j;
         long j2;
@@ -968,6 +969,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), RsBlas_cherk, i2, 0, 0, i, 0, 0, allocation2.getType().getX(), y, f, 0.0f, j, 0L, f2, 0.0f, j2, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CHPMV(int i, Float2 float2, Allocation allocation, Allocation allocation2, int i2, Float2 float22, Allocation allocation3, int i3) {
         int validateSPR2 = validateSPR2(Element.F32_2(this.mRS), i, allocation2, i2, allocation3, i3, allocation);
         boolean isIncSupp = isIncSupp();
@@ -980,9 +982,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             id3 = getDummyAlloc(allocation3);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 97, 0, 0, 0, i, 0, 0, validateSPR2, 0, float2.f399x, float2.f400y, id, id2, float22.f399x, float22.f400y, id3, i2, i3, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 97, 0, 0, 0, i, 0, 0, validateSPR2, 0, float2.x, float2.y, id, id2, float22.x, float22.y, id3, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CHPR(int i, float f, Allocation allocation, int i2, Allocation allocation2) {
         long j;
         long j2;
@@ -1002,6 +1005,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 101, 0, 0, 0, i, 0, 0, validateSPR, 0, f, 0.0f, j2, 0L, 0.0f, 0.0f, j, i2, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CHPR2(int i, Float2 float2, Allocation allocation, int i2, Allocation allocation2, int i3, Allocation allocation3) {
         int validateSPR2 = validateSPR2(Element.F32_2(this.mRS), i, allocation, i2, allocation2, i3, allocation3);
         boolean isIncSupp = isIncSupp();
@@ -1015,9 +1019,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         }
         long j = id;
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 103, 0, 0, 0, i, 0, 0, validateSPR2, 0, float2.f399x, float2.f400y, id2, id3, 0.0f, 0.0f, j, i2, i3, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 103, 0, 0, 0, i, 0, 0, validateSPR2, 0, float2.x, float2.y, id2, id3, 0.0f, 0.0f, j, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CSYMM(int i, int i2, Float2 float2, Allocation allocation, Allocation allocation2, Float2 float22, Allocation allocation3) {
         validateSide(i);
         validateUplo(i2);
@@ -1035,9 +1040,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             id3 = getDummyAlloc(allocation3);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 126, 0, 0, i, i2, 0, allocation3.getType().getY(), allocation3.getType().getX(), 0, float2.f399x, float2.f400y, id, id2, float22.f399x, float22.f400y, id3, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 126, 0, 0, i, i2, 0, allocation3.getType().getY(), allocation3.getType().getX(), 0, float2.x, float2.y, id, id2, float22.x, float22.y, id3, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CSYR2K(int i, int i2, Float2 float2, Allocation allocation, Allocation allocation2, Float2 float22, Allocation allocation3) {
         long j;
         long j2;
@@ -1060,9 +1066,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             j3 = id3;
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 128, i2, 0, 0, i, 0, 0, allocation3.getType().getX(), y, float2.f399x, float2.f400y, j, j2, float22.f399x, float22.f400y, j3, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 128, i2, 0, 0, i, 0, 0, allocation3.getType().getX(), y, float2.x, float2.y, j, j2, float22.x, float22.y, j3, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CSYRK(int i, int i2, Float2 float2, Allocation allocation, Float2 float22, Allocation allocation2) {
         validateTranspose(i2);
         validateUplo(i);
@@ -1076,9 +1083,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             getDummyAlloc(allocation2);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), RsBlas_csyrk, i2, 0, 0, i, 0, 0, allocation2.getType().getX(), y, float2.f399x, float2.f400y, id, 0L, float22.f399x, float22.f400y, allocation2.getID(this.mRS), 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), RsBlas_csyrk, i2, 0, 0, i, 0, 0, allocation2.getType().getX(), y, float2.x, float2.y, id, 0L, float22.x, float22.y, allocation2.getID(this.mRS), 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CTBMV(int i, int i2, int i3, int i4, Allocation allocation, Allocation allocation2, int i5) {
         if (i4 < 0) {
             throw new RSRuntimeException("K must be greater than or equal to 0");
@@ -1096,6 +1104,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 66, i2, 0, 0, i, i3, 0, y, i4, 0.0f, 0.0f, id, id2, 0.0f, 0.0f, 0L, i5, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CTBSV(int i, int i2, int i3, int i4, Allocation allocation, Allocation allocation2, int i5) {
         validateTRMV(Element.F32_2(this.mRS), i, i2, i3, allocation, allocation2, i5);
         int y = allocation.getType().getY();
@@ -1113,6 +1122,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 69, i2, 0, 0, i, i3, 0, y, i4, 0.0f, 0.0f, id, id2, 0.0f, 0.0f, 0L, i5, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CTPMV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         int validateTPMV = validateTPMV(Element.F32_2(this.mRS), i, i2, i3, allocation, allocation2, i4);
         boolean isIncSupp = isIncSupp();
@@ -1126,6 +1136,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 67, i2, 0, 0, i, i3, 0, validateTPMV, 0, 0.0f, 0.0f, id, id2, 0.0f, 0.0f, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CTPSV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         int validateTPMV = validateTPMV(Element.F32_2(this.mRS), i, i2, i3, allocation, allocation2, i4);
         boolean isIncSupp = isIncSupp();
@@ -1139,6 +1150,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 70, i2, 0, 0, i, i3, 0, validateTPMV, 0, 0.0f, 0.0f, id, id2, 0.0f, 0.0f, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CTRMM(int i, int i2, int i3, int i4, Float2 float2, Allocation allocation, Allocation allocation2) {
         validateUplo(i2);
         validateDiag(i4);
@@ -1152,9 +1164,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         }
         long j = id2;
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), RsBlas_ctrmm, i3, 0, i, i2, i4, allocation2.getType().getY(), allocation2.getType().getX(), 0, float2.f399x, float2.f400y, id, j, 0.0f, 0.0f, 0L, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), RsBlas_ctrmm, i3, 0, i, i2, i4, allocation2.getType().getY(), allocation2.getType().getX(), 0, float2.x, float2.y, id, j, 0.0f, 0.0f, 0L, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CTRMV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         validateTRMV(Element.F32_2(this.mRS), i, i2, i3, allocation, allocation2, i4);
         int y = allocation.getType().getY();
@@ -1169,6 +1182,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 65, i2, 0, 0, i, i3, 0, y, 0, 0.0f, 0.0f, id, id2, 0.0f, 0.0f, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CTRSM(int i, int i2, int i3, int i4, Float2 float2, Allocation allocation, Allocation allocation2) {
         validateUplo(i2);
         validateDiag(i4);
@@ -1182,9 +1196,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         }
         long j = id2;
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), RsBlas_ctrsm, i3, 0, i, i2, i4, allocation2.getType().getY(), allocation2.getType().getX(), 0, float2.f399x, float2.f400y, id, j, 0.0f, 0.0f, 0L, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), RsBlas_ctrsm, i3, 0, i, i2, i4, allocation2.getType().getY(), allocation2.getType().getX(), 0, float2.x, float2.y, id, j, 0.0f, 0.0f, 0L, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void CTRSV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         validateTRMV(Element.F32_2(this.mRS), i, i2, i3, allocation, allocation2, i4);
         int y = allocation.getType().getY();
@@ -1199,6 +1214,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Complex(getID(renderScript), 68, i2, 0, 0, i, i3, 0, y, 0, 0.0f, 0.0f, id, id2, 0.0f, 0.0f, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DGBMV(int i, int i2, int i3, double d, Allocation allocation, Allocation allocation2, int i4, double d2, Allocation allocation3, int i5) {
         validateGEMV(Element.F64(this.mRS), i, allocation, allocation2, i4, allocation3, i5);
         if (i2 < 0 || i3 < 0) {
@@ -1219,6 +1235,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 56, i, 0, 0, 0, 0, y, x, 0, d, id, id2, d2, id3, i4, i5, i2, i3, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DGEMM(int i, int i2, double d, Allocation allocation, Allocation allocation2, double d2, Allocation allocation3) {
         int y;
         int x;
@@ -1255,6 +1272,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 119, i, i2, 0, 0, 0, i3, y2, i4, d, j, j2, d2, j3, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DGEMV(int i, double d, Allocation allocation, Allocation allocation2, int i2, double d2, Allocation allocation3, int i3) {
         validateGEMV(Element.F64(this.mRS), i, allocation, allocation2, i2, allocation3, i3);
         int y = allocation.getType().getY();
@@ -1272,6 +1290,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 55, i, 0, 0, 0, 0, y, x, 0, d, id, id2, d2, id3, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DGER(double d, Allocation allocation, int i, Allocation allocation2, int i2, Allocation allocation3) {
         int y = allocation3.getType().getY();
         int x = allocation3.getType().getX();
@@ -1290,6 +1309,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 90, 0, 0, 0, 0, 0, y, x, 0, d, id2, id3, 0.0d, j, i, i2, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DSBMV(int i, int i2, double d, Allocation allocation, Allocation allocation2, int i3, double d2, Allocation allocation3, int i4) {
         if (i2 < 0) {
             throw new RSRuntimeException("K must be greater than or equal to 0");
@@ -1308,6 +1328,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 88, 0, 0, 0, i, 0, 0, validateSYMV, i2, d, id, id2, d2, id3, i3, i4, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DSPMV(int i, double d, Allocation allocation, Allocation allocation2, int i2, double d2, Allocation allocation3, int i3) {
         int validateSPMV = validateSPMV(Element.F64(this.mRS), i, allocation, allocation2, i2, allocation3, i3);
         boolean isIncSupp = isIncSupp();
@@ -1323,6 +1344,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 89, 0, 0, 0, i, 0, 0, validateSPMV, 0, d, id, id2, d2, id3, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DSPR(int i, double d, Allocation allocation, int i2, Allocation allocation2) {
         long j;
         long j2;
@@ -1342,6 +1364,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 92, 0, 0, 0, i, 0, 0, validateSPR, 0, d, j2, j, 0.0d, 0L, i2, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DSPR2(int i, double d, Allocation allocation, int i2, Allocation allocation2, int i3, Allocation allocation3) {
         int validateSPR2 = validateSPR2(Element.F64(this.mRS), i, allocation, i2, allocation2, i3, allocation3);
         boolean isIncSupp = isIncSupp();
@@ -1358,6 +1381,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 94, 0, 0, 0, i, 0, 0, validateSPR2, 0, d, id2, id3, 0.0d, j, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DSYMM(int i, int i2, double d, Allocation allocation, Allocation allocation2, double d2, Allocation allocation3) {
         validateSide(i);
         validateUplo(i2);
@@ -1378,6 +1402,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 120, 0, 0, i, i2, 0, allocation3.getType().getY(), allocation3.getType().getX(), 0, d, id, id2, d2, id3, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DSYMV(int i, double d, Allocation allocation, Allocation allocation2, int i2, double d2, Allocation allocation3, int i3) {
         int validateSYMV = validateSYMV(Element.F64(this.mRS), i, allocation, allocation2, allocation3, i2, i3);
         boolean isIncSupp = isIncSupp();
@@ -1393,6 +1418,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 87, 0, 0, 0, i, 0, 0, validateSYMV, 0, d, id, id2, d2, id3, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DSYR(int i, double d, Allocation allocation, int i2, Allocation allocation2) {
         long j;
         long j2;
@@ -1412,6 +1438,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 91, 0, 0, 0, i, 0, 0, validateSYR, 0, d, j2, j, 0.0d, 0L, i2, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DSYR2(int i, double d, Allocation allocation, int i2, Allocation allocation2, int i3, Allocation allocation3) {
         int validateSYR2 = validateSYR2(Element.F64(this.mRS), i, allocation, i2, allocation2, i3, allocation3);
         boolean isIncSupp = isIncSupp();
@@ -1428,6 +1455,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 93, 0, 0, 0, i, 0, 0, validateSYR2, 0, d, id2, id3, 0.0d, j, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DSYR2K(int i, int i2, double d, Allocation allocation, Allocation allocation2, double d2, Allocation allocation3) {
         long j;
         long j2;
@@ -1453,6 +1481,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 122, i2, 0, 0, i, 0, 0, allocation3.getType().getX(), y, d, j, j2, d2, j3, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DSYRK(int i, int i2, double d, Allocation allocation, double d2, Allocation allocation2) {
         validateTranspose(i2);
         validateUplo(i);
@@ -1469,6 +1498,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 121, i2, 0, 0, i, 0, 0, allocation2.getType().getX(), y, d, id, 0L, d2, id2, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DTBMV(int i, int i2, int i3, int i4, Allocation allocation, Allocation allocation2, int i5) {
         if (i4 < 0) {
             throw new RSRuntimeException("K must be greater than or equal to 0");
@@ -1486,6 +1516,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 58, i2, 0, 0, i, i3, 0, y, i4, 0.0d, id, id2, 0.0d, 0L, i5, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DTBSV(int i, int i2, int i3, int i4, Allocation allocation, Allocation allocation2, int i5) {
         validateTRMV(Element.F64(this.mRS), i, i2, i3, allocation, allocation2, i5);
         int y = allocation.getType().getY();
@@ -1503,6 +1534,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 61, i2, 0, 0, i, i3, 0, y, i4, 0.0d, id, id2, 0.0d, 0L, i5, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DTPMV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         int validateTPMV = validateTPMV(Element.F64(this.mRS), i, i2, i3, allocation, allocation2, i4);
         boolean isIncSupp = isIncSupp();
@@ -1516,6 +1548,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 59, i2, 0, 0, i, i3, 0, validateTPMV, 0, 0.0d, id, id2, 0.0d, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DTPSV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         int validateTPMV = validateTPMV(Element.F64(this.mRS), i, i2, i3, allocation, allocation2, i4);
         boolean isIncSupp = isIncSupp();
@@ -1529,6 +1562,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 62, i2, 0, 0, i, i3, 0, validateTPMV, 0, 0.0d, id, id2, 0.0d, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DTRMM(int i, int i2, int i3, int i4, double d, Allocation allocation, Allocation allocation2) {
         validateUplo(i2);
         validateDiag(i4);
@@ -1545,6 +1579,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 123, i3, 0, i, i2, i4, allocation2.getType().getY(), allocation2.getType().getX(), 0, d, id, j, 0.0d, 0L, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DTRMV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         validateTRMV(Element.F64(this.mRS), i, i2, i3, allocation, allocation2, i4);
         int y = allocation.getType().getY();
@@ -1559,6 +1594,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 57, i2, 0, 0, i, i3, 0, y, 0, 0.0d, id, id2, 0.0d, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DTRSM(int i, int i2, int i3, int i4, double d, Allocation allocation, Allocation allocation2) {
         validateUplo(i2);
         validateDiag(i4);
@@ -1575,6 +1611,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 124, i3, 0, i, i2, i4, allocation2.getType().getY(), allocation2.getType().getX(), 0, d, id, j, 0.0d, 0L, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void DTRSV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         validateTRMV(Element.F64(this.mRS), i, i2, i3, allocation, allocation2, i4);
         int y = allocation.getType().getY();
@@ -1589,6 +1626,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Double(getID(renderScript), 60, i2, 0, 0, i, i3, 0, y, 0, 0.0d, id, id2, 0.0d, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SGBMV(int i, int i2, int i3, float f, Allocation allocation, Allocation allocation2, int i4, float f2, Allocation allocation3, int i5) {
         validateGEMV(Element.F32(this.mRS), i, allocation, allocation2, i4, allocation3, i5);
         if (i2 < 0 || i3 < 0) {
@@ -1609,6 +1647,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 48, i, 0, 0, 0, 0, y, x, 0, f, id, id2, f2, id3, i4, i5, i2, i3, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SGEMM(int i, int i2, float f, Allocation allocation, Allocation allocation2, float f2, Allocation allocation3) {
         int y;
         int x;
@@ -1645,6 +1684,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 113, i, i2, 0, 0, 0, i3, y2, i4, f, j3, j, f2, j2, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SGEMV(int i, float f, Allocation allocation, Allocation allocation2, int i2, float f2, Allocation allocation3, int i3) {
         validateGEMV(Element.F32(this.mRS), i, allocation, allocation2, i2, allocation3, i3);
         int y = allocation.getType().getY();
@@ -1662,6 +1702,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 47, i, 0, 0, 0, 0, y, x, 0, f, id, id2, f2, id3, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SGER(float f, Allocation allocation, int i, Allocation allocation2, int i2, Allocation allocation3) {
         int y = allocation3.getType().getY();
         int x = allocation3.getType().getX();
@@ -1680,6 +1721,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 82, 0, 0, 0, 0, 0, y, x, 0, f, id2, id3, 0.0f, j, i, i2, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SSBMV(int i, int i2, float f, Allocation allocation, Allocation allocation2, int i3, float f2, Allocation allocation3, int i4) {
         if (i2 < 0) {
             throw new RSRuntimeException("K must be greater than or equal to 0");
@@ -1698,6 +1740,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 80, 0, 0, 0, i, 0, 0, validateSYMV, i2, f, id, id2, f2, id3, i3, i4, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SSPMV(int i, float f, Allocation allocation, Allocation allocation2, int i2, float f2, Allocation allocation3, int i3) {
         int validateSPMV = validateSPMV(Element.F32(this.mRS), i, allocation, allocation2, i2, allocation3, i3);
         boolean isIncSupp = isIncSupp();
@@ -1713,6 +1756,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 81, 0, 0, 0, i, 0, 0, validateSPMV, 0, f, id, id2, f2, id3, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SSPR(int i, float f, Allocation allocation, int i2, Allocation allocation2) {
         long j;
         long j2;
@@ -1732,6 +1776,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 84, 0, 0, 0, i, 0, 0, validateSPR, 0, f, j2, j, 0.0f, 0L, i2, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SSPR2(int i, float f, Allocation allocation, int i2, Allocation allocation2, int i3, Allocation allocation3) {
         int validateSPR2 = validateSPR2(Element.F32(this.mRS), i, allocation, i2, allocation2, i3, allocation3);
         boolean isIncSupp = isIncSupp();
@@ -1748,6 +1793,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 86, 0, 0, 0, i, 0, 0, validateSPR2, 0, f, id2, id3, 0.0f, j, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SSYMM(int i, int i2, float f, Allocation allocation, Allocation allocation2, float f2, Allocation allocation3) {
         validateSide(i);
         validateUplo(i2);
@@ -1768,6 +1814,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 114, 0, 0, i, i2, 0, allocation3.getType().getY(), allocation3.getType().getX(), 0, f, id, id2, f2, id3, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SSYMV(int i, float f, Allocation allocation, Allocation allocation2, int i2, float f2, Allocation allocation3, int i3) {
         int validateSYMV = validateSYMV(Element.F32(this.mRS), i, allocation, allocation2, allocation3, i2, i3);
         boolean isIncSupp = isIncSupp();
@@ -1783,6 +1830,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 79, 0, 0, 0, i, 0, 0, validateSYMV, 0, f, id, id2, f2, id3, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SSYR(int i, float f, Allocation allocation, int i2, Allocation allocation2) {
         long j;
         long j2;
@@ -1802,6 +1850,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 83, 0, 0, 0, i, 0, 0, validateSYR, 0, f, j2, j, 0.0f, 0L, i2, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SSYR2(int i, float f, Allocation allocation, int i2, Allocation allocation2, int i3, Allocation allocation3) {
         int validateSYR2 = validateSYR2(Element.F32(this.mRS), i, allocation, i2, allocation2, i3, allocation3);
         boolean isIncSupp = isIncSupp();
@@ -1818,6 +1867,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 85, 0, 0, 0, i, 0, 0, validateSYR2, 0, f, id2, id3, 0.0f, j, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SSYR2K(int i, int i2, float f, Allocation allocation, Allocation allocation2, float f2, Allocation allocation3) {
         long j;
         long j2;
@@ -1843,6 +1893,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 116, i2, 0, 0, i, 0, 0, allocation3.getType().getX(), y, f, j, j2, f2, j3, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void SSYRK(int i, int i2, float f, Allocation allocation, float f2, Allocation allocation2) {
         validateTranspose(i2);
         validateUplo(i);
@@ -1859,6 +1910,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 115, i2, 0, 0, i, 0, 0, allocation2.getType().getX(), y, f, id, 0L, f2, id2, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void STBMV(int i, int i2, int i3, int i4, Allocation allocation, Allocation allocation2, int i5) {
         if (i4 < 0) {
             throw new RSRuntimeException("K must be greater than or equal to 0");
@@ -1876,6 +1928,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 50, i2, 0, 0, i, i3, 0, y, i4, 0.0f, id, id2, 0.0f, 0L, i5, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void STBSV(int i, int i2, int i3, int i4, Allocation allocation, Allocation allocation2, int i5) {
         validateTRMV(Element.F32(this.mRS), i, i2, i3, allocation, allocation2, i5);
         int y = allocation.getType().getY();
@@ -1893,6 +1946,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 53, i2, 0, 0, i, i3, 0, y, i4, 0.0f, id, id2, 0.0f, 0L, i5, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void STPMV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         int validateTPMV = validateTPMV(Element.F32(this.mRS), i, i2, i3, allocation, allocation2, i4);
         boolean isIncSupp = isIncSupp();
@@ -1906,6 +1960,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 51, i2, 0, 0, i, i3, 0, validateTPMV, 0, 0.0f, id, id2, 0.0f, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void STPSV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         int validateTPMV = validateTPMV(Element.F32(this.mRS), i, i2, i3, allocation, allocation2, i4);
         boolean isIncSupp = isIncSupp();
@@ -1919,6 +1974,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 54, i2, 0, 0, i, i3, 0, validateTPMV, 0, 0.0f, id, id2, 0.0f, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void STRMM(int i, int i2, int i3, int i4, float f, Allocation allocation, Allocation allocation2) {
         validateUplo(i2);
         validateDiag(i4);
@@ -1935,6 +1991,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 117, i3, 0, i, i2, i4, allocation2.getType().getY(), allocation2.getType().getX(), 0, f, id, j, 0.0f, 0L, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void STRMV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         validateTRMV(Element.F32(this.mRS), i, i2, i3, allocation, allocation2, i4);
         int y = allocation.getType().getY();
@@ -1949,6 +2006,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 49, i2, 0, 0, i, i3, 0, y, 0, 0.0f, id, id2, 0.0f, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void STRSM(int i, int i2, int i3, int i4, float f, Allocation allocation, Allocation allocation2) {
         validateUplo(i2);
         validateDiag(i4);
@@ -1965,6 +2023,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 118, i3, 0, i, i2, i4, allocation2.getType().getY(), allocation2.getType().getX(), 0, f, id, j, 0.0f, 0L, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void STRSV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         validateTRMV(Element.F32(this.mRS), i, i2, i3, allocation, allocation2, i4);
         int y = allocation.getType().getY();
@@ -1979,6 +2038,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Single(getID(renderScript), 52, i2, 0, 0, i, i3, 0, y, 0, 0.0f, id, id2, 0.0f, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZGBMV(int i, int i2, int i3, Double2 double2, Allocation allocation, Allocation allocation2, int i4, Double2 double22, Allocation allocation3, int i5) {
         validateGEMV(Element.F64_2(this.mRS), i, allocation, allocation2, i4, allocation3, i5);
         if (i2 < 0 || i3 < 0) {
@@ -1996,9 +2056,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             id3 = getDummyAlloc(allocation3);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 72, i, 0, 0, 0, 0, y, x, 0, double2.f390x, double2.f391y, id, id2, double22.f390x, double22.f391y, id3, i4, i5, i2, i3, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 72, i, 0, 0, 0, 0, y, x, 0, double2.x, double2.y, id, id2, double22.x, double22.y, id3, i4, i5, i2, i3, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZGEMM(int i, int i2, Double2 double2, Allocation allocation, Allocation allocation2, Double2 double22, Allocation allocation3) {
         int y;
         int x;
@@ -2032,9 +2093,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             j3 = id3;
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 131, i, i2, 0, 0, 0, i3, y2, i4, double2.f390x, double2.f391y, j, j2, double22.f390x, double22.f391y, j3, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 131, i, i2, 0, 0, 0, i3, y2, i4, double2.x, double2.y, j, j2, double22.x, double22.y, j3, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZGEMV(int i, Double2 double2, Allocation allocation, Allocation allocation2, int i2, Double2 double22, Allocation allocation3, int i3) {
         validateGEMV(Element.F64_2(this.mRS), i, allocation, allocation2, i2, allocation3, i3);
         int y = allocation.getType().getY();
@@ -2049,9 +2111,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             id3 = getDummyAlloc(allocation3);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 71, i, 0, 0, 0, 0, y, x, 0, double2.f390x, double2.f391y, id, id2, double22.f390x, double22.f391y, id3, i2, i3, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 71, i, 0, 0, 0, 0, y, x, 0, double2.x, double2.y, id, id2, double22.x, double22.y, id3, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZGERC(Double2 double2, Allocation allocation, int i, Allocation allocation2, int i2, Allocation allocation3) {
         validateGERU(Element.F64_2(this.mRS), allocation, i, allocation2, i2, allocation3);
         int y = allocation3.getType().getY();
@@ -2067,9 +2130,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         }
         long j = id;
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 108, 0, 0, 0, 0, 0, y, x, 0, double2.f390x, double2.f391y, id2, id3, 0.0d, 0.0d, j, i, i2, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 108, 0, 0, 0, 0, 0, y, x, 0, double2.x, double2.y, id2, id3, 0.0d, 0.0d, j, i, i2, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZGERU(Double2 double2, Allocation allocation, int i, Allocation allocation2, int i2, Allocation allocation3) {
         validateGERU(Element.F64_2(this.mRS), allocation, i, allocation2, i2, allocation3);
         int y = allocation3.getType().getY();
@@ -2085,9 +2149,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         }
         long j = id;
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 107, 0, 0, 0, 0, 0, y, x, 0, double2.f390x, double2.f391y, id2, id3, 0.0d, 0.0d, j, i, i2, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 107, 0, 0, 0, 0, 0, y, x, 0, double2.x, double2.y, id2, id3, 0.0d, 0.0d, j, i, i2, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZHBMV(int i, int i2, Double2 double2, Allocation allocation, Allocation allocation2, int i3, Double2 double22, Allocation allocation3, int i4) {
         int validateSYR2 = validateSYR2(Element.F64_2(this.mRS), i, allocation2, i3, allocation3, i4, allocation);
         if (i2 < 0) {
@@ -2103,9 +2168,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             id3 = getDummyAlloc(allocation3);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 105, 0, 0, 0, i, 0, 0, validateSYR2, i2, double2.f390x, double2.f391y, id, id2, double22.f390x, double22.f391y, id3, i3, i4, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 105, 0, 0, 0, i, 0, 0, validateSYR2, i2, double2.x, double2.y, id, id2, double22.x, double22.y, id3, i3, i4, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZHEMM(int i, int i2, Double2 double2, Allocation allocation, Allocation allocation2, Double2 double22, Allocation allocation3) {
         long j;
         long j2;
@@ -2127,9 +2193,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             j3 = id3;
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), RsBlas_zhemm, 0, 0, i, i2, 0, allocation3.getType().getY(), allocation3.getType().getX(), 0, double2.f390x, double2.f391y, j, j2, double22.f390x, double22.f391y, j3, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), RsBlas_zhemm, 0, 0, i, i2, 0, allocation3.getType().getY(), allocation3.getType().getX(), 0, double2.x, double2.y, j, j2, double22.x, double22.y, j3, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZHEMV(int i, Double2 double2, Allocation allocation, Allocation allocation2, int i2, Double2 double22, Allocation allocation3, int i3) {
         int validateSYR2 = validateSYR2(Element.F64_2(this.mRS), i, allocation2, i2, allocation3, i3, allocation);
         boolean isIncSupp = isIncSupp();
@@ -2142,9 +2209,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             id3 = getDummyAlloc(allocation3);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 104, 0, 0, 0, i, 0, 0, validateSYR2, 0, double2.f390x, double2.f391y, id, id2, double22.f390x, double22.f391y, id3, i2, i3, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 104, 0, 0, 0, i, 0, 0, validateSYR2, 0, double2.x, double2.y, id, id2, double22.x, double22.y, id3, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZHER(int i, double d, Allocation allocation, int i2, Allocation allocation2) {
         long j;
         long j2;
@@ -2164,6 +2232,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 109, 0, 0, 0, i, 0, 0, validateSYR, 0, d, 0.0d, j2, 0L, 0.0d, 0.0d, j, i2, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZHER2(int i, Double2 double2, Allocation allocation, int i2, Allocation allocation2, int i3, Allocation allocation3) {
         int validateSYR2 = validateSYR2(Element.F64_2(this.mRS), i, allocation, i2, allocation2, i3, allocation3);
         boolean isIncSupp = isIncSupp();
@@ -2177,9 +2246,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         }
         long j = id;
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 111, 0, 0, 0, i, 0, 0, validateSYR2, 0, double2.f390x, double2.f391y, id2, id3, 0.0d, 0.0d, j, i2, i3, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 111, 0, 0, 0, i, 0, 0, validateSYR2, 0, double2.x, double2.y, id2, id3, 0.0d, 0.0d, j, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZHER2K(int i, int i2, Double2 double2, Allocation allocation, Allocation allocation2, double d, Allocation allocation3) {
         long j;
         long j2;
@@ -2199,9 +2269,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             j2 = id2;
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 142, i2, 0, 0, i, 0, 0, allocation3.getType().getX(), x, double2.f390x, double2.f391y, allocation.getID(this.mRS), j, d, 0.0d, j2, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 142, i2, 0, 0, i, 0, 0, allocation3.getType().getX(), x, double2.x, double2.y, allocation.getID(this.mRS), j, d, 0.0d, j2, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZHERK(int i, int i2, double d, Allocation allocation, double d2, Allocation allocation2) {
         long j;
         long j2;
@@ -2222,6 +2293,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 141, i2, 0, 0, i, 0, 0, allocation2.getType().getX(), y, d, 0.0d, j, 0L, d2, 0.0d, j2, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZHPMV(int i, Double2 double2, Allocation allocation, Allocation allocation2, int i2, Double2 double22, Allocation allocation3, int i3) {
         int validateSPR2 = validateSPR2(Element.F64_2(this.mRS), i, allocation2, i2, allocation3, i3, allocation);
         boolean isIncSupp = isIncSupp();
@@ -2234,9 +2306,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             id3 = getDummyAlloc(allocation3);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 106, 0, 0, 0, i, 0, 0, validateSPR2, 0, double2.f390x, double2.f391y, id, id2, double22.f390x, double22.f391y, id3, i2, i3, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 106, 0, 0, 0, i, 0, 0, validateSPR2, 0, double2.x, double2.y, id, id2, double22.x, double22.y, id3, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZHPR(int i, double d, Allocation allocation, int i2, Allocation allocation2) {
         long j;
         long j2;
@@ -2256,6 +2329,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 110, 0, 0, 0, i, 0, 0, validateSPR, 0, d, 0.0d, j2, 0L, 0.0d, 0.0d, j, i2, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZHPR2(int i, Double2 double2, Allocation allocation, int i2, Allocation allocation2, int i3, Allocation allocation3) {
         int validateSPR2 = validateSPR2(Element.F64_2(this.mRS), i, allocation, i2, allocation2, i3, allocation3);
         boolean isIncSupp = isIncSupp();
@@ -2269,9 +2343,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         }
         long j = id;
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 112, 0, 0, 0, i, 0, 0, validateSPR2, 0, double2.f390x, double2.f391y, id2, id3, 0.0d, 0.0d, j, i2, i3, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 112, 0, 0, 0, i, 0, 0, validateSPR2, 0, double2.x, double2.y, id2, id3, 0.0d, 0.0d, j, i2, i3, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZSYMM(int i, int i2, Double2 double2, Allocation allocation, Allocation allocation2, Double2 double22, Allocation allocation3) {
         validateSide(i);
         validateUplo(i2);
@@ -2289,9 +2364,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             id3 = getDummyAlloc(allocation3);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 132, 0, 0, i, i2, 0, allocation3.getType().getY(), allocation3.getType().getX(), 0, double2.f390x, double2.f391y, id, id2, double22.f390x, double22.f391y, id3, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 132, 0, 0, i, i2, 0, allocation3.getType().getY(), allocation3.getType().getX(), 0, double2.x, double2.y, id, id2, double22.x, double22.y, id3, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZSYR2K(int i, int i2, Double2 double2, Allocation allocation, Allocation allocation2, Double2 double22, Allocation allocation3) {
         long j;
         long j2;
@@ -2314,9 +2390,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             j3 = id3;
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), RsBlas_zsyr2k, i2, 0, 0, i, 0, 0, allocation3.getType().getX(), y, double2.f390x, double2.f391y, j, j2, double22.f390x, double22.f391y, j3, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), RsBlas_zsyr2k, i2, 0, 0, i, 0, 0, allocation3.getType().getX(), y, double2.x, double2.y, j, j2, double22.x, double22.y, j3, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZSYRK(int i, int i2, Double2 double2, Allocation allocation, Double2 double22, Allocation allocation2) {
         validateTranspose(i2);
         validateUplo(i);
@@ -2330,9 +2407,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
             getDummyAlloc(allocation2);
         }
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), RsBlas_zsyrk, i2, 0, 0, i, 0, 0, allocation2.getType().getX(), y, double2.f390x, double2.f391y, id, 0L, double22.f390x, double22.f391y, allocation2.getID(this.mRS), 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), RsBlas_zsyrk, i2, 0, 0, i, 0, 0, allocation2.getType().getX(), y, double2.x, double2.y, id, 0L, double22.x, double22.y, allocation2.getID(this.mRS), 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZTBMV(int i, int i2, int i3, int i4, Allocation allocation, Allocation allocation2, int i5) {
         if (i4 < 0) {
             throw new RSRuntimeException("K must be greater than or equal to 0");
@@ -2350,6 +2428,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 74, i2, 0, 0, i, i3, 0, y, i4, 0.0d, 0.0d, id, id2, 0.0d, 0.0d, 0L, i5, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZTBSV(int i, int i2, int i3, int i4, Allocation allocation, Allocation allocation2, int i5) {
         validateTRMV(Element.F64_2(this.mRS), i, i2, i3, allocation, allocation2, i5);
         int y = allocation.getType().getY();
@@ -2367,6 +2446,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 77, i2, 0, 0, i, i3, 0, y, i4, 0.0d, 0.0d, id, id2, 0.0d, 0.0d, 0L, i5, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZTPMV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         int validateTPMV = validateTPMV(Element.F64_2(this.mRS), i, i2, i3, allocation, allocation2, i4);
         boolean isIncSupp = isIncSupp();
@@ -2380,6 +2460,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 75, i2, 0, 0, i, i3, 0, validateTPMV, 0, 0.0d, 0.0d, id, id2, 0.0d, 0.0d, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZTPSV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         int validateTPMV = validateTPMV(Element.F64_2(this.mRS), i, i2, i3, allocation, allocation2, i4);
         boolean isIncSupp = isIncSupp();
@@ -2393,6 +2474,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 78, i2, 0, 0, i, i3, 0, validateTPMV, 0, 0.0d, 0.0d, id, id2, 0.0d, 0.0d, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZTRMM(int i, int i2, int i3, int i4, Double2 double2, Allocation allocation, Allocation allocation2) {
         validateUplo(i2);
         validateDiag(i4);
@@ -2406,9 +2488,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         }
         long j = id2;
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), RsBlas_ztrmm, i3, 0, i, i2, i4, allocation2.getType().getY(), allocation2.getType().getX(), 0, double2.f390x, double2.f391y, id, j, 0.0d, 0.0d, 0L, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), RsBlas_ztrmm, i3, 0, i, i2, i4, allocation2.getType().getY(), allocation2.getType().getX(), 0, double2.x, double2.y, id, j, 0.0d, 0.0d, 0L, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZTRMV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         validateTRMV(Element.F64_2(this.mRS), i, i2, i3, allocation, allocation2, i4);
         int y = allocation.getType().getY();
@@ -2423,6 +2506,7 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), 73, i2, 0, 0, i, i3, 0, y, 0, 0.0d, 0.0d, id, id2, 0.0d, 0.0d, 0L, i4, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZTRSM(int i, int i2, int i3, int i4, Double2 double2, Allocation allocation, Allocation allocation2) {
         validateUplo(i2);
         validateDiag(i4);
@@ -2436,9 +2520,10 @@ public final class ScriptIntrinsicBLAS extends ScriptIntrinsic {
         }
         long j = id2;
         RenderScript renderScript = this.mRS;
-        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), RsBlas_ztrsm, i3, 0, i, i2, i4, allocation2.getType().getY(), allocation2.getType().getX(), 0, double2.f390x, double2.f391y, id, j, 0.0d, 0.0d, 0L, 0, 0, 0, 0, isIncSupp);
+        renderScript.nScriptIntrinsicBLAS_Z(getID(renderScript), RsBlas_ztrsm, i3, 0, i, i2, i4, allocation2.getType().getY(), allocation2.getType().getX(), 0, double2.x, double2.y, id, j, 0.0d, 0.0d, 0L, 0, 0, 0, 0, isIncSupp);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void ZTRSV(int i, int i2, int i3, Allocation allocation, Allocation allocation2, int i4) {
         validateTRMV(Element.F64_2(this.mRS), i, i2, i3, allocation, allocation2, i4);
         int y = allocation.getType().getY();

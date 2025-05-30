@@ -9,9 +9,9 @@ import javax.annotation.Nullable;
 import tb.ba1;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class EventListener {
-    public static final EventListener NONE = new C1409a();
+    public static final EventListener NONE = new a();
 
     /* compiled from: Taobao */
     public interface Factory {
@@ -19,108 +19,83 @@ public abstract class EventListener {
     }
 
     /* compiled from: Taobao */
-    /* renamed from: okhttp3.EventListener$a */
-    class C1409a extends EventListener {
-        C1409a() {
+    class a extends EventListener {
+        a() {
         }
     }
 
-    /* renamed from: l */
-    static Factory m348l(EventListener eventListener) {
+    static Factory l(EventListener eventListener) {
         return new ba1(eventListener);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    /* renamed from: m */
-    public static /* synthetic */ EventListener m349m(EventListener eventListener, Call call) {
+    public static /* synthetic */ EventListener m(EventListener eventListener, Call call) {
         return eventListener;
     }
 
-    /* renamed from: b */
-    public void m350b(Call call) {
+    public void b(Call call) {
     }
 
-    /* renamed from: c */
-    public void m351c(Call call, IOException iOException) {
+    public void c(Call call, IOException iOException) {
     }
 
-    /* renamed from: d */
-    public void m352d(Call call) {
+    public void d(Call call) {
     }
 
-    /* renamed from: e */
-    public void m353e(Call call, InetSocketAddress inetSocketAddress, Proxy proxy, @Nullable Protocol protocol) {
+    public void e(Call call, InetSocketAddress inetSocketAddress, Proxy proxy, @Nullable Protocol protocol) {
     }
 
-    /* renamed from: f */
-    public void m354f(Call call, InetSocketAddress inetSocketAddress, Proxy proxy, @Nullable Protocol protocol, IOException iOException) {
+    public void f(Call call, InetSocketAddress inetSocketAddress, Proxy proxy, @Nullable Protocol protocol, IOException iOException) {
     }
 
-    /* renamed from: g */
-    public void m355g(Call call, InetSocketAddress inetSocketAddress, Proxy proxy) {
+    public void g(Call call, InetSocketAddress inetSocketAddress, Proxy proxy) {
     }
 
-    /* renamed from: h */
-    public void m356h(Call call, Connection connection) {
+    public void h(Call call, Connection connection) {
     }
 
-    /* renamed from: i */
-    public void m357i(Call call, Connection connection) {
+    public void i(Call call, Connection connection) {
     }
 
-    /* renamed from: j */
-    public void m358j(Call call, String str, List<InetAddress> list) {
+    public void j(Call call, String str, List<InetAddress> list) {
     }
 
-    /* renamed from: k */
-    public void m359k(Call call, String str) {
+    public void k(Call call, String str) {
     }
 
-    /* renamed from: n */
-    public void m360n(Call call, long j) {
+    public void n(Call call, long j) {
     }
 
-    /* renamed from: o */
-    public void m361o(Call call) {
+    public void o(Call call) {
     }
 
-    /* renamed from: p */
-    public void m362p(Call call, IOException iOException) {
+    public void p(Call call, IOException iOException) {
     }
 
-    /* renamed from: q */
-    public void m363q(Call call, C1474n c1474n) {
+    public void q(Call call, n nVar) {
     }
 
-    /* renamed from: r */
-    public void m364r(Call call) {
+    public void r(Call call) {
     }
 
-    /* renamed from: s */
-    public void m365s(Call call, long j) {
+    public void s(Call call, long j) {
     }
 
-    /* renamed from: t */
-    public void m366t(Call call) {
+    public void t(Call call) {
     }
 
-    /* renamed from: u */
-    public void m367u(Call call, IOException iOException) {
+    public void u(Call call, IOException iOException) {
     }
 
-    /* renamed from: v */
-    public void m368v(Call call, C1476p c1476p) {
+    public void v(Call call, p pVar) {
     }
 
-    /* renamed from: w */
-    public void m369w(Call call) {
+    public void w(Call call) {
     }
 
-    /* renamed from: x */
-    public void m370x(Call call, @Nullable C1470j c1470j) {
+    public void x(Call call, @Nullable j jVar) {
     }
 
-    /* renamed from: y */
-    public void m371y(Call call) {
+    public void y(Call call) {
     }
 }

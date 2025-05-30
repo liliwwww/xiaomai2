@@ -14,7 +14,7 @@ import tb.fy5;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class VectorizedKeyframesSpec<V extends AnimationVector> implements VectorizedDurationBasedAnimationSpec<V> {
     public static final int $stable = 8;
     private final int delayMillis;
@@ -39,67 +39,60 @@ public final class VectorizedKeyframesSpec<V extends AnimationVector> implements
         }
     }
 
-    @Override // androidx.compose.animation.core.VectorizedDurationBasedAnimationSpec
     public int getDelayMillis() {
         return this.delayMillis;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedDurationBasedAnimationSpec
     public int getDurationMillis() {
         return this.durationMillis;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedDurationBasedAnimationSpec, androidx.compose.animation.core.VectorizedAnimationSpec
     public /* synthetic */ long getDurationNanos(AnimationVector animationVector, AnimationVector animationVector2, AnimationVector animationVector3) {
         return ey5.a(this, animationVector, animationVector2, animationVector3);
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     public /* synthetic */ AnimationVector getEndVelocity(AnimationVector animationVector, AnimationVector animationVector2, AnimationVector animationVector3) {
         return dy5.a(this, animationVector, animationVector2, animationVector3);
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     @NotNull
     public V getValueFromNanos(long j, @NotNull V v, @NotNull V v2, @NotNull V v3) {
-        long clampPlayTime;
         Intrinsics.checkNotNullParameter(v, "initialValue");
         Intrinsics.checkNotNullParameter(v2, "targetValue");
         Intrinsics.checkNotNullParameter(v3, "initialVelocity");
-        clampPlayTime = VectorizedAnimationSpecKt.clampPlayTime(this, j / AnimationKt.MillisToNanos);
-        int i = (int) clampPlayTime;
-        if (this.keyframes.containsKey(Integer.valueOf(i))) {
-            return (V) ((Pair) MapsKt.getValue(this.keyframes, Integer.valueOf(i))).getFirst();
+        int access$clampPlayTime = (int) VectorizedAnimationSpecKt.access$clampPlayTime(this, j / AnimationKt.MillisToNanos);
+        if (this.keyframes.containsKey(Integer.valueOf(access$clampPlayTime))) {
+            return (V) ((Pair) MapsKt.getValue(this.keyframes, Integer.valueOf(access$clampPlayTime))).getFirst();
         }
-        if (i >= getDurationMillis()) {
+        if (access$clampPlayTime >= getDurationMillis()) {
             return v2;
         }
-        if (i <= 0) {
+        if (access$clampPlayTime <= 0) {
             return v;
         }
         int durationMillis = getDurationMillis();
         Easing linearEasing = EasingKt.getLinearEasing();
-        int i2 = 0;
+        int i = 0;
         AnimationVector animationVector = v;
-        int i3 = 0;
+        int i2 = 0;
         for (Map.Entry<Integer, Pair<V, Easing>> entry : this.keyframes.entrySet()) {
             int intValue = entry.getKey().intValue();
             Pair<V, Easing> value = entry.getValue();
-            if (i > intValue && intValue >= i3) {
+            if (access$clampPlayTime > intValue && intValue >= i2) {
                 animationVector = (AnimationVector) value.getFirst();
                 linearEasing = (Easing) value.getSecond();
-                i3 = intValue;
-            } else if (i < intValue && intValue <= durationMillis) {
+                i2 = intValue;
+            } else if (access$clampPlayTime < intValue && intValue <= durationMillis) {
                 v2 = (V) value.getFirst();
                 durationMillis = intValue;
             }
         }
-        float transform = linearEasing.transform((i - i3) / (durationMillis - i3));
+        float transform = linearEasing.transform((access$clampPlayTime - i2) / (durationMillis - i2));
         init(v);
         int size$animation_core_release = animationVector.getSize$animation_core_release();
         while (true) {
             V v4 = null;
-            if (i2 >= size$animation_core_release) {
+            if (i >= size$animation_core_release) {
                 break;
             }
             V v5 = this.valueVector;
@@ -108,8 +101,8 @@ public final class VectorizedKeyframesSpec<V extends AnimationVector> implements
             } else {
                 v4 = v5;
             }
-            v4.set$animation_core_release(i2, VectorConvertersKt.lerp(animationVector.get$animation_core_release(i2), v2.get$animation_core_release(i2), transform));
-            i2++;
+            v4.set$animation_core_release(i, VectorConvertersKt.lerp(animationVector.get$animation_core_release(i), v2.get$animation_core_release(i), transform));
+            i++;
         }
         V v6 = this.valueVector;
         if (v6 != null) {
@@ -119,19 +112,17 @@ public final class VectorizedKeyframesSpec<V extends AnimationVector> implements
         return null;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     @NotNull
     public V getVelocityFromNanos(long j, @NotNull V v, @NotNull V v2, @NotNull V v3) {
-        long clampPlayTime;
         Intrinsics.checkNotNullParameter(v, "initialValue");
         Intrinsics.checkNotNullParameter(v2, "targetValue");
         Intrinsics.checkNotNullParameter(v3, "initialVelocity");
-        clampPlayTime = VectorizedAnimationSpecKt.clampPlayTime(this, j / AnimationKt.MillisToNanos);
-        if (clampPlayTime <= 0) {
+        long access$clampPlayTime = VectorizedAnimationSpecKt.access$clampPlayTime(this, j / AnimationKt.MillisToNanos);
+        if (access$clampPlayTime <= 0) {
             return v3;
         }
-        AnimationVector valueFromMillis = VectorizedAnimationSpecKt.getValueFromMillis(this, clampPlayTime - 1, v, v2, v3);
-        AnimationVector valueFromMillis2 = VectorizedAnimationSpecKt.getValueFromMillis(this, clampPlayTime, v, v2, v3);
+        AnimationVector valueFromMillis = VectorizedAnimationSpecKt.getValueFromMillis(this, access$clampPlayTime - 1, v, v2, v3);
+        AnimationVector valueFromMillis2 = VectorizedAnimationSpecKt.getValueFromMillis(this, access$clampPlayTime, v, v2, v3);
         init(v);
         int i = 0;
         int size$animation_core_release = valueFromMillis.getSize$animation_core_release();
@@ -157,7 +148,6 @@ public final class VectorizedKeyframesSpec<V extends AnimationVector> implements
         return null;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedFiniteAnimationSpec, androidx.compose.animation.core.VectorizedAnimationSpec
     public /* synthetic */ boolean isInfinite() {
         return fy5.a(this);
     }

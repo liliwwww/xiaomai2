@@ -1,18 +1,11 @@
 package androidx.compose.foundation.text;
 
 import androidx.compose.foundation.text.selection.SelectionRegistrar;
-import androidx.compose.foundation.text.selection.SelectionRegistrarKt;
 import androidx.compose.runtime.saveable.Saver;
 import androidx.compose.runtime.saveable.SaverKt;
-import androidx.compose.runtime.saveable.SaverScope;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.functions.Function2;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class BasicTextKt {
     /* JADX WARN: Removed duplicated region for block: B:102:0x00a9  */
     /* JADX WARN: Removed duplicated region for block: B:109:0x0087  */
@@ -57,14 +50,14 @@ public final class BasicTextKt {
     /* renamed from: BasicText-4YKlhWE, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m1700BasicText4YKlhWE(@org.jetbrains.annotations.NotNull final java.lang.String r31, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r32, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.TextStyle r33, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.text.TextLayoutResult, kotlin.Unit> r34, int r35, boolean r36, int r37, int r38, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r39, final int r40, final int r41) {
+    public static final void m378BasicText4YKlhWE(@org.jetbrains.annotations.NotNull java.lang.String r31, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r32, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.TextStyle r33, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.ui.text.TextLayoutResult, kotlin.Unit> r34, int r35, boolean r36, int r37, int r38, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r39, int r40, int r41) {
         /*
             Method dump skipped, instructions count: 834
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.BasicTextKt.m1700BasicText4YKlhWE(java.lang.String, androidx.compose.ui.Modifier, androidx.compose.ui.text.TextStyle, kotlin.jvm.functions.Function1, int, boolean, int, int, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.BasicTextKt.m378BasicText4YKlhWE(java.lang.String, androidx.compose.ui.Modifier, androidx.compose.ui.text.TextStyle, kotlin.jvm.functions.Function1, int, boolean, int, int, androidx.compose.runtime.Composer, int, int):void");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:10:0x004a  */
@@ -99,14 +92,14 @@ public final class BasicTextKt {
     /* renamed from: BasicText-BpD7jsM, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final /* synthetic */ void m1701BasicTextBpD7jsM(final java.lang.String r23, androidx.compose.p004ui.Modifier r24, androidx.compose.p004ui.text.TextStyle r25, kotlin.jvm.functions.Function1 r26, int r27, boolean r28, int r29, androidx.compose.runtime.Composer r30, final int r31, final int r32) {
+    public static final /* synthetic */ void m379BasicTextBpD7jsM(java.lang.String r23, androidx.compose.ui.Modifier r24, androidx.compose.ui.text.TextStyle r25, kotlin.jvm.functions.Function1 r26, int r27, boolean r28, int r29, androidx.compose.runtime.Composer r30, int r31, int r32) {
         /*
             Method dump skipped, instructions count: 410
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.BasicTextKt.m1701BasicTextBpD7jsM(java.lang.String, androidx.compose.ui.Modifier, androidx.compose.ui.text.TextStyle, kotlin.jvm.functions.Function1, int, boolean, int, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.BasicTextKt.m379BasicTextBpD7jsM(java.lang.String, androidx.compose.ui.Modifier, androidx.compose.ui.text.TextStyle, kotlin.jvm.functions.Function1, int, boolean, int, androidx.compose.runtime.Composer, int, int):void");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:103:0x00ca  */
@@ -156,44 +149,18 @@ public final class BasicTextKt {
     /* renamed from: BasicText-VhcvRP8, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m1702BasicTextVhcvRP8(@org.jetbrains.annotations.NotNull final androidx.compose.p004ui.text.AnnotatedString r34, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r35, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.TextStyle r36, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.text.TextLayoutResult, kotlin.Unit> r37, int r38, boolean r39, int r40, int r41, @org.jetbrains.annotations.Nullable java.util.Map<java.lang.String, androidx.compose.foundation.text.InlineTextContent> r42, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r43, final int r44, final int r45) {
+    public static final void m380BasicTextVhcvRP8(@org.jetbrains.annotations.NotNull androidx.compose.ui.text.AnnotatedString r34, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r35, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.TextStyle r36, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function1<? super androidx.compose.ui.text.TextLayoutResult, kotlin.Unit> r37, int r38, boolean r39, int r40, int r41, @org.jetbrains.annotations.Nullable java.util.Map<java.lang.String, androidx.compose.foundation.text.InlineTextContent> r42, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r43, int r44, int r45) {
         /*
             Method dump skipped, instructions count: 931
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.BasicTextKt.m1702BasicTextVhcvRP8(androidx.compose.ui.text.AnnotatedString, androidx.compose.ui.Modifier, androidx.compose.ui.text.TextStyle, kotlin.jvm.functions.Function1, int, boolean, int, int, java.util.Map, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.BasicTextKt.m380BasicTextVhcvRP8(androidx.compose.ui.text.AnnotatedString, androidx.compose.ui.Modifier, androidx.compose.ui.text.TextStyle, kotlin.jvm.functions.Function1, int, boolean, int, int, java.util.Map, androidx.compose.runtime.Composer, int, int):void");
     }
 
-    private static final Saver<Long, Long> selectionIdSaver(final SelectionRegistrar selectionRegistrar) {
-        return SaverKt.Saver(new Function2<SaverScope, Long, Long>() { // from class: androidx.compose.foundation.text.BasicTextKt$selectionIdSaver$1
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                return invoke((SaverScope) obj, ((Number) obj2).longValue());
-            }
-
-            @Nullable
-            public final Long invoke(@NotNull SaverScope saverScope, long j) {
-                Intrinsics.checkNotNullParameter(saverScope, "$this$Saver");
-                if (SelectionRegistrarKt.hasSelection(SelectionRegistrar.this, j)) {
-                    return Long.valueOf(j);
-                }
-                return null;
-            }
-        }, new Function1<Long, Long>() { // from class: androidx.compose.foundation.text.BasicTextKt$selectionIdSaver$2
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                return invoke(((Number) obj).longValue());
-            }
-
-            @Nullable
-            public final Long invoke(long j) {
-                return Long.valueOf(j);
-            }
-        });
+    private static final Saver<Long, Long> selectionIdSaver(SelectionRegistrar selectionRegistrar) {
+        return SaverKt.Saver(new selectionIdSaver.1(selectionRegistrar), selectionIdSaver.2.INSTANCE);
     }
 
     /* JADX WARN: Removed duplicated region for block: B:10:0x004c  */
@@ -232,13 +199,13 @@ public final class BasicTextKt {
     /* renamed from: BasicText-4YKlhWE, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final /* synthetic */ void m1699BasicText4YKlhWE(final androidx.compose.p004ui.text.AnnotatedString r26, androidx.compose.p004ui.Modifier r27, androidx.compose.p004ui.text.TextStyle r28, kotlin.jvm.functions.Function1 r29, int r30, boolean r31, int r32, java.util.Map r33, androidx.compose.runtime.Composer r34, final int r35, final int r36) {
+    public static final /* synthetic */ void m377BasicText4YKlhWE(androidx.compose.ui.text.AnnotatedString r26, androidx.compose.ui.Modifier r27, androidx.compose.ui.text.TextStyle r28, kotlin.jvm.functions.Function1 r29, int r30, boolean r31, int r32, java.util.Map r33, androidx.compose.runtime.Composer r34, int r35, int r36) {
         /*
             Method dump skipped, instructions count: 450
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.BasicTextKt.m1699BasicText4YKlhWE(androidx.compose.ui.text.AnnotatedString, androidx.compose.ui.Modifier, androidx.compose.ui.text.TextStyle, kotlin.jvm.functions.Function1, int, boolean, int, java.util.Map, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.text.BasicTextKt.m377BasicText4YKlhWE(androidx.compose.ui.text.AnnotatedString, androidx.compose.ui.Modifier, androidx.compose.ui.text.TextStyle, kotlin.jvm.functions.Function1, int, boolean, int, java.util.Map, androidx.compose.runtime.Composer, int, int):void");
     }
 }

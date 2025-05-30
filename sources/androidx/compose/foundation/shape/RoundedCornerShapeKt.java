@@ -1,11 +1,11 @@
 package androidx.compose.foundation.shape;
 
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.ui.unit.Dp;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class RoundedCornerShapeKt {
 
     @NotNull
@@ -35,31 +35,31 @@ public final class RoundedCornerShapeKt {
 
     @NotNull
     /* renamed from: RoundedCornerShape-0680j_4, reason: not valid java name */
-    public static final RoundedCornerShape m1694RoundedCornerShape0680j_4(float f) {
-        return RoundedCornerShape(CornerSizeKt.m1686CornerSize0680j_4(f));
+    public static final RoundedCornerShape m542RoundedCornerShape0680j_4(float f) {
+        return RoundedCornerShape(CornerSizeKt.m537CornerSize0680j_4(f));
     }
 
     @NotNull
     /* renamed from: RoundedCornerShape-a9UjIt4, reason: not valid java name */
-    public static final RoundedCornerShape m1695RoundedCornerShapea9UjIt4(float f, float f2, float f3, float f4) {
-        return new RoundedCornerShape(CornerSizeKt.m1686CornerSize0680j_4(f), CornerSizeKt.m1686CornerSize0680j_4(f2), CornerSizeKt.m1686CornerSize0680j_4(f3), CornerSizeKt.m1686CornerSize0680j_4(f4));
+    public static final RoundedCornerShape m543RoundedCornerShapea9UjIt4(float f, float f2, float f3, float f4) {
+        return new RoundedCornerShape(CornerSizeKt.m537CornerSize0680j_4(f), CornerSizeKt.m537CornerSize0680j_4(f2), CornerSizeKt.m537CornerSize0680j_4(f3), CornerSizeKt.m537CornerSize0680j_4(f4));
     }
 
     /* renamed from: RoundedCornerShape-a9UjIt4$default, reason: not valid java name */
-    public static /* synthetic */ RoundedCornerShape m1696RoundedCornerShapea9UjIt4$default(float f, float f2, float f3, float f4, int i, Object obj) {
+    public static /* synthetic */ RoundedCornerShape m544RoundedCornerShapea9UjIt4$default(float f, float f2, float f3, float f4, int i, Object obj) {
         if ((i & 1) != 0) {
-            f = C0856Dp.m5216constructorimpl(0);
+            f = Dp.constructor-impl(0);
         }
         if ((i & 2) != 0) {
-            f2 = C0856Dp.m5216constructorimpl(0);
+            f2 = Dp.constructor-impl(0);
         }
         if ((i & 4) != 0) {
-            f3 = C0856Dp.m5216constructorimpl(0);
+            f3 = Dp.constructor-impl(0);
         }
         if ((i & 8) != 0) {
-            f4 = C0856Dp.m5216constructorimpl(0);
+            f4 = Dp.constructor-impl(0);
         }
-        return m1695RoundedCornerShapea9UjIt4(f, f2, f3, f4);
+        return m543RoundedCornerShapea9UjIt4(f, f2, f3, f4);
     }
 
     @NotNull

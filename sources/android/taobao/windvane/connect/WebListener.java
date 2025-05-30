@@ -3,7 +3,7 @@ package android.taobao.windvane.connect;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface WebListener {
     public static final int TOKEN_CHECK_UPDATE = 6;
     public static final int TOKEN_DO_UPDATE = 7;

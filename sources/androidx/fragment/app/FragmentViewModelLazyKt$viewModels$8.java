@@ -10,7 +10,7 @@ import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FragmentViewModelLazyKt$viewModels$8 extends Lambda implements Function0<ViewModelProvider.Factory> {
     final /* synthetic */ Lazy<ViewModelStoreOwner> $owner$delegate;
     final /* synthetic */ Fragment $this_viewModels;
@@ -25,12 +25,11 @@ public final class FragmentViewModelLazyKt$viewModels$8 extends Lambda implement
 
     @NotNull
     /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-    public final ViewModelProvider.Factory m5602invoke() {
-        ViewModelStoreOwner m5585viewModels$lambda1;
+    public final ViewModelProvider.Factory m2339invoke() {
         ViewModelProvider.Factory defaultViewModelProviderFactory;
-        m5585viewModels$lambda1 = FragmentViewModelLazyKt.m5585viewModels$lambda1(this.$owner$delegate);
-        HasDefaultViewModelProviderFactory hasDefaultViewModelProviderFactory = m5585viewModels$lambda1 instanceof HasDefaultViewModelProviderFactory ? (HasDefaultViewModelProviderFactory) m5585viewModels$lambda1 : null;
-        if (hasDefaultViewModelProviderFactory == null || (defaultViewModelProviderFactory = hasDefaultViewModelProviderFactory.getDefaultViewModelProviderFactory()) == null) {
+        HasDefaultViewModelProviderFactory hasDefaultViewModelProviderFactory = FragmentViewModelLazyKt.access$viewModels$lambda-1(this.$owner$delegate);
+        HasDefaultViewModelProviderFactory hasDefaultViewModelProviderFactory2 = hasDefaultViewModelProviderFactory instanceof HasDefaultViewModelProviderFactory ? hasDefaultViewModelProviderFactory : null;
+        if (hasDefaultViewModelProviderFactory2 == null || (defaultViewModelProviderFactory = hasDefaultViewModelProviderFactory2.getDefaultViewModelProviderFactory()) == null) {
             defaultViewModelProviderFactory = this.$this_viewModels.getDefaultViewModelProviderFactory();
         }
         Intrinsics.checkNotNullExpressionValue(defaultViewModelProviderFactory, "(owner as? HasDefaultVie…tViewModelProviderFactory");

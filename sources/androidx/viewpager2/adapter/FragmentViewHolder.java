@@ -4,11 +4,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView$ViewHolder;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
-public final class FragmentViewHolder extends RecyclerView.ViewHolder {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
+public final class FragmentViewHolder extends RecyclerView$ViewHolder {
     private FragmentViewHolder(@NonNull FrameLayout frameLayout) {
         super(frameLayout);
     }

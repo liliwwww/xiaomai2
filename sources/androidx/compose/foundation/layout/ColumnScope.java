@@ -1,18 +1,18 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.Measured;
-import androidx.compose.p004ui.layout.VerticalAlignmentLine;
 import androidx.compose.runtime.Immutable;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.Alignment$Horizontal;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.Measured;
+import androidx.compose.ui.layout.VerticalAlignmentLine;
 import kotlin.jvm.functions.Function1;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @LayoutScopeMarker
 @Immutable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface ColumnScope {
 
     /* compiled from: Taobao */
@@ -21,7 +21,7 @@ public interface ColumnScope {
 
     @Stable
     @NotNull
-    Modifier align(@NotNull Modifier modifier, @NotNull Alignment.Horizontal horizontal);
+    Modifier align(@NotNull Modifier modifier, @NotNull Alignment$Horizontal alignment$Horizontal);
 
     @Stable
     @NotNull

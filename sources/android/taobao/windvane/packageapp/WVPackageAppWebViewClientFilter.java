@@ -1,8 +1,7 @@
 package android.taobao.windvane.packageapp;
 
 import android.taobao.windvane.config.WVCommonConfig;
-import android.taobao.windvane.monitor.AppMonitorUtil;
-import android.taobao.windvane.p003ha.WVHAManager;
+import android.taobao.windvane.ha.WVHAManager;
 import android.taobao.windvane.packageapp.zipapp.utils.ZCacheResourceWrapper;
 import android.taobao.windvane.service.WVEventContext;
 import android.taobao.windvane.service.WVEventListener;
@@ -13,8 +12,6 @@ import android.taobao.windvane.webview.WVWrapWebResourceResponse;
 import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import com.taobao.zcache.ResourceRequest;
-import com.taobao.zcache.ResourceResponse;
-import com.taobao.zcache.ResourceResponseCallback;
 import com.taobao.zcache.ZCache;
 import com.taobao.zcache.ZCacheInitTask;
 import com.taobao.zcache.ZCacheManager;
@@ -25,7 +22,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVPackageAppWebViewClientFilter implements WVEventListener {
     static final int CORE_TYPE_ANDROID = 2;
     static final int CORE_TYPE_U3 = 1;
@@ -63,7 +60,7 @@ public class WVPackageAppWebViewClientFilter implements WVEventListener {
         try {
             i2 = ((Integer) (i == 1004 ? objArr[0] : objArr[1])).intValue();
         } catch (Throwable th) {
-            TaoLog.m21e(this.TAG, "onEvent: 获取内核状态出错");
+            TaoLog.e(this.TAG, "onEvent: 获取内核状态出错");
             th.printStackTrace();
         }
         if (i2 == 1 || i2 == 3) {
@@ -90,29 +87,11 @@ public class WVPackageAppWebViewClientFilter implements WVEventListener {
             }
         }
         if (WVCommonConfig.commonConfig.enableZCacheAdpter) {
-            final ZCacheResourceWrapper zCacheResourceWrapper = new ZCacheResourceWrapper();
+            ZCacheResourceWrapper zCacheResourceWrapper = new ZCacheResourceWrapper();
             ResourceRequest resourceRequest = new ResourceRequest(wVEventContext.url, hashMap2);
-            final CountDownLatch countDownLatch = new CountDownLatch(1);
-            final long currentTimeMillis = System.currentTimeMillis();
+            CountDownLatch countDownLatch = new CountDownLatch(1);
             try {
-                ZCache.getResource(resourceRequest, new ResourceResponseCallback() { // from class: android.taobao.windvane.packageapp.WVPackageAppWebViewClientFilter.1
-                    public void finish(ResourceResponse resourceResponse) {
-                        try {
-                            zCacheResourceWrapper.wrapZCacheResourceResponse(resourceResponse);
-                        } catch (Throwable th3) {
-                            th3.printStackTrace();
-                        }
-                        countDownLatch.countDown();
-                        long currentTimeMillis2 = System.currentTimeMillis() - currentTimeMillis;
-                        if (!zCacheResourceWrapper.zCacheResourceResponse.isSuccess || currentTimeMillis2 <= WVPackageAppWebViewClientFilter.ZCACHE_REPONSE_TIMEOUT) {
-                            if (zCacheResourceWrapper.zCacheResourceResponse.isSuccess) {
-                                AppMonitorUtil.commitSuccess(AppMonitorUtil.MONITOR_POINT_ZCACHE_RESPONSE_TIME_OUT, "ZCache请求在正常时限内返回");
-                            }
-                        } else {
-                            AppMonitorUtil.commitFail(AppMonitorUtil.MONITOR_POINT_ZCACHE_RESPONSE_TIME_OUT, 0, "ZCache请求超时, 用时：" + currentTimeMillis2, null);
-                        }
-                    }
-                });
+                ZCache.getResource(resourceRequest, new 1(this, zCacheResourceWrapper, countDownLatch, System.currentTimeMillis()));
                 countDownLatch.await(ZCACHE_REPONSE_TIMEOUT, TimeUnit.MILLISECONDS);
             } catch (Throwable th3) {
                 Log.e(this.TAG, "onEvent: 异步等待发生错误！");
@@ -128,17 +107,17 @@ public class WVPackageAppWebViewClientFilter implements WVEventListener {
             }
         }
         if (zCacheResourceResponse == null) {
-            TaoLog.m24i("ZCache", "H5 use ZCache 3.0, url=[" + wVEventContext.url + "], with response:[false]");
+            TaoLog.i("ZCache", "H5 use ZCache 3.0, url=[" + wVEventContext.url + "], with response:[false]");
             return new WVEventResult(false);
         }
         if (WVCommonConfig.commonConfig.enableMimeTypeSet && (map = zCacheResourceResponse.headers) != null && map.containsKey("Content-Type")) {
             String str3 = (String) zCacheResourceResponse.headers.get("Content-Type");
             str = (str3 == null || !str3.contains("text/html")) ? str3 : "text/html";
-            TaoLog.m21e("ZCache", "mimeType= " + str);
+            TaoLog.e("ZCache", "mimeType= " + str);
         } else {
             str = null;
         }
-        TaoLog.m24i("ZCache", "H5 use ZCache 3.0, url=[" + wVEventContext.url + "] with response:[" + zCacheResourceResponse.isSuccess + "]");
+        TaoLog.i("ZCache", "H5 use ZCache 3.0, url=[" + wVEventContext.url + "] with response:[" + zCacheResourceResponse.isSuccess + "]");
         if (str == null) {
             str = zCacheResourceResponse.mimeType;
         }

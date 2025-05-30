@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.lifecycle.LiveDataScopeImpl$emitSource$2", f = "CoroutineLiveData.kt", i = {}, l = {94}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class LiveDataScopeImpl$emitSource$2 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super DisposableHandle>, Object> {
     final /* synthetic */ LiveData<T> $source;
     int label;
@@ -44,9 +44,9 @@ final class LiveDataScopeImpl$emitSource$2 extends SuspendLambda implements Func
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
             CoroutineLiveData target$lifecycle_livedata_ktx_release = this.this$0.getTarget$lifecycle_livedata_ktx_release();
-            Object obj2 = this.$source;
+            LiveData<T> liveData = this.$source;
             this.label = 1;
-            obj = target$lifecycle_livedata_ktx_release.emitSource$lifecycle_livedata_ktx_release(obj2, this);
+            obj = target$lifecycle_livedata_ktx_release.emitSource$lifecycle_livedata_ktx_release(liveData, this);
             if (obj == coroutine_suspended) {
                 return coroutine_suspended;
             }

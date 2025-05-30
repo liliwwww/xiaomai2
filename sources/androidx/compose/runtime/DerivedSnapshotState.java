@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.k65;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class DerivedSnapshotState<T> implements StateObject, DerivedState<T> {
 
     @NotNull
@@ -243,8 +243,8 @@ final class DerivedSnapshotState<T> implements StateObject, DerivedState<T> {
         }
         snapshotThreadLocal = SnapshotStateKt__DerivedStateKt.calculationBlockNestedLevel;
         Integer num2 = (Integer) snapshotThreadLocal.get();
-        final int intValue3 = num2 != null ? num2.intValue() : 0;
-        final IdentityArrayMap<StateObject, Integer> identityArrayMap = new IdentityArrayMap<>(0, 1, null);
+        int intValue3 = num2 != null ? num2.intValue() : 0;
+        IdentityArrayMap<StateObject, Integer> identityArrayMap = new IdentityArrayMap<>(0, 1, null);
         MutableVector mutableVector2 = (MutableVector) SnapshotStateKt__DerivedStateKt.derivedStateObservers.get();
         if (mutableVector2 == null) {
             mutableVector2 = new MutableVector(new Pair[0], 0);
@@ -261,39 +261,7 @@ final class DerivedSnapshotState<T> implements StateObject, DerivedState<T> {
         try {
             snapshotThreadLocal2 = SnapshotStateKt__DerivedStateKt.calculationBlockNestedLevel;
             snapshotThreadLocal2.set(Integer.valueOf(intValue3 + 1));
-            Object observe = Snapshot.Companion.observe(new Function1<Object, Unit>(this) { // from class: androidx.compose.runtime.DerivedSnapshotState$currentRecord$result$1$result$1
-                final /* synthetic */ DerivedSnapshotState<T> this$0;
-
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(1);
-                    this.this$0 = this;
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    m2391invoke(obj2);
-                    return Unit.INSTANCE;
-                }
-
-                /* renamed from: invoke, reason: collision with other method in class */
-                public final void m2391invoke(@NotNull Object obj2) {
-                    SnapshotThreadLocal snapshotThreadLocal7;
-                    Intrinsics.checkNotNullParameter(obj2, "it");
-                    if (obj2 == this.this$0) {
-                        throw new IllegalStateException("A derived state calculation cannot read itself".toString());
-                    }
-                    if (obj2 instanceof StateObject) {
-                        snapshotThreadLocal7 = SnapshotStateKt__DerivedStateKt.calculationBlockNestedLevel;
-                        Object obj3 = snapshotThreadLocal7.get();
-                        Intrinsics.checkNotNull(obj3);
-                        int intValue4 = ((Number) obj3).intValue();
-                        IdentityArrayMap<StateObject, Integer> identityArrayMap2 = identityArrayMap;
-                        int i6 = intValue4 - intValue3;
-                        Integer num3 = identityArrayMap2.get(obj2);
-                        identityArrayMap2.set(obj2, Integer.valueOf(Math.min(i6, num3 != null ? num3.intValue() : Integer.MAX_VALUE)));
-                    }
-                }
-            }, null, function0);
+            Object observe = Snapshot.Companion.observe(new currentRecord.result.1.result.1(this, identityArrayMap, intValue3), (Function1) null, function0);
             snapshotThreadLocal3 = SnapshotStateKt__DerivedStateKt.calculationBlockNestedLevel;
             snapshotThreadLocal3.set(Integer.valueOf(intValue3));
             int size4 = mutableVector2.getSize();
@@ -353,7 +321,6 @@ final class DerivedSnapshotState<T> implements StateObject, DerivedState<T> {
         return currentRecord((ResultRecord) SnapshotKt.current(this.first, snapshot), snapshot, false, this.calculation);
     }
 
-    @Override // androidx.compose.runtime.DerivedState
     public T getCurrentValue() {
         return (T) currentRecord((ResultRecord) SnapshotKt.current(this.first), Snapshot.Companion.getCurrent(), false, this.calculation).getResult();
     }
@@ -368,7 +335,6 @@ final class DerivedSnapshotState<T> implements StateObject, DerivedState<T> {
         return null;
     }
 
-    @Override // androidx.compose.runtime.DerivedState
     @NotNull
     public Object[] getDependencies() {
         Object[] keys$runtime_release;
@@ -376,19 +342,16 @@ final class DerivedSnapshotState<T> implements StateObject, DerivedState<T> {
         return (dependencies == null || (keys$runtime_release = dependencies.getKeys$runtime_release()) == null) ? new Object[0] : keys$runtime_release;
     }
 
-    @Override // androidx.compose.runtime.snapshots.StateObject
     @NotNull
     public StateRecord getFirstStateRecord() {
         return this.first;
     }
 
-    @Override // androidx.compose.runtime.DerivedState
     @Nullable
     public SnapshotMutationPolicy<T> getPolicy() {
         return this.policy;
     }
 
-    @Override // androidx.compose.runtime.State
     public T getValue() {
         Snapshot.Companion companion = Snapshot.Companion;
         Function1<Object, Unit> readObserver$runtime_release = companion.getCurrent().getReadObserver$runtime_release();
@@ -398,12 +361,10 @@ final class DerivedSnapshotState<T> implements StateObject, DerivedState<T> {
         return (T) currentRecord((ResultRecord) SnapshotKt.current(this.first), companion.getCurrent(), true, this.calculation).getResult();
     }
 
-    @Override // androidx.compose.runtime.snapshots.StateObject
     public /* synthetic */ StateRecord mergeRecords(StateRecord stateRecord, StateRecord stateRecord2, StateRecord stateRecord3) {
         return k65.a(this, stateRecord, stateRecord2, stateRecord3);
     }
 
-    @Override // androidx.compose.runtime.snapshots.StateObject
     public void prependStateRecord(@NotNull StateRecord stateRecord) {
         Intrinsics.checkNotNullParameter(stateRecord, "value");
         this.first = (ResultRecord) stateRecord;

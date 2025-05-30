@@ -1,11 +1,13 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.modifier.ModifierLocalKt;
-import androidx.compose.p004ui.modifier.ProvidableModifierLocal;
-import androidx.compose.p004ui.platform.InspectableValueKt;
-import androidx.compose.p004ui.platform.InspectorInfo;
+import androidx.compose.foundation.layout.WindowInsetsPaddingKt$consumeWindowInsets$;
+import androidx.compose.foundation.layout.WindowInsetsPaddingKt$windowInsetsPadding$;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.modifier.ModifierLocalKt;
+import androidx.compose.ui.modifier.ProvidableModifierLocal;
+import androidx.compose.ui.platform.InspectableValueKt;
+import androidx.compose.ui.platform.InspectorInfo;
 import kotlin.Deprecated;
 import kotlin.ReplaceWith;
 import kotlin.Unit;
@@ -15,39 +17,24 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class WindowInsetsPaddingKt {
 
     @NotNull
     private static final ProvidableModifierLocal<WindowInsets> ModifierLocalConsumedWindowInsets = ModifierLocalKt.modifierLocalOf(new Function0<WindowInsets>() { // from class: androidx.compose.foundation.layout.WindowInsetsPaddingKt$ModifierLocalConsumedWindowInsets$1
         @NotNull
         /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-        public final WindowInsets m1458invoke() {
+        public final WindowInsets m242invoke() {
             return WindowInsetsKt.WindowInsets(0, 0, 0, 0);
         }
     });
 
     @Stable
     @NotNull
-    public static final Modifier consumeWindowInsets(@NotNull Modifier modifier, @NotNull final WindowInsets windowInsets) {
+    public static final Modifier consumeWindowInsets(@NotNull Modifier modifier, @NotNull WindowInsets windowInsets) {
         Intrinsics.checkNotNullParameter(modifier, "<this>");
         Intrinsics.checkNotNullParameter(windowInsets, "insets");
-        return modifier.then(new UnionInsetsConsumingModifier(windowInsets, InspectableValueKt.isDebugInspectorInfoEnabled() ? new Function1<InspectorInfo, Unit>() { // from class: androidx.compose.foundation.layout.WindowInsetsPaddingKt$consumeWindowInsets$$inlined$debugInspectorInfo$1
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((InspectorInfo) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull InspectorInfo inspectorInfo) {
-                Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
-                inspectorInfo.setName("consumeWindowInsets");
-                inspectorInfo.getProperties().set("insets", WindowInsets.this);
-            }
-        } : InspectableValueKt.getNoInspectorInfo()));
+        return modifier.then(new UnionInsetsConsumingModifier(windowInsets, InspectableValueKt.isDebugInspectorInfoEnabled() ? new WindowInsetsPaddingKt$consumeWindowInsets$.inlined.debugInspectorInfo.1(windowInsets) : InspectableValueKt.getNoInspectorInfo()));
     }
 
     @ExperimentalLayoutApi
@@ -91,25 +78,10 @@ public final class WindowInsetsPaddingKt {
 
     @Stable
     @NotNull
-    public static final Modifier windowInsetsPadding(@NotNull Modifier modifier, @NotNull final WindowInsets windowInsets) {
+    public static final Modifier windowInsetsPadding(@NotNull Modifier modifier, @NotNull WindowInsets windowInsets) {
         Intrinsics.checkNotNullParameter(modifier, "<this>");
         Intrinsics.checkNotNullParameter(windowInsets, "insets");
-        return modifier.then(new InsetsPaddingModifier(windowInsets, InspectableValueKt.isDebugInspectorInfoEnabled() ? new Function1<InspectorInfo, Unit>() { // from class: androidx.compose.foundation.layout.WindowInsetsPaddingKt$windowInsetsPadding$$inlined$debugInspectorInfo$1
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((InspectorInfo) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull InspectorInfo inspectorInfo) {
-                Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
-                inspectorInfo.setName("windowInsetsPadding");
-                inspectorInfo.getProperties().set("insets", WindowInsets.this);
-            }
-        } : InspectableValueKt.getNoInspectorInfo()));
+        return modifier.then(new InsetsPaddingModifier(windowInsets, InspectableValueKt.isDebugInspectorInfoEnabled() ? new WindowInsetsPaddingKt$windowInsetsPadding$.inlined.debugInspectorInfo.1(windowInsets) : InspectableValueKt.getNoInspectorInfo()));
     }
 
     @ExperimentalLayoutApi
@@ -135,24 +107,9 @@ public final class WindowInsetsPaddingKt {
     @Stable
     @ExperimentalLayoutApi
     @NotNull
-    public static final Modifier consumeWindowInsets(@NotNull Modifier modifier, @NotNull final PaddingValues paddingValues) {
+    public static final Modifier consumeWindowInsets(@NotNull Modifier modifier, @NotNull PaddingValues paddingValues) {
         Intrinsics.checkNotNullParameter(modifier, "<this>");
         Intrinsics.checkNotNullParameter(paddingValues, "paddingValues");
-        return modifier.then(new PaddingValuesConsumingModifier(paddingValues, InspectableValueKt.isDebugInspectorInfoEnabled() ? new Function1<InspectorInfo, Unit>() { // from class: androidx.compose.foundation.layout.WindowInsetsPaddingKt$consumeWindowInsets$$inlined$debugInspectorInfo$2
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((InspectorInfo) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull InspectorInfo inspectorInfo) {
-                Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
-                inspectorInfo.setName("consumeWindowInsets");
-                inspectorInfo.getProperties().set("paddingValues", PaddingValues.this);
-            }
-        } : InspectableValueKt.getNoInspectorInfo()));
+        return modifier.then(new PaddingValuesConsumingModifier(paddingValues, InspectableValueKt.isDebugInspectorInfoEnabled() ? new WindowInsetsPaddingKt$consumeWindowInsets$.inlined.debugInspectorInfo.2(paddingValues) : InspectableValueKt.getNoInspectorInfo()));
     }
 }

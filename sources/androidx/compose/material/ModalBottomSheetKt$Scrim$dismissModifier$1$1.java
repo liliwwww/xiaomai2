@@ -1,8 +1,8 @@
 package androidx.compose.material;
 
 import androidx.compose.foundation.gestures.TapGestureDetectorKt;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.input.pointer.PointerInputScope;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.ModalBottomSheetKt$Scrim$dismissModifier$1$1", f = "ModalBottomSheet.kt", i = {}, l = {443}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class ModalBottomSheetKt$Scrim$dismissModifier$1$1 extends SuspendLambda implements Function2<PointerInputScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ Function0<Unit> $onDismiss;
     private /* synthetic */ Object L$0;
@@ -56,12 +56,12 @@ final class ModalBottomSheetKt$Scrim$dismissModifier$1$1 extends SuspendLambda i
                 }
 
                 public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    m2156invokek4lQ0M(((Offset) obj2).m2566unboximpl());
+                    m778invokek4lQ0M(((Offset) obj2).unbox-impl());
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke-k-4lQ0M, reason: not valid java name */
-                public final void m2156invokek4lQ0M(long j) {
+                public final void m778invokek4lQ0M(long j) {
                     function0.invoke();
                 }
             };

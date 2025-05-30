@@ -9,10 +9,10 @@ import androidx.compose.foundation.ExperimentalFoundationApi;
 import androidx.compose.foundation.gestures.FlingBehavior;
 import androidx.compose.foundation.gestures.ScrollScope;
 import androidx.compose.foundation.gestures.ScrollableKt;
-import androidx.compose.p004ui.MotionDurationScale;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Density;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.MotionDurationScale;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function1;
@@ -25,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
 @ExperimentalFoundationApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SnapFlingBehavior implements FlingBehavior {
     public static final int $stable = 0;
 
@@ -56,7 +56,7 @@ public final class SnapFlingBehavior implements FlingBehavior {
         this.snapAnimationSpec = animationSpec2;
         this.density = density;
         this.shortSnapVelocityThreshold = f;
-        this.velocityThreshold = density.mo1283toPx0680j_4(f);
+        this.velocityThreshold = density.mo321toPx0680j_4(f);
         this.motionScaleDuration = ScrollableKt.getDefaultScrollMotionDurationScale();
     }
 
@@ -69,7 +69,7 @@ public final class SnapFlingBehavior implements FlingBehavior {
     /* JADX WARN: Removed duplicated region for block: B:8:0x0023  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object fling(androidx.compose.foundation.gestures.ScrollScope r11, float r12, kotlin.jvm.functions.Function1<? super java.lang.Float, kotlin.Unit> r13, kotlin.coroutines.Continuation<? super androidx.compose.foundation.gestures.snapping.AnimationResult<java.lang.Float, androidx.compose.animation.core.AnimationVector1D>> r14) {
         /*
@@ -143,12 +143,12 @@ public final class SnapFlingBehavior implements FlingBehavior {
     /* JADX WARN: Removed duplicated region for block: B:8:0x002b  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object longSnap(androidx.compose.foundation.gestures.ScrollScope r26, float r27, final kotlin.jvm.functions.Function1<? super java.lang.Float, kotlin.Unit> r28, kotlin.coroutines.Continuation<? super androidx.compose.foundation.gestures.snapping.AnimationResult<java.lang.Float, androidx.compose.animation.core.AnimationVector1D>> r29) {
         /*
             Method dump skipped, instructions count: 216
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.snapping.SnapFlingBehavior.longSnap(androidx.compose.foundation.gestures.ScrollScope, float, kotlin.jvm.functions.Function1, kotlin.coroutines.Continuation):java.lang.Object");
     }
@@ -193,7 +193,7 @@ public final class SnapFlingBehavior implements FlingBehavior {
             return false;
         }
         SnapFlingBehavior snapFlingBehavior = (SnapFlingBehavior) obj;
-        return Intrinsics.areEqual(snapFlingBehavior.snapAnimationSpec, this.snapAnimationSpec) && Intrinsics.areEqual(snapFlingBehavior.highVelocityAnimationSpec, this.highVelocityAnimationSpec) && Intrinsics.areEqual(snapFlingBehavior.lowVelocityAnimationSpec, this.lowVelocityAnimationSpec) && Intrinsics.areEqual(snapFlingBehavior.snapLayoutInfoProvider, this.snapLayoutInfoProvider) && Intrinsics.areEqual(snapFlingBehavior.density, this.density) && C0856Dp.m5221equalsimpl0(snapFlingBehavior.shortSnapVelocityThreshold, this.shortSnapVelocityThreshold);
+        return Intrinsics.areEqual(snapFlingBehavior.snapAnimationSpec, this.snapAnimationSpec) && Intrinsics.areEqual(snapFlingBehavior.highVelocityAnimationSpec, this.highVelocityAnimationSpec) && Intrinsics.areEqual(snapFlingBehavior.lowVelocityAnimationSpec, this.lowVelocityAnimationSpec) && Intrinsics.areEqual(snapFlingBehavior.snapLayoutInfoProvider, this.snapLayoutInfoProvider) && Intrinsics.areEqual(snapFlingBehavior.density, this.density) && Dp.m2147equalsimpl0(snapFlingBehavior.shortSnapVelocityThreshold, this.shortSnapVelocityThreshold);
     }
 
     @NotNull
@@ -202,21 +202,13 @@ public final class SnapFlingBehavior implements FlingBehavior {
     }
 
     public int hashCode() {
-        return ((((((((((0 + this.snapAnimationSpec.hashCode()) * 31) + this.highVelocityAnimationSpec.hashCode()) * 31) + this.lowVelocityAnimationSpec.hashCode()) * 31) + this.snapLayoutInfoProvider.hashCode()) * 31) + this.density.hashCode()) * 31) + C0856Dp.m5222hashCodeimpl(this.shortSnapVelocityThreshold);
+        return ((((((((((0 + this.snapAnimationSpec.hashCode()) * 31) + this.highVelocityAnimationSpec.hashCode()) * 31) + this.lowVelocityAnimationSpec.hashCode()) * 31) + this.snapLayoutInfoProvider.hashCode()) * 31) + this.density.hashCode()) * 31) + Dp.m2148hashCodeimpl(this.shortSnapVelocityThreshold);
     }
 
     @Override // androidx.compose.foundation.gestures.FlingBehavior
     @Nullable
     public Object performFling(@NotNull ScrollScope scrollScope, float f, @NotNull Continuation<? super Float> continuation) {
-        return performFling(scrollScope, f, new Function1<Float, Unit>() { // from class: androidx.compose.foundation.gestures.snapping.SnapFlingBehavior$performFling$2
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke(((Number) obj).floatValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(float f2) {
-            }
-        }, continuation);
+        return performFling(scrollScope, f, performFling.2.INSTANCE, continuation);
     }
 
     public final void setMotionScaleDuration$foundation_release(@NotNull MotionDurationScale motionDurationScale) {
@@ -231,15 +223,15 @@ public final class SnapFlingBehavior implements FlingBehavior {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object performFling(@org.jetbrains.annotations.NotNull androidx.compose.foundation.gestures.ScrollScope r11, float r12, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super java.lang.Float, kotlin.Unit> r13, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super java.lang.Float> r14) {
         /*
             r10 = this;
-            boolean r0 = r14 instanceof androidx.compose.foundation.gestures.snapping.SnapFlingBehavior$performFling$3
+            boolean r0 = r14 instanceof androidx.compose.foundation.gestures.snapping.SnapFlingBehavior.performFling.3
             if (r0 == 0) goto L13
             r0 = r14
-            androidx.compose.foundation.gestures.snapping.SnapFlingBehavior$performFling$3 r0 = (androidx.compose.foundation.gestures.snapping.SnapFlingBehavior$performFling$3) r0
+            androidx.compose.foundation.gestures.snapping.SnapFlingBehavior$performFling$3 r0 = (androidx.compose.foundation.gestures.snapping.SnapFlingBehavior.performFling.3) r0
             int r1 = r0.label
             r2 = -2147483648(0xffffffff80000000, float:-0.0)
             r3 = r1 & r2

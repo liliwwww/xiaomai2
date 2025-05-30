@@ -8,15 +8,15 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class HandlerKt {
     @NotNull
     public static final Runnable postAtTime(@NotNull Handler handler, long j, @Nullable Object obj, @NotNull Function0<Unit> function0) {
         Intrinsics.checkNotNullParameter(handler, "<this>");
         Intrinsics.checkNotNullParameter(function0, "action");
-        HandlerKt$postAtTime$runnable$1 handlerKt$postAtTime$runnable$1 = new HandlerKt$postAtTime$runnable$1(function0);
-        handler.postAtTime(handlerKt$postAtTime$runnable$1, obj, j);
-        return handlerKt$postAtTime$runnable$1;
+        postAtTime.runnable.1 r0 = new postAtTime.runnable.1(function0);
+        handler.postAtTime(r0, obj, j);
+        return r0;
     }
 
     public static /* synthetic */ Runnable postAtTime$default(Handler handler, long j, Object obj, Function0 function0, int i, Object obj2) {
@@ -25,9 +25,9 @@ public final class HandlerKt {
         }
         Intrinsics.checkNotNullParameter(handler, "<this>");
         Intrinsics.checkNotNullParameter(function0, "action");
-        HandlerKt$postAtTime$runnable$1 handlerKt$postAtTime$runnable$1 = new HandlerKt$postAtTime$runnable$1(function0);
-        handler.postAtTime(handlerKt$postAtTime$runnable$1, obj, j);
-        return handlerKt$postAtTime$runnable$1;
+        postAtTime.runnable.1 r5 = new postAtTime.runnable.1(function0);
+        handler.postAtTime(r5, obj, j);
+        return r5;
     }
 
     @NotNull

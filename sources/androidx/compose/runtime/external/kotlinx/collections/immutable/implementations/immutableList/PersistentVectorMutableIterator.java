@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* JADX WARN: Unexpected interfaces in signature: [kotlin.jvm.internal.markers.KMutableListIterator] */
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PersistentVectorMutableIterator<T> extends AbstractListIterator<T> implements ListIterator<T> {
 
     @NotNull
@@ -67,7 +67,7 @@ public final class PersistentVectorMutableIterator<T> extends AbstractListIterat
         }
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableList.AbstractListIterator, java.util.ListIterator
+    @Override // java.util.ListIterator
     public void add(T t) {
         checkForComodification();
         this.builder.add(getIndex(), t);
@@ -75,7 +75,7 @@ public final class PersistentVectorMutableIterator<T> extends AbstractListIterat
         reset();
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableList.AbstractListIterator, java.util.ListIterator, java.util.Iterator
+    @Override // java.util.ListIterator, java.util.Iterator
     public T next() {
         checkForComodification();
         checkHasNext$runtime_release();
@@ -89,7 +89,7 @@ public final class PersistentVectorMutableIterator<T> extends AbstractListIterat
         }
         if (trieIterator.hasNext()) {
             setIndex(getIndex() + 1);
-            return trieIterator.next();
+            return (T) trieIterator.next();
         }
         Object[] tail$runtime_release2 = this.builder.getTail$runtime_release();
         int index2 = getIndex();
@@ -110,14 +110,14 @@ public final class PersistentVectorMutableIterator<T> extends AbstractListIterat
         }
         if (getIndex() <= trieIterator.getSize()) {
             setIndex(getIndex() - 1);
-            return trieIterator.previous();
+            return (T) trieIterator.previous();
         }
         Object[] tail$runtime_release2 = this.builder.getTail$runtime_release();
         setIndex(getIndex() - 1);
         return (T) tail$runtime_release2[getIndex() - trieIterator.getSize()];
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableList.AbstractListIterator, java.util.ListIterator, java.util.Iterator
+    @Override // java.util.ListIterator, java.util.Iterator
     public void remove() {
         checkForComodification();
         checkHasIterated();
@@ -128,7 +128,7 @@ public final class PersistentVectorMutableIterator<T> extends AbstractListIterat
         reset();
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableList.AbstractListIterator, java.util.ListIterator
+    @Override // java.util.ListIterator
     public void set(T t) {
         checkForComodification();
         checkHasIterated();

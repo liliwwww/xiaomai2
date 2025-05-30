@@ -13,7 +13,7 @@ import com.alibaba.wireless.security.aopsdk.replace.android.telephony.TelephonyM
 import java.util.Random;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class PhoneInfo {
     public static final String IMEI = "imei";
     public static final String IMSI = "imsi";
@@ -48,15 +48,15 @@ public class PhoneInfo {
 
     public static String getImei(Context context) {
         try {
-            SharedPreferences sharedPreferences = context.getSharedPreferences("imei", 0);
-            String string = sharedPreferences.getString("imei", null);
+            SharedPreferences sharedPreferences = context.getSharedPreferences(IMEI, 0);
+            String string = sharedPreferences.getString(IMEI, null);
             if (string == null || string.length() == 0) {
                 string = generateImei().replaceAll(" ", "").trim();
                 while (string.length() < 15) {
                     string = "0" + string;
                 }
                 SharedPreferences.Editor edit = sharedPreferences.edit();
-                edit.putString("imei", string);
+                edit.putString(IMEI, string);
                 edit.commit();
             }
             return string.trim();
@@ -66,22 +66,22 @@ public class PhoneInfo {
     }
 
     public static String getImsi(Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("imei", 0);
-        String string = sharedPreferences.getString("imsi", null);
+        SharedPreferences sharedPreferences = context.getSharedPreferences(IMEI, 0);
+        String string = sharedPreferences.getString(IMSI, null);
         if (string == null || string.length() == 0) {
             string = generateImei().replaceAll(" ", "").trim();
             while (string.length() < 15) {
                 string = "0" + string;
             }
             SharedPreferences.Editor edit = sharedPreferences.edit();
-            edit.putString("imsi", string);
+            edit.putString(IMSI, string);
             edit.commit();
         }
         return string;
     }
 
     public static String getLocalMacAddress(Context context) {
-        String macAddress = WifiInfo.getMacAddress(((WifiManager) context.getSystemService(NetWork.CONN_TYPE_WIFI)).getConnectionInfo());
+        String macAddress = WifiInfo.getMacAddress(((WifiManager) context.getSystemService("wifi")).getConnectionInfo());
         if (macAddress == null || "".equals(macAddress)) {
             return context.getSharedPreferences(MACADDRESS, 0).getString(MACADDRESS, "");
         }

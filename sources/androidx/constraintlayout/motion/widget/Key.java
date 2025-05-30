@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class Key {
     public static final String ALPHA = "alpha";
     public static final String CURVEFIT = "curveFit";
@@ -51,7 +51,7 @@ public abstract class Key {
 
     @Override // 
     /* renamed from: clone, reason: merged with bridge method [inline-methods] */
-    public abstract Key mo5575clone();
+    public abstract Key mo2783clone();
 
     public Key copy(Key key) {
         this.mFramePosition = key.mFramePosition;

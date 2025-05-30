@@ -9,6 +9,6 @@ import kotlin.annotation.AnnotationRetention;
 @RequiresOptIn(level = RequiresOptIn.Level.ERROR, message = "This is internal API that may change frequently and without warning.")
 @Retention(RetentionPolicy.CLASS)
 @kotlin.annotation.Retention(AnnotationRetention.BINARY)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public @interface InternalComposeTracingApi {
 }

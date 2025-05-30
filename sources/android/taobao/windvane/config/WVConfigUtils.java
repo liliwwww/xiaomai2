@@ -1,6 +1,5 @@
 package android.taobao.windvane.config;
 
-import android.taobao.windvane.connect.api.ApiConstants;
 import android.taobao.windvane.connect.api.ApiResponse;
 import android.taobao.windvane.util.ConfigStorage;
 import android.text.TextUtils;
@@ -8,7 +7,7 @@ import android.webkit.CookieManager;
 import java.net.URLEncoder;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVConfigUtils {
     public static final String SPNAME = "WVConfigUtils";
     protected static final String TAG = "WVConfigUtils";
@@ -47,7 +46,7 @@ public class WVConfigUtils {
                 try {
                     String encode = URLEncoder.encode(GlobalConfig.getInstance().getAppVersion(), "utf-8");
                     appVersion = encode;
-                    encode.replace(ApiConstants.SPLIT_LINE, "%2D");
+                    encode.replace("-", "%2D");
                 } catch (Exception unused) {
                 }
             }
@@ -68,8 +67,8 @@ public class WVConfigUtils {
                 return null;
             }
             String valueOf = String.valueOf(charAt);
-            if (!valueOf.equals(ConfigStorage.getStringVal(WVConfigManager.SPNAME_CONFIG, "abt", ""))) {
-                ConfigStorage.putStringVal(WVConfigManager.SPNAME_CONFIG, "abt", valueOf);
+            if (!valueOf.equals(ConfigStorage.getStringVal("wv_main_config", "abt", ""))) {
+                ConfigStorage.putStringVal("wv_main_config", "abt", valueOf);
             }
             return valueOf;
         } catch (Exception unused) {
@@ -78,8 +77,8 @@ public class WVConfigUtils {
     }
 
     public static boolean isNeedUpdate(boolean z, String str, String str2) {
-        long currentTimeMillis = System.currentTimeMillis() - ConfigStorage.getLongVal(str, str2 + ConfigStorage.KEY_TIME);
-        return currentTimeMillis > (z ? ConfigStorage.DEFAULT_SMALL_MAX_AGE : ConfigStorage.DEFAULT_MAX_AGE) || currentTimeMillis < 0;
+        long currentTimeMillis = System.currentTimeMillis() - ConfigStorage.getLongVal(str, str2 + "wv-time");
+        return currentTimeMillis > (z ? 1800000L : 21600000L) || currentTimeMillis < 0;
     }
 
     protected boolean needSaveConfig(String str) {
@@ -100,7 +99,7 @@ public class WVConfigUtils {
             valueOf = Long.valueOf(Long.parseLong(str));
             str3 = null;
         }
-        String[] split2 = ConfigStorage.getStringVal(WVConfigManager.SPNAME_CONFIG, str2, "0").split("\\.");
+        String[] split2 = ConfigStorage.getStringVal("wv_main_config", str2, "0").split("\\.");
         if (valueOf.longValue() <= Long.parseLong(split2[0])) {
             if (valueOf.longValue() != Long.parseLong(split2[0])) {
                 return false;

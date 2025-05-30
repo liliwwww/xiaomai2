@@ -1,12 +1,11 @@
 package androidx.compose.animation.core;
 
-import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.FloatCompanionObject;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AnimationKt {
     public static final long MillisToNanos = 1000000;
 
@@ -36,21 +35,7 @@ public final class AnimationKt {
         Intrinsics.checkNotNullParameter(v, "initialValue");
         Intrinsics.checkNotNullParameter(v2, "targetValue");
         Intrinsics.checkNotNullParameter(v3, "initialVelocity");
-        return new TargetBasedAnimation<>(vectorizedAnimationSpec, (TwoWayConverter<V, V>) VectorConvertersKt.TwoWayConverter(new Function1<V, V>() { // from class: androidx.compose.animation.core.AnimationKt$createAnimation$1
-            /* JADX WARN: Incorrect return type in method signature: (TV;)TV; */
-            @NotNull
-            public final AnimationVector invoke(@NotNull AnimationVector animationVector) {
-                Intrinsics.checkNotNullParameter(animationVector, "it");
-                return animationVector;
-            }
-        }, new Function1<V, V>() { // from class: androidx.compose.animation.core.AnimationKt$createAnimation$2
-            /* JADX WARN: Incorrect return type in method signature: (TV;)TV; */
-            @NotNull
-            public final AnimationVector invoke(@NotNull AnimationVector animationVector) {
-                Intrinsics.checkNotNullParameter(animationVector, "it");
-                return animationVector;
-            }
-        }), v, v2, v3);
+        return new TargetBasedAnimation<>(vectorizedAnimationSpec, (TwoWayConverter<V, V>) VectorConvertersKt.TwoWayConverter(createAnimation.1.INSTANCE, createAnimation.2.INSTANCE), v, v2, v3);
     }
 
     public static final long getDurationMillis(@NotNull Animation<?, ?> animation) {

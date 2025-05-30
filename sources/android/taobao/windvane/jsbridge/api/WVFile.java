@@ -1,8 +1,7 @@
 package android.taobao.windvane.jsbridge.api;
 
 import android.taobao.windvane.cache.WVCacheManager;
-import android.taobao.windvane.connect.api.ApiConstants;
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
+import android.taobao.windvane.extra.uc.preRender.BasePreInitManager;
 import android.taobao.windvane.jsbridge.WVApiPlugin;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.taobao.windvane.jsbridge.WVResult;
@@ -16,7 +15,7 @@ import java.io.IOException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVFile extends WVApiPlugin {
     public static final long FILE_MAX_SIZE = 5242880;
 
@@ -24,7 +23,6 @@ public class WVFile extends WVApiPlugin {
         return (z ? j + ((long) str.length()) : (long) str.length()) <= FILE_MAX_SIZE;
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if ("read".equals(str)) {
             read(str2, wVCallBackContext);
@@ -68,7 +66,7 @@ public class WVFile extends WVApiPlugin {
         if (BasePreInitManager.PRE_RENDER_URL_ADDITION_VALUE.equalsIgnoreCase(str4)) {
             str3 = (cacheDir + File.separator) + "wvShareFiles";
         } else {
-            String host = WVUtils.getHost(this.mWebView.getUrl());
+            String host = WVUtils.getHost(((WVApiPlugin) this).mWebView.getUrl());
             str3 = (cacheDir + File.separator) + host;
         }
         try {
@@ -78,7 +76,7 @@ public class WVFile extends WVApiPlugin {
             String str5 = new String(bArr, "UTF-8");
             fileInputStream.close();
             WVResult wVResult2 = new WVResult();
-            wVResult2.addData(ApiConstants.DATA, str5);
+            wVResult2.addData("data", str5);
             wVCallBackContext.success(wVResult2);
         } catch (FileNotFoundException unused2) {
             WVResult wVResult3 = new WVResult();
@@ -106,7 +104,7 @@ public class WVFile extends WVApiPlugin {
             try {
                 JSONObject jSONObject = new JSONObject(str);
                 String optString2 = jSONObject.optString("mode", "write");
-                String optString3 = jSONObject.optString(ApiConstants.DATA);
+                String optString3 = jSONObject.optString("data");
                 optString = jSONObject.optString("fileName");
                 String optString4 = jSONObject.optString("share", "false");
                 if (optString2 == null || optString == null || optString.contains(File.separator)) {
@@ -132,7 +130,7 @@ public class WVFile extends WVApiPlugin {
         if (BasePreInitManager.PRE_RENDER_URL_ADDITION_VALUE.equalsIgnoreCase(str5)) {
             str4 = (cacheDir + File.separator) + "wvShareFiles";
         } else {
-            String host = WVUtils.getHost(this.mWebView.getUrl());
+            String host = WVUtils.getHost(((WVApiPlugin) this).mWebView.getUrl());
             str4 = (cacheDir + File.separator) + host;
         }
         File file = new File(str4);

@@ -10,6 +10,7 @@ import android.view.Window;
 import androidx.annotation.CallSuper;
 import androidx.annotation.StyleRes;
 import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.Lifecycle$Event;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LifecycleRegistry;
 import androidx.lifecycle.ViewTreeLifecycleOwner;
@@ -21,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.x40;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ComponentDialog extends Dialog implements OnBackPressedDispatcherOwner, LifecycleOwner {
 
     @Nullable
@@ -67,7 +68,7 @@ public class ComponentDialog extends Dialog implements OnBackPressedDispatcherOw
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: onBackPressedDispatcher$lambda-1, reason: not valid java name */
-    public static final void m924onBackPressedDispatcher$lambda1(ComponentDialog componentDialog) {
+    public static final void m4onBackPressedDispatcher$lambda1(ComponentDialog componentDialog) {
         Intrinsics.checkNotNullParameter(componentDialog, "this$0");
         super.onBackPressed();
     }
@@ -79,13 +80,11 @@ public class ComponentDialog extends Dialog implements OnBackPressedDispatcherOw
         super.addContentView(view, layoutParams);
     }
 
-    @Override // androidx.lifecycle.LifecycleOwner
     @NotNull
     public final Lifecycle getLifecycle() {
         return getLifecycleRegistry();
     }
 
-    @Override // androidx.activity.OnBackPressedDispatcherOwner
     @NotNull
     public final OnBackPressedDispatcher getOnBackPressedDispatcher() {
         return this.onBackPressedDispatcher;
@@ -104,20 +103,20 @@ public class ComponentDialog extends Dialog implements OnBackPressedDispatcherOw
         if (Build.VERSION.SDK_INT >= 33) {
             this.onBackPressedDispatcher.setOnBackInvokedDispatcher(getOnBackInvokedDispatcher());
         }
-        getLifecycleRegistry().handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+        getLifecycleRegistry().handleLifecycleEvent(Lifecycle$Event.ON_CREATE);
     }
 
     @Override // android.app.Dialog
     @CallSuper
     protected void onStart() {
         super.onStart();
-        getLifecycleRegistry().handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+        getLifecycleRegistry().handleLifecycleEvent(Lifecycle$Event.ON_RESUME);
     }
 
     @Override // android.app.Dialog
     @CallSuper
     protected void onStop() {
-        getLifecycleRegistry().handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
+        getLifecycleRegistry().handleLifecycleEvent(Lifecycle$Event.ON_DESTROY);
         this._lifecycleRegistry = null;
         super.onStop();
     }

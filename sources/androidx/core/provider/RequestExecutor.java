@@ -1,8 +1,7 @@
 package androidx.core.provider;
 
 import android.os.Handler;
-import android.os.Process;
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
+import android.taobao.windvane.extra.uc.preRender.BasePreInitManager;
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.core.util.Consumer;
@@ -19,30 +18,13 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class RequestExecutor {
 
     /* compiled from: Taobao */
     private static class DefaultThreadFactory implements ThreadFactory {
         private int mPriority;
         private String mThreadName;
-
-        /* compiled from: Taobao */
-        /* loaded from: classes2.dex */
-        private static class ProcessPriorityThread extends Thread {
-            private final int mPriority;
-
-            ProcessPriorityThread(Runnable runnable, String str, int i) {
-                super(runnable, str);
-                this.mPriority = i;
-            }
-
-            @Override // java.lang.Thread, java.lang.Runnable
-            public void run() {
-                Process.setThreadPriority(this.mPriority);
-                super.run();
-            }
-        }
 
         DefaultThreadFactory(@NonNull String str, int i) {
             this.mThreadName = str;
@@ -69,44 +51,6 @@ class RequestExecutor {
                 return;
             }
             throw new RejectedExecutionException(this.mHandler + " is shutting down");
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static class ReplyRunnable<T> implements Runnable {
-
-        @NonNull
-        private Callable<T> mCallable;
-
-        @NonNull
-        private Consumer<T> mConsumer;
-
-        @NonNull
-        private Handler mHandler;
-
-        ReplyRunnable(@NonNull Handler handler, @NonNull Callable<T> callable, @NonNull Consumer<T> consumer) {
-            this.mCallable = callable;
-            this.mConsumer = consumer;
-            this.mHandler = handler;
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            final T t;
-            try {
-                t = this.mCallable.call();
-            } catch (Exception unused) {
-                t = null;
-            }
-            final Consumer<T> consumer = this.mConsumer;
-            this.mHandler.post(new Runnable() { // from class: androidx.core.provider.RequestExecutor.ReplyRunnable.1
-                /* JADX WARN: Multi-variable type inference failed */
-                @Override // java.lang.Runnable
-                public void run() {
-                    consumer.accept(t);
-                }
-            });
         }
     }
 

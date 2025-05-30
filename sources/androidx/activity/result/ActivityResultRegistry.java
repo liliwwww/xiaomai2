@@ -14,12 +14,11 @@ import androidx.lifecycle.LifecycleEventObserver;
 import androidx.lifecycle.LifecycleOwner;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class ActivityResultRegistry {
     private static final int INITIAL_REQUEST_CODE_VALUE = 65536;
     private static final String KEY_COMPONENT_ACTIVITY_LAUNCHED_KEYS = "KEY_COMPONENT_ACTIVITY_LAUNCHED_KEYS";
@@ -45,30 +44,6 @@ public abstract class ActivityResultRegistry {
         CallbackAndContract(ActivityResultCallback<O> activityResultCallback, ActivityResultContract<?, O> activityResultContract) {
             this.mCallback = activityResultCallback;
             this.mContract = activityResultContract;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static class LifecycleContainer {
-        final Lifecycle mLifecycle;
-        private final ArrayList<LifecycleEventObserver> mObservers = new ArrayList<>();
-
-        LifecycleContainer(@NonNull Lifecycle lifecycle) {
-            this.mLifecycle = lifecycle;
-        }
-
-        void addObserver(@NonNull LifecycleEventObserver lifecycleEventObserver) {
-            this.mLifecycle.addObserver(lifecycleEventObserver);
-            this.mObservers.add(lifecycleEventObserver);
-        }
-
-        void clearObservers() {
-            Iterator<LifecycleEventObserver> it = this.mObservers.iterator();
-            while (it.hasNext()) {
-                this.mLifecycle.removeObserver(it.next());
-            }
-            this.mObservers.clear();
         }
     }
 
@@ -182,10 +157,10 @@ public abstract class ActivityResultRegistry {
                     ActivityResultRegistry.this.mParsedPendingResults.remove(str);
                     activityResultCallback.onActivityResult(obj);
                 }
-                ActivityResult activityResult = (ActivityResult) ActivityResultRegistry.this.mPendingResults.getParcelable(str);
-                if (activityResult != null) {
+                ActivityResult parcelable = ActivityResultRegistry.this.mPendingResults.getParcelable(str);
+                if (parcelable != null) {
                     ActivityResultRegistry.this.mPendingResults.remove(str);
-                    activityResultCallback.onActivityResult(activityResultContract.parseResult(activityResult.getResultCode(), activityResult.getData()));
+                    activityResultCallback.onActivityResult(activityResultContract.parseResult(parcelable.getResultCode(), parcelable.getData()));
                 }
             }
         });
@@ -262,7 +237,6 @@ public abstract class ActivityResultRegistry {
         return true;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @NonNull
     public final <I, O> ActivityResultLauncher<I> register(@NonNull final String str, @NonNull final ActivityResultContract<I, O> activityResultContract, @NonNull ActivityResultCallback<O> activityResultCallback) {
         registerKey(str);
@@ -272,10 +246,10 @@ public abstract class ActivityResultRegistry {
             this.mParsedPendingResults.remove(str);
             activityResultCallback.onActivityResult(obj);
         }
-        ActivityResult activityResult = (ActivityResult) this.mPendingResults.getParcelable(str);
-        if (activityResult != null) {
+        ActivityResult parcelable = this.mPendingResults.getParcelable(str);
+        if (parcelable != null) {
             this.mPendingResults.remove(str);
-            activityResultCallback.onActivityResult(activityResultContract.parseResult(activityResult.getResultCode(), activityResult.getData()));
+            activityResultCallback.onActivityResult(activityResultContract.parseResult(parcelable.getResultCode(), parcelable.getData()));
         }
         return new ActivityResultLauncher<I>() { // from class: androidx.activity.result.ActivityResultRegistry.3
             @Override // androidx.activity.result.ActivityResultLauncher

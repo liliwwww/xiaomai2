@@ -1,55 +1,28 @@
 package androidx.compose.foundation.text;
 
 import androidx.compose.foundation.gestures.Orientation;
-import androidx.compose.p004ui.geometry.Rect;
-import androidx.compose.p004ui.text.TextRange;
 import androidx.compose.runtime.MutableState;
+import androidx.compose.runtime.SnapshotMutationPolicy;
 import androidx.compose.runtime.SnapshotStateKt;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
 import androidx.compose.runtime.Stable;
 import androidx.compose.runtime.saveable.ListSaverKt;
 import androidx.compose.runtime.saveable.Saver;
-import androidx.compose.runtime.saveable.SaverScope;
-import java.util.List;
-import kotlin.collections.CollectionsKt;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.functions.Function2;
+import androidx.compose.ui.geometry.Rect;
+import androidx.compose.ui.text.TextRange;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TextFieldScrollerPosition {
 
     @NotNull
     public static final Companion Companion = new Companion(null);
 
     @NotNull
-    private static final Saver<TextFieldScrollerPosition, Object> Saver = ListSaverKt.listSaver(new Function2<SaverScope, TextFieldScrollerPosition, List<? extends Object>>() { // from class: androidx.compose.foundation.text.TextFieldScrollerPosition$Companion$Saver$1
-        @NotNull
-        public final List<Object> invoke(@NotNull SaverScope saverScope, @NotNull TextFieldScrollerPosition textFieldScrollerPosition) {
-            Intrinsics.checkNotNullParameter(saverScope, "$this$listSaver");
-            Intrinsics.checkNotNullParameter(textFieldScrollerPosition, "it");
-            Object[] objArr = new Object[2];
-            objArr[0] = Float.valueOf(textFieldScrollerPosition.getOffset());
-            objArr[1] = Boolean.valueOf(textFieldScrollerPosition.getOrientation() == Orientation.Vertical);
-            return CollectionsKt.listOf(objArr);
-        }
-    }, new Function1<List<? extends Object>, TextFieldScrollerPosition>() { // from class: androidx.compose.foundation.text.TextFieldScrollerPosition$Companion$Saver$2
-        @Nullable
-        public final TextFieldScrollerPosition invoke(@NotNull List<? extends Object> list) {
-            Intrinsics.checkNotNullParameter(list, "restored");
-            Object obj = list.get(1);
-            Intrinsics.checkNotNull(obj, "null cannot be cast to non-null type kotlin.Boolean");
-            Orientation orientation = ((Boolean) obj).booleanValue() ? Orientation.Vertical : Orientation.Horizontal;
-            Object obj2 = list.get(0);
-            Intrinsics.checkNotNull(obj2, "null cannot be cast to non-null type kotlin.Float");
-            return new TextFieldScrollerPosition(orientation, ((Float) obj2).floatValue());
-        }
-    });
+    private static final Saver<TextFieldScrollerPosition, Object> Saver = ListSaverKt.listSaver(Companion.Saver.1.INSTANCE, Companion.Saver.2.INSTANCE);
 
     @NotNull
     private final MutableState maximum$delegate;
@@ -81,10 +54,10 @@ public final class TextFieldScrollerPosition {
 
     public TextFieldScrollerPosition(@NotNull Orientation orientation, float f) {
         Intrinsics.checkNotNullParameter(orientation, "initialOrientation");
-        this.offset$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Float.valueOf(f), null, 2, null);
-        this.maximum$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Float.valueOf(0.0f), null, 2, null);
+        this.offset$delegate = SnapshotStateKt.mutableStateOf$default(Float.valueOf(f), (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.maximum$delegate = SnapshotStateKt.mutableStateOf$default(Float.valueOf(0.0f), (SnapshotMutationPolicy) null, 2, (Object) null);
         this.previousCursorRect = Rect.Companion.getZero();
-        this.previousSelection = TextRange.Companion.m4754getZerod9O1mEE();
+        this.previousSelection = TextRange.Companion.m1893getZerod9O1mEE();
         this.orientation$delegate = SnapshotStateKt.mutableStateOf(orientation, SnapshotStateKt.structuralEqualityPolicy());
     }
 
@@ -99,29 +72,26 @@ public final class TextFieldScrollerPosition {
         setOffset(getOffset() + ((f2 <= f4 && (f >= offset || f2 - f <= f3)) ? (f >= offset || f2 - f > f3) ? 0.0f : f - offset : f2 - f4));
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final float getMaximum() {
         return ((Number) this.maximum$delegate.getValue()).floatValue();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final float getOffset() {
         return ((Number) this.offset$delegate.getValue()).floatValue();
     }
 
     /* renamed from: getOffsetToFollow-5zc-tL8, reason: not valid java name */
-    public final int m1797getOffsetToFollow5zctL8(long j) {
-        return TextRange.m4749getStartimpl(j) != TextRange.m4749getStartimpl(this.previousSelection) ? TextRange.m4749getStartimpl(j) : TextRange.m4744getEndimpl(j) != TextRange.m4744getEndimpl(this.previousSelection) ? TextRange.m4744getEndimpl(j) : TextRange.m4747getMinimpl(j);
+    public final int m444getOffsetToFollow5zctL8(long j) {
+        return TextRange.getStart-impl(j) != TextRange.getStart-impl(this.previousSelection) ? TextRange.getStart-impl(j) : TextRange.getEnd-impl(j) != TextRange.getEnd-impl(this.previousSelection) ? TextRange.getEnd-impl(j) : TextRange.getMin-impl(j);
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @NotNull
     public final Orientation getOrientation() {
         return (Orientation) this.orientation$delegate.getValue();
     }
 
     /* renamed from: getPreviousSelection-d9O1mEE, reason: not valid java name */
-    public final long m1798getPreviousSelectiond9O1mEE() {
+    public final long m445getPreviousSelectiond9O1mEE() {
         return this.previousSelection;
     }
 
@@ -135,7 +105,7 @@ public final class TextFieldScrollerPosition {
     }
 
     /* renamed from: setPreviousSelection-5zc-tL8, reason: not valid java name */
-    public final void m1799setPreviousSelection5zctL8(long j) {
+    public final void m446setPreviousSelection5zctL8(long j) {
         this.previousSelection = j;
     }
 
@@ -145,9 +115,9 @@ public final class TextFieldScrollerPosition {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public final void update(@org.jetbrains.annotations.NotNull androidx.compose.foundation.gestures.Orientation r5, @org.jetbrains.annotations.NotNull androidx.compose.p004ui.geometry.Rect r6, int r7, int r8) {
+    public final void update(@org.jetbrains.annotations.NotNull androidx.compose.foundation.gestures.Orientation r5, @org.jetbrains.annotations.NotNull androidx.compose.ui.geometry.Rect r6, int r7, int r8) {
         /*
             r4 = this;
             java.lang.String r0 = "orientation"

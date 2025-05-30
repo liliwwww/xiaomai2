@@ -8,65 +8,39 @@ import android.taobao.windvane.runtimepermission.PermissionProposer;
 import android.taobao.windvane.util.ImageTool;
 import android.taobao.windvane.util.TaoLog;
 import android.text.TextUtils;
-import androidx.core.app.NotificationCompat;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVImage extends WVApiPlugin {
     private static final String TAG = "WVImage";
 
     /* JADX INFO: Access modifiers changed from: private */
-    public void saveImage(String str, final WVCallBackContext wVCallBackContext) {
+    public void saveImage(String str, WVCallBackContext wVCallBackContext) {
         try {
             String optString = new JSONObject(str).optString(HttpConnector.URL, "");
             if (TextUtils.isEmpty(optString)) {
                 return;
             }
-            ImageTool.saveImageToDCIM(this.mContext, optString, new ImageTool.ImageSaveCallback() { // from class: android.taobao.windvane.jsbridge.api.WVImage.3
-                @Override // android.taobao.windvane.util.ImageTool.ImageSaveCallback
-                public void error(String str2) {
-                    WVResult wVResult = new WVResult();
-                    wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, str2);
-                    wVCallBackContext.error(wVResult);
-                }
-
-                @Override // android.taobao.windvane.util.ImageTool.ImageSaveCallback
-                public void success() {
-                    wVCallBackContext.success();
-                }
-            });
+            ImageTool.saveImageToDCIM(this.mContext, optString, (ImageTool.ImageSaveCallback) new 3(this, wVCallBackContext));
         } catch (JSONException e) {
             WVResult wVResult = new WVResult();
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, e.getMessage());
+            wVResult.addData("msg", e.getMessage());
             wVCallBackContext.error(wVResult);
         }
     }
 
     @Override // android.taobao.windvane.jsbridge.WVApiPlugin
-    public boolean execute(String str, final String str2, final WVCallBackContext wVCallBackContext) {
+    public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if (!TextUtils.equals(str, "saveImage")) {
             return false;
         }
         try {
-            PermissionProposer.buildPermissionTask(this.mContext, new String[]{"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE"}).setTaskOnPermissionGranted(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVImage.2
-                @Override // java.lang.Runnable
-                public void run() {
-                    TaoLog.m18d("WVImage", "PERMISSION GRANTED");
-                    WVImage.this.saveImage(str2, wVCallBackContext);
-                }
-            }).setTaskOnPermissionDenied(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVImage.1
-                @Override // java.lang.Runnable
-                public void run() {
-                    WVResult wVResult = new WVResult();
-                    wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "NO_PERMISSION");
-                    wVCallBackContext.error(wVResult);
-                }
-            }).execute();
+            PermissionProposer.buildPermissionTask(this.mContext, new String[]{"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE"}).setTaskOnPermissionGranted(new 2(this, str2, wVCallBackContext)).setTaskOnPermissionDenied(new 1(this, wVCallBackContext)).execute();
             return true;
         } catch (Exception e) {
-            TaoLog.m18d("WVImage", "Run whith some exception!");
+            TaoLog.d(TAG, "Run whith some exception!");
             e.printStackTrace();
             return false;
         }

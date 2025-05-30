@@ -8,7 +8,7 @@ import java.util.List;
 
 /* compiled from: Taobao */
 @RequiresApi(22)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class PlaybackStateCompatApi22 {
     private PlaybackStateCompatApi22() {
     }

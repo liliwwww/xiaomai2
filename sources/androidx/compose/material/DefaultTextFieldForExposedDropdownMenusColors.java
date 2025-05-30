@@ -2,16 +2,16 @@ package androidx.compose.material;
 
 import androidx.compose.animation.SingleValueAnimationKt;
 import androidx.compose.animation.core.AnimationSpecKt;
+import androidx.compose.animation.core.Easing;
 import androidx.compose.foundation.interaction.FocusInteractionKt;
 import androidx.compose.foundation.interaction.InteractionSource;
-import androidx.compose.material.TextFieldColorsWithIcons;
-import androidx.compose.p004ui.graphics.Color;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.Immutable;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.graphics.Color;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Reflection;
@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldColorsWithIcons {
     private final long backgroundColor;
     private final long cursorColor;
@@ -75,21 +75,20 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
     }
 
     /* renamed from: indicatorColor$lambda-1, reason: not valid java name */
-    private static final boolean m2055indicatorColor$lambda1(State<Boolean> state) {
-        return state.getValue().booleanValue();
+    private static final boolean m574indicatorColor$lambda1(State<Boolean> state) {
+        return ((Boolean) state.getValue()).booleanValue();
     }
 
     /* renamed from: labelColor$lambda-2, reason: not valid java name */
-    private static final boolean m2056labelColor$lambda2(State<Boolean> state) {
-        return state.getValue().booleanValue();
+    private static final boolean m575labelColor$lambda2(State<Boolean> state) {
+        return ((Boolean) state.getValue()).booleanValue();
     }
 
     /* renamed from: trailingIconColor$lambda-0, reason: not valid java name */
-    private static final boolean m2057trailingIconColor$lambda0(State<Boolean> state) {
-        return state.getValue().booleanValue();
+    private static final boolean m576trailingIconColor$lambda0(State<Boolean> state) {
+        return ((Boolean) state.getValue()).booleanValue();
     }
 
-    @Override // androidx.compose.material.TextFieldColors
     @Composable
     @NotNull
     public State<Color> backgroundColor(boolean z, @Nullable Composer composer, int i) {
@@ -97,7 +96,7 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-28962788, i, -1, "androidx.compose.material.DefaultTextFieldForExposedDropdownMenusColors.backgroundColor (ExposedDropdownMenu.kt:642)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(this.backgroundColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(this.backgroundColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -105,7 +104,6 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         return rememberUpdatedState;
     }
 
-    @Override // androidx.compose.material.TextFieldColors
     @Composable
     @NotNull
     public State<Color> cursorColor(boolean z, @Nullable Composer composer, int i) {
@@ -113,7 +111,7 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-930693132, i, -1, "androidx.compose.material.DefaultTextFieldForExposedDropdownMenusColors.cursorColor (ExposedDropdownMenu.kt:674)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(z ? this.errorCursorColor : this.cursorColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(z ? this.errorCursorColor : this.cursorColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -129,14 +127,13 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
             return false;
         }
         DefaultTextFieldForExposedDropdownMenusColors defaultTextFieldForExposedDropdownMenusColors = (DefaultTextFieldForExposedDropdownMenusColors) obj;
-        return Color.m2788equalsimpl0(this.textColor, defaultTextFieldForExposedDropdownMenusColors.textColor) && Color.m2788equalsimpl0(this.disabledTextColor, defaultTextFieldForExposedDropdownMenusColors.disabledTextColor) && Color.m2788equalsimpl0(this.cursorColor, defaultTextFieldForExposedDropdownMenusColors.cursorColor) && Color.m2788equalsimpl0(this.errorCursorColor, defaultTextFieldForExposedDropdownMenusColors.errorCursorColor) && Color.m2788equalsimpl0(this.focusedIndicatorColor, defaultTextFieldForExposedDropdownMenusColors.focusedIndicatorColor) && Color.m2788equalsimpl0(this.unfocusedIndicatorColor, defaultTextFieldForExposedDropdownMenusColors.unfocusedIndicatorColor) && Color.m2788equalsimpl0(this.errorIndicatorColor, defaultTextFieldForExposedDropdownMenusColors.errorIndicatorColor) && Color.m2788equalsimpl0(this.disabledIndicatorColor, defaultTextFieldForExposedDropdownMenusColors.disabledIndicatorColor) && Color.m2788equalsimpl0(this.leadingIconColor, defaultTextFieldForExposedDropdownMenusColors.leadingIconColor) && Color.m2788equalsimpl0(this.disabledLeadingIconColor, defaultTextFieldForExposedDropdownMenusColors.disabledLeadingIconColor) && Color.m2788equalsimpl0(this.errorLeadingIconColor, defaultTextFieldForExposedDropdownMenusColors.errorLeadingIconColor) && Color.m2788equalsimpl0(this.trailingIconColor, defaultTextFieldForExposedDropdownMenusColors.trailingIconColor) && Color.m2788equalsimpl0(this.focusedTrailingIconColor, defaultTextFieldForExposedDropdownMenusColors.focusedTrailingIconColor) && Color.m2788equalsimpl0(this.disabledTrailingIconColor, defaultTextFieldForExposedDropdownMenusColors.disabledTrailingIconColor) && Color.m2788equalsimpl0(this.errorTrailingIconColor, defaultTextFieldForExposedDropdownMenusColors.errorTrailingIconColor) && Color.m2788equalsimpl0(this.backgroundColor, defaultTextFieldForExposedDropdownMenusColors.backgroundColor) && Color.m2788equalsimpl0(this.focusedLabelColor, defaultTextFieldForExposedDropdownMenusColors.focusedLabelColor) && Color.m2788equalsimpl0(this.unfocusedLabelColor, defaultTextFieldForExposedDropdownMenusColors.unfocusedLabelColor) && Color.m2788equalsimpl0(this.disabledLabelColor, defaultTextFieldForExposedDropdownMenusColors.disabledLabelColor) && Color.m2788equalsimpl0(this.errorLabelColor, defaultTextFieldForExposedDropdownMenusColors.errorLabelColor) && Color.m2788equalsimpl0(this.placeholderColor, defaultTextFieldForExposedDropdownMenusColors.placeholderColor) && Color.m2788equalsimpl0(this.disabledPlaceholderColor, defaultTextFieldForExposedDropdownMenusColors.disabledPlaceholderColor);
+        return Color.m1051equalsimpl0(this.textColor, defaultTextFieldForExposedDropdownMenusColors.textColor) && Color.m1051equalsimpl0(this.disabledTextColor, defaultTextFieldForExposedDropdownMenusColors.disabledTextColor) && Color.m1051equalsimpl0(this.cursorColor, defaultTextFieldForExposedDropdownMenusColors.cursorColor) && Color.m1051equalsimpl0(this.errorCursorColor, defaultTextFieldForExposedDropdownMenusColors.errorCursorColor) && Color.m1051equalsimpl0(this.focusedIndicatorColor, defaultTextFieldForExposedDropdownMenusColors.focusedIndicatorColor) && Color.m1051equalsimpl0(this.unfocusedIndicatorColor, defaultTextFieldForExposedDropdownMenusColors.unfocusedIndicatorColor) && Color.m1051equalsimpl0(this.errorIndicatorColor, defaultTextFieldForExposedDropdownMenusColors.errorIndicatorColor) && Color.m1051equalsimpl0(this.disabledIndicatorColor, defaultTextFieldForExposedDropdownMenusColors.disabledIndicatorColor) && Color.m1051equalsimpl0(this.leadingIconColor, defaultTextFieldForExposedDropdownMenusColors.leadingIconColor) && Color.m1051equalsimpl0(this.disabledLeadingIconColor, defaultTextFieldForExposedDropdownMenusColors.disabledLeadingIconColor) && Color.m1051equalsimpl0(this.errorLeadingIconColor, defaultTextFieldForExposedDropdownMenusColors.errorLeadingIconColor) && Color.m1051equalsimpl0(this.trailingIconColor, defaultTextFieldForExposedDropdownMenusColors.trailingIconColor) && Color.m1051equalsimpl0(this.focusedTrailingIconColor, defaultTextFieldForExposedDropdownMenusColors.focusedTrailingIconColor) && Color.m1051equalsimpl0(this.disabledTrailingIconColor, defaultTextFieldForExposedDropdownMenusColors.disabledTrailingIconColor) && Color.m1051equalsimpl0(this.errorTrailingIconColor, defaultTextFieldForExposedDropdownMenusColors.errorTrailingIconColor) && Color.m1051equalsimpl0(this.backgroundColor, defaultTextFieldForExposedDropdownMenusColors.backgroundColor) && Color.m1051equalsimpl0(this.focusedLabelColor, defaultTextFieldForExposedDropdownMenusColors.focusedLabelColor) && Color.m1051equalsimpl0(this.unfocusedLabelColor, defaultTextFieldForExposedDropdownMenusColors.unfocusedLabelColor) && Color.m1051equalsimpl0(this.disabledLabelColor, defaultTextFieldForExposedDropdownMenusColors.disabledLabelColor) && Color.m1051equalsimpl0(this.errorLabelColor, defaultTextFieldForExposedDropdownMenusColors.errorLabelColor) && Color.m1051equalsimpl0(this.placeholderColor, defaultTextFieldForExposedDropdownMenusColors.placeholderColor) && Color.m1051equalsimpl0(this.disabledPlaceholderColor, defaultTextFieldForExposedDropdownMenusColors.disabledPlaceholderColor);
     }
 
     public int hashCode() {
-        return (((((((((((((((((((((((((((((((((((((((((Color.m2794hashCodeimpl(this.textColor) * 31) + Color.m2794hashCodeimpl(this.disabledTextColor)) * 31) + Color.m2794hashCodeimpl(this.cursorColor)) * 31) + Color.m2794hashCodeimpl(this.errorCursorColor)) * 31) + Color.m2794hashCodeimpl(this.focusedIndicatorColor)) * 31) + Color.m2794hashCodeimpl(this.unfocusedIndicatorColor)) * 31) + Color.m2794hashCodeimpl(this.errorIndicatorColor)) * 31) + Color.m2794hashCodeimpl(this.disabledIndicatorColor)) * 31) + Color.m2794hashCodeimpl(this.leadingIconColor)) * 31) + Color.m2794hashCodeimpl(this.disabledLeadingIconColor)) * 31) + Color.m2794hashCodeimpl(this.errorLeadingIconColor)) * 31) + Color.m2794hashCodeimpl(this.trailingIconColor)) * 31) + Color.m2794hashCodeimpl(this.focusedTrailingIconColor)) * 31) + Color.m2794hashCodeimpl(this.disabledTrailingIconColor)) * 31) + Color.m2794hashCodeimpl(this.errorTrailingIconColor)) * 31) + Color.m2794hashCodeimpl(this.backgroundColor)) * 31) + Color.m2794hashCodeimpl(this.focusedLabelColor)) * 31) + Color.m2794hashCodeimpl(this.unfocusedLabelColor)) * 31) + Color.m2794hashCodeimpl(this.disabledLabelColor)) * 31) + Color.m2794hashCodeimpl(this.errorLabelColor)) * 31) + Color.m2794hashCodeimpl(this.placeholderColor)) * 31) + Color.m2794hashCodeimpl(this.disabledPlaceholderColor);
+        return (((((((((((((((((((((((((((((((((((((((((Color.m1057hashCodeimpl(this.textColor) * 31) + Color.m1057hashCodeimpl(this.disabledTextColor)) * 31) + Color.m1057hashCodeimpl(this.cursorColor)) * 31) + Color.m1057hashCodeimpl(this.errorCursorColor)) * 31) + Color.m1057hashCodeimpl(this.focusedIndicatorColor)) * 31) + Color.m1057hashCodeimpl(this.unfocusedIndicatorColor)) * 31) + Color.m1057hashCodeimpl(this.errorIndicatorColor)) * 31) + Color.m1057hashCodeimpl(this.disabledIndicatorColor)) * 31) + Color.m1057hashCodeimpl(this.leadingIconColor)) * 31) + Color.m1057hashCodeimpl(this.disabledLeadingIconColor)) * 31) + Color.m1057hashCodeimpl(this.errorLeadingIconColor)) * 31) + Color.m1057hashCodeimpl(this.trailingIconColor)) * 31) + Color.m1057hashCodeimpl(this.focusedTrailingIconColor)) * 31) + Color.m1057hashCodeimpl(this.disabledTrailingIconColor)) * 31) + Color.m1057hashCodeimpl(this.errorTrailingIconColor)) * 31) + Color.m1057hashCodeimpl(this.backgroundColor)) * 31) + Color.m1057hashCodeimpl(this.focusedLabelColor)) * 31) + Color.m1057hashCodeimpl(this.unfocusedLabelColor)) * 31) + Color.m1057hashCodeimpl(this.disabledLabelColor)) * 31) + Color.m1057hashCodeimpl(this.errorLabelColor)) * 31) + Color.m1057hashCodeimpl(this.placeholderColor)) * 31) + Color.m1057hashCodeimpl(this.disabledPlaceholderColor);
     }
 
-    @Override // androidx.compose.material.TextFieldColors
     @Composable
     @NotNull
     public State<Color> indicatorColor(boolean z, boolean z2, @NotNull InteractionSource interactionSource, @Nullable Composer composer, int i) {
@@ -146,14 +143,14 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(476110356, i, -1, "androidx.compose.material.DefaultTextFieldForExposedDropdownMenusColors.indicatorColor (ExposedDropdownMenu.kt:621)");
         }
-        long j = !z ? this.disabledIndicatorColor : z2 ? this.errorIndicatorColor : m2055indicatorColor$lambda1(FocusInteractionKt.collectIsFocusedAsState(interactionSource, composer, (i >> 6) & 14)) ? this.focusedIndicatorColor : this.unfocusedIndicatorColor;
+        long j = !z ? this.disabledIndicatorColor : z2 ? this.errorIndicatorColor : m574indicatorColor$lambda1(FocusInteractionKt.collectIsFocusedAsState(interactionSource, composer, (i >> 6) & 14)) ? this.focusedIndicatorColor : this.unfocusedIndicatorColor;
         if (z) {
             composer.startReplaceableGroup(182314778);
-            rememberUpdatedState = SingleValueAnimationKt.m1020animateColorAsStateKTwxG1Y(j, AnimationSpecKt.tween$default(150, 0, null, 6, null), null, composer, 48, 4);
+            rememberUpdatedState = SingleValueAnimationKt.m60animateColorAsStateKTwxG1Y(j, AnimationSpecKt.tween$default(TextFieldImplKt.AnimationDuration, 0, (Easing) null, 6, (Object) null), null, composer, 48, 4);
             composer.endReplaceableGroup();
         } else {
             composer.startReplaceableGroup(182314883);
-            rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(j), composer, 0);
+            rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(j), composer, 0);
             composer.endReplaceableGroup();
         }
         if (ComposerKt.isTraceInProgress()) {
@@ -163,7 +160,6 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         return rememberUpdatedState;
     }
 
-    @Override // androidx.compose.material.TextFieldColors
     @Composable
     @NotNull
     public State<Color> labelColor(boolean z, boolean z2, @NotNull InteractionSource interactionSource, @Nullable Composer composer, int i) {
@@ -172,7 +168,7 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-1749156593, i, -1, "androidx.compose.material.DefaultTextFieldForExposedDropdownMenusColors.labelColor (ExposedDropdownMenu.kt:652)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(!z ? this.disabledLabelColor : z2 ? this.errorLabelColor : m2056labelColor$lambda2(FocusInteractionKt.collectIsFocusedAsState(interactionSource, composer, (i >> 6) & 14)) ? this.focusedLabelColor : this.unfocusedLabelColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(!z ? this.disabledLabelColor : z2 ? this.errorLabelColor : m575labelColor$lambda2(FocusInteractionKt.collectIsFocusedAsState(interactionSource, composer, (i >> 6) & 14)) ? this.focusedLabelColor : this.unfocusedLabelColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -180,14 +176,12 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         return rememberUpdatedState;
     }
 
-    @Override // androidx.compose.material.TextFieldColorsWithIcons
     @Composable
     @NotNull
     public State<Color> leadingIconColor(boolean z, boolean z2, @NotNull InteractionSource interactionSource, @Nullable Composer composer, int i) {
-        return TextFieldColorsWithIcons.DefaultImpls.leadingIconColor(this, z, z2, interactionSource, composer, i);
+        return TextFieldColorsWithIcons$DefaultImpls.leadingIconColor(this, z, z2, interactionSource, composer, i);
     }
 
-    @Override // androidx.compose.material.TextFieldColors
     @Composable
     @NotNull
     public State<Color> placeholderColor(boolean z, @Nullable Composer composer, int i) {
@@ -195,7 +189,7 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(1742462291, i, -1, "androidx.compose.material.DefaultTextFieldForExposedDropdownMenusColors.placeholderColor (ExposedDropdownMenu.kt:647)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(z ? this.placeholderColor : this.disabledPlaceholderColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(z ? this.placeholderColor : this.disabledPlaceholderColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -203,7 +197,6 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         return rememberUpdatedState;
     }
 
-    @Override // androidx.compose.material.TextFieldColors
     @Composable
     @NotNull
     public State<Color> textColor(boolean z, @Nullable Composer composer, int i) {
@@ -211,7 +204,7 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(394526077, i, -1, "androidx.compose.material.DefaultTextFieldForExposedDropdownMenusColors.textColor (ExposedDropdownMenu.kt:669)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(z ? this.textColor : this.disabledTextColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(z ? this.textColor : this.disabledTextColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -219,7 +212,6 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         return rememberUpdatedState;
     }
 
-    @Override // androidx.compose.material.TextFieldColors
     @Composable
     @NotNull
     public State<Color> trailingIconColor(boolean z, boolean z2, @Nullable Composer composer, int i) {
@@ -227,7 +219,7 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(1665901393, i, -1, "androidx.compose.material.DefaultTextFieldForExposedDropdownMenusColors.trailingIconColor (ExposedDropdownMenu.kt:592)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(!z ? this.disabledTrailingIconColor : z2 ? this.errorTrailingIconColor : this.trailingIconColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(!z ? this.disabledTrailingIconColor : z2 ? this.errorTrailingIconColor : this.trailingIconColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -235,7 +227,6 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         return rememberUpdatedState;
     }
 
-    @Override // androidx.compose.material.TextFieldColors
     @Composable
     @NotNull
     public State<Color> leadingIconColor(boolean z, boolean z2, @Nullable Composer composer, int i) {
@@ -243,7 +234,7 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-776179197, i, -1, "androidx.compose.material.DefaultTextFieldForExposedDropdownMenusColors.leadingIconColor (ExposedDropdownMenu.kt:581)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(!z ? this.disabledLeadingIconColor : z2 ? this.errorLeadingIconColor : this.leadingIconColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(!z ? this.disabledLeadingIconColor : z2 ? this.errorLeadingIconColor : this.leadingIconColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -251,7 +242,6 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         return rememberUpdatedState;
     }
 
-    @Override // androidx.compose.material.TextFieldColorsWithIcons
     @Composable
     @NotNull
     public State<Color> trailingIconColor(boolean z, boolean z2, @NotNull InteractionSource interactionSource, @Nullable Composer composer, int i) {
@@ -261,15 +251,15 @@ final class DefaultTextFieldForExposedDropdownMenusColors implements TextFieldCo
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(79259602, i, -1, "androidx.compose.material.DefaultTextFieldForExposedDropdownMenusColors.trailingIconColor (ExposedDropdownMenu.kt:603)");
         }
-        State<Boolean> collectIsFocusedAsState = FocusInteractionKt.collectIsFocusedAsState(interactionSource, composer, (i >> 6) & 14);
+        State collectIsFocusedAsState = FocusInteractionKt.collectIsFocusedAsState(interactionSource, composer, (i >> 6) & 14);
         if (!z) {
             j = this.disabledTrailingIconColor;
         } else if (z2) {
             j = this.errorTrailingIconColor;
         } else {
-            j = m2057trailingIconColor$lambda0(collectIsFocusedAsState) ? this.focusedTrailingIconColor : this.trailingIconColor;
+            j = m576trailingIconColor$lambda0(collectIsFocusedAsState) ? this.focusedTrailingIconColor : this.trailingIconColor;
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(j), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m1040boximpl(j), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }

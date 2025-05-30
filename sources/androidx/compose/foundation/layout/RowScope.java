@@ -1,28 +1,22 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.HorizontalAlignmentLine;
-import androidx.compose.p004ui.layout.Measured;
 import androidx.compose.runtime.Immutable;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.Alignment$Vertical;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.HorizontalAlignmentLine;
+import androidx.compose.ui.layout.Measured;
 import kotlin.jvm.functions.Function1;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @LayoutScopeMarker
 @Immutable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface RowScope {
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class DefaultImpls {
-    }
-
     @Stable
     @NotNull
-    Modifier align(@NotNull Modifier modifier, @NotNull Alignment.Vertical vertical);
+    Modifier align(@NotNull Modifier modifier, @NotNull Alignment$Vertical alignment$Vertical);
 
     @Stable
     @NotNull

@@ -5,7 +5,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AndroidXConsumerKt {
     @NotNull
     public static final <T> Consumer<T> asAndroidXConsumer(@NotNull Continuation<? super T> continuation) {

@@ -1,10 +1,10 @@
 package androidx.compose.foundation.lazy.grid;
 
 import androidx.compose.animation.core.FiniteAnimationSpec;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntOffsetKt;
-import androidx.compose.p004ui.unit.IntSize;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntOffsetKt;
+import androidx.compose.ui.unit.IntSize;
 import java.util.List;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.DefaultConstructorMarker;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyGridPositionedItem implements LazyGridItemInfo {
     private final int column;
     private final boolean hasAnimations;
@@ -74,14 +74,14 @@ public final class LazyGridPositionedItem implements LazyGridItemInfo {
     }
 
     /* renamed from: copy-4Tuh3kE, reason: not valid java name */
-    private final long m1580copy4Tuh3kE(long j, Function1<? super Integer, Integer> function1) {
-        int m5334getXimpl = this.isVertical ? IntOffset.m5334getXimpl(j) : ((Number) function1.invoke(Integer.valueOf(IntOffset.m5334getXimpl(j)))).intValue();
+    private final long m299copy4Tuh3kE(long j, Function1<? super Integer, Integer> function1) {
+        int i = this.isVertical ? IntOffset.getX-impl(j) : ((Number) function1.invoke(Integer.valueOf(IntOffset.getX-impl(j)))).intValue();
         boolean z = this.isVertical;
-        int m5335getYimpl = IntOffset.m5335getYimpl(j);
+        int i2 = IntOffset.getY-impl(j);
         if (z) {
-            m5335getYimpl = ((Number) function1.invoke(Integer.valueOf(m5335getYimpl))).intValue();
+            i2 = ((Number) function1.invoke(Integer.valueOf(i2))).intValue();
         }
-        return IntOffsetKt.IntOffset(m5334getXimpl, m5335getYimpl);
+        return IntOffsetKt.IntOffset(i, i2);
     }
 
     @Nullable
@@ -93,29 +93,26 @@ public final class LazyGridPositionedItem implements LazyGridItemInfo {
         return null;
     }
 
-    @Override // androidx.compose.foundation.lazy.grid.LazyGridItemInfo
     public int getColumn() {
         return this.column;
     }
 
     public final int getCrossAxisOffset() {
-        return this.isVertical ? IntOffset.m5334getXimpl(mo1565getOffsetnOccac()) : IntOffset.m5335getYimpl(mo1565getOffsetnOccac());
+        return this.isVertical ? IntOffset.getX-impl(m300getOffsetnOccac()) : IntOffset.getY-impl(m300getOffsetnOccac());
     }
 
     public final int getCrossAxisSize() {
-        return this.isVertical ? IntSize.m5376getWidthimpl(mo1566getSizeYbymL2g()) : IntSize.m5375getHeightimpl(mo1566getSizeYbymL2g());
+        return this.isVertical ? IntSize.getWidth-impl(m301getSizeYbymL2g()) : IntSize.getHeight-impl(m301getSizeYbymL2g());
     }
 
     public final boolean getHasAnimations() {
         return this.hasAnimations;
     }
 
-    @Override // androidx.compose.foundation.lazy.grid.LazyGridItemInfo
     public int getIndex() {
         return this.index;
     }
 
-    @Override // androidx.compose.foundation.lazy.grid.LazyGridItemInfo
     @NotNull
     public Object getKey() {
         return this.key;
@@ -125,9 +122,8 @@ public final class LazyGridPositionedItem implements LazyGridItemInfo {
         return getMainAxisSize(this.placeables.get(i));
     }
 
-    @Override // androidx.compose.foundation.lazy.grid.LazyGridItemInfo
-    /* renamed from: getOffset-nOcc-ac */
-    public long mo1565getOffsetnOccac() {
+    /* renamed from: getOffset-nOcc-ac, reason: not valid java name */
+    public long m300getOffsetnOccac() {
         return this.offset;
     }
 
@@ -135,14 +131,12 @@ public final class LazyGridPositionedItem implements LazyGridItemInfo {
         return this.placeables.size();
     }
 
-    @Override // androidx.compose.foundation.lazy.grid.LazyGridItemInfo
     public int getRow() {
         return this.row;
     }
 
-    @Override // androidx.compose.foundation.lazy.grid.LazyGridItemInfo
-    /* renamed from: getSize-YbymL2g */
-    public long mo1566getSizeYbymL2g() {
+    /* renamed from: getSize-YbymL2g, reason: not valid java name */
+    public long m301getSizeYbymL2g() {
         return this.size;
     }
 
@@ -151,22 +145,22 @@ public final class LazyGridPositionedItem implements LazyGridItemInfo {
         int placeablesCount = getPlaceablesCount();
         for (int i = 0; i < placeablesCount; i++) {
             Placeable placeable = this.placeables.get(i);
-            long m1569getAnimatedOffsetYT5a7pE = getAnimationSpec(i) != null ? this.placementAnimator.m1569getAnimatedOffsetYT5a7pE(getKey(), i, this.minMainAxisOffset - getMainAxisSize(placeable), this.maxMainAxisOffset, mo1565getOffsetnOccac()) : mo1565getOffsetnOccac();
+            long j = getAnimationSpec(i) != null ? this.placementAnimator.getAnimatedOffset-YT5a7pE(getKey(), i, this.minMainAxisOffset - getMainAxisSize(placeable), this.maxMainAxisOffset, m300getOffsetnOccac()) : m300getOffsetnOccac();
             if (this.reverseLayout) {
-                m1569getAnimatedOffsetYT5a7pE = IntOffsetKt.IntOffset(this.isVertical ? IntOffset.m5334getXimpl(m1569getAnimatedOffsetYT5a7pE) : (this.mainAxisLayoutSize - IntOffset.m5334getXimpl(m1569getAnimatedOffsetYT5a7pE)) - getMainAxisSize(placeable), this.isVertical ? (this.mainAxisLayoutSize - IntOffset.m5335getYimpl(m1569getAnimatedOffsetYT5a7pE)) - getMainAxisSize(placeable) : IntOffset.m5335getYimpl(m1569getAnimatedOffsetYT5a7pE));
+                j = IntOffsetKt.IntOffset(this.isVertical ? IntOffset.getX-impl(j) : (this.mainAxisLayoutSize - IntOffset.getX-impl(j)) - getMainAxisSize(placeable), this.isVertical ? (this.mainAxisLayoutSize - IntOffset.getY-impl(j)) - getMainAxisSize(placeable) : IntOffset.getY-impl(j));
             }
             if (this.isVertical) {
-                long j = this.visualOffset;
-                Placeable.PlacementScope.m4226placeWithLayeraW9wM$default(placementScope, placeable, IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1569getAnimatedOffsetYT5a7pE) + IntOffset.m5334getXimpl(j), IntOffset.m5335getYimpl(m1569getAnimatedOffsetYT5a7pE) + IntOffset.m5335getYimpl(j)), 0.0f, null, 6, null);
-            } else {
                 long j2 = this.visualOffset;
-                Placeable.PlacementScope.m4225placeRelativeWithLayeraW9wM$default(placementScope, placeable, IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1569getAnimatedOffsetYT5a7pE) + IntOffset.m5334getXimpl(j2), IntOffset.m5335getYimpl(m1569getAnimatedOffsetYT5a7pE) + IntOffset.m5335getYimpl(j2)), 0.0f, null, 6, null);
+                Placeable.PlacementScope.placeWithLayer-aW-9-wM$default(placementScope, placeable, IntOffsetKt.IntOffset(IntOffset.getX-impl(j) + IntOffset.getX-impl(j2), IntOffset.getY-impl(j) + IntOffset.getY-impl(j2)), 0.0f, (Function1) null, 6, (Object) null);
+            } else {
+                long j3 = this.visualOffset;
+                Placeable.PlacementScope.placeRelativeWithLayer-aW-9-wM$default(placementScope, placeable, IntOffsetKt.IntOffset(IntOffset.getX-impl(j) + IntOffset.getX-impl(j3), IntOffset.getY-impl(j) + IntOffset.getY-impl(j3)), 0.0f, (Function1) null, 6, (Object) null);
             }
         }
     }
 
     public final int getMainAxisSize() {
-        return this.isVertical ? IntSize.m5375getHeightimpl(mo1566getSizeYbymL2g()) : IntSize.m5376getWidthimpl(mo1566getSizeYbymL2g());
+        return this.isVertical ? IntSize.getHeight-impl(m301getSizeYbymL2g()) : IntSize.getWidth-impl(m301getSizeYbymL2g());
     }
 
     private final int getMainAxisSize(Placeable placeable) {

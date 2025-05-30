@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class LazyListItemProviderImpl implements LazyListItemProvider, LazyLayoutItemProvider {
     private final /* synthetic */ LazyLayoutItemProvider $$delegate_0;
 
@@ -70,7 +70,7 @@ final class LazyListItemProviderImpl implements LazyListItemProvider, LazyLayout
                 if (ComposerKt.isTraceInProgress()) {
                     ComposerKt.traceEventStart(2070454083, i3, -1, "androidx.compose.foundation.lazy.LazyListItemProviderImpl.$$delegate_0.<anonymous> (LazyListItemProvider.kt:80)");
                 }
-                LazyListState lazyListState2 = LazyListState.this;
+                LazyListState lazyListState2 = lazyListState;
                 final LazyItemScopeImpl lazyItemScopeImpl2 = lazyItemScopeImpl;
                 LazyListPinnableContainerProviderKt.LazyListPinnableContainerProvider(lazyListState2, i, ComposableLambdaKt.composableLambda(composer, -1137011645, true, new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.lazy.LazyListItemProviderImpl.1.1
                     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
@@ -156,7 +156,6 @@ final class LazyListItemProviderImpl implements LazyListItemProvider, LazyLayout
         return this.$$delegate_0.getContentType(i);
     }
 
-    @Override // androidx.compose.foundation.lazy.LazyListItemProvider
     @NotNull
     public List<Integer> getHeaderIndexes() {
         return this.headerIndexes;
@@ -167,7 +166,6 @@ final class LazyListItemProviderImpl implements LazyListItemProvider, LazyLayout
         return this.$$delegate_0.getItemCount();
     }
 
-    @Override // androidx.compose.foundation.lazy.LazyListItemProvider
     @NotNull
     public LazyItemScopeImpl getItemScope() {
         return this.itemScope;

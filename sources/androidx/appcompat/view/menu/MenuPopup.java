@@ -13,10 +13,9 @@ import android.widget.PopupWindow;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-/* JADX INFO: Access modifiers changed from: package-private */
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
-public abstract class MenuPopup implements AdapterView.OnItemClickListener, MenuPresenter, ShowableListMenu {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
+abstract class MenuPopup implements AdapterView.OnItemClickListener, MenuPresenter, ShowableListMenu {
     private Rect mEpicenterBounds;
 
     MenuPopup() {
@@ -72,12 +71,10 @@ public abstract class MenuPopup implements AdapterView.OnItemClickListener, Menu
         return true;
     }
 
-    @Override // androidx.appcompat.view.menu.MenuPresenter
     public boolean collapseItemActionView(MenuBuilder menuBuilder, MenuItemImpl menuItemImpl) {
         return false;
     }
 
-    @Override // androidx.appcompat.view.menu.MenuPresenter
     public boolean expandItemActionView(MenuBuilder menuBuilder, MenuItemImpl menuItemImpl) {
         return false;
     }
@@ -86,17 +83,14 @@ public abstract class MenuPopup implements AdapterView.OnItemClickListener, Menu
         return this.mEpicenterBounds;
     }
 
-    @Override // androidx.appcompat.view.menu.MenuPresenter
     public int getId() {
         return 0;
     }
 
-    @Override // androidx.appcompat.view.menu.MenuPresenter
     public MenuView getMenuView(ViewGroup viewGroup) {
         throw new UnsupportedOperationException("MenuPopups manage their own views");
     }
 
-    @Override // androidx.appcompat.view.menu.MenuPresenter
     public void initForMenu(@NonNull Context context, @Nullable MenuBuilder menuBuilder) {
     }
 

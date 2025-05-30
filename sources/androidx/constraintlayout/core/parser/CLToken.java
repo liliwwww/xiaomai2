@@ -1,9 +1,7 @@
 package androidx.constraintlayout.core.parser;
 
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
-
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class CLToken extends CLElement {
     int index;
     char[] tokenFalse;
@@ -12,8 +10,8 @@ public class CLToken extends CLElement {
     Type type;
 
     /* compiled from: Taobao */
-    /* renamed from: androidx.constraintlayout.core.parser.CLToken$1 */
-    static /* synthetic */ class C08881 {
+    /* renamed from: androidx.constraintlayout.core.parser.CLToken$1, reason: invalid class name */
+    static /* synthetic */ class AnonymousClass1 {
         static final /* synthetic */ int[] $SwitchMap$androidx$constraintlayout$core$parser$CLToken$Type;
 
         static {
@@ -38,20 +36,11 @@ public class CLToken extends CLElement {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    enum Type {
-        UNKNOWN,
-        TRUE,
-        FALSE,
-        NULL
-    }
-
     public CLToken(char[] cArr) {
         super(cArr);
         this.index = 0;
         this.type = Type.UNKNOWN;
-        this.tokenTrue = BasePreInitManager.PRE_RENDER_URL_ADDITION_VALUE.toCharArray();
+        this.tokenTrue = "true".toCharArray();
         this.tokenFalse = "false".toCharArray();
         this.tokenNull = "null".toCharArray();
     }
@@ -82,7 +71,6 @@ public class CLToken extends CLElement {
         throw new CLParsingException("this token is not a null: <" + content() + ">", this);
     }
 
-    @Override // androidx.constraintlayout.core.parser.CLElement
     protected String toFormattedJSON(int i, int i2) {
         StringBuilder sb = new StringBuilder();
         addIndent(sb, i);
@@ -90,7 +78,6 @@ public class CLToken extends CLElement {
         return sb.toString();
     }
 
-    @Override // androidx.constraintlayout.core.parser.CLElement
     protected String toJSON() {
         if (!CLParser.DEBUG) {
             return content();
@@ -99,7 +86,7 @@ public class CLToken extends CLElement {
     }
 
     public boolean validate(char c, long j) {
-        int i = C08881.$SwitchMap$androidx$constraintlayout$core$parser$CLToken$Type[this.type.ordinal()];
+        int i = AnonymousClass1.$SwitchMap$androidx$constraintlayout$core$parser$CLToken$Type[this.type.ordinal()];
         if (i == 1) {
             char[] cArr = this.tokenTrue;
             int i2 = this.index;

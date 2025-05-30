@@ -7,12 +7,11 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
 import android.support.v4.media.MediaMetadataCompat;
-import android.support.v4.media.session.MediaSessionCompat;
 import android.text.TextUtils;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface IMediaControllerCallback extends IInterface {
 
     /* compiled from: Taobao */
@@ -31,210 +30,6 @@ public interface IMediaControllerCallback extends IInterface {
         static final int TRANSACTION_onShuffleModeChanged = 12;
         static final int TRANSACTION_onShuffleModeChangedRemoved = 10;
         static final int TRANSACTION_onVolumeInfoChanged = 8;
-
-        /* compiled from: Taobao */
-        /* loaded from: classes.dex */
-        private static class Proxy implements IMediaControllerCallback {
-            private IBinder mRemote;
-
-            Proxy(IBinder iBinder) {
-                this.mRemote = iBinder;
-            }
-
-            @Override // android.os.IInterface
-            public IBinder asBinder() {
-                return this.mRemote;
-            }
-
-            public String getInterfaceDescriptor() {
-                return Stub.DESCRIPTOR;
-            }
-
-            @Override // android.support.v4.media.session.IMediaControllerCallback
-            public void onCaptioningEnabledChanged(boolean z) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(Stub.DESCRIPTOR);
-                    obtain.writeInt(z ? 1 : 0);
-                    this.mRemote.transact(11, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            @Override // android.support.v4.media.session.IMediaControllerCallback
-            public void onEvent(String str, Bundle bundle) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(Stub.DESCRIPTOR);
-                    obtain.writeString(str);
-                    if (bundle != null) {
-                        obtain.writeInt(1);
-                        bundle.writeToParcel(obtain, 0);
-                    } else {
-                        obtain.writeInt(0);
-                    }
-                    this.mRemote.transact(1, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            @Override // android.support.v4.media.session.IMediaControllerCallback
-            public void onExtrasChanged(Bundle bundle) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(Stub.DESCRIPTOR);
-                    if (bundle != null) {
-                        obtain.writeInt(1);
-                        bundle.writeToParcel(obtain, 0);
-                    } else {
-                        obtain.writeInt(0);
-                    }
-                    this.mRemote.transact(7, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            @Override // android.support.v4.media.session.IMediaControllerCallback
-            public void onMetadataChanged(MediaMetadataCompat mediaMetadataCompat) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(Stub.DESCRIPTOR);
-                    if (mediaMetadataCompat != null) {
-                        obtain.writeInt(1);
-                        mediaMetadataCompat.writeToParcel(obtain, 0);
-                    } else {
-                        obtain.writeInt(0);
-                    }
-                    this.mRemote.transact(4, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            @Override // android.support.v4.media.session.IMediaControllerCallback
-            public void onPlaybackStateChanged(PlaybackStateCompat playbackStateCompat) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(Stub.DESCRIPTOR);
-                    if (playbackStateCompat != null) {
-                        obtain.writeInt(1);
-                        playbackStateCompat.writeToParcel(obtain, 0);
-                    } else {
-                        obtain.writeInt(0);
-                    }
-                    this.mRemote.transact(3, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            @Override // android.support.v4.media.session.IMediaControllerCallback
-            public void onQueueChanged(List<MediaSessionCompat.QueueItem> list) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(Stub.DESCRIPTOR);
-                    obtain.writeTypedList(list);
-                    this.mRemote.transact(5, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            @Override // android.support.v4.media.session.IMediaControllerCallback
-            public void onQueueTitleChanged(CharSequence charSequence) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(Stub.DESCRIPTOR);
-                    if (charSequence != null) {
-                        obtain.writeInt(1);
-                        TextUtils.writeToParcel(charSequence, obtain, 0);
-                    } else {
-                        obtain.writeInt(0);
-                    }
-                    this.mRemote.transact(6, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            @Override // android.support.v4.media.session.IMediaControllerCallback
-            public void onRepeatModeChanged(int i) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(Stub.DESCRIPTOR);
-                    obtain.writeInt(i);
-                    this.mRemote.transact(9, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            @Override // android.support.v4.media.session.IMediaControllerCallback
-            public void onSessionDestroyed() throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(Stub.DESCRIPTOR);
-                    this.mRemote.transact(2, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            @Override // android.support.v4.media.session.IMediaControllerCallback
-            public void onSessionReady() throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(Stub.DESCRIPTOR);
-                    this.mRemote.transact(13, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            @Override // android.support.v4.media.session.IMediaControllerCallback
-            public void onShuffleModeChanged(int i) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(Stub.DESCRIPTOR);
-                    obtain.writeInt(i);
-                    this.mRemote.transact(12, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            @Override // android.support.v4.media.session.IMediaControllerCallback
-            public void onShuffleModeChangedRemoved(boolean z) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(Stub.DESCRIPTOR);
-                    obtain.writeInt(z ? 1 : 0);
-                    this.mRemote.transact(10, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-
-            @Override // android.support.v4.media.session.IMediaControllerCallback
-            public void onVolumeInfoChanged(ParcelableVolumeInfo parcelableVolumeInfo) throws RemoteException {
-                Parcel obtain = Parcel.obtain();
-                try {
-                    obtain.writeInterfaceToken(Stub.DESCRIPTOR);
-                    if (parcelableVolumeInfo != null) {
-                        obtain.writeInt(1);
-                        parcelableVolumeInfo.writeToParcel(obtain, 0);
-                    } else {
-                        obtain.writeInt(0);
-                    }
-                    this.mRemote.transact(8, obtain, null, 1);
-                } finally {
-                    obtain.recycle();
-                }
-            }
-        }
 
         public Stub() {
             attachInterface(this, DESCRIPTOR);
@@ -270,15 +65,15 @@ public interface IMediaControllerCallback extends IInterface {
                     return true;
                 case 3:
                     parcel.enforceInterface(DESCRIPTOR);
-                    onPlaybackStateChanged(parcel.readInt() != 0 ? PlaybackStateCompat.CREATOR.createFromParcel(parcel) : null);
+                    onPlaybackStateChanged(parcel.readInt() != 0 ? (PlaybackStateCompat) PlaybackStateCompat.CREATOR.createFromParcel(parcel) : null);
                     return true;
                 case 4:
                     parcel.enforceInterface(DESCRIPTOR);
-                    onMetadataChanged(parcel.readInt() != 0 ? MediaMetadataCompat.CREATOR.createFromParcel(parcel) : null);
+                    onMetadataChanged(parcel.readInt() != 0 ? (MediaMetadataCompat) MediaMetadataCompat.CREATOR.createFromParcel(parcel) : null);
                     return true;
                 case 5:
                     parcel.enforceInterface(DESCRIPTOR);
-                    onQueueChanged(parcel.createTypedArrayList(MediaSessionCompat.QueueItem.CREATOR));
+                    onQueueChanged(parcel.createTypedArrayList(MediaSessionCompat$QueueItem.CREATOR));
                     return true;
                 case 6:
                     parcel.enforceInterface(DESCRIPTOR);
@@ -290,7 +85,7 @@ public interface IMediaControllerCallback extends IInterface {
                     return true;
                 case 8:
                     parcel.enforceInterface(DESCRIPTOR);
-                    onVolumeInfoChanged(parcel.readInt() != 0 ? ParcelableVolumeInfo.CREATOR.createFromParcel(parcel) : null);
+                    onVolumeInfoChanged(parcel.readInt() != 0 ? (ParcelableVolumeInfo) ParcelableVolumeInfo.CREATOR.createFromParcel(parcel) : null);
                     return true;
                 case 9:
                     parcel.enforceInterface(DESCRIPTOR);
@@ -328,7 +123,7 @@ public interface IMediaControllerCallback extends IInterface {
 
     void onPlaybackStateChanged(PlaybackStateCompat playbackStateCompat) throws RemoteException;
 
-    void onQueueChanged(List<MediaSessionCompat.QueueItem> list) throws RemoteException;
+    void onQueueChanged(List<MediaSessionCompat$QueueItem> list) throws RemoteException;
 
     void onQueueTitleChanged(CharSequence charSequence) throws RemoteException;
 

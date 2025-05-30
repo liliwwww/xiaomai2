@@ -7,7 +7,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVFileInfoParser {
     public static final long DEFAULT_MAX_AGE = 2592000000L;
     public static final int FILE_INFO_MIN_LEN = 60;
@@ -35,16 +35,16 @@ public class WVFileInfoParser {
         try {
             fileChannel.write(allocate, wVFileInfo.pos);
         } catch (IOException e) {
-            TaoLog.m21e("FileInfoParser", "refreshFileInfo: write error. " + e.getMessage());
+            TaoLog.e("FileInfoParser", "refreshFileInfo: write error. " + e.getMessage());
         }
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("FileInfoParser", "refreshFileInfo time cost:" + (System.currentTimeMillis() - currentTimeMillis));
+            TaoLog.d("FileInfoParser", "refreshFileInfo time cost:" + (System.currentTimeMillis() - currentTimeMillis));
         }
     }
 
     public static WVFileInfo updateFileInfo(int i, WVFileInfo wVFileInfo, FileChannel fileChannel) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("FileInfoParser", "updateFileInfo filename:" + wVFileInfo.fileName + "operation:" + i);
+            TaoLog.d("FileInfoParser", "updateFileInfo filename:" + wVFileInfo.fileName + "operation:" + i);
         }
         if (i == 1) {
             refreshFileInfo(wVFileInfo, fileChannel);
@@ -65,7 +65,7 @@ public class WVFileInfoParser {
             try {
                 wVFileInfo.pos = fileChannel.size();
             } catch (IOException e) {
-                TaoLog.m21e("FileInfoParser", "updateFileInfo setPos error:" + wVFileInfo.fileName + ". fChannel.size():" + e.getMessage());
+                TaoLog.e("FileInfoParser", "updateFileInfo setPos error:" + wVFileInfo.fileName + ". fChannel.size():" + e.getMessage());
             }
             refreshFileInfo(wVFileInfo, fileChannel);
         }

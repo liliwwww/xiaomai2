@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class HttpConnector {
     public static final String CACHE_CONTROL = "cache-control";
     public static final String CONTENT_LENGTH = "content-length";
@@ -27,14 +27,6 @@ public class HttpConnector {
     private HttpConnectListener<HttpResponse> mListener = null;
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    class HttpOverFlowException extends Exception {
-        public HttpOverFlowException(String str) {
-            super(str);
-        }
-    }
-
-    /* compiled from: Taobao */
     class HttpsErrorException extends Exception {
         public HttpsErrorException(String str) {
             super(str);
@@ -48,71 +40,63 @@ public class HttpConnector {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    class RedirectException extends Exception {
-        public RedirectException(String str) {
-            super(str);
-        }
-    }
-
     static {
         System.setProperty("http.keepAlive", "false");
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:43:0x03b3, code lost:
+    /* JADX WARN: Code restructure failed: missing block: B:26:0x03b3, code lost:
     
         if (r7 != 0) goto L267;
      */
-    /* JADX WARN: Code restructure failed: missing block: B:44:0x03fd, code lost:
+    /* JADX WARN: Code restructure failed: missing block: B:27:0x03fd, code lost:
     
         r2 = r17.mListener;
      */
-    /* JADX WARN: Code restructure failed: missing block: B:45:0x03ff, code lost:
+    /* JADX WARN: Code restructure failed: missing block: B:28:0x03ff, code lost:
     
         if (r2 == null) goto L271;
      */
-    /* JADX WARN: Code restructure failed: missing block: B:46:0x0401, code lost:
+    /* JADX WARN: Code restructure failed: missing block: B:29:0x0401, code lost:
     
         r2.onFinish(new android.taobao.windvane.connect.HttpResponse(), 0);
      */
-    /* JADX WARN: Code restructure failed: missing block: B:48:0x040e, code lost:
+    /* JADX WARN: Code restructure failed: missing block: B:31:0x040e, code lost:
     
         return new android.taobao.windvane.connect.HttpResponse();
      */
-    /* JADX WARN: Code restructure failed: missing block: B:49:0x03fa, code lost:
+    /* JADX WARN: Code restructure failed: missing block: B:33:0x03fa, code lost:
     
         r7.disconnect();
      */
-    /* JADX WARN: Code restructure failed: missing block: B:85:0x03f8, code lost:
+    /* JADX WARN: Code restructure failed: missing block: B:69:0x03f8, code lost:
     
         if (r7 == 0) goto L268;
      */
     /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Removed duplicated region for block: B:111:0x034f A[Catch: all -> 0x0446, TryCatch #18 {all -> 0x0446, blocks: (B:109:0x0347, B:111:0x034f, B:112:0x0365, B:113:0x0370, B:18:0x042b, B:20:0x042f, B:21:0x0435, B:27:0x043d, B:29:0x0441, B:30:0x0445), top: B:6:0x002c }] */
-    /* JADX WARN: Removed duplicated region for block: B:20:0x042f A[Catch: all -> 0x0446, TryCatch #18 {all -> 0x0446, blocks: (B:109:0x0347, B:111:0x034f, B:112:0x0365, B:113:0x0370, B:18:0x042b, B:20:0x042f, B:21:0x0435, B:27:0x043d, B:29:0x0441, B:30:0x0445), top: B:6:0x002c }] */
-    /* JADX WARN: Removed duplicated region for block: B:23:? A[Catch: all -> 0x0446, SYNTHETIC, TryCatch #18 {all -> 0x0446, blocks: (B:109:0x0347, B:111:0x034f, B:112:0x0365, B:113:0x0370, B:18:0x042b, B:20:0x042f, B:21:0x0435, B:27:0x043d, B:29:0x0441, B:30:0x0445), top: B:6:0x002c }] */
-    /* JADX WARN: Removed duplicated region for block: B:29:0x0441 A[Catch: all -> 0x0446, TryCatch #18 {all -> 0x0446, blocks: (B:109:0x0347, B:111:0x034f, B:112:0x0365, B:113:0x0370, B:18:0x042b, B:20:0x042f, B:21:0x0435, B:27:0x043d, B:29:0x0441, B:30:0x0445), top: B:6:0x002c }] */
-    /* JADX WARN: Removed duplicated region for block: B:31:? A[Catch: all -> 0x0446, SYNTHETIC, TRY_LEAVE, TryCatch #18 {all -> 0x0446, blocks: (B:109:0x0347, B:111:0x034f, B:112:0x0365, B:113:0x0370, B:18:0x042b, B:20:0x042f, B:21:0x0435, B:27:0x043d, B:29:0x0441, B:30:0x0445), top: B:6:0x002c }] */
+    /* JADX WARN: Removed duplicated region for block: B:103:0x0441 A[Catch: all -> 0x0446, TryCatch #18 {all -> 0x0446, blocks: (B:109:0x0347, B:111:0x034f, B:112:0x0365, B:113:0x0370, B:93:0x042b, B:95:0x042f, B:96:0x0435, B:101:0x043d, B:103:0x0441, B:104:0x0445), top: B:6:0x002c }] */
+    /* JADX WARN: Removed duplicated region for block: B:105:? A[Catch: all -> 0x0446, SYNTHETIC, TRY_LEAVE, TryCatch #18 {all -> 0x0446, blocks: (B:109:0x0347, B:111:0x034f, B:112:0x0365, B:113:0x0370, B:93:0x042b, B:95:0x042f, B:96:0x0435, B:101:0x043d, B:103:0x0441, B:104:0x0445), top: B:6:0x002c }] */
+    /* JADX WARN: Removed duplicated region for block: B:111:0x034f A[Catch: all -> 0x0446, TryCatch #18 {all -> 0x0446, blocks: (B:109:0x0347, B:111:0x034f, B:112:0x0365, B:113:0x0370, B:93:0x042b, B:95:0x042f, B:96:0x0435, B:101:0x043d, B:103:0x0441, B:104:0x0445), top: B:6:0x002c }] */
+    /* JADX WARN: Removed duplicated region for block: B:19:0x037c A[Catch: all -> 0x041c, TryCatch #60 {all -> 0x041c, blocks: (B:17:0x0378, B:19:0x037c, B:20:0x0383, B:54:0x03bd, B:56:0x03c1, B:57:0x03c8, B:88:0x0412, B:89:0x041b, B:84:0x040f), top: B:5:0x002c, inners: #56 }] */
     /* JADX WARN: Removed duplicated region for block: B:331:0x0474  */
     /* JADX WARN: Removed duplicated region for block: B:333:? A[SYNTHETIC] */
     /* JADX WARN: Removed duplicated region for block: B:337:0x0460 A[EXC_TOP_SPLITTER, SYNTHETIC] */
     /* JADX WARN: Removed duplicated region for block: B:342:0x0455 A[EXC_TOP_SPLITTER, SYNTHETIC] */
     /* JADX WARN: Removed duplicated region for block: B:347:0x044a A[EXC_TOP_SPLITTER, SYNTHETIC] */
-    /* JADX WARN: Removed duplicated region for block: B:36:0x037c A[Catch: all -> 0x041c, TryCatch #60 {all -> 0x041c, blocks: (B:34:0x0378, B:36:0x037c, B:37:0x0383, B:70:0x03bd, B:72:0x03c1, B:73:0x03c8, B:104:0x0412, B:105:0x041b, B:100:0x040f), top: B:5:0x002c, inners: #56 }] */
-    /* JADX WARN: Removed duplicated region for block: B:53:0x03a1 A[EXC_TOP_SPLITTER, SYNTHETIC] */
-    /* JADX WARN: Removed duplicated region for block: B:58:0x0396 A[EXC_TOP_SPLITTER, SYNTHETIC] */
-    /* JADX WARN: Removed duplicated region for block: B:63:0x038b A[EXC_TOP_SPLITTER, SYNTHETIC] */
-    /* JADX WARN: Removed duplicated region for block: B:72:0x03c1 A[Catch: all -> 0x041c, TryCatch #60 {all -> 0x041c, blocks: (B:34:0x0378, B:36:0x037c, B:37:0x0383, B:70:0x03bd, B:72:0x03c1, B:73:0x03c8, B:104:0x0412, B:105:0x041b, B:100:0x040f), top: B:5:0x002c, inners: #56 }] */
-    /* JADX WARN: Removed duplicated region for block: B:75:0x03ce  */
-    /* JADX WARN: Removed duplicated region for block: B:99:0x040f A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Removed duplicated region for block: B:37:0x03a1 A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Removed duplicated region for block: B:42:0x0396 A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Removed duplicated region for block: B:47:0x038b A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Removed duplicated region for block: B:56:0x03c1 A[Catch: all -> 0x041c, TryCatch #60 {all -> 0x041c, blocks: (B:17:0x0378, B:19:0x037c, B:20:0x0383, B:54:0x03bd, B:56:0x03c1, B:57:0x03c8, B:88:0x0412, B:89:0x041b, B:84:0x040f), top: B:5:0x002c, inners: #56 }] */
+    /* JADX WARN: Removed duplicated region for block: B:59:0x03ce  */
+    /* JADX WARN: Removed duplicated region for block: B:83:0x040f A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Removed duplicated region for block: B:95:0x042f A[Catch: all -> 0x0446, TryCatch #18 {all -> 0x0446, blocks: (B:109:0x0347, B:111:0x034f, B:112:0x0365, B:113:0x0370, B:93:0x042b, B:95:0x042f, B:96:0x0435, B:101:0x043d, B:103:0x0441, B:104:0x0445), top: B:6:0x002c }] */
+    /* JADX WARN: Removed duplicated region for block: B:97:? A[Catch: all -> 0x0446, SYNTHETIC, TryCatch #18 {all -> 0x0446, blocks: (B:109:0x0347, B:111:0x034f, B:112:0x0365, B:113:0x0370, B:93:0x042b, B:95:0x042f, B:96:0x0435, B:101:0x043d, B:103:0x0441, B:104:0x0445), top: B:6:0x002c }] */
     /* JADX WARN: Type inference failed for: r17v0, types: [android.taobao.windvane.connect.HttpConnector] */
     /* JADX WARN: Type inference failed for: r2v0, types: [android.taobao.windvane.connect.HttpRequest] */
     /* JADX WARN: Type inference failed for: r2v1 */
-    /* JADX WARN: Type inference failed for: r2v15, types: [java.util.zip.GZIPInputStream] */
+    /* JADX WARN: Type inference failed for: r2v17, types: [java.util.zip.GZIPInputStream] */
     /* JADX WARN: Type inference failed for: r2v26 */
-    /* JADX WARN: Type inference failed for: r2v32 */
-    /* JADX WARN: Type inference failed for: r2v69 */
+    /* JADX WARN: Type inference failed for: r2v36 */
+    /* JADX WARN: Type inference failed for: r2v70 */
     /* JADX WARN: Type inference failed for: r2v92 */
     /* JADX WARN: Type inference failed for: r2v93 */
     /* JADX WARN: Type inference failed for: r3v0, types: [java.lang.String] */
@@ -123,28 +107,28 @@ public class HttpConnector {
     /* JADX WARN: Type inference failed for: r5v2, types: [java.io.DataInputStream] */
     /* JADX WARN: Type inference failed for: r7v1, types: [boolean] */
     /* JADX WARN: Type inference failed for: r7v10 */
+    /* JADX WARN: Type inference failed for: r7v11, types: [java.net.HttpURLConnection] */
+    /* JADX WARN: Type inference failed for: r7v12 */
     /* JADX WARN: Type inference failed for: r7v13 */
     /* JADX WARN: Type inference failed for: r7v14 */
     /* JADX WARN: Type inference failed for: r7v2 */
     /* JADX WARN: Type inference failed for: r7v32, types: [java.net.HttpURLConnection] */
+    /* JADX WARN: Type inference failed for: r7v35 */
+    /* JADX WARN: Type inference failed for: r7v36 */
+    /* JADX WARN: Type inference failed for: r7v37 */
+    /* JADX WARN: Type inference failed for: r7v38 */
     /* JADX WARN: Type inference failed for: r7v39 */
     /* JADX WARN: Type inference failed for: r7v40 */
     /* JADX WARN: Type inference failed for: r7v41 */
     /* JADX WARN: Type inference failed for: r7v42 */
-    /* JADX WARN: Type inference failed for: r7v43 */
-    /* JADX WARN: Type inference failed for: r7v44 */
-    /* JADX WARN: Type inference failed for: r7v45 */
-    /* JADX WARN: Type inference failed for: r7v46 */
-    /* JADX WARN: Type inference failed for: r7v8 */
-    /* JADX WARN: Type inference failed for: r7v9, types: [java.net.HttpURLConnection] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private android.taobao.windvane.connect.HttpResponse dataConnect(android.taobao.windvane.connect.HttpRequest r18) throws android.taobao.windvane.connect.HttpConnector.NetWorkErrorException, android.taobao.windvane.connect.HttpConnector.HttpOverFlowException, android.taobao.windvane.connect.HttpConnector.RedirectException, android.taobao.windvane.connect.HttpConnector.HttpsErrorException {
         /*
             Method dump skipped, instructions count: 1144
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.connect.HttpConnector.dataConnect(android.taobao.windvane.connect.HttpRequest):android.taobao.windvane.connect.HttpResponse");
     }
@@ -188,10 +172,10 @@ public class HttpConnector {
         while (i < retryTime) {
             try {
                 return dataConnect(httpRequest);
-            } catch (HttpOverFlowException e) {
+            } catch (HttpsErrorException e) {
                 e.printStackTrace();
                 str = e.toString();
-            } catch (HttpsErrorException e2) {
+            } catch (HttpOverFlowException e2) {
                 e2.printStackTrace();
                 str = e2.toString();
             } catch (NetWorkErrorException e3) {
@@ -201,7 +185,7 @@ public class HttpConnector {
                 try {
                     Thread.sleep(i * 2 * 1000);
                 } catch (InterruptedException unused) {
-                    TaoLog.m21e(TAG, "HttpConnector retry Sleep has been interrupted, go ahead");
+                    TaoLog.e(TAG, "HttpConnector retry Sleep has been interrupted, go ahead");
                 }
             } catch (RedirectException e4) {
                 e4.printStackTrace();

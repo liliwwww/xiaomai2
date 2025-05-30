@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class FlexBuffersBuilder {
     static final /* synthetic */ boolean $assertionsDisabled = false;
     public static final int BUILDER_FLAG_NONE = 0;
@@ -23,9 +23,7 @@ public class FlexBuffersBuilder {
     private static final int WIDTH_32 = 2;
     private static final int WIDTH_64 = 3;
     private static final int WIDTH_8 = 0;
-
-    /* renamed from: bb */
-    private final ReadWriteBuf f363bb;
+    private final ReadWriteBuf bb;
     private boolean finished;
     private final int flags;
     private Comparator<Value> keyComparator;
@@ -33,137 +31,20 @@ public class FlexBuffersBuilder {
     private final ArrayList<Value> stack;
     private final HashMap<String, Integer> stringPool;
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static class Value {
-        static final /* synthetic */ boolean $assertionsDisabled = false;
-        final double dValue;
-        long iValue;
-        int key;
-        final int minBitWidth;
-        final int type;
-
-        Value(int i, int i2, int i3, long j) {
-            this.key = i;
-            this.type = i2;
-            this.minBitWidth = i3;
-            this.iValue = j;
-            this.dValue = Double.MIN_VALUE;
-        }
-
-        static Value blob(int i, int i2, int i3, int i4) {
-            return new Value(i, i3, i4, i2);
-        }
-
-        static Value bool(int i, boolean z) {
-            return new Value(i, 26, 0, z ? 1L : 0L);
-        }
-
-        /* JADX INFO: Access modifiers changed from: private */
-        public int elemWidth(int i, int i2) {
-            return elemWidth(this.type, this.minBitWidth, this.iValue, i, i2);
-        }
-
-        static Value float32(int i, float f) {
-            return new Value(i, 3, 2, f);
-        }
-
-        static Value float64(int i, double d) {
-            return new Value(i, 3, 3, d);
-        }
-
-        static Value int16(int i, int i2) {
-            return new Value(i, 1, 1, i2);
-        }
-
-        static Value int32(int i, int i2) {
-            return new Value(i, 1, 2, i2);
-        }
-
-        static Value int64(int i, long j) {
-            return new Value(i, 1, 3, j);
-        }
-
-        static Value int8(int i, int i2) {
-            return new Value(i, 1, 0, i2);
-        }
-
-        private static byte packedType(int i, int i2) {
-            return (byte) (i | (i2 << 2));
-        }
-
-        /* JADX INFO: Access modifiers changed from: private */
-        public static int paddingBytes(int i, int i2) {
-            return ((~i) + 1) & (i2 - 1);
-        }
-
-        /* JADX INFO: Access modifiers changed from: private */
-        public byte storedPackedType() {
-            return storedPackedType(0);
-        }
-
-        private int storedWidth(int i) {
-            return FlexBuffers.isTypeInline(this.type) ? Math.max(this.minBitWidth, i) : this.minBitWidth;
-        }
-
-        static Value uInt16(int i, int i2) {
-            return new Value(i, 2, 1, i2);
-        }
-
-        static Value uInt32(int i, int i2) {
-            return new Value(i, 2, 2, i2);
-        }
-
-        static Value uInt64(int i, long j) {
-            return new Value(i, 2, 3, j);
-        }
-
-        static Value uInt8(int i, int i2) {
-            return new Value(i, 2, 0, i2);
-        }
-
-        /* JADX INFO: Access modifiers changed from: private */
-        public static int elemWidth(int i, int i2, long j, int i3, int i4) {
-            if (FlexBuffers.isTypeInline(i)) {
-                return i2;
-            }
-            for (int i5 = 1; i5 <= 32; i5 *= 2) {
-                int widthUInBits = FlexBuffersBuilder.widthUInBits((int) (((paddingBytes(i3, i5) + i3) + (i4 * i5)) - j));
-                if ((1 << widthUInBits) == i5) {
-                    return widthUInBits;
-                }
-            }
-            return 3;
-        }
-
-        /* JADX INFO: Access modifiers changed from: private */
-        public byte storedPackedType(int i) {
-            return packedType(storedWidth(i), this.type);
-        }
-
-        Value(int i, int i2, int i3, double d) {
-            this.key = i;
-            this.type = i2;
-            this.minBitWidth = i3;
-            this.dValue = d;
-            this.iValue = Long.MIN_VALUE;
-        }
-    }
-
     public FlexBuffersBuilder(int i) {
         this(new ArrayReadWriteBuf(i), 1);
     }
 
     private int align(int i) {
         int i2 = 1 << i;
-        int paddingBytes = Value.paddingBytes(this.f363bb.writePosition(), i2);
+        int access$100 = Value.access$100(this.bb.writePosition(), i2);
         while (true) {
-            int i3 = paddingBytes - 1;
-            if (paddingBytes == 0) {
+            int i3 = access$100 - 1;
+            if (access$100 == 0) {
                 return i2;
             }
-            this.f363bb.put((byte) 0);
-            paddingBytes = i3;
+            this.bb.put((byte) 0);
+            access$100 = i3;
         }
     }
 
@@ -173,11 +54,11 @@ public class FlexBuffersBuilder {
         int i3 = i;
         while (i3 < this.stack.size()) {
             i3++;
-            max = Math.max(max, Value.elemWidth(4, 0, this.stack.get(i3).key, this.f363bb.writePosition(), i3));
+            max = Math.max(max, Value.access$500(4, 0, this.stack.get(i3).key, this.bb.writePosition(), i3));
         }
         int align = align(max);
         writeInt(j, align);
-        int writePosition = this.f363bb.writePosition();
+        int writePosition = this.bb.writePosition();
         while (i < this.stack.size()) {
             int i4 = this.stack.get(i).key;
             writeOffset(this.stack.get(i).key, align);
@@ -193,7 +74,7 @@ public class FlexBuffersBuilder {
         long j = i6;
         int max = Math.max(0, widthUInBits(j));
         if (value != null) {
-            max = Math.max(max, value.elemWidth(this.f363bb.writePosition(), 0));
+            max = Math.max(max, Value.access$200(value, this.bb.writePosition(), 0));
             i4 = 3;
         } else {
             i4 = 1;
@@ -201,7 +82,7 @@ public class FlexBuffersBuilder {
         int i7 = 4;
         int i8 = max;
         for (int i9 = i2; i9 < this.stack.size(); i9++) {
-            i8 = Math.max(i8, this.stack.get(i9).elemWidth(this.f363bb.writePosition(), i9 + i4));
+            i8 = Math.max(i8, Value.access$200(this.stack.get(i9), this.bb.writePosition(), i9 + i4));
             if (z && i9 == i2) {
                 i7 = this.stack.get(i9).type;
                 if (!FlexBuffers.isTypedVectorElementType(i7)) {
@@ -218,13 +99,13 @@ public class FlexBuffersBuilder {
         if (!z2) {
             writeInt(j, align);
         }
-        int writePosition = this.f363bb.writePosition();
+        int writePosition = this.bb.writePosition();
         for (int i11 = i10; i11 < this.stack.size(); i11++) {
             writeAny(this.stack.get(i11), align);
         }
         if (!z) {
             while (i10 < this.stack.size()) {
-                this.f363bb.put(this.stack.get(i10).storedPackedType(i8));
+                this.bb.put(Value.access$400(this.stack.get(i10), i8));
                 i10++;
             }
         }
@@ -245,11 +126,11 @@ public class FlexBuffersBuilder {
         if (str == null) {
             return -1;
         }
-        int writePosition = this.f363bb.writePosition();
+        int writePosition = this.bb.writePosition();
         if ((this.flags & 1) == 0) {
             byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
-            this.f363bb.put(bytes, 0, bytes.length);
-            this.f363bb.put((byte) 0);
+            this.bb.put(bytes, 0, bytes.length);
+            this.bb.put((byte) 0);
             this.keyPool.put(str, Integer.valueOf(writePosition));
             return writePosition;
         }
@@ -258,20 +139,20 @@ public class FlexBuffersBuilder {
             return num.intValue();
         }
         byte[] bytes2 = str.getBytes(StandardCharsets.UTF_8);
-        this.f363bb.put(bytes2, 0, bytes2.length);
-        this.f363bb.put((byte) 0);
+        this.bb.put(bytes2, 0, bytes2.length);
+        this.bb.put((byte) 0);
         this.keyPool.put(str, Integer.valueOf(writePosition));
         return writePosition;
     }
 
     static int widthUInBits(long j) {
-        if (j <= FlexBuffers.Unsigned.byteToUnsignedInt((byte) -1)) {
+        if (j <= FlexBuffers$Unsigned.byteToUnsignedInt((byte) -1)) {
             return 0;
         }
-        if (j <= FlexBuffers.Unsigned.shortToUnsignedInt((short) -1)) {
+        if (j <= FlexBuffers$Unsigned.shortToUnsignedInt((short) -1)) {
             return 1;
         }
-        return j <= FlexBuffers.Unsigned.intToUnsignedLong(-1) ? 2 : 3;
+        return j <= FlexBuffers$Unsigned.intToUnsignedLong(-1) ? 2 : 3;
     }
 
     private void writeAny(Value value, int i) {
@@ -291,41 +172,41 @@ public class FlexBuffersBuilder {
     private Value writeBlob(int i, byte[] bArr, int i2, boolean z) {
         int widthUInBits = widthUInBits(bArr.length);
         writeInt(bArr.length, align(widthUInBits));
-        int writePosition = this.f363bb.writePosition();
-        this.f363bb.put(bArr, 0, bArr.length);
+        int writePosition = this.bb.writePosition();
+        this.bb.put(bArr, 0, bArr.length);
         if (z) {
-            this.f363bb.put((byte) 0);
+            this.bb.put((byte) 0);
         }
         return Value.blob(i, writePosition, i2, widthUInBits);
     }
 
     private void writeDouble(double d, int i) {
         if (i == 4) {
-            this.f363bb.putFloat((float) d);
+            this.bb.putFloat((float) d);
         } else if (i == 8) {
-            this.f363bb.putDouble(d);
+            this.bb.putDouble(d);
         }
     }
 
     private void writeInt(long j, int i) {
         if (i == 1) {
-            this.f363bb.put((byte) j);
+            this.bb.put((byte) j);
             return;
         }
         if (i == 2) {
-            this.f363bb.putShort((short) j);
+            this.bb.putShort((short) j);
         } else if (i == 4) {
-            this.f363bb.putInt((int) j);
+            this.bb.putInt((int) j);
         } else {
             if (i != 8) {
                 return;
             }
-            this.f363bb.putLong(j);
+            this.bb.putLong(j);
         }
     }
 
     private void writeOffset(long j, int i) {
-        writeInt((int) (this.f363bb.writePosition() - j), i);
+        writeInt((int) (this.bb.writePosition() - j), i);
     }
 
     private Value writeString(int i, String str) {
@@ -354,16 +235,16 @@ public class FlexBuffersBuilder {
     }
 
     public ByteBuffer finish() {
-        int align = align(this.stack.get(0).elemWidth(this.f363bb.writePosition(), 0));
+        int align = align(Value.access$200(this.stack.get(0), this.bb.writePosition(), 0));
         writeAny(this.stack.get(0), align);
-        this.f363bb.put(this.stack.get(0).storedPackedType());
-        this.f363bb.put((byte) align);
+        this.bb.put(Value.access$300(this.stack.get(0)));
+        this.bb.put((byte) align);
         this.finished = true;
-        return ByteBuffer.wrap(this.f363bb.data(), 0, this.f363bb.writePosition());
+        return ByteBuffer.wrap(this.bb.data(), 0, this.bb.writePosition());
     }
 
     public ReadWriteBuf getBuffer() {
-        return this.f363bb;
+        return this.bb;
     }
 
     public int putBlob(byte[] bArr) {
@@ -506,8 +387,8 @@ public class FlexBuffersBuilder {
                 int i2 = value.key;
                 int i3 = value2.key;
                 do {
-                    b = FlexBuffersBuilder.this.f363bb.get(i2);
-                    b2 = FlexBuffersBuilder.this.f363bb.get(i3);
+                    b = FlexBuffersBuilder.this.bb.get(i2);
+                    b2 = FlexBuffersBuilder.this.bb.get(i3);
                     if (b == 0) {
                         return b - b2;
                     }
@@ -517,7 +398,7 @@ public class FlexBuffersBuilder {
                 return b - b2;
             }
         };
-        this.f363bb = readWriteBuf;
+        this.bb = readWriteBuf;
         this.flags = i;
     }
 

@@ -5,7 +5,7 @@ import androidx.compose.foundation.lazy.layout.IntervalList;
 import androidx.compose.runtime.collection.MutableVector;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class IntervalListKt {
     /* JADX INFO: Access modifiers changed from: private */
     @ExperimentalFoundationApi

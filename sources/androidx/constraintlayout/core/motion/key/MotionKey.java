@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class MotionKey implements TypedValues {
     public static final String ALPHA = "alpha";
     public static final String CUSTOM = "CUSTOM";
@@ -38,7 +38,7 @@ public abstract class MotionKey implements TypedValues {
 
     @Override // 
     /* renamed from: clone, reason: merged with bridge method [inline-methods] */
-    public abstract MotionKey mo5574clone();
+    public abstract MotionKey mo2314clone();
 
     public MotionKey copy(MotionKey motionKey) {
         this.mFramePosition = motionKey.mFramePosition;
@@ -73,12 +73,10 @@ public abstract class MotionKey implements TypedValues {
     public void setInterpolation(HashMap<String, Integer> hashMap) {
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, float f) {
         return false;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, int i2) {
         if (i != 100) {
             return false;
@@ -87,7 +85,6 @@ public abstract class MotionKey implements TypedValues {
         return true;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, boolean z) {
         return false;
     }
@@ -113,7 +110,6 @@ public abstract class MotionKey implements TypedValues {
         this.mCustom.put(str, new CustomVariable(str, i, i2));
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, String str) {
         if (i != 101) {
             return false;

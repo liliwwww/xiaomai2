@@ -8,13 +8,6 @@ import androidx.compose.foundation.interaction.InteractionSourceKt;
 import androidx.compose.foundation.interaction.MutableInteractionSource;
 import androidx.compose.foundation.lazy.layout.LazyAnimateScrollKt;
 import androidx.compose.foundation.lazy.layout.LazyLayoutPrefetchState;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.Remeasurement;
-import androidx.compose.p004ui.layout.RemeasurementModifier;
-import androidx.compose.p004ui.unit.Constraints;
-import androidx.compose.p004ui.unit.ConstraintsKt;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.DensityKt;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
@@ -23,6 +16,13 @@ import androidx.compose.runtime.saveable.ListSaverKt;
 import androidx.compose.runtime.saveable.Saver;
 import androidx.compose.runtime.saveable.SaverScope;
 import androidx.compose.runtime.snapshots.SnapshotStateList;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.Remeasurement;
+import androidx.compose.ui.layout.RemeasurementModifier;
+import androidx.compose.ui.unit.Constraints;
+import androidx.compose.ui.unit.ConstraintsKt;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.DensityKt;
 import java.util.List;
 import kotlin.Unit;
 import kotlin.collections.CollectionsKt;
@@ -40,7 +40,7 @@ import tb.nt2;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyListState implements ScrollableState {
 
     @NotNull
@@ -133,7 +133,7 @@ public final class LazyListState implements ScrollableState {
     /* JADX WARN: Illegal instructions before constructor call */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public LazyListState() {
         /*
@@ -148,67 +148,63 @@ public final class LazyListState implements ScrollableState {
     }
 
     public LazyListState(int i, int i2) {
+        MutableState<LazyListLayoutInfo> mutableStateOf$default;
+        MutableState mutableStateOf$default2;
+        MutableState mutableStateOf$default3;
+        MutableState mutableStateOf$default4;
+        MutableState mutableStateOf$default5;
+        MutableState mutableStateOf$default6;
+        MutableState mutableStateOf$default7;
         this.scrollPosition = new LazyListScrollPosition(i, i2);
         this.animateScrollScope = new LazyListAnimateScrollScope(this);
-        this.layoutInfoState = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(EmptyLazyListLayoutInfo.INSTANCE, null, 2, null);
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(EmptyLazyListLayoutInfo.INSTANCE, null, 2, null);
+        this.layoutInfoState = mutableStateOf$default;
         this.internalInteractionSource = InteractionSourceKt.MutableInteractionSource();
-        this.density$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(DensityKt.Density(1.0f, 1.0f), null, 2, null);
-        this.scrollableState = ScrollableStateKt.ScrollableState(new Function1<Float, Float>() { // from class: androidx.compose.foundation.lazy.LazyListState$scrollableState$1
-            {
-                super(1);
-            }
-
-            @NotNull
-            public final Float invoke(float f) {
-                return Float.valueOf(-LazyListState.this.onScroll$foundation_release(-f));
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                return invoke(((Number) obj).floatValue());
-            }
-        });
+        mutableStateOf$default2 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(DensityKt.Density(1.0f, 1.0f), null, 2, null);
+        this.density$delegate = mutableStateOf$default2;
+        this.scrollableState = ScrollableStateKt.ScrollableState(new scrollableState.1(this));
         this.prefetchingEnabled = true;
         this.indexToPrefetch = -1;
-        this.remeasurement$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
+        mutableStateOf$default3 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
+        this.remeasurement$delegate = mutableStateOf$default3;
         this.remeasurementModifier = new RemeasurementModifier() { // from class: androidx.compose.foundation.lazy.LazyListState$remeasurementModifier$1
-            @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
             public /* synthetic */ boolean all(Function1 function1) {
                 return nt2.a(this, function1);
             }
 
-            @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
             public /* synthetic */ boolean any(Function1 function1) {
                 return nt2.b(this, function1);
             }
 
-            @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
             public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
                 return nt2.c(this, obj, function2);
             }
 
-            @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
             public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
                 return nt2.d(this, obj, function2);
             }
 
-            @Override // androidx.compose.p004ui.layout.RemeasurementModifier
             public void onRemeasurementAvailable(@NotNull Remeasurement remeasurement) {
                 Intrinsics.checkNotNullParameter(remeasurement, "remeasurement");
                 LazyListState.this.setRemeasurement(remeasurement);
             }
 
-            @Override // androidx.compose.p004ui.Modifier
+            /* JADX WARN: Multi-variable type inference failed */
             public /* synthetic */ Modifier then(Modifier modifier) {
                 return mt2.a(this, modifier);
             }
         };
         this.awaitLayoutModifier = new AwaitFirstLayoutModifier();
-        this.placementAnimator$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
-        this.premeasureConstraints$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Constraints.m5172boximpl(ConstraintsKt.Constraints$default(0, 0, 0, 0, 15, null)), null, 2, null);
+        mutableStateOf$default4 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
+        this.placementAnimator$delegate = mutableStateOf$default4;
+        mutableStateOf$default5 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Constraints.box-impl(ConstraintsKt.Constraints$default(0, 0, 0, 0, 15, (Object) null)), null, 2, null);
+        this.premeasureConstraints$delegate = mutableStateOf$default5;
         this.pinnedItems = SnapshotStateKt.mutableStateListOf();
         Boolean bool = Boolean.FALSE;
-        this.canScrollForward$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(bool, null, 2, null);
-        this.canScrollBackward$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(bool, null, 2, null);
+        mutableStateOf$default6 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(bool, null, 2, null);
+        this.canScrollForward$delegate = mutableStateOf$default6;
+        mutableStateOf$default7 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(bool, null, 2, null);
+        this.canScrollBackward$delegate = mutableStateOf$default7;
         this.prefetchState = new LazyLayoutPrefetchState();
     }
 
@@ -247,7 +243,7 @@ public final class LazyListState implements ScrollableState {
                         }
                         this.wasScrollingForward = z;
                         this.indexToPrefetch = index;
-                        this.currentPrefetchHandle = this.prefetchState.m1616schedulePrefetch0kLqBqw(index, m1523getPremeasureConstraintsmsEJaDk$foundation_release());
+                        this.currentPrefetchHandle = this.prefetchState.m490schedulePrefetch0kLqBqw(index, m435getPremeasureConstraintsmsEJaDk$foundation_release());
                     }
                 }
             }
@@ -302,13 +298,11 @@ public final class LazyListState implements ScrollableState {
         return this.awaitLayoutModifier;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @Override // androidx.compose.foundation.gestures.ScrollableState
     public boolean getCanScrollBackward() {
         return ((Boolean) this.canScrollBackward$delegate.getValue()).booleanValue();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @Override // androidx.compose.foundation.gestures.ScrollableState
     public boolean getCanScrollForward() {
         return ((Boolean) this.canScrollForward$delegate.getValue()).booleanValue();
@@ -320,7 +314,7 @@ public final class LazyListState implements ScrollableState {
     }
 
     public final int getFirstVisibleItemIndex() {
-        return this.scrollPosition.m1520getIndexjQJCoq8();
+        return this.scrollPosition.m432getIndexjQJCoq8();
     }
 
     public final int getFirstVisibleItemScrollOffset() {
@@ -339,7 +333,7 @@ public final class LazyListState implements ScrollableState {
 
     @NotNull
     public final LazyListLayoutInfo getLayoutInfo() {
-        return this.layoutInfoState.getValue();
+        return (LazyListLayoutInfo) this.layoutInfoState.getValue();
     }
 
     public final int getNumMeasurePasses$foundation_release() {
@@ -351,7 +345,6 @@ public final class LazyListState implements ScrollableState {
         return this.pinnedItems;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     public final LazyListItemPlacementAnimator getPlacementAnimator$foundation_release() {
         return (LazyListItemPlacementAnimator) this.placementAnimator$delegate.getValue();
@@ -366,10 +359,9 @@ public final class LazyListState implements ScrollableState {
         return this.prefetchingEnabled;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     /* renamed from: getPremeasureConstraints-msEJaDk$foundation_release, reason: not valid java name */
-    public final long m1523getPremeasureConstraintsmsEJaDk$foundation_release() {
-        return ((Constraints) this.premeasureConstraints$delegate.getValue()).m5190unboximpl();
+    public final long m435getPremeasureConstraintsmsEJaDk$foundation_release() {
+        return ((Constraints) this.premeasureConstraints$delegate.getValue()).unbox-impl();
     }
 
     @Nullable
@@ -425,7 +417,7 @@ public final class LazyListState implements ScrollableState {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public java.lang.Object scroll(@org.jetbrains.annotations.NotNull androidx.compose.foundation.MutatePriority r6, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.foundation.gestures.ScrollScope, ? super kotlin.coroutines.Continuation<? super kotlin.Unit>, ? extends java.lang.Object> r7, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r8) {
         /*
@@ -519,12 +511,12 @@ public final class LazyListState implements ScrollableState {
     }
 
     /* renamed from: setPremeasureConstraints-BRTryo0$foundation_release, reason: not valid java name */
-    public final void m1524setPremeasureConstraintsBRTryo0$foundation_release(long j) {
-        this.premeasureConstraints$delegate.setValue(Constraints.m5172boximpl(j));
+    public final void m436setPremeasureConstraintsBRTryo0$foundation_release(long j) {
+        this.premeasureConstraints$delegate.setValue(Constraints.box-impl(j));
     }
 
     public final void snapToItemIndexInternal$foundation_release(int i, int i2) {
-        this.scrollPosition.m1521requestPositionAhXoVpI(DataIndex.m1483constructorimpl(i), i2);
+        this.scrollPosition.m433requestPositionAhXoVpI(DataIndex.constructor-impl(i), i2);
         LazyListItemPlacementAnimator placementAnimator$foundation_release = getPlacementAnimator$foundation_release();
         if (placementAnimator$foundation_release != null) {
             placementAnimator$foundation_release.reset();

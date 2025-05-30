@@ -8,13 +8,12 @@ import android.taobao.windvane.webview.WVWrapWebResourceResponse;
 import android.text.TextUtils;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVSecurityFilter extends WVWebViewClientFilter {
-    @Override // android.taobao.windvane.service.WVWebViewClientFilter
     @SuppressLint({"NewApi", "DefaultLocale"})
     public WVWrapWebResourceResponse shouldInterceptRequest(IWVWebView iWVWebView, String str) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("WVSecurityFilter", "WVSecurityFilter shouldInterceptRequest url =" + str);
+            TaoLog.d("WVSecurityFilter", "WVSecurityFilter shouldInterceptRequest url =" + str);
         }
         return (TextUtils.isEmpty(str) || str.length() <= 6 || !str.substring(0, 7).toLowerCase().startsWith("file://")) ? super.shouldInterceptRequest(iWVWebView, str) : new WVWrapWebResourceResponse("", "utf-8", null, null);
     }

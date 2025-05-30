@@ -1,0 +1,52 @@
+package androidx.compose.ui.text;
+
+import java.util.List;
+import kotlin.collections.CollectionsKt;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Lambda;
+import org.jetbrains.annotations.NotNull;
+
+/* compiled from: Taobao */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
+final class MultiParagraphIntrinsics$maxIntrinsicWidth$2 extends Lambda implements Function0<Float> {
+    final /* synthetic */ MultiParagraphIntrinsics this$0;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    MultiParagraphIntrinsics$maxIntrinsicWidth$2(MultiParagraphIntrinsics multiParagraphIntrinsics) {
+        super(0);
+        this.this$0 = multiParagraphIntrinsics;
+    }
+
+    @NotNull
+    /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
+    public final Float m2255invoke() {
+        Object obj;
+        ParagraphIntrinsics intrinsics;
+        List infoList$ui_text_release = this.this$0.getInfoList$ui_text_release();
+        if (infoList$ui_text_release.isEmpty()) {
+            obj = null;
+        } else {
+            Object obj2 = infoList$ui_text_release.get(0);
+            float maxIntrinsicWidth = ((ParagraphIntrinsicInfo) obj2).getIntrinsics().getMaxIntrinsicWidth();
+            int lastIndex = CollectionsKt.getLastIndex(infoList$ui_text_release);
+            int i = 1;
+            if (1 <= lastIndex) {
+                while (true) {
+                    Object obj3 = infoList$ui_text_release.get(i);
+                    float maxIntrinsicWidth2 = ((ParagraphIntrinsicInfo) obj3).getIntrinsics().getMaxIntrinsicWidth();
+                    if (Float.compare(maxIntrinsicWidth, maxIntrinsicWidth2) < 0) {
+                        obj2 = obj3;
+                        maxIntrinsicWidth = maxIntrinsicWidth2;
+                    }
+                    if (i == lastIndex) {
+                        break;
+                    }
+                    i++;
+                }
+            }
+            obj = obj2;
+        }
+        ParagraphIntrinsicInfo paragraphIntrinsicInfo = (ParagraphIntrinsicInfo) obj;
+        return Float.valueOf((paragraphIntrinsicInfo == null || (intrinsics = paragraphIntrinsicInfo.getIntrinsics()) == null) ? 0.0f : intrinsics.getMaxIntrinsicWidth());
+    }
+}

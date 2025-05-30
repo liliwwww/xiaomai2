@@ -10,7 +10,7 @@ import kotlin.jvm.internal.markers.KMappedMarker;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class PersistentHashSetIterator<E> implements Iterator<E>, KMappedMarker {
     private boolean hasNext;
 
@@ -70,7 +70,7 @@ public class PersistentHashSetIterator<E> implements Iterator<E>, KMappedMarker 
     }
 
     protected final E currentElement() {
-        CommonFunctionsKt.m2432assert(hasNext());
+        CommonFunctionsKt.assert(hasNext());
         return this.path.get(this.pathLastIndex).currentElement();
     }
 

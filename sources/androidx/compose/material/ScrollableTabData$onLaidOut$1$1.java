@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.ScrollableTabData$onLaidOut$1$1", f = "TabRow.kt", i = {}, l = {475}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class ScrollableTabData$onLaidOut$1$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ int $calculatedOffset;
     int label;
@@ -40,17 +40,15 @@ final class ScrollableTabData$onLaidOut$1$1 extends SuspendLambda implements Fun
 
     @Nullable
     public final Object invokeSuspend(@NotNull Object obj) {
-        ScrollState scrollState;
-        AnimationSpec<Float> animationSpec;
         Object coroutine_suspended = IntrinsicsKt.getCOROUTINE_SUSPENDED();
         int i = this.label;
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
-            scrollState = this.this$0.scrollState;
+            ScrollState access$getScrollState$p = ScrollableTabData.access$getScrollState$p(this.this$0);
             int i2 = this.$calculatedOffset;
-            animationSpec = TabRowKt.ScrollableTabRowScrollSpec;
+            AnimationSpec access$getScrollableTabRowScrollSpec$p = TabRowKt.access$getScrollableTabRowScrollSpec$p();
             this.label = 1;
-            if (scrollState.animateScrollTo(i2, animationSpec, this) == coroutine_suspended) {
+            if (access$getScrollState$p.animateScrollTo(i2, access$getScrollableTabRowScrollSpec$p, this) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

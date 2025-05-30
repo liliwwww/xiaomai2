@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.pullrefresh.PullRefreshKt$pullRefresh$2$2", f = "PullRefresh.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class PullRefreshKt$pullRefresh$2$2 extends SuspendLambda implements Function2<Float, Continuation<? super Unit>, Object> {
     final /* synthetic */ PullRefreshState $state;
     int label;

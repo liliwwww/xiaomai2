@@ -7,7 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVLocaleConfig {
     private static volatile WVLocaleConfig instance;
     public String mCurrentLocale = null;
@@ -26,7 +26,7 @@ public class WVLocaleConfig {
 
     public void init() {
         try {
-            String stringVal = ConfigStorage.getStringVal(WVConfigManager.SPNAME_CONFIG, WVConfigManager.CONFIGNAME_LOCALE);
+            String stringVal = ConfigStorage.getStringVal("wv_main_config", "locale");
             if (TextUtils.isEmpty(stringVal)) {
                 return;
             }
@@ -41,7 +41,7 @@ public class WVLocaleConfig {
     /* JADX WARN: Removed duplicated region for block: B:13:0x0028  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public boolean needFull() {
         /*
@@ -93,7 +93,7 @@ public class WVLocaleConfig {
             WVThreadPool.getInstance().execute(new Runnable() { // from class: android.taobao.windvane.config.WVLocaleConfig.1
                 @Override // java.lang.Runnable
                 public void run() {
-                    ConfigStorage.putStringVal(WVConfigManager.SPNAME_CONFIG, WVConfigManager.CONFIGNAME_LOCALE, jSONObject.toString());
+                    ConfigStorage.putStringVal("wv_main_config", "locale", jSONObject.toString());
                 }
             });
         } catch (JSONException e) {

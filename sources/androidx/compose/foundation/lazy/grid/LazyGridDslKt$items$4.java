@@ -6,7 +6,7 @@ import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyGridDslKt$items$4 extends Lambda implements Function1<Integer, Object> {
     final /* synthetic */ Function1<T, Object> $contentType;
     final /* synthetic */ List<T> $items;

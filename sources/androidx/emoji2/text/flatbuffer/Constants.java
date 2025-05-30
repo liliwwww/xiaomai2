@@ -1,7 +1,7 @@
 package androidx.emoji2.text.flatbuffer;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Constants {
     static final int FILE_IDENTIFIER_LENGTH = 4;
     static final int SIZEOF_BYTE = 1;

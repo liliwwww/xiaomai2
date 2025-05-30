@@ -11,13 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R;
+import androidx.appcompat.R$attr;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewPropertyAnimatorCompat;
-import androidx.core.view.ViewPropertyAnimatorListener;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 abstract class AbsActionBarView extends ViewGroup {
     private static final int FADE_DURATION = 200;
     protected ActionMenuPresenter mActionMenuPresenter;
@@ -28,43 +28,6 @@ abstract class AbsActionBarView extends ViewGroup {
     protected final Context mPopupContext;
     protected final VisibilityAnimListener mVisAnimListener;
     protected ViewPropertyAnimatorCompat mVisibilityAnim;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    protected class VisibilityAnimListener implements ViewPropertyAnimatorListener {
-        private boolean mCanceled = false;
-        int mFinalVisibility;
-
-        protected VisibilityAnimListener() {
-        }
-
-        @Override // androidx.core.view.ViewPropertyAnimatorListener
-        public void onAnimationCancel(View view) {
-            this.mCanceled = true;
-        }
-
-        @Override // androidx.core.view.ViewPropertyAnimatorListener
-        public void onAnimationEnd(View view) {
-            if (this.mCanceled) {
-                return;
-            }
-            AbsActionBarView absActionBarView = AbsActionBarView.this;
-            absActionBarView.mVisibilityAnim = null;
-            AbsActionBarView.super.setVisibility(this.mFinalVisibility);
-        }
-
-        @Override // androidx.core.view.ViewPropertyAnimatorListener
-        public void onAnimationStart(View view) {
-            AbsActionBarView.super.setVisibility(0);
-            this.mCanceled = false;
-        }
-
-        public VisibilityAnimListener withFinalVisibility(ViewPropertyAnimatorCompat viewPropertyAnimatorCompat, int i) {
-            AbsActionBarView.this.mVisibilityAnim = viewPropertyAnimatorCompat;
-            this.mFinalVisibility = i;
-            return this;
-        }
-    }
 
     AbsActionBarView(@NonNull Context context) {
         this(context, null);
@@ -134,8 +97,8 @@ abstract class AbsActionBarView extends ViewGroup {
     @Override // android.view.View
     protected void onConfigurationChanged(Configuration configuration) {
         super.onConfigurationChanged(configuration);
-        TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(null, C0257R.styleable.ActionBar, C0257R.attr.actionBarStyle, 0);
-        setContentHeight(obtainStyledAttributes.getLayoutDimension(C0257R.styleable.ActionBar_height, 0));
+        TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(null, R.styleable.ActionBar, R$attr.actionBarStyle, 0);
+        setContentHeight(obtainStyledAttributes.getLayoutDimension(R.styleable.ActionBar_height, 0));
         obtainStyledAttributes.recycle();
         ActionMenuPresenter actionMenuPresenter = this.mActionMenuPresenter;
         if (actionMenuPresenter != null) {
@@ -250,9 +213,9 @@ abstract class AbsActionBarView extends ViewGroup {
 
     AbsActionBarView(@NonNull Context context, @Nullable AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
-        this.mVisAnimListener = new VisibilityAnimListener();
+        this.mVisAnimListener = new VisibilityAnimListener(this);
         TypedValue typedValue = new TypedValue();
-        if (context.getTheme().resolveAttribute(C0257R.attr.actionBarPopupTheme, typedValue, true) && typedValue.resourceId != 0) {
+        if (context.getTheme().resolveAttribute(R$attr.actionBarPopupTheme, typedValue, true) && typedValue.resourceId != 0) {
             this.mPopupContext = new ContextThemeWrapper(context, typedValue.resourceId);
         } else {
             this.mPopupContext = context;

@@ -1,6 +1,6 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.geometry.Offset;
+import androidx.compose.ui.geometry.Offset;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.TransformableStateKt$zoomBy$2", f = "TransformableState.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class TransformableStateKt$zoomBy$2 extends SuspendLambda implements Function2<TransformScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ float $zoomFactor;
     private /* synthetic */ Object L$0;
@@ -44,7 +44,7 @@ final class TransformableStateKt$zoomBy$2 extends SuspendLambda implements Funct
             throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
         }
         ResultKt.throwOnFailure(obj);
-        ((TransformScope) this.L$0).mo1210transformByd4ec7I(this.$zoomFactor, Offset.Companion.m2572getZeroF1C5BW0(), 0.0f);
+        ((TransformScope) this.L$0).mo163transformByd4ec7I(this.$zoomFactor, Offset.Companion.getZero-F1C5BW0(), 0.0f);
         return Unit.INSTANCE;
     }
 }

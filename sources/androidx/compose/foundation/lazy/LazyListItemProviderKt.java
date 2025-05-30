@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyListItemProviderKt {
     private static final int NearestItemsExtraItemCount = 100;
     private static final int NearestItemsSlidingWindowSize = 30;
@@ -36,33 +36,11 @@ public final class LazyListItemProviderKt {
         boolean changed = composer.changed(lazyListState);
         Object rememberedValue = composer.rememberedValue();
         if (changed || rememberedValue == Composer.Companion.getEmpty()) {
-            rememberedValue = new Function0<Integer>() { // from class: androidx.compose.foundation.lazy.LazyListItemProviderKt$rememberLazyListItemProvider$nearestItemsRangeState$1$1
-                {
-                    super(0);
-                }
-
-                @NotNull
-                /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-                public final Integer m1508invoke() {
-                    return Integer.valueOf(LazyListState.this.getFirstVisibleItemIndex());
-                }
-            };
+            rememberedValue = new rememberLazyListItemProvider.nearestItemsRangeState.1.1(lazyListState);
             composer.updateRememberedValue(rememberedValue);
         }
         composer.endReplaceableGroup();
-        final State<IntRange> rememberLazyNearestItemsRangeState = LazyNearestItemsRangeKt.rememberLazyNearestItemsRangeState((Function0) rememberedValue, new Function0<Integer>() { // from class: androidx.compose.foundation.lazy.LazyListItemProviderKt$rememberLazyListItemProvider$nearestItemsRangeState$2
-            @NotNull
-            /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Integer m1509invoke() {
-                return 30;
-            }
-        }, new Function0<Integer>() { // from class: androidx.compose.foundation.lazy.LazyListItemProviderKt$rememberLazyListItemProvider$nearestItemsRangeState$3
-            @NotNull
-            /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Integer m1510invoke() {
-                return 100;
-            }
-        }, composer, 432);
+        final State<IntRange> rememberLazyNearestItemsRangeState = LazyNearestItemsRangeKt.rememberLazyNearestItemsRangeState((Function0) rememberedValue, rememberLazyListItemProvider.nearestItemsRangeState.2.INSTANCE, rememberLazyListItemProvider.nearestItemsRangeState.3.INSTANCE, composer, 432);
         composer.startReplaceableGroup(511388516);
         boolean changed2 = composer.changed(rememberLazyNearestItemsRangeState) | composer.changed(lazyListState);
         Object rememberedValue2 = composer.rememberedValue();
@@ -76,10 +54,10 @@ public final class LazyListItemProviderKt {
 
                 @NotNull
                 /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-                public final LazyListItemProviderImpl m1507invoke() {
+                public final LazyListItemProviderImpl m259invoke() {
                     LazyListScopeImpl lazyListScopeImpl = new LazyListScopeImpl();
-                    rememberUpdatedState.getValue().invoke(lazyListScopeImpl);
-                    return new LazyListItemProviderImpl(lazyListScopeImpl.getIntervals(), rememberLazyNearestItemsRangeState.getValue(), lazyListScopeImpl.getHeaderIndexes(), lazyItemScopeImpl, lazyListState);
+                    ((Function1) rememberUpdatedState.getValue()).invoke(lazyListScopeImpl);
+                    return new LazyListItemProviderImpl(lazyListScopeImpl.getIntervals(), (IntRange) rememberLazyNearestItemsRangeState.getValue(), lazyListScopeImpl.getHeaderIndexes(), lazyItemScopeImpl, lazyListState);
                 }
             }));
             composer.updateRememberedValue(rememberedValue2);

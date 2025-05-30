@@ -1,7 +1,7 @@
 package android.taobao.windvane.packageapp.zipapp.data;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ZipAppResultCode {
     public static int ERR_APPRES_CONFIG_PARSE = 402;
     public static int ERR_APPS_CONFIG_PARSE = 401;

@@ -5,9 +5,8 @@ import android.taobao.windvane.config.GlobalConfig;
 import android.taobao.windvane.config.WVCommonConfig;
 import android.taobao.windvane.config.WVConfigManager;
 import android.taobao.windvane.config.WVServerConfig;
-import android.taobao.windvane.connect.HttpConnector;
 import android.taobao.windvane.debug.WVPageFinishJSRender;
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
+import android.taobao.windvane.extra.uc.preRender.BasePreInitManager;
 import android.taobao.windvane.jsbridge.WVApiPlugin;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.taobao.windvane.jsbridge.WVResult;
@@ -15,7 +14,6 @@ import android.taobao.windvane.monitor.WVLocPerformanceMonitor;
 import android.taobao.windvane.util.EnvUtil;
 import android.taobao.windvane.util.TaoLog;
 import android.taobao.windvane.util.log.AndroidLog;
-import android.taobao.windvane.webview.IWVWebView;
 import android.taobao.windvane.webview.WVWebView;
 import android.text.TextUtils;
 import android.webkit.WebView;
@@ -27,7 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVDevelopTool extends WVApiPlugin {
     private static final String TAG = "WVDevelopTool";
     private static int mLastMode;
@@ -36,7 +34,7 @@ public class WVDevelopTool extends WVApiPlugin {
     private void getURLContentType(WVCallBackContext wVCallBackContext, String str) {
         WVResult wVResult = new WVResult();
         try {
-            String optString = new JSONObject(str).optString(HttpConnector.URL, "");
+            String optString = new JSONObject(str).optString("url", "");
             if (WVServerConfig.isBlackUrl(optString)) {
                 wVResult.addData("type", (Object) (-1));
             } else if (WVServerConfig.isTrustedUrl(optString)) {
@@ -113,7 +111,7 @@ public class WVDevelopTool extends WVApiPlugin {
             }
             jSONObject2.put("appVersion", GlobalConfig.getInstance().getAppVersion());
             WVConfigManager.getInstance().updateConfigByKey("windvane_domain", jSONObject2.toString());
-            TaoLog.m24i("WVConfig", "receive name=[windvane_domain]; config=[" + jSONObject2.toString() + "]");
+            TaoLog.i("WVConfig", "receive name=[windvane_domain]; config=[" + jSONObject2.toString() + "]");
             wVCallBackContext.success();
             return;
         }
@@ -132,7 +130,7 @@ public class WVDevelopTool extends WVApiPlugin {
     }
 
     public final void clearWindVaneCache(String str, WVCallBackContext wVCallBackContext) {
-        this.mWebView.clearCache();
+        ((WVApiPlugin) this).mWebView.clearCache();
         wVCallBackContext.success();
     }
 
@@ -144,7 +142,6 @@ public class WVDevelopTool extends WVApiPlugin {
         EnvUtil.setOpenSpdyforDebug(false);
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if ("isDebugEnabled".equals(str)) {
             WVResult wVResult = new WVResult();
@@ -253,11 +250,11 @@ public class WVDevelopTool extends WVApiPlugin {
             if (new JSONObject(str).optBoolean("enable", false)) {
                 WVCommonConfig.getInstance();
                 WVCommonConfig.commonConfig.useSystemWebView = false;
-                Toast.makeText(this.mContext, "启用UC, 重启后生效", 1).show();
+                Toast.makeText(((WVApiPlugin) this).mContext, "启用UC, 重启后生效", 1).show();
             } else {
                 WVCommonConfig.getInstance();
                 WVCommonConfig.commonConfig.useSystemWebView = true;
-                Toast.makeText(this.mContext, "关闭UC, 重启后生效", 1).show();
+                Toast.makeText(((WVApiPlugin) this).mContext, "关闭UC, 重启后生效", 1).show();
             }
             wVCallBackContext.success();
         } catch (Exception unused) {
@@ -274,8 +271,9 @@ public class WVDevelopTool extends WVApiPlugin {
                 wVCallBackContext.error(wVResult);
                 return;
             }
-            IWVWebView iWVWebView = this.mWebView;
-            if (iWVWebView instanceof WVWebView) {
+            WVWebView wVWebView = ((WVApiPlugin) this).mWebView;
+            if (wVWebView instanceof WVWebView) {
+                WVWebView wVWebView2 = wVWebView;
                 WebView.setWebContentsDebuggingEnabled(optBoolean);
             }
             this.mIsDebugOpen = optBoolean;

@@ -7,7 +7,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.ViewConfiguration;
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
@@ -15,10 +14,9 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import androidx.core.view.ViewCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class PagerTabStrip extends PagerTitleStrip {
     private static final int FULL_UNDERLINE_HEIGHT = 1;
     private static final int INDICATOR_HEIGHT = 3;
@@ -70,11 +68,11 @@ public class PagerTabStrip extends PagerTitleStrip {
         int left = this.mCurrText.getLeft() - this.mTabPadding;
         int right = this.mCurrText.getRight() + this.mTabPadding;
         int i = height - this.mIndicatorHeight;
-        this.mTabPaint.setColor((this.mTabAlpha << 24) | (this.mIndicatorColor & ViewCompat.MEASURED_SIZE_MASK));
+        this.mTabPaint.setColor((this.mTabAlpha << 24) | (this.mIndicatorColor & 16777215));
         float f = height;
         canvas.drawRect(left, i, right, f, this.mTabPaint);
         if (this.mDrawFullUnderline) {
-            this.mTabPaint.setColor((-16777216) | (this.mIndicatorColor & ViewCompat.MEASURED_SIZE_MASK));
+            this.mTabPaint.setColor((-16777216) | (this.mIndicatorColor & 16777215));
             canvas.drawRect(getPaddingLeft(), height - this.mFullUnderlineHeight, getWidth() - getPaddingRight(), f, this.mTabPaint);
         }
     }
@@ -111,7 +109,7 @@ public class PagerTabStrip extends PagerTitleStrip {
         if (this.mDrawFullUnderlineSet) {
             return;
         }
-        this.mDrawFullUnderline = (i & ViewCompat.MEASURED_STATE_MASK) == 0;
+        this.mDrawFullUnderline = (i & (-16777216)) == 0;
     }
 
     @Override // android.view.View
@@ -203,20 +201,9 @@ public class PagerTabStrip extends PagerTitleStrip {
         setTextSpacing(getTextSpacing());
         setWillNotDraw(false);
         this.mPrevText.setFocusable(true);
-        this.mPrevText.setOnClickListener(new View.OnClickListener() { // from class: androidx.viewpager.widget.PagerTabStrip.1
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                PagerTabStrip.this.mPager.setCurrentItem(r2.getCurrentItem() - 1);
-            }
-        });
+        this.mPrevText.setOnClickListener(new 1(this));
         this.mNextText.setFocusable(true);
-        this.mNextText.setOnClickListener(new View.OnClickListener() { // from class: androidx.viewpager.widget.PagerTabStrip.2
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                ViewPager viewPager = PagerTabStrip.this.mPager;
-                viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
-            }
-        });
+        this.mNextText.setOnClickListener(new 2(this));
         if (getBackground() == null) {
             this.mDrawFullUnderline = true;
         }

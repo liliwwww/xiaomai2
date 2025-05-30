@@ -4,18 +4,14 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MonotonicCurveFit extends CurveFit {
     private static final String TAG = "MonotonicCurveFit";
     private boolean mExtrapolate = true;
     double[] mSlopeTemp;
-
-    /* renamed from: mT */
-    private double[] f254mT;
+    private double[] mT;
     private double[][] mTangent;
-
-    /* renamed from: mY */
-    private double[][] f255mY;
+    private double[][] mY;
 
     public MonotonicCurveFit(double[] dArr, double[][] dArr2) {
         int length = dArr.length;
@@ -56,8 +52,8 @@ public class MonotonicCurveFit extends CurveFit {
                 }
             }
         }
-        this.f254mT = dArr;
-        this.f255mY = dArr2;
+        this.mT = dArr;
+        this.mY = dArr2;
         this.mTangent = dArr4;
     }
 
@@ -93,17 +89,16 @@ public class MonotonicCurveFit extends CurveFit {
         return ((((d10 + (d11 * d8)) + (d8 * d12)) - (d11 * d7)) - (((d * 2.0d) * d5) * d7)) + (d12 * d2);
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.CurveFit
     public void getPos(double d, double[] dArr) {
-        double[] dArr2 = this.f254mT;
+        double[] dArr2 = this.mT;
         int length = dArr2.length;
         int i = 0;
-        int length2 = this.f255mY[0].length;
+        int length2 = this.mY[0].length;
         if (this.mExtrapolate) {
             if (d <= dArr2[0]) {
                 getSlope(dArr2[0], this.mSlopeTemp);
                 for (int i2 = 0; i2 < length2; i2++) {
-                    dArr[i2] = this.f255mY[0][i2] + ((d - this.f254mT[0]) * this.mSlopeTemp[i2]);
+                    dArr[i2] = this.mY[0][i2] + ((d - this.mT[0]) * this.mSlopeTemp[i2]);
                 }
                 return;
             }
@@ -111,7 +106,7 @@ public class MonotonicCurveFit extends CurveFit {
             if (d >= dArr2[i3]) {
                 getSlope(dArr2[i3], this.mSlopeTemp);
                 while (i < length2) {
-                    dArr[i] = this.f255mY[i3][i] + ((d - this.f254mT[i3]) * this.mSlopeTemp[i]);
+                    dArr[i] = this.mY[i3][i] + ((d - this.mT[i3]) * this.mSlopeTemp[i]);
                     i++;
                 }
                 return;
@@ -119,14 +114,14 @@ public class MonotonicCurveFit extends CurveFit {
         } else {
             if (d <= dArr2[0]) {
                 for (int i4 = 0; i4 < length2; i4++) {
-                    dArr[i4] = this.f255mY[0][i4];
+                    dArr[i4] = this.mY[0][i4];
                 }
                 return;
             }
             int i5 = length - 1;
             if (d >= dArr2[i5]) {
                 while (i < length2) {
-                    dArr[i] = this.f255mY[i5][i];
+                    dArr[i] = this.mY[i5][i];
                     i++;
                 }
                 return;
@@ -134,18 +129,18 @@ public class MonotonicCurveFit extends CurveFit {
         }
         int i6 = 0;
         while (i6 < length - 1) {
-            if (d == this.f254mT[i6]) {
+            if (d == this.mT[i6]) {
                 for (int i7 = 0; i7 < length2; i7++) {
-                    dArr[i7] = this.f255mY[i6][i7];
+                    dArr[i7] = this.mY[i6][i7];
                 }
             }
-            double[] dArr3 = this.f254mT;
+            double[] dArr3 = this.mT;
             int i8 = i6 + 1;
             if (d < dArr3[i8]) {
                 double d2 = dArr3[i8] - dArr3[i6];
                 double d3 = (d - dArr3[i6]) / d2;
                 while (i < length2) {
-                    double[][] dArr4 = this.f255mY;
+                    double[][] dArr4 = this.mY;
                     double d4 = dArr4[i6][i];
                     double d5 = dArr4[i8][i];
                     double[][] dArr5 = this.mTangent;
@@ -158,12 +153,11 @@ public class MonotonicCurveFit extends CurveFit {
         }
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.CurveFit
     public void getSlope(double d, double[] dArr) {
         double d2;
-        double[] dArr2 = this.f254mT;
+        double[] dArr2 = this.mT;
         int length = dArr2.length;
-        int length2 = this.f255mY[0].length;
+        int length2 = this.mY[0].length;
         if (d <= dArr2[0]) {
             d2 = dArr2[0];
         } else {
@@ -172,13 +166,13 @@ public class MonotonicCurveFit extends CurveFit {
         }
         int i2 = 0;
         while (i2 < length - 1) {
-            double[] dArr3 = this.f254mT;
+            double[] dArr3 = this.mT;
             int i3 = i2 + 1;
             if (d2 <= dArr3[i3]) {
                 double d3 = dArr3[i3] - dArr3[i2];
                 double d4 = (d2 - dArr3[i2]) / d3;
                 for (int i4 = 0; i4 < length2; i4++) {
-                    double[][] dArr4 = this.f255mY;
+                    double[][] dArr4 = this.mY;
                     double d5 = dArr4[i2][i4];
                     double d6 = dArr4[i3][i4];
                     double[][] dArr5 = this.mTangent;
@@ -190,9 +184,8 @@ public class MonotonicCurveFit extends CurveFit {
         }
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.CurveFit
     public double[] getTimePoints() {
-        return this.f254mT;
+        return this.mT;
     }
 
     private static MonotonicCurveFit buildWave(double[] dArr) {
@@ -219,10 +212,9 @@ public class MonotonicCurveFit extends CurveFit {
         return new MonotonicCurveFit(dArr3, dArr2);
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.CurveFit
     public double getSlope(double d, int i) {
         double d2;
-        double[] dArr = this.f254mT;
+        double[] dArr = this.mT;
         int length = dArr.length;
         int i2 = 0;
         if (d < dArr[0]) {
@@ -232,12 +224,12 @@ public class MonotonicCurveFit extends CurveFit {
             d2 = d >= dArr[i3] ? dArr[i3] : d;
         }
         while (i2 < length - 1) {
-            double[] dArr2 = this.f254mT;
+            double[] dArr2 = this.mT;
             int i4 = i2 + 1;
             if (d2 <= dArr2[i4]) {
                 double d3 = dArr2[i4] - dArr2[i2];
                 double d4 = (d2 - dArr2[i2]) / d3;
-                double[][] dArr3 = this.f255mY;
+                double[][] dArr3 = this.mY;
                 double d5 = dArr3[i2][i];
                 double d6 = dArr3[i4][i];
                 double[][] dArr4 = this.mTangent;
@@ -248,17 +240,16 @@ public class MonotonicCurveFit extends CurveFit {
         return 0.0d;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.CurveFit
     public void getPos(double d, float[] fArr) {
-        double[] dArr = this.f254mT;
+        double[] dArr = this.mT;
         int length = dArr.length;
         int i = 0;
-        int length2 = this.f255mY[0].length;
+        int length2 = this.mY[0].length;
         if (this.mExtrapolate) {
             if (d <= dArr[0]) {
                 getSlope(dArr[0], this.mSlopeTemp);
                 for (int i2 = 0; i2 < length2; i2++) {
-                    fArr[i2] = (float) (this.f255mY[0][i2] + ((d - this.f254mT[0]) * this.mSlopeTemp[i2]));
+                    fArr[i2] = (float) (this.mY[0][i2] + ((d - this.mT[0]) * this.mSlopeTemp[i2]));
                 }
                 return;
             }
@@ -266,7 +257,7 @@ public class MonotonicCurveFit extends CurveFit {
             if (d >= dArr[i3]) {
                 getSlope(dArr[i3], this.mSlopeTemp);
                 while (i < length2) {
-                    fArr[i] = (float) (this.f255mY[i3][i] + ((d - this.f254mT[i3]) * this.mSlopeTemp[i]));
+                    fArr[i] = (float) (this.mY[i3][i] + ((d - this.mT[i3]) * this.mSlopeTemp[i]));
                     i++;
                 }
                 return;
@@ -274,14 +265,14 @@ public class MonotonicCurveFit extends CurveFit {
         } else {
             if (d <= dArr[0]) {
                 for (int i4 = 0; i4 < length2; i4++) {
-                    fArr[i4] = (float) this.f255mY[0][i4];
+                    fArr[i4] = (float) this.mY[0][i4];
                 }
                 return;
             }
             int i5 = length - 1;
             if (d >= dArr[i5]) {
                 while (i < length2) {
-                    fArr[i] = (float) this.f255mY[i5][i];
+                    fArr[i] = (float) this.mY[i5][i];
                     i++;
                 }
                 return;
@@ -289,18 +280,18 @@ public class MonotonicCurveFit extends CurveFit {
         }
         int i6 = 0;
         while (i6 < length - 1) {
-            if (d == this.f254mT[i6]) {
+            if (d == this.mT[i6]) {
                 for (int i7 = 0; i7 < length2; i7++) {
-                    fArr[i7] = (float) this.f255mY[i6][i7];
+                    fArr[i7] = (float) this.mY[i6][i7];
                 }
             }
-            double[] dArr2 = this.f254mT;
+            double[] dArr2 = this.mT;
             int i8 = i6 + 1;
             if (d < dArr2[i8]) {
                 double d2 = dArr2[i8] - dArr2[i6];
                 double d3 = (d - dArr2[i6]) / d2;
                 while (i < length2) {
-                    double[][] dArr3 = this.f255mY;
+                    double[][] dArr3 = this.mY;
                     double d4 = dArr3[i6][i];
                     double d5 = dArr3[i8][i];
                     double[][] dArr4 = this.mTangent;
@@ -313,38 +304,37 @@ public class MonotonicCurveFit extends CurveFit {
         }
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.CurveFit
     public double getPos(double d, int i) {
-        double[] dArr = this.f254mT;
+        double[] dArr = this.mT;
         int length = dArr.length;
         int i2 = 0;
         if (this.mExtrapolate) {
             if (d <= dArr[0]) {
-                return this.f255mY[0][i] + ((d - dArr[0]) * getSlope(dArr[0], i));
+                return this.mY[0][i] + ((d - dArr[0]) * getSlope(dArr[0], i));
             }
             int i3 = length - 1;
             if (d >= dArr[i3]) {
-                return this.f255mY[i3][i] + ((d - dArr[i3]) * getSlope(dArr[i3], i));
+                return this.mY[i3][i] + ((d - dArr[i3]) * getSlope(dArr[i3], i));
             }
         } else {
             if (d <= dArr[0]) {
-                return this.f255mY[0][i];
+                return this.mY[0][i];
             }
             int i4 = length - 1;
             if (d >= dArr[i4]) {
-                return this.f255mY[i4][i];
+                return this.mY[i4][i];
             }
         }
         while (i2 < length - 1) {
-            double[] dArr2 = this.f254mT;
+            double[] dArr2 = this.mT;
             if (d == dArr2[i2]) {
-                return this.f255mY[i2][i];
+                return this.mY[i2][i];
             }
             int i5 = i2 + 1;
             if (d < dArr2[i5]) {
                 double d2 = dArr2[i5] - dArr2[i2];
                 double d3 = (d - dArr2[i2]) / d2;
-                double[][] dArr3 = this.f255mY;
+                double[][] dArr3 = this.mY;
                 double d4 = dArr3[i2][i];
                 double d5 = dArr3[i5][i];
                 double[][] dArr4 = this.mTangent;

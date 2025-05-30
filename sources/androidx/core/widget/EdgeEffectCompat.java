@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class EdgeEffectCompat {
     private final EdgeEffect mEdgeEffect;
 
@@ -24,42 +24,6 @@ public final class EdgeEffectCompat {
         @DoNotInline
         static void onPull(EdgeEffect edgeEffect, float f, float f2) {
             edgeEffect.onPull(f, f2);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(31)
-    /* loaded from: classes2.dex */
-    private static class Api31Impl {
-        private Api31Impl() {
-        }
-
-        @DoNotInline
-        public static EdgeEffect create(Context context, AttributeSet attributeSet) {
-            try {
-                return new EdgeEffect(context, attributeSet);
-            } catch (Throwable unused) {
-                return new EdgeEffect(context);
-            }
-        }
-
-        @DoNotInline
-        public static float getDistance(EdgeEffect edgeEffect) {
-            try {
-                return edgeEffect.getDistance();
-            } catch (Throwable unused) {
-                return 0.0f;
-            }
-        }
-
-        @DoNotInline
-        public static float onPullDistance(EdgeEffect edgeEffect, float f, float f2) {
-            try {
-                return edgeEffect.onPullDistance(f, f2);
-            } catch (Throwable unused) {
-                edgeEffect.onPull(f, f2);
-                return 0.0f;
-            }
         }
     }
 

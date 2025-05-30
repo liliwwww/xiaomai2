@@ -5,7 +5,7 @@ import java.util.ArrayDeque;
 import java.util.concurrent.Executor;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class TransactionExecutor implements Executor {
     private Runnable mActive;
     private final Executor mExecutor;

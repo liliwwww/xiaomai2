@@ -13,28 +13,10 @@ import androidx.annotation.RequiresApi;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ViewConfigurationCompat {
     private static final String TAG = "ViewConfigCompat";
     private static Method sGetScaledScrollFactorMethod;
-
-    /* compiled from: Taobao */
-    @RequiresApi(26)
-    /* loaded from: classes2.dex */
-    static class Api26Impl {
-        private Api26Impl() {
-        }
-
-        @DoNotInline
-        static float getScaledHorizontalScrollFactor(ViewConfiguration viewConfiguration) {
-            return viewConfiguration.getScaledHorizontalScrollFactor();
-        }
-
-        @DoNotInline
-        static float getScaledVerticalScrollFactor(ViewConfiguration viewConfiguration) {
-            return viewConfiguration.getScaledVerticalScrollFactor();
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(28)

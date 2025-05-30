@@ -6,22 +6,21 @@ import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.EffectsKt;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
 import androidx.compose.runtime.snapshots.Snapshot;
-import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.ranges.IntRange;
 import kotlin.ranges.RangesKt;
-import kotlinx.coroutines.CoroutineScope;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyNearestItemsRangeKt {
     /* JADX INFO: Access modifiers changed from: private */
     public static final IntRange calculateNearestItemsRange(int i, int i2, int i3) {
@@ -47,7 +46,7 @@ public final class LazyNearestItemsRangeKt {
             try {
                 Snapshot makeCurrent = createNonObservableSnapshot.makeCurrent();
                 try {
-                    Object mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(calculateNearestItemsRange(((Number) function0.invoke()).intValue(), ((Number) function02.invoke()).intValue(), ((Number) function03.invoke()).intValue()), null, 2, null);
+                    Object mutableStateOf$default = SnapshotStateKt.mutableStateOf$default(calculateNearestItemsRange(((Number) function0.invoke()).intValue(), ((Number) function02.invoke()).intValue(), ((Number) function03.invoke()).intValue()), (SnapshotMutationPolicy) null, 2, (Object) null);
                     createNonObservableSnapshot.dispose();
                     composer.updateRememberedValue(mutableStateOf$default);
                     rememberedValue = mutableStateOf$default;
@@ -68,11 +67,11 @@ public final class LazyNearestItemsRangeKt {
         }
         Object rememberedValue2 = composer.rememberedValue();
         if (z2 || rememberedValue2 == Composer.Companion.getEmpty()) {
-            rememberedValue2 = new LazyNearestItemsRangeKt$rememberLazyNearestItemsRangeState$1$1(function0, function02, function03, mutableState, null);
+            rememberedValue2 = new rememberLazyNearestItemsRangeState.1.1(function0, function02, function03, mutableState, (Continuation) null);
             composer.updateRememberedValue(rememberedValue2);
         }
         composer.endReplaceableGroup();
-        EffectsKt.LaunchedEffect(mutableState, (Function2<? super CoroutineScope, ? super Continuation<? super Unit>, ? extends Object>) rememberedValue2, composer, 64);
+        EffectsKt.LaunchedEffect(mutableState, (Function2) rememberedValue2, composer, 64);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }

@@ -3,7 +3,7 @@ package androidx.constraintlayout.core.motion.utils;
 import java.util.Arrays;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Oscillator {
     public static final int BOUNCE = 6;
     public static final int COS_WAVE = 5;

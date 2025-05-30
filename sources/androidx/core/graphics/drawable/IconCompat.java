@@ -15,7 +15,6 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.Shader;
-import android.graphics.drawable.AdaptiveIconDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
@@ -24,7 +23,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.taobao.windvane.util.WVConstants;
-import android.taobao.windvane.util.WVNativeCallbackUtil;
 import android.text.TextUtils;
 import android.util.Log;
 import androidx.annotation.ColorInt;
@@ -41,19 +39,18 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.core.util.ObjectsCompat;
 import androidx.core.util.Preconditions;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 import androidx.versionedparcelable.CustomVersionedParcelable;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class IconCompat extends CustomVersionedParcelable {
     private static final float ADAPTIVE_ICON_INSET_FACTOR = 0.25f;
     private static final int AMBIENT_SHADOW_ALPHA = 30;
@@ -315,24 +312,6 @@ public class IconCompat extends CustomVersionedParcelable {
     }
 
     /* compiled from: Taobao */
-    @RequiresApi(26)
-    /* loaded from: classes.dex */
-    static class Api26Impl {
-        private Api26Impl() {
-        }
-
-        @DoNotInline
-        static Drawable createAdaptiveIconDrawable(Drawable drawable, Drawable drawable2) {
-            return new AdaptiveIconDrawable(drawable, drawable2);
-        }
-
-        @DoNotInline
-        static Icon createWithAdaptiveBitmap(Bitmap bitmap) {
-            return Icon.createWithAdaptiveBitmap(bitmap);
-        }
-    }
-
-    /* compiled from: Taobao */
     @RequiresApi(28)
     static class Api28Impl {
         private Api28Impl() {
@@ -369,13 +348,6 @@ public class IconCompat extends CustomVersionedParcelable {
         static Icon createWithAdaptiveBitmapContentUri(Uri uri) {
             return Icon.createWithAdaptiveBitmapContentUri(uri);
         }
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
-    /* loaded from: classes.dex */
-    public @interface IconType {
     }
 
     @RestrictTo({RestrictTo.Scope.LIBRARY})
@@ -525,7 +497,7 @@ public class IconCompat extends CustomVersionedParcelable {
         }
         PackageManager packageManager = context.getPackageManager();
         try {
-            ApplicationInfo applicationInfo = packageManager.getApplicationInfo(str, 8192);
+            ApplicationInfo applicationInfo = packageManager.getApplicationInfo(str, AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED);
             if (applicationInfo != null) {
                 return packageManager.getResourcesForApplication(applicationInfo);
             }
@@ -565,7 +537,7 @@ public class IconCompat extends CustomVersionedParcelable {
             case 6:
                 InputStream uriInputStream2 = getUriInputStream(context);
                 if (uriInputStream2 != null) {
-                    return Build.VERSION.SDK_INT >= 26 ? Api26Impl.createAdaptiveIconDrawable(null, new BitmapDrawable(context.getResources(), BitmapFactory.decodeStream(uriInputStream2))) : new BitmapDrawable(context.getResources(), createLegacyIconFromAdaptiveIcon(BitmapFactory.decodeStream(uriInputStream2), false));
+                    return Build.VERSION.SDK_INT >= 26 ? Api26Impl.createAdaptiveIconDrawable((Drawable) null, new BitmapDrawable(context.getResources(), BitmapFactory.decodeStream(uriInputStream2))) : new BitmapDrawable(context.getResources(), createLegacyIconFromAdaptiveIcon(BitmapFactory.decodeStream(uriInputStream2), false));
                 }
                 return null;
             default:
@@ -646,8 +618,8 @@ public class IconCompat extends CustomVersionedParcelable {
         String str = (String) obj;
         if (str.contains(":")) {
             String str2 = str.split(":", -1)[1];
-            String str3 = str2.split(WVNativeCallbackUtil.SEPERATER, -1)[0];
-            String str4 = str2.split(WVNativeCallbackUtil.SEPERATER, -1)[1];
+            String str3 = str2.split("/", -1)[0];
+            String str4 = str2.split("/", -1)[1];
             String str5 = str.split(":", -1)[0];
             if ("0_resource_name_obfuscated".equals(str4)) {
                 Log.i(TAG, "Found obfuscated resource, not trying to update resource id for it");
@@ -760,7 +732,6 @@ public class IconCompat extends CustomVersionedParcelable {
         return loadDrawableInner;
     }
 
-    @Override // androidx.versionedparcelable.CustomVersionedParcelable
     public void onPostParceling() {
         this.mTintMode = PorterDuff.Mode.valueOf(this.mTintModeStr);
         switch (this.mType) {
@@ -803,7 +774,6 @@ public class IconCompat extends CustomVersionedParcelable {
         }
     }
 
-    @Override // androidx.versionedparcelable.CustomVersionedParcelable
     public void onPreParceling(boolean z) {
         this.mTintModeStr = this.mTintMode.name();
         switch (this.mType) {

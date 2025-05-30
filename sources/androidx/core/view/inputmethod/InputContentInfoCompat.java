@@ -9,61 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class InputContentInfoCompat {
     private final InputContentInfoCompatImpl mImpl;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static final class InputContentInfoCompatBaseImpl implements InputContentInfoCompatImpl {
-
-        @NonNull
-        private final Uri mContentUri;
-
-        @NonNull
-        private final ClipDescription mDescription;
-
-        @Nullable
-        private final Uri mLinkUri;
-
-        InputContentInfoCompatBaseImpl(@NonNull Uri uri, @NonNull ClipDescription clipDescription, @Nullable Uri uri2) {
-            this.mContentUri = uri;
-            this.mDescription = clipDescription;
-            this.mLinkUri = uri2;
-        }
-
-        @Override // androidx.core.view.inputmethod.InputContentInfoCompat.InputContentInfoCompatImpl
-        @NonNull
-        public Uri getContentUri() {
-            return this.mContentUri;
-        }
-
-        @Override // androidx.core.view.inputmethod.InputContentInfoCompat.InputContentInfoCompatImpl
-        @NonNull
-        public ClipDescription getDescription() {
-            return this.mDescription;
-        }
-
-        @Override // androidx.core.view.inputmethod.InputContentInfoCompat.InputContentInfoCompatImpl
-        @Nullable
-        public Object getInputContentInfo() {
-            return null;
-        }
-
-        @Override // androidx.core.view.inputmethod.InputContentInfoCompat.InputContentInfoCompatImpl
-        @Nullable
-        public Uri getLinkUri() {
-            return this.mLinkUri;
-        }
-
-        @Override // androidx.core.view.inputmethod.InputContentInfoCompat.InputContentInfoCompatImpl
-        public void releasePermission() {
-        }
-
-        @Override // androidx.core.view.inputmethod.InputContentInfoCompat.InputContentInfoCompatImpl
-        public void requestPermission() {
-        }
-    }
 
     /* compiled from: Taobao */
     private interface InputContentInfoCompatImpl {

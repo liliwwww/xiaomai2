@@ -6,11 +6,10 @@ import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresOptIn;
 import androidx.annotation.RestrictTo;
-import androidx.exifinterface.media.ExifInterface;
 import java.util.Locale;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class BuildCompat {
 
     /* compiled from: Taobao */
@@ -72,12 +71,12 @@ public class BuildCompat {
         return Build.VERSION.SDK_INT >= 30;
     }
 
-    @ChecksSdkIntAtLeast(api = 31, codename = ExifInterface.LATITUDE_SOUTH)
+    @ChecksSdkIntAtLeast(api = 31, codename = "S")
     @SuppressLint({"RestrictedApi"})
     @Deprecated
     public static boolean isAtLeastS() {
         int i = Build.VERSION.SDK_INT;
-        return i >= 31 || (i >= 30 && isAtLeastPreReleaseCodename(ExifInterface.LATITUDE_SOUTH, Build.VERSION.CODENAME));
+        return i >= 31 || (i >= 30 && isAtLeastPreReleaseCodename("S", Build.VERSION.CODENAME));
     }
 
     @ChecksSdkIntAtLeast(api = 32, codename = "Sv2")

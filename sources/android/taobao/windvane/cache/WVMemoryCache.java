@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVMemoryCache {
     public static final long DEFAULT_CACHE_TIME = 2000;
     private static WVMemoryCache mMemoryCache;

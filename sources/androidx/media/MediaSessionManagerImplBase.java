@@ -4,15 +4,13 @@ import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.text.TextUtils;
 import android.util.Log;
 import androidx.annotation.NonNull;
-import androidx.core.util.ObjectsCompat;
 import androidx.media.MediaSessionManager;
 import com.alibaba.wireless.security.aopsdk.replace.android.provider.Settings;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class MediaSessionManagerImplBase implements MediaSessionManager.MediaSessionManagerImpl {
     private static final boolean DEBUG = MediaSessionManager.DEBUG;
     private static final String ENABLED_NOTIFICATION_LISTENERS = "enabled_notification_listeners";
@@ -22,70 +20,25 @@ class MediaSessionManagerImplBase implements MediaSessionManager.MediaSessionMan
     ContentResolver mContentResolver;
     Context mContext;
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class RemoteUserInfoImplBase implements MediaSessionManager.RemoteUserInfoImpl {
-        private String mPackageName;
-        private int mPid;
-        private int mUid;
-
-        RemoteUserInfoImplBase(String str, int i, int i2) {
-            this.mPackageName = str;
-            this.mPid = i;
-            this.mUid = i2;
-        }
-
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (!(obj instanceof RemoteUserInfoImplBase)) {
-                return false;
-            }
-            RemoteUserInfoImplBase remoteUserInfoImplBase = (RemoteUserInfoImplBase) obj;
-            return TextUtils.equals(this.mPackageName, remoteUserInfoImplBase.mPackageName) && this.mPid == remoteUserInfoImplBase.mPid && this.mUid == remoteUserInfoImplBase.mUid;
-        }
-
-        @Override // androidx.media.MediaSessionManager.RemoteUserInfoImpl
-        public String getPackageName() {
-            return this.mPackageName;
-        }
-
-        @Override // androidx.media.MediaSessionManager.RemoteUserInfoImpl
-        public int getPid() {
-            return this.mPid;
-        }
-
-        @Override // androidx.media.MediaSessionManager.RemoteUserInfoImpl
-        public int getUid() {
-            return this.mUid;
-        }
-
-        public int hashCode() {
-            return ObjectsCompat.hash(this.mPackageName, Integer.valueOf(this.mPid), Integer.valueOf(this.mUid));
-        }
-    }
-
     MediaSessionManagerImplBase(Context context) {
         this.mContext = context;
         this.mContentResolver = context.getContentResolver();
     }
 
-    private boolean isPermissionGranted(MediaSessionManager.RemoteUserInfoImpl remoteUserInfoImpl, String str) {
-        return remoteUserInfoImpl.getPid() < 0 ? this.mContext.getPackageManager().checkPermission(str, remoteUserInfoImpl.getPackageName()) == 0 : this.mContext.checkPermission(str, remoteUserInfoImpl.getPid(), remoteUserInfoImpl.getUid()) == 0;
+    private boolean isPermissionGranted(MediaSessionManager$RemoteUserInfoImpl mediaSessionManager$RemoteUserInfoImpl, String str) {
+        return mediaSessionManager$RemoteUserInfoImpl.getPid() < 0 ? this.mContext.getPackageManager().checkPermission(str, mediaSessionManager$RemoteUserInfoImpl.getPackageName()) == 0 : this.mContext.checkPermission(str, mediaSessionManager$RemoteUserInfoImpl.getPid(), mediaSessionManager$RemoteUserInfoImpl.getUid()) == 0;
     }
 
-    @Override // androidx.media.MediaSessionManager.MediaSessionManagerImpl
     public Context getContext() {
         return this.mContext;
     }
 
-    boolean isEnabledNotificationListener(@NonNull MediaSessionManager.RemoteUserInfoImpl remoteUserInfoImpl) {
+    boolean isEnabledNotificationListener(@NonNull MediaSessionManager$RemoteUserInfoImpl mediaSessionManager$RemoteUserInfoImpl) {
         String string = Settings.Secure.getString(this.mContentResolver, ENABLED_NOTIFICATION_LISTENERS);
         if (string != null) {
             for (String str : string.split(":")) {
                 ComponentName unflattenFromString = ComponentName.unflattenFromString(str);
-                if (unflattenFromString != null && unflattenFromString.getPackageName().equals(remoteUserInfoImpl.getPackageName())) {
+                if (unflattenFromString != null && unflattenFromString.getPackageName().equals(mediaSessionManager$RemoteUserInfoImpl.getPackageName())) {
                     return true;
                 }
             }
@@ -93,19 +46,18 @@ class MediaSessionManagerImplBase implements MediaSessionManager.MediaSessionMan
         return false;
     }
 
-    @Override // androidx.media.MediaSessionManager.MediaSessionManagerImpl
-    public boolean isTrustedForMediaControl(@NonNull MediaSessionManager.RemoteUserInfoImpl remoteUserInfoImpl) {
+    public boolean isTrustedForMediaControl(@NonNull MediaSessionManager$RemoteUserInfoImpl mediaSessionManager$RemoteUserInfoImpl) {
         try {
-            if (this.mContext.getPackageManager().getApplicationInfo(remoteUserInfoImpl.getPackageName(), 0).uid == remoteUserInfoImpl.getUid()) {
-                return isPermissionGranted(remoteUserInfoImpl, PERMISSION_STATUS_BAR_SERVICE) || isPermissionGranted(remoteUserInfoImpl, PERMISSION_MEDIA_CONTENT_CONTROL) || remoteUserInfoImpl.getUid() == 1000 || isEnabledNotificationListener(remoteUserInfoImpl);
+            if (this.mContext.getPackageManager().getApplicationInfo(mediaSessionManager$RemoteUserInfoImpl.getPackageName(), 0).uid == mediaSessionManager$RemoteUserInfoImpl.getUid()) {
+                return isPermissionGranted(mediaSessionManager$RemoteUserInfoImpl, PERMISSION_STATUS_BAR_SERVICE) || isPermissionGranted(mediaSessionManager$RemoteUserInfoImpl, PERMISSION_MEDIA_CONTENT_CONTROL) || mediaSessionManager$RemoteUserInfoImpl.getUid() == 1000 || isEnabledNotificationListener(mediaSessionManager$RemoteUserInfoImpl);
             }
             if (DEBUG) {
-                Log.d(TAG, "Package name " + remoteUserInfoImpl.getPackageName() + " doesn't match with the uid " + remoteUserInfoImpl.getUid());
+                Log.d(TAG, "Package name " + mediaSessionManager$RemoteUserInfoImpl.getPackageName() + " doesn't match with the uid " + mediaSessionManager$RemoteUserInfoImpl.getUid());
             }
             return false;
         } catch (PackageManager.NameNotFoundException unused) {
             if (DEBUG) {
-                Log.d(TAG, "Package " + remoteUserInfoImpl.getPackageName() + " doesn't exist");
+                Log.d(TAG, "Package " + mediaSessionManager$RemoteUserInfoImpl.getPackageName() + " doesn't exist");
             }
             return false;
         }

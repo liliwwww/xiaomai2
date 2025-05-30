@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.view.View;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface ItemTouchUIUtil {
     void clearView(View view);
 

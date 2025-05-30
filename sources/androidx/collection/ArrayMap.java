@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ArrayMap<K, V> extends SimpleArrayMap<K, V> implements Map<K, V> {
 
     @Nullable
@@ -26,7 +26,7 @@ public class ArrayMap<K, V> extends SimpleArrayMap<K, V> implements Map<K, V> {
 
                 @Override // androidx.collection.MapCollections
                 protected Object colGetEntry(int i, int i2) {
-                    return ArrayMap.this.mArray[(i << 1) + i2];
+                    return ((SimpleArrayMap) ArrayMap.this).mArray[(i << 1) + i2];
                 }
 
                 @Override // androidx.collection.MapCollections
@@ -36,7 +36,7 @@ public class ArrayMap<K, V> extends SimpleArrayMap<K, V> implements Map<K, V> {
 
                 @Override // androidx.collection.MapCollections
                 protected int colGetSize() {
-                    return ArrayMap.this.mSize;
+                    return ((SimpleArrayMap) ArrayMap.this).mSize;
                 }
 
                 @Override // androidx.collection.MapCollections
@@ -61,7 +61,7 @@ public class ArrayMap<K, V> extends SimpleArrayMap<K, V> implements Map<K, V> {
 
                 @Override // androidx.collection.MapCollections
                 protected V colSetValue(int i, V v) {
-                    return ArrayMap.this.setValueAt(i, v);
+                    return (V) ArrayMap.this.setValueAt(i, v);
                 }
             };
         }
@@ -84,7 +84,7 @@ public class ArrayMap<K, V> extends SimpleArrayMap<K, V> implements Map<K, V> {
 
     @Override // java.util.Map
     public void putAll(Map<? extends K, ? extends V> map) {
-        ensureCapacity(this.mSize + map.size());
+        ensureCapacity(((SimpleArrayMap) this).mSize + map.size());
         for (Map.Entry<? extends K, ? extends V> entry : map.entrySet()) {
             put(entry.getKey(), entry.getValue());
         }

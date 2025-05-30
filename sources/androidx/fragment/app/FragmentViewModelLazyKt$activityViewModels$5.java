@@ -7,13 +7,12 @@ import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FragmentViewModelLazyKt$activityViewModels$5 extends Lambda implements Function0<CreationExtras> {
     final /* synthetic */ Function0<CreationExtras> $extrasProducer;
     final /* synthetic */ Fragment $this_activityViewModels;
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    /* JADX WARN: Multi-variable type inference failed */
     public FragmentViewModelLazyKt$activityViewModels$5(Function0<? extends CreationExtras> function0, Fragment fragment) {
         super(0);
         this.$extrasProducer = function0;
@@ -22,7 +21,7 @@ public final class FragmentViewModelLazyKt$activityViewModels$5 extends Lambda i
 
     @NotNull
     /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-    public final CreationExtras m5590invoke() {
+    public final CreationExtras m2330invoke() {
         CreationExtras creationExtras;
         Function0<CreationExtras> function0 = this.$extrasProducer;
         if (function0 != null && (creationExtras = (CreationExtras) function0.invoke()) != null) {

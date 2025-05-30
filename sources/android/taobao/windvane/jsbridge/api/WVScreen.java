@@ -11,13 +11,11 @@ import android.taobao.windvane.jsbridge.utils.WVUtils;
 import android.taobao.windvane.runtimepermission.PermissionProposer;
 import android.taobao.windvane.util.DigestUtils;
 import android.text.TextUtils;
-import androidx.core.app.NotificationCompat;
-import androidx.core.os.EnvironmentCompat;
 import java.io.File;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVScreen extends WVApiPlugin {
     private static final String TAG = "WVScreen";
 
@@ -50,7 +48,7 @@ public class WVScreen extends WVApiPlugin {
                 j = optLong2;
                 j2 = optLong;
             } catch (Exception e) {
-                wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "param error: [" + e.getMessage() + "]");
+                wVResult.addData("msg", "param error: [" + e.getMessage() + "]");
                 wVCallBackContext.error(wVResult);
                 return;
             }
@@ -67,25 +65,13 @@ public class WVScreen extends WVApiPlugin {
     }
 
     @Override // android.taobao.windvane.jsbridge.WVApiPlugin
-    public boolean execute(String str, final String str2, final WVCallBackContext wVCallBackContext) {
+    public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if ("capture".equals(str)) {
             Context context = this.mContext;
             if (context == null) {
                 return true;
             }
-            PermissionProposer.buildPermissionTask(context, new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}).setTaskOnPermissionGranted(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVScreen.2
-                @Override // java.lang.Runnable
-                public void run() {
-                    WVScreen.this.capture(wVCallBackContext, str2);
-                }
-            }).setTaskOnPermissionDenied(new Runnable() { // from class: android.taobao.windvane.jsbridge.api.WVScreen.1
-                @Override // java.lang.Runnable
-                public void run() {
-                    WVResult wVResult = new WVResult();
-                    wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "no permission");
-                    wVCallBackContext.error(wVResult);
-                }
-            }).execute();
+            PermissionProposer.buildPermissionTask(context, new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}).setTaskOnPermissionGranted(new 2(this, wVCallBackContext, str2)).setTaskOnPermissionDenied(new 1(this, wVCallBackContext)).execute();
             return true;
         }
         if ("getOrientation".equals(str)) {
@@ -107,7 +93,7 @@ public class WVScreen extends WVApiPlugin {
             wVCallBackContext.error(wVResult);
         } else {
             int requestedOrientation = ((Activity) context).getRequestedOrientation();
-            wVResult.addData("orientation", requestedOrientation == 0 ? "landscape" : requestedOrientation == 1 ? "portrait" : EnvironmentCompat.MEDIA_UNKNOWN);
+            wVResult.addData("orientation", requestedOrientation == 0 ? "landscape" : requestedOrientation == 1 ? "portrait" : "unknown");
             wVCallBackContext.success(wVResult);
         }
     }
@@ -119,7 +105,7 @@ public class WVScreen extends WVApiPlugin {
             try {
                 str2 = new JSONObject(str).optString("orientation", "");
             } catch (Exception unused) {
-                wVCallBackContext.error(new WVResult(WVResult.PARAM_ERR));
+                wVCallBackContext.error(new WVResult("HY_PARAM_ERR"));
             }
         }
         Context context = this.mContext;

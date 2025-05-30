@@ -1,13 +1,12 @@
 package androidx.compose.foundation.layout;
 
 import androidx.compose.foundation.layout.AlignmentLineProvider;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.AlignmentLine;
-import androidx.compose.p004ui.layout.Measured;
-import androidx.compose.p004ui.layout.ParentDataModifier;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.platform.InspectorValueInfo;
-import androidx.compose.p004ui.unit.Density;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.AlignmentLine;
+import androidx.compose.ui.layout.ParentDataModifier;
+import androidx.compose.ui.platform.InspectorInfo;
+import androidx.compose.ui.platform.InspectorValueInfo;
+import androidx.compose.ui.unit.Density;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
@@ -19,7 +18,7 @@ import tb.mt2;
 import tb.nt2;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class SiblingsAlignedModifier extends InspectorValueInfo implements ParentDataModifier {
 
     /* compiled from: Taobao */
@@ -56,7 +55,7 @@ public abstract class SiblingsAlignedModifier extends InspectorValueInfo impleme
             return this.alignmentLine.hashCode();
         }
 
-        @Override // androidx.compose.foundation.layout.SiblingsAlignedModifier, androidx.compose.p004ui.layout.ParentDataModifier
+        @Override // androidx.compose.foundation.layout.SiblingsAlignedModifier, androidx.compose.ui.layout.ParentDataModifier
         @NotNull
         public Object modifyParentData(@NotNull Density density, @Nullable Object obj) {
             Intrinsics.checkNotNullParameter(density, "<this>");
@@ -74,60 +73,6 @@ public abstract class SiblingsAlignedModifier extends InspectorValueInfo impleme
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class WithAlignmentLineBlock extends SiblingsAlignedModifier {
-
-        @NotNull
-        private final Function1<Measured, Integer> block;
-
-        /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        /* JADX WARN: Multi-variable type inference failed */
-        public WithAlignmentLineBlock(@NotNull Function1<? super Measured, Integer> function1, @NotNull Function1<? super InspectorInfo, Unit> function12) {
-            super(function12, null);
-            Intrinsics.checkNotNullParameter(function1, "block");
-            Intrinsics.checkNotNullParameter(function12, "inspectorInfo");
-            this.block = function1;
-        }
-
-        public boolean equals(@Nullable Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            WithAlignmentLineBlock withAlignmentLineBlock = obj instanceof WithAlignmentLineBlock ? (WithAlignmentLineBlock) obj : null;
-            if (withAlignmentLineBlock == null) {
-                return false;
-            }
-            return Intrinsics.areEqual(this.block, withAlignmentLineBlock.block);
-        }
-
-        @NotNull
-        public final Function1<Measured, Integer> getBlock() {
-            return this.block;
-        }
-
-        public int hashCode() {
-            return this.block.hashCode();
-        }
-
-        @Override // androidx.compose.foundation.layout.SiblingsAlignedModifier, androidx.compose.p004ui.layout.ParentDataModifier
-        @NotNull
-        public Object modifyParentData(@NotNull Density density, @Nullable Object obj) {
-            Intrinsics.checkNotNullParameter(density, "<this>");
-            RowColumnParentData rowColumnParentData = obj instanceof RowColumnParentData ? (RowColumnParentData) obj : null;
-            if (rowColumnParentData == null) {
-                rowColumnParentData = new RowColumnParentData(0.0f, false, null, 7, null);
-            }
-            rowColumnParentData.setCrossAxisAlignment(CrossAxisAlignment.Companion.Relative$foundation_layout_release(new AlignmentLineProvider.Block(this.block)));
-            return rowColumnParentData;
-        }
-
-        @NotNull
-        public String toString() {
-            return "WithAlignmentLineBlock(block=" + this.block + ')';
-        }
-    }
-
     private SiblingsAlignedModifier(Function1<? super InspectorInfo, Unit> function1) {
         super(function1);
     }
@@ -136,31 +81,30 @@ public abstract class SiblingsAlignedModifier extends InspectorValueInfo impleme
         this(function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
 
-    @Override // androidx.compose.p004ui.layout.ParentDataModifier
+    @Override // androidx.compose.ui.layout.ParentDataModifier
     @Nullable
     public abstract Object modifyParentData(@NotNull Density density, @Nullable Object obj);
 
-    @Override // androidx.compose.p004ui.Modifier
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }

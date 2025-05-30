@@ -1,11 +1,10 @@
 package androidx.constraintlayout.core;
 
-import androidx.exifinterface.media.ExifInterface;
 import java.util.Arrays;
 import java.util.HashSet;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class SolverVariable implements Comparable<SolverVariable> {
     private static final boolean INTERNAL_DEBUG = false;
     static final int MAX_STRENGTH = 9;
@@ -27,9 +26,7 @@ public class SolverVariable implements Comparable<SolverVariable> {
     public float computedValue;
     int definitionId;
     float[] goalStrengthVector;
-
-    /* renamed from: id */
-    public int f235id;
+    public int id;
     public boolean inGoal;
     HashSet<ArrayRow> inRows;
     public boolean isFinalValue;
@@ -44,50 +41,8 @@ public class SolverVariable implements Comparable<SolverVariable> {
     float synonymDelta;
     public int usageInRowCount;
 
-    /* compiled from: Taobao */
-    /* renamed from: androidx.constraintlayout.core.SolverVariable$1 */
-    /* loaded from: classes.dex */
-    static /* synthetic */ class C08811 {
-        static final /* synthetic */ int[] $SwitchMap$androidx$constraintlayout$core$SolverVariable$Type;
-
-        static {
-            int[] iArr = new int[Type.values().length];
-            $SwitchMap$androidx$constraintlayout$core$SolverVariable$Type = iArr;
-            try {
-                iArr[Type.UNRESTRICTED.ordinal()] = 1;
-            } catch (NoSuchFieldError unused) {
-            }
-            try {
-                $SwitchMap$androidx$constraintlayout$core$SolverVariable$Type[Type.CONSTANT.ordinal()] = 2;
-            } catch (NoSuchFieldError unused2) {
-            }
-            try {
-                $SwitchMap$androidx$constraintlayout$core$SolverVariable$Type[Type.SLACK.ordinal()] = 3;
-            } catch (NoSuchFieldError unused3) {
-            }
-            try {
-                $SwitchMap$androidx$constraintlayout$core$SolverVariable$Type[Type.ERROR.ordinal()] = 4;
-            } catch (NoSuchFieldError unused4) {
-            }
-            try {
-                $SwitchMap$androidx$constraintlayout$core$SolverVariable$Type[Type.UNKNOWN.ordinal()] = 5;
-            } catch (NoSuchFieldError unused5) {
-            }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public enum Type {
-        UNRESTRICTED,
-        CONSTANT,
-        SLACK,
-        ERROR,
-        UNKNOWN
-    }
-
     public SolverVariable(String str, Type type) {
-        this.f235id = -1;
+        this.id = -1;
         this.definitionId = -1;
         this.strength = 0;
         this.isFinalValue = false;
@@ -108,7 +63,7 @@ public class SolverVariable implements Comparable<SolverVariable> {
         if (str != null) {
             return str + uniqueErrorId;
         }
-        int i = C08811.$SwitchMap$androidx$constraintlayout$core$SolverVariable$Type[type.ordinal()];
+        int i = 1.$SwitchMap$androidx$constraintlayout$core$SolverVariable$Type[type.ordinal()];
         if (i == 1) {
             StringBuilder sb = new StringBuilder();
             sb.append("U");
@@ -127,7 +82,7 @@ public class SolverVariable implements Comparable<SolverVariable> {
         }
         if (i == 3) {
             StringBuilder sb3 = new StringBuilder();
-            sb3.append(ExifInterface.LATITUDE_SOUTH);
+            sb3.append("S");
             int i4 = uniqueSlackId + 1;
             uniqueSlackId = i4;
             sb3.append(i4);
@@ -145,7 +100,7 @@ public class SolverVariable implements Comparable<SolverVariable> {
             throw new AssertionError(type.name());
         }
         StringBuilder sb5 = new StringBuilder();
-        sb5.append(ExifInterface.GPS_MEASUREMENT_INTERRUPTED);
+        sb5.append("V");
         int i6 = uniqueId + 1;
         uniqueId = i6;
         sb5.append(i6);
@@ -211,7 +166,7 @@ public class SolverVariable implements Comparable<SolverVariable> {
         this.mName = null;
         this.mType = Type.UNKNOWN;
         this.strength = 0;
-        this.f235id = -1;
+        this.id = -1;
         this.definitionId = -1;
         this.computedValue = 0.0f;
         this.isFinalValue = false;
@@ -248,7 +203,7 @@ public class SolverVariable implements Comparable<SolverVariable> {
 
     public void setSynonym(LinearSystem linearSystem, SolverVariable solverVariable, float f) {
         this.isSynonym = true;
-        this.synonym = solverVariable.f235id;
+        this.synonym = solverVariable.id;
         this.synonymDelta = f;
         int i = this.mClientEquationsCount;
         this.definitionId = -1;
@@ -293,7 +248,7 @@ public class SolverVariable implements Comparable<SolverVariable> {
         if (this.mName != null) {
             return "" + this.mName;
         }
-        return "" + this.f235id;
+        return "" + this.id;
     }
 
     public final void updateReferencesWithNewDefinition(LinearSystem linearSystem, ArrayRow arrayRow) {
@@ -306,11 +261,11 @@ public class SolverVariable implements Comparable<SolverVariable> {
 
     @Override // java.lang.Comparable
     public int compareTo(SolverVariable solverVariable) {
-        return this.f235id - solverVariable.f235id;
+        return this.id - solverVariable.id;
     }
 
     public SolverVariable(Type type, String str) {
-        this.f235id = -1;
+        this.id = -1;
         this.definitionId = -1;
         this.strength = 0;
         this.isFinalValue = false;

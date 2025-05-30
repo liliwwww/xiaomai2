@@ -7,7 +7,7 @@ import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ActivityViewModelLazyKt$viewModels$4 extends Lambda implements Function0<CreationExtras> {
     final /* synthetic */ Function0<CreationExtras> $extrasProducer;
     final /* synthetic */ ComponentActivity $this_viewModels;
@@ -22,7 +22,7 @@ public final class ActivityViewModelLazyKt$viewModels$4 extends Lambda implement
 
     @NotNull
     /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-    public final CreationExtras m921invoke() {
+    public final CreationExtras m3invoke() {
         CreationExtras creationExtras;
         Function0<CreationExtras> function0 = this.$extrasProducer;
         if (function0 != null && (creationExtras = (CreationExtras) function0.invoke()) != null) {

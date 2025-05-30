@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.SwipeableV2State$snapTo$2", f = "SwipeableV2.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class SwipeableV2State$snapTo$2 extends SuspendLambda implements Function2<DragScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ float $targetOffset;
     private /* synthetic */ Object L$0;
@@ -46,7 +46,7 @@ final class SwipeableV2State$snapTo$2 extends SuspendLambda implements Function2
             throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
         }
         ResultKt.throwOnFailure(obj);
-        ((DragScope) this.L$0).dragBy(this.$targetOffset - this.this$0.getOffset().getValue().floatValue());
+        ((DragScope) this.L$0).dragBy(this.$targetOffset - ((Number) this.this$0.getOffset().getValue()).floatValue());
         return Unit.INSTANCE;
     }
 }

@@ -1,5 +1,6 @@
 package androidx.lifecycle;
 
+import androidx.appcompat.R;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -8,14 +9,13 @@ import kotlin.coroutines.jvm.internal.DebugMetadata;
 import kotlin.coroutines.jvm.internal.SuspendLambda;
 import kotlin.jvm.functions.Function2;
 import kotlinx.coroutines.flow.Flow;
-import kotlinx.coroutines.flow.FlowCollector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
 /* compiled from: Taobao */
-@DebugMetadata(c = "androidx.lifecycle.FlowLiveDataConversions$asLiveData$1", f = "FlowLiveData.kt", i = {}, l = {80}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+@DebugMetadata(c = "androidx.lifecycle.FlowLiveDataConversions$asLiveData$1", f = "FlowLiveData.kt", i = {}, l = {R.styleable.AppCompatTheme_listPreferredItemHeightLarge}, m = "invokeSuspend", n = {}, s = {})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class FlowLiveDataConversions$asLiveData$1<T> extends SuspendLambda implements Function2<LiveDataScope<T>, Continuation<? super Unit>, Object> {
     final /* synthetic */ Flow<T> $this_asLiveData;
     private /* synthetic */ Object L$0;
@@ -46,17 +46,11 @@ final class FlowLiveDataConversions$asLiveData$1<T> extends SuspendLambda implem
         int i = this.label;
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
-            final LiveDataScope liveDataScope = (LiveDataScope) this.L$0;
+            LiveDataScope liveDataScope = (LiveDataScope) this.L$0;
             Flow<T> flow = this.$this_asLiveData;
-            FlowCollector flowCollector = new FlowCollector() { // from class: androidx.lifecycle.FlowLiveDataConversions$asLiveData$1.1
-                @Nullable
-                public final Object emit(T t, @NotNull Continuation<? super Unit> continuation) {
-                    Object emit = liveDataScope.emit(t, continuation);
-                    return emit == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? emit : Unit.INSTANCE;
-                }
-            };
+            1 r3 = new 1(liveDataScope);
             this.label = 1;
-            if (flow.collect(flowCollector, this) == coroutine_suspended) {
+            if (flow.collect(r3, this) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

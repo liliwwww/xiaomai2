@@ -10,23 +10,23 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @Stable
 @ExperimentalFoundationApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyLayoutPrefetchState {
 
     @NotNull
-    private final MutableState prefetcher$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface PrefetchHandle {
-        void cancel();
-    }
+    private final MutableState prefetcher$delegate;
 
     /* compiled from: Taobao */
     public interface Prefetcher {
         @NotNull
         /* renamed from: schedulePrefetch-0kLqBqw, reason: not valid java name */
-        PrefetchHandle mo1617schedulePrefetch0kLqBqw(int i, long j);
+        PrefetchHandle mo491schedulePrefetch0kLqBqw(int i, long j);
+    }
+
+    public LazyLayoutPrefetchState() {
+        MutableState mutableStateOf$default;
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
+        this.prefetcher$delegate = mutableStateOf$default;
     }
 
     @Nullable
@@ -36,10 +36,10 @@ public final class LazyLayoutPrefetchState {
 
     @NotNull
     /* renamed from: schedulePrefetch-0kLqBqw, reason: not valid java name */
-    public final PrefetchHandle m1616schedulePrefetch0kLqBqw(int i, long j) {
-        PrefetchHandle mo1617schedulePrefetch0kLqBqw;
+    public final PrefetchHandle m490schedulePrefetch0kLqBqw(int i, long j) {
+        PrefetchHandle mo491schedulePrefetch0kLqBqw;
         Prefetcher prefetcher$foundation_release = getPrefetcher$foundation_release();
-        return (prefetcher$foundation_release == null || (mo1617schedulePrefetch0kLqBqw = prefetcher$foundation_release.mo1617schedulePrefetch0kLqBqw(i, j)) == null) ? DummyHandle.INSTANCE : mo1617schedulePrefetch0kLqBqw;
+        return (prefetcher$foundation_release == null || (mo491schedulePrefetch0kLqBqw = prefetcher$foundation_release.mo491schedulePrefetch0kLqBqw(i, j)) == null) ? DummyHandle.INSTANCE : mo491schedulePrefetch0kLqBqw;
     }
 
     public final void setPrefetcher$foundation_release(@Nullable Prefetcher prefetcher) {

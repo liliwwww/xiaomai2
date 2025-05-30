@@ -14,7 +14,7 @@ import androidx.core.content.PermissionChecker;
 import java.util.Calendar;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class TwilightManager {
     private static final int SUNRISE = 6;
     private static final int SUNSET = 22;

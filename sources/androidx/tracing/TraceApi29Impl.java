@@ -5,7 +5,7 @@ import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
 @RequiresApi(29)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class TraceApi29Impl {
     private TraceApi29Impl() {
     }

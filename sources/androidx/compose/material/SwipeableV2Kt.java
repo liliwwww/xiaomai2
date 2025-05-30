@@ -2,35 +2,32 @@ package androidx.compose.material;
 
 import androidx.compose.animation.core.AnimationSpec;
 import androidx.compose.foundation.gestures.DraggableKt;
-import androidx.compose.foundation.gestures.DraggableKt$draggable$1;
-import androidx.compose.foundation.gestures.DraggableKt$draggable$2;
 import androidx.compose.foundation.gestures.Orientation;
 import androidx.compose.foundation.interaction.MutableInteractionSource;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.OnRemeasuredModifierKt;
-import androidx.compose.p004ui.unit.IntSize;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.saveable.RememberSaveableKt;
-import androidx.compose.runtime.saveable.Saver;
-import java.util.Collection;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.OnRemeasuredModifierKt;
+import androidx.compose.ui.unit.IntSize;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import kotlin.Unit;
 import kotlin.collections.MapsKt;
+import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
+import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SwipeableV2Kt {
     /* JADX INFO: Access modifiers changed from: private */
     public static final <T> T closestState(Map<T, Float> map, float f) {
@@ -108,7 +105,7 @@ public final class SwipeableV2Kt {
 
                 /* JADX WARN: Multi-variable type inference failed */
                 /* renamed from: invoke, reason: collision with other method in class */
-                public /* bridge */ /* synthetic */ Object m2262invoke(Object obj) {
+                public /* bridge */ /* synthetic */ Object m676invoke(Object obj) {
                     return invoke((SwipeableV2Kt$rememberSwipeableV2State$1<T>) obj);
                 }
             };
@@ -116,7 +113,7 @@ public final class SwipeableV2Kt {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-1791789117, i, -1, "androidx.compose.material.rememberSwipeableV2State (SwipeableV2.kt:366)");
         }
-        SwipeableV2State<T> swipeableV2State = (SwipeableV2State) RememberSaveableKt.m2434rememberSaveable(new Object[0], (Saver) SwipeableV2State.Companion.Saver(animationSpec, function1), (String) null, (Function0) new Function0<SwipeableV2State<T>>() { // from class: androidx.compose.material.SwipeableV2Kt$rememberSwipeableV2State$2
+        SwipeableV2State<T> swipeableV2State = (SwipeableV2State) RememberSaveableKt.m795rememberSaveable(new Object[0], SwipeableV2State.Companion.Saver(animationSpec, function1), (String) null, (Function0) new Function0<SwipeableV2State<T>>() { // from class: androidx.compose.material.SwipeableV2Kt$rememberSwipeableV2State$2
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             /* JADX WARN: Multi-variable type inference failed */
             {
@@ -125,7 +122,7 @@ public final class SwipeableV2Kt {
 
             @NotNull
             /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final SwipeableV2State<T> m2263invoke() {
+            public final SwipeableV2State<T> m677invoke() {
                 return new SwipeableV2State<>(t, animationSpec, function1);
             }
         }, composer, 72, 4);
@@ -147,46 +144,12 @@ public final class SwipeableV2Kt {
 
     @ExperimentalMaterialApi
     @NotNull
-    public static final <T> Modifier swipeAnchors(@NotNull Modifier modifier, @NotNull final SwipeableV2State<T> swipeableV2State, @NotNull final Set<? extends T> set, @Nullable final Function2<? super Map<T, Float>, ? super Map<T, Float>, Unit> function2, @NotNull final Function2<? super T, ? super IntSize, Float> function22) {
+    public static final <T> Modifier swipeAnchors(@NotNull Modifier modifier, @NotNull SwipeableV2State<T> swipeableV2State, @NotNull Set<? extends T> set, @Nullable Function2<? super Map<T, Float>, ? super Map<T, Float>, Unit> function2, @NotNull Function2<? super T, ? super IntSize, Float> function22) {
         Intrinsics.checkNotNullParameter(modifier, "<this>");
         Intrinsics.checkNotNullParameter(swipeableV2State, "state");
         Intrinsics.checkNotNullParameter(set, "possibleStates");
         Intrinsics.checkNotNullParameter(function22, "calculateAnchor");
-        return OnRemeasuredModifierKt.onSizeChanged(modifier, new Function1<IntSize, Unit>() { // from class: androidx.compose.material.SwipeableV2Kt$swipeAnchors$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                m2264invokeozmzZPI(((IntSize) obj).m5380unboximpl());
-                return Unit.INSTANCE;
-            }
-
-            /* renamed from: invoke-ozmzZPI, reason: not valid java name */
-            public final void m2264invokeozmzZPI(long j) {
-                Function2<Map<T, Float>, Map<T, Float>, Unit> function23;
-                Map anchors$material_release = swipeableV2State.getAnchors$material_release();
-                LinkedHashMap linkedHashMap = new LinkedHashMap();
-                Collection collection = set;
-                Function2<T, IntSize, Float> function24 = function22;
-                for (Object obj : collection) {
-                    Float f = (Float) function24.invoke(obj, IntSize.m5368boximpl(j));
-                    if (f != null) {
-                        linkedHashMap.put(obj, f);
-                    }
-                }
-                if (Intrinsics.areEqual(anchors$material_release, linkedHashMap)) {
-                    return;
-                }
-                swipeableV2State.updateAnchors$material_release(linkedHashMap);
-                if (!(!anchors$material_release.isEmpty()) || (function23 = function2) == 0) {
-                    return;
-                }
-                function23.invoke(anchors$material_release, linkedHashMap);
-            }
-        });
+        return OnRemeasuredModifierKt.onSizeChanged(modifier, new swipeAnchors.1(swipeableV2State, set, function2, function22));
     }
 
     public static /* synthetic */ Modifier swipeAnchors$default(Modifier modifier, SwipeableV2State swipeableV2State, Set set, Function2 function2, Function2 function22, int i, Object obj) {
@@ -199,12 +162,10 @@ public final class SwipeableV2Kt {
     @ExperimentalMaterialApi
     @NotNull
     public static final <T> Modifier swipeableV2(@NotNull Modifier modifier, @NotNull SwipeableV2State<T> swipeableV2State, @NotNull Orientation orientation, boolean z, boolean z2, @Nullable MutableInteractionSource mutableInteractionSource) {
-        Modifier draggable;
         Intrinsics.checkNotNullParameter(modifier, "<this>");
         Intrinsics.checkNotNullParameter(swipeableV2State, "state");
         Intrinsics.checkNotNullParameter(orientation, "orientation");
-        draggable = DraggableKt.draggable(modifier, swipeableV2State.getDraggableState$material_release(), orientation, (r20 & 4) != 0 ? true : z, (r20 & 8) != 0 ? null : mutableInteractionSource, (r20 & 16) != 0 ? false : swipeableV2State.isAnimationRunning(), (r20 & 32) != 0 ? new DraggableKt$draggable$1(null) : null, (r20 & 64) != 0 ? new DraggableKt$draggable$2(null) : new SwipeableV2Kt$swipeableV2$1(swipeableV2State, null), (r20 & 128) != 0 ? false : z2);
-        return draggable;
+        return DraggableKt.draggable$default(modifier, swipeableV2State.getDraggableState$material_release(), orientation, z, mutableInteractionSource, swipeableV2State.isAnimationRunning(), (Function3) null, new swipeableV2.1(swipeableV2State, (Continuation) null), z2, 32, (Object) null);
     }
 
     public static /* synthetic */ Modifier swipeableV2$default(Modifier modifier, SwipeableV2State swipeableV2State, Orientation orientation, boolean z, boolean z2, MutableInteractionSource mutableInteractionSource, int i, Object obj) {

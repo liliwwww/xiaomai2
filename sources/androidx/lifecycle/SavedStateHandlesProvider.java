@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SavedStateHandlesProvider implements SavedStateRegistry.SavedStateProvider {
     private boolean restored;
 
@@ -35,7 +35,7 @@ public final class SavedStateHandlesProvider implements SavedStateRegistry.Saved
 
             @NotNull
             /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final SavedStateHandlesVM m5610invoke() {
+            public final SavedStateHandlesVM m2341invoke() {
                 return SavedStateHandleSupport.getSavedStateHandlesVM(ViewModelStoreOwner.this);
             }
         });
@@ -71,7 +71,6 @@ public final class SavedStateHandlesProvider implements SavedStateRegistry.Saved
         getViewModel();
     }
 
-    @Override // androidx.savedstate.SavedStateRegistry.SavedStateProvider
     @NotNull
     public Bundle saveState() {
         Bundle bundle = new Bundle();
@@ -79,11 +78,11 @@ public final class SavedStateHandlesProvider implements SavedStateRegistry.Saved
         if (bundle2 != null) {
             bundle.putAll(bundle2);
         }
-        for (Map.Entry<String, SavedStateHandle> entry : getViewModel().getHandles().entrySet()) {
-            String key = entry.getKey();
-            Bundle saveState = entry.getValue().savedStateProvider().saveState();
+        for (Map.Entry entry : getViewModel().getHandles().entrySet()) {
+            String str = (String) entry.getKey();
+            Bundle saveState = ((SavedStateHandle) entry.getValue()).savedStateProvider().saveState();
             if (!Intrinsics.areEqual(saveState, Bundle.EMPTY)) {
-                bundle.putBundle(key, saveState);
+                bundle.putBundle(str, saveState);
             }
         }
         this.restored = false;

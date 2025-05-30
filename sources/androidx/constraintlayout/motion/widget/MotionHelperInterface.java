@@ -6,7 +6,7 @@ import androidx.constraintlayout.motion.widget.MotionLayout;
 import java.util.HashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface MotionHelperInterface extends Animatable, MotionLayout.TransitionListener {
     boolean isDecorator();
 

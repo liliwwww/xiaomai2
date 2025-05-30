@@ -7,21 +7,18 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.taobao.windvane.config.EnvEnum;
 import android.taobao.windvane.config.GlobalConfig;
-import android.taobao.windvane.jsbridge.IJsApiFailedCallBack;
-import android.taobao.windvane.jsbridge.IJsApiSucceedCallBack;
 import android.taobao.windvane.jsbridge.WVApiPlugin;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.taobao.windvane.jsbridge.WVCallMethodContext;
 import android.taobao.windvane.jsbridge.WVJsBridge;
 import android.taobao.windvane.jsbridge.WVResult;
-import android.taobao.windvane.jsbridge.api.WVAPI;
 import android.taobao.windvane.runtimepermission.PermissionChecker;
 import android.taobao.windvane.util.CommonUtils;
 import android.taobao.windvane.util.EnvUtil;
 import android.taobao.windvane.util.TaoLog;
 import android.taobao.windvane.webview.WVWebView;
 import android.text.TextUtils;
-import androidx.core.app.NotificationCompat;
+import androidx.multidex.BuildConfig;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -30,11 +27,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVBase extends WVApiPlugin {
     private void copyToClipboard(WVCallBackContext wVCallBackContext, String str) {
-        String str2 = WVResult.PARAM_ERR;
-        WVResult wVResult = new WVResult(WVResult.PARAM_ERR);
+        String str2 = "HY_PARAM_ERR";
+        WVResult wVResult = new WVResult("HY_PARAM_ERR");
         if (!TextUtils.isEmpty(str)) {
             try {
                 JSONObject jSONObject = new JSONObject(str);
@@ -42,7 +39,7 @@ public class WVBase extends WVApiPlugin {
                     String string = jSONObject.getString("text");
                     if (Build.VERSION.SDK_INT >= 11) {
                         ((ClipboardManager) this.mWebView.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(string, string));
-                        WVResult wVResult2 = new WVResult(WVResult.SUCCESS);
+                        WVResult wVResult2 = new WVResult("HY_SUCCESS");
                         try {
                             wVCallBackContext.success(wVResult2);
                             return;
@@ -50,18 +47,18 @@ public class WVBase extends WVApiPlugin {
                             e = e;
                             wVResult = wVResult2;
                             e.printStackTrace();
-                            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, str2);
+                            wVResult.addData("msg", str2);
                             wVCallBackContext.error(wVResult);
                         }
                     }
-                    wVResult = new WVResult(WVResult.FAIL);
-                    str2 = WVResult.FAIL;
+                    wVResult = new WVResult("HY_FAILED");
+                    str2 = "HY_FAILED";
                 }
             } catch (JSONException e2) {
                 e = e2;
             }
         }
-        wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, str2);
+        wVResult.addData("msg", str2);
         wVCallBackContext.error(wVResult);
     }
 
@@ -76,21 +73,13 @@ public class WVBase extends WVApiPlugin {
             wVCallMethodContext.methodName = string2;
             wVCallMethodContext.params = string3;
             wVCallMethodContext.webview = this.mWebView;
-            wVCallMethodContext.succeedCallBack = new IJsApiSucceedCallBack() { // from class: android.taobao.windvane.jsbridge.api.WVBase.1
-                @Override // android.taobao.windvane.jsbridge.IJsApiSucceedCallBack
-                public void succeed(String str2) {
-                }
-            };
-            wVCallMethodContext.failedCallBack = new IJsApiFailedCallBack() { // from class: android.taobao.windvane.jsbridge.api.WVBase.2
-                @Override // android.taobao.windvane.jsbridge.IJsApiFailedCallBack
-                public void fail(String str2) {
-                }
-            };
+            wVCallMethodContext.succeedCallBack = new 1(this);
+            wVCallMethodContext.failedCallBack = new 2(this);
             if (WVJsBridge.getInstance().mTailBridges == null) {
                 WVJsBridge.getInstance().mTailBridges = new ArrayList<>();
             }
             WVJsBridge.getInstance().mTailBridges.add(wVCallMethodContext);
-            TaoLog.m24i(WVAPI.PluginName.API_BASE, "addTailJSBridge : " + str);
+            TaoLog.i("Base", "addTailJSBridge : " + str);
         } catch (Exception unused) {
         }
     }
@@ -100,7 +89,7 @@ public class WVBase extends WVApiPlugin {
             try {
                 JSONArray jSONArray = new JSONObject(str).getJSONArray("permissions");
                 if (jSONArray.length() < 1) {
-                    wVCallBackContext.error(WVResult.PARAM_ERR);
+                    wVCallBackContext.error("HY_PARAM_ERR");
                     return;
                 }
                 String[] strArr = new String[jSONArray.length()];
@@ -109,21 +98,21 @@ public class WVBase extends WVApiPlugin {
                 }
                 Map<String, String> checkPermissions = PermissionChecker.checkPermissions(this.mContext, strArr);
                 if (checkPermissions == null || checkPermissions.size() <= 0) {
-                    wVCallBackContext.error(new WVResult(WVResult.FAIL));
+                    wVCallBackContext.error(new WVResult("HY_FAILED"));
                     return;
                 }
-                WVResult wVResult = new WVResult(WVResult.SUCCESS);
+                WVResult wVResult = new WVResult("HY_SUCCESS");
                 wVResult.addData("result", new JSONObject(checkPermissions));
                 wVCallBackContext.success(wVResult);
             } catch (JSONException e) {
                 e.printStackTrace();
-                WVResult wVResult2 = new WVResult(WVResult.PARAM_ERR);
+                WVResult wVResult2 = new WVResult("HY_PARAM_ERR");
                 wVResult2.addData("reason", "JSONException: " + e);
                 wVCallBackContext.error(wVResult2);
             }
         } catch (JSONException e2) {
             e2.printStackTrace();
-            WVResult wVResult3 = new WVResult(WVResult.PARAM_ERR);
+            WVResult wVResult3 = new WVResult("HY_PARAM_ERR");
             wVResult3.addData("reason", "JSONException: " + e2);
             wVCallBackContext.error(wVResult3);
         }
@@ -133,7 +122,7 @@ public class WVBase extends WVApiPlugin {
     /* JADX WARN: Removed duplicated region for block: B:23:0x008c  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void commitUTEvent(android.taobao.windvane.jsbridge.WVCallBackContext r17, java.lang.String r18) {
         /*
@@ -198,7 +187,7 @@ public class WVBase extends WVApiPlugin {
             r0.append(r2)
             r0.append(r1)
             java.lang.String r0 = r0.toString()
-            android.taobao.windvane.util.TaoLog.m18d(r4, r0)
+            android.taobao.windvane.util.TaoLog.d(r4, r0)
             goto La8
         L8c:
             java.lang.StringBuilder r2 = new java.lang.StringBuilder
@@ -207,7 +196,7 @@ public class WVBase extends WVApiPlugin {
             r2.append(r5)
             r2.append(r1)
             java.lang.String r1 = r2.toString()
-            android.taobao.windvane.util.TaoLog.m21e(r4, r1)
+            android.taobao.windvane.util.TaoLog.e(r4, r1)
             java.lang.String r1 = "HY_PARAM_ERR"
             r3.setResult(r1)
             r0.error(r3)
@@ -287,13 +276,13 @@ public class WVBase extends WVApiPlugin {
         try {
             str2 = new JSONObject(str).getString("android");
         } catch (JSONException unused) {
-            TaoLog.m21e(WVAPI.PluginName.API_BASE, "isInstall parse params error, params: " + str);
+            TaoLog.e("Base", "isInstall parse params error, params: " + str);
             str2 = null;
         }
         WVResult wVResult = new WVResult();
         boolean isAppInstalled = CommonUtils.isAppInstalled(this.mWebView.getContext(), str2);
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(WVAPI.PluginName.API_BASE, "isInstall " + isAppInstalled + " for package " + str2);
+            TaoLog.d("Base", "isInstall " + isAppInstalled + " for package " + str2);
         }
         if (isAppInstalled) {
             wVCallBackContext.success(wVResult);
@@ -308,9 +297,9 @@ public class WVBase extends WVApiPlugin {
         wVResult.addData("version", GlobalConfig.VERSION);
         wVResult.addData("debug", Boolean.valueOf(EnvUtil.isAppDebug()));
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(WVAPI.PluginName.API_BASE, "isWindVaneSDK: version=8.5.0");
+            TaoLog.d("Base", "isWindVaneSDK: version=8.5.0");
         }
-        wVResult.addData("env", EnvEnum.DAILY.equals(GlobalConfig.env) ? "daily" : EnvEnum.PRE.equals(GlobalConfig.env) ? "pre" : "release");
+        wVResult.addData("env", EnvEnum.DAILY.equals(GlobalConfig.env) ? "daily" : EnvEnum.PRE.equals(GlobalConfig.env) ? "pre" : BuildConfig.BUILD_TYPE);
         wVResult.addData("container", this.mWebView instanceof WVWebView ? "WVWebView" : "WVUCWebView");
         wVCallBackContext.success(wVResult);
     }
@@ -319,7 +308,7 @@ public class WVBase extends WVApiPlugin {
     /* JADX WARN: Removed duplicated region for block: B:28:0x009b  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void plusUT(android.taobao.windvane.jsbridge.WVCallBackContext r17, java.lang.String r18) {
         /*
@@ -392,7 +381,7 @@ public class WVBase extends WVApiPlugin {
             r0.append(r2)
             r0.append(r1)
             java.lang.String r0 = r0.toString()
-            android.taobao.windvane.util.TaoLog.m18d(r4, r0)
+            android.taobao.windvane.util.TaoLog.d(r4, r0)
             goto Lb8
         L9b:
             java.lang.StringBuilder r3 = new java.lang.StringBuilder
@@ -401,7 +390,7 @@ public class WVBase extends WVApiPlugin {
             r3.append(r5)
             r3.append(r1)
             java.lang.String r1 = r3.toString()
-            android.taobao.windvane.util.TaoLog.m21e(r4, r1)
+            android.taobao.windvane.util.TaoLog.e(r4, r1)
             java.lang.String r1 = "HY_PARAM_ERR"
             r2.setResult(r1)
             r0.error(r2)

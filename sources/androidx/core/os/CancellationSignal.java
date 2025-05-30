@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class CancellationSignal {
     private boolean mCancelInProgress;
     private Object mCancellationSignalObj;
@@ -28,12 +28,6 @@ public final class CancellationSignal {
         static android.os.CancellationSignal createCancellationSignal() {
             return new android.os.CancellationSignal();
         }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface OnCancelListener {
-        void onCancel();
     }
 
     private void waitForCancelFinishedLocked() {

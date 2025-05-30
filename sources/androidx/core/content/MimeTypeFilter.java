@@ -1,12 +1,11 @@
 package androidx.core.content;
 
-import android.taobao.windvane.util.WVNativeCallbackUtil;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class MimeTypeFilter {
     private MimeTypeFilter() {
     }
@@ -15,7 +14,7 @@ public final class MimeTypeFilter {
         if (str == null) {
             return false;
         }
-        return mimeTypeAgainstFilter(str.split(WVNativeCallbackUtil.SEPERATER), str2.split(WVNativeCallbackUtil.SEPERATER));
+        return mimeTypeAgainstFilter(str.split("/"), str2.split("/"));
     }
 
     @NonNull
@@ -24,9 +23,9 @@ public final class MimeTypeFilter {
             return new String[0];
         }
         ArrayList arrayList = new ArrayList();
-        String[] split = str.split(WVNativeCallbackUtil.SEPERATER);
+        String[] split = str.split("/");
         for (String str2 : strArr) {
-            if (mimeTypeAgainstFilter(str2.split(WVNativeCallbackUtil.SEPERATER), split)) {
+            if (mimeTypeAgainstFilter(str2.split("/"), split)) {
                 arrayList.add(str2);
             }
         }
@@ -54,9 +53,9 @@ public final class MimeTypeFilter {
         if (str == null) {
             return null;
         }
-        String[] split = str.split(WVNativeCallbackUtil.SEPERATER);
+        String[] split = str.split("/");
         for (String str2 : strArr) {
-            if (mimeTypeAgainstFilter(split, str2.split(WVNativeCallbackUtil.SEPERATER))) {
+            if (mimeTypeAgainstFilter(split, str2.split("/"))) {
                 return str2;
             }
         }
@@ -68,9 +67,9 @@ public final class MimeTypeFilter {
         if (strArr == null) {
             return null;
         }
-        String[] split = str.split(WVNativeCallbackUtil.SEPERATER);
+        String[] split = str.split("/");
         for (String str2 : strArr) {
-            if (mimeTypeAgainstFilter(str2.split(WVNativeCallbackUtil.SEPERATER), split)) {
+            if (mimeTypeAgainstFilter(str2.split("/"), split)) {
                 return str2;
             }
         }

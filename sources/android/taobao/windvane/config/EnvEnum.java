@@ -1,7 +1,7 @@
 package android.taobao.windvane.config;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public enum EnvEnum {
     ONLINE(0, "m"),
     PRE(1, "wapa"),

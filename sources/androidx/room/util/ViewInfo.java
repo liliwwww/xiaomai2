@@ -2,11 +2,12 @@ package androidx.room.util;
 
 import android.database.Cursor;
 import androidx.annotation.RestrictTo;
-import androidx.sqlite.p008db.SupportSQLiteDatabase;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ViewInfo {
     public final String name;
     public final String sql;

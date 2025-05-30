@@ -1,6 +1,5 @@
 package androidx.multidex;
 
-import android.support.v4.media.session.PlaybackStateCompat;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -8,21 +7,11 @@ import java.util.zip.CRC32;
 import java.util.zip.ZipException;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class ZipUtil {
     private static final int BUFFER_SIZE = 16384;
     private static final int ENDHDR = 22;
     private static final int ENDSIG = 101010256;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class CentralDirectory {
-        long offset;
-        long size;
-
-        CentralDirectory() {
-        }
-    }
 
     ZipUtil() {
     }
@@ -32,14 +21,14 @@ final class ZipUtil {
         long j = centralDirectory.size;
         randomAccessFile.seek(centralDirectory.offset);
         byte[] bArr = new byte[16384];
-        int read = randomAccessFile.read(bArr, 0, (int) Math.min(PlaybackStateCompat.ACTION_PREPARE, j));
+        int read = randomAccessFile.read(bArr, 0, (int) Math.min(16384L, j));
         while (read != -1) {
             crc32.update(bArr, 0, read);
             j -= read;
             if (j == 0) {
                 break;
             }
-            read = randomAccessFile.read(bArr, 0, (int) Math.min(PlaybackStateCompat.ACTION_PREPARE, j));
+            read = randomAccessFile.read(bArr, 0, (int) Math.min(16384L, j));
         }
         return crc32.getValue();
     }
@@ -49,9 +38,9 @@ final class ZipUtil {
         if (length < 0) {
             throw new ZipException("File too short to be a zip file: " + randomAccessFile.length());
         }
-        long j = length - PlaybackStateCompat.ACTION_PREPARE_FROM_SEARCH;
+        long j = length - 65536;
         long j2 = j >= 0 ? j : 0L;
-        int reverseBytes = Integer.reverseBytes(101010256);
+        int reverseBytes = Integer.reverseBytes(ENDSIG);
         do {
             randomAccessFile.seek(length);
             if (randomAccessFile.readInt() == reverseBytes) {

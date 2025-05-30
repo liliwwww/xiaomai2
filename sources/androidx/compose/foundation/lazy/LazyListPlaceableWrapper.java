@@ -1,11 +1,11 @@
 package androidx.compose.foundation.lazy;
 
-import androidx.compose.p004ui.layout.Placeable;
+import androidx.compose.ui.layout.Placeable;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyListPlaceableWrapper {
     private final long offset;
 
@@ -22,7 +22,7 @@ public final class LazyListPlaceableWrapper {
     }
 
     /* renamed from: getOffset-nOcc-ac, reason: not valid java name */
-    public final long m1516getOffsetnOccac() {
+    public final long m264getOffsetnOccac() {
         return this.offset;
     }
 

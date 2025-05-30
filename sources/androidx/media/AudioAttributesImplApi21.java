@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
 @TargetApi(21)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class AudioAttributesImplApi21 implements AudioAttributesImpl {
     private static final String TAG = "AudioAttributesCompat21";
     static Method sAudioAttributesToLegacyStreamType;
@@ -48,22 +48,18 @@ class AudioAttributesImplApi21 implements AudioAttributesImpl {
         return false;
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public Object getAudioAttributes() {
         return this.mAudioAttributes;
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public int getContentType() {
         return this.mAudioAttributes.getContentType();
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public int getFlags() {
         return this.mAudioAttributes.getFlags();
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public int getLegacyStreamType() {
         int i = this.mLegacyStreamType;
         if (i != -1) {
@@ -82,17 +78,14 @@ class AudioAttributesImplApi21 implements AudioAttributesImpl {
         }
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public int getRawLegacyStreamType() {
         return this.mLegacyStreamType;
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public int getUsage() {
         return this.mAudioAttributes.getUsage();
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public int getVolumeControlStream() {
         return Build.VERSION.SDK_INT >= 26 ? this.mAudioAttributes.getVolumeControlStream() : AudioAttributesCompat.toVolumeStreamType(true, getFlags(), getUsage());
     }
@@ -101,7 +94,6 @@ class AudioAttributesImplApi21 implements AudioAttributesImpl {
         return this.mAudioAttributes.hashCode();
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     @NonNull
     public Bundle toBundle() {
         Bundle bundle = new Bundle();

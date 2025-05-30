@@ -1,17 +1,17 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.ComposedModifierKt;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.input.pointer.AwaitPointerEventScope;
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
-import androidx.compose.p004ui.input.pointer.SuspendingPointerInputFilterKt;
-import androidx.compose.p004ui.platform.InspectableValueKt;
-import androidx.compose.p004ui.platform.InspectorInfo;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.ComposedModifierKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope;
+import androidx.compose.ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.input.pointer.SuspendingPointerInputFilterKt;
+import androidx.compose.ui.platform.InspectableValueKt;
+import androidx.compose.ui.platform.InspectorInfo;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function1;
@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TransformableKt {
     /* JADX INFO: Access modifiers changed from: private */
     /* JADX WARN: Removed duplicated region for block: B:12:0x0072  */
@@ -41,12 +41,12 @@ public final class TransformableKt {
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:45:0x0062 -> B:10:0x0067). Please report as a decompilation issue!!! */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object awaitTwoDowns(androidx.compose.p004ui.input.pointer.AwaitPointerEventScope r17, boolean r18, kotlin.coroutines.Continuation<? super kotlin.Unit> r19) {
+    public static final java.lang.Object awaitTwoDowns(androidx.compose.ui.input.pointer.AwaitPointerEventScope r17, boolean r18, kotlin.coroutines.Continuation<? super kotlin.Unit> r19) {
         /*
             Method dump skipped, instructions count: 232
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.TransformableKt.awaitTwoDowns(androidx.compose.ui.input.pointer.AwaitPointerEventScope, boolean, kotlin.coroutines.Continuation):java.lang.Object");
     }
@@ -65,12 +65,12 @@ public final class TransformableKt {
     /* JADX WARN: Removed duplicated region for block: B:9:0x0029  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final java.lang.Object detectZoom(androidx.compose.p004ui.input.pointer.PointerInputScope r22, androidx.compose.runtime.State<java.lang.Boolean> r23, androidx.compose.runtime.State<? extends androidx.compose.foundation.gestures.TransformableState> r24, kotlin.coroutines.Continuation<? super kotlin.Unit> r25) {
+    public static final java.lang.Object detectZoom(androidx.compose.ui.input.pointer.PointerInputScope r22, androidx.compose.runtime.State<java.lang.Boolean> r23, androidx.compose.runtime.State<? extends androidx.compose.foundation.gestures.TransformableState> r24, kotlin.coroutines.Continuation<? super kotlin.Unit> r25) {
         /*
             Method dump skipped, instructions count: 250
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.TransformableKt.detectZoom(androidx.compose.ui.input.pointer.PointerInputScope, androidx.compose.runtime.State, androidx.compose.runtime.State, kotlin.coroutines.Continuation):java.lang.Object");
     }
@@ -93,7 +93,7 @@ public final class TransformableKt {
             public final void invoke(@NotNull InspectorInfo inspectorInfo) {
                 Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
                 inspectorInfo.setName("transformable");
-                inspectorInfo.getProperties().set("state", TransformableState.this);
+                inspectorInfo.getProperties().set("state", transformableState);
                 inspectorInfo.getProperties().set("enabled", Boolean.valueOf(z2));
                 inspectorInfo.getProperties().set("lockRotationOnZoomPan", Boolean.valueOf(z));
             }
@@ -115,16 +115,16 @@ public final class TransformableKt {
                 if (ComposerKt.isTraceInProgress()) {
                     ComposerKt.traceEventStart(1509335853, i, -1, "androidx.compose.foundation.gestures.transformable.<anonymous> (Transformable.kt:65)");
                 }
-                State rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(TransformableState.this, composer, 0);
+                State rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(transformableState, composer, 0);
                 State rememberUpdatedState2 = SnapshotStateKt.rememberUpdatedState(Boolean.valueOf(z), composer, 0);
                 composer.startReplaceableGroup(-492369756);
                 Object rememberedValue = composer.rememberedValue();
                 if (rememberedValue == Composer.Companion.getEmpty()) {
-                    rememberedValue = new TransformableKt$transformable$2$block$1$1(rememberUpdatedState2, rememberUpdatedState, null);
+                    rememberedValue = new block.1.1(rememberUpdatedState2, rememberUpdatedState, (Continuation) null);
                     composer.updateRememberedValue(rememberedValue);
                 }
                 composer.endReplaceableGroup();
-                Modifier pointerInput = z2 ? SuspendingPointerInputFilterKt.pointerInput(Modifier.Companion, Unit.INSTANCE, (Function2<? super PointerInputScope, ? super Continuation<? super Unit>, ? extends Object>) rememberedValue) : Modifier.Companion;
+                Modifier pointerInput = z2 ? SuspendingPointerInputFilterKt.pointerInput((Modifier) Modifier.Companion, (Object) Unit.INSTANCE, (Function2<? super PointerInputScope, ? super Continuation<? super Unit>, ? extends Object>) rememberedValue) : Modifier.Companion;
                 if (ComposerKt.isTraceInProgress()) {
                     ComposerKt.traceEventEnd();
                 }

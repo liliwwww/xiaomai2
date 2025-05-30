@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVBroadcastChannel extends WVApiPlugin {
     private static final String CHANNEL_INSTANCE_ID = "instanceId";
     private static final String CHANNEL_KEY = "name";
@@ -21,11 +21,11 @@ public class WVBroadcastChannel extends WVApiPlugin {
     private static final String KEY_RESULT = "result";
     private Map<String, MessageChannel> messageTokenChannels = new HashMap();
 
-    private void onMessage(JSONObject jSONObject, final WVCallBackContext wVCallBackContext) {
+    private void onMessage(JSONObject jSONObject, WVCallBackContext wVCallBackContext) {
         if (this.messageTokenChannels == null) {
             return;
         }
-        final String string = jSONObject.getString(CHANNEL_INSTANCE_ID);
+        String string = jSONObject.getString(CHANNEL_INSTANCE_ID);
         if (TextUtils.isEmpty(string)) {
             if (wVCallBackContext != null) {
                 JSONObject jSONObject2 = new JSONObject();
@@ -38,14 +38,7 @@ public class WVBroadcastChannel extends WVApiPlugin {
         }
         MessageChannel messageChannel = this.messageTokenChannels.get(string);
         if (messageChannel != null) {
-            messageChannel.setCallback(new MessageCallback() { // from class: android.taobao.windvane.jsbridge.api.WVBroadcastChannel.1
-                public void onMessage(Object obj) {
-                    WVCallBackContext wVCallBackContext2 = wVCallBackContext;
-                    if (wVCallBackContext2 != null) {
-                        wVCallBackContext2.fireEvent("Broadcast.Message." + string, JSON.toJSONString(obj));
-                    }
-                }
-            });
+            messageChannel.setCallback(new 1(this, wVCallBackContext, string));
         } else if (wVCallBackContext != null) {
             JSONObject jSONObject3 = new JSONObject();
             jSONObject3.put(KEY_RESULT, "-1");
@@ -94,7 +87,6 @@ public class WVBroadcastChannel extends WVApiPlugin {
         }
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         try {
             JSONObject parseObject = JSON.parseObject(str2);
@@ -115,7 +107,6 @@ public class WVBroadcastChannel extends WVApiPlugin {
         }
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public void onDestroy() {
         Map<String, MessageChannel> map = this.messageTokenChannels;
         if (map != null) {

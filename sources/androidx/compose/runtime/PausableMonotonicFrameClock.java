@@ -11,7 +11,7 @@ import tb.hu2;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PausableMonotonicFrameClock implements MonotonicFrameClock {
     public static final int $stable = 8;
 
@@ -36,7 +36,6 @@ public final class PausableMonotonicFrameClock implements MonotonicFrameClock {
         return (E) MonotonicFrameClock.DefaultImpls.get(this, key);
     }
 
-    @Override // androidx.compose.runtime.MonotonicFrameClock
     public /* synthetic */ CoroutineContext.Key getKey() {
         return hu2.a(this);
     }
@@ -68,19 +67,18 @@ public final class PausableMonotonicFrameClock implements MonotonicFrameClock {
     /* JADX WARN: Removed duplicated region for block: B:18:0x0062 A[RETURN] */
     /* JADX WARN: Removed duplicated region for block: B:19:0x0040  */
     /* JADX WARN: Removed duplicated region for block: B:8:0x0024  */
-    @Override // androidx.compose.runtime.MonotonicFrameClock
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public <R> java.lang.Object withFrameNanos(@org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super java.lang.Long, ? extends R> r6, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super R> r7) {
         /*
             r5 = this;
-            boolean r0 = r7 instanceof androidx.compose.runtime.PausableMonotonicFrameClock$withFrameNanos$1
+            boolean r0 = r7 instanceof androidx.compose.runtime.PausableMonotonicFrameClock.withFrameNanos.1
             if (r0 == 0) goto L13
             r0 = r7
-            androidx.compose.runtime.PausableMonotonicFrameClock$withFrameNanos$1 r0 = (androidx.compose.runtime.PausableMonotonicFrameClock$withFrameNanos$1) r0
+            androidx.compose.runtime.PausableMonotonicFrameClock$withFrameNanos$1 r0 = (androidx.compose.runtime.PausableMonotonicFrameClock.withFrameNanos.1) r0
             int r1 = r0.label
             r2 = -2147483648(0xffffffff80000000, float:-0.0)
             r3 = r1 & r2

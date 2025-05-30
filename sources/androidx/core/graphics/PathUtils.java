@@ -2,7 +2,6 @@ package androidx.core.graphics;
 
 import android.graphics.Path;
 import android.graphics.PointF;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -10,22 +9,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class PathUtils {
-
-    /* compiled from: Taobao */
-    @RequiresApi(26)
-    /* loaded from: classes.dex */
-    static class Api26Impl {
-        private Api26Impl() {
-        }
-
-        @DoNotInline
-        static float[] approximate(Path path, float f) {
-            return path.approximate(f);
-        }
-    }
-
     private PathUtils() {
     }
 

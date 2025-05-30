@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ScreenCaptureUtil {
     private static final int IMAGE_SAVE_REQUEST_CODE = 1553;
 
@@ -110,37 +110,36 @@ public final class ScreenCaptureUtil {
     /* JADX INFO: Access modifiers changed from: private */
     public static void saveBitmapToPath(Context context, Bitmap bitmap, Uri uri) throws IOException {
         ParcelFileDescriptor parcelFileDescriptor;
-        FileOutputStream fileOutputStream;
-        FileOutputStream fileOutputStream2 = null;
+        FileOutputStream fileOutputStream = null;
         try {
             parcelFileDescriptor = context.getContentResolver().openFileDescriptor(uri, "w");
             try {
-                fileOutputStream = new FileOutputStream(parcelFileDescriptor.getFileDescriptor());
-            } catch (Throwable th) {
-                th = th;
-            }
-        } catch (Throwable th2) {
-            th = th2;
-            parcelFileDescriptor = null;
-        }
-        try {
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
-            fileOutputStream.flush();
-            fileOutputStream.close();
-        } catch (Throwable th3) {
-            th = th3;
-            fileOutputStream2 = fileOutputStream;
-            try {
-                th.printStackTrace();
-            } finally {
-                if (fileOutputStream2 != null) {
+                FileOutputStream fileOutputStream2 = new FileOutputStream(parcelFileDescriptor.getFileDescriptor());
+                try {
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream2);
                     fileOutputStream2.flush();
                     fileOutputStream2.close();
+                } catch (Throwable th) {
+                    th = th;
+                    fileOutputStream = fileOutputStream2;
+                    try {
+                        th.printStackTrace();
+                    } finally {
+                        if (fileOutputStream != null) {
+                            fileOutputStream.flush();
+                            fileOutputStream.close();
+                        }
+                        if (parcelFileDescriptor != null) {
+                            parcelFileDescriptor.close();
+                        }
+                    }
                 }
-                if (parcelFileDescriptor != null) {
-                    parcelFileDescriptor.close();
-                }
+            } catch (Throwable th2) {
+                th = th2;
             }
+        } catch (Throwable th3) {
+            th = th3;
+            parcelFileDescriptor = null;
         }
     }
 }

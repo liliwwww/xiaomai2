@@ -1,16 +1,16 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.geometry.Rect;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.DpRect;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.geometry.Rect;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.DpRect;
 import kotlin.jvm.internal.Intrinsics;
 import kotlinx.coroutines.sync.Mutex;
 import kotlinx.coroutines.sync.MutexKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class PressGestureScopeImpl implements PressGestureScope, Density {
     private final /* synthetic */ Density $$delegate_0;
     private boolean isCanceled;
@@ -33,15 +33,15 @@ final class PressGestureScopeImpl implements PressGestureScope, Density {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public java.lang.Object awaitRelease(@org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r5) {
         /*
             r4 = this;
-            boolean r0 = r5 instanceof androidx.compose.foundation.gestures.PressGestureScopeImpl$awaitRelease$1
+            boolean r0 = r5 instanceof androidx.compose.foundation.gestures.PressGestureScopeImpl.awaitRelease.1
             if (r0 == 0) goto L13
             r0 = r5
-            androidx.compose.foundation.gestures.PressGestureScopeImpl$awaitRelease$1 r0 = (androidx.compose.foundation.gestures.PressGestureScopeImpl$awaitRelease$1) r0
+            androidx.compose.foundation.gestures.PressGestureScopeImpl$awaitRelease$1 r0 = (androidx.compose.foundation.gestures.PressGestureScopeImpl.awaitRelease.1) r0
             int r1 = r0.label
             r2 = -2147483648(0xffffffff80000000, float:-0.0)
             r3 = r1 & r2
@@ -92,12 +92,10 @@ final class PressGestureScopeImpl implements PressGestureScope, Density {
         Mutex.a.b(this.mutex, (Object) null, 1, (Object) null);
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     public float getDensity() {
         return this.$$delegate_0.getDensity();
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     public float getFontScale() {
         return this.$$delegate_0.getFontScale();
     }
@@ -112,7 +110,7 @@ final class PressGestureScopeImpl implements PressGestureScope, Density {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object reset(@org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r5) {
         /*
@@ -168,63 +166,54 @@ final class PressGestureScopeImpl implements PressGestureScope, Density {
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.PressGestureScopeImpl.reset(kotlin.coroutines.Continuation):java.lang.Object");
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     @Stable
     /* renamed from: roundToPx--R2X_6o, reason: not valid java name */
-    public int mo1276roundToPxR2X_6o(long j) {
-        return this.$$delegate_0.mo1276roundToPxR2X_6o(j);
+    public int m228roundToPxR2X_6o(long j) {
+        return this.$$delegate_0.roundToPx--R2X_6o(j);
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     @Stable
     /* renamed from: roundToPx-0680j_4, reason: not valid java name */
-    public int mo1277roundToPx0680j_4(float f) {
-        return this.$$delegate_0.mo1277roundToPx0680j_4(f);
+    public int m229roundToPx0680j_4(float f) {
+        return this.$$delegate_0.roundToPx-0680j_4(f);
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     @Stable
     /* renamed from: toDp-GaN1DYA, reason: not valid java name */
-    public float mo1278toDpGaN1DYA(long j) {
-        return this.$$delegate_0.mo1278toDpGaN1DYA(j);
+    public float m230toDpGaN1DYA(long j) {
+        return this.$$delegate_0.toDp-GaN1DYA(j);
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     @Stable
     /* renamed from: toDp-u2uoSUM, reason: not valid java name */
-    public float mo1279toDpu2uoSUM(float f) {
-        return this.$$delegate_0.mo1279toDpu2uoSUM(f);
+    public float m231toDpu2uoSUM(float f) {
+        return this.$$delegate_0.toDp-u2uoSUM(f);
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     @Stable
     /* renamed from: toDp-u2uoSUM, reason: not valid java name */
-    public float mo1280toDpu2uoSUM(int i) {
-        return this.$$delegate_0.mo1280toDpu2uoSUM(i);
+    public float m232toDpu2uoSUM(int i) {
+        return this.$$delegate_0.toDp-u2uoSUM(i);
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     @Stable
     /* renamed from: toDpSize-k-rfVVM, reason: not valid java name */
-    public long mo1281toDpSizekrfVVM(long j) {
-        return this.$$delegate_0.mo1281toDpSizekrfVVM(j);
+    public long m233toDpSizekrfVVM(long j) {
+        return this.$$delegate_0.toDpSize-k-rfVVM(j);
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     @Stable
     /* renamed from: toPx--R2X_6o, reason: not valid java name */
-    public float mo1282toPxR2X_6o(long j) {
-        return this.$$delegate_0.mo1282toPxR2X_6o(j);
+    public float m234toPxR2X_6o(long j) {
+        return this.$$delegate_0.toPx--R2X_6o(j);
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     @Stable
     /* renamed from: toPx-0680j_4, reason: not valid java name */
-    public float mo1283toPx0680j_4(float f) {
-        return this.$$delegate_0.mo1283toPx0680j_4(f);
+    public float m235toPx0680j_4(float f) {
+        return this.$$delegate_0.toPx-0680j_4(f);
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     @Stable
     @NotNull
     public Rect toRect(@NotNull DpRect dpRect) {
@@ -232,32 +221,28 @@ final class PressGestureScopeImpl implements PressGestureScope, Density {
         return this.$$delegate_0.toRect(dpRect);
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     @Stable
     /* renamed from: toSize-XkaWNTQ, reason: not valid java name */
-    public long mo1284toSizeXkaWNTQ(long j) {
-        return this.$$delegate_0.mo1284toSizeXkaWNTQ(j);
+    public long m236toSizeXkaWNTQ(long j) {
+        return this.$$delegate_0.toSize-XkaWNTQ(j);
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     @Stable
     /* renamed from: toSp-0xMU5do, reason: not valid java name */
-    public long mo1285toSp0xMU5do(float f) {
-        return this.$$delegate_0.mo1285toSp0xMU5do(f);
+    public long m237toSp0xMU5do(float f) {
+        return this.$$delegate_0.toSp-0xMU5do(f);
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     @Stable
     /* renamed from: toSp-kPz2Gy4, reason: not valid java name */
-    public long mo1286toSpkPz2Gy4(float f) {
-        return this.$$delegate_0.mo1286toSpkPz2Gy4(f);
+    public long m238toSpkPz2Gy4(float f) {
+        return this.$$delegate_0.toSp-kPz2Gy4(f);
     }
 
-    @Override // androidx.compose.p004ui.unit.Density
     @Stable
     /* renamed from: toSp-kPz2Gy4, reason: not valid java name */
-    public long mo1287toSpkPz2Gy4(int i) {
-        return this.$$delegate_0.mo1287toSpkPz2Gy4(i);
+    public long m239toSpkPz2Gy4(int i) {
+        return this.$$delegate_0.toSp-kPz2Gy4(i);
     }
 
     /* JADX WARN: Removed duplicated region for block: B:16:0x0036  */
@@ -266,7 +251,7 @@ final class PressGestureScopeImpl implements PressGestureScope, Density {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public java.lang.Object tryAwaitRelease(@org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super java.lang.Boolean> r6) {
         /*

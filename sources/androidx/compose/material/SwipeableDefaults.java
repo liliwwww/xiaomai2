@@ -1,8 +1,9 @@
 package androidx.compose.material;
 
 import androidx.compose.animation.core.SpringSpec;
-import androidx.compose.p004ui.unit.C0856Dp;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.unit.Dp;
+import androidx.constraintlayout.widget.R$styleable;
 import java.util.Set;
 import kotlin.collections.CollectionsKt;
 import kotlin.jvm.internal.Intrinsics;
@@ -11,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SwipeableDefaults {
     public static final int $stable = 0;
     public static final float StandardResistanceFactor = 10.0f;
@@ -22,7 +23,7 @@ public final class SwipeableDefaults {
 
     @NotNull
     private static final SpringSpec<Float> AnimationSpec = new SpringSpec<>(0.0f, 0.0f, null, 7, null);
-    private static final float VelocityThreshold = C0856Dp.m5216constructorimpl(125);
+    private static final float VelocityThreshold = Dp.constructor-impl(R$styleable.AppCompatTheme_windowMinWidthMinor);
 
     private SwipeableDefaults() {
     }
@@ -43,7 +44,7 @@ public final class SwipeableDefaults {
     }
 
     /* renamed from: getVelocityThreshold-D9Ej5fM, reason: not valid java name */
-    public final float m2252getVelocityThresholdD9Ej5fM() {
+    public final float m826getVelocityThresholdD9Ej5fM() {
         return VelocityThreshold;
     }
 

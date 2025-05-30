@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface LazyStaggeredGridItemInfo {
     int getIndex();
 
@@ -15,8 +15,8 @@ public interface LazyStaggeredGridItemInfo {
     int getLane();
 
     /* renamed from: getOffset-nOcc-ac, reason: not valid java name */
-    long mo1629getOffsetnOccac();
+    long m497getOffsetnOccac();
 
     /* renamed from: getSize-YbymL2g, reason: not valid java name */
-    long mo1630getSizeYbymL2g();
+    long m498getSizeYbymL2g();
 }

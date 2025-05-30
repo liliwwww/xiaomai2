@@ -3,14 +3,14 @@ package androidx.compose.foundation.lazy.grid;
 import androidx.compose.animation.core.Animatable;
 import androidx.compose.animation.core.AnimationVector2D;
 import androidx.compose.animation.core.VectorConvertersKt;
-import androidx.compose.p004ui.unit.IntOffset;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.ui.unit.IntOffset;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class PlaceableInfo {
 
     @NotNull
@@ -22,10 +22,12 @@ final class PlaceableInfo {
     private long targetOffset;
 
     private PlaceableInfo(long j, int i) {
+        MutableState mutableStateOf$default;
         this.mainAxisSize = i;
-        this.animatedOffset = new Animatable<>(IntOffset.m5325boximpl(j), VectorConvertersKt.getVectorConverter(IntOffset.Companion), null, 4, null);
+        this.animatedOffset = new Animatable<>(IntOffset.m2634boximpl(j), VectorConvertersKt.getVectorConverter(IntOffset.Companion), (Object) null, 4, (DefaultConstructorMarker) null);
         this.targetOffset = j;
-        this.inProgress$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
+        this.inProgress$delegate = mutableStateOf$default;
     }
 
     public /* synthetic */ PlaceableInfo(long j, int i, DefaultConstructorMarker defaultConstructorMarker) {
@@ -37,7 +39,6 @@ final class PlaceableInfo {
         return this.animatedOffset;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final boolean getInProgress() {
         return ((Boolean) this.inProgress$delegate.getValue()).booleanValue();
     }
@@ -47,7 +48,7 @@ final class PlaceableInfo {
     }
 
     /* renamed from: getTargetOffset-nOcc-ac, reason: not valid java name */
-    public final long m1611getTargetOffsetnOccac() {
+    public final long m487getTargetOffsetnOccac() {
         return this.targetOffset;
     }
 
@@ -60,7 +61,7 @@ final class PlaceableInfo {
     }
 
     /* renamed from: setTargetOffset--gyyYBs, reason: not valid java name */
-    public final void m1612setTargetOffsetgyyYBs(long j) {
+    public final void m488setTargetOffsetgyyYBs(long j) {
         this.targetOffset = j;
     }
 }

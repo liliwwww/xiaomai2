@@ -16,7 +16,7 @@ import tb.bb2;
 import tb.i80;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LaunchedEffectImpl implements RememberObserver {
 
     @Nullable
@@ -35,7 +35,6 @@ public final class LaunchedEffectImpl implements RememberObserver {
         this.scope = i80.a(coroutineContext);
     }
 
-    @Override // androidx.compose.runtime.RememberObserver
     public void onAbandoned() {
         Job job = this.job;
         if (job != null) {
@@ -44,7 +43,6 @@ public final class LaunchedEffectImpl implements RememberObserver {
         this.job = null;
     }
 
-    @Override // androidx.compose.runtime.RememberObserver
     public void onForgotten() {
         Job job = this.job;
         if (job != null) {
@@ -53,7 +51,6 @@ public final class LaunchedEffectImpl implements RememberObserver {
         this.job = null;
     }
 
-    @Override // androidx.compose.runtime.RememberObserver
     public void onRemembered() {
         Job job = this.job;
         if (job != null) {

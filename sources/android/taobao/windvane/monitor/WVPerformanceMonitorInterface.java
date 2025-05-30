@@ -3,7 +3,7 @@ package android.taobao.windvane.monitor;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface WVPerformanceMonitorInterface {
     public static final int FROMTYPE_CACHE = 2;
     public static final int FROMTYPE_COMBO = 8;
@@ -15,24 +15,6 @@ public interface WVPerformanceMonitorInterface {
     public static final int FROM_UC_WEBVIEW = 70;
     public static final int FROM_UC_WEBVIEW_E = 71;
     public static final int FROM_UC_WEBVIEW_PAGECACHE = 72;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class NetStat {
-        public long dataSpeed;
-        public long dnsTime;
-        public long firstDataTime;
-        public short isDNSTimeout;
-        public boolean isSSL;
-        public long oneWayTime;
-        public long postBodyTime;
-        public long recDataTime;
-        public long serverRT;
-        public int spdy;
-        public long tcpLinkDate;
-        public long totalSize;
-        public long waitTime;
-    }
 
     void didExitAtTime(String str, long j);
 

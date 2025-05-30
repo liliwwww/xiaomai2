@@ -10,7 +10,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SparseArrayKt {
     public static final <T> boolean contains(@NotNull SparseArray<T> sparseArray, int i) {
         Intrinsics.checkNotNullParameter(sparseArray, "<this>");
@@ -65,30 +65,9 @@ public final class SparseArrayKt {
     }
 
     @NotNull
-    public static final <T> IntIterator keyIterator(@NotNull final SparseArray<T> sparseArray) {
+    public static final <T> IntIterator keyIterator(@NotNull SparseArray<T> sparseArray) {
         Intrinsics.checkNotNullParameter(sparseArray, "<this>");
-        return new IntIterator() { // from class: androidx.core.util.SparseArrayKt$keyIterator$1
-            private int index;
-
-            public final int getIndex() {
-                return this.index;
-            }
-
-            public boolean hasNext() {
-                return this.index < sparseArray.size();
-            }
-
-            public int nextInt() {
-                SparseArray<T> sparseArray2 = sparseArray;
-                int i = this.index;
-                this.index = i + 1;
-                return sparseArray2.keyAt(i);
-            }
-
-            public final void setIndex(int i) {
-                this.index = i;
-            }
-        };
+        return new keyIterator.1(sparseArray);
     }
 
     @NotNull
@@ -128,6 +107,6 @@ public final class SparseArrayKt {
     @NotNull
     public static final <T> Iterator<T> valueIterator(@NotNull SparseArray<T> sparseArray) {
         Intrinsics.checkNotNullParameter(sparseArray, "<this>");
-        return new SparseArrayKt$valueIterator$1(sparseArray);
+        return new valueIterator.1(sparseArray);
     }
 }

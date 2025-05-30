@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.FlowCollector;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SwipeableState$snapTo$2<T> implements FlowCollector<Map<Float, ? extends T>> {
     final /* synthetic */ T $targetValue;
     final /* synthetic */ SwipeableState<T> this$0;
@@ -26,7 +26,7 @@ final class SwipeableState$snapTo$2<T> implements FlowCollector<Map<Float, ? ext
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object emit(@org.jetbrains.annotations.NotNull java.util.Map<java.lang.Float, ? extends T> r5, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r6) {
         /*

@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public enum TlsVersion {
     TLS_1_3("TLSv1.3"),
     TLS_1_2("TLSv1.2"),

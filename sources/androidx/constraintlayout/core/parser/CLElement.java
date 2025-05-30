@@ -1,10 +1,9 @@
 package androidx.constraintlayout.core.parser;
 
-import android.taobao.windvane.connect.api.ApiConstants;
 import androidx.core.location.LocationRequestCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class CLElement {
     protected static int BASE_INDENT = 2;
     protected static int MAX_LINE = 80;
@@ -129,7 +128,7 @@ public class CLElement {
         long j = this.start;
         long j2 = this.end;
         if (j > j2 || j2 == LocationRequestCompat.PASSIVE_INTERVAL) {
-            return getClass() + " (INVALID, " + this.start + ApiConstants.SPLIT_LINE + this.end + ")";
+            return getClass() + " (INVALID, " + this.start + "-" + this.end + ")";
         }
         return getStrClass() + " (" + this.start + " : " + this.end + ") <<" + new String(this.mContent).substring((int) this.start, ((int) this.end) + 1) + ">>";
     }

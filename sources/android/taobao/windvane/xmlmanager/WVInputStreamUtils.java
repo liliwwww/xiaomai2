@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVInputStreamUtils {
     static final int BUFFER_SIZE = 4096;
 

@@ -5,10 +5,10 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import androidx.compose.foundation.interaction.PressInteraction;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.geometry.SizeKt;
-import androidx.compose.p004ui.graphics.RectHelper_androidKt;
+import androidx.compose.foundation.interaction.PressInteraction$Press;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.geometry.SizeKt;
+import androidx.compose.ui.graphics.RectHelper_androidKt;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.DefaultConstructorMarker;
@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.ee4;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class RippleHostView extends View {
     private static final long MinimumRippleStateChangeTime = 5;
     private static final long ResetRippleDelayDuration = 50;
@@ -39,24 +39,13 @@ public final class RippleHostView extends View {
     private UnprojectedRipple ripple;
 
     @NotNull
-    public static final Companion Companion = new Companion(null);
+    public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
 
     @NotNull
     private static final int[] PressedState = {android.R.attr.state_pressed, android.R.attr.state_enabled};
 
     @NotNull
     private static final int[] RestingState = new int[0];
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class Companion {
-        private Companion() {
-        }
-
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-    }
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
     public RippleHostView(@NotNull Context context) {
@@ -95,7 +84,7 @@ public final class RippleHostView extends View {
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: setRippleState$lambda-2, reason: not valid java name */
-    public static final void m2372setRippleState$lambda2(RippleHostView rippleHostView) {
+    public static final void m894setRippleState$lambda2(RippleHostView rippleHostView) {
         Intrinsics.checkNotNullParameter(rippleHostView, "this$0");
         UnprojectedRipple unprojectedRipple = rippleHostView.ripple;
         if (unprojectedRipple != null) {
@@ -105,8 +94,8 @@ public final class RippleHostView extends View {
     }
 
     /* renamed from: addRipple-KOepWvA, reason: not valid java name */
-    public final void m2373addRippleKOepWvA(@NotNull PressInteraction.Press press, boolean z, long j, int i, long j2, float f, @NotNull Function0<Unit> function0) {
-        Intrinsics.checkNotNullParameter(press, "interaction");
+    public final void m895addRippleKOepWvA(@NotNull PressInteraction$Press pressInteraction$Press, boolean z, long j, int i, long j2, float f, @NotNull Function0<Unit> function0) {
+        Intrinsics.checkNotNullParameter(pressInteraction$Press, "interaction");
         Intrinsics.checkNotNullParameter(function0, "onInvalidateRipple");
         if (this.ripple == null || !Intrinsics.areEqual(Boolean.valueOf(z), this.bounded)) {
             createRipple(z);
@@ -115,9 +104,9 @@ public final class RippleHostView extends View {
         UnprojectedRipple unprojectedRipple = this.ripple;
         Intrinsics.checkNotNull(unprojectedRipple);
         this.onInvalidateRipple = function0;
-        m2374updateRipplePropertiesbiQXAtU(j, i, j2, f);
+        m896updateRipplePropertiesbiQXAtU(j, i, j2, f);
         if (z) {
-            unprojectedRipple.setHotspot(Offset.m2556getXimpl(press.m1316getPressPositionF1C5BW0()), Offset.m2557getYimpl(press.m1316getPressPositionF1C5BW0()));
+            unprojectedRipple.setHotspot(Offset.getX-impl(pressInteraction$Press.m261getPressPositionF1C5BW0()), Offset.getY-impl(pressInteraction$Press.m261getPressPositionF1C5BW0()));
         } else {
             unprojectedRipple.setHotspot(unprojectedRipple.getBounds().centerX(), unprojectedRipple.getBounds().centerY());
         }
@@ -173,14 +162,14 @@ public final class RippleHostView extends View {
     }
 
     /* renamed from: updateRippleProperties-biQXAtU, reason: not valid java name */
-    public final void m2374updateRipplePropertiesbiQXAtU(long j, int i, long j2, float f) {
+    public final void m896updateRipplePropertiesbiQXAtU(long j, int i, long j2, float f) {
         UnprojectedRipple unprojectedRipple = this.ripple;
         if (unprojectedRipple == null) {
             return;
         }
         unprojectedRipple.trySetRadius(i);
-        unprojectedRipple.m2382setColorDxMtmZc(j2, f);
-        Rect androidRect = RectHelper_androidKt.toAndroidRect(SizeKt.m2646toRectuvyYCjk(j));
+        unprojectedRipple.m900setColorDxMtmZc(j2, f);
+        Rect androidRect = RectHelper_androidKt.toAndroidRect(SizeKt.toRect-uvyYCjk(j));
         setLeft(androidRect.left);
         setTop(androidRect.top);
         setRight(androidRect.right);

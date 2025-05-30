@@ -12,10 +12,10 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @JvmName(name = "PoolingContainer")
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PoolingContainer {
-    private static final int PoolingContainerListenerHolderTag = C0997R.id.pooling_container_listener_holder_tag;
-    private static final int IsPoolingContainerTag = C0997R.id.is_pooling_container_tag;
+    private static final int PoolingContainerListenerHolderTag = R$id.pooling_container_listener_holder_tag;
+    private static final int IsPoolingContainerTag = R$id.is_pooling_container_tag;
 
     @SuppressLint({"ExecutorRegistration"})
     public static final void addPoolingContainerListener(@NotNull View view, @NotNull PoolingContainerListener poolingContainerListener) {

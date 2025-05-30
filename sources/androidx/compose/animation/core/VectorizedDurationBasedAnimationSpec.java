@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import tb.ey5;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface VectorizedDurationBasedAnimationSpec<V extends AnimationVector> extends VectorizedFiniteAnimationSpec<V> {
 
     /* compiled from: Taobao */

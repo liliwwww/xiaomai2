@@ -9,7 +9,7 @@ import kotlin.jvm.internal.Reflection;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class InitializerViewModelFactoryKt {
     public static final /* synthetic */ <VM extends ViewModel> void initializer(InitializerViewModelFactoryBuilder initializerViewModelFactoryBuilder, Function1<? super CreationExtras, ? extends VM> function1) {
         Intrinsics.checkNotNullParameter(initializerViewModelFactoryBuilder, "<this>");

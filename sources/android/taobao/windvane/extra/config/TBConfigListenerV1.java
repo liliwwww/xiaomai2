@@ -19,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class TBConfigListenerV1 implements OrangeConfigListenerV1 {
     private static final String TAG = "TBConfigListenerV1";
 
@@ -43,7 +43,7 @@ public class TBConfigListenerV1 implements OrangeConfigListenerV1 {
     @NonNull
     private static String convertMapToJsonStr(Map<String, String> map) {
         if (map == null || map.isEmpty()) {
-            TaoLog.m18d(TAG, "convertMapToJsonStr: 输入为空");
+            TaoLog.d(TAG, "convertMapToJsonStr: 输入为空");
             return "";
         }
         JSONObject jSONObject = new JSONObject();
@@ -58,8 +58,8 @@ public class TBConfigListenerV1 implements OrangeConfigListenerV1 {
     }
 
     private void getAndroidWindvaneConfigData() {
-        String config = OrangeConfig.getInstance().getConfig(TBConfigManager.ANDROID_WINDVANE_CONFIG, WVConfigManager.CONFIGNAME_PACKAGE, "");
-        TaoLog.m18d("TBConfigReceiver", "receive : packageApp: " + config);
+        String config = OrangeConfig.getInstance().getConfig("android_windvane_config", WVConfigManager.CONFIGNAME_PACKAGE, "");
+        TaoLog.d("TBConfigReceiver", "receive : packageApp: " + config);
         if (TextUtils.isEmpty(config)) {
             return;
         }
@@ -68,7 +68,7 @@ public class TBConfigListenerV1 implements OrangeConfigListenerV1 {
             int length = jSONArray.length();
             for (int i = 0; i < length; i++) {
                 JSONObject optJSONObject = jSONArray.optJSONObject(i);
-                String optString = optJSONObject.optString(ApiConstants.f5V, "");
+                String optString = optJSONObject.optString(ApiConstants.V, "");
                 String optString2 = optJSONObject.optString("v0", "");
                 String optString3 = optJSONObject.optString("v1", "");
                 String optString4 = optJSONObject.optString("s", "");
@@ -110,21 +110,21 @@ public class TBConfigListenerV1 implements OrangeConfigListenerV1 {
         if (TextUtils.isEmpty(str)) {
             return;
         }
-        TaoLog.m18d("TBConfigReceiver", "ConfigName: " + str + " isFromLocal:" + z);
-        if (str.equalsIgnoreCase(TBConfigManager.ANDROID_WINDVANE_CONFIG)) {
+        TaoLog.d("TBConfigReceiver", "ConfigName: " + str + " isFromLocal:" + z);
+        if (str.equalsIgnoreCase("android_windvane_config")) {
             getAndroidWindvaneConfigData();
             return;
         }
-        if (str.equalsIgnoreCase(TBConfigManager.WINDVANE_CONFIG)) {
-            WVJsBridge.enableGetParamByJs = OrangeConfig.getInstance().getConfig(TBConfigManager.WINDVANE_CONFIG, "enableGetParamByJs", "0").equals("1");
+        if (str.equalsIgnoreCase("WindVane")) {
+            WVJsBridge.enableGetParamByJs = OrangeConfig.getInstance().getConfig("WindVane", "enableGetParamByJs", "0").equals("1");
             return;
         }
-        if (str.equals(TBConfigManager.WINDVANE_COMMMON_CONFIG)) {
-            WVCommonConfig.getInstance().setConfig(convertMapToJsonStr(OrangeConfig.getInstance().getConfigs(TBConfigManager.WINDVANE_COMMMON_CONFIG)));
-            TaoLog.m18d(TAG, "onConfigUpdate: update WindVane_common_config.");
-        } else if (str.equals(TBConfigManager.WINDVANE_URL_CONFIG)) {
-            WVURLConfig.getInstance().setConfig(convertMapToJsonStr(OrangeConfig.getInstance().getConfigs(TBConfigManager.WINDVANE_URL_CONFIG)));
-            TaoLog.m18d(TAG, "onConfigUpdate: update WindVane_common_config.");
+        if (str.equals("WindVane_common_config")) {
+            WVCommonConfig.getInstance().setConfig(convertMapToJsonStr(OrangeConfig.getInstance().getConfigs("WindVane_common_config")));
+            TaoLog.d(TAG, "onConfigUpdate: update WindVane_common_config.");
+        } else if (str.equals("WindVane_URL_config")) {
+            WVURLConfig.getInstance().setConfig(convertMapToJsonStr(OrangeConfig.getInstance().getConfigs("WindVane_URL_config")));
+            TaoLog.d(TAG, "onConfigUpdate: update WindVane_common_config.");
         }
     }
 }

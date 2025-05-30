@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVPrefetchHandler implements PrefetchHandler {
     private static String GET_DATA = "Prefetch.getData";
     private static String REQUEST_DATA = "Prefetch.requestData";

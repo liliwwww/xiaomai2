@@ -3,7 +3,7 @@ package android.taobao.windvane.packageapp;
 import android.taobao.windvane.config.EnvEnum;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVPackageAppService {
     private static IPackageZipPrefixAdapter packageZipPrefixAdapter;
     private static WVPackageAppConfigInterface wvPackageApp;

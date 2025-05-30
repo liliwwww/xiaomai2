@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @Stable
 @ExperimentalFoundationApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface LazyLayoutItemProvider {
     @Composable
     void Item(int i, @Nullable Composer composer, int i2);

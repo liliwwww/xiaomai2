@@ -8,7 +8,7 @@ import androidx.core.internal.view.SupportMenuItem;
 import androidx.core.internal.view.SupportSubMenu;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 abstract class BaseMenuWrapper {
     final Context mContext;
     private SimpleArrayMap<SupportMenuItem, MenuItem> mMenuItems;
@@ -26,7 +26,7 @@ abstract class BaseMenuWrapper {
         if (this.mMenuItems == null) {
             this.mMenuItems = new SimpleArrayMap<>();
         }
-        MenuItem menuItem2 = this.mMenuItems.get(supportMenuItem);
+        MenuItem menuItem2 = (MenuItem) this.mMenuItems.get(supportMenuItem);
         if (menuItem2 != null) {
             return menuItem2;
         }
@@ -43,7 +43,7 @@ abstract class BaseMenuWrapper {
         if (this.mSubMenus == null) {
             this.mSubMenus = new SimpleArrayMap<>();
         }
-        SubMenu subMenu2 = this.mSubMenus.get(supportSubMenu);
+        SubMenu subMenu2 = (SubMenu) this.mSubMenus.get(supportSubMenu);
         if (subMenu2 != null) {
             return subMenu2;
         }
@@ -69,7 +69,7 @@ abstract class BaseMenuWrapper {
         }
         int i2 = 0;
         while (i2 < this.mMenuItems.size()) {
-            if (this.mMenuItems.keyAt(i2).getGroupId() == i) {
+            if (((SupportMenuItem) this.mMenuItems.keyAt(i2)).getGroupId() == i) {
                 this.mMenuItems.removeAt(i2);
                 i2--;
             }
@@ -82,7 +82,7 @@ abstract class BaseMenuWrapper {
             return;
         }
         for (int i2 = 0; i2 < this.mMenuItems.size(); i2++) {
-            if (this.mMenuItems.keyAt(i2).getItemId() == i) {
+            if (((SupportMenuItem) this.mMenuItems.keyAt(i2)).getItemId() == i) {
                 this.mMenuItems.removeAt(i2);
                 return;
             }

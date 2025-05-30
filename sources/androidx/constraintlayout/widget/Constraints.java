@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Constraints extends ViewGroup {
     public static final String TAG = "Constraints";
     ConstraintSet myConstraintSet;
@@ -97,7 +97,7 @@ public class Constraints extends ViewGroup {
         }
 
         public LayoutParams(LayoutParams layoutParams) {
-            super((ConstraintLayout.LayoutParams) layoutParams);
+            super(layoutParams);
             this.alpha = 1.0f;
             this.applyElevation = false;
             this.elevation = 0.0f;
@@ -128,36 +128,36 @@ public class Constraints extends ViewGroup {
             this.translationX = 0.0f;
             this.translationY = 0.0f;
             this.translationZ = 0.0f;
-            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0923R.styleable.ConstraintSet);
+            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, R$styleable.ConstraintSet);
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
                 int index = obtainStyledAttributes.getIndex(i);
-                if (index == C0923R.styleable.ConstraintSet_android_alpha) {
+                if (index == R$styleable.ConstraintSet_android_alpha) {
                     this.alpha = obtainStyledAttributes.getFloat(index, this.alpha);
-                } else if (index == C0923R.styleable.ConstraintSet_android_elevation) {
+                } else if (index == R$styleable.ConstraintSet_android_elevation) {
                     if (Build.VERSION.SDK_INT >= 21) {
                         this.elevation = obtainStyledAttributes.getFloat(index, this.elevation);
                         this.applyElevation = true;
                     }
-                } else if (index == C0923R.styleable.ConstraintSet_android_rotationX) {
+                } else if (index == R$styleable.ConstraintSet_android_rotationX) {
                     this.rotationX = obtainStyledAttributes.getFloat(index, this.rotationX);
-                } else if (index == C0923R.styleable.ConstraintSet_android_rotationY) {
+                } else if (index == R$styleable.ConstraintSet_android_rotationY) {
                     this.rotationY = obtainStyledAttributes.getFloat(index, this.rotationY);
-                } else if (index == C0923R.styleable.ConstraintSet_android_rotation) {
+                } else if (index == R$styleable.ConstraintSet_android_rotation) {
                     this.rotation = obtainStyledAttributes.getFloat(index, this.rotation);
-                } else if (index == C0923R.styleable.ConstraintSet_android_scaleX) {
+                } else if (index == R$styleable.ConstraintSet_android_scaleX) {
                     this.scaleX = obtainStyledAttributes.getFloat(index, this.scaleX);
-                } else if (index == C0923R.styleable.ConstraintSet_android_scaleY) {
+                } else if (index == R$styleable.ConstraintSet_android_scaleY) {
                     this.scaleY = obtainStyledAttributes.getFloat(index, this.scaleY);
-                } else if (index == C0923R.styleable.ConstraintSet_android_transformPivotX) {
+                } else if (index == R$styleable.ConstraintSet_android_transformPivotX) {
                     this.transformPivotX = obtainStyledAttributes.getFloat(index, this.transformPivotX);
-                } else if (index == C0923R.styleable.ConstraintSet_android_transformPivotY) {
+                } else if (index == R$styleable.ConstraintSet_android_transformPivotY) {
                     this.transformPivotY = obtainStyledAttributes.getFloat(index, this.transformPivotY);
-                } else if (index == C0923R.styleable.ConstraintSet_android_translationX) {
+                } else if (index == R$styleable.ConstraintSet_android_translationX) {
                     this.translationX = obtainStyledAttributes.getFloat(index, this.translationX);
-                } else if (index == C0923R.styleable.ConstraintSet_android_translationY) {
+                } else if (index == R$styleable.ConstraintSet_android_translationY) {
                     this.translationY = obtainStyledAttributes.getFloat(index, this.translationY);
-                } else if (index == C0923R.styleable.ConstraintSet_android_translationZ && Build.VERSION.SDK_INT >= 21) {
+                } else if (index == R$styleable.ConstraintSet_android_translationZ && Build.VERSION.SDK_INT >= 21) {
                     this.translationZ = obtainStyledAttributes.getFloat(index, this.translationZ);
                 }
             }

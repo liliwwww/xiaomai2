@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 /* JADX INFO: Add missing generic type declarations: [T, V] */
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.animation.core.Animatable$runAnimation$2", f = "Animatable.kt", i = {0, 0}, l = {305}, m = "invokeSuspend", n = {"endState", "clampingNeeded"}, s = {"L$0", "L$1"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class Animatable$runAnimation$2<T, V> extends SuspendLambda implements Function1<Continuation<? super AnimationResult<T, V>>, Object> {
     final /* synthetic */ Animation<T, V> $animation;
     final /* synthetic */ Function1<Animatable<T, V>, Unit> $block;

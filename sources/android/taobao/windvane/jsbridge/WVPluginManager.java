@@ -1,6 +1,5 @@
 package android.taobao.windvane.jsbridge;
 
-import android.taobao.windvane.connect.api.ApiConstants;
 import android.taobao.windvane.monitor.WVMonitorService;
 import android.taobao.windvane.util.TaoLog;
 import android.taobao.windvane.webview.IWVWebView;
@@ -10,7 +9,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVPluginManager {
     public static final String KEY_METHOD = "method";
     public static final String KEY_NAME = "name";
@@ -29,12 +28,12 @@ public class WVPluginManager {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public static android.taobao.windvane.jsbridge.WVApiPlugin createPlugin(java.lang.String r5, android.content.Context r6, android.taobao.windvane.webview.IWVWebView r7) {
         /*
             Method dump skipped, instructions count: 280
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.jsbridge.WVPluginManager.createPlugin(java.lang.String, android.content.Context, android.taobao.windvane.webview.IWVWebView):android.taobao.windvane.jsbridge.WVApiPlugin");
     }
@@ -42,7 +41,7 @@ public class WVPluginManager {
     public static Map<String, String> getOriginalPlugin(String str, String str2) {
         int indexOf;
         if (TextUtils.isEmpty(str) || TextUtils.isEmpty(str2)) {
-            TaoLog.m30w(TAG, "getOriginalPlugin failed, alias is empty.");
+            TaoLog.w(TAG, "getOriginalPlugin failed, alias is empty.");
             return null;
         }
         String str3 = aliasPlugins.get(str + SEPARATOR + str2);
@@ -67,7 +66,7 @@ public class WVPluginManager {
 
     public static void registerAlias(String str, String str2, String str3, String str4) {
         if (!plugins.containsKey(str3) || TextUtils.isEmpty(str) || TextUtils.isEmpty(str2)) {
-            TaoLog.m30w(TAG, "registerAlias quit, this is no original plugin or alias is invalid.");
+            TaoLog.w(TAG, "registerAlias quit, this is no original plugin or alias is invalid.");
             return;
         }
         if (TextUtils.isEmpty(str3) || TextUtils.isEmpty(str4)) {
@@ -88,7 +87,7 @@ public class WVPluginManager {
             map.put(iWVWebView, map2);
         }
         registerPlugin(str, cls, true, map2);
-        TaoLog.m24i(TAG, "注册到局部API，使用范围=[" + iWVWebView.getClass().getSimpleName() + "],API=[" + str + SEPARATOR + cls.getSimpleName() + "]");
+        TaoLog.i(TAG, "注册到局部API，使用范围=[" + iWVWebView.getClass().getSimpleName() + "],API=[" + str + SEPARATOR + cls.getSimpleName() + "]");
     }
 
     public static void registerPlugin(String str, Class<? extends WVApiPlugin> cls) {
@@ -119,7 +118,7 @@ public class WVPluginManager {
 
     public static void unregisterAlias(String str, String str2) {
         if (TextUtils.isEmpty(str) || TextUtils.isEmpty(str2)) {
-            TaoLog.m30w(TAG, "unregisterAlias quit, alias is invalid.");
+            TaoLog.w(TAG, "unregisterAlias quit, alias is invalid.");
             return;
         }
         aliasPlugins.remove(str + SEPARATOR + str2);
@@ -189,7 +188,7 @@ public class WVPluginManager {
         StringBuilder sb = new StringBuilder();
         for (Map.Entry<String, WVPluginInfo> entry : plugins.entrySet()) {
             sb.append(entry.getKey());
-            sb.append(ApiConstants.SPLIT_LINE);
+            sb.append("-");
             sb.append(entry.getValue().className);
             sb.append(",");
         }
@@ -223,7 +222,7 @@ public class WVPluginManager {
             }
         } catch (Throwable th) {
             if (TaoLog.getLogStatus()) {
-                TaoLog.m21e(TAG, "registerPlugin by Object error : " + th.getMessage());
+                TaoLog.e(TAG, "registerPlugin by Object error : " + th.getMessage());
             }
         }
     }

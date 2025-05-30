@@ -1,12 +1,12 @@
 package androidx.compose.foundation.text;
 
 import androidx.compose.foundation.text.selection.Selectable;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.layout.LayoutCoordinates;
-import androidx.compose.p004ui.text.TextLayoutResult;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.SnapshotStateKt;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.layout.LayoutCoordinates;
+import androidx.compose.ui.text.TextLayoutResult;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TextState {
 
     @NotNull
@@ -44,19 +44,10 @@ public final class TextState {
     public TextState(@NotNull TextDelegate textDelegate, long j) {
         Intrinsics.checkNotNullParameter(textDelegate, "textDelegate");
         this.selectableId = j;
-        this.onTextLayout = new Function1<TextLayoutResult, Unit>() { // from class: androidx.compose.foundation.text.TextState$onTextLayout$1
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((TextLayoutResult) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull TextLayoutResult textLayoutResult) {
-                Intrinsics.checkNotNullParameter(textLayoutResult, "it");
-            }
-        };
+        this.onTextLayout = onTextLayout.1.INSTANCE;
         this.textDelegate = textDelegate;
-        this.previousGlobalPosition = Offset.Companion.m2572getZeroF1C5BW0();
-        this.selectionBackgroundColor = Color.Companion.m2823getUnspecified0d7_KjU();
+        this.previousGlobalPosition = Offset.Companion.getZero-F1C5BW0();
+        this.selectionBackgroundColor = Color.Companion.getUnspecified-0d7_KjU();
         Unit unit = Unit.INSTANCE;
         this.drawScopeInvalidation$delegate = SnapshotStateKt.mutableStateOf(unit, SnapshotStateKt.neverEqualPolicy());
         this.layoutInvalidation$delegate = SnapshotStateKt.mutableStateOf(unit, SnapshotStateKt.neverEqualPolicy());
@@ -98,7 +89,7 @@ public final class TextState {
     }
 
     /* renamed from: getPreviousGlobalPosition-F1C5BW0, reason: not valid java name */
-    public final long m1815getPreviousGlobalPositionF1C5BW0() {
+    public final long m458getPreviousGlobalPositionF1C5BW0() {
         return this.previousGlobalPosition;
     }
 
@@ -112,7 +103,7 @@ public final class TextState {
     }
 
     /* renamed from: getSelectionBackgroundColor-0d7_KjU, reason: not valid java name */
-    public final long m1816getSelectionBackgroundColor0d7_KjU() {
+    public final long m459getSelectionBackgroundColor0d7_KjU() {
         return this.selectionBackgroundColor;
     }
 
@@ -136,7 +127,7 @@ public final class TextState {
     }
 
     /* renamed from: setPreviousGlobalPosition-k-4lQ0M, reason: not valid java name */
-    public final void m1817setPreviousGlobalPositionk4lQ0M(long j) {
+    public final void m460setPreviousGlobalPositionk4lQ0M(long j) {
         this.previousGlobalPosition = j;
     }
 
@@ -145,7 +136,7 @@ public final class TextState {
     }
 
     /* renamed from: setSelectionBackgroundColor-8_81llA, reason: not valid java name */
-    public final void m1818setSelectionBackgroundColor8_81llA(long j) {
+    public final void m461setSelectionBackgroundColor8_81llA(long j) {
         this.selectionBackgroundColor = j;
     }
 

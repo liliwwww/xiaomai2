@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class CursorLoader extends AsyncTaskLoader<Cursor> {
     CancellationSignal mCancellationSignal;
     Cursor mCursor;
@@ -25,12 +25,12 @@ public class CursorLoader extends AsyncTaskLoader<Cursor> {
     String mSortOrder;
     Uri mUri;
 
+    /* JADX WARN: Multi-variable type inference failed */
     public CursorLoader(@NonNull Context context) {
         super(context);
         this.mObserver = new Loader.ForceLoadContentObserver();
     }
 
-    @Override // androidx.loader.content.AsyncTaskLoader
     public void cancelLoadInBackground() {
         super.cancelLoadInBackground();
         synchronized (this) {
@@ -41,7 +41,7 @@ public class CursorLoader extends AsyncTaskLoader<Cursor> {
         }
     }
 
-    @Override // androidx.loader.content.AsyncTaskLoader, androidx.loader.content.Loader
+    /* JADX WARN: Multi-variable type inference failed */
     @Deprecated
     public void dump(String str, FileDescriptor fileDescriptor, PrintWriter printWriter, String[] strArr) {
         super.dump(str, fileDescriptor, printWriter, strArr);
@@ -93,9 +93,9 @@ public class CursorLoader extends AsyncTaskLoader<Cursor> {
         return this.mUri;
     }
 
-    @Override // androidx.loader.content.Loader
+    /* JADX WARN: Multi-variable type inference failed */
     protected void onReset() {
-        super.onReset();
+        super/*androidx.loader.content.Loader*/.onReset();
         onStopLoading();
         Cursor cursor = this.mCursor;
         if (cursor != null && !cursor.isClosed()) {
@@ -104,7 +104,7 @@ public class CursorLoader extends AsyncTaskLoader<Cursor> {
         this.mCursor = null;
     }
 
-    @Override // androidx.loader.content.Loader
+    /* JADX WARN: Multi-variable type inference failed */
     protected void onStartLoading() {
         Cursor cursor = this.mCursor;
         if (cursor != null) {
@@ -115,7 +115,7 @@ public class CursorLoader extends AsyncTaskLoader<Cursor> {
         }
     }
 
-    @Override // androidx.loader.content.Loader
+    /* JADX WARN: Multi-variable type inference failed */
     protected void onStopLoading() {
         cancelLoad();
     }
@@ -140,7 +140,7 @@ public class CursorLoader extends AsyncTaskLoader<Cursor> {
         this.mUri = uri;
     }
 
-    @Override // androidx.loader.content.Loader
+    /* JADX WARN: Multi-variable type inference failed */
     public void deliverResult(Cursor cursor) {
         if (isReset()) {
             if (cursor != null) {
@@ -152,7 +152,7 @@ public class CursorLoader extends AsyncTaskLoader<Cursor> {
         Cursor cursor2 = this.mCursor;
         this.mCursor = cursor;
         if (isStarted()) {
-            super.deliverResult((CursorLoader) cursor);
+            super/*androidx.loader.content.Loader*/.deliverResult((CursorLoader) cursor);
         }
         if (cursor2 == null || cursor2 == cursor || cursor2.isClosed()) {
             return;
@@ -160,9 +160,9 @@ public class CursorLoader extends AsyncTaskLoader<Cursor> {
         cursor2.close();
     }
 
-    /* JADX WARN: Can't rename method to resolve collision */
-    @Override // androidx.loader.content.AsyncTaskLoader
-    public Cursor loadInBackground() {
+    /* JADX WARN: Multi-variable type inference failed */
+    /* renamed from: loadInBackground, reason: merged with bridge method [inline-methods] */
+    public Cursor m2813loadInBackground() {
         synchronized (this) {
             if (isLoadInBackgroundCanceled()) {
                 throw new OperationCanceledException();
@@ -192,7 +192,6 @@ public class CursorLoader extends AsyncTaskLoader<Cursor> {
         }
     }
 
-    @Override // androidx.loader.content.AsyncTaskLoader
     public void onCanceled(Cursor cursor) {
         if (cursor == null || cursor.isClosed()) {
             return;
@@ -200,6 +199,7 @@ public class CursorLoader extends AsyncTaskLoader<Cursor> {
         cursor.close();
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public CursorLoader(@NonNull Context context, @NonNull Uri uri, @Nullable String[] strArr, @Nullable String str, @Nullable String[] strArr2, @Nullable String str2) {
         super(context);
         this.mObserver = new Loader.ForceLoadContentObserver();

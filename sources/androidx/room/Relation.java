@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /* compiled from: Taobao */
 @Target({ElementType.FIELD, ElementType.METHOD})
 @Retention(RetentionPolicy.CLASS)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public @interface Relation {
     Junction associateBy() default @Junction(Object.class);
 

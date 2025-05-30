@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVThreadPool {
     private static final int CORE_POOL_SIZE;
     private static final int CPU_COUNT;
@@ -80,7 +80,7 @@ public class WVThreadPool {
             this.executor = new ThreadPoolExecutor(i, MAX_POOL_SIZE, 500L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(i));
         }
         if (runnable == null) {
-            TaoLog.m30w(TAG, "execute task is null.");
+            TaoLog.w(TAG, "execute task is null.");
             return;
         }
         refreshTaskMap();
@@ -91,7 +91,7 @@ public class WVThreadPool {
             if (put != null) {
                 put.cancel(true);
             }
-            TaoLog.m18d(TAG, "overlap the same name task:[" + str + "]");
+            TaoLog.d(TAG, "overlap the same name task:[" + str + "]");
         } else {
             String str2 = (String) this.tasks.keySet().toArray()[0];
             Future remove = this.tasks.remove(str2);
@@ -99,8 +99,8 @@ public class WVThreadPool {
                 remove.cancel(true);
             }
             this.tasks.put(str, this.executor.submit(runnable));
-            TaoLog.m18d(TAG, "remove first task:[" + str2 + "]");
+            TaoLog.d(TAG, "remove first task:[" + str2 + "]");
         }
-        TaoLog.m18d(TAG, "activeTask count after:" + ((ThreadPoolExecutor) this.executor).getActiveCount());
+        TaoLog.d(TAG, "activeTask count after:" + ((ThreadPoolExecutor) this.executor).getActiveCount());
     }
 }

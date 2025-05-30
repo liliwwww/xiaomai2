@@ -3,16 +3,16 @@ package androidx.compose.foundation;
 import android.view.View;
 import android.widget.Magnifier;
 import androidx.annotation.RequiresApi;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.IntSizeKt;
 import androidx.compose.runtime.internal.StabilityInferred;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.IntSizeKt;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @RequiresApi(28)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PlatformMagnifierFactoryApi28Impl implements PlatformMagnifierFactory {
 
     @NotNull
@@ -33,7 +33,6 @@ public final class PlatformMagnifierFactoryApi28Impl implements PlatformMagnifie
             this.magnifier = magnifier;
         }
 
-        @Override // androidx.compose.foundation.PlatformMagnifier
         public void dismiss() {
             this.magnifier.dismiss();
         }
@@ -43,19 +42,16 @@ public final class PlatformMagnifierFactoryApi28Impl implements PlatformMagnifie
             return this.magnifier;
         }
 
-        @Override // androidx.compose.foundation.PlatformMagnifier
-        /* renamed from: getSize-YbymL2g */
-        public long mo1194getSizeYbymL2g() {
+        /* renamed from: getSize-YbymL2g, reason: not valid java name */
+        public long m149getSizeYbymL2g() {
             return IntSizeKt.IntSize(this.magnifier.getWidth(), this.magnifier.getHeight());
         }
 
-        @Override // androidx.compose.foundation.PlatformMagnifier
-        /* renamed from: update-Wko1d7g */
-        public void mo1195updateWko1d7g(long j, long j2, float f) {
-            this.magnifier.show(Offset.m2556getXimpl(j), Offset.m2557getYimpl(j));
+        /* renamed from: update-Wko1d7g, reason: not valid java name */
+        public void m150updateWko1d7g(long j, long j2, float f) {
+            this.magnifier.show(Offset.m848getXimpl(j), Offset.m849getYimpl(j));
         }
 
-        @Override // androidx.compose.foundation.PlatformMagnifier
         public void updateContent() {
             this.magnifier.update();
         }

@@ -12,13 +12,15 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.VisibleForTesting;
 import androidx.collection.LruCache;
-import androidx.core.content.res.FontResourcesParserCompat;
-import androidx.core.content.res.ResourcesCompat;
+import androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry;
+import androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry;
+import androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry;
+import androidx.core.content.res.ResourcesCompat$FontCallback;
 import androidx.core.provider.FontsContractCompat;
 import androidx.core.util.Preconditions;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class TypefaceCompat {
     private static final LruCache<String, Typeface> sTypefaceCache;
     private static final TypefaceCompatBaseImpl sTypefaceCompatImpl;
@@ -28,25 +30,23 @@ public class TypefaceCompat {
     public static class ResourcesCallbackAdapter extends FontsContractCompat.FontRequestCallback {
 
         @Nullable
-        private ResourcesCompat.FontCallback mFontCallback;
+        private ResourcesCompat$FontCallback mFontCallback;
 
-        public ResourcesCallbackAdapter(@Nullable ResourcesCompat.FontCallback fontCallback) {
-            this.mFontCallback = fontCallback;
+        public ResourcesCallbackAdapter(@Nullable ResourcesCompat$FontCallback resourcesCompat$FontCallback) {
+            this.mFontCallback = resourcesCompat$FontCallback;
         }
 
-        @Override // androidx.core.provider.FontsContractCompat.FontRequestCallback
         public void onTypefaceRequestFailed(int i) {
-            ResourcesCompat.FontCallback fontCallback = this.mFontCallback;
-            if (fontCallback != null) {
-                fontCallback.lambda$callbackFailAsync$1(i);
+            ResourcesCompat$FontCallback resourcesCompat$FontCallback = this.mFontCallback;
+            if (resourcesCompat$FontCallback != null) {
+                resourcesCompat$FontCallback.lambda$callbackFailAsync$1(i);
             }
         }
 
-        @Override // androidx.core.provider.FontsContractCompat.FontRequestCallback
         public void onTypefaceRetrieved(@NonNull Typeface typeface) {
-            ResourcesCompat.FontCallback fontCallback = this.mFontCallback;
-            if (fontCallback != null) {
-                fontCallback.lambda$callbackSuccessAsync$0(typeface);
+            ResourcesCompat$FontCallback resourcesCompat$FontCallback = this.mFontCallback;
+            if (resourcesCompat$FontCallback != null) {
+                resourcesCompat$FontCallback.lambda$callbackSuccessAsync$0(typeface);
             }
         }
     }
@@ -95,25 +95,25 @@ public class TypefaceCompat {
 
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY})
-    public static Typeface createFromResourcesFamilyXml(@NonNull Context context, @NonNull FontResourcesParserCompat.FamilyResourceEntry familyResourceEntry, @NonNull Resources resources, int i, @Nullable String str, int i2, int i3, @Nullable ResourcesCompat.FontCallback fontCallback, @Nullable Handler handler, boolean z) {
+    public static Typeface createFromResourcesFamilyXml(@NonNull Context context, @NonNull FontResourcesParserCompat$FamilyResourceEntry fontResourcesParserCompat$FamilyResourceEntry, @NonNull Resources resources, int i, @Nullable String str, int i2, int i3, @Nullable ResourcesCompat$FontCallback resourcesCompat$FontCallback, @Nullable Handler handler, boolean z) {
         Typeface createFromFontFamilyFilesResourceEntry;
-        if (familyResourceEntry instanceof FontResourcesParserCompat.ProviderResourceEntry) {
-            FontResourcesParserCompat.ProviderResourceEntry providerResourceEntry = (FontResourcesParserCompat.ProviderResourceEntry) familyResourceEntry;
-            Typeface systemFontFamily = getSystemFontFamily(providerResourceEntry.getSystemFontFamilyName());
+        if (fontResourcesParserCompat$FamilyResourceEntry instanceof FontResourcesParserCompat$ProviderResourceEntry) {
+            FontResourcesParserCompat$ProviderResourceEntry fontResourcesParserCompat$ProviderResourceEntry = (FontResourcesParserCompat$ProviderResourceEntry) fontResourcesParserCompat$FamilyResourceEntry;
+            Typeface systemFontFamily = getSystemFontFamily(fontResourcesParserCompat$ProviderResourceEntry.getSystemFontFamilyName());
             if (systemFontFamily != null) {
-                if (fontCallback != null) {
-                    fontCallback.callbackSuccessAsync(systemFontFamily, handler);
+                if (resourcesCompat$FontCallback != null) {
+                    resourcesCompat$FontCallback.callbackSuccessAsync(systemFontFamily, handler);
                 }
                 return systemFontFamily;
             }
-            createFromFontFamilyFilesResourceEntry = FontsContractCompat.requestFont(context, providerResourceEntry.getRequest(), i3, !z ? fontCallback != null : providerResourceEntry.getFetchStrategy() != 0, z ? providerResourceEntry.getTimeout() : -1, ResourcesCompat.FontCallback.getHandler(handler), new ResourcesCallbackAdapter(fontCallback));
+            createFromFontFamilyFilesResourceEntry = FontsContractCompat.requestFont(context, fontResourcesParserCompat$ProviderResourceEntry.getRequest(), i3, !z ? resourcesCompat$FontCallback != null : fontResourcesParserCompat$ProviderResourceEntry.getFetchStrategy() != 0, z ? fontResourcesParserCompat$ProviderResourceEntry.getTimeout() : -1, ResourcesCompat$FontCallback.getHandler(handler), new ResourcesCallbackAdapter(resourcesCompat$FontCallback));
         } else {
-            createFromFontFamilyFilesResourceEntry = sTypefaceCompatImpl.createFromFontFamilyFilesResourceEntry(context, (FontResourcesParserCompat.FontFamilyFilesResourceEntry) familyResourceEntry, resources, i3);
-            if (fontCallback != null) {
+            createFromFontFamilyFilesResourceEntry = sTypefaceCompatImpl.createFromFontFamilyFilesResourceEntry(context, (FontResourcesParserCompat$FontFamilyFilesResourceEntry) fontResourcesParserCompat$FamilyResourceEntry, resources, i3);
+            if (resourcesCompat$FontCallback != null) {
                 if (createFromFontFamilyFilesResourceEntry != null) {
-                    fontCallback.callbackSuccessAsync(createFromFontFamilyFilesResourceEntry, handler);
+                    resourcesCompat$FontCallback.callbackSuccessAsync(createFromFontFamilyFilesResourceEntry, handler);
                 } else {
-                    fontCallback.callbackFailAsync(-3, handler);
+                    resourcesCompat$FontCallback.callbackFailAsync(-3, handler);
                 }
             }
         }
@@ -146,7 +146,7 @@ public class TypefaceCompat {
     @Nullable
     private static Typeface getBestFontFromFamily(Context context, Typeface typeface, int i) {
         TypefaceCompatBaseImpl typefaceCompatBaseImpl = sTypefaceCompatImpl;
-        FontResourcesParserCompat.FontFamilyFilesResourceEntry fontFamily = typefaceCompatBaseImpl.getFontFamily(typeface);
+        FontResourcesParserCompat$FontFamilyFilesResourceEntry fontFamily = typefaceCompatBaseImpl.getFontFamily(typeface);
         if (fontFamily == null) {
             return null;
         }
@@ -180,7 +180,7 @@ public class TypefaceCompat {
     }
 
     @NonNull
-    public static Typeface create(@NonNull Context context, @Nullable Typeface typeface, @IntRange(from = 1, m43to = 1000) int i, boolean z) {
+    public static Typeface create(@NonNull Context context, @Nullable Typeface typeface, @IntRange(from = 1, to = 1000) int i, boolean z) {
         if (context != null) {
             Preconditions.checkArgumentInRange(i, 1, 1000, "weight");
             if (typeface == null) {
@@ -194,7 +194,7 @@ public class TypefaceCompat {
     @Nullable
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     @Deprecated
-    public static Typeface createFromResourcesFamilyXml(@NonNull Context context, @NonNull FontResourcesParserCompat.FamilyResourceEntry familyResourceEntry, @NonNull Resources resources, int i, int i2, @Nullable ResourcesCompat.FontCallback fontCallback, @Nullable Handler handler, boolean z) {
-        return createFromResourcesFamilyXml(context, familyResourceEntry, resources, i, null, 0, i2, fontCallback, handler, z);
+    public static Typeface createFromResourcesFamilyXml(@NonNull Context context, @NonNull FontResourcesParserCompat$FamilyResourceEntry fontResourcesParserCompat$FamilyResourceEntry, @NonNull Resources resources, int i, int i2, @Nullable ResourcesCompat$FontCallback resourcesCompat$FontCallback, @Nullable Handler handler, boolean z) {
+        return createFromResourcesFamilyXml(context, fontResourcesParserCompat$FamilyResourceEntry, resources, i, null, 0, i2, resourcesCompat$FontCallback, handler, z);
     }
 }

@@ -12,14 +12,13 @@ import android.util.SparseBooleanArray;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.collection.ArrayMap;
 import androidx.collection.ArraySet;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.ObjectStreamClass;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -31,8 +30,8 @@ import java.util.Map;
 import java.util.Set;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class VersionedParcel {
     private static final int EX_BAD_PARCELABLE = -2;
     private static final int EX_ILLEGAL_ARGUMENT = -3;
@@ -53,14 +52,6 @@ public abstract class VersionedParcel {
     protected final ArrayMap<String, Class> mParcelizerCache;
     protected final ArrayMap<String, Method> mReadCache;
     protected final ArrayMap<String, Method> mWriteCache;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static class ParcelException extends RuntimeException {
-        public ParcelException(Throwable th) {
-            super(th);
-        }
-    }
 
     public VersionedParcel(ArrayMap<String, Method> arrayMap, ArrayMap<String, Method> arrayMap2, ArrayMap<String, Class> arrayMap3) {
         this.mReadCache = arrayMap;
@@ -93,7 +84,7 @@ public abstract class VersionedParcel {
     }
 
     private Class findParcelClass(Class<? extends VersionedParcelable> cls) throws ClassNotFoundException {
-        Class cls2 = this.mParcelizerCache.get(cls.getName());
+        Class cls2 = (Class) this.mParcelizerCache.get(cls.getName());
         if (cls2 != null) {
             return cls2;
         }
@@ -103,7 +94,7 @@ public abstract class VersionedParcel {
     }
 
     private Method getReadMethod(String str) throws IllegalAccessException, NoSuchMethodException, ClassNotFoundException {
-        Method method = this.mReadCache.get(str);
+        Method method = (Method) this.mReadCache.get(str);
         if (method != null) {
             return method;
         }
@@ -148,7 +139,7 @@ public abstract class VersionedParcel {
 
     /* JADX WARN: Multi-variable type inference failed */
     private Method getWriteMethod(Class cls) throws IllegalAccessException, NoSuchMethodException, ClassNotFoundException {
-        Method method = this.mWriteCache.get(cls.getName());
+        Method method = (Method) this.mWriteCache.get(cls.getName());
         if (method != null) {
             return method;
         }
@@ -379,13 +370,7 @@ public abstract class VersionedParcel {
             return null;
         }
         try {
-            return (Serializable) new ObjectInputStream(new ByteArrayInputStream(readByteArray())) { // from class: androidx.versionedparcelable.VersionedParcel.1
-                @Override // java.io.ObjectInputStream
-                protected Class<?> resolveClass(ObjectStreamClass objectStreamClass) throws IOException, ClassNotFoundException {
-                    Class<?> cls = Class.forName(objectStreamClass.getName(), false, getClass().getClassLoader());
-                    return cls != null ? cls : super.resolveClass(objectStreamClass);
-                }
-            }.readObject();
+            return (Serializable) new 1(this, new ByteArrayInputStream(readByteArray())).readObject();
         } catch (IOException e) {
             throw new RuntimeException("VersionedParcelable encountered IOException reading a Serializable object (name = " + readString + ")", e);
         } catch (ClassNotFoundException e2) {

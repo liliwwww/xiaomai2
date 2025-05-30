@@ -8,7 +8,7 @@ import com.taobao.zcache.ZCacheInitTask;
 import com.taobao.zcache.ZCacheManager;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVPackageAppRuntime {
     public static final String TAG = "PackageApp-Runtime";
 
@@ -36,14 +36,14 @@ public class WVPackageAppRuntime {
         com.taobao.zcache.model.ZCacheResourceResponse zCacheResource = ZCacheManager.instance().getZCacheResource(removeQueryParam);
         ZCacheResourceResponse zCacheResourceResponse = new ZCacheResourceResponse();
         if (zCacheResource != null) {
-            TaoLog.m24i("ZCache", "weex use ZCache 3.0, url=[" + removeQueryParam + "], with response:[" + zCacheResource.isSuccess + "]");
+            TaoLog.i("ZCache", "weex use ZCache 3.0, url=[" + removeQueryParam + "], with response:[" + zCacheResource.isSuccess + "]");
             zCacheResourceResponse.encoding = zCacheResource.encoding;
             zCacheResourceResponse.headers = zCacheResource.headers;
             zCacheResourceResponse.inputStream = zCacheResource.inputStream;
             zCacheResourceResponse.isSuccess = zCacheResource.isSuccess;
             zCacheResourceResponse.mimeType = zCacheResource.mimeType;
         } else {
-            TaoLog.m24i("ZCache", "weex use ZCache 3.0, url=[" + removeQueryParam + "], with response=[null]");
+            TaoLog.i("ZCache", "weex use ZCache 3.0, url=[" + removeQueryParam + "], with response=[null]");
         }
         return zCacheResourceResponse;
     }

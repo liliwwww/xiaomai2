@@ -9,48 +9,12 @@ import java.util.WeakHashMap;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class SafeIterableMap<K, V> implements Iterable<Map.Entry<K, V>> {
     private Entry<K, V> mEnd;
     private final WeakHashMap<SupportRemove<K, V>, Boolean> mIterators = new WeakHashMap<>();
     private int mSize = 0;
     Entry<K, V> mStart;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class AscendingIterator<K, V> extends ListIterator<K, V> {
-        AscendingIterator(Entry<K, V> entry, Entry<K, V> entry2) {
-            super(entry, entry2);
-        }
-
-        @Override // androidx.arch.core.internal.SafeIterableMap.ListIterator
-        Entry<K, V> backward(Entry<K, V> entry) {
-            return entry.mPrevious;
-        }
-
-        @Override // androidx.arch.core.internal.SafeIterableMap.ListIterator
-        Entry<K, V> forward(Entry<K, V> entry) {
-            return entry.mNext;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static class DescendingIterator<K, V> extends ListIterator<K, V> {
-        DescendingIterator(Entry<K, V> entry, Entry<K, V> entry2) {
-            super(entry, entry2);
-        }
-
-        @Override // androidx.arch.core.internal.SafeIterableMap.ListIterator
-        Entry<K, V> backward(Entry<K, V> entry) {
-            return entry.mNext;
-        }
-
-        @Override // androidx.arch.core.internal.SafeIterableMap.ListIterator
-        Entry<K, V> forward(Entry<K, V> entry) {
-            return entry.mPrevious;
-        }
-    }
 
     /* compiled from: Taobao */
     static class Entry<K, V> implements Map.Entry<K, V> {
@@ -104,48 +68,6 @@ public class SafeIterableMap<K, V> implements Iterable<Map.Entry<K, V>> {
 
         public String toString() {
             return this.mKey + "=" + this.mValue;
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes.dex */
-    public class IteratorWithAdditions extends SupportRemove<K, V> implements Iterator<Map.Entry<K, V>> {
-        private boolean mBeforeStart = true;
-        private Entry<K, V> mCurrent;
-
-        IteratorWithAdditions() {
-        }
-
-        @Override // java.util.Iterator
-        public boolean hasNext() {
-            if (this.mBeforeStart) {
-                return SafeIterableMap.this.mStart != null;
-            }
-            Entry<K, V> entry = this.mCurrent;
-            return (entry == null || entry.mNext == null) ? false : true;
-        }
-
-        @Override // androidx.arch.core.internal.SafeIterableMap.SupportRemove
-        void supportRemove(@NonNull Entry<K, V> entry) {
-            Entry<K, V> entry2 = this.mCurrent;
-            if (entry == entry2) {
-                Entry<K, V> entry3 = entry2.mPrevious;
-                this.mCurrent = entry3;
-                this.mBeforeStart = entry3 == null;
-            }
-        }
-
-        @Override // java.util.Iterator
-        public Map.Entry<K, V> next() {
-            if (this.mBeforeStart) {
-                this.mBeforeStart = false;
-                this.mCurrent = SafeIterableMap.this.mStart;
-            } else {
-                Entry<K, V> entry = this.mCurrent;
-                this.mCurrent = entry != null ? entry.mNext : null;
-            }
-            return this.mCurrent;
         }
     }
 
@@ -267,9 +189,10 @@ public class SafeIterableMap<K, V> implements Iterable<Map.Entry<K, V>> {
         return ascendingIterator;
     }
 
+    /* JADX WARN: Incorrect inner types in method signature: ()Landroidx/arch/core/internal/SafeIterableMap<TK;TV;>.IteratorWithAdditions; */
     @NonNull
-    public SafeIterableMap<K, V>.IteratorWithAdditions iteratorWithAdditions() {
-        SafeIterableMap<K, V>.IteratorWithAdditions iteratorWithAdditions = new IteratorWithAdditions();
+    public IteratorWithAdditions iteratorWithAdditions() {
+        SupportRemove<K, V> iteratorWithAdditions = new IteratorWithAdditions<>(this);
         this.mIterators.put(iteratorWithAdditions, Boolean.FALSE);
         return iteratorWithAdditions;
     }

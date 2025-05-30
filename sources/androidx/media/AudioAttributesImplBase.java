@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 import java.util.Arrays;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class AudioAttributesImplBase implements AudioAttributesImpl {
     int mContentType;
     int mFlags;
@@ -34,17 +34,14 @@ class AudioAttributesImplBase implements AudioAttributesImpl {
         return this.mContentType == audioAttributesImplBase.getContentType() && this.mFlags == audioAttributesImplBase.getFlags() && this.mUsage == audioAttributesImplBase.getUsage() && this.mLegacyStream == audioAttributesImplBase.mLegacyStream;
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public Object getAudioAttributes() {
         return null;
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public int getContentType() {
         return this.mContentType;
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public int getFlags() {
         int i = this.mFlags;
         int legacyStreamType = getLegacyStreamType();
@@ -56,23 +53,19 @@ class AudioAttributesImplBase implements AudioAttributesImpl {
         return i & 273;
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public int getLegacyStreamType() {
         int i = this.mLegacyStream;
         return i != -1 ? i : AudioAttributesCompat.toVolumeStreamType(false, this.mFlags, this.mUsage);
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public int getRawLegacyStreamType() {
         return this.mLegacyStream;
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public int getUsage() {
         return this.mUsage;
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     public int getVolumeControlStream() {
         return AudioAttributesCompat.toVolumeStreamType(true, this.mFlags, this.mUsage);
     }
@@ -81,7 +74,6 @@ class AudioAttributesImplBase implements AudioAttributesImpl {
         return Arrays.hashCode(new Object[]{Integer.valueOf(this.mContentType), Integer.valueOf(this.mFlags), Integer.valueOf(this.mUsage), Integer.valueOf(this.mLegacyStream)});
     }
 
-    @Override // androidx.media.AudioAttributesImpl
     @NonNull
     public Bundle toBundle() {
         Bundle bundle = new Bundle();

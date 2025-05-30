@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class GestureDetectorCompat {
     private final GestureDetectorCompatImpl mImpl;
 
@@ -142,12 +142,12 @@ public final class GestureDetectorCompat {
         @Override // androidx.core.view.GestureDetectorCompat.GestureDetectorCompatImpl
         /*
             Code decompiled incorrectly, please refer to instructions dump.
-            To view partially-correct code enable 'Show inconsistent code' option in preferences
+            To view partially-correct add '--show-bad-code' argument
         */
         public boolean onTouchEvent(android.view.MotionEvent r13) {
             /*
                 Method dump skipped, instructions count: 593
-                To view this dump change 'Code comments level' option to 'DEBUG'
+                To view this dump add '--comments-level debug' option
             */
             throw new UnsupportedOperationException("Method not decompiled: androidx.core.view.GestureDetectorCompat.GestureDetectorCompatImplBase.onTouchEvent(android.view.MotionEvent):boolean");
         }

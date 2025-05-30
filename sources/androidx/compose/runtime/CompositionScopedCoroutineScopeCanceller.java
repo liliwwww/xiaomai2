@@ -9,7 +9,7 @@ import tb.i80;
 
 /* compiled from: Taobao */
 @PublishedApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class CompositionScopedCoroutineScopeCanceller implements RememberObserver {
 
     @NotNull
@@ -25,17 +25,14 @@ public final class CompositionScopedCoroutineScopeCanceller implements RememberO
         return this.coroutineScope;
     }
 
-    @Override // androidx.compose.runtime.RememberObserver
     public void onAbandoned() {
         i80.f(this.coroutineScope, (CancellationException) null, 1, (Object) null);
     }
 
-    @Override // androidx.compose.runtime.RememberObserver
     public void onForgotten() {
         i80.f(this.coroutineScope, (CancellationException) null, 1, (Object) null);
     }
 
-    @Override // androidx.compose.runtime.RememberObserver
     public void onRemembered() {
     }
 }

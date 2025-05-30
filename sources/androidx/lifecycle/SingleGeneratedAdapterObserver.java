@@ -1,12 +1,10 @@
 package androidx.lifecycle;
 
-import androidx.core.app.NotificationCompat;
-import androidx.lifecycle.Lifecycle;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SingleGeneratedAdapterObserver implements LifecycleEventObserver {
 
     @NotNull
@@ -17,11 +15,10 @@ public final class SingleGeneratedAdapterObserver implements LifecycleEventObser
         this.generatedAdapter = generatedAdapter;
     }
 
-    @Override // androidx.lifecycle.LifecycleEventObserver
-    public void onStateChanged(@NotNull LifecycleOwner lifecycleOwner, @NotNull Lifecycle.Event event) {
+    public void onStateChanged(@NotNull LifecycleOwner lifecycleOwner, @NotNull Lifecycle$Event lifecycle$Event) {
         Intrinsics.checkNotNullParameter(lifecycleOwner, "source");
-        Intrinsics.checkNotNullParameter(event, NotificationCompat.CATEGORY_EVENT);
-        this.generatedAdapter.callMethods(lifecycleOwner, event, false, null);
-        this.generatedAdapter.callMethods(lifecycleOwner, event, true, null);
+        Intrinsics.checkNotNullParameter(lifecycle$Event, "event");
+        this.generatedAdapter.callMethods(lifecycleOwner, lifecycle$Event, false, (MethodCallsLogger) null);
+        this.generatedAdapter.callMethods(lifecycleOwner, lifecycle$Event, true, (MethodCallsLogger) null);
     }
 }

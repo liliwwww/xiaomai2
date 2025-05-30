@@ -3,7 +3,7 @@ package androidx.emoji2.text.flatbuffer;
 import java.nio.ByteBuffer;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class UnionVector extends BaseVector {
     public UnionVector __assign(int i, int i2, ByteBuffer byteBuffer) {
         __reset(i, i2, byteBuffer);
@@ -11,6 +11,6 @@ public final class UnionVector extends BaseVector {
     }
 
     public Table get(Table table, int i) {
-        return Table.__union(table, __element(i), this.f359bb);
+        return Table.__union(table, __element(i), ((BaseVector) this).bb);
     }
 }

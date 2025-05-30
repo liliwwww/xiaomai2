@@ -7,7 +7,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PersistentOrderedMapValues<K, V> extends AbstractCollection<V> implements ImmutableCollection<V> {
 
     @NotNull
@@ -18,7 +18,6 @@ public final class PersistentOrderedMapValues<K, V> extends AbstractCollection<V
         this.map = persistentOrderedMap;
     }
 
-    @Override // java.util.Collection
     public boolean contains(Object obj) {
         return this.map.containsValue(obj);
     }
@@ -27,7 +26,6 @@ public final class PersistentOrderedMapValues<K, V> extends AbstractCollection<V
         return this.map.size();
     }
 
-    @Override // java.util.Collection, java.lang.Iterable
     @NotNull
     public Iterator<V> iterator() {
         return new PersistentOrderedMapValuesIterator(this.map);

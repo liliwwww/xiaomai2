@@ -1,6 +1,5 @@
 package android.taobao.windvane.webview;
 
-import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
@@ -22,7 +21,7 @@ import android.widget.TextView;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVUIModel {
     private static final String TAG = "WVUIModel";
     private LinearLayout errorLayout;
@@ -136,7 +135,7 @@ public class WVUIModel {
 
     public void loadErrorPage() {
         if (!(this.mContext instanceof Activity)) {
-            TaoLog.m21e(TAG, "context can not be application");
+            TaoLog.e(TAG, "context can not be application");
             return;
         }
         if (this.errorView == null) {
@@ -232,7 +231,7 @@ public class WVUIModel {
 
     public void showLoadingView() {
         if (!(this.mContext instanceof Activity)) {
-            TaoLog.m21e(TAG, "context can not be application");
+            TaoLog.e(TAG, "context can not be application");
             return;
         }
         if (this.loadingView == null) {
@@ -257,56 +256,15 @@ public class WVUIModel {
         ObjectAnimator ofFloat = ObjectAnimator.ofFloat(this.mWarningView, "translationY", f, 0.0f);
         ofFloat.setInterpolator(new DecelerateInterpolator());
         ofFloat.setDuration(1000L);
-        final ObjectAnimator ofFloat2 = ObjectAnimator.ofFloat(this.mWarningView, "translationY", 0.0f, f);
+        ObjectAnimator ofFloat2 = ObjectAnimator.ofFloat(this.mWarningView, "translationY", 0.0f, f);
         ofFloat2.setDuration(1000L);
         ofFloat2.setInterpolator(new DecelerateInterpolator());
-        final AnimatorSet animatorSet = new AnimatorSet();
+        AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(ofFloat);
         animatorSet.play(ofFloat2).after(6000L);
-        ofFloat2.addListener(new Animator.AnimatorListener() { // from class: android.taobao.windvane.webview.WVUIModel.1
-            @Override // android.animation.Animator.AnimatorListener
-            public void onAnimationCancel(Animator animator) {
-                if (WVUIModel.this.mWarningView != null) {
-                    ViewParent parent = WVUIModel.this.mWarningView.getParent();
-                    if (parent != null && (parent instanceof ViewGroup)) {
-                        ((ViewGroup) parent).removeView(WVUIModel.this.mWarningView);
-                    }
-                    WVUIModel.this.mWarningView = null;
-                }
-            }
-
-            @Override // android.animation.Animator.AnimatorListener
-            public void onAnimationEnd(Animator animator) {
-                if (WVUIModel.this.mWarningView != null) {
-                    ViewParent parent = WVUIModel.this.mWarningView.getParent();
-                    if (parent != null && (parent instanceof ViewGroup)) {
-                        ((ViewGroup) parent).removeView(WVUIModel.this.mWarningView);
-                    }
-                    WVUIModel.this.mWarningView = null;
-                }
-            }
-
-            @Override // android.animation.Animator.AnimatorListener
-            public void onAnimationRepeat(Animator animator) {
-            }
-
-            @Override // android.animation.Animator.AnimatorListener
-            public void onAnimationStart(Animator animator) {
-            }
-        });
+        ofFloat2.addListener(new 1(this));
         animatorSet.start();
-        this.mWarningView.setOnClickListener(new View.OnClickListener() { // from class: android.taobao.windvane.webview.WVUIModel.2
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                if (WVUIModel.this.cancelNoti) {
-                    animatorSet.cancel();
-                    AnimatorSet animatorSet2 = new AnimatorSet();
-                    animatorSet2.play(ofFloat2);
-                    animatorSet2.start();
-                    WVUIModel.this.cancelNoti = false;
-                }
-            }
-        });
+        this.mWarningView.setOnClickListener(new 2(this, animatorSet, ofFloat2));
     }
 
     public void switchNaviBar(int i) {

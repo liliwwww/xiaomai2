@@ -2,29 +2,20 @@ package android.taobao.windvane.extra.performance2;
 
 import android.taobao.windvane.WVPerformanceManager;
 import android.taobao.windvane.config.GlobalConfig;
-import android.taobao.windvane.connect.HttpConnector;
-import android.taobao.windvane.connect.api.ApiConstants;
 import android.taobao.windvane.extra.performance.WVAPMManager;
 import android.taobao.windvane.util.CommonUtils;
 import android.taobao.windvane.util.TaoLog;
-import android.taobao.windvane.util.WVConstants;
 import android.taobao.windvane.webview.IWVWebView;
-import android.text.TextUtils;
-import android.webkit.ValueCallback;
 import androidx.exifinterface.media.ExifInterface;
-import androidx.lifecycle.CoroutineLiveDataKt;
 import com.taobao.android.riverlogger.RVLLevel;
 import com.taobao.android.riverlogger.d;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVPageTracker {
     private static String RVLOG_PAGE_MODEL = "WindVane/Page";
     public static final int WVZCacheStateHitZCache = 2;
@@ -109,22 +100,6 @@ public class WVPageTracker {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    class WVResource implements Serializable {
-        public int dataSize;
-        public boolean isHTML;
-        public long loadingEndTime;
-        public long loadingStartTime;
-        public int statusCode;
-        public String url;
-        public String zcacheInfo;
-        public int zcacheState;
-
-        WVResource() {
-        }
-    }
-
     public WVPageTracker() {
         if (usable()) {
             updateWebViewIdentifier();
@@ -177,7 +152,7 @@ public class WVPageTracker {
             WVResource wVResource = wVPageTracker.resources.get(i3);
             if (wVResource == null) {
                 i = i4;
-                TaoLog.m21e("WVPageTracker", " analyzeResources : resource为空！");
+                TaoLog.e("WVPageTracker", " analyzeResources : resource为空！");
                 i2 = i3;
             } else {
                 i = i4;
@@ -412,7 +387,7 @@ public class WVPageTracker {
     private void updatePageIdentifier() {
         this.mLastPageUniqueIdentifier = this.mPageUniqueIdentifier;
         pageIdentifier++;
-        this.mPageUniqueIdentifier = this.mWebViewUniqueIdentifier + ApiConstants.SPLIT_LINE + pageIdentifier;
+        this.mPageUniqueIdentifier = this.mWebViewUniqueIdentifier + "-" + pageIdentifier;
     }
 
     private void updateWebViewIdentifier() {
@@ -494,7 +469,7 @@ public class WVPageTracker {
             this.url = str;
             recordRedirectEntrance();
             long currentTime = currentTime();
-            d.a(RVLLevel.Error, RVLOG_PAGE_MODEL).g("loadRequest", this.mPageUniqueIdentifier).a(HttpConnector.URL, str).h(currentTime).d();
+            d.a(RVLLevel.Error, RVLOG_PAGE_MODEL).g("loadRequest", this.mPageUniqueIdentifier).a("url", str).h(currentTime).d();
             onStateChanged(0);
             onApmStaged(this.stages[2], currentTime);
             IWVWebView iWVWebView = this.webView;
@@ -526,7 +501,7 @@ public class WVPageTracker {
             d.a(RVLLevel.Error, RVLOG_PAGE_MODEL).g("finishLoad", this.mPageUniqueIdentifier).h(currentTime).d();
             onApmStaged(this.stages[12], currentTime);
             onApmAddedProperty("isFinished", new Integer(1));
-            onApmAddedProperty(WVConstants.INTENT_EXTRA_URL, str);
+            onApmAddedProperty("URL", str);
             onApmAddedStatistic("jsErrorTimes", this.jsErrorTimes);
             onPageReceivedPerformanceTiming(iWVWebView);
             analyzeStates();
@@ -543,7 +518,7 @@ public class WVPageTracker {
 
     public void onPageReceivedCustomizedStage(long j, String str) {
         if (usable()) {
-            onApmStaged(customizedStageIndentifier + ApiConstants.SPLIT_LINE + str, j);
+            onApmStaged(customizedStageIndentifier + "-" + str, j);
         }
     }
 
@@ -579,48 +554,7 @@ public class WVPageTracker {
     }
 
     public void onPageReceivedPerformanceTiming(IWVWebView iWVWebView) {
-        iWVWebView.evaluateJavascript("(function(performance){var timing=performance&&performance.timing;return timing&&JSON.stringify({ns:timing.navigationStart,fs:timing.fetchStart,rs:timing.requestStart,re:timing.responseEnd,ds:timing.domContentLoadedEventStart,dc:timing.domComplete,ls:timing.loadEventStart,le:timing.loadEventEnd})})(window.performance)", new ValueCallback<String>() { // from class: android.taobao.windvane.extra.performance2.WVPageTracker.1
-            @Override // android.webkit.ValueCallback
-            public void onReceiveValue(String str) {
-                if (TextUtils.isEmpty(str)) {
-                    str = "{}";
-                }
-                if (str.startsWith("\"") && str.endsWith("\"")) {
-                    str = str.substring(1, str.length() - 1);
-                }
-                try {
-                    JSONObject jSONObject = new JSONObject(str.replace("\\", ""));
-                    long optLong = jSONObject.optLong("ns");
-                    long optLong2 = jSONObject.optLong("rs");
-                    long optLong3 = jSONObject.optLong("re");
-                    long optLong4 = jSONObject.optLong("dc");
-                    RVLLevel rVLLevel = RVLLevel.Error;
-                    d.a(rVLLevel, WVPageTracker.RVLOG_PAGE_MODEL).g("navigationStart", WVPageTracker.this.mPageUniqueIdentifier).h(optLong).d();
-                    d.a(rVLLevel, WVPageTracker.RVLOG_PAGE_MODEL).g("requestStart", WVPageTracker.this.mPageUniqueIdentifier).h(optLong2).d();
-                    d.a(rVLLevel, WVPageTracker.RVLOG_PAGE_MODEL).g("responseEnd", WVPageTracker.this.mPageUniqueIdentifier).h(optLong3).d();
-                    d.a(rVLLevel, WVPageTracker.RVLOG_PAGE_MODEL).g("domComplete", WVPageTracker.this.mPageUniqueIdentifier).h(optLong4).d();
-                    if (WVPageTracker.this.mReceiveFirstPaintElapse > 0) {
-                        d.a(rVLLevel, WVPageTracker.RVLOG_PAGE_MODEL).g("firstPaint", WVPageTracker.this.mPageUniqueIdentifier).h(WVPageTracker.this.mReceiveFirstPaintElapse + optLong).d();
-                    } else {
-                        WVPageTracker.this.mNavigationStartTS = optLong;
-                    }
-                    WVPageTracker wVPageTracker = WVPageTracker.this;
-                    wVPageTracker.onApmStaged(wVPageTracker.stages[6], optLong);
-                    WVPageTracker wVPageTracker2 = WVPageTracker.this;
-                    wVPageTracker2.onApmStaged(wVPageTracker2.stages[7], jSONObject.optLong("fs"));
-                    WVPageTracker wVPageTracker3 = WVPageTracker.this;
-                    wVPageTracker3.onApmStaged(wVPageTracker3.stages[8], optLong3);
-                    WVPageTracker wVPageTracker4 = WVPageTracker.this;
-                    wVPageTracker4.onApmStaged(wVPageTracker4.stages[9], jSONObject.optLong("ds"));
-                    WVPageTracker wVPageTracker5 = WVPageTracker.this;
-                    wVPageTracker5.onApmStaged(wVPageTracker5.stages[10], jSONObject.optLong("ls"));
-                    WVPageTracker wVPageTracker6 = WVPageTracker.this;
-                    wVPageTracker6.onApmStaged(wVPageTracker6.stages[11], jSONObject.optLong("le"));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        iWVWebView.evaluateJavascript("(function(performance){var timing=performance&&performance.timing;return timing&&JSON.stringify({ns:timing.navigationStart,fs:timing.fetchStart,rs:timing.requestStart,re:timing.responseEnd,ds:timing.domContentLoadedEventStart,dc:timing.domComplete,ls:timing.loadEventStart,le:timing.loadEventEnd})})(window.performance)", new 1(this));
     }
 
     public void onPageReceivedT1(long j) {
@@ -636,7 +570,7 @@ public class WVPageTracker {
     }
 
     public void onPageReceivedTTI(long j) {
-        if (usable() && j - this.tti <= CoroutineLiveDataKt.DEFAULT_TIMEOUT) {
+        if (usable() && j - this.tti <= 5000) {
             this.tti = j;
         }
     }
@@ -708,7 +642,7 @@ public class WVPageTracker {
 
     public void onResourceStarted(String str) {
         if (usable()) {
-            WVResource wVResource = new WVResource();
+            WVResource wVResource = new WVResource(this);
             wVResource.loadingStartTime = currentTime();
             wVResource.url = str;
             if (isPage(str)) {

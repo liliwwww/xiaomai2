@@ -1,18 +1,19 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.C0790a;
-import androidx.compose.p004ui.layout.IntrinsicMeasurable;
-import androidx.compose.p004ui.layout.IntrinsicMeasureScope;
-import androidx.compose.p004ui.layout.LayoutModifier;
-import androidx.compose.p004ui.layout.Measurable;
-import androidx.compose.p004ui.layout.MeasureResult;
-import androidx.compose.p004ui.layout.MeasureScope;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.platform.InspectorValueInfo;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.ConstraintsKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.IntrinsicMeasurable;
+import androidx.compose.ui.layout.IntrinsicMeasureScope;
+import androidx.compose.ui.layout.LayoutModifier;
+import androidx.compose.ui.layout.Measurable;
+import androidx.compose.ui.layout.MeasureResult;
+import androidx.compose.ui.layout.MeasureScope;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.layout.a;
+import androidx.compose.ui.platform.InspectorInfo;
+import androidx.compose.ui.platform.InspectorValueInfo;
+import androidx.compose.ui.unit.ConstraintsKt;
+import androidx.compose.ui.unit.Dp;
+import java.util.Map;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
@@ -23,7 +24,7 @@ import tb.mt2;
 import tb.nt2;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class PaddingValuesModifier extends InspectorValueInfo implements LayoutModifier {
 
     @NotNull
@@ -37,12 +38,12 @@ final class PaddingValuesModifier extends InspectorValueInfo implements LayoutMo
         this.paddingValues = paddingValues;
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
@@ -55,12 +56,12 @@ final class PaddingValuesModifier extends InspectorValueInfo implements LayoutMo
         return Intrinsics.areEqual(this.paddingValues, paddingValuesModifier.paddingValues);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
@@ -74,62 +75,41 @@ final class PaddingValuesModifier extends InspectorValueInfo implements LayoutMo
         return this.paddingValues.hashCode();
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     public /* synthetic */ int maxIntrinsicHeight(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m141a(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return a.a(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     public /* synthetic */ int maxIntrinsicWidth(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m142b(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return a.b(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     @NotNull
-    /* renamed from: measure-3p2s80s */
-    public MeasureResult mo959measure3p2s80s(@NotNull final MeasureScope measureScope, @NotNull Measurable measurable, long j) {
+    /* renamed from: measure-3p2s80s, reason: not valid java name */
+    public MeasureResult m228measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull Measurable measurable, long j) {
         Intrinsics.checkNotNullParameter(measureScope, "$this$measure");
         Intrinsics.checkNotNullParameter(measurable, "measurable");
         boolean z = false;
         float f = 0;
-        if (C0856Dp.m5215compareTo0680j_4(this.paddingValues.mo1375calculateLeftPaddingu2uoSUM(measureScope.getLayoutDirection()), C0856Dp.m5216constructorimpl(f)) >= 0 && C0856Dp.m5215compareTo0680j_4(this.paddingValues.mo1377calculateTopPaddingD9Ej5fM(), C0856Dp.m5216constructorimpl(f)) >= 0 && C0856Dp.m5215compareTo0680j_4(this.paddingValues.mo1376calculateRightPaddingu2uoSUM(measureScope.getLayoutDirection()), C0856Dp.m5216constructorimpl(f)) >= 0 && C0856Dp.m5215compareTo0680j_4(this.paddingValues.mo1374calculateBottomPaddingD9Ej5fM(), C0856Dp.m5216constructorimpl(f)) >= 0) {
+        if (Dp.m2141compareTo0680j_4(this.paddingValues.mo217calculateLeftPaddingu2uoSUM(measureScope.getLayoutDirection()), Dp.m2142constructorimpl(f)) >= 0 && Dp.m2141compareTo0680j_4(this.paddingValues.mo219calculateTopPaddingD9Ej5fM(), Dp.m2142constructorimpl(f)) >= 0 && Dp.m2141compareTo0680j_4(this.paddingValues.mo218calculateRightPaddingu2uoSUM(measureScope.getLayoutDirection()), Dp.m2142constructorimpl(f)) >= 0 && Dp.m2141compareTo0680j_4(this.paddingValues.mo216calculateBottomPaddingD9Ej5fM(), Dp.m2142constructorimpl(f)) >= 0) {
             z = true;
         }
         if (!z) {
             throw new IllegalArgumentException("Padding must be non-negative".toString());
         }
-        int mo1277roundToPx0680j_4 = measureScope.mo1277roundToPx0680j_4(this.paddingValues.mo1375calculateLeftPaddingu2uoSUM(measureScope.getLayoutDirection())) + measureScope.mo1277roundToPx0680j_4(this.paddingValues.mo1376calculateRightPaddingu2uoSUM(measureScope.getLayoutDirection()));
-        int mo1277roundToPx0680j_42 = measureScope.mo1277roundToPx0680j_4(this.paddingValues.mo1377calculateTopPaddingD9Ej5fM()) + measureScope.mo1277roundToPx0680j_4(this.paddingValues.mo1374calculateBottomPaddingD9Ej5fM());
-        final Placeable mo4187measureBRTryo0 = measurable.mo4187measureBRTryo0(ConstraintsKt.m5200offsetNN6EwU(j, -mo1277roundToPx0680j_4, -mo1277roundToPx0680j_42));
-        return MeasureScope.CC.m140p(measureScope, ConstraintsKt.m5198constrainWidthK40F9xA(j, mo4187measureBRTryo0.getWidth() + mo1277roundToPx0680j_4), ConstraintsKt.m5197constrainHeightK40F9xA(j, mo4187measureBRTryo0.getHeight() + mo1277roundToPx0680j_42), null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.foundation.layout.PaddingValuesModifier$measure$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((Placeable.PlacementScope) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
-                Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
-                Placeable.PlacementScope.place$default(placementScope, Placeable.this, measureScope.mo1277roundToPx0680j_4(this.getPaddingValues().mo1375calculateLeftPaddingu2uoSUM(measureScope.getLayoutDirection())), measureScope.mo1277roundToPx0680j_4(this.getPaddingValues().mo1377calculateTopPaddingD9Ej5fM()), 0.0f, 4, null);
-            }
-        }, 4, null);
+        int mo319roundToPx0680j_4 = measureScope.mo319roundToPx0680j_4(this.paddingValues.mo217calculateLeftPaddingu2uoSUM(measureScope.getLayoutDirection())) + measureScope.mo319roundToPx0680j_4(this.paddingValues.mo218calculateRightPaddingu2uoSUM(measureScope.getLayoutDirection()));
+        int mo319roundToPx0680j_42 = measureScope.mo319roundToPx0680j_4(this.paddingValues.mo219calculateTopPaddingD9Ej5fM()) + measureScope.mo319roundToPx0680j_4(this.paddingValues.mo216calculateBottomPaddingD9Ej5fM());
+        Placeable mo1521measureBRTryo0 = measurable.mo1521measureBRTryo0(ConstraintsKt.m2138offsetNN6EwU(j, -mo319roundToPx0680j_4, -mo319roundToPx0680j_42));
+        return MeasureScope.-CC.p(measureScope, ConstraintsKt.m2136constrainWidthK40F9xA(j, mo1521measureBRTryo0.getWidth() + mo319roundToPx0680j_4), ConstraintsKt.m2135constrainHeightK40F9xA(j, mo1521measureBRTryo0.getHeight() + mo319roundToPx0680j_42), (Map) null, new measure.2(mo1521measureBRTryo0, measureScope, this), 4, (Object) null);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     public /* synthetic */ int minIntrinsicHeight(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m143c(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return a.c(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     public /* synthetic */ int minIntrinsicWidth(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m144d(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return a.d(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.Modifier
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }

@@ -4,7 +4,7 @@ import android.os.Build;
 import androidx.renderscript.Script;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ScriptIntrinsicHistogram extends ScriptIntrinsic {
     private static final int INTRINSIC_API_LEVEL = 19;
     private Allocation mOut;
@@ -14,7 +14,7 @@ public class ScriptIntrinsicHistogram extends ScriptIntrinsic {
     }
 
     public static ScriptIntrinsicHistogram create(RenderScript renderScript, Element element) {
-        if (!element.isCompatible(Element.U8_4(renderScript)) && !element.isCompatible(Element.U8_3(renderScript)) && !element.isCompatible(Element.U8_2(renderScript)) && !element.isCompatible(Element.m294U8(renderScript))) {
+        if (!element.isCompatible(Element.U8_4(renderScript)) && !element.isCompatible(Element.U8_3(renderScript)) && !element.isCompatible(Element.U8_2(renderScript)) && !element.isCompatible(Element.U8(renderScript))) {
             throw new RSIllegalArgumentException("Unsuported element type.");
         }
         boolean z = renderScript.isUseNative() && Build.VERSION.SDK_INT < 19;
@@ -31,12 +31,12 @@ public class ScriptIntrinsicHistogram extends ScriptIntrinsic {
         forEach_Dot(allocation, null);
     }
 
-    public Script.FieldID getFieldID_Input() {
-        return createFieldID(1, null);
+    public Script$FieldID getFieldID_Input() {
+        return createFieldID(1, (Element) null);
     }
 
     public Script.KernelID getKernelID_Separate() {
-        return createKernelID(0, 3, null, null);
+        return createKernelID(0, 3, (Element) null, (Element) null);
     }
 
     public void setDotCoefficients(float f, float f2, float f3, float f4) {
@@ -54,6 +54,7 @@ public class ScriptIntrinsicHistogram extends ScriptIntrinsic {
         setVar(0, fieldPacker);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void setOutput(Allocation allocation) {
         this.mOut = allocation;
         if (allocation.getType().getElement() != Element.U32(this.mRS) && this.mOut.getType().getElement() != Element.U32_2(this.mRS) && this.mOut.getType().getElement() != Element.U32_3(this.mRS) && this.mOut.getType().getElement() != Element.U32_4(this.mRS) && this.mOut.getType().getElement() != Element.I32(this.mRS) && this.mOut.getType().getElement() != Element.I32_2(this.mRS) && this.mOut.getType().getElement() != Element.I32_3(this.mRS) && this.mOut.getType().getElement() != Element.I32_4(this.mRS)) {
@@ -65,23 +66,25 @@ public class ScriptIntrinsicHistogram extends ScriptIntrinsic {
         setVar(1, allocation);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void forEach(Allocation allocation, Script.LaunchOptions launchOptions) {
         if (allocation.getType().getElement().getVectorSize() < this.mOut.getType().getElement().getVectorSize()) {
             throw new RSIllegalArgumentException("Input vector size must be >= output vector size.");
         }
-        if (!allocation.getType().getElement().isCompatible(Element.m294U8(this.mRS)) && !allocation.getType().getElement().isCompatible(Element.U8_2(this.mRS)) && !allocation.getType().getElement().isCompatible(Element.U8_3(this.mRS)) && !allocation.getType().getElement().isCompatible(Element.U8_4(this.mRS))) {
+        if (!allocation.getType().getElement().isCompatible(Element.U8(this.mRS)) && !allocation.getType().getElement().isCompatible(Element.U8_2(this.mRS)) && !allocation.getType().getElement().isCompatible(Element.U8_3(this.mRS)) && !allocation.getType().getElement().isCompatible(Element.U8_4(this.mRS))) {
             throw new RSIllegalArgumentException("Input type must be U8, U8_1, U8_2 or U8_4.");
         }
-        forEach(0, allocation, null, null, launchOptions);
+        forEach(0, allocation, (Allocation) null, (FieldPacker) null, launchOptions);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public void forEach_Dot(Allocation allocation, Script.LaunchOptions launchOptions) {
         if (this.mOut.getType().getElement().getVectorSize() != 1) {
             throw new RSIllegalArgumentException("Output vector size must be one.");
         }
-        if (!allocation.getType().getElement().isCompatible(Element.m294U8(this.mRS)) && !allocation.getType().getElement().isCompatible(Element.U8_2(this.mRS)) && !allocation.getType().getElement().isCompatible(Element.U8_3(this.mRS)) && !allocation.getType().getElement().isCompatible(Element.U8_4(this.mRS))) {
+        if (!allocation.getType().getElement().isCompatible(Element.U8(this.mRS)) && !allocation.getType().getElement().isCompatible(Element.U8_2(this.mRS)) && !allocation.getType().getElement().isCompatible(Element.U8_3(this.mRS)) && !allocation.getType().getElement().isCompatible(Element.U8_4(this.mRS))) {
             throw new RSIllegalArgumentException("Input type must be U8, U8_1, U8_2 or U8_4.");
         }
-        forEach(1, allocation, null, null, launchOptions);
+        forEach(1, allocation, (Allocation) null, (FieldPacker) null, launchOptions);
     }
 }

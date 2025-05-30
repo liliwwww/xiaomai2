@@ -9,7 +9,7 @@ import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
 @RequiresApi(21)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ViewUtilsApi21 extends ViewUtilsApi19 {
     private static boolean sTryHiddenSetAnimationMatrix = true;
     private static boolean sTryHiddenTransformMatrixToGlobal = true;
@@ -18,7 +18,6 @@ class ViewUtilsApi21 extends ViewUtilsApi19 {
     ViewUtilsApi21() {
     }
 
-    @Override // androidx.transition.ViewUtilsBase
     @SuppressLint({"NewApi"})
     public void setAnimationMatrix(@NonNull View view, @Nullable Matrix matrix) {
         if (sTryHiddenSetAnimationMatrix) {
@@ -30,7 +29,6 @@ class ViewUtilsApi21 extends ViewUtilsApi19 {
         }
     }
 
-    @Override // androidx.transition.ViewUtilsBase
     @SuppressLint({"NewApi"})
     public void transformMatrixToGlobal(@NonNull View view, @NonNull Matrix matrix) {
         if (sTryHiddenTransformMatrixToGlobal) {
@@ -42,7 +40,6 @@ class ViewUtilsApi21 extends ViewUtilsApi19 {
         }
     }
 
-    @Override // androidx.transition.ViewUtilsBase
     @SuppressLint({"NewApi"})
     public void transformMatrixToLocal(@NonNull View view, @NonNull Matrix matrix) {
         if (sTryHiddenTransformMatrixToLocal) {

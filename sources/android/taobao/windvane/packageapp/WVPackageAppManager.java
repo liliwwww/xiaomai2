@@ -13,7 +13,7 @@ import com.taobao.zcache.ZCacheManager;
 import com.taobao.zcache.ZCacheSDK;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVPackageAppManager {
     private static WVPackageAppManager appManager;
     private IZCacheFirstUpdateFinishCallback updateFinishCallback;

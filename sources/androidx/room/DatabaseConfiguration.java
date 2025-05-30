@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.room.RoomDatabase;
 import androidx.room.migration.AutoMigrationSpec;
-import androidx.sqlite.p008db.SupportSQLiteOpenHelper;
+import androidx.sqlite.db.SupportSQLiteOpenHelper;
 import java.io.File;
 import java.io.InputStream;
 import java.util.Collections;
@@ -18,7 +18,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Executor;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class DatabaseConfiguration {
     public final boolean allowDestructiveMigrationOnDowngrade;
     public final boolean allowMainThreadQueries;
@@ -40,11 +40,11 @@ public class DatabaseConfiguration {
 
     @Nullable
     public final Callable<InputStream> copyFromInputStream;
-    public final RoomDatabase.JournalMode journalMode;
+    public final RoomDatabase$JournalMode journalMode;
     private final Set<Integer> mMigrationNotRequiredFrom;
 
     @NonNull
-    public final RoomDatabase.MigrationContainer migrationContainer;
+    public final RoomDatabase$MigrationContainer migrationContainer;
     public final boolean multiInstanceInvalidation;
 
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
@@ -71,8 +71,8 @@ public class DatabaseConfiguration {
 
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     @Deprecated
-    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase.MigrationContainer migrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, RoomDatabase.JournalMode journalMode, @NonNull Executor executor, boolean z2, @Nullable Set<Integer> set) {
-        this(context, str, factory, migrationContainer, list, z, journalMode, executor, executor, false, z2, false, set, (String) null, (File) null, (Callable<InputStream>) null, (RoomDatabase.PrepackagedDatabaseCallback) null, (List<Object>) null, (List<AutoMigrationSpec>) null);
+    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase$MigrationContainer roomDatabase$MigrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, RoomDatabase$JournalMode roomDatabase$JournalMode, @NonNull Executor executor, boolean z2, @Nullable Set<Integer> set) {
+        this(context, str, factory, roomDatabase$MigrationContainer, list, z, roomDatabase$JournalMode, executor, executor, false, z2, false, set, (String) null, (File) null, (Callable<InputStream>) null, (RoomDatabase.PrepackagedDatabaseCallback) null, (List<Object>) null, (List<AutoMigrationSpec>) null);
     }
 
     public boolean isMigrationRequired(int i, int i2) {
@@ -87,53 +87,53 @@ public class DatabaseConfiguration {
 
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     @Deprecated
-    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase.MigrationContainer migrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, RoomDatabase.JournalMode journalMode, @NonNull Executor executor, @NonNull Executor executor2, boolean z2, boolean z3, boolean z4, @Nullable Set<Integer> set) {
-        this(context, str, factory, migrationContainer, list, z, journalMode, executor, executor2, z2, z3, z4, set, (String) null, (File) null, (Callable<InputStream>) null, (RoomDatabase.PrepackagedDatabaseCallback) null, (List<Object>) null, (List<AutoMigrationSpec>) null);
+    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase$MigrationContainer roomDatabase$MigrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, RoomDatabase$JournalMode roomDatabase$JournalMode, @NonNull Executor executor, @NonNull Executor executor2, boolean z2, boolean z3, boolean z4, @Nullable Set<Integer> set) {
+        this(context, str, factory, roomDatabase$MigrationContainer, list, z, roomDatabase$JournalMode, executor, executor2, z2, z3, z4, set, (String) null, (File) null, (Callable<InputStream>) null, (RoomDatabase.PrepackagedDatabaseCallback) null, (List<Object>) null, (List<AutoMigrationSpec>) null);
     }
 
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     @Deprecated
-    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase.MigrationContainer migrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, RoomDatabase.JournalMode journalMode, @NonNull Executor executor, @NonNull Executor executor2, boolean z2, boolean z3, boolean z4, @Nullable Set<Integer> set, @Nullable String str2, @Nullable File file) {
-        this(context, str, factory, migrationContainer, list, z, journalMode, executor, executor2, z2, z3, z4, set, str2, file, (Callable<InputStream>) null, (RoomDatabase.PrepackagedDatabaseCallback) null, (List<Object>) null, (List<AutoMigrationSpec>) null);
+    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase$MigrationContainer roomDatabase$MigrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, RoomDatabase$JournalMode roomDatabase$JournalMode, @NonNull Executor executor, @NonNull Executor executor2, boolean z2, boolean z3, boolean z4, @Nullable Set<Integer> set, @Nullable String str2, @Nullable File file) {
+        this(context, str, factory, roomDatabase$MigrationContainer, list, z, roomDatabase$JournalMode, executor, executor2, z2, z3, z4, set, str2, file, (Callable<InputStream>) null, (RoomDatabase.PrepackagedDatabaseCallback) null, (List<Object>) null, (List<AutoMigrationSpec>) null);
     }
 
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     @Deprecated
-    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase.MigrationContainer migrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, @NonNull RoomDatabase.JournalMode journalMode, @NonNull Executor executor, @NonNull Executor executor2, boolean z2, boolean z3, boolean z4, @Nullable Set<Integer> set, @Nullable String str2, @Nullable File file, @Nullable Callable<InputStream> callable) {
-        this(context, str, factory, migrationContainer, list, z, journalMode, executor, executor2, z2, z3, z4, set, str2, file, callable, (RoomDatabase.PrepackagedDatabaseCallback) null, (List<Object>) null, (List<AutoMigrationSpec>) null);
+    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase$MigrationContainer roomDatabase$MigrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, @NonNull RoomDatabase$JournalMode roomDatabase$JournalMode, @NonNull Executor executor, @NonNull Executor executor2, boolean z2, boolean z3, boolean z4, @Nullable Set<Integer> set, @Nullable String str2, @Nullable File file, @Nullable Callable<InputStream> callable) {
+        this(context, str, factory, roomDatabase$MigrationContainer, list, z, roomDatabase$JournalMode, executor, executor2, z2, z3, z4, set, str2, file, callable, (RoomDatabase.PrepackagedDatabaseCallback) null, (List<Object>) null, (List<AutoMigrationSpec>) null);
     }
 
     @SuppressLint({"LambdaLast"})
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     @Deprecated
-    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase.MigrationContainer migrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, @NonNull RoomDatabase.JournalMode journalMode, @NonNull Executor executor, @NonNull Executor executor2, boolean z2, boolean z3, boolean z4, @Nullable Set<Integer> set, @Nullable String str2, @Nullable File file, @Nullable Callable<InputStream> callable, @Nullable RoomDatabase.PrepackagedDatabaseCallback prepackagedDatabaseCallback) {
-        this(context, str, factory, migrationContainer, list, z, journalMode, executor, executor2, z2, z3, z4, set, str2, file, callable, prepackagedDatabaseCallback, (List<Object>) null, (List<AutoMigrationSpec>) null);
+    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase$MigrationContainer roomDatabase$MigrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, @NonNull RoomDatabase$JournalMode roomDatabase$JournalMode, @NonNull Executor executor, @NonNull Executor executor2, boolean z2, boolean z3, boolean z4, @Nullable Set<Integer> set, @Nullable String str2, @Nullable File file, @Nullable Callable<InputStream> callable, @Nullable RoomDatabase.PrepackagedDatabaseCallback prepackagedDatabaseCallback) {
+        this(context, str, factory, roomDatabase$MigrationContainer, list, z, roomDatabase$JournalMode, executor, executor2, z2, z3, z4, set, str2, file, callable, prepackagedDatabaseCallback, (List<Object>) null, (List<AutoMigrationSpec>) null);
     }
 
     @SuppressLint({"LambdaLast"})
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     @Deprecated
-    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase.MigrationContainer migrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, @NonNull RoomDatabase.JournalMode journalMode, @NonNull Executor executor, @NonNull Executor executor2, boolean z2, boolean z3, boolean z4, @Nullable Set<Integer> set, @Nullable String str2, @Nullable File file, @Nullable Callable<InputStream> callable, @Nullable RoomDatabase.PrepackagedDatabaseCallback prepackagedDatabaseCallback, @Nullable List<Object> list2) {
-        this(context, str, factory, migrationContainer, list, z, journalMode, executor, executor2, z2, z3, z4, set, str2, file, callable, prepackagedDatabaseCallback, list2, (List<AutoMigrationSpec>) null);
+    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase$MigrationContainer roomDatabase$MigrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, @NonNull RoomDatabase$JournalMode roomDatabase$JournalMode, @NonNull Executor executor, @NonNull Executor executor2, boolean z2, boolean z3, boolean z4, @Nullable Set<Integer> set, @Nullable String str2, @Nullable File file, @Nullable Callable<InputStream> callable, @Nullable RoomDatabase.PrepackagedDatabaseCallback prepackagedDatabaseCallback, @Nullable List<Object> list2) {
+        this(context, str, factory, roomDatabase$MigrationContainer, list, z, roomDatabase$JournalMode, executor, executor2, z2, z3, z4, set, str2, file, callable, prepackagedDatabaseCallback, list2, (List<AutoMigrationSpec>) null);
     }
 
     @SuppressLint({"LambdaLast"})
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     @Deprecated
-    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase.MigrationContainer migrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, @NonNull RoomDatabase.JournalMode journalMode, @NonNull Executor executor, @NonNull Executor executor2, boolean z2, boolean z3, boolean z4, @Nullable Set<Integer> set, @Nullable String str2, @Nullable File file, @Nullable Callable<InputStream> callable, @Nullable RoomDatabase.PrepackagedDatabaseCallback prepackagedDatabaseCallback, @Nullable List<Object> list2, @Nullable List<AutoMigrationSpec> list3) {
-        this(context, str, factory, migrationContainer, list, z, journalMode, executor, executor2, z2 ? new Intent(context, (Class<?>) MultiInstanceInvalidationService.class) : null, z3, z4, set, str2, file, callable, prepackagedDatabaseCallback, list2, list3);
+    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase$MigrationContainer roomDatabase$MigrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, @NonNull RoomDatabase$JournalMode roomDatabase$JournalMode, @NonNull Executor executor, @NonNull Executor executor2, boolean z2, boolean z3, boolean z4, @Nullable Set<Integer> set, @Nullable String str2, @Nullable File file, @Nullable Callable<InputStream> callable, @Nullable RoomDatabase.PrepackagedDatabaseCallback prepackagedDatabaseCallback, @Nullable List<Object> list2, @Nullable List<AutoMigrationSpec> list3) {
+        this(context, str, factory, roomDatabase$MigrationContainer, list, z, roomDatabase$JournalMode, executor, executor2, z2 ? new Intent(context, (Class<?>) MultiInstanceInvalidationService.class) : null, z3, z4, set, str2, file, callable, prepackagedDatabaseCallback, list2, list3);
     }
 
     @SuppressLint({"LambdaLast"})
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase.MigrationContainer migrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, @NonNull RoomDatabase.JournalMode journalMode, @NonNull Executor executor, @NonNull Executor executor2, @Nullable Intent intent, boolean z2, boolean z3, @Nullable Set<Integer> set, @Nullable String str2, @Nullable File file, @Nullable Callable<InputStream> callable, @Nullable RoomDatabase.PrepackagedDatabaseCallback prepackagedDatabaseCallback, @Nullable List<Object> list2, @Nullable List<AutoMigrationSpec> list3) {
+    public DatabaseConfiguration(@NonNull Context context, @Nullable String str, @NonNull SupportSQLiteOpenHelper.Factory factory, @NonNull RoomDatabase$MigrationContainer roomDatabase$MigrationContainer, @Nullable List<RoomDatabase.Callback> list, boolean z, @NonNull RoomDatabase$JournalMode roomDatabase$JournalMode, @NonNull Executor executor, @NonNull Executor executor2, @Nullable Intent intent, boolean z2, boolean z3, @Nullable Set<Integer> set, @Nullable String str2, @Nullable File file, @Nullable Callable<InputStream> callable, @Nullable RoomDatabase.PrepackagedDatabaseCallback prepackagedDatabaseCallback, @Nullable List<Object> list2, @Nullable List<AutoMigrationSpec> list3) {
         this.sqliteOpenHelperFactory = factory;
         this.context = context;
         this.name = str;
-        this.migrationContainer = migrationContainer;
+        this.migrationContainer = roomDatabase$MigrationContainer;
         this.callbacks = list;
         this.allowMainThreadQueries = z;
-        this.journalMode = journalMode;
+        this.journalMode = roomDatabase$JournalMode;
         this.queryExecutor = executor;
         this.transactionExecutor = executor2;
         this.multiInstanceInvalidationServiceIntent = intent;

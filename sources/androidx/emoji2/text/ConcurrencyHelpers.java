@@ -3,10 +3,9 @@ package androidx.emoji2.text;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import java.util.Objects;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadFactory;
@@ -15,22 +14,9 @@ import java.util.concurrent.TimeUnit;
 import tb.p50;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ConcurrencyHelpers {
     private static final int FONT_LOAD_TIMEOUT_SECONDS = 15;
-
-    /* compiled from: Taobao */
-    @RequiresApi(28)
-    /* loaded from: classes2.dex */
-    static class Handler28Impl {
-        private Handler28Impl() {
-        }
-
-        @DoNotInline
-        public static Handler createAsync(Looper looper) {
-            return Handler.createAsync(looper);
-        }
-    }
 
     private ConcurrencyHelpers() {
     }
@@ -42,15 +28,8 @@ class ConcurrencyHelpers {
         return new p50(handler);
     }
 
-    static ThreadPoolExecutor createBackgroundPriorityExecutor(@NonNull final String str) {
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(0, 1, 15L, TimeUnit.SECONDS, new LinkedBlockingDeque(), new ThreadFactory() { // from class: androidx.emoji2.text.a
-            @Override // java.util.concurrent.ThreadFactory
-            public final Thread newThread(Runnable runnable) {
-                Thread lambda$createBackgroundPriorityExecutor$0;
-                lambda$createBackgroundPriorityExecutor$0 = ConcurrencyHelpers.lambda$createBackgroundPriorityExecutor$0(str, runnable);
-                return lambda$createBackgroundPriorityExecutor$0;
-            }
-        });
+    static ThreadPoolExecutor createBackgroundPriorityExecutor(@NonNull String str) {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(0, 1, 15L, TimeUnit.SECONDS, (BlockingQueue<Runnable>) new LinkedBlockingDeque(), (ThreadFactory) new a(str));
         threadPoolExecutor.allowCoreThreadTimeOut(true);
         return threadPoolExecutor;
     }

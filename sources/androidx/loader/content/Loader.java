@@ -11,7 +11,7 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Loader<D> {
     Context mContext;
     int mId;
@@ -38,18 +38,6 @@ public class Loader<D> {
         public void onChange(boolean z) {
             Loader.this.onContentChanged();
         }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface OnLoadCanceledListener<D> {
-        void onLoadCanceled(@NonNull Loader<D> loader);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface OnLoadCompleteListener<D> {
-        void onLoadComplete(@NonNull Loader<D> loader, @Nullable D d);
     }
 
     public Loader(@NonNull Context context) {

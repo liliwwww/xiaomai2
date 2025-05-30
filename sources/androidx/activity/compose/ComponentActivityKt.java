@@ -3,9 +3,9 @@ package androidx.activity.compose;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.activity.ComponentActivity;
-import androidx.compose.p004ui.platform.ComposeView;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.CompositionContext;
+import androidx.compose.ui.platform.ComposeView;
 import androidx.lifecycle.ViewTreeLifecycleOwner;
 import androidx.lifecycle.ViewTreeViewModelStoreOwner;
 import androidx.savedstate.ViewTreeSavedStateRegistryOwner;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ComponentActivityKt {
 
     @NotNull

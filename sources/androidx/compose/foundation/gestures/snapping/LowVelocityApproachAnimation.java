@@ -4,7 +4,7 @@ import androidx.compose.animation.core.AnimationSpec;
 import androidx.compose.animation.core.AnimationStateKt;
 import androidx.compose.animation.core.AnimationVector1D;
 import androidx.compose.foundation.gestures.ScrollScope;
-import androidx.compose.p004ui.unit.Density;
+import androidx.compose.ui.unit.Density;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.intrinsics.IntrinsicsKt;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class LowVelocityApproachAnimation implements ApproachAnimation<Float, AnimationVector1D> {
 
     @NotNull

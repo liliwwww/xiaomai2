@@ -8,9 +8,10 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import androidx.annotation.Px;
 import androidx.annotation.RequiresApi;
-import androidx.exifinterface.media.ExifInterface;
+import androidx.core.view.ViewKt$doOnLayout$;
 import java.util.Objects;
 import kotlin.Unit;
+import kotlin.coroutines.Continuation;
 import kotlin.jvm.JvmName;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
@@ -21,27 +22,15 @@ import org.jetbrains.annotations.NotNull;
 import tb.h56;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ViewKt {
-    public static final void doOnAttach(@NotNull final View view, @NotNull final Function1<? super View, Unit> function1) {
+    public static final void doOnAttach(@NotNull View view, @NotNull Function1<? super View, Unit> function1) {
         Intrinsics.checkNotNullParameter(view, "<this>");
         Intrinsics.checkNotNullParameter(function1, "action");
         if (ViewCompat.isAttachedToWindow(view)) {
             function1.invoke(view);
         } else {
-            view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() { // from class: androidx.core.view.ViewKt$doOnAttach$1
-                @Override // android.view.View.OnAttachStateChangeListener
-                public void onViewAttachedToWindow(@NotNull View view2) {
-                    Intrinsics.checkNotNullParameter(view2, "view");
-                    view.removeOnAttachStateChangeListener(this);
-                    function1.invoke(view2);
-                }
-
-                @Override // android.view.View.OnAttachStateChangeListener
-                public void onViewDetachedFromWindow(@NotNull View view2) {
-                    Intrinsics.checkNotNullParameter(view2, "view");
-                }
-            });
+            view.addOnAttachStateChangeListener(new doOnAttach.1(view, function1));
         }
     }
 
@@ -67,46 +56,27 @@ public final class ViewKt {
         }
     }
 
-    public static final void doOnLayout(@NotNull View view, @NotNull final Function1<? super View, Unit> function1) {
+    public static final void doOnLayout(@NotNull View view, @NotNull Function1<? super View, Unit> function1) {
         Intrinsics.checkNotNullParameter(view, "<this>");
         Intrinsics.checkNotNullParameter(function1, "action");
         if (!ViewCompat.isLaidOut(view) || view.isLayoutRequested()) {
-            view.addOnLayoutChangeListener(new View.OnLayoutChangeListener() { // from class: androidx.core.view.ViewKt$doOnLayout$$inlined$doOnNextLayout$1
-                @Override // android.view.View.OnLayoutChangeListener
-                public void onLayoutChange(@NotNull View view2, int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8) {
-                    Intrinsics.checkNotNullParameter(view2, "view");
-                    view2.removeOnLayoutChangeListener(this);
-                    function1.invoke(view2);
-                }
-            });
+            view.addOnLayoutChangeListener(new ViewKt$doOnLayout$.inlined.doOnNextLayout.1(function1));
         } else {
             function1.invoke(view);
         }
     }
 
-    public static final void doOnNextLayout(@NotNull View view, @NotNull final Function1<? super View, Unit> function1) {
+    public static final void doOnNextLayout(@NotNull View view, @NotNull Function1<? super View, Unit> function1) {
         Intrinsics.checkNotNullParameter(view, "<this>");
         Intrinsics.checkNotNullParameter(function1, "action");
-        view.addOnLayoutChangeListener(new View.OnLayoutChangeListener() { // from class: androidx.core.view.ViewKt$doOnNextLayout$1
-            @Override // android.view.View.OnLayoutChangeListener
-            public void onLayoutChange(@NotNull View view2, int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8) {
-                Intrinsics.checkNotNullParameter(view2, "view");
-                view2.removeOnLayoutChangeListener(this);
-                function1.invoke(view2);
-            }
-        });
+        view.addOnLayoutChangeListener(new doOnNextLayout.1(function1));
     }
 
     @NotNull
-    public static final OneShotPreDrawListener doOnPreDraw(@NotNull final View view, @NotNull final Function1<? super View, Unit> function1) {
+    public static final OneShotPreDrawListener doOnPreDraw(@NotNull View view, @NotNull Function1<? super View, Unit> function1) {
         Intrinsics.checkNotNullParameter(view, "<this>");
         Intrinsics.checkNotNullParameter(function1, "action");
-        OneShotPreDrawListener add = OneShotPreDrawListener.add(view, new Runnable() { // from class: androidx.core.view.ViewKt$doOnPreDraw$1
-            @Override // java.lang.Runnable
-            public final void run() {
-                function1.invoke(view);
-            }
-        });
+        OneShotPreDrawListener add = OneShotPreDrawListener.add(view, new doOnPreDraw.1(function1, view));
         Intrinsics.checkNotNullExpressionValue(add, "View.doOnPreDraw(\n    cr…dd(this) { action(this) }");
         return add;
     }
@@ -136,7 +106,7 @@ public final class ViewKt {
     @NotNull
     public static final Sequence<View> getAllViews(@NotNull View view) {
         Intrinsics.checkNotNullParameter(view, "<this>");
-        return SequencesKt.sequence(new ViewKt$allViews$1(view, null));
+        return SequencesKt.sequence(new allViews.1(view, (Continuation) null));
     }
 
     @NotNull
@@ -219,17 +189,12 @@ public final class ViewKt {
     }
 
     @NotNull
-    public static final Runnable postDelayed(@NotNull View view, long j, @NotNull final Function0<Unit> function0) {
+    public static final Runnable postDelayed(@NotNull View view, long j, @NotNull Function0<Unit> function0) {
         Intrinsics.checkNotNullParameter(view, "<this>");
         Intrinsics.checkNotNullParameter(function0, "action");
-        Runnable runnable = new Runnable() { // from class: androidx.core.view.ViewKt$postDelayed$runnable$1
-            @Override // java.lang.Runnable
-            public final void run() {
-                function0.invoke();
-            }
-        };
-        view.postDelayed(runnable, j);
-        return runnable;
+        postDelayed.runnable.1 r0 = new postDelayed.runnable.1(function0);
+        view.postDelayed(r0, j);
+        return r0;
     }
 
     @RequiresApi(16)
@@ -244,7 +209,7 @@ public final class ViewKt {
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: postOnAnimationDelayed$lambda-1, reason: not valid java name */
-    public static final void m5580postOnAnimationDelayed$lambda1(Function0 function0) {
+    public static final void m2789postOnAnimationDelayed$lambda1(Function0 function0) {
         Intrinsics.checkNotNullParameter(function0, "$action");
         function0.invoke();
     }
@@ -283,7 +248,7 @@ public final class ViewKt {
         Intrinsics.checkNotNullParameter(view, "<this>");
         Intrinsics.checkNotNullParameter(function1, "block");
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        Intrinsics.reifiedOperationMarker(1, ExifInterface.GPS_DIRECTION_TRUE);
+        Intrinsics.reifiedOperationMarker(1, "T");
         function1.invoke(layoutParams);
         view.setLayoutParams(layoutParams);
     }

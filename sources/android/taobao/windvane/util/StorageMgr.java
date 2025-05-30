@@ -3,7 +3,7 @@ package android.taobao.windvane.util;
 import android.os.Environment;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class StorageMgr {
     public static final int ERROR = -1;
 

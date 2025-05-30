@@ -3,13 +3,13 @@ package androidx.compose.foundation.text.selection;
 import androidx.compose.foundation.text.StringHelpersKt;
 import androidx.compose.foundation.text.StringHelpers_androidKt;
 import androidx.compose.foundation.text.selection.BaseTextPreparedSelection;
-import androidx.compose.p004ui.geometry.OffsetKt;
-import androidx.compose.p004ui.text.AnnotatedString;
-import androidx.compose.p004ui.text.TextLayoutResult;
-import androidx.compose.p004ui.text.TextRange;
-import androidx.compose.p004ui.text.TextRangeKt;
-import androidx.compose.p004ui.text.input.OffsetMapping;
-import androidx.compose.p004ui.text.style.ResolvedTextDirection;
+import androidx.compose.ui.geometry.OffsetKt;
+import androidx.compose.ui.text.AnnotatedString;
+import androidx.compose.ui.text.TextLayoutResult;
+import androidx.compose.ui.text.TextRange;
+import androidx.compose.ui.text.TextRangeKt;
+import androidx.compose.ui.text.input.OffsetMapping;
+import androidx.compose.ui.text.style.ResolvedTextDirection;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.DefaultConstructorMarker;
@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelection<T>> {
 
     @NotNull
@@ -121,8 +121,8 @@ public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelect
         if (i >= this.originalText.length()) {
             return this.originalText.length();
         }
-        long m4725getWordBoundaryjx7JFs = textLayoutResult.m4725getWordBoundaryjx7JFs(charOffset(i));
-        return TextRange.m4744getEndimpl(m4725getWordBoundaryjx7JFs) <= i ? getNextWordOffsetForLayout(textLayoutResult, i + 1) : this.offsetMapping.transformedToOriginal(TextRange.m4744getEndimpl(m4725getWordBoundaryjx7JFs));
+        long j = textLayoutResult.getWordBoundary--jx7JFs(charOffset(i));
+        return TextRange.m2325getEndimpl(j) <= i ? getNextWordOffsetForLayout(textLayoutResult, i + 1) : this.offsetMapping.transformedToOriginal(TextRange.m2325getEndimpl(j));
     }
 
     static /* synthetic */ int getNextWordOffsetForLayout$default(BaseTextPreparedSelection baseTextPreparedSelection, TextLayoutResult textLayoutResult, int i, int i2, Object obj) {
@@ -136,19 +136,19 @@ public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelect
     }
 
     private final int getParagraphEnd() {
-        return StringHelpersKt.findParagraphEnd(getText$foundation_release(), TextRange.m4746getMaximpl(this.selection));
+        return StringHelpersKt.findParagraphEnd(getText$foundation_release(), TextRange.m2327getMaximpl(this.selection));
     }
 
     private final int getParagraphStart() {
-        return StringHelpersKt.findParagraphStart(getText$foundation_release(), TextRange.m4747getMinimpl(this.selection));
+        return StringHelpersKt.findParagraphStart(getText$foundation_release(), TextRange.m2328getMinimpl(this.selection));
     }
 
     private final int getPrevWordOffset(TextLayoutResult textLayoutResult, int i) {
         if (i < 0) {
             return 0;
         }
-        long m4725getWordBoundaryjx7JFs = textLayoutResult.m4725getWordBoundaryjx7JFs(charOffset(i));
-        return TextRange.m4749getStartimpl(m4725getWordBoundaryjx7JFs) >= i ? getPrevWordOffset(textLayoutResult, i - 1) : this.offsetMapping.transformedToOriginal(TextRange.m4749getStartimpl(m4725getWordBoundaryjx7JFs));
+        long j = textLayoutResult.getWordBoundary--jx7JFs(charOffset(i));
+        return TextRange.m2330getStartimpl(j) >= i ? getPrevWordOffset(textLayoutResult, i - 1) : this.offsetMapping.transformedToOriginal(TextRange.m2330getStartimpl(j));
     }
 
     static /* synthetic */ int getPrevWordOffset$default(BaseTextPreparedSelection baseTextPreparedSelection, TextLayoutResult textLayoutResult, int i, int i2, Object obj) {
@@ -185,7 +185,7 @@ public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelect
         if ((isLtr() && floatValue >= textLayoutResult.getLineRight(lineForOffset)) || (!isLtr() && floatValue <= textLayoutResult.getLineLeft(lineForOffset))) {
             return textLayoutResult.getLineEnd(lineForOffset, true);
         }
-        return this.offsetMapping.transformedToOriginal(textLayoutResult.m4723getOffsetForPositionk4lQ0M(OffsetKt.Offset(cachedX.floatValue(), lineBottom)));
+        return this.offsetMapping.transformedToOriginal(textLayoutResult.getOffsetForPosition-k-4lQ0M(OffsetKt.Offset(cachedX.floatValue(), lineBottom)));
     }
 
     private final T moveCursorNext() {
@@ -229,15 +229,15 @@ public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelect
     }
 
     private final int transformedEndOffset() {
-        return this.offsetMapping.originalToTransformed(TextRange.m4744getEndimpl(this.selection));
+        return this.offsetMapping.originalToTransformed(TextRange.m2325getEndimpl(this.selection));
     }
 
     private final int transformedMaxOffset() {
-        return this.offsetMapping.originalToTransformed(TextRange.m4746getMaximpl(this.selection));
+        return this.offsetMapping.originalToTransformed(TextRange.m2327getMaximpl(this.selection));
     }
 
     private final int transformedMinOffset() {
-        return this.offsetMapping.originalToTransformed(TextRange.m4747getMinimpl(this.selection));
+        return this.offsetMapping.originalToTransformed(TextRange.m2328getMinimpl(this.selection));
     }
 
     @NotNull
@@ -258,13 +258,13 @@ public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelect
         Intrinsics.checkNotNullParameter(function1, "or");
         getState().resetCachedX();
         if (getText$foundation_release().length() > 0) {
-            if (TextRange.m4743getCollapsedimpl(this.selection)) {
+            if (TextRange.m2324getCollapsedimpl(this.selection)) {
                 Intrinsics.checkNotNull(this, "null cannot be cast to non-null type T of androidx.compose.foundation.text.selection.BaseTextPreparedSelection.collapseLeftOr$lambda$4");
                 function1.invoke(this);
             } else if (isLtr()) {
-                setCursor(TextRange.m4747getMinimpl(this.selection));
+                setCursor(TextRange.m2328getMinimpl(this.selection));
             } else {
-                setCursor(TextRange.m4746getMaximpl(this.selection));
+                setCursor(TextRange.m2327getMaximpl(this.selection));
             }
         }
         Intrinsics.checkNotNull(this, "null cannot be cast to non-null type T of androidx.compose.foundation.text.selection.BaseTextPreparedSelection");
@@ -276,13 +276,13 @@ public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelect
         Intrinsics.checkNotNullParameter(function1, "or");
         getState().resetCachedX();
         if (getText$foundation_release().length() > 0) {
-            if (TextRange.m4743getCollapsedimpl(this.selection)) {
+            if (TextRange.m2324getCollapsedimpl(this.selection)) {
                 Intrinsics.checkNotNull(this, "null cannot be cast to non-null type T of androidx.compose.foundation.text.selection.BaseTextPreparedSelection.collapseRightOr$lambda$5");
                 function1.invoke(this);
             } else if (isLtr()) {
-                setCursor(TextRange.m4746getMaximpl(this.selection));
+                setCursor(TextRange.m2327getMaximpl(this.selection));
             } else {
-                setCursor(TextRange.m4747getMinimpl(this.selection));
+                setCursor(TextRange.m2328getMinimpl(this.selection));
             }
         }
         Intrinsics.checkNotNull(this, "null cannot be cast to non-null type T of androidx.compose.foundation.text.selection.BaseTextPreparedSelection");
@@ -293,7 +293,7 @@ public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelect
     public final T deselect() {
         getState().resetCachedX();
         if (getText$foundation_release().length() > 0) {
-            setCursor(TextRange.m4744getEndimpl(this.selection));
+            setCursor(TextRange.m2325getEndimpl(this.selection));
         }
         Intrinsics.checkNotNull(this, "null cannot be cast to non-null type T of androidx.compose.foundation.text.selection.BaseTextPreparedSelection");
         return this;
@@ -328,7 +328,7 @@ public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelect
     }
 
     public final int getNextCharacterIndex() {
-        return StringHelpers_androidKt.findFollowingBreak(this.annotatedString.getText(), TextRange.m4744getEndimpl(this.selection));
+        return StringHelpers_androidKt.findFollowingBreak(this.annotatedString.getText(), TextRange.m2325getEndimpl(this.selection));
     }
 
     @Nullable
@@ -346,7 +346,7 @@ public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelect
     }
 
     /* renamed from: getOriginalSelection-d9O1mEE, reason: not valid java name */
-    public final long m1821getOriginalSelectiond9O1mEE() {
+    public final long m587getOriginalSelectiond9O1mEE() {
         return this.originalSelection;
     }
 
@@ -356,7 +356,7 @@ public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelect
     }
 
     public final int getPrecedingCharacterIndex() {
-        return StringHelpers_androidKt.findPrecedingBreak(this.annotatedString.getText(), TextRange.m4744getEndimpl(this.selection));
+        return StringHelpers_androidKt.findPrecedingBreak(this.annotatedString.getText(), TextRange.m2325getEndimpl(this.selection));
     }
 
     @Nullable
@@ -369,7 +369,7 @@ public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelect
     }
 
     /* renamed from: getSelection-d9O1mEE, reason: not valid java name */
-    public final long m1822getSelectiond9O1mEE() {
+    public final long m588getSelectiond9O1mEE() {
         return this.selection;
     }
 
@@ -562,7 +562,7 @@ public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelect
     @NotNull
     public final T selectMovement() {
         if (getText$foundation_release().length() > 0) {
-            this.selection = TextRangeKt.TextRange(TextRange.m4749getStartimpl(this.originalSelection), TextRange.m4744getEndimpl(this.selection));
+            this.selection = TextRangeKt.TextRange(TextRange.m2330getStartimpl(this.originalSelection), TextRange.m2325getEndimpl(this.selection));
         }
         Intrinsics.checkNotNull(this, "null cannot be cast to non-null type T of androidx.compose.foundation.text.selection.BaseTextPreparedSelection");
         return this;
@@ -582,7 +582,7 @@ public abstract class BaseTextPreparedSelection<T extends BaseTextPreparedSelect
     }
 
     /* renamed from: setSelection-5zc-tL8, reason: not valid java name */
-    public final void m1823setSelection5zctL8(long j) {
+    public final void m589setSelection5zctL8(long j) {
         this.selection = j;
     }
 }

@@ -5,141 +5,99 @@ import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.collection.LongSparseArray;
 import androidx.collection.SimpleArrayMap;
-import androidx.core.util.Pools;
-import androidx.recyclerview.widget.RecyclerView;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class ViewInfoStore {
     private static final boolean DEBUG = false;
 
     @VisibleForTesting
-    final SimpleArrayMap<RecyclerView.ViewHolder, InfoRecord> mLayoutHolderMap = new SimpleArrayMap<>();
+    final SimpleArrayMap<RecyclerView$ViewHolder, InfoRecord> mLayoutHolderMap = new SimpleArrayMap<>();
 
     @VisibleForTesting
-    final LongSparseArray<RecyclerView.ViewHolder> mOldChangedHolders = new LongSparseArray<>();
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class InfoRecord {
-        static final int FLAG_APPEAR = 2;
-        static final int FLAG_APPEAR_AND_DISAPPEAR = 3;
-        static final int FLAG_APPEAR_PRE_AND_POST = 14;
-        static final int FLAG_DISAPPEARED = 1;
-        static final int FLAG_POST = 8;
-        static final int FLAG_PRE = 4;
-        static final int FLAG_PRE_AND_POST = 12;
-        static Pools.Pool<InfoRecord> sPool = new Pools.SimplePool(20);
-        int flags;
-
-        @Nullable
-        RecyclerView.ItemAnimator.ItemHolderInfo postInfo;
-
-        @Nullable
-        RecyclerView.ItemAnimator.ItemHolderInfo preInfo;
-
-        private InfoRecord() {
-        }
-
-        static void drainCache() {
-            while (sPool.acquire() != null) {
-            }
-        }
-
-        static InfoRecord obtain() {
-            InfoRecord acquire = sPool.acquire();
-            return acquire == null ? new InfoRecord() : acquire;
-        }
-
-        static void recycle(InfoRecord infoRecord) {
-            infoRecord.flags = 0;
-            infoRecord.preInfo = null;
-            infoRecord.postInfo = null;
-            sPool.release(infoRecord);
-        }
-    }
+    final LongSparseArray<RecyclerView$ViewHolder> mOldChangedHolders = new LongSparseArray<>();
 
     /* compiled from: Taobao */
     interface ProcessCallback {
-        void processAppeared(RecyclerView.ViewHolder viewHolder, @Nullable RecyclerView.ItemAnimator.ItemHolderInfo itemHolderInfo, RecyclerView.ItemAnimator.ItemHolderInfo itemHolderInfo2);
+        void processAppeared(RecyclerView$ViewHolder recyclerView$ViewHolder, @Nullable RecyclerView$ItemAnimator$ItemHolderInfo recyclerView$ItemAnimator$ItemHolderInfo, RecyclerView$ItemAnimator$ItemHolderInfo recyclerView$ItemAnimator$ItemHolderInfo2);
 
-        void processDisappeared(RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo itemHolderInfo, @Nullable RecyclerView.ItemAnimator.ItemHolderInfo itemHolderInfo2);
+        void processDisappeared(RecyclerView$ViewHolder recyclerView$ViewHolder, @NonNull RecyclerView$ItemAnimator$ItemHolderInfo recyclerView$ItemAnimator$ItemHolderInfo, @Nullable RecyclerView$ItemAnimator$ItemHolderInfo recyclerView$ItemAnimator$ItemHolderInfo2);
 
-        void processPersistent(RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo itemHolderInfo, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo itemHolderInfo2);
+        void processPersistent(RecyclerView$ViewHolder recyclerView$ViewHolder, @NonNull RecyclerView$ItemAnimator$ItemHolderInfo recyclerView$ItemAnimator$ItemHolderInfo, @NonNull RecyclerView$ItemAnimator$ItemHolderInfo recyclerView$ItemAnimator$ItemHolderInfo2);
 
-        void unused(RecyclerView.ViewHolder viewHolder);
+        void unused(RecyclerView$ViewHolder recyclerView$ViewHolder);
     }
 
     ViewInfoStore() {
     }
 
-    private RecyclerView.ItemAnimator.ItemHolderInfo popFromLayoutStep(RecyclerView.ViewHolder viewHolder, int i) {
+    private RecyclerView$ItemAnimator$ItemHolderInfo popFromLayoutStep(RecyclerView$ViewHolder recyclerView$ViewHolder, int i) {
         InfoRecord valueAt;
-        RecyclerView.ItemAnimator.ItemHolderInfo itemHolderInfo;
-        int indexOfKey = this.mLayoutHolderMap.indexOfKey(viewHolder);
+        RecyclerView$ItemAnimator$ItemHolderInfo recyclerView$ItemAnimator$ItemHolderInfo;
+        int indexOfKey = this.mLayoutHolderMap.indexOfKey(recyclerView$ViewHolder);
         if (indexOfKey >= 0 && (valueAt = this.mLayoutHolderMap.valueAt(indexOfKey)) != null) {
             int i2 = valueAt.flags;
             if ((i2 & i) != 0) {
                 int i3 = (~i) & i2;
                 valueAt.flags = i3;
                 if (i == 4) {
-                    itemHolderInfo = valueAt.preInfo;
+                    recyclerView$ItemAnimator$ItemHolderInfo = valueAt.preInfo;
                 } else {
                     if (i != 8) {
                         throw new IllegalArgumentException("Must provide flag PRE or POST");
                     }
-                    itemHolderInfo = valueAt.postInfo;
+                    recyclerView$ItemAnimator$ItemHolderInfo = valueAt.postInfo;
                 }
                 if ((i3 & 12) == 0) {
                     this.mLayoutHolderMap.removeAt(indexOfKey);
                     InfoRecord.recycle(valueAt);
                 }
-                return itemHolderInfo;
+                return recyclerView$ItemAnimator$ItemHolderInfo;
             }
         }
         return null;
     }
 
-    void addToAppearedInPreLayoutHolders(RecyclerView.ViewHolder viewHolder, RecyclerView.ItemAnimator.ItemHolderInfo itemHolderInfo) {
-        InfoRecord infoRecord = this.mLayoutHolderMap.get(viewHolder);
+    void addToAppearedInPreLayoutHolders(RecyclerView$ViewHolder recyclerView$ViewHolder, RecyclerView$ItemAnimator$ItemHolderInfo recyclerView$ItemAnimator$ItemHolderInfo) {
+        InfoRecord infoRecord = this.mLayoutHolderMap.get(recyclerView$ViewHolder);
         if (infoRecord == null) {
             infoRecord = InfoRecord.obtain();
-            this.mLayoutHolderMap.put(viewHolder, infoRecord);
+            this.mLayoutHolderMap.put(recyclerView$ViewHolder, infoRecord);
         }
         infoRecord.flags |= 2;
-        infoRecord.preInfo = itemHolderInfo;
+        infoRecord.preInfo = recyclerView$ItemAnimator$ItemHolderInfo;
     }
 
-    void addToDisappearedInLayout(RecyclerView.ViewHolder viewHolder) {
-        InfoRecord infoRecord = this.mLayoutHolderMap.get(viewHolder);
+    void addToDisappearedInLayout(RecyclerView$ViewHolder recyclerView$ViewHolder) {
+        InfoRecord infoRecord = this.mLayoutHolderMap.get(recyclerView$ViewHolder);
         if (infoRecord == null) {
             infoRecord = InfoRecord.obtain();
-            this.mLayoutHolderMap.put(viewHolder, infoRecord);
+            this.mLayoutHolderMap.put(recyclerView$ViewHolder, infoRecord);
         }
         infoRecord.flags |= 1;
     }
 
-    void addToOldChangeHolders(long j, RecyclerView.ViewHolder viewHolder) {
-        this.mOldChangedHolders.put(j, viewHolder);
+    void addToOldChangeHolders(long j, RecyclerView$ViewHolder recyclerView$ViewHolder) {
+        this.mOldChangedHolders.put(j, recyclerView$ViewHolder);
     }
 
-    void addToPostLayout(RecyclerView.ViewHolder viewHolder, RecyclerView.ItemAnimator.ItemHolderInfo itemHolderInfo) {
-        InfoRecord infoRecord = this.mLayoutHolderMap.get(viewHolder);
+    void addToPostLayout(RecyclerView$ViewHolder recyclerView$ViewHolder, RecyclerView$ItemAnimator$ItemHolderInfo recyclerView$ItemAnimator$ItemHolderInfo) {
+        InfoRecord infoRecord = this.mLayoutHolderMap.get(recyclerView$ViewHolder);
         if (infoRecord == null) {
             infoRecord = InfoRecord.obtain();
-            this.mLayoutHolderMap.put(viewHolder, infoRecord);
+            this.mLayoutHolderMap.put(recyclerView$ViewHolder, infoRecord);
         }
-        infoRecord.postInfo = itemHolderInfo;
+        infoRecord.postInfo = recyclerView$ItemAnimator$ItemHolderInfo;
         infoRecord.flags |= 8;
     }
 
-    void addToPreLayout(RecyclerView.ViewHolder viewHolder, RecyclerView.ItemAnimator.ItemHolderInfo itemHolderInfo) {
-        InfoRecord infoRecord = this.mLayoutHolderMap.get(viewHolder);
+    void addToPreLayout(RecyclerView$ViewHolder recyclerView$ViewHolder, RecyclerView$ItemAnimator$ItemHolderInfo recyclerView$ItemAnimator$ItemHolderInfo) {
+        InfoRecord infoRecord = this.mLayoutHolderMap.get(recyclerView$ViewHolder);
         if (infoRecord == null) {
             infoRecord = InfoRecord.obtain();
-            this.mLayoutHolderMap.put(viewHolder, infoRecord);
+            this.mLayoutHolderMap.put(recyclerView$ViewHolder, infoRecord);
         }
-        infoRecord.preInfo = itemHolderInfo;
+        infoRecord.preInfo = recyclerView$ItemAnimator$ItemHolderInfo;
         infoRecord.flags |= 4;
     }
 
@@ -148,17 +106,17 @@ class ViewInfoStore {
         this.mOldChangedHolders.clear();
     }
 
-    RecyclerView.ViewHolder getFromOldChangeHolders(long j) {
+    RecyclerView$ViewHolder getFromOldChangeHolders(long j) {
         return this.mOldChangedHolders.get(j);
     }
 
-    boolean isDisappearing(RecyclerView.ViewHolder viewHolder) {
-        InfoRecord infoRecord = this.mLayoutHolderMap.get(viewHolder);
+    boolean isDisappearing(RecyclerView$ViewHolder recyclerView$ViewHolder) {
+        InfoRecord infoRecord = this.mLayoutHolderMap.get(recyclerView$ViewHolder);
         return (infoRecord == null || (infoRecord.flags & 1) == 0) ? false : true;
     }
 
-    boolean isInPreLayout(RecyclerView.ViewHolder viewHolder) {
-        InfoRecord infoRecord = this.mLayoutHolderMap.get(viewHolder);
+    boolean isInPreLayout(RecyclerView$ViewHolder recyclerView$ViewHolder) {
+        InfoRecord infoRecord = this.mLayoutHolderMap.get(recyclerView$ViewHolder);
         return (infoRecord == null || (infoRecord.flags & 4) == 0) ? false : true;
     }
 
@@ -166,33 +124,33 @@ class ViewInfoStore {
         InfoRecord.drainCache();
     }
 
-    public void onViewDetached(RecyclerView.ViewHolder viewHolder) {
-        removeFromDisappearedInLayout(viewHolder);
+    public void onViewDetached(RecyclerView$ViewHolder recyclerView$ViewHolder) {
+        removeFromDisappearedInLayout(recyclerView$ViewHolder);
     }
 
     @Nullable
-    RecyclerView.ItemAnimator.ItemHolderInfo popFromPostLayout(RecyclerView.ViewHolder viewHolder) {
-        return popFromLayoutStep(viewHolder, 8);
+    RecyclerView$ItemAnimator$ItemHolderInfo popFromPostLayout(RecyclerView$ViewHolder recyclerView$ViewHolder) {
+        return popFromLayoutStep(recyclerView$ViewHolder, 8);
     }
 
     @Nullable
-    RecyclerView.ItemAnimator.ItemHolderInfo popFromPreLayout(RecyclerView.ViewHolder viewHolder) {
-        return popFromLayoutStep(viewHolder, 4);
+    RecyclerView$ItemAnimator$ItemHolderInfo popFromPreLayout(RecyclerView$ViewHolder recyclerView$ViewHolder) {
+        return popFromLayoutStep(recyclerView$ViewHolder, 4);
     }
 
     void process(ProcessCallback processCallback) {
         for (int size = this.mLayoutHolderMap.size() - 1; size >= 0; size--) {
-            RecyclerView.ViewHolder keyAt = this.mLayoutHolderMap.keyAt(size);
+            RecyclerView$ViewHolder keyAt = this.mLayoutHolderMap.keyAt(size);
             InfoRecord removeAt = this.mLayoutHolderMap.removeAt(size);
             int i = removeAt.flags;
             if ((i & 3) == 3) {
                 processCallback.unused(keyAt);
             } else if ((i & 1) != 0) {
-                RecyclerView.ItemAnimator.ItemHolderInfo itemHolderInfo = removeAt.preInfo;
-                if (itemHolderInfo == null) {
+                RecyclerView$ItemAnimator$ItemHolderInfo recyclerView$ItemAnimator$ItemHolderInfo = removeAt.preInfo;
+                if (recyclerView$ItemAnimator$ItemHolderInfo == null) {
                     processCallback.unused(keyAt);
                 } else {
-                    processCallback.processDisappeared(keyAt, itemHolderInfo, removeAt.postInfo);
+                    processCallback.processDisappeared(keyAt, recyclerView$ItemAnimator$ItemHolderInfo, removeAt.postInfo);
                 }
             } else if ((i & 14) == 14) {
                 processCallback.processAppeared(keyAt, removeAt.preInfo, removeAt.postInfo);
@@ -207,27 +165,27 @@ class ViewInfoStore {
         }
     }
 
-    void removeFromDisappearedInLayout(RecyclerView.ViewHolder viewHolder) {
-        InfoRecord infoRecord = this.mLayoutHolderMap.get(viewHolder);
+    void removeFromDisappearedInLayout(RecyclerView$ViewHolder recyclerView$ViewHolder) {
+        InfoRecord infoRecord = this.mLayoutHolderMap.get(recyclerView$ViewHolder);
         if (infoRecord == null) {
             return;
         }
         infoRecord.flags &= -2;
     }
 
-    void removeViewHolder(RecyclerView.ViewHolder viewHolder) {
+    void removeViewHolder(RecyclerView$ViewHolder recyclerView$ViewHolder) {
         int size = this.mOldChangedHolders.size() - 1;
         while (true) {
             if (size < 0) {
                 break;
             }
-            if (viewHolder == this.mOldChangedHolders.valueAt(size)) {
+            if (recyclerView$ViewHolder == this.mOldChangedHolders.valueAt(size)) {
                 this.mOldChangedHolders.removeAt(size);
                 break;
             }
             size--;
         }
-        InfoRecord remove = this.mLayoutHolderMap.remove(viewHolder);
+        InfoRecord remove = this.mLayoutHolderMap.remove(recyclerView$ViewHolder);
         if (remove != null) {
             InfoRecord.recycle(remove);
         }

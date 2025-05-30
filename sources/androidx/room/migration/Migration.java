@@ -1,10 +1,10 @@
 package androidx.room.migration;
 
 import androidx.annotation.NonNull;
-import androidx.sqlite.p008db.SupportSQLiteDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class Migration {
     public final int endVersion;
     public final int startVersion;

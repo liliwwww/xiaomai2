@@ -4,13 +4,10 @@ import androidx.compose.animation.core.AnimationSpec;
 import androidx.compose.foundation.gestures.DraggableKt;
 import androidx.compose.foundation.gestures.DraggableState;
 import androidx.compose.runtime.MutableState;
+import androidx.compose.runtime.SnapshotMutationPolicy;
 import androidx.compose.runtime.SnapshotStateKt;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
 import androidx.compose.runtime.Stable;
 import androidx.compose.runtime.State;
-import androidx.compose.runtime.saveable.Saver;
-import androidx.compose.runtime.saveable.SaverKt;
-import androidx.compose.runtime.saveable.SaverScope;
 import java.util.Map;
 import kotlin.Unit;
 import kotlin.collections.MapsKt;
@@ -28,11 +25,11 @@ import org.jetbrains.annotations.Nullable;
 /* compiled from: Taobao */
 @Stable
 @ExperimentalMaterialApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SwipeableV2State<T> {
 
     @NotNull
-    public static final Companion Companion = new Companion(null);
+    public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
 
     @NotNull
     private final MutableState anchors$delegate;
@@ -82,135 +79,20 @@ public final class SwipeableV2State<T> {
     @NotNull
     private final MutableState velocityThreshold$delegate;
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class Companion {
-        private Companion() {
-        }
-
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-
-        @NotNull
-        public final <T> Saver<SwipeableV2State<T>, T> Saver(@NotNull final AnimationSpec<Float> animationSpec, @NotNull final Function1<? super T, Boolean> function1) {
-            Intrinsics.checkNotNullParameter(animationSpec, "animationSpec");
-            Intrinsics.checkNotNullParameter(function1, "confirmStateChange");
-            return SaverKt.Saver(new Function2<SaverScope, SwipeableV2State<T>, T>() { // from class: androidx.compose.material.SwipeableV2State$Companion$Saver$1
-                @Nullable
-                public final T invoke(@NotNull SaverScope saverScope, @NotNull SwipeableV2State<T> swipeableV2State) {
-                    Intrinsics.checkNotNullParameter(saverScope, "$this$Saver");
-                    Intrinsics.checkNotNullParameter(swipeableV2State, "it");
-                    return swipeableV2State.getCurrentState();
-                }
-            }, new Function1<T, SwipeableV2State<T>>() { // from class: androidx.compose.material.SwipeableV2State$Companion$Saver$2
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                /* JADX WARN: Multi-variable type inference failed */
-                {
-                    super(1);
-                }
-
-                /* JADX WARN: Multi-variable type inference failed */
-                /* renamed from: invoke, reason: collision with other method in class */
-                public /* bridge */ /* synthetic */ Object m2266invoke(Object obj) {
-                    return invoke((SwipeableV2State$Companion$Saver$2<T>) obj);
-                }
-
-                @Nullable
-                public final SwipeableV2State<T> invoke(@NotNull T t) {
-                    Intrinsics.checkNotNullParameter(t, "it");
-                    return new SwipeableV2State<>(t, animationSpec, function1);
-                }
-            });
-        }
-    }
-
     /* JADX WARN: Multi-variable type inference failed */
     public SwipeableV2State(T t, @NotNull AnimationSpec<Float> animationSpec, @NotNull Function1<? super T, Boolean> function1) {
         Intrinsics.checkNotNullParameter(animationSpec, "animationSpec");
         Intrinsics.checkNotNullParameter(function1, "confirmStateChange");
         this.animationSpec = animationSpec;
         this.confirmStateChange = function1;
-        this.currentState$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(t, null, 2, null);
-        this.targetState$delegate = SnapshotStateKt.derivedStateOf(new Function0<T>(this) { // from class: androidx.compose.material.SwipeableV2State$targetState$2
-            final /* synthetic */ SwipeableV2State<T> this$0;
-
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(0);
-                this.this$0 = this;
-            }
-
-            public final T invoke() {
-                float unsafeOffset;
-                float unsafeOffset2;
-                Object closestState;
-                unsafeOffset = this.this$0.getUnsafeOffset();
-                if (Float.isNaN(unsafeOffset)) {
-                    return this.this$0.getCurrentState();
-                }
-                Map<T, Float> anchors$material_release = this.this$0.getAnchors$material_release();
-                unsafeOffset2 = this.this$0.getUnsafeOffset();
-                closestState = SwipeableV2Kt.closestState(anchors$material_release, unsafeOffset2);
-                return (T) closestState;
-            }
-        });
-        this.offset = SnapshotStateKt.derivedStateOf(new Function0<Float>(this) { // from class: androidx.compose.material.SwipeableV2State$offset$1
-            final /* synthetic */ SwipeableV2State<T> this$0;
-
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(0);
-                this.this$0 = this;
-            }
-
-            @NotNull
-            /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Float m2269invoke() {
-                float unsafeOffset;
-                float unsafeOffset2;
-                unsafeOffset = this.this$0.getUnsafeOffset();
-                if (Float.isNaN(unsafeOffset)) {
-                    throw new IllegalStateException("The offset was read before being initialized. Did you access the offset in a phase before layout, like effects or composition?".toString());
-                }
-                unsafeOffset2 = this.this$0.getUnsafeOffset();
-                return Float.valueOf(unsafeOffset2);
-            }
-        });
-        this.isAnimationRunning$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
-        this.progress$delegate = SnapshotStateKt.derivedStateOf(new Function0<Float>(this) { // from class: androidx.compose.material.SwipeableV2State$progress$2
-            final /* synthetic */ SwipeableV2State<T> this$0;
-
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(0);
-                this.this$0 = this;
-            }
-
-            @NotNull
-            /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Float m2271invoke() {
-                Float f = (Float) this.this$0.getAnchors$material_release().get(this.this$0.getCurrentState());
-                float f2 = 0.0f;
-                float floatValue = f != null ? f.floatValue() : 0.0f;
-                Float f3 = (Float) this.this$0.getAnchors$material_release().get(this.this$0.getTargetState());
-                float floatValue2 = (f3 != null ? f3.floatValue() : 0.0f) - floatValue;
-                if (Math.abs(floatValue2) > 1.0E-6f) {
-                    float floatValue3 = (this.this$0.getOffset().getValue().floatValue() - floatValue) / floatValue2;
-                    if (floatValue3 >= 1.0E-6f) {
-                        if (floatValue3 <= 0.999999f) {
-                            f2 = floatValue3;
-                        }
-                    }
-                    return Float.valueOf(f2);
-                }
-                f2 = 1.0f;
-                return Float.valueOf(f2);
-            }
-        });
+        this.currentState$delegate = SnapshotStateKt.mutableStateOf$default(t, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.targetState$delegate = SnapshotStateKt.derivedStateOf(new targetState.2(this));
+        this.offset = SnapshotStateKt.derivedStateOf(new offset.1(this));
+        this.isAnimationRunning$delegate = SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.progress$delegate = SnapshotStateKt.derivedStateOf(new progress.2(this));
         Float valueOf = Float.valueOf(0.0f);
-        this.lastVelocity$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(valueOf, null, 2, null);
-        this.dragPosition = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Float.valueOf(Float.NaN), null, 2, null);
+        this.lastVelocity$delegate = SnapshotStateKt.mutableStateOf$default(valueOf, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.dragPosition = SnapshotStateKt.mutableStateOf$default(Float.valueOf(Float.NaN), (SnapshotMutationPolicy) null, 2, (Object) null);
         this.unsafeOffset$delegate = SnapshotStateKt.derivedStateOf(new Function0<Float>(this) { // from class: androidx.compose.material.SwipeableV2State$unsafeOffset$2
             final /* synthetic */ SwipeableV2State<T> this$0;
 
@@ -222,7 +104,7 @@ public final class SwipeableV2State<T> {
 
             @NotNull
             /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Float m2272invoke() {
+            public final Float m679invoke() {
                 MutableState mutableState;
                 float minBound;
                 float maxBound;
@@ -233,23 +115,7 @@ public final class SwipeableV2State<T> {
                 return Float.valueOf(RangesKt.coerceIn(floatValue, minBound, maxBound));
             }
         });
-        this.minBound$delegate = SnapshotStateKt.derivedStateOf(new Function0<Float>(this) { // from class: androidx.compose.material.SwipeableV2State$minBound$2
-            final /* synthetic */ SwipeableV2State<T> this$0;
-
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(0);
-                this.this$0 = this;
-            }
-
-            @NotNull
-            /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Float m2268invoke() {
-                Float minOrNull;
-                minOrNull = SwipeableV2Kt.minOrNull(this.this$0.getAnchors$material_release());
-                return Float.valueOf(minOrNull != null ? minOrNull.floatValue() : Float.NEGATIVE_INFINITY);
-            }
-        });
+        this.minBound$delegate = SnapshotStateKt.derivedStateOf(new minBound.2(this));
         this.maxBound$delegate = SnapshotStateKt.derivedStateOf(new Function0<Float>(this) { // from class: androidx.compose.material.SwipeableV2State$maxBound$2
             final /* synthetic */ SwipeableV2State<T> this$0;
 
@@ -261,43 +127,16 @@ public final class SwipeableV2State<T> {
 
             @NotNull
             /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Float m2267invoke() {
+            public final Float m678invoke() {
                 Float maxOrNull;
                 maxOrNull = SwipeableV2Kt.maxOrNull(this.this$0.getAnchors$material_release());
                 return Float.valueOf(maxOrNull != null ? maxOrNull.floatValue() : Float.POSITIVE_INFINITY);
             }
         });
-        this.positionalThresholds$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(new Function2<T, T, Float>() { // from class: androidx.compose.material.SwipeableV2State$positionalThresholds$2
-            @NotNull
-            /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Float m2270invoke(T t2, T t3) {
-                return Float.valueOf(0.0f);
-            }
-        }, null, 2, null);
-        this.velocityThreshold$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(valueOf, null, 2, null);
-        this.draggableState = DraggableKt.DraggableState(new Function1<Float, Unit>(this) { // from class: androidx.compose.material.SwipeableV2State$draggableState$1
-            final /* synthetic */ SwipeableV2State<T> this$0;
-
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-                this.this$0 = this;
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke(((Number) obj).floatValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(float f) {
-                MutableState mutableState;
-                MutableState mutableState2;
-                mutableState = ((SwipeableV2State) this.this$0).dragPosition;
-                mutableState2 = ((SwipeableV2State) this.this$0).dragPosition;
-                mutableState.setValue(Float.valueOf(((Number) mutableState2.getValue()).floatValue() + f));
-            }
-        });
-        this.anchors$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(MapsKt.emptyMap(), null, 2, null);
+        this.positionalThresholds$delegate = SnapshotStateKt.mutableStateOf$default(positionalThresholds.2.INSTANCE, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.velocityThreshold$delegate = SnapshotStateKt.mutableStateOf$default(valueOf, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.draggableState = DraggableKt.DraggableState(new draggableState.1(this));
+        this.anchors$delegate = SnapshotStateKt.mutableStateOf$default(MapsKt.emptyMap(), (SnapshotMutationPolicy) null, 2, (Object) null);
     }
 
     public static /* synthetic */ Object animateTo$default(SwipeableV2State swipeableV2State, Object obj, float f, Continuation continuation, int i, Object obj2) {
@@ -395,12 +234,12 @@ public final class SwipeableV2State<T> {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object animateTo(T r12, float r13, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r14) {
         /*
             Method dump skipped, instructions count: 264
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SwipeableV2State.animateTo(java.lang.Object, float, kotlin.coroutines.Continuation):java.lang.Object");
     }
@@ -429,7 +268,7 @@ public final class SwipeableV2State<T> {
     }
 
     public final T getCurrentState() {
-        return this.currentState$delegate.getValue();
+        return (T) this.currentState$delegate.getValue();
     }
 
     @NotNull
@@ -471,7 +310,7 @@ public final class SwipeableV2State<T> {
     @Nullable
     public final Object settle(float f, @NotNull Continuation<? super Unit> continuation) {
         Object currentState = getCurrentState();
-        Object computeTarget = computeTarget(this.offset.getValue().floatValue(), currentState, getPositionalThresholds(), f, getVelocityThreshold());
+        Object computeTarget = computeTarget(((Number) this.offset.getValue()).floatValue(), currentState, getPositionalThresholds(), f, getVelocityThreshold());
         if (((Boolean) this.confirmStateChange.invoke(computeTarget)).booleanValue()) {
             Object animateTo = animateTo(computeTarget, f, continuation);
             return animateTo == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? animateTo : Unit.INSTANCE;
@@ -485,7 +324,7 @@ public final class SwipeableV2State<T> {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object snapTo(T r8, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r9) {
         /*
@@ -564,16 +403,6 @@ public final class SwipeableV2State<T> {
     }
 
     public /* synthetic */ SwipeableV2State(Object obj, AnimationSpec animationSpec, Function1 function1, int i, DefaultConstructorMarker defaultConstructorMarker) {
-        this(obj, (i & 2) != 0 ? SwipeableDefaults.INSTANCE.getAnimationSpec() : animationSpec, (i & 4) != 0 ? new Function1<T, Boolean>() { // from class: androidx.compose.material.SwipeableV2State.1
-            @NotNull
-            public final Boolean invoke(T t) {
-                return Boolean.TRUE;
-            }
-
-            /* renamed from: invoke, reason: collision with other method in class */
-            public /* bridge */ /* synthetic */ Object m2265invoke(Object obj2) {
-                return invoke((C07151) obj2);
-            }
-        } : function1);
+        this(obj, (i & 2) != 0 ? SwipeableDefaults.INSTANCE.getAnimationSpec() : animationSpec, (i & 4) != 0 ? 1.INSTANCE : function1);
     }
 }

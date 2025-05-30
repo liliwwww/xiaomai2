@@ -1,10 +1,10 @@
 package androidx.compose.foundation;
 
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.LayoutCoordinates;
-import androidx.compose.p004ui.layout.OnGloballyPositionedModifier;
-import androidx.compose.p004ui.modifier.ModifierLocalConsumer;
-import androidx.compose.p004ui.modifier.ModifierLocalReadScope;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.LayoutCoordinates;
+import androidx.compose.ui.layout.OnGloballyPositionedModifier;
+import androidx.compose.ui.modifier.ModifierLocalConsumer;
+import androidx.compose.ui.modifier.ModifierLocalReadScope;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
@@ -15,7 +15,7 @@ import tb.mt2;
 import tb.nt2;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FocusedBoundsModifier implements OnGloballyPositionedModifier, ModifierLocalConsumer {
 
     @Nullable
@@ -36,27 +36,26 @@ public final class FocusedBoundsModifier implements OnGloballyPositionedModifier
         }
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    @Override // androidx.compose.ui.Modifier$Element
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
 
-    @Override // androidx.compose.p004ui.layout.OnGloballyPositionedModifier
     public void onGloballyPositioned(@NotNull LayoutCoordinates layoutCoordinates) {
         Intrinsics.checkNotNullParameter(layoutCoordinates, "coordinates");
         this.layoutCoordinates = layoutCoordinates;
@@ -70,7 +69,7 @@ public final class FocusedBoundsModifier implements OnGloballyPositionedModifier
         }
     }
 
-    @Override // androidx.compose.p004ui.modifier.ModifierLocalConsumer
+    @Override // androidx.compose.ui.modifier.ModifierLocalConsumer
     public void onModifierLocalsUpdated(@NotNull ModifierLocalReadScope modifierLocalReadScope) {
         Function1<? super LayoutCoordinates, Unit> function1;
         Intrinsics.checkNotNullParameter(modifierLocalReadScope, "scope");
@@ -81,7 +80,6 @@ public final class FocusedBoundsModifier implements OnGloballyPositionedModifier
         this.observer = function12;
     }
 
-    @Override // androidx.compose.p004ui.Modifier
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }

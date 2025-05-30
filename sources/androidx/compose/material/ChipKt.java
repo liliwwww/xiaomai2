@@ -1,24 +1,24 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.unit.C0856Dp;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.unit.Dp;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ChipKt {
     private static final float LeadingIconEndSpacing;
     private static final float SelectedOverlayOpacity = 0.16f;
     private static final float SurfaceOverlayOpacity = 0.12f;
     private static final float TrailingIconSpacing;
-    private static final float HorizontalPadding = C0856Dp.m5216constructorimpl(12);
-    private static final float LeadingIconStartSpacing = C0856Dp.m5216constructorimpl(4);
-    private static final float SelectedIconContainerSize = C0856Dp.m5216constructorimpl(24);
+    private static final float HorizontalPadding = Dp.m2142constructorimpl(12);
+    private static final float LeadingIconStartSpacing = Dp.m2142constructorimpl(4);
+    private static final float SelectedIconContainerSize = Dp.m2142constructorimpl(24);
 
     static {
         float f = 8;
-        LeadingIconEndSpacing = C0856Dp.m5216constructorimpl(f);
-        TrailingIconSpacing = C0856Dp.m5216constructorimpl(f);
+        LeadingIconEndSpacing = Dp.m2142constructorimpl(f);
+        TrailingIconSpacing = Dp.m2142constructorimpl(f);
     }
 
     /* JADX WARN: Removed duplicated region for block: B:104:0x00ea  */
@@ -59,20 +59,20 @@ public final class ChipKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void Chip(@org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r35, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r36, boolean r37, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r38, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r39, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r40, @org.jetbrains.annotations.Nullable androidx.compose.material.ChipColors r41, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r42, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r43, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r44, final int r45, final int r46) {
+    public static final void Chip(@org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function0<kotlin.Unit> r35, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r36, boolean r37, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r38, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r39, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r40, @org.jetbrains.annotations.Nullable androidx.compose.material.ChipColors r41, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r42, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r43, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r44, int r45, int r46) {
         /*
             Method dump skipped, instructions count: 708
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.ChipKt.Chip(kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, boolean, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.ui.graphics.Shape, androidx.compose.foundation.BorderStroke, androidx.compose.material.ChipColors, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: Chip$lambda-1, reason: not valid java name */
-    public static final long m2004Chip$lambda1(State<Color> state) {
-        return state.getValue().m2797unboximpl();
+    public static final long m557Chip$lambda1(State<Color> state) {
+        return ((Color) state.getValue()).m1060unboximpl();
     }
 
     /* JADX WARN: Removed duplicated region for block: B:100:0x0266  */
@@ -122,12 +122,12 @@ public final class ChipKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void FilterChip(final boolean r43, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r44, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r45, boolean r46, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r47, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r48, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r49, @org.jetbrains.annotations.Nullable androidx.compose.material.SelectableChipColors r50, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r51, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r52, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r53, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r54, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r55, final int r56, final int r57, final int r58) {
+    public static final void FilterChip(boolean r43, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function0<kotlin.Unit> r44, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r45, boolean r46, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r47, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r48, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r49, @org.jetbrains.annotations.Nullable androidx.compose.material.SelectableChipColors r50, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r51, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r52, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r53, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.RowScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r54, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r55, int r56, int r57, int r58) {
         /*
             Method dump skipped, instructions count: 903
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.ChipKt.FilterChip(boolean, kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, boolean, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.ui.graphics.Shape, androidx.compose.foundation.BorderStroke, androidx.compose.material.SelectableChipColors, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int, int):void");
     }

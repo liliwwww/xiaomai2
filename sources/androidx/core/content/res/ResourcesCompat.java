@@ -1,6 +1,5 @@
 package androidx.core.content.res;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
@@ -9,7 +8,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
@@ -17,25 +15,20 @@ import androidx.annotation.AnyRes;
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DimenRes;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.FontRes;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.core.util.ObjectsCompat;
 import androidx.core.util.Preconditions;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.WeakHashMap;
-import tb.ec4;
-import tb.fc4;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ResourcesCompat {
 
     @AnyRes
@@ -46,69 +39,6 @@ public final class ResourcesCompat {
     @GuardedBy("sColorStateCacheLock")
     private static final WeakHashMap<ColorStateListCacheKey, SparseArray<ColorStateListCacheEntry>> sColorStateCaches = new WeakHashMap<>(0);
     private static final Object sColorStateCacheLock = new Object();
-
-    /* compiled from: Taobao */
-    @RequiresApi(15)
-    /* loaded from: classes2.dex */
-    static class Api15Impl {
-        private Api15Impl() {
-        }
-
-        @DoNotInline
-        static Drawable getDrawableForDensity(Resources resources, int i, int i2) {
-            return resources.getDrawableForDensity(i, i2);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(21)
-    /* loaded from: classes2.dex */
-    static class Api21Impl {
-        private Api21Impl() {
-        }
-
-        @DoNotInline
-        static Drawable getDrawable(Resources resources, int i, Resources.Theme theme) {
-            return resources.getDrawable(i, theme);
-        }
-
-        @DoNotInline
-        static Drawable getDrawableForDensity(Resources resources, int i, int i2, Resources.Theme theme) {
-            return resources.getDrawableForDensity(i, i2, theme);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(23)
-    /* loaded from: classes2.dex */
-    static class Api23Impl {
-        private Api23Impl() {
-        }
-
-        @DoNotInline
-        static int getColor(Resources resources, int i, Resources.Theme theme) {
-            return resources.getColor(i, theme);
-        }
-
-        @NonNull
-        @DoNotInline
-        static ColorStateList getColorStateList(@NonNull Resources resources, @ColorRes int i, @Nullable Resources.Theme theme) {
-            return resources.getColorStateList(i, theme);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(29)
-    /* loaded from: classes2.dex */
-    static class Api29Impl {
-        private Api29Impl() {
-        }
-
-        @DoNotInline
-        static float getFloat(@NonNull Resources resources, @DimenRes int i) {
-            return resources.getFloat(i);
-        }
-    }
 
     /* compiled from: Taobao */
     private static class ColorStateListCacheEntry {
@@ -145,100 +75,7 @@ public final class ResourcesCompat {
         }
 
         public int hashCode() {
-            return ObjectsCompat.hash(this.mResources, this.mTheme);
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static abstract class FontCallback {
-        @NonNull
-        @RestrictTo({RestrictTo.Scope.LIBRARY})
-        public static Handler getHandler(@Nullable Handler handler) {
-            return handler == null ? new Handler(Looper.getMainLooper()) : handler;
-        }
-
-        @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-        public final void callbackFailAsync(int i, @Nullable Handler handler) {
-            getHandler(handler).post(new ec4(this, i));
-        }
-
-        @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-        public final void callbackSuccessAsync(@NonNull Typeface typeface, @Nullable Handler handler) {
-            getHandler(handler).post(new fc4(this, typeface));
-        }
-
-        /* renamed from: onFontRetrievalFailed, reason: merged with bridge method [inline-methods] */
-        public abstract void lambda$callbackFailAsync$1(int i);
-
-        /* renamed from: onFontRetrieved, reason: merged with bridge method [inline-methods] */
-        public abstract void lambda$callbackSuccessAsync$0(@NonNull Typeface typeface);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class ThemeCompat {
-
-        /* compiled from: Taobao */
-        @RequiresApi(23)
-        /* loaded from: classes.dex */
-        static class Api23Impl {
-            private static Method sRebaseMethod;
-            private static boolean sRebaseMethodFetched;
-            private static final Object sRebaseMethodLock = new Object();
-
-            private Api23Impl() {
-            }
-
-            @SuppressLint({"BanUncheckedReflection"})
-            static void rebase(@NonNull Resources.Theme theme) {
-                synchronized (sRebaseMethodLock) {
-                    if (!sRebaseMethodFetched) {
-                        try {
-                            Method declaredMethod = Resources.Theme.class.getDeclaredMethod("rebase", new Class[0]);
-                            sRebaseMethod = declaredMethod;
-                            declaredMethod.setAccessible(true);
-                        } catch (NoSuchMethodException e) {
-                            Log.i(ResourcesCompat.TAG, "Failed to retrieve rebase() method", e);
-                        }
-                        sRebaseMethodFetched = true;
-                    }
-                    Method method = sRebaseMethod;
-                    if (method != null) {
-                        try {
-                            method.invoke(theme, new Object[0]);
-                        } catch (IllegalAccessException | InvocationTargetException e2) {
-                            Log.i(ResourcesCompat.TAG, "Failed to invoke rebase() method via reflection", e2);
-                            sRebaseMethod = null;
-                        }
-                    }
-                }
-            }
-        }
-
-        /* compiled from: Taobao */
-        @RequiresApi(29)
-        /* loaded from: classes.dex */
-        static class Api29Impl {
-            private Api29Impl() {
-            }
-
-            @DoNotInline
-            static void rebase(@NonNull Resources.Theme theme) {
-                theme.rebase();
-            }
-        }
-
-        private ThemeCompat() {
-        }
-
-        public static void rebase(@NonNull Resources.Theme theme) {
-            int i = Build.VERSION.SDK_INT;
-            if (i >= 29) {
-                Api29Impl.rebase(theme);
-            } else if (i >= 23) {
-                Api23Impl.rebase(theme);
-            }
+            return ObjectsCompat.hash(new Object[]{this.mResources, this.mTheme});
         }
     }
 
@@ -398,7 +235,7 @@ public final class ResourcesCompat {
     /* JADX WARN: Removed duplicated region for block: B:36:0x00b8  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private static android.graphics.Typeface loadFont(@androidx.annotation.NonNull android.content.Context r17, android.content.res.Resources r18, @androidx.annotation.NonNull android.util.TypedValue r19, int r20, int r21, @androidx.annotation.Nullable androidx.core.content.res.ResourcesCompat.FontCallback r22, @androidx.annotation.Nullable android.os.Handler r23, boolean r24, boolean r25) {
         /*
@@ -521,7 +358,7 @@ public final class ResourcesCompat {
     }
 
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public static Typeface getFont(@NonNull Context context, @FontRes int i, @NonNull TypedValue typedValue, int i2, @Nullable FontCallback fontCallback) throws Resources.NotFoundException {
         if (context.isRestricted()) {
             return null;

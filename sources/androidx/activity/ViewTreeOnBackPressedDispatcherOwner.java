@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @JvmName(name = "ViewTreeOnBackPressedDispatcherOwner")
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ViewTreeOnBackPressedDispatcherOwner {
     @JvmName(name = "get")
     @Nullable
@@ -30,7 +30,7 @@ public final class ViewTreeOnBackPressedDispatcherOwner {
             @Nullable
             public final OnBackPressedDispatcherOwner invoke(@NotNull View view2) {
                 Intrinsics.checkNotNullParameter(view2, "it");
-                Object tag = view2.getTag(C0240R.id.view_tree_on_back_pressed_dispatcher_owner);
+                Object tag = view2.getTag(R.id.view_tree_on_back_pressed_dispatcher_owner);
                 if (tag instanceof OnBackPressedDispatcherOwner) {
                     return (OnBackPressedDispatcherOwner) tag;
                 }
@@ -43,6 +43,6 @@ public final class ViewTreeOnBackPressedDispatcherOwner {
     public static final void set(@NotNull View view, @NotNull OnBackPressedDispatcherOwner onBackPressedDispatcherOwner) {
         Intrinsics.checkNotNullParameter(view, "<this>");
         Intrinsics.checkNotNullParameter(onBackPressedDispatcherOwner, "onBackPressedDispatcherOwner");
-        view.setTag(C0240R.id.view_tree_on_back_pressed_dispatcher_owner, onBackPressedDispatcherOwner);
+        view.setTag(R.id.view_tree_on_back_pressed_dispatcher_owner, onBackPressedDispatcherOwner);
     }
 }

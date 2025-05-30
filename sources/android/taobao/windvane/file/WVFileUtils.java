@@ -10,7 +10,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVFileUtils {
     private static final String TAG = "WVFileUtils";
     private static String sAuthority;
@@ -30,7 +30,7 @@ public class WVFileUtils {
     }
 
     public static ArrayList<String> getFileListbyDir(File file) {
-        TaoLog.m24i(TAG, file.getPath());
+        TaoLog.i(TAG, file.getPath());
         ArrayList<String> arrayList = new ArrayList<>();
         getFileList(file, arrayList);
         return arrayList;
@@ -48,7 +48,7 @@ public class WVFileUtils {
                 }
                 return FileProvider.getUriForFile(context, str, file);
             } catch (Throwable th) {
-                TaoLog.m30w("WVUtils", "Failed to get file uri:" + th.getMessage());
+                TaoLog.w("WVUtils", "Failed to get file uri:" + th.getMessage());
             }
         }
         return null;

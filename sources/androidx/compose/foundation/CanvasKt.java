@@ -1,31 +1,27 @@
 package androidx.compose.foundation;
 
 import androidx.compose.foundation.layout.SpacerKt;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.draw.DrawModifierKt;
-import androidx.compose.p004ui.graphics.drawscope.DrawScope;
-import androidx.compose.p004ui.semantics.SemanticsModifierKt;
-import androidx.compose.p004ui.semantics.SemanticsPropertiesKt;
-import androidx.compose.p004ui.semantics.SemanticsPropertyReceiver;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableTarget;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
-import androidx.compose.runtime.RecomposeScopeImplKt;
 import androidx.compose.runtime.ScopeUpdateScope;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.draw.DrawModifierKt;
+import androidx.compose.ui.graphics.drawscope.DrawScope;
+import androidx.compose.ui.semantics.SemanticsModifierKt;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
-import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class CanvasKt {
     @ComposableTarget(applier = "androidx.compose.ui.UiComposable")
     @Composable
-    public static final void Canvas(@NotNull final Modifier modifier, @NotNull final Function1<? super DrawScope, Unit> function1, @Nullable Composer composer, final int i) {
+    public static final void Canvas(@NotNull Modifier modifier, @NotNull Function1<? super DrawScope, Unit> function1, @Nullable Composer composer, int i) {
         int i2;
         Intrinsics.checkNotNullParameter(modifier, "modifier");
         Intrinsics.checkNotNullParameter(function1, "onDraw");
@@ -53,28 +49,13 @@ public final class CanvasKt {
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.CanvasKt$Canvas$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                invoke((Composer) obj, ((Number) obj2).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i3) {
-                CanvasKt.Canvas(Modifier.this, function1, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
-            }
-        });
+        endRestartGroup.updateScope(new Canvas.1(modifier, function1, i));
     }
 
     @ComposableTarget(applier = "androidx.compose.ui.UiComposable")
     @Composable
     @ExperimentalFoundationApi
-    public static final void Canvas(@NotNull final Modifier modifier, @NotNull final String str, @NotNull final Function1<? super DrawScope, Unit> function1, @Nullable Composer composer, final int i) {
+    public static final void Canvas(@NotNull Modifier modifier, @NotNull String str, @NotNull Function1<? super DrawScope, Unit> function1, @Nullable Composer composer, int i) {
         int i2;
         Intrinsics.checkNotNullParameter(modifier, "modifier");
         Intrinsics.checkNotNullParameter(str, "contentDescription");
@@ -102,26 +83,11 @@ public final class CanvasKt {
             boolean changed = startRestartGroup.changed(str);
             Object rememberedValue = startRestartGroup.rememberedValue();
             if (changed || rememberedValue == Composer.Companion.getEmpty()) {
-                rememberedValue = new Function1<SemanticsPropertyReceiver, Unit>() { // from class: androidx.compose.foundation.CanvasKt$Canvas$2$1
-                    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                    {
-                        super(1);
-                    }
-
-                    public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                        invoke((SemanticsPropertyReceiver) obj);
-                        return Unit.INSTANCE;
-                    }
-
-                    public final void invoke(@NotNull SemanticsPropertyReceiver semanticsPropertyReceiver) {
-                        Intrinsics.checkNotNullParameter(semanticsPropertyReceiver, "$this$semantics");
-                        SemanticsPropertiesKt.setContentDescription(semanticsPropertyReceiver, str);
-                    }
-                };
+                rememberedValue = new Canvas.2.1(str);
                 startRestartGroup.updateRememberedValue(rememberedValue);
             }
             startRestartGroup.endReplaceableGroup();
-            SpacerKt.Spacer(SemanticsModifierKt.semantics$default(drawBehind, false, (Function1) rememberedValue, 1, null), startRestartGroup, 0);
+            SpacerKt.Spacer(SemanticsModifierKt.semantics$default(drawBehind, false, (Function1) rememberedValue, 1, (Object) null), startRestartGroup, 0);
             if (ComposerKt.isTraceInProgress()) {
                 ComposerKt.traceEventEnd();
             }
@@ -130,21 +96,6 @@ public final class CanvasKt {
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.CanvasKt$Canvas$3
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                invoke((Composer) obj, ((Number) obj2).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i3) {
-                CanvasKt.Canvas(Modifier.this, str, function1, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
-            }
-        });
+        endRestartGroup.updateScope(new Canvas.3(modifier, str, function1, i));
     }
 }

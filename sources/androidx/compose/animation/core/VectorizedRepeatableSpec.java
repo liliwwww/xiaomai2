@@ -12,7 +12,7 @@ import tb.fy5;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class VectorizedRepeatableSpec<V extends AnimationVector> implements VectorizedFiniteAnimationSpec<V> {
     public static final int $stable = 8;
 
@@ -57,7 +57,6 @@ public final class VectorizedRepeatableSpec<V extends AnimationVector> implement
         return j3 > j4 ? getVelocityFromNanos(j4 - j2, v, v2, v3) : v2;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     public long getDurationNanos(@NotNull V v, @NotNull V v2, @NotNull V v3) {
         Intrinsics.checkNotNullParameter(v, "initialValue");
         Intrinsics.checkNotNullParameter(v2, "targetValue");
@@ -69,36 +68,32 @@ public final class VectorizedRepeatableSpec<V extends AnimationVector> implement
         return this.durationNanos;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     public /* synthetic */ AnimationVector getEndVelocity(AnimationVector animationVector, AnimationVector animationVector2, AnimationVector animationVector3) {
         return dy5.a(this, animationVector, animationVector2, animationVector3);
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     @NotNull
     public V getValueFromNanos(long j, @NotNull V v, @NotNull V v2, @NotNull V v3) {
         Intrinsics.checkNotNullParameter(v, "initialValue");
         Intrinsics.checkNotNullParameter(v2, "targetValue");
         Intrinsics.checkNotNullParameter(v3, "initialVelocity");
-        return this.animation.getValueFromNanos(repetitionPlayTimeNanos(j), v, v2, repetitionStartVelocity(j, v, v3, v2));
+        return (V) this.animation.getValueFromNanos(repetitionPlayTimeNanos(j), v, v2, repetitionStartVelocity(j, v, v3, v2));
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     @NotNull
     public V getVelocityFromNanos(long j, @NotNull V v, @NotNull V v2, @NotNull V v3) {
         Intrinsics.checkNotNullParameter(v, "initialValue");
         Intrinsics.checkNotNullParameter(v2, "targetValue");
         Intrinsics.checkNotNullParameter(v3, "initialVelocity");
-        return this.animation.getVelocityFromNanos(repetitionPlayTimeNanos(j), v, v2, repetitionStartVelocity(j, v, v3, v2));
+        return (V) this.animation.getVelocityFromNanos(repetitionPlayTimeNanos(j), v, v2, repetitionStartVelocity(j, v, v3, v2));
     }
 
-    @Override // androidx.compose.animation.core.VectorizedFiniteAnimationSpec, androidx.compose.animation.core.VectorizedAnimationSpec
     public /* synthetic */ boolean isInfinite() {
         return fy5.a(this);
     }
 
     public /* synthetic */ VectorizedRepeatableSpec(int i, VectorizedDurationBasedAnimationSpec vectorizedDurationBasedAnimationSpec, RepeatMode repeatMode, long j, int i2, DefaultConstructorMarker defaultConstructorMarker) {
-        this(i, vectorizedDurationBasedAnimationSpec, (i2 & 4) != 0 ? RepeatMode.Restart : repeatMode, (i2 & 8) != 0 ? StartOffset.m1071constructorimpl$default(0, 0, 2, null) : j, (DefaultConstructorMarker) null);
+        this(i, vectorizedDurationBasedAnimationSpec, (i2 & 4) != 0 ? RepeatMode.Restart : repeatMode, (i2 & 8) != 0 ? StartOffset.m88constructorimpl$default(0, 0, 2, null) : j, (DefaultConstructorMarker) null);
     }
 
     public /* synthetic */ VectorizedRepeatableSpec(int i, VectorizedDurationBasedAnimationSpec vectorizedDurationBasedAnimationSpec, RepeatMode repeatMode, int i2, DefaultConstructorMarker defaultConstructorMarker) {
@@ -108,7 +103,7 @@ public final class VectorizedRepeatableSpec<V extends AnimationVector> implement
     /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "This method has been deprecated in favor of the constructor that accepts start offset.")
     public /* synthetic */ VectorizedRepeatableSpec(int i, VectorizedDurationBasedAnimationSpec vectorizedDurationBasedAnimationSpec, RepeatMode repeatMode) {
-        this(i, vectorizedDurationBasedAnimationSpec, repeatMode, StartOffset.m1071constructorimpl$default(0, 0, 2, null), (DefaultConstructorMarker) null);
+        this(i, vectorizedDurationBasedAnimationSpec, repeatMode, StartOffset.m88constructorimpl$default(0, 0, 2, null), (DefaultConstructorMarker) null);
         Intrinsics.checkNotNullParameter(vectorizedDurationBasedAnimationSpec, "animation");
         Intrinsics.checkNotNullParameter(repeatMode, "repeatMode");
     }

@@ -1,11 +1,10 @@
 package androidx.compose.foundation.lazy;
 
 import androidx.compose.animation.core.Animatable;
-import androidx.compose.animation.core.AnimationSpec;
 import androidx.compose.animation.core.AnimationVector2D;
 import androidx.compose.animation.core.FiniteAnimationSpec;
 import androidx.compose.animation.core.SpringSpec;
-import androidx.compose.p004ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntOffset;
 import java.util.concurrent.CancellationException;
 import kotlin.ResultKt;
 import kotlin.Unit;
@@ -20,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.lazy.LazyListItemPlacementAnimator$startAnimationsIfNeeded$1$1", f = "LazyListItemPlacementAnimator.kt", i = {}, l = {297}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class LazyListItemPlacementAnimator$startAnimationsIfNeeded$1$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ FiniteAnimationSpec<IntOffset> $animationSpec;
     final /* synthetic */ PlaceableInfo $placeableInfo;
@@ -45,23 +44,23 @@ final class LazyListItemPlacementAnimator$startAnimationsIfNeeded$1$1 extends Su
 
     @Nullable
     public final Object invokeSuspend(@NotNull Object obj) {
-        AnimationSpec animationSpec;
+        SpringSpec springSpec;
         Object coroutine_suspended = IntrinsicsKt.getCOROUTINE_SUSPENDED();
         int i = this.label;
         try {
             if (i == 0) {
                 ResultKt.throwOnFailure(obj);
                 if (this.$placeableInfo.getAnimatedOffset().isRunning()) {
-                    FiniteAnimationSpec<IntOffset> finiteAnimationSpec = this.$animationSpec;
-                    animationSpec = finiteAnimationSpec instanceof SpringSpec ? (SpringSpec) finiteAnimationSpec : LazyListItemPlacementAnimatorKt.InterruptionSpec;
+                    SpringSpec springSpec2 = this.$animationSpec;
+                    springSpec = springSpec2 instanceof SpringSpec ? springSpec2 : LazyListItemPlacementAnimatorKt.InterruptionSpec;
                 } else {
-                    animationSpec = this.$animationSpec;
+                    springSpec = this.$animationSpec;
                 }
-                AnimationSpec animationSpec2 = animationSpec;
+                SpringSpec springSpec3 = springSpec;
                 Animatable<IntOffset, AnimationVector2D> animatedOffset = this.$placeableInfo.getAnimatedOffset();
-                IntOffset m5325boximpl = IntOffset.m5325boximpl(this.$placeableInfo.m1530getTargetOffsetnOccac());
+                IntOffset intOffset = IntOffset.box-impl(this.$placeableInfo.m271getTargetOffsetnOccac());
                 this.label = 1;
-                if (Animatable.animateTo$default(animatedOffset, m5325boximpl, animationSpec2, null, null, this, 12, null) == coroutine_suspended) {
+                if (Animatable.animateTo$default(animatedOffset, intOffset, springSpec3, null, null, this, 12, null) == coroutine_suspended) {
                     return coroutine_suspended;
                 }
             } else {

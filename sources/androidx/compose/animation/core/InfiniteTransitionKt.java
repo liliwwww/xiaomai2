@@ -1,6 +1,5 @@
 package androidx.compose.animation.core;
 
-import androidx.compose.animation.core.InfiniteTransition;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
@@ -17,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class InfiniteTransitionKt {
     @Composable
     @NotNull
@@ -49,11 +48,11 @@ public final class InfiniteTransitionKt {
         composer.startReplaceableGroup(-492369756);
         Object rememberedValue = composer.rememberedValue();
         if (rememberedValue == Composer.Companion.getEmpty()) {
-            rememberedValue = new InfiniteTransition.TransitionAnimationState(infiniteTransition, t, t2, twoWayConverter, infiniteRepeatableSpec);
+            rememberedValue = new InfiniteTransition$TransitionAnimationState(infiniteTransition, t, t2, twoWayConverter, infiniteRepeatableSpec);
             composer.updateRememberedValue(rememberedValue);
         }
         composer.endReplaceableGroup();
-        final InfiniteTransition.TransitionAnimationState transitionAnimationState = (InfiniteTransition.TransitionAnimationState) rememberedValue;
+        final InfiniteTransition$TransitionAnimationState infiniteTransition$TransitionAnimationState = (InfiniteTransition$TransitionAnimationState) rememberedValue;
         EffectsKt.SideEffect(new Function0<Unit>() { // from class: androidx.compose.animation.core.InfiniteTransitionKt$animateValue$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             {
@@ -61,19 +60,19 @@ public final class InfiniteTransitionKt {
             }
 
             public /* bridge */ /* synthetic */ Object invoke() {
-                m1053invoke();
+                m68invoke();
                 return Unit.INSTANCE;
             }
 
             /* renamed from: invoke, reason: collision with other method in class */
-            public final void m1053invoke() {
-                if (Intrinsics.areEqual(t, transitionAnimationState.getInitialValue()) && Intrinsics.areEqual(t2, transitionAnimationState.getTargetValue())) {
+            public final void m68invoke() {
+                if (Intrinsics.areEqual(t, infiniteTransition$TransitionAnimationState.getInitialValue()) && Intrinsics.areEqual(t2, infiniteTransition$TransitionAnimationState.getTargetValue())) {
                     return;
                 }
-                transitionAnimationState.updateValues(t, t2, infiniteRepeatableSpec);
+                infiniteTransition$TransitionAnimationState.updateValues(t, t2, infiniteRepeatableSpec);
             }
         }, composer, 0);
-        EffectsKt.DisposableEffect(transitionAnimationState, new Function1<DisposableEffectScope, DisposableEffectResult>() { // from class: androidx.compose.animation.core.InfiniteTransitionKt$animateValue$2
+        EffectsKt.DisposableEffect((Object) infiniteTransition$TransitionAnimationState, (Function1<? super DisposableEffectScope, ? extends DisposableEffectResult>) new Function1<DisposableEffectScope, DisposableEffectResult>() { // from class: androidx.compose.animation.core.InfiniteTransitionKt$animateValue$2
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             {
                 super(1);
@@ -82,13 +81,12 @@ public final class InfiniteTransitionKt {
             @NotNull
             public final DisposableEffectResult invoke(@NotNull DisposableEffectScope disposableEffectScope) {
                 Intrinsics.checkNotNullParameter(disposableEffectScope, "$this$DisposableEffect");
-                InfiniteTransition.this.addAnimation$animation_core_release(transitionAnimationState);
-                final InfiniteTransition infiniteTransition2 = InfiniteTransition.this;
-                final InfiniteTransition.TransitionAnimationState<T, V> transitionAnimationState2 = transitionAnimationState;
+                infiniteTransition.addAnimation$animation_core_release(infiniteTransition$TransitionAnimationState);
+                final InfiniteTransition infiniteTransition2 = infiniteTransition;
+                final InfiniteTransition$TransitionAnimationState<T, V> infiniteTransition$TransitionAnimationState2 = infiniteTransition$TransitionAnimationState;
                 return new DisposableEffectResult() { // from class: androidx.compose.animation.core.InfiniteTransitionKt$animateValue$2$invoke$$inlined$onDispose$1
-                    @Override // androidx.compose.runtime.DisposableEffectResult
                     public void dispose() {
-                        InfiniteTransition.this.removeAnimation$animation_core_release(transitionAnimationState2);
+                        infiniteTransition2.removeAnimation$animation_core_release(infiniteTransition$TransitionAnimationState2);
                     }
                 };
             }
@@ -97,7 +95,7 @@ public final class InfiniteTransitionKt {
             ComposerKt.traceEventEnd();
         }
         composer.endReplaceableGroup();
-        return transitionAnimationState;
+        return infiniteTransition$TransitionAnimationState;
     }
 
     @Composable

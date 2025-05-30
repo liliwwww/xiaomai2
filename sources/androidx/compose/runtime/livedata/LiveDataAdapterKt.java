@@ -1,13 +1,14 @@
 package androidx.compose.runtime.livedata;
 
-import androidx.compose.p004ui.platform.AndroidCompositionLocals_androidKt;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.EffectsKt;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.platform.AndroidCompositionLocals_androidKt;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import kotlin.jvm.internal.Intrinsics;
@@ -15,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LiveDataAdapterKt {
     @Composable
     @NotNull
@@ -45,12 +46,12 @@ public final class LiveDataAdapterKt {
         composer.startReplaceableGroup(-492369756);
         Object rememberedValue = composer.rememberedValue();
         if (rememberedValue == Composer.Companion.getEmpty()) {
-            rememberedValue = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(r, null, 2, null);
+            rememberedValue = SnapshotStateKt.mutableStateOf$default(r, (SnapshotMutationPolicy) null, 2, (Object) null);
             composer.updateRememberedValue(rememberedValue);
         }
         composer.endReplaceableGroup();
         MutableState mutableState = (MutableState) rememberedValue;
-        EffectsKt.DisposableEffect(liveData, lifecycleOwner, new LiveDataAdapterKt$observeAsState$1(liveData, lifecycleOwner, mutableState), composer, 72);
+        EffectsKt.DisposableEffect(liveData, lifecycleOwner, new observeAsState.1(liveData, lifecycleOwner, mutableState), composer, 72);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }

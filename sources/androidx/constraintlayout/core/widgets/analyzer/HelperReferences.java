@@ -2,131 +2,126 @@ package androidx.constraintlayout.core.widgets.analyzer;
 
 import androidx.constraintlayout.core.widgets.Barrier;
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
+import androidx.constraintlayout.core.widgets.HelperWidget;
 import androidx.constraintlayout.core.widgets.analyzer.DependencyNode;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class HelperReferences extends WidgetRun {
     public HelperReferences(ConstraintWidget constraintWidget) {
         super(constraintWidget);
     }
 
     private void addDependency(DependencyNode dependencyNode) {
-        this.start.dependencies.add(dependencyNode);
-        dependencyNode.targets.add(this.start);
+        ((WidgetRun) this).start.dependencies.add(dependencyNode);
+        dependencyNode.targets.add(((WidgetRun) this).start);
     }
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.WidgetRun
     void apply() {
-        ConstraintWidget constraintWidget = this.widget;
-        if (constraintWidget instanceof Barrier) {
-            this.start.delegateToWidgetRun = true;
-            Barrier barrier = (Barrier) constraintWidget;
-            int barrierType = barrier.getBarrierType();
-            boolean allowsGoneWidget = barrier.getAllowsGoneWidget();
+        Barrier barrier = ((WidgetRun) this).widget;
+        if (barrier instanceof Barrier) {
+            ((WidgetRun) this).start.delegateToWidgetRun = true;
+            Barrier barrier2 = barrier;
+            int barrierType = barrier2.getBarrierType();
+            boolean allowsGoneWidget = barrier2.getAllowsGoneWidget();
             int i = 0;
             if (barrierType == 0) {
-                this.start.type = DependencyNode.Type.LEFT;
-                while (i < barrier.mWidgetsCount) {
-                    ConstraintWidget constraintWidget2 = barrier.mWidgets[i];
-                    if (allowsGoneWidget || constraintWidget2.getVisibility() != 8) {
-                        DependencyNode dependencyNode = constraintWidget2.horizontalRun.start;
-                        dependencyNode.dependencies.add(this.start);
-                        this.start.targets.add(dependencyNode);
+                ((WidgetRun) this).start.type = DependencyNode.Type.LEFT;
+                while (i < ((HelperWidget) barrier2).mWidgetsCount) {
+                    ConstraintWidget constraintWidget = ((HelperWidget) barrier2).mWidgets[i];
+                    if (allowsGoneWidget || constraintWidget.getVisibility() != 8) {
+                        DependencyNode dependencyNode = ((WidgetRun) constraintWidget.horizontalRun).start;
+                        dependencyNode.dependencies.add(((WidgetRun) this).start);
+                        ((WidgetRun) this).start.targets.add(dependencyNode);
                     }
                     i++;
                 }
-                addDependency(this.widget.horizontalRun.start);
-                addDependency(this.widget.horizontalRun.end);
+                addDependency(((WidgetRun) ((WidgetRun) this).widget.horizontalRun).start);
+                addDependency(((WidgetRun) ((WidgetRun) this).widget.horizontalRun).end);
                 return;
             }
             if (barrierType == 1) {
-                this.start.type = DependencyNode.Type.RIGHT;
-                while (i < barrier.mWidgetsCount) {
-                    ConstraintWidget constraintWidget3 = barrier.mWidgets[i];
-                    if (allowsGoneWidget || constraintWidget3.getVisibility() != 8) {
-                        DependencyNode dependencyNode2 = constraintWidget3.horizontalRun.end;
-                        dependencyNode2.dependencies.add(this.start);
-                        this.start.targets.add(dependencyNode2);
+                ((WidgetRun) this).start.type = DependencyNode.Type.RIGHT;
+                while (i < ((HelperWidget) barrier2).mWidgetsCount) {
+                    ConstraintWidget constraintWidget2 = ((HelperWidget) barrier2).mWidgets[i];
+                    if (allowsGoneWidget || constraintWidget2.getVisibility() != 8) {
+                        DependencyNode dependencyNode2 = ((WidgetRun) constraintWidget2.horizontalRun).end;
+                        dependencyNode2.dependencies.add(((WidgetRun) this).start);
+                        ((WidgetRun) this).start.targets.add(dependencyNode2);
                     }
                     i++;
                 }
-                addDependency(this.widget.horizontalRun.start);
-                addDependency(this.widget.horizontalRun.end);
+                addDependency(((WidgetRun) ((WidgetRun) this).widget.horizontalRun).start);
+                addDependency(((WidgetRun) ((WidgetRun) this).widget.horizontalRun).end);
                 return;
             }
             if (barrierType == 2) {
-                this.start.type = DependencyNode.Type.TOP;
-                while (i < barrier.mWidgetsCount) {
-                    ConstraintWidget constraintWidget4 = barrier.mWidgets[i];
-                    if (allowsGoneWidget || constraintWidget4.getVisibility() != 8) {
-                        DependencyNode dependencyNode3 = constraintWidget4.verticalRun.start;
-                        dependencyNode3.dependencies.add(this.start);
-                        this.start.targets.add(dependencyNode3);
+                ((WidgetRun) this).start.type = DependencyNode.Type.TOP;
+                while (i < ((HelperWidget) barrier2).mWidgetsCount) {
+                    ConstraintWidget constraintWidget3 = ((HelperWidget) barrier2).mWidgets[i];
+                    if (allowsGoneWidget || constraintWidget3.getVisibility() != 8) {
+                        DependencyNode dependencyNode3 = ((WidgetRun) constraintWidget3.verticalRun).start;
+                        dependencyNode3.dependencies.add(((WidgetRun) this).start);
+                        ((WidgetRun) this).start.targets.add(dependencyNode3);
                     }
                     i++;
                 }
-                addDependency(this.widget.verticalRun.start);
-                addDependency(this.widget.verticalRun.end);
+                addDependency(((WidgetRun) ((WidgetRun) this).widget.verticalRun).start);
+                addDependency(((WidgetRun) ((WidgetRun) this).widget.verticalRun).end);
                 return;
             }
             if (barrierType != 3) {
                 return;
             }
-            this.start.type = DependencyNode.Type.BOTTOM;
-            while (i < barrier.mWidgetsCount) {
-                ConstraintWidget constraintWidget5 = barrier.mWidgets[i];
-                if (allowsGoneWidget || constraintWidget5.getVisibility() != 8) {
-                    DependencyNode dependencyNode4 = constraintWidget5.verticalRun.end;
-                    dependencyNode4.dependencies.add(this.start);
-                    this.start.targets.add(dependencyNode4);
+            ((WidgetRun) this).start.type = DependencyNode.Type.BOTTOM;
+            while (i < ((HelperWidget) barrier2).mWidgetsCount) {
+                ConstraintWidget constraintWidget4 = ((HelperWidget) barrier2).mWidgets[i];
+                if (allowsGoneWidget || constraintWidget4.getVisibility() != 8) {
+                    DependencyNode dependencyNode4 = ((WidgetRun) constraintWidget4.verticalRun).end;
+                    dependencyNode4.dependencies.add(((WidgetRun) this).start);
+                    ((WidgetRun) this).start.targets.add(dependencyNode4);
                 }
                 i++;
             }
-            addDependency(this.widget.verticalRun.start);
-            addDependency(this.widget.verticalRun.end);
+            addDependency(((WidgetRun) ((WidgetRun) this).widget.verticalRun).start);
+            addDependency(((WidgetRun) ((WidgetRun) this).widget.verticalRun).end);
         }
     }
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.WidgetRun
     public void applyToWidget() {
-        ConstraintWidget constraintWidget = this.widget;
-        if (constraintWidget instanceof Barrier) {
-            int barrierType = ((Barrier) constraintWidget).getBarrierType();
+        Barrier barrier = ((WidgetRun) this).widget;
+        if (barrier instanceof Barrier) {
+            int barrierType = barrier.getBarrierType();
             if (barrierType == 0 || barrierType == 1) {
-                this.widget.setX(this.start.value);
+                ((WidgetRun) this).widget.setX(((WidgetRun) this).start.value);
             } else {
-                this.widget.setY(this.start.value);
+                ((WidgetRun) this).widget.setY(((WidgetRun) this).start.value);
             }
         }
     }
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.WidgetRun
     void clear() {
-        this.runGroup = null;
-        this.start.clear();
+        ((WidgetRun) this).runGroup = null;
+        ((WidgetRun) this).start.clear();
     }
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.WidgetRun
     void reset() {
-        this.start.resolved = false;
+        ((WidgetRun) this).start.resolved = false;
     }
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.WidgetRun
     boolean supportsWrapComputation() {
         return false;
     }
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.WidgetRun, androidx.constraintlayout.core.widgets.analyzer.Dependency
     public void update(Dependency dependency) {
-        Barrier barrier = (Barrier) this.widget;
+        Barrier barrier = ((WidgetRun) this).widget;
         int barrierType = barrier.getBarrierType();
-        Iterator<DependencyNode> it = this.start.targets.iterator();
+        Iterator it = ((WidgetRun) this).start.targets.iterator();
         int i = 0;
         int i2 = -1;
         while (it.hasNext()) {
-            int i3 = it.next().value;
+            int i3 = ((DependencyNode) it.next()).value;
             if (i2 == -1 || i3 < i2) {
                 i2 = i3;
             }
@@ -135,9 +130,9 @@ class HelperReferences extends WidgetRun {
             }
         }
         if (barrierType == 0 || barrierType == 2) {
-            this.start.resolve(i2 + barrier.getMargin());
+            ((WidgetRun) this).start.resolve(i2 + barrier.getMargin());
         } else {
-            this.start.resolve(i + barrier.getMargin());
+            ((WidgetRun) this).start.resolve(i + barrier.getMargin());
         }
     }
 }

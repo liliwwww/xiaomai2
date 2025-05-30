@@ -4,6 +4,7 @@ import androidx.compose.animation.core.Animatable;
 import androidx.compose.animation.core.AnimationSpecKt;
 import androidx.compose.animation.core.EasingKt;
 import androidx.compose.animation.core.TweenSpec;
+import androidx.compose.material.TextFieldImplKt;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -22,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.ripple.RippleAnimation$fadeOut$2", f = "RippleAnimation.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class RippleAnimation$fadeOut$2 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Job>, Object> {
     private /* synthetic */ Object L$0;
     int label;
@@ -30,20 +31,20 @@ final class RippleAnimation$fadeOut$2 extends SuspendLambda implements Function2
 
     /* compiled from: Taobao */
     @DebugMetadata(c = "androidx.compose.material.ripple.RippleAnimation$fadeOut$2$1", f = "RippleAnimation.kt", i = {}, l = {112}, m = "invokeSuspend", n = {}, s = {})
-    /* renamed from: androidx.compose.material.ripple.RippleAnimation$fadeOut$2$1 */
-    static final class C07381 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
+    /* renamed from: androidx.compose.material.ripple.RippleAnimation$fadeOut$2$1, reason: invalid class name */
+    static final class AnonymousClass1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
         int label;
         final /* synthetic */ RippleAnimation this$0;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        C07381(RippleAnimation rippleAnimation, Continuation<? super C07381> continuation) {
+        AnonymousClass1(RippleAnimation rippleAnimation, Continuation<? super AnonymousClass1> continuation) {
             super(2, continuation);
             this.this$0 = rippleAnimation;
         }
 
         @NotNull
         public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
-            return new C07381(this.this$0, continuation);
+            return new AnonymousClass1(this.this$0, continuation);
         }
 
         @Nullable
@@ -60,7 +61,7 @@ final class RippleAnimation$fadeOut$2 extends SuspendLambda implements Function2
                 ResultKt.throwOnFailure(obj);
                 animatable = this.this$0.animatedAlpha;
                 Float boxFloat = Boxing.boxFloat(0.0f);
-                TweenSpec tween$default = AnimationSpecKt.tween$default(150, 0, EasingKt.getLinearEasing(), 2, null);
+                TweenSpec tween$default = AnimationSpecKt.tween$default(TextFieldImplKt.AnimationDuration, 0, EasingKt.getLinearEasing(), 2, (Object) null);
                 this.label = 1;
                 if (Animatable.animateTo$default(animatable, boxFloat, tween$default, null, null, this, 12, null) == coroutine_suspended) {
                     return coroutine_suspended;
@@ -100,6 +101,6 @@ final class RippleAnimation$fadeOut$2 extends SuspendLambda implements Function2
             throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
         }
         ResultKt.throwOnFailure(obj);
-        return d.d((CoroutineScope) this.L$0, (CoroutineContext) null, (CoroutineStart) null, new C07381(this.this$0, null), 3, (Object) null);
+        return d.d((CoroutineScope) this.L$0, (CoroutineContext) null, (CoroutineStart) null, new AnonymousClass1(this.this$0, null), 3, (Object) null);
     }
 }

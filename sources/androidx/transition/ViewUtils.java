@@ -7,10 +7,9 @@ import android.util.Property;
 import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ViewUtils {
     static final Property<View, Rect> CLIP_BOUNDS;
     private static final ViewUtilsBase IMPL;
@@ -32,28 +31,8 @@ class ViewUtils {
         } else {
             IMPL = new ViewUtilsBase();
         }
-        TRANSITION_ALPHA = new Property<View, Float>(Float.class, "translationAlpha") { // from class: androidx.transition.ViewUtils.1
-            @Override // android.util.Property
-            public Float get(View view) {
-                return Float.valueOf(ViewUtils.getTransitionAlpha(view));
-            }
-
-            @Override // android.util.Property
-            public void set(View view, Float f) {
-                ViewUtils.setTransitionAlpha(view, f.floatValue());
-            }
-        };
-        CLIP_BOUNDS = new Property<View, Rect>(Rect.class, "clipBounds") { // from class: androidx.transition.ViewUtils.2
-            @Override // android.util.Property
-            public Rect get(View view) {
-                return ViewCompat.getClipBounds(view);
-            }
-
-            @Override // android.util.Property
-            public void set(View view, Rect rect) {
-                ViewCompat.setClipBounds(view, rect);
-            }
-        };
+        TRANSITION_ALPHA = new 1(Float.class, "translationAlpha");
+        CLIP_BOUNDS = new 2(Rect.class, "clipBounds");
     }
 
     private ViewUtils() {

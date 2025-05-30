@@ -8,7 +8,6 @@ import android.taobao.windvane.jsbridge.WVResult;
 import android.taobao.windvane.util.TaoLog;
 import android.taobao.windvane.webview.IWVWebView;
 import android.text.TextUtils;
-import androidx.core.app.NotificationCompat;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.taobao.weaver.prefetch.GetPrefetchCallback;
@@ -16,7 +15,7 @@ import com.taobao.weaver.prefetch.PrefetchDataResponse;
 import com.taobao.weaver.prefetch.WMLPrefetch;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVPrefetch extends WVApiPlugin {
     private String getMatchingUrl(String str) {
         Uri parse = Uri.parse(str);
@@ -42,7 +41,7 @@ public class WVPrefetch extends WVApiPlugin {
             IWVWebView webview = wVCallBackContext.getWebview();
             if (webview == null) {
                 WVResult wVResult = new WVResult();
-                wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "NO_WEBVIEW");
+                wVResult.addData("msg", "NO_WEBVIEW");
                 wVCallBackContext.error(wVResult);
                 return;
             }
@@ -55,7 +54,7 @@ public class WVPrefetch extends WVApiPlugin {
             if (!TextUtils.isEmpty(string)) {
                 matchingUrl = matchingUrl + "#" + string;
             }
-            TaoLog.m18d("WVPrefetch", "getData: " + matchingUrl);
+            TaoLog.d("WVPrefetch", "getData: " + matchingUrl);
             WMLPrefetch.getInstance().getData(matchingUrl, new GetPrefetchCallback() { // from class: android.taobao.windvane.jsbridge.api.WVPrefetch.1
                 public void onComplete(PrefetchDataResponse prefetchDataResponse) {
                     try {
@@ -74,7 +73,7 @@ public class WVPrefetch extends WVApiPlugin {
 
                 public void onError(PrefetchDataResponse prefetchDataResponse) {
                     WVResult wVResult2 = new WVResult();
-                    wVResult2.addData(NotificationCompat.CATEGORY_MESSAGE, prefetchDataResponse.performanceData.getStatus().getMsg());
+                    wVResult2.addData("msg", prefetchDataResponse.performanceData.getStatus().getMsg());
                     wVResult2.addData("code", prefetchDataResponse.performanceData.getStatus().getCode());
                     wVCallBackContext.error(wVResult2);
                 }
@@ -82,7 +81,7 @@ public class WVPrefetch extends WVApiPlugin {
         } catch (Throwable th) {
             th.printStackTrace();
             WVResult wVResult2 = new WVResult();
-            wVResult2.addData(NotificationCompat.CATEGORY_MESSAGE, "exception");
+            wVResult2.addData("msg", "exception");
             wVResult2.addData("code", "-1");
             wVCallBackContext.error(wVResult2);
         }
@@ -97,12 +96,12 @@ public class WVPrefetch extends WVApiPlugin {
                 return;
             }
             parseObject.put("userAgent", this.mWebView.getUserAgentString());
-            TaoLog.m18d("WVPrefetch", "requestData: " + string + " with params: " + parseObject.toJSONString());
+            TaoLog.d("WVPrefetch", "requestData: " + string + " with params: " + parseObject.toJSONString());
             WMLPrefetch.getInstance().prefetchData(string, parseObject);
         } catch (Throwable th) {
             th.printStackTrace();
             WVResult wVResult = new WVResult();
-            wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "exception");
+            wVResult.addData("msg", "exception");
             wVResult.addData("code", "-1");
             wVCallBackContext.error(wVResult);
         }

@@ -3,11 +3,10 @@ package androidx.compose.runtime.external.kotlinx.collections.immutable.implemen
 import androidx.compose.runtime.external.kotlinx.collections.immutable.internal.CommonFunctionsKt;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TrieNodeValuesIterator<K, V> extends TrieNodeBaseIterator<K, V, V> {
-    @Override // java.util.Iterator
     public V next() {
-        CommonFunctionsKt.m2432assert(hasNextKey());
+        CommonFunctionsKt.m922assert(hasNextKey());
         setIndex(getIndex() + 2);
         return (V) getBuffer()[getIndex() - 1];
     }

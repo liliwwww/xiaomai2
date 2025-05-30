@@ -6,14 +6,13 @@ import android.taobao.windvane.webview.IWVWebView;
 import android.text.TextUtils;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVPageFinishJSRender {
     private static String jsContent;
     private static boolean renderJs;
 
     /* compiled from: Taobao */
     public static class WVDevelopToolWebViewClientFilter extends WVWebViewClientFilter {
-        @Override // android.taobao.windvane.service.WVWebViewClientFilter
         public void onPageFinished(IWVWebView iWVWebView, String str) {
             if (WVPageFinishJSRender.renderJs && !TextUtils.isEmpty(WVPageFinishJSRender.jsContent) && (iWVWebView instanceof IWVWebView)) {
                 iWVWebView.evaluateJavascript(WVPageFinishJSRender.jsContent);

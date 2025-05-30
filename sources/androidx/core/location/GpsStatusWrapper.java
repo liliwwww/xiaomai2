@@ -5,12 +5,13 @@ import android.location.GpsStatus;
 import android.os.Build;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.core.util.Preconditions;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class GpsStatusWrapper extends GnssStatusCompat {
     private static final int BEIDOU_PRN_COUNT = 35;
     private static final int BEIDOU_PRN_OFFSET = 200;
@@ -101,27 +102,22 @@ class GpsStatusWrapper extends GnssStatusCompat {
         return false;
     }
 
-    @Override // androidx.core.location.GnssStatusCompat
     public float getAzimuthDegrees(int i) {
         return getSatellite(i).getAzimuth();
     }
 
-    @Override // androidx.core.location.GnssStatusCompat
     public float getBasebandCn0DbHz(int i) {
         throw new UnsupportedOperationException();
     }
 
-    @Override // androidx.core.location.GnssStatusCompat
     public float getCarrierFrequencyHz(int i) {
         throw new UnsupportedOperationException();
     }
 
-    @Override // androidx.core.location.GnssStatusCompat
     public float getCn0DbHz(int i) {
         return getSatellite(i).getSnr();
     }
 
-    @Override // androidx.core.location.GnssStatusCompat
     public int getConstellationType(int i) {
         if (Build.VERSION.SDK_INT < 24) {
             return 1;
@@ -129,12 +125,10 @@ class GpsStatusWrapper extends GnssStatusCompat {
         return getConstellationFromPrn(getSatellite(i).getPrn());
     }
 
-    @Override // androidx.core.location.GnssStatusCompat
     public float getElevationDegrees(int i) {
         return getSatellite(i).getElevation();
     }
 
-    @Override // androidx.core.location.GnssStatusCompat
     public int getSatelliteCount() {
         int i;
         synchronized (this.mWrapped) {
@@ -149,27 +143,22 @@ class GpsStatusWrapper extends GnssStatusCompat {
         return i;
     }
 
-    @Override // androidx.core.location.GnssStatusCompat
     public int getSvid(int i) {
         return Build.VERSION.SDK_INT < 24 ? getSatellite(i).getPrn() : getSvidFromPrn(getSatellite(i).getPrn());
     }
 
-    @Override // androidx.core.location.GnssStatusCompat
     public boolean hasAlmanacData(int i) {
         return getSatellite(i).hasAlmanac();
     }
 
-    @Override // androidx.core.location.GnssStatusCompat
     public boolean hasBasebandCn0DbHz(int i) {
         return false;
     }
 
-    @Override // androidx.core.location.GnssStatusCompat
     public boolean hasCarrierFrequencyHz(int i) {
         return false;
     }
 
-    @Override // androidx.core.location.GnssStatusCompat
     public boolean hasEphemerisData(int i) {
         return getSatellite(i).hasEphemeris();
     }
@@ -178,7 +167,6 @@ class GpsStatusWrapper extends GnssStatusCompat {
         return this.mWrapped.hashCode();
     }
 
-    @Override // androidx.core.location.GnssStatusCompat
     public boolean usedInFix(int i) {
         return getSatellite(i).usedInFix();
     }

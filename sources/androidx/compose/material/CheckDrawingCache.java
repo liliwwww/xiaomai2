@@ -1,17 +1,17 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.graphics.AndroidPathMeasure_androidKt;
-import androidx.compose.p004ui.graphics.AndroidPath_androidKt;
-import androidx.compose.p004ui.graphics.Path;
-import androidx.compose.p004ui.graphics.PathMeasure;
 import androidx.compose.runtime.Immutable;
+import androidx.compose.ui.graphics.AndroidPathMeasure_androidKt;
+import androidx.compose.ui.graphics.AndroidPath_androidKt;
+import androidx.compose.ui.graphics.Path;
+import androidx.compose.ui.graphics.PathMeasure;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class CheckDrawingCache {
 
     @NotNull

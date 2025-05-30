@@ -3,7 +3,7 @@ package androidx.emoji2.text.flatbuffer;
 import java.nio.ByteBuffer;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class FloatVector extends BaseVector {
     public FloatVector __assign(int i, ByteBuffer byteBuffer) {
         __reset(i, 4, byteBuffer);
@@ -11,6 +11,6 @@ public final class FloatVector extends BaseVector {
     }
 
     public float get(int i) {
-        return this.f359bb.getFloat(__element(i));
+        return this.bb.getFloat(__element(i));
     }
 }

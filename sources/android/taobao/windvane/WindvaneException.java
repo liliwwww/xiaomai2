@@ -1,7 +1,7 @@
 package android.taobao.windvane;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WindvaneException extends Exception {
     private static final long serialVersionUID = -4046535764429263458L;
     private int errorCode;

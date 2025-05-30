@@ -1,7 +1,7 @@
 package androidx.compose.foundation.lazy.layout;
 
 import androidx.compose.foundation.ExperimentalFoundationApi;
-import androidx.compose.p004ui.layout.SubcomposeSlotReusePolicy;
+import androidx.compose.ui.layout.SubcomposeSlotReusePolicy;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class LazyLayoutItemReusePolicy implements SubcomposeSlotReusePolicy {
 
     @NotNull
@@ -26,16 +26,14 @@ final class LazyLayoutItemReusePolicy implements SubcomposeSlotReusePolicy {
         this.countPerType = new LinkedHashMap();
     }
 
-    @Override // androidx.compose.p004ui.layout.SubcomposeSlotReusePolicy
     public boolean areCompatible(@Nullable Object obj, @Nullable Object obj2) {
         return Intrinsics.areEqual(this.factory.getContentType(obj), this.factory.getContentType(obj2));
     }
 
-    @Override // androidx.compose.p004ui.layout.SubcomposeSlotReusePolicy
     public void getSlotsToRetain(@NotNull SubcomposeSlotReusePolicy.SlotIdsSet slotIdsSet) {
         Intrinsics.checkNotNullParameter(slotIdsSet, "slotIds");
         this.countPerType.clear();
-        Iterator<Object> it = slotIdsSet.iterator();
+        Iterator it = slotIdsSet.iterator();
         while (it.hasNext()) {
             Object contentType = this.factory.getContentType(it.next());
             Integer num = this.countPerType.get(contentType);

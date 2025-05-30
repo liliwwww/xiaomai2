@@ -11,7 +11,7 @@ import tb.fy5;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class VectorizedTweenSpec<V extends AnimationVector> implements VectorizedDurationBasedAnimationSpec<V> {
     public static final int $stable = 8;
 
@@ -32,20 +32,17 @@ public final class VectorizedTweenSpec<V extends AnimationVector> implements Vec
         this.durationMillis = i;
         this.delayMillis = i2;
         this.easing = easing;
-        this.anim = new VectorizedFloatAnimationSpec<>(new FloatTweenSpec(getDurationMillis(), getDelayMillis(), easing));
+        this.anim = new VectorizedFloatAnimationSpec<>((FloatAnimationSpec) new FloatTweenSpec(getDurationMillis(), getDelayMillis(), easing));
     }
 
-    @Override // androidx.compose.animation.core.VectorizedDurationBasedAnimationSpec
     public int getDelayMillis() {
         return this.delayMillis;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedDurationBasedAnimationSpec
     public int getDurationMillis() {
         return this.durationMillis;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedDurationBasedAnimationSpec, androidx.compose.animation.core.VectorizedAnimationSpec
     public /* synthetic */ long getDurationNanos(AnimationVector animationVector, AnimationVector animationVector2, AnimationVector animationVector3) {
         return ey5.a(this, animationVector, animationVector2, animationVector3);
     }
@@ -55,12 +52,10 @@ public final class VectorizedTweenSpec<V extends AnimationVector> implements Vec
         return this.easing;
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     public /* synthetic */ AnimationVector getEndVelocity(AnimationVector animationVector, AnimationVector animationVector2, AnimationVector animationVector3) {
         return dy5.a(this, animationVector, animationVector2, animationVector3);
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     @NotNull
     public V getValueFromNanos(long j, @NotNull V v, @NotNull V v2, @NotNull V v3) {
         Intrinsics.checkNotNullParameter(v, "initialValue");
@@ -69,7 +64,6 @@ public final class VectorizedTweenSpec<V extends AnimationVector> implements Vec
         return this.anim.getValueFromNanos(j, v, v2, v3);
     }
 
-    @Override // androidx.compose.animation.core.VectorizedAnimationSpec
     @NotNull
     public V getVelocityFromNanos(long j, @NotNull V v, @NotNull V v2, @NotNull V v3) {
         Intrinsics.checkNotNullParameter(v, "initialValue");
@@ -78,7 +72,6 @@ public final class VectorizedTweenSpec<V extends AnimationVector> implements Vec
         return this.anim.getVelocityFromNanos(j, v, v2, v3);
     }
 
-    @Override // androidx.compose.animation.core.VectorizedFiniteAnimationSpec, androidx.compose.animation.core.VectorizedAnimationSpec
     public /* synthetic */ boolean isInfinite() {
         return fy5.a(this);
     }

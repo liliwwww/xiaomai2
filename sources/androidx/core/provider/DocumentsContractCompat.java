@@ -13,46 +13,9 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class DocumentsContractCompat {
     private static final String PATH_TREE = "tree";
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class DocumentCompat {
-        public static final int FLAG_VIRTUAL_DOCUMENT = 512;
-
-        private DocumentCompat() {
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(19)
-    /* loaded from: classes2.dex */
-    private static class DocumentsContractApi19Impl {
-        private DocumentsContractApi19Impl() {
-        }
-
-        @DoNotInline
-        public static Uri buildDocumentUri(String str, String str2) {
-            return DocumentsContract.buildDocumentUri(str, str2);
-        }
-
-        @DoNotInline
-        static boolean deleteDocument(ContentResolver contentResolver, Uri uri) throws FileNotFoundException {
-            return DocumentsContract.deleteDocument(contentResolver, uri);
-        }
-
-        @DoNotInline
-        static String getDocumentId(Uri uri) {
-            return DocumentsContract.getDocumentId(uri);
-        }
-
-        @DoNotInline
-        static boolean isDocumentUri(Context context, @Nullable Uri uri) {
-            return DocumentsContract.isDocumentUri(context, uri);
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(21)

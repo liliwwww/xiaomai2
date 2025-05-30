@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 
 /* compiled from: Taobao */
 @SuppressLint({"UnknownNullness"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface Predicate<T> {
     @SuppressLint({"MissingNullability"})
     Predicate<T> and(@SuppressLint({"MissingNullability"}) Predicate<? super T> predicate);
@@ -13,8 +13,7 @@ public interface Predicate<T> {
     Predicate<T> negate();
 
     @SuppressLint({"MissingNullability"})
-    /* renamed from: or */
-    Predicate<T> m239or(@SuppressLint({"MissingNullability"}) Predicate<? super T> predicate);
+    Predicate<T> or(@SuppressLint({"MissingNullability"}) Predicate<? super T> predicate);
 
     boolean test(T t);
 }

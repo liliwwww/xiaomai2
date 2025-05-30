@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface IntervalList<T> {
 
     /* compiled from: Taobao */

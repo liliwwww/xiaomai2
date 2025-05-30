@@ -1,11 +1,11 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.graphics.Color;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.graphics.Color;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class TextFieldTransitionScope {
 
     @NotNull
@@ -28,25 +28,29 @@ final class TextFieldTransitionScope {
     }
 
     /* renamed from: Transition_DTcfvLk$lambda-1, reason: not valid java name */
-    private static final float m2326Transition_DTcfvLk$lambda1(State<Float> state) {
+    private static final float m872Transition_DTcfvLk$lambda1(State<Float> state) {
         return state.getValue().floatValue();
     }
 
     /* renamed from: Transition_DTcfvLk$lambda-3, reason: not valid java name */
-    private static final float m2327Transition_DTcfvLk$lambda3(State<Float> state) {
+    private static final float m873Transition_DTcfvLk$lambda3(State<Float> state) {
         return state.getValue().floatValue();
     }
 
     /* renamed from: Transition_DTcfvLk$lambda-5, reason: not valid java name */
-    private static final long m2328Transition_DTcfvLk$lambda5(State<Color> state) {
-        return state.getValue().m2797unboximpl();
+    private static final long m874Transition_DTcfvLk$lambda5(State<Color> state) {
+        return state.getValue().unbox-impl();
     }
 
     /* renamed from: Transition_DTcfvLk$lambda-6, reason: not valid java name */
-    private static final long m2329Transition_DTcfvLk$lambda6(State<Color> state) {
-        return state.getValue().m2797unboximpl();
+    private static final long m875Transition_DTcfvLk$lambda6(State<Color> state) {
+        return state.getValue().unbox-impl();
     }
 
+    /* JADX WARN: Code restructure failed: missing block: B:146:0x035c, code lost:
+    
+        if (r12 == androidx.compose.runtime.Composer.Companion.getEmpty()) goto L164;
+     */
     /* JADX WARN: Code restructure failed: missing block: B:155:0x01fa, code lost:
     
         if (r32 != false) goto L122;
@@ -87,13 +91,13 @@ final class TextFieldTransitionScope {
     /* renamed from: Transition-DTcfvLk, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public final void m2330TransitionDTcfvLk(@org.jetbrains.annotations.NotNull final androidx.compose.material.InputPhase r26, final long r27, final long r29, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.material.InputPhase, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, androidx.compose.p004ui.graphics.Color> r31, final boolean r32, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function6<? super java.lang.Float, ? super androidx.compose.p004ui.graphics.Color, ? super androidx.compose.p004ui.graphics.Color, ? super java.lang.Float, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r33, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r34, final int r35) {
+    public final void m876TransitionDTcfvLk(@org.jetbrains.annotations.NotNull final androidx.compose.material.InputPhase r26, final long r27, final long r29, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.material.InputPhase, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, androidx.compose.ui.graphics.Color> r31, final boolean r32, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function6<? super java.lang.Float, ? super androidx.compose.ui.graphics.Color, ? super androidx.compose.ui.graphics.Color, ? super java.lang.Float, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r33, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r34, final int r35) {
         /*
             Method dump skipped, instructions count: 1068
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.TextFieldTransitionScope.m2330TransitionDTcfvLk(androidx.compose.material.InputPhase, long, long, kotlin.jvm.functions.Function3, boolean, kotlin.jvm.functions.Function6, androidx.compose.runtime.Composer, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.TextFieldTransitionScope.m876TransitionDTcfvLk(androidx.compose.material.InputPhase, long, long, kotlin.jvm.functions.Function3, boolean, kotlin.jvm.functions.Function6, androidx.compose.runtime.Composer, int):void");
     }
 }

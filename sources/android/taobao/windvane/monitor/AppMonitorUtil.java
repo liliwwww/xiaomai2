@@ -2,15 +2,12 @@ package android.taobao.windvane.monitor;
 
 import android.net.Uri;
 import android.taobao.windvane.config.WVCommonConfig;
-import android.taobao.windvane.connect.HttpConnector;
-import android.taobao.windvane.connect.api.ApiConstants;
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
+import android.taobao.windvane.extra.uc.preRender.BasePreInitManager;
 import android.taobao.windvane.packageapp.zipapp.data.ZipAppInfo;
 import android.taobao.windvane.util.TaoLog;
-import android.taobao.windvane.util.WVConstants;
 import android.taobao.windvane.util.WVUrlUtil;
 import android.text.TextUtils;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
+import androidx.constraintlayout.core.motion.utils.TypedValues$TransitionType;
 import androidx.core.app.NotificationCompat;
 import com.alibaba.mtl.appmonitor.AppMonitor;
 import com.alibaba.mtl.appmonitor.model.DimensionSet;
@@ -20,7 +17,7 @@ import com.alibaba.mtl.appmonitor.model.MeasureSet;
 import com.alibaba.mtl.appmonitor.model.MeasureValueSet;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class AppMonitorUtil {
     public static final String JS_ERROR_POINT = "JavaScriptError";
     public static final String MONITOR_MATCH_URL_FAILED = "urlMatchFailed";
@@ -87,14 +84,14 @@ public class AppMonitorUtil {
         try {
             DimensionValueSet create = DimensionValueSet.create();
             create.setValue("name", str);
-            create.setValue(TypedValues.TransitionType.S_FROM, Integer.toString(i));
+            create.setValue(TypedValues$TransitionType.S_FROM, Integer.toString(i));
             create.setValue("isSuccess", Integer.toString(i2));
             MeasureValueSet create2 = MeasureValueSet.create();
             create2.setValue("updateTime", j);
             create2.setValue("updateCount", i3);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_UPDATE_CONFIG_INFO, create, create2);
         } catch (Exception unused) {
-            TaoLog.m24i(TAG, "AppMonitor exception");
+            TaoLog.i(TAG, "AppMonitor exception");
         }
     }
 
@@ -116,7 +113,7 @@ public class AppMonitorUtil {
             create2.setValue("initTime", j);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_CORE_INIT_TIME, create, create2);
         } catch (Throwable unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitCoreInitTime exception");
+            TaoLog.i(TAG, "AppMonitor commitCoreInitTime exception");
         }
     }
 
@@ -130,7 +127,7 @@ public class AppMonitorUtil {
             create.setValue("coreType", str2);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_CORE_TYPE_BY_PV, create, MeasureValueSet.create());
         } catch (Throwable unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitCoreTypeByPV exception");
+            TaoLog.i(TAG, "AppMonitor commitCoreTypeByPV exception");
         }
     }
 
@@ -138,7 +135,7 @@ public class AppMonitorUtil {
         if (WVCommonConfig.commonConfig.monitorStatus == 0 || !isAppMonitorEnabled) {
             return;
         }
-        TaoLog.m30w(TAG, "Webview commitEmptyPage : " + str);
+        TaoLog.w(TAG, "Webview commitEmptyPage : " + str);
         AppMonitor.Alarm.commitFail("WindVane", MONITOR_POINT_PAGE_EMPTY, str, "101", str2);
     }
 
@@ -148,12 +145,12 @@ public class AppMonitorUtil {
         }
         try {
             DimensionValueSet create = DimensionValueSet.create();
-            create.setValue(WVConstants.INTENT_EXTRA_URL, str);
+            create.setValue("URL", str);
             MeasureValueSet create2 = MeasureValueSet.create();
             create2.setValue("time", j);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_FSP_TIME, create, create2);
         } catch (Throwable unused) {
-            TaoLog.m24i(TAG, "AppMonitor paramParseError exception");
+            TaoLog.i(TAG, "AppMonitor paramParseError exception");
         }
     }
 
@@ -178,12 +175,12 @@ public class AppMonitorUtil {
         try {
             DimensionValueSet create = DimensionValueSet.create();
             create.setValue("name", str);
-            create.setValue(ApiConstants.RET, str2);
+            create.setValue("ret", str2);
             create.setValue("message", str3);
-            create.setValue(HttpConnector.URL, str4);
+            create.setValue("url", str4);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_JS_BRIDGE_RETURN, create, MeasureValueSet.create());
         } catch (Throwable unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitJsBridgeReturn exception");
+            TaoLog.i(TAG, "AppMonitor commitJsBridgeReturn exception");
         }
     }
 
@@ -208,8 +205,8 @@ public class AppMonitorUtil {
         try {
             DimensionValueSet create = DimensionValueSet.create();
             create.setValue("appName", zipAppInfo.name);
-            create.setValue("version", zipAppInfo.f26v);
-            create.setValue("seq", String.valueOf(zipAppInfo.f24s));
+            create.setValue("version", zipAppInfo.v);
+            create.setValue("seq", String.valueOf(zipAppInfo.s));
             create.setValue("online", str);
             create.setValue("networkSupport", str2);
             MeasureValueSet create2 = MeasureValueSet.create();
@@ -218,9 +215,9 @@ public class AppMonitorUtil {
             create2.setValue("publishTime", j3);
             create2.setValue("notificationTime", j4);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_PACKAGEAPP, create, create2);
-            TaoLog.m24i(TAG, "app publishTime : " + j3 + " online : " + str);
+            TaoLog.i(TAG, "app publishTime : " + j3 + " online : " + str);
         } catch (Exception unused) {
-            TaoLog.m24i(TAG, "AppMonitor exception");
+            TaoLog.i(TAG, "AppMonitor exception");
         }
     }
 
@@ -263,7 +260,7 @@ public class AppMonitorUtil {
             create2.setValue("noCacheRatio", f2);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_PACKAGE_CLEANUP, create, create2);
         } catch (Exception unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitPackageClearUpInfo exception");
+            TaoLog.i(TAG, "AppMonitor commitPackageClearUpInfo exception");
         }
     }
 
@@ -281,7 +278,7 @@ public class AppMonitorUtil {
             create2.setValue("successCount", j2);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_PACKAGEQUEUE, create, create2);
         } catch (Exception unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitPackageQueueInfo exception");
+            TaoLog.i(TAG, "AppMonitor commitPackageQueueInfo exception");
         }
     }
 
@@ -296,7 +293,7 @@ public class AppMonitorUtil {
             create2.setValue("t_endTime", j2);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_PACKAGEAPP_UPDATE_START, create, create2);
         } catch (Exception unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitPackageUpdateStartInfo exception");
+            TaoLog.i(TAG, "AppMonitor commitPackageUpdateStartInfo exception");
         }
     }
 
@@ -315,7 +312,7 @@ public class AppMonitorUtil {
             create2.setValue("verifyTime", j4);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_PACKAGEAPP_VISIT, create, create2);
         } catch (Exception unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitPackageVisitInfo exception");
+            TaoLog.i(TAG, "AppMonitor commitPackageVisitInfo exception");
         }
     }
 
@@ -330,7 +327,7 @@ public class AppMonitorUtil {
             create2.setValue("time", j);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_PACKAGEAPP_VISIT_START, create, create2);
         } catch (Exception unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitPackageVisitStartInfo exception");
+            TaoLog.i(TAG, "AppMonitor commitPackageVisitStartInfo exception");
         }
     }
 
@@ -339,9 +336,9 @@ public class AppMonitorUtil {
             return;
         }
         try {
-            AppMonitor.Alarm.commitSuccess("WindVane", MONITOR_POINT_PACKAGEAPP_VISIT, str + ApiConstants.SPLIT_LINE + j);
+            AppMonitor.Alarm.commitSuccess("WindVane", MONITOR_POINT_PACKAGEAPP_VISIT, str + "-" + j);
         } catch (Exception unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitPackageVisitSuccess exception");
+            TaoLog.i(TAG, "AppMonitor commitPackageVisitSuccess exception");
         }
     }
 
@@ -357,7 +354,7 @@ public class AppMonitorUtil {
             create.setValue("invokeMethod", str4);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_PARAM_PARSE_ERROR, create, MeasureValueSet.create());
         } catch (Throwable unused) {
-            TaoLog.m24i(TAG, "AppMonitor paramParseError exception");
+            TaoLog.i(TAG, "AppMonitor paramParseError exception");
         }
     }
 
@@ -365,12 +362,12 @@ public class AppMonitorUtil {
     /* JADX WARN: Removed duplicated region for block: B:34:0x01c5  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public static void commitPerformanceInfo(android.taobao.windvane.monitor.WVMonitorData r20) {
         /*
             Method dump skipped, instructions count: 553
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.monitor.AppMonitorUtil.commitPerformanceInfo(android.taobao.windvane.monitor.WVMonitorData):void");
     }
@@ -381,7 +378,7 @@ public class AppMonitorUtil {
         }
         try {
             DimensionValueSet create = DimensionValueSet.create();
-            create.setValue(HttpConnector.URL, str);
+            create.setValue("url", str);
             create.setValue("r_type", str2);
             create.setValue("process_mode", str3);
             create.setValue("background", str4);
@@ -428,14 +425,14 @@ public class AppMonitorUtil {
         try {
             DimensionValueSet create = DimensionValueSet.create();
             if (!TextUtils.isEmpty(str)) {
-                create.setValue(HttpConnector.URL, WVUrlUtil.removeQueryParam(str));
+                create.setValue("url", WVUrlUtil.removeQueryParam(str));
             }
             MeasureValueSet create2 = MeasureValueSet.create();
             create2.setValue("time", j);
-            TaoLog.m24i(TAG, "Webview start after : " + j + "ms, url : " + WVUrlUtil.removeQueryParam(str));
+            TaoLog.i(TAG, "Webview start after : " + j + "ms, url : " + WVUrlUtil.removeQueryParam(str));
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_WEBVIEW_START, create, create2);
         } catch (Exception unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitStartTimeInfo exception");
+            TaoLog.i(TAG, "AppMonitor commitStartTimeInfo exception");
         }
     }
 
@@ -445,14 +442,14 @@ public class AppMonitorUtil {
         }
         try {
             DimensionValueSet create = DimensionValueSet.create();
-            create.setValue(HttpConnector.URL, str);
+            create.setValue("url", str);
             create.setValue("isHTML", str4);
             create.setValue("statusCode", str3);
             create.setValue("referrer", str2);
             create.setValue("bizCode", str5);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_STATUS_CODE, create, MeasureValueSet.create());
         } catch (Exception unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitStatusCode exception");
+            TaoLog.i(TAG, "AppMonitor commitStatusCode exception");
         }
     }
 
@@ -477,7 +474,7 @@ public class AppMonitorUtil {
         try {
             DimensionValueSet create = DimensionValueSet.create();
             Uri parse = Uri.parse(str);
-            create.setValue(HttpConnector.URL, parse.getHost() + parse.getPath());
+            create.setValue("url", parse.getHost() + parse.getPath());
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_USE_WEBGL, create, MeasureValueSet.create());
         } catch (Throwable unused) {
         }
@@ -493,7 +490,7 @@ public class AppMonitorUtil {
             create.setValue("wvInitTime", j);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_WV_INIT_TIME, DimensionValueSet.create(), create);
         } catch (Throwable unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitWVInitTime exception");
+            TaoLog.i(TAG, "AppMonitor commitWVInitTime exception");
         }
     }
 
@@ -506,7 +503,7 @@ public class AppMonitorUtil {
             create.setValue("type", str);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_WEBVIEW_WRAP_TYPE, create, MeasureValueSet.create());
         } catch (Throwable unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitWVWrapType exception");
+            TaoLog.i(TAG, "AppMonitor commitWVWrapType exception");
         }
     }
 
@@ -516,7 +513,7 @@ public class AppMonitorUtil {
         }
         try {
             DimensionValueSet create = DimensionValueSet.create();
-            create.setValue(HttpConnector.URL, str);
+            create.setValue("url", str);
             create.setValue("version", str2);
             create.setValue("bizcode", str3);
             create.setValue("result", str4);
@@ -524,7 +521,7 @@ public class AppMonitorUtil {
             create2.setValue("score", j);
             AppMonitor.Stat.commit("WindVane", MONITOR_POINT_WEB_PERFORMANCE_CHECK, create, create2);
         } catch (Exception unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitPackageUpdateStartInfo exception");
+            TaoLog.i(TAG, "AppMonitor commitPackageUpdateStartInfo exception");
         }
     }
 
@@ -537,7 +534,7 @@ public class AppMonitorUtil {
             create.setValue("installedApps", str);
             AppMonitor.Stat.commit(MONITOR_MODULE_ZCache, MONITOR_POINT_DIURNAL_OVERVIEW, create, MeasureValueSet.create());
         } catch (Throwable unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitZCacheDiurnalOverview exception");
+            TaoLog.i(TAG, "AppMonitor commitZCacheDiurnalOverview exception");
         }
     }
 
@@ -556,7 +553,7 @@ public class AppMonitorUtil {
             create2.setValue("isSuccess", z ? BasePreInitManager.PRE_RENDER_URL_ADDITION_VALUE : "false");
             AppMonitor.Stat.commit(MONITOR_MODULE_ZCache, MONITOR_POINT_ZCACHE_DOWNLOAD_TIME, create2, create);
         } catch (Throwable unused) {
-            TaoLog.m24i(TAG, "AppMonitor commitZCacheDownLoadTime exception");
+            TaoLog.i(TAG, "AppMonitor commitZCacheDownLoadTime exception");
         }
     }
 
@@ -585,7 +582,7 @@ public class AppMonitorUtil {
             create4.addMeasure(createMeasuerWithRange("verifyTime", 0.0d, 60000.0d));
             AppMonitor.register("WindVane", MONITOR_POINT_PACKAGEAPP_VISIT, create4, create3);
             DimensionSet create5 = DimensionSet.create();
-            create5.addDimension(HttpConnector.URL);
+            create5.addDimension("url");
             create5.addDimension("version");
             create5.addDimension("bizcode");
             create5.addDimension("result");
@@ -615,20 +612,20 @@ public class AppMonitorUtil {
             create12.addMeasure("noCacheRatio");
             AppMonitor.register("WindVane", MONITOR_POINT_PACKAGE_CLEANUP, create12, create11);
             DimensionSet create13 = DimensionSet.create();
-            create13.addDimension(HttpConnector.URL);
+            create13.addDimension("url");
             MeasureSet create14 = MeasureSet.create();
             create14.addMeasure(createMeasuerWithRange("time", 0.0d, 1800000.0d));
             AppMonitor.register("WindVane", MONITOR_POINT_WEBVIEW_START, create14, create13);
             DimensionSet create15 = DimensionSet.create();
             create15.addDimension("name");
-            create15.addDimension(TypedValues.TransitionType.S_FROM);
+            create15.addDimension(TypedValues$TransitionType.S_FROM);
             create15.addDimension("isSuccess");
             MeasureSet create16 = MeasureSet.create();
             create16.addMeasure(createMeasuerWithRange("updateTime", 0.0d, 600000.0d));
             create16.addMeasure(createMeasuerWithRange("updateCount", 0.0d, 1000.0d));
             AppMonitor.register("WindVane", MONITOR_POINT_UPDATE_CONFIG_INFO, create16, create15);
             DimensionSet create17 = DimensionSet.create();
-            create17.addDimension(HttpConnector.URL);
+            create17.addDimension("url");
             create17.addDimension("isHTML");
             create17.addDimension("statusCode");
             create17.addDimension("referrer");
@@ -648,9 +645,9 @@ public class AppMonitorUtil {
             AppMonitor.register("WindVane", MONITOR_POINT_PACKAGEAPP, create19, create18);
             DimensionSet create20 = DimensionSet.create();
             create20.addDimension("name");
-            create20.addDimension(ApiConstants.RET);
+            create20.addDimension("ret");
             create20.addDimension(NotificationCompat.CATEGORY_MESSAGE);
-            create20.addDimension(HttpConnector.URL);
+            create20.addDimension("url");
             AppMonitor.register("WindVane", MONITOR_POINT_JS_BRIDGE_RETURN, MeasureSet.create(), create20);
             MeasureSet create21 = MeasureSet.create();
             create21.addMeasure("tbInitTime");
@@ -681,7 +678,7 @@ public class AppMonitorUtil {
             create28.addDimension("coreType");
             AppMonitor.register("WindVane", MONITOR_POINT_CORE_TYPE_BY_PV, MeasureSet.create(), create28);
             DimensionSet create29 = DimensionSet.create();
-            create29.addDimension(HttpConnector.URL);
+            create29.addDimension("url");
             create29.addDimension("r_type");
             create29.addDimension("process_mode");
             create29.addDimension("background");
@@ -693,7 +690,7 @@ public class AppMonitorUtil {
             create30.addDimension("invokeMethod");
             AppMonitor.register("WindVane", MONITOR_POINT_PARAM_PARSE_ERROR, MeasureSet.create(), create30);
             DimensionSet create31 = DimensionSet.create();
-            create31.addDimension(HttpConnector.URL);
+            create31.addDimension("url");
             AppMonitor.register("WindVane", MONITOR_POINT_USE_WEBGL, MeasureSet.create(), create31);
             DimensionSet create32 = DimensionSet.create();
             create32.addDimension("web_init_mode");
@@ -704,7 +701,7 @@ public class AppMonitorUtil {
             create32.addDimension("gpu_succ_reason");
             AppMonitor.register("WindVane", MONITOR_POINT_MULTI_PROCESS_BY_PV, MeasureSet.create(), create29);
             DimensionSet create33 = DimensionSet.create();
-            create33.addDimension(HttpConnector.URL);
+            create33.addDimension("url");
             create33.addDimension("via");
             create33.addDimension("pkgName");
             create33.addDimension("pkgVersion");
@@ -745,7 +742,7 @@ public class AppMonitorUtil {
             AppMonitor.register("WindVane", MONITOR_POINT_PERFORMANCE_5, create34, create33);
             isAppMonitorEnabled = true;
         } catch (Throwable unused) {
-            TaoLog.m24i(TAG, "AppMonitor not found");
+            TaoLog.i(TAG, "AppMonitor not found");
         }
     }
 }

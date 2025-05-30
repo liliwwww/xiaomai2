@@ -9,7 +9,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import java.util.Locale;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class ScrollEventAdapter extends RecyclerView.OnScrollListener {
     private static final int NO_POSITION = -1;
     private static final int STATE_IDLE = 0;
@@ -37,28 +37,11 @@ final class ScrollEventAdapter extends RecyclerView.OnScrollListener {
     @NonNull
     private final ViewPager2 mViewPager;
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static final class ScrollEventValues {
-        float mOffset;
-        int mOffsetPx;
-        int mPosition;
-
-        ScrollEventValues() {
-        }
-
-        void reset() {
-            this.mPosition = -1;
-            this.mOffset = 0.0f;
-            this.mOffsetPx = 0;
-        }
-    }
-
     ScrollEventAdapter(@NonNull ViewPager2 viewPager2) {
         this.mViewPager = viewPager2;
         RecyclerView recyclerView = viewPager2.mRecyclerView;
         this.mRecyclerView = recyclerView;
-        this.mLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+        this.mLayoutManager = recyclerView.getLayoutManager();
         this.mScrollValues = new ScrollEventValues();
         resetState();
     }
@@ -231,7 +214,6 @@ final class ScrollEventAdapter extends RecyclerView.OnScrollListener {
         }
     }
 
-    @Override // androidx.recyclerview.widget.RecyclerView.OnScrollListener
     public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int i) {
         boolean z = true;
         if (!(this.mAdapterState == 1 && this.mScrollState == 1) && i == 1) {
@@ -294,10 +276,9 @@ final class ScrollEventAdapter extends RecyclerView.OnScrollListener {
      */
     /* JADX WARN: Removed duplicated region for block: B:13:0x0025  */
     /* JADX WARN: Removed duplicated region for block: B:18:0x0039  */
-    @Override // androidx.recyclerview.widget.RecyclerView.OnScrollListener
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void onScrolled(@androidx.annotation.NonNull androidx.recyclerview.widget.RecyclerView r4, int r5, int r6) {
         /*

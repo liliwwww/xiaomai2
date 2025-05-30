@@ -1,20 +1,20 @@
 package androidx.compose.foundation.lazy;
 
-import androidx.compose.p004ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntOffset;
 import java.util.ArrayList;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class ItemInfo {
-    private long notAnimatableDelta = IntOffset.Companion.m5344getZeronOccac();
+    private long notAnimatableDelta = IntOffset.Companion.m2653getZeronOccac();
 
     @NotNull
     private final List<PlaceableInfo> placeables = new ArrayList();
 
     /* renamed from: getNotAnimatableDelta-nOcc-ac, reason: not valid java name */
-    public final long m1495getNotAnimatableDeltanOccac() {
+    public final long m416getNotAnimatableDeltanOccac() {
         return this.notAnimatableDelta;
     }
 
@@ -24,7 +24,7 @@ final class ItemInfo {
     }
 
     /* renamed from: setNotAnimatableDelta--gyyYBs, reason: not valid java name */
-    public final void m1496setNotAnimatableDeltagyyYBs(long j) {
+    public final void m417setNotAnimatableDeltagyyYBs(long j) {
         this.notAnimatableDelta = j;
     }
 }

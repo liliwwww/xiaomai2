@@ -7,7 +7,7 @@ import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FragmentViewModelLazyKt$activityViewModels$6 extends Lambda implements Function0<ViewModelProvider.Factory> {
     final /* synthetic */ Fragment $this_activityViewModels;
 
@@ -19,7 +19,7 @@ public final class FragmentViewModelLazyKt$activityViewModels$6 extends Lambda i
 
     @NotNull
     /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-    public final ViewModelProvider.Factory m5591invoke() {
+    public final ViewModelProvider.Factory m2331invoke() {
         ViewModelProvider.Factory defaultViewModelProviderFactory = this.$this_activityViewModels.requireActivity().getDefaultViewModelProviderFactory();
         Intrinsics.checkNotNullExpressionValue(defaultViewModelProviderFactory, "requireActivity().defaultViewModelProviderFactory");
         return defaultViewModelProviderFactory;

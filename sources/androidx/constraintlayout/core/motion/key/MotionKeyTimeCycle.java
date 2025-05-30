@@ -7,7 +7,7 @@ import java.util.Iterator;
 import tb.aq5;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class MotionKeyTimeCycle extends MotionKey {
     public static final int KEY_TYPE = 3;
     static final String NAME = "KeyTimeCycle";
@@ -32,8 +32,8 @@ public class MotionKeyTimeCycle extends MotionKey {
     private float mWaveOffset = 0.0f;
 
     public MotionKeyTimeCycle() {
-        this.mType = 3;
-        this.mCustom = new HashMap<>();
+        ((MotionKey) this).mType = 3;
+        ((MotionKey) this).mCustom = new HashMap();
     }
 
     /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
@@ -43,21 +43,19 @@ public class MotionKeyTimeCycle extends MotionKey {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void addTimeValues(java.util.HashMap<java.lang.String, androidx.constraintlayout.core.motion.utils.TimeCycleSplineSet> r11) {
         /*
             Method dump skipped, instructions count: 618
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.constraintlayout.core.motion.key.MotionKeyTimeCycle.addTimeValues(java.util.HashMap):void");
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public void addValues(HashMap<String, SplineSet> hashMap) {
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public void getAttributeNames(HashSet<String> hashSet) {
         if (!Float.isNaN(this.mAlpha)) {
             hashSet.add("alpha");
@@ -92,23 +90,21 @@ public class MotionKeyTimeCycle extends MotionKey {
         if (!Float.isNaN(this.mTranslationZ)) {
             hashSet.add("translationZ");
         }
-        if (this.mCustom.size() > 0) {
-            Iterator<String> it = this.mCustom.keySet().iterator();
+        if (((MotionKey) this).mCustom.size() > 0) {
+            Iterator it = ((MotionKey) this).mCustom.keySet().iterator();
             while (it.hasNext()) {
-                hashSet.add("CUSTOM," + it.next());
+                hashSet.add("CUSTOM," + ((String) it.next()));
             }
         }
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public int getId(String str) {
         return aq5.a(str);
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, int i2) {
         if (i == 100) {
-            this.mFramePosition = i2;
+            ((MotionKey) this).mFramePosition = i2;
             return true;
         }
         if (i != 421) {
@@ -118,13 +114,11 @@ public class MotionKeyTimeCycle extends MotionKey {
         return true;
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey
-    /* renamed from: clone */
-    public MotionKey mo5574clone() {
+    /* renamed from: clone, reason: merged with bridge method [inline-methods] */
+    public MotionKey m2778clone() {
         return new MotionKeyTimeCycle().copy((MotionKey) this);
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public MotionKeyTimeCycle copy(MotionKey motionKey) {
         super.copy(motionKey);
         MotionKeyTimeCycle motionKeyTimeCycle = (MotionKeyTimeCycle) motionKey;
@@ -148,7 +142,6 @@ public class MotionKeyTimeCycle extends MotionKey {
         return this;
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, float f) {
         if (i == 315) {
             this.mProgress = toFloat(Float.valueOf(f));
@@ -207,7 +200,6 @@ public class MotionKeyTimeCycle extends MotionKey {
         return true;
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, String str) {
         if (i == 420) {
             this.mTransitionEasing = str;
@@ -221,7 +213,6 @@ public class MotionKeyTimeCycle extends MotionKey {
         return true;
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, boolean z) {
         return super.setValue(i, z);
     }

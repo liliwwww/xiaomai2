@@ -5,15 +5,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.room.migration.Migration;
-import androidx.sqlite.p008db.SimpleSQLiteQuery;
-import androidx.sqlite.p008db.SupportSQLiteDatabase;
-import androidx.sqlite.p008db.SupportSQLiteOpenHelper;
+import androidx.sqlite.db.SimpleSQLiteQuery;
+import androidx.sqlite.db.SupportSQLiteDatabase;
+import androidx.sqlite.db.SupportSQLiteOpenHelper;
 import java.util.Iterator;
 import java.util.List;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class RoomOpenHelper extends SupportSQLiteOpenHelper.Callback {
 
     @Nullable
@@ -54,27 +54,12 @@ public class RoomOpenHelper extends SupportSQLiteOpenHelper.Callback {
         @NonNull
         protected ValidationResult onValidateSchema(@NonNull SupportSQLiteDatabase supportSQLiteDatabase) {
             validateMigration(supportSQLiteDatabase);
-            return new ValidationResult(true, null);
+            return new ValidationResult(true, (String) null);
         }
 
         @Deprecated
         protected void validateMigration(SupportSQLiteDatabase supportSQLiteDatabase) {
             throw new UnsupportedOperationException("validateMigration is deprecated");
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes.dex */
-    public static class ValidationResult {
-
-        @Nullable
-        public final String expectedFoundMsg;
-        public final boolean isValid;
-
-        public ValidationResult(boolean z, @Nullable String str) {
-            this.isValid = z;
-            this.expectedFoundMsg = str;
         }
     }
 
@@ -97,7 +82,7 @@ public class RoomOpenHelper extends SupportSQLiteOpenHelper.Callback {
                 throw new IllegalStateException("Pre-packaged database has an invalid schema: " + onValidateSchema.expectedFoundMsg);
             }
         }
-        Cursor query = supportSQLiteDatabase.query(new SimpleSQLiteQuery(RoomMasterTable.READ_QUERY));
+        Cursor query = supportSQLiteDatabase.query(new SimpleSQLiteQuery("SELECT identity_hash FROM room_master_table WHERE id = 42 LIMIT 1"));
         try {
             String string = query.moveToFirst() ? query.getString(0) : null;
             query.close();
@@ -111,7 +96,7 @@ public class RoomOpenHelper extends SupportSQLiteOpenHelper.Callback {
     }
 
     private void createMasterTableIfNotExists(SupportSQLiteDatabase supportSQLiteDatabase) {
-        supportSQLiteDatabase.execSQL(RoomMasterTable.CREATE_QUERY);
+        supportSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
     }
 
     private static boolean hasEmptySchema(SupportSQLiteDatabase supportSQLiteDatabase) {
@@ -149,12 +134,10 @@ public class RoomOpenHelper extends SupportSQLiteOpenHelper.Callback {
         supportSQLiteDatabase.execSQL(RoomMasterTable.createInsertQuery(this.mIdentityHash));
     }
 
-    @Override // androidx.sqlite.db.SupportSQLiteOpenHelper.Callback
     public void onConfigure(SupportSQLiteDatabase supportSQLiteDatabase) {
         super.onConfigure(supportSQLiteDatabase);
     }
 
-    @Override // androidx.sqlite.db.SupportSQLiteOpenHelper.Callback
     public void onCreate(SupportSQLiteDatabase supportSQLiteDatabase) {
         boolean hasEmptySchema = hasEmptySchema(supportSQLiteDatabase);
         this.mDelegate.createAllTables(supportSQLiteDatabase);
@@ -168,12 +151,10 @@ public class RoomOpenHelper extends SupportSQLiteOpenHelper.Callback {
         this.mDelegate.onCreate(supportSQLiteDatabase);
     }
 
-    @Override // androidx.sqlite.db.SupportSQLiteOpenHelper.Callback
     public void onDowngrade(SupportSQLiteDatabase supportSQLiteDatabase, int i, int i2) {
         onUpgrade(supportSQLiteDatabase, i, i2);
     }
 
-    @Override // androidx.sqlite.db.SupportSQLiteOpenHelper.Callback
     public void onOpen(SupportSQLiteDatabase supportSQLiteDatabase) {
         super.onOpen(supportSQLiteDatabase);
         checkIdentity(supportSQLiteDatabase);
@@ -181,7 +162,6 @@ public class RoomOpenHelper extends SupportSQLiteOpenHelper.Callback {
         this.mConfiguration = null;
     }
 
-    @Override // androidx.sqlite.db.SupportSQLiteOpenHelper.Callback
     public void onUpgrade(SupportSQLiteDatabase supportSQLiteDatabase, int i, int i2) {
         boolean z;
         List<Migration> findMigrationPath;

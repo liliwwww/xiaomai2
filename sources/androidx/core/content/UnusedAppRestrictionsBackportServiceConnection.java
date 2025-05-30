@@ -15,7 +15,7 @@ import androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportCal
 import androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportService;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class UnusedAppRestrictionsBackportServiceConnection implements ServiceConnection {
     private final Context mContext;
 
@@ -33,11 +33,10 @@ class UnusedAppRestrictionsBackportServiceConnection implements ServiceConnectio
 
     private IUnusedAppRestrictionsBackportCallback getBackportCallback() {
         return new IUnusedAppRestrictionsBackportCallback.Stub() { // from class: androidx.core.content.UnusedAppRestrictionsBackportServiceConnection.1
-            @Override // androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportCallback
             public void onIsPermissionRevocationEnabledForAppResult(boolean z, boolean z2) throws RemoteException {
                 if (!z) {
                     UnusedAppRestrictionsBackportServiceConnection.this.mResultFuture.set(0);
-                    Log.e(PackageManagerCompat.LOG_TAG, "Unable to retrieve the permission revocation setting from the backport");
+                    Log.e("PackageManagerCompat", "Unable to retrieve the permission revocation setting from the backport");
                 } else if (z2) {
                     UnusedAppRestrictionsBackportServiceConnection.this.mResultFuture.set(3);
                 } else {

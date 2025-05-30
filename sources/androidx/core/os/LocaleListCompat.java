@@ -2,7 +2,7 @@ package androidx.core.os;
 
 import android.os.Build;
 import android.os.LocaleList;
-import android.taobao.windvane.connect.api.ApiConstants;
+import android.support.v4.media.session.PlaybackStateCompat;
 import androidx.annotation.DoNotInline;
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
@@ -11,54 +11,13 @@ import androidx.annotation.OptIn;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.Size;
 import androidx.core.os.BuildCompat;
-import androidx.core.text.ICUCompat;
 import java.util.Locale;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LocaleListCompat {
     private static final LocaleListCompat sEmptyLocaleList = create(new Locale[0]);
     private final LocaleListInterface mImpl;
-
-    /* compiled from: Taobao */
-    @RequiresApi(21)
-    /* loaded from: classes2.dex */
-    static class Api21Impl {
-        private static final Locale[] PSEUDO_LOCALE = {new Locale("en", "XA"), new Locale("ar", "XB")};
-
-        private Api21Impl() {
-        }
-
-        @DoNotInline
-        static Locale forLanguageTag(String str) {
-            return Locale.forLanguageTag(str);
-        }
-
-        private static boolean isPseudoLocale(Locale locale) {
-            for (Locale locale2 : PSEUDO_LOCALE) {
-                if (locale2.equals(locale)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        @DoNotInline
-        static boolean matchesLanguageAndScript(@NonNull Locale locale, @NonNull Locale locale2) {
-            if (locale.equals(locale2)) {
-                return true;
-            }
-            if (!locale.getLanguage().equals(locale2.getLanguage()) || isPseudoLocale(locale) || isPseudoLocale(locale2)) {
-                return false;
-            }
-            String maximizeAndGetScript = ICUCompat.maximizeAndGetScript(locale);
-            if (!maximizeAndGetScript.isEmpty()) {
-                return maximizeAndGetScript.equals(ICUCompat.maximizeAndGetScript(locale2));
-            }
-            String country = locale.getCountry();
-            return country.isEmpty() || country.equals(locale2.getCountry());
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(24)
@@ -92,8 +51,8 @@ public final class LocaleListCompat {
     }
 
     static Locale forLanguageTagCompat(String str) {
-        if (str.contains(ApiConstants.SPLIT_LINE)) {
-            String[] split = str.split(ApiConstants.SPLIT_LINE, -1);
+        if (str.contains("-")) {
+            String[] split = str.split("-", -1);
             if (split.length > 2) {
                 return new Locale(split[0], split[1], split[2]);
             }
@@ -136,13 +95,13 @@ public final class LocaleListCompat {
     }
 
     @NonNull
-    @Size(min = 1)
+    @Size(min = PlaybackStateCompat.ACTION_STOP)
     public static LocaleListCompat getAdjustedDefault() {
         return Build.VERSION.SDK_INT >= 24 ? wrap(Api24Impl.getAdjustedDefault()) : create(Locale.getDefault());
     }
 
     @NonNull
-    @Size(min = 1)
+    @Size(min = PlaybackStateCompat.ACTION_STOP)
     public static LocaleListCompat getDefault() {
         return Build.VERSION.SDK_INT >= 24 ? wrap(Api24Impl.getDefault()) : create(Locale.getDefault());
     }

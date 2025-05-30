@@ -4,12 +4,12 @@ import android.app.Application;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.pm.ProviderInfo;
-import com.ali.mobisecenhance.p009ld.RecordLog;
+import com.ali.mobisecenhance.ld.RecordLog;
 import com.j2c.enhance.SoLoad992979061;
 import java.util.ArrayList;
 import java.util.List;
 
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Init {
     private static final String TAG;
     private static final RecordLog logger;

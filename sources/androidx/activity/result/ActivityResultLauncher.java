@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityOptionsCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class ActivityResultLauncher<I> {
     @NonNull
     public abstract ActivityResultContract<I, ?> getContract();

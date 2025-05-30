@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import tb.c8;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class AndroidFlingSpline {
     private static final int NbSamples = 100;
 
@@ -29,61 +29,61 @@ final class AndroidFlingSpline {
         }
 
         /* renamed from: box-impl, reason: not valid java name */
-        public static final /* synthetic */ FlingResult m1332boximpl(long j) {
+        public static final /* synthetic */ FlingResult m275boximpl(long j) {
             return new FlingResult(j);
         }
 
         /* renamed from: constructor-impl, reason: not valid java name */
-        public static long m1333constructorimpl(long j) {
+        public static long m276constructorimpl(long j) {
             return j;
         }
 
         /* renamed from: equals-impl, reason: not valid java name */
-        public static boolean m1334equalsimpl(long j, Object obj) {
-            return (obj instanceof FlingResult) && j == ((FlingResult) obj).m1340unboximpl();
+        public static boolean m277equalsimpl(long j, Object obj) {
+            return (obj instanceof FlingResult) && j == ((FlingResult) obj).m283unboximpl();
         }
 
         /* renamed from: equals-impl0, reason: not valid java name */
-        public static final boolean m1335equalsimpl0(long j, long j2) {
+        public static final boolean m278equalsimpl0(long j, long j2) {
             return j == j2;
         }
 
         /* renamed from: getDistanceCoefficient-impl, reason: not valid java name */
-        public static final float m1336getDistanceCoefficientimpl(long j) {
+        public static final float m279getDistanceCoefficientimpl(long j) {
             FloatCompanionObject floatCompanionObject = FloatCompanionObject.INSTANCE;
             return Float.intBitsToFloat((int) (j >> 32));
         }
 
         /* renamed from: getVelocityCoefficient-impl, reason: not valid java name */
-        public static final float m1337getVelocityCoefficientimpl(long j) {
+        public static final float m280getVelocityCoefficientimpl(long j) {
             FloatCompanionObject floatCompanionObject = FloatCompanionObject.INSTANCE;
             return Float.intBitsToFloat((int) (j & 4294967295L));
         }
 
         /* renamed from: hashCode-impl, reason: not valid java name */
-        public static int m1338hashCodeimpl(long j) {
+        public static int m281hashCodeimpl(long j) {
             return c8.a(j);
         }
 
         /* renamed from: toString-impl, reason: not valid java name */
-        public static String m1339toStringimpl(long j) {
+        public static String m282toStringimpl(long j) {
             return "FlingResult(packedValue=" + j + ')';
         }
 
         public boolean equals(Object obj) {
-            return m1334equalsimpl(this.packedValue, obj);
+            return m277equalsimpl(this.packedValue, obj);
         }
 
         public int hashCode() {
-            return m1338hashCodeimpl(this.packedValue);
+            return m281hashCodeimpl(this.packedValue);
         }
 
         public String toString() {
-            return m1339toStringimpl(this.packedValue);
+            return m282toStringimpl(this.packedValue);
         }
 
         /* renamed from: unbox-impl, reason: not valid java name */
-        public final /* synthetic */ long m1340unboximpl() {
+        public final /* synthetic */ long m283unboximpl() {
             return this.packedValue;
         }
     }
@@ -163,7 +163,7 @@ final class AndroidFlingSpline {
     }
 
     /* renamed from: flingPosition-LfoxSSI, reason: not valid java name */
-    public final long m1331flingPositionLfoxSSI(float f) {
+    public final long m274flingPositionLfoxSSI(float f) {
         float f2;
         float f3;
         float f4 = 100;
@@ -180,6 +180,6 @@ final class AndroidFlingSpline {
             f2 = 1.0f;
             f3 = 0.0f;
         }
-        return FlingResult.m1333constructorimpl((Float.floatToIntBits(f3) & 4294967295L) | (Float.floatToIntBits(f2) << 32));
+        return FlingResult.m276constructorimpl((Float.floatToIntBits(f3) & 4294967295L) | (Float.floatToIntBits(f2) << 32));
     }
 }

@@ -3,18 +3,18 @@ package androidx.compose.material;
 import androidx.compose.foundation.BackgroundKt;
 import androidx.compose.foundation.BorderKt;
 import androidx.compose.foundation.BorderStroke;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.draw.ClipKt;
-import androidx.compose.p004ui.draw.ShadowKt;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.graphics.Shape;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.draw.ClipKt;
+import androidx.compose.ui.draw.ShadowKt;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.graphics.Shape;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SurfaceKt {
     /* JADX WARN: Removed duplicated region for block: B:100:0x0256  */
     /* JADX WARN: Removed duplicated region for block: B:102:0x0265  */
@@ -73,14 +73,14 @@ public final class SurfaceKt {
     /* renamed from: Surface-9VG74zQ, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m2241Surface9VG74zQ(@org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r38, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r39, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r40, long r41, long r43, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r45, float r46, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r47, @org.jetbrains.annotations.Nullable androidx.compose.foundation.Indication r48, boolean r49, @org.jetbrains.annotations.Nullable java.lang.String r50, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.semantics.Role r51, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r52, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r53, final int r54, final int r55, final int r56) {
+    public static final void m658Surface9VG74zQ(@org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function0<kotlin.Unit> r38, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r39, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r40, long r41, long r43, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r45, float r46, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r47, @org.jetbrains.annotations.Nullable androidx.compose.foundation.Indication r48, boolean r49, @org.jetbrains.annotations.Nullable java.lang.String r50, @org.jetbrains.annotations.Nullable androidx.compose.ui.semantics.Role r51, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r52, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r53, int r54, int r55, int r56) {
         /*
             Method dump skipped, instructions count: 941
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SurfaceKt.m2241Surface9VG74zQ(kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.foundation.BorderStroke, float, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.foundation.Indication, boolean, java.lang.String, androidx.compose.ui.semantics.Role, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SurfaceKt.m658Surface9VG74zQ(kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.foundation.BorderStroke, float, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.foundation.Indication, boolean, java.lang.String, androidx.compose.ui.semantics.Role, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int, int):void");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:103:0x007e  */
@@ -112,14 +112,14 @@ public final class SurfaceKt {
     /* renamed from: Surface-F-jzlyU, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m2242SurfaceFjzlyU(@org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r22, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r23, long r24, long r26, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r28, float r29, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, final int r32, final int r33) {
+    public static final void m659SurfaceFjzlyU(@org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r22, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r23, long r24, long r26, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r28, float r29, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, final int r32, final int r33) {
         /*
             Method dump skipped, instructions count: 515
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SurfaceKt.m2242SurfaceFjzlyU(androidx.compose.ui.Modifier, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.foundation.BorderStroke, float, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SurfaceKt.m659SurfaceFjzlyU(androidx.compose.ui.Modifier, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.foundation.BorderStroke, float, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int):void");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:100:0x01d1  */
@@ -165,14 +165,14 @@ public final class SurfaceKt {
     /* renamed from: Surface-LPr_se0, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m2243SurfaceLPr_se0(@org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r29, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r30, boolean r31, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r32, long r33, long r35, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r37, float r38, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r39, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r40, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r41, final int r42, final int r43) {
+    public static final void m660SurfaceLPr_se0(@org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r29, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r30, boolean r31, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r32, long r33, long r35, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r37, float r38, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r39, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r40, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r41, final int r42, final int r43) {
         /*
             Method dump skipped, instructions count: 733
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SurfaceKt.m2243SurfaceLPr_se0(kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, boolean, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.foundation.BorderStroke, float, androidx.compose.foundation.interaction.MutableInteractionSource, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SurfaceKt.m660SurfaceLPr_se0(kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, boolean, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.foundation.BorderStroke, float, androidx.compose.foundation.interaction.MutableInteractionSource, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int):void");
     }
 
     /* JADX WARN: Removed duplicated region for block: B:101:0x0241  */
@@ -219,33 +219,33 @@ public final class SurfaceKt {
     /* renamed from: Surface-Ny5ogXk, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m2244SurfaceNy5ogXk(final boolean r31, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r32, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r33, boolean r34, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r35, long r36, long r38, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r40, float r41, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r42, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r43, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r44, final int r45, final int r46, final int r47) {
+    public static final void m661SurfaceNy5ogXk(final boolean r31, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function0<kotlin.Unit> r32, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r33, boolean r34, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r35, long r36, long r38, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r40, float r41, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r42, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r43, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r44, final int r45, final int r46, final int r47) {
         /*
             Method dump skipped, instructions count: 787
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SurfaceKt.m2244SurfaceNy5ogXk(boolean, kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, boolean, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.foundation.BorderStroke, float, androidx.compose.foundation.interaction.MutableInteractionSource, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SurfaceKt.m661SurfaceNy5ogXk(boolean, kotlin.jvm.functions.Function0, androidx.compose.ui.Modifier, boolean, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.foundation.BorderStroke, float, androidx.compose.foundation.interaction.MutableInteractionSource, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int, int):void");
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: surface-8ww4TTg, reason: not valid java name */
-    public static final Modifier m2248surface8ww4TTg(Modifier modifier, Shape shape, long j, BorderStroke borderStroke, float f) {
-        return ClipKt.clip(BackgroundKt.m1115backgroundbw27NRU(ShadowKt.m2472shadows4CzXII$default(modifier, f, shape, false, 0L, 0L, 24, null).then(borderStroke != null ? BorderKt.border(Modifier.Companion, borderStroke, shape) : Modifier.Companion), j, shape), shape);
+    public static final Modifier m665surface8ww4TTg(Modifier modifier, Shape shape, long j, BorderStroke borderStroke, float f) {
+        return ClipKt.clip(BackgroundKt.background-bw27NRU(ShadowKt.shadow-s4CzXII$default(modifier, f, shape, false, 0L, 0L, 24, (Object) null).then(borderStroke != null ? BorderKt.border(Modifier.Companion, borderStroke, shape) : Modifier.Companion), j, shape), shape);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     @Composable
     @ComposableInferredTarget(scheme = "[0[0]]")
     /* renamed from: surfaceColorAtElevation-cq6XJ1M, reason: not valid java name */
-    public static final long m2249surfaceColorAtElevationcq6XJ1M(long j, ElevationOverlay elevationOverlay, float f, Composer composer, int i) {
+    public static final long m666surfaceColorAtElevationcq6XJ1M(long j, ElevationOverlay elevationOverlay, float f, Composer composer, int i) {
         composer.startReplaceableGroup(1561611256);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(1561611256, i, -1, "androidx.compose.material.surfaceColorAtElevation (Surface.kt:632)");
         }
-        if (Color.m2788equalsimpl0(j, MaterialTheme.INSTANCE.getColors(composer, 6).m2020getSurface0d7_KjU()) && elevationOverlay != null) {
-            j = elevationOverlay.mo2052apply7g2Lkgo(j, f, composer, (i & 14) | ((i >> 3) & 112) | ((i << 3) & 896));
+        if (Color.m1051equalsimpl0(j, MaterialTheme.INSTANCE.getColors(composer, 6).getSurface-0d7_KjU()) && elevationOverlay != null) {
+            j = elevationOverlay.apply-7g2Lkgo(j, f, composer, (i & 14) | ((i >> 3) & 112) | ((i << 3) & 896));
         }
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
@@ -298,13 +298,13 @@ public final class SurfaceKt {
     /* renamed from: Surface-Ny5ogXk, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m2245SurfaceNy5ogXk(final boolean r31, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super java.lang.Boolean, kotlin.Unit> r32, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r33, boolean r34, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r35, long r36, long r38, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r40, float r41, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r42, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r43, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r44, final int r45, final int r46, final int r47) {
+    public static final void m662SurfaceNy5ogXk(boolean r31, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super java.lang.Boolean, kotlin.Unit> r32, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r33, boolean r34, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r35, long r36, long r38, @org.jetbrains.annotations.Nullable androidx.compose.foundation.BorderStroke r40, float r41, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r42, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r43, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r44, int r45, int r46, int r47) {
         /*
             Method dump skipped, instructions count: 787
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SurfaceKt.m2245SurfaceNy5ogXk(boolean, kotlin.jvm.functions.Function1, androidx.compose.ui.Modifier, boolean, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.foundation.BorderStroke, float, androidx.compose.foundation.interaction.MutableInteractionSource, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SurfaceKt.m662SurfaceNy5ogXk(boolean, kotlin.jvm.functions.Function1, androidx.compose.ui.Modifier, boolean, androidx.compose.ui.graphics.Shape, long, long, androidx.compose.foundation.BorderStroke, float, androidx.compose.foundation.interaction.MutableInteractionSource, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int, int):void");
     }
 }

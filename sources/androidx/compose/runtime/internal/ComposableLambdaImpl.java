@@ -6,7 +6,6 @@ import androidx.compose.runtime.ScopeUpdateScope;
 import androidx.compose.runtime.Stable;
 import java.util.ArrayList;
 import java.util.List;
-import kotlin.Unit;
 import kotlin.jvm.functions.Function10;
 import kotlin.jvm.functions.Function11;
 import kotlin.jvm.functions.Function13;
@@ -33,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ComposableLambdaImpl implements ComposableLambda {
 
     @Nullable
@@ -208,7 +207,7 @@ public final class ComposableLambdaImpl implements ComposableLambda {
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @NotNull Composer composer, final int i) {
+    public Object invoke(@Nullable Object obj, @NotNull Composer composer, int i) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -218,28 +217,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function3) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj2, 3)).invoke(obj, startRestartGroup, Integer.valueOf(differentBits | i));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$1
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj3, Object obj4) {
-                    invoke((Composer) obj3, ((Number) obj4).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i2) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, composer2, i | 1);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.1(this, obj, i));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @NotNull Composer composer, final int i) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @NotNull Composer composer, int i) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -249,28 +233,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function4) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj3, 4)).invoke(obj, obj2, startRestartGroup, Integer.valueOf(differentBits | i));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$2
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj4, Object obj5) {
-                    invoke((Composer) obj4, ((Number) obj5).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i2) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, composer2, i | 1);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.2(this, obj, obj2, i));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @NotNull Composer composer, final int i) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @NotNull Composer composer, int i) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -280,28 +249,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function5) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj4, 5)).invoke(obj, obj2, obj3, startRestartGroup, Integer.valueOf(differentBits | i));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$3
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj5, Object obj6) {
-                    invoke((Composer) obj5, ((Number) obj6).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i2) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, composer2, i | 1);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.3(this, obj, obj2, obj3, i));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @NotNull Composer composer, final int i) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @NotNull Composer composer, int i) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -311,28 +265,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function6) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj5, 6)).invoke(obj, obj2, obj3, obj4, startRestartGroup, Integer.valueOf(differentBits | i));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$4
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj6, Object obj7) {
-                    invoke((Composer) obj6, ((Number) obj7).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i2) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, composer2, i | 1);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.4(this, obj, obj2, obj3, obj4, i));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @NotNull Composer composer, final int i) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @NotNull Composer composer, int i) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -342,28 +281,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function7) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj6, 7)).invoke(obj, obj2, obj3, obj4, obj5, startRestartGroup, Integer.valueOf(i | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$5
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj7, Object obj8) {
-                    invoke((Composer) obj7, ((Number) obj8).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i2) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, obj5, composer2, i | 1);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.5(this, obj, obj2, obj3, obj4, obj5, i));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @Nullable final Object obj6, @NotNull Composer composer, final int i) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @Nullable Object obj6, @NotNull Composer composer, int i) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -373,28 +297,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function8) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj7, 8)).invoke(obj, obj2, obj3, obj4, obj5, obj6, startRestartGroup, Integer.valueOf(i | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$6
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj8, Object obj9) {
-                    invoke((Composer) obj8, ((Number) obj9).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i2) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, obj5, obj6, composer2, i | 1);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.6(this, obj, obj2, obj3, obj4, obj5, obj6, i));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @Nullable final Object obj6, @Nullable final Object obj7, @NotNull Composer composer, final int i) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @Nullable Object obj6, @Nullable Object obj7, @NotNull Composer composer, int i) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -404,28 +313,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function9) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj8, 9)).invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, startRestartGroup, Integer.valueOf(i | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$7
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj9, Object obj10) {
-                    invoke((Composer) obj9, ((Number) obj10).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i2) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, composer2, i | 1);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.7(this, obj, obj2, obj3, obj4, obj5, obj6, obj7, i));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @Nullable final Object obj6, @Nullable final Object obj7, @Nullable final Object obj8, @NotNull Composer composer, final int i) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @Nullable Object obj6, @Nullable Object obj7, @Nullable Object obj8, @NotNull Composer composer, int i) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -435,28 +329,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function10) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj9, 10)).invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, startRestartGroup, Integer.valueOf(i | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$8
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj10, Object obj11) {
-                    invoke((Composer) obj10, ((Number) obj11).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i2) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, composer2, i | 1);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.8(this, obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, i));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @Nullable final Object obj6, @Nullable final Object obj7, @Nullable final Object obj8, @Nullable final Object obj9, @NotNull Composer composer, final int i) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @Nullable Object obj6, @Nullable Object obj7, @Nullable Object obj8, @Nullable Object obj9, @NotNull Composer composer, int i) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -466,28 +345,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function11) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj10, 11)).invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, startRestartGroup, Integer.valueOf(i | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$9
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj11, Object obj12) {
-                    invoke((Composer) obj11, ((Number) obj12).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i2) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, composer2, i | 1);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.9(this, obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, i));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @Nullable final Object obj6, @Nullable final Object obj7, @Nullable final Object obj8, @Nullable final Object obj9, @Nullable final Object obj10, @NotNull Composer composer, final int i, int i2) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @Nullable Object obj6, @Nullable Object obj7, @Nullable Object obj8, @Nullable Object obj9, @Nullable Object obj10, @NotNull Composer composer, int i, int i2) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -497,40 +361,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function13) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj11, 13)).invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, startRestartGroup, Integer.valueOf(i), Integer.valueOf(i2 | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$10
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj12, Object obj13) {
-                    invoke((Composer) obj12, ((Number) obj13).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl composableLambdaImpl = ComposableLambdaImpl.this;
-                    Object obj12 = obj;
-                    Object obj13 = obj2;
-                    Object obj14 = obj3;
-                    Object obj15 = obj4;
-                    Object obj16 = obj5;
-                    Object obj17 = obj6;
-                    Object obj18 = obj7;
-                    Object obj19 = obj8;
-                    Object obj20 = obj9;
-                    Object obj21 = obj10;
-                    int i4 = i;
-                    composableLambdaImpl.invoke(obj12, obj13, obj14, obj15, obj16, obj17, obj18, obj19, obj20, obj21, composer2, i4 | 1, i4);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.10(this, obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, i));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @Nullable final Object obj6, @Nullable final Object obj7, @Nullable final Object obj8, @Nullable final Object obj9, @Nullable final Object obj10, @Nullable final Object obj11, @NotNull Composer composer, final int i, final int i2) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @Nullable Object obj6, @Nullable Object obj7, @Nullable Object obj8, @Nullable Object obj9, @Nullable Object obj10, @Nullable Object obj11, @NotNull Composer composer, int i, int i2) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -540,28 +377,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function14) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj12, 14)).invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, startRestartGroup, Integer.valueOf(i), Integer.valueOf(i2 | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$11
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj13, Object obj14) {
-                    invoke((Composer) obj13, ((Number) obj14).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, composer2, i | 1, i2);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.11(this, obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, i, i2));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @Nullable final Object obj6, @Nullable final Object obj7, @Nullable final Object obj8, @Nullable final Object obj9, @Nullable final Object obj10, @Nullable final Object obj11, @Nullable final Object obj12, @NotNull Composer composer, final int i, final int i2) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @Nullable Object obj6, @Nullable Object obj7, @Nullable Object obj8, @Nullable Object obj9, @Nullable Object obj10, @Nullable Object obj11, @Nullable Object obj12, @NotNull Composer composer, int i, int i2) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -571,28 +393,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function15) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj13, 15)).invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, startRestartGroup, Integer.valueOf(i), Integer.valueOf(i2 | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$12
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj14, Object obj15) {
-                    invoke((Composer) obj14, ((Number) obj15).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, composer2, i | 1, i2);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.12(this, obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, i, i2));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @Nullable final Object obj6, @Nullable final Object obj7, @Nullable final Object obj8, @Nullable final Object obj9, @Nullable final Object obj10, @Nullable final Object obj11, @Nullable final Object obj12, @Nullable final Object obj13, @NotNull Composer composer, final int i, final int i2) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @Nullable Object obj6, @Nullable Object obj7, @Nullable Object obj8, @Nullable Object obj9, @Nullable Object obj10, @Nullable Object obj11, @Nullable Object obj12, @Nullable Object obj13, @NotNull Composer composer, int i, int i2) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -602,28 +409,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function16) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj14, 16)).invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, startRestartGroup, Integer.valueOf(i), Integer.valueOf(i2 | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$13
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj15, Object obj16) {
-                    invoke((Composer) obj15, ((Number) obj16).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, composer2, i | 1, i2);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.13(this, obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, i, i2));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @Nullable final Object obj6, @Nullable final Object obj7, @Nullable final Object obj8, @Nullable final Object obj9, @Nullable final Object obj10, @Nullable final Object obj11, @Nullable final Object obj12, @Nullable final Object obj13, @Nullable final Object obj14, @NotNull Composer composer, final int i, final int i2) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @Nullable Object obj6, @Nullable Object obj7, @Nullable Object obj8, @Nullable Object obj9, @Nullable Object obj10, @Nullable Object obj11, @Nullable Object obj12, @Nullable Object obj13, @Nullable Object obj14, @NotNull Composer composer, int i, int i2) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -633,28 +425,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function17) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj15, 17)).invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, startRestartGroup, Integer.valueOf(i), Integer.valueOf(i2 | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$14
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj16, Object obj17) {
-                    invoke((Composer) obj16, ((Number) obj17).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, composer2, i | 1, i2);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.14(this, obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, i, i2));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @Nullable final Object obj6, @Nullable final Object obj7, @Nullable final Object obj8, @Nullable final Object obj9, @Nullable final Object obj10, @Nullable final Object obj11, @Nullable final Object obj12, @Nullable final Object obj13, @Nullable final Object obj14, @Nullable final Object obj15, @NotNull Composer composer, final int i, final int i2) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @Nullable Object obj6, @Nullable Object obj7, @Nullable Object obj8, @Nullable Object obj9, @Nullable Object obj10, @Nullable Object obj11, @Nullable Object obj12, @Nullable Object obj13, @Nullable Object obj14, @Nullable Object obj15, @NotNull Composer composer, int i, int i2) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -664,28 +441,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function18) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj16, 18)).invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, startRestartGroup, Integer.valueOf(i), Integer.valueOf(i2 | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$15
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj17, Object obj18) {
-                    invoke((Composer) obj17, ((Number) obj18).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, composer2, i | 1, i2);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.15(this, obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, i, i2));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @Nullable final Object obj6, @Nullable final Object obj7, @Nullable final Object obj8, @Nullable final Object obj9, @Nullable final Object obj10, @Nullable final Object obj11, @Nullable final Object obj12, @Nullable final Object obj13, @Nullable final Object obj14, @Nullable final Object obj15, @Nullable final Object obj16, @NotNull Composer composer, final int i, final int i2) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @Nullable Object obj6, @Nullable Object obj7, @Nullable Object obj8, @Nullable Object obj9, @Nullable Object obj10, @Nullable Object obj11, @Nullable Object obj12, @Nullable Object obj13, @Nullable Object obj14, @Nullable Object obj15, @Nullable Object obj16, @NotNull Composer composer, int i, int i2) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -695,28 +457,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function19) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj17, 19)).invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, obj16, startRestartGroup, Integer.valueOf(i), Integer.valueOf(i2 | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$16
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj18, Object obj19) {
-                    invoke((Composer) obj18, ((Number) obj19).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, obj16, composer2, i | 1, i2);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.16(this, obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, obj16, i, i2));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @Nullable final Object obj6, @Nullable final Object obj7, @Nullable final Object obj8, @Nullable final Object obj9, @Nullable final Object obj10, @Nullable final Object obj11, @Nullable final Object obj12, @Nullable final Object obj13, @Nullable final Object obj14, @Nullable final Object obj15, @Nullable final Object obj16, @Nullable final Object obj17, @NotNull Composer composer, final int i, final int i2) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @Nullable Object obj6, @Nullable Object obj7, @Nullable Object obj8, @Nullable Object obj9, @Nullable Object obj10, @Nullable Object obj11, @Nullable Object obj12, @Nullable Object obj13, @Nullable Object obj14, @Nullable Object obj15, @Nullable Object obj16, @Nullable Object obj17, @NotNull Composer composer, int i, int i2) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -726,28 +473,13 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function20) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj18, 20)).invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, obj16, obj17, startRestartGroup, Integer.valueOf(i), Integer.valueOf(i2 | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$17
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj19, Object obj20) {
-                    invoke((Composer) obj19, ((Number) obj20).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, obj16, obj17, composer2, i | 1, i2);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.17(this, obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, obj16, obj17, i, i2));
         }
         return invoke;
     }
 
     @Nullable
-    public Object invoke(@Nullable final Object obj, @Nullable final Object obj2, @Nullable final Object obj3, @Nullable final Object obj4, @Nullable final Object obj5, @Nullable final Object obj6, @Nullable final Object obj7, @Nullable final Object obj8, @Nullable final Object obj9, @Nullable final Object obj10, @Nullable final Object obj11, @Nullable final Object obj12, @Nullable final Object obj13, @Nullable final Object obj14, @Nullable final Object obj15, @Nullable final Object obj16, @Nullable final Object obj17, @Nullable final Object obj18, @NotNull Composer composer, final int i, final int i2) {
+    public Object invoke(@Nullable Object obj, @Nullable Object obj2, @Nullable Object obj3, @Nullable Object obj4, @Nullable Object obj5, @Nullable Object obj6, @Nullable Object obj7, @Nullable Object obj8, @Nullable Object obj9, @Nullable Object obj10, @Nullable Object obj11, @Nullable Object obj12, @Nullable Object obj13, @Nullable Object obj14, @Nullable Object obj15, @Nullable Object obj16, @Nullable Object obj17, @Nullable Object obj18, @NotNull Composer composer, int i, int i2) {
         Intrinsics.checkNotNullParameter(composer, "c");
         Composer startRestartGroup = composer.startRestartGroup(this.key);
         trackRead(startRestartGroup);
@@ -757,22 +489,7 @@ public final class ComposableLambdaImpl implements ComposableLambda {
         Object invoke = ((Function21) TypeIntrinsics.beforeCheckcastToFunctionOfArity(obj19, 21)).invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, obj16, obj17, obj18, startRestartGroup, Integer.valueOf(i), Integer.valueOf(i2 | differentBits));
         ScopeUpdateScope endRestartGroup = startRestartGroup.endRestartGroup();
         if (endRestartGroup != null) {
-            endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$18
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(2);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj20, Object obj21) {
-                    invoke((Composer) obj20, ((Number) obj21).intValue());
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Composer composer2, int i3) {
-                    Intrinsics.checkNotNullParameter(composer2, "nc");
-                    ComposableLambdaImpl.this.invoke(obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, obj16, obj17, obj18, composer2, i | 1, i2);
-                }
-            });
+            endRestartGroup.updateScope(new invoke.18(this, obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12, obj13, obj14, obj15, obj16, obj17, obj18, i, i2));
         }
         return invoke;
     }

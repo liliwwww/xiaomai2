@@ -13,10 +13,8 @@ import android.view.MotionEvent;
 import android.widget.HeaderViewListAdapter;
 import android.widget.ListAdapter;
 import android.widget.PopupWindow;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
 import androidx.appcompat.view.menu.ListMenuItemView;
 import androidx.appcompat.view.menu.MenuAdapter;
@@ -26,42 +24,11 @@ import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class MenuPopupWindow extends ListPopupWindow implements MenuItemHoverListener {
     private static final String TAG = "MenuPopupWindow";
     private static Method sSetTouchModalMethod;
     private MenuItemHoverListener mHoverListener;
-
-    /* compiled from: Taobao */
-    @RequiresApi(23)
-    /* loaded from: classes.dex */
-    static class Api23Impl {
-        private Api23Impl() {
-        }
-
-        @DoNotInline
-        static void setEnterTransition(PopupWindow popupWindow, Transition transition) {
-            popupWindow.setEnterTransition(transition);
-        }
-
-        @DoNotInline
-        static void setExitTransition(PopupWindow popupWindow, Transition transition) {
-            popupWindow.setExitTransition(transition);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(29)
-    /* loaded from: classes.dex */
-    static class Api29Impl {
-        private Api29Impl() {
-        }
-
-        @DoNotInline
-        static void setTouchModal(PopupWindow popupWindow, boolean z) {
-            popupWindow.setTouchModal(z);
-        }
-    }
 
     /* compiled from: Taobao */
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
@@ -70,19 +37,6 @@ public class MenuPopupWindow extends ListPopupWindow implements MenuItemHoverLis
         private MenuItemHoverListener mHoverListener;
         private MenuItem mHoveredMenuItem;
         final int mRetreatKey;
-
-        /* compiled from: Taobao */
-        @RequiresApi(17)
-        /* loaded from: classes.dex */
-        static class Api17Impl {
-            private Api17Impl() {
-            }
-
-            @DoNotInline
-            static int getLayoutDirection(Configuration configuration) {
-                return configuration.getLayoutDirection();
-            }
-        }
 
         public MenuDropDownListView(Context context, boolean z) {
             super(context, z);
@@ -142,14 +96,14 @@ public class MenuPopupWindow extends ListPopupWindow implements MenuItemHoverLis
             int pointToPosition;
             int i2;
             if (this.mHoverListener != null) {
-                ListAdapter adapter = getAdapter();
+                MenuAdapter adapter = getAdapter();
                 if (adapter instanceof HeaderViewListAdapter) {
                     HeaderViewListAdapter headerViewListAdapter = (HeaderViewListAdapter) adapter;
                     i = headerViewListAdapter.getHeadersCount();
                     menuAdapter = (MenuAdapter) headerViewListAdapter.getWrappedAdapter();
                 } else {
                     i = 0;
-                    menuAdapter = (MenuAdapter) adapter;
+                    menuAdapter = adapter;
                 }
                 MenuItemImpl menuItemImpl = null;
                 if (motionEvent.getAction() != 10 && (pointToPosition = pointToPosition((int) motionEvent.getX(), (int) motionEvent.getY())) != -1 && (i2 = pointToPosition - i) >= 0 && i2 < menuAdapter.getCount()) {

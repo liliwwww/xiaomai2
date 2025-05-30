@@ -11,7 +11,7 @@ import java.util.regex.PatternSyntaxException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVServerConfig {
     public static String ALLOW_ACCESS_DOMAIN_PATTERN;
     public static boolean CACHE;
@@ -27,9 +27,7 @@ public class WVServerConfig {
     public static Pattern forbiddenDomain;
     public static Pattern supportDownloadDomain;
     public static Pattern thirdPartyDomain;
-
-    /* renamed from: v */
-    public static String f3v;
+    public static String v;
 
     static {
         try {
@@ -50,7 +48,7 @@ public class WVServerConfig {
         supportDownloadDomain = null;
         ALLOW_ACCESS_DOMAIN_PATTERN = WVConstants.ALLOW_SSL_DOMAIN_PATTERN;
         allowAccessDomain = null;
-        f3v = "0";
+        v = "0";
     }
 
     public static boolean isAllowAccess(String str) {
@@ -63,9 +61,9 @@ public class WVServerConfig {
             }
             try {
                 allowAccessDomain = Pattern.compile(ALLOW_ACCESS_DOMAIN_PATTERN, 2);
-                TaoLog.m18d("WVServerConfig", "compile pattern allowAccessDomain rule, " + ALLOW_ACCESS_DOMAIN_PATTERN);
+                TaoLog.d("WVServerConfig", "compile pattern allowAccessDomain rule, " + ALLOW_ACCESS_DOMAIN_PATTERN);
             } catch (PatternSyntaxException e) {
-                TaoLog.m21e("WVServerConfig", " PatternSyntaxException pattern:" + e.getMessage());
+                TaoLog.e("WVServerConfig", " PatternSyntaxException pattern:" + e.getMessage());
             }
         }
         try {
@@ -91,9 +89,9 @@ public class WVServerConfig {
             }
             try {
                 supportDownloadDomain = Pattern.compile(SUPPORT_DOWNLOAD_DOMAIN_PATTERN, 2);
-                TaoLog.m18d("WVServerConfig", "compile pattern supportDownloadDomain rule, " + SUPPORT_DOWNLOAD_DOMAIN_PATTERN);
+                TaoLog.d("WVServerConfig", "compile pattern supportDownloadDomain rule, " + SUPPORT_DOWNLOAD_DOMAIN_PATTERN);
             } catch (PatternSyntaxException e) {
-                TaoLog.m21e("WVServerConfig", " PatternSyntaxException pattern:" + e.getMessage());
+                TaoLog.e("WVServerConfig", " PatternSyntaxException pattern:" + e.getMessage());
             }
         }
         try {
@@ -146,9 +144,9 @@ public class WVServerConfig {
             }
             try {
                 domainPat = Pattern.compile(DOMAIN_PATTERN, 2);
-                TaoLog.m18d("WVServerConfig", "compile pattern domainPat rule, " + DOMAIN_PATTERN);
+                TaoLog.d("WVServerConfig", "compile pattern domainPat rule, " + DOMAIN_PATTERN);
             } catch (PatternSyntaxException e) {
-                TaoLog.m21e("WVServerConfig", " PatternSyntaxException pattern:" + e.getMessage());
+                TaoLog.e("WVServerConfig", " PatternSyntaxException pattern:" + e.getMessage());
             }
         }
         try {
@@ -174,9 +172,9 @@ public class WVServerConfig {
             }
             try {
                 forbiddenDomain = Pattern.compile(FORBIDDEN_DOMAIN_PATTERN, 2);
-                TaoLog.m18d("WVServerConfig", "compile pattern black rule, " + FORBIDDEN_DOMAIN_PATTERN);
+                TaoLog.d("WVServerConfig", "compile pattern black rule, " + FORBIDDEN_DOMAIN_PATTERN);
             } catch (PatternSyntaxException e) {
-                TaoLog.m21e("WVServerConfig", " PatternSyntaxException pattern:" + e.getMessage());
+                TaoLog.e("WVServerConfig", " PatternSyntaxException pattern:" + e.getMessage());
             }
         }
         try {
@@ -201,9 +199,9 @@ public class WVServerConfig {
             }
             try {
                 thirdPartyDomain = Pattern.compile(THIRD_PARTY_DOMAIN_PATTERN, 2);
-                TaoLog.m18d("WVServerConfig", "compile pattern thirdPartyDomain rule, " + THIRD_PARTY_DOMAIN_PATTERN);
+                TaoLog.d("WVServerConfig", "compile pattern thirdPartyDomain rule, " + THIRD_PARTY_DOMAIN_PATTERN);
             } catch (PatternSyntaxException e) {
-                TaoLog.m21e("WVServerConfig", " PatternSyntaxException pattern:" + e.getMessage());
+                TaoLog.e("WVServerConfig", " PatternSyntaxException pattern:" + e.getMessage());
             }
         }
         try {

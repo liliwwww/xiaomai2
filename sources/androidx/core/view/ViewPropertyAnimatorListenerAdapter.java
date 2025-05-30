@@ -4,17 +4,14 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ViewPropertyAnimatorListenerAdapter implements ViewPropertyAnimatorListener {
-    @Override // androidx.core.view.ViewPropertyAnimatorListener
     public void onAnimationCancel(@NonNull View view) {
     }
 
-    @Override // androidx.core.view.ViewPropertyAnimatorListener
     public void onAnimationEnd(@NonNull View view) {
     }
 
-    @Override // androidx.core.view.ViewPropertyAnimatorListener
     public void onAnimationStart(@NonNull View view) {
     }
 }

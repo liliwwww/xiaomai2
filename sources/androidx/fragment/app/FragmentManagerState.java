@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /* compiled from: Taobao */
 @SuppressLint({"BanParcelableUsage"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class FragmentManagerState implements Parcelable {
     public static final Parcelable.Creator<FragmentManagerState> CREATOR = new Parcelable.Creator<FragmentManagerState>() { // from class: androidx.fragment.app.FragmentManagerState.1
         /* JADX WARN: Can't rename method to resolve collision */

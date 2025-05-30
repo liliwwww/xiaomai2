@@ -1,24 +1,20 @@
 package androidx.fragment.app;
 
-import android.R;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
-import android.view.animation.Transformation;
 import androidx.annotation.AnimRes;
 import androidx.annotation.NonNull;
-import androidx.core.view.OneShotPreDrawListener;
-import androidx.fragment.C1043R;
+import androidx.fragment.R;
+import androidx.fragment.R$animator;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class FragmentAnim {
     private FragmentAnim() {
     }
@@ -35,7 +31,7 @@ class FragmentAnim {
         fragment.setAnimations(0, 0, 0, 0);
         ViewGroup viewGroup = fragment.mContainer;
         if (viewGroup != null) {
-            int i = C1043R.id.visible_removing_fragment_view_tag;
+            int i = R.id.visible_removing_fragment_view_tag;
             if (viewGroup.getTag(i) != null) {
                 fragment.mContainer.setTag(i, null);
             }
@@ -91,7 +87,7 @@ class FragmentAnim {
 
     @AnimRes
     private static int toActivityTransitResId(@NonNull Context context, int i) {
-        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(R.style.Animation.Activity, new int[]{i});
+        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(android.R.style.Animation.Activity, new int[]{i});
         int resourceId = obtainStyledAttributes.getResourceId(0, -1);
         obtainStyledAttributes.recycle();
         return resourceId;
@@ -100,21 +96,21 @@ class FragmentAnim {
     @AnimRes
     private static int transitToAnimResourceId(@NonNull Context context, int i, boolean z) {
         if (i == 4097) {
-            return z ? C1043R.animator.fragment_open_enter : C1043R.animator.fragment_open_exit;
+            return z ? R$animator.fragment_open_enter : R$animator.fragment_open_exit;
         }
         if (i == 8194) {
-            return z ? C1043R.animator.fragment_close_enter : C1043R.animator.fragment_close_exit;
+            return z ? R$animator.fragment_close_enter : R$animator.fragment_close_exit;
         }
         if (i == 8197) {
-            return z ? toActivityTransitResId(context, R.attr.activityCloseEnterAnimation) : toActivityTransitResId(context, R.attr.activityCloseExitAnimation);
+            return z ? toActivityTransitResId(context, android.R.attr.activityCloseEnterAnimation) : toActivityTransitResId(context, android.R.attr.activityCloseExitAnimation);
         }
         if (i == 4099) {
-            return z ? C1043R.animator.fragment_fade_enter : C1043R.animator.fragment_fade_exit;
+            return z ? R$animator.fragment_fade_enter : R$animator.fragment_fade_exit;
         }
         if (i != 4100) {
             return -1;
         }
-        return z ? toActivityTransitResId(context, R.attr.activityOpenEnterAnimation) : toActivityTransitResId(context, R.attr.activityOpenExitAnimation);
+        return z ? toActivityTransitResId(context, android.R.attr.activityOpenEnterAnimation) : toActivityTransitResId(context, android.R.attr.activityOpenExitAnimation);
     }
 
     /* compiled from: Taobao */
@@ -136,62 +132,6 @@ class FragmentAnim {
             if (animator == null) {
                 throw new IllegalStateException("Animator cannot be null");
             }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class EndViewTransitionAnimation extends AnimationSet implements Runnable {
-        private boolean mAnimating;
-        private final View mChild;
-        private boolean mEnded;
-        private final ViewGroup mParent;
-        private boolean mTransitionEnded;
-
-        EndViewTransitionAnimation(@NonNull Animation animation, @NonNull ViewGroup viewGroup, @NonNull View view) {
-            super(false);
-            this.mAnimating = true;
-            this.mParent = viewGroup;
-            this.mChild = view;
-            addAnimation(animation);
-            viewGroup.post(this);
-        }
-
-        @Override // android.view.animation.AnimationSet, android.view.animation.Animation
-        public boolean getTransformation(long j, @NonNull Transformation transformation) {
-            this.mAnimating = true;
-            if (this.mEnded) {
-                return !this.mTransitionEnded;
-            }
-            if (!super.getTransformation(j, transformation)) {
-                this.mEnded = true;
-                OneShotPreDrawListener.add(this.mParent, this);
-            }
-            return true;
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            if (this.mEnded || !this.mAnimating) {
-                this.mParent.endViewTransition(this.mChild);
-                this.mTransitionEnded = true;
-            } else {
-                this.mAnimating = false;
-                this.mParent.post(this);
-            }
-        }
-
-        @Override // android.view.animation.Animation
-        public boolean getTransformation(long j, @NonNull Transformation transformation, float f) {
-            this.mAnimating = true;
-            if (this.mEnded) {
-                return !this.mTransitionEnded;
-            }
-            if (!super.getTransformation(j, transformation, f)) {
-                this.mEnded = true;
-                OneShotPreDrawListener.add(this.mParent, this);
-            }
-            return true;
         }
     }
 }

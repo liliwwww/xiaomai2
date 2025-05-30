@@ -1,7 +1,7 @@
 package android.taobao.windvane.webview;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WindVaneError extends Error {
     private static final long serialVersionUID = 8736004749630607428L;
 

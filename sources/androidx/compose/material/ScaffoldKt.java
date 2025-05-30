@@ -1,21 +1,23 @@
 package androidx.compose.material;
 
 import androidx.compose.foundation.layout.PaddingValues;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.UiComposable;
-import androidx.compose.p004ui.layout.MeasureResult;
-import androidx.compose.p004ui.layout.MeasureScope;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.layout.SubcomposeLayoutKt;
-import androidx.compose.p004ui.layout.SubcomposeMeasureScope;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Constraints;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.CompositionLocalKt;
 import androidx.compose.runtime.ProvidableCompositionLocal;
 import androidx.compose.runtime.ScopeUpdateScope;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.UiComposable;
+import androidx.compose.ui.layout.MeasureResult;
+import androidx.compose.ui.layout.MeasureScope;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.layout.SubcomposeLayoutKt;
+import androidx.compose.ui.layout.SubcomposeMeasureScope;
+import androidx.compose.ui.unit.Constraints;
+import androidx.compose.ui.unit.Dp;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+import java.util.Map;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
@@ -26,18 +28,18 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ScaffoldKt {
 
     @NotNull
     private static final ProvidableCompositionLocal<FabPlacement> LocalFabPlacement = CompositionLocalKt.staticCompositionLocalOf(new Function0<FabPlacement>() { // from class: androidx.compose.material.ScaffoldKt$LocalFabPlacement$1
         @Nullable
         /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-        public final FabPlacement m2209invoke() {
+        public final FabPlacement m652invoke() {
             return null;
         }
     });
-    private static final float FabSpacing = C0856Dp.m5216constructorimpl(16);
+    private static final float FabSpacing = Dp.m2142constructorimpl(16);
 
     /* JADX WARN: Code restructure failed: missing block: B:62:0x01b8, code lost:
     
@@ -123,21 +125,21 @@ public final class ScaffoldKt {
     /* renamed from: Scaffold-27mzLpw, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void m2206Scaffold27mzLpw(@org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r41, @org.jetbrains.annotations.Nullable androidx.compose.material.ScaffoldState r42, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r43, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r44, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function3<? super androidx.compose.material.SnackbarHostState, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r45, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r46, int r47, boolean r48, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.ColumnScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r49, boolean r50, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r51, float r52, long r53, long r55, long r57, long r59, long r61, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.PaddingValues, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r63, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r64, final int r65, final int r66, final int r67) {
+    public static final void m649Scaffold27mzLpw(@org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r41, @org.jetbrains.annotations.Nullable androidx.compose.material.ScaffoldState r42, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r43, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r44, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function3<? super androidx.compose.material.SnackbarHostState, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r45, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r46, int r47, boolean r48, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.ColumnScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r49, boolean r50, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r51, float r52, long r53, long r55, long r57, long r59, long r61, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.foundation.layout.PaddingValues, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r63, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r64, final int r65, final int r66, final int r67) {
         /*
             Method dump skipped, instructions count: 1275
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.ScaffoldKt.m2206Scaffold27mzLpw(androidx.compose.ui.Modifier, androidx.compose.material.ScaffoldState, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function3, kotlin.jvm.functions.Function2, int, boolean, kotlin.jvm.functions.Function3, boolean, androidx.compose.ui.graphics.Shape, float, long, long, long, long, long, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int, int):void");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.ScaffoldKt.m649Scaffold27mzLpw(androidx.compose.ui.Modifier, androidx.compose.material.ScaffoldState, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function3, kotlin.jvm.functions.Function2, int, boolean, kotlin.jvm.functions.Function3, boolean, androidx.compose.ui.graphics.Shape, float, long, long, long, long, long, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int, int):void");
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     @Composable
     @UiComposable
     /* renamed from: ScaffoldLayout-MDYNRJg, reason: not valid java name */
-    public static final void m2207ScaffoldLayoutMDYNRJg(final boolean z, final int i, final Function2<? super Composer, ? super Integer, Unit> function2, final Function3<? super PaddingValues, ? super Composer, ? super Integer, Unit> function3, final Function2<? super Composer, ? super Integer, Unit> function22, final Function2<? super Composer, ? super Integer, Unit> function23, final Function2<? super Composer, ? super Integer, Unit> function24, Composer composer, final int i2) {
+    public static final void m650ScaffoldLayoutMDYNRJg(final boolean z, final int i, final Function2<? super Composer, ? super Integer, Unit> function2, final Function3<? super PaddingValues, ? super Composer, ? super Integer, Unit> function3, final Function2<? super Composer, ? super Integer, Unit> function22, final Function2<? super Composer, ? super Integer, Unit> function23, final Function2<? super Composer, ? super Integer, Unit> function24, Composer composer, int i2) {
         Modifier modifier;
         Composer startRestartGroup = composer.startRestartGroup(-1401632215);
         int i3 = (i2 & 14) == 0 ? (startRestartGroup.changed(z) ? 4 : 2) | i2 : i2;
@@ -151,13 +153,13 @@ public final class ScaffoldKt {
             i3 |= startRestartGroup.changed(function3) ? 2048 : 1024;
         }
         if ((57344 & i2) == 0) {
-            i3 |= startRestartGroup.changed(function22) ? 16384 : 8192;
+            i3 |= startRestartGroup.changed(function22) ? AccessibilityNodeInfoCompat.ACTION_COPY : 8192;
         }
         if ((458752 & i2) == 0) {
-            i3 |= startRestartGroup.changed(function23) ? 131072 : 65536;
+            i3 |= startRestartGroup.changed(function23) ? AccessibilityNodeInfoCompat.ACTION_SET_SELECTION : AccessibilityNodeInfoCompat.ACTION_CUT;
         }
         if ((3670016 & i2) == 0) {
-            i3 |= startRestartGroup.changed(function24) ? 1048576 : 524288;
+            i3 |= startRestartGroup.changed(function24) ? AccessibilityNodeInfoCompat.ACTION_DISMISS : AccessibilityNodeInfoCompat.ACTION_COLLAPSE;
         }
         final int i4 = i3;
         if ((2995931 & i4) == 599186 && startRestartGroup.getSkipping()) {
@@ -166,7 +168,7 @@ public final class ScaffoldKt {
             if (ComposerKt.isTraceInProgress()) {
                 ComposerKt.traceEventStart(-1401632215, i4, -1, "androidx.compose.material.ScaffoldLayout (Scaffold.kt:227)");
             }
-            Object[] objArr = {function2, function22, function23, FabPosition.m2113boximpl(i), Boolean.valueOf(z), function24, function3};
+            Object[] objArr = {function2, function22, function23, FabPosition.m589boximpl(i), Boolean.valueOf(z), function24, function3};
             startRestartGroup.startReplaceableGroup(-568225417);
             boolean z2 = false;
             for (int i5 = 0; i5 < 7; i5++) {
@@ -183,16 +185,16 @@ public final class ScaffoldKt {
                     }
 
                     public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                        return m2210invoke0kLqBqw((SubcomposeMeasureScope) obj, ((Constraints) obj2).m5190unboximpl());
+                        return m653invoke0kLqBqw((SubcomposeMeasureScope) obj, ((Constraints) obj2).m2128unboximpl());
                     }
 
                     @NotNull
                     /* renamed from: invoke-0kLqBqw, reason: not valid java name */
-                    public final MeasureResult m2210invoke0kLqBqw(@NotNull final SubcomposeMeasureScope subcomposeMeasureScope, long j) {
+                    public final MeasureResult m653invoke0kLqBqw(@NotNull final SubcomposeMeasureScope subcomposeMeasureScope, long j) {
                         Intrinsics.checkNotNullParameter(subcomposeMeasureScope, "$this$SubcomposeLayout");
-                        final int m5184getMaxWidthimpl = Constraints.m5184getMaxWidthimpl(j);
-                        final int m5183getMaxHeightimpl = Constraints.m5183getMaxHeightimpl(j);
-                        final long m5175copyZbe2FdA$default = Constraints.m5175copyZbe2FdA$default(j, 0, 0, 0, 0, 10, null);
+                        final int m2122getMaxWidthimpl = Constraints.m2122getMaxWidthimpl(j);
+                        final int m2121getMaxHeightimpl = Constraints.m2121getMaxHeightimpl(j);
+                        final long m2113copyZbe2FdA$default = Constraints.m2113copyZbe2FdA$default(j, 0, 0, 0, 0, 10, null);
                         final Function2<Composer, Integer, Unit> function26 = function2;
                         final Function2<Composer, Integer, Unit> function27 = function22;
                         final Function2<Composer, Integer, Unit> function28 = function23;
@@ -201,7 +203,7 @@ public final class ScaffoldKt {
                         final Function2<Composer, Integer, Unit> function29 = function24;
                         final int i7 = i4;
                         final Function3<PaddingValues, Composer, Integer, Unit> function32 = function3;
-                        return MeasureScope.CC.m140p(subcomposeMeasureScope, m5184getMaxWidthimpl, m5183getMaxHeightimpl, null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.material.ScaffoldKt$ScaffoldLayout$1$1.1
+                        return MeasureScope.-CC.p(subcomposeMeasureScope, m2122getMaxWidthimpl, m2121getMaxHeightimpl, (Map) null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.material.ScaffoldKt$ScaffoldLayout$1$1.1
                             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
                             /* JADX WARN: Multi-variable type inference failed */
                             {
@@ -230,16 +232,16 @@ public final class ScaffoldKt {
                             /* JADX WARN: Removed duplicated region for block: B:89:0x0365  */
                             /*
                                 Code decompiled incorrectly, please refer to instructions dump.
-                                To view partially-correct code enable 'Show inconsistent code' option in preferences
+                                To view partially-correct add '--show-bad-code' argument
                             */
                             public final void invoke(@org.jetbrains.annotations.NotNull androidx.compose.ui.layout.Placeable.PlacementScope r31) {
                                 /*
                                     Method dump skipped, instructions count: 907
-                                    To view this dump change 'Code comments level' option to 'DEBUG'
+                                    To view this dump add '--comments-level debug' option
                                 */
-                                throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.ScaffoldKt$ScaffoldLayout$1$1.C06891.invoke(androidx.compose.ui.layout.Placeable$PlacementScope):void");
+                                throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.ScaffoldKt$ScaffoldLayout$1$1.AnonymousClass1.invoke(androidx.compose.ui.layout.Placeable$PlacementScope):void");
                             }
-                        }, 4, null);
+                        }, 4, (Object) null);
                     }
                 };
                 startRestartGroup.updateRememberedValue(function25);
@@ -257,22 +259,7 @@ public final class ScaffoldKt {
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.material.ScaffoldKt$ScaffoldLayout$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(2);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                invoke((Composer) obj, ((Number) obj2).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i6) {
-                ScaffoldKt.m2207ScaffoldLayoutMDYNRJg(z, i, function2, function3, function22, function23, function24, composer2, i2 | 1);
-            }
-        });
+        endRestartGroup.updateScope(new ScaffoldLayout.2(z, i, function2, function3, function22, function23, function24, i2));
     }
 
     @NotNull
@@ -285,7 +272,7 @@ public final class ScaffoldKt {
     public static final ScaffoldState rememberScaffoldState(@Nullable DrawerState drawerState, @Nullable SnackbarHostState snackbarHostState, @Nullable Composer composer, int i, int i2) {
         composer.startReplaceableGroup(1569641925);
         if ((i2 & 1) != 0) {
-            drawerState = DrawerKt.rememberDrawerState(DrawerValue.Closed, null, composer, 6, 2);
+            drawerState = DrawerKt.rememberDrawerState(DrawerValue.Closed, (Function1) null, composer, 6, 2);
         }
         if ((i2 & 2) != 0) {
             composer.startReplaceableGroup(-492369756);

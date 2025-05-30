@@ -11,7 +11,7 @@ import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
 @SuppressLint({"InlinedApi"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class HtmlCompat {
     public static final int FROM_HTML_MODE_COMPACT = 63;
     public static final int FROM_HTML_MODE_LEGACY = 0;

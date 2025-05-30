@@ -1,23 +1,21 @@
 package okhttp3;
 
-import androidx.core.app.NotificationCompat;
 import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 import okhttp3.internal.NamedRunnable;
-import okhttp3.internal.connection.C1433i;
 import tb.iv3;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class RealCall implements Call {
     final OkHttpClient client;
     private boolean executed;
     final boolean forWebSocket;
-    final C1474n originalRequest;
-    private C1433i transmitter;
+    final n originalRequest;
+    private okhttp3.internal.connection.i transmitter;
 
     /* compiled from: Taobao */
     final class AsyncCall extends NamedRunnable {
@@ -40,42 +38,42 @@ final class RealCall implements Call {
             Throwable th;
             boolean z;
             IOException e;
-            RealCall.this.transmitter.m591q();
+            RealCall.this.transmitter.q();
             try {
                 try {
                     z = true;
-                } catch (IOException e2) {
-                    e = e2;
-                    z = false;
-                } catch (Throwable th2) {
-                    th = th2;
-                    z = false;
-                }
-                try {
-                    this.responseCallback.onResponse(RealCall.this, RealCall.this.getResponseWithInterceptorChain());
-                } catch (IOException e3) {
-                    e = e3;
-                    if (z) {
-                        iv3.j().p(4, "Callback failure for " + RealCall.this.toLoggableString(), e);
-                    } else {
-                        this.responseCallback.onFailure(RealCall.this, e);
+                    try {
+                        this.responseCallback.onResponse(RealCall.this, RealCall.this.getResponseWithInterceptorChain());
+                    } catch (IOException e2) {
+                        e = e2;
+                        if (z) {
+                            iv3.j().p(4, "Callback failure for " + RealCall.this.toLoggableString(), e);
+                        } else {
+                            this.responseCallback.onFailure(RealCall.this, e);
+                        }
+                        RealCall.this.client.dispatcher().f(this);
+                    } catch (Throwable th2) {
+                        th = th2;
+                        RealCall.this.cancel();
+                        if (!z) {
+                            IOException iOException = new IOException("canceled due to " + th);
+                            iOException.addSuppressed(th);
+                            this.responseCallback.onFailure(RealCall.this, iOException);
+                        }
+                        throw th;
                     }
-                    RealCall.this.client.dispatcher().m440f(this);
                 } catch (Throwable th3) {
-                    th = th3;
-                    RealCall.this.cancel();
-                    if (!z) {
-                        IOException iOException = new IOException("canceled due to " + th);
-                        iOException.addSuppressed(th);
-                        this.responseCallback.onFailure(RealCall.this, iOException);
-                    }
-                    throw th;
+                    RealCall.this.client.dispatcher().f(this);
+                    throw th3;
                 }
-                RealCall.this.client.dispatcher().m440f(this);
+            } catch (IOException e3) {
+                e = e3;
+                z = false;
             } catch (Throwable th4) {
-                RealCall.this.client.dispatcher().m440f(this);
-                throw th4;
+                th = th4;
+                z = false;
             }
+            RealCall.this.client.dispatcher().f(this);
         }
 
         void executeOn(ExecutorService executorService) {
@@ -85,12 +83,12 @@ final class RealCall implements Call {
                 } catch (RejectedExecutionException e) {
                     InterruptedIOException interruptedIOException = new InterruptedIOException("executor rejected");
                     interruptedIOException.initCause(e);
-                    RealCall.this.transmitter.m586l(interruptedIOException);
+                    RealCall.this.transmitter.l(interruptedIOException);
                     this.responseCallback.onFailure(RealCall.this, interruptedIOException);
-                    RealCall.this.client.dispatcher().m440f(this);
+                    RealCall.this.client.dispatcher().f(this);
                 }
             } catch (Throwable th) {
-                RealCall.this.client.dispatcher().m440f(this);
+                RealCall.this.client.dispatcher().f(this);
                 throw th;
             }
         }
@@ -100,10 +98,10 @@ final class RealCall implements Call {
         }
 
         String host() {
-            return RealCall.this.originalRequest.m858h().m816m();
+            return RealCall.this.originalRequest.h().m();
         }
 
-        C1474n request() {
+        n request() {
             return RealCall.this.originalRequest;
         }
 
@@ -112,24 +110,22 @@ final class RealCall implements Call {
         }
     }
 
-    private RealCall(OkHttpClient okHttpClient, C1474n c1474n, boolean z) {
+    private RealCall(OkHttpClient okHttpClient, n nVar, boolean z) {
         this.client = okHttpClient;
-        this.originalRequest = c1474n;
+        this.originalRequest = nVar;
         this.forWebSocket = z;
     }
 
-    static RealCall newRealCall(OkHttpClient okHttpClient, C1474n c1474n, boolean z) {
-        RealCall realCall = new RealCall(okHttpClient, c1474n, z);
-        realCall.transmitter = new C1433i(okHttpClient, realCall);
+    static RealCall newRealCall(OkHttpClient okHttpClient, n nVar, boolean z) {
+        RealCall realCall = new RealCall(okHttpClient, nVar, z);
+        realCall.transmitter = new okhttp3.internal.connection.i(okHttpClient, realCall);
         return realCall;
     }
 
-    @Override // okhttp3.Call
     public void cancel() {
-        this.transmitter.m580d();
+        this.transmitter.d();
     }
 
-    @Override // okhttp3.Call
     public void enqueue(Callback callback) {
         synchronized (this) {
             if (this.executed) {
@@ -137,34 +133,33 @@ final class RealCall implements Call {
             }
             this.executed = true;
         }
-        this.transmitter.m578b();
-        this.client.dispatcher().m437a(new AsyncCall(callback));
+        this.transmitter.b();
+        this.client.dispatcher().a(new AsyncCall(callback));
     }
 
-    @Override // okhttp3.Call
-    public C1476p execute() throws IOException {
+    public p execute() throws IOException {
         synchronized (this) {
             if (this.executed) {
                 throw new IllegalStateException("Already Executed");
             }
             this.executed = true;
         }
-        this.transmitter.m591q();
-        this.transmitter.m578b();
+        this.transmitter.q();
+        this.transmitter.b();
         try {
-            this.client.dispatcher().m438b(this);
+            this.client.dispatcher().b(this);
             return getResponseWithInterceptorChain();
         } finally {
-            this.client.dispatcher().m441g(this);
+            this.client.dispatcher().g(this);
         }
     }
 
     /* JADX WARN: Removed duplicated region for block: B:23:0x00a5  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    okhttp3.C1476p getResponseWithInterceptorChain() throws java.io.IOException {
+    okhttp3.p getResponseWithInterceptorChain() throws java.io.IOException {
         /*
             r11 = this;
             java.util.ArrayList r1 = new java.util.ArrayList
@@ -219,13 +214,13 @@ final class RealCall implements Call {
             okhttp3.n r2 = r11.originalRequest     // Catch: java.lang.Throwable -> L95 java.io.IOException -> L97
             okhttp3.p r2 = r10.proceed(r2)     // Catch: java.lang.Throwable -> L95 java.io.IOException -> L97
             okhttp3.internal.connection.i r3 = r11.transmitter     // Catch: java.lang.Throwable -> L95 java.io.IOException -> L97
-            boolean r3 = r3.m584i()     // Catch: java.lang.Throwable -> L95 java.io.IOException -> L97
+            boolean r3 = r3.i()     // Catch: java.lang.Throwable -> L95 java.io.IOException -> L97
             if (r3 != 0) goto L8a
             okhttp3.internal.connection.i r0 = r11.transmitter
-            r0.m586l(r1)
+            r0.l(r1)
             return r2
         L8a:
-            okhttp3.internal.C1421a.m470g(r2)     // Catch: java.lang.Throwable -> L95 java.io.IOException -> L97
+            okhttp3.internal.a.g(r2)     // Catch: java.lang.Throwable -> L95 java.io.IOException -> L97
             java.io.IOException r2 = new java.io.IOException     // Catch: java.lang.Throwable -> L95 java.io.IOException -> L97
             java.lang.String r3 = "Canceled"
             r2.<init>(r3)     // Catch: java.lang.Throwable -> L95 java.io.IOException -> L97
@@ -237,7 +232,7 @@ final class RealCall implements Call {
             r0 = move-exception
             r2 = 1
             okhttp3.internal.connection.i r3 = r11.transmitter     // Catch: java.lang.Throwable -> La0
-            java.io.IOException r0 = r3.m586l(r0)     // Catch: java.lang.Throwable -> La0
+            java.io.IOException r0 = r3.l(r0)     // Catch: java.lang.Throwable -> La0
             throw r0     // Catch: java.lang.Throwable -> La0
         La0:
             r0 = move-exception
@@ -246,48 +241,44 @@ final class RealCall implements Call {
         La3:
             if (r0 != 0) goto Laa
             okhttp3.internal.connection.i r0 = r11.transmitter
-            r0.m586l(r1)
+            r0.l(r1)
         Laa:
             throw r2
         */
         throw new UnsupportedOperationException("Method not decompiled: okhttp3.RealCall.getResponseWithInterceptorChain():okhttp3.p");
     }
 
-    @Override // okhttp3.Call
     public boolean isCanceled() {
-        return this.transmitter.m584i();
+        return this.transmitter.i();
     }
 
-    @Override // okhttp3.Call
     public synchronized boolean isExecuted() {
         return this.executed;
     }
 
     String redactedUrl() {
-        return this.originalRequest.m858h().m806A();
+        return this.originalRequest.h().A();
     }
 
-    @Override // okhttp3.Call
-    public C1474n request() {
+    public n request() {
         return this.originalRequest;
     }
 
-    @Override // okhttp3.Call
     public okio.o timeout() {
-        return this.transmitter.m589o();
+        return this.transmitter.o();
     }
 
     String toLoggableString() {
         StringBuilder sb = new StringBuilder();
         sb.append(isCanceled() ? "canceled " : "");
-        sb.append(this.forWebSocket ? "web socket" : NotificationCompat.CATEGORY_CALL);
+        sb.append(this.forWebSocket ? "web socket" : "call");
         sb.append(" to ");
         sb.append(redactedUrl());
         return sb.toString();
     }
 
-    @Override // okhttp3.Call
-    public RealCall clone() {
+    /* renamed from: clone, reason: collision with other method in class and merged with bridge method [inline-methods] and merged with bridge method [inline-methods] */
+    public RealCall m2822clone() {
         return newRealCall(this.client, this.originalRequest, this.forWebSocket);
     }
 }

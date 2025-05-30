@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class FragmentViewModelLazyKt {
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "Superseded by activityViewModels that takes a CreationExtras producer")
     @MainThread
@@ -28,12 +28,12 @@ public final class FragmentViewModelLazyKt {
         Intrinsics.checkNotNullParameter(fragment, "<this>");
         Intrinsics.reifiedOperationMarker(4, "VM");
         KClass orCreateKotlinClass = Reflection.getOrCreateKotlinClass(ViewModel.class);
-        FragmentViewModelLazyKt$activityViewModels$1 fragmentViewModelLazyKt$activityViewModels$1 = new FragmentViewModelLazyKt$activityViewModels$1(fragment);
-        FragmentViewModelLazyKt$activityViewModels$2 fragmentViewModelLazyKt$activityViewModels$2 = new FragmentViewModelLazyKt$activityViewModels$2(fragment);
+        activityViewModels.1 r1 = new activityViewModels.1(fragment);
+        activityViewModels.2 r2 = new activityViewModels.2(fragment);
         if (function0 == null) {
-            function0 = new FragmentViewModelLazyKt$activityViewModels$3(fragment);
+            function0 = new activityViewModels.3<>(fragment);
         }
-        return createViewModelLazy(fragment, orCreateKotlinClass, fragmentViewModelLazyKt$activityViewModels$1, fragmentViewModelLazyKt$activityViewModels$2, function0);
+        return createViewModelLazy(fragment, orCreateKotlinClass, r1, r2, function0);
     }
 
     public static /* synthetic */ Lazy activityViewModels$default(Fragment fragment, Function0 function0, int i, Object obj) {
@@ -43,33 +43,21 @@ public final class FragmentViewModelLazyKt {
         Intrinsics.checkNotNullParameter(fragment, "<this>");
         Intrinsics.reifiedOperationMarker(4, "VM");
         KClass orCreateKotlinClass = Reflection.getOrCreateKotlinClass(ViewModel.class);
-        FragmentViewModelLazyKt$activityViewModels$1 fragmentViewModelLazyKt$activityViewModels$1 = new FragmentViewModelLazyKt$activityViewModels$1(fragment);
-        FragmentViewModelLazyKt$activityViewModels$2 fragmentViewModelLazyKt$activityViewModels$2 = new FragmentViewModelLazyKt$activityViewModels$2(fragment);
+        activityViewModels.1 r4 = new activityViewModels.1(fragment);
+        activityViewModels.2 r0 = new activityViewModels.2(fragment);
         if (function0 == null) {
-            function0 = new FragmentViewModelLazyKt$activityViewModels$3(fragment);
+            function0 = new activityViewModels.3(fragment);
         }
-        return createViewModelLazy(fragment, orCreateKotlinClass, fragmentViewModelLazyKt$activityViewModels$1, fragmentViewModelLazyKt$activityViewModels$2, function0);
+        return createViewModelLazy(fragment, orCreateKotlinClass, r4, r0, function0);
     }
 
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "Superseded by createViewModelLazy that takes a CreationExtras producer")
     @MainThread
-    public static final /* synthetic */ Lazy createViewModelLazy(final Fragment fragment, KClass kClass, Function0 function0, Function0 function02) {
+    public static final /* synthetic */ Lazy createViewModelLazy(Fragment fragment, KClass kClass, Function0 function0, Function0 function02) {
         Intrinsics.checkNotNullParameter(fragment, "<this>");
         Intrinsics.checkNotNullParameter(kClass, "viewModelClass");
         Intrinsics.checkNotNullParameter(function0, "storeProducer");
-        return createViewModelLazy(fragment, kClass, function0, new Function0<CreationExtras>() { // from class: androidx.fragment.app.FragmentViewModelLazyKt$createViewModelLazy$1
-            {
-                super(0);
-            }
-
-            @NotNull
-            /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final CreationExtras m5592invoke() {
-                CreationExtras defaultViewModelCreationExtras = Fragment.this.getDefaultViewModelCreationExtras();
-                Intrinsics.checkNotNullExpressionValue(defaultViewModelCreationExtras, "defaultViewModelCreationExtras");
-                return defaultViewModelCreationExtras;
-            }
-        }, function02);
+        return createViewModelLazy(fragment, kClass, function0, new createViewModelLazy.1(fragment), function02);
     }
 
     public static /* synthetic */ Lazy createViewModelLazy$default(Fragment fragment, KClass kClass, Function0 function0, Function0 function02, int i, Object obj) {
@@ -88,11 +76,11 @@ public final class FragmentViewModelLazyKt {
         Intrinsics.reifiedOperationMarker(4, "VM");
         KClass orCreateKotlinClass = Reflection.getOrCreateKotlinClass(ViewModel.class);
         FragmentViewModelLazyKt$viewModels$2 fragmentViewModelLazyKt$viewModels$2 = new FragmentViewModelLazyKt$viewModels$2(lazy);
-        FragmentViewModelLazyKt$viewModels$3 fragmentViewModelLazyKt$viewModels$3 = new FragmentViewModelLazyKt$viewModels$3(lazy);
+        viewModels.3 r2 = new viewModels.3(lazy);
         if (function02 == null) {
-            function02 = new FragmentViewModelLazyKt$viewModels$4(fragment, lazy);
+            function02 = new viewModels.4<>(fragment, lazy);
         }
-        return createViewModelLazy(fragment, orCreateKotlinClass, fragmentViewModelLazyKt$viewModels$2, fragmentViewModelLazyKt$viewModels$3, function02);
+        return createViewModelLazy(fragment, orCreateKotlinClass, fragmentViewModelLazyKt$viewModels$2, r2, function02);
     }
 
     public static /* synthetic */ Lazy viewModels$default(final Fragment fragment, Function0 function0, Function0 function02, int i, Object obj) {
@@ -104,7 +92,7 @@ public final class FragmentViewModelLazyKt {
 
                 @NotNull
                 /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-                public final Fragment m5595invoke() {
+                public final Fragment m2799invoke() {
                     return Fragment.this;
                 }
             };
@@ -118,22 +106,22 @@ public final class FragmentViewModelLazyKt {
         Intrinsics.reifiedOperationMarker(4, "VM");
         KClass orCreateKotlinClass = Reflection.getOrCreateKotlinClass(ViewModel.class);
         FragmentViewModelLazyKt$viewModels$2 fragmentViewModelLazyKt$viewModels$2 = new FragmentViewModelLazyKt$viewModels$2(lazy);
-        FragmentViewModelLazyKt$viewModels$3 fragmentViewModelLazyKt$viewModels$3 = new FragmentViewModelLazyKt$viewModels$3(lazy);
+        viewModels.3 r0 = new viewModels.3(lazy);
         if (function02 == null) {
-            function02 = new FragmentViewModelLazyKt$viewModels$4(fragment, lazy);
+            function02 = new viewModels.4(fragment, lazy);
         }
-        return createViewModelLazy(fragment, orCreateKotlinClass, fragmentViewModelLazyKt$viewModels$2, fragmentViewModelLazyKt$viewModels$3, function02);
+        return createViewModelLazy(fragment, orCreateKotlinClass, fragmentViewModelLazyKt$viewModels$2, r0, function02);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: viewModels$lambda-0, reason: not valid java name */
-    public static final ViewModelStoreOwner m5584viewModels$lambda0(Lazy<? extends ViewModelStoreOwner> lazy) {
+    public static final ViewModelStoreOwner m2796viewModels$lambda0(Lazy<? extends ViewModelStoreOwner> lazy) {
         return (ViewModelStoreOwner) lazy.getValue();
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: viewModels$lambda-1, reason: not valid java name */
-    public static final ViewModelStoreOwner m5585viewModels$lambda1(Lazy<? extends ViewModelStoreOwner> lazy) {
+    public static final ViewModelStoreOwner m2797viewModels$lambda1(Lazy<? extends ViewModelStoreOwner> lazy) {
         return (ViewModelStoreOwner) lazy.getValue();
     }
 
@@ -142,12 +130,12 @@ public final class FragmentViewModelLazyKt {
         Intrinsics.checkNotNullParameter(fragment, "<this>");
         Intrinsics.reifiedOperationMarker(4, "VM");
         KClass orCreateKotlinClass = Reflection.getOrCreateKotlinClass(ViewModel.class);
-        FragmentViewModelLazyKt$activityViewModels$4 fragmentViewModelLazyKt$activityViewModels$4 = new FragmentViewModelLazyKt$activityViewModels$4(fragment);
-        FragmentViewModelLazyKt$activityViewModels$5 fragmentViewModelLazyKt$activityViewModels$5 = new FragmentViewModelLazyKt$activityViewModels$5(function0, fragment);
+        activityViewModels.4 r1 = new activityViewModels.4(fragment);
+        activityViewModels.5 r2 = new activityViewModels.5(function0, fragment);
         if (function02 == null) {
-            function02 = new FragmentViewModelLazyKt$activityViewModels$6(fragment);
+            function02 = new activityViewModels.6<>(fragment);
         }
-        return createViewModelLazy(fragment, orCreateKotlinClass, fragmentViewModelLazyKt$activityViewModels$4, fragmentViewModelLazyKt$activityViewModels$5, function02);
+        return createViewModelLazy(fragment, orCreateKotlinClass, r1, r2, function02);
     }
 
     @MainThread
@@ -165,7 +153,7 @@ public final class FragmentViewModelLazyKt {
 
                 @NotNull
                 /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-                public final ViewModelProvider.Factory m5594invoke() {
+                public final ViewModelProvider.Factory m2798invoke() {
                     ViewModelProvider.Factory defaultViewModelProviderFactory = Fragment.this.getDefaultViewModelProviderFactory();
                     Intrinsics.checkNotNullExpressionValue(defaultViewModelProviderFactory, "defaultViewModelProviderFactory");
                     return defaultViewModelProviderFactory;
@@ -175,21 +163,9 @@ public final class FragmentViewModelLazyKt {
         return new ViewModelLazy(kClass, function0, function03, function02);
     }
 
-    public static /* synthetic */ Lazy createViewModelLazy$default(final Fragment fragment, KClass kClass, Function0 function0, Function0 function02, Function0 function03, int i, Object obj) {
+    public static /* synthetic */ Lazy createViewModelLazy$default(Fragment fragment, KClass kClass, Function0 function0, Function0 function02, Function0 function03, int i, Object obj) {
         if ((i & 4) != 0) {
-            function02 = new Function0<CreationExtras>() { // from class: androidx.fragment.app.FragmentViewModelLazyKt$createViewModelLazy$2
-                {
-                    super(0);
-                }
-
-                @NotNull
-                /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-                public final CreationExtras m5593invoke() {
-                    CreationExtras defaultViewModelCreationExtras = Fragment.this.getDefaultViewModelCreationExtras();
-                    Intrinsics.checkNotNullExpressionValue(defaultViewModelCreationExtras, "defaultViewModelCreationExtras");
-                    return defaultViewModelCreationExtras;
-                }
-            };
+            function02 = new createViewModelLazy.2(fragment);
         }
         if ((i & 8) != 0) {
             function03 = null;
@@ -207,12 +183,12 @@ public final class FragmentViewModelLazyKt {
         Intrinsics.checkNotNullParameter(fragment, "<this>");
         Intrinsics.reifiedOperationMarker(4, "VM");
         KClass orCreateKotlinClass = Reflection.getOrCreateKotlinClass(ViewModel.class);
-        FragmentViewModelLazyKt$activityViewModels$4 fragmentViewModelLazyKt$activityViewModels$4 = new FragmentViewModelLazyKt$activityViewModels$4(fragment);
-        FragmentViewModelLazyKt$activityViewModels$5 fragmentViewModelLazyKt$activityViewModels$5 = new FragmentViewModelLazyKt$activityViewModels$5(function0, fragment);
+        activityViewModels.4 r5 = new activityViewModels.4(fragment);
+        activityViewModels.5 r0 = new activityViewModels.5(function0, fragment);
         if (function02 == null) {
-            function02 = new FragmentViewModelLazyKt$activityViewModels$6(fragment);
+            function02 = new activityViewModels.6(fragment);
         }
-        return createViewModelLazy(fragment, orCreateKotlinClass, fragmentViewModelLazyKt$activityViewModels$4, fragmentViewModelLazyKt$activityViewModels$5, function02);
+        return createViewModelLazy(fragment, orCreateKotlinClass, r5, r0, function02);
     }
 
     @MainThread
@@ -222,27 +198,17 @@ public final class FragmentViewModelLazyKt {
         Lazy lazy = LazyKt.lazy(LazyThreadSafetyMode.NONE, new FragmentViewModelLazyKt$viewModels$owner$4(function0));
         Intrinsics.reifiedOperationMarker(4, "VM");
         KClass orCreateKotlinClass = Reflection.getOrCreateKotlinClass(ViewModel.class);
-        FragmentViewModelLazyKt$viewModels$6 fragmentViewModelLazyKt$viewModels$6 = new FragmentViewModelLazyKt$viewModels$6(lazy);
-        FragmentViewModelLazyKt$viewModels$7 fragmentViewModelLazyKt$viewModels$7 = new FragmentViewModelLazyKt$viewModels$7(function02, lazy);
+        viewModels.6 r1 = new viewModels.6(lazy);
+        viewModels.7 r2 = new viewModels.7(function02, lazy);
         if (function03 == null) {
-            function03 = new FragmentViewModelLazyKt$viewModels$8(fragment, lazy);
+            function03 = new viewModels.8<>(fragment, lazy);
         }
-        return createViewModelLazy(fragment, orCreateKotlinClass, fragmentViewModelLazyKt$viewModels$6, fragmentViewModelLazyKt$viewModels$7, function03);
+        return createViewModelLazy(fragment, orCreateKotlinClass, r1, r2, function03);
     }
 
-    public static /* synthetic */ Lazy viewModels$default(final Fragment fragment, Function0 function0, Function0 function02, Function0 function03, int i, Object obj) {
+    public static /* synthetic */ Lazy viewModels$default(Fragment fragment, Function0 function0, Function0 function02, Function0 function03, int i, Object obj) {
         if ((i & 1) != 0) {
-            function0 = new Function0<Fragment>() { // from class: androidx.fragment.app.FragmentViewModelLazyKt$viewModels$5
-                {
-                    super(0);
-                }
-
-                @NotNull
-                /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-                public final Fragment m5599invoke() {
-                    return Fragment.this;
-                }
-            };
+            function0 = new viewModels.5(fragment);
         }
         if ((i & 2) != 0) {
             function02 = null;
@@ -255,11 +221,11 @@ public final class FragmentViewModelLazyKt {
         Lazy lazy = LazyKt.lazy(LazyThreadSafetyMode.NONE, new FragmentViewModelLazyKt$viewModels$owner$4(function0));
         Intrinsics.reifiedOperationMarker(4, "VM");
         KClass orCreateKotlinClass = Reflection.getOrCreateKotlinClass(ViewModel.class);
-        FragmentViewModelLazyKt$viewModels$6 fragmentViewModelLazyKt$viewModels$6 = new FragmentViewModelLazyKt$viewModels$6(lazy);
-        FragmentViewModelLazyKt$viewModels$7 fragmentViewModelLazyKt$viewModels$7 = new FragmentViewModelLazyKt$viewModels$7(function02, lazy);
+        viewModels.6 r6 = new viewModels.6(lazy);
+        viewModels.7 r0 = new viewModels.7(function02, lazy);
         if (function03 == null) {
-            function03 = new FragmentViewModelLazyKt$viewModels$8(fragment, lazy);
+            function03 = new viewModels.8(fragment, lazy);
         }
-        return createViewModelLazy(fragment, orCreateKotlinClass, fragmentViewModelLazyKt$viewModels$6, fragmentViewModelLazyKt$viewModels$7, function03);
+        return createViewModelLazy(fragment, orCreateKotlinClass, r6, r0, function03);
     }
 }

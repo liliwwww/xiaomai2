@@ -11,7 +11,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class RegionKt {
     @NotNull
     public static final Region and(@NotNull Region region, @NotNull Rect rect) {
@@ -45,7 +45,7 @@ public final class RegionKt {
     @NotNull
     public static final Iterator<Rect> iterator(@NotNull Region region) {
         Intrinsics.checkNotNullParameter(region, "<this>");
-        return new RegionKt$iterator$1(region);
+        return new iterator.1(region);
     }
 
     @NotNull
@@ -66,8 +66,7 @@ public final class RegionKt {
     }
 
     @NotNull
-    /* renamed from: or */
-    public static final Region m217or(@NotNull Region region, @NotNull Rect rect) {
+    public static final Region or(@NotNull Region region, @NotNull Rect rect) {
         Intrinsics.checkNotNullParameter(region, "<this>");
         Intrinsics.checkNotNullParameter(rect, "r");
         Region region2 = new Region(region);
@@ -120,8 +119,7 @@ public final class RegionKt {
     }
 
     @NotNull
-    /* renamed from: or */
-    public static final Region m218or(@NotNull Region region, @NotNull Region region2) {
+    public static final Region or(@NotNull Region region, @NotNull Region region2) {
         Intrinsics.checkNotNullParameter(region, "<this>");
         Intrinsics.checkNotNullParameter(region2, "r");
         Region region3 = new Region(region);

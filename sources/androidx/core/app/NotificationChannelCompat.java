@@ -12,7 +12,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.util.Preconditions;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class NotificationChannelCompat {
     public static final String DEFAULT_CHANNEL_ID = "miscellaneous";
     private static final int DEFAULT_LIGHT_COLOR = 0;
@@ -120,14 +120,14 @@ public class NotificationChannelCompat {
         @NonNull
         public Builder setVibrationPattern(@Nullable long[] jArr) {
             NotificationChannelCompat notificationChannelCompat = this.mChannel;
-            notificationChannelCompat.mVibrationEnabled = jArr != null && jArr.length > 0;
+            notificationChannelCompat.mVibrationEnabled = (jArr == null || jArr.length <= 0) ? false : NotificationChannelCompat.DEFAULT_SHOW_BADGE;
             notificationChannelCompat.mVibrationPattern = jArr;
             return this;
         }
     }
 
     NotificationChannelCompat(@NonNull String str, int i) {
-        this.mShowBadge = true;
+        this.mShowBadge = DEFAULT_SHOW_BADGE;
         this.mSound = Settings.System.DEFAULT_NOTIFICATION_URI;
         this.mLightColor = 0;
         this.mId = (String) Preconditions.checkNotNull(str);

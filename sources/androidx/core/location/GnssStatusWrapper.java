@@ -10,7 +10,7 @@ import androidx.core.util.Preconditions;
 /* compiled from: Taobao */
 @RequiresApi(24)
 @RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class GnssStatusWrapper extends GnssStatusCompat {
     private final GnssStatus mWrapped;
 
@@ -28,24 +28,6 @@ class GnssStatusWrapper extends GnssStatusCompat {
         @DoNotInline
         static boolean hasCarrierFrequencyHz(GnssStatus gnssStatus, int i) {
             return gnssStatus.hasCarrierFrequencyHz(i);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(30)
-    /* loaded from: classes.dex */
-    static class Api30Impl {
-        private Api30Impl() {
-        }
-
-        @DoNotInline
-        static float getBasebandCn0DbHz(GnssStatus gnssStatus, int i) {
-            return gnssStatus.getBasebandCn0DbHz(i);
-        }
-
-        @DoNotInline
-        static boolean hasBasebandCn0DbHz(GnssStatus gnssStatus, int i) {
-            return gnssStatus.hasBasebandCn0DbHz(i);
         }
     }
 

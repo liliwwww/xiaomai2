@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.OptIn;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.collection.SimpleArrayMap;
 import androidx.core.os.BuildCompat;
 import androidx.core.view.KeyEventDispatcher;
@@ -20,18 +21,11 @@ import androidx.lifecycle.LifecycleRegistry;
 import androidx.lifecycle.ReportFragment;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ComponentActivity extends Activity implements KeyEventDispatcher.Component, LifecycleOwner {
     private SimpleArrayMap<Class<? extends ExtraData>, ExtraData> mExtraDataMap = new SimpleArrayMap<>();
     private LifecycleRegistry mLifecycleRegistry = new LifecycleRegistry(this);
-
-    /* compiled from: Taobao */
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    @Deprecated
-    /* loaded from: classes2.dex */
-    public static class ExtraData {
-    }
 
     @OptIn(markerClass = {BuildCompat.PrereleaseSdkCheck.class})
     private static boolean shouldSkipDump(@Nullable String[] strArr) {
@@ -73,12 +67,13 @@ public class ComponentActivity extends Activity implements KeyEventDispatcher.Co
         return true;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     @Deprecated
     public <T extends ExtraData> T getExtraData(Class<T> cls) {
         return (T) this.mExtraDataMap.get(cls);
     }
 
+    @Override // androidx.lifecycle.LifecycleOwner
     @NonNull
     public Lifecycle getLifecycle() {
         return this.mLifecycleRegistry;
@@ -98,8 +93,7 @@ public class ComponentActivity extends Activity implements KeyEventDispatcher.Co
         super.onSaveInstanceState(bundle);
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     @Deprecated
     public void putExtraData(ExtraData extraData) {
         this.mExtraDataMap.put(extraData.getClass(), extraData);
@@ -110,7 +104,7 @@ public class ComponentActivity extends Activity implements KeyEventDispatcher.Co
     }
 
     @Override // androidx.core.view.KeyEventDispatcher.Component
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public boolean superDispatchKeyEvent(@NonNull KeyEvent keyEvent) {
         return super.dispatchKeyEvent(keyEvent);
     }

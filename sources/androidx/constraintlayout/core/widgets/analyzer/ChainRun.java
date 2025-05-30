@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ChainRun extends WidgetRun {
     private int chainStyle;
     ArrayList<WidgetRun> widgets;
@@ -15,14 +15,14 @@ public class ChainRun extends WidgetRun {
     public ChainRun(ConstraintWidget constraintWidget, int i) {
         super(constraintWidget);
         this.widgets = new ArrayList<>();
-        this.orientation = i;
+        ((WidgetRun) this).orientation = i;
         build();
     }
 
     private void build() {
         ConstraintWidget constraintWidget;
-        ConstraintWidget constraintWidget2 = this.widget;
-        ConstraintWidget previousChainMember = constraintWidget2.getPreviousChainMember(this.orientation);
+        ConstraintWidget constraintWidget2 = ((WidgetRun) this).widget;
+        ConstraintWidget previousChainMember = constraintWidget2.getPreviousChainMember(((WidgetRun) this).orientation);
         while (true) {
             ConstraintWidget constraintWidget3 = previousChainMember;
             constraintWidget = constraintWidget2;
@@ -30,31 +30,31 @@ public class ChainRun extends WidgetRun {
             if (constraintWidget2 == null) {
                 break;
             } else {
-                previousChainMember = constraintWidget2.getPreviousChainMember(this.orientation);
+                previousChainMember = constraintWidget2.getPreviousChainMember(((WidgetRun) this).orientation);
             }
         }
-        this.widget = constraintWidget;
-        this.widgets.add(constraintWidget.getRun(this.orientation));
-        ConstraintWidget nextChainMember = constraintWidget.getNextChainMember(this.orientation);
+        ((WidgetRun) this).widget = constraintWidget;
+        this.widgets.add(constraintWidget.getRun(((WidgetRun) this).orientation));
+        ConstraintWidget nextChainMember = constraintWidget.getNextChainMember(((WidgetRun) this).orientation);
         while (nextChainMember != null) {
-            this.widgets.add(nextChainMember.getRun(this.orientation));
-            nextChainMember = nextChainMember.getNextChainMember(this.orientation);
+            this.widgets.add(nextChainMember.getRun(((WidgetRun) this).orientation));
+            nextChainMember = nextChainMember.getNextChainMember(((WidgetRun) this).orientation);
         }
         Iterator<WidgetRun> it = this.widgets.iterator();
         while (it.hasNext()) {
             WidgetRun next = it.next();
-            int i = this.orientation;
+            int i = ((WidgetRun) this).orientation;
             if (i == 0) {
                 next.widget.horizontalChainRun = this;
             } else if (i == 1) {
                 next.widget.verticalChainRun = this;
             }
         }
-        if ((this.orientation == 0 && ((ConstraintWidgetContainer) this.widget.getParent()).isRtl()) && this.widgets.size() > 1) {
+        if ((((WidgetRun) this).orientation == 0 && ((ConstraintWidgetContainer) ((WidgetRun) this).widget.getParent()).isRtl()) && this.widgets.size() > 1) {
             ArrayList<WidgetRun> arrayList = this.widgets;
-            this.widget = arrayList.get(arrayList.size() - 1).widget;
+            ((WidgetRun) this).widget = arrayList.get(arrayList.size() - 1).widget;
         }
-        this.chainStyle = this.orientation == 0 ? this.widget.getHorizontalChainStyle() : this.widget.getVerticalChainStyle();
+        this.chainStyle = ((WidgetRun) this).orientation == 0 ? ((WidgetRun) this).widget.getHorizontalChainStyle() : ((WidgetRun) this).widget.getVerticalChainStyle();
     }
 
     private ConstraintWidget getFirstVisibleWidget() {
@@ -77,7 +77,7 @@ public class ChainRun extends WidgetRun {
         return null;
     }
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.WidgetRun
+    /* JADX WARN: Multi-variable type inference failed */
     void apply() {
         Iterator<WidgetRun> it = this.widgets.iterator();
         while (it.hasNext()) {
@@ -89,7 +89,7 @@ public class ChainRun extends WidgetRun {
         }
         ConstraintWidget constraintWidget = this.widgets.get(0).widget;
         ConstraintWidget constraintWidget2 = this.widgets.get(size - 1).widget;
-        if (this.orientation == 0) {
+        if (((WidgetRun) this).orientation == 0) {
             ConstraintAnchor constraintAnchor = constraintWidget.mLeft;
             ConstraintAnchor constraintAnchor2 = constraintWidget2.mRight;
             DependencyNode target = getTarget(constraintAnchor, 0);
@@ -99,7 +99,7 @@ public class ChainRun extends WidgetRun {
                 margin = firstVisibleWidget.mLeft.getMargin();
             }
             if (target != null) {
-                addTarget(this.start, target, margin);
+                addTarget(((WidgetRun) this).start, target, margin);
             }
             DependencyNode target2 = getTarget(constraintAnchor2, 0);
             int margin2 = constraintAnchor2.getMargin();
@@ -108,7 +108,7 @@ public class ChainRun extends WidgetRun {
                 margin2 = lastVisibleWidget.mRight.getMargin();
             }
             if (target2 != null) {
-                addTarget(this.end, target2, -margin2);
+                addTarget(((WidgetRun) this).end, target2, -margin2);
             }
         } else {
             ConstraintAnchor constraintAnchor3 = constraintWidget.mTop;
@@ -120,7 +120,7 @@ public class ChainRun extends WidgetRun {
                 margin3 = firstVisibleWidget2.mTop.getMargin();
             }
             if (target3 != null) {
-                addTarget(this.start, target3, margin3);
+                addTarget(((WidgetRun) this).start, target3, margin3);
             }
             DependencyNode target4 = getTarget(constraintAnchor4, 1);
             int margin4 = constraintAnchor4.getMargin();
@@ -129,30 +129,27 @@ public class ChainRun extends WidgetRun {
                 margin4 = lastVisibleWidget2.mBottom.getMargin();
             }
             if (target4 != null) {
-                addTarget(this.end, target4, -margin4);
+                addTarget(((WidgetRun) this).end, target4, -margin4);
             }
         }
-        this.start.updateDelegate = this;
-        this.end.updateDelegate = this;
+        ((WidgetRun) this).start.updateDelegate = this;
+        ((WidgetRun) this).end.updateDelegate = this;
     }
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.WidgetRun
     public void applyToWidget() {
         for (int i = 0; i < this.widgets.size(); i++) {
             this.widgets.get(i).applyToWidget();
         }
     }
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.WidgetRun
     void clear() {
-        this.runGroup = null;
+        ((WidgetRun) this).runGroup = null;
         Iterator<WidgetRun> it = this.widgets.iterator();
         while (it.hasNext()) {
             it.next().clear();
         }
     }
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.WidgetRun
     public long getWrapDimension() {
         int size = this.widgets.size();
         long j = 0;
@@ -162,13 +159,11 @@ public class ChainRun extends WidgetRun {
         return j;
     }
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.WidgetRun
     void reset() {
-        this.start.resolved = false;
-        this.end.resolved = false;
+        ((WidgetRun) this).start.resolved = false;
+        ((WidgetRun) this).end.resolved = false;
     }
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.WidgetRun
     boolean supportsWrapComputation() {
         int size = this.widgets.size();
         for (int i = 0; i < size; i++) {
@@ -181,7 +176,7 @@ public class ChainRun extends WidgetRun {
 
     public String toString() {
         StringBuilder sb = new StringBuilder("ChainRun ");
-        sb.append(this.orientation == 0 ? "horizontal : " : "vertical : ");
+        sb.append(((WidgetRun) this).orientation == 0 ? "horizontal : " : "vertical : ");
         Iterator<WidgetRun> it = this.widgets.iterator();
         while (it.hasNext()) {
             WidgetRun next = it.next();
@@ -198,15 +193,14 @@ public class ChainRun extends WidgetRun {
      */
     /* JADX WARN: Removed duplicated region for block: B:53:0x00d6  */
     /* JADX WARN: Removed duplicated region for block: B:63:0x00e8  */
-    @Override // androidx.constraintlayout.core.widgets.analyzer.WidgetRun, androidx.constraintlayout.core.widgets.analyzer.Dependency
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void update(androidx.constraintlayout.core.widgets.analyzer.Dependency r27) {
         /*
             Method dump skipped, instructions count: 1064
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.constraintlayout.core.widgets.analyzer.ChainRun.update(androidx.constraintlayout.core.widgets.analyzer.Dependency):void");
     }

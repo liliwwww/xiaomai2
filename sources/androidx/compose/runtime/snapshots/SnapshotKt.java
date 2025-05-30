@@ -1,7 +1,6 @@
 package androidx.compose.runtime.snapshots;
 
 import androidx.compose.runtime.SnapshotThreadLocal;
-import androidx.compose.runtime.snapshots.Snapshot;
 import androidx.compose.runtime.snapshots.SnapshotIdSet;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +20,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SnapshotKt {
     private static final int INVALID_SNAPSHOT = 0;
 
@@ -75,9 +74,9 @@ public final class SnapshotKt {
         openSnapshots = openSnapshots.set(globalSnapshot.getId());
         AtomicReference<GlobalSnapshot> atomicReference = new AtomicReference<>(globalSnapshot);
         currentGlobalSnapshot = atomicReference;
-        GlobalSnapshot globalSnapshot2 = atomicReference.get();
-        Intrinsics.checkNotNullExpressionValue(globalSnapshot2, "currentGlobalSnapshot.get()");
-        snapshotInitializer = globalSnapshot2;
+        Snapshot snapshot = atomicReference.get();
+        Intrinsics.checkNotNullExpressionValue(snapshot, "currentGlobalSnapshot.get()");
+        snapshotInitializer = snapshot;
     }
 
     @NotNull
@@ -95,14 +94,13 @@ public final class SnapshotKt {
         GlobalSnapshot globalSnapshot;
         T t;
         List mutableList;
-        Snapshot snapshot = snapshotInitializer;
-        Intrinsics.checkNotNull(snapshot, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.GlobalSnapshot");
+        Intrinsics.checkNotNull(snapshotInitializer, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.GlobalSnapshot");
         synchronized (getLock()) {
             globalSnapshot = currentGlobalSnapshot.get();
             Intrinsics.checkNotNullExpressionValue(globalSnapshot, "currentGlobalSnapshot.get()");
-            t = (T) takeNewGlobalSnapshot(globalSnapshot, function1);
+            t = (T) takeNewGlobalSnapshot((Snapshot) globalSnapshot, function1);
         }
-        Set<StateObject> modified$runtime_release = globalSnapshot.getModified$runtime_release();
+        Set modified$runtime_release = globalSnapshot.getModified$runtime_release();
         if (modified$runtime_release != null) {
             synchronized (getLock()) {
                 mutableList = CollectionsKt.toMutableList(applyObservers);
@@ -149,13 +147,13 @@ public final class SnapshotKt {
 
     @NotNull
     public static final Snapshot currentSnapshot() {
-        Snapshot snapshot = threadSnapshot.get();
+        Snapshot snapshot = (Snapshot) threadSnapshot.get();
         if (snapshot != null) {
             return snapshot;
         }
-        GlobalSnapshot globalSnapshot = currentGlobalSnapshot.get();
-        Intrinsics.checkNotNullExpressionValue(globalSnapshot, "currentGlobalSnapshot.get()");
-        return globalSnapshot;
+        Snapshot snapshot2 = currentGlobalSnapshot.get();
+        Intrinsics.checkNotNullExpressionValue(snapshot2, "currentGlobalSnapshot.get()");
+        return snapshot2;
     }
 
     @NotNull
@@ -177,28 +175,11 @@ public final class SnapshotKt {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public static final Function1<Object, Unit> mergedReadObserver(final Function1<Object, Unit> function1, final Function1<Object, Unit> function12, boolean z) {
+    public static final Function1<Object, Unit> mergedReadObserver(Function1<Object, Unit> function1, Function1<Object, Unit> function12, boolean z) {
         if (!z) {
             function12 = null;
         }
-        return (function1 == null || function12 == null || Intrinsics.areEqual(function1, function12)) ? function1 == null ? function12 : function1 : new Function1<Object, Unit>() { // from class: androidx.compose.runtime.snapshots.SnapshotKt$mergedReadObserver$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                m2444invoke(obj);
-                return Unit.INSTANCE;
-            }
-
-            /* renamed from: invoke, reason: collision with other method in class */
-            public final void m2444invoke(@NotNull Object obj) {
-                Intrinsics.checkNotNullParameter(obj, "state");
-                function1.invoke(obj);
-                function12.invoke(obj);
-            }
-        };
+        return (function1 == null || function12 == null || Intrinsics.areEqual(function1, function12)) ? function1 == null ? function12 : function1 : new mergedReadObserver.1(function1, function12);
     }
 
     static /* synthetic */ Function1 mergedReadObserver$default(Function1 function1, Function1 function12, boolean z, int i, Object obj) {
@@ -217,12 +198,12 @@ public final class SnapshotKt {
             }
 
             public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                m2445invoke(obj);
+                m930invoke(obj);
                 return Unit.INSTANCE;
             }
 
             /* renamed from: invoke, reason: collision with other method in class */
-            public final void m2445invoke(@NotNull Object obj) {
+            public final void m930invoke(@NotNull Object obj) {
                 Intrinsics.checkNotNullParameter(obj, "state");
                 function1.invoke(obj);
                 function12.invoke(obj);
@@ -263,7 +244,7 @@ public final class SnapshotKt {
     public static final void notifyWrite(@NotNull Snapshot snapshot, @NotNull StateObject stateObject) {
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
         Intrinsics.checkNotNullParameter(stateObject, "state");
-        Function1<Object, Unit> writeObserver$runtime_release = snapshot.getWriteObserver$runtime_release();
+        Function1 writeObserver$runtime_release = snapshot.getWriteObserver$runtime_release();
         if (writeObserver$runtime_release != null) {
             writeObserver$runtime_release.invoke(stateObject);
         }
@@ -277,12 +258,12 @@ public final class SnapshotKt {
         if (modified$runtime_release == null) {
             return null;
         }
-        SnapshotIdSet m88or = mutableSnapshot2.getInvalid$runtime_release().set(mutableSnapshot2.getId()).m88or(mutableSnapshot2.getPreviousIds$runtime_release());
+        SnapshotIdSet or = mutableSnapshot2.getInvalid$runtime_release().set(mutableSnapshot2.getId()).or(mutableSnapshot2.getPreviousIds$runtime_release());
         HashMap hashMap = null;
         for (StateObject stateObject : modified$runtime_release) {
             StateRecord firstStateRecord = stateObject.getFirstStateRecord();
             StateRecord readable2 = readable(firstStateRecord, id, snapshotIdSet);
-            if (readable2 != null && (readable = readable(firstStateRecord, id, m88or)) != null && !Intrinsics.areEqual(readable2, readable)) {
+            if (readable2 != null && (readable = readable(firstStateRecord, id, or)) != null && !Intrinsics.areEqual(readable2, readable)) {
                 StateRecord readable3 = readable(firstStateRecord, mutableSnapshot2.getId(), mutableSnapshot2.getInvalid$runtime_release());
                 if (readable3 == null) {
                     readError();
@@ -333,7 +314,7 @@ public final class SnapshotKt {
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
         Intrinsics.checkNotNullParameter(t2, "candidate");
         if (snapshot.getReadOnly()) {
-            snapshot.mo2441recordModified$runtime_release(stateObject);
+            snapshot.recordModified$runtime_release(stateObject);
         }
         int id = snapshot.getId();
         if (t2.getSnapshotId$runtime_release() == id) {
@@ -341,7 +322,7 @@ public final class SnapshotKt {
         }
         T t3 = (T) newOverwritableRecord(t, stateObject);
         t3.setSnapshotId$runtime_release(id);
-        snapshot.mo2441recordModified$runtime_release(stateObject);
+        snapshot.recordModified$runtime_release(stateObject);
         return t3;
     }
 
@@ -408,28 +389,8 @@ public final class SnapshotKt {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public static final <T extends Snapshot> T takeNewSnapshot(final Function1<? super SnapshotIdSet, ? extends T> function1) {
-        return (T) advanceGlobalSnapshot(new Function1<SnapshotIdSet, T>() { // from class: androidx.compose.runtime.snapshots.SnapshotKt$takeNewSnapshot$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(1);
-            }
-
-            /* JADX WARN: Incorrect return type in method signature: (Landroidx/compose/runtime/snapshots/SnapshotIdSet;)TT; */
-            @NotNull
-            public final Snapshot invoke(@NotNull SnapshotIdSet snapshotIdSet) {
-                SnapshotIdSet snapshotIdSet2;
-                Intrinsics.checkNotNullParameter(snapshotIdSet, "invalid");
-                Snapshot snapshot = (Snapshot) function1.invoke(snapshotIdSet);
-                synchronized (SnapshotKt.getLock()) {
-                    snapshotIdSet2 = SnapshotKt.openSnapshots;
-                    SnapshotKt.openSnapshots = snapshotIdSet2.set(snapshot.getId());
-                    Unit unit = Unit.INSTANCE;
-                }
-                return snapshot;
-            }
-        });
+    public static final <T extends Snapshot> T takeNewSnapshot(Function1<? super SnapshotIdSet, ? extends T> function1) {
+        return (T) advanceGlobalSnapshot(new takeNewSnapshot.1(function1));
     }
 
     public static final int trackPinning(int i, @NotNull SnapshotIdSet snapshotIdSet) {
@@ -507,7 +468,7 @@ public final class SnapshotKt {
         Intrinsics.checkNotNullParameter(stateObject, "state");
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
         if (snapshot.getReadOnly()) {
-            snapshot.mo2441recordModified$runtime_release(stateObject);
+            snapshot.recordModified$runtime_release(stateObject);
         }
         T t2 = (T) readable(t, snapshot.getId(), snapshot.getInvalid$runtime_release());
         if (t2 == null) {
@@ -518,7 +479,7 @@ public final class SnapshotKt {
             return t2;
         }
         T t3 = (T) newWritableRecord(t2, stateObject, snapshot);
-        snapshot.mo2441recordModified$runtime_release(stateObject);
+        snapshot.recordModified$runtime_release(stateObject);
         return t3;
     }
 
@@ -527,14 +488,14 @@ public final class SnapshotKt {
     public static final <T extends StateRecord> T current(@NotNull T t) {
         T t2;
         Intrinsics.checkNotNullParameter(t, "r");
-        Snapshot.Companion companion = Snapshot.Companion;
-        Snapshot current = companion.getCurrent();
+        Snapshot$Companion snapshot$Companion = Snapshot.Companion;
+        Snapshot current = snapshot$Companion.getCurrent();
         T t3 = (T) readable(t, current.getId(), current.getInvalid$runtime_release());
         if (t3 != null) {
             return t3;
         }
         synchronized (getLock()) {
-            Snapshot current2 = companion.getCurrent();
+            Snapshot current2 = snapshot$Companion.getCurrent();
             t2 = (T) readable(t, current2.getId(), current2.getInvalid$runtime_release());
         }
         if (t2 != null) {
@@ -553,9 +514,9 @@ public final class SnapshotKt {
         T t2;
         Intrinsics.checkNotNullParameter(t, "<this>");
         Intrinsics.checkNotNullParameter(stateObject, "state");
-        Snapshot.Companion companion = Snapshot.Companion;
-        Snapshot current = companion.getCurrent();
-        Function1<Object, Unit> readObserver$runtime_release = current.getReadObserver$runtime_release();
+        Snapshot$Companion snapshot$Companion = Snapshot.Companion;
+        Snapshot current = snapshot$Companion.getCurrent();
+        Function1 readObserver$runtime_release = current.getReadObserver$runtime_release();
         if (readObserver$runtime_release != null) {
             readObserver$runtime_release.invoke(stateObject);
         }
@@ -564,7 +525,7 @@ public final class SnapshotKt {
             return t3;
         }
         synchronized (getLock()) {
-            Snapshot current2 = companion.getCurrent();
+            Snapshot current2 = snapshot$Companion.getCurrent();
             t2 = (T) readable(t, current2.getId(), current2.getInvalid$runtime_release());
         }
         if (t2 != null) {
@@ -600,7 +561,7 @@ public final class SnapshotKt {
         Intrinsics.checkNotNullParameter(t, "<this>");
         Intrinsics.checkNotNullParameter(stateObject, "state");
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
-        Function1<Object, Unit> readObserver$runtime_release = snapshot.getReadObserver$runtime_release();
+        Function1 readObserver$runtime_release = snapshot.getReadObserver$runtime_release();
         if (readObserver$runtime_release != null) {
             readObserver$runtime_release.invoke(stateObject);
         }

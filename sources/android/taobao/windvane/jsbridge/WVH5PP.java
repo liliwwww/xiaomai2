@@ -1,14 +1,13 @@
 package android.taobao.windvane.jsbridge;
 
 import android.os.SystemClock;
-import android.taobao.windvane.extra.p002uc.preRender.BasePreInitManager;
 import android.taobao.windvane.extra.performance2.IPerformance;
+import android.taobao.windvane.extra.uc.preRender.BasePreInitManager;
 import android.taobao.windvane.util.FullTraceUtils;
 import android.taobao.windvane.util.TaoLog;
 import android.taobao.windvane.utils.TimeUtils;
 import android.taobao.windvane.webview.IFullTrace;
 import android.taobao.windvane.webview.IWVWebView;
-import android.view.View;
 import com.taobao.analysis.v3.FalcoSpan;
 import com.taobao.monitor.procedure.IProcedure;
 import com.taobao.monitor.procedure.ViewToken;
@@ -21,7 +20,7 @@ import org.json.JSONObject;
 import tb.zy3;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVH5PP extends WVApiPlugin {
     private static final String TAG = "WVH5PP";
     private static Set<String> activityPropertiedSet;
@@ -37,22 +36,22 @@ public class WVH5PP extends WVApiPlugin {
         while (keys.hasNext()) {
             String next = keys.next();
             if (set.contains(next)) {
-                TaoLog.m27v(TAG, "property add abort because added:" + next);
+                TaoLog.v(TAG, "property add abort because added:" + next);
             } else {
                 String string = jSONObject.getString(next);
-                TaoLog.m27v(TAG, "key:" + next + " value:" + string);
-                WebView webview = wVCallBackContext.getWebview();
+                TaoLog.v(TAG, "key:" + next + " value:" + string);
+                IPerformance webview = wVCallBackContext.getWebview();
                 if ("isFinished".equals(next) && BasePreInitManager.PRE_RENDER_URL_ADDITION_VALUE.equalsIgnoreCase(string)) {
                     if (webview instanceof WebView) {
                         try {
-                            webview.setTag(ViewToken.APM_VIEW_TOKEN, "valid_view");
+                            ((WebView) webview).setTag(ViewToken.APM_VIEW_TOKEN, "valid_view");
                         } catch (Throwable th) {
-                            TaoLog.m18d(TAG, "ViewToken doesn't exist: " + th);
+                            TaoLog.d(TAG, "ViewToken doesn't exist: " + th);
                         }
-                        TaoLog.m18d(TAG, "receive isFinished setTag " + SystemClock.uptimeMillis());
+                        TaoLog.d(TAG, "receive isFinished setTag " + SystemClock.uptimeMillis());
                     }
                     if (webview instanceof IPerformance) {
-                        ((IPerformance) webview).setReportedFSP(true);
+                        webview.setReportedFSP(true);
                     }
                 }
                 iProcedure.addProperty("H5_H5_" + next, string);
@@ -69,11 +68,11 @@ public class WVH5PP extends WVApiPlugin {
         while (keys.hasNext()) {
             String next = keys.next();
             if (set.contains(next)) {
-                TaoLog.m27v(TAG, "stage add abort because added:" + next);
+                TaoLog.v(TAG, "stage add abort because added:" + next);
             } else {
                 Long valueOf = Long.valueOf(jSONObject.getLong(next));
                 Long valueOf2 = Long.valueOf(TimeUtils.generateUptimeFromCurrentTime(valueOf.longValue()));
-                TaoLog.m27v(TAG, "stage:" + next + " time:" + valueOf2);
+                TaoLog.v(TAG, "stage:" + next + " time:" + valueOf2);
                 StringBuilder sb = new StringBuilder();
                 sb.append("H5_H5_");
                 sb.append(next);
@@ -86,7 +85,6 @@ public class WVH5PP extends WVApiPlugin {
         }
     }
 
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if ("receiveFSPTime".equals(str)) {
             receiveFSPTime(str2, wVCallBackContext);
@@ -117,19 +115,19 @@ public class WVH5PP extends WVApiPlugin {
             if (optJSONObject != null && optJSONObject.length() > 0) {
                 IProcedure launcherProcedure = zy3.b.getLauncherProcedure();
                 if (launcherProcedure == null || !launcherProcedure.isAlive()) {
-                    TaoLog.m27v(TAG, "LauncherProcedure is not Alive");
+                    TaoLog.v(TAG, "LauncherProcedure is not Alive");
                 } else {
                     procedureProperty(optJSONObject, launcherProcedure, launcherPropertiedSet, wVCallBackContext);
                 }
                 IProcedure currentActivityProcedure = zy3.b.getCurrentActivityProcedure();
                 if (currentActivityProcedure == null || !currentActivityProcedure.isAlive()) {
-                    TaoLog.m27v(TAG, "CurrentActivityProcedure is not Alive");
+                    TaoLog.v(TAG, "CurrentActivityProcedure is not Alive");
                 } else {
                     procedureProperty(optJSONObject, currentActivityProcedure, activityPropertiedSet, wVCallBackContext);
                 }
-                IProcedure procedure = zy3.b.getProcedure((View) wVCallBackContext.getWebview());
+                IProcedure procedure = zy3.b.getProcedure(wVCallBackContext.getWebview());
                 if (procedure == null || !procedure.isAlive()) {
-                    TaoLog.m27v(TAG, "Procedure is not Alive");
+                    TaoLog.v(TAG, "Procedure is not Alive");
                 } else {
                     procedureProperty(optJSONObject, procedure, procedurePropertiedSet, wVCallBackContext);
                 }
@@ -146,19 +144,19 @@ public class WVH5PP extends WVApiPlugin {
             if (optJSONObject != null && optJSONObject.length() > 0) {
                 IProcedure launcherProcedure = zy3.b.getLauncherProcedure();
                 if (launcherProcedure == null || !launcherProcedure.isAlive()) {
-                    TaoLog.m27v(TAG, "LauncherProcedure is not Alive");
+                    TaoLog.v(TAG, "LauncherProcedure is not Alive");
                 } else {
                     procedureStage(optJSONObject, launcherProcedure, launcherStagedSet, wVCallBackContext.getWebview());
                 }
                 IProcedure currentActivityProcedure = zy3.b.getCurrentActivityProcedure();
                 if (currentActivityProcedure == null || !currentActivityProcedure.isAlive()) {
-                    TaoLog.m27v(TAG, "CurrentActivityProcedure is not Alive");
+                    TaoLog.v(TAG, "CurrentActivityProcedure is not Alive");
                 } else {
                     procedureStage(optJSONObject, currentActivityProcedure, activityStagedSet, wVCallBackContext.getWebview());
                 }
-                IProcedure procedure = zy3.b.getProcedure((View) wVCallBackContext.getWebview());
+                IProcedure procedure = zy3.b.getProcedure(wVCallBackContext.getWebview());
                 if (procedure == null || !procedure.isAlive()) {
-                    TaoLog.m27v(TAG, "LauncherProcedure is not Alive");
+                    TaoLog.v(TAG, "LauncherProcedure is not Alive");
                 } else {
                     procedureStage(optJSONObject, procedure, procedureStagedSet, wVCallBackContext.getWebview());
                 }
@@ -170,13 +168,13 @@ public class WVH5PP extends WVApiPlugin {
     }
 
     public final void receiveFPTime(String str, WVCallBackContext wVCallBackContext) {
-        if (this.performance == null) {
+        if (((WVApiPlugin) this).performance == null) {
             return;
         }
         try {
             long optLong = new JSONObject(str).optLong("time");
             if (optLong != 0) {
-                this.performance.receiveJSMessageForFP(optLong);
+                ((WVApiPlugin) this).performance.receiveJSMessageForFP(optLong);
             }
             wVCallBackContext.success();
         } catch (Exception unused) {
@@ -185,13 +183,13 @@ public class WVH5PP extends WVApiPlugin {
     }
 
     public final void receiveFSPTime(String str, WVCallBackContext wVCallBackContext) {
-        if (this.performance == null) {
+        if (((WVApiPlugin) this).performance == null) {
             return;
         }
         try {
             long optLong = new JSONObject(str).optLong("time");
             if (optLong != 0) {
-                this.performance.receiveJSMessageForFSP(optLong);
+                ((WVApiPlugin) this).performance.receiveJSMessageForFSP(optLong);
             }
             wVCallBackContext.success();
         } catch (Exception unused) {
@@ -200,13 +198,13 @@ public class WVH5PP extends WVApiPlugin {
     }
 
     public final void receiveTTITime(String str, WVCallBackContext wVCallBackContext) {
-        if (this.performance == null) {
+        if (((WVApiPlugin) this).performance == null) {
             return;
         }
         try {
             long optLong = new JSONObject(str).optLong("time");
             if (optLong != 0) {
-                this.performance.receiveJSMessageForTTI(optLong);
+                ((WVApiPlugin) this).performance.receiveJSMessageForTTI(optLong);
             }
             wVCallBackContext.success();
         } catch (Exception unused) {

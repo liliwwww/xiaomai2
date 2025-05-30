@@ -17,16 +17,15 @@ import android.widget.ImageView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.constraintlayout.utils.widget.ImageFilterView;
-import androidx.constraintlayout.widget.C0923R;
+import androidx.constraintlayout.widget.R;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ImageFilterButton extends AppCompatImageButton {
     private Drawable mAltDrawable;
     private float mCrossfade;
     private Drawable mDrawable;
-    private ImageFilterView.ImageMatrix mImageMatrix;
+    private ImageFilterView$ImageMatrix mImageMatrix;
     LayerDrawable mLayer;
     Drawable[] mLayers;
     private boolean mOverlay;
@@ -42,7 +41,7 @@ public class ImageFilterButton extends AppCompatImageButton {
 
     public ImageFilterButton(Context context) {
         super(context);
-        this.mImageMatrix = new ImageFilterView.ImageMatrix();
+        this.mImageMatrix = new ImageFilterView$ImageMatrix();
         this.mCrossfade = 0.0f;
         this.mRoundPercent = 0.0f;
         this.mRound = Float.NaN;
@@ -60,36 +59,36 @@ public class ImageFilterButton extends AppCompatImageButton {
     private void init(Context context, AttributeSet attributeSet) {
         setPadding(0, 0, 0, 0);
         if (attributeSet != null) {
-            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, C0923R.styleable.ImageFilterView);
+            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.ImageFilterView);
             int indexCount = obtainStyledAttributes.getIndexCount();
-            this.mAltDrawable = obtainStyledAttributes.getDrawable(C0923R.styleable.ImageFilterView_altSrc);
+            this.mAltDrawable = obtainStyledAttributes.getDrawable(R.styleable.ImageFilterView_altSrc);
             for (int i = 0; i < indexCount; i++) {
                 int index = obtainStyledAttributes.getIndex(i);
-                if (index == C0923R.styleable.ImageFilterView_crossfade) {
+                if (index == R.styleable.ImageFilterView_crossfade) {
                     this.mCrossfade = obtainStyledAttributes.getFloat(index, 0.0f);
-                } else if (index == C0923R.styleable.ImageFilterView_warmth) {
+                } else if (index == R.styleable.ImageFilterView_warmth) {
                     setWarmth(obtainStyledAttributes.getFloat(index, 0.0f));
-                } else if (index == C0923R.styleable.ImageFilterView_saturation) {
+                } else if (index == R.styleable.ImageFilterView_saturation) {
                     setSaturation(obtainStyledAttributes.getFloat(index, 0.0f));
-                } else if (index == C0923R.styleable.ImageFilterView_contrast) {
+                } else if (index == R.styleable.ImageFilterView_contrast) {
                     setContrast(obtainStyledAttributes.getFloat(index, 0.0f));
-                } else if (index == C0923R.styleable.ImageFilterView_round) {
+                } else if (index == R.styleable.ImageFilterView_round) {
                     if (Build.VERSION.SDK_INT >= 21) {
                         setRound(obtainStyledAttributes.getDimension(index, 0.0f));
                     }
-                } else if (index == C0923R.styleable.ImageFilterView_roundPercent) {
+                } else if (index == R.styleable.ImageFilterView_roundPercent) {
                     if (Build.VERSION.SDK_INT >= 21) {
                         setRoundPercent(obtainStyledAttributes.getFloat(index, 0.0f));
                     }
-                } else if (index == C0923R.styleable.ImageFilterView_overlay) {
+                } else if (index == R.styleable.ImageFilterView_overlay) {
                     setOverlay(obtainStyledAttributes.getBoolean(index, this.mOverlay));
-                } else if (index == C0923R.styleable.ImageFilterView_imagePanX) {
+                } else if (index == R.styleable.ImageFilterView_imagePanX) {
                     setImagePanX(obtainStyledAttributes.getFloat(index, this.mPanX));
-                } else if (index == C0923R.styleable.ImageFilterView_imagePanY) {
+                } else if (index == R.styleable.ImageFilterView_imagePanY) {
                     setImagePanY(obtainStyledAttributes.getFloat(index, this.mPanY));
-                } else if (index == C0923R.styleable.ImageFilterView_imageRotate) {
+                } else if (index == R.styleable.ImageFilterView_imageRotate) {
                     setImageRotate(obtainStyledAttributes.getFloat(index, this.mRotate));
-                } else if (index == C0923R.styleable.ImageFilterView_imageZoom) {
+                } else if (index == R.styleable.ImageFilterView_imageZoom) {
                     setImageZoom(obtainStyledAttributes.getFloat(index, this.mZoom));
                 }
             }
@@ -234,15 +233,15 @@ public class ImageFilterButton extends AppCompatImageButton {
     }
 
     public void setBrightness(float f) {
-        ImageFilterView.ImageMatrix imageMatrix = this.mImageMatrix;
-        imageMatrix.mBrightness = f;
-        imageMatrix.updateMatrix(this);
+        ImageFilterView$ImageMatrix imageFilterView$ImageMatrix = this.mImageMatrix;
+        imageFilterView$ImageMatrix.mBrightness = f;
+        imageFilterView$ImageMatrix.updateMatrix(this);
     }
 
     public void setContrast(float f) {
-        ImageFilterView.ImageMatrix imageMatrix = this.mImageMatrix;
-        imageMatrix.mContrast = f;
-        imageMatrix.updateMatrix(this);
+        ImageFilterView$ImageMatrix imageFilterView$ImageMatrix = this.mImageMatrix;
+        imageFilterView$ImageMatrix.mContrast = f;
+        imageFilterView$ImageMatrix.updateMatrix(this);
     }
 
     public void setCrossfade(float f) {
@@ -396,20 +395,20 @@ public class ImageFilterButton extends AppCompatImageButton {
     }
 
     public void setSaturation(float f) {
-        ImageFilterView.ImageMatrix imageMatrix = this.mImageMatrix;
-        imageMatrix.mSaturation = f;
-        imageMatrix.updateMatrix(this);
+        ImageFilterView$ImageMatrix imageFilterView$ImageMatrix = this.mImageMatrix;
+        imageFilterView$ImageMatrix.mSaturation = f;
+        imageFilterView$ImageMatrix.updateMatrix(this);
     }
 
     public void setWarmth(float f) {
-        ImageFilterView.ImageMatrix imageMatrix = this.mImageMatrix;
-        imageMatrix.mWarmth = f;
-        imageMatrix.updateMatrix(this);
+        ImageFilterView$ImageMatrix imageFilterView$ImageMatrix = this.mImageMatrix;
+        imageFilterView$ImageMatrix.mWarmth = f;
+        imageFilterView$ImageMatrix.updateMatrix(this);
     }
 
     public ImageFilterButton(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.mImageMatrix = new ImageFilterView.ImageMatrix();
+        this.mImageMatrix = new ImageFilterView$ImageMatrix();
         this.mCrossfade = 0.0f;
         this.mRoundPercent = 0.0f;
         this.mRound = Float.NaN;
@@ -426,7 +425,7 @@ public class ImageFilterButton extends AppCompatImageButton {
 
     public ImageFilterButton(Context context, AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
-        this.mImageMatrix = new ImageFilterView.ImageMatrix();
+        this.mImageMatrix = new ImageFilterView$ImageMatrix();
         this.mCrossfade = 0.0f;
         this.mRoundPercent = 0.0f;
         this.mRound = Float.NaN;

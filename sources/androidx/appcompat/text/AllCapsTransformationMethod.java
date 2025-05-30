@@ -9,7 +9,7 @@ import java.util.Locale;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class AllCapsTransformationMethod implements TransformationMethod {
     private Locale mLocale;
 

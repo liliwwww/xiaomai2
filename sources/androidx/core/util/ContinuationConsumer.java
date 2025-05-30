@@ -2,6 +2,7 @@ package androidx.core.util;
 
 import androidx.annotation.RequiresApi;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 import kotlin.Result;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.internal.Intrinsics;
@@ -9,8 +10,8 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @RequiresApi(24)
-/* loaded from: classes.dex */
-final class ContinuationConsumer<T> extends AtomicBoolean implements java.util.function.Consumer<T> {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
+final class ContinuationConsumer<T> extends AtomicBoolean implements Consumer<T> {
 
     @NotNull
     private final Continuation<T> continuation;

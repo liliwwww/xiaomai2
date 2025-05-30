@@ -1,6 +1,5 @@
 package android.taobao.windvane.urlintercept;
 
-import android.taobao.windvane.urlintercept.WVURLInterceptData;
 import java.net.URLDecoder;
 import java.util.Collections;
 import java.util.HashMap;
@@ -11,9 +10,9 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVURLInterceptService {
-    private static Set<WVURLInterceptData.RuleData> urlRules = Collections.synchronizedSet(new HashSet());
+    private static Set<WVURLInterceptData$RuleData> urlRules = Collections.synchronizedSet(new HashSet());
     private static Map<String, Pattern> rulePat = Collections.synchronizedMap(new HashMap());
     private static WVURLIntercepterInterface mIntercepter = null;
     private static WVURLIntercepterHandler mHandler = null;
@@ -35,7 +34,7 @@ public class WVURLInterceptService {
         return mIntercepter;
     }
 
-    public static Set<WVURLInterceptData.RuleData> getWVURLinterceptRules() {
+    public static Set<WVURLInterceptData$RuleData> getWVURLinterceptRules() {
         return urlRules;
     }
 
@@ -55,10 +54,10 @@ public class WVURLInterceptService {
         mIntercepter = wVURLIntercepterInterface;
     }
 
-    public static void registerWVURLinterceptRules(Set<WVURLInterceptData.RuleData> set) {
-        Iterator<WVURLInterceptData.RuleData> it = set.iterator();
+    public static void registerWVURLinterceptRules(Set<WVURLInterceptData$RuleData> set) {
+        Iterator<WVURLInterceptData$RuleData> it = set.iterator();
         while (it != null && it.hasNext()) {
-            WVURLInterceptData.RuleData next = it.next();
+            WVURLInterceptData$RuleData next = it.next();
             if (next.needdecode) {
                 try {
                     next.pattern = URLDecoder.decode(next.pattern, "utf-8");

@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
 @RequiresApi(21)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class WrappedDrawableApi21 extends WrappedDrawableApi14 {
     private static final String TAG = "WrappedDrawableApi21";
     private static Method sIsProjectedDrawableMethod;
@@ -91,7 +91,7 @@ class WrappedDrawableApi21 extends WrappedDrawableApi14 {
         return true;
     }
 
-    @Override // androidx.core.graphics.drawable.WrappedDrawableApi14, android.graphics.drawable.Drawable, androidx.core.graphics.drawable.TintAwareDrawable
+    @Override // androidx.core.graphics.drawable.WrappedDrawableApi14, android.graphics.drawable.Drawable
     public void setTint(int i) {
         if (isCompatTintEnabled()) {
             super.setTint(i);
@@ -100,7 +100,7 @@ class WrappedDrawableApi21 extends WrappedDrawableApi14 {
         }
     }
 
-    @Override // androidx.core.graphics.drawable.WrappedDrawableApi14, android.graphics.drawable.Drawable, androidx.core.graphics.drawable.TintAwareDrawable
+    @Override // androidx.core.graphics.drawable.WrappedDrawableApi14, android.graphics.drawable.Drawable
     public void setTintList(ColorStateList colorStateList) {
         if (isCompatTintEnabled()) {
             super.setTintList(colorStateList);
@@ -109,7 +109,7 @@ class WrappedDrawableApi21 extends WrappedDrawableApi14 {
         }
     }
 
-    @Override // androidx.core.graphics.drawable.WrappedDrawableApi14, android.graphics.drawable.Drawable, androidx.core.graphics.drawable.TintAwareDrawable
+    @Override // androidx.core.graphics.drawable.WrappedDrawableApi14, android.graphics.drawable.Drawable
     public void setTintMode(@NonNull PorterDuff.Mode mode) {
         if (isCompatTintEnabled()) {
             super.setTintMode(mode);

@@ -7,7 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ViewGroupUtilsApi14 {
     private static final int LAYOUT_TRANSITION_CHANGING = 4;
     private static final String TAG = "ViewGroupUtilsApi14";
@@ -48,7 +48,7 @@ class ViewGroupUtilsApi14 {
     /* JADX WARN: Removed duplicated region for block: B:26:? A[RETURN, SYNTHETIC] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     static void suppressLayout(@androidx.annotation.NonNull android.view.ViewGroup r5, boolean r6) {
         /*
@@ -82,7 +82,7 @@ class ViewGroupUtilsApi14 {
         L39:
             android.animation.LayoutTransition r0 = androidx.transition.ViewGroupUtilsApi14.sEmptyLayoutTransition
             if (r6 == r0) goto L42
-            int r0 = androidx.transition.C1345R.id.transition_layout_save
+            int r0 = androidx.transition.R$id.transition_layout_save
             r5.setTag(r0, r6)
         L42:
             android.animation.LayoutTransition r6 = androidx.transition.ViewGroupUtilsApi14.sEmptyLayoutTransition
@@ -125,7 +125,7 @@ class ViewGroupUtilsApi14 {
             if (r2 == 0) goto L84
             r5.requestLayout()
         L84:
-            int r6 = androidx.transition.C1345R.id.transition_layout_save
+            int r6 = androidx.transition.R$id.transition_layout_save
             java.lang.Object r0 = r5.getTag(r6)
             android.animation.LayoutTransition r0 = (android.animation.LayoutTransition) r0
             if (r0 == 0) goto L94

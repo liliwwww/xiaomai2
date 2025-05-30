@@ -12,17 +12,15 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.os.EnvironmentCompat;
 import androidx.core.view.ViewCompat;
-import androidx.fragment.C1043R;
+import androidx.fragment.R;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.SpecialEffectsController;
 import androidx.fragment.app.strictmode.FragmentStrictMode;
-import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ViewModelStoreOwner;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class FragmentStateManager {
     private static final String TAG = "FragmentManager";
     private static final String TARGET_REQUEST_CODE_STATE_TAG = "android:target_req_state";
@@ -37,34 +35,6 @@ class FragmentStateManager {
     private final FragmentStore mFragmentStore;
     private boolean mMovingToState = false;
     private int mFragmentManagerState = -1;
-
-    /* compiled from: Taobao */
-    /* renamed from: androidx.fragment.app.FragmentStateManager$2 */
-    /* loaded from: classes.dex */
-    static /* synthetic */ class C10882 {
-        static final /* synthetic */ int[] $SwitchMap$androidx$lifecycle$Lifecycle$State;
-
-        static {
-            int[] iArr = new int[Lifecycle.State.values().length];
-            $SwitchMap$androidx$lifecycle$Lifecycle$State = iArr;
-            try {
-                iArr[Lifecycle.State.RESUMED.ordinal()] = 1;
-            } catch (NoSuchFieldError unused) {
-            }
-            try {
-                $SwitchMap$androidx$lifecycle$Lifecycle$State[Lifecycle.State.STARTED.ordinal()] = 2;
-            } catch (NoSuchFieldError unused2) {
-            }
-            try {
-                $SwitchMap$androidx$lifecycle$Lifecycle$State[Lifecycle.State.CREATED.ordinal()] = 3;
-            } catch (NoSuchFieldError unused3) {
-            }
-            try {
-                $SwitchMap$androidx$lifecycle$Lifecycle$State[Lifecycle.State.INITIALIZED.ordinal()] = 4;
-            } catch (NoSuchFieldError unused4) {
-            }
-        }
-    }
 
     FragmentStateManager(@NonNull FragmentLifecycleCallbacksDispatcher fragmentLifecycleCallbacksDispatcher, @NonNull FragmentStore fragmentStore, @NonNull Fragment fragment) {
         this.mDispatcher = fragmentLifecycleCallbacksDispatcher;
@@ -172,7 +142,7 @@ class FragmentStateManager {
             return fragment.mState;
         }
         int i = this.mFragmentManagerState;
-        int i2 = C10882.$SwitchMap$androidx$lifecycle$Lifecycle$State[fragment.mMaxState.ordinal()];
+        int i2 = 2.$SwitchMap$androidx$lifecycle$Lifecycle$State[fragment.mMaxState.ordinal()];
         if (i2 != 1) {
             i = i2 != 2 ? i2 != 3 ? i2 != 4 ? Math.min(i, -1) : Math.min(i, 0) : Math.min(i, 1) : Math.min(i, 5);
         }
@@ -260,7 +230,7 @@ class FragmentStateManager {
                         try {
                             str = fragment3.getResources().getResourceName(this.mFragment.mContainerId);
                         } catch (Resources.NotFoundException unused) {
-                            str = EnvironmentCompat.MEDIA_UNKNOWN;
+                            str = "unknown";
                         }
                         throw new IllegalArgumentException("No view found for id 0x" + Integer.toHexString(this.mFragment.mContainerId) + " (" + str + ") for fragment " + this.mFragment);
                     }
@@ -276,7 +246,7 @@ class FragmentStateManager {
         if (view != null) {
             view.setSaveFromParentEnabled(false);
             Fragment fragment5 = this.mFragment;
-            fragment5.mView.setTag(C1043R.id.fragment_container_view_tag, fragment5);
+            fragment5.mView.setTag(R.id.fragment_container_view_tag, fragment5);
             if (viewGroup != null) {
                 addViewToContainer();
             }
@@ -287,18 +257,8 @@ class FragmentStateManager {
             if (ViewCompat.isAttachedToWindow(this.mFragment.mView)) {
                 ViewCompat.requestApplyInsets(this.mFragment.mView);
             } else {
-                final View view2 = this.mFragment.mView;
-                view2.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() { // from class: androidx.fragment.app.FragmentStateManager.1
-                    @Override // android.view.View.OnAttachStateChangeListener
-                    public void onViewAttachedToWindow(View view3) {
-                        view2.removeOnAttachStateChangeListener(this);
-                        ViewCompat.requestApplyInsets(view2);
-                    }
-
-                    @Override // android.view.View.OnAttachStateChangeListener
-                    public void onViewDetachedFromWindow(View view3) {
-                    }
-                });
+                View view2 = this.mFragment.mView;
+                view2.addOnAttachStateChangeListener(new 1(this, view2));
             }
             this.mFragment.performViewCreated();
             FragmentLifecycleCallbacksDispatcher fragmentLifecycleCallbacksDispatcher = this.mDispatcher;
@@ -387,7 +347,7 @@ class FragmentStateManager {
         fragment2.mContainer = null;
         fragment2.mView = null;
         fragment2.mViewLifecycleOwner = null;
-        fragment2.mViewLifecycleOwnerLiveData.setValue(null);
+        fragment2.mViewLifecycleOwnerLiveData.setValue((Object) null);
         this.mFragment.mInLayout = false;
     }
 
@@ -426,7 +386,7 @@ class FragmentStateManager {
             if (view != null) {
                 view.setSaveFromParentEnabled(false);
                 Fragment fragment3 = this.mFragment;
-                fragment3.mView.setTag(C1043R.id.fragment_container_view_tag, fragment3);
+                fragment3.mView.setTag(R.id.fragment_container_view_tag, fragment3);
                 Fragment fragment4 = this.mFragment;
                 if (fragment4.mHidden) {
                     fragment4.mView.setVisibility(8);

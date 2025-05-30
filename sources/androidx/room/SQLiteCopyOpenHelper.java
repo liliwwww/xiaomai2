@@ -8,9 +8,10 @@ import androidx.annotation.RequiresApi;
 import androidx.room.util.CopyLock;
 import androidx.room.util.DBUtil;
 import androidx.room.util.FileUtil;
-import androidx.sqlite.p008db.SupportSQLiteDatabase;
-import androidx.sqlite.p008db.SupportSQLiteOpenHelper;
-import androidx.sqlite.p008db.framework.FrameworkSQLiteOpenHelperFactory;
+import androidx.sqlite.db.SupportSQLiteDatabase;
+import androidx.sqlite.db.SupportSQLiteOpenHelper;
+import androidx.sqlite.db.SupportSQLiteOpenHelper$Configuration;
+import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -21,7 +22,7 @@ import java.nio.channels.ReadableByteChannel;
 import java.util.concurrent.Callable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class SQLiteCopyOpenHelper implements DelegatingOpenHelper, SupportSQLiteOpenHelper {
 
     @NonNull
@@ -86,23 +87,7 @@ class SQLiteCopyOpenHelper implements DelegatingOpenHelper, SupportSQLiteOpenHel
 
     private SupportSQLiteOpenHelper createFrameworkOpenHelper(File file) {
         try {
-            return new FrameworkSQLiteOpenHelperFactory().create(SupportSQLiteOpenHelper.Configuration.builder(this.mContext).name(file.getAbsolutePath()).callback(new SupportSQLiteOpenHelper.Callback(Math.max(DBUtil.readVersion(file), 1)) { // from class: androidx.room.SQLiteCopyOpenHelper.1
-                @Override // androidx.sqlite.db.SupportSQLiteOpenHelper.Callback
-                public void onCreate(@NonNull SupportSQLiteDatabase supportSQLiteDatabase) {
-                }
-
-                @Override // androidx.sqlite.db.SupportSQLiteOpenHelper.Callback
-                public void onOpen(@NonNull SupportSQLiteDatabase supportSQLiteDatabase) {
-                    int i = this.version;
-                    if (i < 1) {
-                        supportSQLiteDatabase.setVersion(i);
-                    }
-                }
-
-                @Override // androidx.sqlite.db.SupportSQLiteOpenHelper.Callback
-                public void onUpgrade(@NonNull SupportSQLiteDatabase supportSQLiteDatabase, int i, int i2) {
-                }
-            }).build());
+            return new FrameworkSQLiteOpenHelperFactory().create(SupportSQLiteOpenHelper$Configuration.builder(this.mContext).name(file.getAbsolutePath()).callback(new 1(this, Math.max(DBUtil.readVersion(file), 1))).build());
         } catch (IOException e) {
             throw new RuntimeException("Malformed database file, unable to read version.", e);
         }
@@ -176,24 +161,20 @@ class SQLiteCopyOpenHelper implements DelegatingOpenHelper, SupportSQLiteOpenHel
         throw th;
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteOpenHelper, java.io.Closeable, java.lang.AutoCloseable
     public synchronized void close() {
         this.mDelegate.close();
         this.mVerified = false;
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteOpenHelper
     public String getDatabaseName() {
         return this.mDelegate.getDatabaseName();
     }
 
-    @Override // androidx.room.DelegatingOpenHelper
     @NonNull
     public SupportSQLiteOpenHelper getDelegate() {
         return this.mDelegate;
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteOpenHelper
     public synchronized SupportSQLiteDatabase getReadableDatabase() {
         if (!this.mVerified) {
             verifyDatabaseFile(false);
@@ -202,7 +183,6 @@ class SQLiteCopyOpenHelper implements DelegatingOpenHelper, SupportSQLiteOpenHel
         return this.mDelegate.getReadableDatabase();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteOpenHelper
     public synchronized SupportSQLiteDatabase getWritableDatabase() {
         if (!this.mVerified) {
             verifyDatabaseFile(true);
@@ -215,7 +195,6 @@ class SQLiteCopyOpenHelper implements DelegatingOpenHelper, SupportSQLiteOpenHel
         this.mDatabaseConfiguration = databaseConfiguration;
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteOpenHelper
     @RequiresApi(api = 16)
     public void setWriteAheadLoggingEnabled(boolean z) {
         this.mDelegate.setWriteAheadLoggingEnabled(z);

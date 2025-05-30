@@ -6,6 +6,7 @@ import android.os.SystemClock;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.core.os.OperationCanceledException;
 import androidx.core.util.TimeUtils;
 import java.io.FileDescriptor;
@@ -14,7 +15,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class AsyncTaskLoader<D> extends Loader<D> {
     static final boolean DEBUG = false;
     static final String TAG = "AsyncTaskLoader";
@@ -33,7 +34,6 @@ public abstract class AsyncTaskLoader<D> extends Loader<D> {
         LoadTask() {
         }
 
-        @Override // androidx.loader.content.ModernAsyncTask
         protected void onCancelled(D d) {
             try {
                 AsyncTaskLoader.this.dispatchOnCancelled(this, d);
@@ -42,7 +42,6 @@ public abstract class AsyncTaskLoader<D> extends Loader<D> {
             }
         }
 
-        @Override // androidx.loader.content.ModernAsyncTask
         protected void onPostExecute(D d) {
             try {
                 AsyncTaskLoader.this.dispatchOnLoadComplete(this, d);
@@ -65,7 +64,6 @@ public abstract class AsyncTaskLoader<D> extends Loader<D> {
         }
 
         /* JADX INFO: Access modifiers changed from: protected */
-        @Override // androidx.loader.content.ModernAsyncTask
         public D doInBackground(Void... voidArr) {
             try {
                 return (D) AsyncTaskLoader.this.onLoadInBackground();
@@ -111,7 +109,6 @@ public abstract class AsyncTaskLoader<D> extends Loader<D> {
         deliverResult(d);
     }
 
-    @Override // androidx.loader.content.Loader
     @Deprecated
     public void dump(String str, FileDescriptor fileDescriptor, PrintWriter printWriter, String[] strArr) {
         super.dump(str, fileDescriptor, printWriter, strArr);
@@ -148,7 +145,7 @@ public abstract class AsyncTaskLoader<D> extends Loader<D> {
             this.mHandler.removeCallbacks(this.mTask);
         }
         if (this.mUpdateThrottle <= 0 || SystemClock.uptimeMillis() >= this.mLastLoadCompleteTime + this.mUpdateThrottle) {
-            this.mTask.executeOnExecutor(this.mExecutor, null);
+            this.mTask.executeOnExecutor(this.mExecutor, (Object[]) null);
         } else {
             this.mTask.waiting = true;
             this.mHandler.postAtTime(this.mTask, this.mLastLoadCompleteTime + this.mUpdateThrottle);
@@ -162,13 +159,12 @@ public abstract class AsyncTaskLoader<D> extends Loader<D> {
     @Nullable
     public abstract D loadInBackground();
 
-    @Override // androidx.loader.content.Loader
     protected boolean onCancelLoad() {
         if (this.mTask == null) {
             return false;
         }
-        if (!this.mStarted) {
-            this.mContentChanged = true;
+        if (!((Loader) this).mStarted) {
+            ((Loader) this).mContentChanged = true;
         }
         if (this.mCancellingTask != null) {
             if (this.mTask.waiting) {
@@ -196,7 +192,6 @@ public abstract class AsyncTaskLoader<D> extends Loader<D> {
     public void onCanceled(@Nullable D d) {
     }
 
-    @Override // androidx.loader.content.Loader
     protected void onForceLoad() {
         super.onForceLoad();
         cancelLoad();
@@ -216,7 +211,7 @@ public abstract class AsyncTaskLoader<D> extends Loader<D> {
         }
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     public void waitForLoader() {
         AsyncTaskLoader<D>.LoadTask loadTask = this.mTask;
         if (loadTask != null) {

@@ -6,12 +6,12 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface LazyGridItemProvider extends LazyLayoutItemProvider {
     boolean getHasCustomSpans();
 
     /* renamed from: getSpan-_-orMbw, reason: not valid java name */
-    long mo1570getSpan_orMbw(@NotNull LazyGridItemSpanScope lazyGridItemSpanScope, int i);
+    long mo291getSpan_orMbw(@NotNull LazyGridItemSpanScope lazyGridItemSpanScope, int i);
 
     @NotNull
     LazyGridSpanLayoutProvider getSpanLayoutProvider();

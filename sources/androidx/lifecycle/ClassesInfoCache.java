@@ -11,7 +11,7 @@ import java.util.Map;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class ClassesInfoCache {
     private static final int CALL_TYPE_NO_ARG = 0;
     private static final int CALL_TYPE_PROVIDER = 1;
@@ -122,8 +122,8 @@ final class ClassesInfoCache {
         }
         boolean z = false;
         for (Method method : methodArr) {
-            OnLifecycleEvent onLifecycleEvent = (OnLifecycleEvent) method.getAnnotation(OnLifecycleEvent.class);
-            if (onLifecycleEvent != null) {
+            OnLifecycleEvent annotation = method.getAnnotation(OnLifecycleEvent.class);
+            if (annotation != null) {
                 Class<?>[] parameterTypes = method.getParameterTypes();
                 if (parameterTypes.length <= 0) {
                     i = 0;
@@ -133,7 +133,7 @@ final class ClassesInfoCache {
                     }
                     i = 1;
                 }
-                Lifecycle.Event value = onLifecycleEvent.value();
+                Lifecycle.Event value = annotation.value();
                 if (parameterTypes.length > 1) {
                     if (!Lifecycle.Event.class.isAssignableFrom(parameterTypes[1])) {
                         throw new IllegalArgumentException("invalid parameter type. second arg must be an event");
@@ -188,7 +188,7 @@ final class ClassesInfoCache {
         }
         Method[] declaredMethods = getDeclaredMethods(cls);
         for (Method method : declaredMethods) {
-            if (((OnLifecycleEvent) method.getAnnotation(OnLifecycleEvent.class)) != null) {
+            if (method.getAnnotation(OnLifecycleEvent.class) != null) {
                 createInfo(cls, declaredMethods);
                 return true;
             }

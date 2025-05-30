@@ -1,7 +1,7 @@
 package androidx.constraintlayout.motion.widget;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class OnSwipe {
     public static final int COMPLETE_MODE_CONTINUOUS_VELOCITY = 0;
     public static final int COMPLETE_MODE_SPRING = 1;

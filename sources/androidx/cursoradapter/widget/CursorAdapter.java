@@ -1,10 +1,8 @@
 package androidx.cursoradapter.widget;
 
 import android.content.Context;
-import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.DataSetObserver;
-import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -12,81 +10,43 @@ import android.widget.Filter;
 import android.widget.FilterQueryProvider;
 import android.widget.Filterable;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.cursoradapter.widget.CursorFilter;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class CursorAdapter extends BaseAdapter implements Filterable, CursorFilter.CursorFilterClient {
 
     @Deprecated
     public static final int FLAG_AUTO_REQUERY = 1;
     public static final int FLAG_REGISTER_CONTENT_OBSERVER = 2;
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     protected boolean mAutoRequery;
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     protected ChangeObserver mChangeObserver;
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     protected Context mContext;
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     protected Cursor mCursor;
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     protected CursorFilter mCursorFilter;
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     protected DataSetObserver mDataSetObserver;
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     protected boolean mDataValid;
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     protected FilterQueryProvider mFilterQueryProvider;
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     protected int mRowIDColumn;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private class ChangeObserver extends ContentObserver {
-        ChangeObserver() {
-            super(new Handler());
-        }
-
-        @Override // android.database.ContentObserver
-        public boolean deliverSelfNotifications() {
-            return true;
-        }
-
-        @Override // android.database.ContentObserver
-        public void onChange(boolean z) {
-            CursorAdapter.this.onContentChanged();
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private class MyDataSetObserver extends DataSetObserver {
-        MyDataSetObserver() {
-        }
-
-        @Override // android.database.DataSetObserver
-        public void onChanged() {
-            CursorAdapter cursorAdapter = CursorAdapter.this;
-            cursorAdapter.mDataValid = true;
-            cursorAdapter.notifyDataSetChanged();
-        }
-
-        @Override // android.database.DataSetObserver
-        public void onInvalidated() {
-            CursorAdapter cursorAdapter = CursorAdapter.this;
-            cursorAdapter.mDataValid = false;
-            cursorAdapter.notifyDataSetInvalidated();
-        }
-    }
 
     @Deprecated
     public CursorAdapter(Context context, Cursor cursor) {
@@ -95,6 +55,7 @@ public abstract class CursorAdapter extends BaseAdapter implements Filterable, C
 
     public abstract void bindView(View view, Context context, Cursor cursor);
 
+    @Override // androidx.cursoradapter.widget.CursorFilter.CursorFilterClient
     public void changeCursor(Cursor cursor) {
         Cursor swapCursor = swapCursor(cursor);
         if (swapCursor != null) {
@@ -102,6 +63,7 @@ public abstract class CursorAdapter extends BaseAdapter implements Filterable, C
         }
     }
 
+    @Override // androidx.cursoradapter.widget.CursorFilter.CursorFilterClient
     public CharSequence convertToString(Cursor cursor) {
         return cursor == null ? "" : cursor.toString();
     }
@@ -203,6 +165,7 @@ public abstract class CursorAdapter extends BaseAdapter implements Filterable, C
         this.mDataValid = this.mCursor.requery();
     }
 
+    @Override // androidx.cursoradapter.widget.CursorFilter.CursorFilterClient
     public Cursor runQueryOnBackgroundThread(CharSequence charSequence) {
         FilterQueryProvider filterQueryProvider = this.mFilterQueryProvider;
         return filterQueryProvider != null ? filterQueryProvider.runQuery(charSequence) : this.mCursor;
@@ -261,8 +224,8 @@ public abstract class CursorAdapter extends BaseAdapter implements Filterable, C
         this.mContext = context;
         this.mRowIDColumn = z ? cursor.getColumnIndexOrThrow("_id") : -1;
         if ((i & 2) == 2) {
-            this.mChangeObserver = new ChangeObserver();
-            this.mDataSetObserver = new MyDataSetObserver();
+            this.mChangeObserver = new ChangeObserver(this);
+            this.mDataSetObserver = new MyDataSetObserver(this);
         } else {
             this.mChangeObserver = null;
             this.mDataSetObserver = null;

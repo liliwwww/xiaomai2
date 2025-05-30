@@ -13,13 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.core.content.res.TypedArrayUtils;
-import androidx.transition.AnimatorUtils;
 import androidx.transition.Transition;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class Visibility extends Transition {
     public static final int MODE_IN = 1;
     public static final int MODE_OUT = 2;
@@ -30,7 +29,7 @@ public abstract class Visibility extends Transition {
     private static final String[] sTransitionProperties = {PROPNAME_VISIBILITY, PROPNAME_PARENT};
 
     /* compiled from: Taobao */
-    private static class DisappearListener extends AnimatorListenerAdapter implements AnimatorUtils.AnimatorPauseListenerCompat, Transition.TransitionListener {
+    private static class DisappearListener extends AnimatorListenerAdapter implements AnimatorUtils$AnimatorPauseListenerCompat, Transition.TransitionListener {
         boolean mCanceled = false;
         private final int mFinalVisibility;
         private boolean mLayoutSuppressed;
@@ -76,7 +75,7 @@ public abstract class Visibility extends Transition {
             hideViewWhenNotCanceled();
         }
 
-        @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorPauseListener, androidx.transition.AnimatorUtils.AnimatorPauseListenerCompat
+        @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorPauseListener, androidx.transition.AnimatorUtils$AnimatorPauseListenerCompat
         public void onAnimationPause(Animator animator) {
             if (this.mCanceled) {
                 return;
@@ -88,7 +87,7 @@ public abstract class Visibility extends Transition {
         public void onAnimationRepeat(Animator animator) {
         }
 
-        @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorPauseListener, androidx.transition.AnimatorUtils.AnimatorPauseListenerCompat
+        @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorPauseListener, androidx.transition.AnimatorUtils$AnimatorPauseListenerCompat
         public void onAnimationResume(Animator animator) {
             if (this.mCanceled) {
                 return;
@@ -130,20 +129,6 @@ public abstract class Visibility extends Transition {
     @Retention(RetentionPolicy.SOURCE)
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
     public @interface Mode {
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static class VisibilityInfo {
-        ViewGroup mEndParent;
-        int mEndVisibility;
-        boolean mFadeIn;
-        ViewGroup mStartParent;
-        int mStartVisibility;
-        boolean mVisibilityChange;
-
-        VisibilityInfo() {
-        }
     }
 
     public Visibility() {
@@ -290,12 +275,12 @@ public abstract class Visibility extends Transition {
     /* JADX WARN: Removed duplicated region for block: B:37:0x0049  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public android.animation.Animator onDisappear(final android.view.ViewGroup r18, androidx.transition.TransitionValues r19, int r20, androidx.transition.TransitionValues r21, int r22) {
         /*
             Method dump skipped, instructions count: 263
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.transition.Visibility.onDisappear(android.view.ViewGroup, androidx.transition.TransitionValues, int, androidx.transition.TransitionValues, int):android.animation.Animator");
     }

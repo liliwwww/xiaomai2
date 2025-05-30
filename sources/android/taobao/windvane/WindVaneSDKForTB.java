@@ -13,7 +13,6 @@ import android.taobao.windvane.jsbridge.api.WVAPI;
 import android.taobao.windvane.monitor.AppMonitorUtil;
 import android.taobao.windvane.monitor.WVLocPerformanceMonitor;
 import android.taobao.windvane.monitor.WVMonitor;
-import android.taobao.windvane.monitor.WVMonitorService;
 import android.taobao.windvane.packageapp.WVPackageAppManager;
 import android.taobao.windvane.service.WVEventContext;
 import android.taobao.windvane.service.WVEventId;
@@ -26,14 +25,12 @@ import android.taobao.windvane.util.EnvUtil;
 import android.taobao.windvane.util.TaoLog;
 import android.taobao.windvane.webview.WVSchemeInterceptService;
 import com.alibaba.motu.crashreporter.MotuCrashReporter;
-import com.taobao.application.common.Apm;
-import com.taobao.application.common.IAppPreferences;
 import com.taobao.application.common.b;
 import java.util.concurrent.atomic.AtomicBoolean;
 import tb.tr5;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WindVaneSDKForTB {
     public static final String TAG = "WindVaneSDKForTB";
     private static boolean isForeground;
@@ -53,7 +50,7 @@ public class WindVaneSDKForTB {
         public WVEventResult onEvent(int i, WVEventContext wVEventContext, Object... objArr) {
             WVEventResult wVEventResult = new WVEventResult(false);
             if (i == 7001) {
-                TaoLog.m24i("WVConfigManager", "receive orange register");
+                TaoLog.i("WVConfigManager", "receive orange register");
                 TBConfigManager.getInstance().init(this.context);
                 WVEventService.getInstance().removeEventListener(this);
             }
@@ -63,10 +60,10 @@ public class WindVaneSDKForTB {
 
     public static void init(Context context, String str, int i, WVAppParams wVAppParams) {
         if (!inited.compareAndSet(false, true)) {
-            TaoLog.m21e("InitWindVane", "windvane has already initiated");
+            TaoLog.e("InitWindVane", "windvane has already initiated");
             return;
         }
-        TaoLog.m21e("InitWindVane", "first init");
+        TaoLog.e("InitWindVane", "first init");
         long currentTimeMillis = System.currentTimeMillis();
         if (wVAppParams.ucsdkappkeySec == null) {
             wVAppParams.ucsdkappkeySec = TB_UC_SDK_APP_KEY_SEC;
@@ -88,26 +85,7 @@ public class WindVaneSDKForTB {
         MotuCrashReporter.getInstance().setCrashCaughtListener(new tr5());
         try {
             WVEventService.getInstance().addEventListener(new OrangeRegisterEventLister(context), WVEventService.WV_FORWARD_EVENT);
-            final IAppPreferences d = b.d();
-            b.a(new Apm.OnApmEventListener() { // from class: android.taobao.windvane.WindVaneSDKForTB.1
-                public void onEvent(int i2) {
-                    boolean unused = WindVaneSDKForTB.isForeground = d.getBoolean("isInBackground", false);
-                    boolean z = WVMonitorService.getPackageMonitorInterface() != null;
-                    if (i2 == 2 && z) {
-                        long currentTimeMillis3 = System.currentTimeMillis();
-                        TaoLog.m24i(WindVaneSDKForTB.TAG, "app active at time : " + currentTimeMillis3);
-                        GlobalConfig.isBackground = false;
-                        WVConfigManager.getInstance().updateConfig(WVConfigManager.WVConfigUpdateFromType.WVConfigUpdateFromTypeAppActive);
-                        WVMonitorService.getPackageMonitorInterface().uploadStartAppTime(currentTimeMillis3);
-                    }
-                    if (i2 == 1 && z) {
-                        long currentTimeMillis4 = System.currentTimeMillis();
-                        TaoLog.m24i(WindVaneSDKForTB.TAG, "app background at time : " + currentTimeMillis4);
-                        GlobalConfig.isBackground = true;
-                        WVMonitorService.getPackageMonitorInterface().uploadBackgroundTime(currentTimeMillis4);
-                    }
-                }
-            });
+            b.a(new 1(b.d()));
         } catch (Throwable unused) {
         }
         if (GlobalConfig.getInstance().needSpeed()) {

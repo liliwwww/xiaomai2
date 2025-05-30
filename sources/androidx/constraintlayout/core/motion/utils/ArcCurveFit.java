@@ -3,7 +3,7 @@ package androidx.constraintlayout.core.motion.utils;
 import java.util.Arrays;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ArcCurveFit extends CurveFit {
     public static final int ARC_START_FLIP = 3;
     public static final int ARC_START_HORIZONTAL = 2;

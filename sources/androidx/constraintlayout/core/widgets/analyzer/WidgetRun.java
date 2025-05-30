@@ -2,11 +2,12 @@ package androidx.constraintlayout.core.widgets.analyzer;
 
 import androidx.constraintlayout.core.widgets.ConstraintAnchor;
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
+import androidx.constraintlayout.core.widgets.ConstraintWidget$DimensionBehaviour;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class WidgetRun implements Dependency {
-    protected ConstraintWidget.DimensionBehaviour dimensionBehavior;
+    protected ConstraintWidget$DimensionBehaviour dimensionBehavior;
     public int matchConstraintsType;
     RunGroup runGroup;
     ConstraintWidget widget;
@@ -16,40 +17,6 @@ public abstract class WidgetRun implements Dependency {
     public DependencyNode start = new DependencyNode(this);
     public DependencyNode end = new DependencyNode(this);
     protected RunType mRunType = RunType.NONE;
-
-    /* compiled from: Taobao */
-    /* renamed from: androidx.constraintlayout.core.widgets.analyzer.WidgetRun$1 */
-    /* loaded from: classes.dex */
-    static /* synthetic */ class C08991 {
-
-        /* renamed from: $SwitchMap$androidx$constraintlayout$core$widgets$ConstraintAnchor$Type */
-        static final /* synthetic */ int[] f272x6930e354;
-
-        static {
-            int[] iArr = new int[ConstraintAnchor.Type.values().length];
-            f272x6930e354 = iArr;
-            try {
-                iArr[ConstraintAnchor.Type.LEFT.ordinal()] = 1;
-            } catch (NoSuchFieldError unused) {
-            }
-            try {
-                f272x6930e354[ConstraintAnchor.Type.RIGHT.ordinal()] = 2;
-            } catch (NoSuchFieldError unused2) {
-            }
-            try {
-                f272x6930e354[ConstraintAnchor.Type.TOP.ordinal()] = 3;
-            } catch (NoSuchFieldError unused3) {
-            }
-            try {
-                f272x6930e354[ConstraintAnchor.Type.BASELINE.ordinal()] = 4;
-            } catch (NoSuchFieldError unused4) {
-            }
-            try {
-                f272x6930e354[ConstraintAnchor.Type.BOTTOM.ordinal()] = 5;
-            } catch (NoSuchFieldError unused5) {
-            }
-        }
-    }
 
     /* compiled from: Taobao */
     enum RunType {
@@ -89,21 +56,21 @@ public abstract class WidgetRun implements Dependency {
             return;
         }
         ConstraintWidget constraintWidget2 = this.widget;
-        WidgetRun widgetRun = constraintWidget2.horizontalRun;
-        ConstraintWidget.DimensionBehaviour dimensionBehaviour = widgetRun.dimensionBehavior;
-        ConstraintWidget.DimensionBehaviour dimensionBehaviour2 = ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT;
-        if (dimensionBehaviour == dimensionBehaviour2 && widgetRun.matchConstraintsType == 3) {
-            VerticalWidgetRun verticalWidgetRun = constraintWidget2.verticalRun;
-            if (verticalWidgetRun.dimensionBehavior == dimensionBehaviour2 && verticalWidgetRun.matchConstraintsType == 3) {
+        VerticalWidgetRun verticalWidgetRun = constraintWidget2.horizontalRun;
+        ConstraintWidget$DimensionBehaviour constraintWidget$DimensionBehaviour = verticalWidgetRun.dimensionBehavior;
+        ConstraintWidget$DimensionBehaviour constraintWidget$DimensionBehaviour2 = ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT;
+        if (constraintWidget$DimensionBehaviour == constraintWidget$DimensionBehaviour2 && verticalWidgetRun.matchConstraintsType == 3) {
+            VerticalWidgetRun verticalWidgetRun2 = constraintWidget2.verticalRun;
+            if (verticalWidgetRun2.dimensionBehavior == constraintWidget$DimensionBehaviour2 && verticalWidgetRun2.matchConstraintsType == 3) {
                 return;
             }
         }
         if (i == 0) {
-            widgetRun = constraintWidget2.verticalRun;
+            verticalWidgetRun = constraintWidget2.verticalRun;
         }
-        if (widgetRun.dimension.resolved) {
+        if (verticalWidgetRun.dimension.resolved) {
             float dimensionRatio = constraintWidget2.getDimensionRatio();
-            this.dimension.resolve(i == 1 ? (int) ((widgetRun.dimension.value / dimensionRatio) + 0.5f) : (int) ((dimensionRatio * widgetRun.dimension.value) + 0.5f));
+            this.dimension.resolve(i == 1 ? (int) ((verticalWidgetRun.dimension.value / dimensionRatio) + 0.5f) : (int) ((dimensionRatio * verticalWidgetRun.dimension.value) + 0.5f));
         }
     }
 
@@ -151,7 +118,7 @@ public abstract class WidgetRun implements Dependency {
             return null;
         }
         ConstraintWidget constraintWidget = constraintAnchor2.mOwner;
-        int i = C08991.f272x6930e354[constraintAnchor2.mType.ordinal()];
+        int i = 1.$SwitchMap$androidx$constraintlayout$core$widgets$ConstraintAnchor$Type[constraintAnchor2.mType.ordinal()];
         if (i == 1) {
             return constraintWidget.horizontalRun.start;
         }
@@ -206,7 +173,6 @@ public abstract class WidgetRun implements Dependency {
 
     abstract boolean supportsWrapComputation();
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.Dependency
     public void update(Dependency dependency) {
     }
 
@@ -217,7 +183,7 @@ public abstract class WidgetRun implements Dependency {
             int margin = target.value + constraintAnchor.getMargin();
             int margin2 = target2.value - constraintAnchor2.getMargin();
             int i2 = margin2 - margin;
-            if (!this.dimension.resolved && this.dimensionBehavior == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
+            if (!this.dimension.resolved && this.dimensionBehavior == ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT) {
                 resolveDimension(i, i2);
             }
             DimensionDependency dimensionDependency = this.dimension;
@@ -279,8 +245,8 @@ public abstract class WidgetRun implements Dependency {
             return null;
         }
         ConstraintWidget constraintWidget = constraintAnchor2.mOwner;
-        WidgetRun widgetRun = i == 0 ? constraintWidget.horizontalRun : constraintWidget.verticalRun;
-        int i2 = C08991.f272x6930e354[constraintAnchor2.mType.ordinal()];
+        HorizontalWidgetRun horizontalWidgetRun = i == 0 ? constraintWidget.horizontalRun : constraintWidget.verticalRun;
+        int i2 = 1.$SwitchMap$androidx$constraintlayout$core$widgets$ConstraintAnchor$Type[constraintAnchor2.mType.ordinal()];
         if (i2 != 1) {
             if (i2 != 2) {
                 if (i2 != 3) {
@@ -289,8 +255,8 @@ public abstract class WidgetRun implements Dependency {
                     }
                 }
             }
-            return widgetRun.end;
+            return horizontalWidgetRun.end;
         }
-        return widgetRun.start;
+        return horizontalWidgetRun.start;
     }
 }

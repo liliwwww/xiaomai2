@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @ViewModelFactoryDsl
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class InitializerViewModelFactoryBuilder {
 
     @NotNull

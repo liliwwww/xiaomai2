@@ -6,7 +6,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TrieNodeMutableEntriesIterator<K, V> extends TrieNodeBaseIterator<K, V, Map.Entry<K, V>> {
 
     @NotNull
@@ -20,7 +20,7 @@ public final class TrieNodeMutableEntriesIterator<K, V> extends TrieNodeBaseIter
     @Override // java.util.Iterator
     @NotNull
     public Map.Entry<K, V> next() {
-        CommonFunctionsKt.m2432assert(hasNextKey());
+        CommonFunctionsKt.assert(hasNextKey());
         setIndex(getIndex() + 2);
         return new MutableMapEntry(this.parentIterator, getBuffer()[getIndex() - 2], getBuffer()[getIndex() - 1]);
     }

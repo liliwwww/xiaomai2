@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ContextAwareHelper {
     private volatile Context mContext;
     private final Set<OnContextAvailableListener> mListeners = new CopyOnWriteArraySet();

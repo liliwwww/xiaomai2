@@ -1,7 +1,7 @@
 package android.taobao.windvane.connect;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVNetWorkProxy {
     private static WVNetWorkProxy mConnectManager;
     private WVNetWorkProxyInterface mNetWorkProxy = null;

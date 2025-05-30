@@ -4,7 +4,7 @@ import android.util.FloatProperty;
 import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class FloatPropertyCompat<T> {
     final String mPropertyName;
 

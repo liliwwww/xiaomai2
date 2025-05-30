@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class PersistentOrderedMapBuilderLinksIterator<K, V> implements Iterator<LinkedValue<V>>, KMutableIterator {
 
     @NotNull
@@ -97,11 +97,11 @@ public class PersistentOrderedMapBuilderLinksIterator<K, V> implements Iterator<
         this.lastIteratedKey = this.nextKey;
         this.nextWasInvoked = true;
         this.index++;
-        LinkedValue<V> linkedValue = this.builder.getHashMapBuilder$runtime_release().get(this.nextKey);
-        if (linkedValue != null) {
-            LinkedValue<V> linkedValue2 = linkedValue;
-            this.nextKey = linkedValue2.getNext();
-            return linkedValue2;
+        Object obj = this.builder.getHashMapBuilder$runtime_release().get(this.nextKey);
+        if (obj != null) {
+            LinkedValue<V> linkedValue = (LinkedValue) obj;
+            this.nextKey = linkedValue.getNext();
+            return linkedValue;
         }
         throw new ConcurrentModificationException("Hash code of a key (" + this.nextKey + ") has changed after it was added to the persistent map.");
     }

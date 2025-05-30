@@ -2,9 +2,9 @@ package androidx.compose.foundation.gestures;
 
 import androidx.compose.foundation.interaction.DragInteraction;
 import androidx.compose.foundation.interaction.MutableInteractionSource;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.unit.Velocity;
 import androidx.compose.runtime.MutableState;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.unit.Velocity;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function3;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DragLogic {
 
     @NotNull
@@ -65,7 +65,7 @@ final class DragLogic {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object processDragCancel(@org.jetbrains.annotations.NotNull kotlinx.coroutines.CoroutineScope r9, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r10) {
         /*
@@ -134,9 +134,9 @@ final class DragLogic {
             r2 = r8
         L6c:
             kotlin.jvm.functions.Function3<kotlinx.coroutines.CoroutineScope, androidx.compose.ui.unit.Velocity, kotlin.coroutines.Continuation<? super kotlin.Unit>, java.lang.Object> r10 = r2.onDragStopped
-            androidx.compose.ui.unit.Velocity$Companion r2 = androidx.compose.p004ui.unit.Velocity.Companion
-            long r6 = r2.m5452getZero9UxMQ8M()
-            androidx.compose.ui.unit.Velocity r2 = androidx.compose.p004ui.unit.Velocity.m5432boximpl(r6)
+            androidx.compose.ui.unit.Velocity$Companion r2 = androidx.compose.ui.unit.Velocity.Companion
+            long r6 = r2.getZero-9UxMQ8M()
+            androidx.compose.ui.unit.Velocity r2 = androidx.compose.ui.unit.Velocity.m2701boximpl(r6)
             r0.L$0 = r5
             r0.L$1 = r5
             r0.label = r3
@@ -157,12 +157,12 @@ final class DragLogic {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public final java.lang.Object processDragStart(@org.jetbrains.annotations.NotNull kotlinx.coroutines.CoroutineScope r9, @org.jetbrains.annotations.NotNull androidx.compose.foundation.gestures.DragEvent.DragStarted r10, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r11) {
+    public final java.lang.Object processDragStart(@org.jetbrains.annotations.NotNull kotlinx.coroutines.CoroutineScope r9, @org.jetbrains.annotations.NotNull androidx.compose.foundation.gestures.DragEvent$DragStarted r10, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r11) {
         /*
             Method dump skipped, instructions count: 201
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.gestures.DragLogic.processDragStart(kotlinx.coroutines.CoroutineScope, androidx.compose.foundation.gestures.DragEvent$DragStarted, kotlin.coroutines.Continuation):java.lang.Object");
     }
@@ -173,15 +173,15 @@ final class DragLogic {
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object processDragStop(@org.jetbrains.annotations.NotNull kotlinx.coroutines.CoroutineScope r10, @org.jetbrains.annotations.NotNull androidx.compose.foundation.gestures.DragEvent.DragStopped r11, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r12) {
         /*
             r9 = this;
-            boolean r0 = r12 instanceof androidx.compose.foundation.gestures.DragLogic$processDragStop$1
+            boolean r0 = r12 instanceof androidx.compose.foundation.gestures.DragLogic.processDragStop.1
             if (r0 == 0) goto L13
             r0 = r12
-            androidx.compose.foundation.gestures.DragLogic$processDragStop$1 r0 = (androidx.compose.foundation.gestures.DragLogic$processDragStop$1) r0
+            androidx.compose.foundation.gestures.DragLogic$processDragStop$1 r0 = (androidx.compose.foundation.gestures.DragLogic.processDragStop.1) r0
             int r1 = r0.label
             r2 = -2147483648(0xffffffff80000000, float:-0.0)
             r3 = r1 & r2
@@ -248,8 +248,8 @@ final class DragLogic {
             r2 = r9
         L75:
             kotlin.jvm.functions.Function3<kotlinx.coroutines.CoroutineScope, androidx.compose.ui.unit.Velocity, kotlin.coroutines.Continuation<? super kotlin.Unit>, java.lang.Object> r12 = r2.onDragStopped
-            long r6 = r11.m1213getVelocity9UxMQ8M()
-            androidx.compose.ui.unit.Velocity r11 = androidx.compose.p004ui.unit.Velocity.m5432boximpl(r6)
+            long r6 = r11.getVelocity-9UxMQ8M()
+            androidx.compose.ui.unit.Velocity r11 = androidx.compose.ui.unit.Velocity.m2701boximpl(r6)
             r0.L$0 = r5
             r0.L$1 = r5
             r0.L$2 = r5

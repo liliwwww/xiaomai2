@@ -3,22 +3,12 @@ package androidx.core.view.accessibility;
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.os.Build;
 import android.view.accessibility.AccessibilityManager;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AccessibilityManagerCompat {
-
-    /* compiled from: Taobao */
-    @Deprecated
-    /* loaded from: classes2.dex */
-    public interface AccessibilityStateChangeListener {
-        @Deprecated
-        void onAccessibilityStateChanged(boolean z);
-    }
 
     /* compiled from: Taobao */
     @Deprecated
@@ -54,56 +44,8 @@ public final class AccessibilityManagerCompat {
     }
 
     /* compiled from: Taobao */
-    @RequiresApi(19)
-    /* loaded from: classes2.dex */
-    static class Api19Impl {
-        private Api19Impl() {
-        }
-
-        @DoNotInline
-        static boolean addTouchExplorationStateChangeListenerWrapper(AccessibilityManager accessibilityManager, TouchExplorationStateChangeListener touchExplorationStateChangeListener) {
-            return accessibilityManager.addTouchExplorationStateChangeListener(new TouchExplorationStateChangeListenerWrapper(touchExplorationStateChangeListener));
-        }
-
-        @DoNotInline
-        static boolean removeTouchExplorationStateChangeListenerWrapper(AccessibilityManager accessibilityManager, TouchExplorationStateChangeListener touchExplorationStateChangeListener) {
-            return accessibilityManager.removeTouchExplorationStateChangeListener(new TouchExplorationStateChangeListenerWrapper(touchExplorationStateChangeListener));
-        }
-    }
-
-    /* compiled from: Taobao */
     public interface TouchExplorationStateChangeListener {
         void onTouchExplorationStateChanged(boolean z);
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(19)
-    /* loaded from: classes2.dex */
-    private static final class TouchExplorationStateChangeListenerWrapper implements AccessibilityManager.TouchExplorationStateChangeListener {
-        final TouchExplorationStateChangeListener mListener;
-
-        TouchExplorationStateChangeListenerWrapper(@NonNull TouchExplorationStateChangeListener touchExplorationStateChangeListener) {
-            this.mListener = touchExplorationStateChangeListener;
-        }
-
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (obj instanceof TouchExplorationStateChangeListenerWrapper) {
-                return this.mListener.equals(((TouchExplorationStateChangeListenerWrapper) obj).mListener);
-            }
-            return false;
-        }
-
-        public int hashCode() {
-            return this.mListener.hashCode();
-        }
-
-        @Override // android.view.accessibility.AccessibilityManager.TouchExplorationStateChangeListener
-        public void onTouchExplorationStateChanged(boolean z) {
-            this.mListener.onTouchExplorationStateChanged(z);
-        }
     }
 
     private AccessibilityManagerCompat() {

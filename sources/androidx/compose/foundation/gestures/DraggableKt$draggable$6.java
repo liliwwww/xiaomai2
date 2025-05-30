@@ -1,6 +1,6 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.geometry.Offset;
+import androidx.compose.ui.geometry.Offset;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.DraggableKt$draggable$6", f = "Draggable.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class DraggableKt$draggable$6 extends SuspendLambda implements Function3<CoroutineScope, Offset, Continuation<? super Unit>, Object> {
     int label;
 
@@ -23,12 +23,12 @@ final class DraggableKt$draggable$6 extends SuspendLambda implements Function3<C
     }
 
     public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-        return m1262invoked4ec7I((CoroutineScope) obj, ((Offset) obj2).m2566unboximpl(), (Continuation) obj3);
+        return m172invoked4ec7I((CoroutineScope) obj, ((Offset) obj2).m858unboximpl(), (Continuation) obj3);
     }
 
     @Nullable
     /* renamed from: invoke-d-4ec7I, reason: not valid java name */
-    public final Object m1262invoked4ec7I(@NotNull CoroutineScope coroutineScope, long j, @Nullable Continuation<? super Unit> continuation) {
+    public final Object m172invoked4ec7I(@NotNull CoroutineScope coroutineScope, long j, @Nullable Continuation<? super Unit> continuation) {
         return new DraggableKt$draggable$6(continuation).invokeSuspend(Unit.INSTANCE);
     }
 

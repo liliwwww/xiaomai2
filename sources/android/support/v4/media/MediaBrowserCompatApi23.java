@@ -7,16 +7,8 @@ import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
 @RequiresApi(23)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class MediaBrowserCompatApi23 {
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    interface ItemCallback {
-        void onError(@NonNull String str);
-
-        void onItemLoaded(Parcel parcel);
-    }
 
     /* compiled from: Taobao */
     static class ItemCallbackProxy<T extends ItemCallback> extends MediaBrowser.ItemCallback {
@@ -34,7 +26,7 @@ class MediaBrowserCompatApi23 {
         @Override // android.media.browse.MediaBrowser.ItemCallback
         public void onItemLoaded(MediaBrowser.MediaItem mediaItem) {
             if (mediaItem == null) {
-                this.mItemCallback.onItemLoaded(null);
+                this.mItemCallback.onItemLoaded((Parcel) null);
                 return;
             }
             Parcel obtain = Parcel.obtain();

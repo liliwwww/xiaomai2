@@ -3,7 +3,6 @@ package android.taobao.windvane.extra.mtop;
 import android.content.ContextWrapper;
 import android.net.Uri;
 import android.taobao.windvane.config.GlobalConfig;
-import android.taobao.windvane.connect.api.ApiConstants;
 import android.taobao.windvane.connect.api.ApiRequest;
 import android.taobao.windvane.connect.api.IApiAdapter;
 import android.taobao.windvane.extra.security.SecurityManager;
@@ -12,7 +11,7 @@ import android.taobao.windvane.util.TaoLog;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MtopApiAdapter implements IApiAdapter {
     private ApiRequest request;
 
@@ -22,44 +21,44 @@ public class MtopApiAdapter implements IApiAdapter {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private void checkParams() {
         /*
             Method dump skipped, instructions count: 294
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.extra.mtop.MtopApiAdapter.checkParams():void");
     }
 
     private String getSecBodyData(ContextWrapper contextWrapper) {
-        return SecurityManager.getInstance().getSecBody(contextWrapper, this.request.getParam(ApiConstants.f4T), this.request.getParam(ApiConstants.APPKEY));
+        return SecurityManager.getInstance().getSecBody(contextWrapper, this.request.getParam("t"), this.request.getParam("appKey"));
     }
 
     private String getSign() {
-        String sign = SecurityManager.getInstance().getSign(0, this.request.getParams(), this.request.getParam(ApiConstants.APPKEY));
+        String sign = SecurityManager.getInstance().getSign(0, this.request.getParams(), this.request.getParam("appKey"));
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d("MtopApiAdapter", "appkey: " + this.request.getParam(ApiConstants.APPKEY) + " params: " + this.request.getParams());
+            TaoLog.d("MtopApiAdapter", "appkey: " + this.request.getParam("appKey") + " params: " + this.request.getParams());
         }
         if (sign != null) {
             return sign;
         }
-        TaoLog.m30w("MtopApiAdapter", "SecurityManager.getSign failed, execute TaoApiSign.getSign");
+        TaoLog.w("MtopApiAdapter", "SecurityManager.getSign failed, execute TaoApiSign.getSign");
         return TaoApiSign.getSign(this.request.getParams());
     }
 
     private String wrapBody() {
         StringBuilder sb = new StringBuilder();
         boolean z = false;
-        for (Map.Entry<String, String> entry : this.request.getParams().entrySet()) {
+        for (Map.Entry entry : this.request.getParams().entrySet()) {
             if (z) {
-                sb.append(ApiConstants.SPLIT_STR);
+                sb.append("&");
             } else {
                 z = true;
             }
-            sb.append(Uri.encode(entry.getKey()));
+            sb.append(Uri.encode((String) entry.getKey()));
             sb.append("=");
-            sb.append(Uri.encode(entry.getValue()));
+            sb.append(Uri.encode((String) entry.getValue()));
         }
         return sb.toString();
     }
@@ -74,13 +73,12 @@ public class MtopApiAdapter implements IApiAdapter {
         if (path == null || path.length() == 0) {
             buildUpon.appendPath("");
         }
-        for (Map.Entry<String, String> entry : this.request.getParams().entrySet()) {
-            buildUpon = buildUpon.appendQueryParameter(entry.getKey(), entry.getValue());
+        for (Map.Entry entry : this.request.getParams().entrySet()) {
+            buildUpon = buildUpon.appendQueryParameter((String) entry.getKey(), (String) entry.getValue());
         }
         return buildUpon.toString();
     }
 
-    @Override // android.taobao.windvane.connect.api.IApiAdapter
     public String formatBody(ApiRequest apiRequest) {
         if (apiRequest == null) {
             return "";
@@ -90,7 +88,6 @@ public class MtopApiAdapter implements IApiAdapter {
         return wrapBody();
     }
 
-    @Override // android.taobao.windvane.connect.api.IApiAdapter
     public String formatUrl(ApiRequest apiRequest) {
         if (apiRequest == null) {
             return "";

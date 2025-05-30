@@ -3,48 +3,37 @@ package androidx.compose.material;
 import androidx.compose.animation.core.AnimationSpec;
 import androidx.compose.foundation.gestures.Orientation;
 import androidx.compose.foundation.interaction.MutableInteractionSource;
-import androidx.compose.p004ui.ComposedModifierKt;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.input.nestedscroll.NestedScrollConnection;
-import androidx.compose.p004ui.platform.InspectableValueKt;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Density;
+import androidx.compose.material.SwipeableKt$swipeable-pPrIpRY$;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
-import androidx.compose.runtime.DisposableEffectResult;
-import androidx.compose.runtime.DisposableEffectScope;
 import androidx.compose.runtime.EffectsKt;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.saveable.RememberSaveableKt;
-import androidx.compose.runtime.saveable.Saver;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
+import androidx.compose.ui.ComposedModifierKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection;
+import androidx.compose.ui.platform.InspectableValueKt;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.collections.CollectionsKt;
-import kotlin.collections.MapsKt;
 import kotlin.coroutines.Continuation;
-import kotlin.coroutines.intrinsics.IntrinsicsKt;
-import kotlin.coroutines.jvm.internal.DebugMetadata;
-import kotlin.coroutines.jvm.internal.SuspendLambda;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Intrinsics;
-import kotlinx.coroutines.CoroutineScope;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SwipeableKt {
     /* JADX INFO: Access modifiers changed from: private */
     /* JADX WARN: Code restructure failed: missing block: B:12:0x003f, code lost:
@@ -65,7 +54,7 @@ public final class SwipeableKt {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public static final float computeTarget(float r3, float r4, java.util.Set<java.lang.Float> r5, kotlin.jvm.functions.Function2<? super java.lang.Float, ? super java.lang.Float, java.lang.Float> r6, float r7, float r8) {
         /*
@@ -172,7 +161,7 @@ public final class SwipeableKt {
     @NotNull
     public static final <T> NestedScrollConnection getPreUpPostDownNestedScrollConnection(@NotNull SwipeableState<T> swipeableState) {
         Intrinsics.checkNotNullParameter(swipeableState, "<this>");
-        return new SwipeableKt$PreUpPostDownNestedScrollConnection$1(swipeableState);
+        return new PreUpPostDownNestedScrollConnection.1(swipeableState);
     }
 
     @ExperimentalMaterialApi
@@ -198,7 +187,7 @@ public final class SwipeableKt {
 
                 /* JADX WARN: Multi-variable type inference failed */
                 /* renamed from: invoke, reason: collision with other method in class */
-                public /* bridge */ /* synthetic */ Object m2255invoke(Object obj) {
+                public /* bridge */ /* synthetic */ Object m671invoke(Object obj) {
                     return invoke((SwipeableKt$rememberSwipeableState$1<T>) obj);
                 }
             };
@@ -206,7 +195,7 @@ public final class SwipeableKt {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-1237755169, i, -1, "androidx.compose.material.rememberSwipeableState (Swipeable.kt:467)");
         }
-        SwipeableState<T> swipeableState = (SwipeableState) RememberSaveableKt.m2434rememberSaveable(new Object[0], (Saver) SwipeableState.Companion.Saver(animationSpec, function1), (String) null, (Function0) new Function0<SwipeableState<T>>() { // from class: androidx.compose.material.SwipeableKt$rememberSwipeableState$2
+        SwipeableState<T> swipeableState = (SwipeableState) RememberSaveableKt.m795rememberSaveable(new Object[0], SwipeableState.Companion.Saver(animationSpec, function1), (String) null, (Function0) new Function0<SwipeableState<T>>() { // from class: androidx.compose.material.SwipeableKt$rememberSwipeableState$2
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             /* JADX WARN: Multi-variable type inference failed */
             {
@@ -215,7 +204,7 @@ public final class SwipeableKt {
 
             @NotNull
             /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final SwipeableState<T> m2256invoke() {
+            public final SwipeableState<T> m672invoke() {
                 return new SwipeableState<>(t, animationSpec, function1);
             }
         }, composer, 72, 4);
@@ -229,7 +218,7 @@ public final class SwipeableKt {
     @Composable
     @ExperimentalMaterialApi
     @NotNull
-    public static final <T> SwipeableState<T> rememberSwipeableStateFor(@NotNull final T t, @NotNull final Function1<? super T, Unit> function1, @Nullable AnimationSpec<Float> animationSpec, @Nullable Composer composer, int i, int i2) {
+    public static final <T> SwipeableState<T> rememberSwipeableStateFor(@NotNull T t, @NotNull Function1<? super T, Unit> function1, @Nullable AnimationSpec<Float> animationSpec, @Nullable Composer composer, int i, int i2) {
         Intrinsics.checkNotNullParameter(t, "value");
         Intrinsics.checkNotNullParameter(function1, "onValueChange");
         composer.startReplaceableGroup(1156387078);
@@ -243,54 +232,22 @@ public final class SwipeableKt {
         Object rememberedValue = composer.rememberedValue();
         Composer.Companion companion = Composer.Companion;
         if (rememberedValue == companion.getEmpty()) {
-            rememberedValue = new SwipeableState(t, animationSpec, new Function1<T, Boolean>() { // from class: androidx.compose.material.SwipeableKt$rememberSwipeableStateFor$swipeableState$1$1
-                @NotNull
-                public final Boolean invoke(@NotNull T t2) {
-                    Intrinsics.checkNotNullParameter(t2, "it");
-                    return Boolean.TRUE;
-                }
-
-                /* JADX WARN: Multi-variable type inference failed */
-                /* renamed from: invoke, reason: collision with other method in class */
-                public /* bridge */ /* synthetic */ Object m2257invoke(Object obj) {
-                    return invoke((SwipeableKt$rememberSwipeableStateFor$swipeableState$1$1<T>) obj);
-                }
-            });
+            rememberedValue = new SwipeableState(t, animationSpec, rememberSwipeableStateFor.swipeableState.1.1.INSTANCE);
             composer.updateRememberedValue(rememberedValue);
         }
         composer.endReplaceableGroup();
-        final SwipeableState<T> swipeableState = (SwipeableState) rememberedValue;
+        SwipeableState<T> swipeableState = (SwipeableState) rememberedValue;
         composer.startReplaceableGroup(-492369756);
         Object rememberedValue2 = composer.rememberedValue();
         if (rememberedValue2 == companion.getEmpty()) {
-            rememberedValue2 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
+            rememberedValue2 = SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, (SnapshotMutationPolicy) null, 2, (Object) null);
             composer.updateRememberedValue(rememberedValue2);
         }
         composer.endReplaceableGroup();
-        final MutableState mutableState = (MutableState) rememberedValue2;
+        MutableState mutableState = (MutableState) rememberedValue2;
         int i3 = i & 8;
-        EffectsKt.LaunchedEffect(t, mutableState.getValue(), new SwipeableKt$rememberSwipeableStateFor$1(t, swipeableState, null), composer, (i & 14) | i3 | 512);
-        EffectsKt.DisposableEffect(swipeableState.getCurrentValue(), new Function1<DisposableEffectScope, DisposableEffectResult>() { // from class: androidx.compose.material.SwipeableKt$rememberSwipeableStateFor$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(1);
-            }
-
-            @NotNull
-            public final DisposableEffectResult invoke(@NotNull DisposableEffectScope disposableEffectScope) {
-                Intrinsics.checkNotNullParameter(disposableEffectScope, "$this$DisposableEffect");
-                if (!Intrinsics.areEqual(t, swipeableState.getCurrentValue())) {
-                    function1.invoke(swipeableState.getCurrentValue());
-                    mutableState.setValue(Boolean.valueOf(!r2.getValue().booleanValue()));
-                }
-                return new DisposableEffectResult() { // from class: androidx.compose.material.SwipeableKt$rememberSwipeableStateFor$2$invoke$$inlined$onDispose$1
-                    @Override // androidx.compose.runtime.DisposableEffectResult
-                    public void dispose() {
-                    }
-                };
-            }
-        }, composer, i3);
+        EffectsKt.LaunchedEffect(t, mutableState.getValue(), new rememberSwipeableStateFor.1(t, swipeableState, (Continuation) null), composer, (i & 14) | i3 | 512);
+        EffectsKt.DisposableEffect(swipeableState.getCurrentValue(), new rememberSwipeableStateFor.2(t, swipeableState, function1, mutableState), composer, i3);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -301,119 +258,13 @@ public final class SwipeableKt {
     @ExperimentalMaterialApi
     @NotNull
     /* renamed from: swipeable-pPrIpRY, reason: not valid java name */
-    public static final <T> Modifier m2253swipeablepPrIpRY(@NotNull Modifier modifier, @NotNull final SwipeableState<T> swipeableState, @NotNull final Map<Float, ? extends T> map, @NotNull final Orientation orientation, final boolean z, final boolean z2, @Nullable final MutableInteractionSource mutableInteractionSource, @NotNull final Function2<? super T, ? super T, ? extends ThresholdConfig> function2, @Nullable final ResistanceConfig resistanceConfig, final float f) {
+    public static final <T> Modifier m669swipeablepPrIpRY(@NotNull Modifier modifier, @NotNull final SwipeableState<T> swipeableState, @NotNull final Map<Float, ? extends T> map, @NotNull final Orientation orientation, final boolean z, final boolean z2, @Nullable final MutableInteractionSource mutableInteractionSource, @NotNull final Function2<? super T, ? super T, ? extends ThresholdConfig> function2, @Nullable final ResistanceConfig resistanceConfig, final float f) {
         Intrinsics.checkNotNullParameter(modifier, "$this$swipeable");
         Intrinsics.checkNotNullParameter(swipeableState, "state");
         Intrinsics.checkNotNullParameter(map, "anchors");
         Intrinsics.checkNotNullParameter(orientation, "orientation");
         Intrinsics.checkNotNullParameter(function2, "thresholds");
-        return ComposedModifierKt.composed(modifier, InspectableValueKt.isDebugInspectorInfoEnabled() ? new Function1<InspectorInfo, Unit>() { // from class: androidx.compose.material.SwipeableKt$swipeable-pPrIpRY$$inlined$debugInspectorInfo$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((InspectorInfo) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull InspectorInfo inspectorInfo) {
-                Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
-                inspectorInfo.setName("swipeable");
-                inspectorInfo.getProperties().set("state", SwipeableState.this);
-                inspectorInfo.getProperties().set("anchors", map);
-                inspectorInfo.getProperties().set("orientation", orientation);
-                inspectorInfo.getProperties().set("enabled", Boolean.valueOf(z));
-                inspectorInfo.getProperties().set("reverseDirection", Boolean.valueOf(z2));
-                inspectorInfo.getProperties().set("interactionSource", mutableInteractionSource);
-                inspectorInfo.getProperties().set("thresholds", function2);
-                inspectorInfo.getProperties().set("resistance", resistanceConfig);
-                inspectorInfo.getProperties().set("velocityThreshold", C0856Dp.m5214boximpl(f));
-            }
-        } : InspectableValueKt.getNoInspectorInfo(), new Function3<Modifier, Composer, Integer, Modifier>() { // from class: androidx.compose.material.SwipeableKt$swipeable$3
-
-            /* compiled from: Taobao */
-            @DebugMetadata(c = "androidx.compose.material.SwipeableKt$swipeable$3$3", f = "Swipeable.kt", i = {}, l = {TypedValues.MotionType.TYPE_PATHMOTION_ARC}, m = "invokeSuspend", n = {}, s = {})
-            /* renamed from: androidx.compose.material.SwipeableKt$swipeable$3$3 */
-            /* loaded from: classes2.dex */
-            static final class C07093 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
-                final /* synthetic */ Map<Float, T> $anchors;
-                final /* synthetic */ Density $density;
-                final /* synthetic */ ResistanceConfig $resistance;
-                final /* synthetic */ SwipeableState<T> $state;
-                final /* synthetic */ Function2<T, T, ThresholdConfig> $thresholds;
-                final /* synthetic */ float $velocityThreshold;
-                int label;
-
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                /* JADX WARN: Multi-variable type inference failed */
-                C07093(SwipeableState<T> swipeableState, Map<Float, ? extends T> map, ResistanceConfig resistanceConfig, Density density, Function2<? super T, ? super T, ? extends ThresholdConfig> function2, float f, Continuation<? super C07093> continuation) {
-                    super(2, continuation);
-                    this.$state = swipeableState;
-                    this.$anchors = map;
-                    this.$resistance = resistanceConfig;
-                    this.$density = density;
-                    this.$thresholds = function2;
-                    this.$velocityThreshold = f;
-                }
-
-                @NotNull
-                public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
-                    return new C07093(this.$state, this.$anchors, this.$resistance, this.$density, this.$thresholds, this.$velocityThreshold, continuation);
-                }
-
-                @Nullable
-                public final Object invoke(@NotNull CoroutineScope coroutineScope, @Nullable Continuation<? super Unit> continuation) {
-                    return create(coroutineScope, continuation).invokeSuspend(Unit.INSTANCE);
-                }
-
-                @Nullable
-                public final Object invokeSuspend(@NotNull Object obj) {
-                    Object coroutine_suspended = IntrinsicsKt.getCOROUTINE_SUSPENDED();
-                    int i = this.label;
-                    if (i == 0) {
-                        ResultKt.throwOnFailure(obj);
-                        Map anchors$material_release = this.$state.getAnchors$material_release();
-                        this.$state.setAnchors$material_release(this.$anchors);
-                        this.$state.setResistance$material_release(this.$resistance);
-                        SwipeableState<T> swipeableState = this.$state;
-                        final Map<Float, T> map = this.$anchors;
-                        final Function2<T, T, ThresholdConfig> function2 = this.$thresholds;
-                        final Density density = this.$density;
-                        swipeableState.setThresholds$material_release(new Function2<Float, Float, Float>() { // from class: androidx.compose.material.SwipeableKt.swipeable.3.3.1
-                            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                            /* JADX WARN: Multi-variable type inference failed */
-                            {
-                                super(2);
-                            }
-
-                            public /* bridge */ /* synthetic */ Object invoke(Object obj2, Object obj3) {
-                                return invoke(((Number) obj2).floatValue(), ((Number) obj3).floatValue());
-                            }
-
-                            @NotNull
-                            public final Float invoke(float f, float f2) {
-                                return Float.valueOf(((ThresholdConfig) function2.invoke(MapsKt.getValue(map, Float.valueOf(f)), MapsKt.getValue(map, Float.valueOf(f2)))).computeThreshold(density, f, f2));
-                            }
-                        });
-                        this.$state.setVelocityThreshold$material_release(this.$density.mo1283toPx0680j_4(this.$velocityThreshold));
-                        SwipeableState<T> swipeableState2 = this.$state;
-                        Object obj2 = this.$anchors;
-                        this.label = 1;
-                        if (swipeableState2.processNewAnchors$material_release(anchors$material_release, obj2, this) == coroutine_suspended) {
-                            return coroutine_suspended;
-                        }
-                    } else {
-                        if (i != 1) {
-                            throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-                        }
-                        ResultKt.throwOnFailure(obj);
-                    }
-                    return Unit.INSTANCE;
-                }
-            }
-
+        return ComposedModifierKt.composed(modifier, InspectableValueKt.isDebugInspectorInfoEnabled() ? new SwipeableKt$swipeable-pPrIpRY$.inlined.debugInspectorInfo.1(swipeableState, map, orientation, z, z2, mutableInteractionSource, function2, resistanceConfig, f) : InspectableValueKt.getNoInspectorInfo(), new Function3<Modifier, Composer, Integer, Modifier>() { // from class: androidx.compose.material.SwipeableKt$swipeable$3
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             /* JADX WARN: Multi-variable type inference failed */
             {
@@ -432,9 +283,9 @@ public final class SwipeableKt {
             @org.jetbrains.annotations.NotNull
             /*
                 Code decompiled incorrectly, please refer to instructions dump.
-                To view partially-correct code enable 'Show inconsistent code' option in preferences
+                To view partially-correct add '--show-bad-code' argument
             */
-            public final androidx.compose.p004ui.Modifier invoke(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.Modifier r25, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r26, int r27) {
+            public final androidx.compose.ui.Modifier invoke(@org.jetbrains.annotations.NotNull androidx.compose.ui.Modifier r25, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r26, int r27) {
                 /*
                     r24 = this;
                     r0 = r24
@@ -468,10 +319,10 @@ public final class SwipeableKt {
                     r3 = 0
                 L41:
                     if (r3 == 0) goto Lca
-                    androidx.compose.runtime.ProvidableCompositionLocal r2 = androidx.compose.p004ui.platform.CompositionLocalsKt.getLocalDensity()
+                    androidx.compose.runtime.ProvidableCompositionLocal r2 = androidx.compose.ui.platform.CompositionLocalsKt.getLocalDensity()
                     java.lang.Object r2 = r1.consume(r2)
                     r7 = r2
-                    androidx.compose.ui.unit.Density r7 = (androidx.compose.p004ui.unit.Density) r7
+                    androidx.compose.ui.unit.Density r7 = (androidx.compose.ui.unit.Density) r7
                     androidx.compose.material.SwipeableState<T> r2 = r2
                     java.util.Map<java.lang.Float, T> r3 = r1
                     r2.ensureInit$material_release(r3)
@@ -488,7 +339,7 @@ public final class SwipeableKt {
                     r3.<init>(r4, r5, r6, r7, r8, r9, r10)
                     r3 = 520(0x208, float:7.29E-43)
                     androidx.compose.runtime.EffectsKt.LaunchedEffect(r2, r11, r12, r1, r3)
-                    androidx.compose.ui.Modifier$Companion r13 = androidx.compose.p004ui.Modifier.Companion
+                    androidx.compose.ui.Modifier$Companion r13 = androidx.compose.ui.Modifier.Companion
                     androidx.compose.material.SwipeableState<T> r2 = r2
                     boolean r18 = r2.isAnimationRunning()
                     androidx.compose.material.SwipeableState<T> r2 = r2

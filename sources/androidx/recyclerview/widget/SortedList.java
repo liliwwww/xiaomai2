@@ -5,10 +5,9 @@ import androidx.annotation.Nullable;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Comparator;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class SortedList<T> {
     private static final int CAPACITY_GROWTH = 10;
     private static final int DELETION = 2;
@@ -36,17 +35,14 @@ public class SortedList<T> {
             this.mBatchingListUpdateCallback = new BatchingListUpdateCallback(callback);
         }
 
-        @Override // androidx.recyclerview.widget.SortedList.Callback
         public boolean areContentsTheSame(T2 t2, T2 t22) {
             return this.mWrappedCallback.areContentsTheSame(t2, t22);
         }
 
-        @Override // androidx.recyclerview.widget.SortedList.Callback
         public boolean areItemsTheSame(T2 t2, T2 t22) {
             return this.mWrappedCallback.areItemsTheSame(t2, t22);
         }
 
-        @Override // androidx.recyclerview.widget.SortedList.Callback, java.util.Comparator
         public int compare(T2 t2, T2 t22) {
             return this.mWrappedCallback.compare(t2, t22);
         }
@@ -55,57 +51,29 @@ public class SortedList<T> {
             this.mBatchingListUpdateCallback.dispatchLastEvent();
         }
 
-        @Override // androidx.recyclerview.widget.SortedList.Callback
         @Nullable
         public Object getChangePayload(T2 t2, T2 t22) {
             return this.mWrappedCallback.getChangePayload(t2, t22);
         }
 
-        @Override // androidx.recyclerview.widget.SortedList.Callback
         public void onChanged(int i, int i2) {
             this.mBatchingListUpdateCallback.onChanged(i, i2, null);
         }
 
-        @Override // androidx.recyclerview.widget.ListUpdateCallback
         public void onInserted(int i, int i2) {
             this.mBatchingListUpdateCallback.onInserted(i, i2);
         }
 
-        @Override // androidx.recyclerview.widget.ListUpdateCallback
         public void onMoved(int i, int i2) {
             this.mBatchingListUpdateCallback.onMoved(i, i2);
         }
 
-        @Override // androidx.recyclerview.widget.ListUpdateCallback
         public void onRemoved(int i, int i2) {
             this.mBatchingListUpdateCallback.onRemoved(i, i2);
         }
 
-        @Override // androidx.recyclerview.widget.SortedList.Callback, androidx.recyclerview.widget.ListUpdateCallback
         public void onChanged(int i, int i2, Object obj) {
             this.mBatchingListUpdateCallback.onChanged(i, i2, obj);
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static abstract class Callback<T2> implements Comparator<T2>, ListUpdateCallback {
-        public abstract boolean areContentsTheSame(T2 t2, T2 t22);
-
-        public abstract boolean areItemsTheSame(T2 t2, T2 t22);
-
-        @Override // java.util.Comparator
-        public abstract int compare(T2 t2, T2 t22);
-
-        @Nullable
-        public Object getChangePayload(T2 t2, T2 t22) {
-            return null;
-        }
-
-        public abstract void onChanged(int i, int i2);
-
-        public void onChanged(int i, int i2, Object obj) {
-            onChanged(i, i2);
         }
     }
 

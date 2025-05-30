@@ -11,14 +11,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SaveableStateRegistryKt {
 
     @NotNull
     private static final ProvidableCompositionLocal<SaveableStateRegistry> LocalSaveableStateRegistry = CompositionLocalKt.staticCompositionLocalOf(new Function0<SaveableStateRegistry>() { // from class: androidx.compose.runtime.saveable.SaveableStateRegistryKt$LocalSaveableStateRegistry$1
         @Nullable
         /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-        public final SaveableStateRegistry m2437invoke() {
+        public final SaveableStateRegistry m925invoke() {
             return null;
         }
     });

@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Surface;
-import androidx.renderscript.Element;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.Iterator;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class RenderScript {
     private static final String CACHE_PATH = "com.android.renderscript.cache";
     public static final int CREATE_FLAG_NONE = 0;
@@ -133,91 +132,6 @@ public class RenderScript {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class MessageThread extends Thread {
-        static final int RS_ERROR_FATAL_UNKNOWN = 4096;
-        static final int RS_MESSAGE_TO_CLIENT_ERROR = 3;
-        static final int RS_MESSAGE_TO_CLIENT_EXCEPTION = 1;
-        static final int RS_MESSAGE_TO_CLIENT_NONE = 0;
-        static final int RS_MESSAGE_TO_CLIENT_RESIZE = 2;
-        static final int RS_MESSAGE_TO_CLIENT_USER = 4;
-        int[] mAuxData;
-        RenderScript mRS;
-        boolean mRun;
-
-        MessageThread(RenderScript renderScript) {
-            super("RSMessageThread");
-            this.mRun = true;
-            this.mAuxData = new int[2];
-            this.mRS = renderScript;
-        }
-
-        @Override // java.lang.Thread, java.lang.Runnable
-        public void run() {
-            int[] iArr = new int[16];
-            RenderScript renderScript = this.mRS;
-            renderScript.nContextInitToClient(renderScript.mContext);
-            while (this.mRun) {
-                iArr[0] = 0;
-                RenderScript renderScript2 = this.mRS;
-                int nContextPeekMessage = renderScript2.nContextPeekMessage(renderScript2.mContext, this.mAuxData);
-                int[] iArr2 = this.mAuxData;
-                int i = iArr2[1];
-                int i2 = iArr2[0];
-                if (nContextPeekMessage == 4) {
-                    if ((i >> 2) >= iArr.length) {
-                        iArr = new int[(i + 3) >> 2];
-                    }
-                    RenderScript renderScript3 = this.mRS;
-                    if (renderScript3.nContextGetUserMessage(renderScript3.mContext, iArr) != 4) {
-                        throw new RSDriverException("Error processing message from RenderScript.");
-                    }
-                    RSMessageHandler rSMessageHandler = this.mRS.mMessageCallback;
-                    if (rSMessageHandler == null) {
-                        throw new RSInvalidStateException("Received a message from the script with no message handler installed.");
-                    }
-                    rSMessageHandler.mData = iArr;
-                    rSMessageHandler.mID = i2;
-                    rSMessageHandler.mLength = i;
-                    rSMessageHandler.run();
-                } else if (nContextPeekMessage == 3) {
-                    RenderScript renderScript4 = this.mRS;
-                    String nContextGetErrorMessage = renderScript4.nContextGetErrorMessage(renderScript4.mContext);
-                    if (i2 >= 4096) {
-                        throw new RSRuntimeException("Fatal error " + i2 + ", details: " + nContextGetErrorMessage);
-                    }
-                    RSErrorHandler rSErrorHandler = this.mRS.mErrorCallback;
-                    if (rSErrorHandler != null) {
-                        rSErrorHandler.mErrorMessage = nContextGetErrorMessage;
-                        rSErrorHandler.mErrorNum = i2;
-                        rSErrorHandler.run();
-                    } else {
-                        Log.e(RenderScript.LOG_TAG, "non fatal RS error, " + nContextGetErrorMessage);
-                    }
-                } else {
-                    try {
-                        Thread.sleep(1L, 0);
-                    } catch (InterruptedException unused) {
-                    }
-                }
-            }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public enum Priority {
-        LOW(15),
-        NORMAL(-4);
-
-        int mID;
-
-        Priority(int i) {
-            this.mID = i;
-        }
-    }
-
-    /* compiled from: Taobao */
     public static class RSErrorHandler implements Runnable {
         protected String mErrorMessage;
         protected int mErrorNum;
@@ -267,12 +181,12 @@ public class RenderScript {
     /* JADX WARN: Removed duplicated region for block: B:32:0x0129  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private static androidx.renderscript.RenderScript internalCreate(android.content.Context r10, int r11, androidx.renderscript.RenderScript.ContextType r12, int r13) {
         /*
             Method dump skipped, instructions count: 466
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.renderscript.RenderScript.internalCreate(android.content.Context, int, androidx.renderscript.RenderScript$ContextType, int):androidx.renderscript.RenderScript");
     }
@@ -459,9 +373,9 @@ public class RenderScript {
         return rsnAllocationCubeCreateFromBitmap(this.mContext, j, i, bitmap, i2);
     }
 
-    synchronized void nAllocationData1D(long j, int i, int i2, int i3, Object obj, int i4, Element.DataType dataType, int i5, boolean z) {
+    synchronized void nAllocationData1D(long j, int i, int i2, int i3, Object obj, int i4, Element$DataType element$DataType, int i5, boolean z) {
         validate();
-        rsnAllocationData1D(this.mContext, j, i, i2, i3, obj, i4, dataType.mID, i5, z);
+        rsnAllocationData1D(this.mContext, j, i, i2, i3, obj, i4, element$DataType.mID, i5, z);
     }
 
     synchronized void nAllocationData2D(long j, int i, int i2, int i3, int i4, int i5, int i6, long j2, int i7, int i8, int i9, int i10) {
@@ -499,19 +413,19 @@ public class RenderScript {
         rsnAllocationIoSend(this.mContext, j);
     }
 
-    synchronized void nAllocationRead(long j, Object obj, Element.DataType dataType, int i, boolean z) {
+    synchronized void nAllocationRead(long j, Object obj, Element$DataType element$DataType, int i, boolean z) {
         validate();
-        rsnAllocationRead(this.mContext, j, obj, dataType.mID, i, z);
+        rsnAllocationRead(this.mContext, j, obj, element$DataType.mID, i, z);
     }
 
-    synchronized void nAllocationRead1D(long j, int i, int i2, int i3, Object obj, int i4, Element.DataType dataType, int i5, boolean z) {
+    synchronized void nAllocationRead1D(long j, int i, int i2, int i3, Object obj, int i4, Element$DataType element$DataType, int i5, boolean z) {
         validate();
-        rsnAllocationRead1D(this.mContext, j, i, i2, i3, obj, i4, dataType.mID, i5, z);
+        rsnAllocationRead1D(this.mContext, j, i, i2, i3, obj, i4, element$DataType.mID, i5, z);
     }
 
-    synchronized void nAllocationRead2D(long j, int i, int i2, int i3, int i4, int i5, int i6, Object obj, int i7, Element.DataType dataType, int i8, boolean z) {
+    synchronized void nAllocationRead2D(long j, int i, int i2, int i3, int i4, int i5, int i6, Object obj, int i7, Element$DataType element$DataType, int i8, boolean z) {
         validate();
-        rsnAllocationRead2D(this.mContext, j, i, i2, i3, i4, i5, i6, obj, i7, dataType.mID, i8, z);
+        rsnAllocationRead2D(this.mContext, j, i, i2, i3, i4, i5, i6, obj, i7, element$DataType.mID, i8, z);
     }
 
     synchronized void nAllocationResize1D(long j, int i) {
@@ -1145,14 +1059,14 @@ public class RenderScript {
         return create(context, context.getApplicationInfo().targetSdkVersion, contextType, i);
     }
 
-    synchronized void nAllocationData2D(long j, int i, int i2, int i3, int i4, int i5, int i6, Object obj, int i7, Element.DataType dataType, int i8, boolean z) {
+    synchronized void nAllocationData2D(long j, int i, int i2, int i3, int i4, int i5, int i6, Object obj, int i7, Element$DataType element$DataType, int i8, boolean z) {
         validate();
-        rsnAllocationData2D(this.mContext, j, i, i2, i3, i4, i5, i6, obj, i7, dataType.mID, i8, z);
+        rsnAllocationData2D(this.mContext, j, i, i2, i3, i4, i5, i6, obj, i7, element$DataType.mID, i8, z);
     }
 
-    synchronized void nAllocationData3D(long j, int i, int i2, int i3, int i4, int i5, int i6, int i7, Object obj, int i8, Element.DataType dataType, int i9, boolean z) {
+    synchronized void nAllocationData3D(long j, int i, int i2, int i3, int i4, int i5, int i6, int i7, Object obj, int i8, Element$DataType element$DataType, int i9, boolean z) {
         validate();
-        rsnAllocationData3D(this.mContext, j, i, i2, i3, i4, i5, i6, i7, obj, i8, dataType.mID, i9, z);
+        rsnAllocationData3D(this.mContext, j, i, i2, i3, i4, i5, i6, i7, obj, i8, element$DataType.mID, i9, z);
     }
 
     public static RenderScript create(Context context, int i) {

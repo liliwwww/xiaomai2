@@ -1,5 +1,6 @@
 package androidx.compose.runtime;
 
+import androidx.compose.runtime.ComposableSingletons;
 import androidx.compose.runtime.collection.IdentityArrayMap;
 import androidx.compose.runtime.collection.IdentityArraySet;
 import androidx.compose.runtime.collection.IdentityScopeMap;
@@ -27,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class CompositionImpl implements ControlledComposition {
 
     @Nullable
@@ -223,13 +224,13 @@ public final class CompositionImpl implements ControlledComposition {
         ArrayList arrayList2 = new ArrayList();
         this.lateChanges = arrayList2;
         this.observationsProcessed = new IdentityScopeMap<>();
-        this.invalidations = new IdentityArrayMap<>(0, 1, null);
+        this.invalidations = new IdentityArrayMap<>(0, 1, (DefaultConstructorMarker) null);
         ComposerImpl composerImpl = new ComposerImpl(applier, compositionContext, slotTable, hashSet, arrayList, arrayList2, this);
         compositionContext.registerComposer$runtime_release(composerImpl);
         this.composer = composerImpl;
         this._recomposeContext = coroutineContext;
         this.isRoot = compositionContext instanceof Recomposer;
-        this.composable = ComposableSingletons$CompositionKt.INSTANCE.m2385getLambda1$runtime_release();
+        this.composable = ComposableSingletons.CompositionKt.INSTANCE.getLambda-1$runtime_release();
     }
 
     private final void abandonChanges() {
@@ -243,12 +244,12 @@ public final class CompositionImpl implements ControlledComposition {
     /* JADX WARN: Removed duplicated region for block: B:43:0x00a9 A[SYNTHETIC] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private final void addPendingInvalidationsLocked(java.util.Set<? extends java.lang.Object> r17, boolean r18) {
         /*
             Method dump skipped, instructions count: 413
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.runtime.CompositionImpl.addPendingInvalidationsLocked(java.util.Set, boolean):void");
     }
@@ -515,7 +516,7 @@ public final class CompositionImpl implements ControlledComposition {
                     return InvalidationResult.IMMINENT;
                 }
                 if (obj == null) {
-                    this.invalidations.set(recomposeScopeImpl, null);
+                    this.invalidations.set(recomposeScopeImpl, (Object) null);
                 } else {
                     CompositionKt.addValue(this.invalidations, recomposeScopeImpl, obj);
                 }
@@ -545,7 +546,7 @@ public final class CompositionImpl implements ControlledComposition {
 
     private final IdentityArrayMap<RecomposeScopeImpl, IdentityArraySet<Object>> takeInvalidations() {
         IdentityArrayMap<RecomposeScopeImpl, IdentityArraySet<Object>> identityArrayMap = this.invalidations;
-        this.invalidations = new IdentityArrayMap<>(0, 1, null);
+        this.invalidations = new IdentityArrayMap<>(0, 1, (DefaultConstructorMarker) null);
         return identityArrayMap;
     }
 
@@ -685,12 +686,11 @@ public final class CompositionImpl implements ControlledComposition {
         }
     }
 
-    @Override // androidx.compose.runtime.Composition
     public void dispose() {
         synchronized (this.lock) {
             if (!this.disposed) {
                 this.disposed = true;
-                this.composable = ComposableSingletons$CompositionKt.INSTANCE.m2386getLambda2$runtime_release();
+                this.composable = ComposableSingletons.CompositionKt.INSTANCE.getLambda-2$runtime_release();
                 List<Function3<Applier<?>, SlotWriter, RememberManager, Unit>> deferredChanges$runtime_release = this.composer.getDeferredChanges$runtime_release();
                 if (deferredChanges$runtime_release != null) {
                     applyChangesInLocked(deferredChanges$runtime_release);
@@ -751,7 +751,6 @@ public final class CompositionImpl implements ControlledComposition {
         return ArraysKt.filterNotNull(this.derivedStates.getValues());
     }
 
-    @Override // androidx.compose.runtime.Composition
     public boolean getHasInvalidations() {
         boolean z;
         synchronized (this.lock) {
@@ -842,7 +841,7 @@ public final class CompositionImpl implements ControlledComposition {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final void invalidateGroupsWithKey(int r7) {
         /*
@@ -904,7 +903,6 @@ public final class CompositionImpl implements ControlledComposition {
         return this.composer.isComposing$runtime_release();
     }
 
-    @Override // androidx.compose.runtime.Composition
     public boolean isDisposed() {
         return this.disposed;
     }
@@ -1048,7 +1046,6 @@ public final class CompositionImpl implements ControlledComposition {
         this.composable = function2;
     }
 
-    @Override // androidx.compose.runtime.Composition
     public void setContent(@NotNull Function2<? super Composer, ? super Integer, Unit> function2) {
         Intrinsics.checkNotNullParameter(function2, "content");
         if (!(!this.disposed)) {

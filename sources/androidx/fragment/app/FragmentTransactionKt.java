@@ -5,7 +5,7 @@ import androidx.annotation.IdRes;
 import kotlin.jvm.internal.Intrinsics;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FragmentTransactionKt {
     public static final /* synthetic */ <F extends Fragment> FragmentTransaction add(FragmentTransaction fragmentTransaction, @IdRes int i, String str, Bundle bundle) {
         Intrinsics.checkNotNullParameter(fragmentTransaction, "<this>");

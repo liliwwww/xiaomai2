@@ -1,14 +1,7 @@
 package androidx.compose.animation;
 
 import androidx.compose.animation.core.Transition;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.LayoutKt;
-import androidx.compose.p004ui.layout.MeasurePolicy;
-import androidx.compose.p004ui.node.ComposeUiNode;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.platform.ViewConfiguration;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
+import androidx.compose.animation.core.TransitionKt;
 import androidx.compose.runtime.Applier;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
@@ -19,19 +12,28 @@ import androidx.compose.runtime.EffectsKt;
 import androidx.compose.runtime.MutableState;
 import androidx.compose.runtime.ScopeUpdateScope;
 import androidx.compose.runtime.SkippableUpdater;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.Updater;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.LayoutKt;
+import androidx.compose.ui.layout.MeasurePolicy;
+import androidx.compose.ui.node.ComposeUiNode;
+import androidx.compose.ui.node.ComposeUiNode$Companion;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.platform.ViewConfiguration;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import kotlin.Unit;
-import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.functions.Function3;
-import kotlinx.coroutines.CoroutineScope;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AnimatedVisibilityKt {
     /* JADX INFO: Access modifiers changed from: private */
     @Composable
@@ -55,10 +57,10 @@ public final class AnimatedVisibilityKt {
             i2 |= startRestartGroup.changed(enterTransition) ? 2048 : 1024;
         }
         if ((i & 57344) == 0) {
-            i2 |= startRestartGroup.changed(exitTransition) ? 16384 : 8192;
+            i2 |= startRestartGroup.changed(exitTransition) ? AccessibilityNodeInfoCompat.ACTION_COPY : 8192;
         }
         if ((458752 & i) == 0) {
-            i2 |= startRestartGroup.changed(function3) ? 131072 : 65536;
+            i2 |= startRestartGroup.changed(function3) ? AccessibilityNodeInfoCompat.ACTION_SET_SELECTION : AccessibilityNodeInfoCompat.ACTION_CUT;
         }
         int i3 = i2;
         if ((374491 & i3) == 74898 && startRestartGroup.getSkipping()) {
@@ -73,7 +75,7 @@ public final class AnimatedVisibilityKt {
             boolean changed = startRestartGroup.changed(transition);
             Object rememberedValue = startRestartGroup.rememberedValue();
             if (changed || rememberedValue == Composer.Companion.getEmpty()) {
-                rememberedValue = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(function1.invoke(transition.getCurrentState()), null, 2, null);
+                rememberedValue = SnapshotStateKt.mutableStateOf$default(function1.invoke(transition.getCurrentState()), (SnapshotMutationPolicy) null, 2, (Object) null);
                 startRestartGroup.updateRememberedValue(rememberedValue);
             }
             startRestartGroup.endReplaceableGroup();
@@ -104,7 +106,7 @@ public final class AnimatedVisibilityKt {
                     ComposerKt.traceEventEnd();
                 }
                 startRestartGroup.endReplaceableGroup();
-                T targetState = transition.getTargetState();
+                Object targetState = transition.getTargetState();
                 startRestartGroup.startReplaceableGroup(-1220581778);
                 if (ComposerKt.isTraceInProgress()) {
                     ComposerKt.traceEventStart(-1220581778, i7, -1, "androidx.compose.animation.AnimatedEnterExitImpl.<anonymous> (AnimatedVisibility.kt:739)");
@@ -114,7 +116,7 @@ public final class AnimatedVisibilityKt {
                     ComposerKt.traceEventEnd();
                 }
                 startRestartGroup.endReplaceableGroup();
-                Transition createChildTransitionInternal = androidx.compose.animation.core.TransitionKt.createChildTransitionInternal(transition, targetEnterExit, targetEnterExit2, "EnterExitTransition", startRestartGroup, i6 | ((i5 << 6) & 7168));
+                Transition createChildTransitionInternal = TransitionKt.createChildTransitionInternal(transition, targetEnterExit, targetEnterExit2, "EnterExitTransition", startRestartGroup, i6 | ((i5 << 6) & 7168));
                 startRestartGroup.endReplaceableGroup();
                 startRestartGroup.startReplaceableGroup(511388516);
                 boolean changed3 = startRestartGroup.changed(createChildTransitionInternal) | startRestartGroup.changed(mutableState);
@@ -124,7 +126,7 @@ public final class AnimatedVisibilityKt {
                     startRestartGroup.updateRememberedValue(rememberedValue3);
                 }
                 startRestartGroup.endReplaceableGroup();
-                EffectsKt.LaunchedEffect(createChildTransitionInternal, (Function2<? super CoroutineScope, ? super Continuation<? super Unit>, ? extends Object>) rememberedValue3, startRestartGroup, 64);
+                EffectsKt.LaunchedEffect(createChildTransitionInternal, (Function2) rememberedValue3, startRestartGroup, 64);
                 int i9 = i3 >> 3;
                 int i10 = (i9 & 57344) | (i9 & 112) | (i9 & 896) | (i9 & 7168);
                 startRestartGroup.startReplaceableGroup(-1967270694);
@@ -156,8 +158,8 @@ public final class AnimatedVisibilityKt {
                     Density density = (Density) composer2.consume(CompositionLocalsKt.getLocalDensity());
                     LayoutDirection layoutDirection = (LayoutDirection) composer2.consume(CompositionLocalsKt.getLocalLayoutDirection());
                     ViewConfiguration viewConfiguration = (ViewConfiguration) composer2.consume(CompositionLocalsKt.getLocalViewConfiguration());
-                    ComposeUiNode.Companion companion = ComposeUiNode.Companion;
-                    Function0<ComposeUiNode> constructor = companion.getConstructor();
+                    ComposeUiNode$Companion composeUiNode$Companion = ComposeUiNode.Companion;
+                    Function0<ComposeUiNode> constructor = composeUiNode$Companion.getConstructor();
                     Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf = LayoutKt.materializerOf(then);
                     if (!(composer2.getApplier() instanceof Applier)) {
                         ComposablesKt.invalidApplier();
@@ -169,13 +171,13 @@ public final class AnimatedVisibilityKt {
                         composer2.useNode();
                     }
                     composer2.disableReusing();
-                    Composer m2410constructorimpl = Updater.m2410constructorimpl(composer2);
-                    Updater.m2417setimpl(m2410constructorimpl, measurePolicy, companion.getSetMeasurePolicy());
-                    Updater.m2417setimpl(m2410constructorimpl, density, companion.getSetDensity());
-                    Updater.m2417setimpl(m2410constructorimpl, layoutDirection, companion.getSetLayoutDirection());
-                    Updater.m2417setimpl(m2410constructorimpl, viewConfiguration, companion.getSetViewConfiguration());
+                    Composer m747constructorimpl = Updater.m747constructorimpl(composer2);
+                    Updater.m754setimpl(m747constructorimpl, measurePolicy, (Function2<? super T, ? super MeasurePolicy, Unit>) composeUiNode$Companion.getSetMeasurePolicy());
+                    Updater.m754setimpl(m747constructorimpl, density, (Function2<? super T, ? super Density, Unit>) composeUiNode$Companion.getSetDensity());
+                    Updater.m754setimpl(m747constructorimpl, layoutDirection, (Function2<? super T, ? super LayoutDirection, Unit>) composeUiNode$Companion.getSetLayoutDirection());
+                    Updater.m754setimpl(m747constructorimpl, viewConfiguration, (Function2<? super T, ? super ViewConfiguration, Unit>) composeUiNode$Companion.getSetViewConfiguration());
                     composer2.enableReusing();
-                    materializerOf.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(composer2)), composer2, 0);
+                    materializerOf.invoke(SkippableUpdater.box-impl(SkippableUpdater.constructor-impl(composer2)), composer2, 0);
                     composer2.startReplaceableGroup(2058660585);
                     composer2.startReplaceableGroup(1797450476);
                     function3.invoke(animatedVisibilityScopeImpl, composer2, Integer.valueOf(((i10 >> 9) & 112) | 8));
@@ -240,12 +242,12 @@ public final class AnimatedVisibilityKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[0[0]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void AnimatedVisibility(final boolean r24, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r25, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r27, @org.jetbrains.annotations.Nullable java.lang.String r28, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r29, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r30, final int r31, final int r32) {
+    public static final void AnimatedVisibility(final boolean r24, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r25, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r27, @org.jetbrains.annotations.Nullable java.lang.String r28, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r29, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r30, final int r31, final int r32) {
         /*
             Method dump skipped, instructions count: 384
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.AnimatedVisibilityKt.AnimatedVisibility(boolean, androidx.compose.ui.Modifier, androidx.compose.animation.EnterTransition, androidx.compose.animation.ExitTransition, java.lang.String, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -264,7 +266,7 @@ public final class AnimatedVisibilityKt {
             composer.startReplaceableGroup(-492369756);
             Object rememberedValue = composer.rememberedValue();
             if (rememberedValue == Composer.Companion.getEmpty()) {
-                rememberedValue = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
+                rememberedValue = SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, (SnapshotMutationPolicy) null, 2, (Object) null);
                 composer.updateRememberedValue(rememberedValue);
             }
             composer.endReplaceableGroup();
@@ -305,12 +307,12 @@ public final class AnimatedVisibilityKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[0[0]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void AnimatedVisibility(@org.jetbrains.annotations.NotNull final androidx.compose.foundation.layout.RowScope r24, final boolean r25, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r27, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r28, @org.jetbrains.annotations.Nullable java.lang.String r29, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, final int r32, final int r33) {
+    public static final void AnimatedVisibility(@org.jetbrains.annotations.NotNull final androidx.compose.foundation.layout.RowScope r24, final boolean r25, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r27, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r28, @org.jetbrains.annotations.Nullable java.lang.String r29, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, final int r32, final int r33) {
         /*
             Method dump skipped, instructions count: 401
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.AnimatedVisibilityKt.AnimatedVisibility(androidx.compose.foundation.layout.RowScope, boolean, androidx.compose.ui.Modifier, androidx.compose.animation.EnterTransition, androidx.compose.animation.ExitTransition, java.lang.String, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -338,12 +340,12 @@ public final class AnimatedVisibilityKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[0[0]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void AnimatedVisibility(@org.jetbrains.annotations.NotNull final androidx.compose.foundation.layout.ColumnScope r24, final boolean r25, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r27, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r28, @org.jetbrains.annotations.Nullable java.lang.String r29, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, final int r32, final int r33) {
+    public static final void AnimatedVisibility(@org.jetbrains.annotations.NotNull final androidx.compose.foundation.layout.ColumnScope r24, final boolean r25, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r27, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r28, @org.jetbrains.annotations.Nullable java.lang.String r29, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, final int r32, final int r33) {
         /*
             Method dump skipped, instructions count: 401
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.AnimatedVisibilityKt.AnimatedVisibility(androidx.compose.foundation.layout.ColumnScope, boolean, androidx.compose.ui.Modifier, androidx.compose.animation.EnterTransition, androidx.compose.animation.ExitTransition, java.lang.String, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -372,12 +374,12 @@ public final class AnimatedVisibilityKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[0[0]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void AnimatedVisibility(@org.jetbrains.annotations.NotNull final androidx.compose.animation.core.MutableTransitionState<java.lang.Boolean> r24, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r25, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r27, @org.jetbrains.annotations.Nullable java.lang.String r28, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r29, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r30, final int r31, final int r32) {
+    public static final void AnimatedVisibility(@org.jetbrains.annotations.NotNull final androidx.compose.animation.core.MutableTransitionState<java.lang.Boolean> r24, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r25, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r27, @org.jetbrains.annotations.Nullable java.lang.String r28, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r29, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r30, final int r31, final int r32) {
         /*
             Method dump skipped, instructions count: 387
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.AnimatedVisibilityKt.AnimatedVisibility(androidx.compose.animation.core.MutableTransitionState, androidx.compose.ui.Modifier, androidx.compose.animation.EnterTransition, androidx.compose.animation.ExitTransition, java.lang.String, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -406,12 +408,12 @@ public final class AnimatedVisibilityKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[0[0]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void AnimatedVisibility(@org.jetbrains.annotations.NotNull final androidx.compose.foundation.layout.RowScope r24, @org.jetbrains.annotations.NotNull final androidx.compose.animation.core.MutableTransitionState<java.lang.Boolean> r25, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r27, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r28, @org.jetbrains.annotations.Nullable java.lang.String r29, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, final int r32, final int r33) {
+    public static final void AnimatedVisibility(@org.jetbrains.annotations.NotNull androidx.compose.foundation.layout.RowScope r24, @org.jetbrains.annotations.NotNull androidx.compose.animation.core.MutableTransitionState<java.lang.Boolean> r25, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r27, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r28, @org.jetbrains.annotations.Nullable java.lang.String r29, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, int r32, int r33) {
         /*
             Method dump skipped, instructions count: 412
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.AnimatedVisibilityKt.AnimatedVisibility(androidx.compose.foundation.layout.RowScope, androidx.compose.animation.core.MutableTransitionState, androidx.compose.ui.Modifier, androidx.compose.animation.EnterTransition, androidx.compose.animation.ExitTransition, java.lang.String, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -440,12 +442,12 @@ public final class AnimatedVisibilityKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[0[0]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void AnimatedVisibility(@org.jetbrains.annotations.NotNull final androidx.compose.foundation.layout.ColumnScope r24, @org.jetbrains.annotations.NotNull final androidx.compose.animation.core.MutableTransitionState<java.lang.Boolean> r25, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r27, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r28, @org.jetbrains.annotations.Nullable java.lang.String r29, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, final int r32, final int r33) {
+    public static final void AnimatedVisibility(@org.jetbrains.annotations.NotNull androidx.compose.foundation.layout.ColumnScope r24, @org.jetbrains.annotations.NotNull androidx.compose.animation.core.MutableTransitionState<java.lang.Boolean> r25, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r27, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r28, @org.jetbrains.annotations.Nullable java.lang.String r29, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r30, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r31, int r32, int r33) {
         /*
             Method dump skipped, instructions count: 412
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.AnimatedVisibilityKt.AnimatedVisibility(androidx.compose.foundation.layout.ColumnScope, androidx.compose.animation.core.MutableTransitionState, androidx.compose.ui.Modifier, androidx.compose.animation.EnterTransition, androidx.compose.animation.ExitTransition, java.lang.String, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -471,12 +473,12 @@ public final class AnimatedVisibilityKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[0[0]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final <T> void AnimatedVisibility(@org.jetbrains.annotations.NotNull final androidx.compose.animation.core.Transition<T> r23, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super T, java.lang.Boolean> r24, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r25, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r27, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r28, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r29, final int r30, final int r31) {
+    public static final <T> void AnimatedVisibility(@org.jetbrains.annotations.NotNull androidx.compose.animation.core.Transition<T> r23, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super T, java.lang.Boolean> r24, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r25, @org.jetbrains.annotations.Nullable androidx.compose.animation.EnterTransition r26, @org.jetbrains.annotations.Nullable androidx.compose.animation.ExitTransition r27, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function3<? super androidx.compose.animation.AnimatedVisibilityScope, ? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r28, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r29, int r30, int r31) {
         /*
             Method dump skipped, instructions count: 370
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.AnimatedVisibilityKt.AnimatedVisibility(androidx.compose.animation.core.Transition, kotlin.jvm.functions.Function1, androidx.compose.ui.Modifier, androidx.compose.animation.EnterTransition, androidx.compose.animation.ExitTransition, kotlin.jvm.functions.Function3, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -502,12 +504,12 @@ public final class AnimatedVisibilityKt {
     @androidx.compose.animation.ExperimentalAnimationApi
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void AnimatedVisibility(final boolean r17, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r18, @org.jetbrains.annotations.NotNull final androidx.compose.animation.EnterTransition r19, @org.jetbrains.annotations.NotNull final androidx.compose.animation.ExitTransition r20, final boolean r21, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r22, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r23, final int r24, final int r25) {
+    public static final void AnimatedVisibility(boolean r17, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r18, @org.jetbrains.annotations.NotNull androidx.compose.animation.EnterTransition r19, @org.jetbrains.annotations.NotNull androidx.compose.animation.ExitTransition r20, boolean r21, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r22, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r23, int r24, int r25) {
         /*
             Method dump skipped, instructions count: 354
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.AnimatedVisibilityKt.AnimatedVisibility(boolean, androidx.compose.ui.Modifier, androidx.compose.animation.EnterTransition, androidx.compose.animation.ExitTransition, boolean, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -517,7 +519,7 @@ public final class AnimatedVisibilityKt {
     @ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable]]")
     private static final void AnimatedEnterExitImpl(Transition<EnterExitState> transition, Modifier modifier, EnterTransition enterTransition, ExitTransition exitTransition, Function3<? super AnimatedVisibilityScope, ? super Composer, ? super Integer, Unit> function3, Composer composer, int i) {
         composer.startReplaceableGroup(-1967270694);
-        EnterExitState currentState = transition.getCurrentState();
+        Object currentState = transition.getCurrentState();
         EnterExitState enterExitState = EnterExitState.Visible;
         if (currentState == enterExitState || transition.getTargetState() == enterExitState) {
             int i2 = i & 14;
@@ -544,8 +546,8 @@ public final class AnimatedVisibilityKt {
             Density density = (Density) composer.consume(CompositionLocalsKt.getLocalDensity());
             LayoutDirection layoutDirection = (LayoutDirection) composer.consume(CompositionLocalsKt.getLocalLayoutDirection());
             ViewConfiguration viewConfiguration = (ViewConfiguration) composer.consume(CompositionLocalsKt.getLocalViewConfiguration());
-            ComposeUiNode.Companion companion = ComposeUiNode.Companion;
-            Function0<ComposeUiNode> constructor = companion.getConstructor();
+            ComposeUiNode$Companion composeUiNode$Companion = ComposeUiNode.Companion;
+            Function0<ComposeUiNode> constructor = composeUiNode$Companion.getConstructor();
             Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf = LayoutKt.materializerOf(then);
             if (!(composer.getApplier() instanceof Applier)) {
                 ComposablesKt.invalidApplier();
@@ -557,13 +559,13 @@ public final class AnimatedVisibilityKt {
                 composer.useNode();
             }
             composer.disableReusing();
-            Composer m2410constructorimpl = Updater.m2410constructorimpl(composer);
-            Updater.m2417setimpl(m2410constructorimpl, measurePolicy, companion.getSetMeasurePolicy());
-            Updater.m2417setimpl(m2410constructorimpl, density, companion.getSetDensity());
-            Updater.m2417setimpl(m2410constructorimpl, layoutDirection, companion.getSetLayoutDirection());
-            Updater.m2417setimpl(m2410constructorimpl, viewConfiguration, companion.getSetViewConfiguration());
+            Composer m747constructorimpl = Updater.m747constructorimpl(composer);
+            Updater.m754setimpl(m747constructorimpl, measurePolicy, (Function2<? super T, ? super MeasurePolicy, Unit>) composeUiNode$Companion.getSetMeasurePolicy());
+            Updater.m754setimpl(m747constructorimpl, density, (Function2<? super T, ? super Density, Unit>) composeUiNode$Companion.getSetDensity());
+            Updater.m754setimpl(m747constructorimpl, layoutDirection, (Function2<? super T, ? super LayoutDirection, Unit>) composeUiNode$Companion.getSetLayoutDirection());
+            Updater.m754setimpl(m747constructorimpl, viewConfiguration, (Function2<? super T, ? super ViewConfiguration, Unit>) composeUiNode$Companion.getSetViewConfiguration());
             composer.enableReusing();
-            materializerOf.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(composer)), composer, 0);
+            materializerOf.invoke(SkippableUpdater.box-impl(SkippableUpdater.constructor-impl(composer)), composer, 0);
             composer.startReplaceableGroup(2058660585);
             composer.startReplaceableGroup(1797450476);
             function3.invoke(animatedVisibilityScopeImpl, composer, Integer.valueOf(((i >> 9) & 112) | 8));

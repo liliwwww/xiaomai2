@@ -1,18 +1,18 @@
 package androidx.compose.foundation.text;
 
 import androidx.compose.foundation.gestures.Orientation;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.geometry.Rect;
-import androidx.compose.p004ui.layout.C0790a;
-import androidx.compose.p004ui.layout.IntrinsicMeasurable;
-import androidx.compose.p004ui.layout.IntrinsicMeasureScope;
-import androidx.compose.p004ui.layout.LayoutModifier;
-import androidx.compose.p004ui.layout.Measurable;
-import androidx.compose.p004ui.layout.MeasureResult;
-import androidx.compose.p004ui.layout.MeasureScope;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.text.input.TransformedText;
-import androidx.compose.p004ui.unit.Constraints;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.IntrinsicMeasurable;
+import androidx.compose.ui.layout.IntrinsicMeasureScope;
+import androidx.compose.ui.layout.LayoutModifier;
+import androidx.compose.ui.layout.Measurable;
+import androidx.compose.ui.layout.MeasureResult;
+import androidx.compose.ui.layout.MeasureScope;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.layout.a;
+import androidx.compose.ui.text.input.TransformedText;
+import androidx.compose.ui.unit.Constraints;
+import java.util.Map;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
@@ -25,7 +25,7 @@ import tb.mt2;
 import tb.nt2;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class VerticalScrollLayoutModifier implements LayoutModifier {
     private final int cursorOffset;
 
@@ -65,12 +65,12 @@ final class VerticalScrollLayoutModifier implements LayoutModifier {
         return verticalScrollLayoutModifier.copy(textFieldScrollerPosition, i, transformedText, function0);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
@@ -113,12 +113,12 @@ final class VerticalScrollLayoutModifier implements LayoutModifier {
         return Intrinsics.areEqual(this.scrollerPosition, verticalScrollLayoutModifier.scrollerPosition) && this.cursorOffset == verticalScrollLayoutModifier.cursorOffset && Intrinsics.areEqual(this.transformedText, verticalScrollLayoutModifier.transformedText) && Intrinsics.areEqual(this.textLayoutResultProvider, verticalScrollLayoutModifier.textLayoutResultProvider);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
@@ -146,25 +146,22 @@ final class VerticalScrollLayoutModifier implements LayoutModifier {
         return (((((this.scrollerPosition.hashCode() * 31) + this.cursorOffset) * 31) + this.transformedText.hashCode()) * 31) + this.textLayoutResultProvider.hashCode();
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     public /* synthetic */ int maxIntrinsicHeight(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m141a(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return a.a(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     public /* synthetic */ int maxIntrinsicWidth(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m142b(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return a.b(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     @NotNull
-    /* renamed from: measure-3p2s80s */
-    public MeasureResult mo959measure3p2s80s(@NotNull final MeasureScope measureScope, @NotNull Measurable measurable, long j) {
+    /* renamed from: measure-3p2s80s, reason: not valid java name */
+    public MeasureResult m462measure3p2s80s(@NotNull final MeasureScope measureScope, @NotNull Measurable measurable, long j) {
         Intrinsics.checkNotNullParameter(measureScope, "$this$measure");
         Intrinsics.checkNotNullParameter(measurable, "measurable");
-        final Placeable mo4187measureBRTryo0 = measurable.mo4187measureBRTryo0(Constraints.m5175copyZbe2FdA$default(j, 0, 0, 0, Integer.MAX_VALUE, 7, null));
-        final int min = Math.min(mo4187measureBRTryo0.getHeight(), Constraints.m5183getMaxHeightimpl(j));
-        return MeasureScope.CC.m140p(measureScope, mo4187measureBRTryo0.getWidth(), min, null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.foundation.text.VerticalScrollLayoutModifier$measure$1
+        final Placeable mo1521measureBRTryo0 = measurable.mo1521measureBRTryo0(Constraints.m2113copyZbe2FdA$default(j, 0, 0, 0, Integer.MAX_VALUE, 7, null));
+        final int min = Math.min(mo1521measureBRTryo0.getHeight(), Constraints.m2121getMaxHeightimpl(j));
+        return MeasureScope.-CC.p(measureScope, mo1521measureBRTryo0.getWidth(), min, (Map) null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.foundation.text.VerticalScrollLayoutModifier$measure$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             {
                 super(1);
@@ -176,30 +173,25 @@ final class VerticalScrollLayoutModifier implements LayoutModifier {
             }
 
             public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
-                Rect cursorRectInScroller;
                 Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
                 MeasureScope measureScope2 = MeasureScope.this;
                 int cursorOffset = this.getCursorOffset();
                 TransformedText transformedText = this.getTransformedText();
                 TextLayoutResultProxy textLayoutResultProxy = (TextLayoutResultProxy) this.getTextLayoutResultProvider().invoke();
-                cursorRectInScroller = TextFieldScrollKt.getCursorRectInScroller(measureScope2, cursorOffset, transformedText, textLayoutResultProxy != null ? textLayoutResultProxy.getValue() : null, false, mo4187measureBRTryo0.getWidth());
-                this.getScrollerPosition().update(Orientation.Vertical, cursorRectInScroller, min, mo4187measureBRTryo0.getHeight());
-                Placeable.PlacementScope.placeRelative$default(placementScope, mo4187measureBRTryo0, 0, MathKt.roundToInt(-this.getScrollerPosition().getOffset()), 0.0f, 4, null);
+                this.getScrollerPosition().update(Orientation.Vertical, TextFieldScrollKt.access$getCursorRectInScroller(measureScope2, cursorOffset, transformedText, textLayoutResultProxy != null ? textLayoutResultProxy.getValue() : null, false, mo1521measureBRTryo0.getWidth()), min, mo1521measureBRTryo0.getHeight());
+                Placeable.PlacementScope.placeRelative$default(placementScope, mo1521measureBRTryo0, 0, MathKt.roundToInt(-this.getScrollerPosition().getOffset()), 0.0f, 4, (Object) null);
             }
-        }, 4, null);
+        }, 4, (Object) null);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     public /* synthetic */ int minIntrinsicHeight(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m143c(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return a.c(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     public /* synthetic */ int minIntrinsicWidth(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m144d(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return a.d(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.Modifier
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }

@@ -16,15 +16,13 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.View;
 import android.widget.TextView;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.VisibleForTesting;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R;
 import androidx.core.view.ViewCompat;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -34,7 +32,7 @@ import java.util.Collections;
 import java.util.concurrent.ConcurrentHashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class AppCompatTextViewAutoSizeHelper {
     private static final int DEFAULT_AUTO_SIZE_GRANULARITY_IN_PX = 1;
     private static final int DEFAULT_AUTO_SIZE_MAX_TEXT_SIZE_IN_SP = 112;
@@ -62,63 +60,6 @@ class AppCompatTextViewAutoSizeHelper {
     private float mAutoSizeMaxTextSizeInPx = UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE;
     private int[] mAutoSizeTextSizesInPx = new int[0];
     private boolean mHasPresetAutoSizeValues = false;
-
-    /* compiled from: Taobao */
-    @RequiresApi(16)
-    /* loaded from: classes.dex */
-    private static final class Api16Impl {
-        private Api16Impl() {
-        }
-
-        @NonNull
-        @DoNotInline
-        static StaticLayout createStaticLayoutForMeasuring(@NonNull CharSequence charSequence, @NonNull Layout.Alignment alignment, int i, @NonNull TextView textView, @NonNull TextPaint textPaint) {
-            return new StaticLayout(charSequence, textPaint, i, alignment, textView.getLineSpacingMultiplier(), textView.getLineSpacingExtra(), textView.getIncludeFontPadding());
-        }
-
-        @DoNotInline
-        static int getMaxLines(@NonNull TextView textView) {
-            return textView.getMaxLines();
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(18)
-    /* loaded from: classes.dex */
-    private static final class Api18Impl {
-        private Api18Impl() {
-        }
-
-        @DoNotInline
-        static boolean isInLayout(@NonNull View view) {
-            return view.isInLayout();
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(23)
-    /* loaded from: classes.dex */
-    private static final class Api23Impl {
-        private Api23Impl() {
-        }
-
-        @NonNull
-        @DoNotInline
-        static StaticLayout createStaticLayoutForMeasuring(@NonNull CharSequence charSequence, @NonNull Layout.Alignment alignment, int i, int i2, @NonNull TextView textView, @NonNull TextPaint textPaint, @NonNull Impl impl) {
-            StaticLayout.Builder obtain = StaticLayout.Builder.obtain(charSequence, 0, charSequence.length(), textPaint, i);
-            StaticLayout.Builder hyphenationFrequency = obtain.setAlignment(alignment).setLineSpacing(textView.getLineSpacingExtra(), textView.getLineSpacingMultiplier()).setIncludePad(textView.getIncludeFontPadding()).setBreakStrategy(textView.getBreakStrategy()).setHyphenationFrequency(textView.getHyphenationFrequency());
-            if (i2 == -1) {
-                i2 = Integer.MAX_VALUE;
-            }
-            hyphenationFrequency.setMaxLines(i2);
-            try {
-                impl.computeAndSetTextDirection(obtain, textView);
-            } catch (ClassCastException unused) {
-                Log.w(AppCompatTextViewAutoSizeHelper.TAG, "Failed to obtain TextDirectionHeuristic, auto size may be incorrect");
-            }
-            return obtain.build();
-        }
-    }
 
     /* compiled from: Taobao */
     private static class Impl {
@@ -460,21 +401,21 @@ class AppCompatTextViewAutoSizeHelper {
     void loadFromAttributes(@Nullable AttributeSet attributeSet, int i) {
         int resourceId;
         Context context = this.mContext;
-        int[] iArr = C0257R.styleable.AppCompatTextView;
+        int[] iArr = R.styleable.AppCompatTextView;
         TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, iArr, i, 0);
         TextView textView = this.mTextView;
         ViewCompat.saveAttributeDataForStyleable(textView, textView.getContext(), iArr, attributeSet, obtainStyledAttributes, i, 0);
-        int i2 = C0257R.styleable.AppCompatTextView_autoSizeTextType;
+        int i2 = R.styleable.AppCompatTextView_autoSizeTextType;
         if (obtainStyledAttributes.hasValue(i2)) {
             this.mAutoSizeTextType = obtainStyledAttributes.getInt(i2, 0);
         }
-        int i3 = C0257R.styleable.AppCompatTextView_autoSizeStepGranularity;
+        int i3 = R.styleable.AppCompatTextView_autoSizeStepGranularity;
         float dimension = obtainStyledAttributes.hasValue(i3) ? obtainStyledAttributes.getDimension(i3, UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE) : UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE;
-        int i4 = C0257R.styleable.AppCompatTextView_autoSizeMinTextSize;
+        int i4 = R.styleable.AppCompatTextView_autoSizeMinTextSize;
         float dimension2 = obtainStyledAttributes.hasValue(i4) ? obtainStyledAttributes.getDimension(i4, UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE) : UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE;
-        int i5 = C0257R.styleable.AppCompatTextView_autoSizeMaxTextSize;
+        int i5 = R.styleable.AppCompatTextView_autoSizeMaxTextSize;
         float dimension3 = obtainStyledAttributes.hasValue(i5) ? obtainStyledAttributes.getDimension(i5, UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE) : UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE;
-        int i6 = C0257R.styleable.AppCompatTextView_autoSizePresetSizes;
+        int i6 = R.styleable.AppCompatTextView_autoSizePresetSizes;
         if (obtainStyledAttributes.hasValue(i6) && (resourceId = obtainStyledAttributes.getResourceId(i6, 0)) > 0) {
             TypedArray obtainTypedArray = obtainStyledAttributes.getResources().obtainTypedArray(resourceId);
             setupAutoSizeUniformPresetSizes(obtainTypedArray);

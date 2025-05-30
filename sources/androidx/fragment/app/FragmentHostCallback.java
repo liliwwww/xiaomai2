@@ -19,7 +19,7 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class FragmentHostCallback<E> extends FragmentContainer {
 
     @Nullable
@@ -110,6 +110,7 @@ public abstract class FragmentHostCallback<E> extends FragmentContainer {
     public void onSupportInvalidateOptionsMenu() {
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     FragmentHostCallback(@NonNull FragmentActivity fragmentActivity) {
         this(fragmentActivity, fragmentActivity, new Handler(), 0);
     }

@@ -12,12 +12,13 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ActionBarContainer extends FrameLayout {
     private View mActionBarView;
     Drawable mBackground;
@@ -96,8 +97,8 @@ public class ActionBarContainer extends FrameLayout {
     @Override // android.view.View
     public void onFinishInflate() {
         super.onFinishInflate();
-        this.mActionBarView = findViewById(C0257R.id.action_bar);
-        this.mContextView = findViewById(C0257R.id.action_context_bar);
+        this.mActionBarView = findViewById(R.id.action_bar);
+        this.mContextView = findViewById(R.id.action_context_bar);
     }
 
     @Override // android.view.View
@@ -275,7 +276,7 @@ public class ActionBarContainer extends FrameLayout {
 
     public void setTransitioning(boolean z) {
         this.mIsTransitioning = z;
-        setDescendantFocusability(z ? 393216 : 262144);
+        setDescendantFocusability(z ? 393216 : AccessibilityEventCompat.TYPE_GESTURE_DETECTION_START);
     }
 
     @Override // android.view.View
@@ -317,14 +318,14 @@ public class ActionBarContainer extends FrameLayout {
     public ActionBarContainer(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         ViewCompat.setBackground(this, new ActionBarBackgroundDrawable(this));
-        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0257R.styleable.ActionBar);
-        this.mBackground = obtainStyledAttributes.getDrawable(C0257R.styleable.ActionBar_background);
-        this.mStackedBackground = obtainStyledAttributes.getDrawable(C0257R.styleable.ActionBar_backgroundStacked);
-        this.mHeight = obtainStyledAttributes.getDimensionPixelSize(C0257R.styleable.ActionBar_height, -1);
+        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, R.styleable.ActionBar);
+        this.mBackground = obtainStyledAttributes.getDrawable(R.styleable.ActionBar_background);
+        this.mStackedBackground = obtainStyledAttributes.getDrawable(R.styleable.ActionBar_backgroundStacked);
+        this.mHeight = obtainStyledAttributes.getDimensionPixelSize(R.styleable.ActionBar_height, -1);
         boolean z = true;
-        if (getId() == C0257R.id.split_action_bar) {
+        if (getId() == R.id.split_action_bar) {
             this.mIsSplit = true;
-            this.mSplitBackground = obtainStyledAttributes.getDrawable(C0257R.styleable.ActionBar_backgroundSplit);
+            this.mSplitBackground = obtainStyledAttributes.getDrawable(R.styleable.ActionBar_backgroundSplit);
         }
         obtainStyledAttributes.recycle();
         if (!this.mIsSplit ? this.mBackground != null || this.mStackedBackground != null : this.mSplitBackground != null) {

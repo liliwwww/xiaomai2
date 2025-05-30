@@ -4,7 +4,7 @@ import kotlin.jvm.internal.FloatCompanionObject;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AnimatableKt {
     @NotNull
     public static final Animatable<Float, AnimationVector1D> Animatable(float f, float f2) {

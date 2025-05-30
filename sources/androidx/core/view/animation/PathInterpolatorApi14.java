@@ -5,27 +5,23 @@ import android.graphics.PathMeasure;
 import android.view.animation.Interpolator;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class PathInterpolatorApi14 implements Interpolator {
     private static final float PRECISION = 0.002f;
-
-    /* renamed from: mX */
-    private final float[] f346mX;
-
-    /* renamed from: mY */
-    private final float[] f347mY;
+    private final float[] mX;
+    private final float[] mY;
 
     PathInterpolatorApi14(Path path) {
         PathMeasure pathMeasure = new PathMeasure(path, false);
         float length = pathMeasure.getLength();
-        int i = ((int) (length / 0.002f)) + 1;
-        this.f346mX = new float[i];
-        this.f347mY = new float[i];
+        int i = ((int) (length / PRECISION)) + 1;
+        this.mX = new float[i];
+        this.mY = new float[i];
         float[] fArr = new float[2];
         for (int i2 = 0; i2 < i; i2++) {
             pathMeasure.getPosTan((i2 * length) / (i - 1), fArr, null);
-            this.f346mX[i2] = fArr[0];
-            this.f347mY[i2] = fArr[1];
+            this.mX[i2] = fArr[0];
+            this.mY[i2] = fArr[1];
         }
     }
 
@@ -52,22 +48,22 @@ class PathInterpolatorApi14 implements Interpolator {
             return 1.0f;
         }
         int i = 0;
-        int length = this.f346mX.length - 1;
+        int length = this.mX.length - 1;
         while (length - i > 1) {
             int i2 = (i + length) / 2;
-            if (f < this.f346mX[i2]) {
+            if (f < this.mX[i2]) {
                 length = i2;
             } else {
                 i = i2;
             }
         }
-        float[] fArr = this.f346mX;
+        float[] fArr = this.mX;
         float f2 = fArr[length] - fArr[i];
         if (f2 == 0.0f) {
-            return this.f347mY[i];
+            return this.mY[i];
         }
         float f3 = (f - fArr[i]) / f2;
-        float[] fArr2 = this.f347mY;
+        float[] fArr2 = this.mY;
         float f4 = fArr2[i];
         return f4 + (f3 * (fArr2[length] - f4));
     }

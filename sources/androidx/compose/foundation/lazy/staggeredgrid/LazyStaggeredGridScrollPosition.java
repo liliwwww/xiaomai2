@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyStaggeredGridScrollPosition {
 
     @NotNull
@@ -38,12 +38,16 @@ public final class LazyStaggeredGridScrollPosition {
 
     /* JADX WARN: Multi-variable type inference failed */
     public LazyStaggeredGridScrollPosition(@NotNull int[] iArr, @NotNull int[] iArr2, @NotNull Function2<? super Integer, ? super Integer, int[]> function2) {
+        MutableState mutableStateOf$default;
+        MutableState mutableStateOf$default2;
         Intrinsics.checkNotNullParameter(iArr, "initialIndices");
         Intrinsics.checkNotNullParameter(iArr2, "initialOffsets");
         Intrinsics.checkNotNullParameter(function2, "fillIndices");
         this.fillIndices = function2;
-        this.indices$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(iArr, null, 2, null);
-        this.offsets$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(iArr2, null, 2, null);
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(iArr, null, 2, null);
+        this.indices$delegate = mutableStateOf$default;
+        mutableStateOf$default2 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(iArr2, null, 2, null);
+        this.offsets$delegate = mutableStateOf$default2;
     }
 
     private final void update(int[] iArr, int[] iArr2) {
@@ -56,13 +60,11 @@ public final class LazyStaggeredGridScrollPosition {
         setOffsets(iArr2);
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @NotNull
     public final int[] getIndices() {
         return (int[]) this.indices$delegate.getValue();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @NotNull
     public final int[] getOffsets() {
         return (int[]) this.offsets$delegate.getValue();

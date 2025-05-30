@@ -1,8 +1,7 @@
 package androidx.compose.material;
 
 import androidx.compose.foundation.gestures.TapGestureDetectorKt;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.input.pointer.PointerInputScope;
+import androidx.compose.ui.input.pointer.PointerInputScope;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -12,12 +11,13 @@ import kotlin.coroutines.jvm.internal.SuspendLambda;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
+import kotlin.jvm.functions.Function3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.material.DrawerKt$BottomDrawerScrim$dismissModifier$1$1", f = "Drawer.kt", i = {}, l = {634}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class DrawerKt$BottomDrawerScrim$dismissModifier$1$1 extends SuspendLambda implements Function2<PointerInputScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ Function0<Unit> $onDismiss;
     private /* synthetic */ Object L$0;
@@ -48,25 +48,9 @@ final class DrawerKt$BottomDrawerScrim$dismissModifier$1$1 extends SuspendLambda
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
             PointerInputScope pointerInputScope = (PointerInputScope) this.L$0;
-            final Function0<Unit> function0 = this.$onDismiss;
-            Function1<Offset, Unit> function1 = new Function1<Offset, Unit>() { // from class: androidx.compose.material.DrawerKt$BottomDrawerScrim$dismissModifier$1$1.1
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(1);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    m2078invokek4lQ0M(((Offset) obj2).m2566unboximpl());
-                    return Unit.INSTANCE;
-                }
-
-                /* renamed from: invoke-k-4lQ0M, reason: not valid java name */
-                public final void m2078invokek4lQ0M(long j) {
-                    function0.invoke();
-                }
-            };
+            1 r7 = new 1(this.$onDismiss);
             this.label = 1;
-            if (TapGestureDetectorKt.detectTapGestures$default(pointerInputScope, null, null, null, function1, this, 7, null) == coroutine_suspended) {
+            if (TapGestureDetectorKt.detectTapGestures$default(pointerInputScope, (Function1) null, (Function1) null, (Function3) null, r7, this, 7, (Object) null) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

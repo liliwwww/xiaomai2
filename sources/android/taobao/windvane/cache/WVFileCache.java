@@ -12,12 +12,11 @@ import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVFileCache {
     public static final int CREATE = 4;
     public static final int DELETE = 3;
@@ -31,38 +30,9 @@ public class WVFileCache {
     private String infoDirPath;
     private int maxCapacity;
     private boolean sdcard;
-    private Map<String, WVFileInfo> storedFile = Collections.synchronizedMap(new FixedSizeLinkedHashMap());
+    private Map<String, WVFileInfo> storedFile = Collections.synchronizedMap(new FixedSizeLinkedHashMap(this));
     private boolean isNoSpaceClear = true;
     private boolean isInit = false;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    protected class FixedSizeLinkedHashMap<K, V> extends LinkedHashMap<K, V> {
-        private static final long serialVersionUID = 1;
-
-        protected FixedSizeLinkedHashMap() {
-        }
-
-        @Override // java.util.LinkedHashMap
-        protected boolean removeEldestEntry(Map.Entry<K, V> entry) {
-            if (size() <= WVFileCache.this.maxCapacity) {
-                return false;
-            }
-            if (TaoLog.getLogStatus()) {
-                TaoLog.m18d(WVFileCache.TAG, "removeEldestEntry, size:" + size() + " " + entry.getKey());
-            }
-            V value = entry.getValue();
-            if (!(value instanceof WVFileInfo)) {
-                return true;
-            }
-            WVFileInfo wVFileInfo = (WVFileInfo) value;
-            if (!FileAccesser.deleteFile(new File(WVFileCache.this.baseDirPath, wVFileInfo.fileName))) {
-                return true;
-            }
-            WVFileInfoParser.updateFileInfo(3, wVFileInfo, WVFileCache.this.fInfoChannel);
-            return true;
-        }
-    }
 
     public WVFileCache(String str, String str2, int i, boolean z) {
         this.maxCapacity = 100;
@@ -80,17 +50,17 @@ public class WVFileCache {
             this.fInfoChannel.read(allocate);
             bArr = allocate.array();
         } catch (IOException e) {
-            TaoLog.m21e(TAG, "collectFiles fInfoChannel.read error:" + e.getMessage());
+            TaoLog.e(TAG, "collectFiles fInfoChannel.read error:" + e.getMessage());
             bArr = null;
         }
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(TAG, "collectFiles read fileinfo:" + (System.currentTimeMillis() - currentTimeMillis));
+            TaoLog.d(TAG, "collectFiles read fileinfo:" + (System.currentTimeMillis() - currentTimeMillis));
         }
         long currentTimeMillis2 = System.currentTimeMillis();
         if (bArr == null) {
             return false;
         }
-        TaoLog.m18d("collectFiles", "read fileinfo success");
+        TaoLog.d("collectFiles", "read fileinfo success");
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int i = 60;
         boolean z = false;
@@ -116,7 +86,7 @@ public class WVFileCache {
             i++;
         }
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(TAG, "parse fileinfo:" + (System.currentTimeMillis() - currentTimeMillis2));
+            TaoLog.d(TAG, "parse fileinfo:" + (System.currentTimeMillis() - currentTimeMillis2));
         }
         long currentTimeMillis3 = System.currentTimeMillis();
         if (z) {
@@ -127,7 +97,7 @@ public class WVFileCache {
                 wrap.position(0);
                 this.fInfoChannel.write(wrap);
             } catch (IOException e2) {
-                TaoLog.m21e(TAG, "collectFiles fInfoChannel.write error:" + e2.getMessage());
+                TaoLog.e(TAG, "collectFiles fInfoChannel.write error:" + e2.getMessage());
             }
         }
         try {
@@ -136,13 +106,13 @@ public class WVFileCache {
             e3.printStackTrace();
         }
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(TAG, "write fileinfo:" + (System.currentTimeMillis() - currentTimeMillis3));
+            TaoLog.d(TAG, "write fileinfo:" + (System.currentTimeMillis() - currentTimeMillis3));
         }
         return true;
     }
 
     private void onFileOverflow() {
-        TaoLog.m18d(TAG, "onFileOverflow");
+        TaoLog.d(TAG, "onFileOverflow");
         ArrayList arrayList = new ArrayList();
         Set<Map.Entry<String, WVFileInfo>> entrySet = this.storedFile.entrySet();
         int size = this.storedFile.size();
@@ -187,13 +157,13 @@ public class WVFileCache {
             File file = new File(this.baseDirPath, str);
             r1 = file.isFile() ? file.delete() : false;
             if ((r1 || !file.exists()) && (wVFileInfo = this.storedFile.get(str)) != null) {
-                TaoLog.m18d(TAG, "delete success");
+                TaoLog.d(TAG, "delete success");
                 WVFileInfoParser.updateFileInfo(3, wVFileInfo, this.fInfoChannel);
                 this.storedFile.remove(str);
                 if (!TaoLog.getLogStatus()) {
                     return true;
                 }
-                TaoLog.m18d(TAG, "delete time cost:" + (System.currentTimeMillis() - currentTimeMillis));
+                TaoLog.d(TAG, "delete time cost:" + (System.currentTimeMillis() - currentTimeMillis));
                 return true;
             }
         }
@@ -244,7 +214,7 @@ public class WVFileCache {
                 try {
                     file.createNewFile();
                 } catch (IOException e) {
-                    TaoLog.m21e(TAG, "init createNewFile:" + e.getMessage());
+                    TaoLog.e(TAG, "init createNewFile:" + e.getMessage());
                     return false;
                 }
             }
@@ -256,14 +226,14 @@ public class WVFileCache {
                     this.fInfoChannel = randomAccessFile.getChannel();
                 }
                 if (TaoLog.getLogStatus()) {
-                    TaoLog.m18d(TAG, "lock success process is " + Process.myPid());
+                    TaoLog.d(TAG, "lock success process is " + Process.myPid());
                 }
                 long currentTimeMillis = System.currentTimeMillis();
                 if (!collectFiles()) {
                     return false;
                 }
                 if (TaoLog.getLogStatus()) {
-                    TaoLog.m18d(TAG, "init time cost:" + (System.currentTimeMillis() - currentTimeMillis));
+                    TaoLog.d(TAG, "init time cost:" + (System.currentTimeMillis() - currentTimeMillis));
                 }
                 this.isInit = true;
                 setCapacity(this.maxCapacity);
@@ -271,7 +241,7 @@ public class WVFileCache {
                     clear();
                 }
             } catch (Exception e2) {
-                TaoLog.m21e(TAG, "init fInfoOs RandomAccessFile:" + e2.getMessage());
+                TaoLog.e(TAG, "init fInfoOs RandomAccessFile:" + e2.getMessage());
                 return false;
             }
         }
@@ -284,7 +254,7 @@ public class WVFileCache {
 
     public byte[] read(String str) {
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(TAG, "read:" + str);
+            TaoLog.d(TAG, "read:" + str);
         }
         if (!this.isInit) {
             return null;
@@ -298,7 +268,7 @@ public class WVFileCache {
         this.storedFile.put(str, WVFileInfoParser.updateFileInfo(1, wVFileInfo, this.fInfoChannel));
         byte[] read = FileAccesser.read(new File(this.baseDirPath, str));
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(TAG, "read time cost:" + (System.currentTimeMillis() - currentTimeMillis));
+            TaoLog.d(TAG, "read time cost:" + (System.currentTimeMillis() - currentTimeMillis));
         }
         return read;
     }
@@ -316,7 +286,7 @@ public class WVFileCache {
         if (!this.isInit || wVFileInfo == null || (str = wVFileInfo.fileName) == null || (wVFileInfo2 = this.storedFile.get(str)) == null) {
             return;
         }
-        TaoLog.m18d(TAG, "update info success");
+        TaoLog.d(TAG, "update info success");
         wVFileInfo.pos = wVFileInfo2.pos;
         this.storedFile.put(str, WVFileInfoParser.updateFileInfo(2, wVFileInfo, this.fInfoChannel));
     }
@@ -324,7 +294,7 @@ public class WVFileCache {
     /* JADX WARN: Removed duplicated region for block: B:14:0x006d  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public boolean write(android.taobao.windvane.cache.WVFileInfo r8, java.nio.ByteBuffer r9) {
         /*
@@ -344,7 +314,7 @@ public class WVFileCache {
             r3.append(r4)
             r3.append(r1)
             java.lang.String r3 = r3.toString()
-            android.taobao.windvane.util.TaoLog.m18d(r2, r3)
+            android.taobao.windvane.util.TaoLog.d(r2, r3)
         L26:
             boolean r2 = r7.isInit
             if (r2 == 0) goto Lae
@@ -366,7 +336,7 @@ public class WVFileCache {
             java.lang.String r3 = r3.getMessage()
             r5.append(r3)
             java.lang.String r3 = r5.toString()
-            android.taobao.windvane.util.TaoLog.m21e(r4, r3)
+            android.taobao.windvane.util.TaoLog.e(r4, r3)
             boolean r3 = r7.isNoSpaceClear
             if (r3 == 0) goto L6a
             r7.clear()
@@ -385,7 +355,7 @@ public class WVFileCache {
             if (r9 == 0) goto L94
             java.lang.String r0 = android.taobao.windvane.cache.WVFileCache.TAG
             java.lang.String r2 = "writed success, file exist"
-            android.taobao.windvane.util.TaoLog.m18d(r0, r2)
+            android.taobao.windvane.util.TaoLog.d(r0, r2)
             long r2 = r9.pos
             r8.pos = r2
             r9 = 2
@@ -398,7 +368,7 @@ public class WVFileCache {
         L94:
             java.lang.String r9 = android.taobao.windvane.cache.WVFileCache.TAG
             java.lang.String r0 = "writed success, file do not exist"
-            android.taobao.windvane.util.TaoLog.m18d(r9, r0)
+            android.taobao.windvane.util.TaoLog.d(r9, r0)
             r9 = 4
             java.nio.channels.FileChannel r0 = r7.fInfoChannel
             android.taobao.windvane.cache.WVFileInfo r8 = android.taobao.windvane.cache.WVFileInfoParser.updateFileInfo(r9, r8, r0)

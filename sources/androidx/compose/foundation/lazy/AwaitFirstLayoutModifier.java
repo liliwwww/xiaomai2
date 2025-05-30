@@ -1,8 +1,8 @@
 package androidx.compose.foundation.lazy;
 
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.LayoutCoordinates;
-import androidx.compose.p004ui.layout.OnGloballyPositionedModifier;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.LayoutCoordinates;
+import androidx.compose.ui.layout.OnGloballyPositionedModifier;
 import kotlin.Result;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -15,34 +15,30 @@ import tb.mt2;
 import tb.nt2;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class AwaitFirstLayoutModifier implements OnGloballyPositionedModifier {
 
     @Nullable
     private Continuation<? super Unit> continuation;
     private boolean wasPositioned;
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
 
-    @Override // androidx.compose.p004ui.layout.OnGloballyPositionedModifier
+    @Override // androidx.compose.ui.layout.OnGloballyPositionedModifier
     public void onGloballyPositioned(@NotNull LayoutCoordinates layoutCoordinates) {
         Intrinsics.checkNotNullParameter(layoutCoordinates, "coordinates");
         if (this.wasPositioned) {
@@ -57,7 +53,7 @@ public final class AwaitFirstLayoutModifier implements OnGloballyPositionedModif
         this.continuation = null;
     }
 
-    @Override // androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }
@@ -68,7 +64,7 @@ public final class AwaitFirstLayoutModifier implements OnGloballyPositionedModif
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object waitForFirstLayout(@org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r5) {
         /*

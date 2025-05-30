@@ -9,33 +9,18 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TaskStackBuilder implements Iterable<Intent> {
     private static final String TAG = "TaskStackBuilder";
     private final ArrayList<Intent> mIntents = new ArrayList<>();
     private final Context mSourceContext;
-
-    /* compiled from: Taobao */
-    @RequiresApi(16)
-    /* loaded from: classes.dex */
-    static class Api16Impl {
-        private Api16Impl() {
-        }
-
-        @DoNotInline
-        static PendingIntent getActivities(Context context, int i, Intent[] intentArr, int i2, Bundle bundle) {
-            return PendingIntent.getActivities(context, i, intentArr, i2, bundle);
-        }
-    }
 
     /* compiled from: Taobao */
     public interface SupportParentable {

@@ -1,7 +1,7 @@
 package android.taobao.windvane.util;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public enum MimeTypeEnum {
     JS("js", "application/x-javascript"),
     CSS("css", "text/css"),

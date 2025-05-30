@@ -1,25 +1,25 @@
 package androidx.compose.material;
 
 import androidx.compose.foundation.shape.RoundedCornerShapeKt;
-import androidx.compose.p004ui.geometry.OffsetKt;
-import androidx.compose.p004ui.geometry.Rect;
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.geometry.SizeKt;
-import androidx.compose.p004ui.graphics.AndroidPath_androidKt;
-import androidx.compose.p004ui.graphics.Outline;
-import androidx.compose.p004ui.graphics.OutlineKt;
-import androidx.compose.p004ui.graphics.Path;
-import androidx.compose.p004ui.graphics.PathOperation;
-import androidx.compose.p004ui.graphics.Shape;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
+import androidx.compose.ui.geometry.OffsetKt;
+import androidx.compose.ui.geometry.Rect;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.geometry.SizeKt;
+import androidx.compose.ui.graphics.AndroidPath_androidKt;
+import androidx.compose.ui.graphics.Outline;
+import androidx.compose.ui.graphics.OutlineKt;
+import androidx.compose.ui.graphics.Path;
+import androidx.compose.ui.graphics.PathOperation;
+import androidx.compose.ui.graphics.Shape;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.Pair;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class BottomAppBarCutoutShape implements Shape {
 
     @NotNull
@@ -36,20 +36,16 @@ final class BottomAppBarCutoutShape implements Shape {
     }
 
     private final void addCutoutShape(Path path, LayoutDirection layoutDirection, Density density) {
-        float f;
-        float f2;
-        f = AppBarKt.BottomAppBarCutoutOffset;
-        float mo1283toPx0680j_4 = density.mo1283toPx0680j_4(f);
-        float f3 = 2 * mo1283toPx0680j_4;
-        long Size = SizeKt.Size(this.fabPlacement.getWidth() + f3, this.fabPlacement.getHeight() + f3);
-        float left = this.fabPlacement.getLeft() - mo1283toPx0680j_4;
-        float m2625getWidthimpl = left + Size.m2625getWidthimpl(Size);
-        float m2622getHeightimpl = Size.m2622getHeightimpl(Size) / 2.0f;
-        OutlineKt.addOutline(path, this.cutoutShape.mo1164createOutlinePq9zytI(Size, layoutDirection, density));
-        path.mo2692translatek4lQ0M(OffsetKt.Offset(left, -m2622getHeightimpl));
+        float mo321toPx0680j_4 = density.mo321toPx0680j_4(AppBarKt.access$getBottomAppBarCutoutOffset$p());
+        float f = 2 * mo321toPx0680j_4;
+        long Size = SizeKt.Size(this.fabPlacement.getWidth() + f, this.fabPlacement.getHeight() + f);
+        float left = this.fabPlacement.getLeft() - mo321toPx0680j_4;
+        float m903getWidthimpl = left + Size.m903getWidthimpl(Size);
+        float m900getHeightimpl = Size.m900getHeightimpl(Size) / 2.0f;
+        OutlineKt.addOutline(path, this.cutoutShape.mo130createOutlinePq9zytI(Size, layoutDirection, density));
+        path.translate-k-4lQ0M(OffsetKt.Offset(left, -m900getHeightimpl));
         if (Intrinsics.areEqual(this.cutoutShape, RoundedCornerShapeKt.getCircleShape())) {
-            f2 = AppBarKt.BottomAppBarRoundedEdgeRadius;
-            addRoundedEdges(path, left, m2625getWidthimpl, m2622getHeightimpl, density.mo1283toPx0680j_4(f2), 0.0f);
+            addRoundedEdges(path, left, m903getWidthimpl, m900getHeightimpl, density.mo321toPx0680j_4(AppBarKt.access$getBottomAppBarRoundedEdgeRadius$p()), 0.0f);
         }
     }
 
@@ -58,7 +54,7 @@ final class BottomAppBarCutoutShape implements Shape {
         float f7 = f3 + f6;
         float f8 = f + f7;
         float f9 = f2 - f7;
-        Pair<Float, Float> calculateRoundedEdgeIntercept = AppBarKt.calculateRoundedEdgeIntercept(f6 - 1.0f, f5, f3);
+        Pair calculateRoundedEdgeIntercept = AppBarKt.calculateRoundedEdgeIntercept(f6 - 1.0f, f5, f3);
         float floatValue = ((Number) calculateRoundedEdgeIntercept.component1()).floatValue() + f3;
         float floatValue2 = ((Number) calculateRoundedEdgeIntercept.component2()).floatValue() - f5;
         path.moveTo(f8 - f4, 0.0f);
@@ -95,17 +91,17 @@ final class BottomAppBarCutoutShape implements Shape {
         return new BottomAppBarCutoutShape(shape, fabPlacement);
     }
 
-    @Override // androidx.compose.p004ui.graphics.Shape
+    @Override // androidx.compose.ui.graphics.Shape
     @NotNull
     /* renamed from: createOutline-Pq9zytI */
-    public Outline mo1164createOutlinePq9zytI(long j, @NotNull LayoutDirection layoutDirection, @NotNull Density density) {
+    public Outline mo130createOutlinePq9zytI(long j, @NotNull LayoutDirection layoutDirection, @NotNull Density density) {
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
         Intrinsics.checkNotNullParameter(density, "density");
         Path Path = AndroidPath_androidKt.Path();
-        Path.addRect(new Rect(0.0f, 0.0f, Size.m2625getWidthimpl(j), Size.m2622getHeightimpl(j)));
+        Path.addRect(new Rect(0.0f, 0.0f, Size.m903getWidthimpl(j), Size.m900getHeightimpl(j)));
         Path Path2 = AndroidPath_androidKt.Path();
         addCutoutShape(Path2, layoutDirection, density);
-        Path2.mo2690opN5in7k0(Path, Path2, PathOperation.Companion.m3039getDifferenceb3I0S0c());
+        Path2.op-N5in7k0(Path, Path2, PathOperation.Companion.m1184getDifferenceb3I0S0c());
         return new Outline.Generic(Path2);
     }
 

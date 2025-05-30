@@ -5,7 +5,7 @@ import kotlin.jvm.functions.Function1;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SpringEstimationKt {
     public static final long estimateAnimationDurationMillis(float f, float f2, float f3, float f4, float f5) {
         return estimateAnimationDurationMillis(f, f2, f3, f4, f5);
@@ -13,9 +13,9 @@ public final class SpringEstimationKt {
 
     private static final double estimateCriticallyDamped(Pair<ComplexDouble, ComplexDouble> pair, final double d, double d2, double d3) {
         double d4;
-        final double d5;
+        double d5;
+        estimateCriticallyDamped.fn.1 r9;
         Function1<Double, Double> function1;
-        Function1<Double, Double> function12;
         double d6;
         final double real = ((ComplexDouble) pair.getFirst()).getReal();
         double d7 = real * d;
@@ -36,22 +36,8 @@ public final class SpringEstimationKt {
             if (d9 <= 0.0d || (-estimateCriticallyDamped$xInflection(d, real, d9, d8)) >= d3) {
                 d4 = (-(2.0d / real)) - (d / d8);
                 d5 = d3;
-                function1 = new Function1<Double, Double>() { // from class: androidx.compose.animation.core.SpringEstimationKt$estimateCriticallyDamped$fn$1
-                    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                    {
-                        super(1);
-                    }
-
-                    @NotNull
-                    public final Double invoke(double d10) {
-                        return Double.valueOf(((d + (d8 * d10)) * Math.exp(real * d10)) + d5);
-                    }
-
-                    public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                        return invoke(((Number) obj).doubleValue());
-                    }
-                };
-                function12 = new Function1<Double, Double>() { // from class: androidx.compose.animation.core.SpringEstimationKt$estimateCriticallyDamped$fnPrime$1
+                r9 = new estimateCriticallyDamped.fn.1(d, d8, real, d5);
+                function1 = new Function1<Double, Double>() { // from class: androidx.compose.animation.core.SpringEstimationKt$estimateCriticallyDamped$fnPrime$1
                     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
                     {
                         super(1);
@@ -71,7 +57,7 @@ public final class SpringEstimationKt {
                 d6 = Double.MAX_VALUE;
                 while (d6 > 0.001d && i < 100) {
                     i++;
-                    double doubleValue = d4 - (((Number) function1.invoke(Double.valueOf(d4))).doubleValue() / ((Number) function12.invoke(Double.valueOf(d4))).doubleValue());
+                    double doubleValue = d4 - (((Number) r9.invoke(Double.valueOf(d4))).doubleValue() / ((Number) function1.invoke(Double.valueOf(d4))).doubleValue());
                     double abs = Math.abs(d4 - doubleValue);
                     d4 = doubleValue;
                     d6 = abs;
@@ -83,22 +69,8 @@ public final class SpringEstimationKt {
             }
         }
         d5 = -d3;
-        function1 = new Function1<Double, Double>() { // from class: androidx.compose.animation.core.SpringEstimationKt$estimateCriticallyDamped$fn$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            @NotNull
-            public final Double invoke(double d10) {
-                return Double.valueOf(((d + (d8 * d10)) * Math.exp(real * d10)) + d5);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                return invoke(((Number) obj).doubleValue());
-            }
-        };
-        function12 = new Function1<Double, Double>() { // from class: androidx.compose.animation.core.SpringEstimationKt$estimateCriticallyDamped$fnPrime$1
+        r9 = new estimateCriticallyDamped.fn.1(d, d8, real, d5);
+        function1 = new Function1<Double, Double>() { // from class: androidx.compose.animation.core.SpringEstimationKt$estimateCriticallyDamped$fnPrime$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             {
                 super(1);
@@ -118,7 +90,7 @@ public final class SpringEstimationKt {
         d6 = Double.MAX_VALUE;
         while (d6 > 0.001d) {
             i++;
-            double doubleValue2 = d4 - (((Number) function1.invoke(Double.valueOf(d4))).doubleValue() / ((Number) function12.invoke(Double.valueOf(d4))).doubleValue());
+            double doubleValue2 = d4 - (((Number) r9.invoke(Double.valueOf(d4))).doubleValue() / ((Number) function1.invoke(Double.valueOf(d4))).doubleValue());
             double abs2 = Math.abs(d4 - doubleValue2);
             d4 = doubleValue2;
             d6 = abs2;
@@ -157,18 +129,18 @@ public final class SpringEstimationKt {
     /* JADX WARN: Removed duplicated region for block: B:27:0x00e9  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private static final double estimateOverDamped(kotlin.Pair<androidx.compose.animation.core.ComplexDouble, androidx.compose.animation.core.ComplexDouble> r31, double r32, double r34, double r36) {
         /*
             Method dump skipped, instructions count: 296
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.animation.core.SpringEstimationKt.estimateOverDamped(kotlin.Pair, double, double, double):double");
     }
 
     /* renamed from: estimateOverDamped$xInflection-0, reason: not valid java name */
-    private static final double m1066estimateOverDamped$xInflection0(double d, double d2, double d3, double d4, double d5) {
+    private static final double m90estimateOverDamped$xInflection0(double d, double d2, double d3, double d4, double d5) {
         return (d * Math.exp(d2 * d3)) + (d4 * Math.exp(d5 * d3));
     }
 

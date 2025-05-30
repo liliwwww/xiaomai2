@@ -3,15 +3,14 @@ package androidx.compose.foundation.lazy.grid;
 import androidx.compose.foundation.MutatePriority;
 import androidx.compose.foundation.gestures.ScrollScope;
 import androidx.compose.foundation.lazy.layout.LazyAnimateScrollScope;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntSize;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntSize;
 import java.util.List;
 import kotlin.Unit;
 import kotlin.collections.CollectionsKt;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.intrinsics.IntrinsicsKt;
-import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -19,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.eo4;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyGridAnimateScrollScope implements LazyAnimateScrollScope {
 
     @NotNull
@@ -30,34 +29,19 @@ public final class LazyGridAnimateScrollScope implements LazyAnimateScrollScope 
         this.state = lazyGridState;
     }
 
-    private final int calculateLineAverageMainAxisSize(final List<? extends LazyGridItemInfo> list, final boolean z) {
-        Function1<Integer, Integer> function1 = new Function1<Integer, Integer>() { // from class: androidx.compose.foundation.lazy.grid.LazyGridAnimateScrollScope$calculateLineAverageMainAxisSize$lineOf$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                return invoke(((Number) obj).intValue());
-            }
-
-            @NotNull
-            public final Integer invoke(int i) {
-                return Integer.valueOf(z ? list.get(i).getRow() : list.get(i).getColumn());
-            }
-        };
+    private final int calculateLineAverageMainAxisSize(List<? extends LazyGridItemInfo> list, boolean z) {
+        calculateLineAverageMainAxisSize.lineOf.1 r0 = new calculateLineAverageMainAxisSize.lineOf.1(z, list);
         int i = 0;
         int i2 = 0;
         int i3 = 0;
         while (i < list.size()) {
-            int intValue = ((Number) function1.invoke(Integer.valueOf(i))).intValue();
+            int intValue = ((Number) r0.invoke(Integer.valueOf(i))).intValue();
             if (intValue == -1) {
                 i++;
             } else {
                 int i4 = 0;
-                while (i < list.size() && ((Number) function1.invoke(Integer.valueOf(i))).intValue() == intValue) {
-                    i4 = Math.max(i4, z ? IntSize.m5375getHeightimpl(list.get(i).mo1566getSizeYbymL2g()) : IntSize.m5376getWidthimpl(list.get(i).mo1566getSizeYbymL2g()));
+                while (i < list.size() && ((Number) r0.invoke(Integer.valueOf(i))).intValue() == intValue) {
+                    i4 = Math.max(i4, z ? IntSize.getHeight-impl(list.get(i).getSize-YbymL2g()) : IntSize.getWidth-impl(list.get(i).getSize-YbymL2g()));
                     i++;
                 }
                 i2 += i4;
@@ -129,7 +113,7 @@ public final class LazyGridAnimateScrollScope implements LazyAnimateScrollScope 
         }
         LazyGridItemInfo lazyGridItemInfo2 = lazyGridItemInfo;
         if (lazyGridItemInfo2 != null) {
-            return Integer.valueOf(this.state.isVertical$foundation_release() ? IntOffset.m5335getYimpl(lazyGridItemInfo2.mo1565getOffsetnOccac()) : IntOffset.m5334getXimpl(lazyGridItemInfo2.mo1565getOffsetnOccac()));
+            return Integer.valueOf(this.state.isVertical$foundation_release() ? IntOffset.getY-impl(lazyGridItemInfo2.getOffset-nOcc-ac()) : IntOffset.getX-impl(lazyGridItemInfo2.getOffset-nOcc-ac()));
         }
         return null;
     }

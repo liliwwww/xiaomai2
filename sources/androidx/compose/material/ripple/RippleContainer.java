@@ -2,7 +2,7 @@ package androidx.compose.material.ripple;
 
 import android.content.Context;
 import android.view.ViewGroup;
-import androidx.compose.p004ui.C0756R;
+import androidx.compose.ui.R;
 import java.util.ArrayList;
 import java.util.List;
 import kotlin.collections.CollectionsKt;
@@ -10,7 +10,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class RippleContainer extends ViewGroup {
     private final int MaxRippleHosts;
     private int nextHostIndex;
@@ -40,7 +40,7 @@ public final class RippleContainer extends ViewGroup {
         arrayList.add(rippleHostView);
         arrayList2.add(rippleHostView);
         this.nextHostIndex = 1;
-        setTag(C0756R.id.hide_in_inspector_tag, Boolean.TRUE);
+        setTag(R.id.hide_in_inspector_tag, Boolean.TRUE);
     }
 
     public final void disposeRippleIfNeeded(@NotNull AndroidRippleIndicationInstance androidRippleIndicationInstance) {

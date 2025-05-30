@@ -4,7 +4,7 @@ import java.io.File;
 import java.nio.ByteBuffer;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class FileAccesser {
     public static boolean deleteFile(String str) {
         if (str == null) {
@@ -25,7 +25,7 @@ public class FileAccesser {
     /* JADX WARN: Removed duplicated region for block: B:46:0x004e A[EXC_TOP_SPLITTER, SYNTHETIC] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public static byte[] read(java.io.File r5) {
         /*
@@ -68,7 +68,7 @@ public class FileAccesser {
         L36:
             java.lang.String r2 = "FileAccesser"
             java.lang.String r3 = "read loacl file failed"
-            android.taobao.windvane.util.TaoLog.m30w(r2, r3)     // Catch: java.lang.Throwable -> L4b
+            android.taobao.windvane.util.TaoLog.w(r2, r3)     // Catch: java.lang.Throwable -> L4b
             if (r1 == 0) goto L45
             r1.close()     // Catch: java.io.IOException -> L44
             goto L45
@@ -103,7 +103,7 @@ public class FileAccesser {
     /* JADX WARN: Removed duplicated region for block: B:62:0x0080 A[EXC_TOP_SPLITTER, SYNTHETIC] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public static boolean write(java.io.File r6, java.nio.ByteBuffer r7) throws android.taobao.windvane.file.NotEnoughSpace {
         /*

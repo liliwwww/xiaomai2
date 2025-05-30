@@ -3,11 +3,11 @@ package androidx.compose.foundation.lazy.grid;
 import androidx.compose.foundation.gestures.ScrollExtensionsKt;
 import androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider;
 import androidx.compose.foundation.lazy.layout.LazyLayoutSemanticState;
-import androidx.compose.p004ui.semantics.CollectionInfo;
-import androidx.compose.p004ui.semantics.ScrollAxisRange;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
+import androidx.compose.ui.semantics.CollectionInfo;
+import androidx.compose.ui.semantics.ScrollAxisRange;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.intrinsics.IntrinsicsKt;
@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazySemanticsKt {
     @Composable
     @NotNull
@@ -50,14 +50,15 @@ public final class LazySemanticsKt {
                 public ScrollAxisRange scrollAxisRange() {
                     final LazyGridState lazyGridState2 = lazyGridState;
                     Function0<Float> function0 = new Function0<Float>() { // from class: androidx.compose.foundation.lazy.grid.LazySemanticsKt$rememberLazyGridSemanticState$1$1$scrollAxisRange$1
+                        /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
                         {
                             super(0);
                         }
 
                         @NotNull
                         /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-                        public final Float m1596invoke() {
-                            return Float.valueOf(LazyGridState.this.getFirstVisibleItemIndex() + (LazyGridState.this.getFirstVisibleItemScrollOffset() / 100000.0f));
+                        public final Float m471invoke() {
+                            return Float.valueOf(lazyGridState2.getFirstVisibleItemIndex() + (lazyGridState2.getFirstVisibleItemScrollOffset() / 100000.0f));
                         }
                     };
                     final LazyGridState lazyGridState3 = lazyGridState;
@@ -70,15 +71,15 @@ public final class LazySemanticsKt {
 
                         @NotNull
                         /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-                        public final Float m1597invoke() {
+                        public final Float m472invoke() {
                             float firstVisibleItemIndex;
                             float firstVisibleItemScrollOffset;
-                            if (LazyGridState.this.getCanScrollForward()) {
+                            if (lazyGridState3.getCanScrollForward()) {
                                 firstVisibleItemIndex = lazyLayoutItemProvider2.getItemCount();
                                 firstVisibleItemScrollOffset = 1.0f;
                             } else {
-                                firstVisibleItemIndex = LazyGridState.this.getFirstVisibleItemIndex();
-                                firstVisibleItemScrollOffset = LazyGridState.this.getFirstVisibleItemScrollOffset() / 100000.0f;
+                                firstVisibleItemIndex = lazyGridState3.getFirstVisibleItemIndex();
+                                firstVisibleItemScrollOffset = lazyGridState3.getFirstVisibleItemScrollOffset() / 100000.0f;
                             }
                             return Float.valueOf(firstVisibleItemIndex + firstVisibleItemScrollOffset);
                         }
@@ -88,7 +89,7 @@ public final class LazySemanticsKt {
                 @Override // androidx.compose.foundation.lazy.layout.LazyLayoutSemanticState
                 @Nullable
                 public Object scrollToItem(int i2, @NotNull Continuation<? super Unit> continuation) {
-                    Object scrollToItem$default = LazyGridState.scrollToItem$default(lazyGridState, i2, 0, continuation, 2, null);
+                    Object scrollToItem$default = LazyGridState.scrollToItem$default(lazyGridState, i2, 0, continuation, 2, (Object) null);
                     return scrollToItem$default == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? scrollToItem$default : Unit.INSTANCE;
                 }
             };

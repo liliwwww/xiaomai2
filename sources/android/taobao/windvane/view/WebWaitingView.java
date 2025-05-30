@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
+import android.taobao.windvane.packageapp.zipapp.utils.ZipAppConstants;
 import android.taobao.windvane.util.EnvUtil;
 import android.util.AttributeSet;
 import android.view.View;
@@ -12,7 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WebWaitingView extends RelativeLayout {
     private static final int LOADING_BG_ID = 101;
     private static final int LOADING_PGBAR_ID = 102;
@@ -31,7 +32,7 @@ public class WebWaitingView extends RelativeLayout {
         GradientDrawable gradientDrawable = new GradientDrawable();
         gradientDrawable.setCornerRadius(f2);
         gradientDrawable.setColor(-12303292);
-        gradientDrawable.setAlpha(150);
+        gradientDrawable.setAlpha(ZipAppConstants.LOW_LIMITED_MAX_APP_NUM);
         if (Build.VERSION.SDK_INT >= 16) {
             view.setBackground(gradientDrawable);
         } else {

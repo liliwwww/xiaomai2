@@ -5,12 +5,12 @@ import okio.ByteString;
 import tb.s96;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface WebSocket {
 
     /* compiled from: Taobao */
     public interface Factory {
-        WebSocket newWebSocket(C1474n c1474n, s96 s96Var);
+        WebSocket newWebSocket(n nVar, s96 s96Var);
     }
 
     void cancel();
@@ -19,7 +19,7 @@ public interface WebSocket {
 
     long queueSize();
 
-    C1474n request();
+    n request();
 
     boolean send(String str);
 

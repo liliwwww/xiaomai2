@@ -1,7 +1,6 @@
 package androidx.core.net;
 
 import android.net.Uri;
-import android.taobao.windvane.connect.api.ApiConstants;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Preconditions;
@@ -10,26 +9,22 @@ import java.util.Locale;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class MailTo {
     private static final String BCC = "bcc";
     private static final String BODY = "body";
-
-    /* renamed from: CC */
-    private static final String f338CC = "cc";
+    private static final String CC = "cc";
     private static final String MAILTO = "mailto";
     public static final String MAILTO_SCHEME = "mailto:";
     private static final String SUBJECT = "subject";
-
-    /* renamed from: TO */
-    private static final String f339TO = "to";
+    private static final String TO = "to";
     private HashMap<String, String> mHeaders = new HashMap<>();
 
     private MailTo() {
     }
 
     public static boolean isMailTo(@Nullable String str) {
-        return str != null && str.startsWith("mailto:");
+        return str != null && str.startsWith(MAILTO_SCHEME);
     }
 
     @NonNull
@@ -54,7 +49,7 @@ public final class MailTo {
         }
         MailTo mailTo = new MailTo();
         if (substring != null) {
-            for (String str2 : substring.split(ApiConstants.SPLIT_STR)) {
+            for (String str2 : substring.split("&")) {
                 String[] split = str2.split("=", 2);
                 if (split.length != 0) {
                     mailTo.mHeaders.put(Uri.decode(split[0]).toLowerCase(Locale.ROOT), split.length > 1 ? Uri.decode(split[1]) : null);
@@ -81,7 +76,7 @@ public final class MailTo {
 
     @Nullable
     public String getCc() {
-        return this.mHeaders.get(f338CC);
+        return this.mHeaders.get(CC);
     }
 
     @Nullable
@@ -101,7 +96,7 @@ public final class MailTo {
 
     @NonNull
     public String toString() {
-        StringBuilder sb = new StringBuilder("mailto:");
+        StringBuilder sb = new StringBuilder(MAILTO_SCHEME);
         sb.append('?');
         for (Map.Entry<String, String> entry : this.mHeaders.entrySet()) {
             sb.append(Uri.encode(entry.getKey()));

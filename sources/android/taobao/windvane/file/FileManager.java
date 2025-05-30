@@ -5,11 +5,10 @@ import android.content.Context;
 import android.os.Build;
 import android.taobao.windvane.config.WVCommonConfig;
 import android.taobao.windvane.config.WVCommonConfigData;
-import android.taobao.windvane.jsbridge.utils.WVUtils;
 import android.taobao.windvane.util.CommonUtils;
 import android.taobao.windvane.util.TaoLog;
-import android.taobao.windvane.util.WVNativeCallbackUtil;
 import android.text.TextUtils;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,7 +20,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class FileManager {
     static final int BUFFER = 1024;
     private static final String TAG = "FileManager";
@@ -37,7 +36,7 @@ public class FileManager {
         String formatUrl2 = formatUrl(str2);
         new File(formatUrl2).mkdirs();
         File[] listFiles = new File(formatUrl).listFiles();
-        byte[] bArr = new byte[2048];
+        byte[] bArr = new byte[AccessibilityEventCompat.TYPE_WINDOW_CONTENT_CHANGED];
         if (listFiles == null) {
             return false;
         }
@@ -77,71 +76,72 @@ public class FileManager {
     /* JADX WARN: Type inference failed for: r1v7 */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:46:0x0026 -> B:15:0x0072). Please report as a decompilation issue!!! */
     public static void copyFile(InputStream inputStream, File file) {
+        FileOutputStream fileOutputStream;
         if (inputStream == null || file == null) {
             return;
         }
         ?? r1 = 0;
-        FileOutputStream fileOutputStream = null;
         FileOutputStream fileOutputStream2 = null;
+        FileOutputStream fileOutputStream3 = null;
         r1 = 0;
         try {
-        } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                try {
+                    file.createNewFile();
+                    fileOutputStream = new FileOutputStream(file);
+                } catch (Throwable th) {
+                    th = th;
+                }
+            } catch (FileNotFoundException e) {
+                e = e;
+            } catch (IOException e2) {
+                e = e2;
+            }
+        } catch (IOException e3) {
+            e3.printStackTrace();
             r1 = r1;
         }
         try {
-            try {
-                file.createNewFile();
-                FileOutputStream fileOutputStream3 = new FileOutputStream(file);
-                try {
-                    byte[] bArr = new byte[2048];
-                    while (true) {
-                        int read = inputStream.read(bArr, 0, 2048);
-                        if (read == -1) {
-                            break;
-                        } else {
-                            fileOutputStream3.write(bArr, 0, read);
-                        }
-                    }
-                    fileOutputStream3.close();
-                    r1 = bArr;
-                } catch (FileNotFoundException e2) {
-                    e = e2;
-                    fileOutputStream = fileOutputStream3;
-                    TaoLog.m21e(TAG, "copyFile: dest FileNotFoundException:" + e.getMessage());
-                    r1 = fileOutputStream;
-                    if (fileOutputStream != null) {
-                        fileOutputStream.close();
-                        r1 = fileOutputStream;
-                    }
-                } catch (IOException e3) {
-                    e = e3;
-                    fileOutputStream2 = fileOutputStream3;
-                    TaoLog.m21e(TAG, "copyFile: write IOException:" + e.getMessage());
-                    r1 = fileOutputStream2;
-                    if (fileOutputStream2 != null) {
-                        fileOutputStream2.close();
-                        r1 = fileOutputStream2;
-                    }
-                } catch (Throwable th) {
-                    th = th;
-                    r1 = fileOutputStream3;
-                    if (r1 != 0) {
-                        try {
-                            r1.close();
-                        } catch (IOException e4) {
-                            e4.printStackTrace();
-                        }
-                    }
-                    throw th;
+            byte[] bArr = new byte[AccessibilityEventCompat.TYPE_WINDOW_CONTENT_CHANGED];
+            while (true) {
+                int read = inputStream.read(bArr, 0, AccessibilityEventCompat.TYPE_WINDOW_CONTENT_CHANGED);
+                if (read == -1) {
+                    break;
+                } else {
+                    fileOutputStream.write(bArr, 0, read);
                 }
-            } catch (FileNotFoundException e5) {
-                e = e5;
-            } catch (IOException e6) {
-                e = e6;
+            }
+            fileOutputStream.close();
+            r1 = bArr;
+        } catch (FileNotFoundException e4) {
+            e = e4;
+            fileOutputStream2 = fileOutputStream;
+            TaoLog.e(TAG, "copyFile: dest FileNotFoundException:" + e.getMessage());
+            r1 = fileOutputStream2;
+            if (fileOutputStream2 != null) {
+                fileOutputStream2.close();
+                r1 = fileOutputStream2;
+            }
+        } catch (IOException e5) {
+            e = e5;
+            fileOutputStream3 = fileOutputStream;
+            TaoLog.e(TAG, "copyFile: write IOException:" + e.getMessage());
+            r1 = fileOutputStream3;
+            if (fileOutputStream3 != null) {
+                fileOutputStream3.close();
+                r1 = fileOutputStream3;
             }
         } catch (Throwable th2) {
             th = th2;
+            r1 = fileOutputStream;
+            if (r1 != 0) {
+                try {
+                    r1.close();
+                } catch (IOException e6) {
+                    e6.printStackTrace();
+                }
+            }
+            throw th;
         }
     }
 
@@ -188,7 +188,7 @@ public class FileManager {
         if (str3 == null) {
             str3 = createInnerCacheStorage(application, str, str2);
         }
-        TaoLog.m18d(TAG, "createBaseDir path:" + str3);
+        TaoLog.d(TAG, "createBaseDir path:" + str3);
         return str3;
     }
 
@@ -217,7 +217,7 @@ public class FileManager {
         sb.append(File.separator);
         sb.append(str2);
         String sb2 = sb.toString();
-        TaoLog.m18d(TAG, "createInnerCacheStorage path:" + sb2);
+        TaoLog.d(TAG, "createInnerCacheStorage path:" + sb2);
         return sb2;
     }
 
@@ -234,25 +234,25 @@ public class FileManager {
         sb.append(File.separator);
         sb.append(str2);
         String sb2 = sb.toString();
-        TaoLog.m18d(TAG, "createInnerfileStorage path:" + sb2);
+        TaoLog.d(TAG, "createInnerfileStorage path:" + sb2);
         return sb2;
     }
 
     private static String formatUrl(String str) {
-        String replaceAll = str.replaceAll(WVUtils.URL_SEPARATOR, WVNativeCallbackUtil.SEPERATER);
-        return replaceAll.endsWith(WVNativeCallbackUtil.SEPERATER) ? replaceAll.substring(0, replaceAll.length() - 1) : replaceAll;
+        String replaceAll = str.replaceAll("//", "/");
+        return replaceAll.endsWith("/") ? replaceAll.substring(0, replaceAll.length() - 1) : replaceAll;
     }
 
     /* JADX WARN: Removed duplicated region for block: B:119:0x024c A[EXC_TOP_SPLITTER, SYNTHETIC] */
     /* JADX WARN: Removed duplicated region for block: B:130:? A[SYNTHETIC] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public static java.lang.String unZipByFilePath(java.lang.String r17, java.lang.String r18) {
         /*
             Method dump skipped, instructions count: 645
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.file.FileManager.unZipByFilePath(java.lang.String, java.lang.String):java.lang.String");
     }
@@ -281,7 +281,7 @@ public class FileManager {
     /* JADX WARN: Removed duplicated region for block: B:66:0x009c A[EXC_TOP_SPLITTER, SYNTHETIC] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public static boolean copy(java.io.File r4, java.io.File r5, byte[] r6) {
         /*
@@ -299,7 +299,7 @@ public class FileManager {
             java.io.File r4 = r4.getAbsoluteFile()     // Catch: java.lang.Throwable -> L7c java.lang.Exception -> L7f
             r6.append(r4)     // Catch: java.lang.Throwable -> L7c java.lang.Exception -> L7f
             java.lang.String r4 = r6.toString()     // Catch: java.lang.Throwable -> L7c java.lang.Exception -> L7f
-            android.taobao.windvane.util.TaoLog.m30w(r5, r4)     // Catch: java.lang.Throwable -> L7c java.lang.Exception -> L7f
+            android.taobao.windvane.util.TaoLog.w(r5, r4)     // Catch: java.lang.Throwable -> L7c java.lang.Exception -> L7f
         L29:
             return r1
         L2a:
@@ -419,8 +419,8 @@ public class FileManager {
         if (inputStream == null || str == null) {
             return false;
         }
-        if (!str.endsWith(WVNativeCallbackUtil.SEPERATER)) {
-            str = str + WVNativeCallbackUtil.SEPERATER;
+        if (!str.endsWith("/")) {
+            str = str + "/";
         }
         FileOutputStream fileOutputStream = null;
         try {
@@ -455,12 +455,12 @@ public class FileManager {
                                     } catch (Exception e) {
                                         e = e;
                                         fileOutputStream = fileOutputStream2;
-                                        TaoLog.m21e(TAG, "unzip: IOException:" + e.getMessage());
+                                        TaoLog.e(TAG, "unzip: IOException:" + e.getMessage());
                                         if (fileOutputStream != null) {
                                             try {
                                                 fileOutputStream.close();
                                             } catch (IOException e2) {
-                                                TaoLog.m21e(TAG, "close Stream Exception:" + e2.getMessage());
+                                                TaoLog.e(TAG, "close Stream Exception:" + e2.getMessage());
                                                 return false;
                                             }
                                         }
@@ -476,7 +476,7 @@ public class FileManager {
                                             try {
                                                 fileOutputStream.close();
                                             } catch (IOException e3) {
-                                                TaoLog.m21e(TAG, "close Stream Exception:" + e3.getMessage());
+                                                TaoLog.e(TAG, "close Stream Exception:" + e3.getMessage());
                                                 throw th;
                                             }
                                         }
@@ -496,17 +496,17 @@ public class FileManager {
                         try {
                             fileOutputStream.close();
                         } catch (IOException e4) {
-                            TaoLog.m21e(TAG, "close Stream Exception:" + e4.getMessage());
+                            TaoLog.e(TAG, "close Stream Exception:" + e4.getMessage());
                         }
                     }
                     zipInputStream.close();
                     inputStream.close();
                     return true;
-                } catch (Throwable th2) {
-                    th = th2;
+                } catch (Exception e5) {
+                    e = e5;
                 }
-            } catch (Exception e5) {
-                e = e5;
+            } catch (Throwable th2) {
+                th = th2;
             }
         } catch (Exception e6) {
             e = e6;

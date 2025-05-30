@@ -1,7 +1,7 @@
 package android.taobao.windvane.monitor;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVMonitor {
     public static final int OPTION_ERROR = 2;
     public static final int OPTION_JSBRIDGE = 4;

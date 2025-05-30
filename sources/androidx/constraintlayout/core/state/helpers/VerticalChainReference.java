@@ -6,56 +6,31 @@ import androidx.constraintlayout.core.state.State;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class VerticalChainReference extends ChainReference {
-
-    /* compiled from: Taobao */
-    /* renamed from: androidx.constraintlayout.core.state.helpers.VerticalChainReference$1 */
-    /* loaded from: classes2.dex */
-    static /* synthetic */ class C08931 {
-        static final /* synthetic */ int[] $SwitchMap$androidx$constraintlayout$core$state$State$Chain;
-
-        static {
-            int[] iArr = new int[State.Chain.values().length];
-            $SwitchMap$androidx$constraintlayout$core$state$State$Chain = iArr;
-            try {
-                iArr[State.Chain.SPREAD.ordinal()] = 1;
-            } catch (NoSuchFieldError unused) {
-            }
-            try {
-                $SwitchMap$androidx$constraintlayout$core$state$State$Chain[State.Chain.SPREAD_INSIDE.ordinal()] = 2;
-            } catch (NoSuchFieldError unused2) {
-            }
-            try {
-                $SwitchMap$androidx$constraintlayout$core$state$State$Chain[State.Chain.PACKED.ordinal()] = 3;
-            } catch (NoSuchFieldError unused3) {
-            }
-        }
-    }
-
     public VerticalChainReference(State state) {
         super(state, State.Helper.VERTICAL_CHAIN);
     }
 
-    @Override // androidx.constraintlayout.core.state.HelperReference, androidx.constraintlayout.core.state.ConstraintReference, androidx.constraintlayout.core.state.Reference
+    /* JADX WARN: Multi-variable type inference failed */
     public void apply() {
-        Iterator<Object> it = this.mReferences.iterator();
+        Iterator<Object> it = ((HelperReference) this).mReferences.iterator();
         while (it.hasNext()) {
             ((HelperReference) this).mState.constraints(it.next()).clearVertical();
         }
-        Iterator<Object> it2 = this.mReferences.iterator();
+        Iterator<Object> it2 = ((HelperReference) this).mReferences.iterator();
         ConstraintReference constraintReference = null;
         ConstraintReference constraintReference2 = null;
         while (it2.hasNext()) {
             ConstraintReference constraints = ((HelperReference) this).mState.constraints(it2.next());
             if (constraintReference2 == null) {
-                Object obj = this.mTopToTop;
+                Object obj = ((ConstraintReference) this).mTopToTop;
                 if (obj != null) {
-                    constraints.topToTop(obj).margin(this.mMarginTop).marginGone(this.mMarginTopGone);
+                    constraints.topToTop(obj).margin(((ConstraintReference) this).mMarginTop).marginGone(((ConstraintReference) this).mMarginTopGone);
                 } else {
-                    Object obj2 = this.mTopToBottom;
+                    Object obj2 = ((ConstraintReference) this).mTopToBottom;
                     if (obj2 != null) {
-                        constraints.topToBottom(obj2).margin(this.mMarginTop).marginGone(this.mMarginTopGone);
+                        constraints.topToBottom(obj2).margin(((ConstraintReference) this).mMarginTop).marginGone(((ConstraintReference) this).mMarginTopGone);
                     } else {
                         constraints.topToTop(State.PARENT);
                     }
@@ -69,13 +44,13 @@ public class VerticalChainReference extends ChainReference {
             constraintReference = constraints;
         }
         if (constraintReference != null) {
-            Object obj3 = this.mBottomToTop;
+            Object obj3 = ((ConstraintReference) this).mBottomToTop;
             if (obj3 != null) {
-                constraintReference.bottomToTop(obj3).margin(this.mMarginBottom).marginGone(this.mMarginBottomGone);
+                constraintReference.bottomToTop(obj3).margin(((ConstraintReference) this).mMarginBottom).marginGone(((ConstraintReference) this).mMarginBottomGone);
             } else {
-                Object obj4 = this.mBottomToBottom;
+                Object obj4 = ((ConstraintReference) this).mBottomToBottom;
                 if (obj4 != null) {
-                    constraintReference.bottomToBottom(obj4).margin(this.mMarginBottom).marginGone(this.mMarginBottomGone);
+                    constraintReference.bottomToBottom(obj4).margin(((ConstraintReference) this).mMarginBottom).marginGone(((ConstraintReference) this).mMarginBottomGone);
                 } else {
                     constraintReference.bottomToBottom(State.PARENT);
                 }
@@ -84,11 +59,11 @@ public class VerticalChainReference extends ChainReference {
         if (constraintReference2 == null) {
             return;
         }
-        float f = this.mBias;
+        float f = ((ChainReference) this).mBias;
         if (f != 0.5f) {
             constraintReference2.verticalBias(f);
         }
-        int i = C08931.$SwitchMap$androidx$constraintlayout$core$state$State$Chain[this.mStyle.ordinal()];
+        int i = 1.$SwitchMap$androidx$constraintlayout$core$state$State$Chain[((ChainReference) this).mStyle.ordinal()];
         if (i == 1) {
             constraintReference2.setVerticalChainStyle(0);
         } else if (i == 2) {

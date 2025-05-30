@@ -8,10 +8,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.core.graphics.drawable.IconCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Person {
     private static final String ICON_KEY = "icon";
     private static final String IS_BOT_KEY = "isBot";
@@ -75,78 +76,6 @@ public class Person {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static class Builder {
-
-        @Nullable
-        IconCompat mIcon;
-        boolean mIsBot;
-        boolean mIsImportant;
-
-        @Nullable
-        String mKey;
-
-        @Nullable
-        CharSequence mName;
-
-        @Nullable
-        String mUri;
-
-        public Builder() {
-        }
-
-        @NonNull
-        public Person build() {
-            return new Person(this);
-        }
-
-        @NonNull
-        public Builder setBot(boolean z) {
-            this.mIsBot = z;
-            return this;
-        }
-
-        @NonNull
-        public Builder setIcon(@Nullable IconCompat iconCompat) {
-            this.mIcon = iconCompat;
-            return this;
-        }
-
-        @NonNull
-        public Builder setImportant(boolean z) {
-            this.mIsImportant = z;
-            return this;
-        }
-
-        @NonNull
-        public Builder setKey(@Nullable String str) {
-            this.mKey = str;
-            return this;
-        }
-
-        @NonNull
-        public Builder setName(@Nullable CharSequence charSequence) {
-            this.mName = charSequence;
-            return this;
-        }
-
-        @NonNull
-        public Builder setUri(@Nullable String str) {
-            this.mUri = str;
-            return this;
-        }
-
-        Builder(Person person) {
-            this.mName = person.mName;
-            this.mIcon = person.mIcon;
-            this.mUri = person.mUri;
-            this.mKey = person.mKey;
-            this.mIsBot = person.mIsBot;
-            this.mIsImportant = person.mIsImportant;
-        }
-    }
-
     Person(Builder builder) {
         this.mName = builder.mName;
         this.mIcon = builder.mIcon;
@@ -158,7 +87,7 @@ public class Person {
 
     @NonNull
     @RequiresApi(28)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public static Person fromAndroidPerson(@NonNull android.app.Person person) {
         return Api28Impl.fromAndroidPerson(person);
     }
@@ -171,7 +100,7 @@ public class Person {
 
     @NonNull
     @RequiresApi(22)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public static Person fromPersistableBundle(@NonNull PersistableBundle persistableBundle) {
         return Api22Impl.fromPersistableBundle(persistableBundle);
     }
@@ -205,7 +134,7 @@ public class Person {
     }
 
     @NonNull
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public String resolveToLegacyUri() {
         String str = this.mUri;
         if (str != null) {
@@ -219,7 +148,7 @@ public class Person {
 
     @NonNull
     @RequiresApi(28)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public android.app.Person toAndroidPerson() {
         return Api28Impl.toAndroidPerson(this);
     }
@@ -244,7 +173,7 @@ public class Person {
 
     @NonNull
     @RequiresApi(22)
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public PersistableBundle toPersistableBundle() {
         return Api22Impl.toPersistableBundle(this);
     }

@@ -5,10 +5,9 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewParent;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class VirtualLayout extends ConstraintHelper {
     private boolean mApplyElevationOnAttach;
     private boolean mApplyVisibilityOnAttach;
@@ -26,13 +25,13 @@ public abstract class VirtualLayout extends ConstraintHelper {
     protected void init(AttributeSet attributeSet) {
         super.init(attributeSet);
         if (attributeSet != null) {
-            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, C0923R.styleable.ConstraintLayout_Layout);
+            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.ConstraintLayout_Layout);
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
                 int index = obtainStyledAttributes.getIndex(i);
-                if (index == C0923R.styleable.ConstraintLayout_Layout_android_visibility) {
+                if (index == R.styleable.ConstraintLayout_Layout_android_visibility) {
                     this.mApplyVisibilityOnAttach = true;
-                } else if (index == C0923R.styleable.ConstraintLayout_Layout_android_elevation) {
+                } else if (index == R.styleable.ConstraintLayout_Layout_android_elevation) {
                     this.mApplyElevationOnAttach = true;
                 }
             }
@@ -44,9 +43,9 @@ public abstract class VirtualLayout extends ConstraintHelper {
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         if (this.mApplyVisibilityOnAttach || this.mApplyElevationOnAttach) {
-            ViewParent parent = getParent();
+            ConstraintLayout parent = getParent();
             if (parent instanceof ConstraintLayout) {
-                ConstraintLayout constraintLayout = (ConstraintLayout) parent;
+                ConstraintLayout constraintLayout = parent;
                 int visibility = getVisibility();
                 float elevation = Build.VERSION.SDK_INT >= 21 ? getElevation() : 0.0f;
                 for (int i = 0; i < this.mCount; i++) {

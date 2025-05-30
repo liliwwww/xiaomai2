@@ -2,7 +2,8 @@ package androidx.compose.animation.core;
 
 import androidx.compose.animation.core.AnimationVector;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
 import androidx.compose.runtime.internal.StabilityInferred;
 import kotlin.Deprecated;
@@ -20,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class Animatable<T, V extends AnimationVector> {
     public static final int $stable = 8;
 
@@ -73,10 +74,10 @@ public final class Animatable<T, V extends AnimationVector> {
         this.visibilityThreshold = t2;
         this.label = str;
         this.internalState = new AnimationState<>(twoWayConverter, t, null, 0L, 0L, false, 60, null);
-        this.isRunning$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
-        this.targetValue$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(t, null, 2, null);
+        this.isRunning$delegate = SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.targetValue$delegate = SnapshotStateKt.mutableStateOf$default(t, (SnapshotMutationPolicy) null, 2, (Object) null);
         this.mutatorMutex = new MutatorMutex();
-        this.defaultSpringSpec = new SpringSpec<>(0.0f, 0.0f, t2, 3, null);
+        this.defaultSpringSpec = new SpringSpec<>(0.0f, 0.0f, t2, 3, (DefaultConstructorMarker) null);
         V createVector = createVector(t, Float.NEGATIVE_INFINITY);
         this.negativeInfinityBounds = createVector;
         V createVector2 = createVector(t, Float.POSITIVE_INFINITY);
@@ -172,7 +173,7 @@ public final class Animatable<T, V extends AnimationVector> {
 
     @Nullable
     public final Object animateDecay(T t, @NotNull DecayAnimationSpec<T> decayAnimationSpec, @Nullable Function1<? super Animatable<T, V>, Unit> function1, @NotNull Continuation<? super AnimationResult<T, V>> continuation) {
-        return runAnimation(new DecayAnimation((DecayAnimationSpec) decayAnimationSpec, (TwoWayConverter<T, AnimationVector>) this.typeConverter, (Object) getValue(), (AnimationVector) this.typeConverter.getConvertToVector().invoke(t)), t, function1, continuation);
+        return runAnimation(new DecayAnimation(decayAnimationSpec, this.typeConverter, getValue(), (AnimationVector) this.typeConverter.getConvertToVector().invoke(t)), t, function1, continuation);
     }
 
     @Nullable
@@ -206,7 +207,7 @@ public final class Animatable<T, V extends AnimationVector> {
     }
 
     public final T getTargetValue() {
-        return this.targetValue$delegate.getValue();
+        return (T) this.targetValue$delegate.getValue();
     }
 
     @NotNull

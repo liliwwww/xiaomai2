@@ -1,6 +1,5 @@
 package androidx.lifecycle;
 
-import androidx.lifecycle.Lifecycle;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -10,7 +9,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Deprecated
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public @interface OnLifecycleEvent {
-    Lifecycle.Event value();
+    Lifecycle$Event value();
 }

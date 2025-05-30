@@ -9,7 +9,7 @@ import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class FragmentViewModelLazyKt$viewModels$6 extends Lambda implements Function0<ViewModelStore> {
     final /* synthetic */ Lazy<ViewModelStoreOwner> $owner$delegate;
 
@@ -22,10 +22,8 @@ public final class FragmentViewModelLazyKt$viewModels$6 extends Lambda implement
 
     @NotNull
     /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-    public final ViewModelStore m5600invoke() {
-        ViewModelStoreOwner m5585viewModels$lambda1;
-        m5585viewModels$lambda1 = FragmentViewModelLazyKt.m5585viewModels$lambda1(this.$owner$delegate);
-        ViewModelStore viewModelStore = m5585viewModels$lambda1.getViewModelStore();
+    public final ViewModelStore m2337invoke() {
+        ViewModelStore viewModelStore = FragmentViewModelLazyKt.access$viewModels$lambda-1(this.$owner$delegate).getViewModelStore();
         Intrinsics.checkNotNullExpressionValue(viewModelStore, "owner.viewModelStore");
         return viewModelStore;
     }

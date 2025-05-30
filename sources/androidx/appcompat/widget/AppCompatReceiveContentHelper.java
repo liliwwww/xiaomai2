@@ -6,54 +6,19 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.os.Build;
-import android.text.Selection;
-import android.text.Spannable;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.View;
 import android.widget.TextView;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.core.view.ContentInfoCompat;
+import androidx.core.view.ContentInfoCompat$Builder;
 import androidx.core.view.ViewCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class AppCompatReceiveContentHelper {
     private static final String LOG_TAG = "ReceiveContent";
-
-    /* compiled from: Taobao */
-    @RequiresApi(24)
-    /* loaded from: classes2.dex */
-    private static final class OnDropApi24Impl {
-        private OnDropApi24Impl() {
-        }
-
-        @DoNotInline
-        static boolean onDropForTextView(@NonNull DragEvent dragEvent, @NonNull TextView textView, @NonNull Activity activity) {
-            activity.requestDragAndDropPermissions(dragEvent);
-            int offsetForPosition = textView.getOffsetForPosition(dragEvent.getX(), dragEvent.getY());
-            textView.beginBatchEdit();
-            try {
-                Selection.setSelection((Spannable) textView.getText(), offsetForPosition);
-                ViewCompat.performReceiveContent(textView, new ContentInfoCompat.Builder(dragEvent.getClipData(), 3).build());
-                textView.endBatchEdit();
-                return true;
-            } catch (Throwable th) {
-                textView.endBatchEdit();
-                throw th;
-            }
-        }
-
-        @DoNotInline
-        static boolean onDropForView(@NonNull DragEvent dragEvent, @NonNull View view, @NonNull Activity activity) {
-            activity.requestDragAndDropPermissions(dragEvent);
-            ViewCompat.performReceiveContent(view, new ContentInfoCompat.Builder(dragEvent.getClipData(), 3).build());
-            return true;
-        }
-    }
 
     private AppCompatReceiveContentHelper() {
     }
@@ -83,7 +48,7 @@ final class AppCompatReceiveContentHelper {
         ClipboardManager clipboardManager = (ClipboardManager) textView.getContext().getSystemService("clipboard");
         ClipData primaryClip = clipboardManager == null ? null : com.alibaba.wireless.security.aopsdk.replace.android.content.ClipboardManager.getPrimaryClip(clipboardManager);
         if (primaryClip != null && primaryClip.getItemCount() > 0) {
-            ViewCompat.performReceiveContent(textView, new ContentInfoCompat.Builder(primaryClip, 1).setFlags(i != 16908322 ? 1 : 0).build());
+            ViewCompat.performReceiveContent(textView, new ContentInfoCompat$Builder(primaryClip, 1).setFlags(i != 16908322 ? 1 : 0).build());
         }
         return true;
     }

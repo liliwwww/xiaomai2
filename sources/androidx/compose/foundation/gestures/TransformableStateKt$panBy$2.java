@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.TransformableStateKt$panBy$2", f = "TransformableState.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class TransformableStateKt$panBy$2 extends SuspendLambda implements Function2<TransformScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ long $offset;
     private /* synthetic */ Object L$0;
@@ -43,7 +43,7 @@ final class TransformableStateKt$panBy$2 extends SuspendLambda implements Functi
             throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
         }
         ResultKt.throwOnFailure(obj);
-        ((TransformScope) this.L$0).mo1210transformByd4ec7I(1.0f, this.$offset, 0.0f);
+        ((TransformScope) this.L$0).mo163transformByd4ec7I(1.0f, this.$offset, 0.0f);
         return Unit.INSTANCE;
     }
 }

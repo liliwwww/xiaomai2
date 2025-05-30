@@ -4,7 +4,7 @@ import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class Target {
     public static final Target DARK_MUTED;
     public static final Target DARK_VIBRANT;
@@ -124,22 +124,22 @@ public final class Target {
         return this.mWeights[1];
     }
 
-    @FloatRange(from = 0.0d, m42to = 1.0d)
+    @FloatRange(from = 0.0d, to = 1.0d)
     public float getMaximumLightness() {
         return this.mLightnessTargets[2];
     }
 
-    @FloatRange(from = 0.0d, m42to = 1.0d)
+    @FloatRange(from = 0.0d, to = 1.0d)
     public float getMaximumSaturation() {
         return this.mSaturationTargets[2];
     }
 
-    @FloatRange(from = 0.0d, m42to = 1.0d)
+    @FloatRange(from = 0.0d, to = 1.0d)
     public float getMinimumLightness() {
         return this.mLightnessTargets[0];
     }
 
-    @FloatRange(from = 0.0d, m42to = 1.0d)
+    @FloatRange(from = 0.0d, to = 1.0d)
     public float getMinimumSaturation() {
         return this.mSaturationTargets[0];
     }
@@ -152,12 +152,12 @@ public final class Target {
         return this.mWeights[0];
     }
 
-    @FloatRange(from = 0.0d, m42to = 1.0d)
+    @FloatRange(from = 0.0d, to = 1.0d)
     public float getTargetLightness() {
         return this.mLightnessTargets[1];
     }
 
-    @FloatRange(from = 0.0d, m42to = 1.0d)
+    @FloatRange(from = 0.0d, to = 1.0d)
     public float getTargetSaturation() {
         return this.mSaturationTargets[1];
     }
@@ -212,25 +212,25 @@ public final class Target {
         }
 
         @NonNull
-        public Builder setMaximumLightness(@FloatRange(from = 0.0d, m42to = 1.0d) float f) {
+        public Builder setMaximumLightness(@FloatRange(from = 0.0d, to = 1.0d) float f) {
             this.mTarget.mLightnessTargets[2] = f;
             return this;
         }
 
         @NonNull
-        public Builder setMaximumSaturation(@FloatRange(from = 0.0d, m42to = 1.0d) float f) {
+        public Builder setMaximumSaturation(@FloatRange(from = 0.0d, to = 1.0d) float f) {
             this.mTarget.mSaturationTargets[2] = f;
             return this;
         }
 
         @NonNull
-        public Builder setMinimumLightness(@FloatRange(from = 0.0d, m42to = 1.0d) float f) {
+        public Builder setMinimumLightness(@FloatRange(from = 0.0d, to = 1.0d) float f) {
             this.mTarget.mLightnessTargets[0] = f;
             return this;
         }
 
         @NonNull
-        public Builder setMinimumSaturation(@FloatRange(from = 0.0d, m42to = 1.0d) float f) {
+        public Builder setMinimumSaturation(@FloatRange(from = 0.0d, to = 1.0d) float f) {
             this.mTarget.mSaturationTargets[0] = f;
             return this;
         }
@@ -248,13 +248,13 @@ public final class Target {
         }
 
         @NonNull
-        public Builder setTargetLightness(@FloatRange(from = 0.0d, m42to = 1.0d) float f) {
+        public Builder setTargetLightness(@FloatRange(from = 0.0d, to = 1.0d) float f) {
             this.mTarget.mLightnessTargets[1] = f;
             return this;
         }
 
         @NonNull
-        public Builder setTargetSaturation(@FloatRange(from = 0.0d, m42to = 1.0d) float f) {
+        public Builder setTargetSaturation(@FloatRange(from = 0.0d, to = 1.0d) float f) {
             this.mTarget.mSaturationTargets[1] = f;
             return this;
         }

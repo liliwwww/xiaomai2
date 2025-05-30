@@ -1,7 +1,6 @@
 package androidx.compose.runtime.snapshots;
 
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
 import kotlin.KotlinNothingValueException;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -10,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TransparentObserverSnapshot extends Snapshot {
     private final boolean mergeParentObservers;
     private final boolean ownsPreviousSnapshot;
@@ -29,29 +28,20 @@ public final class TransparentObserverSnapshot extends Snapshot {
 
     public TransparentObserverSnapshot(@Nullable Snapshot snapshot, @Nullable Function1<Object, Unit> function1, boolean z, boolean z2) {
         super(0, SnapshotIdSet.Companion.getEMPTY(), null);
-        AtomicReference atomicReference;
         Function1<Object, Unit> readObserver$runtime_release;
-        Function1<Object, Unit> mergedReadObserver;
         this.previousSnapshot = snapshot;
         this.mergeParentObservers = z;
         this.ownsPreviousSnapshot = z2;
-        if (snapshot == null || (readObserver$runtime_release = snapshot.getReadObserver$runtime_release()) == null) {
-            atomicReference = SnapshotKt.currentGlobalSnapshot;
-            readObserver$runtime_release = ((GlobalSnapshot) atomicReference.get()).getReadObserver$runtime_release();
-        }
-        mergedReadObserver = SnapshotKt.mergedReadObserver(function1, readObserver$runtime_release, z);
-        this.readObserver = mergedReadObserver;
+        this.readObserver = SnapshotKt.access$mergedReadObserver(function1, (snapshot == null || (readObserver$runtime_release = snapshot.getReadObserver$runtime_release()) == null) ? ((GlobalSnapshot) SnapshotKt.access$getCurrentGlobalSnapshot$p().get()).getReadObserver$runtime_release() : readObserver$runtime_release, z);
         this.root = this;
     }
 
     private final Snapshot getCurrentSnapshot() {
-        AtomicReference atomicReference;
         Snapshot snapshot = this.previousSnapshot;
         if (snapshot != null) {
             return snapshot;
         }
-        atomicReference = SnapshotKt.currentGlobalSnapshot;
-        Object obj = atomicReference.get();
+        Object obj = SnapshotKt.access$getCurrentGlobalSnapshot$p().get();
         Intrinsics.checkNotNullExpressionValue(obj, "currentGlobalSnapshot.get()");
         return (Snapshot) obj;
     }
@@ -118,9 +108,9 @@ public final class TransparentObserverSnapshot extends Snapshot {
 
     @Override // androidx.compose.runtime.snapshots.Snapshot
     /* renamed from: recordModified$runtime_release */
-    public void mo2441recordModified$runtime_release(@NotNull StateObject stateObject) {
+    public void mo799recordModified$runtime_release(@NotNull StateObject stateObject) {
         Intrinsics.checkNotNullParameter(stateObject, "state");
-        getCurrentSnapshot().mo2441recordModified$runtime_release(stateObject);
+        getCurrentSnapshot().mo799recordModified$runtime_release(stateObject);
     }
 
     @Override // androidx.compose.runtime.snapshots.Snapshot
@@ -144,19 +134,14 @@ public final class TransparentObserverSnapshot extends Snapshot {
     @Override // androidx.compose.runtime.snapshots.Snapshot
     @NotNull
     public Snapshot takeNestedSnapshot(@Nullable Function1<Object, Unit> function1) {
-        Snapshot createTransparentSnapshotWithNoParentReadObserver;
-        Function1<Object, Unit> mergedReadObserver$default = SnapshotKt.mergedReadObserver$default(function1, getReadObserver$runtime_release(), false, 4, null);
-        if (this.mergeParentObservers) {
-            return getCurrentSnapshot().takeNestedSnapshot(mergedReadObserver$default);
-        }
-        createTransparentSnapshotWithNoParentReadObserver = SnapshotKt.createTransparentSnapshotWithNoParentReadObserver(getCurrentSnapshot().takeNestedSnapshot(null), mergedReadObserver$default, true);
-        return createTransparentSnapshotWithNoParentReadObserver;
+        Function1<Object, Unit> mergedReadObserver$default = SnapshotKt.mergedReadObserver$default(function1, getReadObserver$runtime_release(), false, 4, (Object) null);
+        return !this.mergeParentObservers ? SnapshotKt.access$createTransparentSnapshotWithNoParentReadObserver(getCurrentSnapshot().takeNestedSnapshot(null), mergedReadObserver$default, true) : getCurrentSnapshot().takeNestedSnapshot(mergedReadObserver$default);
     }
 
     @Override // androidx.compose.runtime.snapshots.Snapshot
     @NotNull
     /* renamed from: nestedActivated$runtime_release, reason: merged with bridge method [inline-methods] */
-    public Void mo2438nestedActivated$runtime_release(@NotNull Snapshot snapshot) {
+    public Void mo797nestedActivated$runtime_release(@NotNull Snapshot snapshot) {
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
         SnapshotStateMapKt.unsupported();
         throw new KotlinNothingValueException();
@@ -165,7 +150,7 @@ public final class TransparentObserverSnapshot extends Snapshot {
     @Override // androidx.compose.runtime.snapshots.Snapshot
     @NotNull
     /* renamed from: nestedDeactivated$runtime_release, reason: merged with bridge method [inline-methods] */
-    public Void mo2439nestedDeactivated$runtime_release(@NotNull Snapshot snapshot) {
+    public Void mo798nestedDeactivated$runtime_release(@NotNull Snapshot snapshot) {
         Intrinsics.checkNotNullParameter(snapshot, "snapshot");
         SnapshotStateMapKt.unsupported();
         throw new KotlinNothingValueException();

@@ -7,7 +7,7 @@ import java.util.Iterator;
 import tb.zp5;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class MotionKeyAttributes extends MotionKey {
     private static final boolean DEBUG = false;
     public static final int KEY_TYPE = 1;
@@ -32,13 +32,13 @@ public class MotionKeyAttributes extends MotionKey {
     private float mProgress = Float.NaN;
 
     public MotionKeyAttributes() {
-        this.mType = 1;
-        this.mCustom = new HashMap<>();
+        ((MotionKey) this).mType = 1;
+        ((MotionKey) this).mCustom = new HashMap();
     }
 
     private float getFloatValue(int i) {
         if (i == 100) {
-            return this.mFramePosition;
+            return ((MotionKey) this).mFramePosition;
         }
         switch (i) {
             case 303:
@@ -79,26 +79,23 @@ public class MotionKeyAttributes extends MotionKey {
     
         if (r1.equals("pivotX") == false) goto L15;
      */
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void addValues(java.util.HashMap<java.lang.String, androidx.constraintlayout.core.motion.utils.SplineSet> r7) {
         /*
             Method dump skipped, instructions count: 608
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.constraintlayout.core.motion.key.MotionKeyAttributes.addValues(java.util.HashMap):void");
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey
-    /* renamed from: clone */
-    public MotionKey mo5574clone() {
+    /* renamed from: clone, reason: merged with bridge method [inline-methods] */
+    public MotionKey m2777clone() {
         return null;
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public void getAttributeNames(HashSet<String> hashSet) {
         if (!Float.isNaN(this.mAlpha)) {
             hashSet.add("alpha");
@@ -142,10 +139,10 @@ public class MotionKeyAttributes extends MotionKey {
         if (!Float.isNaN(this.mProgress)) {
             hashSet.add("progress");
         }
-        if (this.mCustom.size() > 0) {
-            Iterator<String> it = this.mCustom.keySet().iterator();
+        if (((MotionKey) this).mCustom.size() > 0) {
+            Iterator it = ((MotionKey) this).mCustom.keySet().iterator();
             while (it.hasNext()) {
-                hashSet.add("CUSTOM," + it.next());
+                hashSet.add("CUSTOM," + ((String) it.next()));
             }
         }
     }
@@ -154,7 +151,6 @@ public class MotionKeyAttributes extends MotionKey {
         return this.mCurveFit;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.TypedValues
     public int getId(String str) {
         return zp5.a(str);
     }
@@ -162,7 +158,7 @@ public class MotionKeyAttributes extends MotionKey {
     public void printAttributes() {
         HashSet<String> hashSet = new HashSet<>();
         getAttributeNames(hashSet);
-        System.out.println(" ------------- " + this.mFramePosition + " -------------");
+        System.out.println(" ------------- " + ((MotionKey) this).mFramePosition + " -------------");
         String[] strArr = (String[]) hashSet.toArray(new String[0]);
         for (int i = 0; i < strArr.length; i++) {
             int a = zp5.a(strArr[i]);
@@ -170,7 +166,6 @@ public class MotionKeyAttributes extends MotionKey {
         }
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey
     public void setInterpolation(HashMap<String, Integer> hashMap) {
         if (!Float.isNaN(this.mAlpha)) {
             hashMap.put("alpha", Integer.valueOf(this.mCurveFit));
@@ -214,18 +209,17 @@ public class MotionKeyAttributes extends MotionKey {
         if (!Float.isNaN(this.mProgress)) {
             hashMap.put("progress", Integer.valueOf(this.mCurveFit));
         }
-        if (this.mCustom.size() > 0) {
-            Iterator<String> it = this.mCustom.keySet().iterator();
+        if (((MotionKey) this).mCustom.size() > 0) {
+            Iterator it = ((MotionKey) this).mCustom.keySet().iterator();
             while (it.hasNext()) {
-                hashMap.put("CUSTOM," + it.next(), Integer.valueOf(this.mCurveFit));
+                hashMap.put("CUSTOM," + ((String) it.next()), Integer.valueOf(this.mCurveFit));
             }
         }
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, int i2) {
         if (i == 100) {
-            this.mFramePosition = i2;
+            ((MotionKey) this).mFramePosition = i2;
             return true;
         }
         if (i == 301) {
@@ -242,7 +236,6 @@ public class MotionKeyAttributes extends MotionKey {
         return super.setValue(i, i2);
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, float f) {
         if (i != 100) {
             switch (i) {
@@ -296,10 +289,9 @@ public class MotionKeyAttributes extends MotionKey {
         return true;
     }
 
-    @Override // androidx.constraintlayout.core.motion.key.MotionKey, androidx.constraintlayout.core.motion.utils.TypedValues
     public boolean setValue(int i, String str) {
         if (i == 101) {
-            this.mTargetString = str;
+            ((MotionKey) this).mTargetString = str;
             return true;
         }
         if (i != 317) {

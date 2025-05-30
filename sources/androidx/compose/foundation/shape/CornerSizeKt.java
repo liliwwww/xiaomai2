@@ -4,7 +4,7 @@ import androidx.compose.runtime.Stable;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class CornerSizeKt {
 
     @NotNull
@@ -19,7 +19,7 @@ public final class CornerSizeKt {
     @Stable
     @NotNull
     /* renamed from: CornerSize-0680j_4, reason: not valid java name */
-    public static final CornerSize m1686CornerSize0680j_4(float f) {
+    public static final CornerSize m537CornerSize0680j_4(float f) {
         return new DpCornerSize(f, null);
     }
 

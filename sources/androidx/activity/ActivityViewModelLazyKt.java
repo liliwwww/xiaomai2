@@ -13,7 +13,7 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Reflection;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ActivityViewModelLazyKt {
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "Superseded by viewModels that takes a CreationExtras")
     @MainThread
@@ -23,7 +23,7 @@ public final class ActivityViewModelLazyKt {
             function0 = new ActivityViewModelLazyKt$viewModels$factoryPromise$1(componentActivity);
         }
         Intrinsics.reifiedOperationMarker(4, "VM");
-        return new ViewModelLazy(Reflection.getOrCreateKotlinClass(ViewModel.class), new ActivityViewModelLazyKt$viewModels$1(componentActivity), function0, new ActivityViewModelLazyKt$viewModels$2(componentActivity));
+        return new ViewModelLazy(Reflection.getOrCreateKotlinClass(ViewModel.class), new viewModels.1(componentActivity), function0, new viewModels.2(componentActivity));
     }
 
     public static /* synthetic */ Lazy viewModels$default(ComponentActivity componentActivity, Function0 function0, int i, Object obj) {
@@ -35,7 +35,7 @@ public final class ActivityViewModelLazyKt {
             function0 = new ActivityViewModelLazyKt$viewModels$factoryPromise$1(componentActivity);
         }
         Intrinsics.reifiedOperationMarker(4, "VM");
-        return new ViewModelLazy(Reflection.getOrCreateKotlinClass(ViewModel.class), new ActivityViewModelLazyKt$viewModels$1(componentActivity), function0, new ActivityViewModelLazyKt$viewModels$2(componentActivity));
+        return new ViewModelLazy(Reflection.getOrCreateKotlinClass(ViewModel.class), new viewModels.1(componentActivity), function0, new viewModels.2(componentActivity));
     }
 
     @MainThread
@@ -45,7 +45,7 @@ public final class ActivityViewModelLazyKt {
             function02 = new ActivityViewModelLazyKt$viewModels$factoryPromise$2(componentActivity);
         }
         Intrinsics.reifiedOperationMarker(4, "VM");
-        return new ViewModelLazy(Reflection.getOrCreateKotlinClass(ViewModel.class), new ActivityViewModelLazyKt$viewModels$3(componentActivity), function02, new ActivityViewModelLazyKt$viewModels$4(function0, componentActivity));
+        return new ViewModelLazy(Reflection.getOrCreateKotlinClass(ViewModel.class), new viewModels.3(componentActivity), function02, new viewModels.4(function0, componentActivity));
     }
 
     public static /* synthetic */ Lazy viewModels$default(ComponentActivity componentActivity, Function0 function0, Function0 function02, int i, Object obj) {
@@ -60,6 +60,6 @@ public final class ActivityViewModelLazyKt {
             function02 = new ActivityViewModelLazyKt$viewModels$factoryPromise$2(componentActivity);
         }
         Intrinsics.reifiedOperationMarker(4, "VM");
-        return new ViewModelLazy(Reflection.getOrCreateKotlinClass(ViewModel.class), new ActivityViewModelLazyKt$viewModels$3(componentActivity), function02, new ActivityViewModelLazyKt$viewModels$4(function0, componentActivity));
+        return new ViewModelLazy(Reflection.getOrCreateKotlinClass(ViewModel.class), new viewModels.3(componentActivity), function02, new viewModels.4(function0, componentActivity));
     }
 }

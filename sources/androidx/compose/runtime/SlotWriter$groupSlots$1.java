@@ -5,7 +5,7 @@ import kotlin.jvm.internal.markers.KMappedMarker;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SlotWriter$groupSlots$1 implements Iterator<Object>, KMappedMarker {
     final /* synthetic */ int $end;
     private int current;
@@ -29,11 +29,12 @@ public final class SlotWriter$groupSlots$1 implements Iterator<Object>, KMappedM
     @Override // java.util.Iterator
     @Nullable
     public Object next() {
+        Object[] objArr;
         int dataIndexToDataAddress;
         if (!hasNext()) {
             return null;
         }
-        Object[] objArr = this.this$0.slots;
+        objArr = this.this$0.slots;
         SlotWriter slotWriter = this.this$0;
         int i = this.current;
         this.current = i + 1;

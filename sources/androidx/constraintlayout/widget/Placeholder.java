@@ -10,10 +10,9 @@ import android.taobao.windvane.jsbridge.utils.WVUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class Placeholder extends View {
     private View mContent;
     private int mContentId;
@@ -31,13 +30,13 @@ public class Placeholder extends View {
         super.setVisibility(this.mEmptyVisibility);
         this.mContentId = -1;
         if (attributeSet != null) {
-            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, C0923R.styleable.ConstraintLayout_placeholder);
+            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.ConstraintLayout_placeholder);
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
                 int index = obtainStyledAttributes.getIndex(i);
-                if (index == C0923R.styleable.ConstraintLayout_placeholder_content) {
+                if (index == R.styleable.ConstraintLayout_placeholder_content) {
                     this.mContentId = obtainStyledAttributes.getResourceId(index, this.mContentId);
-                } else if (index == C0923R.styleable.ConstraintLayout_placeholder_placeholder_emptyVisibility) {
+                } else if (index == R.styleable.ConstraintLayout_placeholder_placeholder_emptyVisibility) {
                     this.mEmptyVisibility = obtainStyledAttributes.getInt(index, this.mEmptyVisibility);
                 }
             }
@@ -80,7 +79,7 @@ public class Placeholder extends View {
         View view = this.mContent;
         if (view != null) {
             view.setVisibility(0);
-            ((ConstraintLayout.LayoutParams) this.mContent.getLayoutParams()).isInPlaceholder = false;
+            ((ConstraintLayout$LayoutParams) this.mContent.getLayoutParams()).isInPlaceholder = false;
             this.mContent = null;
         }
         this.mContentId = i;
@@ -98,18 +97,18 @@ public class Placeholder extends View {
         if (this.mContent == null) {
             return;
         }
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) getLayoutParams();
-        ConstraintLayout.LayoutParams layoutParams2 = (ConstraintLayout.LayoutParams) this.mContent.getLayoutParams();
-        layoutParams2.widget.setVisibility(0);
-        ConstraintWidget.DimensionBehaviour horizontalDimensionBehaviour = layoutParams.widget.getHorizontalDimensionBehaviour();
+        ConstraintLayout$LayoutParams constraintLayout$LayoutParams = (ConstraintLayout$LayoutParams) getLayoutParams();
+        ConstraintLayout$LayoutParams constraintLayout$LayoutParams2 = (ConstraintLayout$LayoutParams) this.mContent.getLayoutParams();
+        constraintLayout$LayoutParams2.widget.setVisibility(0);
+        ConstraintWidget.DimensionBehaviour horizontalDimensionBehaviour = constraintLayout$LayoutParams.widget.getHorizontalDimensionBehaviour();
         ConstraintWidget.DimensionBehaviour dimensionBehaviour = ConstraintWidget.DimensionBehaviour.FIXED;
         if (horizontalDimensionBehaviour != dimensionBehaviour) {
-            layoutParams.widget.setWidth(layoutParams2.widget.getWidth());
+            constraintLayout$LayoutParams.widget.setWidth(constraintLayout$LayoutParams2.widget.getWidth());
         }
-        if (layoutParams.widget.getVerticalDimensionBehaviour() != dimensionBehaviour) {
-            layoutParams.widget.setHeight(layoutParams2.widget.getHeight());
+        if (constraintLayout$LayoutParams.widget.getVerticalDimensionBehaviour() != dimensionBehaviour) {
+            constraintLayout$LayoutParams.widget.setHeight(constraintLayout$LayoutParams2.widget.getHeight());
         }
-        layoutParams2.widget.setVisibility(8);
+        constraintLayout$LayoutParams2.widget.setVisibility(8);
     }
 
     public void updatePreLayout(ConstraintLayout constraintLayout) {
@@ -119,7 +118,7 @@ public class Placeholder extends View {
         View findViewById = constraintLayout.findViewById(this.mContentId);
         this.mContent = findViewById;
         if (findViewById != null) {
-            ((ConstraintLayout.LayoutParams) findViewById.getLayoutParams()).isInPlaceholder = true;
+            ((ConstraintLayout$LayoutParams) findViewById.getLayoutParams()).isInPlaceholder = true;
             this.mContent.setVisibility(0);
             setVisibility(0);
         }

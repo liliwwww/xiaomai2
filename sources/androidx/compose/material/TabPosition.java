@@ -1,14 +1,14 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.unit.C0856Dp;
 import androidx.compose.runtime.Immutable;
+import androidx.compose.ui.unit.Dp;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TabPosition {
     private final float left;
     private final float width;
@@ -30,30 +30,30 @@ public final class TabPosition {
             return false;
         }
         TabPosition tabPosition = (TabPosition) obj;
-        return C0856Dp.m5221equalsimpl0(this.left, tabPosition.left) && C0856Dp.m5221equalsimpl0(this.width, tabPosition.width);
+        return Dp.equals-impl0(this.left, tabPosition.left) && Dp.equals-impl0(this.width, tabPosition.width);
     }
 
     /* renamed from: getLeft-D9Ej5fM, reason: not valid java name */
-    public final float m2286getLeftD9Ej5fM() {
+    public final float m842getLeftD9Ej5fM() {
         return this.left;
     }
 
     /* renamed from: getRight-D9Ej5fM, reason: not valid java name */
-    public final float m2287getRightD9Ej5fM() {
-        return C0856Dp.m5216constructorimpl(this.left + this.width);
+    public final float m843getRightD9Ej5fM() {
+        return Dp.constructor-impl(this.left + this.width);
     }
 
     /* renamed from: getWidth-D9Ej5fM, reason: not valid java name */
-    public final float m2288getWidthD9Ej5fM() {
+    public final float m844getWidthD9Ej5fM() {
         return this.width;
     }
 
     public int hashCode() {
-        return (C0856Dp.m5222hashCodeimpl(this.left) * 31) + C0856Dp.m5222hashCodeimpl(this.width);
+        return (Dp.hashCode-impl(this.left) * 31) + Dp.hashCode-impl(this.width);
     }
 
     @NotNull
     public String toString() {
-        return "TabPosition(left=" + ((Object) C0856Dp.m5227toStringimpl(this.left)) + ", right=" + ((Object) C0856Dp.m5227toStringimpl(m2287getRightD9Ej5fM())) + ", width=" + ((Object) C0856Dp.m5227toStringimpl(this.width)) + ')';
+        return "TabPosition(left=" + ((Object) Dp.toString-impl(this.left)) + ", right=" + ((Object) Dp.toString-impl(m843getRightD9Ej5fM())) + ", width=" + ((Object) Dp.toString-impl(this.width)) + ')';
     }
 }

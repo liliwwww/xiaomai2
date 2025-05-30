@@ -1,10 +1,11 @@
 package androidx.compose.material.pullrefresh;
 
 import androidx.compose.material.ExperimentalMaterialApi;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.input.nestedscroll.NestedScrollModifierKt;
-import androidx.compose.p004ui.platform.InspectableValueKt;
-import androidx.compose.p004ui.platform.InspectorInfo;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.input.nestedscroll.NestedScrollDispatcher;
+import androidx.compose.ui.input.nestedscroll.NestedScrollModifierKt;
+import androidx.compose.ui.platform.InspectableValueKt;
+import androidx.compose.ui.platform.InspectorInfo;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function1;
@@ -13,7 +14,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PullRefreshKt {
     @ExperimentalMaterialApi
     @NotNull
@@ -34,7 +35,7 @@ public final class PullRefreshKt {
             public final void invoke(@NotNull InspectorInfo inspectorInfo) {
                 Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
                 inspectorInfo.setName("pullRefresh");
-                inspectorInfo.getProperties().set("state", PullRefreshState.this);
+                inspectorInfo.getProperties().set("state", pullRefreshState);
                 inspectorInfo.getProperties().set("enabled", Boolean.valueOf(z));
             }
         } : InspectableValueKt.getNoInspectorInfo(), pullRefresh(Modifier.Companion, new PullRefreshKt$pullRefresh$2$1(pullRefreshState), new PullRefreshKt$pullRefresh$2$2(pullRefreshState, null), z));
@@ -78,6 +79,6 @@ public final class PullRefreshKt {
                 inspectorInfo.getProperties().set("onRelease", function2);
                 inspectorInfo.getProperties().set("enabled", Boolean.valueOf(z));
             }
-        } : InspectableValueKt.getNoInspectorInfo(), NestedScrollModifierKt.nestedScroll$default(Modifier.Companion, new PullRefreshNestedScrollConnection(function1, function2, z), null, 2, null));
+        } : InspectableValueKt.getNoInspectorInfo(), NestedScrollModifierKt.nestedScroll$default(Modifier.Companion, new PullRefreshNestedScrollConnection(function1, function2, z), (NestedScrollDispatcher) null, 2, (Object) null));
     }
 }

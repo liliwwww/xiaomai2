@@ -2,7 +2,8 @@ package androidx.compose.animation.core;
 
 import androidx.compose.animation.core.AnimationVector;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.internal.StabilityInferred;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
@@ -11,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AnimationScope<T, V extends AnimationVector> {
     public static final int $stable = 8;
     private long finishedTimeNanos;
@@ -42,11 +43,11 @@ public final class AnimationScope<T, V extends AnimationVector> {
         this.targetValue = t2;
         this.startTimeNanos = j2;
         this.onCancel = function0;
-        this.value$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(t, null, 2, null);
+        this.value$delegate = SnapshotStateKt.mutableStateOf$default(t, (SnapshotMutationPolicy) null, 2, (Object) null);
         this.velocityVector = (V) AnimationVectorsKt.copy(v);
         this.lastFrameTimeNanos = j;
         this.finishedTimeNanos = Long.MIN_VALUE;
-        this.isRunning$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.valueOf(z), null, 2, null);
+        this.isRunning$delegate = SnapshotStateKt.mutableStateOf$default(Boolean.valueOf(z), (SnapshotMutationPolicy) null, 2, (Object) null);
     }
 
     public final void cancelAnimation() {
@@ -76,7 +77,7 @@ public final class AnimationScope<T, V extends AnimationVector> {
     }
 
     public final T getValue() {
-        return this.value$delegate.getValue();
+        return (T) this.value$delegate.getValue();
     }
 
     public final T getVelocity() {

@@ -17,7 +17,7 @@ import java.util.Map;
 /* compiled from: Taobao */
 @SuppressLint({"UnknownNullness"})
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class FragmentTransitionImpl {
     protected static void bfsAddViewChildren(List<View> list, View view) {
         int size = list.size();
@@ -116,9 +116,9 @@ public abstract class FragmentTransitionImpl {
         runnable.run();
     }
 
-    void setNameOverridesReordered(View view, final ArrayList<View> arrayList, final ArrayList<View> arrayList2, final ArrayList<String> arrayList3, Map<String, String> map) {
-        final int size = arrayList2.size();
-        final ArrayList arrayList4 = new ArrayList();
+    void setNameOverridesReordered(View view, ArrayList<View> arrayList, ArrayList<View> arrayList2, ArrayList<String> arrayList3, Map<String, String> map) {
+        int size = arrayList2.size();
+        ArrayList arrayList4 = new ArrayList();
         for (int i = 0; i < size; i++) {
             View view2 = arrayList.get(i);
             String transitionName = ViewCompat.getTransitionName(view2);
@@ -139,15 +139,7 @@ public abstract class FragmentTransitionImpl {
                 }
             }
         }
-        OneShotPreDrawListener.add(view, new Runnable() { // from class: androidx.fragment.app.FragmentTransitionImpl.1
-            @Override // java.lang.Runnable
-            public void run() {
-                for (int i3 = 0; i3 < size; i3++) {
-                    ViewCompat.setTransitionName((View) arrayList2.get(i3), (String) arrayList3.get(i3));
-                    ViewCompat.setTransitionName((View) arrayList.get(i3), (String) arrayList4.get(i3));
-                }
-            }
-        });
+        OneShotPreDrawListener.add(view, new 1(this, size, arrayList2, arrayList3, arrayList, arrayList4));
     }
 
     public abstract void setSharedElementTargets(Object obj, View view, ArrayList<View> arrayList);

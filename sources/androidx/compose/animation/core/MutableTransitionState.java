@@ -1,14 +1,15 @@
 package androidx.compose.animation.core;
 
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.internal.StabilityInferred;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class MutableTransitionState<S> {
     public static final int $stable = 0;
 
@@ -16,14 +17,14 @@ public final class MutableTransitionState<S> {
     private final MutableState currentState$delegate;
 
     @NotNull
-    private final MutableState isRunning$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
+    private final MutableState isRunning$delegate = SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, (SnapshotMutationPolicy) null, 2, (Object) null);
 
     @NotNull
     private final MutableState targetState$delegate;
 
     public MutableTransitionState(S s) {
-        this.currentState$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(s, null, 2, null);
-        this.targetState$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(s, null, 2, null);
+        this.currentState$delegate = SnapshotStateKt.mutableStateOf$default(s, (SnapshotMutationPolicy) null, 2, (Object) null);
+        this.targetState$delegate = SnapshotStateKt.mutableStateOf$default(s, (SnapshotMutationPolicy) null, 2, (Object) null);
     }
 
     public final S getCurrentState() {
@@ -38,7 +39,6 @@ public final class MutableTransitionState<S> {
         return Intrinsics.areEqual(getCurrentState(), getTargetState()) && !isRunning$animation_core_release();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final boolean isRunning$animation_core_release() {
         return ((Boolean) this.isRunning$delegate.getValue()).booleanValue();
     }

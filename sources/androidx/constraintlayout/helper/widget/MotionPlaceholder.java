@@ -9,10 +9,11 @@ import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import androidx.constraintlayout.core.widgets.ConstraintWidgetContainer;
 import androidx.constraintlayout.core.widgets.Helper;
 import androidx.constraintlayout.core.widgets.Placeholder;
+import androidx.constraintlayout.widget.ConstraintHelper;
 import androidx.constraintlayout.widget.VirtualLayout;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class MotionPlaceholder extends VirtualLayout {
     private static final String TAG = "MotionPlaceholder";
     Placeholder mPlaceholder;
@@ -21,20 +22,17 @@ public class MotionPlaceholder extends VirtualLayout {
         super(context);
     }
 
-    @Override // androidx.constraintlayout.widget.VirtualLayout, androidx.constraintlayout.widget.ConstraintHelper
     protected void init(AttributeSet attributeSet) {
         super.init(attributeSet);
-        this.mHelperWidget = new Placeholder();
+        ((ConstraintHelper) this).mHelperWidget = new Placeholder();
         validateParams();
     }
 
-    @Override // androidx.constraintlayout.widget.ConstraintHelper, android.view.View
     @SuppressLint({"WrongCall"})
     protected void onMeasure(int i, int i2) {
         onMeasure(this.mPlaceholder, i, i2);
     }
 
-    @Override // androidx.constraintlayout.widget.ConstraintHelper
     public void updatePreLayout(ConstraintWidgetContainer constraintWidgetContainer, Helper helper, SparseArray<ConstraintWidget> sparseArray) {
     }
 
@@ -42,7 +40,7 @@ public class MotionPlaceholder extends VirtualLayout {
         super(context, attributeSet);
     }
 
-    @Override // androidx.constraintlayout.widget.VirtualLayout
+    /* JADX WARN: Multi-variable type inference failed */
     public void onMeasure(androidx.constraintlayout.core.widgets.VirtualLayout virtualLayout, int i, int i2) {
         int mode = View.MeasureSpec.getMode(i);
         int size = View.MeasureSpec.getSize(i);

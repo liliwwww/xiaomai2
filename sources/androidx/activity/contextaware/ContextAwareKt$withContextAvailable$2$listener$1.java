@@ -9,7 +9,7 @@ import kotlinx.coroutines.CancellableContinuation;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ContextAwareKt$withContextAvailable$2$listener$1 implements OnContextAvailableListener {
     final /* synthetic */ CancellableContinuation<R> $co;
     final /* synthetic */ Function1<Context, R> $onContextAvailable;

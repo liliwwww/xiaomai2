@@ -1,9 +1,7 @@
 package androidx.constraintlayout.core.parser;
 
-import androidx.core.os.EnvironmentCompat;
-
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class CLParsingException extends Exception {
     private final String mElementClass;
     private final int mLineNumber;
@@ -15,7 +13,7 @@ public class CLParsingException extends Exception {
             this.mElementClass = cLElement.getStrClass();
             this.mLineNumber = cLElement.getLine();
         } else {
-            this.mElementClass = EnvironmentCompat.MEDIA_UNKNOWN;
+            this.mElementClass = "unknown";
             this.mLineNumber = 0;
         }
     }

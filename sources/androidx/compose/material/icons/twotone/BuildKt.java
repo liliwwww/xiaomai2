@@ -1,21 +1,22 @@
 package androidx.compose.material.icons.twotone;
 
 import androidx.compose.material.icons.Icons;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.graphics.SolidColor;
-import androidx.compose.p004ui.graphics.StrokeCap;
-import androidx.compose.p004ui.graphics.StrokeJoin;
-import androidx.compose.p004ui.graphics.vector.ImageVector;
-import androidx.compose.p004ui.graphics.vector.PathBuilder;
-import androidx.compose.p004ui.graphics.vector.VectorKt;
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.ui.graphics.Brush;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.graphics.SolidColor;
+import androidx.compose.ui.graphics.StrokeCap;
+import androidx.compose.ui.graphics.StrokeJoin;
+import androidx.compose.ui.graphics.vector.ImageVector;
+import androidx.compose.ui.graphics.vector.PathBuilder;
+import androidx.compose.ui.graphics.vector.VectorKt;
+import androidx.compose.ui.unit.Dp;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class BuildKt {
 
     @Nullable
@@ -29,14 +30,14 @@ public final class BuildKt {
             Intrinsics.checkNotNull(imageVector);
             return imageVector;
         }
-        ImageVector.Builder builder = new ImageVector.Builder("TwoTone.Build", C0856Dp.m5216constructorimpl(24.0f), C0856Dp.m5216constructorimpl(24.0f), 24.0f, 24.0f, 0L, 0, 96, (DefaultConstructorMarker) null);
+        ImageVector.Builder builder = new ImageVector.Builder("TwoTone.Build", Dp.m2142constructorimpl(24.0f), Dp.m2142constructorimpl(24.0f), 24.0f, 24.0f, 0L, 0, 96, (DefaultConstructorMarker) null);
         int defaultFillType = VectorKt.getDefaultFillType();
         Color.Companion companion = Color.Companion;
-        SolidColor solidColor = new SolidColor(companion.m2813getBlack0d7_KjU(), null);
+        SolidColor solidColor = new SolidColor(companion.getBlack-0d7_KjU(), null);
         StrokeCap.Companion companion2 = StrokeCap.Companion;
-        int m3092getButtKaPHkGw = companion2.m3092getButtKaPHkGw();
+        int i = companion2.getButt-KaPHkGw();
         StrokeJoin.Companion companion3 = StrokeJoin.Companion;
-        int m3102getBevelLxFBmk8 = companion3.m3102getBevelLxFBmk8();
+        int i2 = companion3.getBevel-LxFBmk8();
         PathBuilder pathBuilder = new PathBuilder();
         pathBuilder.moveTo(11.92f, 8.28f);
         pathBuilder.curveToRelative(0.24f, -1.4f, -0.16f, -2.89f, -1.24f, -3.96f);
@@ -52,11 +53,11 @@ public final class BuildKt {
         pathBuilder.lineToRelative(-9.45f, -9.45f);
         pathBuilder.curveToRelative(0.47f, -0.6f, 0.77f, -1.26f, 0.89f, -1.96f);
         pathBuilder.close();
-        ImageVector.Builder.m3310addPathoIyEayM$default(builder, pathBuilder.getNodes(), defaultFillType, "", solidColor, 0.3f, null, 0.3f, 1.0f, m3092getButtKaPHkGw, m3102getBevelLxFBmk8, 1.0f, 0.0f, 0.0f, 0.0f, 14336, null);
+        ImageVector.Builder.addPath-oIyEayM$default(builder, pathBuilder.getNodes(), defaultFillType, "", solidColor, 0.3f, (Brush) null, 0.3f, 1.0f, i, i2, 1.0f, 0.0f, 0.0f, 0.0f, 14336, (Object) null);
         int defaultFillType2 = VectorKt.getDefaultFillType();
-        SolidColor solidColor2 = new SolidColor(companion.m2813getBlack0d7_KjU(), null);
-        int m3092getButtKaPHkGw2 = companion2.m3092getButtKaPHkGw();
-        int m3102getBevelLxFBmk82 = companion3.m3102getBevelLxFBmk8();
+        SolidColor solidColor2 = new SolidColor(companion.getBlack-0d7_KjU(), null);
+        int i3 = companion2.getButt-KaPHkGw();
+        int i4 = companion3.getBevel-LxFBmk8();
         PathBuilder pathBuilder2 = new PathBuilder();
         pathBuilder2.moveTo(22.61f, 18.97f);
         pathBuilder2.lineTo(13.54f, 9.9f);
@@ -86,7 +87,7 @@ public final class BuildKt {
         pathBuilder2.lineToRelative(9.45f, 9.45f);
         pathBuilder2.lineToRelative(-0.88f, 0.9f);
         pathBuilder2.close();
-        ImageVector build = ImageVector.Builder.m3310addPathoIyEayM$default(builder, pathBuilder2.getNodes(), defaultFillType2, "", solidColor2, 1.0f, null, 1.0f, 1.0f, m3092getButtKaPHkGw2, m3102getBevelLxFBmk82, 1.0f, 0.0f, 0.0f, 0.0f, 14336, null).build();
+        ImageVector build = ImageVector.Builder.addPath-oIyEayM$default(builder, pathBuilder2.getNodes(), defaultFillType2, "", solidColor2, 1.0f, (Brush) null, 1.0f, 1.0f, i3, i4, 1.0f, 0.0f, 0.0f, 0.0f, 14336, (Object) null).build();
         _build = build;
         Intrinsics.checkNotNull(build);
         return build;

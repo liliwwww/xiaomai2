@@ -1,6 +1,5 @@
 package androidx.compose.runtime;
 
-import androidx.compose.runtime.Recomposer;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -14,8 +13,8 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.runtime.Recomposer$join$2", f = "Recomposer.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
-final class Recomposer$join$2 extends SuspendLambda implements Function2<Recomposer.State, Continuation<? super Boolean>, Object> {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
+final class Recomposer$join$2 extends SuspendLambda implements Function2<Recomposer$State, Continuation<? super Boolean>, Object> {
     /* synthetic */ Object L$0;
     int label;
 
@@ -31,8 +30,8 @@ final class Recomposer$join$2 extends SuspendLambda implements Function2<Recompo
     }
 
     @Nullable
-    public final Object invoke(@NotNull Recomposer.State state, @Nullable Continuation<? super Boolean> continuation) {
-        return create(state, continuation).invokeSuspend(Unit.INSTANCE);
+    public final Object invoke(@NotNull Recomposer$State recomposer$State, @Nullable Continuation<? super Boolean> continuation) {
+        return create(recomposer$State, continuation).invokeSuspend(Unit.INSTANCE);
     }
 
     @Nullable
@@ -42,6 +41,6 @@ final class Recomposer$join$2 extends SuspendLambda implements Function2<Recompo
             throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
         }
         ResultKt.throwOnFailure(obj);
-        return Boxing.boxBoolean(((Recomposer.State) this.L$0) == Recomposer.State.ShutDown);
+        return Boxing.boxBoolean(((Recomposer$State) this.L$0) == Recomposer$State.ShutDown);
     }
 }

@@ -17,7 +17,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class CompositionKt {
 
     @NotNull
@@ -40,14 +40,14 @@ public final class CompositionKt {
     /* JADX INFO: Access modifiers changed from: private */
     public static final <K, V> void addValue(IdentityArrayMap<K, IdentityArraySet<V>> identityArrayMap, K k, V v) {
         if (identityArrayMap.contains(k)) {
-            IdentityArraySet<V> identityArraySet = identityArrayMap.get(k);
+            IdentityArraySet identityArraySet = (IdentityArraySet) identityArrayMap.get(k);
             if (identityArraySet != null) {
                 identityArraySet.add(v);
                 return;
             }
             return;
         }
-        IdentityArraySet<V> identityArraySet2 = new IdentityArraySet<>();
+        IdentityArraySet identityArraySet2 = new IdentityArraySet();
         identityArraySet2.add(v);
         Unit unit = Unit.INSTANCE;
         identityArrayMap.set(k, identityArraySet2);

@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface Interceptor {
 
     /* compiled from: Taobao */
@@ -17,11 +17,11 @@ public interface Interceptor {
         @Nullable
         Connection connection();
 
-        C1476p proceed(C1474n c1474n) throws IOException;
+        p proceed(n nVar) throws IOException;
 
         int readTimeoutMillis();
 
-        C1474n request();
+        n request();
 
         Chain withConnectTimeout(int i, TimeUnit timeUnit);
 
@@ -32,5 +32,5 @@ public interface Interceptor {
         int writeTimeoutMillis();
     }
 
-    C1476p intercept(Chain chain) throws IOException;
+    p intercept(Chain chain) throws IOException;
 }

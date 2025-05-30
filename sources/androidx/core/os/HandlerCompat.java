@@ -11,29 +11,9 @@ import androidx.annotation.RequiresApi;
 import java.lang.reflect.InvocationTargetException;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class HandlerCompat {
     private static final String TAG = "HandlerCompat";
-
-    /* compiled from: Taobao */
-    @RequiresApi(28)
-    /* loaded from: classes2.dex */
-    private static class Api28Impl {
-        private Api28Impl() {
-        }
-
-        public static Handler createAsync(Looper looper) {
-            return Handler.createAsync(looper);
-        }
-
-        public static boolean postDelayed(Handler handler, Runnable runnable, Object obj, long j) {
-            return handler.postDelayed(runnable, obj, j);
-        }
-
-        public static Handler createAsync(Looper looper, Handler.Callback callback) {
-            return Handler.createAsync(looper, callback);
-        }
-    }
 
     /* compiled from: Taobao */
     @RequiresApi(29)

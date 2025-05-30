@@ -15,10 +15,9 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.Px;
-import androidx.cardview.C0354R;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class CardView extends FrameLayout {
     private static final int[] COLOR_BACKGROUND_ATTR = {R.attr.colorBackground};
     private static final CardViewImpl IMPL;
@@ -164,7 +163,7 @@ public class CardView extends FrameLayout {
     }
 
     public CardView(@NonNull Context context, @Nullable AttributeSet attributeSet) {
-        this(context, attributeSet, C0354R.attr.cardViewStyle);
+        this(context, attributeSet, androidx.cardview.R.attr.cardViewStyle);
     }
 
     public void setCardBackgroundColor(@Nullable ColorStateList colorStateList) {
@@ -228,8 +227,8 @@ public class CardView extends FrameLayout {
             }
         };
         this.mCardViewDelegate = cardViewDelegate;
-        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0354R.styleable.CardView, i, C0354R.style.CardView);
-        int i2 = C0354R.styleable.CardView_cardBackgroundColor;
+        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, androidx.cardview.R.styleable.CardView, i, androidx.cardview.R.style.CardView);
+        int i2 = androidx.cardview.R.styleable.CardView_cardBackgroundColor;
         if (obtainStyledAttributes.hasValue(i2)) {
             valueOf = obtainStyledAttributes.getColorStateList(i2);
         } else {
@@ -239,26 +238,26 @@ public class CardView extends FrameLayout {
             float[] fArr = new float[3];
             Color.colorToHSV(color2, fArr);
             if (fArr[2] > 0.5f) {
-                color = getResources().getColor(C0354R.color.cardview_light_background);
+                color = getResources().getColor(androidx.cardview.R.color.cardview_light_background);
             } else {
-                color = getResources().getColor(C0354R.color.cardview_dark_background);
+                color = getResources().getColor(androidx.cardview.R.color.cardview_dark_background);
             }
             valueOf = ColorStateList.valueOf(color);
         }
         ColorStateList colorStateList = valueOf;
-        float dimension = obtainStyledAttributes.getDimension(C0354R.styleable.CardView_cardCornerRadius, 0.0f);
-        float dimension2 = obtainStyledAttributes.getDimension(C0354R.styleable.CardView_cardElevation, 0.0f);
-        float dimension3 = obtainStyledAttributes.getDimension(C0354R.styleable.CardView_cardMaxElevation, 0.0f);
-        this.mCompatPadding = obtainStyledAttributes.getBoolean(C0354R.styleable.CardView_cardUseCompatPadding, false);
-        this.mPreventCornerOverlap = obtainStyledAttributes.getBoolean(C0354R.styleable.CardView_cardPreventCornerOverlap, true);
-        int dimensionPixelSize = obtainStyledAttributes.getDimensionPixelSize(C0354R.styleable.CardView_contentPadding, 0);
-        rect.left = obtainStyledAttributes.getDimensionPixelSize(C0354R.styleable.CardView_contentPaddingLeft, dimensionPixelSize);
-        rect.top = obtainStyledAttributes.getDimensionPixelSize(C0354R.styleable.CardView_contentPaddingTop, dimensionPixelSize);
-        rect.right = obtainStyledAttributes.getDimensionPixelSize(C0354R.styleable.CardView_contentPaddingRight, dimensionPixelSize);
-        rect.bottom = obtainStyledAttributes.getDimensionPixelSize(C0354R.styleable.CardView_contentPaddingBottom, dimensionPixelSize);
+        float dimension = obtainStyledAttributes.getDimension(androidx.cardview.R.styleable.CardView_cardCornerRadius, 0.0f);
+        float dimension2 = obtainStyledAttributes.getDimension(androidx.cardview.R.styleable.CardView_cardElevation, 0.0f);
+        float dimension3 = obtainStyledAttributes.getDimension(androidx.cardview.R.styleable.CardView_cardMaxElevation, 0.0f);
+        this.mCompatPadding = obtainStyledAttributes.getBoolean(androidx.cardview.R.styleable.CardView_cardUseCompatPadding, false);
+        this.mPreventCornerOverlap = obtainStyledAttributes.getBoolean(androidx.cardview.R.styleable.CardView_cardPreventCornerOverlap, true);
+        int dimensionPixelSize = obtainStyledAttributes.getDimensionPixelSize(androidx.cardview.R.styleable.CardView_contentPadding, 0);
+        rect.left = obtainStyledAttributes.getDimensionPixelSize(androidx.cardview.R.styleable.CardView_contentPaddingLeft, dimensionPixelSize);
+        rect.top = obtainStyledAttributes.getDimensionPixelSize(androidx.cardview.R.styleable.CardView_contentPaddingTop, dimensionPixelSize);
+        rect.right = obtainStyledAttributes.getDimensionPixelSize(androidx.cardview.R.styleable.CardView_contentPaddingRight, dimensionPixelSize);
+        rect.bottom = obtainStyledAttributes.getDimensionPixelSize(androidx.cardview.R.styleable.CardView_contentPaddingBottom, dimensionPixelSize);
         float f = dimension2 > dimension3 ? dimension2 : dimension3;
-        this.mUserSetMinWidth = obtainStyledAttributes.getDimensionPixelSize(C0354R.styleable.CardView_android_minWidth, 0);
-        this.mUserSetMinHeight = obtainStyledAttributes.getDimensionPixelSize(C0354R.styleable.CardView_android_minHeight, 0);
+        this.mUserSetMinWidth = obtainStyledAttributes.getDimensionPixelSize(androidx.cardview.R.styleable.CardView_android_minWidth, 0);
+        this.mUserSetMinHeight = obtainStyledAttributes.getDimensionPixelSize(androidx.cardview.R.styleable.CardView_android_minHeight, 0);
         obtainStyledAttributes.recycle();
         IMPL.initialize(cardViewDelegate, context, colorStateList, dimension, dimension2, f);
     }

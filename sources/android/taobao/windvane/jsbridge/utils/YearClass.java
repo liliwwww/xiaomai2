@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class YearClass {
     public static final int CLASS_2008 = 2008;
     public static final int CLASS_2009 = 2009;
@@ -15,9 +15,7 @@ public class YearClass {
     public static final int CLASS_2013 = 2013;
     public static final int CLASS_2014 = 2014;
     public static final int CLASS_UNKNOWN = -1;
-
-    /* renamed from: MB */
-    private static final long f21MB = 1048576;
+    private static final long MB = 1048576;
     private static final int MHZ_IN_KHZ = 1000;
     private static volatile Integer mYearCategory;
 
@@ -59,10 +57,7 @@ public class YearClass {
         if (cPUMaxFreqKHz == -1) {
             return -1;
         }
-        if (cPUMaxFreqKHz <= 528000) {
-            return 2008;
-        }
-        return cPUMaxFreqKHz <= 620000 ? CLASS_2009 : cPUMaxFreqKHz <= 1020000 ? CLASS_2010 : cPUMaxFreqKHz <= 1220000 ? CLASS_2011 : cPUMaxFreqKHz <= 1520000 ? CLASS_2012 : cPUMaxFreqKHz <= 2020000 ? CLASS_2013 : CLASS_2014;
+        return cPUMaxFreqKHz <= 528000 ? CLASS_2008 : cPUMaxFreqKHz <= 620000 ? CLASS_2009 : cPUMaxFreqKHz <= 1020000 ? CLASS_2010 : cPUMaxFreqKHz <= 1220000 ? CLASS_2011 : cPUMaxFreqKHz <= 1520000 ? CLASS_2012 : cPUMaxFreqKHz <= 2020000 ? CLASS_2013 : CLASS_2014;
     }
 
     private static int getNumCoresYear() {
@@ -70,10 +65,7 @@ public class YearClass {
         if (numberOfCPUCores < 1) {
             return -1;
         }
-        if (numberOfCPUCores == 1) {
-            return 2008;
-        }
-        return numberOfCPUCores <= 3 ? CLASS_2011 : CLASS_2012;
+        return numberOfCPUCores == 1 ? CLASS_2008 : numberOfCPUCores <= 3 ? CLASS_2011 : CLASS_2012;
     }
 
     private static int getRamYear(Context context) {
@@ -81,9 +73,6 @@ public class YearClass {
         if (totalMemory <= 0) {
             return -1;
         }
-        if (totalMemory <= 201326592) {
-            return 2008;
-        }
-        return totalMemory <= 304087040 ? CLASS_2009 : totalMemory <= 536870912 ? CLASS_2010 : totalMemory <= 1073741824 ? CLASS_2011 : totalMemory <= 1610612736 ? CLASS_2012 : totalMemory <= 2147483648L ? CLASS_2013 : CLASS_2014;
+        return totalMemory <= 201326592 ? CLASS_2008 : totalMemory <= 304087040 ? CLASS_2009 : totalMemory <= 536870912 ? CLASS_2010 : totalMemory <= 1073741824 ? CLASS_2011 : totalMemory <= 1610612736 ? CLASS_2012 : totalMemory <= 2147483648L ? CLASS_2013 : CLASS_2014;
     }
 }

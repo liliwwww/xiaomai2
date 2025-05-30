@@ -15,12 +15,13 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.content.LocusIdCompat;
 import androidx.core.graphics.drawable.IconCompat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class NotificationCompatBuilder implements NotificationBuilderWithBuilderAccessor {
     private RemoteViews mBigContentView;
     private final Notification.Builder mBuilder;
@@ -51,9 +52,9 @@ class NotificationCompatBuilder implements NotificationBuilderWithBuilderAccesso
         }
         if (i2 >= 16) {
             this.mBuilder.setSubText(builder.mSubText).setUsesChronometer(builder.mUseChronometer).setPriority(builder.mPriority);
-            Iterator<NotificationCompat.Action> it = builder.mActions.iterator();
+            Iterator it = builder.mActions.iterator();
             while (it.hasNext()) {
-                addAction(it.next());
+                addAction((NotificationCompat$Action) it.next());
             }
             Bundle bundle = builder.mExtras;
             if (bundle != null) {
@@ -85,7 +86,7 @@ class NotificationCompatBuilder implements NotificationBuilderWithBuilderAccesso
             this.mBuilder.setShowWhen(builder.mShowWhen);
         }
         if (i3 >= 19 && i3 < 21 && (combineLists = combineLists(getPeople(builder.mPersonList), builder.mPeople)) != null && !combineLists.isEmpty()) {
-            this.mExtras.putStringArray(NotificationCompat.EXTRA_PEOPLE, (String[]) combineLists.toArray(new String[combineLists.size()]));
+            this.mExtras.putStringArray("android.people", (String[]) combineLists.toArray(new String[combineLists.size()]));
         }
         if (i3 >= 20) {
             this.mBuilder.setLocalOnly(builder.mLocalOnly).setGroup(builder.mGroupKey).setGroupSummary(builder.mGroupSummary).setSortKey(builder.mSortKey);
@@ -107,7 +108,7 @@ class NotificationCompatBuilder implements NotificationBuilderWithBuilderAccesso
                 Bundle bundle3 = new Bundle(bundle2);
                 Bundle bundle4 = new Bundle();
                 for (int i4 = 0; i4 < builder.mInvisibleActions.size(); i4++) {
-                    bundle4.putBundle(Integer.toString(i4), NotificationCompatJellybean.getBundleForAction(builder.mInvisibleActions.get(i4)));
+                    bundle4.putBundle(Integer.toString(i4), NotificationCompatJellybean.getBundleForAction((NotificationCompat$Action) builder.mInvisibleActions.get(i4)));
                 }
                 bundle2.putBundle("invisible_actions", bundle4);
                 bundle3.putBundle("invisible_actions", bundle4);
@@ -144,9 +145,9 @@ class NotificationCompatBuilder implements NotificationBuilderWithBuilderAccesso
             }
         }
         if (i5 >= 28) {
-            Iterator<Person> it3 = builder.mPersonList.iterator();
+            Iterator it3 = builder.mPersonList.iterator();
             while (it3.hasNext()) {
-                this.mBuilder.addPerson(it3.next().toAndroidPerson());
+                this.mBuilder.addPerson(((Person) it3.next()).toAndroidPerson());
             }
         }
         int i6 = Build.VERSION.SDK_INT;
@@ -176,46 +177,46 @@ class NotificationCompatBuilder implements NotificationBuilderWithBuilderAccesso
             this.mBuilder.setDefaults(i8);
             if (i6 >= 26) {
                 if (TextUtils.isEmpty(this.mBuilderCompat.mGroupKey)) {
-                    this.mBuilder.setGroup(NotificationCompat.GROUP_KEY_SILENT);
+                    this.mBuilder.setGroup("silent");
                 }
                 this.mBuilder.setGroupAlertBehavior(this.mGroupAlertBehavior);
             }
         }
     }
 
-    private void addAction(NotificationCompat.Action action) {
+    private void addAction(NotificationCompat$Action notificationCompat$Action) {
         int i = Build.VERSION.SDK_INT;
         if (i < 20) {
             if (i >= 16) {
-                this.mActionExtrasList.add(NotificationCompatJellybean.writeActionAndGetExtras(this.mBuilder, action));
+                this.mActionExtrasList.add(NotificationCompatJellybean.writeActionAndGetExtras(this.mBuilder, notificationCompat$Action));
                 return;
             }
             return;
         }
-        IconCompat iconCompat = action.getIconCompat();
-        Notification.Action.Builder builder = i >= 23 ? new Notification.Action.Builder(iconCompat != null ? iconCompat.toIcon() : null, action.getTitle(), action.getActionIntent()) : new Notification.Action.Builder(iconCompat != null ? iconCompat.getResId() : 0, action.getTitle(), action.getActionIntent());
-        if (action.getRemoteInputs() != null) {
-            for (android.app.RemoteInput remoteInput : RemoteInput.fromCompat(action.getRemoteInputs())) {
+        IconCompat iconCompat = notificationCompat$Action.getIconCompat();
+        Notification.Action.Builder builder = i >= 23 ? new Notification.Action.Builder(iconCompat != null ? iconCompat.toIcon() : null, notificationCompat$Action.getTitle(), notificationCompat$Action.getActionIntent()) : new Notification.Action.Builder(iconCompat != null ? iconCompat.getResId() : 0, notificationCompat$Action.getTitle(), notificationCompat$Action.getActionIntent());
+        if (notificationCompat$Action.getRemoteInputs() != null) {
+            for (android.app.RemoteInput remoteInput : RemoteInput.fromCompat(notificationCompat$Action.getRemoteInputs())) {
                 builder.addRemoteInput(remoteInput);
             }
         }
-        Bundle bundle = action.getExtras() != null ? new Bundle(action.getExtras()) : new Bundle();
-        bundle.putBoolean("android.support.allowGeneratedReplies", action.getAllowGeneratedReplies());
+        Bundle bundle = notificationCompat$Action.getExtras() != null ? new Bundle(notificationCompat$Action.getExtras()) : new Bundle();
+        bundle.putBoolean("android.support.allowGeneratedReplies", notificationCompat$Action.getAllowGeneratedReplies());
         int i2 = Build.VERSION.SDK_INT;
         if (i2 >= 24) {
-            builder.setAllowGeneratedReplies(action.getAllowGeneratedReplies());
+            builder.setAllowGeneratedReplies(notificationCompat$Action.getAllowGeneratedReplies());
         }
-        bundle.putInt("android.support.action.semanticAction", action.getSemanticAction());
+        bundle.putInt("android.support.action.semanticAction", notificationCompat$Action.getSemanticAction());
         if (i2 >= 28) {
-            builder.setSemanticAction(action.getSemanticAction());
+            builder.setSemanticAction(notificationCompat$Action.getSemanticAction());
         }
         if (i2 >= 29) {
-            builder.setContextual(action.isContextual());
+            builder.setContextual(notificationCompat$Action.isContextual());
         }
         if (i2 >= 31) {
-            builder.setAuthenticationRequired(action.isAuthenticationRequired());
+            builder.setAuthenticationRequired(notificationCompat$Action.isAuthenticationRequired());
         }
-        bundle.putBoolean("android.support.action.showsUserInterface", action.getShowsUserInterface());
+        bundle.putBoolean("android.support.action.showsUserInterface", notificationCompat$Action.getShowsUserInterface());
         builder.addExtras(bundle);
         this.mBuilder.addAction(builder.build());
     }
@@ -231,7 +232,7 @@ class NotificationCompatBuilder implements NotificationBuilderWithBuilderAccesso
         ArraySet arraySet = new ArraySet(list.size() + list2.size());
         arraySet.addAll(list);
         arraySet.addAll(list2);
-        return new ArrayList(arraySet);
+        return new ArrayList((Collection) arraySet);
     }
 
     @Nullable
@@ -393,7 +394,6 @@ class NotificationCompatBuilder implements NotificationBuilderWithBuilderAccesso
         return build5;
     }
 
-    @Override // androidx.core.app.NotificationBuilderWithBuilderAccessor
     public Notification.Builder getBuilder() {
         return this.mBuilder;
     }

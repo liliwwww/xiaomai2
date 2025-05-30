@@ -3,6 +3,7 @@ package androidx.concurrent.futures;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import com.google.common.util.concurrent.ListenableFuture;
 import java.util.Locale;
 import java.util.Objects;
@@ -19,8 +20,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class AbstractResolvableFuture<V> implements ListenableFuture<V> {
     static final AtomicHelper ATOMIC_HELPER;
     private static final Object NULL;
@@ -38,76 +39,12 @@ public abstract class AbstractResolvableFuture<V> implements ListenableFuture<V>
     private static final Logger log = Logger.getLogger(AbstractResolvableFuture.class.getName());
 
     /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static abstract class AtomicHelper {
-        private AtomicHelper() {
-        }
-
-        abstract boolean casListeners(AbstractResolvableFuture<?> abstractResolvableFuture, Listener listener, Listener listener2);
-
-        abstract boolean casValue(AbstractResolvableFuture<?> abstractResolvableFuture, Object obj, Object obj2);
-
-        abstract boolean casWaiters(AbstractResolvableFuture<?> abstractResolvableFuture, Waiter waiter, Waiter waiter2);
-
-        abstract void putNext(Waiter waiter, Waiter waiter2);
-
-        abstract void putThread(Waiter waiter, Thread thread);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static final class Cancellation {
-        static final Cancellation CAUSELESS_CANCELLED;
-        static final Cancellation CAUSELESS_INTERRUPTED;
-
-        @Nullable
-        final Throwable cause;
-        final boolean wasInterrupted;
-
-        static {
-            if (AbstractResolvableFuture.GENERATE_CANCELLATION_CAUSES) {
-                CAUSELESS_CANCELLED = null;
-                CAUSELESS_INTERRUPTED = null;
-            } else {
-                CAUSELESS_CANCELLED = new Cancellation(false, null);
-                CAUSELESS_INTERRUPTED = new Cancellation(true, null);
-            }
-        }
-
-        Cancellation(boolean z, @Nullable Throwable th) {
-            this.wasInterrupted = z;
-            this.cause = th;
-        }
-    }
-
-    /* compiled from: Taobao */
     private static final class Failure {
-        static final Failure FALLBACK_INSTANCE = new Failure(new Throwable("Failure occurred while trying to finish a future.") { // from class: androidx.concurrent.futures.AbstractResolvableFuture.Failure.1
-            @Override // java.lang.Throwable
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        });
+        static final Failure FALLBACK_INSTANCE = new Failure(new 1("Failure occurred while trying to finish a future."));
         final Throwable exception;
 
         Failure(Throwable th) {
             this.exception = (Throwable) AbstractResolvableFuture.checkNotNull(th);
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static final class Listener {
-        static final Listener TOMBSTONE = new Listener(null, null);
-        final Executor executor;
-
-        @Nullable
-        Listener next;
-        final Runnable task;
-
-        Listener(Runnable runnable, Executor executor) {
-            this.task = runnable;
-            this.executor = executor;
         }
     }
 
@@ -120,7 +57,7 @@ public abstract class AbstractResolvableFuture<V> implements ListenableFuture<V>
         final AtomicReferenceFieldUpdater<AbstractResolvableFuture, Waiter> waitersUpdater;
 
         SafeAtomicHelper(AtomicReferenceFieldUpdater<Waiter, Thread> atomicReferenceFieldUpdater, AtomicReferenceFieldUpdater<Waiter, Waiter> atomicReferenceFieldUpdater2, AtomicReferenceFieldUpdater<AbstractResolvableFuture, Waiter> atomicReferenceFieldUpdater3, AtomicReferenceFieldUpdater<AbstractResolvableFuture, Listener> atomicReferenceFieldUpdater4, AtomicReferenceFieldUpdater<AbstractResolvableFuture, Object> atomicReferenceFieldUpdater5) {
-            super();
+            super((AnonymousClass1) null);
             this.waiterThreadUpdater = atomicReferenceFieldUpdater;
             this.waiterNextUpdater = atomicReferenceFieldUpdater2;
             this.waitersUpdater = atomicReferenceFieldUpdater3;
@@ -128,27 +65,22 @@ public abstract class AbstractResolvableFuture<V> implements ListenableFuture<V>
             this.valueUpdater = atomicReferenceFieldUpdater5;
         }
 
-        @Override // androidx.concurrent.futures.AbstractResolvableFuture.AtomicHelper
         boolean casListeners(AbstractResolvableFuture<?> abstractResolvableFuture, Listener listener, Listener listener2) {
             return this.listenersUpdater.compareAndSet(abstractResolvableFuture, listener, listener2);
         }
 
-        @Override // androidx.concurrent.futures.AbstractResolvableFuture.AtomicHelper
         boolean casValue(AbstractResolvableFuture<?> abstractResolvableFuture, Object obj, Object obj2) {
             return this.valueUpdater.compareAndSet(abstractResolvableFuture, obj, obj2);
         }
 
-        @Override // androidx.concurrent.futures.AbstractResolvableFuture.AtomicHelper
         boolean casWaiters(AbstractResolvableFuture<?> abstractResolvableFuture, Waiter waiter, Waiter waiter2) {
             return this.waitersUpdater.compareAndSet(abstractResolvableFuture, waiter, waiter2);
         }
 
-        @Override // androidx.concurrent.futures.AbstractResolvableFuture.AtomicHelper
         void putNext(Waiter waiter, Waiter waiter2) {
             this.waiterNextUpdater.lazySet(waiter, waiter2);
         }
 
-        @Override // androidx.concurrent.futures.AbstractResolvableFuture.AtomicHelper
         void putThread(Waiter waiter, Thread thread) {
             this.waiterThreadUpdater.lazySet(waiter, thread);
         }
@@ -175,90 +107,8 @@ public abstract class AbstractResolvableFuture<V> implements ListenableFuture<V>
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static final class SynchronizedHelper extends AtomicHelper {
-        SynchronizedHelper() {
-            super();
-        }
-
-        @Override // androidx.concurrent.futures.AbstractResolvableFuture.AtomicHelper
-        boolean casListeners(AbstractResolvableFuture<?> abstractResolvableFuture, Listener listener, Listener listener2) {
-            synchronized (abstractResolvableFuture) {
-                if (abstractResolvableFuture.listeners != listener) {
-                    return false;
-                }
-                abstractResolvableFuture.listeners = listener2;
-                return true;
-            }
-        }
-
-        @Override // androidx.concurrent.futures.AbstractResolvableFuture.AtomicHelper
-        boolean casValue(AbstractResolvableFuture<?> abstractResolvableFuture, Object obj, Object obj2) {
-            synchronized (abstractResolvableFuture) {
-                if (abstractResolvableFuture.value != obj) {
-                    return false;
-                }
-                abstractResolvableFuture.value = obj2;
-                return true;
-            }
-        }
-
-        @Override // androidx.concurrent.futures.AbstractResolvableFuture.AtomicHelper
-        boolean casWaiters(AbstractResolvableFuture<?> abstractResolvableFuture, Waiter waiter, Waiter waiter2) {
-            synchronized (abstractResolvableFuture) {
-                if (abstractResolvableFuture.waiters != waiter) {
-                    return false;
-                }
-                abstractResolvableFuture.waiters = waiter2;
-                return true;
-            }
-        }
-
-        @Override // androidx.concurrent.futures.AbstractResolvableFuture.AtomicHelper
-        void putNext(Waiter waiter, Waiter waiter2) {
-            waiter.next = waiter2;
-        }
-
-        @Override // androidx.concurrent.futures.AbstractResolvableFuture.AtomicHelper
-        void putThread(Waiter waiter, Thread thread) {
-            waiter.thread = thread;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static final class Waiter {
-        static final Waiter TOMBSTONE = new Waiter(false);
-
-        @Nullable
-        volatile Waiter next;
-
-        @Nullable
-        volatile Thread thread;
-
-        Waiter(boolean z) {
-        }
-
-        void setNext(Waiter waiter) {
-            AbstractResolvableFuture.ATOMIC_HELPER.putNext(this, waiter);
-        }
-
-        void unpark() {
-            Thread thread = this.thread;
-            if (thread != null) {
-                this.thread = null;
-                LockSupport.unpark(thread);
-            }
-        }
-
-        Waiter() {
-            AbstractResolvableFuture.ATOMIC_HELPER.putThread(this, Thread.currentThread());
-        }
-    }
-
     static {
-        AtomicHelper synchronizedHelper;
+        SafeAtomicHelper synchronizedHelper;
         try {
             synchronizedHelper = new SafeAtomicHelper(AtomicReferenceFieldUpdater.newUpdater(Waiter.class, Thread.class, "thread"), AtomicReferenceFieldUpdater.newUpdater(Waiter.class, Waiter.class, "next"), AtomicReferenceFieldUpdater.newUpdater(AbstractResolvableFuture.class, Waiter.class, "waiters"), AtomicReferenceFieldUpdater.newUpdater(AbstractResolvableFuture.class, Listener.class, "listeners"), AtomicReferenceFieldUpdater.newUpdater(AbstractResolvableFuture.class, Object.class, "value"));
             th = null;
@@ -633,7 +483,7 @@ public abstract class AbstractResolvableFuture<V> implements ListenableFuture<V>
         if (v == null) {
             v = (V) NULL;
         }
-        if (!ATOMIC_HELPER.casValue(this, null, v)) {
+        if (!ATOMIC_HELPER.casValue(this, (Object) null, v)) {
             return false;
         }
         complete(this);
@@ -641,7 +491,7 @@ public abstract class AbstractResolvableFuture<V> implements ListenableFuture<V>
     }
 
     protected boolean setException(Throwable th) {
-        if (!ATOMIC_HELPER.casValue(this, null, new Failure((Throwable) checkNotNull(th)))) {
+        if (!ATOMIC_HELPER.casValue(this, (Object) null, new Failure((Throwable) checkNotNull(th)))) {
             return false;
         }
         complete(this);
@@ -654,14 +504,14 @@ public abstract class AbstractResolvableFuture<V> implements ListenableFuture<V>
         Object obj = this.value;
         if (obj == null) {
             if (listenableFuture.isDone()) {
-                if (!ATOMIC_HELPER.casValue(this, null, getFutureValue(listenableFuture))) {
+                if (!ATOMIC_HELPER.casValue(this, (Object) null, getFutureValue(listenableFuture))) {
                     return false;
                 }
                 complete(this);
                 return true;
             }
             SetFuture setFuture = new SetFuture(this, listenableFuture);
-            if (ATOMIC_HELPER.casValue(this, null, setFuture)) {
+            if (ATOMIC_HELPER.casValue(this, (Object) null, setFuture)) {
                 try {
                     listenableFuture.addListener(setFuture, DirectExecutor.INSTANCE);
                 } catch (Throwable th) {

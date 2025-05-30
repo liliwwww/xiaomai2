@@ -4,10 +4,10 @@ import android.graphics.PointF;
 import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView$SmoothScroller;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class LinearSnapHelper extends SnapHelper {
     private static final float INVALID_DISTANCE = 1.0f;
 
@@ -17,8 +17,8 @@ public class LinearSnapHelper extends SnapHelper {
     @Nullable
     private OrientationHelper mVerticalHelper;
 
-    private float computeDistancePerChild(RecyclerView.LayoutManager layoutManager, OrientationHelper orientationHelper) {
-        int childCount = layoutManager.getChildCount();
+    private float computeDistancePerChild(RecyclerView$LayoutManager recyclerView$LayoutManager, OrientationHelper orientationHelper) {
+        int childCount = recyclerView$LayoutManager.getChildCount();
         if (childCount == 0) {
             return 1.0f;
         }
@@ -27,8 +27,8 @@ public class LinearSnapHelper extends SnapHelper {
         int i = Integer.MAX_VALUE;
         int i2 = Integer.MIN_VALUE;
         for (int i3 = 0; i3 < childCount; i3++) {
-            View childAt = layoutManager.getChildAt(i3);
-            int position = layoutManager.getPosition(childAt);
+            View childAt = recyclerView$LayoutManager.getChildAt(i3);
+            int position = recyclerView$LayoutManager.getPosition(childAt);
             if (position != -1) {
                 if (position < i) {
                     view = childAt;
@@ -54,9 +54,9 @@ public class LinearSnapHelper extends SnapHelper {
         return (orientationHelper.getDecoratedStart(view) + (orientationHelper.getDecoratedMeasurement(view) / 2)) - (orientationHelper.getStartAfterPadding() + (orientationHelper.getTotalSpace() / 2));
     }
 
-    private int estimateNextPositionDiffForFling(RecyclerView.LayoutManager layoutManager, OrientationHelper orientationHelper, int i, int i2) {
+    private int estimateNextPositionDiffForFling(RecyclerView$LayoutManager recyclerView$LayoutManager, OrientationHelper orientationHelper, int i, int i2) {
         int[] calculateScrollDistance = calculateScrollDistance(i, i2);
-        float computeDistancePerChild = computeDistancePerChild(layoutManager, orientationHelper);
+        float computeDistancePerChild = computeDistancePerChild(recyclerView$LayoutManager, orientationHelper);
         if (computeDistancePerChild <= 0.0f) {
             return 0;
         }
@@ -64,8 +64,8 @@ public class LinearSnapHelper extends SnapHelper {
     }
 
     @Nullable
-    private View findCenterView(RecyclerView.LayoutManager layoutManager, OrientationHelper orientationHelper) {
-        int childCount = layoutManager.getChildCount();
+    private View findCenterView(RecyclerView$LayoutManager recyclerView$LayoutManager, OrientationHelper orientationHelper) {
+        int childCount = recyclerView$LayoutManager.getChildCount();
         View view = null;
         if (childCount == 0) {
             return null;
@@ -73,7 +73,7 @@ public class LinearSnapHelper extends SnapHelper {
         int startAfterPadding = orientationHelper.getStartAfterPadding() + (orientationHelper.getTotalSpace() / 2);
         int i = Integer.MAX_VALUE;
         for (int i2 = 0; i2 < childCount; i2++) {
-            View childAt = layoutManager.getChildAt(i2);
+            View childAt = recyclerView$LayoutManager.getChildAt(i2);
             int abs = Math.abs((orientationHelper.getDecoratedStart(childAt) + (orientationHelper.getDecoratedMeasurement(childAt) / 2)) - startAfterPadding);
             if (abs < i) {
                 view = childAt;
@@ -84,53 +84,50 @@ public class LinearSnapHelper extends SnapHelper {
     }
 
     @NonNull
-    private OrientationHelper getHorizontalHelper(@NonNull RecyclerView.LayoutManager layoutManager) {
+    private OrientationHelper getHorizontalHelper(@NonNull RecyclerView$LayoutManager recyclerView$LayoutManager) {
         OrientationHelper orientationHelper = this.mHorizontalHelper;
-        if (orientationHelper == null || orientationHelper.mLayoutManager != layoutManager) {
-            this.mHorizontalHelper = OrientationHelper.createHorizontalHelper(layoutManager);
+        if (orientationHelper == null || orientationHelper.mLayoutManager != recyclerView$LayoutManager) {
+            this.mHorizontalHelper = OrientationHelper.createHorizontalHelper(recyclerView$LayoutManager);
         }
         return this.mHorizontalHelper;
     }
 
     @NonNull
-    private OrientationHelper getVerticalHelper(@NonNull RecyclerView.LayoutManager layoutManager) {
+    private OrientationHelper getVerticalHelper(@NonNull RecyclerView$LayoutManager recyclerView$LayoutManager) {
         OrientationHelper orientationHelper = this.mVerticalHelper;
-        if (orientationHelper == null || orientationHelper.mLayoutManager != layoutManager) {
-            this.mVerticalHelper = OrientationHelper.createVerticalHelper(layoutManager);
+        if (orientationHelper == null || orientationHelper.mLayoutManager != recyclerView$LayoutManager) {
+            this.mVerticalHelper = OrientationHelper.createVerticalHelper(recyclerView$LayoutManager);
         }
         return this.mVerticalHelper;
     }
 
-    @Override // androidx.recyclerview.widget.SnapHelper
-    public int[] calculateDistanceToFinalSnap(@NonNull RecyclerView.LayoutManager layoutManager, @NonNull View view) {
+    public int[] calculateDistanceToFinalSnap(@NonNull RecyclerView$LayoutManager recyclerView$LayoutManager, @NonNull View view) {
         int[] iArr = new int[2];
-        if (layoutManager.canScrollHorizontally()) {
-            iArr[0] = distanceToCenter(view, getHorizontalHelper(layoutManager));
+        if (recyclerView$LayoutManager.canScrollHorizontally()) {
+            iArr[0] = distanceToCenter(view, getHorizontalHelper(recyclerView$LayoutManager));
         } else {
             iArr[0] = 0;
         }
-        if (layoutManager.canScrollVertically()) {
-            iArr[1] = distanceToCenter(view, getVerticalHelper(layoutManager));
+        if (recyclerView$LayoutManager.canScrollVertically()) {
+            iArr[1] = distanceToCenter(view, getVerticalHelper(recyclerView$LayoutManager));
         } else {
             iArr[1] = 0;
         }
         return iArr;
     }
 
-    @Override // androidx.recyclerview.widget.SnapHelper
-    public View findSnapView(RecyclerView.LayoutManager layoutManager) {
-        if (layoutManager.canScrollVertically()) {
-            return findCenterView(layoutManager, getVerticalHelper(layoutManager));
+    public View findSnapView(RecyclerView$LayoutManager recyclerView$LayoutManager) {
+        if (recyclerView$LayoutManager.canScrollVertically()) {
+            return findCenterView(recyclerView$LayoutManager, getVerticalHelper(recyclerView$LayoutManager));
         }
-        if (layoutManager.canScrollHorizontally()) {
-            return findCenterView(layoutManager, getHorizontalHelper(layoutManager));
+        if (recyclerView$LayoutManager.canScrollHorizontally()) {
+            return findCenterView(recyclerView$LayoutManager, getHorizontalHelper(recyclerView$LayoutManager));
         }
         return null;
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    @Override // androidx.recyclerview.widget.SnapHelper
-    public int findTargetSnapPosition(RecyclerView.LayoutManager layoutManager, int i, int i2) {
+    public int findTargetSnapPosition(RecyclerView$LayoutManager recyclerView$LayoutManager, int i, int i2) {
         int itemCount;
         View findSnapView;
         int position;
@@ -138,26 +135,26 @@ public class LinearSnapHelper extends SnapHelper {
         PointF computeScrollVectorForPosition;
         int i4;
         int i5;
-        if (!(layoutManager instanceof RecyclerView.SmoothScroller.ScrollVectorProvider) || (itemCount = layoutManager.getItemCount()) == 0 || (findSnapView = findSnapView(layoutManager)) == null || (position = layoutManager.getPosition(findSnapView)) == -1 || (computeScrollVectorForPosition = ((RecyclerView.SmoothScroller.ScrollVectorProvider) layoutManager).computeScrollVectorForPosition(itemCount - 1)) == null) {
+        if (!(recyclerView$LayoutManager instanceof RecyclerView$SmoothScroller.ScrollVectorProvider) || (itemCount = recyclerView$LayoutManager.getItemCount()) == 0 || (findSnapView = findSnapView(recyclerView$LayoutManager)) == null || (position = recyclerView$LayoutManager.getPosition(findSnapView)) == -1 || (computeScrollVectorForPosition = ((RecyclerView$SmoothScroller.ScrollVectorProvider) recyclerView$LayoutManager).computeScrollVectorForPosition(itemCount - 1)) == null) {
             return -1;
         }
-        if (layoutManager.canScrollHorizontally()) {
-            i4 = estimateNextPositionDiffForFling(layoutManager, getHorizontalHelper(layoutManager), i, 0);
+        if (recyclerView$LayoutManager.canScrollHorizontally()) {
+            i4 = estimateNextPositionDiffForFling(recyclerView$LayoutManager, getHorizontalHelper(recyclerView$LayoutManager), i, 0);
             if (computeScrollVectorForPosition.x < 0.0f) {
                 i4 = -i4;
             }
         } else {
             i4 = 0;
         }
-        if (layoutManager.canScrollVertically()) {
-            i5 = estimateNextPositionDiffForFling(layoutManager, getVerticalHelper(layoutManager), 0, i2);
+        if (recyclerView$LayoutManager.canScrollVertically()) {
+            i5 = estimateNextPositionDiffForFling(recyclerView$LayoutManager, getVerticalHelper(recyclerView$LayoutManager), 0, i2);
             if (computeScrollVectorForPosition.y < 0.0f) {
                 i5 = -i5;
             }
         } else {
             i5 = 0;
         }
-        if (layoutManager.canScrollVertically()) {
+        if (recyclerView$LayoutManager.canScrollVertically()) {
             i4 = i5;
         }
         if (i4 == 0) {

@@ -5,7 +5,6 @@ import android.taobao.windvane.connect.api.ApiResponse;
 import android.taobao.windvane.urlintercept.WVURLInterceptData;
 import android.taobao.windvane.util.WVUrlUtil;
 import android.text.TextUtils;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,7 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVURLInterceptHelper {
     private static String TAG = "WVURLInterceptHelper";
     private static final String URL_FILTER_TAG = "_wv_url_hyid";
@@ -29,7 +28,7 @@ public class WVURLInterceptHelper {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public static synchronized android.taobao.windvane.urlintercept.WVURLInterceptData.URLInfo parseByRule(java.lang.String r9, java.util.Set<android.taobao.windvane.urlintercept.WVURLInterceptData.RuleData> r10, java.util.Map<java.lang.String, java.util.regex.Pattern> r11) {
         /*
@@ -61,7 +60,7 @@ public class WVURLInterceptHelper {
             r7.append(r8)     // Catch: java.lang.Throwable -> Lea
             r7.append(r4)     // Catch: java.lang.Throwable -> Lea
             java.lang.String r7 = r7.toString()     // Catch: java.lang.Throwable -> Lea
-            android.taobao.windvane.util.TaoLog.m21e(r6, r7)     // Catch: java.lang.Throwable -> Lea
+            android.taobao.windvane.util.TaoLog.e(r6, r7)     // Catch: java.lang.Throwable -> Lea
         L48:
             if (r5 != 0) goto L4c
             monitor-exit(r0)
@@ -79,7 +78,7 @@ public class WVURLInterceptHelper {
             r11.append(r6)     // Catch: java.lang.Throwable -> Lea
             r11.append(r4)     // Catch: java.lang.Throwable -> Lea
             java.lang.String r11 = r11.toString()     // Catch: java.lang.Throwable -> Lea
-            android.taobao.windvane.util.TaoLog.m18d(r10, r11)     // Catch: java.lang.Throwable -> Lea
+            android.taobao.windvane.util.TaoLog.d(r10, r11)     // Catch: java.lang.Throwable -> Lea
         L73:
             int r10 = r3.target     // Catch: java.lang.Throwable -> Lea
             r1.code = r10     // Catch: java.lang.Throwable -> Lea
@@ -87,7 +86,7 @@ public class WVURLInterceptHelper {
             int r10 = r3.rutype     // Catch: java.lang.Throwable -> Lea
             if (r10 != 0) goto Lb5
             int r9 = r5.groupCount()     // Catch: java.lang.Throwable -> Lea
-            java.util.Map<java.lang.String, java.lang.Integer> r10 = r3.indexp     // Catch: java.lang.Throwable -> Lea
+            java.util.Map r10 = r3.indexp     // Catch: java.lang.Throwable -> Lea
             java.util.Set r10 = r10.entrySet()     // Catch: java.lang.Throwable -> Lea
             java.util.Iterator r10 = r10.iterator()     // Catch: java.lang.Throwable -> Lea
         L8b:
@@ -108,7 +107,7 @@ public class WVURLInterceptHelper {
         Lb5:
             r11 = 1
             if (r10 != r11) goto Le6
-            java.util.Map<java.lang.String, java.lang.String> r10 = r3.namep     // Catch: java.lang.Throwable -> Lea
+            java.util.Map r10 = r3.namep     // Catch: java.lang.Throwable -> Lea
             java.util.Set r10 = r10.entrySet()     // Catch: java.lang.Throwable -> Lea
             java.util.Iterator r10 = r10.iterator()     // Catch: java.lang.Throwable -> Lea
         Lc2:
@@ -178,7 +177,7 @@ public class WVURLInterceptHelper {
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject2 = (JSONObject) jSONArray.get(i);
                         WVURLInterceptData.RuleData ruleData = new WVURLInterceptData.RuleData();
-                        ruleData.target = jSONObject2.getInt(TypedValues.AttributesType.S_TARGET);
+                        ruleData.target = jSONObject2.getInt("target");
                         ruleData.pattern = jSONObject2.getString("pattern");
                         ruleData.rutype = jSONObject2.optInt("rutype");
                         for (String str2 : jSONObject2.optString("indexp").split(",")) {

@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyListItemProviderKt$rememberLazyListItemProvider$1$1 implements LazyListItemProvider, LazyLayoutItemProvider {
     private final /* synthetic */ LazyLayoutItemProvider $$delegate_0;
     final /* synthetic */ State<LazyListItemProviderImpl> $itemProviderState;
@@ -42,10 +42,9 @@ public final class LazyListItemProviderKt$rememberLazyListItemProvider$1$1 imple
         return this.$$delegate_0.getContentType(i);
     }
 
-    @Override // androidx.compose.foundation.lazy.LazyListItemProvider
     @NotNull
     public List<Integer> getHeaderIndexes() {
-        return this.$itemProviderState.getValue().getHeaderIndexes();
+        return ((LazyListItemProviderImpl) this.$itemProviderState.getValue()).getHeaderIndexes();
     }
 
     @Override // androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider
@@ -53,10 +52,9 @@ public final class LazyListItemProviderKt$rememberLazyListItemProvider$1$1 imple
         return this.$$delegate_0.getItemCount();
     }
 
-    @Override // androidx.compose.foundation.lazy.LazyListItemProvider
     @NotNull
     public LazyItemScopeImpl getItemScope() {
-        return this.$itemProviderState.getValue().getItemScope();
+        return ((LazyListItemProviderImpl) this.$itemProviderState.getValue()).getItemScope();
     }
 
     @Override // androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider

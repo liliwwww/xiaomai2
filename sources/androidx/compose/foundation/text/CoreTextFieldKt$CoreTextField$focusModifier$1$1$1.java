@@ -1,9 +1,9 @@
 package androidx.compose.foundation.text;
 
 import androidx.compose.foundation.relocation.BringIntoViewRequester;
-import androidx.compose.p004ui.text.TextLayoutResult;
-import androidx.compose.p004ui.text.input.OffsetMapping;
-import androidx.compose.p004ui.text.input.TextFieldValue;
+import androidx.compose.ui.text.TextLayoutResult;
+import androidx.compose.ui.text.input.OffsetMapping;
+import androidx.compose.ui.text.input.TextFieldValue;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.text.CoreTextFieldKt$CoreTextField$focusModifier$1$1$1", f = "CoreTextField.kt", i = {}, l = {305}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class CoreTextFieldKt$CoreTextField$focusModifier$1$1$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ BringIntoViewRequester $bringIntoViewRequester;
     final /* synthetic */ TextLayoutResultProxy $layoutResult;

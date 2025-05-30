@@ -3,8 +3,8 @@ package androidx.lifecycle;
 import android.os.Bundle;
 import androidx.annotation.MainThread;
 import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.viewmodel.CreationExtras;
+import androidx.lifecycle.viewmodel.CreationExtras$Key;
 import androidx.lifecycle.viewmodel.InitializerViewModelFactoryBuilder;
 import androidx.savedstate.SavedStateRegistry;
 import androidx.savedstate.SavedStateRegistryOwner;
@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @JvmName(name = "SavedStateHandleSupport")
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SavedStateHandleSupport {
 
     @NotNull
@@ -28,23 +28,21 @@ public final class SavedStateHandleSupport {
 
     @JvmField
     @NotNull
-    public static final CreationExtras.Key<SavedStateRegistryOwner> SAVED_STATE_REGISTRY_OWNER_KEY = new CreationExtras.Key<SavedStateRegistryOwner>() { // from class: androidx.lifecycle.SavedStateHandleSupport$SAVED_STATE_REGISTRY_OWNER_KEY$1
-    };
+    public static final CreationExtras$Key<SavedStateRegistryOwner> SAVED_STATE_REGISTRY_OWNER_KEY = new SAVED_STATE_REGISTRY_OWNER_KEY.1();
 
     @JvmField
     @NotNull
-    public static final CreationExtras.Key<ViewModelStoreOwner> VIEW_MODEL_STORE_OWNER_KEY = new CreationExtras.Key<ViewModelStoreOwner>() { // from class: androidx.lifecycle.SavedStateHandleSupport$VIEW_MODEL_STORE_OWNER_KEY$1
-    };
+    public static final CreationExtras$Key<ViewModelStoreOwner> VIEW_MODEL_STORE_OWNER_KEY = new VIEW_MODEL_STORE_OWNER_KEY.1();
 
     @JvmField
     @NotNull
-    public static final CreationExtras.Key<Bundle> DEFAULT_ARGS_KEY = new CreationExtras.Key<Bundle>() { // from class: androidx.lifecycle.SavedStateHandleSupport$DEFAULT_ARGS_KEY$1
+    public static final CreationExtras$Key<Bundle> DEFAULT_ARGS_KEY = new CreationExtras$Key<Bundle>() { // from class: androidx.lifecycle.SavedStateHandleSupport$DEFAULT_ARGS_KEY$1
     };
 
     private static final SavedStateHandle createSavedStateHandle(SavedStateRegistryOwner savedStateRegistryOwner, ViewModelStoreOwner viewModelStoreOwner, String str, Bundle bundle) {
         SavedStateHandlesProvider savedStateHandlesProvider = getSavedStateHandlesProvider(savedStateRegistryOwner);
         SavedStateHandlesVM savedStateHandlesVM = getSavedStateHandlesVM(viewModelStoreOwner);
-        SavedStateHandle savedStateHandle = savedStateHandlesVM.getHandles().get(str);
+        SavedStateHandle savedStateHandle = (SavedStateHandle) savedStateHandlesVM.getHandles().get(str);
         if (savedStateHandle != null) {
             return savedStateHandle;
         }
@@ -53,7 +51,6 @@ public final class SavedStateHandleSupport {
         return createHandle;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @MainThread
     public static final <T extends SavedStateRegistryOwner & ViewModelStoreOwner> void enableSavedStateHandles(@NotNull T t) {
         Intrinsics.checkNotNullParameter(t, "<this>");
@@ -90,7 +87,7 @@ public final class SavedStateHandleSupport {
                 return new SavedStateHandlesVM();
             }
         });
-        return (SavedStateHandlesVM) new ViewModelProvider(viewModelStoreOwner, initializerViewModelFactoryBuilder.build()).get(VIEWMODEL_KEY, SavedStateHandlesVM.class);
+        return new ViewModelProvider(viewModelStoreOwner, initializerViewModelFactoryBuilder.build()).get(VIEWMODEL_KEY, SavedStateHandlesVM.class);
     }
 
     @MainThread
@@ -102,7 +99,7 @@ public final class SavedStateHandleSupport {
             ViewModelStoreOwner viewModelStoreOwner = (ViewModelStoreOwner) creationExtras.get(VIEW_MODEL_STORE_OWNER_KEY);
             if (viewModelStoreOwner != null) {
                 Bundle bundle = (Bundle) creationExtras.get(DEFAULT_ARGS_KEY);
-                String str = (String) creationExtras.get(ViewModelProvider.NewInstanceFactory.VIEW_MODEL_KEY);
+                String str = (String) creationExtras.get(ViewModelProvider$NewInstanceFactory.VIEW_MODEL_KEY);
                 if (str != null) {
                     return createSavedStateHandle(savedStateRegistryOwner, viewModelStoreOwner, str, bundle);
                 }

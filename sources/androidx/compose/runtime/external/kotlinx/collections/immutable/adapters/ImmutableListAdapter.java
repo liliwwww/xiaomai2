@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ImmutableListAdapter<E> implements ImmutableList<E>, List<E>, KMappedMarker {
 
     @NotNull
@@ -170,7 +170,7 @@ public final class ImmutableListAdapter<E> implements ImmutableList<E>, List<E>,
         return this.impl.toString();
     }
 
-    @Override // androidx.compose.runtime.external.kotlinx.collections.immutable.ImmutableList, java.util.List
+    @Override // java.util.List
     @NotNull
     public ImmutableList<E> subList(int i, int i2) {
         return new ImmutableListAdapter(this.impl.subList(i, i2));

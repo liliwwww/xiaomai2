@@ -11,6 +11,7 @@ import android.graphics.Region;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.text.InputFilter;
 import android.text.Layout;
 import android.text.StaticLayout;
@@ -26,23 +27,18 @@ import android.view.ViewConfiguration;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.CompoundButton;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.C0257R;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.text.AllCapsTransformationMethod;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.widget.TextViewCompat;
 import androidx.emoji2.text.EmojiCompat;
-import java.lang.ref.Reference;
-import java.lang.ref.WeakReference;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class SwitchCompat extends CompoundButton implements EmojiCompatConfigurationView {
     private static final String ACCESSIBILITY_EVENT_CLASS_NAME = "android.widget.Switch";
     private static final int MONOSPACE = 3;
@@ -102,57 +98,8 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
     private ColorStateList mTrackTintList;
     private PorterDuff.Mode mTrackTintMode;
     private VelocityTracker mVelocityTracker;
-    private static final Property<SwitchCompat, Float> THUMB_POS = new Property<SwitchCompat, Float>(Float.class, "thumbPos") { // from class: androidx.appcompat.widget.SwitchCompat.1
-        @Override // android.util.Property
-        public Float get(SwitchCompat switchCompat) {
-            return Float.valueOf(switchCompat.mThumbPosition);
-        }
-
-        @Override // android.util.Property
-        public void set(SwitchCompat switchCompat, Float f) {
-            switchCompat.setThumbPosition(f.floatValue());
-        }
-    };
+    private static final Property<SwitchCompat, Float> THUMB_POS = new 1(Float.class, "thumbPos");
     private static final int[] CHECKED_STATE_SET = {R.attr.state_checked};
-
-    /* compiled from: Taobao */
-    @RequiresApi(18)
-    /* loaded from: classes2.dex */
-    static class Api18Impl {
-        private Api18Impl() {
-        }
-
-        @DoNotInline
-        static void setAutoCancel(ObjectAnimator objectAnimator, boolean z) {
-            objectAnimator.setAutoCancel(z);
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static class EmojiCompatInitCallback extends EmojiCompat.InitCallback {
-        private final Reference<SwitchCompat> mOuterWeakRef;
-
-        EmojiCompatInitCallback(SwitchCompat switchCompat) {
-            this.mOuterWeakRef = new WeakReference(switchCompat);
-        }
-
-        @Override // androidx.emoji2.text.EmojiCompat.InitCallback
-        public void onFailed(@Nullable Throwable th) {
-            SwitchCompat switchCompat = this.mOuterWeakRef.get();
-            if (switchCompat != null) {
-                switchCompat.onEmojiCompatInitializedForSwitchText();
-            }
-        }
-
-        @Override // androidx.emoji2.text.EmojiCompat.InitCallback
-        public void onInitialized() {
-            SwitchCompat switchCompat = this.mOuterWeakRef.get();
-            if (switchCompat != null) {
-                switchCompat.onEmojiCompatInitializedForSwitchText();
-            }
-        }
-    }
 
     public SwitchCompat(@NonNull Context context) {
         this(context, null);
@@ -281,7 +228,7 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
         if (Build.VERSION.SDK_INT >= 30) {
             CharSequence charSequence = this.mTextOff;
             if (charSequence == null) {
-                charSequence = getResources().getString(C0257R.string.abc_capital_off);
+                charSequence = getResources().getString(androidx.appcompat.R.string.abc_capital_off);
             }
             ViewCompat.setStateDescription(this, charSequence);
         }
@@ -291,7 +238,7 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
         if (Build.VERSION.SDK_INT >= 30) {
             CharSequence charSequence = this.mTextOn;
             if (charSequence == null) {
-                charSequence = getResources().getString(C0257R.string.abc_capital_on);
+                charSequence = getResources().getString(androidx.appcompat.R.string.abc_capital_on);
             }
             ViewCompat.setStateDescription(this, charSequence);
         }
@@ -337,7 +284,7 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
         boolean z2 = motionEvent.getAction() == 1 && isEnabled();
         boolean isChecked = isChecked();
         if (z2) {
-            this.mVelocityTracker.computeCurrentVelocity(1000);
+            this.mVelocityTracker.computeCurrentVelocity(WVURLRuleConstants.LOGIN);
             float xVelocity = this.mVelocityTracker.getXVelocity();
             if (Math.abs(xVelocity) <= this.mMinFlingVelocity) {
                 z = getTargetCheckedState();
@@ -495,7 +442,7 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
         return this.mThumbDrawable;
     }
 
-    @FloatRange(from = 0.0d, m42to = 1.0d)
+    @FloatRange(from = 0.0d, to = 1.0d)
     protected final float getThumbPosition() {
         return this.mThumbPosition;
     }
@@ -528,7 +475,6 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
         return this.mTrackTintMode;
     }
 
-    @Override // androidx.appcompat.widget.EmojiCompatConfigurationView
     public boolean isEmojiCompatEnabled() {
         return getEmojiTextViewHelper().isEnabled();
     }
@@ -769,7 +715,7 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
     @Override // android.widget.TextView, android.view.View
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public boolean onTouchEvent(android.view.MotionEvent r7) {
         /*
@@ -905,7 +851,6 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
         super.setCustomSelectionActionModeCallback(TextViewCompat.wrapCustomSelectionActionModeCallback(this, callback));
     }
 
-    @Override // androidx.appcompat.widget.EmojiCompatConfigurationView
     public void setEmojiCompatEnabled(boolean z) {
         getEmojiTextViewHelper().setEnabled(z);
         setTextOnInternal(this.mTextOn);
@@ -949,14 +894,14 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
     }
 
     public void setSwitchTextAppearance(Context context, int i) {
-        TintTypedArray obtainStyledAttributes = TintTypedArray.obtainStyledAttributes(context, i, C0257R.styleable.TextAppearance);
-        ColorStateList colorStateList = obtainStyledAttributes.getColorStateList(C0257R.styleable.TextAppearance_android_textColor);
+        TintTypedArray obtainStyledAttributes = TintTypedArray.obtainStyledAttributes(context, i, androidx.appcompat.R.styleable.TextAppearance);
+        ColorStateList colorStateList = obtainStyledAttributes.getColorStateList(androidx.appcompat.R.styleable.TextAppearance_android_textColor);
         if (colorStateList != null) {
             this.mTextColors = colorStateList;
         } else {
             this.mTextColors = getTextColors();
         }
-        int dimensionPixelSize = obtainStyledAttributes.getDimensionPixelSize(C0257R.styleable.TextAppearance_android_textSize, 0);
+        int dimensionPixelSize = obtainStyledAttributes.getDimensionPixelSize(androidx.appcompat.R.styleable.TextAppearance_android_textSize, 0);
         if (dimensionPixelSize != 0) {
             float f = dimensionPixelSize;
             if (f != this.mTextPaint.getTextSize()) {
@@ -964,8 +909,8 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
                 requestLayout();
             }
         }
-        setSwitchTypefaceByIndex(obtainStyledAttributes.getInt(C0257R.styleable.TextAppearance_android_typeface, -1), obtainStyledAttributes.getInt(C0257R.styleable.TextAppearance_android_textStyle, -1));
-        if (obtainStyledAttributes.getBoolean(C0257R.styleable.TextAppearance_textAllCaps, false)) {
+        setSwitchTypefaceByIndex(obtainStyledAttributes.getInt(androidx.appcompat.R.styleable.TextAppearance_android_typeface, -1), obtainStyledAttributes.getInt(androidx.appcompat.R.styleable.TextAppearance_android_textStyle, -1));
+        if (obtainStyledAttributes.getBoolean(androidx.appcompat.R.styleable.TextAppearance_textAllCaps, false)) {
             this.mSwitchTransformationMethod = new AllCapsTransformationMethod(getContext());
         } else {
             this.mSwitchTransformationMethod = null;
@@ -1083,7 +1028,7 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
     }
 
     public SwitchCompat(@NonNull Context context, @Nullable AttributeSet attributeSet) {
-        this(context, attributeSet, C0257R.attr.switchStyle);
+        this(context, attributeSet, androidx.appcompat.R.attr.switchStyle);
     }
 
     public SwitchCompat(@NonNull Context context, @Nullable AttributeSet attributeSet, int i) {
@@ -1103,32 +1048,32 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
         TextPaint textPaint = new TextPaint(1);
         this.mTextPaint = textPaint;
         textPaint.density = getResources().getDisplayMetrics().density;
-        int[] iArr = C0257R.styleable.SwitchCompat;
+        int[] iArr = androidx.appcompat.R.styleable.SwitchCompat;
         TintTypedArray obtainStyledAttributes = TintTypedArray.obtainStyledAttributes(context, attributeSet, iArr, i, 0);
         ViewCompat.saveAttributeDataForStyleable(this, context, iArr, attributeSet, obtainStyledAttributes.getWrappedTypeArray(), i, 0);
-        Drawable drawable = obtainStyledAttributes.getDrawable(C0257R.styleable.SwitchCompat_android_thumb);
+        Drawable drawable = obtainStyledAttributes.getDrawable(androidx.appcompat.R.styleable.SwitchCompat_android_thumb);
         this.mThumbDrawable = drawable;
         if (drawable != null) {
             drawable.setCallback(this);
         }
-        Drawable drawable2 = obtainStyledAttributes.getDrawable(C0257R.styleable.SwitchCompat_track);
+        Drawable drawable2 = obtainStyledAttributes.getDrawable(androidx.appcompat.R.styleable.SwitchCompat_track);
         this.mTrackDrawable = drawable2;
         if (drawable2 != null) {
             drawable2.setCallback(this);
         }
-        setTextOnInternal(obtainStyledAttributes.getText(C0257R.styleable.SwitchCompat_android_textOn));
-        setTextOffInternal(obtainStyledAttributes.getText(C0257R.styleable.SwitchCompat_android_textOff));
-        this.mShowText = obtainStyledAttributes.getBoolean(C0257R.styleable.SwitchCompat_showText, true);
-        this.mThumbTextPadding = obtainStyledAttributes.getDimensionPixelSize(C0257R.styleable.SwitchCompat_thumbTextPadding, 0);
-        this.mSwitchMinWidth = obtainStyledAttributes.getDimensionPixelSize(C0257R.styleable.SwitchCompat_switchMinWidth, 0);
-        this.mSwitchPadding = obtainStyledAttributes.getDimensionPixelSize(C0257R.styleable.SwitchCompat_switchPadding, 0);
-        this.mSplitTrack = obtainStyledAttributes.getBoolean(C0257R.styleable.SwitchCompat_splitTrack, false);
-        ColorStateList colorStateList = obtainStyledAttributes.getColorStateList(C0257R.styleable.SwitchCompat_thumbTint);
+        setTextOnInternal(obtainStyledAttributes.getText(androidx.appcompat.R.styleable.SwitchCompat_android_textOn));
+        setTextOffInternal(obtainStyledAttributes.getText(androidx.appcompat.R.styleable.SwitchCompat_android_textOff));
+        this.mShowText = obtainStyledAttributes.getBoolean(androidx.appcompat.R.styleable.SwitchCompat_showText, true);
+        this.mThumbTextPadding = obtainStyledAttributes.getDimensionPixelSize(androidx.appcompat.R.styleable.SwitchCompat_thumbTextPadding, 0);
+        this.mSwitchMinWidth = obtainStyledAttributes.getDimensionPixelSize(androidx.appcompat.R.styleable.SwitchCompat_switchMinWidth, 0);
+        this.mSwitchPadding = obtainStyledAttributes.getDimensionPixelSize(androidx.appcompat.R.styleable.SwitchCompat_switchPadding, 0);
+        this.mSplitTrack = obtainStyledAttributes.getBoolean(androidx.appcompat.R.styleable.SwitchCompat_splitTrack, false);
+        ColorStateList colorStateList = obtainStyledAttributes.getColorStateList(androidx.appcompat.R.styleable.SwitchCompat_thumbTint);
         if (colorStateList != null) {
             this.mThumbTintList = colorStateList;
             this.mHasThumbTint = true;
         }
-        PorterDuff.Mode parseTintMode = DrawableUtils.parseTintMode(obtainStyledAttributes.getInt(C0257R.styleable.SwitchCompat_thumbTintMode, -1), null);
+        PorterDuff.Mode parseTintMode = DrawableUtils.parseTintMode(obtainStyledAttributes.getInt(androidx.appcompat.R.styleable.SwitchCompat_thumbTintMode, -1), null);
         if (this.mThumbTintMode != parseTintMode) {
             this.mThumbTintMode = parseTintMode;
             this.mHasThumbTintMode = true;
@@ -1136,12 +1081,12 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
         if (this.mHasThumbTint || this.mHasThumbTintMode) {
             applyThumbTint();
         }
-        ColorStateList colorStateList2 = obtainStyledAttributes.getColorStateList(C0257R.styleable.SwitchCompat_trackTint);
+        ColorStateList colorStateList2 = obtainStyledAttributes.getColorStateList(androidx.appcompat.R.styleable.SwitchCompat_trackTint);
         if (colorStateList2 != null) {
             this.mTrackTintList = colorStateList2;
             this.mHasTrackTint = true;
         }
-        PorterDuff.Mode parseTintMode2 = DrawableUtils.parseTintMode(obtainStyledAttributes.getInt(C0257R.styleable.SwitchCompat_trackTintMode, -1), null);
+        PorterDuff.Mode parseTintMode2 = DrawableUtils.parseTintMode(obtainStyledAttributes.getInt(androidx.appcompat.R.styleable.SwitchCompat_trackTintMode, -1), null);
         if (this.mTrackTintMode != parseTintMode2) {
             this.mTrackTintMode = parseTintMode2;
             this.mHasTrackTintMode = true;
@@ -1149,7 +1094,7 @@ public class SwitchCompat extends CompoundButton implements EmojiCompatConfigura
         if (this.mHasTrackTint || this.mHasTrackTintMode) {
             applyTrackTint();
         }
-        int resourceId = obtainStyledAttributes.getResourceId(C0257R.styleable.SwitchCompat_switchTextAppearance, 0);
+        int resourceId = obtainStyledAttributes.getResourceId(androidx.appcompat.R.styleable.SwitchCompat_switchTextAppearance, 0);
         if (resourceId != 0) {
             setSwitchTextAppearance(context, resourceId);
         }

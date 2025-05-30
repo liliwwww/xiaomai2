@@ -1,39 +1,41 @@
 package androidx.compose.material.icons.rounded;
 
-import androidx.compose.material.icons.Icons;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.graphics.SolidColor;
-import androidx.compose.p004ui.graphics.StrokeCap;
-import androidx.compose.p004ui.graphics.StrokeJoin;
-import androidx.compose.p004ui.graphics.vector.ImageVector;
-import androidx.compose.p004ui.graphics.vector.PathBuilder;
-import androidx.compose.p004ui.graphics.vector.VectorKt;
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.material.icons.Icons$Rounded;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.graphics.SolidColor;
+import androidx.compose.ui.graphics.StrokeCap;
+import androidx.compose.ui.graphics.StrokeJoin;
+import androidx.compose.ui.graphics.vector.ImageVector;
+import androidx.compose.ui.graphics.vector.PathBuilder;
+import androidx.compose.ui.graphics.vector.VectorKt;
+import androidx.compose.ui.unit.Dp;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class BuildKt {
 
     @Nullable
     private static ImageVector _build;
 
     @NotNull
-    public static final ImageVector getBuild(@NotNull Icons.Rounded rounded) {
-        Intrinsics.checkNotNullParameter(rounded, "<this>");
+    public static final ImageVector getBuild(@NotNull Icons$Rounded icons$Rounded) {
+        ImageVector.Builder m1327addPathoIyEayM;
+        Intrinsics.checkNotNullParameter(icons$Rounded, "<this>");
         ImageVector imageVector = _build;
         if (imageVector != null) {
             Intrinsics.checkNotNull(imageVector);
             return imageVector;
         }
-        ImageVector.Builder builder = new ImageVector.Builder("Rounded.Build", C0856Dp.m5216constructorimpl(24.0f), C0856Dp.m5216constructorimpl(24.0f), 24.0f, 24.0f, 0L, 0, 96, (DefaultConstructorMarker) null);
+        ImageVector.Builder builder = new ImageVector.Builder("Rounded.Build", Dp.constructor-impl(24.0f), Dp.constructor-impl(24.0f), 24.0f, 24.0f, 0L, 0, 96, (DefaultConstructorMarker) null);
         int defaultFillType = VectorKt.getDefaultFillType();
-        SolidColor solidColor = new SolidColor(Color.Companion.m2813getBlack0d7_KjU(), null);
-        int m3092getButtKaPHkGw = StrokeCap.Companion.m3092getButtKaPHkGw();
-        int m3102getBevelLxFBmk8 = StrokeJoin.Companion.m3102getBevelLxFBmk8();
+        SolidColor solidColor = new SolidColor(Color.Companion.m1074getBlack0d7_KjU(), (DefaultConstructorMarker) null);
+        int m1208getButtKaPHkGw = StrokeCap.Companion.m1208getButtKaPHkGw();
+        int m1211getBevelLxFBmk8 = StrokeJoin.Companion.m1211getBevelLxFBmk8();
         PathBuilder pathBuilder = new PathBuilder();
         pathBuilder.moveTo(12.09f, 2.91f);
         pathBuilder.curveTo(10.08f, 0.9f, 7.07f, 0.49f, 4.65f, 1.67f);
@@ -50,7 +52,8 @@ public final class BuildKt {
         pathBuilder.lineTo(13.54f, 9.9f);
         pathBuilder.curveToRelative(0.92f, -2.34f, 0.44f, -5.1f, -1.45f, -6.99f);
         pathBuilder.close();
-        ImageVector build = ImageVector.Builder.m3310addPathoIyEayM$default(builder, pathBuilder.getNodes(), defaultFillType, "", solidColor, 1.0f, null, 1.0f, 1.0f, m3092getButtKaPHkGw, m3102getBevelLxFBmk8, 1.0f, 0.0f, 0.0f, 0.0f, 14336, null).build();
+        m1327addPathoIyEayM = builder.m1327addPathoIyEayM(pathBuilder.getNodes(), (r30 & 2) != 0 ? VectorKt.getDefaultFillType() : defaultFillType, (r30 & 4) != 0 ? "" : "", (r30 & 8) != 0 ? null : solidColor, (r30 & 16) != 0 ? 1.0f : 1.0f, (r30 & 32) == 0 ? null : null, (r30 & 64) != 0 ? 1.0f : 1.0f, (r30 & 128) != 0 ? 0.0f : 1.0f, (r30 & 256) != 0 ? VectorKt.getDefaultStrokeLineCap() : m1208getButtKaPHkGw, (r30 & 512) != 0 ? VectorKt.getDefaultStrokeLineJoin() : m1211getBevelLxFBmk8, (r30 & AccessibilityEventCompat.TYPE_TOUCH_EXPLORATION_GESTURE_END) != 0 ? 4.0f : 1.0f, (r30 & AccessibilityEventCompat.TYPE_WINDOW_CONTENT_CHANGED) != 0 ? 0.0f : 0.0f, (r30 & AccessibilityEventCompat.TYPE_VIEW_SCROLLED) == 0 ? 0.0f : 1.0f, (r30 & AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED) == 0 ? 0.0f : 0.0f);
+        ImageVector build = m1327addPathoIyEayM.build();
         _build = build;
         Intrinsics.checkNotNull(build);
         return build;

@@ -12,10 +12,10 @@ import android.os.Build;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import androidx.core.view.ViewCompat;
-import androidx.swiperefreshlayout.C1308R;
+import androidx.swiperefreshlayout.R$styleable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class CircleImageView extends ImageView {
     private static final int DEFAULT_BACKGROUND_COLOR = -328966;
     private static final int FILL_SHADOW_COLOR = 1023410176;
@@ -67,8 +67,8 @@ class CircleImageView extends ImageView {
         int i = (int) (Y_OFFSET * f);
         int i2 = (int) (0.0f * f);
         this.mShadowRadius = (int) (SHADOW_RADIUS * f);
-        TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(C1308R.styleable.SwipeRefreshLayout);
-        this.mBackgroundColor = obtainStyledAttributes.getColor(C1308R.styleable.f491xaa980688, DEFAULT_BACKGROUND_COLOR);
+        TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(R$styleable.SwipeRefreshLayout);
+        this.mBackgroundColor = obtainStyledAttributes.getColor(R$styleable.SwipeRefreshLayout_swipeRefreshLayoutProgressSpinnerBackgroundColor, DEFAULT_BACKGROUND_COLOR);
         obtainStyledAttributes.recycle();
         if (elevationSupported()) {
             shapeDrawable = new ShapeDrawable(new OvalShape());

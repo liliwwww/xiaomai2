@@ -1,7 +1,7 @@
 package androidx.compose.runtime.reflect;
 
 import androidx.compose.runtime.Composer;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
+import androidx.constraintlayout.core.motion.utils.TypedValues$Custom;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ComposableMethodKt {
     private static final int BITS_PER_INT = 31;
 
@@ -169,12 +169,12 @@ public final class ComposableMethodKt {
                 }
                 return null;
             case 64711720:
-                if (name.equals(TypedValues.Custom.S_BOOLEAN)) {
+                if (name.equals(TypedValues$Custom.S_BOOLEAN)) {
                     return Boolean.FALSE;
                 }
                 return null;
             case 97526364:
-                if (name.equals(TypedValues.Custom.S_FLOAT)) {
+                if (name.equals(TypedValues$Custom.S_FLOAT)) {
                     return Float.valueOf(0.0f);
                 }
                 return null;

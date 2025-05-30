@@ -11,7 +11,7 @@ import com.taobao.opentracing.api.SpanContext;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class FullTraceUtils {
     private static final String TAG = "FullTraceUtils";
 
@@ -63,7 +63,7 @@ public class FullTraceUtils {
         if (spanWrapper != null) {
             return makeSpanChildOf(str, str2, spanWrapper.context());
         }
-        TaoLog.m24i(TAG, "falcoSpan=null " + CommonUtils.getStackTrace(new Exception().fillInStackTrace()));
+        TaoLog.i(TAG, "falcoSpan=null " + CommonUtils.getStackTrace(new Exception().fillInStackTrace()));
         return null;
     }
 
@@ -78,7 +78,7 @@ public class FullTraceUtils {
         if (falcoSpan != null) {
             return makeSpanChildOf(str, str2, falcoSpan.context());
         }
-        TaoLog.m24i(TAG, "falcoSpan=null " + CommonUtils.getStackTrace(new Exception().fillInStackTrace()));
+        TaoLog.i(TAG, "falcoSpan=null " + CommonUtils.getStackTrace(new Exception().fillInStackTrace()));
         return null;
     }
 
@@ -113,7 +113,7 @@ public class FullTraceUtils {
             if (spanContext != null) {
                 buildSpan.asChildOf(spanContext);
             } else {
-                TaoLog.m24i(TAG, "spanContext=null " + CommonUtils.getStackTrace(new Exception().fillInStackTrace()));
+                TaoLog.i(TAG, "spanContext=null " + CommonUtils.getStackTrace(new Exception().fillInStackTrace()));
             }
             return buildSpan.startContainerSpan();
         } catch (Throwable th) {
@@ -134,10 +134,10 @@ public class FullTraceUtils {
                 if (extractMapToContext != null) {
                     buildSpan.asChildOf(extractMapToContext);
                 } else {
-                    TaoLog.m24i(TAG, "openTracingContextMap=" + map + CommonUtils.getStackTrace(new Exception().fillInStackTrace()));
+                    TaoLog.i(TAG, "openTracingContextMap=" + map + CommonUtils.getStackTrace(new Exception().fillInStackTrace()));
                 }
             } else {
-                TaoLog.m24i(TAG, "openTracingContextMap==null " + CommonUtils.getStackTrace(new Exception().fillInStackTrace()));
+                TaoLog.i(TAG, "openTracingContextMap==null " + CommonUtils.getStackTrace(new Exception().fillInStackTrace()));
             }
             return buildSpan.startContainerSpan();
         } catch (Throwable th) {

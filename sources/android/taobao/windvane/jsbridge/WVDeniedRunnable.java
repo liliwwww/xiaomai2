@@ -1,10 +1,9 @@
 package android.taobao.windvane.jsbridge;
 
 import android.text.TextUtils;
-import androidx.core.app.NotificationCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVDeniedRunnable implements Runnable {
     WVCallBackContext callback;
     String errorMsg;
@@ -18,7 +17,7 @@ public class WVDeniedRunnable implements Runnable {
     @Override // java.lang.Runnable
     public void run() {
         WVResult wVResult = new WVResult();
-        wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, this.errorMsg);
+        wVResult.addData("msg", this.errorMsg);
         if (!TextUtils.isEmpty(this.state)) {
             wVResult.addData("state", this.state);
         }

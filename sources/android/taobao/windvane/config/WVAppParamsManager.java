@@ -3,7 +3,7 @@ package android.taobao.windvane.config;
 import android.text.TextUtils;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVAppParamsManager {
     private static WVAppParamsManager Instance;
     private WVAppParams params;

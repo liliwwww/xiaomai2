@@ -12,7 +12,7 @@ import androidx.core.graphics.PathParser;
 import org.xmlpull.v1.XmlPullParser;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class PatternPathMotion extends PathMotion {
     private Path mOriginalPatternPath;
     private final Path mPatternPath;
@@ -30,7 +30,6 @@ public class PatternPathMotion extends PathMotion {
         return (float) Math.sqrt((f * f) + (f2 * f2));
     }
 
-    @Override // androidx.transition.PathMotion
     public Path getPath(float f, float f2, float f3, float f4) {
         float f5 = f3 - f;
         float f6 = f4 - f2;

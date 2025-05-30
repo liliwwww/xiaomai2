@@ -3,58 +3,15 @@ package androidx.core.view;
 import android.os.Build;
 import android.view.View;
 import android.view.Window;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class WindowCompat {
     public static final int FEATURE_ACTION_BAR = 8;
     public static final int FEATURE_ACTION_BAR_OVERLAY = 9;
     public static final int FEATURE_ACTION_MODE_OVERLAY = 10;
-
-    /* compiled from: Taobao */
-    @RequiresApi(16)
-    /* loaded from: classes.dex */
-    static class Api16Impl {
-        private Api16Impl() {
-        }
-
-        @DoNotInline
-        static void setDecorFitsSystemWindows(@NonNull Window window, boolean z) {
-            View decorView = window.getDecorView();
-            int systemUiVisibility = decorView.getSystemUiVisibility();
-            decorView.setSystemUiVisibility(z ? systemUiVisibility & (-1793) : systemUiVisibility | 1792);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(28)
-    /* loaded from: classes.dex */
-    static class Api28Impl {
-        private Api28Impl() {
-        }
-
-        @DoNotInline
-        static <T> T requireViewById(Window window, int i) {
-            return (T) window.requireViewById(i);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(30)
-    /* loaded from: classes.dex */
-    static class Api30Impl {
-        private Api30Impl() {
-        }
-
-        @DoNotInline
-        static void setDecorFitsSystemWindows(@NonNull Window window, boolean z) {
-            window.setDecorFitsSystemWindows(z);
-        }
-    }
 
     private WindowCompat() {
     }

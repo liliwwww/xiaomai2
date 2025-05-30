@@ -1,12 +1,10 @@
 package android.taobao.windvane.webview;
 
 import android.annotation.TargetApi;
-import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -24,12 +22,9 @@ import android.taobao.windvane.jsbridge.WVJsBridge;
 import android.taobao.windvane.jsbridge.WVPluginEntryManager;
 import android.taobao.windvane.jspatch.WVJsPatchListener;
 import android.taobao.windvane.monitor.WVMonitorService;
-import android.taobao.windvane.runtimepermission.PermissionProposer;
-import android.taobao.windvane.service.WVEventId;
 import android.taobao.windvane.service.WVEventService;
 import android.taobao.windvane.urlintercept.WVURLInterceptService;
 import android.taobao.windvane.util.EnvUtil;
-import android.taobao.windvane.util.ImageTool;
 import android.taobao.windvane.util.TaoLog;
 import android.taobao.windvane.util.WVConstants;
 import android.taobao.windvane.util.WVNativeCallbackUtil;
@@ -42,7 +37,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.CookieManager;
-import android.webkit.DownloadListener;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -56,7 +50,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
     private static final String TAG = "WVWebView";
     private static boolean evaluateJavascriptSupported;
@@ -65,12 +59,8 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
     protected Context context;
     private String currentUrl;
     private String dataOnActive;
-
-    /* renamed from: dx */
-    float f33dx;
-
-    /* renamed from: dy */
-    float f34dy;
+    float dx;
+    float dy;
     protected WVPluginEntryManager entryManager;
     protected boolean isAlive;
     boolean isUser;
@@ -96,32 +86,6 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
     private boolean wvSupportFileSchema;
     private boolean wvSupportNativeJs;
     private WVUIModel wvUIModel;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    class WVDownLoadListener implements DownloadListener {
-        WVDownLoadListener() {
-        }
-
-        @Override // android.webkit.DownloadListener
-        public void onDownloadStart(String str, String str2, String str3, String str4, long j) {
-            if (TaoLog.getLogStatus()) {
-                TaoLog.m18d(WVWebView.TAG, "Download start, url: " + str + " contentDisposition: " + str3 + " mimetype: " + str4 + " contentLength: " + j);
-            }
-            if (!WVWebView.this.supportDownload) {
-                TaoLog.m30w(WVWebView.TAG, "DownloadListener is not support for webview.");
-                return;
-            }
-            Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(str));
-            intent.setFlags(268435456);
-            try {
-                WVWebView.this.context.startActivity(intent);
-            } catch (ActivityNotFoundException unused) {
-                Toast.makeText(WVWebView.this.context, "对不起，您的设备找不到相应的程序", 1).show();
-                TaoLog.m21e(WVWebView.TAG, "DownloadListener not found activity to open this url.");
-            }
-        }
-    }
 
     static {
         evaluateJavascriptSupported = Build.VERSION.SDK_INT >= 19;
@@ -152,30 +116,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
         String[] strArr = new String[1];
         strArr[0] = EnvUtil.isCN() ? "保存到相册" : "Save picture to album";
         this.mPopupMenuTags = strArr;
-        this.mPopupClickListener = new View.OnClickListener() { // from class: android.taobao.windvane.webview.WVWebView.2
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                if (WVWebView.this.mPopupMenuTags != null && WVWebView.this.mPopupMenuTags.length > 0 && WVWebView.this.mPopupMenuTags[0].equals(view.getTag())) {
-                    try {
-                        PermissionProposer.buildPermissionTask(WVWebView.this.context, new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}).setTaskOnPermissionGranted(new Runnable() { // from class: android.taobao.windvane.webview.WVWebView.2.2
-                            @Override // java.lang.Runnable
-                            public void run() {
-                                ImageTool.saveImageToDCIM(WVWebView.this.context.getApplicationContext(), WVWebView.this.mImageUrl, WVWebView.this.mHandler);
-                            }
-                        }).setTaskOnPermissionDenied(new Runnable() { // from class: android.taobao.windvane.webview.WVWebView.2.1
-                            @Override // java.lang.Runnable
-                            public void run() {
-                                WVWebView.this.mHandler.sendEmptyMessage(WVConstants.NOTIFY_SAVE_IMAGE_FAIL);
-                            }
-                        }).execute();
-                    } catch (Exception unused) {
-                    }
-                }
-                if (WVWebView.this.mPopupController != null) {
-                    WVWebView.this.mPopupController.hide();
-                }
-            }
-        };
+        this.mPopupClickListener = new 2(this);
         this.isUser = true;
         this.mEventSparseArray = new SparseArray<>();
         this.context = context;
@@ -185,10 +126,10 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
     private void init() {
         int i;
         if (EnvUtil.isDebug()) {
-            WVEventService.getInstance().onEvent(WVEventId.WEBVIEW_ONCREATE);
+            WVEventService.getInstance().onEvent(3008);
         }
         this.mHandler = new Handler(Looper.getMainLooper(), this);
-        WVWebViewClient wVWebViewClient = new WVWebViewClient(this.context);
+        WebViewClient wVWebViewClient = new WVWebViewClient(this.context);
         this.webViewClient = wVWebViewClient;
         super.setWebViewClient(wVWebViewClient);
         WVWebChromeClient wVWebChromeClient = new WVWebChromeClient(this.context);
@@ -211,7 +152,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
         String userAgentString = settings.getUserAgentString();
         if (userAgentString != null) {
             if (!TextUtils.isEmpty(appTag) && !TextUtils.isEmpty(appVersion)) {
-                userAgentString = userAgentString + " AliApp(" + appTag + WVNativeCallbackUtil.SEPERATER + appVersion + ")";
+                userAgentString = userAgentString + " AliApp(" + appTag + "/" + appVersion + ")";
             }
             if (!userAgentString.contains("TTID/") && !TextUtils.isEmpty(GlobalConfig.getInstance().getTtid())) {
                 userAgentString = userAgentString + " TTID/" + GlobalConfig.getInstance().getTtid();
@@ -278,34 +219,10 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
             }
         }
         this.wvUIModel = new WVUIModel(this.context, this);
-        View.OnLongClickListener onLongClickListener = new View.OnLongClickListener() { // from class: android.taobao.windvane.webview.WVWebView.1
-            @Override // android.view.View.OnLongClickListener
-            public boolean onLongClick(View view) {
-                WebView.HitTestResult hitTestResult;
-                try {
-                    hitTestResult = WVWebView.this.getHitTestResult();
-                } catch (Exception unused2) {
-                    hitTestResult = null;
-                }
-                if (hitTestResult == null || !WVWebView.this.longPressSaveImage) {
-                    return false;
-                }
-                if (TaoLog.getLogStatus()) {
-                    TaoLog.m18d(WVWebView.TAG, "Long click on WebView, " + hitTestResult.getExtra());
-                }
-                if (hitTestResult.getType() != 8 && hitTestResult.getType() != 5) {
-                    return false;
-                }
-                WVWebView.this.mImageUrl = hitTestResult.getExtra();
-                WVWebView wVWebView = WVWebView.this;
-                wVWebView.mPopupController = new PopupWindowController(wVWebView.context, wVWebView, wVWebView.mPopupMenuTags, WVWebView.this.mPopupClickListener);
-                WVWebView.this.mPopupController.show();
-                return true;
-            }
-        };
+        View.OnLongClickListener onLongClickListener = new 1(this);
         this.mLongClickListener = onLongClickListener;
         setOnLongClickListener(onLongClickListener);
-        setDownloadListener(new WVDownLoadListener());
+        setDownloadListener(new WVDownLoadListener(this));
         WVTweakWebCoreHandler.tryTweakWebCoreHandler();
         this.isAlive = true;
         if (WVMonitorService.getPackageMonitorInterface() != null) {
@@ -332,7 +249,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
         if (isAttachedToWindow() || Build.VERSION.SDK_INT >= 24) {
             return post(runnable);
         }
-        TaoLog.m18d(TAG, " webview has not attach to window");
+        TaoLog.d(TAG, " webview has not attach to window");
         IWVWebView.taskQueue.add(runnable);
         return true;
     }
@@ -345,7 +262,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
         if (this.wvSupportNativeJs || Build.VERSION.SDK_INT >= 17) {
             super.addJavascriptInterface(obj, str);
         } else {
-            TaoLog.m21e(TAG, "addJavascriptInterface is disabled before API level 17 for security reason.");
+            TaoLog.e(TAG, "addJavascriptInterface is disabled before API level 17 for security reason.");
         }
     }
 
@@ -372,14 +289,14 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
         if (i > 0) {
             this.mPageLoadedCount = i - 1;
         } else {
-            TaoLog.m21e(TAG, "back pressed, mPageLoadedCount=" + this.mPageLoadedCount);
+            TaoLog.e(TAG, "back pressed, mPageLoadedCount=" + this.mPageLoadedCount);
         }
         return true;
     }
 
     @Override // android.webkit.WebView
     public boolean canGoBack() {
-        if (WVEventService.getInstance().onEvent(WVEventId.PAGE_back).isSuccess) {
+        if (WVEventService.getInstance().onEvent(3004).isSuccess) {
             return false;
         }
         return super.canGoBack();
@@ -424,7 +341,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
                 handler.removeCallbacksAndMessages(null);
                 this.mHandler = null;
             }
-            WVEventService.getInstance().onEvent(WVEventId.PAGE_destroy);
+            WVEventService.getInstance().onEvent(3003);
             WVEventService.getInstance().removeEventListener(this.wvSecurityFilter);
             WVEventService.getInstance().removeEventListener(this.jsPatchListener);
             removeAllViews();
@@ -460,10 +377,10 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
     public String getCurrentUrl() {
         String url = super.getUrl();
         if (url == null) {
-            TaoLog.m27v(TAG, "getUrl by currentUrl: " + this.currentUrl);
+            TaoLog.v(TAG, "getUrl by currentUrl: " + this.currentUrl);
             return this.currentUrl;
         }
-        TaoLog.m27v(TAG, "getUrl by webview: " + url);
+        TaoLog.v(TAG, "getUrl by webview: " + url);
         return url;
     }
 
@@ -517,7 +434,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
     @Override // android.os.Handler.Callback
     public boolean handleMessage(Message message) {
         switch (message.what) {
-            case 400:
+            case WVConstants.NOTIFY_PAGE_START /* 400 */:
                 WVUIModel wVUIModel = this.wvUIModel;
                 if (wVUIModel.isShowLoading() & (wVUIModel != null)) {
                     this.wvUIModel.showLoadingView();
@@ -587,7 +504,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
     public void loadDataWithBaseURL(String str, String str2, String str3, String str4, String str5) {
         if (this.isAlive) {
             if (TaoLog.getLogStatus()) {
-                TaoLog.m18d(TAG, "loadDataWithBaseURL: baseUrl=" + str);
+                TaoLog.d(TAG, "loadDataWithBaseURL: baseUrl=" + str);
             }
             super.loadDataWithBaseURL(str, str2, str3, str4, str5);
         }
@@ -611,17 +528,17 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
                 super.loadUrl(forbiddenDomainRedirectURL);
                 return;
             } catch (Exception e) {
-                TaoLog.m21e(TAG, e.getMessage());
+                TaoLog.e(TAG, e.getMessage());
                 return;
             }
         }
         if (WVURLFilter.doFilter(str, this.context, this)) {
-            TaoLog.m21e(TAG, "loadUrl filter url=" + str);
+            TaoLog.e(TAG, "loadUrl filter url=" + str);
             return;
         }
-        WVEventService.getInstance().onEvent(WVEventId.WEBVIEW_LOADURL);
+        WVEventService.getInstance().onEvent(3010);
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(TAG, "loadUrl: url=" + str);
+            TaoLog.d(TAG, "loadUrl: url=" + str);
         }
         WVSchemeIntercepterInterface wVSchemeIntercepter = WVSchemeInterceptService.getWVSchemeIntercepter();
         if (wVSchemeIntercepter != null) {
@@ -631,13 +548,13 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
             if (WVURLInterceptService.getWVABTestHandler() != null && WVUrlUtil.shouldTryABTest(str)) {
                 String aBTestUrl = WVURLInterceptService.getWVABTestHandler().toABTestUrl(str);
                 if (!TextUtils.isEmpty(aBTestUrl) && !aBTestUrl.equals(str)) {
-                    TaoLog.m24i(TAG, str + " abTestUrl to : " + aBTestUrl);
+                    TaoLog.i(TAG, str + " abTestUrl to : " + aBTestUrl);
                     str = aBTestUrl;
                 }
             }
             super.loadUrl(str);
         } catch (Exception e2) {
-            TaoLog.m21e(TAG, e2.getMessage());
+            TaoLog.e(TAG, e2.getMessage());
         }
     }
 
@@ -686,7 +603,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
         if (Build.VERSION.SDK_INT >= 11) {
             super.onPause();
         }
-        WVEventService.getInstance().onEvent(WVEventId.PAGE_onPause);
+        WVEventService.getInstance().onEvent(3001);
     }
 
     @Override // android.webkit.WebView
@@ -699,7 +616,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
         if (Build.VERSION.SDK_INT >= 11) {
             super.onResume();
         }
-        WVEventService.getInstance().onEvent(WVEventId.PAGE_onResume, this, getUrl(), new Object[0]);
+        WVEventService.getInstance().onEvent(3002, this, getUrl(), new Object[0]);
     }
 
     @Override // android.webkit.WebView, android.view.View
@@ -720,18 +637,18 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
         int action = motionEvent.getAction();
         int pointerId = motionEvent.getPointerId(motionEvent.getActionIndex());
         if (action == 0) {
-            this.f33dx = motionEvent.getX();
-            this.f34dy = motionEvent.getY();
+            this.dx = motionEvent.getX();
+            this.dy = motionEvent.getY();
             if (!this.isUser) {
                 this.mEventSparseArray.put(pointerId, MotionEvent.obtain(motionEvent));
                 return true;
             }
         } else if (action == 2) {
-            if (!this.isUser && Math.abs(motionEvent.getY() - this.f34dy) > 5.0f) {
+            if (!this.isUser && Math.abs(motionEvent.getY() - this.dy) > 5.0f) {
                 return true;
             }
         } else if (action == 1) {
-            if (!this.isUser && Math.abs(motionEvent.getY() - this.f34dy) > 5.0f) {
+            if (!this.isUser && Math.abs(motionEvent.getY() - this.dy) > 5.0f) {
                 this.isUser = true;
                 return true;
             }
@@ -753,7 +670,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
     public void pauseTimers() {
         super.pauseTimers();
         if (TaoLog.getLogStatus()) {
-            TaoLog.m21e(TAG, "You  must be careful  to Call pauseTimers ,It's Global");
+            TaoLog.e(TAG, "You  must be careful  to Call pauseTimers ,It's Global");
         }
     }
 
@@ -775,16 +692,16 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
                 loadUrl(forbiddenDomainRedirectURL);
                 return;
             } catch (Exception e) {
-                TaoLog.m21e(TAG, e.getMessage());
+                TaoLog.e(TAG, e.getMessage());
                 return;
             }
         }
         if (WVURLFilter.doFilter(str, this.context, this)) {
-            TaoLog.m21e(TAG, "loadUrl filter url=" + str);
+            TaoLog.e(TAG, "loadUrl filter url=" + str);
             return;
         }
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(TAG, "postUrl: url=" + str);
+            TaoLog.d(TAG, "postUrl: url=" + str);
         }
         super.postUrl(str, bArr);
     }
@@ -803,7 +720,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
     public void resumeTimers() {
         super.resumeTimers();
         if (TaoLog.getLogStatus()) {
-            TaoLog.m21e(TAG, "You  must be careful  to Call resumeTimers ,It's Global");
+            TaoLog.e(TAG, "You  must be careful  to Call resumeTimers ,It's Global");
         }
     }
 
@@ -821,7 +738,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
 
     public void setCurrentUrl(String str, String str2) {
         this.currentUrl = str;
-        TaoLog.m27v(TAG, "setCurrentUrl: " + str + " state : " + str2);
+        TaoLog.v(TAG, "setCurrentUrl: " + str + " state : " + str2);
     }
 
     @Override // android.taobao.windvane.webview.IWVWebView
@@ -947,16 +864,16 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
                 super.loadUrl(forbiddenDomainRedirectURL);
                 return;
             } catch (Exception e) {
-                TaoLog.m21e(TAG, e.getMessage());
+                TaoLog.e(TAG, e.getMessage());
                 return;
             }
         }
         if (WVURLFilter.doFilter(str, this.context, this)) {
-            TaoLog.m21e(TAG, "loadUrl filter url=" + str);
+            TaoLog.e(TAG, "loadUrl filter url=" + str);
             return;
         }
         if (TaoLog.getLogStatus()) {
-            TaoLog.m18d(TAG, "loadUrl with headers: url=" + str);
+            TaoLog.d(TAG, "loadUrl with headers: url=" + str);
         }
         super.loadUrl(str, map);
     }
@@ -986,30 +903,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
         String[] strArr = new String[1];
         strArr[0] = EnvUtil.isCN() ? "保存到相册" : "Save picture to album";
         this.mPopupMenuTags = strArr;
-        this.mPopupClickListener = new View.OnClickListener() { // from class: android.taobao.windvane.webview.WVWebView.2
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                if (WVWebView.this.mPopupMenuTags != null && WVWebView.this.mPopupMenuTags.length > 0 && WVWebView.this.mPopupMenuTags[0].equals(view.getTag())) {
-                    try {
-                        PermissionProposer.buildPermissionTask(WVWebView.this.context, new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}).setTaskOnPermissionGranted(new Runnable() { // from class: android.taobao.windvane.webview.WVWebView.2.2
-                            @Override // java.lang.Runnable
-                            public void run() {
-                                ImageTool.saveImageToDCIM(WVWebView.this.context.getApplicationContext(), WVWebView.this.mImageUrl, WVWebView.this.mHandler);
-                            }
-                        }).setTaskOnPermissionDenied(new Runnable() { // from class: android.taobao.windvane.webview.WVWebView.2.1
-                            @Override // java.lang.Runnable
-                            public void run() {
-                                WVWebView.this.mHandler.sendEmptyMessage(WVConstants.NOTIFY_SAVE_IMAGE_FAIL);
-                            }
-                        }).execute();
-                    } catch (Exception unused) {
-                    }
-                }
-                if (WVWebView.this.mPopupController != null) {
-                    WVWebView.this.mPopupController.hide();
-                }
-            }
-        };
+        this.mPopupClickListener = new 2(this);
         this.isUser = true;
         this.mEventSparseArray = new SparseArray<>();
         this.context = context;
@@ -1041,30 +935,7 @@ public class WVWebView extends WebView implements Handler.Callback, IWVWebView {
         String[] strArr = new String[1];
         strArr[0] = EnvUtil.isCN() ? "保存到相册" : "Save picture to album";
         this.mPopupMenuTags = strArr;
-        this.mPopupClickListener = new View.OnClickListener() { // from class: android.taobao.windvane.webview.WVWebView.2
-            @Override // android.view.View.OnClickListener
-            public void onClick(View view) {
-                if (WVWebView.this.mPopupMenuTags != null && WVWebView.this.mPopupMenuTags.length > 0 && WVWebView.this.mPopupMenuTags[0].equals(view.getTag())) {
-                    try {
-                        PermissionProposer.buildPermissionTask(WVWebView.this.context, new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}).setTaskOnPermissionGranted(new Runnable() { // from class: android.taobao.windvane.webview.WVWebView.2.2
-                            @Override // java.lang.Runnable
-                            public void run() {
-                                ImageTool.saveImageToDCIM(WVWebView.this.context.getApplicationContext(), WVWebView.this.mImageUrl, WVWebView.this.mHandler);
-                            }
-                        }).setTaskOnPermissionDenied(new Runnable() { // from class: android.taobao.windvane.webview.WVWebView.2.1
-                            @Override // java.lang.Runnable
-                            public void run() {
-                                WVWebView.this.mHandler.sendEmptyMessage(WVConstants.NOTIFY_SAVE_IMAGE_FAIL);
-                            }
-                        }).execute();
-                    } catch (Exception unused) {
-                    }
-                }
-                if (WVWebView.this.mPopupController != null) {
-                    WVWebView.this.mPopupController.hide();
-                }
-            }
-        };
+        this.mPopupClickListener = new 2(this);
         this.isUser = true;
         this.mEventSparseArray = new SparseArray<>();
         this.context = context;

@@ -5,7 +5,7 @@ import androidx.annotation.MainThread;
 import androidx.annotation.VisibleForTesting;
 import androidx.arch.core.executor.ArchTaskExecutor;
 import androidx.arch.core.internal.FastSafeIterableMap;
-import androidx.arch.core.internal.SafeIterableMap;
+import androidx.arch.core.internal.SafeIterableMap$IteratorWithAdditions;
 import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.Lifecycle;
 import java.lang.ref.WeakReference;
@@ -20,11 +20,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class LifecycleRegistry extends Lifecycle {
 
     @NotNull
-    public static final Companion Companion = new Companion(null);
+    public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
     private int addingObserverCounter;
     private final boolean enforceMainThread;
     private boolean handlingEvent;
@@ -41,32 +41,6 @@ public class LifecycleRegistry extends Lifecycle {
 
     @NotNull
     private Lifecycle.State state;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class Companion {
-        private Companion() {
-        }
-
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-
-        @JvmStatic
-        @VisibleForTesting
-        @NotNull
-        public final LifecycleRegistry createUnsafe(@NotNull LifecycleOwner lifecycleOwner) {
-            Intrinsics.checkNotNullParameter(lifecycleOwner, "owner");
-            return new LifecycleRegistry(lifecycleOwner, false, null);
-        }
-
-        @JvmStatic
-        @NotNull
-        public final Lifecycle.State min$lifecycle_runtime_release(@NotNull Lifecycle.State state, @Nullable Lifecycle.State state2) {
-            Intrinsics.checkNotNullParameter(state, "state1");
-            return (state2 == null || state2.compareTo(state) >= 0) ? state : state2;
-        }
-    }
 
     /* compiled from: Taobao */
     public static final class ObserverWithState {
@@ -128,20 +102,20 @@ public class LifecycleRegistry extends Lifecycle {
     }
 
     private final void backwardPass(LifecycleOwner lifecycleOwner) {
-        Iterator<Map.Entry<LifecycleObserver, ObserverWithState>> descendingIterator = this.observerMap.descendingIterator();
+        Iterator descendingIterator = this.observerMap.descendingIterator();
         Intrinsics.checkNotNullExpressionValue(descendingIterator, "observerMap.descendingIterator()");
         while (descendingIterator.hasNext() && !this.newEventOccurred) {
-            Map.Entry<LifecycleObserver, ObserverWithState> next = descendingIterator.next();
-            Intrinsics.checkNotNullExpressionValue(next, "next()");
-            LifecycleObserver key = next.getKey();
-            ObserverWithState value = next.getValue();
-            while (value.getState().compareTo(this.state) > 0 && !this.newEventOccurred && this.observerMap.contains(key)) {
-                Lifecycle.Event downFrom = Lifecycle.Event.Companion.downFrom(value.getState());
+            Map.Entry entry = (Map.Entry) descendingIterator.next();
+            Intrinsics.checkNotNullExpressionValue(entry, "next()");
+            LifecycleObserver lifecycleObserver = (LifecycleObserver) entry.getKey();
+            ObserverWithState observerWithState = (ObserverWithState) entry.getValue();
+            while (observerWithState.getState().compareTo(this.state) > 0 && !this.newEventOccurred && this.observerMap.contains(lifecycleObserver)) {
+                Lifecycle.Event downFrom = Lifecycle.Event.Companion.downFrom(observerWithState.getState());
                 if (downFrom == null) {
-                    throw new IllegalStateException("no event down from " + value.getState());
+                    throw new IllegalStateException("no event down from " + observerWithState.getState());
                 }
                 pushParentState(downFrom.getTargetState());
-                value.dispatchEvent(lifecycleOwner, downFrom);
+                observerWithState.dispatchEvent(lifecycleOwner, downFrom);
                 popParentState();
             }
         }
@@ -175,7 +149,7 @@ public class LifecycleRegistry extends Lifecycle {
     }
 
     private final void forwardPass(LifecycleOwner lifecycleOwner) {
-        SafeIterableMap<LifecycleObserver, ObserverWithState>.IteratorWithAdditions iteratorWithAdditions = this.observerMap.iteratorWithAdditions();
+        SafeIterableMap$IteratorWithAdditions iteratorWithAdditions = this.observerMap.iteratorWithAdditions();
         Intrinsics.checkNotNullExpressionValue(iteratorWithAdditions, "observerMap.iteratorWithAdditions()");
         while (iteratorWithAdditions.hasNext() && !this.newEventOccurred) {
             Map.Entry next = iteratorWithAdditions.next();
@@ -197,12 +171,12 @@ public class LifecycleRegistry extends Lifecycle {
         if (this.observerMap.size() == 0) {
             return true;
         }
-        Map.Entry<LifecycleObserver, ObserverWithState> eldest = this.observerMap.eldest();
+        Map.Entry eldest = this.observerMap.eldest();
         Intrinsics.checkNotNull(eldest);
-        Lifecycle.State state = eldest.getValue().getState();
-        Map.Entry<LifecycleObserver, ObserverWithState> newest = this.observerMap.newest();
+        Lifecycle.State state = ((ObserverWithState) eldest.getValue()).getState();
+        Map.Entry newest = this.observerMap.newest();
         Intrinsics.checkNotNull(newest);
-        Lifecycle.State state2 = newest.getValue().getState();
+        Lifecycle.State state2 = ((ObserverWithState) newest.getValue()).getState();
         return state == state2 && this.state == state2;
     }
 
@@ -243,13 +217,13 @@ public class LifecycleRegistry extends Lifecycle {
         while (!isSynced()) {
             this.newEventOccurred = false;
             Lifecycle.State state = this.state;
-            Map.Entry<LifecycleObserver, ObserverWithState> eldest = this.observerMap.eldest();
+            Map.Entry eldest = this.observerMap.eldest();
             Intrinsics.checkNotNull(eldest);
-            if (state.compareTo(eldest.getValue().getState()) < 0) {
+            if (state.compareTo(((ObserverWithState) eldest.getValue()).getState()) < 0) {
                 backwardPass(lifecycleOwner);
             }
-            Map.Entry<LifecycleObserver, ObserverWithState> newest = this.observerMap.newest();
-            if (!this.newEventOccurred && newest != null && this.state.compareTo(newest.getValue().getState()) > 0) {
+            Map.Entry newest = this.observerMap.newest();
+            if (!this.newEventOccurred && newest != null && this.state.compareTo(((ObserverWithState) newest.getValue()).getState()) > 0) {
                 forwardPass(lifecycleOwner);
             }
         }

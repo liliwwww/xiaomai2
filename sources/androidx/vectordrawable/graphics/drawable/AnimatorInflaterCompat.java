@@ -14,6 +14,7 @@ import android.content.res.XmlResourceParser;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.os.Build;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -21,7 +22,8 @@ import android.util.Xml;
 import android.view.InflateException;
 import androidx.annotation.AnimatorRes;
 import androidx.annotation.RestrictTo;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
+import androidx.annotation.RestrictTo$Scope;
+import androidx.constraintlayout.core.motion.utils.TypedValues$TransitionType;
 import androidx.core.content.res.TypedArrayUtils;
 import androidx.core.graphics.PathParser;
 import java.io.IOException;
@@ -30,8 +32,8 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class AnimatorInflaterCompat {
     private static final boolean DBG_ANIMATOR_INFLATER = false;
     private static final int MAX_NUM_POINTS = 100;
@@ -346,7 +348,7 @@ public class AnimatorInflaterCompat {
     }
 
     private static void parseAnimatorFromTypeArray(ValueAnimator valueAnimator, TypedArray typedArray, TypedArray typedArray2, float f, XmlPullParser xmlPullParser) {
-        long namedInt = TypedArrayUtils.getNamedInt(typedArray, xmlPullParser, TypedValues.TransitionType.S_DURATION, 1, 300);
+        long namedInt = TypedArrayUtils.getNamedInt(typedArray, xmlPullParser, TypedValues$TransitionType.S_DURATION, 1, WVURLRuleConstants.SHOP);
         long namedInt2 = TypedArrayUtils.getNamedInt(typedArray, xmlPullParser, "startOffset", 2, 0);
         int namedInt3 = TypedArrayUtils.getNamedInt(typedArray, xmlPullParser, "valueType", 7, 4);
         if (TypedArrayUtils.hasAttribute(xmlPullParser, "valueFrom") && TypedArrayUtils.hasAttribute(xmlPullParser, "valueTo")) {
@@ -433,12 +435,12 @@ public class AnimatorInflaterCompat {
     /* JADX WARN: Removed duplicated region for block: B:33:0x00b8  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private static android.animation.Animator createAnimatorFromXml(android.content.Context r18, android.content.res.Resources r19, android.content.res.Resources.Theme r20, org.xmlpull.v1.XmlPullParser r21, android.util.AttributeSet r22, android.animation.AnimatorSet r23, int r24, float r25) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException {
         /*
             Method dump skipped, instructions count: 263
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat.createAnimatorFromXml(android.content.Context, android.content.res.Resources, android.content.res.Resources$Theme, org.xmlpull.v1.XmlPullParser, android.util.AttributeSet, android.animation.AnimatorSet, int, float):android.animation.Animator");
     }
@@ -454,12 +456,12 @@ public class AnimatorInflaterCompat {
                 try {
                     xmlResourceParser = resources.getAnimation(i);
                     return createAnimatorFromXml(context, resources, theme, xmlResourceParser, f);
-                } catch (IOException e) {
+                } catch (XmlPullParserException e) {
                     Resources.NotFoundException notFoundException = new Resources.NotFoundException("Can't load animation resource ID #0x" + Integer.toHexString(i));
                     notFoundException.initCause(e);
                     throw notFoundException;
                 }
-            } catch (XmlPullParserException e2) {
+            } catch (IOException e2) {
                 Resources.NotFoundException notFoundException2 = new Resources.NotFoundException("Can't load animation resource ID #0x" + Integer.toHexString(i));
                 notFoundException2.initCause(e2);
                 throw notFoundException2;

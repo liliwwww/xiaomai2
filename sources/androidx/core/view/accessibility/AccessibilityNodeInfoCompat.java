@@ -10,20 +10,16 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.OptIn;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
-import androidx.core.C0927R;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.core.os.BuildCompat;
-import androidx.core.view.accessibility.AccessibilityViewCommand;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class AccessibilityNodeInfoCompat {
     public static final int ACTION_ACCESSIBILITY_FOCUS = 64;
     public static final String ACTION_ARGUMENT_COLUMN_INT = "android.view.accessibility.action.ARGUMENT_COLUMN_INT";
@@ -100,268 +96,9 @@ public class AccessibilityNodeInfoCompat {
     private static int sClickableSpanId;
     private final AccessibilityNodeInfo mInfo;
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public int mParentVirtualDescendantId = -1;
     private int mVirtualDescendantId = -1;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static class AccessibilityActionCompat {
-        public static final AccessibilityActionCompat ACTION_CONTEXT_CLICK;
-
-        @NonNull
-        public static final AccessibilityActionCompat ACTION_DRAG_CANCEL;
-
-        @NonNull
-        public static final AccessibilityActionCompat ACTION_DRAG_DROP;
-
-        @NonNull
-        public static final AccessibilityActionCompat ACTION_DRAG_START;
-        public static final AccessibilityActionCompat ACTION_HIDE_TOOLTIP;
-
-        @NonNull
-        public static final AccessibilityActionCompat ACTION_IME_ENTER;
-        public static final AccessibilityActionCompat ACTION_MOVE_WINDOW;
-
-        @NonNull
-        public static final AccessibilityActionCompat ACTION_PAGE_DOWN;
-
-        @NonNull
-        public static final AccessibilityActionCompat ACTION_PAGE_LEFT;
-
-        @NonNull
-        public static final AccessibilityActionCompat ACTION_PAGE_RIGHT;
-
-        @NonNull
-        public static final AccessibilityActionCompat ACTION_PAGE_UP;
-
-        @NonNull
-        public static final AccessibilityActionCompat ACTION_PRESS_AND_HOLD;
-        public static final AccessibilityActionCompat ACTION_SCROLL_DOWN;
-        public static final AccessibilityActionCompat ACTION_SCROLL_LEFT;
-        public static final AccessibilityActionCompat ACTION_SCROLL_RIGHT;
-        public static final AccessibilityActionCompat ACTION_SCROLL_TO_POSITION;
-        public static final AccessibilityActionCompat ACTION_SCROLL_UP;
-        public static final AccessibilityActionCompat ACTION_SET_PROGRESS;
-        public static final AccessibilityActionCompat ACTION_SHOW_ON_SCREEN;
-
-        @NonNull
-        public static final AccessibilityActionCompat ACTION_SHOW_TEXT_SUGGESTIONS;
-        public static final AccessibilityActionCompat ACTION_SHOW_TOOLTIP;
-        private static final String TAG = "A11yActionCompat";
-        final Object mAction;
-
-        @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-        protected final AccessibilityViewCommand mCommand;
-        private final int mId;
-        private final Class<? extends AccessibilityViewCommand.CommandArguments> mViewCommandArgumentClass;
-        public static final AccessibilityActionCompat ACTION_FOCUS = new AccessibilityActionCompat(1, null);
-        public static final AccessibilityActionCompat ACTION_CLEAR_FOCUS = new AccessibilityActionCompat(2, null);
-        public static final AccessibilityActionCompat ACTION_SELECT = new AccessibilityActionCompat(4, null);
-        public static final AccessibilityActionCompat ACTION_CLEAR_SELECTION = new AccessibilityActionCompat(8, null);
-        public static final AccessibilityActionCompat ACTION_CLICK = new AccessibilityActionCompat(16, null);
-        public static final AccessibilityActionCompat ACTION_LONG_CLICK = new AccessibilityActionCompat(32, null);
-        public static final AccessibilityActionCompat ACTION_ACCESSIBILITY_FOCUS = new AccessibilityActionCompat(64, null);
-        public static final AccessibilityActionCompat ACTION_CLEAR_ACCESSIBILITY_FOCUS = new AccessibilityActionCompat(128, null);
-        public static final AccessibilityActionCompat ACTION_NEXT_AT_MOVEMENT_GRANULARITY = new AccessibilityActionCompat(256, (CharSequence) null, (Class<? extends AccessibilityViewCommand.CommandArguments>) AccessibilityViewCommand.MoveAtGranularityArguments.class);
-        public static final AccessibilityActionCompat ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY = new AccessibilityActionCompat(512, (CharSequence) null, (Class<? extends AccessibilityViewCommand.CommandArguments>) AccessibilityViewCommand.MoveAtGranularityArguments.class);
-        public static final AccessibilityActionCompat ACTION_NEXT_HTML_ELEMENT = new AccessibilityActionCompat(1024, (CharSequence) null, (Class<? extends AccessibilityViewCommand.CommandArguments>) AccessibilityViewCommand.MoveHtmlArguments.class);
-        public static final AccessibilityActionCompat ACTION_PREVIOUS_HTML_ELEMENT = new AccessibilityActionCompat(2048, (CharSequence) null, (Class<? extends AccessibilityViewCommand.CommandArguments>) AccessibilityViewCommand.MoveHtmlArguments.class);
-        public static final AccessibilityActionCompat ACTION_SCROLL_FORWARD = new AccessibilityActionCompat(4096, null);
-        public static final AccessibilityActionCompat ACTION_SCROLL_BACKWARD = new AccessibilityActionCompat(8192, null);
-        public static final AccessibilityActionCompat ACTION_COPY = new AccessibilityActionCompat(16384, null);
-        public static final AccessibilityActionCompat ACTION_PASTE = new AccessibilityActionCompat(32768, null);
-        public static final AccessibilityActionCompat ACTION_CUT = new AccessibilityActionCompat(65536, null);
-        public static final AccessibilityActionCompat ACTION_SET_SELECTION = new AccessibilityActionCompat(131072, (CharSequence) null, (Class<? extends AccessibilityViewCommand.CommandArguments>) AccessibilityViewCommand.SetSelectionArguments.class);
-        public static final AccessibilityActionCompat ACTION_EXPAND = new AccessibilityActionCompat(262144, null);
-        public static final AccessibilityActionCompat ACTION_COLLAPSE = new AccessibilityActionCompat(524288, null);
-        public static final AccessibilityActionCompat ACTION_DISMISS = new AccessibilityActionCompat(1048576, null);
-        public static final AccessibilityActionCompat ACTION_SET_TEXT = new AccessibilityActionCompat(2097152, (CharSequence) null, (Class<? extends AccessibilityViewCommand.CommandArguments>) AccessibilityViewCommand.SetTextArguments.class);
-
-        static {
-            int i = Build.VERSION.SDK_INT;
-            ACTION_SHOW_ON_SCREEN = new AccessibilityActionCompat(i >= 23 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN : null, R.id.accessibilityActionShowOnScreen, null, null, null);
-            ACTION_SCROLL_TO_POSITION = new AccessibilityActionCompat(i >= 23 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_TO_POSITION : null, R.id.accessibilityActionScrollToPosition, null, null, AccessibilityViewCommand.ScrollToPositionArguments.class);
-            ACTION_SCROLL_UP = new AccessibilityActionCompat(i >= 23 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_UP : null, R.id.accessibilityActionScrollUp, null, null, null);
-            ACTION_SCROLL_LEFT = new AccessibilityActionCompat(i >= 23 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_LEFT : null, R.id.accessibilityActionScrollLeft, null, null, null);
-            ACTION_SCROLL_DOWN = new AccessibilityActionCompat(i >= 23 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_DOWN : null, R.id.accessibilityActionScrollDown, null, null, null);
-            ACTION_SCROLL_RIGHT = new AccessibilityActionCompat(i >= 23 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_RIGHT : null, R.id.accessibilityActionScrollRight, null, null, null);
-            ACTION_PAGE_UP = new AccessibilityActionCompat(i >= 29 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_UP : null, R.id.accessibilityActionPageUp, null, null, null);
-            ACTION_PAGE_DOWN = new AccessibilityActionCompat(i >= 29 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_DOWN : null, R.id.accessibilityActionPageDown, null, null, null);
-            ACTION_PAGE_LEFT = new AccessibilityActionCompat(i >= 29 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_LEFT : null, R.id.accessibilityActionPageLeft, null, null, null);
-            ACTION_PAGE_RIGHT = new AccessibilityActionCompat(i >= 29 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_RIGHT : null, R.id.accessibilityActionPageRight, null, null, null);
-            ACTION_CONTEXT_CLICK = new AccessibilityActionCompat(i >= 23 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_CONTEXT_CLICK : null, R.id.accessibilityActionContextClick, null, null, null);
-            ACTION_SET_PROGRESS = new AccessibilityActionCompat(i >= 24 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_SET_PROGRESS : null, R.id.accessibilityActionSetProgress, null, null, AccessibilityViewCommand.SetProgressArguments.class);
-            ACTION_MOVE_WINDOW = new AccessibilityActionCompat(i >= 26 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_MOVE_WINDOW : null, R.id.accessibilityActionMoveWindow, null, null, AccessibilityViewCommand.MoveWindowArguments.class);
-            ACTION_SHOW_TOOLTIP = new AccessibilityActionCompat(i >= 28 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_TOOLTIP : null, R.id.accessibilityActionShowTooltip, null, null, null);
-            ACTION_HIDE_TOOLTIP = new AccessibilityActionCompat(i >= 28 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_HIDE_TOOLTIP : null, R.id.accessibilityActionHideTooltip, null, null, null);
-            ACTION_PRESS_AND_HOLD = new AccessibilityActionCompat(i >= 30 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_PRESS_AND_HOLD : null, R.id.accessibilityActionPressAndHold, null, null, null);
-            ACTION_IME_ENTER = new AccessibilityActionCompat(i >= 30 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_IME_ENTER : null, R.id.accessibilityActionImeEnter, null, null, null);
-            ACTION_DRAG_START = new AccessibilityActionCompat(i >= 32 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_DRAG_START : null, R.id.accessibilityActionDragStart, null, null, null);
-            ACTION_DRAG_DROP = new AccessibilityActionCompat(i >= 32 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_DRAG_DROP : null, R.id.accessibilityActionDragDrop, null, null, null);
-            ACTION_DRAG_CANCEL = new AccessibilityActionCompat(i >= 32 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_DRAG_CANCEL : null, R.id.accessibilityActionDragCancel, null, null, null);
-            ACTION_SHOW_TEXT_SUGGESTIONS = new AccessibilityActionCompat(i >= 33 ? AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_TEXT_SUGGESTIONS : null, R.id.accessibilityActionShowTextSuggestions, null, null, null);
-        }
-
-        public AccessibilityActionCompat(int i, CharSequence charSequence) {
-            this(null, i, charSequence, null, null);
-        }
-
-        @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-        public AccessibilityActionCompat createReplacementAction(CharSequence charSequence, AccessibilityViewCommand accessibilityViewCommand) {
-            return new AccessibilityActionCompat(null, this.mId, charSequence, accessibilityViewCommand, this.mViewCommandArgumentClass);
-        }
-
-        public boolean equals(@Nullable Object obj) {
-            if (obj == null || !(obj instanceof AccessibilityActionCompat)) {
-                return false;
-            }
-            AccessibilityActionCompat accessibilityActionCompat = (AccessibilityActionCompat) obj;
-            Object obj2 = this.mAction;
-            return obj2 == null ? accessibilityActionCompat.mAction == null : obj2.equals(accessibilityActionCompat.mAction);
-        }
-
-        public int getId() {
-            if (Build.VERSION.SDK_INT >= 21) {
-                return ((AccessibilityNodeInfo.AccessibilityAction) this.mAction).getId();
-            }
-            return 0;
-        }
-
-        public CharSequence getLabel() {
-            if (Build.VERSION.SDK_INT >= 21) {
-                return ((AccessibilityNodeInfo.AccessibilityAction) this.mAction).getLabel();
-            }
-            return null;
-        }
-
-        public int hashCode() {
-            Object obj = this.mAction;
-            if (obj != null) {
-                return obj.hashCode();
-            }
-            return 0;
-        }
-
-        @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-        public boolean perform(View view, Bundle bundle) {
-            if (this.mCommand == null) {
-                return false;
-            }
-            AccessibilityViewCommand.CommandArguments commandArguments = null;
-            Class<? extends AccessibilityViewCommand.CommandArguments> cls = this.mViewCommandArgumentClass;
-            if (cls != null) {
-                try {
-                    AccessibilityViewCommand.CommandArguments newInstance = cls.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-                    try {
-                        newInstance.setBundle(bundle);
-                        commandArguments = newInstance;
-                    } catch (Exception e) {
-                        e = e;
-                        commandArguments = newInstance;
-                        Class<? extends AccessibilityViewCommand.CommandArguments> cls2 = this.mViewCommandArgumentClass;
-                        Log.e(TAG, "Failed to execute command with argument class ViewCommandArgument: " + (cls2 == null ? "null" : cls2.getName()), e);
-                        return this.mCommand.perform(view, commandArguments);
-                    }
-                } catch (Exception e2) {
-                    e = e2;
-                }
-            }
-            return this.mCommand.perform(view, commandArguments);
-        }
-
-        @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-        public AccessibilityActionCompat(int i, CharSequence charSequence, AccessibilityViewCommand accessibilityViewCommand) {
-            this(null, i, charSequence, accessibilityViewCommand, null);
-        }
-
-        AccessibilityActionCompat(Object obj) {
-            this(obj, 0, null, null, null);
-        }
-
-        private AccessibilityActionCompat(int i, CharSequence charSequence, Class<? extends AccessibilityViewCommand.CommandArguments> cls) {
-            this(null, i, charSequence, null, cls);
-        }
-
-        AccessibilityActionCompat(Object obj, int i, CharSequence charSequence, AccessibilityViewCommand accessibilityViewCommand, Class<? extends AccessibilityViewCommand.CommandArguments> cls) {
-            this.mId = i;
-            this.mCommand = accessibilityViewCommand;
-            if (Build.VERSION.SDK_INT >= 21 && obj == null) {
-                this.mAction = new AccessibilityNodeInfo.AccessibilityAction(i, charSequence);
-            } else {
-                this.mAction = obj;
-            }
-            this.mViewCommandArgumentClass = cls;
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(33)
-    /* loaded from: classes2.dex */
-    private static class Api33Impl {
-        private Api33Impl() {
-        }
-
-        @DoNotInline
-        public static AccessibilityNodeInfo.ExtraRenderingInfo getExtraRenderingInfo(AccessibilityNodeInfo accessibilityNodeInfo) {
-            return accessibilityNodeInfo.getExtraRenderingInfo();
-        }
-
-        @DoNotInline
-        public static boolean isTextSelectable(AccessibilityNodeInfo accessibilityNodeInfo) {
-            return accessibilityNodeInfo.isTextSelectable();
-        }
-
-        @DoNotInline
-        public static void setTextSelectable(AccessibilityNodeInfo accessibilityNodeInfo, boolean z) {
-            accessibilityNodeInfo.setTextSelectable(z);
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static class RangeInfoCompat {
-        public static final int RANGE_TYPE_FLOAT = 1;
-        public static final int RANGE_TYPE_INT = 0;
-        public static final int RANGE_TYPE_PERCENT = 2;
-        final Object mInfo;
-
-        RangeInfoCompat(Object obj) {
-            this.mInfo = obj;
-        }
-
-        public static RangeInfoCompat obtain(int i, float f, float f2, float f3) {
-            return Build.VERSION.SDK_INT >= 19 ? new RangeInfoCompat(AccessibilityNodeInfo.RangeInfo.obtain(i, f, f2, f3)) : new RangeInfoCompat(null);
-        }
-
-        public float getCurrent() {
-            if (Build.VERSION.SDK_INT >= 19) {
-                return ((AccessibilityNodeInfo.RangeInfo) this.mInfo).getCurrent();
-            }
-            return 0.0f;
-        }
-
-        public float getMax() {
-            if (Build.VERSION.SDK_INT >= 19) {
-                return ((AccessibilityNodeInfo.RangeInfo) this.mInfo).getMax();
-            }
-            return 0.0f;
-        }
-
-        public float getMin() {
-            if (Build.VERSION.SDK_INT >= 19) {
-                return ((AccessibilityNodeInfo.RangeInfo) this.mInfo).getMin();
-            }
-            return 0.0f;
-        }
-
-        public int getType() {
-            if (Build.VERSION.SDK_INT >= 19) {
-                return ((AccessibilityNodeInfo.RangeInfo) this.mInfo).getType();
-            }
-            return 0;
-        }
-    }
 
     @Deprecated
     public AccessibilityNodeInfoCompat(Object obj) {
@@ -429,17 +166,17 @@ public class AccessibilityNodeInfoCompat {
                 return "ACTION_SCROLL_FORWARD";
             case 8192:
                 return "ACTION_SCROLL_BACKWARD";
-            case 16384:
+            case ACTION_COPY /* 16384 */:
                 return "ACTION_COPY";
-            case 32768:
+            case ACTION_PASTE /* 32768 */:
                 return "ACTION_PASTE";
-            case 65536:
+            case ACTION_CUT /* 65536 */:
                 return "ACTION_CUT";
-            case 131072:
+            case ACTION_SET_SELECTION /* 131072 */:
                 return "ACTION_SET_SELECTION";
-            case 262144:
+            case ACTION_EXPAND /* 262144 */:
                 return "ACTION_EXPAND";
-            case 524288:
+            case ACTION_COLLAPSE /* 524288 */:
                 return "ACTION_COLLAPSE";
             case 2097152:
                 return "ACTION_SET_TEXT";
@@ -502,7 +239,7 @@ public class AccessibilityNodeInfoCompat {
         return extras != null && (extras.getInt(BOOLEAN_PROPERTY_KEY, 0) & i) == i;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public static ClickableSpan[] getClickableSpans(CharSequence charSequence) {
         if (charSequence instanceof Spanned) {
             return (ClickableSpan[]) ((Spanned) charSequence).getSpans(0, charSequence.length(), ClickableSpan.class);
@@ -516,12 +253,12 @@ public class AccessibilityNodeInfoCompat {
             return spansFromViewTags;
         }
         SparseArray<WeakReference<ClickableSpan>> sparseArray = new SparseArray<>();
-        view.setTag(C0927R.id.tag_accessibility_clickable_spans, sparseArray);
+        view.setTag(androidx.core.R.id.tag_accessibility_clickable_spans, sparseArray);
         return sparseArray;
     }
 
     private SparseArray<WeakReference<ClickableSpan>> getSpansFromViewTags(View view) {
-        return (SparseArray) view.getTag(C0927R.id.tag_accessibility_clickable_spans);
+        return (SparseArray) view.getTag(androidx.core.R.id.tag_accessibility_clickable_spans);
     }
 
     private boolean hasSpans() {
@@ -590,7 +327,7 @@ public class AccessibilityNodeInfoCompat {
         this.mInfo.addChild(view);
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void addSpansToExtras(CharSequence charSequence, View view) {
         int i = Build.VERSION.SDK_INT;
         if (i < 19 || i >= 26) {
@@ -602,7 +339,7 @@ public class AccessibilityNodeInfoCompat {
         if (clickableSpans == null || clickableSpans.length <= 0) {
             return;
         }
-        getExtras().putInt(SPANS_ACTION_ID_KEY, C0927R.id.accessibility_action_clickable_span);
+        getExtras().putInt(SPANS_ACTION_ID_KEY, androidx.core.R.id.accessibility_action_clickable_span);
         SparseArray<WeakReference<ClickableSpan>> orCreateSpansFromViewTags = getOrCreateSpansFromViewTags(view);
         for (int i2 = 0; i2 < clickableSpans.length; i2++) {
             int idForClickableSpan = idForClickableSpan(clickableSpans[i2], orCreateSpansFromViewTags);

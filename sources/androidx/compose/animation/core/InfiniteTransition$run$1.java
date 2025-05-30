@@ -1,10 +1,7 @@
 package androidx.compose.animation.core;
 
-import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
-import kotlin.coroutines.intrinsics.IntrinsicsKt;
-import kotlin.coroutines.jvm.internal.Boxing;
 import kotlin.coroutines.jvm.internal.DebugMetadata;
 import kotlin.coroutines.jvm.internal.SuspendLambda;
 import kotlin.jvm.functions.Function2;
@@ -14,51 +11,12 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.animation.core.InfiniteTransition$run$1", f = "InfiniteTransition.kt", i = {0, 0, 1, 1}, l = {147, 169}, m = "invokeSuspend", n = {"$this$LaunchedEffect", "durationScale", "$this$LaunchedEffect", "durationScale"}, s = {"L$0", "L$1", "L$0", "L$1"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class InfiniteTransition$run$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     private /* synthetic */ Object L$0;
     Object L$1;
     int label;
     final /* synthetic */ InfiniteTransition this$0;
-
-    /* compiled from: Taobao */
-    @DebugMetadata(c = "androidx.compose.animation.core.InfiniteTransition$run$1$3", f = "InfiniteTransition.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-    /* renamed from: androidx.compose.animation.core.InfiniteTransition$run$1$3 */
-    /* loaded from: classes.dex */
-    static final class C03763 extends SuspendLambda implements Function2<Float, Continuation<? super Boolean>, Object> {
-        /* synthetic */ float F$0;
-        int label;
-
-        C03763(Continuation<? super C03763> continuation) {
-            super(2, continuation);
-        }
-
-        @NotNull
-        public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
-            C03763 c03763 = new C03763(continuation);
-            c03763.F$0 = ((Number) obj).floatValue();
-            return c03763;
-        }
-
-        @Nullable
-        public final Object invoke(float f, @Nullable Continuation<? super Boolean> continuation) {
-            return create(Float.valueOf(f), continuation).invokeSuspend(Unit.INSTANCE);
-        }
-
-        public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-            return invoke(((Number) obj).floatValue(), (Continuation<? super Boolean>) obj2);
-        }
-
-        @Nullable
-        public final Object invokeSuspend(@NotNull Object obj) {
-            IntrinsicsKt.getCOROUTINE_SUSPENDED();
-            if (this.label != 0) {
-                throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-            }
-            ResultKt.throwOnFailure(obj);
-            return Boxing.boxBoolean(this.F$0 > 0.0f);
-        }
-    }
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
     InfiniteTransition$run$1(InfiniteTransition infiniteTransition, Continuation<? super InfiniteTransition$run$1> continuation) {
@@ -91,7 +49,7 @@ final class InfiniteTransition$run$1 extends SuspendLambda implements Function2<
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object invokeSuspend(@org.jetbrains.annotations.NotNull java.lang.Object r9) {
         /*
@@ -137,7 +95,7 @@ final class InfiniteTransition$run$1 extends SuspendLambda implements Function2<
         L42:
             androidx.compose.animation.core.InfiniteTransition$run$1$1 r5 = new androidx.compose.animation.core.InfiniteTransition$run$1$1
             androidx.compose.animation.core.InfiniteTransition r6 = r4.this$0
-            r5.<init>()
+            r5.<init>(r6, r1, r9)
             r4.L$0 = r9
             r4.L$1 = r1
             r4.label = r3
@@ -156,7 +114,7 @@ final class InfiniteTransition$run$1 extends SuspendLambda implements Function2<
         L60:
             if (r5 == 0) goto L42
             androidx.compose.animation.core.InfiniteTransition$run$1$2 r5 = new androidx.compose.animation.core.InfiniteTransition$run$1$2
-            r5.<init>()
+            r5.<init>(r9)
             kotlinx.coroutines.flow.Flow r5 = androidx.compose.runtime.SnapshotStateKt.snapshotFlow(r5)
             androidx.compose.animation.core.InfiniteTransition$run$1$3 r6 = new androidx.compose.animation.core.InfiniteTransition$run$1$3
             r7 = 0

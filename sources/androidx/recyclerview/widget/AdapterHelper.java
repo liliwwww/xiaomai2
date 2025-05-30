@@ -1,15 +1,14 @@
 package androidx.recyclerview.widget;
 
 import androidx.core.util.Pools;
-import androidx.recyclerview.widget.OpReorderer;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.core.util.Pools$SimplePool;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
-final class AdapterHelper implements OpReorderer.Callback {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
+final class AdapterHelper implements OpReorderer$Callback {
     private static final boolean DEBUG = false;
     static final int POSITION_TYPE_INVISIBLE = 0;
     static final int POSITION_TYPE_NEW_OR_LAID_OUT = 1;
@@ -25,7 +24,7 @@ final class AdapterHelper implements OpReorderer.Callback {
 
     /* compiled from: Taobao */
     interface Callback {
-        RecyclerView.ViewHolder findViewHolder(int i);
+        RecyclerView$ViewHolder findViewHolder(int i);
 
         void markViewHoldersUpdated(int i, int i2, Object obj);
 
@@ -40,69 +39,6 @@ final class AdapterHelper implements OpReorderer.Callback {
         void onDispatchFirstPass(UpdateOp updateOp);
 
         void onDispatchSecondPass(UpdateOp updateOp);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static final class UpdateOp {
-        static final int ADD = 1;
-        static final int MOVE = 8;
-        static final int POOL_SIZE = 30;
-        static final int REMOVE = 2;
-        static final int UPDATE = 4;
-        int cmd;
-        int itemCount;
-        Object payload;
-        int positionStart;
-
-        UpdateOp(int i, int i2, int i3, Object obj) {
-            this.cmd = i;
-            this.positionStart = i2;
-            this.itemCount = i3;
-            this.payload = obj;
-        }
-
-        String cmdToString() {
-            int i = this.cmd;
-            return i != 1 ? i != 2 ? i != 4 ? i != 8 ? "??" : "mv" : "up" : "rm" : "add";
-        }
-
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (!(obj instanceof UpdateOp)) {
-                return false;
-            }
-            UpdateOp updateOp = (UpdateOp) obj;
-            int i = this.cmd;
-            if (i != updateOp.cmd) {
-                return false;
-            }
-            if (i == 8 && Math.abs(this.itemCount - this.positionStart) == 1 && this.itemCount == updateOp.positionStart && this.positionStart == updateOp.itemCount) {
-                return true;
-            }
-            if (this.itemCount != updateOp.itemCount || this.positionStart != updateOp.positionStart) {
-                return false;
-            }
-            Object obj2 = this.payload;
-            if (obj2 != null) {
-                if (!obj2.equals(updateOp.payload)) {
-                    return false;
-                }
-            } else if (updateOp.payload != null) {
-                return false;
-            }
-            return true;
-        }
-
-        public int hashCode() {
-            return (((this.cmd * 31) + this.positionStart) * 31) + this.itemCount;
-        }
-
-        public String toString() {
-            return Integer.toHexString(System.identityHashCode(this)) + "[" + cmdToString() + ",s:" + this.positionStart + "c:" + this.itemCount + ",p:" + this.payload + "]";
-        }
     }
 
     AdapterHelper(Callback callback) {
@@ -471,17 +407,17 @@ final class AdapterHelper implements OpReorderer.Callback {
         return (this.mPostponedList.isEmpty() || this.mPendingUpdates.isEmpty()) ? false : true;
     }
 
-    @Override // androidx.recyclerview.widget.OpReorderer.Callback
+    @Override // androidx.recyclerview.widget.OpReorderer$Callback
     public UpdateOp obtainUpdateOp(int i, int i2, int i3, Object obj) {
-        UpdateOp acquire = this.mUpdateOpPool.acquire();
-        if (acquire == null) {
+        UpdateOp updateOp = (UpdateOp) this.mUpdateOpPool.acquire();
+        if (updateOp == null) {
             return new UpdateOp(i, i2, i3, obj);
         }
-        acquire.cmd = i;
-        acquire.positionStart = i2;
-        acquire.itemCount = i3;
-        acquire.payload = obj;
-        return acquire;
+        updateOp.cmd = i;
+        updateOp.positionStart = i2;
+        updateOp.itemCount = i3;
+        updateOp.payload = obj;
+        return updateOp;
     }
 
     boolean onItemRangeChanged(int i, int i2, Object obj) {
@@ -546,7 +482,7 @@ final class AdapterHelper implements OpReorderer.Callback {
         this.mPendingUpdates.clear();
     }
 
-    @Override // androidx.recyclerview.widget.OpReorderer.Callback
+    @Override // androidx.recyclerview.widget.OpReorderer$Callback
     public void recycleUpdateOp(UpdateOp updateOp) {
         if (this.mDisableRecycler) {
             return;
@@ -570,7 +506,7 @@ final class AdapterHelper implements OpReorderer.Callback {
     }
 
     AdapterHelper(Callback callback, boolean z) {
-        this.mUpdateOpPool = new Pools.SimplePool(30);
+        this.mUpdateOpPool = new Pools$SimplePool(30);
         this.mPendingUpdates = new ArrayList<>();
         this.mPostponedList = new ArrayList<>();
         this.mExistingUpdateTypes = 0;

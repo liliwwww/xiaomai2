@@ -8,24 +8,19 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class OnBackPressedDispatcherKt {
     @NotNull
-    public static final OnBackPressedCallback addCallback(@NotNull OnBackPressedDispatcher onBackPressedDispatcher, @Nullable LifecycleOwner lifecycleOwner, final boolean z, @NotNull final Function1<? super OnBackPressedCallback, Unit> function1) {
+    public static final OnBackPressedCallback addCallback(@NotNull OnBackPressedDispatcher onBackPressedDispatcher, @Nullable LifecycleOwner lifecycleOwner, boolean z, @NotNull Function1<? super OnBackPressedCallback, Unit> function1) {
         Intrinsics.checkNotNullParameter(onBackPressedDispatcher, "<this>");
         Intrinsics.checkNotNullParameter(function1, "onBackPressed");
-        OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(z) { // from class: androidx.activity.OnBackPressedDispatcherKt$addCallback$callback$1
-            @Override // androidx.activity.OnBackPressedCallback
-            public void handleOnBackPressed() {
-                function1.invoke(this);
-            }
-        };
+        addCallback.callback.1 r0 = new addCallback.callback.1(z, function1);
         if (lifecycleOwner != null) {
-            onBackPressedDispatcher.addCallback(lifecycleOwner, onBackPressedCallback);
+            onBackPressedDispatcher.addCallback(lifecycleOwner, r0);
         } else {
-            onBackPressedDispatcher.addCallback(onBackPressedCallback);
+            onBackPressedDispatcher.addCallback(r0);
         }
-        return onBackPressedCallback;
+        return r0;
     }
 
     public static /* synthetic */ OnBackPressedCallback addCallback$default(OnBackPressedDispatcher onBackPressedDispatcher, LifecycleOwner lifecycleOwner, boolean z, Function1 function1, int i, Object obj) {

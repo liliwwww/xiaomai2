@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TraceCompat {
     private static final String TAG = "TraceCompat";
     private static Method sAsyncTraceBeginMethod;
@@ -33,34 +33,6 @@ public final class TraceCompat {
         @DoNotInline
         static void endSection() {
             Trace.endSection();
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(29)
-    /* loaded from: classes2.dex */
-    static class Api29Impl {
-        private Api29Impl() {
-        }
-
-        @DoNotInline
-        static void beginAsyncSection(String str, int i) {
-            Trace.beginAsyncSection(str, i);
-        }
-
-        @DoNotInline
-        static void endAsyncSection(String str, int i) {
-            Trace.endAsyncSection(str, i);
-        }
-
-        @DoNotInline
-        static boolean isEnabled() {
-            return Trace.isEnabled();
-        }
-
-        @DoNotInline
-        static void setCounter(String str, long j) {
-            Trace.setCounter(str, j);
         }
     }
 

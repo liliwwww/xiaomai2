@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ComposerKt {
     public static final int compositionLocalMapKey = 202;
 
@@ -43,34 +43,10 @@ public final class ComposerKt {
     private static final int rootKey = 100;
 
     @NotNull
-    private static final Function3<Applier<?>, SlotWriter, RememberManager, Unit> removeCurrentGroupInstance = new Function3<Applier<?>, SlotWriter, RememberManager, Unit>() { // from class: androidx.compose.runtime.ComposerKt$removeCurrentGroupInstance$1
-        public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-            invoke((Applier<?>) obj, (SlotWriter) obj2, (RememberManager) obj3);
-            return Unit.INSTANCE;
-        }
-
-        public final void invoke(@NotNull Applier<?> applier, @NotNull SlotWriter slotWriter, @NotNull RememberManager rememberManager) {
-            Intrinsics.checkNotNullParameter(applier, "<anonymous parameter 0>");
-            Intrinsics.checkNotNullParameter(slotWriter, "slots");
-            Intrinsics.checkNotNullParameter(rememberManager, "rememberManager");
-            ComposerKt.removeCurrentGroup(slotWriter, rememberManager);
-        }
-    };
+    private static final Function3<Applier<?>, SlotWriter, RememberManager, Unit> removeCurrentGroupInstance = removeCurrentGroupInstance.1.INSTANCE;
 
     @NotNull
-    private static final Function3<Applier<?>, SlotWriter, RememberManager, Unit> skipToGroupEndInstance = new Function3<Applier<?>, SlotWriter, RememberManager, Unit>() { // from class: androidx.compose.runtime.ComposerKt$skipToGroupEndInstance$1
-        public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-            invoke((Applier<?>) obj, (SlotWriter) obj2, (RememberManager) obj3);
-            return Unit.INSTANCE;
-        }
-
-        public final void invoke(@NotNull Applier<?> applier, @NotNull SlotWriter slotWriter, @NotNull RememberManager rememberManager) {
-            Intrinsics.checkNotNullParameter(applier, "<anonymous parameter 0>");
-            Intrinsics.checkNotNullParameter(slotWriter, "slots");
-            Intrinsics.checkNotNullParameter(rememberManager, "<anonymous parameter 2>");
-            slotWriter.skipToGroupEnd();
-        }
-    };
+    private static final Function3<Applier<?>, SlotWriter, RememberManager, Unit> skipToGroupEndInstance = skipToGroupEndInstance.1.INSTANCE;
 
     @NotNull
     private static final Function3<Applier<?>, SlotWriter, RememberManager, Unit> endGroupInstance = new Function3<Applier<?>, SlotWriter, RememberManager, Unit>() { // from class: androidx.compose.runtime.ComposerKt$endGroupInstance$1
@@ -88,19 +64,7 @@ public final class ComposerKt {
     };
 
     @NotNull
-    private static final Function3<Applier<?>, SlotWriter, RememberManager, Unit> startRootGroup = new Function3<Applier<?>, SlotWriter, RememberManager, Unit>() { // from class: androidx.compose.runtime.ComposerKt$startRootGroup$1
-        public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-            invoke((Applier<?>) obj, (SlotWriter) obj2, (RememberManager) obj3);
-            return Unit.INSTANCE;
-        }
-
-        public final void invoke(@NotNull Applier<?> applier, @NotNull SlotWriter slotWriter, @NotNull RememberManager rememberManager) {
-            Intrinsics.checkNotNullParameter(applier, "<anonymous parameter 0>");
-            Intrinsics.checkNotNullParameter(slotWriter, "slots");
-            Intrinsics.checkNotNullParameter(rememberManager, "<anonymous parameter 2>");
-            slotWriter.ensureStarted(0);
-        }
-    };
+    private static final Function3<Applier<?>, SlotWriter, RememberManager, Unit> startRootGroup = startRootGroup.1.INSTANCE;
 
     @NotNull
     private static final Function3<Applier<?>, SlotWriter, RememberManager, Unit> resetSlotsInstance = new Function3<Applier<?>, SlotWriter, RememberManager, Unit>() { // from class: androidx.compose.runtime.ComposerKt$resetSlotsInstance$1
@@ -215,6 +179,7 @@ public final class ComposerKt {
         return build;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public static final <T> boolean contains(@NotNull PersistentMap<CompositionLocal<Object>, ? extends State<? extends Object>> persistentMap, @NotNull CompositionLocal<T> compositionLocal) {
         Intrinsics.checkNotNullParameter(persistentMap, "<this>");
         Intrinsics.checkNotNullParameter(compositionLocal, "key");
@@ -381,10 +346,11 @@ public final class ComposerKt {
     public static /* synthetic */ void getReuseKey$annotations() {
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public static final <T> T getValueOf(@NotNull PersistentMap<CompositionLocal<Object>, ? extends State<? extends Object>> persistentMap, @NotNull CompositionLocal<T> compositionLocal) {
         Intrinsics.checkNotNullParameter(persistentMap, "<this>");
         Intrinsics.checkNotNullParameter(compositionLocal, "key");
-        State<? extends Object> state = persistentMap.get(compositionLocal);
+        State state = (State) persistentMap.get(compositionLocal);
         if (state != null) {
             return (T) state.getValue();
         }
@@ -405,10 +371,10 @@ public final class ComposerKt {
             return;
         }
         if (obj == null) {
-            list.get(findLocation).setInstances(null);
+            list.get(findLocation).setInstances((IdentityArraySet) null);
             return;
         }
-        IdentityArraySet<Object> instances = list.get(findLocation).getInstances();
+        IdentityArraySet instances = list.get(findLocation).getInstances();
         if (instances != null) {
             instances.add(obj);
         }
@@ -506,7 +472,7 @@ public final class ComposerKt {
         CompositionImpl composition;
         Intrinsics.checkNotNullParameter(slotWriter, "<this>");
         Intrinsics.checkNotNullParameter(rememberManager, "rememberManager");
-        Iterator<Object> groupSlots = slotWriter.groupSlots();
+        Iterator groupSlots = slotWriter.groupSlots();
         while (groupSlots.hasNext()) {
             Object next = groupSlots.next();
             if (next instanceof RememberObserver) {

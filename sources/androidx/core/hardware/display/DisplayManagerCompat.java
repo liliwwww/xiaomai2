@@ -5,36 +5,16 @@ import android.hardware.display.DisplayManager;
 import android.os.Build;
 import android.view.Display;
 import android.view.WindowManager;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import java.util.WeakHashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class DisplayManagerCompat {
     public static final String DISPLAY_CATEGORY_PRESENTATION = "android.hardware.display.category.PRESENTATION";
     private static final WeakHashMap<Context, DisplayManagerCompat> sInstances = new WeakHashMap<>();
     private final Context mContext;
-
-    /* compiled from: Taobao */
-    @RequiresApi(17)
-    /* loaded from: classes2.dex */
-    static class Api17Impl {
-        private Api17Impl() {
-        }
-
-        @DoNotInline
-        static Display getDisplay(DisplayManager displayManager, int i) {
-            return displayManager.getDisplay(i);
-        }
-
-        @DoNotInline
-        static Display[] getDisplays(DisplayManager displayManager) {
-            return displayManager.getDisplays();
-        }
-    }
 
     private DisplayManagerCompat(Context context) {
         this.mContext = context;

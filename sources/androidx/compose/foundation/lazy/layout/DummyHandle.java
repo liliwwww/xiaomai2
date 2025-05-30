@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DummyHandle implements LazyLayoutPrefetchState.PrefetchHandle {
 
     @NotNull
@@ -15,7 +15,6 @@ final class DummyHandle implements LazyLayoutPrefetchState.PrefetchHandle {
     private DummyHandle() {
     }
 
-    @Override // androidx.compose.foundation.lazy.layout.LazyLayoutPrefetchState.PrefetchHandle
     public void cancel() {
     }
 }

@@ -2,25 +2,25 @@ package android.taobao.windvane.service;
 
 import android.taobao.windvane.webview.IWVWebView;
 import android.taobao.windvane.webview.WVWrapWebResourceResponse;
+import androidx.core.view.PointerIconCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class WVWebViewClientFilter implements WVEventListener {
-    @Override // android.taobao.windvane.service.WVEventListener
     public WVEventResult onEvent(int i, WVEventContext wVEventContext, Object... objArr) {
         WVEventResult wVEventResult = new WVEventResult(false);
         if (i != 1008) {
             switch (i) {
-                case 1001:
+                case PointerIconCompat.TYPE_CONTEXT_MENU /* 1001 */:
                     onPageStarted(wVEventContext.webView, wVEventContext.url);
                     break;
-                case 1002:
+                case PointerIconCompat.TYPE_HAND /* 1002 */:
                     onPageFinished(wVEventContext.webView, wVEventContext.url);
                     break;
-                case 1003:
+                case PointerIconCompat.TYPE_HELP /* 1003 */:
                     wVEventResult.isSuccess = shouldOverrideUrlLoading(wVEventContext.webView, wVEventContext.url);
                     break;
-                case WVEventId.PAGE_ReceivedError /* 1005 */:
+                case 1005:
                     onReceivedError(wVEventContext.webView, ((Integer) objArr[0]).intValue(), (String) objArr[1], (String) objArr[2]);
                     break;
             }

@@ -2,13 +2,11 @@ package androidx.core.os;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
-import android.os.Process;
-import android.os.UserHandle;
 import androidx.annotation.RequiresApi;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ProcessCompat {
 
     /* compiled from: Taobao */
@@ -42,53 +40,6 @@ public final class ProcessCompat {
                 e.printStackTrace();
             }
             return true;
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(17)
-    /* loaded from: classes2.dex */
-    static class Api17Impl {
-        private static Method sMethodUserHandleIsAppMethod;
-        private static boolean sResolved;
-        private static final Object sResolvedLock = new Object();
-
-        private Api17Impl() {
-        }
-
-        @SuppressLint({"DiscouragedPrivateApi"})
-        static boolean isApplicationUid(int i) {
-            try {
-                synchronized (sResolvedLock) {
-                    if (!sResolved) {
-                        sResolved = true;
-                        sMethodUserHandleIsAppMethod = UserHandle.class.getDeclaredMethod("isApp", Integer.TYPE);
-                    }
-                }
-                Method method = sMethodUserHandleIsAppMethod;
-                if (method != null) {
-                    Boolean bool = (Boolean) method.invoke(null, Integer.valueOf(i));
-                    if (bool != null) {
-                        return bool.booleanValue();
-                    }
-                    throw new NullPointerException();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return true;
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(24)
-    /* loaded from: classes2.dex */
-    static class Api24Impl {
-        private Api24Impl() {
-        }
-
-        static boolean isApplicationUid(int i) {
-            return Process.isApplicationUid(i);
         }
     }
 

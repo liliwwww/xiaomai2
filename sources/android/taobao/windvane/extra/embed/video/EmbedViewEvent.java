@@ -4,7 +4,7 @@ import android.taobao.windvane.webview.IWVWebView;
 import android.text.TextUtils;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class EmbedViewEvent {
     public static void firevent(IWVWebView iWVWebView, String str, String str2, String str3) {
         if (TextUtils.isEmpty(str3)) {

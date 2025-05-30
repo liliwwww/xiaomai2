@@ -7,14 +7,13 @@ import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
 @RequiresApi(22)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ViewUtilsApi22 extends ViewUtilsApi21 {
     private static boolean sTryHiddenSetLeftTopRightBottom = true;
 
     ViewUtilsApi22() {
     }
 
-    @Override // androidx.transition.ViewUtilsBase
     @SuppressLint({"NewApi"})
     public void setLeftTopRightBottom(@NonNull View view, int i, int i2, int i3, int i4) {
         if (sTryHiddenSetLeftTopRightBottom) {

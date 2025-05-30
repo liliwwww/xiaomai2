@@ -1,10 +1,8 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.animation.core.AnimationScope;
 import androidx.compose.animation.core.AnimationSpec;
 import androidx.compose.animation.core.AnimationState;
 import androidx.compose.animation.core.AnimationStateKt;
-import androidx.compose.animation.core.AnimationVector1D;
 import androidx.compose.animation.core.SuspendAnimationKt;
 import kotlin.ResultKt;
 import kotlin.Unit;
@@ -13,17 +11,14 @@ import kotlin.coroutines.intrinsics.IntrinsicsKt;
 import kotlin.coroutines.jvm.internal.Boxing;
 import kotlin.coroutines.jvm.internal.DebugMetadata;
 import kotlin.coroutines.jvm.internal.SuspendLambda;
-import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
-import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Ref;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tb.dp5;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.TransformableStateKt$animateZoomBy$3", f = "TransformableState.kt", i = {}, l = {138}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class TransformableStateKt$animateZoomBy$3 extends SuspendLambda implements Function2<TransformScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ AnimationSpec<Float> $animationSpec;
     final /* synthetic */ Ref.FloatRef $previous;
@@ -57,30 +52,13 @@ final class TransformableStateKt$animateZoomBy$3 extends SuspendLambda implement
         int i = this.label;
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
-            final TransformScope transformScope = (TransformScope) this.L$0;
-            AnimationState AnimationState$default = AnimationStateKt.AnimationState$default(this.$previous.element, 0.0f, 0L, 0L, false, 30, null);
+            TransformScope transformScope = (TransformScope) this.L$0;
+            AnimationState AnimationState$default = AnimationStateKt.AnimationState$default(this.$previous.element, 0.0f, 0L, 0L, false, 30, (Object) null);
             Float boxFloat = Boxing.boxFloat(this.$zoomFactor);
             AnimationSpec<Float> animationSpec = this.$animationSpec;
-            final Ref.FloatRef floatRef = this.$previous;
-            Function1<AnimationScope<Float, AnimationVector1D>, Unit> function1 = new Function1<AnimationScope<Float, AnimationVector1D>, Unit>() { // from class: androidx.compose.foundation.gestures.TransformableStateKt$animateZoomBy$3.1
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(1);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    invoke((AnimationScope<Float, AnimationVector1D>) obj2);
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull AnimationScope<Float, AnimationVector1D> animationScope) {
-                    Intrinsics.checkNotNullParameter(animationScope, "$this$animateTo");
-                    dp5.a(transformScope, (floatRef.element > 0.0f ? 1 : (floatRef.element == 0.0f ? 0 : -1)) == 0 ? 1.0f : animationScope.getValue().floatValue() / floatRef.element, 0L, 0.0f, 6, (Object) null);
-                    floatRef.element = animationScope.getValue().floatValue();
-                }
-            };
+            1 r6 = new 1(this.$previous, transformScope);
             this.label = 1;
-            if (SuspendAnimationKt.animateTo$default(AnimationState$default, boxFloat, animationSpec, false, function1, this, 4, null) == coroutine_suspended) {
+            if (SuspendAnimationKt.animateTo$default(AnimationState$default, boxFloat, animationSpec, false, r6, this, 4, null) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

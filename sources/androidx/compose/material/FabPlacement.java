@@ -4,7 +4,7 @@ import androidx.compose.runtime.Immutable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class FabPlacement {
     private final int height;
     private final boolean isDocked;

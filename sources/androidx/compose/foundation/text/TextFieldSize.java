@@ -1,14 +1,14 @@
 package androidx.compose.foundation.text;
 
-import androidx.compose.p004ui.text.TextStyle;
-import androidx.compose.p004ui.text.font.FontFamily;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
+import androidx.compose.ui.text.TextStyle;
+import androidx.compose.ui.text.font.FontFamily;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class TextFieldSize {
 
     @NotNull
@@ -38,12 +38,12 @@ final class TextFieldSize {
         this.fontFamilyResolver = resolver;
         this.resolvedStyle = textStyle;
         this.typeface = obj;
-        this.minSize = m1800computeMinSizeYbymL2g();
+        this.minSize = m447computeMinSizeYbymL2g();
     }
 
     /* renamed from: computeMinSize-YbymL2g, reason: not valid java name */
-    private final long m1800computeMinSizeYbymL2g() {
-        return TextFieldDelegateKt.computeSizeForDefaultText$default(this.resolvedStyle, this.density, this.fontFamilyResolver, null, 0, 24, null);
+    private final long m447computeMinSizeYbymL2g() {
+        return TextFieldDelegateKt.computeSizeForDefaultText$default(this.resolvedStyle, this.density, this.fontFamilyResolver, (String) null, 0, 24, (Object) null);
     }
 
     @NotNull
@@ -62,7 +62,7 @@ final class TextFieldSize {
     }
 
     /* renamed from: getMinSize-YbymL2g, reason: not valid java name */
-    public final long m1801getMinSizeYbymL2g() {
+    public final long m448getMinSizeYbymL2g() {
         return this.minSize;
     }
 
@@ -115,6 +115,6 @@ final class TextFieldSize {
         this.fontFamilyResolver = resolver;
         this.resolvedStyle = textStyle;
         this.typeface = obj;
-        this.minSize = m1800computeMinSizeYbymL2g();
+        this.minSize = m447computeMinSizeYbymL2g();
     }
 }

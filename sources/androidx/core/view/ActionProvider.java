@@ -8,21 +8,15 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class ActionProvider {
     private static final String TAG = "ActionProvider(support)";
     private final Context mContext;
     private SubUiVisibilityListener mSubUiVisibilityListener;
     private VisibilityListener mVisibilityListener;
-
-    /* compiled from: Taobao */
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    /* loaded from: classes2.dex */
-    public interface SubUiVisibilityListener {
-        void onSubUiVisibilityChanged(boolean z);
-    }
 
     /* compiled from: Taobao */
     public interface VisibilityListener {
@@ -72,13 +66,13 @@ public abstract class ActionProvider {
         this.mVisibilityListener.onActionProviderVisibilityChanged(isVisible());
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void reset() {
         this.mVisibilityListener = null;
         this.mSubUiVisibilityListener = null;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void setSubUiVisibilityListener(@Nullable SubUiVisibilityListener subUiVisibilityListener) {
         this.mSubUiVisibilityListener = subUiVisibilityListener;
     }
@@ -90,7 +84,7 @@ public abstract class ActionProvider {
         this.mVisibilityListener = visibilityListener;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
     public void subUiVisibilityChanged(boolean z) {
         SubUiVisibilityListener subUiVisibilityListener = this.mSubUiVisibilityListener;
         if (subUiVisibilityListener != null) {

@@ -6,19 +6,12 @@ import java.util.concurrent.Executor;
 
 /* compiled from: Taobao */
 @Keep
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface IVivoSpatializer {
     public static final int SPATIALIZER_IMMERSIVE_LEVEL_MULTICHANNEL = 1;
     public static final int SPATIALIZER_IMMERSIVE_LEVEL_NONE = 0;
     public static final int SPATIALIZER_IMMERSIVE_LEVEL_OTHER = -1;
     public static final int V_SDK_MIN_VERSION = 10000;
-
-    /* compiled from: Taobao */
-    @Keep
-    /* loaded from: classes2.dex */
-    public interface OnHeadTrackerAvailableListener {
-        void onHeadTrackerAvailableChanged(@NonNull IVivoSpatializer iVivoSpatializer, boolean z);
-    }
 
     /* compiled from: Taobao */
     @Keep

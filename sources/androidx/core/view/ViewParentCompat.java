@@ -5,71 +5,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ViewParentCompat {
     private static final String TAG = "ViewParentCompat";
     private static int[] sTempNestedScrollConsumed;
-
-    /* compiled from: Taobao */
-    @RequiresApi(19)
-    /* loaded from: classes.dex */
-    static class Api19Impl {
-        private Api19Impl() {
-        }
-
-        @DoNotInline
-        static void notifySubtreeAccessibilityStateChanged(ViewParent viewParent, View view, View view2, int i) {
-            viewParent.notifySubtreeAccessibilityStateChanged(view, view2, i);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(21)
-    /* loaded from: classes.dex */
-    static class Api21Impl {
-        private Api21Impl() {
-        }
-
-        @DoNotInline
-        static boolean onNestedFling(ViewParent viewParent, View view, float f, float f2, boolean z) {
-            return viewParent.onNestedFling(view, f, f2, z);
-        }
-
-        @DoNotInline
-        static boolean onNestedPreFling(ViewParent viewParent, View view, float f, float f2) {
-            return viewParent.onNestedPreFling(view, f, f2);
-        }
-
-        @DoNotInline
-        static void onNestedPreScroll(ViewParent viewParent, View view, int i, int i2, int[] iArr) {
-            viewParent.onNestedPreScroll(view, i, i2, iArr);
-        }
-
-        @DoNotInline
-        static void onNestedScroll(ViewParent viewParent, View view, int i, int i2, int i3, int i4) {
-            viewParent.onNestedScroll(view, i, i2, i3, i4);
-        }
-
-        @DoNotInline
-        static void onNestedScrollAccepted(ViewParent viewParent, View view, View view2, int i) {
-            viewParent.onNestedScrollAccepted(view, view2, i);
-        }
-
-        @DoNotInline
-        static boolean onStartNestedScroll(ViewParent viewParent, View view, View view2, int i) {
-            return viewParent.onStartNestedScroll(view, view2, i);
-        }
-
-        @DoNotInline
-        static void onStopNestedScroll(ViewParent viewParent, View view) {
-            viewParent.onStopNestedScroll(view);
-        }
-    }
 
     private ViewParentCompat() {
     }

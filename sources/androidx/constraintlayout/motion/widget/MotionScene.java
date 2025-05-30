@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.graphics.RectF;
-import android.taobao.windvane.util.NetWork;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.taobao.windvane.util.WVNativeCallbackUtil;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -22,10 +22,10 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.OvershootInterpolator;
 import androidx.constraintlayout.core.motion.utils.Easing;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
 import androidx.constraintlayout.motion.widget.MotionLayout;
-import androidx.constraintlayout.widget.C0923R;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.constraintlayout.widget.R;
 import androidx.constraintlayout.widget.StateSet;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MotionScene {
     static final int ANTICIPATE = 6;
     static final int BOUNCE = 4;
@@ -84,7 +84,7 @@ public class MotionScene {
     private HashMap<String, Integer> mConstraintSetIdMap = new HashMap<>();
     private SparseIntArray mDeriveMap = new SparseIntArray();
     private boolean DEBUG_DESKTOP = false;
-    private int mDefaultDuration = 400;
+    private int mDefaultDuration = WVURLRuleConstants.CART;
     private int mLayoutDuringTransition = 0;
     private boolean mIgnoreTouch = false;
     private boolean mMotionOutsideRegion = false;
@@ -110,7 +110,7 @@ public class MotionScene {
         if (str.length() > 1) {
             return Integer.parseInt(str.substring(1));
         }
-        Log.e(TypedValues.MotionScene.NAME, "error in parsing id");
+        Log.e("MotionScene", "error in parsing id");
         return i;
     }
 
@@ -226,7 +226,7 @@ public class MotionScene {
                             c = 65535;
                             break;
                         case 793277014:
-                            if (name.equals(TypedValues.MotionScene.NAME)) {
+                            if (name.equals("MotionScene")) {
                                 c = 0;
                                 break;
                             }
@@ -276,7 +276,7 @@ public class MotionScene {
                             break;
                         case 2:
                             if (transition == null) {
-                                Log.v(TypedValues.MotionScene.NAME, " OnSwipe (" + context.getResources().getResourceEntryName(i) + ".xml:" + xml.getLineNumber() + ")");
+                                Log.v("MotionScene", " OnSwipe (" + context.getResources().getResourceEntryName(i) + ".xml:" + xml.getLineNumber() + ")");
                             }
                             if (transition == null) {
                                 break;
@@ -391,7 +391,7 @@ public class MotionScene {
                                 c2 = 65535;
                                 break;
                             case 3387192:
-                                if (attributeValue.equals(NetWork.CONN_TYPE_NONE)) {
+                                if (attributeValue.equals("none")) {
                                     c2 = 2;
                                     break;
                                 }
@@ -455,11 +455,11 @@ public class MotionScene {
     }
 
     private void parseInclude(Context context, XmlPullParser xmlPullParser) {
-        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(Xml.asAttributeSet(xmlPullParser), C0923R.styleable.include);
+        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(Xml.asAttributeSet(xmlPullParser), R.styleable.include);
         int indexCount = obtainStyledAttributes.getIndexCount();
         for (int i = 0; i < indexCount; i++) {
             int index = obtainStyledAttributes.getIndex(i);
-            if (index == C0923R.styleable.include_constraintSet) {
+            if (index == R.styleable.include_constraintSet) {
                 parseInclude(context, obtainStyledAttributes.getResourceId(index, -1));
             }
         }
@@ -467,17 +467,17 @@ public class MotionScene {
     }
 
     private void parseMotionSceneTags(Context context, XmlPullParser xmlPullParser) {
-        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(Xml.asAttributeSet(xmlPullParser), C0923R.styleable.MotionScene);
+        TypedArray obtainStyledAttributes = context.obtainStyledAttributes(Xml.asAttributeSet(xmlPullParser), R.styleable.MotionScene);
         int indexCount = obtainStyledAttributes.getIndexCount();
         for (int i = 0; i < indexCount; i++) {
             int index = obtainStyledAttributes.getIndex(i);
-            if (index == C0923R.styleable.MotionScene_defaultDuration) {
+            if (index == R.styleable.MotionScene_defaultDuration) {
                 int i2 = obtainStyledAttributes.getInt(index, this.mDefaultDuration);
                 this.mDefaultDuration = i2;
                 if (i2 < 8) {
                     this.mDefaultDuration = 8;
                 }
-            } else if (index == C0923R.styleable.MotionScene_layoutDuringTransition) {
+            } else if (index == R.styleable.MotionScene_layoutDuringTransition) {
                 this.mLayoutDuringTransition = obtainStyledAttributes.getInteger(index, 0);
             }
         }
@@ -492,14 +492,14 @@ public class MotionScene {
             readConstraintChain(i2, motionLayout);
             ConstraintSet constraintSet2 = this.mConstraintSetMap.get(i2);
             if (constraintSet2 == null) {
-                Log.e(TypedValues.MotionScene.NAME, "ERROR! invalid deriveConstraintsFrom: @id/" + Debug.getName(this.mMotionLayout.getContext(), i2));
+                Log.e("MotionScene", "ERROR! invalid deriveConstraintsFrom: @id/" + Debug.getName(this.mMotionLayout.getContext(), i2));
                 return;
             }
             constraintSet.derivedState += WVNativeCallbackUtil.SEPERATER + constraintSet2.derivedState;
             constraintSet.readFallback(constraintSet2);
         } else {
             constraintSet.derivedState += "  layout";
-            constraintSet.readFallback(motionLayout);
+            constraintSet.readFallback((ConstraintLayout) motionLayout);
         }
         constraintSet.applyDeltaFrom(constraintSet);
     }
@@ -578,37 +578,37 @@ public class MotionScene {
             Transition next = it.next();
             if (next.mAutoTransition != 0 && ((transition = this.mCurrentTransition) != next || !transition.isTransitionFlag(2))) {
                 if (i == next.mConstraintSetStart && (next.mAutoTransition == 4 || next.mAutoTransition == 2)) {
-                    MotionLayout.TransitionState transitionState = MotionLayout.TransitionState.FINISHED;
-                    motionLayout.setState(transitionState);
+                    MotionLayout$TransitionState motionLayout$TransitionState = MotionLayout$TransitionState.FINISHED;
+                    motionLayout.setState(motionLayout$TransitionState);
                     motionLayout.setTransition(next);
                     if (next.mAutoTransition == 4) {
                         motionLayout.transitionToEnd();
-                        motionLayout.setState(MotionLayout.TransitionState.SETUP);
-                        motionLayout.setState(MotionLayout.TransitionState.MOVING);
+                        motionLayout.setState(MotionLayout$TransitionState.SETUP);
+                        motionLayout.setState(MotionLayout$TransitionState.MOVING);
                     } else {
                         motionLayout.setProgress(1.0f);
                         motionLayout.evaluate(true);
-                        motionLayout.setState(MotionLayout.TransitionState.SETUP);
-                        motionLayout.setState(MotionLayout.TransitionState.MOVING);
-                        motionLayout.setState(transitionState);
+                        motionLayout.setState(MotionLayout$TransitionState.SETUP);
+                        motionLayout.setState(MotionLayout$TransitionState.MOVING);
+                        motionLayout.setState(motionLayout$TransitionState);
                         motionLayout.onNewStateAttachHandlers();
                     }
                     return true;
                 }
                 if (i == next.mConstraintSetEnd && (next.mAutoTransition == 3 || next.mAutoTransition == 1)) {
-                    MotionLayout.TransitionState transitionState2 = MotionLayout.TransitionState.FINISHED;
-                    motionLayout.setState(transitionState2);
+                    MotionLayout$TransitionState motionLayout$TransitionState2 = MotionLayout$TransitionState.FINISHED;
+                    motionLayout.setState(motionLayout$TransitionState2);
                     motionLayout.setTransition(next);
                     if (next.mAutoTransition == 3) {
                         motionLayout.transitionToStart();
-                        motionLayout.setState(MotionLayout.TransitionState.SETUP);
-                        motionLayout.setState(MotionLayout.TransitionState.MOVING);
+                        motionLayout.setState(MotionLayout$TransitionState.SETUP);
+                        motionLayout.setState(MotionLayout$TransitionState.MOVING);
                     } else {
                         motionLayout.setProgress(0.0f);
                         motionLayout.evaluate(true);
-                        motionLayout.setState(MotionLayout.TransitionState.SETUP);
-                        motionLayout.setState(MotionLayout.TransitionState.MOVING);
-                        motionLayout.setState(transitionState2);
+                        motionLayout.setState(MotionLayout$TransitionState.SETUP);
+                        motionLayout.setState(MotionLayout$TransitionState.MOVING);
+                        motionLayout.setState(motionLayout$TransitionState2);
                         motionLayout.onNewStateAttachHandlers();
                     }
                     return true;
@@ -762,11 +762,11 @@ public class MotionScene {
             KeyFrames keyFrames = (KeyFrames) it.next();
             for (Integer num : keyFrames.getKeys()) {
                 if (i2 == num.intValue()) {
-                    Iterator<Key> it2 = keyFrames.getKeyFramesForView(num.intValue()).iterator();
+                    Iterator it2 = keyFrames.getKeyFramesForView(num.intValue()).iterator();
                     while (it2.hasNext()) {
-                        Key next = it2.next();
-                        if (next.mFramePosition == i3 && next.mType == i) {
-                            return next;
+                        Key key = (Key) it2.next();
+                        if (key.mFramePosition == i3 && key.mType == i) {
+                            return key;
                         }
                     }
                 }
@@ -926,9 +926,9 @@ public class MotionScene {
         }
         Iterator it = transition.mKeyFramesList.iterator();
         while (it.hasNext()) {
-            Iterator<Key> it2 = ((KeyFrames) it.next()).getKeyFramesForView(view.getId()).iterator();
+            Iterator it2 = ((KeyFrames) it.next()).getKeyFramesForView(view.getId()).iterator();
             while (it2.hasNext()) {
-                if (it2.next().mFramePosition == i) {
+                if (((Key) it2.next()).mFramePosition == i) {
                     return true;
                 }
             }
@@ -1053,7 +1053,7 @@ public class MotionScene {
         for (int i = 0; i < this.mConstraintSetMap.size(); i++) {
             int keyAt = this.mConstraintSetMap.keyAt(i);
             if (hasCycleDependency(keyAt)) {
-                Log.e(TypedValues.MotionScene.NAME, "Cannot be derived from yourself");
+                Log.e("MotionScene", "Cannot be derived from yourself");
                 return;
             }
             readConstraintChain(keyAt, motionLayout);
@@ -1087,9 +1087,9 @@ public class MotionScene {
         }
         Iterator it = transition.mKeyFramesList.iterator();
         while (it.hasNext()) {
-            Iterator<Key> it2 = ((KeyFrames) it.next()).getKeyFramesForView(view.getId()).iterator();
+            Iterator it2 = ((KeyFrames) it.next()).getKeyFramesForView(view.getId()).iterator();
             while (it2.hasNext()) {
-                if (it2.next().mFramePosition == i) {
+                if (((Key) it2.next()).mFramePosition == i) {
                     if (obj != null) {
                         ((Float) obj).floatValue();
                     }
@@ -1114,7 +1114,7 @@ public class MotionScene {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     void setTransition(int r7, int r8) {
         /*
@@ -1274,7 +1274,7 @@ public class MotionScene {
             this.mDefaultInterpolator = 0;
             this.mDefaultInterpolatorString = null;
             this.mDefaultInterpolatorID = -1;
-            this.mDuration = 400;
+            this.mDuration = WVURLRuleConstants.CART;
             this.mStagger = 0.0f;
             this.mKeyFramesList = new ArrayList<>();
             this.mTouchResponse = null;
@@ -1302,7 +1302,7 @@ public class MotionScene {
             int indexCount = typedArray.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
                 int index = typedArray.getIndex(i);
-                if (index == C0923R.styleable.Transition_constraintSetEnd) {
+                if (index == R.styleable.Transition_constraintSetEnd) {
                     this.mConstraintSetEnd = typedArray.getResourceId(index, -1);
                     String resourceTypeName = context.getResources().getResourceTypeName(this.mConstraintSetEnd);
                     if ("layout".equals(resourceTypeName)) {
@@ -1312,7 +1312,7 @@ public class MotionScene {
                     } else if ("xml".equals(resourceTypeName)) {
                         this.mConstraintSetEnd = motionScene.parseInclude(context, this.mConstraintSetEnd);
                     }
-                } else if (index == C0923R.styleable.Transition_constraintSetStart) {
+                } else if (index == R.styleable.Transition_constraintSetStart) {
                     this.mConstraintSetStart = typedArray.getResourceId(index, this.mConstraintSetStart);
                     String resourceTypeName2 = context.getResources().getResourceTypeName(this.mConstraintSetStart);
                     if ("layout".equals(resourceTypeName2)) {
@@ -1322,7 +1322,7 @@ public class MotionScene {
                     } else if ("xml".equals(resourceTypeName2)) {
                         this.mConstraintSetStart = motionScene.parseInclude(context, this.mConstraintSetStart);
                     }
-                } else if (index == C0923R.styleable.Transition_motionInterpolator) {
+                } else if (index == R.styleable.Transition_motionInterpolator) {
                     int i2 = typedArray.peekValue(index).type;
                     if (i2 == 1) {
                         int resourceId = typedArray.getResourceId(index, -1);
@@ -1344,25 +1344,25 @@ public class MotionScene {
                     } else {
                         this.mDefaultInterpolator = typedArray.getInteger(index, this.mDefaultInterpolator);
                     }
-                } else if (index == C0923R.styleable.Transition_duration) {
+                } else if (index == R.styleable.Transition_duration) {
                     int i3 = typedArray.getInt(index, this.mDuration);
                     this.mDuration = i3;
                     if (i3 < 8) {
                         this.mDuration = 8;
                     }
-                } else if (index == C0923R.styleable.Transition_staggered) {
+                } else if (index == R.styleable.Transition_staggered) {
                     this.mStagger = typedArray.getFloat(index, this.mStagger);
-                } else if (index == C0923R.styleable.Transition_autoTransition) {
+                } else if (index == R.styleable.Transition_autoTransition) {
                     this.mAutoTransition = typedArray.getInteger(index, this.mAutoTransition);
-                } else if (index == C0923R.styleable.Transition_android_id) {
+                } else if (index == R.styleable.Transition_android_id) {
                     this.mId = typedArray.getResourceId(index, this.mId);
-                } else if (index == C0923R.styleable.Transition_transitionDisable) {
+                } else if (index == R.styleable.Transition_transitionDisable) {
                     this.mDisable = typedArray.getBoolean(index, this.mDisable);
-                } else if (index == C0923R.styleable.Transition_pathMotionArc) {
+                } else if (index == R.styleable.Transition_pathMotionArc) {
                     this.mPathMotionArc = typedArray.getInteger(index, -1);
-                } else if (index == C0923R.styleable.Transition_layoutDuringTransition) {
+                } else if (index == R.styleable.Transition_layoutDuringTransition) {
                     this.mLayoutDuringTransition = typedArray.getInteger(index, 0);
-                } else if (index == C0923R.styleable.Transition_transitionFlags) {
+                } else if (index == R.styleable.Transition_transitionFlags) {
                     this.mTransitionFlags = typedArray.getInteger(index, 0);
                 }
             }
@@ -1372,7 +1372,7 @@ public class MotionScene {
         }
 
         private void fillFromAttributeList(MotionScene motionScene, Context context, AttributeSet attributeSet) {
-            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, C0923R.styleable.Transition);
+            TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, R.styleable.Transition);
             fill(motionScene, context, obtainStyledAttributes);
             obtainStyledAttributes.recycle();
         }
@@ -1540,35 +1540,32 @@ public class MotionScene {
                 this.mTargetId = -1;
                 this.mMode = 17;
                 this.mTransition = transition;
-                TypedArray obtainStyledAttributes = context.obtainStyledAttributes(Xml.asAttributeSet(xmlPullParser), C0923R.styleable.OnClick);
+                TypedArray obtainStyledAttributes = context.obtainStyledAttributes(Xml.asAttributeSet(xmlPullParser), R.styleable.OnClick);
                 int indexCount = obtainStyledAttributes.getIndexCount();
                 for (int i = 0; i < indexCount; i++) {
                     int index = obtainStyledAttributes.getIndex(i);
-                    if (index == C0923R.styleable.OnClick_targetId) {
+                    if (index == R.styleable.OnClick_targetId) {
                         this.mTargetId = obtainStyledAttributes.getResourceId(index, this.mTargetId);
-                    } else if (index == C0923R.styleable.OnClick_clickAction) {
+                    } else if (index == R.styleable.OnClick_clickAction) {
                         this.mMode = obtainStyledAttributes.getInt(index, this.mMode);
                     }
                 }
                 obtainStyledAttributes.recycle();
             }
 
-            /* JADX WARN: Multi-variable type inference failed */
-            /* JADX WARN: Type inference failed for: r7v4, types: [android.view.View] */
             public void addOnClickListeners(MotionLayout motionLayout, int i, Transition transition) {
                 int i2 = this.mTargetId;
-                MotionLayout motionLayout2 = motionLayout;
                 if (i2 != -1) {
-                    motionLayout2 = motionLayout.findViewById(i2);
+                    motionLayout = motionLayout.findViewById(i2);
                 }
-                if (motionLayout2 == null) {
-                    Log.e(TypedValues.MotionScene.NAME, "OnClick could not find id " + this.mTargetId);
+                if (motionLayout == null) {
+                    Log.e("MotionScene", "OnClick could not find id " + this.mTargetId);
                     return;
                 }
                 int i3 = transition.mConstraintSetStart;
                 int i4 = transition.mConstraintSetEnd;
                 if (i3 == -1) {
-                    motionLayout2.setOnClickListener(this);
+                    motionLayout.setOnClickListener(this);
                     return;
                 }
                 int i5 = this.mMode;
@@ -1578,7 +1575,7 @@ public class MotionScene {
                     z = true;
                 }
                 if (z2 || z) {
-                    motionLayout2.setOnClickListener(this);
+                    motionLayout.setOnClickListener(this);
                 }
             }
 
@@ -1664,7 +1661,7 @@ public class MotionScene {
                     findViewById.setOnClickListener(null);
                     return;
                 }
-                Log.e(TypedValues.MotionScene.NAME, " (*)  could not find id " + this.mTargetId);
+                Log.e("MotionScene", " (*)  could not find id " + this.mTargetId);
             }
 
             public TransitionOnClick(Transition transition, int i, int i2) {
@@ -1684,7 +1681,7 @@ public class MotionScene {
             this.mDefaultInterpolator = 0;
             this.mDefaultInterpolatorString = null;
             this.mDefaultInterpolatorID = -1;
-            this.mDuration = 400;
+            this.mDuration = WVURLRuleConstants.CART;
             this.mStagger = 0.0f;
             this.mKeyFramesList = new ArrayList<>();
             this.mTouchResponse = null;
@@ -1710,7 +1707,7 @@ public class MotionScene {
             this.mDefaultInterpolator = 0;
             this.mDefaultInterpolatorString = null;
             this.mDefaultInterpolatorID = -1;
-            this.mDuration = 400;
+            this.mDuration = WVURLRuleConstants.CART;
             this.mStagger = 0.0f;
             this.mKeyFramesList = new ArrayList<>();
             this.mTouchResponse = null;
@@ -1762,7 +1759,7 @@ public class MotionScene {
             i = stateGetConstraintID;
         }
         if (this.mConstraintSetMap.get(i) == null) {
-            Log.e(TypedValues.MotionScene.NAME, "Warning could not find ConstraintSet id/" + Debug.getName(this.mMotionLayout.getContext(), i) + " In MotionScene");
+            Log.e("MotionScene", "Warning could not find ConstraintSet id/" + Debug.getName(this.mMotionLayout.getContext(), i) + " In MotionScene");
             SparseArray<ConstraintSet> sparseArray = this.mConstraintSetMap;
             return sparseArray.get(sparseArray.keyAt(0));
         }
@@ -1774,7 +1771,7 @@ public class MotionScene {
         this.mViewTransitionController = new ViewTransitionController(motionLayout);
         load(context, i);
         SparseArray<ConstraintSet> sparseArray = this.mConstraintSetMap;
-        int i2 = C0923R.id.motion_base;
+        int i2 = R.id.motion_base;
         sparseArray.put(i2, new ConstraintSet());
         this.mConstraintSetIdMap.put("motion_base", Integer.valueOf(i2));
     }

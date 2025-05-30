@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WebErrorView extends RelativeLayout {
     public WebErrorView(Context context, AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);

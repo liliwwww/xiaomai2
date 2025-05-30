@@ -4,15 +4,15 @@ import androidx.compose.foundation.ExperimentalFoundationApi;
 import androidx.compose.foundation.layout.Arrangement;
 import androidx.compose.foundation.layout.PaddingKt;
 import androidx.compose.foundation.layout.PaddingValues;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Constraints;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.internal.ComposableLambdaKt;
+import androidx.compose.ui.unit.Constraints;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
+import androidx.compose.ui.unit.LayoutDirection;
 import java.util.List;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyStaggeredGridDslKt {
     /* JADX WARN: Removed duplicated region for block: B:104:0x00cb  */
     /* JADX WARN: Removed duplicated region for block: B:105:0x009c  */
@@ -62,12 +62,12 @@ public final class LazyStaggeredGridDslKt {
     @androidx.compose.foundation.ExperimentalFoundationApi
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void LazyHorizontalStaggeredGrid(@org.jetbrains.annotations.NotNull final androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells r26, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r27, @org.jetbrains.annotations.Nullable androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r29, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Vertical r30, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Horizontal r31, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r32, boolean r33, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridScope, kotlin.Unit> r34, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r35, final int r36, final int r37) {
+    public static final void LazyHorizontalStaggeredGrid(@org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells r26, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r27, @org.jetbrains.annotations.Nullable androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r29, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Vertical r30, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Horizontal r31, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r32, boolean r33, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridScope, kotlin.Unit> r34, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r35, int r36, int r37) {
         /*
             Method dump skipped, instructions count: 590
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridDslKt.LazyHorizontalStaggeredGrid(androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells, androidx.compose.ui.Modifier, androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState, androidx.compose.foundation.layout.PaddingValues, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.foundation.layout.Arrangement$Horizontal, androidx.compose.foundation.gestures.FlingBehavior, boolean, kotlin.jvm.functions.Function1, androidx.compose.runtime.Composer, int, int):void");
     }
@@ -108,19 +108,19 @@ public final class LazyStaggeredGridDslKt {
     @androidx.compose.foundation.ExperimentalFoundationApi
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void LazyVerticalStaggeredGrid(@org.jetbrains.annotations.NotNull final androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells r26, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r27, @org.jetbrains.annotations.Nullable androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r29, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Vertical r30, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Horizontal r31, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r32, boolean r33, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridScope, kotlin.Unit> r34, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r35, final int r36, final int r37) {
+    public static final void LazyVerticalStaggeredGrid(@org.jetbrains.annotations.NotNull androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells r26, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r27, @org.jetbrains.annotations.Nullable androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState r28, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.PaddingValues r29, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Vertical r30, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Horizontal r31, @org.jetbrains.annotations.Nullable androidx.compose.foundation.gestures.FlingBehavior r32, boolean r33, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridScope, kotlin.Unit> r34, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r35, int r36, int r37) {
         /*
             Method dump skipped, instructions count: 586
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridDslKt.LazyVerticalStaggeredGrid(androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells, androidx.compose.ui.Modifier, androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState, androidx.compose.foundation.layout.PaddingValues, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.foundation.layout.Arrangement$Horizontal, androidx.compose.foundation.gestures.FlingBehavior, boolean, kotlin.jvm.functions.Function1, androidx.compose.runtime.Composer, int, int):void");
     }
 
     @ExperimentalFoundationApi
     @ComposableInferredTarget(scheme = "[0[0]]")
-    public static final <T> void items(@NotNull LazyStaggeredGridScope lazyStaggeredGridScope, @NotNull final List<? extends T> list, @Nullable final Function1<? super T, ? extends Object> function1, @NotNull final Function1<? super T, ? extends Object> function12, @NotNull final Function4<? super LazyStaggeredGridItemScope, ? super T, ? super Composer, ? super Integer, Unit> function4) {
+    public static final <T> void items(@NotNull LazyStaggeredGridScope lazyStaggeredGridScope, @NotNull final List<? extends T> list, @Nullable final Function1<? super T, ? extends Object> function1, @NotNull Function1<? super T, ? extends Object> function12, @NotNull Function4<? super LazyStaggeredGridItemScope, ? super T, ? super Composer, ? super Integer, Unit> function4) {
         Intrinsics.checkNotNullParameter(lazyStaggeredGridScope, "<this>");
         Intrinsics.checkNotNullParameter(list, "items");
         Intrinsics.checkNotNullParameter(function12, "contentType");
@@ -140,58 +140,7 @@ public final class LazyStaggeredGridDslKt {
             public /* bridge */ /* synthetic */ Object invoke(Object obj) {
                 return invoke(((Number) obj).intValue());
             }
-        } : null, new Function1<Integer, Object>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridDslKt$items$3
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                return invoke(((Number) obj).intValue());
-            }
-
-            @Nullable
-            public final Object invoke(int i) {
-                return function12.invoke(list.get(i));
-            }
-        }, ComposableLambdaKt.composableLambdaInstance(-666084403, true, new Function4<LazyStaggeredGridItemScope, Integer, Composer, Integer, Unit>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridDslKt$items$4
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(4);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3, Object obj4) {
-                invoke((LazyStaggeredGridItemScope) obj, ((Number) obj2).intValue(), (Composer) obj3, ((Number) obj4).intValue());
-                return Unit.INSTANCE;
-            }
-
-            @Composable
-            public final void invoke(@NotNull LazyStaggeredGridItemScope lazyStaggeredGridItemScope, int i, @Nullable Composer composer, int i2) {
-                int i3;
-                Intrinsics.checkNotNullParameter(lazyStaggeredGridItemScope, "$this$items");
-                if ((i2 & 14) == 0) {
-                    i3 = (composer.changed(lazyStaggeredGridItemScope) ? 4 : 2) | i2;
-                } else {
-                    i3 = i2;
-                }
-                if ((i2 & 112) == 0) {
-                    i3 |= composer.changed(i) ? 32 : 16;
-                }
-                if ((i3 & 731) == 146 && composer.getSkipping()) {
-                    composer.skipToGroupEnd();
-                    return;
-                }
-                if (ComposerKt.isTraceInProgress()) {
-                    ComposerKt.traceEventStart(-666084403, i3, -1, "androidx.compose.foundation.lazy.staggeredgrid.items.<anonymous> (LazyStaggeredGridDsl.kt:291)");
-                }
-                function4.invoke(lazyStaggeredGridItemScope, list.get(i), composer, Integer.valueOf(i3 & 14));
-                if (ComposerKt.isTraceInProgress()) {
-                    ComposerKt.traceEventEnd();
-                }
-            }
-        }));
+        } : null, new items.3(function12, list), ComposableLambdaKt.composableLambdaInstance(-666084403, true, new items.4(function4, list)));
     }
 
     public static /* synthetic */ void items$default(LazyStaggeredGridScope lazyStaggeredGridScope, List list, Function1 function1, Function1 function12, Function4 function4, int i, Object obj) {
@@ -199,17 +148,7 @@ public final class LazyStaggeredGridDslKt {
             function1 = null;
         }
         if ((i & 4) != 0) {
-            function12 = new Function1() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridDslKt$items$1
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    return m1625invoke((LazyStaggeredGridDslKt$items$1) obj2);
-                }
-
-                @Nullable
-                /* renamed from: invoke, reason: collision with other method in class */
-                public final Void m1625invoke(T t) {
-                    return null;
-                }
-            };
+            function12 = items.1.INSTANCE;
         }
         items(lazyStaggeredGridScope, list, function1, function12, function4);
     }
@@ -325,23 +264,23 @@ public final class LazyStaggeredGridDslKt {
                 }
 
                 public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                    return m1627invoke0kLqBqw((Density) obj, ((Constraints) obj2).m5190unboximpl());
+                    return m326invoke0kLqBqw((Density) obj, ((Constraints) obj2).m2128unboximpl());
                 }
 
                 @NotNull
                 /* renamed from: invoke-0kLqBqw, reason: not valid java name */
-                public final int[] m1627invoke0kLqBqw(@NotNull Density density, long j) {
+                public final int[] m326invoke0kLqBqw(@NotNull Density density, long j) {
                     Intrinsics.checkNotNullParameter(density, "$this$null");
-                    if (!(Constraints.m5184getMaxWidthimpl(j) != Integer.MAX_VALUE)) {
+                    if (!(Constraints.m2122getMaxWidthimpl(j) != Integer.MAX_VALUE)) {
                         throw new IllegalArgumentException("LazyVerticalStaggeredGrid's width should be bound by parent.".toString());
                     }
                     PaddingValues paddingValues2 = PaddingValues.this;
                     LayoutDirection layoutDirection = LayoutDirection.Ltr;
-                    List<Integer> calculateCrossAxisCellSizes = staggeredGridCells.calculateCrossAxisCellSizes(density, Constraints.m5184getMaxWidthimpl(j) - density.mo1277roundToPx0680j_4(C0856Dp.m5216constructorimpl(PaddingKt.calculateStartPadding(paddingValues2, layoutDirection) + PaddingKt.calculateEndPadding(PaddingValues.this, layoutDirection))), density.mo1277roundToPx0680j_4(horizontal.mo1347getSpacingD9Ej5fM()));
+                    List calculateCrossAxisCellSizes = staggeredGridCells.calculateCrossAxisCellSizes(density, Constraints.m2122getMaxWidthimpl(j) - density.mo319roundToPx0680j_4(Dp.m2142constructorimpl(PaddingKt.calculateStartPadding(paddingValues2, layoutDirection) + PaddingKt.calculateEndPadding(PaddingValues.this, layoutDirection))), density.mo319roundToPx0680j_4(horizontal.getSpacing-D9Ej5fM()));
                     int size = calculateCrossAxisCellSizes.size();
                     int[] iArr = new int[size];
                     for (int i2 = 0; i2 < size; i2++) {
-                        iArr[i2] = calculateCrossAxisCellSizes.get(i2).intValue();
+                        iArr[i2] = ((Number) calculateCrossAxisCellSizes.get(i2)).intValue();
                     }
                     int size2 = calculateCrossAxisCellSizes.size();
                     for (int i3 = 1; i3 < size2; i3++) {
@@ -376,21 +315,21 @@ public final class LazyStaggeredGridDslKt {
                 }
 
                 public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                    return m1628invoke0kLqBqw((Density) obj, ((Constraints) obj2).m5190unboximpl());
+                    return m327invoke0kLqBqw((Density) obj, ((Constraints) obj2).m2128unboximpl());
                 }
 
                 @NotNull
                 /* renamed from: invoke-0kLqBqw, reason: not valid java name */
-                public final int[] m1628invoke0kLqBqw(@NotNull Density density, long j) {
+                public final int[] m327invoke0kLqBqw(@NotNull Density density, long j) {
                     Intrinsics.checkNotNullParameter(density, "$this$null");
-                    if (!(Constraints.m5183getMaxHeightimpl(j) != Integer.MAX_VALUE)) {
+                    if (!(Constraints.m2121getMaxHeightimpl(j) != Integer.MAX_VALUE)) {
                         throw new IllegalArgumentException("LazyHorizontalStaggeredGrid's height should be bound by parent.".toString());
                     }
-                    List<Integer> calculateCrossAxisCellSizes = staggeredGridCells.calculateCrossAxisCellSizes(density, Constraints.m5183getMaxHeightimpl(j) - density.mo1277roundToPx0680j_4(C0856Dp.m5216constructorimpl(PaddingValues.this.mo1377calculateTopPaddingD9Ej5fM() + PaddingValues.this.mo1374calculateBottomPaddingD9Ej5fM())), density.mo1277roundToPx0680j_4(vertical.mo1347getSpacingD9Ej5fM()));
+                    List calculateCrossAxisCellSizes = staggeredGridCells.calculateCrossAxisCellSizes(density, Constraints.m2121getMaxHeightimpl(j) - density.mo319roundToPx0680j_4(Dp.m2142constructorimpl(PaddingValues.this.mo219calculateTopPaddingD9Ej5fM() + PaddingValues.this.mo216calculateBottomPaddingD9Ej5fM())), density.mo319roundToPx0680j_4(vertical.getSpacing-D9Ej5fM()));
                     int size = calculateCrossAxisCellSizes.size();
                     int[] iArr = new int[size];
                     for (int i2 = 0; i2 < size; i2++) {
-                        iArr[i2] = calculateCrossAxisCellSizes.get(i2).intValue();
+                        iArr[i2] = ((Number) calculateCrossAxisCellSizes.get(i2)).intValue();
                     }
                     int size2 = calculateCrossAxisCellSizes.size();
                     for (int i3 = 1; i3 < size2; i3++) {
@@ -414,17 +353,7 @@ public final class LazyStaggeredGridDslKt {
             function1 = null;
         }
         if ((i & 4) != 0) {
-            function12 = new Function1() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridDslKt$items$5
-                public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                    return m1626invoke((LazyStaggeredGridDslKt$items$5) obj2);
-                }
-
-                @Nullable
-                /* renamed from: invoke, reason: collision with other method in class */
-                public final Void m1626invoke(T t) {
-                    return null;
-                }
-            };
+            function12 = items.5.INSTANCE;
         }
         items(lazyStaggeredGridScope, objArr, function1, function12, function4);
     }
@@ -450,7 +379,7 @@ public final class LazyStaggeredGridDslKt {
 
     @ExperimentalFoundationApi
     @ComposableInferredTarget(scheme = "[0[0]]")
-    public static final <T> void items(@NotNull LazyStaggeredGridScope lazyStaggeredGridScope, @NotNull final T[] tArr, @Nullable final Function1<? super T, ? extends Object> function1, @NotNull final Function1<? super T, ? extends Object> function12, @NotNull final Function4<? super LazyStaggeredGridItemScope, ? super T, ? super Composer, ? super Integer, Unit> function4) {
+    public static final <T> void items(@NotNull LazyStaggeredGridScope lazyStaggeredGridScope, @NotNull final T[] tArr, @Nullable final Function1<? super T, ? extends Object> function1, @NotNull Function1<? super T, ? extends Object> function12, @NotNull Function4<? super LazyStaggeredGridItemScope, ? super T, ? super Composer, ? super Integer, Unit> function4) {
         Intrinsics.checkNotNullParameter(lazyStaggeredGridScope, "<this>");
         Intrinsics.checkNotNullParameter(tArr, "items");
         Intrinsics.checkNotNullParameter(function12, "contentType");
@@ -470,58 +399,7 @@ public final class LazyStaggeredGridDslKt {
             public /* bridge */ /* synthetic */ Object invoke(Object obj) {
                 return invoke(((Number) obj).intValue());
             }
-        } : null, new Function1<Integer, Object>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridDslKt$items$7
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                return invoke(((Number) obj).intValue());
-            }
-
-            @Nullable
-            public final Object invoke(int i) {
-                return function12.invoke(tArr[i]);
-            }
-        }, ComposableLambdaKt.composableLambdaInstance(-301024882, true, new Function4<LazyStaggeredGridItemScope, Integer, Composer, Integer, Unit>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridDslKt$items$8
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
-            {
-                super(4);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3, Object obj4) {
-                invoke((LazyStaggeredGridItemScope) obj, ((Number) obj2).intValue(), (Composer) obj3, ((Number) obj4).intValue());
-                return Unit.INSTANCE;
-            }
-
-            @Composable
-            public final void invoke(@NotNull LazyStaggeredGridItemScope lazyStaggeredGridItemScope, int i, @Nullable Composer composer, int i2) {
-                int i3;
-                Intrinsics.checkNotNullParameter(lazyStaggeredGridItemScope, "$this$items");
-                if ((i2 & 14) == 0) {
-                    i3 = (composer.changed(lazyStaggeredGridItemScope) ? 4 : 2) | i2;
-                } else {
-                    i3 = i2;
-                }
-                if ((i2 & 112) == 0) {
-                    i3 |= composer.changed(i) ? 32 : 16;
-                }
-                if ((i3 & 731) == 146 && composer.getSkipping()) {
-                    composer.skipToGroupEnd();
-                    return;
-                }
-                if (ComposerKt.isTraceInProgress()) {
-                    ComposerKt.traceEventStart(-301024882, i3, -1, "androidx.compose.foundation.lazy.staggeredgrid.items.<anonymous> (LazyStaggeredGridDsl.kt:359)");
-                }
-                function4.invoke(lazyStaggeredGridItemScope, tArr[i], composer, Integer.valueOf(i3 & 14));
-                if (ComposerKt.isTraceInProgress()) {
-                    ComposerKt.traceEventEnd();
-                }
-            }
-        }));
+        } : null, new items.7(function12, tArr), ComposableLambdaKt.composableLambdaInstance(-301024882, true, new items.8(function4, tArr)));
     }
 
     @ExperimentalFoundationApi

@@ -7,7 +7,7 @@ import kotlin.jvm.internal.markers.KMutableMap;
 
 /* JADX INFO: Add missing generic type declarations: [V, K] */
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class StateMapMutableEntriesIterator$next$1<K, V> implements Map.Entry<K, V>, KMutableMap.Entry {
     private final K key;
     final /* synthetic */ StateMapMutableEntriesIterator<K, V> this$0;

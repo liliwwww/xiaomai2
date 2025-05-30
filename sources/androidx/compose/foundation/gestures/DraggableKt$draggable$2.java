@@ -11,11 +11,10 @@ import kotlinx.coroutines.CoroutineScope;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: Access modifiers changed from: package-private */
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.DraggableKt$draggable$2", f = "Draggable.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
-public final class DraggableKt$draggable$2 extends SuspendLambda implements Function3<CoroutineScope, Float, Continuation<? super Unit>, Object> {
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
+final class DraggableKt$draggable$2 extends SuspendLambda implements Function3<CoroutineScope, Float, Continuation<? super Unit>, Object> {
     int label;
 
     DraggableKt$draggable$2(Continuation<? super DraggableKt$draggable$2> continuation) {

@@ -21,28 +21,24 @@ import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPresenter;
 import androidx.appcompat.widget.DecorToolbar;
 import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar$OnMenuItemClickListener;
 import androidx.appcompat.widget.ToolbarWidgetWrapper;
 import androidx.core.util.Preconditions;
 import androidx.core.view.ViewCompat;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ToolbarActionBar extends ActionBar {
     final DecorToolbar mDecorToolbar;
     private boolean mLastMenuVisibility;
     final AppCompatDelegateImpl.ActionBarMenuCallback mMenuCallback;
     private boolean mMenuCallbackSet;
-    private final Toolbar.OnMenuItemClickListener mMenuClicker;
+    private final Toolbar$OnMenuItemClickListener mMenuClicker;
     boolean mToolbarMenuPrepared;
     final Window.Callback mWindowCallback;
     private ArrayList<ActionBar.OnMenuVisibilityListener> mMenuVisibilityListeners = new ArrayList<>();
-    private final Runnable mMenuInvalidator = new Runnable() { // from class: androidx.appcompat.app.ToolbarActionBar.1
-        @Override // java.lang.Runnable
-        public void run() {
-            ToolbarActionBar.this.populateOptionsMenu();
-        }
-    };
+    private final Runnable mMenuInvalidator = new 1(this);
 
     /* compiled from: Taobao */
     private final class ActionMenuPresenterCallback implements MenuPresenter.Callback {
@@ -51,7 +47,6 @@ class ToolbarActionBar extends ActionBar {
         ActionMenuPresenterCallback() {
         }
 
-        @Override // androidx.appcompat.view.menu.MenuPresenter.Callback
         public void onCloseMenu(@NonNull MenuBuilder menuBuilder, boolean z) {
             if (this.mClosingActionMenu) {
                 return;
@@ -62,7 +57,6 @@ class ToolbarActionBar extends ActionBar {
             this.mClosingActionMenu = false;
         }
 
-        @Override // androidx.appcompat.view.menu.MenuPresenter.Callback
         public boolean onOpenSubMenu(@NonNull MenuBuilder menuBuilder) {
             ToolbarActionBar.this.mWindowCallback.onMenuOpened(108, menuBuilder);
             return true;
@@ -74,12 +68,10 @@ class ToolbarActionBar extends ActionBar {
         MenuBuilderCallback() {
         }
 
-        @Override // androidx.appcompat.view.menu.MenuBuilder.Callback
         public boolean onMenuItemSelected(@NonNull MenuBuilder menuBuilder, @NonNull MenuItem menuItem) {
             return false;
         }
 
-        @Override // androidx.appcompat.view.menu.MenuBuilder.Callback
         public void onMenuModeChange(@NonNull MenuBuilder menuBuilder) {
             if (ToolbarActionBar.this.mDecorToolbar.isOverflowMenuShowing()) {
                 ToolbarActionBar.this.mWindowCallback.onPanelClosed(108, menuBuilder);
@@ -89,51 +81,17 @@ class ToolbarActionBar extends ActionBar {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private class ToolbarMenuCallback implements AppCompatDelegateImpl.ActionBarMenuCallback {
-        ToolbarMenuCallback() {
-        }
-
-        @Override // androidx.appcompat.app.AppCompatDelegateImpl.ActionBarMenuCallback
-        public View onCreatePanelView(int i) {
-            if (i == 0) {
-                return new View(ToolbarActionBar.this.mDecorToolbar.getContext());
-            }
-            return null;
-        }
-
-        @Override // androidx.appcompat.app.AppCompatDelegateImpl.ActionBarMenuCallback
-        public boolean onPreparePanel(int i) {
-            if (i != 0) {
-                return false;
-            }
-            ToolbarActionBar toolbarActionBar = ToolbarActionBar.this;
-            if (toolbarActionBar.mToolbarMenuPrepared) {
-                return false;
-            }
-            toolbarActionBar.mDecorToolbar.setMenuPrepared();
-            ToolbarActionBar.this.mToolbarMenuPrepared = true;
-            return false;
-        }
-    }
-
     ToolbarActionBar(@NonNull Toolbar toolbar, @Nullable CharSequence charSequence, @NonNull Window.Callback callback) {
-        Toolbar.OnMenuItemClickListener onMenuItemClickListener = new Toolbar.OnMenuItemClickListener() { // from class: androidx.appcompat.app.ToolbarActionBar.2
-            @Override // androidx.appcompat.widget.Toolbar.OnMenuItemClickListener
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                return ToolbarActionBar.this.mWindowCallback.onMenuItemSelected(0, menuItem);
-            }
-        };
-        this.mMenuClicker = onMenuItemClickListener;
+        2 r0 = new 2(this);
+        this.mMenuClicker = r0;
         Preconditions.checkNotNull(toolbar);
         ToolbarWidgetWrapper toolbarWidgetWrapper = new ToolbarWidgetWrapper(toolbar, false);
         this.mDecorToolbar = toolbarWidgetWrapper;
         this.mWindowCallback = (Window.Callback) Preconditions.checkNotNull(callback);
         toolbarWidgetWrapper.setWindowCallback(callback);
-        toolbar.setOnMenuItemClickListener(onMenuItemClickListener);
+        toolbar.setOnMenuItemClickListener(r0);
         toolbarWidgetWrapper.setWindowTitle(charSequence);
-        this.mMenuCallback = new ToolbarMenuCallback();
+        this.mMenuCallback = new ToolbarMenuCallback(this);
     }
 
     private Menu getMenu() {

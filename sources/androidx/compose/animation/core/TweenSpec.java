@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TweenSpec<T> implements DurationBasedAnimationSpec<T> {
     private final int delay;
     private final int durationMillis;
@@ -52,9 +52,9 @@ public final class TweenSpec<T> implements DurationBasedAnimationSpec<T> {
         return (((this.durationMillis * 31) + this.easing.hashCode()) * 31) + this.delay;
     }
 
-    @Override // androidx.compose.animation.core.FiniteAnimationSpec, androidx.compose.animation.core.AnimationSpec
     @NotNull
-    public <V extends AnimationVector> VectorizedTweenSpec<V> vectorize(@NotNull TwoWayConverter<T, V> twoWayConverter) {
+    /* renamed from: vectorize, reason: collision with other method in class and merged with bridge method [inline-methods] and merged with bridge method [inline-methods] and merged with bridge method [inline-methods] */
+    public <V extends AnimationVector> VectorizedTweenSpec<V> m99vectorize(@NotNull TwoWayConverter<T, V> twoWayConverter) {
         Intrinsics.checkNotNullParameter(twoWayConverter, "converter");
         return new VectorizedTweenSpec<>(this.durationMillis, this.delay, this.easing);
     }

@@ -11,45 +11,16 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @SuppressLint({"BanParcelableUsage"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class DefaultLazyKey implements Parcelable {
     private final int index;
 
     @NotNull
-    public static final Companion Companion = new Companion(null);
+    public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
 
     @JvmField
     @NotNull
-    public static final Parcelable.Creator<DefaultLazyKey> CREATOR = new Parcelable.Creator<DefaultLazyKey>() { // from class: androidx.compose.foundation.lazy.layout.DefaultLazyKey$Companion$CREATOR$1
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // android.os.Parcelable.Creator
-        @NotNull
-        public DefaultLazyKey createFromParcel(@NotNull Parcel parcel) {
-            Intrinsics.checkNotNullParameter(parcel, "parcel");
-            return new DefaultLazyKey(parcel.readInt());
-        }
-
-        /* JADX WARN: Can't rename method to resolve collision */
-        @Override // android.os.Parcelable.Creator
-        @NotNull
-        public DefaultLazyKey[] newArray(int i) {
-            return new DefaultLazyKey[i];
-        }
-    };
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class Companion {
-        private Companion() {
-        }
-
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-
-        public static /* synthetic */ void getCREATOR$annotations() {
-        }
-    }
+    public static final Parcelable.Creator<DefaultLazyKey> CREATOR = new Companion.CREATOR.1();
 
     public DefaultLazyKey(int i) {
         this.index = i;

@@ -26,14 +26,11 @@ import android.widget.EdgeEffect;
 import android.widget.FrameLayout;
 import android.widget.OverScroller;
 import android.widget.ScrollView;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.VisibleForTesting;
 import androidx.constraintlayout.core.widgets.analyzer.BasicMeasure;
-import androidx.core.C0927R;
 import androidx.core.view.AccessibilityDelegateCompat;
 import androidx.core.view.MotionEventCompat;
 import androidx.core.view.NestedScrollingChild3;
@@ -42,12 +39,14 @@ import androidx.core.view.NestedScrollingParent3;
 import androidx.core.view.NestedScrollingParentHelper;
 import androidx.core.view.ScrollingView;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat;
 import androidx.core.view.accessibility.AccessibilityRecordCompat;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class NestedScrollView extends FrameLayout implements NestedScrollingChild3, NestedScrollingParent3, ScrollingView {
     static final int ANIMATED_SCROLL_GAP = 250;
     private static final int DEFAULT_SMOOTH_SCROLL_DURATION = 250;
@@ -101,7 +100,6 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingChil
         AccessibilityDelegate() {
         }
 
-        @Override // androidx.core.view.AccessibilityDelegateCompat
         public void onInitializeAccessibilityEvent(View view, AccessibilityEvent accessibilityEvent) {
             super.onInitializeAccessibilityEvent(view, accessibilityEvent);
             NestedScrollView nestedScrollView = (NestedScrollView) view;
@@ -113,7 +111,6 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingChil
             AccessibilityRecordCompat.setMaxScrollY(accessibilityEvent, nestedScrollView.getScrollRange());
         }
 
-        @Override // androidx.core.view.AccessibilityDelegateCompat
         public void onInitializeAccessibilityNodeInfo(View view, AccessibilityNodeInfoCompat accessibilityNodeInfoCompat) {
             int scrollRange;
             super.onInitializeAccessibilityNodeInfo(view, accessibilityNodeInfoCompat);
@@ -124,16 +121,15 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingChil
             }
             accessibilityNodeInfoCompat.setScrollable(true);
             if (nestedScrollView.getScrollY() > 0) {
-                accessibilityNodeInfoCompat.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_SCROLL_BACKWARD);
-                accessibilityNodeInfoCompat.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_SCROLL_UP);
+                accessibilityNodeInfoCompat.addAction(AccessibilityNodeInfoCompat$AccessibilityActionCompat.ACTION_SCROLL_BACKWARD);
+                accessibilityNodeInfoCompat.addAction(AccessibilityNodeInfoCompat$AccessibilityActionCompat.ACTION_SCROLL_UP);
             }
             if (nestedScrollView.getScrollY() < scrollRange) {
-                accessibilityNodeInfoCompat.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_SCROLL_FORWARD);
-                accessibilityNodeInfoCompat.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_SCROLL_DOWN);
+                accessibilityNodeInfoCompat.addAction(AccessibilityNodeInfoCompat$AccessibilityActionCompat.ACTION_SCROLL_FORWARD);
+                accessibilityNodeInfoCompat.addAction(AccessibilityNodeInfoCompat$AccessibilityActionCompat.ACTION_SCROLL_DOWN);
             }
         }
 
-        @Override // androidx.core.view.AccessibilityDelegateCompat
         public boolean performAccessibilityAction(View view, int i, Bundle bundle) {
             if (super.performAccessibilityAction(view, i, bundle)) {
                 return true;
@@ -166,19 +162,6 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingChil
             }
             nestedScrollView.smoothScrollTo(0, min, true);
             return true;
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(21)
-    /* loaded from: classes.dex */
-    static class Api21Impl {
-        private Api21Impl() {
-        }
-
-        @DoNotInline
-        static boolean getClipToPadding(ViewGroup viewGroup) {
-            return viewGroup.getClipToPadding();
         }
     }
 
@@ -372,7 +355,7 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingChil
     private void initScrollView() {
         this.mScroller = new OverScroller(getContext());
         setFocusable(true);
-        setDescendantFocusability(262144);
+        setDescendantFocusability(AccessibilityEventCompat.TYPE_GESTURE_DETECTION_START);
         setWillNotDraw(false);
         ViewConfiguration viewConfiguration = ViewConfiguration.get(getContext());
         this.mTouchSlop = viewConfiguration.getScaledTouchSlop();
@@ -438,7 +421,7 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingChil
     /* JADX WARN: Removed duplicated region for block: B:9:0x0061  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private int releaseVerticalGlow(int r4, float r5) {
         /*
@@ -610,7 +593,7 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingChil
             return true;
         }
         int descendantFocusability = getDescendantFocusability();
-        setDescendantFocusability(131072);
+        setDescendantFocusability(AccessibilityEventCompat.TYPE_VIEW_TEXT_TRAVERSED_AT_MOVEMENT_GRANULARITY);
         requestFocus();
         setDescendantFocusability(descendantFocusability);
         return true;
@@ -973,7 +956,7 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingChil
         boolean z;
         int i = 0;
         if (motionEvent.getAction() == 8 && !this.mIsBeingDragged) {
-            float axisValue = MotionEventCompat.isFromSource(motionEvent, 2) ? motionEvent.getAxisValue(9) : MotionEventCompat.isFromSource(motionEvent, 4194304) ? motionEvent.getAxisValue(26) : 0.0f;
+            float axisValue = MotionEventCompat.isFromSource(motionEvent, 2) ? motionEvent.getAxisValue(9) : MotionEventCompat.isFromSource(motionEvent, AccessibilityEventCompat.TYPE_WINDOWS_CHANGED) ? motionEvent.getAxisValue(26) : 0.0f;
             if (axisValue != 0.0f) {
                 int verticalScrollFactorCompat = (int) (axisValue * getVerticalScrollFactorCompat());
                 int scrollRange = getScrollRange();
@@ -1234,12 +1217,12 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingChil
     @Override // android.view.View
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public boolean onTouchEvent(@androidx.annotation.NonNull android.view.MotionEvent r24) {
         /*
             Method dump skipped, instructions count: 618
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.core.widget.NestedScrollView.onTouchEvent(android.view.MotionEvent):boolean");
     }
@@ -1250,7 +1233,7 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingChil
     /* JADX WARN: Removed duplicated region for block: B:38:0x005a  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     boolean overScrollByCompat(int r13, int r14, int r15, int r16, int r17, int r18, int r19, int r20, boolean r21) {
         /*
@@ -1485,7 +1468,7 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingChil
     }
 
     public NestedScrollView(@NonNull Context context, @Nullable AttributeSet attributeSet) {
-        this(context, attributeSet, C0927R.attr.nestedScrollViewStyle);
+        this(context, attributeSet, androidx.core.R.attr.nestedScrollViewStyle);
     }
 
     @Override // android.view.View, androidx.core.view.NestedScrollingChild

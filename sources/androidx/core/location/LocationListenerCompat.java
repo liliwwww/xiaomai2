@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface LocationListenerCompat extends LocationListener {
     @Override // android.location.LocationListener
     void onFlushComplete(int i);

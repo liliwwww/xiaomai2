@@ -8,12 +8,12 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
 import androidx.annotation.Nullable;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.ViewCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class AppCompatSeekBarHelper extends AppCompatProgressBarHelper {
     private boolean mHasTickMarkTint;
     private boolean mHasTickMarkTintMode;
@@ -100,25 +100,24 @@ class AppCompatSeekBarHelper extends AppCompatProgressBarHelper {
         }
     }
 
-    @Override // androidx.appcompat.widget.AppCompatProgressBarHelper
     void loadFromAttributes(AttributeSet attributeSet, int i) {
         super.loadFromAttributes(attributeSet, i);
         Context context = this.mView.getContext();
-        int[] iArr = C0257R.styleable.AppCompatSeekBar;
+        int[] iArr = R.styleable.AppCompatSeekBar;
         TintTypedArray obtainStyledAttributes = TintTypedArray.obtainStyledAttributes(context, attributeSet, iArr, i, 0);
         SeekBar seekBar = this.mView;
         ViewCompat.saveAttributeDataForStyleable(seekBar, seekBar.getContext(), iArr, attributeSet, obtainStyledAttributes.getWrappedTypeArray(), i, 0);
-        Drawable drawableIfKnown = obtainStyledAttributes.getDrawableIfKnown(C0257R.styleable.AppCompatSeekBar_android_thumb);
+        Drawable drawableIfKnown = obtainStyledAttributes.getDrawableIfKnown(R.styleable.AppCompatSeekBar_android_thumb);
         if (drawableIfKnown != null) {
             this.mView.setThumb(drawableIfKnown);
         }
-        setTickMark(obtainStyledAttributes.getDrawable(C0257R.styleable.AppCompatSeekBar_tickMark));
-        int i2 = C0257R.styleable.AppCompatSeekBar_tickMarkTintMode;
+        setTickMark(obtainStyledAttributes.getDrawable(R.styleable.AppCompatSeekBar_tickMark));
+        int i2 = R.styleable.AppCompatSeekBar_tickMarkTintMode;
         if (obtainStyledAttributes.hasValue(i2)) {
             this.mTickMarkTintMode = DrawableUtils.parseTintMode(obtainStyledAttributes.getInt(i2, -1), this.mTickMarkTintMode);
             this.mHasTickMarkTintMode = true;
         }
-        int i3 = C0257R.styleable.AppCompatSeekBar_tickMarkTint;
+        int i3 = R.styleable.AppCompatSeekBar_tickMarkTint;
         if (obtainStyledAttributes.hasValue(i3)) {
             this.mTickMarkTintList = obtainStyledAttributes.getColorStateList(i3);
             this.mHasTickMarkTint = true;

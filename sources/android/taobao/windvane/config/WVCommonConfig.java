@@ -1,27 +1,20 @@
 package android.taobao.windvane.config;
 
-import android.taobao.windvane.config.WVConfigUpdateCallback;
 import android.taobao.windvane.connect.ConnectManager;
-import android.taobao.windvane.connect.HttpConnectListener;
-import android.taobao.windvane.connect.HttpResponse;
 import android.taobao.windvane.connect.api.ApiConstants;
-import android.taobao.windvane.service.WVEventId;
 import android.taobao.windvane.service.WVEventService;
 import android.taobao.windvane.util.ConfigStorage;
 import android.taobao.windvane.util.TaoLog;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
-import androidx.exifinterface.media.ExifInterface;
-import androidx.vectordrawable.graphics.drawable.PathInterpolatorCompat;
 import com.alibaba.wireless.security.aopsdk.replace.android.os.Build;
-import java.io.UnsupportedEncodingException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVCommonConfig implements IConfig {
     private static final String TAG = "WVCommonConfig";
     public static final WVCommonConfigData commonConfig = new WVCommonConfigData();
@@ -55,7 +48,7 @@ public class WVCommonConfig implements IConfig {
             try {
                 strArr[i] = optJSONArray.getString(i);
             } catch (JSONException e) {
-                TaoLog.m23e(TAG, "obtain array error ==>", e.getMessage());
+                TaoLog.e(TAG, "obtain array error ==>", e.getMessage());
             }
         }
         return strArr;
@@ -82,12 +75,12 @@ public class WVCommonConfig implements IConfig {
         if (jSONObject == null) {
             return 0;
         }
-        String optString = jSONObject.optString(ApiConstants.f5V, "");
+        String optString = jSONObject.optString(ApiConstants.V, "");
         if (TextUtils.isEmpty(optString)) {
             return 0;
         }
         WVCommonConfigData wVCommonConfigData = commonConfig;
-        wVCommonConfigData.f2v = optString;
+        wVCommonConfigData.v = optString;
         long optLong = jSONObject.optLong("configUpdateInterval", 0L);
         if (optLong >= 0) {
             wVCommonConfigData.updateInterval = optLong;
@@ -107,7 +100,7 @@ public class WVCommonConfig implements IConfig {
             strArr = parseArray(jSONObject, "monitoredApps");
         } catch (Exception e) {
             e.printStackTrace();
-            TaoLog.m18d(TAG, "parseConfig: monitoredApps parseArray occur some error!");
+            TaoLog.d(TAG, "parseConfig: monitoredApps parseArray occur some error!");
             strArr = null;
         }
         if (strArr != null) {
@@ -117,7 +110,7 @@ public class WVCommonConfig implements IConfig {
             strArr2 = parseArray(jSONObject, "systemBlacks");
         } catch (Throwable th) {
             th.printStackTrace();
-            TaoLog.m18d(TAG, "parseConfig: systemBlacks parseArray occur some error!");
+            TaoLog.d(TAG, "parseConfig: systemBlacks parseArray occur some error!");
             strArr2 = null;
         }
         if (strArr2 != null) {
@@ -127,7 +120,7 @@ public class WVCommonConfig implements IConfig {
             strArr3 = parseArray(jSONObject, "brandBlacks");
         } catch (Throwable th2) {
             th2.printStackTrace();
-            TaoLog.m18d(TAG, "parseConfig: brandBlacks parseArray occur some error!");
+            TaoLog.d(TAG, "parseConfig: brandBlacks parseArray occur some error!");
             strArr3 = null;
         }
         if (strArr2 != null) {
@@ -137,7 +130,7 @@ public class WVCommonConfig implements IConfig {
             strArr4 = parseArray(jSONObject, "modelBlacks");
         } catch (Throwable th3) {
             th3.printStackTrace();
-            TaoLog.m18d(TAG, "parseConfig: modelBlacks parseArray occur some error!");
+            TaoLog.d(TAG, "parseConfig: modelBlacks parseArray occur some error!");
             strArr4 = null;
         }
         if (strArr2 != null) {
@@ -147,7 +140,7 @@ public class WVCommonConfig implements IConfig {
             strArr5 = parseArray(jSONObject, "aliNetworkDegradeDomains");
         } catch (Throwable th4) {
             th4.printStackTrace();
-            TaoLog.m18d(TAG, "parseConfig: aliNetworkDegradeDomains parseArray occur some error!");
+            TaoLog.d(TAG, "parseConfig: aliNetworkDegradeDomains parseArray occur some error!");
             strArr5 = null;
         }
         if (strArr5 != null) {
@@ -157,7 +150,7 @@ public class WVCommonConfig implements IConfig {
             strArr6 = parseArray(jSONObject, "disableMixViews");
         } catch (Throwable th5) {
             th5.printStackTrace();
-            TaoLog.m18d(TAG, "parseConfig: disableMixViews parseArray occur some error!");
+            TaoLog.d(TAG, "parseConfig: disableMixViews parseArray occur some error!");
         }
         WVCommonConfigData wVCommonConfigData2 = commonConfig;
         wVCommonConfigData2.disableMixViews = strArr6;
@@ -193,7 +186,7 @@ public class WVCommonConfig implements IConfig {
         wVCommonConfigData2.isUseTBDownloader = jSONObject.optBoolean("isUseTBDownloader", true);
         wVCommonConfigData2.isUseAliNetworkDelegate = jSONObject.optBoolean("isUseAliNetworkDelegate", true);
         wVCommonConfigData2.packageDownloadLimit = jSONObject.optInt("packageDownloadLimit", 30);
-        wVCommonConfigData2.packageAccessInterval = jSONObject.optInt("packageAccessInterval", PathInterpolatorCompat.MAX_NUM_POINTS);
+        wVCommonConfigData2.packageAccessInterval = jSONObject.optInt("packageAccessInterval", 3000);
         wVCommonConfigData2.packageRemoveInterval = jSONObject.optInt("packageRemoveInterval", 432000000);
         wVCommonConfigData2.recoveryInterval = jSONObject.optInt("recoveryInterval", 432000000);
         wVCommonConfigData2.customsComboLimit = jSONObject.optInt("customsComboLimit", 1);
@@ -247,7 +240,7 @@ public class WVCommonConfig implements IConfig {
         wVCommonConfigData2.enableWVFullTrace = jSONObject.optBoolean("enableWVFullTrace", wVCommonConfigData2.enableWVFullTrace);
         wVCommonConfigData2.uploadPPAfterJs = jSONObject.optBoolean("uploadPPAfterJs", wVCommonConfigData2.uploadPPAfterJs);
         parseUnzipDegradeConfig(jSONObject);
-        WVEventService.getInstance().onEvent(WVEventId.CONFIG_COMMON_UPDATE);
+        WVEventService.getInstance().onEvent(6012);
         return jSONObject.length();
     }
 
@@ -264,12 +257,12 @@ public class WVCommonConfig implements IConfig {
             }
             for (String str3 : split) {
                 if (str.equalsIgnoreCase(str3)) {
-                    TaoLog.m21e(TAG, "Degrade unzip: " + str);
+                    TaoLog.e(TAG, "Degrade unzip: " + str);
                     WVCommonConfigData wVCommonConfigData2 = commonConfig;
                     wVCommonConfigData2.needZipDegrade = true;
                     if (wVCommonConfigData2.zipDegradeMode == 2) {
                         wVCommonConfigData2.packageAppStatus = 0;
-                        TaoLog.m30w(TAG, "Disable package app");
+                        TaoLog.w(TAG, "Disable package app");
                         return;
                     }
                     return;
@@ -304,51 +297,13 @@ public class WVCommonConfig implements IConfig {
         ConfigStorage.putStringVal(WVConfigManager.SPNAME_CONFIG, "commonwv-data", str);
     }
 
-    public void updateCommonRule(final WVConfigUpdateCallback wVConfigUpdateCallback, final String str, String str2) {
+    public void updateCommonRule(WVConfigUpdateCallback wVConfigUpdateCallback, String str, String str2) {
         if (TextUtils.isEmpty(str)) {
-            str = WVConfigManager.getInstance().getConfigUrl("1", commonConfig.f2v, WVConfigUtils.getTargetValue(), str2);
-            if (ExifInterface.GPS_MEASUREMENT_3D.equals(GlobalConfig.zType)) {
+            str = WVConfigManager.getInstance().getConfigUrl("1", commonConfig.v, WVConfigUtils.getTargetValue(), str2);
+            if ("3".equals(GlobalConfig.zType)) {
                 str = WVConfigManager.getInstance().getConfigUrl("1", "0", WVConfigUtils.getTargetValue(), str2);
             }
         }
-        ConnectManager.getInstance().connectSync(str, new HttpConnectListener<HttpResponse>() { // from class: android.taobao.windvane.config.WVCommonConfig.1
-            @Override // android.taobao.windvane.connect.HttpConnectListener
-            public void onError(int i, String str3) {
-                WVConfigUpdateCallback wVConfigUpdateCallback2 = wVConfigUpdateCallback;
-                if (wVConfigUpdateCallback2 != null) {
-                    wVConfigUpdateCallback2.updateError(str, str3);
-                    wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback.CONFIG_UPDATE_STATUS.UNKNOWN_ERROR, 0);
-                }
-                TaoLog.m18d(WVCommonConfig.TAG, "update common failed! : " + str3);
-                super.onError(i, str3);
-            }
-
-            @Override // android.taobao.windvane.connect.HttpConnectListener
-            public void onFinish(HttpResponse httpResponse, int i) {
-                if (wVConfigUpdateCallback == null) {
-                    return;
-                }
-                if (httpResponse == null || httpResponse.getData() == null) {
-                    wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback.CONFIG_UPDATE_STATUS.NULL_DATA, 0);
-                    return;
-                }
-                try {
-                    String str3 = new String(httpResponse.getData(), "utf-8");
-                    if (ExifInterface.GPS_MEASUREMENT_3D.equals(GlobalConfig.zType)) {
-                        WVCommonConfig.this.commonCfg = str3;
-                    }
-                    int parseConfig = WVCommonConfig.this.parseConfig(str3);
-                    if (parseConfig <= 0) {
-                        wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback.CONFIG_UPDATE_STATUS.NO_VERSION, 0);
-                    } else {
-                        ConfigStorage.putStringVal(WVConfigManager.SPNAME_CONFIG, "commonwv-data", str3);
-                        wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback.CONFIG_UPDATE_STATUS.SUCCESS, parseConfig);
-                    }
-                } catch (UnsupportedEncodingException e) {
-                    wVConfigUpdateCallback.updateStatus(WVConfigUpdateCallback.CONFIG_UPDATE_STATUS.ENCODING_ERROR, 0);
-                    TaoLog.m21e(WVCommonConfig.TAG, "config encoding error. " + e.getMessage());
-                }
-            }
-        });
+        ConnectManager.getInstance().connectSync(str, new 1(this, wVConfigUpdateCallback, str));
     }
 }

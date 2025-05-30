@@ -1,10 +1,10 @@
 package androidx.compose.foundation.relocation;
 
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.LayoutCoordinates;
-import androidx.compose.p004ui.layout.OnPlacedModifier;
-import androidx.compose.p004ui.modifier.ModifierLocalConsumer;
-import androidx.compose.p004ui.modifier.ModifierLocalReadScope;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.LayoutCoordinates;
+import androidx.compose.ui.layout.OnPlacedModifier;
+import androidx.compose.ui.modifier.ModifierLocalConsumer;
+import androidx.compose.ui.modifier.ModifierLocalReadScope;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
@@ -14,7 +14,7 @@ import tb.mt2;
 import tb.nt2;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class BringIntoViewChildModifier implements OnPlacedModifier, ModifierLocalConsumer {
 
     @NotNull
@@ -31,22 +31,18 @@ public abstract class BringIntoViewChildModifier implements OnPlacedModifier, Mo
         this.defaultParent = bringIntoViewParent;
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
@@ -66,19 +62,17 @@ public abstract class BringIntoViewChildModifier implements OnPlacedModifier, Mo
         return bringIntoViewParent == null ? this.defaultParent : bringIntoViewParent;
     }
 
-    @Override // androidx.compose.p004ui.modifier.ModifierLocalConsumer
     public void onModifierLocalsUpdated(@NotNull ModifierLocalReadScope modifierLocalReadScope) {
         Intrinsics.checkNotNullParameter(modifierLocalReadScope, "scope");
         this.localParent = (BringIntoViewParent) modifierLocalReadScope.getCurrent(BringIntoViewKt.getModifierLocalBringIntoViewParent());
     }
 
-    @Override // androidx.compose.p004ui.layout.OnPlacedModifier
     public void onPlaced(@NotNull LayoutCoordinates layoutCoordinates) {
         Intrinsics.checkNotNullParameter(layoutCoordinates, "coordinates");
         this.layoutCoordinates = layoutCoordinates;
     }
 
-    @Override // androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }

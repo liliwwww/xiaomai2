@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.SystemClock;
 import android.util.AttributeSet;
@@ -33,8 +32,8 @@ import androidx.core.view.AccessibilityDelegateCompat;
 import androidx.core.view.OnApplyWindowInsetsListener;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
-import androidx.customview.view.AbsSavedState;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
@@ -46,7 +45,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ViewPager extends ViewGroup {
     private static final int CLOSE_ENOUGH = 2;
     private static final boolean DEBUG = false;
@@ -145,19 +144,6 @@ public class ViewPager extends ViewGroup {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static class ItemInfo {
-        Object object;
-        float offset;
-        int position;
-        boolean scrolling;
-        float widthFactor;
-
-        ItemInfo() {
-        }
-    }
-
-    /* compiled from: Taobao */
     class MyAccessibilityDelegate extends AccessibilityDelegateCompat {
         MyAccessibilityDelegate() {
         }
@@ -167,7 +153,6 @@ public class ViewPager extends ViewGroup {
             return pagerAdapter != null && pagerAdapter.getCount() > 1;
         }
 
-        @Override // androidx.core.view.AccessibilityDelegateCompat
         public void onInitializeAccessibilityEvent(View view, AccessibilityEvent accessibilityEvent) {
             PagerAdapter pagerAdapter;
             super.onInitializeAccessibilityEvent(view, accessibilityEvent);
@@ -181,20 +166,18 @@ public class ViewPager extends ViewGroup {
             accessibilityEvent.setToIndex(ViewPager.this.mCurItem);
         }
 
-        @Override // androidx.core.view.AccessibilityDelegateCompat
         public void onInitializeAccessibilityNodeInfo(View view, AccessibilityNodeInfoCompat accessibilityNodeInfoCompat) {
             super.onInitializeAccessibilityNodeInfo(view, accessibilityNodeInfoCompat);
             accessibilityNodeInfoCompat.setClassName(ViewPager.class.getName());
             accessibilityNodeInfoCompat.setScrollable(canScroll());
             if (ViewPager.this.canScrollHorizontally(1)) {
-                accessibilityNodeInfoCompat.addAction(4096);
+                accessibilityNodeInfoCompat.addAction(AccessibilityEventCompat.TYPE_VIEW_SCROLLED);
             }
             if (ViewPager.this.canScrollHorizontally(-1)) {
-                accessibilityNodeInfoCompat.addAction(8192);
+                accessibilityNodeInfoCompat.addAction(AccessibilityEventCompat.TYPE_VIEW_TEXT_SELECTION_CHANGED);
             }
         }
 
-        @Override // androidx.core.view.AccessibilityDelegateCompat
         public boolean performAccessibilityAction(View view, int i, Bundle bundle) {
             if (super.performAccessibilityAction(view, i, bundle)) {
                 return true;
@@ -214,12 +197,6 @@ public class ViewPager extends ViewGroup {
             viewPager2.setCurrentItem(viewPager2.mCurItem - 1);
             return true;
         }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface OnAdapterChangeListener {
-        void onAdapterChanged(@NonNull ViewPager viewPager, @Nullable PagerAdapter pagerAdapter, @Nullable PagerAdapter pagerAdapter2);
     }
 
     /* compiled from: Taobao */
@@ -249,70 +226,6 @@ public class ViewPager extends ViewGroup {
         @Override // android.database.DataSetObserver
         public void onInvalidated() {
             ViewPager.this.dataSetChanged();
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class SavedState extends AbsSavedState {
-        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator<SavedState>() { // from class: androidx.viewpager.widget.ViewPager.SavedState.1
-            @Override // android.os.Parcelable.Creator
-            public SavedState[] newArray(int i) {
-                return new SavedState[i];
-            }
-
-            /* JADX WARN: Can't rename method to resolve collision */
-            @Override // android.os.Parcelable.ClassLoaderCreator
-            public SavedState createFromParcel(Parcel parcel, ClassLoader classLoader) {
-                return new SavedState(parcel, classLoader);
-            }
-
-            @Override // android.os.Parcelable.Creator
-            public SavedState createFromParcel(Parcel parcel) {
-                return new SavedState(parcel, null);
-            }
-        };
-        Parcelable adapterState;
-        ClassLoader loader;
-        int position;
-
-        public SavedState(@NonNull Parcelable parcelable) {
-            super(parcelable);
-        }
-
-        public String toString() {
-            return "FragmentPager.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " position=" + this.position + "}";
-        }
-
-        @Override // androidx.customview.view.AbsSavedState, android.os.Parcelable
-        public void writeToParcel(Parcel parcel, int i) {
-            super.writeToParcel(parcel, i);
-            parcel.writeInt(this.position);
-            parcel.writeParcelable(this.adapterState, i);
-        }
-
-        SavedState(Parcel parcel, ClassLoader classLoader) {
-            super(parcel, classLoader);
-            classLoader = classLoader == null ? getClass().getClassLoader() : classLoader;
-            this.position = parcel.readInt();
-            this.adapterState = parcel.readParcelable(classLoader);
-            this.loader = classLoader;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class SimpleOnPageChangeListener implements OnPageChangeListener {
-        @Override // androidx.viewpager.widget.ViewPager.OnPageChangeListener
-        public void onPageScrollStateChanged(int i) {
-        }
-
-        @Override // androidx.viewpager.widget.ViewPager.OnPageChangeListener
-        public void onPageScrolled(int i, float f, int i2) {
-        }
-
-        @Override // androidx.viewpager.widget.ViewPager.OnPageChangeListener
-        public void onPageSelected(int i) {
         }
     }
 
@@ -915,7 +828,7 @@ public class ViewPager extends ViewGroup {
     /* JADX WARN: Removed duplicated region for block: B:14:0x00cf  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public boolean arrowScroll(int r7) {
         /*
@@ -1381,7 +1294,7 @@ public class ViewPager extends ViewGroup {
 
     void initViewPager() {
         setWillNotDraw(false);
-        setDescendantFocusability(262144);
+        setDescendantFocusability(AccessibilityEventCompat.TYPE_GESTURE_DETECTION_START);
         setFocusable(true);
         Context context = getContext();
         this.mScroller = new Scroller(context, sInterpolator);
@@ -1582,12 +1495,12 @@ public class ViewPager extends ViewGroup {
     @Override // android.view.ViewGroup, android.view.View
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     protected void onLayout(boolean r19, int r20, int r21, int r22, int r23) {
         /*
             Method dump skipped, instructions count: 286
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.viewpager.widget.ViewPager.onLayout(boolean, int, int, int, int):void");
     }
@@ -1601,12 +1514,12 @@ public class ViewPager extends ViewGroup {
     @Override // android.view.View
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     protected void onMeasure(int r14, int r15) {
         /*
             Method dump skipped, instructions count: 245
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.viewpager.widget.ViewPager.onMeasure(int, int):void");
     }
@@ -1615,7 +1528,7 @@ public class ViewPager extends ViewGroup {
     @androidx.annotation.CallSuper
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     protected void onPageScrolled(int r13, float r14, int r15) {
         /*
@@ -2066,12 +1979,12 @@ public class ViewPager extends ViewGroup {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     void populate(int r18) {
         /*
             Method dump skipped, instructions count: 614
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.viewpager.widget.ViewPager.populate(int):void");
     }

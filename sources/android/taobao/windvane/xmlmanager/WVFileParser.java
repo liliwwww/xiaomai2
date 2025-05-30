@@ -6,7 +6,7 @@ import java.lang.reflect.Constructor;
 import org.xmlpull.v1.XmlPullParser;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class WVFileParser {
     private Constructor<?> xmlBlockConstructor;
 
@@ -30,7 +30,7 @@ class WVFileParser {
         try {
             bArr = WVInputStreamUtils.InputStreamTOByte(WVXmlResUtils.class.getResourceAsStream(str));
         } catch (Exception e) {
-            TaoLog.m21e("Read Error", e.toString());
+            TaoLog.e("Read Error", e.toString());
             bArr = null;
         }
         if (bArr != null && bArr.length != 0) {
@@ -40,7 +40,7 @@ class WVFileParser {
                     return (XmlResourceParser) invoke;
                 }
             } catch (Exception e2) {
-                TaoLog.m21e("Read Error", e2.toString());
+                TaoLog.e("Read Error", e2.toString());
             }
         }
         return null;

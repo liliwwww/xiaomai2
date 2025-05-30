@@ -1,7 +1,7 @@
 package androidx.compose.animation.core;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SpringSimulation {
     private double dampedFreq;
     private float finalPosition;
@@ -77,7 +77,7 @@ public final class SpringSimulation {
     }
 
     /* renamed from: updateValues-IJZedt4$animation_core_release, reason: not valid java name */
-    public final long m1067updateValuesIJZedt4$animation_core_release(float f, float f2, long j) {
+    public final long m91updateValuesIJZedt4$animation_core_release(float f, float f2, long j) {
         double cos;
         double d;
         init();

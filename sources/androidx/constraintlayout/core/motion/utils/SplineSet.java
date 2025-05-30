@@ -1,17 +1,15 @@
 package androidx.constraintlayout.core.motion.utils;
 
-import androidx.constraintlayout.core.motion.CustomAttribute;
 import androidx.constraintlayout.core.motion.CustomVariable;
 import androidx.constraintlayout.core.motion.MotionWidget;
 import androidx.constraintlayout.core.motion.utils.KeyFrameArray;
-import androidx.constraintlayout.core.state.WidgetFrame;
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import tb.zp5;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class SplineSet {
     private static final String TAG = "SplineSet";
     private int count;
@@ -33,56 +31,6 @@ public abstract class SplineSet {
         @Override // androidx.constraintlayout.core.motion.utils.SplineSet
         public void setProperty(TypedValues typedValues, float f) {
             typedValues.setValue(typedValues.getId(this.type), get(f));
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class CustomSet extends SplineSet {
-        String mAttributeName;
-        KeyFrameArray.CustomArray mConstraintAttributeList;
-        float[] mTempValues;
-
-        public CustomSet(String str, KeyFrameArray.CustomArray customArray) {
-            this.mAttributeName = str.split(",")[1];
-            this.mConstraintAttributeList = customArray;
-        }
-
-        @Override // androidx.constraintlayout.core.motion.utils.SplineSet
-        public void setPoint(int i, float f) {
-            throw new RuntimeException("don't call for custom attribute call setPoint(pos, ConstraintAttribute)");
-        }
-
-        public void setProperty(WidgetFrame widgetFrame, float f) {
-            this.mCurveFit.getPos(f, this.mTempValues);
-            widgetFrame.setCustomValue(this.mConstraintAttributeList.valueAt(0), this.mTempValues);
-        }
-
-        @Override // androidx.constraintlayout.core.motion.utils.SplineSet
-        public void setup(int i) {
-            int size = this.mConstraintAttributeList.size();
-            int numberOfInterpolatedValues = this.mConstraintAttributeList.valueAt(0).numberOfInterpolatedValues();
-            double[] dArr = new double[size];
-            this.mTempValues = new float[numberOfInterpolatedValues];
-            double[][] dArr2 = (double[][]) Array.newInstance((Class<?>) double.class, size, numberOfInterpolatedValues);
-            for (int i2 = 0; i2 < size; i2++) {
-                int keyAt = this.mConstraintAttributeList.keyAt(i2);
-                CustomAttribute valueAt = this.mConstraintAttributeList.valueAt(i2);
-                dArr[i2] = keyAt * 0.01d;
-                valueAt.getValuesToInterpolate(this.mTempValues);
-                int i3 = 0;
-                while (true) {
-                    if (i3 < this.mTempValues.length) {
-                        dArr2[i2][i3] = r6[i3];
-                        i3++;
-                    }
-                }
-            }
-            this.mCurveFit = CurveFit.get(i, dArr, dArr2);
-        }
-
-        public void setPoint(int i, CustomAttribute customAttribute) {
-            this.mConstraintAttributeList.append(i, customAttribute);
         }
     }
 
@@ -140,62 +88,8 @@ public abstract class SplineSet {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static class Sort {
-        private Sort() {
-        }
-
-        static void doubleQuickSort(int[] iArr, float[] fArr, int i, int i2) {
-            int[] iArr2 = new int[iArr.length + 10];
-            iArr2[0] = i2;
-            iArr2[1] = i;
-            int i3 = 2;
-            while (i3 > 0) {
-                int i4 = i3 - 1;
-                int i5 = iArr2[i4];
-                i3 = i4 - 1;
-                int i6 = iArr2[i3];
-                if (i5 < i6) {
-                    int partition = partition(iArr, fArr, i5, i6);
-                    int i7 = i3 + 1;
-                    iArr2[i3] = partition - 1;
-                    int i8 = i7 + 1;
-                    iArr2[i7] = i5;
-                    int i9 = i8 + 1;
-                    iArr2[i8] = i6;
-                    i3 = i9 + 1;
-                    iArr2[i9] = partition + 1;
-                }
-            }
-        }
-
-        private static int partition(int[] iArr, float[] fArr, int i, int i2) {
-            int i3 = iArr[i2];
-            int i4 = i;
-            while (i < i2) {
-                if (iArr[i] <= i3) {
-                    swap(iArr, fArr, i4, i);
-                    i4++;
-                }
-                i++;
-            }
-            swap(iArr, fArr, i4, i2);
-            return i4;
-        }
-
-        private static void swap(int[] iArr, float[] fArr, int i, int i2) {
-            int i3 = iArr[i];
-            iArr[i] = iArr[i2];
-            iArr[i2] = i3;
-            float f = fArr[i];
-            fArr[i] = fArr[i2];
-            fArr[i2] = f;
-        }
-    }
-
-    public static SplineSet makeCustomSpline(String str, KeyFrameArray.CustomArray customArray) {
-        return new CustomSet(str, customArray);
+    public static SplineSet makeCustomSpline(String str, KeyFrameArray$CustomArray keyFrameArray$CustomArray) {
+        return new CustomSet(str, keyFrameArray$CustomArray);
     }
 
     public static SplineSet makeCustomSplineSet(String str, KeyFrameArray.CustomVar customVar) {

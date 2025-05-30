@@ -7,16 +7,6 @@ import androidx.compose.animation.core.TwoWayConverter;
 import androidx.compose.animation.core.VectorConvertersKt;
 import androidx.compose.foundation.layout.BoxKt;
 import androidx.compose.foundation.layout.BoxScopeInstance;
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.graphics.GraphicsLayerModifierKt;
-import androidx.compose.p004ui.graphics.GraphicsLayerScope;
-import androidx.compose.p004ui.layout.LayoutKt;
-import androidx.compose.p004ui.layout.MeasurePolicy;
-import androidx.compose.p004ui.node.ComposeUiNode;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Applier;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposablesKt;
@@ -25,6 +15,15 @@ import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.SkippableUpdater;
 import androidx.compose.runtime.State;
 import androidx.compose.runtime.Updater;
+import androidx.compose.ui.Alignment;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.graphics.GraphicsLayerModifierKt;
+import androidx.compose.ui.layout.LayoutKt;
+import androidx.compose.ui.layout.MeasurePolicy;
+import androidx.compose.ui.node.ComposeUiNode;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
@@ -33,11 +32,10 @@ import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.FloatCompanionObject;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class CrossfadeKt$Crossfade$5$1 extends Lambda implements Function2<Composer, Integer, Unit> {
     final /* synthetic */ int $$dirty;
     final /* synthetic */ FiniteAnimationSpec<Float> $animationSpec;
@@ -58,7 +56,7 @@ final class CrossfadeKt$Crossfade$5$1 extends Lambda implements Function2<Compos
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: invoke$lambda-1, reason: not valid java name */
-    public static final float m980invoke$lambda1(State<Float> state) {
+    public static final float m43invoke$lambda1(State<Float> state) {
         return state.getValue().floatValue();
     }
 
@@ -77,33 +75,7 @@ final class CrossfadeKt$Crossfade$5$1 extends Lambda implements Function2<Compos
             ComposerKt.traceEventStart(-1426421288, i, -1, "androidx.compose.animation.Crossfade.<anonymous>.<anonymous> (Crossfade.kt:127)");
         }
         Transition<T> transition = this.$this_Crossfade;
-        final FiniteAnimationSpec<Float> finiteAnimationSpec = this.$animationSpec;
-        Function3<Transition.Segment<T>, Composer, Integer, FiniteAnimationSpec<Float>> function3 = new Function3<Transition.Segment<T>, Composer, Integer, FiniteAnimationSpec<Float>>() { // from class: androidx.compose.animation.CrossfadeKt$Crossfade$5$1$alpha$2
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(3);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-                return invoke((Transition.Segment) obj, (Composer) obj2, ((Number) obj3).intValue());
-            }
-
-            @Composable
-            @NotNull
-            public final FiniteAnimationSpec<Float> invoke(@NotNull Transition.Segment<T> segment, @Nullable Composer composer2, int i2) {
-                Intrinsics.checkNotNullParameter(segment, "$this$animateFloat");
-                composer2.startReplaceableGroup(438406499);
-                if (ComposerKt.isTraceInProgress()) {
-                    ComposerKt.traceEventStart(438406499, i2, -1, "androidx.compose.animation.Crossfade.<anonymous>.<anonymous>.<anonymous> (Crossfade.kt:129)");
-                }
-                FiniteAnimationSpec<Float> finiteAnimationSpec2 = finiteAnimationSpec;
-                if (ComposerKt.isTraceInProgress()) {
-                    ComposerKt.traceEventEnd();
-                }
-                composer2.endReplaceableGroup();
-                return finiteAnimationSpec2;
-            }
-        };
+        alpha.2 r2 = new alpha.2(this.$animationSpec);
         T t = this.$stateForContent;
         int i2 = this.$$dirty & 14;
         composer.startReplaceableGroup(-1338768149);
@@ -134,7 +106,7 @@ final class CrossfadeKt$Crossfade$5$1 extends Lambda implements Function2<Compos
             ComposerKt.traceEventEnd();
         }
         composer.endReplaceableGroup();
-        final State createTransitionAnimation = androidx.compose.animation.core.TransitionKt.createTransitionAnimation(transition, valueOf, Float.valueOf(f2), (FiniteAnimationSpec) function3.invoke(transition.getSegment(), composer, Integer.valueOf((i5 >> 3) & 112)), vectorConverter, "FloatAnimation", composer, (i5 & 14) | (57344 & (i5 << 9)) | ((i5 << 6) & 458752));
+        State createTransitionAnimation = androidx.compose.animation.core.TransitionKt.createTransitionAnimation(transition, valueOf, Float.valueOf(f2), (FiniteAnimationSpec) r2.invoke(transition.getSegment(), composer, Integer.valueOf((i5 >> 3) & 112)), vectorConverter, "FloatAnimation", composer, (i5 & 14) | (57344 & (i5 << 9)) | ((i5 << 6) & 458752));
         composer.endReplaceableGroup();
         composer.endReplaceableGroup();
         Modifier.Companion companion = Modifier.Companion;
@@ -142,29 +114,12 @@ final class CrossfadeKt$Crossfade$5$1 extends Lambda implements Function2<Compos
         boolean changed = composer.changed(createTransitionAnimation);
         Object rememberedValue = composer.rememberedValue();
         if (changed || rememberedValue == Composer.Companion.getEmpty()) {
-            rememberedValue = new Function1<GraphicsLayerScope, Unit>() { // from class: androidx.compose.animation.CrossfadeKt$Crossfade$5$1$1$1
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(1);
-                }
-
-                public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                    invoke((GraphicsLayerScope) obj);
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull GraphicsLayerScope graphicsLayerScope) {
-                    float m980invoke$lambda1;
-                    Intrinsics.checkNotNullParameter(graphicsLayerScope, "$this$graphicsLayer");
-                    m980invoke$lambda1 = CrossfadeKt$Crossfade$5$1.m980invoke$lambda1(createTransitionAnimation);
-                    graphicsLayerScope.setAlpha(m980invoke$lambda1);
-                }
-            };
+            rememberedValue = new 1.1(createTransitionAnimation);
             composer.updateRememberedValue(rememberedValue);
         }
         composer.endReplaceableGroup();
         Modifier graphicsLayer = GraphicsLayerModifierKt.graphicsLayer(companion, (Function1) rememberedValue);
-        Function3<T, Composer, Integer, Unit> function32 = this.$content;
+        Function3<T, Composer, Integer, Unit> function3 = this.$content;
         T t2 = this.$stateForContent;
         int i7 = this.$$dirty;
         composer.startReplaceableGroup(-1990474327);
@@ -173,8 +128,8 @@ final class CrossfadeKt$Crossfade$5$1 extends Lambda implements Function2<Compos
         Density density = (Density) composer.consume(CompositionLocalsKt.getLocalDensity());
         LayoutDirection layoutDirection = (LayoutDirection) composer.consume(CompositionLocalsKt.getLocalLayoutDirection());
         ComposeUiNode.Companion companion2 = ComposeUiNode.Companion;
-        Function0<ComposeUiNode> constructor = companion2.getConstructor();
-        Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf = LayoutKt.materializerOf(graphicsLayer);
+        Function0 constructor = companion2.getConstructor();
+        Function3 materializerOf = LayoutKt.materializerOf(graphicsLayer);
         if (!(composer.getApplier() instanceof Applier)) {
             ComposablesKt.invalidApplier();
         }
@@ -185,17 +140,17 @@ final class CrossfadeKt$Crossfade$5$1 extends Lambda implements Function2<Compos
             composer.useNode();
         }
         composer.disableReusing();
-        Composer m2410constructorimpl = Updater.m2410constructorimpl(composer);
-        Updater.m2417setimpl(m2410constructorimpl, rememberBoxMeasurePolicy, companion2.getSetMeasurePolicy());
-        Updater.m2417setimpl(m2410constructorimpl, density, companion2.getSetDensity());
-        Updater.m2417setimpl(m2410constructorimpl, layoutDirection, companion2.getSetLayoutDirection());
+        Composer composer2 = Updater.constructor-impl(composer);
+        Updater.set-impl(composer2, rememberBoxMeasurePolicy, companion2.getSetMeasurePolicy());
+        Updater.set-impl(composer2, density, companion2.getSetDensity());
+        Updater.set-impl(composer2, layoutDirection, companion2.getSetLayoutDirection());
         composer.enableReusing();
-        materializerOf.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(composer)), composer, 0);
+        materializerOf.invoke(SkippableUpdater.m907boximpl(SkippableUpdater.m908constructorimpl(composer)), composer, 0);
         composer.startReplaceableGroup(2058660585);
         composer.startReplaceableGroup(-1253629305);
         BoxScopeInstance boxScopeInstance = BoxScopeInstance.INSTANCE;
         composer.startReplaceableGroup(-222715758);
-        function32.invoke(t2, composer, Integer.valueOf((i7 >> 9) & 112));
+        function3.invoke(t2, composer, Integer.valueOf((i7 >> 9) & 112));
         composer.endReplaceableGroup();
         composer.endReplaceableGroup();
         composer.endReplaceableGroup();

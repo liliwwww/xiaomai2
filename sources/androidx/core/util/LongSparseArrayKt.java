@@ -12,7 +12,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LongSparseArrayKt {
     @RequiresApi(16)
     @SuppressLint({"ClassVerificationFailure"})
@@ -86,32 +86,9 @@ public final class LongSparseArrayKt {
 
     @RequiresApi(16)
     @NotNull
-    public static final <T> LongIterator keyIterator(@NotNull final LongSparseArray<T> longSparseArray) {
+    public static final <T> LongIterator keyIterator(@NotNull LongSparseArray<T> longSparseArray) {
         Intrinsics.checkNotNullParameter(longSparseArray, "<this>");
-        return new LongIterator() { // from class: androidx.core.util.LongSparseArrayKt$keyIterator$1
-            private int index;
-
-            public final int getIndex() {
-                return this.index;
-            }
-
-            @SuppressLint({"ClassVerificationFailure"})
-            public boolean hasNext() {
-                return this.index < longSparseArray.size();
-            }
-
-            @SuppressLint({"ClassVerificationFailure"})
-            public long nextLong() {
-                LongSparseArray<T> longSparseArray2 = longSparseArray;
-                int i = this.index;
-                this.index = i + 1;
-                return longSparseArray2.keyAt(i);
-            }
-
-            public final void setIndex(int i) {
-                this.index = i;
-            }
-        };
+        return new keyIterator.1(longSparseArray);
     }
 
     @RequiresApi(16)

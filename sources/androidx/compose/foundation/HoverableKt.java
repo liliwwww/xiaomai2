@@ -1,17 +1,17 @@
 package androidx.compose.foundation;
 
 import androidx.compose.foundation.interaction.MutableInteractionSource;
-import androidx.compose.p004ui.ComposedModifierKt;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.platform.InspectableValueKt;
-import androidx.compose.p004ui.platform.InspectorInfo;
+import androidx.compose.ui.ComposedModifierKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.platform.InspectableValueKt;
+import androidx.compose.ui.platform.InspectorInfo;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class HoverableKt {
     @NotNull
     public static final Modifier hoverable(@NotNull Modifier modifier, @NotNull final MutableInteractionSource mutableInteractionSource, final boolean z) {
@@ -31,10 +31,10 @@ public final class HoverableKt {
             public final void invoke(@NotNull InspectorInfo inspectorInfo) {
                 Intrinsics.checkNotNullParameter(inspectorInfo, "$this$null");
                 inspectorInfo.setName("hoverable");
-                inspectorInfo.getProperties().set("interactionSource", MutableInteractionSource.this);
+                inspectorInfo.getProperties().set("interactionSource", mutableInteractionSource);
                 inspectorInfo.getProperties().set("enabled", Boolean.valueOf(z));
             }
-        } : InspectableValueKt.getNoInspectorInfo(), new HoverableKt$hoverable$2(mutableInteractionSource, z));
+        } : InspectableValueKt.getNoInspectorInfo(), new hoverable.2(mutableInteractionSource, z));
     }
 
     public static /* synthetic */ Modifier hoverable$default(Modifier modifier, MutableInteractionSource mutableInteractionSource, boolean z, int i, Object obj) {

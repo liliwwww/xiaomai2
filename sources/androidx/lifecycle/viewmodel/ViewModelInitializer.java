@@ -6,7 +6,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ViewModelInitializer<T extends ViewModel> {
 
     @NotNull
@@ -15,7 +15,6 @@ public final class ViewModelInitializer<T extends ViewModel> {
     @NotNull
     private final Function1<CreationExtras, T> initializer;
 
-    /* JADX WARN: Multi-variable type inference failed */
     public ViewModelInitializer(@NotNull Class<T> cls, @NotNull Function1<? super CreationExtras, ? extends T> function1) {
         Intrinsics.checkNotNullParameter(cls, "clazz");
         Intrinsics.checkNotNullParameter(function1, "initializer");

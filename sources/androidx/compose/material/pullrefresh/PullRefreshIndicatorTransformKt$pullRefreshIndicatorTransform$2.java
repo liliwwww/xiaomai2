@@ -1,16 +1,17 @@
 package androidx.compose.material.pullrefresh;
 
 import androidx.compose.animation.core.EasingKt;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.graphics.GraphicsLayerModifierKt;
-import androidx.compose.p004ui.graphics.GraphicsLayerScope;
-import androidx.compose.p004ui.layout.OnRemeasuredModifierKt;
-import androidx.compose.p004ui.unit.IntSize;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.MutableState;
-import androidx.compose.runtime.SnapshotStateKt__SnapshotStateKt;
+import androidx.compose.runtime.SnapshotMutationPolicy;
+import androidx.compose.runtime.SnapshotStateKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.graphics.GraphicsLayerModifierKt;
+import androidx.compose.ui.graphics.GraphicsLayerScope;
+import androidx.compose.ui.layout.OnRemeasuredModifierKt;
+import androidx.compose.ui.unit.IntSize;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function3;
@@ -21,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class PullRefreshIndicatorTransformKt$pullRefreshIndicatorTransform$2 extends Lambda implements Function3<Modifier, Composer, Integer, Modifier> {
     final /* synthetic */ boolean $scale;
     final /* synthetic */ PullRefreshState $state;
@@ -35,13 +36,13 @@ final class PullRefreshIndicatorTransformKt$pullRefreshIndicatorTransform$2 exte
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: invoke$lambda-1, reason: not valid java name */
-    public static final int m2360invoke$lambda1(MutableState<Integer> mutableState) {
-        return mutableState.getValue().intValue();
+    public static final int m717invoke$lambda1(MutableState<Integer> mutableState) {
+        return ((Number) mutableState.getValue()).intValue();
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: invoke$lambda-2, reason: not valid java name */
-    public static final void m2361invoke$lambda2(MutableState<Integer> mutableState, int i) {
+    public static final void m718invoke$lambda2(MutableState<Integer> mutableState, int i) {
         mutableState.setValue(Integer.valueOf(i));
     }
 
@@ -61,7 +62,7 @@ final class PullRefreshIndicatorTransformKt$pullRefreshIndicatorTransform$2 exte
         Object rememberedValue = composer.rememberedValue();
         Composer.Companion companion = Composer.Companion;
         if (rememberedValue == companion.getEmpty()) {
-            rememberedValue = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(0, null, 2, null);
+            rememberedValue = SnapshotStateKt.mutableStateOf$default(0, (SnapshotMutationPolicy) null, 2, (Object) null);
             composer.updateRememberedValue(rememberedValue);
         }
         composer.endReplaceableGroup();
@@ -78,13 +79,13 @@ final class PullRefreshIndicatorTransformKt$pullRefreshIndicatorTransform$2 exte
                 }
 
                 public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                    m2362invokeozmzZPI(((IntSize) obj).m5380unboximpl());
+                    m719invokeozmzZPI(((IntSize) obj).unbox-impl());
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke-ozmzZPI, reason: not valid java name */
-                public final void m2362invokeozmzZPI(long j) {
-                    PullRefreshIndicatorTransformKt$pullRefreshIndicatorTransform$2.m2361invoke$lambda2(mutableState, IntSize.m5375getHeightimpl(j));
+                public final void m719invokeozmzZPI(long j) {
+                    PullRefreshIndicatorTransformKt$pullRefreshIndicatorTransform$2.m718invoke$lambda2(mutableState, IntSize.getHeight-impl(j));
                 }
             };
             composer.updateRememberedValue(rememberedValue2);
@@ -106,11 +107,11 @@ final class PullRefreshIndicatorTransformKt$pullRefreshIndicatorTransform$2 exte
 
             public final void invoke(@NotNull GraphicsLayerScope graphicsLayerScope) {
                 Intrinsics.checkNotNullParameter(graphicsLayerScope, "$this$graphicsLayer");
-                graphicsLayerScope.setTranslationY(PullRefreshState.this.getPosition$material_release() - PullRefreshIndicatorTransformKt$pullRefreshIndicatorTransform$2.m2360invoke$lambda1(mutableState));
-                if (!z || PullRefreshState.this.getRefreshing$material_release()) {
+                graphicsLayerScope.setTranslationY(pullRefreshState.getPosition$material_release() - PullRefreshIndicatorTransformKt$pullRefreshIndicatorTransform$2.m717invoke$lambda1(mutableState));
+                if (!z || pullRefreshState.getRefreshing$material_release()) {
                     return;
                 }
-                float coerceIn = RangesKt.coerceIn(EasingKt.getLinearOutSlowInEasing().transform(PullRefreshState.this.getPosition$material_release() / PullRefreshState.this.getThreshold$material_release()), 0.0f, 1.0f);
+                float coerceIn = RangesKt.coerceIn(EasingKt.getLinearOutSlowInEasing().transform(pullRefreshState.getPosition$material_release() / pullRefreshState.getThreshold$material_release()), 0.0f, 1.0f);
                 graphicsLayerScope.setScaleX(coerceIn);
                 graphicsLayerScope.setScaleY(coerceIn);
             }

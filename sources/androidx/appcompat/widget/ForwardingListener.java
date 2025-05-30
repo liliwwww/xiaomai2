@@ -10,7 +10,7 @@ import androidx.appcompat.view.menu.ShowableListMenu;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class ForwardingListener implements View.OnAttachStateChangeListener, View.OnTouchListener {
     private int mActivePointerId;
     private Runnable mDisallowIntercept;
@@ -33,18 +33,6 @@ public abstract class ForwardingListener implements View.OnAttachStateChangeList
             if (parent != null) {
                 parent.requestDisallowInterceptTouchEvent(true);
             }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private class TriggerLongPress implements Runnable {
-        TriggerLongPress() {
-        }
-
-        @Override // java.lang.Runnable
-        public void run() {
-            ForwardingListener.this.onLongPress();
         }
     }
 
@@ -91,7 +79,7 @@ public abstract class ForwardingListener implements View.OnAttachStateChangeList
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private boolean onTouchObserved(android.view.MotionEvent r6) {
         /*
@@ -143,7 +131,7 @@ public abstract class ForwardingListener implements View.OnAttachStateChangeList
             java.lang.Runnable r6 = r5.mTriggerLongPress
             if (r6 != 0) goto L65
             androidx.appcompat.widget.ForwardingListener$TriggerLongPress r6 = new androidx.appcompat.widget.ForwardingListener$TriggerLongPress
-            r6.<init>()
+            r6.<init>(r5)
             r5.mTriggerLongPress = r6
         L65:
             java.lang.Runnable r6 = r5.mTriggerLongPress

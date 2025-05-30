@@ -8,10 +8,9 @@ import android.os.CancellationSignal;
 import android.util.Pair;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.room.RoomDatabase;
-import androidx.sqlite.p008db.SupportSQLiteDatabase;
-import androidx.sqlite.p008db.SupportSQLiteQuery;
-import androidx.sqlite.p008db.SupportSQLiteStatement;
+import androidx.sqlite.db.SupportSQLiteDatabase;
+import androidx.sqlite.db.SupportSQLiteQuery;
+import androidx.sqlite.db.SupportSQLiteStatement;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,15 +21,15 @@ import java.util.concurrent.Executor;
 import tb.ca5;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class QueryInterceptorDatabase implements SupportSQLiteDatabase {
     private final SupportSQLiteDatabase mDelegate;
-    private final RoomDatabase.QueryCallback mQueryCallback;
+    private final RoomDatabase$QueryCallback mQueryCallback;
     private final Executor mQueryCallbackExecutor;
 
-    QueryInterceptorDatabase(@NonNull SupportSQLiteDatabase supportSQLiteDatabase, @NonNull RoomDatabase.QueryCallback queryCallback, @NonNull Executor executor) {
+    QueryInterceptorDatabase(@NonNull SupportSQLiteDatabase supportSQLiteDatabase, @NonNull RoomDatabase$QueryCallback roomDatabase$QueryCallback, @NonNull Executor executor) {
         this.mDelegate = supportSQLiteDatabase;
-        this.mQueryCallback = queryCallback;
+        this.mQueryCallback = roomDatabase$QueryCallback;
         this.mQueryCallbackExecutor = executor;
     }
 
@@ -94,7 +93,6 @@ final class QueryInterceptorDatabase implements SupportSQLiteDatabase {
         this.mQueryCallback.onQuery("TRANSACTION SUCCESSFUL", Collections.emptyList());
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public void beginTransaction() {
         this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.y
             @Override // java.lang.Runnable
@@ -105,7 +103,6 @@ final class QueryInterceptorDatabase implements SupportSQLiteDatabase {
         this.mDelegate.beginTransaction();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public void beginTransactionNonExclusive() {
         this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.v
             @Override // java.lang.Runnable
@@ -116,7 +113,6 @@ final class QueryInterceptorDatabase implements SupportSQLiteDatabase {
         this.mDelegate.beginTransactionNonExclusive();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public void beginTransactionWithListener(@NonNull SQLiteTransactionListener sQLiteTransactionListener) {
         this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.z
             @Override // java.lang.Runnable
@@ -127,7 +123,6 @@ final class QueryInterceptorDatabase implements SupportSQLiteDatabase {
         this.mDelegate.beginTransactionWithListener(sQLiteTransactionListener);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public void beginTransactionWithListenerNonExclusive(@NonNull SQLiteTransactionListener sQLiteTransactionListener) {
         this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.x
             @Override // java.lang.Runnable
@@ -138,34 +133,28 @@ final class QueryInterceptorDatabase implements SupportSQLiteDatabase {
         this.mDelegate.beginTransactionWithListenerNonExclusive(sQLiteTransactionListener);
     }
 
-    @Override // java.io.Closeable, java.lang.AutoCloseable
     public void close() throws IOException {
         this.mDelegate.close();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     @NonNull
     public SupportSQLiteStatement compileStatement(@NonNull String str) {
         return new QueryInterceptorStatement(this.mDelegate.compileStatement(str), this.mQueryCallback, str, this.mQueryCallbackExecutor);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public int delete(@NonNull String str, @NonNull String str2, @NonNull Object[] objArr) {
         return this.mDelegate.delete(str, str2, objArr);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     @RequiresApi(api = 16)
     public void disableWriteAheadLogging() {
         this.mDelegate.disableWriteAheadLogging();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public boolean enableWriteAheadLogging() {
         return this.mDelegate.enableWriteAheadLogging();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public void endTransaction() {
         this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.s
             @Override // java.lang.Runnable
@@ -176,134 +165,101 @@ final class QueryInterceptorDatabase implements SupportSQLiteDatabase {
         this.mDelegate.endTransaction();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public /* synthetic */ void execPerConnectionSQL(String str, Object[] objArr) {
         ca5.a(this, str, objArr);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
-    public void execSQL(@NonNull final String str) throws SQLException {
-        this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.c0
-            @Override // java.lang.Runnable
-            public final void run() {
-                QueryInterceptorDatabase.this.lambda$execSQL$10(str);
-            }
-        });
+    public void execSQL(@NonNull String str) throws SQLException {
+        this.mQueryCallbackExecutor.execute(new c0(this, str));
         this.mDelegate.execSQL(str);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     @NonNull
     public List<Pair<String, String>> getAttachedDbs() {
         return this.mDelegate.getAttachedDbs();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public long getMaximumSize() {
         return this.mDelegate.getMaximumSize();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public long getPageSize() {
         return this.mDelegate.getPageSize();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     @NonNull
     public String getPath() {
         return this.mDelegate.getPath();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public int getVersion() {
         return this.mDelegate.getVersion();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public boolean inTransaction() {
         return this.mDelegate.inTransaction();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public long insert(@NonNull String str, int i, @NonNull ContentValues contentValues) throws SQLException {
         return this.mDelegate.insert(str, i, contentValues);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public boolean isDatabaseIntegrityOk() {
         return this.mDelegate.isDatabaseIntegrityOk();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public boolean isDbLockedByCurrentThread() {
         return this.mDelegate.isDbLockedByCurrentThread();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public /* synthetic */ boolean isExecPerConnectionSQLSupported() {
         return ca5.b(this);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public boolean isOpen() {
         return this.mDelegate.isOpen();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public boolean isReadOnly() {
         return this.mDelegate.isReadOnly();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     @RequiresApi(api = 16)
     public boolean isWriteAheadLoggingEnabled() {
         return this.mDelegate.isWriteAheadLoggingEnabled();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public boolean needUpgrade(int i) {
         return this.mDelegate.needUpgrade(i);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     @NonNull
-    public Cursor query(@NonNull final String str) {
-        this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.d0
-            @Override // java.lang.Runnable
-            public final void run() {
-                QueryInterceptorDatabase.this.lambda$query$6(str);
-            }
-        });
+    public Cursor query(@NonNull String str) {
+        this.mQueryCallbackExecutor.execute(new d0(this, str));
         return this.mDelegate.query(str);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     @RequiresApi(api = 16)
     public void setForeignKeyConstraintsEnabled(boolean z) {
         this.mDelegate.setForeignKeyConstraintsEnabled(z);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public void setLocale(@NonNull Locale locale) {
         this.mDelegate.setLocale(locale);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public void setMaxSqlCacheSize(int i) {
         this.mDelegate.setMaxSqlCacheSize(i);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public long setMaximumSize(long j) {
         return this.mDelegate.setMaximumSize(j);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public void setPageSize(long j) {
         this.mDelegate.setPageSize(j);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public void setTransactionSuccessful() {
         this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.w
             @Override // java.lang.Runnable
@@ -314,27 +270,22 @@ final class QueryInterceptorDatabase implements SupportSQLiteDatabase {
         this.mDelegate.setTransactionSuccessful();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public void setVersion(int i) {
         this.mDelegate.setVersion(i);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public int update(@NonNull String str, int i, @NonNull ContentValues contentValues, @NonNull String str2, @NonNull Object[] objArr) {
         return this.mDelegate.update(str, i, contentValues, str2, objArr);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public boolean yieldIfContendedSafely() {
         return this.mDelegate.yieldIfContendedSafely();
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public boolean yieldIfContendedSafely(long j) {
         return this.mDelegate.yieldIfContendedSafely(j);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     public void execSQL(@NonNull final String str, @NonNull Object[] objArr) throws SQLException {
         final ArrayList arrayList = new ArrayList();
         arrayList.addAll(Arrays.asList(objArr));
@@ -347,7 +298,6 @@ final class QueryInterceptorDatabase implements SupportSQLiteDatabase {
         this.mDelegate.execSQL(str, arrayList.toArray());
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     @NonNull
     public Cursor query(@NonNull final String str, @NonNull Object[] objArr) {
         final ArrayList arrayList = new ArrayList();
@@ -361,31 +311,19 @@ final class QueryInterceptorDatabase implements SupportSQLiteDatabase {
         return this.mDelegate.query(str, objArr);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     @NonNull
-    public Cursor query(@NonNull final SupportSQLiteQuery supportSQLiteQuery) {
-        final QueryInterceptorProgram queryInterceptorProgram = new QueryInterceptorProgram();
+    public Cursor query(@NonNull SupportSQLiteQuery supportSQLiteQuery) {
+        QueryInterceptorProgram queryInterceptorProgram = new QueryInterceptorProgram();
         supportSQLiteQuery.bindTo(queryInterceptorProgram);
-        this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.a0
-            @Override // java.lang.Runnable
-            public final void run() {
-                QueryInterceptorDatabase.this.lambda$query$8(supportSQLiteQuery, queryInterceptorProgram);
-            }
-        });
+        this.mQueryCallbackExecutor.execute(new a0(this, supportSQLiteQuery, queryInterceptorProgram));
         return this.mDelegate.query(supportSQLiteQuery);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteDatabase
     @NonNull
-    public Cursor query(@NonNull final SupportSQLiteQuery supportSQLiteQuery, @NonNull CancellationSignal cancellationSignal) {
-        final QueryInterceptorProgram queryInterceptorProgram = new QueryInterceptorProgram();
+    public Cursor query(@NonNull SupportSQLiteQuery supportSQLiteQuery, @NonNull CancellationSignal cancellationSignal) {
+        QueryInterceptorProgram queryInterceptorProgram = new QueryInterceptorProgram();
         supportSQLiteQuery.bindTo(queryInterceptorProgram);
-        this.mQueryCallbackExecutor.execute(new Runnable() { // from class: androidx.room.b0
-            @Override // java.lang.Runnable
-            public final void run() {
-                QueryInterceptorDatabase.this.lambda$query$9(supportSQLiteQuery, queryInterceptorProgram);
-            }
-        });
+        this.mQueryCallbackExecutor.execute(new b0(this, supportSQLiteQuery, queryInterceptorProgram));
         return this.mDelegate.query(supportSQLiteQuery);
     }
 }

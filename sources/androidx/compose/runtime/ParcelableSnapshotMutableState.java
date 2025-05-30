@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @SuppressLint({"BanParcelableUsage"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ParcelableSnapshotMutableState<T> extends SnapshotMutableStateImpl<T> implements Parcelable {
     private static final int PolicyNeverEquals = 0;
     private static final int PolicyReferentialEquality = 2;
@@ -89,7 +89,7 @@ public final class ParcelableSnapshotMutableState<T> extends SnapshotMutableStat
         int i2;
         Intrinsics.checkNotNullParameter(parcel, "parcel");
         parcel.writeValue(getValue());
-        SnapshotMutationPolicy<T> policy = getPolicy();
+        SnapshotMutationPolicy policy = getPolicy();
         if (Intrinsics.areEqual(policy, SnapshotStateKt.neverEqualPolicy())) {
             i2 = 0;
         } else if (Intrinsics.areEqual(policy, SnapshotStateKt.structuralEqualityPolicy())) {

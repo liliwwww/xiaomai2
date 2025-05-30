@@ -14,10 +14,8 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputConnectionWrapper;
 import android.view.inputmethod.InputContentInfo;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.core.util.ObjectsCompat;
 import androidx.core.util.Preconditions;
 import androidx.core.view.ContentInfoCompat;
@@ -26,7 +24,7 @@ import tb.d82;
 
 /* compiled from: Taobao */
 @SuppressLint({"PrivateConstructorForUtilityClass"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class InputConnectionCompat {
     private static final String COMMIT_CONTENT_ACTION = "androidx.core.view.inputmethod.InputConnectionCompat.COMMIT_CONTENT";
     private static final String COMMIT_CONTENT_CONTENT_URI_INTEROP_KEY = "android.support.v13.view.inputmethod.InputConnectionCompat.CONTENT_URI";
@@ -45,25 +43,6 @@ public final class InputConnectionCompat {
     private static final String EXTRA_INPUT_CONTENT_INFO = "androidx.core.view.extra.INPUT_CONTENT_INFO";
     public static final int INPUT_CONTENT_GRANT_READ_URI_PERMISSION = 1;
     private static final String LOG_TAG = "InputConnectionCompat";
-
-    /* compiled from: Taobao */
-    @RequiresApi(25)
-    /* loaded from: classes.dex */
-    static class Api25Impl {
-        private Api25Impl() {
-        }
-
-        @DoNotInline
-        static boolean commitContent(InputConnection inputConnection, InputContentInfo inputContentInfo, int i, Bundle bundle) {
-            return inputConnection.commitContent(inputContentInfo, i, bundle);
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface OnCommitContentListener {
-        boolean onCommitContent(@NonNull InputContentInfoCompat inputContentInfoCompat, int i, @Nullable Bundle bundle);
-    }
 
     @Deprecated
     public InputConnectionCompat() {
@@ -144,29 +123,29 @@ public final class InputConnectionCompat {
         }
         try {
             resultReceiver = (ResultReceiver) bundle.getParcelable(z ? COMMIT_CONTENT_RESULT_INTEROP_RECEIVER_KEY : COMMIT_CONTENT_RESULT_RECEIVER_KEY);
-        } catch (Throwable th) {
-            th = th;
-            resultReceiver = 0;
-        }
-        try {
-            Uri uri = (Uri) bundle.getParcelable(z ? COMMIT_CONTENT_CONTENT_URI_INTEROP_KEY : COMMIT_CONTENT_CONTENT_URI_KEY);
-            ClipDescription clipDescription = (ClipDescription) bundle.getParcelable(z ? COMMIT_CONTENT_DESCRIPTION_INTEROP_KEY : COMMIT_CONTENT_DESCRIPTION_KEY);
-            Uri uri2 = (Uri) bundle.getParcelable(z ? COMMIT_CONTENT_LINK_URI_INTEROP_KEY : COMMIT_CONTENT_LINK_URI_KEY);
-            int i = bundle.getInt(z ? COMMIT_CONTENT_FLAGS_INTEROP_KEY : COMMIT_CONTENT_FLAGS_KEY);
-            Bundle bundle2 = (Bundle) bundle.getParcelable(z ? COMMIT_CONTENT_OPTS_INTEROP_KEY : COMMIT_CONTENT_OPTS_KEY);
-            if (uri != null && clipDescription != null) {
-                r0 = onCommitContentListener.onCommitContent(new InputContentInfoCompat(uri, clipDescription, uri2), i, bundle2);
+            try {
+                Uri uri = (Uri) bundle.getParcelable(z ? COMMIT_CONTENT_CONTENT_URI_INTEROP_KEY : COMMIT_CONTENT_CONTENT_URI_KEY);
+                ClipDescription clipDescription = (ClipDescription) bundle.getParcelable(z ? COMMIT_CONTENT_DESCRIPTION_INTEROP_KEY : COMMIT_CONTENT_DESCRIPTION_KEY);
+                Uri uri2 = (Uri) bundle.getParcelable(z ? COMMIT_CONTENT_LINK_URI_INTEROP_KEY : COMMIT_CONTENT_LINK_URI_KEY);
+                int i = bundle.getInt(z ? COMMIT_CONTENT_FLAGS_INTEROP_KEY : COMMIT_CONTENT_FLAGS_KEY);
+                Bundle bundle2 = (Bundle) bundle.getParcelable(z ? COMMIT_CONTENT_OPTS_INTEROP_KEY : COMMIT_CONTENT_OPTS_KEY);
+                if (uri != null && clipDescription != null) {
+                    r0 = onCommitContentListener.onCommitContent(new InputContentInfoCompat(uri, clipDescription, uri2), i, bundle2);
+                }
+                if (resultReceiver != 0) {
+                    resultReceiver.send(r0, null);
+                }
+                return r0;
+            } catch (Throwable th) {
+                th = th;
+                if (resultReceiver != 0) {
+                    resultReceiver.send(0, null);
+                }
+                throw th;
             }
-            if (resultReceiver != 0) {
-                resultReceiver.send(r0, null);
-            }
-            return r0;
         } catch (Throwable th2) {
             th = th2;
-            if (resultReceiver != 0) {
-                resultReceiver.send(0, null);
-            }
-            throw th;
+            resultReceiver = 0;
         }
     }
 

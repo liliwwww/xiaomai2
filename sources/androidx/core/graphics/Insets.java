@@ -7,7 +7,7 @@ import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class Insets {
 
     @NonNull
@@ -24,8 +24,7 @@ public final class Insets {
         }
 
         @DoNotInline
-        /* renamed from: of */
-        static android.graphics.Insets m213of(int i, int i2, int i3, int i4) {
+        static android.graphics.Insets of(int i, int i2, int i3, int i4) {
             return android.graphics.Insets.of(i, i2, i3, i4);
         }
     }
@@ -39,34 +38,33 @@ public final class Insets {
 
     @NonNull
     public static Insets add(@NonNull Insets insets, @NonNull Insets insets2) {
-        return m211of(insets.left + insets2.left, insets.top + insets2.top, insets.right + insets2.right, insets.bottom + insets2.bottom);
+        return of(insets.left + insets2.left, insets.top + insets2.top, insets.right + insets2.right, insets.bottom + insets2.bottom);
     }
 
     @NonNull
     public static Insets max(@NonNull Insets insets, @NonNull Insets insets2) {
-        return m211of(Math.max(insets.left, insets2.left), Math.max(insets.top, insets2.top), Math.max(insets.right, insets2.right), Math.max(insets.bottom, insets2.bottom));
+        return of(Math.max(insets.left, insets2.left), Math.max(insets.top, insets2.top), Math.max(insets.right, insets2.right), Math.max(insets.bottom, insets2.bottom));
     }
 
     @NonNull
     public static Insets min(@NonNull Insets insets, @NonNull Insets insets2) {
-        return m211of(Math.min(insets.left, insets2.left), Math.min(insets.top, insets2.top), Math.min(insets.right, insets2.right), Math.min(insets.bottom, insets2.bottom));
+        return of(Math.min(insets.left, insets2.left), Math.min(insets.top, insets2.top), Math.min(insets.right, insets2.right), Math.min(insets.bottom, insets2.bottom));
     }
 
     @NonNull
-    /* renamed from: of */
-    public static Insets m211of(int i, int i2, int i3, int i4) {
+    public static Insets of(int i, int i2, int i3, int i4) {
         return (i == 0 && i2 == 0 && i3 == 0 && i4 == 0) ? NONE : new Insets(i, i2, i3, i4);
     }
 
     @NonNull
     public static Insets subtract(@NonNull Insets insets, @NonNull Insets insets2) {
-        return m211of(insets.left - insets2.left, insets.top - insets2.top, insets.right - insets2.right, insets.bottom - insets2.bottom);
+        return of(insets.left - insets2.left, insets.top - insets2.top, insets.right - insets2.right, insets.bottom - insets2.bottom);
     }
 
     @NonNull
     @RequiresApi(api = 29)
     public static Insets toCompatInsets(@NonNull android.graphics.Insets insets) {
-        return m211of(insets.left, insets.top, insets.right, insets.bottom);
+        return of(insets.left, insets.top, insets.right, insets.bottom);
     }
 
     @NonNull
@@ -95,7 +93,7 @@ public final class Insets {
     @NonNull
     @RequiresApi(29)
     public android.graphics.Insets toPlatformInsets() {
-        return Api29Impl.m213of(this.left, this.top, this.right, this.bottom);
+        return Api29Impl.of(this.left, this.top, this.right, this.bottom);
     }
 
     @NonNull
@@ -104,8 +102,7 @@ public final class Insets {
     }
 
     @NonNull
-    /* renamed from: of */
-    public static Insets m212of(@NonNull Rect rect) {
-        return m211of(rect.left, rect.top, rect.right, rect.bottom);
+    public static Insets of(@NonNull Rect rect) {
+        return of(rect.left, rect.top, rect.right, rect.bottom);
     }
 }

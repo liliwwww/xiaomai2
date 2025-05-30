@@ -5,12 +5,11 @@ import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
-import kotlinx.coroutines.CoroutineScope;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final /* synthetic */ class SnapshotStateKt__ProduceStateKt {
     @Composable
     @NotNull
@@ -22,7 +21,7 @@ final /* synthetic */ class SnapshotStateKt__ProduceStateKt {
         }
         Object rememberedValue = composer.rememberedValue();
         if (rememberedValue == Composer.Companion.getEmpty()) {
-            rememberedValue = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(t, null, 2, null);
+            rememberedValue = SnapshotStateKt.mutableStateOf$default(t, (SnapshotMutationPolicy) null, 2, (Object) null);
             composer.updateRememberedValue(rememberedValue);
         }
         MutableState mutableState = (MutableState) rememberedValue;
@@ -44,7 +43,7 @@ final /* synthetic */ class SnapshotStateKt__ProduceStateKt {
         }
         Object rememberedValue = composer.rememberedValue();
         if (rememberedValue == Composer.Companion.getEmpty()) {
-            rememberedValue = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(t, null, 2, null);
+            rememberedValue = SnapshotStateKt.mutableStateOf$default(t, (SnapshotMutationPolicy) null, 2, (Object) null);
             composer.updateRememberedValue(rememberedValue);
         }
         MutableState mutableState = (MutableState) rememberedValue;
@@ -66,7 +65,7 @@ final /* synthetic */ class SnapshotStateKt__ProduceStateKt {
         }
         Object rememberedValue = composer.rememberedValue();
         if (rememberedValue == Composer.Companion.getEmpty()) {
-            rememberedValue = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(t, null, 2, null);
+            rememberedValue = SnapshotStateKt.mutableStateOf$default(t, (SnapshotMutationPolicy) null, 2, (Object) null);
             composer.updateRememberedValue(rememberedValue);
         }
         MutableState mutableState = (MutableState) rememberedValue;
@@ -88,7 +87,7 @@ final /* synthetic */ class SnapshotStateKt__ProduceStateKt {
         }
         Object rememberedValue = composer.rememberedValue();
         if (rememberedValue == Composer.Companion.getEmpty()) {
-            rememberedValue = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(t, null, 2, null);
+            rememberedValue = SnapshotStateKt.mutableStateOf$default(t, (SnapshotMutationPolicy) null, 2, (Object) null);
             composer.updateRememberedValue(rememberedValue);
         }
         MutableState mutableState = (MutableState) rememberedValue;
@@ -111,11 +110,11 @@ final /* synthetic */ class SnapshotStateKt__ProduceStateKt {
         }
         Object rememberedValue = composer.rememberedValue();
         if (rememberedValue == Composer.Companion.getEmpty()) {
-            rememberedValue = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(t, null, 2, null);
+            rememberedValue = SnapshotStateKt.mutableStateOf$default(t, (SnapshotMutationPolicy) null, 2, (Object) null);
             composer.updateRememberedValue(rememberedValue);
         }
         MutableState mutableState = (MutableState) rememberedValue;
-        EffectsKt.LaunchedEffect(Arrays.copyOf(objArr, objArr.length), (Function2<? super CoroutineScope, ? super Continuation<? super Unit>, ? extends Object>) new SnapshotStateKt__ProduceStateKt$produceState$5(function2, mutableState, null), composer, 72);
+        EffectsKt.LaunchedEffect(Arrays.copyOf(objArr, objArr.length), new SnapshotStateKt__ProduceStateKt$produceState$5(function2, mutableState, null), composer, 72);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }

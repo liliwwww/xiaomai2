@@ -1,19 +1,19 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.layout.AlignmentLine;
-import androidx.compose.p004ui.layout.C0790a;
-import androidx.compose.p004ui.layout.IntrinsicMeasurable;
-import androidx.compose.p004ui.layout.IntrinsicMeasureScope;
-import androidx.compose.p004ui.layout.LayoutModifier;
-import androidx.compose.p004ui.layout.Measurable;
-import androidx.compose.p004ui.layout.MeasureResult;
-import androidx.compose.p004ui.layout.MeasureScope;
-import androidx.compose.p004ui.platform.InspectorInfo;
-import androidx.compose.p004ui.platform.InspectorValueInfo;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.TextUnit;
-import androidx.compose.p004ui.unit.TextUnitKt;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.layout.AlignmentLine;
+import androidx.compose.ui.layout.IntrinsicMeasurable;
+import androidx.compose.ui.layout.IntrinsicMeasureScope;
+import androidx.compose.ui.layout.LayoutModifier;
+import androidx.compose.ui.layout.Measurable;
+import androidx.compose.ui.layout.MeasureResult;
+import androidx.compose.ui.layout.MeasureScope;
+import androidx.compose.ui.layout.a;
+import androidx.compose.ui.platform.InspectorInfo;
+import androidx.compose.ui.platform.InspectorValueInfo;
+import androidx.compose.ui.unit.Dp;
+import androidx.compose.ui.unit.TextUnit;
+import androidx.compose.ui.unit.TextUnitKt;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
@@ -25,7 +25,7 @@ import tb.mt2;
 import tb.nt2;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class AlignmentLineOffsetTextUnit extends InspectorValueInfo implements LayoutModifier {
     private final long after;
 
@@ -44,12 +44,12 @@ final class AlignmentLineOffsetTextUnit extends InspectorValueInfo implements La
         this(alignmentLine, j, j2, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ boolean all(Function1 function1) {
         return nt2.a(this, function1);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ boolean any(Function1 function1) {
         return nt2.b(this, function1);
     }
@@ -59,21 +59,21 @@ final class AlignmentLineOffsetTextUnit extends InspectorValueInfo implements La
             return true;
         }
         AlignmentLineOffsetTextUnit alignmentLineOffsetTextUnit = obj instanceof AlignmentLineOffsetTextUnit ? (AlignmentLineOffsetTextUnit) obj : null;
-        return alignmentLineOffsetTextUnit != null && Intrinsics.areEqual(this.alignmentLine, alignmentLineOffsetTextUnit.alignmentLine) && TextUnit.m5394equalsimpl0(this.before, alignmentLineOffsetTextUnit.before) && TextUnit.m5394equalsimpl0(this.after, alignmentLineOffsetTextUnit.after);
+        return alignmentLineOffsetTextUnit != null && Intrinsics.areEqual(this.alignmentLine, alignmentLineOffsetTextUnit.alignmentLine) && TextUnit.m2210equalsimpl0(this.before, alignmentLineOffsetTextUnit.before) && TextUnit.m2210equalsimpl0(this.after, alignmentLineOffsetTextUnit.after);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ Object foldIn(Object obj, Function2 function2) {
         return nt2.c(this, obj, function2);
     }
 
-    @Override // androidx.compose.ui.Modifier.Element, androidx.compose.p004ui.Modifier
+    /* JADX WARN: Multi-variable type inference failed */
     public /* synthetic */ Object foldOut(Object obj, Function2 function2) {
         return nt2.d(this, obj, function2);
     }
 
     /* renamed from: getAfter-XSAIIZE, reason: not valid java name */
-    public final long m1329getAfterXSAIIZE() {
+    public final long m182getAfterXSAIIZE() {
         return this.after;
     }
 
@@ -83,52 +83,44 @@ final class AlignmentLineOffsetTextUnit extends InspectorValueInfo implements La
     }
 
     /* renamed from: getBefore-XSAIIZE, reason: not valid java name */
-    public final long m1330getBeforeXSAIIZE() {
+    public final long m183getBeforeXSAIIZE() {
         return this.before;
     }
 
     public int hashCode() {
-        return (((this.alignmentLine.hashCode() * 31) + TextUnit.m5398hashCodeimpl(this.before)) * 31) + TextUnit.m5398hashCodeimpl(this.after);
+        return (((this.alignmentLine.hashCode() * 31) + TextUnit.m2214hashCodeimpl(this.before)) * 31) + TextUnit.m2214hashCodeimpl(this.after);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     public /* synthetic */ int maxIntrinsicHeight(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m141a(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return a.a(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     public /* synthetic */ int maxIntrinsicWidth(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m142b(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return a.b(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     @NotNull
-    /* renamed from: measure-3p2s80s */
-    public MeasureResult mo959measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull Measurable measurable, long j) {
-        MeasureResult m1318alignmentLineOffsetMeasuretjqqzMA;
+    /* renamed from: measure-3p2s80s, reason: not valid java name */
+    public MeasureResult m184measure3p2s80s(@NotNull MeasureScope measureScope, @NotNull Measurable measurable, long j) {
         Intrinsics.checkNotNullParameter(measureScope, "$this$measure");
         Intrinsics.checkNotNullParameter(measurable, "measurable");
-        m1318alignmentLineOffsetMeasuretjqqzMA = AlignmentLineKt.m1318alignmentLineOffsetMeasuretjqqzMA(measureScope, this.alignmentLine, !TextUnitKt.m5415isUnspecifiedR2X_6o(this.before) ? measureScope.mo1278toDpGaN1DYA(this.before) : C0856Dp.Companion.m5236getUnspecifiedD9Ej5fM(), !TextUnitKt.m5415isUnspecifiedR2X_6o(this.after) ? measureScope.mo1278toDpGaN1DYA(this.after) : C0856Dp.Companion.m5236getUnspecifiedD9Ej5fM(), measurable, j);
-        return m1318alignmentLineOffsetMeasuretjqqzMA;
+        return AlignmentLineKt.access$alignmentLineOffsetMeasure-tjqqzMA(measureScope, this.alignmentLine, !TextUnitKt.m2231isUnspecifiedR2X_6o(this.before) ? measureScope.mo310toDpGaN1DYA(this.before) : Dp.Companion.m2162getUnspecifiedD9Ej5fM(), !TextUnitKt.m2231isUnspecifiedR2X_6o(this.after) ? measureScope.mo310toDpGaN1DYA(this.after) : Dp.Companion.m2162getUnspecifiedD9Ej5fM(), measurable, j);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     public /* synthetic */ int minIntrinsicHeight(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m143c(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return a.c(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.layout.LayoutModifier
     public /* synthetic */ int minIntrinsicWidth(IntrinsicMeasureScope intrinsicMeasureScope, IntrinsicMeasurable intrinsicMeasurable, int i) {
-        return C0790a.m144d(this, intrinsicMeasureScope, intrinsicMeasurable, i);
+        return a.d(this, intrinsicMeasureScope, intrinsicMeasurable, i);
     }
 
-    @Override // androidx.compose.p004ui.Modifier
     public /* synthetic */ Modifier then(Modifier modifier) {
         return mt2.a(this, modifier);
     }
 
     @NotNull
     public String toString() {
-        return "AlignmentLineOffset(alignmentLine=" + this.alignmentLine + ", before=" + ((Object) TextUnit.m5404toStringimpl(this.before)) + ", after=" + ((Object) TextUnit.m5404toStringimpl(this.after)) + ')';
+        return "AlignmentLineOffset(alignmentLine=" + this.alignmentLine + ", before=" + ((Object) TextUnit.m2220toStringimpl(this.before)) + ", after=" + ((Object) TextUnit.m2220toStringimpl(this.after)) + ')';
     }
 }

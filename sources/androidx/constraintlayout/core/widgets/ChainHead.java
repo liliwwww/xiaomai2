@@ -1,10 +1,9 @@
 package androidx.constraintlayout.core.widgets;
 
-import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ChainHead {
     private boolean mDefined;
     protected ConstraintWidget mFirst;
@@ -51,9 +50,9 @@ public class ChainHead {
             constraintWidget.mListNextMatchConstraintsWidget[i2] = null;
             if (constraintWidget.getVisibility() != 8) {
                 this.mVisibleWidgets++;
-                ConstraintWidget.DimensionBehaviour dimensionBehaviour = constraintWidget.getDimensionBehaviour(this.mOrientation);
-                ConstraintWidget.DimensionBehaviour dimensionBehaviour2 = ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT;
-                if (dimensionBehaviour != dimensionBehaviour2) {
+                ConstraintWidget$DimensionBehaviour dimensionBehaviour = constraintWidget.getDimensionBehaviour(this.mOrientation);
+                ConstraintWidget$DimensionBehaviour constraintWidget$DimensionBehaviour = ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT;
+                if (dimensionBehaviour != constraintWidget$DimensionBehaviour) {
                     this.mTotalSize += constraintWidget.getLength(this.mOrientation);
                 }
                 int margin = this.mTotalSize + constraintWidget.mListAnchors[i].getMargin();
@@ -67,9 +66,9 @@ public class ChainHead {
                     this.mFirstVisibleWidget = constraintWidget;
                 }
                 this.mLastVisibleWidget = constraintWidget;
-                ConstraintWidget.DimensionBehaviour[] dimensionBehaviourArr = constraintWidget.mListDimensionBehaviors;
+                ConstraintWidget$DimensionBehaviour[] constraintWidget$DimensionBehaviourArr = constraintWidget.mListDimensionBehaviors;
                 int i4 = this.mOrientation;
-                if (dimensionBehaviourArr[i4] == dimensionBehaviour2) {
+                if (constraintWidget$DimensionBehaviourArr[i4] == constraintWidget$DimensionBehaviour) {
                     int[] iArr = constraintWidget.mResolvedMatchConstraintDefault;
                     if (iArr[i4] == 0 || iArr[i4] == 3 || iArr[i4] == 2) {
                         this.mWidgetsMatchCount++;
@@ -151,7 +150,7 @@ public class ChainHead {
     }
 
     private static boolean isMatchConstraintEqualityCandidate(ConstraintWidget constraintWidget, int i) {
-        if (constraintWidget.getVisibility() != 8 && constraintWidget.mListDimensionBehaviors[i] == ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT) {
+        if (constraintWidget.getVisibility() != 8 && constraintWidget.mListDimensionBehaviors[i] == ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT) {
             int[] iArr = constraintWidget.mResolvedMatchConstraintDefault;
             if (iArr[i] == 0 || iArr[i] == 3) {
                 return true;

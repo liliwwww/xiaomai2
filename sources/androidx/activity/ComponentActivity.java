@@ -1,22 +1,16 @@
 package androidx.activity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.window.OnBackInvokedDispatcher;
 import androidx.activity.contextaware.ContextAware;
 import androidx.activity.contextaware.ContextAwareHelper;
 import androidx.activity.contextaware.OnContextAvailableListener;
@@ -25,20 +19,16 @@ import androidx.activity.result.ActivityResultCaller;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.ActivityResultRegistry;
 import androidx.activity.result.ActivityResultRegistryOwner;
-import androidx.activity.result.IntentSenderRequest;
 import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.CallSuper;
 import androidx.annotation.ContentView;
-import androidx.annotation.DoNotInline;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.OptIn;
 import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.app.MultiWindowModeChangedInfo;
 import androidx.core.app.OnMultiWindowModeChangedProvider;
 import androidx.core.app.OnNewIntentProvider;
@@ -54,7 +44,6 @@ import androidx.core.view.MenuHostHelper;
 import androidx.core.view.MenuProvider;
 import androidx.lifecycle.HasDefaultViewModelProviderFactory;
 import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleEventObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LifecycleRegistry;
 import androidx.lifecycle.ReportFragment;
@@ -80,7 +69,7 @@ import tb.u40;
 import tb.v40;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ComponentActivity extends androidx.core.app.ComponentActivity implements OnBackPressedDispatcherOwner, ContextAware, ActivityResultCaller, ActivityResultRegistryOwner, OnMultiWindowModeChangedProvider, OnNewIntentProvider, OnPictureInPictureModeChangedProvider, OnConfigurationChangedProvider, OnTrimMemoryProvider, MenuHost, HasDefaultViewModelProviderFactory, ViewModelStoreOwner, SavedStateRegistryOwner {
     private static final String ACTIVITY_RESULT_TAG = "android:support:activity-result";
     private final ActivityResultRegistry mActivityResultRegistry;
@@ -115,19 +104,6 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
     }
 
     /* compiled from: Taobao */
-    @RequiresApi(33)
-    /* loaded from: classes.dex */
-    static class Api33Impl {
-        private Api33Impl() {
-        }
-
-        @DoNotInline
-        static OnBackInvokedDispatcher getOnBackInvokedDispatcher(Activity activity) {
-            return activity.getOnBackInvokedDispatcher();
-        }
-    }
-
-    /* compiled from: Taobao */
     static final class NonConfigurationInstances {
         Object custom;
         ViewModelStore viewModelStore;
@@ -136,76 +112,16 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         }
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public ComponentActivity() {
         this.mContextAwareHelper = new ContextAwareHelper();
         this.mMenuHostHelper = new MenuHostHelper(new v40(this));
         this.mLifecycleRegistry = new LifecycleRegistry(this);
         SavedStateRegistryController create = SavedStateRegistryController.create(this);
         this.mSavedStateRegistryController = create;
-        this.mOnBackPressedDispatcher = new OnBackPressedDispatcher(new Runnable() { // from class: androidx.activity.ComponentActivity.1
-            @Override // java.lang.Runnable
-            public void run() {
-                try {
-                    ComponentActivity.super.onBackPressed();
-                } catch (IllegalStateException e) {
-                    if (!TextUtils.equals(e.getMessage(), "Can not perform this action after onSaveInstanceState")) {
-                        throw e;
-                    }
-                }
-            }
-        });
+        this.mOnBackPressedDispatcher = new OnBackPressedDispatcher(new 1(this));
         this.mNextLocalRequestCode = new AtomicInteger();
-        this.mActivityResultRegistry = new ActivityResultRegistry() { // from class: androidx.activity.ComponentActivity.2
-            @Override // androidx.activity.result.ActivityResultRegistry
-            public <I, O> void onLaunch(final int i, @NonNull ActivityResultContract<I, O> activityResultContract, I i2, @Nullable ActivityOptionsCompat activityOptionsCompat) {
-                ComponentActivity componentActivity = ComponentActivity.this;
-                final ActivityResultContract.SynchronousResult<O> synchronousResult = activityResultContract.getSynchronousResult(componentActivity, i2);
-                if (synchronousResult != null) {
-                    new Handler(Looper.getMainLooper()).post(new Runnable() { // from class: androidx.activity.ComponentActivity.2.1
-                        @Override // java.lang.Runnable
-                        public void run() {
-                            dispatchResult(i, synchronousResult.getValue());
-                        }
-                    });
-                    return;
-                }
-                Intent createIntent = activityResultContract.createIntent(componentActivity, i2);
-                Bundle bundle = null;
-                if (createIntent.getExtras() != null && createIntent.getExtras().getClassLoader() == null) {
-                    createIntent.setExtrasClassLoader(componentActivity.getClassLoader());
-                }
-                if (createIntent.hasExtra(ActivityResultContracts.StartActivityForResult.EXTRA_ACTIVITY_OPTIONS_BUNDLE)) {
-                    bundle = createIntent.getBundleExtra(ActivityResultContracts.StartActivityForResult.EXTRA_ACTIVITY_OPTIONS_BUNDLE);
-                    createIntent.removeExtra(ActivityResultContracts.StartActivityForResult.EXTRA_ACTIVITY_OPTIONS_BUNDLE);
-                } else if (activityOptionsCompat != null) {
-                    bundle = activityOptionsCompat.toBundle();
-                }
-                Bundle bundle2 = bundle;
-                if (ActivityResultContracts.RequestMultiplePermissions.ACTION_REQUEST_PERMISSIONS.equals(createIntent.getAction())) {
-                    String[] stringArrayExtra = createIntent.getStringArrayExtra(ActivityResultContracts.RequestMultiplePermissions.EXTRA_PERMISSIONS);
-                    if (stringArrayExtra == null) {
-                        stringArrayExtra = new String[0];
-                    }
-                    ActivityCompat.requestPermissions(componentActivity, stringArrayExtra, i);
-                    return;
-                }
-                if (!ActivityResultContracts.StartIntentSenderForResult.ACTION_INTENT_SENDER_REQUEST.equals(createIntent.getAction())) {
-                    ActivityCompat.startActivityForResult(componentActivity, createIntent, i, bundle2);
-                    return;
-                }
-                IntentSenderRequest intentSenderRequest = (IntentSenderRequest) createIntent.getParcelableExtra(ActivityResultContracts.StartIntentSenderForResult.EXTRA_INTENT_SENDER_REQUEST);
-                try {
-                    ActivityCompat.startIntentSenderForResult(componentActivity, intentSenderRequest.getIntentSender(), i, intentSenderRequest.getFillInIntent(), intentSenderRequest.getFlagsMask(), intentSenderRequest.getFlagsValues(), 0, bundle2);
-                } catch (IntentSender.SendIntentException e) {
-                    new Handler(Looper.getMainLooper()).post(new Runnable() { // from class: androidx.activity.ComponentActivity.2.2
-                        @Override // java.lang.Runnable
-                        public void run() {
-                            dispatchResult(i, 0, new Intent().setAction(ActivityResultContracts.StartIntentSenderForResult.ACTION_INTENT_SENDER_REQUEST).putExtra(ActivityResultContracts.StartIntentSenderForResult.EXTRA_SEND_INTENT_EXCEPTION, e));
-                        }
-                    });
-                }
-            }
-        };
+        this.mActivityResultRegistry = new 2(this);
         this.mOnConfigurationChangedListeners = new CopyOnWriteArrayList<>();
         this.mOnTrimMemoryListeners = new CopyOnWriteArrayList<>();
         this.mOnNewIntentListeners = new CopyOnWriteArrayList<>();
@@ -218,38 +134,10 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         }
         int i = Build.VERSION.SDK_INT;
         if (i >= 19) {
-            getLifecycle().addObserver(new LifecycleEventObserver() { // from class: androidx.activity.ComponentActivity.3
-                @Override // androidx.lifecycle.LifecycleEventObserver
-                public void onStateChanged(@NonNull LifecycleOwner lifecycleOwner, @NonNull Lifecycle.Event event) {
-                    if (event == Lifecycle.Event.ON_STOP) {
-                        Window window = ComponentActivity.this.getWindow();
-                        View peekDecorView = window != null ? window.peekDecorView() : null;
-                        if (peekDecorView != null) {
-                            Api19Impl.cancelPendingInputEvents(peekDecorView);
-                        }
-                    }
-                }
-            });
+            getLifecycle().addObserver(new 3(this));
         }
-        getLifecycle().addObserver(new LifecycleEventObserver() { // from class: androidx.activity.ComponentActivity.4
-            @Override // androidx.lifecycle.LifecycleEventObserver
-            public void onStateChanged(@NonNull LifecycleOwner lifecycleOwner, @NonNull Lifecycle.Event event) {
-                if (event == Lifecycle.Event.ON_DESTROY) {
-                    ComponentActivity.this.mContextAwareHelper.clearAvailableContext();
-                    if (ComponentActivity.this.isChangingConfigurations()) {
-                        return;
-                    }
-                    ComponentActivity.this.getViewModelStore().clear();
-                }
-            }
-        });
-        getLifecycle().addObserver(new LifecycleEventObserver() { // from class: androidx.activity.ComponentActivity.5
-            @Override // androidx.lifecycle.LifecycleEventObserver
-            public void onStateChanged(@NonNull LifecycleOwner lifecycleOwner, @NonNull Lifecycle.Event event) {
-                ComponentActivity.this.ensureViewModelStore();
-                ComponentActivity.this.getLifecycle().removeObserver(this);
-            }
-        });
+        getLifecycle().addObserver(new 4(this));
+        getLifecycle().addObserver(new 5(this));
         create.performAttach();
         SavedStateHandleSupport.enableSavedStateHandles(this);
         if (19 <= i && i <= 23) {
@@ -259,6 +147,7 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         addOnContextAvailableListener(new t40(this));
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     private void initViewTreeOwners() {
         ViewTreeLifecycleOwner.set(getWindow().getDecorView(), this);
         ViewTreeViewModelStoreOwner.set(getWindow().getDecorView(), this);
@@ -281,10 +170,10 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         }
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     public void addContentView(@SuppressLint({"UnknownNullness", "MissingNullability"}) View view, @SuppressLint({"UnknownNullness", "MissingNullability"}) ViewGroup.LayoutParams layoutParams) {
         initViewTreeOwners();
-        super.addContentView(view, layoutParams);
+        super/*android.app.Activity*/.addContentView(view, layoutParams);
     }
 
     @Override // androidx.core.view.MenuHost
@@ -297,7 +186,6 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         this.mOnConfigurationChangedListeners.add(consumer);
     }
 
-    @Override // androidx.activity.contextaware.ContextAware
     public final void addOnContextAvailableListener(@NonNull OnContextAvailableListener onContextAvailableListener) {
         this.mContextAwareHelper.addOnContextAvailableListener(onContextAvailableListener);
     }
@@ -307,7 +195,6 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         this.mOnMultiWindowModeChangedListeners.add(consumer);
     }
 
-    @Override // androidx.core.app.OnNewIntentProvider
     public final void addOnNewIntentListener(@NonNull Consumer<Intent> consumer) {
         this.mOnNewIntentListeners.add(consumer);
     }
@@ -317,11 +204,11 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         this.mOnPictureInPictureModeChangedListeners.add(consumer);
     }
 
-    @Override // androidx.core.content.OnTrimMemoryProvider
     public final void addOnTrimMemoryListener(@NonNull Consumer<Integer> consumer) {
         this.mOnTrimMemoryListeners.add(consumer);
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     void ensureViewModelStore() {
         if (this.mViewModelStore == null) {
             NonConfigurationInstances nonConfigurationInstances = (NonConfigurationInstances) getLastNonConfigurationInstance();
@@ -340,6 +227,7 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         return this.mActivityResultRegistry;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     @Override // androidx.lifecycle.HasDefaultViewModelProviderFactory
     @NonNull
     @CallSuper
@@ -356,6 +244,7 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         return mutableCreationExtras;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     @Override // androidx.lifecycle.HasDefaultViewModelProviderFactory
     @NonNull
     public ViewModelProvider.Factory getDefaultViewModelProviderFactory() {
@@ -365,6 +254,7 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         return this.mDefaultFactory;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     @Deprecated
     public Object getLastCustomNonConfigurationInstance() {
@@ -375,13 +265,11 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         return null;
     }
 
-    @Override // androidx.core.app.ComponentActivity, androidx.lifecycle.LifecycleOwner
     @NonNull
     public Lifecycle getLifecycle() {
         return this.mLifecycleRegistry;
     }
 
-    @Override // androidx.activity.OnBackPressedDispatcherOwner
     @NonNull
     public final OnBackPressedDispatcher getOnBackPressedDispatcher() {
         return this.mOnBackPressedDispatcher;
@@ -393,7 +281,7 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         return this.mSavedStateRegistryController.getSavedStateRegistry();
     }
 
-    @Override // androidx.lifecycle.ViewModelStoreOwner
+    /* JADX WARN: Multi-variable type inference failed */
     @NonNull
     public ViewModelStore getViewModelStore() {
         if (getApplication() == null) {
@@ -403,38 +291,38 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         return this.mViewModelStore;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     @Override // androidx.core.view.MenuHost
     public void invalidateMenu() {
         invalidateOptionsMenu();
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     @CallSuper
     @Deprecated
     protected void onActivityResult(int i, int i2, @Nullable Intent intent) {
         if (this.mActivityResultRegistry.dispatchResult(i, i2, intent)) {
             return;
         }
-        super.onActivityResult(i, i2, intent);
+        super/*android.app.Activity*/.onActivityResult(i, i2, intent);
     }
 
-    @Override // android.app.Activity
     @MainThread
     public void onBackPressed() {
         this.mOnBackPressedDispatcher.onBackPressed();
     }
 
-    @Override // android.app.Activity, android.content.ComponentCallbacks
+    /* JADX WARN: Multi-variable type inference failed */
     @CallSuper
     public void onConfigurationChanged(@NonNull Configuration configuration) {
-        super.onConfigurationChanged(configuration);
+        super/*android.app.Activity*/.onConfigurationChanged(configuration);
         Iterator<Consumer<Configuration>> it = this.mOnConfigurationChangedListeners.iterator();
         while (it.hasNext()) {
             it.next().accept(configuration);
         }
     }
 
-    @Override // androidx.core.app.ComponentActivity, android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     @OptIn(markerClass = {BuildCompat.PrereleaseSdkCheck.class})
     protected void onCreate(@Nullable Bundle bundle) {
         this.mSavedStateRegistryController.performRestore(bundle);
@@ -450,19 +338,19 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         }
     }
 
-    @Override // android.app.Activity, android.view.Window.Callback
+    /* JADX WARN: Multi-variable type inference failed */
     public boolean onCreatePanelMenu(int i, @NonNull Menu menu) {
         if (i != 0) {
             return true;
         }
-        super.onCreatePanelMenu(i, menu);
+        super/*android.app.Activity*/.onCreatePanelMenu(i, menu);
         this.mMenuHostHelper.onCreateMenu(menu, getMenuInflater());
         return true;
     }
 
-    @Override // android.app.Activity, android.view.Window.Callback
+    /* JADX WARN: Multi-variable type inference failed */
     public boolean onMenuItemSelected(int i, @NonNull MenuItem menuItem) {
-        if (super.onMenuItemSelected(i, menuItem)) {
+        if (super/*android.app.Activity*/.onMenuItemSelected(i, menuItem)) {
             return true;
         }
         if (i == 0) {
@@ -471,7 +359,6 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         return false;
     }
 
-    @Override // android.app.Activity
     @CallSuper
     public void onMultiWindowModeChanged(boolean z) {
         if (this.mDispatchingOnMultiWindowModeChanged) {
@@ -483,23 +370,22 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         }
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     @CallSuper
     protected void onNewIntent(@SuppressLint({"UnknownNullness", "MissingNullability"}) Intent intent) {
-        super.onNewIntent(intent);
+        super/*android.app.Activity*/.onNewIntent(intent);
         Iterator<Consumer<Intent>> it = this.mOnNewIntentListeners.iterator();
         while (it.hasNext()) {
             it.next().accept(intent);
         }
     }
 
-    @Override // android.app.Activity, android.view.Window.Callback
+    /* JADX WARN: Multi-variable type inference failed */
     public void onPanelClosed(int i, @NonNull Menu menu) {
         this.mMenuHostHelper.onMenuClosed(menu);
-        super.onPanelClosed(i, menu);
+        super/*android.app.Activity*/.onPanelClosed(i, menu);
     }
 
-    @Override // android.app.Activity
     @CallSuper
     public void onPictureInPictureModeChanged(boolean z) {
         if (this.mDispatchingOnPictureInPictureModeChanged) {
@@ -511,24 +397,24 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         }
     }
 
-    @Override // android.app.Activity, android.view.Window.Callback
+    /* JADX WARN: Multi-variable type inference failed */
     public boolean onPreparePanel(int i, @Nullable View view, @NonNull Menu menu) {
         if (i != 0) {
             return true;
         }
-        super.onPreparePanel(i, view, menu);
+        super/*android.app.Activity*/.onPreparePanel(i, view, menu);
         this.mMenuHostHelper.onPrepareMenu(menu);
         return true;
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     @CallSuper
     @Deprecated
     public void onRequestPermissionsResult(int i, @NonNull String[] strArr, @NonNull int[] iArr) {
         if (this.mActivityResultRegistry.dispatchResult(i, -1, new Intent().putExtra(ActivityResultContracts.RequestMultiplePermissions.EXTRA_PERMISSIONS, strArr).putExtra(ActivityResultContracts.RequestMultiplePermissions.EXTRA_PERMISSION_GRANT_RESULTS, iArr)) || Build.VERSION.SDK_INT < 23) {
             return;
         }
-        super.onRequestPermissionsResult(i, strArr, iArr);
+        super/*android.app.Activity*/.onRequestPermissionsResult(i, strArr, iArr);
     }
 
     @Nullable
@@ -537,7 +423,7 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         return null;
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     public final Object onRetainNonConfigurationInstance() {
         NonConfigurationInstances nonConfigurationInstances;
@@ -555,28 +441,26 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         return nonConfigurationInstances2;
     }
 
-    @Override // androidx.core.app.ComponentActivity, android.app.Activity
     @CallSuper
     protected void onSaveInstanceState(@NonNull Bundle bundle) {
-        Lifecycle lifecycle = getLifecycle();
+        LifecycleRegistry lifecycle = getLifecycle();
         if (lifecycle instanceof LifecycleRegistry) {
-            ((LifecycleRegistry) lifecycle).setCurrentState(Lifecycle.State.CREATED);
+            lifecycle.setCurrentState(Lifecycle.State.CREATED);
         }
         super.onSaveInstanceState(bundle);
         this.mSavedStateRegistryController.performSave(bundle);
     }
 
-    @Override // android.app.Activity, android.content.ComponentCallbacks2
+    /* JADX WARN: Multi-variable type inference failed */
     @CallSuper
     public void onTrimMemory(int i) {
-        super.onTrimMemory(i);
+        super/*android.app.Activity*/.onTrimMemory(i);
         Iterator<Consumer<Integer>> it = this.mOnTrimMemoryListeners.iterator();
         while (it.hasNext()) {
             it.next().accept(Integer.valueOf(i));
         }
     }
 
-    @Override // androidx.activity.contextaware.ContextAware
     @Nullable
     public Context peekAvailableContext() {
         return this.mContextAwareHelper.peekAvailableContext();
@@ -598,7 +482,6 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         this.mOnConfigurationChangedListeners.remove(consumer);
     }
 
-    @Override // androidx.activity.contextaware.ContextAware
     public final void removeOnContextAvailableListener(@NonNull OnContextAvailableListener onContextAvailableListener) {
         this.mContextAwareHelper.removeOnContextAvailableListener(onContextAvailableListener);
     }
@@ -608,7 +491,6 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         this.mOnMultiWindowModeChangedListeners.remove(consumer);
     }
 
-    @Override // androidx.core.app.OnNewIntentProvider
     public final void removeOnNewIntentListener(@NonNull Consumer<Intent> consumer) {
         this.mOnNewIntentListeners.remove(consumer);
     }
@@ -618,12 +500,11 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         this.mOnPictureInPictureModeChangedListeners.remove(consumer);
     }
 
-    @Override // androidx.core.content.OnTrimMemoryProvider
     public final void removeOnTrimMemoryListener(@NonNull Consumer<Integer> consumer) {
         this.mOnTrimMemoryListeners.remove(consumer);
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     public void reportFullyDrawn() {
         try {
             if (Trace.isEnabled()) {
@@ -631,31 +512,31 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
             }
             int i = Build.VERSION.SDK_INT;
             if (i > 19) {
-                super.reportFullyDrawn();
+                super/*android.app.Activity*/.reportFullyDrawn();
             } else if (i == 19 && ContextCompat.checkSelfPermission(this, "android.permission.UPDATE_DEVICE_STATS") == 0) {
-                super.reportFullyDrawn();
+                super/*android.app.Activity*/.reportFullyDrawn();
             }
         } finally {
             Trace.endSection();
         }
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     public void setContentView(@LayoutRes int i) {
         initViewTreeOwners();
-        super.setContentView(i);
+        super/*android.app.Activity*/.setContentView(i);
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     @Deprecated
     public void startActivityForResult(@NonNull Intent intent, int i) {
-        super.startActivityForResult(intent, i);
+        super/*android.app.Activity*/.startActivityForResult(intent, i);
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     @Deprecated
     public void startIntentSenderForResult(@NonNull IntentSender intentSender, int i, @Nullable Intent intent, int i2, int i3, int i4) throws IntentSender.SendIntentException {
-        super.startIntentSenderForResult(intentSender, i, intent, i2, i3, i4);
+        super/*android.app.Activity*/.startIntentSenderForResult(intentSender, i, intent, i2, i3, i4);
     }
 
     @Override // androidx.core.view.MenuHost
@@ -663,16 +544,16 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         this.mMenuHostHelper.addMenuProvider(menuProvider, lifecycleOwner);
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     @Deprecated
     public void startActivityForResult(@NonNull Intent intent, int i, @Nullable Bundle bundle) {
-        super.startActivityForResult(intent, i, bundle);
+        super/*android.app.Activity*/.startActivityForResult(intent, i, bundle);
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     @Deprecated
     public void startIntentSenderForResult(@NonNull IntentSender intentSender, int i, @Nullable Intent intent, int i2, int i3, int i4, @Nullable Bundle bundle) throws IntentSender.SendIntentException {
-        super.startIntentSenderForResult(intentSender, i, intent, i2, i3, i4, bundle);
+        super/*android.app.Activity*/.startIntentSenderForResult(intentSender, i, intent, i2, i3, i4, bundle);
     }
 
     @Override // androidx.core.view.MenuHost
@@ -681,19 +562,19 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         this.mMenuHostHelper.addMenuProvider(menuProvider, lifecycleOwner, state);
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     public void setContentView(@SuppressLint({"UnknownNullness", "MissingNullability"}) View view) {
         initViewTreeOwners();
-        super.setContentView(view);
+        super/*android.app.Activity*/.setContentView(view);
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     @RequiresApi(api = 26)
     @CallSuper
     public void onMultiWindowModeChanged(boolean z, @NonNull Configuration configuration) {
         this.mDispatchingOnMultiWindowModeChanged = true;
         try {
-            super.onMultiWindowModeChanged(z, configuration);
+            super/*android.app.Activity*/.onMultiWindowModeChanged(z, configuration);
             this.mDispatchingOnMultiWindowModeChanged = false;
             Iterator<Consumer<MultiWindowModeChangedInfo>> it = this.mOnMultiWindowModeChangedListeners.iterator();
             while (it.hasNext()) {
@@ -705,13 +586,13 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         }
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     @RequiresApi(api = 26)
     @CallSuper
     public void onPictureInPictureModeChanged(boolean z, @NonNull Configuration configuration) {
         this.mDispatchingOnPictureInPictureModeChanged = true;
         try {
-            super.onPictureInPictureModeChanged(z, configuration);
+            super/*android.app.Activity*/.onPictureInPictureModeChanged(z, configuration);
             this.mDispatchingOnPictureInPictureModeChanged = false;
             Iterator<Consumer<PictureInPictureModeChangedInfo>> it = this.mOnPictureInPictureModeChangedListeners.iterator();
             while (it.hasNext()) {
@@ -729,10 +610,10 @@ public class ComponentActivity extends androidx.core.app.ComponentActivity imple
         return registerForActivityResult(activityResultContract, this.mActivityResultRegistry, activityResultCallback);
     }
 
-    @Override // android.app.Activity
+    /* JADX WARN: Multi-variable type inference failed */
     public void setContentView(@SuppressLint({"UnknownNullness", "MissingNullability"}) View view, @SuppressLint({"UnknownNullness", "MissingNullability"}) ViewGroup.LayoutParams layoutParams) {
         initViewTreeOwners();
-        super.setContentView(view, layoutParams);
+        super/*android.app.Activity*/.setContentView(view, layoutParams);
     }
 
     @ContentView

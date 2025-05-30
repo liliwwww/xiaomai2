@@ -1,6 +1,5 @@
 package androidx.compose.runtime;
 
-import androidx.compose.runtime.BroadcastFrameClock;
 import androidx.compose.runtime.MonotonicFrameClock;
 import androidx.compose.runtime.internal.StabilityInferred;
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ import tb.hu2;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class BroadcastFrameClock implements MonotonicFrameClock {
     public static final int $stable = 8;
 
@@ -45,53 +44,10 @@ public final class BroadcastFrameClock implements MonotonicFrameClock {
     @NotNull
     private List<FrameAwaiter<?>> spareList;
 
-    /* JADX INFO: Access modifiers changed from: private */
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    static final class FrameAwaiter<R> {
-
-        @NotNull
-        private final Continuation<R> continuation;
-
-        @NotNull
-        private final Function1<Long, R> onFrame;
-
-        /* JADX WARN: Multi-variable type inference failed */
-        public FrameAwaiter(@NotNull Function1<? super Long, ? extends R> function1, @NotNull Continuation<? super R> continuation) {
-            Intrinsics.checkNotNullParameter(function1, "onFrame");
-            Intrinsics.checkNotNullParameter(continuation, "continuation");
-            this.onFrame = function1;
-            this.continuation = continuation;
-        }
-
-        @NotNull
-        public final Continuation<R> getContinuation() {
-            return this.continuation;
-        }
-
-        @NotNull
-        public final Function1<Long, R> getOnFrame() {
-            return this.onFrame;
-        }
-
-        public final void resume(long j) {
-            Object obj;
-            Continuation<R> continuation = this.continuation;
-            try {
-                Result.Companion companion = Result.Companion;
-                obj = Result.constructor-impl(this.onFrame.invoke(Long.valueOf(j)));
-            } catch (Throwable th) {
-                Result.Companion companion2 = Result.Companion;
-                obj = Result.constructor-impl(ResultKt.createFailure(th));
-            }
-            continuation.resumeWith(obj);
-        }
-    }
-
     /* JADX WARN: Illegal instructions before constructor call */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public BroadcastFrameClock() {
         /*
@@ -128,7 +84,7 @@ public final class BroadcastFrameClock implements MonotonicFrameClock {
             List<FrameAwaiter<?>> list = this.awaiters;
             int size = list.size();
             for (int i = 0; i < size; i++) {
-                Continuation<?> continuation = list.get(i).getContinuation();
+                Continuation continuation = list.get(i).getContinuation();
                 Result.Companion companion = Result.Companion;
                 continuation.resumeWith(Result.constructor-impl(ResultKt.createFailure(th)));
             }
@@ -194,7 +150,7 @@ public final class BroadcastFrameClock implements MonotonicFrameClock {
         FrameAwaiter frameAwaiter;
         CancellableContinuationImpl cancellableContinuationImpl = new CancellableContinuationImpl(IntrinsicsKt.intercepted(continuation), 1);
         cancellableContinuationImpl.initCancellability();
-        final Ref.ObjectRef objectRef = new Ref.ObjectRef();
+        Ref.ObjectRef objectRef = new Ref.ObjectRef();
         synchronized (this.lock) {
             Throwable th = this.failureCause;
             if (th != null) {
@@ -213,36 +169,7 @@ public final class BroadcastFrameClock implements MonotonicFrameClock {
                 }
                 list.add(frameAwaiter);
                 boolean z2 = !z;
-                cancellableContinuationImpl.invokeOnCancellation(new Function1<Throwable, Unit>() { // from class: androidx.compose.runtime.BroadcastFrameClock$withFrameNanos$2$1
-                    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                    {
-                        super(1);
-                    }
-
-                    public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                        invoke((Throwable) obj2);
-                        return Unit.INSTANCE;
-                    }
-
-                    public final void invoke(@Nullable Throwable th2) {
-                        BroadcastFrameClock.FrameAwaiter frameAwaiter2;
-                        Object obj2 = BroadcastFrameClock.this.lock;
-                        BroadcastFrameClock broadcastFrameClock = BroadcastFrameClock.this;
-                        Ref.ObjectRef<BroadcastFrameClock.FrameAwaiter<R>> objectRef2 = objectRef;
-                        synchronized (obj2) {
-                            List list2 = broadcastFrameClock.awaiters;
-                            Object obj3 = objectRef2.element;
-                            if (obj3 == null) {
-                                Intrinsics.throwUninitializedPropertyAccessException("awaiter");
-                                frameAwaiter2 = null;
-                            } else {
-                                frameAwaiter2 = (BroadcastFrameClock.FrameAwaiter) obj3;
-                            }
-                            list2.remove(frameAwaiter2);
-                            Unit unit = Unit.INSTANCE;
-                        }
-                    }
-                });
+                cancellableContinuationImpl.invokeOnCancellation(new withFrameNanos.2.1(this, objectRef));
                 if (z2 && this.onNewAwaiters != null) {
                     try {
                         this.onNewAwaiters.invoke();

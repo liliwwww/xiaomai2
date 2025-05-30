@@ -12,7 +12,7 @@ import androidx.annotation.RequiresApi;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class AccessibilityRecordCompat {
     private final AccessibilityRecord mRecord;
 
@@ -40,19 +40,6 @@ public class AccessibilityRecordCompat {
         @DoNotInline
         static void setMaxScrollY(AccessibilityRecord accessibilityRecord, int i) {
             accessibilityRecord.setMaxScrollY(i);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(16)
-    /* loaded from: classes2.dex */
-    static class Api16Impl {
-        private Api16Impl() {
-        }
-
-        @DoNotInline
-        static void setSource(AccessibilityRecord accessibilityRecord, View view, int i) {
-            accessibilityRecord.setSource(view, i);
         }
     }
 

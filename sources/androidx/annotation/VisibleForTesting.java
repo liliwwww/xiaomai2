@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 /* compiled from: Taobao */
 @Retention(RetentionPolicy.CLASS)
 @kotlin.annotation.Retention(AnnotationRetention.BINARY)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public @interface VisibleForTesting {
 
     @NotNull

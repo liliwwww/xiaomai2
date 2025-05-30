@@ -4,7 +4,7 @@ import android.os.Build;
 import androidx.renderscript.Script;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ScriptIntrinsic3DLUT extends ScriptIntrinsic {
     private static final int INTRINSIC_API_LEVEL = 19;
     private Element mElement;
@@ -26,11 +26,11 @@ public class ScriptIntrinsic3DLUT extends ScriptIntrinsic {
     }
 
     public void forEach(Allocation allocation, Allocation allocation2) {
-        forEach(0, allocation, allocation2, null);
+        forEach(0, allocation, allocation2, (FieldPacker) null);
     }
 
     public Script.KernelID getKernelID() {
-        return createKernelID(0, 3, null, null);
+        return createKernelID(0, 3, (Element) null, (Element) null);
     }
 
     public void setLUT(Allocation allocation) {

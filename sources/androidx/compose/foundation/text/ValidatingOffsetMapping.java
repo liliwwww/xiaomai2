@@ -1,11 +1,11 @@
 package androidx.compose.foundation.text;
 
-import androidx.compose.p004ui.text.input.OffsetMapping;
+import androidx.compose.ui.text.input.OffsetMapping;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class ValidatingOffsetMapping implements OffsetMapping {
 
     @NotNull
@@ -20,7 +20,7 @@ final class ValidatingOffsetMapping implements OffsetMapping {
         this.transformedLength = i2;
     }
 
-    @Override // androidx.compose.p004ui.text.input.OffsetMapping
+    @Override // androidx.compose.ui.text.input.OffsetMapping
     public int originalToTransformed(int i) {
         int originalToTransformed = this.delegate.originalToTransformed(i);
         boolean z = false;
@@ -33,7 +33,7 @@ final class ValidatingOffsetMapping implements OffsetMapping {
         throw new IllegalStateException(("OffsetMapping.originalToTransformed returned invalid mapping: " + i + " -> " + originalToTransformed + " is not in range of transformed text [0, " + this.transformedLength + ']').toString());
     }
 
-    @Override // androidx.compose.p004ui.text.input.OffsetMapping
+    @Override // androidx.compose.ui.text.input.OffsetMapping
     public int transformedToOriginal(int i) {
         int transformedToOriginal = this.delegate.transformedToOriginal(i);
         boolean z = false;

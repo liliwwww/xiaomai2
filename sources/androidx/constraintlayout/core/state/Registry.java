@@ -1,11 +1,10 @@
 package androidx.constraintlayout.core.state;
 
-import androidx.core.location.LocationRequestCompat;
 import java.util.HashMap;
 import java.util.Set;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Registry {
     private static final Registry sRegistry = new Registry();
     private HashMap<String, RegistryCallback> mCallbacks = new HashMap<>();
@@ -32,7 +31,10 @@ public class Registry {
 
     public long getLastModified(String str) {
         RegistryCallback registryCallback = this.mCallbacks.get(str);
-        return registryCallback != null ? registryCallback.getLastModified() : LocationRequestCompat.PASSIVE_INTERVAL;
+        if (registryCallback != null) {
+            return registryCallback.getLastModified();
+        }
+        return Long.MAX_VALUE;
     }
 
     public Set<String> getLayoutList() {

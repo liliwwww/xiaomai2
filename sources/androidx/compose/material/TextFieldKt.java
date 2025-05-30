@@ -5,25 +5,6 @@ import androidx.compose.foundation.layout.BoxKt;
 import androidx.compose.foundation.layout.BoxScopeInstance;
 import androidx.compose.foundation.layout.PaddingKt;
 import androidx.compose.foundation.layout.PaddingValues;
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.draw.DrawModifierKt;
-import androidx.compose.p004ui.geometry.OffsetKt;
-import androidx.compose.p004ui.geometry.Size;
-import androidx.compose.p004ui.graphics.ColorFilter;
-import androidx.compose.p004ui.graphics.PathEffect;
-import androidx.compose.p004ui.graphics.drawscope.ContentDrawScope;
-import androidx.compose.p004ui.layout.LayoutIdKt;
-import androidx.compose.p004ui.layout.LayoutKt;
-import androidx.compose.p004ui.layout.MeasurePolicy;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.node.ComposeUiNode;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.platform.ViewConfiguration;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Constraints;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Applier;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.ComposableInferredTarget;
@@ -33,6 +14,29 @@ import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.ScopeUpdateScope;
 import androidx.compose.runtime.SkippableUpdater;
 import androidx.compose.runtime.Updater;
+import androidx.compose.ui.Alignment;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.draw.DrawModifierKt;
+import androidx.compose.ui.geometry.OffsetKt;
+import androidx.compose.ui.geometry.Size;
+import androidx.compose.ui.graphics.ColorFilter;
+import androidx.compose.ui.graphics.PathEffect;
+import androidx.compose.ui.graphics.drawscope.ContentDrawScope;
+import androidx.compose.ui.layout.LayoutIdKt;
+import androidx.compose.ui.layout.LayoutKt;
+import androidx.compose.ui.layout.MeasurePolicy;
+import androidx.compose.ui.layout.Placeable;
+import androidx.compose.ui.node.ComposeUiNode;
+import androidx.compose.ui.node.ComposeUiNode$Companion;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.platform.ViewConfiguration;
+import androidx.compose.ui.unit.Constraints;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
+import androidx.compose.ui.unit.LayoutDirection;
+import androidx.core.view.GravityCompat;
+import androidx.core.view.InputDeviceCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
@@ -46,11 +50,11 @@ import org.jetbrains.annotations.Nullable;
 import tb.w51;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class TextFieldKt {
-    private static final float FirstBaselineOffset = C0856Dp.m5216constructorimpl(20);
-    private static final float TextFieldBottomPadding = C0856Dp.m5216constructorimpl(10);
-    private static final float TextFieldTopPadding = C0856Dp.m5216constructorimpl(4);
+    private static final float FirstBaselineOffset = Dp.m2142constructorimpl(20);
+    private static final float TextFieldBottomPadding = Dp.m2142constructorimpl(10);
+    private static final float TextFieldTopPadding = Dp.m2142constructorimpl(4);
 
     /* JADX WARN: Code restructure failed: missing block: B:57:0x01b0, code lost:
     
@@ -135,12 +139,12 @@ public final class TextFieldKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void TextField(@org.jetbrains.annotations.NotNull final java.lang.String r71, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super java.lang.String, kotlin.Unit> r72, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r73, boolean r74, boolean r75, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.TextStyle r76, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r79, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r80, boolean r81, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.input.VisualTransformation r82, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardOptions r83, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardActions r84, boolean r85, int r86, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r87, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r88, @org.jetbrains.annotations.Nullable androidx.compose.material.TextFieldColors r89, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r90, final int r91, final int r92, final int r93) {
+    public static final void TextField(@org.jetbrains.annotations.NotNull java.lang.String r71, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super java.lang.String, kotlin.Unit> r72, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r73, boolean r74, boolean r75, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.TextStyle r76, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r79, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r80, boolean r81, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.input.VisualTransformation r82, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardOptions r83, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardActions r84, boolean r85, int r86, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r87, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r88, @org.jetbrains.annotations.Nullable androidx.compose.material.TextFieldColors r89, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r90, int r91, int r92, int r93) {
         /*
             Method dump skipped, instructions count: 1568
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.TextFieldKt.TextField(java.lang.String, kotlin.jvm.functions.Function1, androidx.compose.ui.Modifier, boolean, boolean, androidx.compose.ui.text.TextStyle, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, boolean, androidx.compose.ui.text.input.VisualTransformation, androidx.compose.foundation.text.KeyboardOptions, androidx.compose.foundation.text.KeyboardActions, boolean, int, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.ui.graphics.Shape, androidx.compose.material.TextFieldColors, androidx.compose.runtime.Composer, int, int, int):void");
     }
@@ -168,16 +172,16 @@ public final class TextFieldKt {
             i2 |= startRestartGroup.changed(function3) ? 2048 : 1024;
         }
         if ((57344 & i) == 0) {
-            i2 |= startRestartGroup.changed(function23) ? 16384 : 8192;
+            i2 |= startRestartGroup.changed(function23) ? AccessibilityNodeInfoCompat.ACTION_COPY : 8192;
         }
         if ((458752 & i) == 0) {
-            i2 |= startRestartGroup.changed(function24) ? 131072 : 65536;
+            i2 |= startRestartGroup.changed(function24) ? AccessibilityNodeInfoCompat.ACTION_SET_SELECTION : AccessibilityNodeInfoCompat.ACTION_CUT;
         }
         if ((3670016 & i) == 0) {
-            i2 |= startRestartGroup.changed(z) ? 1048576 : 524288;
+            i2 |= startRestartGroup.changed(z) ? AccessibilityNodeInfoCompat.ACTION_DISMISS : AccessibilityNodeInfoCompat.ACTION_COLLAPSE;
         }
         if ((29360128 & i) == 0) {
-            i2 |= startRestartGroup.changed(f) ? 8388608 : 4194304;
+            i2 |= startRestartGroup.changed(f) ? GravityCompat.RELATIVE_LAYOUT_DIRECTION : InputDeviceCompat.SOURCE_ROTARY_ENCODER;
         }
         if ((234881024 & i) == 0) {
             i2 |= startRestartGroup.changed(paddingValues) ? 67108864 : 33554432;
@@ -204,8 +208,8 @@ public final class TextFieldKt {
             Density density = (Density) startRestartGroup.consume(CompositionLocalsKt.getLocalDensity());
             LayoutDirection layoutDirection2 = (LayoutDirection) startRestartGroup.consume(CompositionLocalsKt.getLocalLayoutDirection());
             ViewConfiguration viewConfiguration = (ViewConfiguration) startRestartGroup.consume(CompositionLocalsKt.getLocalViewConfiguration());
-            ComposeUiNode.Companion companion = ComposeUiNode.Companion;
-            Function0<ComposeUiNode> constructor = companion.getConstructor();
+            ComposeUiNode$Companion composeUiNode$Companion = ComposeUiNode.Companion;
+            Function0<ComposeUiNode> constructor = composeUiNode$Companion.getConstructor();
             Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf = LayoutKt.materializerOf(modifier);
             int i3 = ((((i2 << 3) & 112) << 9) & 7168) | 6;
             if (!(startRestartGroup.getApplier() instanceof Applier)) {
@@ -218,13 +222,13 @@ public final class TextFieldKt {
                 startRestartGroup.useNode();
             }
             startRestartGroup.disableReusing();
-            Composer m2410constructorimpl = Updater.m2410constructorimpl(startRestartGroup);
-            Updater.m2417setimpl(m2410constructorimpl, textFieldMeasurePolicy, companion.getSetMeasurePolicy());
-            Updater.m2417setimpl(m2410constructorimpl, density, companion.getSetDensity());
-            Updater.m2417setimpl(m2410constructorimpl, layoutDirection2, companion.getSetLayoutDirection());
-            Updater.m2417setimpl(m2410constructorimpl, viewConfiguration, companion.getSetViewConfiguration());
+            Composer m747constructorimpl = Updater.m747constructorimpl(startRestartGroup);
+            Updater.m754setimpl(m747constructorimpl, textFieldMeasurePolicy, (Function2<? super T, ? super TextFieldMeasurePolicy, Unit>) composeUiNode$Companion.getSetMeasurePolicy());
+            Updater.m754setimpl(m747constructorimpl, density, (Function2<? super T, ? super Density, Unit>) composeUiNode$Companion.getSetDensity());
+            Updater.m754setimpl(m747constructorimpl, layoutDirection2, (Function2<? super T, ? super LayoutDirection, Unit>) composeUiNode$Companion.getSetLayoutDirection());
+            Updater.m754setimpl(m747constructorimpl, viewConfiguration, (Function2<? super T, ? super ViewConfiguration, Unit>) composeUiNode$Companion.getSetViewConfiguration());
             startRestartGroup.enableReusing();
-            materializerOf.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(startRestartGroup)), startRestartGroup, Integer.valueOf((i3 >> 3) & 112));
+            materializerOf.invoke(SkippableUpdater.box-impl(SkippableUpdater.constructor-impl(startRestartGroup)), startRestartGroup, Integer.valueOf((i3 >> 3) & 112));
             startRestartGroup.startReplaceableGroup(2058660585);
             startRestartGroup.startReplaceableGroup(642667778);
             if (((i3 >> 9) & 14 & 11) == 2 && startRestartGroup.getSkipping()) {
@@ -240,7 +244,7 @@ public final class TextFieldKt {
                     Density density2 = (Density) startRestartGroup.consume(CompositionLocalsKt.getLocalDensity());
                     LayoutDirection layoutDirection3 = (LayoutDirection) startRestartGroup.consume(CompositionLocalsKt.getLocalLayoutDirection());
                     ViewConfiguration viewConfiguration2 = (ViewConfiguration) startRestartGroup.consume(CompositionLocalsKt.getLocalViewConfiguration());
-                    Function0<ComposeUiNode> constructor2 = companion.getConstructor();
+                    Function0<ComposeUiNode> constructor2 = composeUiNode$Companion.getConstructor();
                     Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf2 = LayoutKt.materializerOf(then);
                     if (!(startRestartGroup.getApplier() instanceof Applier)) {
                         ComposablesKt.invalidApplier();
@@ -252,13 +256,13 @@ public final class TextFieldKt {
                         startRestartGroup.useNode();
                     }
                     startRestartGroup.disableReusing();
-                    Composer m2410constructorimpl2 = Updater.m2410constructorimpl(startRestartGroup);
-                    Updater.m2417setimpl(m2410constructorimpl2, rememberBoxMeasurePolicy, companion.getSetMeasurePolicy());
-                    Updater.m2417setimpl(m2410constructorimpl2, density2, companion.getSetDensity());
-                    Updater.m2417setimpl(m2410constructorimpl2, layoutDirection3, companion.getSetLayoutDirection());
-                    Updater.m2417setimpl(m2410constructorimpl2, viewConfiguration2, companion.getSetViewConfiguration());
+                    Composer m747constructorimpl2 = Updater.m747constructorimpl(startRestartGroup);
+                    Updater.m754setimpl(m747constructorimpl2, rememberBoxMeasurePolicy, (Function2<? super T, ? super MeasurePolicy, Unit>) composeUiNode$Companion.getSetMeasurePolicy());
+                    Updater.m754setimpl(m747constructorimpl2, density2, (Function2<? super T, ? super Density, Unit>) composeUiNode$Companion.getSetDensity());
+                    Updater.m754setimpl(m747constructorimpl2, layoutDirection3, (Function2<? super T, ? super LayoutDirection, Unit>) composeUiNode$Companion.getSetLayoutDirection());
+                    Updater.m754setimpl(m747constructorimpl2, viewConfiguration2, (Function2<? super T, ? super ViewConfiguration, Unit>) composeUiNode$Companion.getSetViewConfiguration());
                     startRestartGroup.enableReusing();
-                    materializerOf2.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(startRestartGroup)), startRestartGroup, 0);
+                    materializerOf2.invoke(SkippableUpdater.box-impl(SkippableUpdater.constructor-impl(startRestartGroup)), startRestartGroup, 0);
                     startRestartGroup.startReplaceableGroup(2058660585);
                     startRestartGroup.startReplaceableGroup(-2137368960);
                     BoxScopeInstance boxScopeInstance = BoxScopeInstance.INSTANCE;
@@ -282,7 +286,7 @@ public final class TextFieldKt {
                     Density density3 = (Density) startRestartGroup.consume(CompositionLocalsKt.getLocalDensity());
                     LayoutDirection layoutDirection4 = (LayoutDirection) startRestartGroup.consume(CompositionLocalsKt.getLocalLayoutDirection());
                     ViewConfiguration viewConfiguration3 = (ViewConfiguration) startRestartGroup.consume(CompositionLocalsKt.getLocalViewConfiguration());
-                    Function0<ComposeUiNode> constructor3 = companion.getConstructor();
+                    Function0<ComposeUiNode> constructor3 = composeUiNode$Companion.getConstructor();
                     Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf3 = LayoutKt.materializerOf(then2);
                     if (!(startRestartGroup.getApplier() instanceof Applier)) {
                         ComposablesKt.invalidApplier();
@@ -294,13 +298,13 @@ public final class TextFieldKt {
                         startRestartGroup.useNode();
                     }
                     startRestartGroup.disableReusing();
-                    Composer m2410constructorimpl3 = Updater.m2410constructorimpl(startRestartGroup);
-                    Updater.m2417setimpl(m2410constructorimpl3, rememberBoxMeasurePolicy2, companion.getSetMeasurePolicy());
-                    Updater.m2417setimpl(m2410constructorimpl3, density3, companion.getSetDensity());
-                    Updater.m2417setimpl(m2410constructorimpl3, layoutDirection4, companion.getSetLayoutDirection());
-                    Updater.m2417setimpl(m2410constructorimpl3, viewConfiguration3, companion.getSetViewConfiguration());
+                    Composer m747constructorimpl3 = Updater.m747constructorimpl(startRestartGroup);
+                    Updater.m754setimpl(m747constructorimpl3, rememberBoxMeasurePolicy2, (Function2<? super T, ? super MeasurePolicy, Unit>) composeUiNode$Companion.getSetMeasurePolicy());
+                    Updater.m754setimpl(m747constructorimpl3, density3, (Function2<? super T, ? super Density, Unit>) composeUiNode$Companion.getSetDensity());
+                    Updater.m754setimpl(m747constructorimpl3, layoutDirection4, (Function2<? super T, ? super LayoutDirection, Unit>) composeUiNode$Companion.getSetLayoutDirection());
+                    Updater.m754setimpl(m747constructorimpl3, viewConfiguration3, (Function2<? super T, ? super ViewConfiguration, Unit>) composeUiNode$Companion.getSetViewConfiguration());
                     startRestartGroup.enableReusing();
-                    materializerOf3.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(startRestartGroup)), startRestartGroup, 0);
+                    materializerOf3.invoke(SkippableUpdater.box-impl(SkippableUpdater.constructor-impl(startRestartGroup)), startRestartGroup, 0);
                     startRestartGroup.startReplaceableGroup(2058660585);
                     startRestartGroup.startReplaceableGroup(-2137368960);
                     BoxScopeInstance boxScopeInstance2 = BoxScopeInstance.INSTANCE;
@@ -316,30 +320,30 @@ public final class TextFieldKt {
                 startRestartGroup.endReplaceableGroup();
                 float calculateStartPadding = PaddingKt.calculateStartPadding(paddingValues, layoutDirection);
                 float calculateEndPadding = PaddingKt.calculateEndPadding(paddingValues, layoutDirection);
-                Modifier.Companion companion2 = Modifier.Companion;
+                Modifier.Companion companion = Modifier.Companion;
                 if (function23 != null) {
-                    calculateStartPadding = C0856Dp.m5216constructorimpl(RangesKt.coerceAtLeast(C0856Dp.m5216constructorimpl(calculateStartPadding - TextFieldImplKt.getHorizontalIconPadding()), C0856Dp.m5216constructorimpl(0)));
+                    calculateStartPadding = Dp.m2142constructorimpl(RangesKt.coerceAtLeast(Dp.m2142constructorimpl(calculateStartPadding - TextFieldImplKt.getHorizontalIconPadding()), Dp.m2142constructorimpl(0)));
                 }
                 float f2 = calculateStartPadding;
                 if (function24 != null) {
-                    calculateEndPadding = C0856Dp.m5216constructorimpl(RangesKt.coerceAtLeast(C0856Dp.m5216constructorimpl(calculateEndPadding - TextFieldImplKt.getHorizontalIconPadding()), C0856Dp.m5216constructorimpl(0)));
+                    calculateEndPadding = Dp.m2142constructorimpl(RangesKt.coerceAtLeast(Dp.m2142constructorimpl(calculateEndPadding - TextFieldImplKt.getHorizontalIconPadding()), Dp.m2142constructorimpl(0)));
                 }
-                Modifier m1398paddingqDBjuR0$default = PaddingKt.m1398paddingqDBjuR0$default(companion2, f2, 0.0f, calculateEndPadding, 0.0f, 10, null);
+                Modifier modifier2 = PaddingKt.padding-qDBjuR0$default(companion, f2, 0.0f, calculateEndPadding, 0.0f, 10, (Object) null);
                 startRestartGroup.startReplaceableGroup(254817490);
                 if (function3 != null) {
-                    function3.invoke(LayoutIdKt.layoutId(companion2, TextFieldImplKt.PlaceholderId).then(m1398paddingqDBjuR0$default), startRestartGroup, Integer.valueOf((i2 >> 6) & 112));
+                    function3.invoke(LayoutIdKt.layoutId(companion, TextFieldImplKt.PlaceholderId).then(modifier2), startRestartGroup, Integer.valueOf((i2 >> 6) & 112));
                 }
                 startRestartGroup.endReplaceableGroup();
                 startRestartGroup.startReplaceableGroup(254817619);
                 if (function22 != null) {
-                    Modifier then3 = LayoutIdKt.layoutId(companion2, TextFieldImplKt.LabelId).then(m1398paddingqDBjuR0$default);
+                    Modifier then3 = LayoutIdKt.layoutId(companion, TextFieldImplKt.LabelId).then(modifier2);
                     startRestartGroup.startReplaceableGroup(733328855);
                     MeasurePolicy rememberBoxMeasurePolicy3 = BoxKt.rememberBoxMeasurePolicy(Alignment.Companion.getTopStart(), false, startRestartGroup, 0);
                     startRestartGroup.startReplaceableGroup(-1323940314);
                     Density density4 = (Density) startRestartGroup.consume(CompositionLocalsKt.getLocalDensity());
                     LayoutDirection layoutDirection5 = (LayoutDirection) startRestartGroup.consume(CompositionLocalsKt.getLocalLayoutDirection());
                     ViewConfiguration viewConfiguration4 = (ViewConfiguration) startRestartGroup.consume(CompositionLocalsKt.getLocalViewConfiguration());
-                    Function0<ComposeUiNode> constructor4 = companion.getConstructor();
+                    Function0<ComposeUiNode> constructor4 = composeUiNode$Companion.getConstructor();
                     Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf4 = LayoutKt.materializerOf(then3);
                     if (!(startRestartGroup.getApplier() instanceof Applier)) {
                         ComposablesKt.invalidApplier();
@@ -351,13 +355,13 @@ public final class TextFieldKt {
                         startRestartGroup.useNode();
                     }
                     startRestartGroup.disableReusing();
-                    Composer m2410constructorimpl4 = Updater.m2410constructorimpl(startRestartGroup);
-                    Updater.m2417setimpl(m2410constructorimpl4, rememberBoxMeasurePolicy3, companion.getSetMeasurePolicy());
-                    Updater.m2417setimpl(m2410constructorimpl4, density4, companion.getSetDensity());
-                    Updater.m2417setimpl(m2410constructorimpl4, layoutDirection5, companion.getSetLayoutDirection());
-                    Updater.m2417setimpl(m2410constructorimpl4, viewConfiguration4, companion.getSetViewConfiguration());
+                    Composer m747constructorimpl4 = Updater.m747constructorimpl(startRestartGroup);
+                    Updater.m754setimpl(m747constructorimpl4, rememberBoxMeasurePolicy3, (Function2<? super T, ? super MeasurePolicy, Unit>) composeUiNode$Companion.getSetMeasurePolicy());
+                    Updater.m754setimpl(m747constructorimpl4, density4, (Function2<? super T, ? super Density, Unit>) composeUiNode$Companion.getSetDensity());
+                    Updater.m754setimpl(m747constructorimpl4, layoutDirection5, (Function2<? super T, ? super LayoutDirection, Unit>) composeUiNode$Companion.getSetLayoutDirection());
+                    Updater.m754setimpl(m747constructorimpl4, viewConfiguration4, (Function2<? super T, ? super ViewConfiguration, Unit>) composeUiNode$Companion.getSetViewConfiguration());
                     startRestartGroup.enableReusing();
-                    materializerOf4.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(startRestartGroup)), startRestartGroup, 0);
+                    materializerOf4.invoke(SkippableUpdater.box-impl(SkippableUpdater.constructor-impl(startRestartGroup)), startRestartGroup, 0);
                     startRestartGroup.startReplaceableGroup(2058660585);
                     startRestartGroup.startReplaceableGroup(-2137368960);
                     BoxScopeInstance boxScopeInstance3 = BoxScopeInstance.INSTANCE;
@@ -371,14 +375,14 @@ public final class TextFieldKt {
                     startRestartGroup.endReplaceableGroup();
                 }
                 startRestartGroup.endReplaceableGroup();
-                Modifier then4 = LayoutIdKt.layoutId(companion2, TextFieldImplKt.TextFieldId).then(m1398paddingqDBjuR0$default);
+                Modifier then4 = LayoutIdKt.layoutId(companion, TextFieldImplKt.TextFieldId).then(modifier2);
                 startRestartGroup.startReplaceableGroup(733328855);
                 MeasurePolicy rememberBoxMeasurePolicy4 = BoxKt.rememberBoxMeasurePolicy(Alignment.Companion.getTopStart(), true, startRestartGroup, 48);
                 startRestartGroup.startReplaceableGroup(-1323940314);
                 Density density5 = (Density) startRestartGroup.consume(CompositionLocalsKt.getLocalDensity());
                 LayoutDirection layoutDirection6 = (LayoutDirection) startRestartGroup.consume(CompositionLocalsKt.getLocalLayoutDirection());
                 ViewConfiguration viewConfiguration5 = (ViewConfiguration) startRestartGroup.consume(CompositionLocalsKt.getLocalViewConfiguration());
-                Function0<ComposeUiNode> constructor5 = companion.getConstructor();
+                Function0<ComposeUiNode> constructor5 = composeUiNode$Companion.getConstructor();
                 Function3<SkippableUpdater<ComposeUiNode>, Composer, Integer, Unit> materializerOf5 = LayoutKt.materializerOf(then4);
                 if (!(startRestartGroup.getApplier() instanceof Applier)) {
                     ComposablesKt.invalidApplier();
@@ -390,13 +394,13 @@ public final class TextFieldKt {
                     startRestartGroup.useNode();
                 }
                 startRestartGroup.disableReusing();
-                Composer m2410constructorimpl5 = Updater.m2410constructorimpl(startRestartGroup);
-                Updater.m2417setimpl(m2410constructorimpl5, rememberBoxMeasurePolicy4, companion.getSetMeasurePolicy());
-                Updater.m2417setimpl(m2410constructorimpl5, density5, companion.getSetDensity());
-                Updater.m2417setimpl(m2410constructorimpl5, layoutDirection6, companion.getSetLayoutDirection());
-                Updater.m2417setimpl(m2410constructorimpl5, viewConfiguration5, companion.getSetViewConfiguration());
+                Composer m747constructorimpl5 = Updater.m747constructorimpl(startRestartGroup);
+                Updater.m754setimpl(m747constructorimpl5, rememberBoxMeasurePolicy4, (Function2<? super T, ? super MeasurePolicy, Unit>) composeUiNode$Companion.getSetMeasurePolicy());
+                Updater.m754setimpl(m747constructorimpl5, density5, (Function2<? super T, ? super Density, Unit>) composeUiNode$Companion.getSetDensity());
+                Updater.m754setimpl(m747constructorimpl5, layoutDirection6, (Function2<? super T, ? super LayoutDirection, Unit>) composeUiNode$Companion.getSetLayoutDirection());
+                Updater.m754setimpl(m747constructorimpl5, viewConfiguration5, (Function2<? super T, ? super ViewConfiguration, Unit>) composeUiNode$Companion.getSetViewConfiguration());
                 startRestartGroup.enableReusing();
-                materializerOf5.invoke(SkippableUpdater.m2398boximpl(SkippableUpdater.m2399constructorimpl(startRestartGroup)), startRestartGroup, 0);
+                materializerOf5.invoke(SkippableUpdater.box-impl(SkippableUpdater.constructor-impl(startRestartGroup)), startRestartGroup, 0);
                 startRestartGroup.startReplaceableGroup(2058660585);
                 startRestartGroup.startReplaceableGroup(-2137368960);
                 BoxScopeInstance boxScopeInstance4 = BoxScopeInstance.INSTANCE;
@@ -434,32 +438,32 @@ public final class TextFieldKt {
             }
 
             public final void invoke(@Nullable Composer composer2, int i4) {
-                TextFieldKt.TextFieldLayout(Modifier.this, function2, function22, function3, function23, function24, z, f, paddingValues, composer2, i | 1);
+                TextFieldKt.TextFieldLayout(modifier, function2, function22, function3, function23, function24, z, f, paddingValues, composer2, i | 1);
             }
         });
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: calculateHeight-O3s9Psw, reason: not valid java name */
-    public static final int m2324calculateHeightO3s9Psw(int i, boolean z, int i2, int i3, int i4, int i5, long j, float f, PaddingValues paddingValues) {
+    public static final int m696calculateHeightO3s9Psw(int i, boolean z, int i2, int i3, int i4, int i5, long j, float f, PaddingValues paddingValues) {
         float f2 = TextFieldTopPadding * f;
-        float mo1377calculateTopPaddingD9Ej5fM = paddingValues.mo1377calculateTopPaddingD9Ej5fM() * f;
-        float mo1374calculateBottomPaddingD9Ej5fM = paddingValues.mo1374calculateBottomPaddingD9Ej5fM() * f;
+        float mo219calculateTopPaddingD9Ej5fM = paddingValues.mo219calculateTopPaddingD9Ej5fM() * f;
+        float mo216calculateBottomPaddingD9Ej5fM = paddingValues.mo216calculateBottomPaddingD9Ej5fM() * f;
         int max = Math.max(i, i5);
-        return Math.max(MathKt.roundToInt(z ? i2 + f2 + max + mo1374calculateBottomPaddingD9Ej5fM : mo1377calculateTopPaddingD9Ej5fM + max + mo1374calculateBottomPaddingD9Ej5fM), Math.max(Math.max(i3, i4), Constraints.m5185getMinHeightimpl(j)));
+        return Math.max(MathKt.roundToInt(z ? i2 + f2 + max + mo216calculateBottomPaddingD9Ej5fM : mo219calculateTopPaddingD9Ej5fM + max + mo216calculateBottomPaddingD9Ej5fM), Math.max(Math.max(i3, i4), Constraints.m2123getMinHeightimpl(j)));
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: calculateWidth-VsPV1Ek, reason: not valid java name */
-    public static final int m2325calculateWidthVsPV1Ek(int i, int i2, int i3, int i4, int i5, long j) {
-        return Math.max(i + Math.max(i3, Math.max(i4, i5)) + i2, Constraints.m5186getMinWidthimpl(j));
+    public static final int m697calculateWidthVsPV1Ek(int i, int i2, int i3, int i4, int i5, long j) {
+        return Math.max(i + Math.max(i3, Math.max(i4, i5)) + i2, Constraints.m2124getMinWidthimpl(j));
     }
 
     @NotNull
     public static final Modifier drawIndicatorLine(@NotNull Modifier modifier, @NotNull final BorderStroke borderStroke) {
         Intrinsics.checkNotNullParameter(modifier, "<this>");
         Intrinsics.checkNotNullParameter(borderStroke, "indicatorBorder");
-        final float m1134getWidthD9Ej5fM = borderStroke.m1134getWidthD9Ej5fM();
+        final float f = borderStroke.getWidth-D9Ej5fM();
         return DrawModifierKt.drawWithContent(modifier, new Function1<ContentDrawScope, Unit>() { // from class: androidx.compose.material.TextFieldKt$drawIndicatorLine$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             {
@@ -474,12 +478,12 @@ public final class TextFieldKt {
             public final void invoke(@NotNull ContentDrawScope contentDrawScope) {
                 Intrinsics.checkNotNullParameter(contentDrawScope, "$this$drawWithContent");
                 contentDrawScope.drawContent();
-                if (C0856Dp.m5221equalsimpl0(m1134getWidthD9Ej5fM, C0856Dp.Companion.m5234getHairlineD9Ej5fM())) {
+                if (Dp.m2147equalsimpl0(f, Dp.Companion.m2160getHairlineD9Ej5fM())) {
                     return;
                 }
-                float density = m1134getWidthD9Ej5fM * contentDrawScope.getDensity();
-                float m2622getHeightimpl = Size.m2622getHeightimpl(contentDrawScope.mo3205getSizeNHjbRc()) - (density / 2);
-                w51.B(contentDrawScope, borderStroke.getBrush(), OffsetKt.Offset(0.0f, m2622getHeightimpl), OffsetKt.Offset(Size.m2625getWidthimpl(contentDrawScope.mo3205getSizeNHjbRc()), m2622getHeightimpl), density, 0, (PathEffect) null, 0.0f, (ColorFilter) null, 0, 496, (Object) null);
+                float density = f * contentDrawScope.getDensity();
+                float m900getHeightimpl = Size.m900getHeightimpl(contentDrawScope.mo1321getSizeNHjbRc()) - (density / 2);
+                w51.B(contentDrawScope, borderStroke.getBrush(), OffsetKt.Offset(0.0f, m900getHeightimpl), OffsetKt.Offset(Size.m903getWidthimpl(contentDrawScope.mo1321getSizeNHjbRc()), m900getHeightimpl), density, 0, (PathEffect) null, 0.0f, (ColorFilter) null, 0, 496, (Object) null);
             }
         });
     }
@@ -499,35 +503,35 @@ public final class TextFieldKt {
     /* JADX INFO: Access modifiers changed from: private */
     public static final void placeWithLabel(Placeable.PlacementScope placementScope, int i, int i2, Placeable placeable, Placeable placeable2, Placeable placeable3, Placeable placeable4, Placeable placeable5, boolean z, int i3, int i4, float f, float f2) {
         if (placeable4 != null) {
-            Placeable.PlacementScope.placeRelative$default(placementScope, placeable4, 0, Alignment.Companion.getCenterVertically().align(placeable4.getHeight(), i2), 0.0f, 4, null);
+            Placeable.PlacementScope.placeRelative$default(placementScope, placeable4, 0, Alignment.Companion.getCenterVertically().align(placeable4.getHeight(), i2), 0.0f, 4, (Object) null);
         }
         if (placeable5 != null) {
-            Placeable.PlacementScope.placeRelative$default(placementScope, placeable5, i - placeable5.getWidth(), Alignment.Companion.getCenterVertically().align(placeable5.getHeight(), i2), 0.0f, 4, null);
+            Placeable.PlacementScope.placeRelative$default(placementScope, placeable5, i - placeable5.getWidth(), Alignment.Companion.getCenterVertically().align(placeable5.getHeight(), i2), 0.0f, 4, (Object) null);
         }
         if (placeable2 != null) {
-            Placeable.PlacementScope.placeRelative$default(placementScope, placeable2, TextFieldImplKt.widthOrZero(placeable4), (z ? Alignment.Companion.getCenterVertically().align(placeable2.getHeight(), i2) : MathKt.roundToInt(TextFieldImplKt.getTextFieldPadding() * f2)) - MathKt.roundToInt((r0 - i3) * f), 0.0f, 4, null);
+            Placeable.PlacementScope.placeRelative$default(placementScope, placeable2, TextFieldImplKt.widthOrZero(placeable4), (z ? Alignment.Companion.getCenterVertically().align(placeable2.getHeight(), i2) : MathKt.roundToInt(TextFieldImplKt.getTextFieldPadding() * f2)) - MathKt.roundToInt((r0 - i3) * f), 0.0f, 4, (Object) null);
         }
-        Placeable.PlacementScope.placeRelative$default(placementScope, placeable, TextFieldImplKt.widthOrZero(placeable4), i4, 0.0f, 4, null);
+        Placeable.PlacementScope.placeRelative$default(placementScope, placeable, TextFieldImplKt.widthOrZero(placeable4), i4, 0.0f, 4, (Object) null);
         if (placeable3 != null) {
-            Placeable.PlacementScope.placeRelative$default(placementScope, placeable3, TextFieldImplKt.widthOrZero(placeable4), i4, 0.0f, 4, null);
+            Placeable.PlacementScope.placeRelative$default(placementScope, placeable3, TextFieldImplKt.widthOrZero(placeable4), i4, 0.0f, 4, (Object) null);
         }
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     public static final void placeWithoutLabel(Placeable.PlacementScope placementScope, int i, int i2, Placeable placeable, Placeable placeable2, Placeable placeable3, Placeable placeable4, boolean z, float f, PaddingValues paddingValues) {
-        int roundToInt = MathKt.roundToInt(paddingValues.mo1377calculateTopPaddingD9Ej5fM() * f);
+        int roundToInt = MathKt.roundToInt(paddingValues.mo219calculateTopPaddingD9Ej5fM() * f);
         if (placeable3 != null) {
-            Placeable.PlacementScope.placeRelative$default(placementScope, placeable3, 0, Alignment.Companion.getCenterVertically().align(placeable3.getHeight(), i2), 0.0f, 4, null);
+            Placeable.PlacementScope.placeRelative$default(placementScope, placeable3, 0, Alignment.Companion.getCenterVertically().align(placeable3.getHeight(), i2), 0.0f, 4, (Object) null);
         }
         if (placeable4 != null) {
-            Placeable.PlacementScope.placeRelative$default(placementScope, placeable4, i - placeable4.getWidth(), Alignment.Companion.getCenterVertically().align(placeable4.getHeight(), i2), 0.0f, 4, null);
+            Placeable.PlacementScope.placeRelative$default(placementScope, placeable4, i - placeable4.getWidth(), Alignment.Companion.getCenterVertically().align(placeable4.getHeight(), i2), 0.0f, 4, (Object) null);
         }
-        Placeable.PlacementScope.placeRelative$default(placementScope, placeable, TextFieldImplKt.widthOrZero(placeable3), z ? Alignment.Companion.getCenterVertically().align(placeable.getHeight(), i2) : roundToInt, 0.0f, 4, null);
+        Placeable.PlacementScope.placeRelative$default(placementScope, placeable, TextFieldImplKt.widthOrZero(placeable3), z ? Alignment.Companion.getCenterVertically().align(placeable.getHeight(), i2) : roundToInt, 0.0f, 4, (Object) null);
         if (placeable2 != null) {
             if (z) {
                 roundToInt = Alignment.Companion.getCenterVertically().align(placeable2.getHeight(), i2);
             }
-            Placeable.PlacementScope.placeRelative$default(placementScope, placeable2, TextFieldImplKt.widthOrZero(placeable3), roundToInt, 0.0f, 4, null);
+            Placeable.PlacementScope.placeRelative$default(placementScope, placeable2, TextFieldImplKt.widthOrZero(placeable3), roundToInt, 0.0f, 4, (Object) null);
         }
     }
 
@@ -614,12 +618,12 @@ public final class TextFieldKt {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void TextField(@org.jetbrains.annotations.NotNull final androidx.compose.p004ui.text.input.TextFieldValue r71, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.text.input.TextFieldValue, kotlin.Unit> r72, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r73, boolean r74, boolean r75, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.TextStyle r76, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r79, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r80, boolean r81, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.text.input.VisualTransformation r82, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardOptions r83, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardActions r84, boolean r85, int r86, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r87, @org.jetbrains.annotations.Nullable androidx.compose.p004ui.graphics.Shape r88, @org.jetbrains.annotations.Nullable androidx.compose.material.TextFieldColors r89, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r90, final int r91, final int r92, final int r93) {
+    public static final void TextField(@org.jetbrains.annotations.NotNull androidx.compose.ui.text.input.TextFieldValue r71, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit> r72, @org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r73, boolean r74, boolean r75, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.TextStyle r76, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r77, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r78, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r79, @org.jetbrains.annotations.Nullable kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r80, boolean r81, @org.jetbrains.annotations.Nullable androidx.compose.ui.text.input.VisualTransformation r82, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardOptions r83, @org.jetbrains.annotations.Nullable androidx.compose.foundation.text.KeyboardActions r84, boolean r85, int r86, @org.jetbrains.annotations.Nullable androidx.compose.foundation.interaction.MutableInteractionSource r87, @org.jetbrains.annotations.Nullable androidx.compose.ui.graphics.Shape r88, @org.jetbrains.annotations.Nullable androidx.compose.material.TextFieldColors r89, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r90, int r91, int r92, int r93) {
         /*
             Method dump skipped, instructions count: 1531
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.TextFieldKt.TextField(androidx.compose.ui.text.input.TextFieldValue, kotlin.jvm.functions.Function1, androidx.compose.ui.Modifier, boolean, boolean, androidx.compose.ui.text.TextStyle, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, boolean, androidx.compose.ui.text.input.VisualTransformation, androidx.compose.foundation.text.KeyboardOptions, androidx.compose.foundation.text.KeyboardActions, boolean, int, androidx.compose.foundation.interaction.MutableInteractionSource, androidx.compose.ui.graphics.Shape, androidx.compose.material.TextFieldColors, androidx.compose.runtime.Composer, int, int, int):void");
     }

@@ -3,27 +3,26 @@ package androidx.constraintlayout.core.widgets.analyzer;
 import androidx.constraintlayout.core.widgets.analyzer.DependencyNode;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class DimensionDependency extends DependencyNode {
     public int wrapValue;
 
     public DimensionDependency(WidgetRun widgetRun) {
         super(widgetRun);
         if (widgetRun instanceof HorizontalWidgetRun) {
-            this.type = DependencyNode.Type.HORIZONTAL_DIMENSION;
+            ((DependencyNode) this).type = DependencyNode.Type.HORIZONTAL_DIMENSION;
         } else {
-            this.type = DependencyNode.Type.VERTICAL_DIMENSION;
+            ((DependencyNode) this).type = DependencyNode.Type.VERTICAL_DIMENSION;
         }
     }
 
-    @Override // androidx.constraintlayout.core.widgets.analyzer.DependencyNode
     public void resolve(int i) {
-        if (this.resolved) {
+        if (((DependencyNode) this).resolved) {
             return;
         }
-        this.resolved = true;
-        this.value = i;
-        for (Dependency dependency : this.dependencies) {
+        ((DependencyNode) this).resolved = true;
+        ((DependencyNode) this).value = i;
+        for (Dependency dependency : ((DependencyNode) this).dependencies) {
             dependency.update(dependency);
         }
     }

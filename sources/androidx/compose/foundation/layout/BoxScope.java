@@ -1,15 +1,15 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.Modifier;
 import androidx.compose.runtime.Immutable;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.Alignment;
+import androidx.compose.ui.Modifier;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @LayoutScopeMarker
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface BoxScope {
     @Stable
     @NotNull

@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class HttpRequest {
     public static final String DEFAULT_HTTPS_ERROR_EXPIRED = "EXPIRED";
     public static final String DEFAULT_HTTPS_ERROR_INVALID = "INVALID";

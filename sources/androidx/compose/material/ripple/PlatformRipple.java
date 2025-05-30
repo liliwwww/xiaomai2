@@ -5,13 +5,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import androidx.compose.foundation.interaction.InteractionSource;
-import androidx.compose.p004ui.graphics.Color;
-import androidx.compose.p004ui.platform.AndroidCompositionLocals_androidKt;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.Stable;
 import androidx.compose.runtime.State;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
+import androidx.compose.ui.graphics.Color;
+import androidx.compose.ui.platform.AndroidCompositionLocals_androidKt;
+import androidx.constraintlayout.core.motion.utils.TypedValues$Custom;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -19,10 +19,10 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PlatformRipple extends Ripple {
     private PlatformRipple(boolean z, float f, State<Color> state) {
-        super(z, f, state, null);
+        super(z, f, state, (DefaultConstructorMarker) null);
     }
 
     public /* synthetic */ PlatformRipple(boolean z, float f, State state, DefaultConstructorMarker defaultConstructorMarker) {
@@ -46,13 +46,12 @@ public final class PlatformRipple extends Ripple {
         return viewGroup;
     }
 
-    @Override // androidx.compose.material.ripple.Ripple
     @Composable
     @NotNull
-    /* renamed from: rememberUpdatedRippleInstance-942rkJo */
-    public RippleIndicationInstance mo2367rememberUpdatedRippleInstance942rkJo(@NotNull InteractionSource interactionSource, boolean z, float f, @NotNull State<Color> state, @NotNull State<RippleAlpha> state2, @Nullable Composer composer, int i) {
+    /* renamed from: rememberUpdatedRippleInstance-942rkJo, reason: not valid java name */
+    public RippleIndicationInstance m729rememberUpdatedRippleInstance942rkJo(@NotNull InteractionSource interactionSource, boolean z, float f, @NotNull State<Color> state, @NotNull State<RippleAlpha> state2, @Nullable Composer composer, int i) {
         Intrinsics.checkNotNullParameter(interactionSource, "interactionSource");
-        Intrinsics.checkNotNullParameter(state, TypedValues.Custom.S_COLOR);
+        Intrinsics.checkNotNullParameter(state, TypedValues$Custom.S_COLOR);
         Intrinsics.checkNotNullParameter(state2, "rippleAlpha");
         composer.startReplaceableGroup(331259447);
         ViewGroup findNearestViewGroup = findNearestViewGroup(composer, (i >> 15) & 14);
@@ -96,7 +95,7 @@ public final class PlatformRipple extends Ripple {
         boolean changed2 = composer.changed(interactionSource) | composer.changed(this) | composer.changed(view);
         Object rememberedValue2 = composer.rememberedValue();
         if (changed2 || rememberedValue2 == Composer.Companion.getEmpty()) {
-            rememberedValue2 = new AndroidRippleIndicationInstance(z, f, state, state2, (RippleContainer) view, null);
+            rememberedValue2 = new AndroidRippleIndicationInstance(z, f, state, state2, (RippleContainer) view, (DefaultConstructorMarker) null);
             composer.updateRememberedValue(rememberedValue2);
         }
         composer.endReplaceableGroup();

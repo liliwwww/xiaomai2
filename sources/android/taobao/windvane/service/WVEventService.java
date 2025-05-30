@@ -1,11 +1,12 @@
 package android.taobao.windvane.service;
 
 import android.taobao.windvane.util.TaoLog;
+import android.taobao.windvane.webview.IWVWebView;
 import java.util.ArrayList;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVEventService {
     private static volatile WVEventService EventManager = null;
     public static int WV_BACKWARD_EVENT = -1;
@@ -45,7 +46,7 @@ public class WVEventService {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public synchronized android.taobao.windvane.service.WVEventResult onEvent(int r4, android.taobao.windvane.webview.IWVWebView r5, java.lang.String r6, java.lang.Object... r7) {
         /*
@@ -133,7 +134,7 @@ public class WVEventService {
     }
 
     public WVEventResult onInstantEvent(int i, Object... objArr) {
-        WVEventContext wVEventContext = new WVEventContext(null, null);
+        WVEventContext wVEventContext = new WVEventContext((IWVWebView) null, (String) null);
         WVInstantEventListener wVInstantEventListener = this.mInstantEvent;
         if (wVInstantEventListener != null) {
             return wVInstantEventListener.onInstantEvent(i, wVEventContext, objArr);
@@ -160,14 +161,14 @@ public class WVEventService {
 
     public synchronized void removeInstantEvent(WVInstantEventListener wVInstantEventListener) {
         if (wVInstantEventListener == null) {
-            TaoLog.m21e("WVEventService", "event can not be null");
+            TaoLog.e("WVEventService", "event can not be null");
             return;
         }
         WVInstantEventListener wVInstantEventListener2 = this.mInstantEvent;
         if (wVInstantEventListener2 == null) {
-            TaoLog.m21e("WVEventService", "event already be null");
+            TaoLog.e("WVEventService", "event already be null");
         } else if (wVInstantEventListener2 != wVInstantEventListener) {
-            TaoLog.m21e("WVEventService", "remove failed");
+            TaoLog.e("WVEventService", "remove failed");
         } else {
             this.mInstantEvent = null;
         }
@@ -175,9 +176,9 @@ public class WVEventService {
 
     public synchronized void setInstantEvent(WVInstantEventListener wVInstantEventListener) {
         if (wVInstantEventListener == null) {
-            TaoLog.m21e("WVEventService", "event can not be null");
+            TaoLog.e("WVEventService", "event can not be null");
         } else if (this.mInstantEvent != null) {
-            TaoLog.m21e("WVEventService", "an instance has already been set, please wait it end");
+            TaoLog.e("WVEventService", "an instance has already been set, please wait it end");
         } else {
             this.mInstantEvent = wVInstantEventListener;
         }

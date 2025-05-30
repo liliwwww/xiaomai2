@@ -30,7 +30,7 @@ import tb.pp5;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class Transition<S> {
 
     @NotNull
@@ -81,80 +81,15 @@ public final class Transition<S> {
         @NotNull
         private final TwoWayConverter<T, V> typeConverter;
 
-        /* compiled from: Taobao */
-        /* loaded from: classes.dex */
-        public final class DeferredAnimationData<T, V extends AnimationVector> implements State<T> {
-
-            @NotNull
-            private final Transition<S>.TransitionAnimationState<T, V> animation;
-
-            @NotNull
-            private Function1<? super S, ? extends T> targetValueByState;
-            final /* synthetic */ Transition<S>.DeferredAnimation<T, V> this$0;
-
-            @NotNull
-            private Function1<? super Segment<S>, ? extends FiniteAnimationSpec<T>> transitionSpec;
-
-            public DeferredAnimationData(@NotNull DeferredAnimation deferredAnimation, @NotNull Transition<S>.TransitionAnimationState<T, V> transitionAnimationState, @NotNull Function1<? super Segment<S>, ? extends FiniteAnimationSpec<T>> function1, Function1<? super S, ? extends T> function12) {
-                Intrinsics.checkNotNullParameter(transitionAnimationState, "animation");
-                Intrinsics.checkNotNullParameter(function1, "transitionSpec");
-                Intrinsics.checkNotNullParameter(function12, "targetValueByState");
-                this.this$0 = deferredAnimation;
-                this.animation = transitionAnimationState;
-                this.transitionSpec = function1;
-                this.targetValueByState = function12;
-            }
-
-            @NotNull
-            public final Transition<S>.TransitionAnimationState<T, V> getAnimation() {
-                return this.animation;
-            }
-
-            @NotNull
-            public final Function1<S, T> getTargetValueByState() {
-                return this.targetValueByState;
-            }
-
-            @NotNull
-            public final Function1<Segment<S>, FiniteAnimationSpec<T>> getTransitionSpec() {
-                return this.transitionSpec;
-            }
-
-            @Override // androidx.compose.runtime.State
-            public T getValue() {
-                updateAnimationStates(this.this$0.this$0.getSegment());
-                return this.animation.getValue();
-            }
-
-            public final void setTargetValueByState(@NotNull Function1<? super S, ? extends T> function1) {
-                Intrinsics.checkNotNullParameter(function1, "<set-?>");
-                this.targetValueByState = function1;
-            }
-
-            public final void setTransitionSpec(@NotNull Function1<? super Segment<S>, ? extends FiniteAnimationSpec<T>> function1) {
-                Intrinsics.checkNotNullParameter(function1, "<set-?>");
-                this.transitionSpec = function1;
-            }
-
-            /* JADX WARN: Multi-variable type inference failed */
-            public final void updateAnimationStates(@NotNull Segment<S> segment) {
-                Intrinsics.checkNotNullParameter(segment, "segment");
-                Object invoke = this.targetValueByState.invoke(segment.getTargetState());
-                if (!this.this$0.this$0.isSeeking()) {
-                    this.animation.updateTargetValue$animation_core_release(invoke, (FiniteAnimationSpec) this.transitionSpec.invoke(segment));
-                } else {
-                    this.animation.updateInitialAndTargetValue$animation_core_release(this.targetValueByState.invoke(segment.getInitialState()), invoke, (FiniteAnimationSpec) this.transitionSpec.invoke(segment));
-                }
-            }
-        }
-
         public DeferredAnimation(@NotNull Transition transition, @NotNull TwoWayConverter<T, V> twoWayConverter, String str) {
+            MutableState mutableStateOf$default;
             Intrinsics.checkNotNullParameter(twoWayConverter, "typeConverter");
             Intrinsics.checkNotNullParameter(str, "label");
             this.this$0 = transition;
             this.typeConverter = twoWayConverter;
             this.label = str;
-            this.data$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
+            mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(null, null, 2, null);
+            this.data$delegate = mutableStateOf$default;
         }
 
         @NotNull
@@ -206,26 +141,6 @@ public final class Transition<S> {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface Segment<S> {
-
-        /* compiled from: Taobao */
-        /* loaded from: classes2.dex */
-        public static final class DefaultImpls {
-            @Deprecated
-            public static <S> boolean isTransitioningTo(@NotNull Segment<S> segment, S s, S s2) {
-                return pp5.b(segment, s, s2);
-            }
-        }
-
-        S getInitialState();
-
-        S getTargetState();
-
-        boolean isTransitioningTo(S s, S s2);
-    }
-
-    /* compiled from: Taobao */
     private static final class SegmentImpl<S> implements Segment<S> {
         private final S initialState;
         private final S targetState;
@@ -245,12 +160,10 @@ public final class Transition<S> {
             return false;
         }
 
-        @Override // androidx.compose.animation.core.Transition.Segment
         public S getInitialState() {
             return this.initialState;
         }
 
-        @Override // androidx.compose.animation.core.Transition.Segment
         public S getTargetState() {
             return this.targetState;
         }
@@ -262,7 +175,6 @@ public final class Transition<S> {
             return hashCode + (targetState != null ? targetState.hashCode() : 0);
         }
 
-        @Override // androidx.compose.animation.core.Transition.Segment
         public /* synthetic */ boolean isTransitioningTo(Object obj, Object obj2) {
             return pp5.a(this, obj, obj2);
         }
@@ -307,6 +219,13 @@ public final class Transition<S> {
         private V velocityVector;
 
         public TransitionAnimationState(Transition transition, @NotNull T t, @NotNull V v, @NotNull TwoWayConverter<T, V> twoWayConverter, String str) {
+            MutableState mutableStateOf$default;
+            MutableState mutableStateOf$default2;
+            MutableState mutableStateOf$default3;
+            MutableState mutableStateOf$default4;
+            MutableState mutableStateOf$default5;
+            MutableState mutableStateOf$default6;
+            MutableState mutableStateOf$default7;
             Object obj;
             Intrinsics.checkNotNullParameter(v, "initialVelocityVector");
             Intrinsics.checkNotNullParameter(twoWayConverter, "typeConverter");
@@ -314,13 +233,20 @@ public final class Transition<S> {
             this.this$0 = transition;
             this.typeConverter = twoWayConverter;
             this.label = str;
-            this.targetValue$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(t, null, 2, null);
-            this.animationSpec$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(AnimationSpecKt.spring$default(0.0f, 0.0f, null, 7, null), null, 2, null);
-            this.animation$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(new TargetBasedAnimation(getAnimationSpec(), twoWayConverter, t, getTargetValue(), v), null, 2, null);
-            this.isFinished$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.TRUE, null, 2, null);
-            this.offsetTimeNanos$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(0L, null, 2, null);
-            this.needsReset$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
-            this.value$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(t, null, 2, null);
+            mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(t, null, 2, null);
+            this.targetValue$delegate = mutableStateOf$default;
+            mutableStateOf$default2 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(AnimationSpecKt.spring$default(0.0f, 0.0f, null, 7, null), null, 2, null);
+            this.animationSpec$delegate = mutableStateOf$default2;
+            mutableStateOf$default3 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(new TargetBasedAnimation(getAnimationSpec(), twoWayConverter, t, getTargetValue(), v), null, 2, null);
+            this.animation$delegate = mutableStateOf$default3;
+            mutableStateOf$default4 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.TRUE, null, 2, null);
+            this.isFinished$delegate = mutableStateOf$default4;
+            mutableStateOf$default5 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(0L, null, 2, null);
+            this.offsetTimeNanos$delegate = mutableStateOf$default5;
+            mutableStateOf$default6 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
+            this.needsReset$delegate = mutableStateOf$default6;
+            mutableStateOf$default7 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(t, null, 2, null);
+            this.value$delegate = mutableStateOf$default7;
             this.velocityVector = v;
             Float f = VisibilityThresholdsKt.getVisibilityThresholdMap().get(twoWayConverter);
             if (f != null) {
@@ -346,7 +272,7 @@ public final class Transition<S> {
         }
 
         private final T getTargetValue() {
-            return this.targetValue$delegate.getValue();
+            return (T) this.targetValue$delegate.getValue();
         }
 
         private final void setAnimation(TargetBasedAnimation<T, V> targetBasedAnimation) {
@@ -411,7 +337,7 @@ public final class Transition<S> {
 
         @Override // androidx.compose.runtime.State
         public T getValue() {
-            return this.value$delegate.getValue();
+            return (T) this.value$delegate.getValue();
         }
 
         public final boolean isFinished$animation_core_release() {
@@ -479,17 +405,29 @@ public final class Transition<S> {
 
     @PublishedApi
     public Transition(@NotNull MutableTransitionState<S> mutableTransitionState, @Nullable String str) {
+        MutableState mutableStateOf$default;
+        MutableState mutableStateOf$default2;
+        MutableState mutableStateOf$default3;
+        MutableState mutableStateOf$default4;
+        MutableState mutableStateOf$default5;
+        MutableState mutableStateOf$default6;
         Intrinsics.checkNotNullParameter(mutableTransitionState, "transitionState");
         this.transitionState = mutableTransitionState;
         this.label = str;
-        this.targetState$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(getCurrentState(), null, 2, null);
-        this.segment$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(new SegmentImpl(getCurrentState(), getCurrentState()), null, 2, null);
-        this.playTimeNanos$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(0L, null, 2, null);
-        this.startTimeNanos$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Long.MIN_VALUE, null, 2, null);
-        this.updateChildrenNeeded$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.TRUE, null, 2, null);
+        mutableStateOf$default = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(getCurrentState(), null, 2, null);
+        this.targetState$delegate = mutableStateOf$default;
+        mutableStateOf$default2 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(new SegmentImpl(getCurrentState(), getCurrentState()), null, 2, null);
+        this.segment$delegate = mutableStateOf$default2;
+        mutableStateOf$default3 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(0L, null, 2, null);
+        this.playTimeNanos$delegate = mutableStateOf$default3;
+        mutableStateOf$default4 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Long.MIN_VALUE, null, 2, null);
+        this.startTimeNanos$delegate = mutableStateOf$default4;
+        mutableStateOf$default5 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.TRUE, null, 2, null);
+        this.updateChildrenNeeded$delegate = mutableStateOf$default5;
         this._animations = SnapshotStateKt.mutableStateListOf();
         this._transitions = SnapshotStateKt.mutableStateListOf();
-        this.isSeeking$delegate = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
+        mutableStateOf$default6 = SnapshotStateKt__SnapshotStateKt.mutableStateOf$default(Boolean.FALSE, null, 2, null);
+        this.isSeeking$delegate = mutableStateOf$default6;
         this.totalDurationNanos$delegate = SnapshotStateKt.derivedStateOf(new Function0<Long>(this) { // from class: androidx.compose.animation.core.Transition$totalDurationNanos$2
             final /* synthetic */ Transition<S> this$0;
 
@@ -501,7 +439,7 @@ public final class Transition<S> {
 
             @NotNull
             /* renamed from: invoke, reason: merged with bridge method [inline-methods] */
-            public final Long m1090invoke() {
+            public final Long m97invoke() {
                 SnapshotStateList snapshotStateList;
                 SnapshotStateList snapshotStateList2;
                 snapshotStateList = ((Transition) this.this$0)._animations;
@@ -524,7 +462,6 @@ public final class Transition<S> {
     public static /* synthetic */ void getPlayTimeNanos$annotations() {
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     private final long getStartTimeNanos() {
         return ((Number) this.startTimeNanos$delegate.getValue()).longValue();
     }
@@ -631,7 +568,7 @@ public final class Transition<S> {
     }
 
     public final S getCurrentState() {
-        return this.transitionState.getCurrentState();
+        return (S) this.transitionState.getCurrentState();
     }
 
     @Nullable
@@ -643,7 +580,6 @@ public final class Transition<S> {
         return this.lastSeekedTimeNanos;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final long getPlayTimeNanos() {
         return ((Number) this.playTimeNanos$delegate.getValue()).longValue();
     }
@@ -666,7 +602,6 @@ public final class Transition<S> {
         return this._transitions;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final boolean getUpdateChildrenNeeded$animation_core_release() {
         return ((Boolean) this.updateChildrenNeeded$delegate.getValue()).booleanValue();
     }
@@ -675,7 +610,6 @@ public final class Transition<S> {
         return getStartTimeNanos() != Long.MIN_VALUE;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public final boolean isSeeking() {
         return ((Boolean) this.isSeeking$delegate.getValue()).booleanValue();
     }
@@ -778,7 +712,7 @@ public final class Transition<S> {
     }
 
     @Composable
-    public final void updateTarget$animation_core_release(final S s, @Nullable Composer composer, final int i) {
+    public final void updateTarget$animation_core_release(S s, @Nullable Composer composer, int i) {
         int i2;
         Composer startRestartGroup = composer.startRestartGroup(-583974681);
         if ((i & 14) == 0) {
@@ -815,24 +749,7 @@ public final class Transition<S> {
         if (endRestartGroup == null) {
             return;
         }
-        endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>(this) { // from class: androidx.compose.animation.core.Transition$updateTarget$2
-            final /* synthetic */ Transition<S> $tmp0_rcvr;
-
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(2);
-                this.$tmp0_rcvr = this;
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                invoke((Composer) obj, ((Number) obj2).intValue());
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable Composer composer2, int i3) {
-                this.$tmp0_rcvr.updateTarget$animation_core_release(s, composer2, i | 1);
-            }
-        });
+        endRestartGroup.updateScope(new updateTarget.2(this, s, i));
     }
 
     public final void removeAnimation$animation_core_release(@NotNull Transition<S>.DeferredAnimation<?, ?> deferredAnimation) {

@@ -1,12 +1,11 @@
 package androidx.compose.runtime.collection;
 
-import androidx.exifinterface.media.ExifInterface;
 import java.util.List;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class MutableVectorKt {
     public static final /* synthetic */ <T> MutableVector<T> MutableVector(int i) {
         Intrinsics.reifiedOperationMarker(0, "T?");
@@ -51,7 +50,7 @@ public final class MutableVectorKt {
 
     public static final /* synthetic */ <T> MutableVector<T> MutableVector(int i, Function1<? super Integer, ? extends T> function1) {
         Intrinsics.checkNotNullParameter(function1, "init");
-        Intrinsics.reifiedOperationMarker(0, ExifInterface.GPS_DIRECTION_TRUE);
+        Intrinsics.reifiedOperationMarker(0, "T");
         Object[] objArr = new Object[i];
         for (int i2 = 0; i2 < i; i2++) {
             objArr[i2] = function1.invoke(Integer.valueOf(i2));

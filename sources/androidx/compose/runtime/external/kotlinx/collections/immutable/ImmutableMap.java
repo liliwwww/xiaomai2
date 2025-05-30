@@ -5,7 +5,7 @@ import kotlin.jvm.internal.markers.KMappedMarker;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface ImmutableMap<K, V> extends Map<K, V>, KMappedMarker {
     @NotNull
     ImmutableSet<Map.Entry<K, V>> getEntries();

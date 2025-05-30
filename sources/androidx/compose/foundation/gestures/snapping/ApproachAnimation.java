@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 interface ApproachAnimation<T, V extends AnimationVector> {
     @Nullable
     Object approachAnimation(@NotNull ScrollScope scrollScope, T t, T t2, @NotNull Function1<? super T, Unit> function1, @NotNull Continuation<? super AnimationResult<T, V>> continuation);

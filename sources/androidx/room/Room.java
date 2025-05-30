@@ -3,10 +3,9 @@ package androidx.room;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
-import androidx.room.RoomDatabase;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Room {
     private static final String CURSOR_CONV_SUFFIX = "_CursorConverter";
     static final String LOG_TAG = "ROOM";
@@ -17,11 +16,11 @@ public class Room {
     }
 
     @NonNull
-    public static <T extends RoomDatabase> RoomDatabase.Builder<T> databaseBuilder(@NonNull Context context, @NonNull Class<T> cls, @NonNull String str) {
+    public static <T extends RoomDatabase> RoomDatabase$Builder<T> databaseBuilder(@NonNull Context context, @NonNull Class<T> cls, @NonNull String str) {
         if (str == null || str.trim().length() == 0) {
             throw new IllegalArgumentException("Cannot build a database with null or empty name. If you are trying to create an in memory database, use Room.inMemoryDatabaseBuilder");
         }
-        return new RoomDatabase.Builder<>(context, cls, str);
+        return new RoomDatabase$Builder<>(context, cls, str);
     }
 
     @NonNull
@@ -51,7 +50,7 @@ public class Room {
     }
 
     @NonNull
-    public static <T extends RoomDatabase> RoomDatabase.Builder<T> inMemoryDatabaseBuilder(@NonNull Context context, @NonNull Class<T> cls) {
-        return new RoomDatabase.Builder<>(context, cls, null);
+    public static <T extends RoomDatabase> RoomDatabase$Builder<T> inMemoryDatabaseBuilder(@NonNull Context context, @NonNull Class<T> cls) {
+        return new RoomDatabase$Builder<>(context, cls, null);
     }
 }

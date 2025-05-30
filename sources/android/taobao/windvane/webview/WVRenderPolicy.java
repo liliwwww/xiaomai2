@@ -6,7 +6,7 @@ import android.view.accessibility.AccessibilityManager;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVRenderPolicy {
     public static void disableAccessibility(Context context) {
         if (Build.VERSION.SDK_INT != 17 || context == null) {

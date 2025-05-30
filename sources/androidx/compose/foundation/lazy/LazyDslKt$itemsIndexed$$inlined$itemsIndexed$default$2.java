@@ -5,7 +5,7 @@ import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyDslKt$itemsIndexed$$inlined$itemsIndexed$default$2 extends Lambda implements Function1<Integer, Object> {
     final /* synthetic */ Object[] $items;
 

@@ -1,11 +1,11 @@
 package androidx.room;
 
-import androidx.sqlite.p008db.SupportSQLiteProgram;
+import androidx.sqlite.db.SupportSQLiteProgram;
 import java.util.ArrayList;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class QueryInterceptorProgram implements SupportSQLiteProgram {
     private List<Object> mBindArgsCache = new ArrayList();
 
@@ -22,37 +22,30 @@ final class QueryInterceptorProgram implements SupportSQLiteProgram {
         this.mBindArgsCache.set(i2, obj);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteProgram
     public void bindBlob(int i, byte[] bArr) {
         saveArgsToCache(i, bArr);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteProgram
     public void bindDouble(int i, double d) {
         saveArgsToCache(i, Double.valueOf(d));
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteProgram
     public void bindLong(int i, long j) {
         saveArgsToCache(i, Long.valueOf(j));
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteProgram
     public void bindNull(int i) {
         saveArgsToCache(i, null);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteProgram
     public void bindString(int i, String str) {
         saveArgsToCache(i, str);
     }
 
-    @Override // androidx.sqlite.p008db.SupportSQLiteProgram
     public void clearBindings() {
         this.mBindArgsCache.clear();
     }
 
-    @Override // java.io.Closeable, java.lang.AutoCloseable
     public void close() {
     }
 

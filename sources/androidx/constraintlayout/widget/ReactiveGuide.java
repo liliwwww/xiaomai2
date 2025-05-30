@@ -4,14 +4,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.util.AttributeSet;
 import android.view.View;
 import androidx.constraintlayout.motion.widget.MotionLayout;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.SharedValues;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ReactiveGuide extends View implements SharedValues.SharedValuesListener {
     private boolean mAnimateChange;
     private boolean mApplyToAllConstraintSets;
@@ -36,17 +36,17 @@ public class ReactiveGuide extends View implements SharedValues.SharedValuesList
 
     private void init(AttributeSet attributeSet) {
         if (attributeSet != null) {
-            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, C0923R.styleable.ConstraintLayout_ReactiveGuide);
+            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.ConstraintLayout_ReactiveGuide);
             int indexCount = obtainStyledAttributes.getIndexCount();
             for (int i = 0; i < indexCount; i++) {
                 int index = obtainStyledAttributes.getIndex(i);
-                if (index == C0923R.styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_valueId) {
+                if (index == R.styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_valueId) {
                     this.mAttributeId = obtainStyledAttributes.getResourceId(index, this.mAttributeId);
-                } else if (index == C0923R.styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_animateChange) {
+                } else if (index == R.styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_animateChange) {
                     this.mAnimateChange = obtainStyledAttributes.getBoolean(index, this.mAnimateChange);
-                } else if (index == C0923R.styleable.f286x2694048c) {
+                } else if (index == R.styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_applyToConstraintSet) {
                     this.mApplyToConstraintSetId = obtainStyledAttributes.getResourceId(index, this.mApplyToConstraintSetId);
-                } else if (index == C0923R.styleable.f285xfdeff96) {
+                } else if (index == R.styleable.ConstraintLayout_ReactiveGuide_reactiveGuide_applyToAllConstraintSets) {
                     this.mApplyToAllConstraintSets = obtainStyledAttributes.getBoolean(index, this.mApplyToAllConstraintSets);
                 }
             }
@@ -79,7 +79,6 @@ public class ReactiveGuide extends View implements SharedValues.SharedValuesList
         setMeasuredDimension(0, 0);
     }
 
-    @Override // androidx.constraintlayout.widget.SharedValues.SharedValuesListener
     public void onNewValue(int i, int i2, int i3) {
         setGuidelineBegin(i2);
         int id = getId();
@@ -115,7 +114,7 @@ public class ReactiveGuide extends View implements SharedValues.SharedValuesList
             }
             ConstraintSet cloneConstraintSet = motionLayout.cloneConstraintSet(currentState);
             cloneConstraintSet.setGuidelineEnd(id, i2);
-            motionLayout.updateStateAnimate(currentState, cloneConstraintSet, 1000);
+            motionLayout.updateStateAnimate(currentState, cloneConstraintSet, WVURLRuleConstants.LOGIN);
         }
     }
 
@@ -140,21 +139,21 @@ public class ReactiveGuide extends View implements SharedValues.SharedValuesList
     }
 
     public void setGuidelineBegin(int i) {
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) getLayoutParams();
-        layoutParams.guideBegin = i;
-        setLayoutParams(layoutParams);
+        ConstraintLayout$LayoutParams constraintLayout$LayoutParams = (ConstraintLayout$LayoutParams) getLayoutParams();
+        constraintLayout$LayoutParams.guideBegin = i;
+        setLayoutParams(constraintLayout$LayoutParams);
     }
 
     public void setGuidelineEnd(int i) {
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) getLayoutParams();
-        layoutParams.guideEnd = i;
-        setLayoutParams(layoutParams);
+        ConstraintLayout$LayoutParams constraintLayout$LayoutParams = (ConstraintLayout$LayoutParams) getLayoutParams();
+        constraintLayout$LayoutParams.guideEnd = i;
+        setLayoutParams(constraintLayout$LayoutParams);
     }
 
     public void setGuidelinePercent(float f) {
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) getLayoutParams();
-        layoutParams.guidePercent = f;
-        setLayoutParams(layoutParams);
+        ConstraintLayout$LayoutParams constraintLayout$LayoutParams = (ConstraintLayout$LayoutParams) getLayoutParams();
+        constraintLayout$LayoutParams.guidePercent = f;
+        setLayoutParams(constraintLayout$LayoutParams);
     }
 
     @Override // android.view.View

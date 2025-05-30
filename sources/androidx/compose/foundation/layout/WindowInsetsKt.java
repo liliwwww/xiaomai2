@@ -1,18 +1,19 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Density;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.ReadOnlyComposable;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
+import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class WindowInsetsKt {
     @NotNull
     public static final WindowInsets WindowInsets(int i, int i2, int i3, int i4) {
@@ -37,25 +38,25 @@ public final class WindowInsetsKt {
 
     @NotNull
     /* renamed from: WindowInsets-a9UjIt4, reason: not valid java name */
-    public static final WindowInsets m1452WindowInsetsa9UjIt4(float f, float f2, float f3, float f4) {
-        return new FixedDpInsets(f, f2, f3, f4, null);
+    public static final WindowInsets m387WindowInsetsa9UjIt4(float f, float f2, float f3, float f4) {
+        return new FixedDpInsets(f, f2, f3, f4, (DefaultConstructorMarker) null);
     }
 
     /* renamed from: WindowInsets-a9UjIt4$default, reason: not valid java name */
-    public static /* synthetic */ WindowInsets m1453WindowInsetsa9UjIt4$default(float f, float f2, float f3, float f4, int i, Object obj) {
+    public static /* synthetic */ WindowInsets m388WindowInsetsa9UjIt4$default(float f, float f2, float f3, float f4, int i, Object obj) {
         if ((i & 1) != 0) {
-            f = C0856Dp.m5216constructorimpl(0);
+            f = Dp.constructor-impl(0);
         }
         if ((i & 2) != 0) {
-            f2 = C0856Dp.m5216constructorimpl(0);
+            f2 = Dp.constructor-impl(0);
         }
         if ((i & 4) != 0) {
-            f3 = C0856Dp.m5216constructorimpl(0);
+            f3 = Dp.constructor-impl(0);
         }
         if ((i & 8) != 0) {
-            f4 = C0856Dp.m5216constructorimpl(0);
+            f4 = Dp.constructor-impl(0);
         }
-        return m1452WindowInsetsa9UjIt4(f, f2, f3, f4);
+        return m387WindowInsetsa9UjIt4(f, f2, f3, f4);
     }
 
     @NotNull
@@ -95,9 +96,9 @@ public final class WindowInsetsKt {
 
     @NotNull
     /* renamed from: only-bOOhFvg, reason: not valid java name */
-    public static final WindowInsets m1454onlybOOhFvg(@NotNull WindowInsets windowInsets, int i) {
+    public static final WindowInsets m389onlybOOhFvg(@NotNull WindowInsets windowInsets, int i) {
         Intrinsics.checkNotNullParameter(windowInsets, "$this$only");
-        return new LimitInsets(windowInsets, i, null);
+        return new LimitInsets(windowInsets, i, (DefaultConstructorMarker) null);
     }
 
     @NotNull

@@ -5,10 +5,10 @@ import javax.annotation.Nullable;
 import tb.kd;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface Authenticator {
     public static final Authenticator NONE = kd.a;
 
     @Nullable
-    C1474n authenticate(@Nullable C1478r c1478r, C1476p c1476p) throws IOException;
+    n authenticate(@Nullable r rVar, p pVar) throws IOException;
 }

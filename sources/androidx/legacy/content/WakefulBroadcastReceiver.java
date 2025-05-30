@@ -10,7 +10,7 @@ import android.util.SparseArray;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class WakefulBroadcastReceiver extends BroadcastReceiver {
     private static final String EXTRA_WAKE_LOCK_ID = "androidx.contentpager.content.wakelockid";
     private static final SparseArray<PowerManager.WakeLock> sActiveWakeLocks = new SparseArray<>();

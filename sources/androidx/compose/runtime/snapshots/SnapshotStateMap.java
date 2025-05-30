@@ -4,7 +4,7 @@ import androidx.compose.runtime.Stable;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.ExtensionsKt;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.ImmutableSet;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.PersistentMap;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
+import androidx.constraintlayout.core.motion.utils.TypedValues$TransitionType;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -21,71 +21,20 @@ import tb.k65;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMutableMap {
 
     @NotNull
     private StateRecord firstStateRecord = new StateMapStateRecord(ExtensionsKt.persistentHashMapOf());
 
     @NotNull
-    private final Set<Map.Entry<K, V>> entries = new SnapshotMapEntrySet(this);
+    private final Set<Map.Entry<K, V>> entries = (Set<Map.Entry<K, V>>) new SnapshotMapEntrySet(this);
 
     @NotNull
-    private final Set<K> keys = new SnapshotMapKeySet(this);
+    private final Set<K> keys = (Set<K>) new SnapshotMapKeySet(this);
 
     @NotNull
-    private final Collection<V> values = new SnapshotMapValueSet(this);
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static final class StateMapStateRecord<K, V> extends StateRecord {
-
-        @NotNull
-        private PersistentMap<K, ? extends V> map;
-        private int modification;
-
-        public StateMapStateRecord(@NotNull PersistentMap<K, ? extends V> persistentMap) {
-            Intrinsics.checkNotNullParameter(persistentMap, "map");
-            this.map = persistentMap;
-        }
-
-        @Override // androidx.compose.runtime.snapshots.StateRecord
-        public void assign(@NotNull StateRecord stateRecord) {
-            Object obj;
-            Intrinsics.checkNotNullParameter(stateRecord, "value");
-            StateMapStateRecord stateMapStateRecord = (StateMapStateRecord) stateRecord;
-            obj = SnapshotStateMapKt.sync;
-            synchronized (obj) {
-                this.map = stateMapStateRecord.map;
-                this.modification = stateMapStateRecord.modification;
-                Unit unit = Unit.INSTANCE;
-            }
-        }
-
-        @Override // androidx.compose.runtime.snapshots.StateRecord
-        @NotNull
-        public StateRecord create() {
-            return new StateMapStateRecord(this.map);
-        }
-
-        @NotNull
-        public final PersistentMap<K, V> getMap$runtime_release() {
-            return this.map;
-        }
-
-        public final int getModification$runtime_release() {
-            return this.modification;
-        }
-
-        public final void setMap$runtime_release(@NotNull PersistentMap<K, ? extends V> persistentMap) {
-            Intrinsics.checkNotNullParameter(persistentMap, "<set-?>");
-            this.map = persistentMap;
-        }
-
-        public final void setModification$runtime_release(int i) {
-            this.modification = i;
-        }
-    }
+    private final Collection<V> values = (Collection<V>) new SnapshotMapValueSet(this);
 
     public static /* synthetic */ void getDebuggerDisplayValue$annotations() {
     }
@@ -94,22 +43,19 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
     }
 
     private final <R> R mutate(Function1<? super Map<K, V>, ? extends R> function1) {
-        Object obj;
-        PersistentMap<K, V> map$runtime_release;
+        PersistentMap map$runtime_release;
         int modification$runtime_release;
         R r;
-        Object obj2;
         Snapshot current;
         boolean z;
         do {
-            obj = SnapshotStateMapKt.sync;
-            synchronized (obj) {
+            synchronized (SnapshotStateMapKt.access$getSync$p()) {
                 try {
-                    StateRecord firstStateRecord = getFirstStateRecord();
+                    StateMapStateRecord firstStateRecord = getFirstStateRecord();
                     Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-                    StateMapStateRecord stateMapStateRecord = (StateMapStateRecord) SnapshotKt.current((StateMapStateRecord) firstStateRecord);
-                    map$runtime_release = stateMapStateRecord.getMap$runtime_release();
-                    modification$runtime_release = stateMapStateRecord.getModification$runtime_release();
+                    StateMapStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                    map$runtime_release = current2.getMap$runtime_release();
+                    modification$runtime_release = current2.getModification$runtime_release();
                     Unit unit = Unit.INSTANCE;
                     InlineMarker.finallyStart(1);
                 } catch (Throwable th) {
@@ -120,26 +66,25 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
             }
             InlineMarker.finallyEnd(1);
             Intrinsics.checkNotNull(map$runtime_release);
-            PersistentMap.Builder<K, V> builder = map$runtime_release.builder();
+            PersistentMap.Builder builder = map$runtime_release.builder();
             r = (R) function1.invoke(builder);
-            PersistentMap<K, V> build = builder.build();
+            PersistentMap build = builder.build();
             if (Intrinsics.areEqual(build, map$runtime_release)) {
                 break;
             }
-            obj2 = SnapshotStateMapKt.sync;
-            synchronized (obj2) {
+            synchronized (SnapshotStateMapKt.access$getSync$p()) {
                 try {
-                    StateRecord firstStateRecord2 = getFirstStateRecord();
+                    StateMapStateRecord firstStateRecord2 = getFirstStateRecord();
                     Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-                    StateMapStateRecord stateMapStateRecord2 = (StateMapStateRecord) firstStateRecord2;
+                    StateMapStateRecord stateMapStateRecord = firstStateRecord2;
                     SnapshotKt.getSnapshotInitializer();
                     synchronized (SnapshotKt.getLock()) {
                         try {
                             current = Snapshot.Companion.getCurrent();
-                            StateMapStateRecord stateMapStateRecord3 = (StateMapStateRecord) SnapshotKt.writableRecord(stateMapStateRecord2, this, current);
-                            if (stateMapStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                                stateMapStateRecord3.setMap$runtime_release(build);
-                                stateMapStateRecord3.setModification$runtime_release(stateMapStateRecord3.getModification$runtime_release() + 1);
+                            StateMapStateRecord writableRecord = SnapshotKt.writableRecord(stateMapStateRecord, this, current);
+                            if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                                writableRecord.setMap$runtime_release(build);
+                                writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                                 z = true;
                             } else {
                                 z = false;
@@ -163,26 +108,24 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
     }
 
     private final void update(Function1<? super PersistentMap<K, ? extends V>, ? extends PersistentMap<K, ? extends V>> function1) {
-        Object obj;
         Snapshot current;
-        StateRecord firstStateRecord = getFirstStateRecord();
+        StateMapStateRecord firstStateRecord = getFirstStateRecord();
         Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-        StateMapStateRecord stateMapStateRecord = (StateMapStateRecord) SnapshotKt.current((StateMapStateRecord) firstStateRecord);
-        PersistentMap<K, V> persistentMap = (PersistentMap) function1.invoke(stateMapStateRecord.getMap$runtime_release());
-        if (persistentMap != stateMapStateRecord.getMap$runtime_release()) {
-            obj = SnapshotStateMapKt.sync;
-            synchronized (obj) {
+        StateMapStateRecord current2 = SnapshotKt.current(firstStateRecord);
+        PersistentMap persistentMap = (PersistentMap) function1.invoke(current2.getMap$runtime_release());
+        if (persistentMap != current2.getMap$runtime_release()) {
+            synchronized (SnapshotStateMapKt.access$getSync$p()) {
                 try {
-                    StateRecord firstStateRecord2 = getFirstStateRecord();
+                    StateMapStateRecord firstStateRecord2 = getFirstStateRecord();
                     Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-                    StateMapStateRecord stateMapStateRecord2 = (StateMapStateRecord) firstStateRecord2;
+                    StateMapStateRecord stateMapStateRecord = firstStateRecord2;
                     SnapshotKt.getSnapshotInitializer();
                     synchronized (SnapshotKt.getLock()) {
                         try {
                             current = Snapshot.Companion.getCurrent();
-                            StateMapStateRecord stateMapStateRecord3 = (StateMapStateRecord) SnapshotKt.writableRecord(stateMapStateRecord2, this, current);
-                            stateMapStateRecord3.setMap$runtime_release(persistentMap);
-                            stateMapStateRecord3.setModification$runtime_release(stateMapStateRecord3.getModification$runtime_release() + 1);
+                            StateMapStateRecord writableRecord = SnapshotKt.writableRecord(stateMapStateRecord, this, current);
+                            writableRecord.setMap$runtime_release(persistentMap);
+                            writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                             InlineMarker.finallyStart(1);
                         } catch (Throwable th) {
                             InlineMarker.finallyStart(1);
@@ -204,17 +147,17 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
     }
 
     private final <R> R withCurrent(Function1<? super StateMapStateRecord<K, V>, ? extends R> function1) {
-        StateRecord firstStateRecord = getFirstStateRecord();
+        StateMapStateRecord firstStateRecord = getFirstStateRecord();
         Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-        return (R) function1.invoke(SnapshotKt.current((StateMapStateRecord) firstStateRecord));
+        return (R) function1.invoke(SnapshotKt.current(firstStateRecord));
     }
 
     private final <R> R writable(Function1<? super StateMapStateRecord<K, V>, ? extends R> function1) {
         Snapshot current;
         R r;
-        StateRecord firstStateRecord = getFirstStateRecord();
+        StateMapStateRecord firstStateRecord = getFirstStateRecord();
         Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-        StateMapStateRecord stateMapStateRecord = (StateMapStateRecord) firstStateRecord;
+        StateMapStateRecord stateMapStateRecord = firstStateRecord;
         SnapshotKt.getSnapshotInitializer();
         synchronized (SnapshotKt.getLock()) {
             try {
@@ -256,25 +199,23 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
 
     @Override // java.util.Map
     public void clear() {
-        Object obj;
         Snapshot current;
-        StateRecord firstStateRecord = getFirstStateRecord();
+        StateMapStateRecord firstStateRecord = getFirstStateRecord();
         Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-        StateMapStateRecord stateMapStateRecord = (StateMapStateRecord) SnapshotKt.current((StateMapStateRecord) firstStateRecord);
-        stateMapStateRecord.getMap$runtime_release();
-        PersistentMap<K, V> persistentHashMapOf = ExtensionsKt.persistentHashMapOf();
-        if (persistentHashMapOf != stateMapStateRecord.getMap$runtime_release()) {
-            obj = SnapshotStateMapKt.sync;
-            synchronized (obj) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+        StateMapStateRecord current2 = SnapshotKt.current(firstStateRecord);
+        current2.getMap$runtime_release();
+        PersistentMap persistentHashMapOf = ExtensionsKt.persistentHashMapOf();
+        if (persistentHashMapOf != current2.getMap$runtime_release()) {
+            synchronized (SnapshotStateMapKt.access$getSync$p()) {
+                StateMapStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-                StateMapStateRecord stateMapStateRecord2 = (StateMapStateRecord) firstStateRecord2;
+                StateMapStateRecord stateMapStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateMapStateRecord stateMapStateRecord3 = (StateMapStateRecord) SnapshotKt.writableRecord(stateMapStateRecord2, this, current);
-                    stateMapStateRecord3.setMap$runtime_release(persistentHashMapOf);
-                    stateMapStateRecord3.setModification$runtime_release(stateMapStateRecord3.getModification$runtime_release() + 1);
+                    StateMapStateRecord writableRecord = SnapshotKt.writableRecord(stateMapStateRecord, this, current);
+                    writableRecord.setMap$runtime_release(persistentHashMapOf);
+                    writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                 }
                 SnapshotKt.notifyWrite(current, this);
             }
@@ -299,15 +240,15 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
     @Override // java.util.Map
     @Nullable
     public V get(Object obj) {
-        return getReadable$runtime_release().getMap$runtime_release().get(obj);
+        return (V) getReadable$runtime_release().getMap$runtime_release().get(obj);
     }
 
     @JvmName(name = "getDebuggerDisplayValue")
     @NotNull
     public final Map<K, V> getDebuggerDisplayValue() {
-        StateRecord firstStateRecord = getFirstStateRecord();
+        StateMapStateRecord firstStateRecord = getFirstStateRecord();
         Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-        return ((StateMapStateRecord) SnapshotKt.current((StateMapStateRecord) firstStateRecord)).getMap$runtime_release();
+        return SnapshotKt.current(firstStateRecord).getMap$runtime_release();
     }
 
     @NotNull
@@ -315,7 +256,6 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
         return this.entries;
     }
 
-    @Override // androidx.compose.runtime.snapshots.StateObject
     @NotNull
     public StateRecord getFirstStateRecord() {
         return this.firstStateRecord;
@@ -332,9 +272,9 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
 
     @NotNull
     public final StateMapStateRecord<K, V> getReadable$runtime_release() {
-        StateRecord firstStateRecord = getFirstStateRecord();
+        StateMapStateRecord firstStateRecord = getFirstStateRecord();
         Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-        return (StateMapStateRecord) SnapshotKt.readable((StateMapStateRecord) firstStateRecord, this);
+        return SnapshotKt.readable(firstStateRecord, this);
     }
 
     public int getSize() {
@@ -356,12 +296,10 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
         return getKeys();
     }
 
-    @Override // androidx.compose.runtime.snapshots.StateObject
     public /* synthetic */ StateRecord mergeRecords(StateRecord stateRecord, StateRecord stateRecord2, StateRecord stateRecord3) {
         return k65.a(this, stateRecord, stateRecord2, stateRecord3);
     }
 
-    @Override // androidx.compose.runtime.snapshots.StateObject
     public void prependStateRecord(@NotNull StateRecord stateRecord) {
         Intrinsics.checkNotNullParameter(stateRecord, "value");
         this.firstStateRecord = (StateMapStateRecord) stateRecord;
@@ -370,43 +308,39 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
     @Override // java.util.Map
     @Nullable
     public V put(K k, V v) {
-        Object obj;
-        PersistentMap<K, V> map$runtime_release;
+        PersistentMap map$runtime_release;
         int modification$runtime_release;
-        V put;
-        Object obj2;
+        V v2;
         Snapshot current;
         boolean z;
         do {
-            obj = SnapshotStateMapKt.sync;
-            synchronized (obj) {
-                StateRecord firstStateRecord = getFirstStateRecord();
+            synchronized (SnapshotStateMapKt.access$getSync$p()) {
+                StateMapStateRecord firstStateRecord = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-                StateMapStateRecord stateMapStateRecord = (StateMapStateRecord) SnapshotKt.current((StateMapStateRecord) firstStateRecord);
-                map$runtime_release = stateMapStateRecord.getMap$runtime_release();
-                modification$runtime_release = stateMapStateRecord.getModification$runtime_release();
+                StateMapStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                map$runtime_release = current2.getMap$runtime_release();
+                modification$runtime_release = current2.getModification$runtime_release();
                 Unit unit = Unit.INSTANCE;
             }
             Intrinsics.checkNotNull(map$runtime_release);
-            PersistentMap.Builder<K, V> builder = map$runtime_release.builder();
-            put = builder.put(k, v);
-            PersistentMap<K, V> build = builder.build();
+            PersistentMap.Builder builder = map$runtime_release.builder();
+            v2 = (V) builder.put(k, v);
+            PersistentMap build = builder.build();
             if (Intrinsics.areEqual(build, map$runtime_release)) {
                 break;
             }
-            obj2 = SnapshotStateMapKt.sync;
-            synchronized (obj2) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+            synchronized (SnapshotStateMapKt.access$getSync$p()) {
+                StateMapStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-                StateMapStateRecord stateMapStateRecord2 = (StateMapStateRecord) firstStateRecord2;
+                StateMapStateRecord stateMapStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateMapStateRecord stateMapStateRecord3 = (StateMapStateRecord) SnapshotKt.writableRecord(stateMapStateRecord2, this, current);
+                    StateMapStateRecord writableRecord = SnapshotKt.writableRecord(stateMapStateRecord, this, current);
                     z = true;
-                    if (stateMapStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                        stateMapStateRecord3.setMap$runtime_release(build);
-                        stateMapStateRecord3.setModification$runtime_release(stateMapStateRecord3.getModification$runtime_release() + 1);
+                    if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                        writableRecord.setMap$runtime_release(build);
+                        writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                     } else {
                         z = false;
                     }
@@ -414,48 +348,44 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
                 SnapshotKt.notifyWrite(current, this);
             }
         } while (!z);
-        return put;
+        return v2;
     }
 
     @Override // java.util.Map
     public void putAll(@NotNull Map<? extends K, ? extends V> map) {
-        Object obj;
-        PersistentMap<K, V> map$runtime_release;
+        PersistentMap map$runtime_release;
         int modification$runtime_release;
-        Object obj2;
         Snapshot current;
         boolean z;
-        Intrinsics.checkNotNullParameter(map, TypedValues.TransitionType.S_FROM);
+        Intrinsics.checkNotNullParameter(map, TypedValues$TransitionType.S_FROM);
         do {
-            obj = SnapshotStateMapKt.sync;
-            synchronized (obj) {
-                StateRecord firstStateRecord = getFirstStateRecord();
+            synchronized (SnapshotStateMapKt.access$getSync$p()) {
+                StateMapStateRecord firstStateRecord = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-                StateMapStateRecord stateMapStateRecord = (StateMapStateRecord) SnapshotKt.current((StateMapStateRecord) firstStateRecord);
-                map$runtime_release = stateMapStateRecord.getMap$runtime_release();
-                modification$runtime_release = stateMapStateRecord.getModification$runtime_release();
+                StateMapStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                map$runtime_release = current2.getMap$runtime_release();
+                modification$runtime_release = current2.getModification$runtime_release();
                 Unit unit = Unit.INSTANCE;
             }
             Intrinsics.checkNotNull(map$runtime_release);
-            PersistentMap.Builder<K, V> builder = map$runtime_release.builder();
+            PersistentMap.Builder builder = map$runtime_release.builder();
             builder.putAll(map);
-            PersistentMap<K, V> build = builder.build();
+            PersistentMap build = builder.build();
             if (Intrinsics.areEqual(build, map$runtime_release)) {
                 return;
             }
-            obj2 = SnapshotStateMapKt.sync;
-            synchronized (obj2) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+            synchronized (SnapshotStateMapKt.access$getSync$p()) {
+                StateMapStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-                StateMapStateRecord stateMapStateRecord2 = (StateMapStateRecord) firstStateRecord2;
+                StateMapStateRecord stateMapStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateMapStateRecord stateMapStateRecord3 = (StateMapStateRecord) SnapshotKt.writableRecord(stateMapStateRecord2, this, current);
+                    StateMapStateRecord writableRecord = SnapshotKt.writableRecord(stateMapStateRecord, this, current);
                     z = true;
-                    if (stateMapStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                        stateMapStateRecord3.setMap$runtime_release(build);
-                        stateMapStateRecord3.setModification$runtime_release(stateMapStateRecord3.getModification$runtime_release() + 1);
+                    if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                        writableRecord.setMap$runtime_release(build);
+                        writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                     } else {
                         z = false;
                     }
@@ -468,43 +398,39 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
     @Override // java.util.Map
     @Nullable
     public V remove(Object obj) {
-        Object obj2;
-        PersistentMap<K, V> map$runtime_release;
+        PersistentMap map$runtime_release;
         int modification$runtime_release;
-        V remove;
-        Object obj3;
+        V v;
         Snapshot current;
         boolean z;
         do {
-            obj2 = SnapshotStateMapKt.sync;
-            synchronized (obj2) {
-                StateRecord firstStateRecord = getFirstStateRecord();
+            synchronized (SnapshotStateMapKt.access$getSync$p()) {
+                StateMapStateRecord firstStateRecord = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-                StateMapStateRecord stateMapStateRecord = (StateMapStateRecord) SnapshotKt.current((StateMapStateRecord) firstStateRecord);
-                map$runtime_release = stateMapStateRecord.getMap$runtime_release();
-                modification$runtime_release = stateMapStateRecord.getModification$runtime_release();
+                StateMapStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                map$runtime_release = current2.getMap$runtime_release();
+                modification$runtime_release = current2.getModification$runtime_release();
                 Unit unit = Unit.INSTANCE;
             }
             Intrinsics.checkNotNull(map$runtime_release);
-            PersistentMap.Builder<K, V> builder = map$runtime_release.builder();
-            remove = builder.remove(obj);
-            PersistentMap<K, V> build = builder.build();
+            PersistentMap.Builder builder = map$runtime_release.builder();
+            v = (V) builder.remove(obj);
+            PersistentMap build = builder.build();
             if (Intrinsics.areEqual(build, map$runtime_release)) {
                 break;
             }
-            obj3 = SnapshotStateMapKt.sync;
-            synchronized (obj3) {
-                StateRecord firstStateRecord2 = getFirstStateRecord();
+            synchronized (SnapshotStateMapKt.access$getSync$p()) {
+                StateMapStateRecord firstStateRecord2 = getFirstStateRecord();
                 Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-                StateMapStateRecord stateMapStateRecord2 = (StateMapStateRecord) firstStateRecord2;
+                StateMapStateRecord stateMapStateRecord = firstStateRecord2;
                 SnapshotKt.getSnapshotInitializer();
                 synchronized (SnapshotKt.getLock()) {
                     current = Snapshot.Companion.getCurrent();
-                    StateMapStateRecord stateMapStateRecord3 = (StateMapStateRecord) SnapshotKt.writableRecord(stateMapStateRecord2, this, current);
+                    StateMapStateRecord writableRecord = SnapshotKt.writableRecord(stateMapStateRecord, this, current);
                     z = true;
-                    if (stateMapStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                        stateMapStateRecord3.setMap$runtime_release(build);
-                        stateMapStateRecord3.setModification$runtime_release(stateMapStateRecord3.getModification$runtime_release() + 1);
+                    if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                        writableRecord.setMap$runtime_release(build);
+                        writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                     } else {
                         z = false;
                     }
@@ -512,27 +438,24 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
                 SnapshotKt.notifyWrite(current, this);
             }
         } while (!z);
-        return remove;
+        return v;
     }
 
     public final boolean removeIf$runtime_release(@NotNull Function1<? super Map.Entry<K, V>, Boolean> function1) {
-        Object obj;
-        PersistentMap<K, V> map$runtime_release;
+        PersistentMap map$runtime_release;
         int modification$runtime_release;
-        Object obj2;
         Snapshot current;
         boolean z;
         Intrinsics.checkNotNullParameter(function1, "predicate");
         boolean z2 = false;
         do {
-            obj = SnapshotStateMapKt.sync;
-            synchronized (obj) {
+            synchronized (SnapshotStateMapKt.access$getSync$p()) {
                 try {
-                    StateRecord firstStateRecord = getFirstStateRecord();
+                    StateMapStateRecord firstStateRecord = getFirstStateRecord();
                     Intrinsics.checkNotNull(firstStateRecord, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-                    StateMapStateRecord stateMapStateRecord = (StateMapStateRecord) SnapshotKt.current((StateMapStateRecord) firstStateRecord);
-                    map$runtime_release = stateMapStateRecord.getMap$runtime_release();
-                    modification$runtime_release = stateMapStateRecord.getModification$runtime_release();
+                    StateMapStateRecord current2 = SnapshotKt.current(firstStateRecord);
+                    map$runtime_release = current2.getMap$runtime_release();
+                    modification$runtime_release = current2.getModification$runtime_release();
                     Unit unit = Unit.INSTANCE;
                     InlineMarker.finallyStart(1);
                 } catch (Throwable th) {
@@ -543,7 +466,7 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
             }
             InlineMarker.finallyEnd(1);
             Intrinsics.checkNotNull(map$runtime_release);
-            PersistentMap.Builder<K, V> builder = map$runtime_release.builder();
+            PersistentMap.Builder builder = map$runtime_release.builder();
             for (Map.Entry<K, V> entry : entrySet()) {
                 if (((Boolean) function1.invoke(entry)).booleanValue()) {
                     builder.remove(entry.getKey());
@@ -551,24 +474,23 @@ public final class SnapshotStateMap<K, V> implements Map<K, V>, StateObject, KMu
                 }
             }
             Unit unit2 = Unit.INSTANCE;
-            PersistentMap<K, V> build = builder.build();
+            PersistentMap build = builder.build();
             if (Intrinsics.areEqual(build, map$runtime_release)) {
                 break;
             }
-            obj2 = SnapshotStateMapKt.sync;
-            synchronized (obj2) {
+            synchronized (SnapshotStateMapKt.access$getSync$p()) {
                 try {
-                    StateRecord firstStateRecord2 = getFirstStateRecord();
+                    StateMapStateRecord firstStateRecord2 = getFirstStateRecord();
                     Intrinsics.checkNotNull(firstStateRecord2, "null cannot be cast to non-null type androidx.compose.runtime.snapshots.SnapshotStateMap.StateMapStateRecord<K of androidx.compose.runtime.snapshots.SnapshotStateMap, V of androidx.compose.runtime.snapshots.SnapshotStateMap>");
-                    StateMapStateRecord stateMapStateRecord2 = (StateMapStateRecord) firstStateRecord2;
+                    StateMapStateRecord stateMapStateRecord = firstStateRecord2;
                     SnapshotKt.getSnapshotInitializer();
                     synchronized (SnapshotKt.getLock()) {
                         try {
                             current = Snapshot.Companion.getCurrent();
-                            StateMapStateRecord stateMapStateRecord3 = (StateMapStateRecord) SnapshotKt.writableRecord(stateMapStateRecord2, this, current);
-                            if (stateMapStateRecord3.getModification$runtime_release() == modification$runtime_release) {
-                                stateMapStateRecord3.setMap$runtime_release(build);
-                                stateMapStateRecord3.setModification$runtime_release(stateMapStateRecord3.getModification$runtime_release() + 1);
+                            StateMapStateRecord writableRecord = SnapshotKt.writableRecord(stateMapStateRecord, this, current);
+                            if (writableRecord.getModification$runtime_release() == modification$runtime_release) {
+                                writableRecord.setMap$runtime_release(build);
+                                writableRecord.setModification$runtime_release(writableRecord.getModification$runtime_release() + 1);
                                 z = true;
                             } else {
                                 z = false;

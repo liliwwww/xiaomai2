@@ -7,7 +7,6 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.util.SparseArray;
 import androidx.annotation.RequiresApi;
-import androidx.core.app.NotificationCompat;
 import androidx.core.graphics.drawable.IconCompat;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ import java.util.Set;
 
 /* compiled from: Taobao */
 @RequiresApi(16)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 class NotificationCompatJellybean {
     static final String EXTRA_ALLOW_GENERATED_REPLIES = "android.support.allowGeneratedReplies";
     static final String EXTRA_DATA_ONLY_REMOTE_INPUTS = "android.support.dataRemoteInputs";
@@ -112,7 +111,7 @@ class NotificationCompatJellybean {
         return remoteInputArr;
     }
 
-    public static NotificationCompat.Action getAction(Notification notification, int i) {
+    public static NotificationCompat$Action getAction(Notification notification, int i) {
         SparseArray sparseParcelableArray;
         synchronized (sActionsLock) {
             try {
@@ -143,9 +142,9 @@ class NotificationCompatJellybean {
         return length;
     }
 
-    static NotificationCompat.Action getActionFromBundle(Bundle bundle) {
+    static NotificationCompat$Action getActionFromBundle(Bundle bundle) {
         Bundle bundle2 = bundle.getBundle(KEY_EXTRAS);
-        return new NotificationCompat.Action(bundle.getInt(KEY_ICON), bundle.getCharSequence(KEY_TITLE), (PendingIntent) bundle.getParcelable(KEY_ACTION_INTENT), bundle.getBundle(KEY_EXTRAS), fromBundleArray(getBundleArrayFromBundle(bundle, KEY_REMOTE_INPUTS)), fromBundleArray(getBundleArrayFromBundle(bundle, KEY_DATA_ONLY_REMOTE_INPUTS)), bundle2 != null ? bundle2.getBoolean(EXTRA_ALLOW_GENERATED_REPLIES, false) : false, bundle.getInt(KEY_SEMANTIC_ACTION), bundle.getBoolean(KEY_SHOWS_USER_INTERFACE), false, false);
+        return new NotificationCompat$Action(bundle.getInt(KEY_ICON), bundle.getCharSequence(KEY_TITLE), (PendingIntent) bundle.getParcelable(KEY_ACTION_INTENT), bundle.getBundle(KEY_EXTRAS), fromBundleArray(getBundleArrayFromBundle(bundle, KEY_REMOTE_INPUTS)), fromBundleArray(getBundleArrayFromBundle(bundle, KEY_DATA_ONLY_REMOTE_INPUTS)), bundle2 != null ? bundle2.getBoolean(EXTRA_ALLOW_GENERATED_REPLIES, false) : false, bundle.getInt(KEY_SEMANTIC_ACTION), bundle.getBoolean(KEY_SHOWS_USER_INTERFACE), false, false);
     }
 
     private static Object[] getActionObjectsLocked(Notification notification) {
@@ -173,18 +172,18 @@ class NotificationCompatJellybean {
         return bundleArr;
     }
 
-    static Bundle getBundleForAction(NotificationCompat.Action action) {
+    static Bundle getBundleForAction(NotificationCompat$Action notificationCompat$Action) {
         Bundle bundle = new Bundle();
-        IconCompat iconCompat = action.getIconCompat();
+        IconCompat iconCompat = notificationCompat$Action.getIconCompat();
         bundle.putInt(KEY_ICON, iconCompat != null ? iconCompat.getResId() : 0);
-        bundle.putCharSequence(KEY_TITLE, action.getTitle());
-        bundle.putParcelable(KEY_ACTION_INTENT, action.getActionIntent());
-        Bundle bundle2 = action.getExtras() != null ? new Bundle(action.getExtras()) : new Bundle();
-        bundle2.putBoolean(EXTRA_ALLOW_GENERATED_REPLIES, action.getAllowGeneratedReplies());
+        bundle.putCharSequence(KEY_TITLE, notificationCompat$Action.getTitle());
+        bundle.putParcelable(KEY_ACTION_INTENT, notificationCompat$Action.getActionIntent());
+        Bundle bundle2 = notificationCompat$Action.getExtras() != null ? new Bundle(notificationCompat$Action.getExtras()) : new Bundle();
+        bundle2.putBoolean(EXTRA_ALLOW_GENERATED_REPLIES, notificationCompat$Action.getAllowGeneratedReplies());
         bundle.putBundle(KEY_EXTRAS, bundle2);
-        bundle.putParcelableArray(KEY_REMOTE_INPUTS, toBundleArray(action.getRemoteInputs()));
-        bundle.putBoolean(KEY_SHOWS_USER_INTERFACE, action.getShowsUserInterface());
-        bundle.putInt(KEY_SEMANTIC_ACTION, action.getSemanticAction());
+        bundle.putParcelableArray(KEY_REMOTE_INPUTS, toBundleArray(notificationCompat$Action.getRemoteInputs()));
+        bundle.putBoolean(KEY_SHOWS_USER_INTERFACE, notificationCompat$Action.getShowsUserInterface());
+        bundle.putInt(KEY_SEMANTIC_ACTION, notificationCompat$Action.getSemanticAction());
         return bundle;
     }
 
@@ -222,7 +221,7 @@ class NotificationCompatJellybean {
         }
     }
 
-    public static NotificationCompat.Action readAction(int i, CharSequence charSequence, PendingIntent pendingIntent, Bundle bundle) {
+    public static NotificationCompat$Action readAction(int i, CharSequence charSequence, PendingIntent pendingIntent, Bundle bundle) {
         RemoteInput[] remoteInputArr;
         RemoteInput[] remoteInputArr2;
         boolean z;
@@ -235,7 +234,7 @@ class NotificationCompatJellybean {
             remoteInputArr2 = null;
             z = false;
         }
-        return new NotificationCompat.Action(i, charSequence, pendingIntent, bundle, remoteInputArr, remoteInputArr2, z, 0, true, false, false);
+        return new NotificationCompat$Action(i, charSequence, pendingIntent, bundle, remoteInputArr, remoteInputArr2, z, 0, true, false, false);
     }
 
     private static Bundle toBundle(RemoteInput remoteInput) {
@@ -268,17 +267,17 @@ class NotificationCompatJellybean {
         return bundleArr;
     }
 
-    public static Bundle writeActionAndGetExtras(Notification.Builder builder, NotificationCompat.Action action) {
-        IconCompat iconCompat = action.getIconCompat();
-        builder.addAction(iconCompat != null ? iconCompat.getResId() : 0, action.getTitle(), action.getActionIntent());
-        Bundle bundle = new Bundle(action.getExtras());
-        if (action.getRemoteInputs() != null) {
-            bundle.putParcelableArray(NotificationCompatExtras.EXTRA_REMOTE_INPUTS, toBundleArray(action.getRemoteInputs()));
+    public static Bundle writeActionAndGetExtras(Notification.Builder builder, NotificationCompat$Action notificationCompat$Action) {
+        IconCompat iconCompat = notificationCompat$Action.getIconCompat();
+        builder.addAction(iconCompat != null ? iconCompat.getResId() : 0, notificationCompat$Action.getTitle(), notificationCompat$Action.getActionIntent());
+        Bundle bundle = new Bundle(notificationCompat$Action.getExtras());
+        if (notificationCompat$Action.getRemoteInputs() != null) {
+            bundle.putParcelableArray(NotificationCompatExtras.EXTRA_REMOTE_INPUTS, toBundleArray(notificationCompat$Action.getRemoteInputs()));
         }
-        if (action.getDataOnlyRemoteInputs() != null) {
-            bundle.putParcelableArray(EXTRA_DATA_ONLY_REMOTE_INPUTS, toBundleArray(action.getDataOnlyRemoteInputs()));
+        if (notificationCompat$Action.getDataOnlyRemoteInputs() != null) {
+            bundle.putParcelableArray(EXTRA_DATA_ONLY_REMOTE_INPUTS, toBundleArray(notificationCompat$Action.getDataOnlyRemoteInputs()));
         }
-        bundle.putBoolean(EXTRA_ALLOW_GENERATED_REPLIES, action.getAllowGeneratedReplies());
+        bundle.putBoolean(EXTRA_ALLOW_GENERATED_REPLIES, notificationCompat$Action.getAllowGeneratedReplies());
         return bundle;
     }
 }

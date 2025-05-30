@@ -19,8 +19,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.graphics.drawable.DrawableContainerCompat;
 import androidx.appcompat.graphics.drawable.StateListDrawableCompat;
-import androidx.appcompat.resources.C0290R;
-import androidx.appcompat.resources.Compatibility;
+import androidx.appcompat.resources.Compatibility$Api18Impl;
+import androidx.appcompat.resources.Compatibility$Api21Impl;
+import androidx.appcompat.resources.R;
 import androidx.appcompat.widget.ResourceManagerInternal;
 import androidx.collection.LongSparseArray;
 import androidx.collection.SparseArrayCompat;
@@ -34,7 +35,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class AnimatedStateListDrawableCompat extends StateListDrawableCompat implements TintAwareDrawable {
     private static final String ELEMENT_ITEM = "item";
     private static final String ELEMENT_TRANSITION = "transition";
@@ -50,23 +51,21 @@ public class AnimatedStateListDrawableCompat extends StateListDrawableCompat imp
 
     /* compiled from: Taobao */
     private static class AnimatableTransition extends Transition {
-
-        /* renamed from: mA */
-        private final Animatable f58mA;
+        private final Animatable mA;
 
         AnimatableTransition(Animatable animatable) {
             super();
-            this.f58mA = animatable;
+            this.mA = animatable;
         }
 
         @Override // androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat.Transition
         public void start() {
-            this.f58mA.start();
+            this.mA.start();
         }
 
         @Override // androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat.Transition
         public void stop() {
-            this.f58mA.stop();
+            this.mA.stop();
         }
     }
 
@@ -130,13 +129,13 @@ public class AnimatedStateListDrawableCompat extends StateListDrawableCompat imp
             return (this.mTransitions.get(generateTransitionKey(i, i2), -1L).longValue() & REVERSED_BIT) != 0;
         }
 
-        @Override // androidx.appcompat.graphics.drawable.StateListDrawableCompat.StateListState, androidx.appcompat.graphics.drawable.DrawableContainerCompat.DrawableContainerState
+        @Override // androidx.appcompat.graphics.drawable.StateListDrawableCompat.StateListState
         void mutate() {
-            this.mTransitions = this.mTransitions.m938clone();
-            this.mStateIds = this.mStateIds.m940clone();
+            this.mTransitions = this.mTransitions.m20clone();
+            this.mStateIds = this.mStateIds.m22clone();
         }
 
-        @Override // androidx.appcompat.graphics.drawable.StateListDrawableCompat.StateListState, android.graphics.drawable.Drawable.ConstantState
+        @Override // androidx.appcompat.graphics.drawable.StateListDrawableCompat.StateListState
         @NonNull
         public Drawable newDrawable() {
             return new AnimatedStateListDrawableCompat(this, null);
@@ -146,31 +145,10 @@ public class AnimatedStateListDrawableCompat extends StateListDrawableCompat imp
             return (this.mTransitions.get(generateTransitionKey(i, i2), -1L).longValue() & REVERSIBLE_FLAG_BIT) != 0;
         }
 
-        @Override // androidx.appcompat.graphics.drawable.StateListDrawableCompat.StateListState, android.graphics.drawable.Drawable.ConstantState
+        @Override // androidx.appcompat.graphics.drawable.StateListDrawableCompat.StateListState
         @NonNull
         public Drawable newDrawable(Resources resources) {
             return new AnimatedStateListDrawableCompat(this, resources);
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    private static class AnimatedVectorDrawableTransition extends Transition {
-        private final AnimatedVectorDrawableCompat mAvd;
-
-        AnimatedVectorDrawableTransition(AnimatedVectorDrawableCompat animatedVectorDrawableCompat) {
-            super();
-            this.mAvd = animatedVectorDrawableCompat;
-        }
-
-        @Override // androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat.Transition
-        public void start() {
-            this.mAvd.start();
-        }
-
-        @Override // androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat.Transition
-        public void stop() {
-            this.mAvd.stop();
         }
     }
 
@@ -187,7 +165,7 @@ public class AnimatedStateListDrawableCompat extends StateListDrawableCompat imp
             FrameInterpolator frameInterpolator = new FrameInterpolator(animationDrawable, z);
             ObjectAnimator ofInt = ObjectAnimator.ofInt(animationDrawable, "currentIndex", i, i2);
             if (Build.VERSION.SDK_INT >= 18) {
-                Compatibility.Api18Impl.setAutoCancel(ofInt, true);
+                Compatibility$Api18Impl.setAutoCancel(ofInt, true);
             }
             ofInt.setDuration(frameInterpolator.getTotalDuration());
             ofInt.setInterpolator(frameInterpolator);
@@ -347,9 +325,9 @@ public class AnimatedStateListDrawableCompat extends StateListDrawableCompat imp
 
     private int parseItem(@NonNull Context context, @NonNull Resources resources, @NonNull XmlPullParser xmlPullParser, @NonNull AttributeSet attributeSet, @Nullable Resources.Theme theme) throws XmlPullParserException, IOException {
         int next;
-        TypedArray obtainAttributes = TypedArrayUtils.obtainAttributes(resources, theme, attributeSet, C0290R.styleable.AnimatedStateListDrawableItem);
-        int resourceId = obtainAttributes.getResourceId(C0290R.styleable.AnimatedStateListDrawableItem_android_id, 0);
-        int resourceId2 = obtainAttributes.getResourceId(C0290R.styleable.AnimatedStateListDrawableItem_android_drawable, -1);
+        TypedArray obtainAttributes = TypedArrayUtils.obtainAttributes(resources, theme, attributeSet, R.styleable.AnimatedStateListDrawableItem);
+        int resourceId = obtainAttributes.getResourceId(R.styleable.AnimatedStateListDrawableItem_android_id, 0);
+        int resourceId2 = obtainAttributes.getResourceId(R.styleable.AnimatedStateListDrawableItem_android_drawable, -1);
         Drawable drawable = resourceId2 > 0 ? ResourceManagerInternal.get().getDrawable(context, resourceId2) : null;
         obtainAttributes.recycle();
         int[] extractStateSet = extractStateSet(attributeSet);
@@ -360,7 +338,7 @@ public class AnimatedStateListDrawableCompat extends StateListDrawableCompat imp
             if (next != 2) {
                 throw new XmlPullParserException(xmlPullParser.getPositionDescription() + ITEM_MISSING_DRAWABLE_ERROR);
             }
-            drawable = xmlPullParser.getName().equals("vector") ? VectorDrawableCompat.createFromXmlInner(resources, xmlPullParser, attributeSet, theme) : Build.VERSION.SDK_INT >= 21 ? Compatibility.Api21Impl.createFromXmlInner(resources, xmlPullParser, attributeSet, theme) : Drawable.createFromXmlInner(resources, xmlPullParser, attributeSet);
+            drawable = xmlPullParser.getName().equals("vector") ? VectorDrawableCompat.createFromXmlInner(resources, xmlPullParser, attributeSet, theme) : Build.VERSION.SDK_INT >= 21 ? Compatibility$Api21Impl.createFromXmlInner(resources, xmlPullParser, attributeSet, theme) : Drawable.createFromXmlInner(resources, xmlPullParser, attributeSet);
         }
         if (drawable != null) {
             return this.mState.addStateSet(extractStateSet, drawable, resourceId);
@@ -370,12 +348,12 @@ public class AnimatedStateListDrawableCompat extends StateListDrawableCompat imp
 
     private int parseTransition(@NonNull Context context, @NonNull Resources resources, @NonNull XmlPullParser xmlPullParser, @NonNull AttributeSet attributeSet, @Nullable Resources.Theme theme) throws XmlPullParserException, IOException {
         int next;
-        TypedArray obtainAttributes = TypedArrayUtils.obtainAttributes(resources, theme, attributeSet, C0290R.styleable.AnimatedStateListDrawableTransition);
-        int resourceId = obtainAttributes.getResourceId(C0290R.styleable.AnimatedStateListDrawableTransition_android_fromId, -1);
-        int resourceId2 = obtainAttributes.getResourceId(C0290R.styleable.AnimatedStateListDrawableTransition_android_toId, -1);
-        int resourceId3 = obtainAttributes.getResourceId(C0290R.styleable.AnimatedStateListDrawableTransition_android_drawable, -1);
+        TypedArray obtainAttributes = TypedArrayUtils.obtainAttributes(resources, theme, attributeSet, R.styleable.AnimatedStateListDrawableTransition);
+        int resourceId = obtainAttributes.getResourceId(R.styleable.AnimatedStateListDrawableTransition_android_fromId, -1);
+        int resourceId2 = obtainAttributes.getResourceId(R.styleable.AnimatedStateListDrawableTransition_android_toId, -1);
+        int resourceId3 = obtainAttributes.getResourceId(R.styleable.AnimatedStateListDrawableTransition_android_drawable, -1);
         Drawable drawable = resourceId3 > 0 ? ResourceManagerInternal.get().getDrawable(context, resourceId3) : null;
-        boolean z = obtainAttributes.getBoolean(C0290R.styleable.AnimatedStateListDrawableTransition_android_reversible, false);
+        boolean z = obtainAttributes.getBoolean(R.styleable.AnimatedStateListDrawableTransition_android_reversible, false);
         obtainAttributes.recycle();
         if (drawable == null) {
             do {
@@ -384,7 +362,7 @@ public class AnimatedStateListDrawableCompat extends StateListDrawableCompat imp
             if (next != 2) {
                 throw new XmlPullParserException(xmlPullParser.getPositionDescription() + TRANSITION_MISSING_DRAWABLE_ERROR);
             }
-            drawable = xmlPullParser.getName().equals("animated-vector") ? AnimatedVectorDrawableCompat.createFromXmlInner(context, resources, xmlPullParser, attributeSet, theme) : Build.VERSION.SDK_INT >= 21 ? Compatibility.Api21Impl.createFromXmlInner(resources, xmlPullParser, attributeSet, theme) : Drawable.createFromXmlInner(resources, xmlPullParser, attributeSet);
+            drawable = xmlPullParser.getName().equals("animated-vector") ? AnimatedVectorDrawableCompat.createFromXmlInner(context, resources, xmlPullParser, attributeSet, theme) : Build.VERSION.SDK_INT >= 21 ? Compatibility$Api21Impl.createFromXmlInner(resources, xmlPullParser, attributeSet, theme) : Drawable.createFromXmlInner(resources, xmlPullParser, attributeSet);
         }
         if (drawable == null) {
             throw new XmlPullParserException(xmlPullParser.getPositionDescription() + TRANSITION_MISSING_DRAWABLE_ERROR);
@@ -426,7 +404,7 @@ public class AnimatedStateListDrawableCompat extends StateListDrawableCompat imp
         }
         boolean transitionHasReversibleFlag = animatedStateListState.transitionHasReversibleFlag(keyframeIdAt, keyframeIdAt2);
         selectDrawable(indexOfTransition);
-        Object current = getCurrent();
+        AnimatedVectorDrawableCompat current = getCurrent();
         if (current instanceof AnimationDrawable) {
             animatableTransition = new AnimationDrawableTransition((AnimationDrawable) current, animatedStateListState.isTransitionReversed(keyframeIdAt, keyframeIdAt2), transitionHasReversibleFlag);
         } else {
@@ -436,7 +414,7 @@ public class AnimatedStateListDrawableCompat extends StateListDrawableCompat imp
                 }
                 return false;
             }
-            animatableTransition = new AnimatedVectorDrawableTransition((AnimatedVectorDrawableCompat) current);
+            animatableTransition = new AnimatedVectorDrawableTransition(current);
         }
         animatableTransition.start();
         this.mTransition = animatableTransition;
@@ -448,13 +426,13 @@ public class AnimatedStateListDrawableCompat extends StateListDrawableCompat imp
     private void updateStateFromTypedArray(TypedArray typedArray) {
         AnimatedStateListState animatedStateListState = this.mState;
         if (Build.VERSION.SDK_INT >= 21) {
-            animatedStateListState.mChangingConfigurations |= Compatibility.Api21Impl.getChangingConfigurations(typedArray);
+            ((DrawableContainerCompat.DrawableContainerState) animatedStateListState).mChangingConfigurations |= Compatibility$Api21Impl.getChangingConfigurations(typedArray);
         }
-        animatedStateListState.setVariablePadding(typedArray.getBoolean(C0290R.styleable.AnimatedStateListDrawableCompat_android_variablePadding, animatedStateListState.mVariablePadding));
-        animatedStateListState.setConstantSize(typedArray.getBoolean(C0290R.styleable.AnimatedStateListDrawableCompat_android_constantSize, animatedStateListState.mConstantSize));
-        animatedStateListState.setEnterFadeDuration(typedArray.getInt(C0290R.styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration, animatedStateListState.mEnterFadeDuration));
-        animatedStateListState.setExitFadeDuration(typedArray.getInt(C0290R.styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration, animatedStateListState.mExitFadeDuration));
-        setDither(typedArray.getBoolean(C0290R.styleable.AnimatedStateListDrawableCompat_android_dither, animatedStateListState.mDither));
+        animatedStateListState.setVariablePadding(typedArray.getBoolean(R.styleable.AnimatedStateListDrawableCompat_android_variablePadding, ((DrawableContainerCompat.DrawableContainerState) animatedStateListState).mVariablePadding));
+        animatedStateListState.setConstantSize(typedArray.getBoolean(R.styleable.AnimatedStateListDrawableCompat_android_constantSize, ((DrawableContainerCompat.DrawableContainerState) animatedStateListState).mConstantSize));
+        animatedStateListState.setEnterFadeDuration(typedArray.getInt(R.styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration, ((DrawableContainerCompat.DrawableContainerState) animatedStateListState).mEnterFadeDuration));
+        animatedStateListState.setExitFadeDuration(typedArray.getInt(R.styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration, ((DrawableContainerCompat.DrawableContainerState) animatedStateListState).mExitFadeDuration));
+        setDither(typedArray.getBoolean(R.styleable.AnimatedStateListDrawableCompat_android_dither, ((DrawableContainerCompat.DrawableContainerState) animatedStateListState).mDither));
     }
 
     public void addState(@NonNull int[] iArr, @NonNull Drawable drawable, int i) {
@@ -476,8 +454,8 @@ public class AnimatedStateListDrawableCompat extends StateListDrawableCompat imp
 
     @Override // androidx.appcompat.graphics.drawable.StateListDrawableCompat
     public void inflate(@NonNull Context context, @NonNull Resources resources, @NonNull XmlPullParser xmlPullParser, @NonNull AttributeSet attributeSet, @Nullable Resources.Theme theme) throws XmlPullParserException, IOException {
-        TypedArray obtainAttributes = TypedArrayUtils.obtainAttributes(resources, theme, attributeSet, C0290R.styleable.AnimatedStateListDrawableCompat);
-        setVisible(obtainAttributes.getBoolean(C0290R.styleable.AnimatedStateListDrawableCompat_android_visible, true), true);
+        TypedArray obtainAttributes = TypedArrayUtils.obtainAttributes(resources, theme, attributeSet, R.styleable.AnimatedStateListDrawableCompat);
+        setVisible(obtainAttributes.getBoolean(R.styleable.AnimatedStateListDrawableCompat_android_visible, true), true);
         updateStateFromTypedArray(obtainAttributes);
         updateDensity(resources);
         obtainAttributes.recycle();

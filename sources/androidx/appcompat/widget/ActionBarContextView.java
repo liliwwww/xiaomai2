@@ -12,7 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R;
+import androidx.appcompat.R$attr;
+import androidx.appcompat.R$layout;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.constraintlayout.core.widgets.analyzer.BasicMeasure;
@@ -21,7 +23,7 @@ import androidx.core.view.ViewPropertyAnimatorCompat;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ActionBarContextView extends AbsActionBarView {
     private View mClose;
     private View mCloseButton;
@@ -42,11 +44,11 @@ public class ActionBarContextView extends AbsActionBarView {
 
     private void initTitle() {
         if (this.mTitleLayout == null) {
-            LayoutInflater.from(getContext()).inflate(C0257R.layout.abc_action_bar_title_item, this);
+            LayoutInflater.from(getContext()).inflate(R$layout.abc_action_bar_title_item, this);
             LinearLayout linearLayout = (LinearLayout) getChildAt(getChildCount() - 1);
             this.mTitleLayout = linearLayout;
-            this.mTitleView = (TextView) linearLayout.findViewById(C0257R.id.action_bar_title);
-            this.mSubtitleView = (TextView) this.mTitleLayout.findViewById(C0257R.id.action_bar_subtitle);
+            this.mTitleView = (TextView) linearLayout.findViewById(R.id.action_bar_title);
+            this.mSubtitleView = (TextView) this.mTitleLayout.findViewById(R.id.action_bar_subtitle);
             if (this.mTitleStyleRes != 0) {
                 this.mTitleView.setTextAppearance(getContext(), this.mTitleStyleRes);
             }
@@ -137,7 +139,7 @@ public class ActionBarContextView extends AbsActionBarView {
         } else if (view.getParent() == null) {
             addView(this.mClose);
         }
-        View findViewById = this.mClose.findViewById(C0257R.id.action_mode_close_button);
+        View findViewById = this.mClose.findViewById(R.id.action_mode_close_button);
         this.mCloseButton = findViewById;
         findViewById.setOnClickListener(new View.OnClickListener() { // from class: androidx.appcompat.widget.ActionBarContextView.1
             @Override // android.view.View.OnClickListener
@@ -145,7 +147,7 @@ public class ActionBarContextView extends AbsActionBarView {
                 actionMode.finish();
             }
         });
-        MenuBuilder menuBuilder = (MenuBuilder) actionMode.getMenu();
+        MenuBuilder menu = actionMode.getMenu();
         ActionMenuPresenter actionMenuPresenter = this.mActionMenuPresenter;
         if (actionMenuPresenter != null) {
             actionMenuPresenter.dismissPopupMenus();
@@ -154,11 +156,11 @@ public class ActionBarContextView extends AbsActionBarView {
         this.mActionMenuPresenter = actionMenuPresenter2;
         actionMenuPresenter2.setReserveOverflow(true);
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(-2, -1);
-        menuBuilder.addMenuPresenter(this.mActionMenuPresenter, this.mPopupContext);
-        ActionMenuView actionMenuView = (ActionMenuView) this.mActionMenuPresenter.getMenuView(this);
-        this.mMenuView = actionMenuView;
-        ViewCompat.setBackground(actionMenuView, null);
-        addView(this.mMenuView, layoutParams);
+        menu.addMenuPresenter(this.mActionMenuPresenter, this.mPopupContext);
+        ActionMenuView menuView = this.mActionMenuPresenter.getMenuView(this);
+        this.mMenuView = menuView;
+        ViewCompat.setBackground(menuView, null);
+        addView((View) this.mMenuView, layoutParams);
     }
 
     @Override // androidx.appcompat.widget.AbsActionBarView
@@ -391,17 +393,17 @@ public class ActionBarContextView extends AbsActionBarView {
     }
 
     public ActionBarContextView(@NonNull Context context, @Nullable AttributeSet attributeSet) {
-        this(context, attributeSet, C0257R.attr.actionModeStyle);
+        this(context, attributeSet, R$attr.actionModeStyle);
     }
 
     public ActionBarContextView(@NonNull Context context, @Nullable AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
-        TintTypedArray obtainStyledAttributes = TintTypedArray.obtainStyledAttributes(context, attributeSet, C0257R.styleable.ActionMode, i, 0);
-        ViewCompat.setBackground(this, obtainStyledAttributes.getDrawable(C0257R.styleable.ActionMode_background));
-        this.mTitleStyleRes = obtainStyledAttributes.getResourceId(C0257R.styleable.ActionMode_titleTextStyle, 0);
-        this.mSubtitleStyleRes = obtainStyledAttributes.getResourceId(C0257R.styleable.ActionMode_subtitleTextStyle, 0);
-        this.mContentHeight = obtainStyledAttributes.getLayoutDimension(C0257R.styleable.ActionMode_height, 0);
-        this.mCloseItemLayout = obtainStyledAttributes.getResourceId(C0257R.styleable.ActionMode_closeItemLayout, C0257R.layout.abc_action_mode_close_item_material);
+        TintTypedArray obtainStyledAttributes = TintTypedArray.obtainStyledAttributes(context, attributeSet, R.styleable.ActionMode, i, 0);
+        ViewCompat.setBackground(this, obtainStyledAttributes.getDrawable(R.styleable.ActionMode_background));
+        this.mTitleStyleRes = obtainStyledAttributes.getResourceId(R.styleable.ActionMode_titleTextStyle, 0);
+        this.mSubtitleStyleRes = obtainStyledAttributes.getResourceId(R.styleable.ActionMode_subtitleTextStyle, 0);
+        this.mContentHeight = obtainStyledAttributes.getLayoutDimension(R.styleable.ActionMode_height, 0);
+        this.mCloseItemLayout = obtainStyledAttributes.getResourceId(R.styleable.ActionMode_closeItemLayout, R$layout.abc_action_mode_close_item_material);
         obtainStyledAttributes.recycle();
     }
 }

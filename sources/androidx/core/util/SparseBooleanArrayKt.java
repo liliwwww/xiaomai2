@@ -10,7 +10,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class SparseBooleanArrayKt {
     public static final boolean contains(@NotNull SparseBooleanArray sparseBooleanArray, int i) {
         Intrinsics.checkNotNullParameter(sparseBooleanArray, "<this>");
@@ -64,30 +64,9 @@ public final class SparseBooleanArrayKt {
     }
 
     @NotNull
-    public static final IntIterator keyIterator(@NotNull final SparseBooleanArray sparseBooleanArray) {
+    public static final IntIterator keyIterator(@NotNull SparseBooleanArray sparseBooleanArray) {
         Intrinsics.checkNotNullParameter(sparseBooleanArray, "<this>");
-        return new IntIterator() { // from class: androidx.core.util.SparseBooleanArrayKt$keyIterator$1
-            private int index;
-
-            public final int getIndex() {
-                return this.index;
-            }
-
-            public boolean hasNext() {
-                return this.index < sparseBooleanArray.size();
-            }
-
-            public int nextInt() {
-                SparseBooleanArray sparseBooleanArray2 = sparseBooleanArray;
-                int i = this.index;
-                this.index = i + 1;
-                return sparseBooleanArray2.keyAt(i);
-            }
-
-            public final void setIndex(int i) {
-                this.index = i;
-            }
-        };
+        return new keyIterator.1(sparseBooleanArray);
     }
 
     @NotNull
@@ -125,29 +104,8 @@ public final class SparseBooleanArrayKt {
     }
 
     @NotNull
-    public static final BooleanIterator valueIterator(@NotNull final SparseBooleanArray sparseBooleanArray) {
+    public static final BooleanIterator valueIterator(@NotNull SparseBooleanArray sparseBooleanArray) {
         Intrinsics.checkNotNullParameter(sparseBooleanArray, "<this>");
-        return new BooleanIterator() { // from class: androidx.core.util.SparseBooleanArrayKt$valueIterator$1
-            private int index;
-
-            public final int getIndex() {
-                return this.index;
-            }
-
-            public boolean hasNext() {
-                return this.index < sparseBooleanArray.size();
-            }
-
-            public boolean nextBoolean() {
-                SparseBooleanArray sparseBooleanArray2 = sparseBooleanArray;
-                int i = this.index;
-                this.index = i + 1;
-                return sparseBooleanArray2.valueAt(i);
-            }
-
-            public final void setIndex(int i) {
-                this.index = i;
-            }
-        };
+        return new valueIterator.1(sparseBooleanArray);
     }
 }

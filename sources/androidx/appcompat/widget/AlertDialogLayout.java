@@ -7,14 +7,14 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.C0257R;
+import androidx.appcompat.R;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.constraintlayout.core.widgets.analyzer.BasicMeasure;
 import androidx.core.view.ViewCompat;
 
 /* compiled from: Taobao */
 @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class AlertDialogLayout extends LinearLayoutCompat {
     public AlertDialogLayout(@Nullable Context context) {
         super(context);
@@ -67,12 +67,12 @@ public class AlertDialogLayout extends LinearLayoutCompat {
             View childAt = getChildAt(i7);
             if (childAt.getVisibility() != 8) {
                 int id = childAt.getId();
-                if (id == C0257R.id.topPanel) {
+                if (id == R.id.topPanel) {
                     view = childAt;
-                } else if (id == C0257R.id.buttonPanel) {
+                } else if (id == R.id.buttonPanel) {
                     view2 = childAt;
                 } else {
-                    if ((id != C0257R.id.contentPanel && id != C0257R.id.customPanel) || view3 != null) {
+                    if ((id != R.id.contentPanel && id != R.id.customPanel) || view3 != null) {
                         return false;
                     }
                     view3 = childAt;
@@ -144,7 +144,7 @@ public class AlertDialogLayout extends LinearLayoutCompat {
     @Override // androidx.appcompat.widget.LinearLayoutCompat, android.view.ViewGroup, android.view.View
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     protected void onLayout(boolean r18, int r19, int r20, int r21, int r22) {
         /*

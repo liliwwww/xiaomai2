@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 import tb.hw5;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Utf8Old extends Utf8 {
     private static final ThreadLocal<Cache> CACHE = ThreadLocal.withInitial(hw5.a);
 
@@ -30,7 +30,6 @@ public class Utf8Old extends Utf8 {
         return new Cache();
     }
 
-    @Override // androidx.emoji2.text.flatbuffer.Utf8
     public String decodeUtf8(ByteBuffer byteBuffer, int i, int i2) {
         CharsetDecoder charsetDecoder = CACHE.get().decoder;
         charsetDecoder.reset();
@@ -44,7 +43,6 @@ public class Utf8Old extends Utf8 {
         }
     }
 
-    @Override // androidx.emoji2.text.flatbuffer.Utf8
     public void encodeUtf8(CharSequence charSequence, ByteBuffer byteBuffer) {
         Cache cache = CACHE.get();
         if (cache.lastInput != charSequence) {
@@ -53,7 +51,6 @@ public class Utf8Old extends Utf8 {
         byteBuffer.put(cache.lastOutput);
     }
 
-    @Override // androidx.emoji2.text.flatbuffer.Utf8
     public int encodedLength(CharSequence charSequence) {
         Cache cache = CACHE.get();
         int length = (int) (charSequence.length() * cache.encoder.maxBytesPerChar());

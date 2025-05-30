@@ -19,7 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ListFragment extends Fragment {
     static final int INTERNAL_EMPTY_ID = 16711681;
     static final int INTERNAL_LIST_CONTAINER_ID = 16711683;
@@ -33,19 +33,8 @@ public class ListFragment extends Fragment {
     View mProgressContainer;
     TextView mStandardEmptyView;
     private final Handler mHandler = new Handler();
-    private final Runnable mRequestFocus = new Runnable() { // from class: androidx.fragment.app.ListFragment.1
-        @Override // java.lang.Runnable
-        public void run() {
-            ListView listView = ListFragment.this.mList;
-            listView.focusableViewAvailable(listView);
-        }
-    };
-    private final AdapterView.OnItemClickListener mOnClickListener = new AdapterView.OnItemClickListener() { // from class: androidx.fragment.app.ListFragment.2
-        @Override // android.widget.AdapterView.OnItemClickListener
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long j) {
-            ListFragment.this.onListItemClick((ListView) adapterView, view, i, j);
-        }
-    };
+    private final Runnable mRequestFocus = new 1(this);
+    private final AdapterView.OnItemClickListener mOnClickListener = new 2(this);
 
     private void ensureList() {
         if (this.mList != null) {
@@ -120,7 +109,6 @@ public class ListFragment extends Fragment {
         return this.mList.getSelectedItemPosition();
     }
 
-    @Override // androidx.fragment.app.Fragment
     @Nullable
     public View onCreateView(@NonNull LayoutInflater layoutInflater, @Nullable ViewGroup viewGroup, @Nullable Bundle bundle) {
         Context requireContext = requireContext();
@@ -147,7 +135,6 @@ public class ListFragment extends Fragment {
         return frameLayout;
     }
 
-    @Override // androidx.fragment.app.Fragment
     public void onDestroyView() {
         this.mHandler.removeCallbacks(this.mRequestFocus);
         this.mList = null;
@@ -162,7 +149,6 @@ public class ListFragment extends Fragment {
     public void onListItemClick(@NonNull ListView listView, @NonNull View view, int i, long j) {
     }
 
-    @Override // androidx.fragment.app.Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle bundle) {
         super.onViewCreated(view, bundle);
         ensureList();

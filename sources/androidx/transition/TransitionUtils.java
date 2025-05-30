@@ -2,7 +2,6 @@ package androidx.transition;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
-import android.animation.TypeEvaluator;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.RectF;
@@ -10,40 +9,14 @@ import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import androidx.constraintlayout.core.widgets.analyzer.BasicMeasure;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class TransitionUtils {
     private static final boolean HAS_IS_ATTACHED_TO_WINDOW;
     private static final boolean HAS_OVERLAY;
     private static final boolean HAS_PICTURE_BITMAP;
     private static final int MAX_IMAGE_SIZE = 1048576;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    static class MatrixEvaluator implements TypeEvaluator<Matrix> {
-        final float[] mTempStartValues = new float[9];
-        final float[] mTempEndValues = new float[9];
-        final Matrix mTempMatrix = new Matrix();
-
-        MatrixEvaluator() {
-        }
-
-        @Override // android.animation.TypeEvaluator
-        public Matrix evaluate(float f, Matrix matrix, Matrix matrix2) {
-            matrix.getValues(this.mTempStartValues);
-            matrix2.getValues(this.mTempEndValues);
-            for (int i = 0; i < 9; i++) {
-                float[] fArr = this.mTempEndValues;
-                float f2 = fArr[i];
-                float[] fArr2 = this.mTempStartValues;
-                fArr[i] = fArr2[i] + ((f2 - fArr2[i]) * f);
-            }
-            this.mTempMatrix.setValues(this.mTempEndValues);
-            return this.mTempMatrix;
-        }
-    }
 
     static {
         int i = Build.VERSION.SDK_INT;
@@ -72,7 +45,7 @@ class TransitionUtils {
         if (createViewBitmap != null) {
             imageView.setImageBitmap(createViewBitmap);
         }
-        imageView.measure(View.MeasureSpec.makeMeasureSpec(round3 - round, BasicMeasure.EXACTLY), View.MeasureSpec.makeMeasureSpec(round4 - round2, BasicMeasure.EXACTLY));
+        imageView.measure(View.MeasureSpec.makeMeasureSpec(round3 - round, 1073741824), View.MeasureSpec.makeMeasureSpec(round4 - round2, 1073741824));
         imageView.layout(round, round2, round3, round4);
         return imageView;
     }
@@ -81,7 +54,7 @@ class TransitionUtils {
     /* JADX WARN: Removed duplicated region for block: B:19:0x0088  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private static android.graphics.Bitmap createViewBitmap(android.view.View r9, android.graphics.Matrix r10, android.graphics.RectF r11, android.view.ViewGroup r12) {
         /*

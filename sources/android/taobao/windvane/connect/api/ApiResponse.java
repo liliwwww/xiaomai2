@@ -9,7 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ApiResponse {
     public static final String ERR_CODE = "ERR_CODE";
     public static final String ERR_SID_INVALID = "ERR_SID_INVALID";
@@ -23,9 +23,7 @@ public class ApiResponse {
     public String errCode;
     public String errInfo;
     public boolean success;
-
-    /* renamed from: v */
-    public String f6v;
+    public String v;
 
     public ApiResponse parseJsonResult(String str) {
         this.success = false;
@@ -33,7 +31,7 @@ public class ApiResponse {
             this.data = new JSONObject(str);
             this.success = true;
         } catch (JSONException unused) {
-            TaoLog.m21e(TAG, "parseJsonResult fail, str = " + str);
+            TaoLog.e(TAG, "parseJsonResult fail, str = " + str);
             this.success = false;
         }
         return this;
@@ -43,10 +41,10 @@ public class ApiResponse {
         this.success = false;
         try {
             JSONObject jSONObject = new JSONObject(str);
-            this.api = jSONObject.getString(ApiConstants.API);
-            this.f6v = jSONObject.getString(ApiConstants.f5V);
-            parseRet(jSONObject.getJSONArray(ApiConstants.RET));
-            this.data = jSONObject.getJSONObject(ApiConstants.DATA);
+            this.api = jSONObject.getString("api");
+            this.v = jSONObject.getString("v");
+            parseRet(jSONObject.getJSONArray("ret"));
+            this.data = jSONObject.getJSONObject("data");
         } catch (JSONException e) {
             e.printStackTrace();
             this.success = false;

@@ -1,17 +1,17 @@
 package androidx.compose.foundation;
 
-import androidx.compose.p004ui.graphics.AndroidPath_androidKt;
-import androidx.compose.p004ui.graphics.Canvas;
-import androidx.compose.p004ui.graphics.ImageBitmap;
-import androidx.compose.p004ui.graphics.Path;
-import androidx.compose.p004ui.graphics.drawscope.CanvasDrawScope;
+import androidx.compose.ui.graphics.AndroidPath_androidKt;
+import androidx.compose.ui.graphics.Canvas;
+import androidx.compose.ui.graphics.ImageBitmap;
+import androidx.compose.ui.graphics.Path;
+import androidx.compose.ui.graphics.drawscope.CanvasDrawScope;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class BorderCache {
 
     @Nullable
@@ -76,20 +76,20 @@ final class BorderCache {
 
     /* JADX WARN: Code restructure failed: missing block: B:11:0x004a, code lost:
     
-        if (androidx.compose.p004ui.graphics.ImageBitmapConfig.m2968equalsimpl(r31, r3 != null ? androidx.compose.p004ui.graphics.ImageBitmapConfig.m2966boximpl(r3.mo2665getConfig_sVssgQ()) : null) != false) goto L17;
+        if (androidx.compose.ui.graphics.ImageBitmapConfig.m1141equalsimpl(r31, r3 != null ? androidx.compose.ui.graphics.ImageBitmapConfig.m1139boximpl(r3.getConfig-_sVssgQ()) : null) != false) goto L17;
      */
     @org.jetbrains.annotations.NotNull
     /* renamed from: drawBorderCache-EMwLDEs, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public final androidx.compose.p004ui.graphics.ImageBitmap m1122drawBorderCacheEMwLDEs(@org.jetbrains.annotations.NotNull androidx.compose.p004ui.draw.CacheDrawScope r28, long r29, int r31, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.p004ui.graphics.drawscope.DrawScope, kotlin.Unit> r32) {
+    public final androidx.compose.ui.graphics.ImageBitmap m123drawBorderCacheEMwLDEs(@org.jetbrains.annotations.NotNull androidx.compose.ui.draw.CacheDrawScope r28, long r29, int r31, @org.jetbrains.annotations.NotNull kotlin.jvm.functions.Function1<? super androidx.compose.ui.graphics.drawscope.DrawScope, kotlin.Unit> r32) {
         /*
             Method dump skipped, instructions count: 289
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.BorderCache.m1122drawBorderCacheEMwLDEs(androidx.compose.ui.draw.CacheDrawScope, long, int, kotlin.jvm.functions.Function1):androidx.compose.ui.graphics.ImageBitmap");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.BorderCache.m123drawBorderCacheEMwLDEs(androidx.compose.ui.draw.CacheDrawScope, long, int, kotlin.jvm.functions.Function1):androidx.compose.ui.graphics.ImageBitmap");
     }
 
     public boolean equals(@Nullable Object obj) {

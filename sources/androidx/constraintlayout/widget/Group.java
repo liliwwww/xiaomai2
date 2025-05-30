@@ -5,44 +5,41 @@ import android.util.AttributeSet;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Group extends ConstraintHelper {
     public Group(Context context) {
         super(context);
     }
 
-    @Override // androidx.constraintlayout.widget.ConstraintHelper
     protected void applyLayoutFeaturesInConstraintSet(ConstraintLayout constraintLayout) {
         applyLayoutFeatures(constraintLayout);
     }
 
-    @Override // androidx.constraintlayout.widget.ConstraintHelper
     protected void init(AttributeSet attributeSet) {
         super.init(attributeSet);
-        this.mUseViewMeasure = false;
+        ((ConstraintHelper) this).mUseViewMeasure = false;
     }
 
-    @Override // androidx.constraintlayout.widget.ConstraintHelper, android.view.View
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         applyLayoutFeatures();
     }
 
-    @Override // android.view.View
+    /* JADX WARN: Multi-variable type inference failed */
     public void setElevation(float f) {
-        super.setElevation(f);
+        super/*android.view.View*/.setElevation(f);
         applyLayoutFeatures();
     }
 
-    @Override // android.view.View
+    /* JADX WARN: Multi-variable type inference failed */
     public void setVisibility(int i) {
-        super.setVisibility(i);
+        super/*android.view.View*/.setVisibility(i);
         applyLayoutFeatures();
     }
 
-    @Override // androidx.constraintlayout.widget.ConstraintHelper
+    /* JADX WARN: Multi-variable type inference failed */
     public void updatePostLayout(ConstraintLayout constraintLayout) {
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) getLayoutParams();
+        ConstraintLayout.LayoutParams layoutParams = getLayoutParams();
         layoutParams.widget.setWidth(0);
         layoutParams.widget.setHeight(0);
     }

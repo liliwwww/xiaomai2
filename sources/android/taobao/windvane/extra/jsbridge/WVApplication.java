@@ -9,24 +9,22 @@ import android.taobao.windvane.jsbridge.WVApiPlugin;
 import android.taobao.windvane.jsbridge.WVCallBackContext;
 import android.taobao.windvane.jsbridge.WVResult;
 import android.taobao.windvane.jsbridge.utils.WVUtils;
-import androidx.core.app.NotificationCompat;
-import androidx.core.os.EnvironmentCompat;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVApplication extends WVApiPlugin {
     private void getNotificationSettings(WVCallBackContext wVCallBackContext, String str) {
         WVResult wVResult = new WVResult();
         if (Build.VERSION.SDK_INT < 22) {
-            wVResult.addData(NotificationCompat.CATEGORY_STATUS, EnvironmentCompat.MEDIA_UNKNOWN);
+            wVResult.addData("status", "unknown");
             wVCallBackContext.success(wVResult);
         } else if (WVUtils.isNotificationEnabled(this.mContext)) {
-            wVResult.addData(NotificationCompat.CATEGORY_STATUS, "authorized");
+            wVResult.addData("status", "authorized");
             wVCallBackContext.success(wVResult);
         } else {
-            wVResult.addData(NotificationCompat.CATEGORY_STATUS, "denied");
+            wVResult.addData("status", "denied");
             wVCallBackContext.success(wVResult);
         }
     }
@@ -37,7 +35,7 @@ public class WVApplication extends WVApiPlugin {
             try {
                 str2 = new JSONObject(str).optString("type", "");
             } catch (JSONException unused) {
-                wVCallBackContext.error(new WVResult(WVResult.PARAM_ERR));
+                wVCallBackContext.error(new WVResult("HY_PARAM_ERR"));
                 str2 = null;
             }
             if (!"Notification".equals(str2)) {
@@ -50,7 +48,7 @@ public class WVApplication extends WVApiPlugin {
                     return;
                 } else {
                     WVResult wVResult = new WVResult();
-                    wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "fail to open Application Settings");
+                    wVResult.addData("msg", "fail to open Application Settings");
                     wVCallBackContext.error(wVResult);
                     return;
                 }
@@ -68,7 +66,7 @@ public class WVApplication extends WVApiPlugin {
                 }
             }
             WVResult wVResult2 = new WVResult();
-            wVResult2.addData(NotificationCompat.CATEGORY_MESSAGE, "fail to open Notification Settings");
+            wVResult2.addData("msg", "fail to open Notification Settings");
             wVCallBackContext.error(wVResult2);
         } catch (Throwable unused2) {
             wVCallBackContext.error();

@@ -12,7 +12,7 @@ import tb.g70;
 import tb.h70;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class ContentLoadingProgressBar extends ProgressBar {
     private static final int MIN_DELAY_MS = 500;
     private static final int MIN_SHOW_TIME_MS = 500;

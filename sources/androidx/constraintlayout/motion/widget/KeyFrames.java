@@ -5,7 +5,6 @@ import android.util.Log;
 import android.util.Xml;
 import androidx.constraintlayout.core.motion.utils.TypedValues;
 import androidx.constraintlayout.widget.ConstraintAttribute;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class KeyFrames {
     private static final String CUSTOM_ATTRIBUTE = "CustomAttribute";
     private static final String CUSTOM_METHOD = "CustomMethod";
@@ -30,7 +29,7 @@ public class KeyFrames {
         sKeyMakers = hashMap;
         try {
             hashMap.put("KeyAttribute", KeyAttributes.class.getConstructor(new Class[0]));
-            sKeyMakers.put(TypedValues.PositionType.NAME, KeyPosition.class.getConstructor(new Class[0]));
+            sKeyMakers.put("KeyPosition", KeyPosition.class.getConstructor(new Class[0]));
             sKeyMakers.put(TypedValues.CycleType.NAME, KeyCycle.class.getConstructor(new Class[0]));
             sKeyMakers.put("KeyTimeCycle", KeyTimeCycle.class.getConstructor(new Class[0]));
             sKeyMakers.put(TypedValues.TriggerType.NAME, KeyTrigger.class.getConstructor(new Class[0]));
@@ -63,7 +62,7 @@ public class KeyFrames {
             Iterator<Key> it = arrayList2.iterator();
             while (it.hasNext()) {
                 Key next = it.next();
-                if (next.matches(((ConstraintLayout.LayoutParams) motionController.mView.getLayoutParams()).constraintTag)) {
+                if (next.matches(motionController.mView.getLayoutParams().constraintTag)) {
                     motionController.addKey(next);
                 }
             }
@@ -99,7 +98,7 @@ public class KeyFrames {
             int eventType = xmlPullParser.getEventType();
             while (eventType != 1) {
                 if (eventType != 2) {
-                    if (eventType == 3 && ViewTransition.KEY_FRAME_SET_TAG.equals(xmlPullParser.getName())) {
+                    if (eventType == 3 && "KeyFrameSet".equals(xmlPullParser.getName())) {
                         return;
                     }
                 } else {
@@ -126,11 +125,11 @@ public class KeyFrames {
                         } else {
                             throw new NullPointerException("Keymaker for " + name + " not found");
                         }
-                    } else if (name.equalsIgnoreCase("CustomAttribute")) {
+                    } else if (name.equalsIgnoreCase(CUSTOM_ATTRIBUTE)) {
                         if (key2 != null && (hashMap2 = key2.mCustomConstraints) != null) {
                             ConstraintAttribute.parse(context, xmlPullParser, hashMap2);
                         }
-                    } else if (name.equalsIgnoreCase("CustomMethod") && key2 != null && (hashMap = key2.mCustomConstraints) != null) {
+                    } else if (name.equalsIgnoreCase(CUSTOM_METHOD) && key2 != null && (hashMap = key2.mCustomConstraints) != null) {
                         ConstraintAttribute.parse(context, xmlPullParser, hashMap);
                     }
                 }

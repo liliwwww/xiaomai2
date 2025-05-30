@@ -2,7 +2,7 @@ package androidx.appcompat.view;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface CollapsibleActionView {
     void onActionViewCollapsed();
 

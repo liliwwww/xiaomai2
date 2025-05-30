@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.collection.ArraySet;
 import androidx.core.util.Preconditions;
 import androidx.emoji2.text.DefaultEmojiCompatConfig;
@@ -34,12 +35,12 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /* compiled from: Taobao */
 @AnyThread
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class EmojiCompat {
     public static final String EDITOR_INFO_METAVERSION_KEY = "android.support.text.emoji.emojiCompat_metadataVersion";
     public static final String EDITOR_INFO_REPLACE_ALL_KEY = "android.support.text.emoji.emojiCompat_replaceAll";
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     static final int EMOJI_COUNT_UNLIMITED = Integer.MAX_VALUE;
     public static final int EMOJI_FALLBACK = 2;
     public static final int EMOJI_SUPPORTED = 1;
@@ -97,140 +98,8 @@ public class EmojiCompat {
 
     /* compiled from: Taobao */
     @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     public @interface CodepointSequenceMatchResult {
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static class CompatInternal {
-        final EmojiCompat mEmojiCompat;
-
-        CompatInternal(EmojiCompat emojiCompat) {
-            this.mEmojiCompat = emojiCompat;
-        }
-
-        String getAssetSignature() {
-            return "";
-        }
-
-        int getEmojiEnd(@NonNull CharSequence charSequence, @IntRange(from = 0) int i) {
-            return -1;
-        }
-
-        public int getEmojiMatch(CharSequence charSequence, int i) {
-            return 0;
-        }
-
-        int getEmojiStart(@NonNull CharSequence charSequence, @IntRange(from = 0) int i) {
-            return -1;
-        }
-
-        boolean hasEmojiGlyph(@NonNull CharSequence charSequence) {
-            return false;
-        }
-
-        boolean hasEmojiGlyph(@NonNull CharSequence charSequence, int i) {
-            return false;
-        }
-
-        void loadMetadata() {
-            this.mEmojiCompat.onMetadataLoadSuccess();
-        }
-
-        CharSequence process(@NonNull CharSequence charSequence, @IntRange(from = 0) int i, @IntRange(from = 0) int i2, @IntRange(from = 0) int i3, boolean z) {
-            return charSequence;
-        }
-
-        void updateEditorInfoAttrs(@NonNull EditorInfo editorInfo) {
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(19)
-    /* loaded from: classes2.dex */
-    private static final class CompatInternal19 extends CompatInternal {
-        private volatile MetadataRepo mMetadataRepo;
-        private volatile EmojiProcessor mProcessor;
-
-        CompatInternal19(EmojiCompat emojiCompat) {
-            super(emojiCompat);
-        }
-
-        @Override // androidx.emoji2.text.EmojiCompat.CompatInternal
-        String getAssetSignature() {
-            String sourceSha = this.mMetadataRepo.getMetadataList().sourceSha();
-            return sourceSha == null ? "" : sourceSha;
-        }
-
-        @Override // androidx.emoji2.text.EmojiCompat.CompatInternal
-        int getEmojiEnd(@NonNull CharSequence charSequence, int i) {
-            return this.mProcessor.getEmojiEnd(charSequence, i);
-        }
-
-        @Override // androidx.emoji2.text.EmojiCompat.CompatInternal
-        public int getEmojiMatch(CharSequence charSequence, int i) {
-            return this.mProcessor.getEmojiMatch(charSequence, i);
-        }
-
-        @Override // androidx.emoji2.text.EmojiCompat.CompatInternal
-        int getEmojiStart(@NonNull CharSequence charSequence, int i) {
-            return this.mProcessor.getEmojiStart(charSequence, i);
-        }
-
-        @Override // androidx.emoji2.text.EmojiCompat.CompatInternal
-        boolean hasEmojiGlyph(@NonNull CharSequence charSequence) {
-            return this.mProcessor.getEmojiMatch(charSequence) == 1;
-        }
-
-        @Override // androidx.emoji2.text.EmojiCompat.CompatInternal
-        void loadMetadata() {
-            try {
-                this.mEmojiCompat.mMetadataLoader.load(new MetadataRepoLoaderCallback() { // from class: androidx.emoji2.text.EmojiCompat.CompatInternal19.1
-                    @Override // androidx.emoji2.text.EmojiCompat.MetadataRepoLoaderCallback
-                    public void onFailed(@Nullable Throwable th) {
-                        CompatInternal19.this.mEmojiCompat.onMetadataLoadFailed(th);
-                    }
-
-                    @Override // androidx.emoji2.text.EmojiCompat.MetadataRepoLoaderCallback
-                    public void onLoaded(@NonNull MetadataRepo metadataRepo) {
-                        CompatInternal19.this.onMetadataLoadSuccess(metadataRepo);
-                    }
-                });
-            } catch (Throwable th) {
-                this.mEmojiCompat.onMetadataLoadFailed(th);
-            }
-        }
-
-        void onMetadataLoadSuccess(@NonNull MetadataRepo metadataRepo) {
-            if (metadataRepo == null) {
-                this.mEmojiCompat.onMetadataLoadFailed(new IllegalArgumentException("metadataRepo cannot be null"));
-                return;
-            }
-            this.mMetadataRepo = metadataRepo;
-            MetadataRepo metadataRepo2 = this.mMetadataRepo;
-            SpanFactory spanFactory = this.mEmojiCompat.mSpanFactory;
-            GlyphChecker glyphChecker = this.mEmojiCompat.mGlyphChecker;
-            EmojiCompat emojiCompat = this.mEmojiCompat;
-            this.mProcessor = new EmojiProcessor(metadataRepo2, spanFactory, glyphChecker, emojiCompat.mUseEmojiAsDefaultStyle, emojiCompat.mEmojiAsDefaultStyleExceptions, EmojiExclusions.getEmojiExclusions());
-            this.mEmojiCompat.onMetadataLoadSuccess();
-        }
-
-        @Override // androidx.emoji2.text.EmojiCompat.CompatInternal
-        CharSequence process(@NonNull CharSequence charSequence, int i, int i2, int i3, boolean z) {
-            return this.mProcessor.process(charSequence, i, i2, i3, z);
-        }
-
-        @Override // androidx.emoji2.text.EmojiCompat.CompatInternal
-        void updateEditorInfoAttrs(@NonNull EditorInfo editorInfo) {
-            editorInfo.extras.putInt(EmojiCompat.EDITOR_INFO_METAVERSION_KEY, this.mMetadataRepo.getMetadataVersion());
-            editorInfo.extras.putBoolean(EmojiCompat.EDITOR_INFO_REPLACE_ALL_KEY, this.mEmojiCompat.mReplaceAll);
-        }
-
-        @Override // androidx.emoji2.text.EmojiCompat.CompatInternal
-        boolean hasEmojiGlyph(@NonNull CharSequence charSequence, int i) {
-            return this.mProcessor.getEmojiMatch(charSequence, i) == 1;
-        }
     }
 
     /* compiled from: Taobao */
@@ -346,7 +215,7 @@ public class EmojiCompat {
     }
 
     /* compiled from: Taobao */
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     public static class DefaultSpanFactory implements SpanFactory {
         @Override // androidx.emoji2.text.EmojiCompat.SpanFactory
         @NonNull
@@ -410,30 +279,8 @@ public class EmojiCompat {
     }
 
     /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
-    /* loaded from: classes2.dex */
-    public @interface LoadStrategy {
-    }
-
-    /* compiled from: Taobao */
     public interface MetadataRepoLoader {
         void load(@NonNull MetadataRepoLoaderCallback metadataRepoLoaderCallback);
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public static abstract class MetadataRepoLoaderCallback {
-        public abstract void onFailed(@Nullable Throwable th);
-
-        public abstract void onLoaded(@NonNull MetadataRepo metadataRepo);
-    }
-
-    /* compiled from: Taobao */
-    @Retention(RetentionPolicy.SOURCE)
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
-    /* loaded from: classes2.dex */
-    public @interface ReplaceStrategy {
     }
 
     /* compiled from: Taobao */
@@ -527,7 +374,7 @@ public class EmojiCompat {
         return emojiCompat;
     }
 
-    @RestrictTo({RestrictTo.Scope.TESTS})
+    @RestrictTo({RestrictTo$Scope.TESTS})
     public static void skipDefaultConfigurationLookup(boolean z) {
         synchronized (CONFIG_LOCK) {
             sHasDoneDefaultConfigLookup = z;
@@ -551,7 +398,7 @@ public class EmojiCompat {
     }
 
     @ColorInt
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     public int getEmojiSpanIndicatorColor() {
         return this.mEmojiSpanIndicatorColor;
     }
@@ -576,7 +423,7 @@ public class EmojiCompat {
         return this.mHelper.hasEmojiGlyph(charSequence);
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    @RestrictTo({RestrictTo$Scope.LIBRARY_GROUP})
     public boolean isEmojiSpanIndicatorEnabled() {
         return this.mEmojiSpanIndicatorEnabled;
     }
@@ -669,14 +516,14 @@ public class EmojiCompat {
     }
 
     @Nullable
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     public static EmojiCompat init(@NonNull Context context, @Nullable DefaultEmojiCompatConfig.DefaultEmojiCompatConfigFactory defaultEmojiCompatConfigFactory) {
         EmojiCompat emojiCompat;
         if (sHasDoneDefaultConfigLookup) {
             return sInstance;
         }
         if (defaultEmojiCompatConfigFactory == null) {
-            defaultEmojiCompatConfigFactory = new DefaultEmojiCompatConfig.DefaultEmojiCompatConfigFactory(null);
+            defaultEmojiCompatConfigFactory = new DefaultEmojiCompatConfig.DefaultEmojiCompatConfigFactory((DefaultEmojiCompatConfig.DefaultEmojiCompatConfigHelper) null);
         }
         Config create = defaultEmojiCompatConfigFactory.create(context);
         synchronized (CONFIG_LOCK) {
@@ -736,7 +583,7 @@ public class EmojiCompat {
     }
 
     @Nullable
-    @RestrictTo({RestrictTo.Scope.TESTS})
+    @RestrictTo({RestrictTo$Scope.TESTS})
     public static EmojiCompat reset(@Nullable EmojiCompat emojiCompat) {
         EmojiCompat emojiCompat2;
         synchronized (INSTANCE_LOCK) {

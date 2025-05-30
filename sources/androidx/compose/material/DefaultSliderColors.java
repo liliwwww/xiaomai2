@@ -1,12 +1,12 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.graphics.Color;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.Immutable;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.graphics.Color;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Reflection;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Immutable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DefaultSliderColors implements SliderColors {
     private final long activeTickColor;
     private final long activeTrackColor;
@@ -53,14 +53,13 @@ final class DefaultSliderColors implements SliderColors {
             return false;
         }
         DefaultSliderColors defaultSliderColors = (DefaultSliderColors) obj;
-        return Color.m2788equalsimpl0(this.thumbColor, defaultSliderColors.thumbColor) && Color.m2788equalsimpl0(this.disabledThumbColor, defaultSliderColors.disabledThumbColor) && Color.m2788equalsimpl0(this.activeTrackColor, defaultSliderColors.activeTrackColor) && Color.m2788equalsimpl0(this.inactiveTrackColor, defaultSliderColors.inactiveTrackColor) && Color.m2788equalsimpl0(this.disabledActiveTrackColor, defaultSliderColors.disabledActiveTrackColor) && Color.m2788equalsimpl0(this.disabledInactiveTrackColor, defaultSliderColors.disabledInactiveTrackColor) && Color.m2788equalsimpl0(this.activeTickColor, defaultSliderColors.activeTickColor) && Color.m2788equalsimpl0(this.inactiveTickColor, defaultSliderColors.inactiveTickColor) && Color.m2788equalsimpl0(this.disabledActiveTickColor, defaultSliderColors.disabledActiveTickColor) && Color.m2788equalsimpl0(this.disabledInactiveTickColor, defaultSliderColors.disabledInactiveTickColor);
+        return Color.equals-impl0(this.thumbColor, defaultSliderColors.thumbColor) && Color.equals-impl0(this.disabledThumbColor, defaultSliderColors.disabledThumbColor) && Color.equals-impl0(this.activeTrackColor, defaultSliderColors.activeTrackColor) && Color.equals-impl0(this.inactiveTrackColor, defaultSliderColors.inactiveTrackColor) && Color.equals-impl0(this.disabledActiveTrackColor, defaultSliderColors.disabledActiveTrackColor) && Color.equals-impl0(this.disabledInactiveTrackColor, defaultSliderColors.disabledInactiveTrackColor) && Color.equals-impl0(this.activeTickColor, defaultSliderColors.activeTickColor) && Color.equals-impl0(this.inactiveTickColor, defaultSliderColors.inactiveTickColor) && Color.equals-impl0(this.disabledActiveTickColor, defaultSliderColors.disabledActiveTickColor) && Color.equals-impl0(this.disabledInactiveTickColor, defaultSliderColors.disabledInactiveTickColor);
     }
 
     public int hashCode() {
-        return (((((((((((((((((Color.m2794hashCodeimpl(this.thumbColor) * 31) + Color.m2794hashCodeimpl(this.disabledThumbColor)) * 31) + Color.m2794hashCodeimpl(this.activeTrackColor)) * 31) + Color.m2794hashCodeimpl(this.inactiveTrackColor)) * 31) + Color.m2794hashCodeimpl(this.disabledActiveTrackColor)) * 31) + Color.m2794hashCodeimpl(this.disabledInactiveTrackColor)) * 31) + Color.m2794hashCodeimpl(this.activeTickColor)) * 31) + Color.m2794hashCodeimpl(this.inactiveTickColor)) * 31) + Color.m2794hashCodeimpl(this.disabledActiveTickColor)) * 31) + Color.m2794hashCodeimpl(this.disabledInactiveTickColor);
+        return (((((((((((((((((Color.hashCode-impl(this.thumbColor) * 31) + Color.hashCode-impl(this.disabledThumbColor)) * 31) + Color.hashCode-impl(this.activeTrackColor)) * 31) + Color.hashCode-impl(this.inactiveTrackColor)) * 31) + Color.hashCode-impl(this.disabledActiveTrackColor)) * 31) + Color.hashCode-impl(this.disabledInactiveTrackColor)) * 31) + Color.hashCode-impl(this.activeTickColor)) * 31) + Color.hashCode-impl(this.inactiveTickColor)) * 31) + Color.hashCode-impl(this.disabledActiveTickColor)) * 31) + Color.hashCode-impl(this.disabledInactiveTickColor);
     }
 
-    @Override // androidx.compose.material.SliderColors
     @Composable
     @NotNull
     public State<Color> thumbColor(boolean z, @Nullable Composer composer, int i) {
@@ -68,7 +67,7 @@ final class DefaultSliderColors implements SliderColors {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-1733795637, i, -1, "androidx.compose.material.DefaultSliderColors.thumbColor (Slider.kt:1087)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(z ? this.thumbColor : this.disabledThumbColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.box-impl(z ? this.thumbColor : this.disabledThumbColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -76,7 +75,6 @@ final class DefaultSliderColors implements SliderColors {
         return rememberUpdatedState;
     }
 
-    @Override // androidx.compose.material.SliderColors
     @Composable
     @NotNull
     public State<Color> tickColor(boolean z, boolean z2, @Nullable Composer composer, int i) {
@@ -84,7 +82,7 @@ final class DefaultSliderColors implements SliderColors {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-1491563694, i, -1, "androidx.compose.material.DefaultSliderColors.tickColor (Slider.kt:1103)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(z ? z2 ? this.activeTickColor : this.inactiveTickColor : z2 ? this.disabledActiveTickColor : this.disabledInactiveTickColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.box-impl(z ? z2 ? this.activeTickColor : this.inactiveTickColor : z2 ? this.disabledActiveTickColor : this.disabledInactiveTickColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }
@@ -92,7 +90,6 @@ final class DefaultSliderColors implements SliderColors {
         return rememberUpdatedState;
     }
 
-    @Override // androidx.compose.material.SliderColors
     @Composable
     @NotNull
     public State<Color> trackColor(boolean z, boolean z2, @Nullable Composer composer, int i) {
@@ -100,7 +97,7 @@ final class DefaultSliderColors implements SliderColors {
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(1575395620, i, -1, "androidx.compose.material.DefaultSliderColors.trackColor (Slider.kt:1092)");
         }
-        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.m2777boximpl(z ? z2 ? this.activeTrackColor : this.inactiveTrackColor : z2 ? this.disabledActiveTrackColor : this.disabledInactiveTrackColor), composer, 0);
+        State<Color> rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(Color.box-impl(z ? z2 ? this.activeTrackColor : this.inactiveTrackColor : z2 ? this.disabledActiveTrackColor : this.disabledInactiveTrackColor), composer, 0);
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventEnd();
         }

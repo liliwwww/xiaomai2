@@ -8,17 +8,11 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class SharedValues {
     public static final int UNSET = -1;
     private SparseIntArray mValues = new SparseIntArray();
     private HashMap<Integer, HashSet<WeakReference<SharedValuesListener>>> mValuesListeners = new HashMap<>();
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public interface SharedValuesListener {
-        void onNewValue(int i, int i2, int i3);
-    }
 
     public void addListener(int i, SharedValuesListener sharedValuesListener) {
         HashSet<WeakReference<SharedValuesListener>> hashSet = this.mValuesListeners.get(Integer.valueOf(i));

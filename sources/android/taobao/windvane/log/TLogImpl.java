@@ -11,7 +11,7 @@ import java.io.File;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class TLogImpl implements ILog {
     private static final String DELIMITER = "\n";
     private static final String LOG_MODULE_NAME = "WindVane";
@@ -36,8 +36,7 @@ public class TLogImpl implements ILog {
     }
 
     @Override // android.taobao.windvane.util.log.ILog
-    /* renamed from: d */
-    public void mo8d(String str, String str2) {
+    public void d(String str, String str2) {
         if (!isTlogEnable()) {
             Log.d(str, str2);
             return;
@@ -49,8 +48,7 @@ public class TLogImpl implements ILog {
     }
 
     @Override // android.taobao.windvane.util.log.ILog
-    /* renamed from: e */
-    public void mo10e(String str, String str2) {
+    public void e(String str, String str2) {
         if (!isTlogEnable()) {
             Log.e(str, str2);
             return;
@@ -62,8 +60,7 @@ public class TLogImpl implements ILog {
     }
 
     @Override // android.taobao.windvane.util.log.ILog
-    /* renamed from: i */
-    public void mo12i(String str, String str2) {
+    public void i(String str, String str2) {
         if (!isTlogEnable()) {
             Log.i(str, str2);
             return;
@@ -76,36 +73,35 @@ public class TLogImpl implements ILog {
 
     @Override // android.taobao.windvane.util.log.ILog
     public boolean isLogLevelEnabled(int i) {
-        Map<String, Integer> map;
+        Map map;
         if (EnvUtil.isAppDebug()) {
             return true;
         }
         String logLevel = AdapterForTLog.getLogLevel();
-        return (logLevel == null || (map = TaoLog.LogLevel) == null || map.get(logLevel) == null || TaoLog.LogLevel.get(logLevel).intValue() > i) ? false : true;
+        return (logLevel == null || (map = TaoLog.LogLevel) == null || map.get(logLevel) == null || ((Integer) TaoLog.LogLevel.get(logLevel)).intValue() > i) ? false : true;
     }
 
     @Override // android.taobao.windvane.util.log.ILog
     public void log(int i, String str, String str2) {
         if (i == 3) {
-            mo8d(str, str2);
+            d(str, str2);
             return;
         }
         if (i == 4) {
-            mo12i(str, str2);
+            i(str, str2);
             return;
         }
         if (i == 5) {
-            mo16w(str, str2);
+            w(str, str2);
         } else if (i != 6) {
-            mo14v(str, str2);
+            v(str, str2);
         } else {
-            mo10e(str, str2);
+            e(str, str2);
         }
     }
 
     @Override // android.taobao.windvane.util.log.ILog
-    /* renamed from: v */
-    public void mo14v(String str, String str2) {
+    public void v(String str, String str2) {
         if (!isTlogEnable()) {
             Log.v(str, str2);
             return;
@@ -117,8 +113,7 @@ public class TLogImpl implements ILog {
     }
 
     @Override // android.taobao.windvane.util.log.ILog
-    /* renamed from: w */
-    public void mo16w(String str, String str2) {
+    public void w(String str, String str2) {
         if (!isTlogEnable()) {
             Log.w(str, str2);
             return;
@@ -130,8 +125,7 @@ public class TLogImpl implements ILog {
     }
 
     @Override // android.taobao.windvane.util.log.ILog
-    /* renamed from: d */
-    public void mo9d(String str, String str2, Throwable th) {
+    public void d(String str, String str2, Throwable th) {
         if (isTlogEnable()) {
             StringBuilder sb = new StringBuilder();
             sb.append(str2);
@@ -148,8 +142,7 @@ public class TLogImpl implements ILog {
     }
 
     @Override // android.taobao.windvane.util.log.ILog
-    /* renamed from: e */
-    public void mo11e(String str, String str2, Throwable th) {
+    public void e(String str, String str2, Throwable th) {
         if (isTlogEnable()) {
             TLog.loge("WindVane", str, str2, th);
             if (this.releaseOpen) {
@@ -162,8 +155,7 @@ public class TLogImpl implements ILog {
     }
 
     @Override // android.taobao.windvane.util.log.ILog
-    /* renamed from: i */
-    public void mo13i(String str, String str2, Throwable th) {
+    public void i(String str, String str2, Throwable th) {
         if (isTlogEnable()) {
             StringBuilder sb = new StringBuilder();
             sb.append(str2);
@@ -180,8 +172,7 @@ public class TLogImpl implements ILog {
     }
 
     @Override // android.taobao.windvane.util.log.ILog
-    /* renamed from: v */
-    public void mo15v(String str, String str2, Throwable th) {
+    public void v(String str, String str2, Throwable th) {
         if (isTlogEnable()) {
             StringBuilder sb = new StringBuilder();
             sb.append(str2);
@@ -198,8 +189,7 @@ public class TLogImpl implements ILog {
     }
 
     @Override // android.taobao.windvane.util.log.ILog
-    /* renamed from: w */
-    public void mo17w(String str, String str2, Throwable th) {
+    public void w(String str, String str2, Throwable th) {
         if (isTlogEnable()) {
             StringBuilder sb = new StringBuilder();
             sb.append(str2);

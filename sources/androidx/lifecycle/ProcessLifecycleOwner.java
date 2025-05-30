@@ -1,20 +1,14 @@
 package androidx.lifecycle;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-import android.os.Build;
-import android.os.Bundle;
 import android.os.Handler;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.VisibleForTesting;
-import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ReportFragment;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class ProcessLifecycleOwner implements LifecycleOwner {
 
     @VisibleForTesting
@@ -26,28 +20,8 @@ public class ProcessLifecycleOwner implements LifecycleOwner {
     private boolean mPauseSent = true;
     private boolean mStopSent = true;
     private final LifecycleRegistry mRegistry = new LifecycleRegistry(this);
-    private Runnable mDelayedPauseRunnable = new Runnable() { // from class: androidx.lifecycle.ProcessLifecycleOwner.1
-        @Override // java.lang.Runnable
-        public void run() {
-            ProcessLifecycleOwner.this.dispatchPauseIfNeeded();
-            ProcessLifecycleOwner.this.dispatchStopIfNeeded();
-        }
-    };
-    ReportFragment.ActivityInitializationListener mInitializationListener = new ReportFragment.ActivityInitializationListener() { // from class: androidx.lifecycle.ProcessLifecycleOwner.2
-        @Override // androidx.lifecycle.ReportFragment.ActivityInitializationListener
-        public void onCreate() {
-        }
-
-        @Override // androidx.lifecycle.ReportFragment.ActivityInitializationListener
-        public void onResume() {
-            ProcessLifecycleOwner.this.activityResumed();
-        }
-
-        @Override // androidx.lifecycle.ReportFragment.ActivityInitializationListener
-        public void onStart() {
-            ProcessLifecycleOwner.this.activityStarted();
-        }
-    };
+    private Runnable mDelayedPauseRunnable = new 1(this);
+    ReportFragment.ActivityInitializationListener mInitializationListener = new 2(this);
 
     private ProcessLifecycleOwner() {
     }
@@ -76,7 +50,7 @@ public class ProcessLifecycleOwner implements LifecycleOwner {
             if (!this.mPauseSent) {
                 this.mHandler.removeCallbacks(this.mDelayedPauseRunnable);
             } else {
-                this.mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+                this.mRegistry.handleLifecycleEvent(Lifecycle$Event.ON_RESUME);
                 this.mPauseSent = false;
             }
         }
@@ -86,7 +60,7 @@ public class ProcessLifecycleOwner implements LifecycleOwner {
         int i = this.mStartedCounter + 1;
         this.mStartedCounter = i;
         if (i == 1 && this.mStopSent) {
-            this.mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
+            this.mRegistry.handleLifecycleEvent(Lifecycle$Event.ON_START);
             this.mStopSent = false;
         }
     }
@@ -98,58 +72,24 @@ public class ProcessLifecycleOwner implements LifecycleOwner {
 
     void attach(Context context) {
         this.mHandler = new Handler();
-        this.mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
-        ((Application) context.getApplicationContext()).registerActivityLifecycleCallbacks(new EmptyActivityLifecycleCallbacks() { // from class: androidx.lifecycle.ProcessLifecycleOwner.3
-            @Override // androidx.lifecycle.EmptyActivityLifecycleCallbacks, android.app.Application.ActivityLifecycleCallbacks
-            public void onActivityCreated(Activity activity, Bundle bundle) {
-                if (Build.VERSION.SDK_INT < 29) {
-                    ReportFragment.get(activity).setProcessListener(ProcessLifecycleOwner.this.mInitializationListener);
-                }
-            }
-
-            @Override // androidx.lifecycle.EmptyActivityLifecycleCallbacks, android.app.Application.ActivityLifecycleCallbacks
-            public void onActivityPaused(Activity activity) {
-                ProcessLifecycleOwner.this.activityPaused();
-            }
-
-            @Override // android.app.Application.ActivityLifecycleCallbacks
-            @RequiresApi(29)
-            public void onActivityPreCreated(@NonNull Activity activity, @Nullable Bundle bundle) {
-                activity.registerActivityLifecycleCallbacks(new EmptyActivityLifecycleCallbacks() { // from class: androidx.lifecycle.ProcessLifecycleOwner.3.1
-                    @Override // android.app.Application.ActivityLifecycleCallbacks
-                    public void onActivityPostResumed(@NonNull Activity activity2) {
-                        ProcessLifecycleOwner.this.activityResumed();
-                    }
-
-                    @Override // android.app.Application.ActivityLifecycleCallbacks
-                    public void onActivityPostStarted(@NonNull Activity activity2) {
-                        ProcessLifecycleOwner.this.activityStarted();
-                    }
-                });
-            }
-
-            @Override // androidx.lifecycle.EmptyActivityLifecycleCallbacks, android.app.Application.ActivityLifecycleCallbacks
-            public void onActivityStopped(Activity activity) {
-                ProcessLifecycleOwner.this.activityStopped();
-            }
-        });
+        this.mRegistry.handleLifecycleEvent(Lifecycle$Event.ON_CREATE);
+        ((Application) context.getApplicationContext()).registerActivityLifecycleCallbacks(new 3(this));
     }
 
     void dispatchPauseIfNeeded() {
         if (this.mResumedCounter == 0) {
             this.mPauseSent = true;
-            this.mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
+            this.mRegistry.handleLifecycleEvent(Lifecycle$Event.ON_PAUSE);
         }
     }
 
     void dispatchStopIfNeeded() {
         if (this.mStartedCounter == 0 && this.mPauseSent) {
-            this.mRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
+            this.mRegistry.handleLifecycleEvent(Lifecycle$Event.ON_STOP);
             this.mStopSent = true;
         }
     }
 
-    @Override // androidx.lifecycle.LifecycleOwner
     @NonNull
     public Lifecycle getLifecycle() {
         return this.mRegistry;

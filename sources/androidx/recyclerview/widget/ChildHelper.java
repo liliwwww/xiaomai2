@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class ChildHelper {
     private static final boolean DEBUG = false;
     private static final String TAG = "ChildrenHelper";
@@ -62,7 +62,7 @@ class ChildHelper {
                 return;
             }
             long j = this.mData;
-            boolean z2 = (Long.MIN_VALUE & j) != 0;
+            boolean z2 = (LAST_BIT & j) != 0;
             long j2 = (1 << i) - 1;
             this.mData = ((j & (~j2)) << 1) | (j & j2);
             if (z) {

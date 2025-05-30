@@ -23,14 +23,13 @@ import androidx.core.os.TraceCompat;
 import androidx.core.util.ObjectsCompat;
 import androidx.core.util.Preconditions;
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class PrecomputedTextCompat implements Spannable {
     private static final char LINE_FEED = '\n';
 
@@ -53,25 +52,6 @@ public class PrecomputedTextCompat implements Spannable {
 
     /* compiled from: Taobao */
     private static class PrecomputedTextFutureTask extends FutureTask<PrecomputedTextCompat> {
-
-        /* compiled from: Taobao */
-        /* loaded from: classes.dex */
-        private static class PrecomputedTextCallback implements Callable<PrecomputedTextCompat> {
-            private Params mParams;
-            private CharSequence mText;
-
-            PrecomputedTextCallback(@NonNull Params params, @NonNull CharSequence charSequence) {
-                this.mParams = params;
-                this.mText = charSequence;
-            }
-
-            /* JADX WARN: Can't rename method to resolve collision */
-            @Override // java.util.concurrent.Callable
-            public PrecomputedTextCompat call() throws Exception {
-                return PrecomputedTextCompat.create(this.mText, this.mParams);
-            }
-        }
-
         PrecomputedTextFutureTask(@NonNull Params params, @NonNull CharSequence charSequence) {
             super(new PrecomputedTextCallback(params, charSequence));
         }

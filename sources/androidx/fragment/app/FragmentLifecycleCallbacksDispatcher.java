@@ -5,12 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentManager;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class FragmentLifecycleCallbacksDispatcher {
 
     @NonNull
@@ -18,20 +17,6 @@ class FragmentLifecycleCallbacksDispatcher {
 
     @NonNull
     private final CopyOnWriteArrayList<FragmentLifecycleCallbacksHolder> mLifecycleCallbacks = new CopyOnWriteArrayList<>();
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static final class FragmentLifecycleCallbacksHolder {
-
-        @NonNull
-        final FragmentManager.FragmentLifecycleCallbacks mCallback;
-        final boolean mRecursive;
-
-        FragmentLifecycleCallbacksHolder(@NonNull FragmentManager.FragmentLifecycleCallbacks fragmentLifecycleCallbacks, boolean z) {
-            this.mCallback = fragmentLifecycleCallbacks;
-            this.mRecursive = z;
-        }
-    }
 
     FragmentLifecycleCallbacksDispatcher(@NonNull FragmentManager fragmentManager) {
         this.mFragmentManager = fragmentManager;
@@ -235,11 +220,11 @@ class FragmentLifecycleCallbacksDispatcher {
         }
     }
 
-    public void registerFragmentLifecycleCallbacks(@NonNull FragmentManager.FragmentLifecycleCallbacks fragmentLifecycleCallbacks, boolean z) {
-        this.mLifecycleCallbacks.add(new FragmentLifecycleCallbacksHolder(fragmentLifecycleCallbacks, z));
+    public void registerFragmentLifecycleCallbacks(@NonNull FragmentManager$FragmentLifecycleCallbacks fragmentManager$FragmentLifecycleCallbacks, boolean z) {
+        this.mLifecycleCallbacks.add(new FragmentLifecycleCallbacksHolder(fragmentManager$FragmentLifecycleCallbacks, z));
     }
 
-    public void unregisterFragmentLifecycleCallbacks(@NonNull FragmentManager.FragmentLifecycleCallbacks fragmentLifecycleCallbacks) {
+    public void unregisterFragmentLifecycleCallbacks(@NonNull FragmentManager$FragmentLifecycleCallbacks fragmentManager$FragmentLifecycleCallbacks) {
         synchronized (this.mLifecycleCallbacks) {
             int i = 0;
             int size = this.mLifecycleCallbacks.size();
@@ -247,7 +232,7 @@ class FragmentLifecycleCallbacksDispatcher {
                 if (i >= size) {
                     break;
                 }
-                if (this.mLifecycleCallbacks.get(i).mCallback == fragmentLifecycleCallbacks) {
+                if (this.mLifecycleCallbacks.get(i).mCallback == fragmentManager$FragmentLifecycleCallbacks) {
                     this.mLifecycleCallbacks.remove(i);
                     break;
                 }

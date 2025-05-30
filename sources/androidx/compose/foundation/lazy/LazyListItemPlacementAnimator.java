@@ -1,19 +1,17 @@
 package androidx.compose.foundation.lazy;
 
 import androidx.compose.animation.core.FiniteAnimationSpec;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntOffsetKt;
+import androidx.compose.foundation.lazy.LazyListItemPlacementAnimator$onMeasured$;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntOffsetKt;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import kotlin.collections.CollectionsKt;
 import kotlin.collections.MapsKt;
-import kotlin.comparisons.ComparisonsKt;
 import kotlin.coroutines.CoroutineContext;
-import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import kotlinx.coroutines.CoroutineScope;
 import kotlinx.coroutines.CoroutineStart;
@@ -21,7 +19,7 @@ import kotlinx.coroutines.d;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyListItemPlacementAnimator {
     private int firstVisibleIndex;
     private final boolean isVertical;
@@ -65,38 +63,38 @@ public final class LazyListItemPlacementAnimator {
 
     private final ItemInfo createItemInfo(LazyListPositionedItem lazyListPositionedItem, int i) {
         ItemInfo itemInfo = new ItemInfo();
-        long m1518getOffsetBjo55l4 = lazyListPositionedItem.m1518getOffsetBjo55l4(0);
-        long m5330copyiSbpLlY$default = this.isVertical ? IntOffset.m5330copyiSbpLlY$default(m1518getOffsetBjo55l4, 0, i, 1, null) : IntOffset.m5330copyiSbpLlY$default(m1518getOffsetBjo55l4, i, 0, 2, null);
+        long m266getOffsetBjo55l4 = lazyListPositionedItem.m266getOffsetBjo55l4(0);
+        long j = this.isVertical ? IntOffset.copy-iSbpLlY$default(m266getOffsetBjo55l4, 0, i, 1, (Object) null) : IntOffset.copy-iSbpLlY$default(m266getOffsetBjo55l4, i, 0, 2, (Object) null);
         int placeablesCount = lazyListPositionedItem.getPlaceablesCount();
         for (int i2 = 0; i2 < placeablesCount; i2++) {
-            long m1518getOffsetBjo55l42 = lazyListPositionedItem.m1518getOffsetBjo55l4(i2);
-            long IntOffset = IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1518getOffsetBjo55l42) - IntOffset.m5334getXimpl(m1518getOffsetBjo55l4), IntOffset.m5335getYimpl(m1518getOffsetBjo55l42) - IntOffset.m5335getYimpl(m1518getOffsetBjo55l4));
-            itemInfo.getPlaceables().add(new PlaceableInfo(IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m5330copyiSbpLlY$default) + IntOffset.m5334getXimpl(IntOffset), IntOffset.m5335getYimpl(m5330copyiSbpLlY$default) + IntOffset.m5335getYimpl(IntOffset)), lazyListPositionedItem.getMainAxisSize(i2), null));
+            long m266getOffsetBjo55l42 = lazyListPositionedItem.m266getOffsetBjo55l4(i2);
+            long IntOffset = IntOffsetKt.IntOffset(IntOffset.getX-impl(m266getOffsetBjo55l42) - IntOffset.getX-impl(m266getOffsetBjo55l4), IntOffset.getY-impl(m266getOffsetBjo55l42) - IntOffset.getY-impl(m266getOffsetBjo55l4));
+            itemInfo.getPlaceables().add(new PlaceableInfo(IntOffsetKt.IntOffset(IntOffset.getX-impl(j) + IntOffset.getX-impl(IntOffset), IntOffset.getY-impl(j) + IntOffset.getY-impl(IntOffset)), lazyListPositionedItem.getMainAxisSize(i2), null));
         }
         return itemInfo;
     }
 
     static /* synthetic */ ItemInfo createItemInfo$default(LazyListItemPlacementAnimator lazyListItemPlacementAnimator, LazyListPositionedItem lazyListPositionedItem, int i, int i2, Object obj) {
         if ((i2 & 2) != 0) {
-            i = lazyListItemPlacementAnimator.m1504getMainAxisgyyYBs(lazyListPositionedItem.m1518getOffsetBjo55l4(0));
+            i = lazyListItemPlacementAnimator.m256getMainAxisgyyYBs(lazyListPositionedItem.m266getOffsetBjo55l4(0));
         }
         return lazyListItemPlacementAnimator.createItemInfo(lazyListPositionedItem, i);
     }
 
     /* renamed from: getMainAxis--gyyYBs, reason: not valid java name */
-    private final int m1504getMainAxisgyyYBs(long j) {
-        return this.isVertical ? IntOffset.m5335getYimpl(j) : IntOffset.m5334getXimpl(j);
+    private final int m256getMainAxisgyyYBs(long j) {
+        return this.isVertical ? IntOffset.getY-impl(j) : IntOffset.getX-impl(j);
     }
 
     private final boolean isWithinBounds(ItemInfo itemInfo, int i) {
-        List<PlaceableInfo> placeables = itemInfo.getPlaceables();
+        List placeables = itemInfo.getPlaceables();
         int size = placeables.size();
         for (int i2 = 0; i2 < size; i2++) {
-            PlaceableInfo placeableInfo = placeables.get(i2);
-            long m1530getTargetOffsetnOccac = placeableInfo.m1530getTargetOffsetnOccac();
-            long m1495getNotAnimatableDeltanOccac = itemInfo.m1495getNotAnimatableDeltanOccac();
-            long IntOffset = IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1530getTargetOffsetnOccac) + IntOffset.m5334getXimpl(m1495getNotAnimatableDeltanOccac), IntOffset.m5335getYimpl(m1530getTargetOffsetnOccac) + IntOffset.m5335getYimpl(m1495getNotAnimatableDeltanOccac));
-            if (m1504getMainAxisgyyYBs(IntOffset) + placeableInfo.getMainAxisSize() > 0 && m1504getMainAxisgyyYBs(IntOffset) < i) {
+            PlaceableInfo placeableInfo = (PlaceableInfo) placeables.get(i2);
+            long m271getTargetOffsetnOccac = placeableInfo.m271getTargetOffsetnOccac();
+            long j = itemInfo.getNotAnimatableDelta-nOcc-ac();
+            long IntOffset = IntOffsetKt.IntOffset(IntOffset.getX-impl(m271getTargetOffsetnOccac) + IntOffset.getX-impl(j), IntOffset.getY-impl(m271getTargetOffsetnOccac) + IntOffset.getY-impl(j));
+            if (m256getMainAxisgyyYBs(IntOffset) + placeableInfo.getMainAxisSize() > 0 && m256getMainAxisgyyYBs(IntOffset) < i) {
                 return true;
             }
         }
@@ -107,30 +105,26 @@ public final class LazyListItemPlacementAnimator {
         while (itemInfo.getPlaceables().size() > lazyListPositionedItem.getPlaceablesCount()) {
             CollectionsKt.removeLast(itemInfo.getPlaceables());
         }
-        while (true) {
-            DefaultConstructorMarker defaultConstructorMarker = null;
-            if (itemInfo.getPlaceables().size() >= lazyListPositionedItem.getPlaceablesCount()) {
-                break;
-            }
+        while (itemInfo.getPlaceables().size() < lazyListPositionedItem.getPlaceablesCount()) {
             int size = itemInfo.getPlaceables().size();
-            long m1518getOffsetBjo55l4 = lazyListPositionedItem.m1518getOffsetBjo55l4(size);
-            List<PlaceableInfo> placeables = itemInfo.getPlaceables();
-            long m1495getNotAnimatableDeltanOccac = itemInfo.m1495getNotAnimatableDeltanOccac();
-            placeables.add(new PlaceableInfo(IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1518getOffsetBjo55l4) - IntOffset.m5334getXimpl(m1495getNotAnimatableDeltanOccac), IntOffset.m5335getYimpl(m1518getOffsetBjo55l4) - IntOffset.m5335getYimpl(m1495getNotAnimatableDeltanOccac)), lazyListPositionedItem.getMainAxisSize(size), defaultConstructorMarker));
+            long m266getOffsetBjo55l4 = lazyListPositionedItem.m266getOffsetBjo55l4(size);
+            List placeables = itemInfo.getPlaceables();
+            long j = itemInfo.getNotAnimatableDelta-nOcc-ac();
+            placeables.add(new PlaceableInfo(IntOffsetKt.IntOffset(IntOffset.getX-impl(m266getOffsetBjo55l4) - IntOffset.getX-impl(j), IntOffset.getY-impl(m266getOffsetBjo55l4) - IntOffset.getY-impl(j)), lazyListPositionedItem.getMainAxisSize(size), null));
         }
-        List<PlaceableInfo> placeables2 = itemInfo.getPlaceables();
+        List placeables2 = itemInfo.getPlaceables();
         int size2 = placeables2.size();
         for (int i = 0; i < size2; i++) {
-            PlaceableInfo placeableInfo = placeables2.get(i);
-            long m1530getTargetOffsetnOccac = placeableInfo.m1530getTargetOffsetnOccac();
-            long m1495getNotAnimatableDeltanOccac2 = itemInfo.m1495getNotAnimatableDeltanOccac();
-            long IntOffset = IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1530getTargetOffsetnOccac) + IntOffset.m5334getXimpl(m1495getNotAnimatableDeltanOccac2), IntOffset.m5335getYimpl(m1530getTargetOffsetnOccac) + IntOffset.m5335getYimpl(m1495getNotAnimatableDeltanOccac2));
-            long m1518getOffsetBjo55l42 = lazyListPositionedItem.m1518getOffsetBjo55l4(i);
+            PlaceableInfo placeableInfo = (PlaceableInfo) placeables2.get(i);
+            long m271getTargetOffsetnOccac = placeableInfo.m271getTargetOffsetnOccac();
+            long j2 = itemInfo.getNotAnimatableDelta-nOcc-ac();
+            long IntOffset = IntOffsetKt.IntOffset(IntOffset.getX-impl(m271getTargetOffsetnOccac) + IntOffset.getX-impl(j2), IntOffset.getY-impl(m271getTargetOffsetnOccac) + IntOffset.getY-impl(j2));
+            long m266getOffsetBjo55l42 = lazyListPositionedItem.m266getOffsetBjo55l4(i);
             placeableInfo.setMainAxisSize(lazyListPositionedItem.getMainAxisSize(i));
             FiniteAnimationSpec<IntOffset> animationSpec = lazyListPositionedItem.getAnimationSpec(i);
-            if (!IntOffset.m5333equalsimpl0(IntOffset, m1518getOffsetBjo55l42)) {
-                long m1495getNotAnimatableDeltanOccac3 = itemInfo.m1495getNotAnimatableDeltanOccac();
-                placeableInfo.m1531setTargetOffsetgyyYBs(IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1518getOffsetBjo55l42) - IntOffset.m5334getXimpl(m1495getNotAnimatableDeltanOccac3), IntOffset.m5335getYimpl(m1518getOffsetBjo55l42) - IntOffset.m5335getYimpl(m1495getNotAnimatableDeltanOccac3)));
+            if (!IntOffset.equals-impl0(IntOffset, m266getOffsetBjo55l42)) {
+                long j3 = itemInfo.getNotAnimatableDelta-nOcc-ac();
+                placeableInfo.m272setTargetOffsetgyyYBs(IntOffsetKt.IntOffset(IntOffset.getX-impl(m266getOffsetBjo55l42) - IntOffset.getX-impl(j3), IntOffset.getY-impl(m266getOffsetBjo55l42) - IntOffset.getY-impl(j3)));
                 if (animationSpec != null) {
                     placeableInfo.setInProgress(true);
                     d.d(this.scope, (CoroutineContext) null, (CoroutineStart) null, new LazyListItemPlacementAnimator$startAnimationsIfNeeded$1$1(placeableInfo, animationSpec, null), 3, (Object) null);
@@ -140,7 +134,7 @@ public final class LazyListItemPlacementAnimator {
     }
 
     /* renamed from: toOffset-Bjo55l4, reason: not valid java name */
-    private final long m1505toOffsetBjo55l4(int i) {
+    private final long m257toOffsetBjo55l4(int i) {
         boolean z = this.isVertical;
         int i2 = z ? 0 : i;
         if (!z) {
@@ -150,20 +144,20 @@ public final class LazyListItemPlacementAnimator {
     }
 
     /* renamed from: getAnimatedOffset-YT5a7pE, reason: not valid java name */
-    public final long m1506getAnimatedOffsetYT5a7pE(@NotNull Object obj, int i, int i2, int i3, long j) {
+    public final long m258getAnimatedOffsetYT5a7pE(@NotNull Object obj, int i, int i2, int i3, long j) {
         Intrinsics.checkNotNullParameter(obj, "key");
         ItemInfo itemInfo = this.keyToItemInfoMap.get(obj);
         if (itemInfo == null) {
             return j;
         }
-        PlaceableInfo placeableInfo = itemInfo.getPlaceables().get(i);
-        long m5343unboximpl = placeableInfo.getAnimatedOffset().getValue().m5343unboximpl();
-        long m1495getNotAnimatableDeltanOccac = itemInfo.m1495getNotAnimatableDeltanOccac();
-        long IntOffset = IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m5343unboximpl) + IntOffset.m5334getXimpl(m1495getNotAnimatableDeltanOccac), IntOffset.m5335getYimpl(m5343unboximpl) + IntOffset.m5335getYimpl(m1495getNotAnimatableDeltanOccac));
-        long m1530getTargetOffsetnOccac = placeableInfo.m1530getTargetOffsetnOccac();
-        long m1495getNotAnimatableDeltanOccac2 = itemInfo.m1495getNotAnimatableDeltanOccac();
-        long IntOffset2 = IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1530getTargetOffsetnOccac) + IntOffset.m5334getXimpl(m1495getNotAnimatableDeltanOccac2), IntOffset.m5335getYimpl(m1530getTargetOffsetnOccac) + IntOffset.m5335getYimpl(m1495getNotAnimatableDeltanOccac2));
-        if (placeableInfo.getInProgress() && ((m1504getMainAxisgyyYBs(IntOffset2) <= i2 && m1504getMainAxisgyyYBs(IntOffset) <= i2) || (m1504getMainAxisgyyYBs(IntOffset2) >= i3 && m1504getMainAxisgyyYBs(IntOffset) >= i3))) {
+        PlaceableInfo placeableInfo = (PlaceableInfo) itemInfo.getPlaceables().get(i);
+        long j2 = placeableInfo.getAnimatedOffset().getValue().unbox-impl();
+        long j3 = itemInfo.getNotAnimatableDelta-nOcc-ac();
+        long IntOffset = IntOffsetKt.IntOffset(IntOffset.getX-impl(j2) + IntOffset.getX-impl(j3), IntOffset.getY-impl(j2) + IntOffset.getY-impl(j3));
+        long m271getTargetOffsetnOccac = placeableInfo.m271getTargetOffsetnOccac();
+        long j4 = itemInfo.getNotAnimatableDelta-nOcc-ac();
+        long IntOffset2 = IntOffsetKt.IntOffset(IntOffset.getX-impl(m271getTargetOffsetnOccac) + IntOffset.getX-impl(j4), IntOffset.getY-impl(m271getTargetOffsetnOccac) + IntOffset.getY-impl(j4));
+        if (placeableInfo.getInProgress() && ((m256getMainAxisgyyYBs(IntOffset2) <= i2 && m256getMainAxisgyyYBs(IntOffset) <= i2) || (m256getMainAxisgyyYBs(IntOffset2) >= i3 && m256getMainAxisgyyYBs(IntOffset) >= i3))) {
             d.d(this.scope, (CoroutineContext) null, (CoroutineStart) null, new LazyListItemPlacementAnimator$getAnimatedOffset$1(placeableInfo, null), 3, (Object) null);
         }
         return IntOffset;
@@ -197,10 +191,10 @@ public final class LazyListItemPlacementAnimator {
         int i7 = this.firstVisibleIndex;
         LazyListPositionedItem lazyListPositionedItem = (LazyListPositionedItem) CollectionsKt.firstOrNull(list);
         this.firstVisibleIndex = lazyListPositionedItem != null ? lazyListPositionedItem.getIndex() : 0;
-        final Map<Object, Integer> map = this.keyToIndexMap;
+        Map<Object, Integer> map = this.keyToIndexMap;
         this.keyToIndexMap = lazyMeasuredItemProvider.getKeyToIndexMap();
         int i8 = this.isVertical ? i3 : i2;
-        long m1505toOffsetBjo55l4 = m1505toOffsetBjo55l4(i);
+        long m257toOffsetBjo55l4 = m257toOffsetBjo55l4(i);
         this.movingAwayKeys.addAll(this.keyToItemInfoMap.keySet());
         int size2 = list.size();
         int i9 = 0;
@@ -227,8 +221,8 @@ public final class LazyListItemPlacementAnimator {
                 } else {
                     i4 = i7;
                     i5 = size2;
-                    long m1495getNotAnimatableDeltanOccac = itemInfo.m1495getNotAnimatableDeltanOccac();
-                    itemInfo.m1496setNotAnimatableDeltagyyYBs(IntOffsetKt.IntOffset(IntOffset.m5334getXimpl(m1495getNotAnimatableDeltanOccac) + IntOffset.m5334getXimpl(m1505toOffsetBjo55l4), IntOffset.m5335getYimpl(m1495getNotAnimatableDeltanOccac) + IntOffset.m5335getYimpl(m1505toOffsetBjo55l4)));
+                    long j = itemInfo.getNotAnimatableDelta-nOcc-ac();
+                    itemInfo.setNotAnimatableDelta--gyyYBs(IntOffsetKt.IntOffset(IntOffset.getX-impl(j) + IntOffset.getX-impl(m257toOffsetBjo55l4), IntOffset.getY-impl(j) + IntOffset.getY-impl(m257toOffsetBjo55l4)));
                     startAnimationsIfNeeded(lazyListPositionedItem2, itemInfo);
                 }
             } else {
@@ -243,13 +237,7 @@ public final class LazyListItemPlacementAnimator {
         int i10 = 0;
         List<LazyListPositionedItem> list2 = this.movingInFromStartBound;
         if (list2.size() > 1) {
-            CollectionsKt.sortWith(list2, new Comparator() { // from class: androidx.compose.foundation.lazy.LazyListItemPlacementAnimator$onMeasured$$inlined$sortByDescending$1
-                /* JADX WARN: Multi-variable type inference failed */
-                @Override // java.util.Comparator
-                public final int compare(T t, T t2) {
-                    return ComparisonsKt.compareValues((Integer) map.get(((LazyListPositionedItem) t2).getKey()), (Integer) map.get(((LazyListPositionedItem) t).getKey()));
-                }
-            });
+            CollectionsKt.sortWith(list2, new LazyListItemPlacementAnimator$onMeasured$.inlined.sortByDescending.1(map));
         }
         List<LazyListPositionedItem> list3 = this.movingInFromStartBound;
         int size3 = list3.size();
@@ -264,13 +252,7 @@ public final class LazyListItemPlacementAnimator {
         }
         List<LazyListPositionedItem> list4 = this.movingInFromEndBound;
         if (list4.size() > 1) {
-            CollectionsKt.sortWith(list4, new Comparator() { // from class: androidx.compose.foundation.lazy.LazyListItemPlacementAnimator$onMeasured$$inlined$sortBy$1
-                /* JADX WARN: Multi-variable type inference failed */
-                @Override // java.util.Comparator
-                public final int compare(T t, T t2) {
-                    return ComparisonsKt.compareValues((Integer) map.get(((LazyListPositionedItem) t).getKey()), (Integer) map.get(((LazyListPositionedItem) t2).getKey()));
-                }
-            });
+            CollectionsKt.sortWith(list4, new LazyListItemPlacementAnimator$onMeasured$.inlined.sortBy.1(map));
         }
         List<LazyListPositionedItem> list5 = this.movingInFromEndBound;
         int size5 = list5.size();
@@ -286,7 +268,7 @@ public final class LazyListItemPlacementAnimator {
         for (Object obj : this.movingAwayKeys) {
             ItemInfo itemInfo2 = (ItemInfo) MapsKt.getValue(this.keyToItemInfoMap, obj);
             Integer num2 = this.keyToIndexMap.get(obj);
-            List<PlaceableInfo> placeables = itemInfo2.getPlaceables();
+            List placeables = itemInfo2.getPlaceables();
             int size6 = placeables.size();
             int i16 = 0;
             while (true) {
@@ -294,7 +276,7 @@ public final class LazyListItemPlacementAnimator {
                     z2 = false;
                     break;
                 } else {
-                    if (placeables.get(i16).getInProgress()) {
+                    if (((PlaceableInfo) placeables.get(i16)).getInProgress()) {
                         z2 = true;
                         break;
                     }
@@ -304,28 +286,17 @@ public final class LazyListItemPlacementAnimator {
             if (itemInfo2.getPlaceables().isEmpty() || num2 == null || ((!z2 && Intrinsics.areEqual(num2, map.get(obj))) || !(z2 || isWithinBounds(itemInfo2, i8)))) {
                 this.keyToItemInfoMap.remove(obj);
             } else {
-                LazyMeasuredItem m1526getAndMeasureZjPyQlc = lazyMeasuredItemProvider.m1526getAndMeasureZjPyQlc(DataIndex.m1483constructorimpl(num2.intValue()));
+                LazyMeasuredItem m267getAndMeasureZjPyQlc = lazyMeasuredItemProvider.m267getAndMeasureZjPyQlc(DataIndex.m245constructorimpl(num2.intValue()));
                 if (num2.intValue() < this.firstVisibleIndex) {
-                    this.movingAwayToStartBound.add(m1526getAndMeasureZjPyQlc);
+                    this.movingAwayToStartBound.add(m267getAndMeasureZjPyQlc);
                 } else {
-                    this.movingAwayToEndBound.add(m1526getAndMeasureZjPyQlc);
+                    this.movingAwayToEndBound.add(m267getAndMeasureZjPyQlc);
                 }
             }
         }
         List<LazyMeasuredItem> list6 = this.movingAwayToStartBound;
         if (list6.size() > 1) {
-            CollectionsKt.sortWith(list6, new Comparator() { // from class: androidx.compose.foundation.lazy.LazyListItemPlacementAnimator$onMeasured$$inlined$sortByDescending$2
-                /* JADX WARN: Multi-variable type inference failed */
-                @Override // java.util.Comparator
-                public final int compare(T t, T t2) {
-                    Map map2;
-                    Map map3;
-                    map2 = LazyListItemPlacementAnimator.this.keyToIndexMap;
-                    Integer num3 = (Integer) map2.get(((LazyMeasuredItem) t2).getKey());
-                    map3 = LazyListItemPlacementAnimator.this.keyToIndexMap;
-                    return ComparisonsKt.compareValues(num3, (Integer) map3.get(((LazyMeasuredItem) t).getKey()));
-                }
-            });
+            CollectionsKt.sortWith(list6, new LazyListItemPlacementAnimator$onMeasured$.inlined.sortByDescending.2(this));
         }
         List<LazyMeasuredItem> list7 = this.movingAwayToStartBound;
         int size7 = list7.size();
@@ -341,18 +312,7 @@ public final class LazyListItemPlacementAnimator {
         }
         List<LazyMeasuredItem> list8 = this.movingAwayToEndBound;
         if (list8.size() > 1) {
-            CollectionsKt.sortWith(list8, new Comparator() { // from class: androidx.compose.foundation.lazy.LazyListItemPlacementAnimator$onMeasured$$inlined$sortBy$2
-                /* JADX WARN: Multi-variable type inference failed */
-                @Override // java.util.Comparator
-                public final int compare(T t, T t2) {
-                    Map map2;
-                    Map map3;
-                    map2 = LazyListItemPlacementAnimator.this.keyToIndexMap;
-                    Integer num3 = (Integer) map2.get(((LazyMeasuredItem) t).getKey());
-                    map3 = LazyListItemPlacementAnimator.this.keyToIndexMap;
-                    return ComparisonsKt.compareValues(num3, (Integer) map3.get(((LazyMeasuredItem) t2).getKey()));
-                }
-            });
+            CollectionsKt.sortWith(list8, new LazyListItemPlacementAnimator$onMeasured$.inlined.sortBy.2(this));
         }
         List<LazyMeasuredItem> list9 = this.movingAwayToEndBound;
         int size9 = list9.size();

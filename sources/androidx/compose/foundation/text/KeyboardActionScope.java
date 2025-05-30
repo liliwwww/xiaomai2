@@ -1,8 +1,8 @@
 package androidx.compose.foundation.text;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public interface KeyboardActionScope {
     /* renamed from: defaultKeyboardAction-KlQnJC8 */
-    void mo1729defaultKeyboardActionKlQnJC8(int i);
+    void mo397defaultKeyboardActionKlQnJC8(int i);
 }

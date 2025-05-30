@@ -5,12 +5,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import androidx.annotation.RestrictTo;
-import androidx.appcompat.view.menu.MenuView;
+import androidx.annotation.RestrictTo$Scope;
 import java.util.ArrayList;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class MenuAdapter extends BaseAdapter {
     MenuBuilder mAdapterMenu;
     private int mExpandedIndex = -1;
@@ -69,11 +69,11 @@ public class MenuAdapter extends BaseAdapter {
         int i2 = i - 1;
         ListMenuItemView listMenuItemView = (ListMenuItemView) view;
         listMenuItemView.setGroupDividerEnabled(this.mAdapterMenu.isGroupDividerEnabled() && groupId != (i2 >= 0 ? getItem(i2).getGroupId() : groupId));
-        MenuView.ItemView itemView = (MenuView.ItemView) view;
+        MenuView$ItemView menuView$ItemView = (MenuView$ItemView) view;
         if (this.mForceShowIcon) {
             listMenuItemView.setForceShowIcon(true);
         }
-        itemView.initialize(getItem(i), 0);
+        menuView$ItemView.initialize(getItem(i), 0);
         return view;
     }
 

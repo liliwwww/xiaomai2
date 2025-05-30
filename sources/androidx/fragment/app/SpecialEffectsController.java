@@ -8,14 +8,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.os.CancellationSignal;
 import androidx.core.view.ViewCompat;
-import androidx.fragment.C1043R;
+import androidx.fragment.R;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 abstract class SpecialEffectsController {
     private final ViewGroup mContainer;
     final ArrayList<Operation> mPendingOperations = new ArrayList<>();
@@ -24,46 +24,42 @@ abstract class SpecialEffectsController {
     boolean mIsContainerPostponed = false;
 
     /* compiled from: Taobao */
-    /* renamed from: androidx.fragment.app.SpecialEffectsController$3 */
-    static /* synthetic */ class C11013 {
-
-        /* renamed from: $SwitchMap$androidx$fragment$app$SpecialEffectsController$Operation$LifecycleImpact */
-        static final /* synthetic */ int[] f367xb9e640f0;
-
-        /* renamed from: $SwitchMap$androidx$fragment$app$SpecialEffectsController$Operation$State */
-        static final /* synthetic */ int[] f368xe493b431;
+    /* renamed from: androidx.fragment.app.SpecialEffectsController$3, reason: invalid class name */
+    static /* synthetic */ class AnonymousClass3 {
+        static final /* synthetic */ int[] $SwitchMap$androidx$fragment$app$SpecialEffectsController$Operation$LifecycleImpact;
+        static final /* synthetic */ int[] $SwitchMap$androidx$fragment$app$SpecialEffectsController$Operation$State;
 
         static {
             int[] iArr = new int[Operation.LifecycleImpact.values().length];
-            f367xb9e640f0 = iArr;
+            $SwitchMap$androidx$fragment$app$SpecialEffectsController$Operation$LifecycleImpact = iArr;
             try {
                 iArr[Operation.LifecycleImpact.ADDING.ordinal()] = 1;
             } catch (NoSuchFieldError unused) {
             }
             try {
-                f367xb9e640f0[Operation.LifecycleImpact.REMOVING.ordinal()] = 2;
+                $SwitchMap$androidx$fragment$app$SpecialEffectsController$Operation$LifecycleImpact[Operation.LifecycleImpact.REMOVING.ordinal()] = 2;
             } catch (NoSuchFieldError unused2) {
             }
             try {
-                f367xb9e640f0[Operation.LifecycleImpact.NONE.ordinal()] = 3;
+                $SwitchMap$androidx$fragment$app$SpecialEffectsController$Operation$LifecycleImpact[Operation.LifecycleImpact.NONE.ordinal()] = 3;
             } catch (NoSuchFieldError unused3) {
             }
             int[] iArr2 = new int[Operation.State.values().length];
-            f368xe493b431 = iArr2;
+            $SwitchMap$androidx$fragment$app$SpecialEffectsController$Operation$State = iArr2;
             try {
                 iArr2[Operation.State.REMOVED.ordinal()] = 1;
             } catch (NoSuchFieldError unused4) {
             }
             try {
-                f368xe493b431[Operation.State.VISIBLE.ordinal()] = 2;
+                $SwitchMap$androidx$fragment$app$SpecialEffectsController$Operation$State[Operation.State.VISIBLE.ordinal()] = 2;
             } catch (NoSuchFieldError unused5) {
             }
             try {
-                f368xe493b431[Operation.State.GONE.ordinal()] = 3;
+                $SwitchMap$androidx$fragment$app$SpecialEffectsController$Operation$State[Operation.State.GONE.ordinal()] = 3;
             } catch (NoSuchFieldError unused6) {
             }
             try {
-                f368xe493b431[Operation.State.INVISIBLE.ordinal()] = 4;
+                $SwitchMap$androidx$fragment$app$SpecialEffectsController$Operation$State[Operation.State.INVISIBLE.ordinal()] = 4;
             } catch (NoSuchFieldError unused7) {
             }
         }
@@ -117,6 +113,139 @@ abstract class SpecialEffectsController {
                 requireView2.setVisibility(4);
             }
             requireView2.setAlpha(fragment2.getPostOnViewCreatedAlpha());
+        }
+    }
+
+    /* compiled from: Taobao */
+    static class Operation {
+
+        @NonNull
+        private State mFinalState;
+
+        @NonNull
+        private final Fragment mFragment;
+
+        @NonNull
+        private LifecycleImpact mLifecycleImpact;
+
+        @NonNull
+        private final List<Runnable> mCompletionListeners = new ArrayList();
+
+        @NonNull
+        private final HashSet<CancellationSignal> mSpecialEffectsSignals = new HashSet<>();
+        private boolean mIsCanceled = false;
+        private boolean mIsComplete = false;
+
+        Operation(@NonNull State state, @NonNull LifecycleImpact lifecycleImpact, @NonNull Fragment fragment, @NonNull CancellationSignal cancellationSignal) {
+            this.mFinalState = state;
+            this.mLifecycleImpact = lifecycleImpact;
+            this.mFragment = fragment;
+            cancellationSignal.setOnCancelListener(new 1(this));
+        }
+
+        final void addCompletionListener(@NonNull Runnable runnable) {
+            this.mCompletionListeners.add(runnable);
+        }
+
+        final void cancel() {
+            if (isCanceled()) {
+                return;
+            }
+            this.mIsCanceled = true;
+            if (this.mSpecialEffectsSignals.isEmpty()) {
+                complete();
+                return;
+            }
+            Iterator it = new ArrayList(this.mSpecialEffectsSignals).iterator();
+            while (it.hasNext()) {
+                ((CancellationSignal) it.next()).cancel();
+            }
+        }
+
+        @CallSuper
+        public void complete() {
+            if (this.mIsComplete) {
+                return;
+            }
+            if (FragmentManager.isLoggingEnabled(2)) {
+                Log.v(FragmentManager.TAG, "SpecialEffectsController: " + this + " has called complete.");
+            }
+            this.mIsComplete = true;
+            Iterator<Runnable> it = this.mCompletionListeners.iterator();
+            while (it.hasNext()) {
+                it.next().run();
+            }
+        }
+
+        public final void completeSpecialEffect(@NonNull CancellationSignal cancellationSignal) {
+            if (this.mSpecialEffectsSignals.remove(cancellationSignal) && this.mSpecialEffectsSignals.isEmpty()) {
+                complete();
+            }
+        }
+
+        @NonNull
+        public State getFinalState() {
+            return this.mFinalState;
+        }
+
+        @NonNull
+        public final Fragment getFragment() {
+            return this.mFragment;
+        }
+
+        @NonNull
+        LifecycleImpact getLifecycleImpact() {
+            return this.mLifecycleImpact;
+        }
+
+        final boolean isCanceled() {
+            return this.mIsCanceled;
+        }
+
+        final boolean isComplete() {
+            return this.mIsComplete;
+        }
+
+        public final void markStartedSpecialEffect(@NonNull CancellationSignal cancellationSignal) {
+            onStart();
+            this.mSpecialEffectsSignals.add(cancellationSignal);
+        }
+
+        final void mergeWith(@NonNull State state, @NonNull LifecycleImpact lifecycleImpact) {
+            int i = AnonymousClass3.$SwitchMap$androidx$fragment$app$SpecialEffectsController$Operation$LifecycleImpact[lifecycleImpact.ordinal()];
+            if (i == 1) {
+                if (this.mFinalState == State.REMOVED) {
+                    if (FragmentManager.isLoggingEnabled(2)) {
+                        Log.v(FragmentManager.TAG, "SpecialEffectsController: For fragment " + this.mFragment + " mFinalState = REMOVED -> VISIBLE. mLifecycleImpact = " + this.mLifecycleImpact + " to ADDING.");
+                    }
+                    this.mFinalState = State.VISIBLE;
+                    this.mLifecycleImpact = LifecycleImpact.ADDING;
+                    return;
+                }
+                return;
+            }
+            if (i == 2) {
+                if (FragmentManager.isLoggingEnabled(2)) {
+                    Log.v(FragmentManager.TAG, "SpecialEffectsController: For fragment " + this.mFragment + " mFinalState = " + this.mFinalState + " -> REMOVED. mLifecycleImpact  = " + this.mLifecycleImpact + " to REMOVING.");
+                }
+                this.mFinalState = State.REMOVED;
+                this.mLifecycleImpact = LifecycleImpact.REMOVING;
+                return;
+            }
+            if (i == 3 && this.mFinalState != State.REMOVED) {
+                if (FragmentManager.isLoggingEnabled(2)) {
+                    Log.v(FragmentManager.TAG, "SpecialEffectsController: For fragment " + this.mFragment + " mFinalState = " + this.mFinalState + " -> " + state + ". ");
+                }
+                this.mFinalState = state;
+            }
+        }
+
+        void onStart() {
+        }
+
+        @NonNull
+        public String toString() {
+            return "Operation {" + Integer.toHexString(System.identityHashCode(this)) + "} {mFinalState = " + this.mFinalState + "} {mLifecycleImpact = " + this.mLifecycleImpact + "} {mFragment = " + this.mFragment + "}";
         }
     }
 
@@ -366,219 +495,9 @@ abstract class SpecialEffectsController {
         this.mOperationDirectionIsPop = z;
     }
 
-    /* compiled from: Taobao */
-    static class Operation {
-
-        @NonNull
-        private State mFinalState;
-
-        @NonNull
-        private final Fragment mFragment;
-
-        @NonNull
-        private LifecycleImpact mLifecycleImpact;
-
-        @NonNull
-        private final List<Runnable> mCompletionListeners = new ArrayList();
-
-        @NonNull
-        private final HashSet<CancellationSignal> mSpecialEffectsSignals = new HashSet<>();
-        private boolean mIsCanceled = false;
-        private boolean mIsComplete = false;
-
-        /* compiled from: Taobao */
-        /* loaded from: classes.dex */
-        enum LifecycleImpact {
-            NONE,
-            ADDING,
-            REMOVING
-        }
-
-        Operation(@NonNull State state, @NonNull LifecycleImpact lifecycleImpact, @NonNull Fragment fragment, @NonNull CancellationSignal cancellationSignal) {
-            this.mFinalState = state;
-            this.mLifecycleImpact = lifecycleImpact;
-            this.mFragment = fragment;
-            cancellationSignal.setOnCancelListener(new CancellationSignal.OnCancelListener() { // from class: androidx.fragment.app.SpecialEffectsController.Operation.1
-                @Override // androidx.core.os.CancellationSignal.OnCancelListener
-                public void onCancel() {
-                    Operation.this.cancel();
-                }
-            });
-        }
-
-        final void addCompletionListener(@NonNull Runnable runnable) {
-            this.mCompletionListeners.add(runnable);
-        }
-
-        final void cancel() {
-            if (isCanceled()) {
-                return;
-            }
-            this.mIsCanceled = true;
-            if (this.mSpecialEffectsSignals.isEmpty()) {
-                complete();
-                return;
-            }
-            Iterator it = new ArrayList(this.mSpecialEffectsSignals).iterator();
-            while (it.hasNext()) {
-                ((CancellationSignal) it.next()).cancel();
-            }
-        }
-
-        @CallSuper
-        public void complete() {
-            if (this.mIsComplete) {
-                return;
-            }
-            if (FragmentManager.isLoggingEnabled(2)) {
-                Log.v(FragmentManager.TAG, "SpecialEffectsController: " + this + " has called complete.");
-            }
-            this.mIsComplete = true;
-            Iterator<Runnable> it = this.mCompletionListeners.iterator();
-            while (it.hasNext()) {
-                it.next().run();
-            }
-        }
-
-        public final void completeSpecialEffect(@NonNull CancellationSignal cancellationSignal) {
-            if (this.mSpecialEffectsSignals.remove(cancellationSignal) && this.mSpecialEffectsSignals.isEmpty()) {
-                complete();
-            }
-        }
-
-        @NonNull
-        public State getFinalState() {
-            return this.mFinalState;
-        }
-
-        @NonNull
-        public final Fragment getFragment() {
-            return this.mFragment;
-        }
-
-        @NonNull
-        LifecycleImpact getLifecycleImpact() {
-            return this.mLifecycleImpact;
-        }
-
-        final boolean isCanceled() {
-            return this.mIsCanceled;
-        }
-
-        final boolean isComplete() {
-            return this.mIsComplete;
-        }
-
-        public final void markStartedSpecialEffect(@NonNull CancellationSignal cancellationSignal) {
-            onStart();
-            this.mSpecialEffectsSignals.add(cancellationSignal);
-        }
-
-        final void mergeWith(@NonNull State state, @NonNull LifecycleImpact lifecycleImpact) {
-            int i = C11013.f367xb9e640f0[lifecycleImpact.ordinal()];
-            if (i == 1) {
-                if (this.mFinalState == State.REMOVED) {
-                    if (FragmentManager.isLoggingEnabled(2)) {
-                        Log.v(FragmentManager.TAG, "SpecialEffectsController: For fragment " + this.mFragment + " mFinalState = REMOVED -> VISIBLE. mLifecycleImpact = " + this.mLifecycleImpact + " to ADDING.");
-                    }
-                    this.mFinalState = State.VISIBLE;
-                    this.mLifecycleImpact = LifecycleImpact.ADDING;
-                    return;
-                }
-                return;
-            }
-            if (i == 2) {
-                if (FragmentManager.isLoggingEnabled(2)) {
-                    Log.v(FragmentManager.TAG, "SpecialEffectsController: For fragment " + this.mFragment + " mFinalState = " + this.mFinalState + " -> REMOVED. mLifecycleImpact  = " + this.mLifecycleImpact + " to REMOVING.");
-                }
-                this.mFinalState = State.REMOVED;
-                this.mLifecycleImpact = LifecycleImpact.REMOVING;
-                return;
-            }
-            if (i == 3 && this.mFinalState != State.REMOVED) {
-                if (FragmentManager.isLoggingEnabled(2)) {
-                    Log.v(FragmentManager.TAG, "SpecialEffectsController: For fragment " + this.mFragment + " mFinalState = " + this.mFinalState + " -> " + state + ". ");
-                }
-                this.mFinalState = state;
-            }
-        }
-
-        void onStart() {
-        }
-
-        @NonNull
-        public String toString() {
-            return "Operation {" + Integer.toHexString(System.identityHashCode(this)) + "} {mFinalState = " + this.mFinalState + "} {mLifecycleImpact = " + this.mLifecycleImpact + "} {mFragment = " + this.mFragment + "}";
-        }
-
-        /* compiled from: Taobao */
-        /* loaded from: classes.dex */
-        enum State {
-            REMOVED,
-            VISIBLE,
-            GONE,
-            INVISIBLE;
-
-            @NonNull
-            static State from(@NonNull View view) {
-                return (view.getAlpha() == 0.0f && view.getVisibility() == 0) ? INVISIBLE : from(view.getVisibility());
-            }
-
-            void applyState(@NonNull View view) {
-                int i = C11013.f368xe493b431[ordinal()];
-                if (i == 1) {
-                    ViewGroup viewGroup = (ViewGroup) view.getParent();
-                    if (viewGroup != null) {
-                        if (FragmentManager.isLoggingEnabled(2)) {
-                            Log.v(FragmentManager.TAG, "SpecialEffectsController: Removing view " + view + " from container " + viewGroup);
-                        }
-                        viewGroup.removeView(view);
-                        return;
-                    }
-                    return;
-                }
-                if (i == 2) {
-                    if (FragmentManager.isLoggingEnabled(2)) {
-                        Log.v(FragmentManager.TAG, "SpecialEffectsController: Setting view " + view + " to VISIBLE");
-                    }
-                    view.setVisibility(0);
-                    return;
-                }
-                if (i == 3) {
-                    if (FragmentManager.isLoggingEnabled(2)) {
-                        Log.v(FragmentManager.TAG, "SpecialEffectsController: Setting view " + view + " to GONE");
-                    }
-                    view.setVisibility(8);
-                    return;
-                }
-                if (i != 4) {
-                    return;
-                }
-                if (FragmentManager.isLoggingEnabled(2)) {
-                    Log.v(FragmentManager.TAG, "SpecialEffectsController: Setting view " + view + " to INVISIBLE");
-                }
-                view.setVisibility(4);
-            }
-
-            @NonNull
-            static State from(int i) {
-                if (i == 0) {
-                    return VISIBLE;
-                }
-                if (i == 4) {
-                    return INVISIBLE;
-                }
-                if (i == 8) {
-                    return GONE;
-                }
-                throw new IllegalArgumentException("Unknown visibility " + i);
-            }
-        }
-    }
-
     @NonNull
     static SpecialEffectsController getOrCreateController(@NonNull ViewGroup viewGroup, @NonNull SpecialEffectsControllerFactory specialEffectsControllerFactory) {
-        int i = C1043R.id.special_effects_controller_view_tag;
+        int i = R.id.special_effects_controller_view_tag;
         Object tag = viewGroup.getTag(i);
         if (tag instanceof SpecialEffectsController) {
             return (SpecialEffectsController) tag;

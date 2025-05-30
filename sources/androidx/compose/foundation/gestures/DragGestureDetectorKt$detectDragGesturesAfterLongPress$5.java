@@ -1,8 +1,8 @@
 package androidx.compose.foundation.gestures;
 
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.input.pointer.AwaitPointerEventScope;
-import androidx.compose.p004ui.input.pointer.PointerInputChange;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope;
+import androidx.compose.ui.input.pointer.PointerInputChange;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.jvm.internal.DebugMetadata;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.gestures.DragGestureDetectorKt$detectDragGesturesAfterLongPress$5", f = "DragGestureDetector.kt", i = {0, 1, 2}, l = {235, 236, 241}, m = "invokeSuspend", n = {"$this$awaitEachGesture", "$this$awaitEachGesture", "$this$awaitEachGesture"}, s = {"L$0", "L$0", "L$0"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class DragGestureDetectorKt$detectDragGesturesAfterLongPress$5 extends RestrictedSuspendLambda implements Function2<AwaitPointerEventScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ Function2<PointerInputChange, Offset, Unit> $onDrag;
     final /* synthetic */ Function0<Unit> $onDragCancel;
@@ -25,7 +25,6 @@ final class DragGestureDetectorKt$detectDragGesturesAfterLongPress$5 extends Res
     int label;
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    /* JADX WARN: Multi-variable type inference failed */
     DragGestureDetectorKt$detectDragGesturesAfterLongPress$5(Function1<? super Offset, Unit> function1, Function0<Unit> function0, Function0<Unit> function02, Function2<? super PointerInputChange, ? super Offset, Unit> function2, Continuation<? super DragGestureDetectorKt$detectDragGesturesAfterLongPress$5> continuation) {
         super(2, continuation);
         this.$onDragStart = function1;
@@ -52,7 +51,7 @@ final class DragGestureDetectorKt$detectDragGesturesAfterLongPress$5 extends Res
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object invokeSuspend(@org.jetbrains.annotations.NotNull java.lang.Object r12) {
         /*
@@ -67,7 +66,7 @@ final class DragGestureDetectorKt$detectDragGesturesAfterLongPress$5 extends Res
             if (r1 == r3) goto L21
             if (r1 != r2) goto L19
             java.lang.Object r0 = r11.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r0 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r0
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r0 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r0
             kotlin.ResultKt.throwOnFailure(r12)     // Catch: java.util.concurrent.CancellationException -> L31
             goto L86
         L19:
@@ -77,12 +76,12 @@ final class DragGestureDetectorKt$detectDragGesturesAfterLongPress$5 extends Res
             throw r12
         L21:
             java.lang.Object r1 = r11.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r1 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r1
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r1 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r1
             kotlin.ResultKt.throwOnFailure(r12)     // Catch: java.util.concurrent.CancellationException -> L31
             goto L5e
         L29:
             java.lang.Object r1 = r11.L$0
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r1 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r1
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r1 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r1
             kotlin.ResultKt.throwOnFailure(r12)     // Catch: java.util.concurrent.CancellationException -> L31
             goto L4d
         L31:
@@ -92,7 +91,7 @@ final class DragGestureDetectorKt$detectDragGesturesAfterLongPress$5 extends Res
             kotlin.ResultKt.throwOnFailure(r12)
             java.lang.Object r12 = r11.L$0
             r1 = r12
-            androidx.compose.ui.input.pointer.AwaitPointerEventScope r1 = (androidx.compose.p004ui.input.pointer.AwaitPointerEventScope) r1
+            androidx.compose.ui.input.pointer.AwaitPointerEventScope r1 = (androidx.compose.ui.input.pointer.AwaitPointerEventScope) r1
             r6 = 0
             r7 = 0
             r9 = 2
@@ -105,27 +104,27 @@ final class DragGestureDetectorKt$detectDragGesturesAfterLongPress$5 extends Res
             if (r12 != r0) goto L4d
             return r0
         L4d:
-            androidx.compose.ui.input.pointer.PointerInputChange r12 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r12     // Catch: java.util.concurrent.CancellationException -> L31
-            long r4 = r12.m4080getIdJ3iCeTQ()     // Catch: java.util.concurrent.CancellationException -> L31
+            androidx.compose.ui.input.pointer.PointerInputChange r12 = (androidx.compose.ui.input.pointer.PointerInputChange) r12     // Catch: java.util.concurrent.CancellationException -> L31
+            long r4 = r12.getId-J3iCeTQ()     // Catch: java.util.concurrent.CancellationException -> L31
             r11.L$0 = r1     // Catch: java.util.concurrent.CancellationException -> L31
             r11.label = r3     // Catch: java.util.concurrent.CancellationException -> L31
-            java.lang.Object r12 = androidx.compose.foundation.gestures.DragGestureDetectorKt.m1220awaitLongPressOrCancellationrnUCldI(r1, r4, r11)     // Catch: java.util.concurrent.CancellationException -> L31
+            java.lang.Object r12 = androidx.compose.foundation.gestures.DragGestureDetectorKt.m177awaitLongPressOrCancellationrnUCldI(r1, r4, r11)     // Catch: java.util.concurrent.CancellationException -> L31
             if (r12 != r0) goto L5e
             return r0
         L5e:
-            androidx.compose.ui.input.pointer.PointerInputChange r12 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r12     // Catch: java.util.concurrent.CancellationException -> L31
+            androidx.compose.ui.input.pointer.PointerInputChange r12 = (androidx.compose.ui.input.pointer.PointerInputChange) r12     // Catch: java.util.concurrent.CancellationException -> L31
             if (r12 == 0) goto Lba
             kotlin.jvm.functions.Function1<androidx.compose.ui.geometry.Offset, kotlin.Unit> r3 = r11.$onDragStart     // Catch: java.util.concurrent.CancellationException -> L31
-            long r4 = r12.m4081getPositionF1C5BW0()     // Catch: java.util.concurrent.CancellationException -> L31
-            androidx.compose.ui.geometry.Offset r4 = androidx.compose.p004ui.geometry.Offset.m2545boximpl(r4)     // Catch: java.util.concurrent.CancellationException -> L31
+            long r4 = r12.getPosition-F1C5BW0()     // Catch: java.util.concurrent.CancellationException -> L31
+            androidx.compose.ui.geometry.Offset r4 = androidx.compose.ui.geometry.Offset.box-impl(r4)     // Catch: java.util.concurrent.CancellationException -> L31
             r3.invoke(r4)     // Catch: java.util.concurrent.CancellationException -> L31
-            long r3 = r12.m4080getIdJ3iCeTQ()     // Catch: java.util.concurrent.CancellationException -> L31
+            long r3 = r12.getId-J3iCeTQ()     // Catch: java.util.concurrent.CancellationException -> L31
             androidx.compose.foundation.gestures.DragGestureDetectorKt$detectDragGesturesAfterLongPress$5$1 r12 = new androidx.compose.foundation.gestures.DragGestureDetectorKt$detectDragGesturesAfterLongPress$5$1     // Catch: java.util.concurrent.CancellationException -> L31
             kotlin.jvm.functions.Function2<androidx.compose.ui.input.pointer.PointerInputChange, androidx.compose.ui.geometry.Offset, kotlin.Unit> r5 = r11.$onDrag     // Catch: java.util.concurrent.CancellationException -> L31
             r12.<init>()     // Catch: java.util.concurrent.CancellationException -> L31
             r11.L$0 = r1     // Catch: java.util.concurrent.CancellationException -> L31
             r11.label = r2     // Catch: java.util.concurrent.CancellationException -> L31
-            java.lang.Object r12 = androidx.compose.foundation.gestures.DragGestureDetectorKt.m1230dragjO51t88(r1, r3, r12, r11)     // Catch: java.util.concurrent.CancellationException -> L31
+            java.lang.Object r12 = androidx.compose.foundation.gestures.DragGestureDetectorKt.m187dragjO51t88(r1, r3, r12, r11)     // Catch: java.util.concurrent.CancellationException -> L31
             if (r12 != r0) goto L85
             return r0
         L85:
@@ -141,8 +140,8 @@ final class DragGestureDetectorKt$detectDragGesturesAfterLongPress$5 extends Res
         L9b:
             if (r0 >= r1) goto Laf
             java.lang.Object r2 = r12.get(r0)     // Catch: java.util.concurrent.CancellationException -> L31
-            androidx.compose.ui.input.pointer.PointerInputChange r2 = (androidx.compose.p004ui.input.pointer.PointerInputChange) r2     // Catch: java.util.concurrent.CancellationException -> L31
-            boolean r3 = androidx.compose.p004ui.input.pointer.PointerEventKt.changedToUp(r2)     // Catch: java.util.concurrent.CancellationException -> L31
+            androidx.compose.ui.input.pointer.PointerInputChange r2 = (androidx.compose.ui.input.pointer.PointerInputChange) r2     // Catch: java.util.concurrent.CancellationException -> L31
+            boolean r3 = androidx.compose.ui.input.pointer.PointerEventKt.changedToUp(r2)     // Catch: java.util.concurrent.CancellationException -> L31
             if (r3 == 0) goto Lac
             r2.consume()     // Catch: java.util.concurrent.CancellationException -> L31
         Lac:

@@ -2,11 +2,11 @@ package com.ali.mobisecenhance;
 
 import android.app.Application;
 import android.content.Context;
-import com.ali.mobisecenhance.p009ld.RecordLog;
+import com.ali.mobisecenhance.ld.RecordLog;
 import com.j2c.enhance.SoLoad992979061;
 import java.lang.reflect.InvocationTargetException;
 
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class SpeedInit extends Init implements Runnable {
     private static final String TAG;
     private static final RecordLog logger;

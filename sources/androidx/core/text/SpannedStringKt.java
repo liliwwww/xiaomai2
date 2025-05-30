@@ -2,16 +2,15 @@ package androidx.core.text;
 
 import android.text.Spanned;
 import android.text.SpannedString;
-import androidx.exifinterface.media.ExifInterface;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SpannedStringKt {
     public static final /* synthetic */ <T> T[] getSpans(Spanned spanned, int i, int i2) {
         Intrinsics.checkNotNullParameter(spanned, "<this>");
-        Intrinsics.reifiedOperationMarker(4, ExifInterface.GPS_DIRECTION_TRUE);
+        Intrinsics.reifiedOperationMarker(4, "T");
         T[] tArr = (T[]) spanned.getSpans(i, i2, Object.class);
         Intrinsics.checkNotNullExpressionValue(tArr, "getSpans(start, end, T::class.java)");
         return tArr;
@@ -25,7 +24,7 @@ public final class SpannedStringKt {
             i2 = spanned.length();
         }
         Intrinsics.checkNotNullParameter(spanned, "<this>");
-        Intrinsics.reifiedOperationMarker(4, ExifInterface.GPS_DIRECTION_TRUE);
+        Intrinsics.reifiedOperationMarker(4, "T");
         Object[] spans = spanned.getSpans(i, i2, Object.class);
         Intrinsics.checkNotNullExpressionValue(spans, "getSpans(start, end, T::class.java)");
         return spans;

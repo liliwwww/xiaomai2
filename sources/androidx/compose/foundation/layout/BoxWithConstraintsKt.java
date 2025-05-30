@@ -1,27 +1,29 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.Alignment;
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.UiComposable;
-import androidx.compose.p004ui.layout.MeasurePolicy;
-import androidx.compose.p004ui.layout.MeasureResult;
-import androidx.compose.p004ui.layout.SubcomposeLayoutKt;
-import androidx.compose.p004ui.layout.SubcomposeMeasureScope;
-import androidx.compose.p004ui.unit.Constraints;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.ScopeUpdateScope;
 import androidx.compose.runtime.internal.ComposableLambdaKt;
+import androidx.compose.ui.Alignment;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.UiComposable;
+import androidx.compose.ui.layout.MeasurePolicy;
+import androidx.compose.ui.layout.MeasureResult;
+import androidx.compose.ui.layout.SubcomposeLayoutKt;
+import androidx.compose.ui.layout.SubcomposeMeasureScope;
+import androidx.compose.ui.unit.Constraints;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.functions.Function3;
+import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class BoxWithConstraintsKt {
     @Composable
     @UiComposable
@@ -52,7 +54,7 @@ public final class BoxWithConstraintsKt {
         if ((i2 & 8) != 0) {
             i3 |= 3072;
         } else if ((i & 7168) == 0) {
-            i3 |= startRestartGroup.changed(function3) ? 2048 : 1024;
+            i3 |= startRestartGroup.changed(function3) ? AccessibilityEventCompat.TYPE_WINDOW_CONTENT_CHANGED : AccessibilityEventCompat.TYPE_TOUCH_EXPLORATION_GESTURE_END;
         }
         if ((i3 & 5851) == 1170 && startRestartGroup.getSkipping()) {
             startRestartGroup.skipToGroupEnd();
@@ -83,18 +85,18 @@ public final class BoxWithConstraintsKt {
                     }
 
                     public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2) {
-                        return m1364invoke0kLqBqw((SubcomposeMeasureScope) obj, ((Constraints) obj2).m5190unboximpl());
+                        return m303invoke0kLqBqw((SubcomposeMeasureScope) obj, ((Constraints) obj2).unbox-impl());
                     }
 
                     @NotNull
                     /* renamed from: invoke-0kLqBqw, reason: not valid java name */
-                    public final MeasureResult m1364invoke0kLqBqw(@NotNull SubcomposeMeasureScope subcomposeMeasureScope, long j) {
+                    public final MeasureResult m303invoke0kLqBqw(@NotNull SubcomposeMeasureScope subcomposeMeasureScope, long j) {
                         Intrinsics.checkNotNullParameter(subcomposeMeasureScope, "$this$SubcomposeLayout");
-                        final BoxWithConstraintsScopeImpl boxWithConstraintsScopeImpl = new BoxWithConstraintsScopeImpl(subcomposeMeasureScope, j, null);
+                        final BoxWithConstraintsScopeImpl boxWithConstraintsScopeImpl = new BoxWithConstraintsScopeImpl(subcomposeMeasureScope, j, (DefaultConstructorMarker) null);
                         Unit unit = Unit.INSTANCE;
                         final Function3<BoxWithConstraintsScope, Composer, Integer, Unit> function32 = function3;
                         final int i8 = i3;
-                        return MeasurePolicy.this.mo944measure3p2s80s(subcomposeMeasureScope, subcomposeMeasureScope.subcompose(unit, ComposableLambdaKt.composableLambdaInstance(-1945019079, true, new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.layout.BoxWithConstraintsKt$BoxWithConstraints$1$1$measurables$1
+                        return rememberBoxMeasurePolicy.measure-3p2s80s(subcomposeMeasureScope, subcomposeMeasureScope.subcompose(unit, ComposableLambdaKt.composableLambdaInstance(-1945019079, true, new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.layout.BoxWithConstraintsKt$BoxWithConstraints$1$1$measurables$1
                             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
                             /* JADX WARN: Multi-variable type inference failed */
                             {

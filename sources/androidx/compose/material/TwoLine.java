@@ -1,10 +1,10 @@
 package androidx.compose.material;
 
-import androidx.compose.p004ui.unit.C0856Dp;
+import androidx.compose.ui.unit.Dp;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class TwoLine {
     private static final float ContentLeftPadding;
     private static final float ContentRightPadding;
@@ -17,24 +17,24 @@ final class TwoLine {
 
     @NotNull
     public static final TwoLine INSTANCE = new TwoLine();
-    private static final float MinHeight = C0856Dp.m5216constructorimpl(64);
-    private static final float MinHeightWithIcon = C0856Dp.m5216constructorimpl(72);
-    private static final float IconMinPaddedWidth = C0856Dp.m5216constructorimpl(40);
-    private static final float OverlineBaselineOffset = C0856Dp.m5216constructorimpl(24);
-    private static final float PrimaryBaselineOffsetNoIcon = C0856Dp.m5216constructorimpl(28);
-    private static final float PrimaryBaselineOffsetWithIcon = C0856Dp.m5216constructorimpl(32);
+    private static final float MinHeight = Dp.constructor-impl(64);
+    private static final float MinHeightWithIcon = Dp.constructor-impl(72);
+    private static final float IconMinPaddedWidth = Dp.constructor-impl(40);
+    private static final float OverlineBaselineOffset = Dp.constructor-impl(24);
+    private static final float PrimaryBaselineOffsetNoIcon = Dp.constructor-impl(28);
+    private static final float PrimaryBaselineOffsetWithIcon = Dp.constructor-impl(32);
 
     static {
         float f = 16;
-        IconLeftPadding = C0856Dp.m5216constructorimpl(f);
-        IconVerticalPadding = C0856Dp.m5216constructorimpl(f);
-        ContentLeftPadding = C0856Dp.m5216constructorimpl(f);
-        ContentRightPadding = C0856Dp.m5216constructorimpl(f);
+        IconLeftPadding = Dp.constructor-impl(f);
+        IconVerticalPadding = Dp.constructor-impl(f);
+        ContentLeftPadding = Dp.constructor-impl(f);
+        ContentRightPadding = Dp.constructor-impl(f);
         float f2 = 20;
-        OverlineToPrimaryBaselineOffset = C0856Dp.m5216constructorimpl(f2);
-        PrimaryToSecondaryBaselineOffsetNoIcon = C0856Dp.m5216constructorimpl(f2);
-        PrimaryToSecondaryBaselineOffsetWithIcon = C0856Dp.m5216constructorimpl(f2);
-        TrailingRightPadding = C0856Dp.m5216constructorimpl(f);
+        OverlineToPrimaryBaselineOffset = Dp.constructor-impl(f2);
+        PrimaryToSecondaryBaselineOffsetNoIcon = Dp.constructor-impl(f2);
+        PrimaryToSecondaryBaselineOffsetWithIcon = Dp.constructor-impl(f2);
+        TrailingRightPadding = Dp.constructor-impl(f);
     }
 
     private TwoLine() {
@@ -61,12 +61,12 @@ final class TwoLine {
     @androidx.compose.runtime.ComposableInferredTarget(scheme = "[androidx.compose.ui.UiComposable[androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable][androidx.compose.ui.UiComposable]]")
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public final void ListItem(@org.jetbrains.annotations.Nullable androidx.compose.p004ui.Modifier r33, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r34, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r35, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r36, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r37, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r38, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r39, final int r40, final int r41) {
+    public final void ListItem(@org.jetbrains.annotations.Nullable androidx.compose.ui.Modifier r33, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r34, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r35, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r36, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r37, @org.jetbrains.annotations.Nullable final kotlin.jvm.functions.Function2<? super androidx.compose.runtime.Composer, ? super java.lang.Integer, kotlin.Unit> r38, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r39, final int r40, final int r41) {
         /*
             Method dump skipped, instructions count: 919
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.TwoLine.ListItem(androidx.compose.ui.Modifier, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, kotlin.jvm.functions.Function2, androidx.compose.runtime.Composer, int, int):void");
     }

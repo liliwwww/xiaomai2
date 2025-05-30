@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.FlowCollector;
 
 /* JADX INFO: Add missing generic type declarations: [T] */
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class SwipeableState$animateTo$2<T> implements FlowCollector<Map<Float, ? extends T>> {
     final /* synthetic */ AnimationSpec<Float> $anim;
     final /* synthetic */ T $targetValue;
@@ -33,12 +33,12 @@ final class SwipeableState$animateTo$2<T> implements FlowCollector<Map<Float, ? 
     @org.jetbrains.annotations.Nullable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object emit(@org.jetbrains.annotations.NotNull java.util.Map<java.lang.Float, ? extends T> r9, @org.jetbrains.annotations.NotNull kotlin.coroutines.Continuation<? super kotlin.Unit> r10) {
         /*
             Method dump skipped, instructions count: 310
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.material.SwipeableState$animateTo$2.emit(java.util.Map, kotlin.coroutines.Continuation):java.lang.Object");
     }

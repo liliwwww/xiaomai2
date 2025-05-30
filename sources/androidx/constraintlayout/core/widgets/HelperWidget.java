@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class HelperWidget extends ConstraintWidget implements Helper {
     public ConstraintWidget[] mWidgets = new ConstraintWidget[4];
     public int mWidgetsCount = 0;
@@ -37,7 +37,6 @@ public class HelperWidget extends ConstraintWidget implements Helper {
         }
     }
 
-    @Override // androidx.constraintlayout.core.widgets.ConstraintWidget
     public void copy(ConstraintWidget constraintWidget, HashMap<ConstraintWidget, ConstraintWidget> hashMap) {
         super.copy(constraintWidget, hashMap);
         HelperWidget helperWidget = (HelperWidget) constraintWidget;

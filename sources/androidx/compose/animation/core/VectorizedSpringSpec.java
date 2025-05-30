@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class VectorizedSpringSpec<V extends AnimationVector> implements VectorizedFiniteAnimationSpec<V> {
     public static final int $stable = 8;
     private final /* synthetic */ VectorizedFloatAnimationSpec<V> $$delegate_0;
@@ -39,7 +39,7 @@ public final class VectorizedSpringSpec<V extends AnimationVector> implements Ve
         Intrinsics.checkNotNullParameter(v, "initialValue");
         Intrinsics.checkNotNullParameter(v2, "targetValue");
         Intrinsics.checkNotNullParameter(v3, "initialVelocity");
-        return this.$$delegate_0.getEndVelocity(v, v2, v3);
+        return (V) this.$$delegate_0.getEndVelocity(v, v2, v3);
     }
 
     public final float getStiffness() {
@@ -52,7 +52,7 @@ public final class VectorizedSpringSpec<V extends AnimationVector> implements Ve
         Intrinsics.checkNotNullParameter(v, "initialValue");
         Intrinsics.checkNotNullParameter(v2, "targetValue");
         Intrinsics.checkNotNullParameter(v3, "initialVelocity");
-        return this.$$delegate_0.getValueFromNanos(j, v, v2, v3);
+        return (V) this.$$delegate_0.getValueFromNanos(j, v, v2, v3);
     }
 
     @Override // androidx.compose.animation.core.VectorizedAnimationSpec
@@ -61,7 +61,7 @@ public final class VectorizedSpringSpec<V extends AnimationVector> implements Ve
         Intrinsics.checkNotNullParameter(v, "initialValue");
         Intrinsics.checkNotNullParameter(v2, "targetValue");
         Intrinsics.checkNotNullParameter(v3, "initialVelocity");
-        return this.$$delegate_0.getVelocityFromNanos(j, v, v2, v3);
+        return (V) this.$$delegate_0.getVelocityFromNanos(j, v, v2, v3);
     }
 
     @Override // androidx.compose.animation.core.VectorizedFiniteAnimationSpec, androidx.compose.animation.core.VectorizedAnimationSpec
@@ -76,7 +76,7 @@ public final class VectorizedSpringSpec<V extends AnimationVector> implements Ve
     /* JADX WARN: Illegal instructions before constructor call */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public VectorizedSpringSpec(float r1, float r2, @org.jetbrains.annotations.Nullable V r3) {
         /*

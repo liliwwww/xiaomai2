@@ -13,7 +13,7 @@ import androidx.annotation.RequiresApi;
 import java.lang.reflect.Field;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class CompoundButtonCompat {
     private static final String TAG = "CompoundButtonCompat";
     private static Field sButtonDrawableField;
@@ -88,7 +88,6 @@ public final class CompoundButtonCompat {
         return null;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     public static ColorStateList getButtonTintList(@NonNull CompoundButton compoundButton) {
         if (Build.VERSION.SDK_INT >= 21) {
@@ -100,7 +99,6 @@ public final class CompoundButtonCompat {
         return null;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     @Nullable
     public static PorterDuff.Mode getButtonTintMode(@NonNull CompoundButton compoundButton) {
         if (Build.VERSION.SDK_INT >= 21) {
@@ -112,7 +110,6 @@ public final class CompoundButtonCompat {
         return null;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static void setButtonTintList(@NonNull CompoundButton compoundButton, @Nullable ColorStateList colorStateList) {
         if (Build.VERSION.SDK_INT >= 21) {
             Api21Impl.setButtonTintList(compoundButton, colorStateList);
@@ -121,7 +118,6 @@ public final class CompoundButtonCompat {
         }
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static void setButtonTintMode(@NonNull CompoundButton compoundButton, @Nullable PorterDuff.Mode mode) {
         if (Build.VERSION.SDK_INT >= 21) {
             Api21Impl.setButtonTintMode(compoundButton, mode);

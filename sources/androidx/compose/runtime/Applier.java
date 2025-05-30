@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import tb.ka;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public interface Applier<N> {
 
     /* compiled from: Taobao */
@@ -38,6 +38,5 @@ public interface Applier<N> {
 
     void remove(int i, int i2);
 
-    /* renamed from: up */
-    void mo83up();
+    void up();
 }

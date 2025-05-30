@@ -1,7 +1,7 @@
 package androidx.lifecycle;
 
 import android.view.View;
-import androidx.lifecycle.runtime.C1136R;
+import androidx.lifecycle.runtime.R;
 import kotlin.jvm.JvmName;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @JvmName(name = "ViewTreeLifecycleOwner")
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ViewTreeLifecycleOwner {
     @JvmName(name = "get")
     @Nullable
@@ -31,7 +31,7 @@ public final class ViewTreeLifecycleOwner {
             @Nullable
             public final LifecycleOwner invoke(@NotNull View view2) {
                 Intrinsics.checkNotNullParameter(view2, "viewParent");
-                Object tag = view2.getTag(C1136R.id.view_tree_lifecycle_owner);
+                Object tag = view2.getTag(R.id.view_tree_lifecycle_owner);
                 if (tag instanceof LifecycleOwner) {
                     return (LifecycleOwner) tag;
                 }
@@ -43,6 +43,6 @@ public final class ViewTreeLifecycleOwner {
     @JvmName(name = "set")
     public static final void set(@NotNull View view, @Nullable LifecycleOwner lifecycleOwner) {
         Intrinsics.checkNotNullParameter(view, "<this>");
-        view.setTag(C1136R.id.view_tree_lifecycle_owner, lifecycleOwner);
+        view.setTag(R.id.view_tree_lifecycle_owner, lifecycleOwner);
     }
 }

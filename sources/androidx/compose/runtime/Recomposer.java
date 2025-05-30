@@ -1,6 +1,6 @@
 package androidx.compose.runtime;
 
-import android.taobao.windvane.connect.api.ApiConstants;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import androidx.compose.runtime.Recomposer;
 import androidx.compose.runtime.collection.IdentityArraySet;
 import androidx.compose.runtime.external.kotlinx.collections.immutable.ExtensionsKt;
@@ -8,7 +8,7 @@ import androidx.compose.runtime.external.kotlinx.collections.immutable.Persisten
 import androidx.compose.runtime.internal.StabilityInferred;
 import androidx.compose.runtime.snapshots.MutableSnapshot;
 import androidx.compose.runtime.snapshots.Snapshot;
-import androidx.compose.runtime.snapshots.SnapshotApplyResult;
+import androidx.compose.runtime.snapshots.SnapshotApplyResult$Failure;
 import androidx.compose.runtime.tooling.CompositionData;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +21,6 @@ import java.util.Set;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.atomic.AtomicReference;
 import kotlin.Deprecated;
-import kotlin.ExceptionsKt;
 import kotlin.Pair;
 import kotlin.ReplaceWith;
 import kotlin.Result;
@@ -57,7 +56,7 @@ import tb.ma1;
 
 /* compiled from: Taobao */
 @StabilityInferred(parameters = 0)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class Recomposer extends CompositionContext {
 
     @NotNull
@@ -142,7 +141,7 @@ public final class Recomposer extends CompositionContext {
             PersistentSet add;
             do {
                 persistentSet = (PersistentSet) Recomposer._runningRecomposers.getValue();
-                add = persistentSet.add((PersistentSet) recomposerInfoImpl);
+                add = persistentSet.add(recomposerInfoImpl);
                 if (persistentSet == add) {
                     return;
                 }
@@ -155,7 +154,7 @@ public final class Recomposer extends CompositionContext {
             PersistentSet remove;
             do {
                 persistentSet = (PersistentSet) Recomposer._runningRecomposers.getValue();
-                remove = persistentSet.remove((PersistentSet) recomposerInfoImpl);
+                remove = persistentSet.remove(recomposerInfoImpl);
                 if (persistentSet == remove) {
                     return;
                 }
@@ -249,39 +248,6 @@ public final class Recomposer extends CompositionContext {
     }
 
     /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private static final class HotReloadable {
-
-        @NotNull
-        private Function2<? super Composer, ? super Integer, Unit> composable;
-
-        @NotNull
-        private final CompositionImpl composition;
-
-        public HotReloadable(@NotNull CompositionImpl compositionImpl) {
-            Intrinsics.checkNotNullParameter(compositionImpl, "composition");
-            this.composition = compositionImpl;
-            this.composable = compositionImpl.getComposable();
-        }
-
-        public final void clearContent() {
-            if (this.composition.isRoot()) {
-                this.composition.setContent(ComposableSingletons$RecomposerKt.INSTANCE.m2387getLambda1$runtime_release());
-            }
-        }
-
-        public final void recompose() {
-            if (this.composition.isRoot()) {
-                this.composition.setContent(this.composable);
-            }
-        }
-
-        public final void resetContent() {
-            this.composition.setComposable(this.composable);
-        }
-    }
-
-    /* compiled from: Taobao */
     private static final class RecomposerErrorState implements RecomposerErrorInfo {
 
         @NotNull
@@ -294,120 +260,14 @@ public final class Recomposer extends CompositionContext {
             this.cause = exc;
         }
 
-        @Override // androidx.compose.runtime.RecomposerErrorInfo
         @NotNull
         public Exception getCause() {
             return this.cause;
         }
 
-        @Override // androidx.compose.runtime.RecomposerErrorInfo
         public boolean getRecoverable() {
             return this.recoverable;
         }
-    }
-
-    /* JADX INFO: Access modifiers changed from: private */
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    final class RecomposerInfoImpl implements RecomposerInfo {
-        public RecomposerInfoImpl() {
-        }
-
-        @Override // androidx.compose.runtime.RecomposerInfo
-        public long getChangeCount() {
-            return Recomposer.this.getChangeCount();
-        }
-
-        @Nullable
-        public final RecomposerErrorInfo getCurrentError() {
-            RecomposerErrorState recomposerErrorState;
-            Object obj = Recomposer.this.stateLock;
-            Recomposer recomposer = Recomposer.this;
-            synchronized (obj) {
-                recomposerErrorState = recomposer.errorState;
-            }
-            return recomposerErrorState;
-        }
-
-        @Override // androidx.compose.runtime.RecomposerInfo
-        public boolean getHasPendingWork() {
-            return Recomposer.this.getHasPendingWork();
-        }
-
-        @Override // androidx.compose.runtime.RecomposerInfo
-        @NotNull
-        public Flow<State> getState() {
-            return Recomposer.this.getCurrentState();
-        }
-
-        public final void invalidateGroupsWithKey(int i) {
-            List mutableList;
-            Object obj = Recomposer.this.stateLock;
-            Recomposer recomposer = Recomposer.this;
-            synchronized (obj) {
-                mutableList = CollectionsKt.toMutableList(recomposer.knownCompositions);
-            }
-            ArrayList arrayList = new ArrayList(mutableList.size());
-            int size = mutableList.size();
-            for (int i2 = 0; i2 < size; i2++) {
-                ControlledComposition controlledComposition = (ControlledComposition) mutableList.get(i2);
-                CompositionImpl compositionImpl = controlledComposition instanceof CompositionImpl ? (CompositionImpl) controlledComposition : null;
-                if (compositionImpl != null) {
-                    arrayList.add(compositionImpl);
-                }
-            }
-            int size2 = arrayList.size();
-            for (int i3 = 0; i3 < size2; i3++) {
-                ((CompositionImpl) arrayList.get(i3)).invalidateGroupsWithKey(i);
-            }
-        }
-
-        @Nullable
-        public final RecomposerErrorState resetErrorState() {
-            return Recomposer.this.resetErrorState();
-        }
-
-        public final void retryFailedCompositions() {
-            Recomposer.this.retryFailedCompositions();
-        }
-
-        @NotNull
-        public final List<HotReloadable> saveStateAndDisposeForHotReload() {
-            List mutableList;
-            Object obj = Recomposer.this.stateLock;
-            Recomposer recomposer = Recomposer.this;
-            synchronized (obj) {
-                mutableList = CollectionsKt.toMutableList(recomposer.knownCompositions);
-            }
-            ArrayList arrayList = new ArrayList(mutableList.size());
-            int size = mutableList.size();
-            for (int i = 0; i < size; i++) {
-                ControlledComposition controlledComposition = (ControlledComposition) mutableList.get(i);
-                CompositionImpl compositionImpl = controlledComposition instanceof CompositionImpl ? (CompositionImpl) controlledComposition : null;
-                if (compositionImpl != null) {
-                    arrayList.add(compositionImpl);
-                }
-            }
-            ArrayList arrayList2 = new ArrayList(arrayList.size());
-            int size2 = arrayList.size();
-            for (int i2 = 0; i2 < size2; i2++) {
-                HotReloadable hotReloadable = new HotReloadable((CompositionImpl) arrayList.get(i2));
-                hotReloadable.clearContent();
-                arrayList2.add(hotReloadable);
-            }
-            return arrayList2;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    public enum State {
-        ShutDown,
-        ShuttingDown,
-        Inactive,
-        InactivePendingWork,
-        Idle,
-        PendingWork
     }
 
     public Recomposer(@NotNull CoroutineContext coroutineContext) {
@@ -418,12 +278,12 @@ public final class Recomposer extends CompositionContext {
             }
 
             public /* bridge */ /* synthetic */ Object invoke() {
-                m2394invoke();
+                m743invoke();
                 return Unit.INSTANCE;
             }
 
             /* renamed from: invoke, reason: collision with other method in class */
-            public final void m2394invoke() {
+            public final void m743invoke() {
                 CancellableContinuation deriveStateLocked;
                 MutableStateFlow mutableStateFlow;
                 Throwable th;
@@ -454,136 +314,15 @@ public final class Recomposer extends CompositionContext {
         this.compositionValueStatesAvailable = new LinkedHashMap();
         this._state = p.a(State.Inactive);
         CompletableJob a = bb2.a(coroutineContext.get(Job.Key));
-        a.invokeOnCompletion(new Function1<Throwable, Unit>() { // from class: androidx.compose.runtime.Recomposer$effectJob$1$1
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((Throwable) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@Nullable final Throwable th) {
-                Job job;
-                CancellableContinuation cancellableContinuation;
-                MutableStateFlow mutableStateFlow;
-                MutableStateFlow mutableStateFlow2;
-                boolean z;
-                CancellableContinuation cancellableContinuation2;
-                CancellableContinuation cancellableContinuation3;
-                CancellationException a2 = ma1.a("Recomposer effect job completed", th);
-                Object obj = Recomposer.this.stateLock;
-                final Recomposer recomposer = Recomposer.this;
-                synchronized (obj) {
-                    job = recomposer.runnerJob;
-                    cancellableContinuation = null;
-                    if (job != null) {
-                        mutableStateFlow2 = recomposer._state;
-                        mutableStateFlow2.setValue(Recomposer.State.ShuttingDown);
-                        z = recomposer.isClosed;
-                        if (z) {
-                            cancellableContinuation2 = recomposer.workContinuation;
-                            if (cancellableContinuation2 != null) {
-                                cancellableContinuation3 = recomposer.workContinuation;
-                                recomposer.workContinuation = null;
-                                job.invokeOnCompletion(new Function1<Throwable, Unit>() { // from class: androidx.compose.runtime.Recomposer$effectJob$1$1$1$1
-                                    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                                    {
-                                        super(1);
-                                    }
-
-                                    public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                                        invoke((Throwable) obj2);
-                                        return Unit.INSTANCE;
-                                    }
-
-                                    public final void invoke(@Nullable Throwable th2) {
-                                        MutableStateFlow mutableStateFlow3;
-                                        Object obj2 = Recomposer.this.stateLock;
-                                        Recomposer recomposer2 = Recomposer.this;
-                                        Throwable th3 = th;
-                                        synchronized (obj2) {
-                                            if (th3 == null) {
-                                                th3 = null;
-                                            } else if (th2 != null) {
-                                                if (!(!(th2 instanceof CancellationException))) {
-                                                    th2 = null;
-                                                }
-                                                if (th2 != null) {
-                                                    ExceptionsKt.addSuppressed(th3, th2);
-                                                }
-                                            }
-                                            recomposer2.closeCause = th3;
-                                            mutableStateFlow3 = recomposer2._state;
-                                            mutableStateFlow3.setValue(Recomposer.State.ShutDown);
-                                            Unit unit = Unit.INSTANCE;
-                                        }
-                                    }
-                                });
-                                cancellableContinuation = cancellableContinuation3;
-                            }
-                        } else {
-                            job.cancel(a2);
-                        }
-                        cancellableContinuation3 = null;
-                        recomposer.workContinuation = null;
-                        job.invokeOnCompletion(new Function1<Throwable, Unit>() { // from class: androidx.compose.runtime.Recomposer$effectJob$1$1$1$1
-                            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                            {
-                                super(1);
-                            }
-
-                            public /* bridge */ /* synthetic */ Object invoke(Object obj2) {
-                                invoke((Throwable) obj2);
-                                return Unit.INSTANCE;
-                            }
-
-                            public final void invoke(@Nullable Throwable th2) {
-                                MutableStateFlow mutableStateFlow3;
-                                Object obj2 = Recomposer.this.stateLock;
-                                Recomposer recomposer2 = Recomposer.this;
-                                Throwable th3 = th;
-                                synchronized (obj2) {
-                                    if (th3 == null) {
-                                        th3 = null;
-                                    } else if (th2 != null) {
-                                        if (!(!(th2 instanceof CancellationException))) {
-                                            th2 = null;
-                                        }
-                                        if (th2 != null) {
-                                            ExceptionsKt.addSuppressed(th3, th2);
-                                        }
-                                    }
-                                    recomposer2.closeCause = th3;
-                                    mutableStateFlow3 = recomposer2._state;
-                                    mutableStateFlow3.setValue(Recomposer.State.ShutDown);
-                                    Unit unit = Unit.INSTANCE;
-                                }
-                            }
-                        });
-                        cancellableContinuation = cancellableContinuation3;
-                    } else {
-                        recomposer.closeCause = a2;
-                        mutableStateFlow = recomposer._state;
-                        mutableStateFlow.setValue(Recomposer.State.ShutDown);
-                        Unit unit = Unit.INSTANCE;
-                    }
-                }
-                if (cancellableContinuation != null) {
-                    Result.Companion companion = Result.Companion;
-                    cancellableContinuation.resumeWith(Result.constructor-impl(Unit.INSTANCE));
-                }
-            }
-        });
+        a.invokeOnCompletion(new effectJob.1.1(this));
         this.effectJob = a;
         this.effectCoroutineContext = coroutineContext.plus(broadcastFrameClock).plus(a);
-        this.recomposerInfo = new RecomposerInfoImpl();
+        this.recomposerInfo = new RecomposerInfoImpl(this);
     }
 
     private final void applyAndCheck(MutableSnapshot mutableSnapshot) {
         try {
-            if (mutableSnapshot.apply() instanceof SnapshotApplyResult.Failure) {
+            if (mutableSnapshot.apply() instanceof SnapshotApplyResult$Failure) {
                 throw new IllegalStateException("Unsupported concurrent change during composition. A state object was modified by composition as well as being modified outside composition.".toString());
             }
         } finally {
@@ -842,7 +581,7 @@ public final class Recomposer extends CompositionContext {
     /* JADX WARN: Removed duplicated region for block: B:20:? A[RETURN, SYNTHETIC] */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final androidx.compose.runtime.ControlledComposition performRecompose(final androidx.compose.runtime.ControlledComposition r7, final androidx.compose.runtime.collection.IdentityArraySet<java.lang.Object> r8) {
         /*
@@ -941,23 +680,8 @@ public final class Recomposer extends CompositionContext {
         recomposer.processCompositionError(exc, controlledComposition, z);
     }
 
-    private final Function1<Object, Unit> readObserverOf(final ControlledComposition controlledComposition) {
-        return new Function1<Object, Unit>() { // from class: androidx.compose.runtime.Recomposer$readObserverOf$1
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                m2396invoke(obj);
-                return Unit.INSTANCE;
-            }
-
-            /* renamed from: invoke, reason: collision with other method in class */
-            public final void m2396invoke(@NotNull Object obj) {
-                Intrinsics.checkNotNullParameter(obj, "value");
-                ControlledComposition.this.recordReadOf(obj);
-            }
-        };
+    private final Function1<Object, Unit> readObserverOf(ControlledComposition controlledComposition) {
+        return new readObserverOf.1(controlledComposition);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -968,7 +692,7 @@ public final class Recomposer extends CompositionContext {
 
     /* JADX INFO: Access modifiers changed from: private */
     public final void recordComposerModificationsLocked() {
-        Set<? extends Object> set = this.snapshotInvalidations;
+        Set<Object> set = this.snapshotInvalidations;
         if (!set.isEmpty()) {
             List<ControlledComposition> list = this.knownCompositions;
             int size = list.size();
@@ -1024,10 +748,10 @@ public final class Recomposer extends CompositionContext {
                 return;
             }
             while (!list.isEmpty()) {
-                ControlledComposition controlledComposition = (ControlledComposition) CollectionsKt.removeLast(list);
-                if (controlledComposition instanceof CompositionImpl) {
-                    controlledComposition.invalidateAll();
-                    controlledComposition.setContent(((CompositionImpl) controlledComposition).getComposable());
+                CompositionImpl compositionImpl = (ControlledComposition) CollectionsKt.removeLast(list);
+                if (compositionImpl instanceof CompositionImpl) {
+                    compositionImpl.invalidateAll();
+                    compositionImpl.setContent(compositionImpl.getComposable());
                     if (this.errorState != null) {
                         break;
                     }
@@ -1051,15 +775,15 @@ public final class Recomposer extends CompositionContext {
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:18:0x00a2 -> B:11:0x003f). Please report as a decompilation issue!!! */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public final java.lang.Object runFrameLoop(androidx.compose.runtime.MonotonicFrameClock r8, androidx.compose.runtime.ProduceFrameSignal r9, kotlin.coroutines.Continuation<? super kotlin.Unit> r10) {
         /*
             r7 = this;
-            boolean r0 = r10 instanceof androidx.compose.runtime.Recomposer$runFrameLoop$1
+            boolean r0 = r10 instanceof androidx.compose.runtime.Recomposer.runFrameLoop.1
             if (r0 == 0) goto L13
             r0 = r10
-            androidx.compose.runtime.Recomposer$runFrameLoop$1 r0 = (androidx.compose.runtime.Recomposer$runFrameLoop$1) r0
+            androidx.compose.runtime.Recomposer$runFrameLoop$1 r0 = (androidx.compose.runtime.Recomposer.runFrameLoop.1) r0
             int r1 = r0.label
             r2 = -2147483648(0xffffffff80000000, float:-0.0)
             r3 = r1 & r2
@@ -1141,7 +865,7 @@ public final class Recomposer extends CompositionContext {
             r9 = r10
         L8d:
             androidx.compose.runtime.Recomposer$runFrameLoop$2 r10 = new androidx.compose.runtime.Recomposer$runFrameLoop$2
-            r10.<init>()
+            r10.<init>(r6, r9, r8, r2)
             r0.L$0 = r6
             r0.L$1 = r5
             r0.L$2 = r2
@@ -1155,28 +879,8 @@ public final class Recomposer extends CompositionContext {
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.runtime.Recomposer.runFrameLoop(androidx.compose.runtime.MonotonicFrameClock, androidx.compose.runtime.ProduceFrameSignal, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
-    private final Function1<Object, Unit> writeObserverOf(final ControlledComposition controlledComposition, final IdentityArraySet<Object> identityArraySet) {
-        return new Function1<Object, Unit>() { // from class: androidx.compose.runtime.Recomposer$writeObserverOf$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                m2397invoke(obj);
-                return Unit.INSTANCE;
-            }
-
-            /* renamed from: invoke, reason: collision with other method in class */
-            public final void m2397invoke(@NotNull Object obj) {
-                Intrinsics.checkNotNullParameter(obj, "value");
-                ControlledComposition.this.recordWriteOf(obj);
-                IdentityArraySet<Object> identityArraySet2 = identityArraySet;
-                if (identityArraySet2 != null) {
-                    identityArraySet2.add(obj);
-                }
-            }
-        };
+    private final Function1<Object, Unit> writeObserverOf(ControlledComposition controlledComposition, IdentityArraySet<Object> identityArraySet) {
+        return new writeObserverOf.1(controlledComposition, identityArraySet);
     }
 
     @NotNull
@@ -1276,7 +980,7 @@ public final class Recomposer extends CompositionContext {
 
     @Override // androidx.compose.runtime.CompositionContext
     public int getCompoundHashKey$runtime_release() {
-        return 1000;
+        return WVURLRuleConstants.LOGIN;
     }
 
     @NotNull
@@ -1362,14 +1066,14 @@ public final class Recomposer extends CompositionContext {
 
     @Nullable
     public final Object join(@NotNull Continuation<? super Unit> continuation) {
-        Object t = kotlinx.coroutines.flow.d.t(getCurrentState(), new Recomposer$join$2(null), continuation);
+        Object t = kotlinx.coroutines.flow.d.t(getCurrentState(), new join.2((Continuation) null), continuation);
         return t == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? t : Unit.INSTANCE;
     }
 
     @Override // androidx.compose.runtime.CompositionContext
     public void movableContentStateReleased$runtime_release(@NotNull MovableContentStateReference movableContentStateReference, @NotNull MovableContentState movableContentState) {
         Intrinsics.checkNotNullParameter(movableContentStateReference, "reference");
-        Intrinsics.checkNotNullParameter(movableContentState, ApiConstants.DATA);
+        Intrinsics.checkNotNullParameter(movableContentState, "data");
         synchronized (this.stateLock) {
             this.compositionValueStatesAvailable.put(movableContentStateReference, movableContentState);
             Unit unit = Unit.INSTANCE;
@@ -1422,7 +1126,7 @@ public final class Recomposer extends CompositionContext {
     }
 
     private final void recordComposerModificationsLocked(Function1<? super ControlledComposition, Unit> function1) {
-        Set<? extends Object> set = this.snapshotInvalidations;
+        Set set = this.snapshotInvalidations;
         if (!set.isEmpty()) {
             List list = this.knownCompositions;
             int size = list.size();

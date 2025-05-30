@@ -3,12 +3,12 @@ package androidx.compose.foundation.gestures;
 import androidx.compose.animation.core.AnimationSpec;
 import androidx.compose.animation.core.SpringSpec;
 import androidx.compose.foundation.MutatePriority;
-import androidx.compose.p004ui.geometry.Offset;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.geometry.Offset;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.intrinsics.IntrinsicsKt;
@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import tb.ep5;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TransformableStateKt {
     @NotNull
     public static final TransformableState TransformableState(@NotNull Function3<? super Float, ? super Offset, ? super Float, Unit> function3) {
@@ -30,24 +30,24 @@ public final class TransformableStateKt {
 
     @Nullable
     /* renamed from: animatePanBy-ubNVwUQ, reason: not valid java name */
-    public static final Object m1311animatePanByubNVwUQ(@NotNull TransformableState transformableState, long j, @NotNull AnimationSpec<Offset> animationSpec, @NotNull Continuation<? super Unit> continuation) {
+    public static final Object m257animatePanByubNVwUQ(@NotNull TransformableState transformableState, long j, @NotNull AnimationSpec<Offset> animationSpec, @NotNull Continuation<? super Unit> continuation) {
         Ref.LongRef longRef = new Ref.LongRef();
-        longRef.element = Offset.Companion.m2572getZeroF1C5BW0();
-        Object a = ep5.a(transformableState, (MutatePriority) null, new TransformableStateKt$animatePanBy$2(longRef, j, animationSpec, null), continuation, 1, (Object) null);
+        longRef.element = Offset.Companion.m1024getZeroF1C5BW0();
+        Object a = ep5.a(transformableState, (MutatePriority) null, new animatePanBy.2(longRef, j, animationSpec, (Continuation) null), continuation, 1, (Object) null);
         return a == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? a : Unit.INSTANCE;
     }
 
     /* renamed from: animatePanBy-ubNVwUQ$default, reason: not valid java name */
-    public static /* synthetic */ Object m1312animatePanByubNVwUQ$default(TransformableState transformableState, long j, AnimationSpec animationSpec, Continuation continuation, int i, Object obj) {
+    public static /* synthetic */ Object m258animatePanByubNVwUQ$default(TransformableState transformableState, long j, AnimationSpec animationSpec, Continuation continuation, int i, Object obj) {
         if ((i & 2) != 0) {
             animationSpec = new SpringSpec(0.0f, 200.0f, null, 5, null);
         }
-        return m1311animatePanByubNVwUQ(transformableState, j, animationSpec, continuation);
+        return m257animatePanByubNVwUQ(transformableState, j, animationSpec, continuation);
     }
 
     @Nullable
     public static final Object animateRotateBy(@NotNull TransformableState transformableState, float f, @NotNull AnimationSpec<Float> animationSpec, @NotNull Continuation<? super Unit> continuation) {
-        Object a = ep5.a(transformableState, (MutatePriority) null, new TransformableStateKt$animateRotateBy$2(new Ref.FloatRef(), f, animationSpec, null), continuation, 1, (Object) null);
+        Object a = ep5.a(transformableState, (MutatePriority) null, new animateRotateBy.2(new Ref.FloatRef(), f, animationSpec, (Continuation) null), continuation, 1, (Object) null);
         return a == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? a : Unit.INSTANCE;
     }
 
@@ -78,8 +78,8 @@ public final class TransformableStateKt {
 
     @Nullable
     /* renamed from: panBy-d-4ec7I, reason: not valid java name */
-    public static final Object m1313panByd4ec7I(@NotNull TransformableState transformableState, long j, @NotNull Continuation<? super Unit> continuation) {
-        Object a = ep5.a(transformableState, (MutatePriority) null, new TransformableStateKt$panBy$2(j, null), continuation, 1, (Object) null);
+    public static final Object m259panByd4ec7I(@NotNull TransformableState transformableState, long j, @NotNull Continuation<? super Unit> continuation) {
+        Object a = ep5.a(transformableState, (MutatePriority) null, new panBy.2(j, (Continuation) null), continuation, 1, (Object) null);
         return a == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? a : Unit.INSTANCE;
     }
 
@@ -102,13 +102,13 @@ public final class TransformableStateKt {
                 }
 
                 public /* bridge */ /* synthetic */ Object invoke(Object obj, Object obj2, Object obj3) {
-                    m1314invoked4ec7I(((Number) obj).floatValue(), ((Offset) obj2).m2566unboximpl(), ((Number) obj3).floatValue());
+                    m260invoked4ec7I(((Number) obj).floatValue(), ((Offset) obj2).unbox-impl(), ((Number) obj3).floatValue());
                     return Unit.INSTANCE;
                 }
 
                 /* renamed from: invoke-d-4ec7I, reason: not valid java name */
-                public final void m1314invoked4ec7I(float f, long j, float f2) {
-                    rememberUpdatedState.getValue().invoke(Float.valueOf(f), Offset.m2545boximpl(j), Float.valueOf(f2));
+                public final void m260invoked4ec7I(float f, long j, float f2) {
+                    rememberUpdatedState.getValue().invoke(Float.valueOf(f), Offset.box-impl(j), Float.valueOf(f2));
                 }
             });
             composer.updateRememberedValue(rememberedValue);
@@ -124,7 +124,7 @@ public final class TransformableStateKt {
 
     @Nullable
     public static final Object rotateBy(@NotNull TransformableState transformableState, float f, @NotNull Continuation<? super Unit> continuation) {
-        Object a = ep5.a(transformableState, (MutatePriority) null, new TransformableStateKt$rotateBy$2(f, null), continuation, 1, (Object) null);
+        Object a = ep5.a(transformableState, (MutatePriority) null, new rotateBy.2(f, (Continuation) null), continuation, 1, (Object) null);
         return a == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? a : Unit.INSTANCE;
     }
 
@@ -143,7 +143,7 @@ public final class TransformableStateKt {
 
     @Nullable
     public static final Object zoomBy(@NotNull TransformableState transformableState, float f, @NotNull Continuation<? super Unit> continuation) {
-        Object a = ep5.a(transformableState, (MutatePriority) null, new TransformableStateKt$zoomBy$2(f, null), continuation, 1, (Object) null);
+        Object a = ep5.a(transformableState, (MutatePriority) null, new zoomBy.2(f, (Continuation) null), continuation, 1, (Object) null);
         return a == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? a : Unit.INSTANCE;
     }
 }

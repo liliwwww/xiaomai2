@@ -1,6 +1,7 @@
 package androidx.viewpager2.widget;
 
 import android.os.SystemClock;
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
@@ -8,7 +9,7 @@ import androidx.annotation.UiThread;
 import androidx.recyclerview.widget.RecyclerView;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class FakeDrag {
     private int mActualDraggedDistance;
     private long mFakeDragBeginTime;
@@ -65,7 +66,7 @@ final class FakeDrag {
         }
         this.mScrollEventAdapter.notifyEndFakeDrag();
         VelocityTracker velocityTracker = this.mVelocityTracker;
-        velocityTracker.computeCurrentVelocity(1000, this.mMaximumVelocity);
+        velocityTracker.computeCurrentVelocity(WVURLRuleConstants.LOGIN, this.mMaximumVelocity);
         if (this.mRecyclerView.fling((int) velocityTracker.getXVelocity(), (int) velocityTracker.getYVelocity())) {
             return true;
         }

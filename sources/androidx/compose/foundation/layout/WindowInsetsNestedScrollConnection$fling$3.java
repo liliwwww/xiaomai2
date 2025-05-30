@@ -3,6 +3,7 @@ package androidx.compose.foundation.layout;
 import android.view.WindowInsetsAnimationController;
 import androidx.compose.animation.core.Animatable;
 import androidx.compose.animation.core.AnimatableKt;
+import androidx.compose.animation.core.AnimationSpec;
 import androidx.compose.animation.core.AnimationVector1D;
 import kotlin.ResultKt;
 import kotlin.Unit;
@@ -23,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.layout.WindowInsetsNestedScrollConnection$fling$3", f = "WindowInsetsConnection.android.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class WindowInsetsNestedScrollConnection$fling$3 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ WindowInsetsAnimationController $animationController;
     final /* synthetic */ int $current;
@@ -36,8 +37,8 @@ final class WindowInsetsNestedScrollConnection$fling$3 extends SuspendLambda imp
 
     /* compiled from: Taobao */
     @DebugMetadata(c = "androidx.compose.foundation.layout.WindowInsetsNestedScrollConnection$fling$3$1", f = "WindowInsetsConnection.android.kt", i = {}, l = {358}, m = "invokeSuspend", n = {}, s = {})
-    /* renamed from: androidx.compose.foundation.layout.WindowInsetsNestedScrollConnection$fling$3$1 */
-    static final class C04681 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
+    /* renamed from: androidx.compose.foundation.layout.WindowInsetsNestedScrollConnection$fling$3$1, reason: invalid class name */
+    static final class AnonymousClass1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
         final /* synthetic */ WindowInsetsAnimationController $animationController;
         final /* synthetic */ int $current;
         final /* synthetic */ float $flingAmount;
@@ -47,7 +48,7 @@ final class WindowInsetsNestedScrollConnection$fling$3 extends SuspendLambda imp
         final /* synthetic */ WindowInsetsNestedScrollConnection this$0;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        C04681(int i, int i2, float f, WindowInsetsAnimationController windowInsetsAnimationController, boolean z, WindowInsetsNestedScrollConnection windowInsetsNestedScrollConnection, Continuation<? super C04681> continuation) {
+        AnonymousClass1(int i, int i2, float f, WindowInsetsAnimationController windowInsetsAnimationController, boolean z, WindowInsetsNestedScrollConnection windowInsetsNestedScrollConnection, Continuation<? super AnonymousClass1> continuation) {
             super(2, continuation);
             this.$current = i;
             this.$target = i2;
@@ -59,7 +60,7 @@ final class WindowInsetsNestedScrollConnection$fling$3 extends SuspendLambda imp
 
         @NotNull
         public final Continuation<Unit> create(@Nullable Object obj, @NotNull Continuation<?> continuation) {
-            return new C04681(this.$current, this.$target, this.$flingAmount, this.$animationController, this.$targetShown, this.this$0, continuation);
+            return new AnonymousClass1(this.$current, this.$target, this.$flingAmount, this.$animationController, this.$targetShown, this.this$0, continuation);
         }
 
         @Nullable
@@ -73,7 +74,7 @@ final class WindowInsetsNestedScrollConnection$fling$3 extends SuspendLambda imp
             int i = this.label;
             if (i == 0) {
                 ResultKt.throwOnFailure(obj);
-                Animatable Animatable$default = AnimatableKt.Animatable$default(this.$current, 0.0f, 2, null);
+                Animatable Animatable$default = AnimatableKt.Animatable$default(this.$current, 0.0f, 2, (Object) null);
                 Float boxFloat = Boxing.boxFloat(this.$target);
                 Float boxFloat2 = Boxing.boxFloat(this.$flingAmount);
                 final WindowInsetsNestedScrollConnection windowInsetsNestedScrollConnection = this.this$0;
@@ -89,11 +90,11 @@ final class WindowInsetsNestedScrollConnection$fling$3 extends SuspendLambda imp
 
                     public final void invoke(@NotNull Animatable<Float, AnimationVector1D> animatable) {
                         Intrinsics.checkNotNullParameter(animatable, "$this$animateTo");
-                        WindowInsetsNestedScrollConnection.this.adjustInsets(animatable.getValue().floatValue());
+                        WindowInsetsNestedScrollConnection.this.adjustInsets(((Number) animatable.getValue()).floatValue());
                     }
                 };
                 this.label = 1;
-                if (Animatable.animateTo$default(Animatable$default, boxFloat, null, boxFloat2, function1, this, 2, null) == coroutine_suspended) {
+                if (Animatable.animateTo$default(Animatable$default, boxFloat, (AnimationSpec) null, boxFloat2, function1, this, 2, (Object) null) == coroutine_suspended) {
                     return coroutine_suspended;
                 }
             } else {
@@ -140,7 +141,7 @@ final class WindowInsetsNestedScrollConnection$fling$3 extends SuspendLambda imp
         ResultKt.throwOnFailure(obj);
         CoroutineScope coroutineScope = (CoroutineScope) this.L$0;
         WindowInsetsNestedScrollConnection windowInsetsNestedScrollConnection = this.this$0;
-        windowInsetsNestedScrollConnection.animationJob = d.d(coroutineScope, (CoroutineContext) null, (CoroutineStart) null, new C04681(this.$current, this.$target, this.$flingAmount, this.$animationController, this.$targetShown, windowInsetsNestedScrollConnection, null), 3, (Object) null);
+        windowInsetsNestedScrollConnection.animationJob = d.d(coroutineScope, (CoroutineContext) null, (CoroutineStart) null, new AnonymousClass1(this.$current, this.$target, this.$flingAmount, this.$animationController, this.$targetShown, windowInsetsNestedScrollConnection, null), 3, (Object) null);
         return Unit.INSTANCE;
     }
 }

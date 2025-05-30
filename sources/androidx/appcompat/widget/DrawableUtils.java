@@ -15,6 +15,7 @@ import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.appcompat.graphics.drawable.DrawableWrapperCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.graphics.drawable.WrappedDrawable;
@@ -23,8 +24,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-/* loaded from: classes.dex */
+@RestrictTo({RestrictTo$Scope.LIBRARY_GROUP_PREFIX})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class DrawableUtils {
     private static final int[] CHECKED_STATE_SET = {R.attr.state_checked};
     private static final int[] EMPTY_STATE_SET = new int[0];
@@ -161,7 +162,6 @@ public class DrawableUtils {
     private DrawableUtils() {
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     public static boolean canSafelyMutateDrawable(@NonNull Drawable drawable) {
         int i = Build.VERSION.SDK_INT;
         if (i >= 17) {

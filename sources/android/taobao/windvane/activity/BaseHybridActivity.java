@@ -14,7 +14,7 @@ import android.webkit.WebView;
 
 /* compiled from: Taobao */
 @Deprecated
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public abstract class BaseHybridActivity extends Activity implements Handler.Callback {
     protected Handler mHandler;
     protected WVViewController mViewController;

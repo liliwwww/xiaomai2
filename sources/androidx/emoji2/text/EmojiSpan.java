@@ -7,11 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.annotation.RestrictTo$Scope;
 import androidx.core.util.Preconditions;
 
 /* compiled from: Taobao */
 @RequiresApi(19)
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public abstract class EmojiSpan extends ReplacementSpan {
 
     @NonNull
@@ -21,23 +22,23 @@ public abstract class EmojiSpan extends ReplacementSpan {
     private short mHeight = -1;
     private float mRatio = 1.0f;
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     EmojiSpan(@NonNull TypefaceEmojiRasterizer typefaceEmojiRasterizer) {
         Preconditions.checkNotNull(typefaceEmojiRasterizer, "rasterizer cannot be null");
         this.mRasterizer = typefaceEmojiRasterizer;
     }
 
-    @RestrictTo({RestrictTo.Scope.TESTS})
+    @RestrictTo({RestrictTo$Scope.TESTS})
     public final int getHeight() {
         return this.mHeight;
     }
 
-    @RestrictTo({RestrictTo.Scope.TESTS})
+    @RestrictTo({RestrictTo$Scope.TESTS})
     public final int getId() {
         return getTypefaceRasterizer().getId();
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     final float getRatio() {
         return this.mRatio;
     }
@@ -65,7 +66,7 @@ public abstract class EmojiSpan extends ReplacementSpan {
         return this.mRasterizer;
     }
 
-    @RestrictTo({RestrictTo.Scope.LIBRARY})
+    @RestrictTo({RestrictTo$Scope.LIBRARY})
     final int getWidth() {
         return this.mWidth;
     }

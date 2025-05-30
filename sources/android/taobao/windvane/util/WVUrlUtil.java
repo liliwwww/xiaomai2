@@ -2,7 +2,6 @@ package android.taobao.windvane.util;
 
 import android.annotation.SuppressLint;
 import android.net.Uri;
-import android.taobao.windvane.connect.api.ApiConstants;
 import android.taobao.windvane.jsbridge.utils.WVUtils;
 import android.text.TextUtils;
 import java.util.HashMap;
@@ -10,7 +9,7 @@ import java.util.Map;
 
 /* compiled from: Taobao */
 @SuppressLint({"DefaultLocale"})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVUrlUtil {
     private static Map<String, String> mimeTypes = new HashMap();
 
@@ -64,7 +63,7 @@ public class WVUrlUtil {
             if (substring.contains("#")) {
                 substring = substring.substring(0, substring.indexOf("#"));
             }
-            for (String str2 : substring.split(ApiConstants.SPLIT_STR)) {
+            for (String str2 : substring.split("&")) {
                 String[] split = str2.split("=");
                 if (split.length < 2) {
                     hashMap.put(split[0], "");
@@ -89,7 +88,7 @@ public class WVUrlUtil {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public static int getQureyIndex(java.lang.String r4) {
         /*
@@ -184,7 +183,7 @@ public class WVUrlUtil {
         char lastChar = getLastChar(str2);
         if ('?' != lastChar && '&' != lastChar) {
             if (str2.contains(WVUtils.URL_DATA_CHAR)) {
-                sb.append(ApiConstants.SPLIT_STR);
+                sb.append("&");
             } else {
                 sb.append(WVUtils.URL_DATA_CHAR);
             }

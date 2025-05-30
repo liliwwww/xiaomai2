@@ -1,9 +1,11 @@
 package androidx.constraintlayout.core.state;
 
+import android.taobao.windvane.urlintercept.WVURLRuleConstants;
 import android.taobao.windvane.util.WVNativeCallbackUtil;
 import androidx.constraintlayout.core.motion.CustomAttribute;
 import androidx.constraintlayout.core.motion.CustomVariable;
-import androidx.constraintlayout.core.motion.utils.TypedValues;
+import androidx.constraintlayout.core.motion.key.MotionKey;
+import androidx.constraintlayout.core.motion.utils.TypedValues$Custom;
 import androidx.constraintlayout.core.parser.CLElement;
 import androidx.constraintlayout.core.parser.CLKey;
 import androidx.constraintlayout.core.parser.CLNumber;
@@ -17,7 +19,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WidgetFrame {
     private static final boolean OLD_SYSTEM = true;
     public static float phone_orientation = Float.NaN;
@@ -147,9 +149,9 @@ public class WidgetFrame {
                 findNextPosition = null;
             }
             if (findPreviousPosition != null) {
-                i5 = (int) (findPreviousPosition.f259x * i);
+                i5 = (int) (findPreviousPosition.x * i);
                 i7 = i2;
-                i12 = (int) (findPreviousPosition.f260y * i7);
+                i12 = (int) (findPreviousPosition.y * i7);
                 i8 = findPreviousPosition.frame;
                 i6 = i;
             } else {
@@ -158,8 +160,8 @@ public class WidgetFrame {
                 i8 = 0;
             }
             if (findNextPosition != null) {
-                i13 = (int) (findNextPosition.f259x * i6);
-                i14 = (int) (findNextPosition.f260y * i7);
+                i13 = (int) (findNextPosition.x * i6);
+                i14 = (int) (findNextPosition.y * i7);
                 i9 = findNextPosition.frame;
             } else {
                 i9 = 100;
@@ -231,11 +233,11 @@ public class WidgetFrame {
     }
 
     public void addCustomColor(String str, int i) {
-        setCustomAttribute(str, TypedValues.Custom.TYPE_COLOR, i);
+        setCustomAttribute(str, TypedValues$Custom.TYPE_COLOR, i);
     }
 
     public void addCustomFloat(String str, float f) {
-        setCustomAttribute(str, TypedValues.Custom.TYPE_FLOAT, f);
+        setCustomAttribute(str, TypedValues$Custom.TYPE_FLOAT, f);
     }
 
     public float centerX() {
@@ -278,15 +280,18 @@ public class WidgetFrame {
     }
 
     public boolean isDefaultTransform() {
-        return Float.isNaN(this.rotationX) && Float.isNaN(this.rotationY) && Float.isNaN(this.rotationZ) && Float.isNaN(this.translationX) && Float.isNaN(this.translationY) && Float.isNaN(this.translationZ) && Float.isNaN(this.scaleX) && Float.isNaN(this.scaleY) && Float.isNaN(this.alpha);
+        if (Float.isNaN(this.rotationX) && Float.isNaN(this.rotationY) && Float.isNaN(this.rotationZ) && Float.isNaN(this.translationX) && Float.isNaN(this.translationY) && Float.isNaN(this.translationZ) && Float.isNaN(this.scaleX) && Float.isNaN(this.scaleY) && Float.isNaN(this.alpha)) {
+            return OLD_SYSTEM;
+        }
+        return false;
     }
 
     void logv(String str) {
         String str2;
         StackTraceElement stackTraceElement = new Throwable().getStackTrace()[1];
-        String str3 = (".(" + stackTraceElement.getFileName() + ":" + stackTraceElement.getLineNumber() + ") " + stackTraceElement.getMethodName()) + " " + (hashCode() % 1000);
+        String str3 = (".(" + stackTraceElement.getFileName() + ":" + stackTraceElement.getLineNumber() + ") " + stackTraceElement.getMethodName()) + " " + (hashCode() % WVURLRuleConstants.LOGIN);
         if (this.widget != null) {
-            str2 = str3 + WVNativeCallbackUtil.SEPERATER + (this.widget.hashCode() % 1000);
+            str2 = str3 + WVNativeCallbackUtil.SEPERATER + (this.widget.hashCode() % WVURLRuleConstants.LOGIN);
         } else {
             str2 = str3 + "/NULL";
         }
@@ -297,24 +302,24 @@ public class WidgetFrame {
         CLObject cLObject = (CLObject) cLElement;
         int size = cLObject.size();
         for (int i = 0; i < size; i++) {
-            CLKey cLKey = (CLKey) cLObject.get(i);
+            CLKey cLKey = cLObject.get(i);
             cLKey.content();
             CLElement value = cLKey.getValue();
             String content = value.content();
             if (content.matches("#[0-9a-fA-F]+")) {
-                setCustomAttribute(cLKey.content(), TypedValues.Custom.TYPE_COLOR, Integer.parseInt(content.substring(1), 16));
+                setCustomAttribute(cLKey.content(), TypedValues$Custom.TYPE_COLOR, Integer.parseInt(content.substring(1), 16));
             } else if (value instanceof CLNumber) {
-                setCustomAttribute(cLKey.content(), TypedValues.Custom.TYPE_FLOAT, value.getFloat());
+                setCustomAttribute(cLKey.content(), TypedValues$Custom.TYPE_FLOAT, value.getFloat());
             } else {
-                setCustomAttribute(cLKey.content(), TypedValues.Custom.TYPE_STRING, content);
+                setCustomAttribute(cLKey.content(), TypedValues$Custom.TYPE_STRING, content);
             }
         }
     }
 
     void printCustomAttributes() {
         StackTraceElement stackTraceElement = new Throwable().getStackTrace()[1];
-        String str = (".(" + stackTraceElement.getFileName() + ":" + stackTraceElement.getLineNumber() + ") " + stackTraceElement.getMethodName()) + " " + (hashCode() % 1000);
-        String str2 = this.widget != null ? str + WVNativeCallbackUtil.SEPERATER + (this.widget.hashCode() % 1000) + " " : str + "/NULL ";
+        String str = (".(" + stackTraceElement.getFileName() + ":" + stackTraceElement.getLineNumber() + ") " + stackTraceElement.getMethodName()) + " " + (hashCode() % WVURLRuleConstants.LOGIN);
+        String str2 = this.widget != null ? str + WVNativeCallbackUtil.SEPERATER + (this.widget.hashCode() % WVURLRuleConstants.LOGIN) + " " : str + "/NULL ";
         HashMap<String, CustomVariable> hashMap = this.mCustom;
         if (hashMap != null) {
             for (String str3 : hashMap.keySet()) {
@@ -343,58 +348,58 @@ public class WidgetFrame {
         switch (str) {
             case "phone_orientation":
                 phone_orientation = cLElement.getFloat();
-                return true;
+                return OLD_SYSTEM;
             case "bottom":
                 this.bottom = cLElement.getInt();
-                return true;
+                return OLD_SYSTEM;
             case "custom":
                 parseCustom(cLElement);
-                return true;
+                return OLD_SYSTEM;
             case "rotationX":
                 this.rotationX = cLElement.getFloat();
-                return true;
+                return OLD_SYSTEM;
             case "rotationY":
                 this.rotationY = cLElement.getFloat();
-                return true;
+                return OLD_SYSTEM;
             case "rotationZ":
                 this.rotationZ = cLElement.getFloat();
-                return true;
+                return OLD_SYSTEM;
             case "translationX":
                 this.translationX = cLElement.getFloat();
-                return true;
+                return OLD_SYSTEM;
             case "translationY":
                 this.translationY = cLElement.getFloat();
-                return true;
+                return OLD_SYSTEM;
             case "translationZ":
                 this.translationZ = cLElement.getFloat();
-                return true;
+                return OLD_SYSTEM;
             case "pivotX":
                 this.pivotX = cLElement.getFloat();
-                return true;
+                return OLD_SYSTEM;
             case "pivotY":
                 this.pivotY = cLElement.getFloat();
-                return true;
+                return OLD_SYSTEM;
             case "scaleX":
                 this.scaleX = cLElement.getFloat();
-                return true;
+                return OLD_SYSTEM;
             case "scaleY":
                 this.scaleY = cLElement.getFloat();
-                return true;
+                return OLD_SYSTEM;
             case "top":
                 this.top = cLElement.getInt();
-                return true;
+                return OLD_SYSTEM;
             case "left":
                 this.left = cLElement.getInt();
-                return true;
+                return OLD_SYSTEM;
             case "alpha":
                 this.alpha = cLElement.getFloat();
-                return true;
+                return OLD_SYSTEM;
             case "right":
                 this.right = cLElement.getInt();
-                return true;
+                return OLD_SYSTEM;
             case "interpolatedPos":
                 this.interpolatedPos = cLElement.getFloat();
-                return true;
+                return OLD_SYSTEM;
             default:
                 return false;
         }
@@ -443,16 +448,16 @@ public class WidgetFrame {
         add(sb, "bottom", this.bottom);
         add(sb, "pivotX", this.pivotX);
         add(sb, "pivotY", this.pivotY);
-        add(sb, "rotationX", this.rotationX);
+        add(sb, MotionKey.ROTATION_X, this.rotationX);
         add(sb, "rotationY", this.rotationY);
-        add(sb, "rotationZ", this.rotationZ);
-        add(sb, "translationX", this.translationX);
-        add(sb, "translationY", this.translationY);
+        add(sb, MotionKey.ROTATION, this.rotationZ);
+        add(sb, MotionKey.TRANSLATION_X, this.translationX);
+        add(sb, MotionKey.TRANSLATION_Y, this.translationY);
         add(sb, "translationZ", this.translationZ);
-        add(sb, "scaleX", this.scaleX);
-        add(sb, "scaleY", this.scaleY);
-        add(sb, "alpha", this.alpha);
-        add(sb, "visibility", this.visibility);
+        add(sb, MotionKey.SCALE_X, this.scaleX);
+        add(sb, MotionKey.SCALE_Y, this.scaleY);
+        add(sb, MotionKey.ALPHA, this.alpha);
+        add(sb, MotionKey.VISIBILITY, this.visibility);
         add(sb, "interpolatedPos", this.interpolatedPos);
         if (this.widget != null) {
             for (ConstraintAnchor.Type type : ConstraintAnchor.Type.values()) {
@@ -472,26 +477,26 @@ public class WidgetFrame {
                 sb.append(str);
                 sb.append(": ");
                 switch (customVariable.getType()) {
-                    case TypedValues.Custom.TYPE_INT /* 900 */:
+                    case TypedValues$Custom.TYPE_INT /* 900 */:
                         sb.append(customVariable.getIntegerValue());
                         sb.append(",\n");
                         break;
-                    case TypedValues.Custom.TYPE_FLOAT /* 901 */:
-                    case TypedValues.Custom.TYPE_DIMENSION /* 905 */:
+                    case TypedValues$Custom.TYPE_FLOAT /* 901 */:
+                    case TypedValues$Custom.TYPE_DIMENSION /* 905 */:
                         sb.append(customVariable.getFloatValue());
                         sb.append(",\n");
                         break;
-                    case TypedValues.Custom.TYPE_COLOR /* 902 */:
+                    case TypedValues$Custom.TYPE_COLOR /* 902 */:
                         sb.append("'");
                         sb.append(CustomVariable.colorString(customVariable.getIntegerValue()));
                         sb.append("',\n");
                         break;
-                    case TypedValues.Custom.TYPE_STRING /* 903 */:
+                    case TypedValues$Custom.TYPE_STRING /* 903 */:
                         sb.append("'");
                         sb.append(customVariable.getStringValue());
                         sb.append("',\n");
                         break;
-                    case TypedValues.Custom.TYPE_BOOLEAN /* 904 */:
+                    case TypedValues$Custom.TYPE_BOOLEAN /* 904 */:
                         sb.append("'");
                         sb.append(customVariable.getBooleanValue());
                         sb.append("',\n");

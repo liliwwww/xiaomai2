@@ -1,16 +1,16 @@
 package androidx.compose.foundation.layout;
 
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.LayoutDirection;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
+import androidx.compose.ui.unit.LayoutDirection;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @Stable
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class PaddingValuesInsets implements WindowInsets {
 
     @NotNull
@@ -34,27 +34,27 @@ final class PaddingValuesInsets implements WindowInsets {
     @Override // androidx.compose.foundation.layout.WindowInsets
     public int getBottom(@NotNull Density density) {
         Intrinsics.checkNotNullParameter(density, "density");
-        return density.mo1277roundToPx0680j_4(this.paddingValues.mo1374calculateBottomPaddingD9Ej5fM());
+        return density.roundToPx-0680j_4(this.paddingValues.calculateBottomPadding-D9Ej5fM());
     }
 
     @Override // androidx.compose.foundation.layout.WindowInsets
     public int getLeft(@NotNull Density density, @NotNull LayoutDirection layoutDirection) {
         Intrinsics.checkNotNullParameter(density, "density");
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-        return density.mo1277roundToPx0680j_4(this.paddingValues.mo1375calculateLeftPaddingu2uoSUM(layoutDirection));
+        return density.roundToPx-0680j_4(this.paddingValues.calculateLeftPadding-u2uoSUM(layoutDirection));
     }
 
     @Override // androidx.compose.foundation.layout.WindowInsets
     public int getRight(@NotNull Density density, @NotNull LayoutDirection layoutDirection) {
         Intrinsics.checkNotNullParameter(density, "density");
         Intrinsics.checkNotNullParameter(layoutDirection, "layoutDirection");
-        return density.mo1277roundToPx0680j_4(this.paddingValues.mo1376calculateRightPaddingu2uoSUM(layoutDirection));
+        return density.roundToPx-0680j_4(this.paddingValues.calculateRightPadding-u2uoSUM(layoutDirection));
     }
 
     @Override // androidx.compose.foundation.layout.WindowInsets
     public int getTop(@NotNull Density density) {
         Intrinsics.checkNotNullParameter(density, "density");
-        return density.mo1277roundToPx0680j_4(this.paddingValues.mo1377calculateTopPaddingD9Ej5fM());
+        return density.roundToPx-0680j_4(this.paddingValues.calculateTopPadding-D9Ej5fM());
     }
 
     public int hashCode() {
@@ -64,6 +64,6 @@ final class PaddingValuesInsets implements WindowInsets {
     @NotNull
     public String toString() {
         LayoutDirection layoutDirection = LayoutDirection.Ltr;
-        return "PaddingValues(" + ((Object) C0856Dp.m5227toStringimpl(this.paddingValues.mo1375calculateLeftPaddingu2uoSUM(layoutDirection))) + ", " + ((Object) C0856Dp.m5227toStringimpl(this.paddingValues.mo1377calculateTopPaddingD9Ej5fM())) + ", " + ((Object) C0856Dp.m5227toStringimpl(this.paddingValues.mo1376calculateRightPaddingu2uoSUM(layoutDirection))) + ", " + ((Object) C0856Dp.m5227toStringimpl(this.paddingValues.mo1374calculateBottomPaddingD9Ej5fM())) + ')';
+        return "PaddingValues(" + ((Object) Dp.toString-impl(this.paddingValues.calculateLeftPadding-u2uoSUM(layoutDirection))) + ", " + ((Object) Dp.toString-impl(this.paddingValues.calculateTopPadding-D9Ej5fM())) + ", " + ((Object) Dp.toString-impl(this.paddingValues.calculateRightPadding-u2uoSUM(layoutDirection))) + ", " + ((Object) Dp.toString-impl(this.paddingValues.calculateBottomPadding-D9Ej5fM())) + ')';
     }
 }

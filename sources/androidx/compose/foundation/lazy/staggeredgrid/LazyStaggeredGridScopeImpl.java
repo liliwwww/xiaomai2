@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyStaggeredGridScopeImpl implements LazyStaggeredGridScope {
 
     @NotNull
@@ -29,23 +29,9 @@ public final class LazyStaggeredGridScopeImpl implements LazyStaggeredGridScope 
 
     @Override // androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridScope
     @ExperimentalFoundationApi
-    public void item(@Nullable final Object obj, @Nullable final Object obj2, @NotNull final Function3<? super LazyStaggeredGridItemScope, ? super Composer, ? super Integer, Unit> function3) {
+    public void item(@Nullable Object obj, @Nullable final Object obj2, @NotNull final Function3<? super LazyStaggeredGridItemScope, ? super Composer, ? super Integer, Unit> function3) {
         Intrinsics.checkNotNullParameter(function3, "content");
-        items(1, obj != null ? new Function1<Integer, Object>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridScopeImpl$item$1$1
-            /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            {
-                super(1);
-            }
-
-            @NotNull
-            public final Object invoke(int i) {
-                return obj;
-            }
-
-            public /* bridge */ /* synthetic */ Object invoke(Object obj3) {
-                return invoke(((Number) obj3).intValue());
-            }
-        } : null, new Function1<Integer, Object>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridScopeImpl$item$2
+        items(1, obj != null ? new item.1.1(obj) : null, new Function1<Integer, Object>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridScopeImpl$item$2
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
             {
                 super(1);

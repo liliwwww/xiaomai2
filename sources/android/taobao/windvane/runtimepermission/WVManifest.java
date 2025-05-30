@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 class WVManifest {
 
     /* compiled from: Taobao */

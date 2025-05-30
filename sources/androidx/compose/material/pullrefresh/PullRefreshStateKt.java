@@ -1,9 +1,6 @@
 package androidx.compose.material.pullrefresh;
 
 import androidx.compose.material.ExperimentalMaterialApi;
-import androidx.compose.p004ui.platform.CompositionLocalsKt;
-import androidx.compose.p004ui.unit.C0856Dp;
-import androidx.compose.p004ui.unit.Density;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
@@ -11,6 +8,9 @@ import androidx.compose.runtime.CompositionScopedCoroutineScopeCanceller;
 import androidx.compose.runtime.EffectsKt;
 import androidx.compose.runtime.SnapshotStateKt;
 import androidx.compose.runtime.State;
+import androidx.compose.ui.platform.CompositionLocalsKt;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Dp;
 import kotlin.Unit;
 import kotlin.coroutines.EmptyCoroutineContext;
 import kotlin.jvm.functions.Function0;
@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class PullRefreshStateKt {
     private static final float DragMultiplier = 0.5f;
 
@@ -28,19 +28,19 @@ public final class PullRefreshStateKt {
     @ExperimentalMaterialApi
     @NotNull
     /* renamed from: rememberPullRefreshState-UuyPYSY, reason: not valid java name */
-    public static final PullRefreshState m2364rememberPullRefreshStateUuyPYSY(final boolean z, @NotNull Function0<Unit> function0, float f, float f2, @Nullable Composer composer, int i, int i2) {
+    public static final PullRefreshState m724rememberPullRefreshStateUuyPYSY(final boolean z, @NotNull Function0<Unit> function0, float f, float f2, @Nullable Composer composer, int i, int i2) {
         Intrinsics.checkNotNullParameter(function0, "onRefresh");
         composer.startReplaceableGroup(-174977512);
         if ((i2 & 4) != 0) {
-            f = PullRefreshDefaults.INSTANCE.m2349getRefreshThresholdD9Ej5fM();
+            f = PullRefreshDefaults.INSTANCE.getRefreshThreshold-D9Ej5fM();
         }
         if ((i2 & 8) != 0) {
-            f2 = PullRefreshDefaults.INSTANCE.m2350getRefreshingOffsetD9Ej5fM();
+            f2 = PullRefreshDefaults.INSTANCE.getRefreshingOffset-D9Ej5fM();
         }
         if (ComposerKt.isTraceInProgress()) {
             ComposerKt.traceEventStart(-174977512, i, -1, "androidx.compose.material.pullrefresh.rememberPullRefreshState (PullRefreshState.kt:54)");
         }
-        if (!(C0856Dp.m5215compareTo0680j_4(f, C0856Dp.m5216constructorimpl((float) 0)) > 0)) {
+        if (!(Dp.m2141compareTo0680j_4(f, Dp.m2142constructorimpl((float) 0)) > 0)) {
             throw new IllegalArgumentException("The refresh trigger must be greater than zero!".toString());
         }
         composer.startReplaceableGroup(773894976);
@@ -57,13 +57,13 @@ public final class PullRefreshStateKt {
         composer.endReplaceableGroup();
         State rememberUpdatedState = SnapshotStateKt.rememberUpdatedState(function0, composer, (i >> 3) & 14);
         Density density = (Density) composer.consume(CompositionLocalsKt.getLocalDensity());
-        float mo1283toPx0680j_4 = density.mo1283toPx0680j_4(f);
-        float mo1283toPx0680j_42 = density.mo1283toPx0680j_4(f2);
+        float mo321toPx0680j_4 = density.mo321toPx0680j_4(f);
+        float mo321toPx0680j_42 = density.mo321toPx0680j_4(f2);
         composer.startReplaceableGroup(1157296644);
         boolean changed = composer.changed(coroutineScope);
         Object rememberedValue2 = composer.rememberedValue();
         if (changed || rememberedValue2 == companion.getEmpty()) {
-            rememberedValue2 = new PullRefreshState(coroutineScope, rememberUpdatedState, mo1283toPx0680j_42, mo1283toPx0680j_4);
+            rememberedValue2 = new PullRefreshState(coroutineScope, rememberUpdatedState, mo321toPx0680j_42, mo321toPx0680j_4);
             composer.updateRememberedValue(rememberedValue2);
         }
         composer.endReplaceableGroup();
@@ -75,13 +75,13 @@ public final class PullRefreshStateKt {
             }
 
             public /* bridge */ /* synthetic */ Object invoke() {
-                m2365invoke();
+                m725invoke();
                 return Unit.INSTANCE;
             }
 
             /* renamed from: invoke, reason: collision with other method in class */
-            public final void m2365invoke() {
-                PullRefreshState.this.setRefreshing$material_release(z);
+            public final void m725invoke() {
+                pullRefreshState.setRefreshing$material_release(z);
             }
         }, composer, 0);
         if (ComposerKt.isTraceInProgress()) {

@@ -5,7 +5,7 @@ import android.view.View;
 import java.util.HashSet;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 abstract class KeyPositionBase extends Key {
     protected static final float SELECTION_SLOPE = 20.0f;
     int mCurveFit = Key.UNSET;

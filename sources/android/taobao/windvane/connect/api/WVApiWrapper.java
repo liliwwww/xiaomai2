@@ -1,7 +1,7 @@
 package android.taobao.windvane.connect.api;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVApiWrapper {
     public static String formatBody(ApiRequest apiRequest, Class<? extends IApiAdapter> cls) {
         if (apiRequest == null || cls == null) {

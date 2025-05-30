@@ -1,7 +1,7 @@
 package androidx.core.content;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class UnusedAppRestrictionsConstants {
     public static final int API_30 = 4;
     public static final int API_30_BACKPORT = 3;

@@ -1,11 +1,9 @@
 package android.taobao.windvane.packageapp.zipapp.data;
 
-import android.support.v4.media.session.PlaybackStateCompat;
-
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public enum ZipUpdateInfoEnum {
-    ZIP_UPDATE_INFO_DELETE(PlaybackStateCompat.ACTION_SKIP_TO_QUEUE_ITEM),
+    ZIP_UPDATE_INFO_DELETE(4096),
     ZIP_APP_TYPE_NORMAL(0);
 
     private long value;

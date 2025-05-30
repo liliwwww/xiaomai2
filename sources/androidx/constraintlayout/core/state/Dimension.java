@@ -1,9 +1,10 @@
 package androidx.constraintlayout.core.state;
 
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
+import androidx.constraintlayout.core.widgets.ConstraintWidget$DimensionBehaviour;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Dimension {
     private final int WRAP_CONTENT;
     Object mInitialValue;
@@ -19,15 +20,6 @@ public class Dimension {
     public static final Object PARENT_DIMENSION = new Object();
     public static final Object PERCENT_DIMENSION = new Object();
     public static final Object RATIO_DIMENSION = new Object();
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public enum Type {
-        FIXED,
-        WRAP,
-        MATCH_PARENT,
-        MATCH_CONSTRAINT
-    }
 
     private Dimension() {
         this.WRAP_CONTENT = -2;
@@ -84,7 +76,7 @@ public class Dimension {
         int i2 = 2;
         if (i == 0) {
             if (this.mIsSuggested) {
-                constraintWidget.setHorizontalDimensionBehaviour(ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT);
+                constraintWidget.setHorizontalDimensionBehaviour(ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT);
                 Object obj = this.mInitialValue;
                 if (obj == WRAP_DIMENSION) {
                     i2 = 1;
@@ -104,15 +96,15 @@ public class Dimension {
             }
             Object obj2 = this.mInitialValue;
             if (obj2 == WRAP_DIMENSION) {
-                constraintWidget.setHorizontalDimensionBehaviour(ConstraintWidget.DimensionBehaviour.WRAP_CONTENT);
+                constraintWidget.setHorizontalDimensionBehaviour(ConstraintWidget$DimensionBehaviour.WRAP_CONTENT);
                 return;
             }
             if (obj2 == PARENT_DIMENSION) {
-                constraintWidget.setHorizontalDimensionBehaviour(ConstraintWidget.DimensionBehaviour.MATCH_PARENT);
+                constraintWidget.setHorizontalDimensionBehaviour(ConstraintWidget$DimensionBehaviour.MATCH_PARENT);
                 return;
             } else {
                 if (obj2 == null) {
-                    constraintWidget.setHorizontalDimensionBehaviour(ConstraintWidget.DimensionBehaviour.FIXED);
+                    constraintWidget.setHorizontalDimensionBehaviour(ConstraintWidget$DimensionBehaviour.FIXED);
                     constraintWidget.setWidth(this.mValue);
                     return;
                 }
@@ -120,7 +112,7 @@ public class Dimension {
             }
         }
         if (this.mIsSuggested) {
-            constraintWidget.setVerticalDimensionBehaviour(ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT);
+            constraintWidget.setVerticalDimensionBehaviour(ConstraintWidget$DimensionBehaviour.MATCH_CONSTRAINT);
             Object obj3 = this.mInitialValue;
             if (obj3 == WRAP_DIMENSION) {
                 i2 = 1;
@@ -140,13 +132,13 @@ public class Dimension {
         }
         Object obj4 = this.mInitialValue;
         if (obj4 == WRAP_DIMENSION) {
-            constraintWidget.setVerticalDimensionBehaviour(ConstraintWidget.DimensionBehaviour.WRAP_CONTENT);
+            constraintWidget.setVerticalDimensionBehaviour(ConstraintWidget$DimensionBehaviour.WRAP_CONTENT);
             return;
         }
         if (obj4 == PARENT_DIMENSION) {
-            constraintWidget.setVerticalDimensionBehaviour(ConstraintWidget.DimensionBehaviour.MATCH_PARENT);
+            constraintWidget.setVerticalDimensionBehaviour(ConstraintWidget$DimensionBehaviour.MATCH_PARENT);
         } else if (obj4 == null) {
-            constraintWidget.setVerticalDimensionBehaviour(ConstraintWidget.DimensionBehaviour.FIXED);
+            constraintWidget.setVerticalDimensionBehaviour(ConstraintWidget$DimensionBehaviour.FIXED);
             constraintWidget.setHeight(this.mValue);
         }
     }

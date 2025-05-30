@@ -1,5 +1,6 @@
 package androidx.compose.runtime;
 
+import androidx.appcompat.R;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -16,8 +17,8 @@ import org.jetbrains.annotations.Nullable;
 
 /* JADX INFO: Add missing generic type declarations: [R] */
 /* compiled from: Taobao */
-@DebugMetadata(c = "androidx.compose.runtime.SdkStubsFallbackFrameClock$withFrameNanos$2", f = "ActualAndroid.android.kt", i = {}, l = {52}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+@DebugMetadata(c = "androidx.compose.runtime.SdkStubsFallbackFrameClock$withFrameNanos$2", f = "ActualAndroid.android.kt", i = {}, l = {R.styleable.AppCompatTheme_colorButtonNormal}, m = "invokeSuspend", n = {}, s = {})
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class SdkStubsFallbackFrameClock$withFrameNanos$2<R> extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super R>, Object> {
     final /* synthetic */ Function1<Long, R> $onFrame;
     int label;

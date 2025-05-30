@@ -3,7 +3,7 @@ package android.taobao.windvane.packageapp.zipapp.utils;
 import androidx.exifinterface.media.ExifInterface;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class InstantPerformanceData {
     public String appName;
     public long d_endTime;

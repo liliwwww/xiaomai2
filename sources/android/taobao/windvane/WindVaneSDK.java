@@ -18,7 +18,7 @@ import android.taobao.windvane.config.WVDomainConfig;
 import android.taobao.windvane.config.WVServerConfig;
 import android.taobao.windvane.config.WVUCPrecacheManager;
 import android.taobao.windvane.config.WVURLConfig;
-import android.taobao.windvane.extra.p002uc.WVWebPushService;
+import android.taobao.windvane.extra.uc.WVWebPushService;
 import android.taobao.windvane.file.FileManager;
 import android.taobao.windvane.jsbridge.WVJsPreprocessor;
 import android.taobao.windvane.jsbridge.WVJsbridgeService;
@@ -38,14 +38,12 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WindVaneSDK {
     private static final String SPNAME_ENV = "wv_evn";
     private static final String VALUE_NAME = "evn_value";
     private static final String WV_MULT = "wv_multi_";
-
-    /* renamed from: a */
-    public static final /* synthetic */ int f1a = 0;
+    public static final /* synthetic */ int a = 0;
     private static boolean initialized;
 
     public static void init(Context context, WVAppParams wVAppParams) {
@@ -57,20 +55,20 @@ public class WindVaneSDK {
         WVUCPrecacheManager.getInstance();
         WVDomainConfig.getInstance().init();
         WVCommonConfig.getInstance().init();
-        WVConfigManager.getInstance().registerHandler(WVConfigManager.CONFIGNAME_DOMAIN, new WVConfigHandler() { // from class: android.taobao.windvane.WindVaneSDK.1
+        WVConfigManager.getInstance().registerHandler("domain", new WVConfigHandler() { // from class: android.taobao.windvane.WindVaneSDK.1
             @Override // android.taobao.windvane.config.WVConfigHandler
             public void update(String str, WVConfigUpdateCallback wVConfigUpdateCallback) {
                 WVDomainConfig.getInstance().updateDomainRule(wVConfigUpdateCallback, str, getSnapshotN());
             }
         });
-        WVConfigManager.getInstance().registerHandler(WVConfigManager.CONFIGNAME_COMMON, new WVConfigHandler() { // from class: android.taobao.windvane.WindVaneSDK.2
+        WVConfigManager.getInstance().registerHandler("common", new WVConfigHandler() { // from class: android.taobao.windvane.WindVaneSDK.2
             @Override // android.taobao.windvane.config.WVConfigHandler
             public void update(String str, WVConfigUpdateCallback wVConfigUpdateCallback) {
                 WVCommonConfig.getInstance().updateCommonRule(wVConfigUpdateCallback, str, getSnapshotN());
             }
         });
         WVCookieConfig.getInstance().init();
-        WVConfigManager.getInstance().registerConfigImpl(WVConfigManager.CONFIGNAME_COOKIE, WVCookieConfig.getInstance());
+        WVConfigManager.getInstance().registerConfigImpl("cookie_black_list", WVCookieConfig.getInstance());
     }
 
     public static void initURLCache(Context context, String str, int i) {
@@ -92,7 +90,7 @@ public class WindVaneSDK {
     public static void setEnvMode(EnvEnum envEnum) {
         if (envEnum != null) {
             try {
-                TaoLog.m24i(SPNAME_ENV, "setEnvMode : " + envEnum.getValue());
+                TaoLog.i(SPNAME_ENV, "setEnvMode : " + envEnum.getValue());
                 GlobalConfig.env = envEnum;
                 if (ConfigStorage.getLongVal(SPNAME_ENV, VALUE_NAME) == envEnum.getKey()) {
                     return;
@@ -115,13 +113,13 @@ public class WindVaneSDK {
 
     public static void init(Context context, String str, WVAppParams wVAppParams) {
         if (initialized) {
-            TaoLog.m24i("WindVaneSDK", "WindVaneSDK has already initialized");
+            TaoLog.i("WindVaneSDK", "WindVaneSDK has already initialized");
             return;
         }
         TaoLog.setImpl(new TLogImpl());
         WMLogGlobal.getInstance().setContext(context.getApplicationContext());
         WMLogGlobal.getInstance().addExternalLogHandler(new TLogNewImpl());
-        TaoLog.m21e("WindVaneSDK", "WindVaneSDK init");
+        TaoLog.e("WindVaneSDK", "WindVaneSDK init");
         Application application = (Application) (context instanceof Application ? context : context.getApplicationContext());
         GlobalConfig.context = application;
         if (application != null) {
@@ -141,7 +139,7 @@ public class WindVaneSDK {
                     FileManager.unzip(assets.open("uclibs.zip"), createFolder.getAbsolutePath());
                 }
                 wVAppParams.ucLibDir = createFolder.getAbsolutePath();
-                TaoLog.m24i("WindVaneSDK", "UC init by uclibs");
+                TaoLog.i("WindVaneSDK", "UC init by uclibs");
             } catch (IOException unused) {
             }
             if (!WVAppParamsManager.getInstance().isParamsSet()) {
@@ -165,16 +163,16 @@ public class WindVaneSDK {
             } catch (Throwable unused2) {
             }
             try {
-                TaoLog.m24i("WindVaneSDK", "trying to init uc core");
+                TaoLog.i("WindVaneSDK", "trying to init uc core");
                 Class.forName("android.taobao.windvane.extra.uc.WVUCWebView");
                 if (!wVAppParams.needSpeed) {
-                    int i = WVWebPushService.f15a;
+                    int i = WVWebPushService.a;
                     Method declaredMethod = WVWebPushService.class.getDeclaredMethod("getInstance", Context.class);
                     declaredMethod.setAccessible(true);
                     declaredMethod.invoke(WVWebPushService.class, context);
                 }
             } catch (Throwable th) {
-                TaoLog.m31w("WindVaneSDK", "failed to load WVUCWebView", th, new Object[0]);
+                TaoLog.w("WindVaneSDK", "failed to load WVUCWebView", th, new Object[0]);
             }
             initialized = true;
             return;

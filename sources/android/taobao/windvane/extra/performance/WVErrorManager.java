@@ -1,12 +1,12 @@
 package android.taobao.windvane.extra.performance;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class WVErrorManager {
     /* JADX WARN: Removed duplicated region for block: B:19:0x008d  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     public void reportJSError(android.webkit.ConsoleMessage r9) {
         /*
@@ -24,7 +24,7 @@ public class WVErrorManager {
             r2.append(r0)
             java.lang.String r0 = r2.toString()
             java.lang.String r2 = "WVErrorManager"
-            android.taobao.windvane.util.TaoLog.m18d(r2, r0)
+            android.taobao.windvane.util.TaoLog.d(r2, r0)
             goto L2c
         L2b:
             r1 = 0
@@ -76,10 +76,10 @@ public class WVErrorManager {
             r9.put(r1, r0)
         L97:
             java.lang.String r0 = "js_error"
-            android.taobao.windvane.p003ha.WVHAManager.uploadApmStage(r0, r9)
+            android.taobao.windvane.ha.WVHAManager.uploadApmStage(r0, r9)
             java.lang.String r2 = "WINDVANE_JS_ERROR"
             r3 = r7
-            android.taobao.windvane.p003ha.WVHAManager.reportJSError(r2, r3, r4, r5, r6, r7)
+            android.taobao.windvane.ha.WVHAManager.reportJSError(r2, r3, r4, r5, r6, r7)
             return
         */
         throw new UnsupportedOperationException("Method not decompiled: android.taobao.windvane.extra.performance.WVErrorManager.reportJSError(android.webkit.ConsoleMessage):void");

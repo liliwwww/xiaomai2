@@ -1,12 +1,12 @@
 package androidx.compose.foundation.text.selection;
 
 import androidx.compose.foundation.text.TextLayoutResultProxy;
-import androidx.compose.p004ui.text.TextRange;
-import androidx.compose.p004ui.text.input.CommitTextCommand;
-import androidx.compose.p004ui.text.input.EditCommand;
-import androidx.compose.p004ui.text.input.OffsetMapping;
-import androidx.compose.p004ui.text.input.SetSelectionCommand;
-import androidx.compose.p004ui.text.input.TextFieldValue;
+import androidx.compose.ui.text.TextRange;
+import androidx.compose.ui.text.input.CommitTextCommand;
+import androidx.compose.ui.text.input.EditCommand;
+import androidx.compose.ui.text.input.OffsetMapping;
+import androidx.compose.ui.text.input.SetSelectionCommand;
+import androidx.compose.ui.text.input.TextFieldValue;
 import java.util.List;
 import kotlin.collections.CollectionsKt;
 import kotlin.jvm.functions.Function1;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TextFieldPreparedSelection extends BaseTextPreparedSelection<TextFieldPreparedSelection> {
 
     @NotNull
@@ -35,7 +35,7 @@ public final class TextFieldPreparedSelection extends BaseTextPreparedSelection<
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private final int jumpByPagesOffset(androidx.compose.foundation.text.TextLayoutResultProxy r6, int r7) {
         /*
@@ -51,27 +51,27 @@ public final class TextFieldPreparedSelection extends BaseTextPreparedSelection<
         L13:
             if (r2 != 0) goto L1b
         L15:
-            androidx.compose.ui.geometry.Rect$Companion r0 = androidx.compose.p004ui.geometry.Rect.Companion
+            androidx.compose.ui.geometry.Rect$Companion r0 = androidx.compose.ui.geometry.Rect.Companion
             androidx.compose.ui.geometry.Rect r2 = r0.getZero()
         L1b:
             androidx.compose.ui.text.input.OffsetMapping r0 = r5.getOffsetMapping()
             androidx.compose.ui.text.input.TextFieldValue r1 = r5.currentValue
-            long r3 = r1.m4956getSelectiond9O1mEE()
-            int r1 = androidx.compose.p004ui.text.TextRange.m4744getEndimpl(r3)
+            long r3 = r1.getSelection-d9O1mEE()
+            int r1 = androidx.compose.ui.text.TextRange.m2325getEndimpl(r3)
             int r0 = r0.originalToTransformed(r1)
             androidx.compose.ui.text.TextLayoutResult r1 = r6.getValue()
             androidx.compose.ui.geometry.Rect r0 = r1.getCursorRect(r0)
             float r1 = r0.getLeft()
             float r0 = r0.getTop()
-            long r2 = r2.m2589getSizeNHjbRc()
-            float r2 = androidx.compose.p004ui.geometry.Size.m2622getHeightimpl(r2)
+            long r2 = r2.getSize-NH-jbRc()
+            float r2 = androidx.compose.ui.geometry.Size.getHeight-impl(r2)
             float r7 = (float) r7
             float r2 = r2 * r7
             float r0 = r0 + r2
             androidx.compose.ui.text.input.OffsetMapping r7 = r5.getOffsetMapping()
             androidx.compose.ui.text.TextLayoutResult r6 = r6.getValue()
-            long r0 = androidx.compose.p004ui.geometry.OffsetKt.Offset(r1, r0)
-            int r6 = r6.m4723getOffsetForPositionk4lQ0M(r0)
+            long r0 = androidx.compose.ui.geometry.OffsetKt.Offset(r1, r0)
+            int r6 = r6.getOffsetForPosition-k-4lQ0M(r0)
             int r6 = r7.transformedToOriginal(r6)
             return r6
         */
@@ -81,8 +81,8 @@ public final class TextFieldPreparedSelection extends BaseTextPreparedSelection<
     @Nullable
     public final List<EditCommand> deleteIfSelectedOr(@NotNull Function1<? super TextFieldPreparedSelection, ? extends EditCommand> function1) {
         Intrinsics.checkNotNullParameter(function1, "or");
-        if (!TextRange.m4743getCollapsedimpl(m1822getSelectiond9O1mEE())) {
-            return CollectionsKt.listOf(new EditCommand[]{new CommitTextCommand("", 0), new SetSelectionCommand(TextRange.m4747getMinimpl(m1822getSelectiond9O1mEE()), TextRange.m4747getMinimpl(m1822getSelectiond9O1mEE()))});
+        if (!TextRange.m2324getCollapsedimpl(m588getSelectiond9O1mEE())) {
+            return CollectionsKt.listOf(new EditCommand[]{new CommitTextCommand("", 0), new SetSelectionCommand(TextRange.m2328getMinimpl(m588getSelectiond9O1mEE()), TextRange.m2328getMinimpl(m588getSelectiond9O1mEE()))});
         }
         EditCommand editCommand = (EditCommand) function1.invoke(this);
         if (editCommand != null) {
@@ -103,7 +103,7 @@ public final class TextFieldPreparedSelection extends BaseTextPreparedSelection<
 
     @NotNull
     public final TextFieldValue getValue() {
-        return TextFieldValue.m4951copy3r_uNRQ$default(this.currentValue, getAnnotatedString(), m1822getSelectiond9O1mEE(), (TextRange) null, 4, (Object) null);
+        return TextFieldValue.copy-3r_uNRQ$default(this.currentValue, getAnnotatedString(), m588getSelectiond9O1mEE(), (TextRange) null, 4, (Object) null);
     }
 
     @NotNull
@@ -128,7 +128,7 @@ public final class TextFieldPreparedSelection extends BaseTextPreparedSelection<
 
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
     public TextFieldPreparedSelection(@NotNull TextFieldValue textFieldValue, @NotNull OffsetMapping offsetMapping, @Nullable TextLayoutResultProxy textLayoutResultProxy, @NotNull TextPreparedSelectionState textPreparedSelectionState) {
-        super(textFieldValue.getAnnotatedString(), textFieldValue.m4956getSelectiond9O1mEE(), textLayoutResultProxy != null ? textLayoutResultProxy.getValue() : null, offsetMapping, textPreparedSelectionState, null);
+        super(textFieldValue.getAnnotatedString(), textFieldValue.getSelection-d9O1mEE(), textLayoutResultProxy != null ? textLayoutResultProxy.getValue() : null, offsetMapping, textPreparedSelectionState, null);
         Intrinsics.checkNotNullParameter(textFieldValue, "currentValue");
         Intrinsics.checkNotNullParameter(offsetMapping, "offsetMapping");
         Intrinsics.checkNotNullParameter(textPreparedSelectionState, "state");

@@ -13,13 +13,12 @@ import kotlin.jvm.functions.Function2;
 import kotlin.ranges.IntRange;
 import kotlinx.coroutines.CoroutineScope;
 import kotlinx.coroutines.flow.Flow;
-import kotlinx.coroutines.flow.FlowCollector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.lazy.layout.LazyNearestItemsRangeKt$rememberLazyNearestItemsRangeState$1$1", f = "LazyNearestItemsRange.kt", i = {}, l = {66}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class LazyNearestItemsRangeKt$rememberLazyNearestItemsRangeState$1$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ Function0<Integer> $extraItemCount;
     final /* synthetic */ Function0<Integer> $firstVisibleItemIndex;
@@ -52,36 +51,10 @@ final class LazyNearestItemsRangeKt$rememberLazyNearestItemsRangeState$1$1 exten
         int i = this.label;
         if (i == 0) {
             ResultKt.throwOnFailure(obj);
-            final Function0<Integer> function0 = this.$firstVisibleItemIndex;
-            final Function0<Integer> function02 = this.$slidingWindowSize;
-            final Function0<Integer> function03 = this.$extraItemCount;
-            Flow snapshotFlow = SnapshotStateKt.snapshotFlow(new Function0<IntRange>() { // from class: androidx.compose.foundation.lazy.layout.LazyNearestItemsRangeKt$rememberLazyNearestItemsRangeState$1$1.1
-                /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-                {
-                    super(0);
-                }
-
-                @NotNull
-                public final IntRange invoke() {
-                    IntRange calculateNearestItemsRange;
-                    calculateNearestItemsRange = LazyNearestItemsRangeKt.calculateNearestItemsRange(((Number) function0.invoke()).intValue(), ((Number) function02.invoke()).intValue(), ((Number) function03.invoke()).intValue());
-                    return calculateNearestItemsRange;
-                }
-            });
-            final MutableState<IntRange> mutableState = this.$state;
-            FlowCollector<IntRange> flowCollector = new FlowCollector<IntRange>() { // from class: androidx.compose.foundation.lazy.layout.LazyNearestItemsRangeKt$rememberLazyNearestItemsRangeState$1$1.2
-                public /* bridge */ /* synthetic */ Object emit(Object obj2, Continuation continuation) {
-                    return emit((IntRange) obj2, (Continuation<? super Unit>) continuation);
-                }
-
-                @Nullable
-                public final Object emit(@NotNull IntRange intRange, @NotNull Continuation<? super Unit> continuation) {
-                    mutableState.setValue(intRange);
-                    return Unit.INSTANCE;
-                }
-            };
+            Flow snapshotFlow = SnapshotStateKt.snapshotFlow(new 1(this.$firstVisibleItemIndex, this.$slidingWindowSize, this.$extraItemCount));
+            2 r1 = new 2(this.$state);
             this.label = 1;
-            if (snapshotFlow.collect(flowCollector, this) == coroutine_suspended) {
+            if (snapshotFlow.collect(r1, this) == coroutine_suspended) {
                 return coroutine_suspended;
             }
         } else {

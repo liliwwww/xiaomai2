@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class TaoLog {
     private static int LENGTH = 5120;
     public static Map<String, Integer> LogLevel = new HashMap();
@@ -22,17 +22,15 @@ public final class TaoLog {
         impl = new AndroidLog();
     }
 
-    /* renamed from: d */
-    public static void m20d(String str, String str2, Object... objArr) {
+    public static void d(String str, String str2, Object... objArr) {
         ILog iLog;
         if (!shouldPrintDebug() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo8d(tagPre + str, format(str2, objArr));
+        iLog.d(tagPre + str, format(str2, objArr));
     }
 
-    /* renamed from: e */
-    public static void m21e(String str, String str2) {
+    public static void e(String str, String str2) {
         if (!shouldPrintError() || impl == null) {
             return;
         }
@@ -44,9 +42,9 @@ public final class TaoLog {
             int i2 = LENGTH;
             int i3 = i * i2;
             i++;
-            iLog.mo10e(str3, str2.substring(i3, i2 * i));
+            iLog.e(str3, str2.substring(i3, i2 * i));
         }
-        impl.mo10e(tagPre + str, str2.substring(i * LENGTH));
+        impl.e(tagPre + str, str2.substring(i * LENGTH));
     }
 
     private static String format(String str, Object[] objArr) {
@@ -57,40 +55,39 @@ public final class TaoLog {
         return impl != null && enabled;
     }
 
-    /* renamed from: i */
-    public static void m24i(String str, String str2) {
+    public static void i(String str, String str2) {
         ILog iLog;
         if (!shouldPrintInfo() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo12i(tagPre + str, str2);
+        iLog.i(tagPre + str, str2);
     }
 
     public static void log(int i, String str, String str2) {
         if (i == 2) {
-            m27v(str, str2);
+            v(str, str2);
             return;
         }
         if (i == 3) {
-            m18d(str, str2);
+            d(str, str2);
             return;
         }
         if (i == 4) {
-            m24i(str, str2);
+            i(str, str2);
             return;
         }
         if (i == 5) {
-            m30w(str, str2);
+            w(str, str2);
         } else if (i != 6) {
-            m27v(str, str2);
+            v(str, str2);
         } else {
-            m21e(str, str2);
+            e(str, str2);
         }
     }
 
     public static void setImpl(ILog iLog) {
         if (EnvUtil.isAppDebug()) {
-            m30w("TaoLog", "Ignore set log impl on debug mode");
+            w("TaoLog", "Ignore set log impl on debug mode");
         } else {
             impl = iLog;
         }
@@ -124,111 +121,99 @@ public final class TaoLog {
         return getLogStatus() && impl.isLogLevelEnabled(ILog.LogLevelEnum.WARNING.getLogLevel());
     }
 
-    /* renamed from: v */
-    public static void m27v(String str, String str2) {
+    public static void v(String str, String str2) {
         ILog iLog;
         if (!shouldPrintVerbose() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo14v(tagPre + str, str2);
+        iLog.v(tagPre + str, str2);
     }
 
-    /* renamed from: w */
-    public static void m30w(String str, String str2) {
+    public static void w(String str, String str2) {
         ILog iLog;
         if (!shouldPrintWarn() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo16w(tagPre + str, str2);
+        iLog.w(tagPre + str, str2);
     }
 
-    /* renamed from: d */
-    public static void m19d(String str, String str2, Throwable th, Object... objArr) {
+    public static void d(String str, String str2, Throwable th, Object... objArr) {
         ILog iLog;
         if (!shouldPrintDebug() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo9d(tagPre + str, format(str2, objArr), th);
+        iLog.d(tagPre + str, format(str2, objArr), th);
     }
 
-    /* renamed from: i */
-    public static void m26i(String str, String str2, Object... objArr) {
+    public static void i(String str, String str2, Object... objArr) {
         ILog iLog;
         if (!shouldPrintInfo() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo12i(tagPre + str, format(str2, objArr));
+        iLog.i(tagPre + str, format(str2, objArr));
     }
 
-    /* renamed from: v */
-    public static void m29v(String str, String str2, Object... objArr) {
+    public static void v(String str, String str2, Object... objArr) {
         ILog iLog;
         if (!shouldPrintVerbose() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo14v(tagPre + str, format(str2, objArr));
+        iLog.v(tagPre + str, format(str2, objArr));
     }
 
-    /* renamed from: w */
-    public static void m32w(String str, String str2, Object... objArr) {
+    public static void w(String str, String str2, Object... objArr) {
         ILog iLog;
         if (!shouldPrintWarn() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo16w(tagPre + str, format(str2, objArr));
+        iLog.w(tagPre + str, format(str2, objArr));
     }
 
-    /* renamed from: d */
-    public static void m18d(String str, String str2) {
+    public static void d(String str, String str2) {
         ILog iLog;
         if (!shouldPrintDebug() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo8d(tagPre + str, str2);
+        iLog.d(tagPre + str, str2);
     }
 
-    /* renamed from: e */
-    public static void m23e(String str, String str2, Object... objArr) {
+    public static void e(String str, String str2, Object... objArr) {
         ILog iLog;
         if (!shouldPrintError() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo10e(tagPre + str, format(str2, objArr));
+        iLog.e(tagPre + str, format(str2, objArr));
     }
 
-    /* renamed from: i */
-    public static void m25i(String str, String str2, Throwable th, Object... objArr) {
+    public static void i(String str, String str2, Throwable th, Object... objArr) {
         ILog iLog;
         if (!shouldPrintInfo() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo13i(tagPre + str, format(str2, objArr), th);
+        iLog.i(tagPre + str, format(str2, objArr), th);
     }
 
-    /* renamed from: v */
-    public static void m28v(String str, String str2, Throwable th, Object... objArr) {
+    public static void v(String str, String str2, Throwable th, Object... objArr) {
         ILog iLog;
         if (!shouldPrintVerbose() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo15v(tagPre + str, format(str2, objArr), th);
+        iLog.v(tagPre + str, format(str2, objArr), th);
     }
 
-    /* renamed from: w */
-    public static void m31w(String str, String str2, Throwable th, Object... objArr) {
+    public static void w(String str, String str2, Throwable th, Object... objArr) {
         ILog iLog;
         if (!shouldPrintWarn() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo17w(tagPre + str, format(str2, objArr), th);
+        iLog.w(tagPre + str, format(str2, objArr), th);
     }
 
-    /* renamed from: e */
-    public static void m22e(String str, String str2, Throwable th, Object... objArr) {
+    public static void e(String str, String str2, Throwable th, Object... objArr) {
         ILog iLog;
         if (!shouldPrintError() || (iLog = impl) == null) {
             return;
         }
-        iLog.mo11e(tagPre + str, format(str2, objArr), th);
+        iLog.e(tagPre + str, format(str2, objArr), th);
     }
 }

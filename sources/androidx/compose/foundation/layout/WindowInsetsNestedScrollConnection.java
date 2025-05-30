@@ -7,10 +7,10 @@ import android.view.WindowInsetsAnimationControlListener;
 import android.view.WindowInsetsAnimationController;
 import android.view.WindowInsetsController;
 import androidx.annotation.RequiresApi;
-import androidx.compose.p004ui.geometry.Offset;
-import androidx.compose.p004ui.input.nestedscroll.NestedScrollConnection;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.Velocity;
+import androidx.compose.ui.geometry.Offset;
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.Velocity;
 import java.util.concurrent.CancellationException;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -28,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @RequiresApi(30)
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class WindowInsetsNestedScrollConnection implements WindowInsetsAnimationControlListener, NestedScrollConnection {
 
     @Nullable
@@ -117,14 +117,14 @@ final class WindowInsetsNestedScrollConnection implements WindowInsetsAnimationC
     /* renamed from: fling-huYlsQE, reason: not valid java name */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public final java.lang.Object m1456flinghuYlsQE(long r27, float r29, boolean r30, kotlin.coroutines.Continuation<? super androidx.compose.p004ui.unit.Velocity> r31) {
+    public final java.lang.Object m391flinghuYlsQE(long r27, float r29, boolean r30, kotlin.coroutines.Continuation<? super androidx.compose.ui.unit.Velocity> r31) {
         /*
             Method dump skipped, instructions count: 416
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.layout.WindowInsetsNestedScrollConnection.m1456flinghuYlsQE(long, float, boolean, kotlin.coroutines.Continuation):java.lang.Object");
+        throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.layout.WindowInsetsNestedScrollConnection.m391flinghuYlsQE(long, float, boolean, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -156,7 +156,7 @@ final class WindowInsetsNestedScrollConnection implements WindowInsetsAnimationC
     }
 
     /* renamed from: scroll-8S9VItk, reason: not valid java name */
-    private final long m1457scroll8S9VItk(long j, float f) {
+    private final long m392scroll8S9VItk(long j, float f) {
         Job job = this.animationJob;
         if (job != null) {
             Job.a.b(job, (CancellationException) null, 1, (Object) null);
@@ -168,7 +168,7 @@ final class WindowInsetsNestedScrollConnection implements WindowInsetsAnimationC
                 if (windowInsetsAnimationController == null) {
                     this.partialConsumption = 0.0f;
                     requestAnimationController();
-                    return this.sideCalculator.mo1418consumedOffsetsMKHz9U(j);
+                    return this.sideCalculator.consumedOffsets-MK-Hz9U(j);
                 }
                 SideCalculator sideCalculator = this.sideCalculator;
                 Insets hiddenStateInsets = windowInsetsAnimationController.getHiddenStateInsets();
@@ -183,7 +183,7 @@ final class WindowInsetsNestedScrollConnection implements WindowInsetsAnimationC
                 int valueOf3 = this.sideCalculator.valueOf(currentInsets);
                 if (valueOf3 == (f > 0.0f ? valueOf2 : valueOf)) {
                     this.partialConsumption = 0.0f;
-                    return Offset.Companion.m2572getZeroF1C5BW0();
+                    return Offset.Companion.m1024getZeroF1C5BW0();
                 }
                 float f2 = valueOf3 + f + this.partialConsumption;
                 int coerceIn = RangesKt.coerceIn(MathKt.roundToInt(f2), valueOf, valueOf2);
@@ -191,10 +191,10 @@ final class WindowInsetsNestedScrollConnection implements WindowInsetsAnimationC
                 if (coerceIn != valueOf3) {
                     windowInsetsAnimationController.setInsetsAndAlpha(this.sideCalculator.adjustInsets(currentInsets, coerceIn), 1.0f, 0.0f);
                 }
-                return this.sideCalculator.mo1418consumedOffsetsMKHz9U(j);
+                return this.sideCalculator.consumedOffsets-MK-Hz9U(j);
             }
         }
-        return Offset.Companion.m2572getZeroF1C5BW0();
+        return Offset.Companion.m1024getZeroF1C5BW0();
     }
 
     public final void dispose() {
@@ -252,30 +252,30 @@ final class WindowInsetsNestedScrollConnection implements WindowInsetsAnimationC
         animationEnded();
     }
 
-    @Override // androidx.compose.p004ui.input.nestedscroll.NestedScrollConnection
+    @Override // androidx.compose.ui.input.nestedscroll.NestedScrollConnection
     @Nullable
     /* renamed from: onPostFling-RZ2iAVY */
-    public Object mo1290onPostFlingRZ2iAVY(long j, long j2, @NotNull Continuation<? super Velocity> continuation) {
-        return m1456flinghuYlsQE(j2, this.sideCalculator.showMotion(Velocity.m5441getXimpl(j2), Velocity.m5442getYimpl(j2)), true, continuation);
+    public Object mo309onPostFlingRZ2iAVY(long j, long j2, @NotNull Continuation<? super Velocity> continuation) {
+        return m391flinghuYlsQE(j2, this.sideCalculator.showMotion(Velocity.m2710getXimpl(j2), Velocity.m2711getYimpl(j2)), true, continuation);
     }
 
-    @Override // androidx.compose.p004ui.input.nestedscroll.NestedScrollConnection
+    @Override // androidx.compose.ui.input.nestedscroll.NestedScrollConnection
     /* renamed from: onPostScroll-DzOQY0M */
-    public long mo1291onPostScrollDzOQY0M(long j, long j2, int i) {
-        return m1457scroll8S9VItk(j2, this.sideCalculator.showMotion(Offset.m2556getXimpl(j2), Offset.m2557getYimpl(j2)));
+    public long mo310onPostScrollDzOQY0M(long j, long j2, int i) {
+        return m392scroll8S9VItk(j2, this.sideCalculator.showMotion(Offset.getX-impl(j2), Offset.getY-impl(j2)));
     }
 
-    @Override // androidx.compose.p004ui.input.nestedscroll.NestedScrollConnection
+    @Override // androidx.compose.ui.input.nestedscroll.NestedScrollConnection
     @Nullable
     /* renamed from: onPreFling-QWom1Mo */
-    public Object mo1292onPreFlingQWom1Mo(long j, @NotNull Continuation<? super Velocity> continuation) {
-        return m1456flinghuYlsQE(j, this.sideCalculator.hideMotion(Velocity.m5441getXimpl(j), Velocity.m5442getYimpl(j)), false, continuation);
+    public Object mo311onPreFlingQWom1Mo(long j, @NotNull Continuation<? super Velocity> continuation) {
+        return m391flinghuYlsQE(j, this.sideCalculator.hideMotion(Velocity.m2710getXimpl(j), Velocity.m2711getYimpl(j)), false, continuation);
     }
 
-    @Override // androidx.compose.p004ui.input.nestedscroll.NestedScrollConnection
+    @Override // androidx.compose.ui.input.nestedscroll.NestedScrollConnection
     /* renamed from: onPreScroll-OzD1aCk */
-    public long mo1293onPreScrollOzD1aCk(long j, int i) {
-        return m1457scroll8S9VItk(j, this.sideCalculator.hideMotion(Offset.m2556getXimpl(j), Offset.m2557getYimpl(j)));
+    public long mo312onPreScrollOzD1aCk(long j, int i) {
+        return m392scroll8S9VItk(j, this.sideCalculator.hideMotion(Offset.getX-impl(j), Offset.getY-impl(j)));
     }
 
     @Override // android.view.WindowInsetsAnimationControlListener
@@ -285,16 +285,7 @@ final class WindowInsetsNestedScrollConnection implements WindowInsetsAnimationC
         this.isControllerRequested = false;
         CancellableContinuation<? super WindowInsetsAnimationController> cancellableContinuation = this.continuation;
         if (cancellableContinuation != null) {
-            cancellableContinuation.resume(windowInsetsAnimationController, new Function1<Throwable, Unit>() { // from class: androidx.compose.foundation.layout.WindowInsetsNestedScrollConnection$onReady$1
-                public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                    invoke((Throwable) obj);
-                    return Unit.INSTANCE;
-                }
-
-                public final void invoke(@NotNull Throwable th) {
-                    Intrinsics.checkNotNullParameter(th, "it");
-                }
-            });
+            cancellableContinuation.resume(windowInsetsAnimationController, onReady.1.INSTANCE);
         }
         this.continuation = null;
     }

@@ -1,7 +1,6 @@
 package android.taobao.windvane.jsbridge;
 
 import android.os.Looper;
-import android.taobao.windvane.config.GlobalConfig;
 import android.taobao.windvane.fullspan.SpanWrapper;
 import android.taobao.windvane.util.FullTraceUtils;
 import android.taobao.windvane.util.TaoLog;
@@ -16,7 +15,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVBridgeEngine implements Serializable {
     private static final String FAILURE_CALLBACK_PREFIX = "javascript:window.__windvane__&&window.__windvane__.onFailure&&window.__windvane__.onFailure";
     private static final String SUCCESS_CALLBACK_PREFIX = "javascript:window.__windvane__&&window.__windvane__.onSuccess&&window.__windvane__.onSuccess";
@@ -104,12 +103,12 @@ public class WVBridgeEngine implements Serializable {
             wVCallMethodContext.params = "{}";
         }
         final SpanWrapper spanWrapper = new SpanWrapper();
-        IWVWebView iWVWebView = this.mWebview;
-        if (iWVWebView instanceof IFullTrace) {
-            spanWrapper.setFalcoSpan(FullTraceUtils.makeSpanChildOf("jsBridge", "JSNativeCall", ((IFullTrace) iWVWebView).getSpanWrapper()));
+        IFullTrace iFullTrace = this.mWebview;
+        if (iFullTrace instanceof IFullTrace) {
+            spanWrapper.setFalcoSpan(FullTraceUtils.makeSpanChildOf("jsBridge", "JSNativeCall", iFullTrace.getSpanWrapper()));
             spanWrapper.log("nativeCall " + split[0] + "." + split[1] + " token:" + str3 + " params:" + str2);
         }
-        TaoLog.m24i("WVJsBridge", "new bridge, reqId=[" + str3 + "]");
+        TaoLog.i("WVJsBridge", "new bridge, reqId=[" + str3 + "]");
         wVCallMethodContext.succeedCallBack = new IExtJsApiSuccessCallBack() { // from class: android.taobao.windvane.jsbridge.WVBridgeEngine.1
             @Override // android.taobao.windvane.jsbridge.IJsApiSucceedCallBack
             public void succeed(String str5) {
@@ -138,7 +137,6 @@ public class WVBridgeEngine implements Serializable {
             }
         };
         wVCallMethodContext.failedCallBack = new IJsApiFailedCallBack() { // from class: android.taobao.windvane.jsbridge.WVBridgeEngine.2
-            @Override // android.taobao.windvane.jsbridge.IJsApiFailedCallBack
             public void fail(String str5) {
                 if (TextUtils.isEmpty(str5)) {
                     str5 = "{}";
@@ -160,8 +158,8 @@ public class WVBridgeEngine implements Serializable {
     @JavascriptInterface
     @com.uc.webview.export.JavascriptInterface
     public String version() {
-        TaoLog.m21e("WVJSPlugin", "WVJSPlugin __windvane__ version 8.5.0");
-        return GlobalConfig.VERSION;
+        TaoLog.e("WVJSPlugin", "WVJSPlugin __windvane__ version 8.5.0");
+        return "8.5.0";
     }
 
     @JavascriptInterface

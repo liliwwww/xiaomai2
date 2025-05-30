@@ -1,6 +1,6 @@
 package androidx.compose.foundation.pager;
 
-import androidx.compose.p004ui.unit.Density;
+import androidx.compose.ui.unit.Density;
 import kotlin.ResultKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
 @DebugMetadata(c = "androidx.compose.foundation.pager.PagerKt$Pager$2$1", f = "Pager.kt", i = {}, l = {}, m = "invokeSuspend", n = {}, s = {})
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 final class PagerKt$Pager$2$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ Density $density;
     final /* synthetic */ float $pageSpacing;
@@ -46,7 +46,7 @@ final class PagerKt$Pager$2$1 extends SuspendLambda implements Function2<Corouti
             throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
         }
         ResultKt.throwOnFailure(obj);
-        this.$state.setPageSpacing$foundation_release(this.$density.mo1277roundToPx0680j_4(this.$pageSpacing));
+        this.$state.setPageSpacing$foundation_release(this.$density.mo319roundToPx0680j_4(this.$pageSpacing));
         return Unit.INSTANCE;
     }
 }

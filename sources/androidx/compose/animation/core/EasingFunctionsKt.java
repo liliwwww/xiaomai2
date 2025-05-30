@@ -3,7 +3,7 @@ package androidx.compose.animation.core;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class EasingFunctionsKt {
 
     @NotNull
@@ -92,7 +92,6 @@ public final class EasingFunctionsKt {
 
     @NotNull
     private static final Easing EaseInElastic = new Easing() { // from class: androidx.compose.animation.core.EasingFunctionsKt$EaseInElastic$1
-        @Override // androidx.compose.animation.core.Easing
         public final float transform(float f) {
             if (f == 0.0f) {
                 return 0.0f;
@@ -106,22 +105,10 @@ public final class EasingFunctionsKt {
     };
 
     @NotNull
-    private static final Easing EaseOutElastic = new Easing() { // from class: androidx.compose.animation.core.EasingFunctionsKt$EaseOutElastic$1
-        @Override // androidx.compose.animation.core.Easing
-        public final float transform(float f) {
-            if (f == 0.0f) {
-                return 0.0f;
-            }
-            if (f == 1.0f) {
-                return 1.0f;
-            }
-            return (float) ((((float) Math.pow(2.0f, (-10.0f) * f)) * Math.sin(((f * 10.0f) - 0.75f) * 2.0943951023931953d)) + 1.0f);
-        }
-    };
+    private static final Easing EaseOutElastic = EaseOutElastic.1.INSTANCE;
 
     @NotNull
     private static final Easing EaseInOutElastic = new Easing() { // from class: androidx.compose.animation.core.EasingFunctionsKt$EaseInOutElastic$1
-        @Override // androidx.compose.animation.core.Easing
         public final float transform(float f) {
             if (f == 0.0f) {
                 return 0.0f;
@@ -139,7 +126,6 @@ public final class EasingFunctionsKt {
 
     @NotNull
     private static final Easing EaseOutBounce = new Easing() { // from class: androidx.compose.animation.core.EasingFunctionsKt$EaseOutBounce$1
-        @Override // androidx.compose.animation.core.Easing
         public final float transform(float f) {
             float f2;
             float f3;
@@ -165,19 +151,13 @@ public final class EasingFunctionsKt {
 
     @NotNull
     private static final Easing EaseInBounce = new Easing() { // from class: androidx.compose.animation.core.EasingFunctionsKt$EaseInBounce$1
-        @Override // androidx.compose.animation.core.Easing
         public final float transform(float f) {
             return 1 - EasingFunctionsKt.getEaseOutBounce().transform(1.0f - f);
         }
     };
 
     @NotNull
-    private static final Easing EaseInOutBounce = new Easing() { // from class: androidx.compose.animation.core.EasingFunctionsKt$EaseInOutBounce$1
-        @Override // androidx.compose.animation.core.Easing
-        public final float transform(float f) {
-            return (((double) f) < 0.5d ? 1 - EasingFunctionsKt.getEaseOutBounce().transform(1.0f - (f * 2.0f)) : 1 + EasingFunctionsKt.getEaseOutBounce().transform((f * 2.0f) - 1.0f)) / 2.0f;
-        }
-    };
+    private static final Easing EaseInOutBounce = EaseInOutBounce.1.INSTANCE;
 
     @NotNull
     public static final Easing getEase() {

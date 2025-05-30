@@ -1,7 +1,7 @@
 package androidx.constraintlayout.motion.widget;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 interface ProxyInterface {
     int designAccess(int i, String str, Object obj, float[] fArr, int i2, float[] fArr2, int i3);
 

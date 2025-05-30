@@ -1,15 +1,15 @@
 package androidx.compose.foundation;
 
 import android.content.res.Configuration;
-import androidx.compose.p004ui.platform.AndroidCompositionLocals_androidKt;
 import androidx.compose.runtime.Composable;
 import androidx.compose.runtime.Composer;
 import androidx.compose.runtime.ComposerKt;
 import androidx.compose.runtime.ReadOnlyComposable;
+import androidx.compose.ui.platform.AndroidCompositionLocals_androidKt;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class DarkTheme_androidKt {
     @Composable
     @ReadOnlyComposable

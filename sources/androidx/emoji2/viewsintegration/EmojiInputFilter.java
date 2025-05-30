@@ -16,7 +16,7 @@ import java.lang.ref.WeakReference;
 /* compiled from: Taobao */
 @RequiresApi(19)
 @RestrictTo({RestrictTo.Scope.LIBRARY})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class EmojiInputFilter implements InputFilter {
     private EmojiCompat.InitCallback mInitCallback;
     private final TextView mTextView;
@@ -45,7 +45,6 @@ final class EmojiInputFilter implements InputFilter {
             return false;
         }
 
-        @Override // androidx.emoji2.text.EmojiCompat.InitCallback
         public void onInitialized() {
             CharSequence text;
             CharSequence process;

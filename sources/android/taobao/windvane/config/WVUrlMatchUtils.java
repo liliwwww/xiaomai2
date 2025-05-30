@@ -1,9 +1,7 @@
 package android.taobao.windvane.config;
 
 import android.net.Uri;
-import android.taobao.windvane.connect.api.ApiConstants;
 import android.taobao.windvane.jsbridge.utils.WVUtils;
-import android.taobao.windvane.runtimepermission.PermissionChecker;
 import android.taobao.windvane.util.TaoLog;
 import android.taobao.windvane.util.WVNativeCallbackUtil;
 import android.text.TextUtils;
@@ -18,7 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVUrlMatchUtils {
     private static final String ACTION_CODE = "urlMatchFailed";
     private static final int ALARM_EVENT_ID = 65501;
@@ -84,25 +82,13 @@ public class WVUrlMatchUtils {
         }
     }
 
-    /* compiled from: Taobao */
-    /* loaded from: classes2.dex */
-    private class UrlParseRes {
-        public String scheme = null;
-        public String[] subHosts = null;
-        public String[] subPaths = null;
-        public int port = -1;
-
-        UrlParseRes() {
-        }
-    }
-
     private WVUrlMatchUtils() {
         this.isLoadAppMonitor = false;
         try {
             this.isLoadAppMonitor = true;
         } catch (Exception e) {
             this.isLoadAppMonitor = false;
-            TaoLog.m21e(TAG, "");
+            TaoLog.e(TAG, "");
             e.printStackTrace();
         }
     }
@@ -138,7 +124,7 @@ public class WVUrlMatchUtils {
     private boolean insertToTrieTree(TireNode tireNode, UrlParseRes urlParseRes, String str) {
         String[] strArr;
         if (urlParseRes == null || (strArr = urlParseRes.subHosts) == null || strArr.length == 0) {
-            TaoLog.m18d(TAG, "insertToTrieTree: 插入节点有误，请检查配置！");
+            TaoLog.d(TAG, "insertToTrieTree: 插入节点有误，请检查配置！");
             return false;
         }
         for (String str2 : strArr) {
@@ -170,17 +156,17 @@ public class WVUrlMatchUtils {
     private UrlParseRes parseUrl(String str) {
         Uri uri;
         if (TextUtils.isEmpty(str)) {
-            TaoLog.m18d(TAG, "dropUrl: 输入的URL为空!!");
+            TaoLog.d(TAG, "dropUrl: 输入的URL为空!!");
             return null;
         }
-        UrlParseRes urlParseRes = new UrlParseRes();
+        UrlParseRes urlParseRes = new UrlParseRes(this);
         if (str.length() > 2 && str.substring(0, 2).equals(WVUtils.URL_SEPARATOR)) {
             str = new StringBuffer(DEFAULT_SCHEME[0] + ":" + str).toString();
         }
         try {
             uri = Uri.parse(str);
         } catch (Throwable th) {
-            TaoLog.m18d(TAG, "parseUrl: 解析URL出现错误");
+            TaoLog.d(TAG, "parseUrl: 解析URL出现错误");
             th.printStackTrace();
             if (this.isLoadAppMonitor) {
                 AppMonitor.Alarm.commitFail("WindVane", "urlMatchFailed", str, "6", "解析URL出现错误");
@@ -189,7 +175,7 @@ public class WVUrlMatchUtils {
         }
         urlParseRes.scheme = uri.getScheme();
         if (TextUtils.isEmpty(uri.getHost()) || uri.getPath() == null) {
-            TaoLog.m18d(TAG, "parseUrl: 输入的URL不符合规范");
+            TaoLog.d(TAG, "parseUrl: 输入的URL不符合规范");
             if (this.isLoadAppMonitor) {
                 AppMonitor.Alarm.commitFail("WindVane", "urlMatchFailed", str, "7", "解析URL出现错误");
             }
@@ -210,7 +196,7 @@ public class WVUrlMatchUtils {
 
     public static String[] reverseStrArray(String[] strArr) {
         if (strArr == null || strArr.length == 0) {
-            TaoLog.m18d(TAG, "reverseStrArray:输入参数为空");
+            TaoLog.d(TAG, "reverseStrArray:输入参数为空");
             return null;
         }
         int i = 0;
@@ -225,7 +211,7 @@ public class WVUrlMatchUtils {
 
     private String reverseUrl(String str) {
         if (TextUtils.isEmpty(str)) {
-            TaoLog.m18d(TAG, "reverseUrl: 输入的URL为空");
+            TaoLog.d(TAG, "reverseUrl: 输入的URL为空");
             return null;
         }
         for (int i = 0; i < str.length(); i++) {
@@ -335,17 +321,17 @@ public class WVUrlMatchUtils {
             return iJsApiPermissionCheck.checkJsApiPermission(str, str2, str3);
         }
         if (TextUtils.isEmpty(str) || TextUtils.isEmpty(str2) || TextUtils.isEmpty(str3)) {
-            TaoLog.m21e(TAG, "checkApiPermission: 输入参数为空!");
+            TaoLog.e(TAG, "checkApiPermission: 输入参数为空!");
             return false;
         }
         Map<String, JSONArray> map = this.apiGroupMap;
         if (map == null || map.isEmpty()) {
-            TaoLog.m21e(TAG, "checkApiPermission: apiGroup配置不应为空!");
+            TaoLog.e(TAG, "checkApiPermission: apiGroup配置不应为空!");
             return false;
         }
-        String urlPermissionInfo = getUrlPermissionInfo(str, ApiConstants.API);
+        String urlPermissionInfo = getUrlPermissionInfo(str, "api");
         if (TextUtils.isEmpty(urlPermissionInfo)) {
-            TaoLog.m18d(TAG, "checkApiPermission: 未能正确获取api权限组");
+            TaoLog.d(TAG, "checkApiPermission: 未能正确获取api权限组");
             return false;
         }
         JSONArray jSONArray = this.apiGroupMap.get(urlPermissionInfo);
@@ -430,49 +416,49 @@ public class WVUrlMatchUtils {
             return iUrlPermissionCheck.getUrlPermissionInfo(str, str2);
         }
         if (TextUtils.isEmpty(str) || TextUtils.isEmpty(str2)) {
-            TaoLog.m18d(TAG, "getUrlPermissionInfo: 输入参数为空!");
+            TaoLog.d(TAG, "getUrlPermissionInfo: 输入参数为空!");
             return null;
         }
         TireNode tireNode = this.domainRoot;
         if (tireNode == null || tireNode.nodeMap.isEmpty()) {
-            TaoLog.m21e(TAG, "getUrlPermissionInfo: URL配置不应为空!");
+            TaoLog.e(TAG, "getUrlPermissionInfo: URL配置不应为空!");
             return null;
         }
         Map<String, Map<String, String>> map = this.urlRulesMap;
         if (map == null || map.isEmpty()) {
-            TaoLog.m21e(TAG, "getUrlPermissionInfo: urlRules配置不应为空!");
+            TaoLog.e(TAG, "getUrlPermissionInfo: urlRules配置不应为空!");
             return null;
         }
         if (TextUtils.equals(str2, "open") && (str.startsWith("javascript:") || str.startsWith("about:"))) {
-            return PermissionChecker.PERMISSION_ALLOW;
+            return "allow";
         }
         try {
             String searchUrlForGroup = searchUrlForGroup(str);
             if (TextUtils.isEmpty(searchUrlForGroup)) {
-                TaoLog.m18d(TAG, "getUrlPermissionInfo: 该url未在配置内，禁止访问!");
+                TaoLog.d(TAG, "getUrlPermissionInfo: 该url未在配置内，禁止访问!");
                 return null;
             }
             Map<String, String> map2 = this.urlRulesMap.get(searchUrlForGroup);
             if (map2 == null || map2.isEmpty()) {
-                TaoLog.m21e(TAG, "getUrlPermissionInfo: 未能找到权限组:" + searchUrlForGroup + " 的配置,请检查配置!");
+                TaoLog.e(TAG, "getUrlPermissionInfo: 未能找到权限组:" + searchUrlForGroup + " 的配置,请检查配置!");
                 return null;
             }
             String str3 = map2.get(str2);
             if (!TextUtils.isEmpty(str3)) {
                 return str3;
             }
-            TaoLog.m21e(TAG, "getUrlPermissionInfo: 未在权限组:" + searchUrlForGroup + " 中找到权限:" + str2 + "的配置");
+            TaoLog.e(TAG, "getUrlPermissionInfo: 未在权限组:" + searchUrlForGroup + " 中找到权限:" + str2 + "的配置");
             return null;
         } catch (Throwable th) {
             th.printStackTrace();
             if (TextUtils.equals(str2, "open")) {
-                TaoLog.m21e(TAG, "获取open权限时，出现匹配错误，已允许该URL打开，url:" + str);
+                TaoLog.e(TAG, "获取open权限时，出现匹配错误，已允许该URL打开，url:" + str);
                 if (this.isLoadAppMonitor) {
                     AppMonitor.Alarm.commitFail("WindVane", "urlMatchFailed", str, "4", "获取open权限时，出现匹配错误，已允许该URL打开");
                 }
-                return PermissionChecker.PERMISSION_ALLOW;
+                return "allow";
             }
-            TaoLog.m21e(TAG, "获取" + str2 + "权限时出现错误，url:" + str);
+            TaoLog.e(TAG, "获取" + str2 + "权限时出现错误，url:" + str);
             if (this.isLoadAppMonitor) {
                 AppMonitor.Alarm.commitFail("WindVane", "urlMatchFailed", str, "5", "获取" + str2 + "权限时，出现匹配错误");
             }
@@ -485,12 +471,12 @@ public class WVUrlMatchUtils {
     }
 
     public boolean isAllowOpen(String str) {
-        return PermissionChecker.PERMISSION_ALLOW.equalsIgnoreCase(getInstance().getUrlPermissionInfo(str, "open"));
+        return "allow".equalsIgnoreCase(getInstance().getUrlPermissionInfo(str, "open"));
     }
 
     public boolean isBrowserOpen(String str) {
         String urlPermissionInfo = getInstance().getUrlPermissionInfo(str, "open");
-        return (PermissionChecker.PERMISSION_ALLOW.equalsIgnoreCase(urlPermissionInfo) || "allowAll".equalsIgnoreCase(urlPermissionInfo) || "forbidden".equalsIgnoreCase(urlPermissionInfo)) ? false : true;
+        return ("allow".equalsIgnoreCase(urlPermissionInfo) || "allowAll".equalsIgnoreCase(urlPermissionInfo) || "forbidden".equalsIgnoreCase(urlPermissionInfo)) ? false : true;
     }
 
     public boolean isForbiddenOpen(String str) {
@@ -505,12 +491,12 @@ public class WVUrlMatchUtils {
         Map<String, TireNode> map;
         int i;
         if (TextUtils.isEmpty(str)) {
-            TaoLog.m21e(TAG, "searchUrl: 输入的URL不应为空！");
+            TaoLog.e(TAG, "searchUrl: 输入的URL不应为空！");
             return null;
         }
         TireNode tireNode = this.domainRoot;
         if (tireNode == null || (map = tireNode.nodeMap) == null || map.isEmpty()) {
-            TaoLog.m21e(TAG, "searchUrl: URL配置不应为空！");
+            TaoLog.e(TAG, "searchUrl: URL配置不应为空！");
             return null;
         }
         UrlParseRes parseUrl = parseUrl(str);
@@ -600,17 +586,17 @@ public class WVUrlMatchUtils {
         Map<String, TireNode> map;
         String str2 = null;
         if (TextUtils.isEmpty(str)) {
-            TaoLog.m21e(TAG, "searchUrlForGroup: 输入的URL不应为空！");
+            TaoLog.e(TAG, "searchUrlForGroup: 输入的URL不应为空！");
             return null;
         }
         TireNode tireNode = this.domainRoot;
         if (tireNode == null || (map = tireNode.nodeMap) == null || map.isEmpty()) {
-            TaoLog.m21e(TAG, "searchUrlForGroup: URL配置不应为空！");
+            TaoLog.e(TAG, "searchUrlForGroup: URL配置不应为空！");
             return null;
         }
         UrlParseRes parseUrl = parseUrl(str);
         if (parseUrl == null) {
-            TaoLog.m21e(TAG, "searchUrlForGroup: URL解析失败，URL配置错误，请检查是否输入为js！");
+            TaoLog.e(TAG, "searchUrlForGroup: URL解析失败，URL配置错误，请检查是否输入为js！");
             return null;
         }
         TireNode tireNode2 = this.domainRoot;
@@ -630,7 +616,7 @@ public class WVUrlMatchUtils {
 
     public void setApiGroup(String str) {
         if (TextUtils.isEmpty(str)) {
-            TaoLog.m21e(TAG, "setApiGroup: 输入参数为空");
+            TaoLog.e(TAG, "setApiGroup: 输入参数为空");
             return;
         }
         try {
@@ -643,10 +629,10 @@ public class WVUrlMatchUtils {
                 if (optJSONArray != null && optJSONArray.length() != 0) {
                     this.apiGroupMap.put(next, optJSONArray);
                 }
-                TaoLog.m18d(TAG, "setApiGroup: 未能正确获取api组:" + next + ",请检查配置");
+                TaoLog.d(TAG, "setApiGroup: 未能正确获取api组:" + next + ",请检查配置");
             }
         } catch (Exception e) {
-            TaoLog.m21e(TAG, "setApiGroupMap: 发生异常! " + e);
+            TaoLog.e(TAG, "setApiGroupMap: 发生异常! " + e);
             e.printStackTrace();
             if (this.isLoadAppMonitor) {
                 AppMonitor.Alarm.commitFail("WindVane", "urlMatchFailed", (String) null, ExifInterface.GPS_MEASUREMENT_3D, "配置错误");
@@ -660,7 +646,7 @@ public class WVUrlMatchUtils {
 
     public void setUrlPatterns(String str) {
         if (TextUtils.isEmpty(str)) {
-            TaoLog.m21e(TAG, "setUrlPatterns: 输入配置为空");
+            TaoLog.e(TAG, "setUrlPatterns: 输入配置为空");
             return;
         }
         try {
@@ -671,15 +657,15 @@ public class WVUrlMatchUtils {
                 String next = keys.next();
                 String optString = jSONObject.optString(next, "");
                 if (TextUtils.isEmpty(optString)) {
-                    TaoLog.m18d(TAG, "setUrlPatterns: 未能正确获取URL:" + next + "的权限组，请检查配置");
+                    TaoLog.d(TAG, "setUrlPatterns: 未能正确获取URL:" + next + "的权限组，请检查配置");
                 } else {
                     if (!insertToTrieTree(this.domainRoot, parseUrl(next), optString)) {
-                        TaoLog.m21e(TAG, "setUrlPatterns: URL insert error! url is:" + next);
+                        TaoLog.e(TAG, "setUrlPatterns: URL insert error! url is:" + next);
                     }
                 }
             }
         } catch (Exception e) {
-            TaoLog.m21e(TAG, "setUrlPatterns: catch a exception!");
+            TaoLog.e(TAG, "setUrlPatterns: catch a exception!");
             e.printStackTrace();
             if (this.isLoadAppMonitor) {
                 AppMonitor.Alarm.commitFail("WindVane", "urlMatchFailed", (String) null, "1", "配置错误");
@@ -693,7 +679,7 @@ public class WVUrlMatchUtils {
 
     public void setUrlRulesMap(String str) {
         if (TextUtils.isEmpty(str)) {
-            TaoLog.m21e(TAG, "setUrlRulesMap: 输入参数为空!");
+            TaoLog.e(TAG, "setUrlRulesMap: 输入参数为空!");
             return;
         }
         try {
@@ -704,7 +690,7 @@ public class WVUrlMatchUtils {
                 String next = keys.next();
                 String optString = jSONObject.optString(next, "");
                 if (TextUtils.isEmpty(optString)) {
-                    TaoLog.m18d(TAG, "setUrlRulesMap: 未能正确获取权限组:" + next + "的权限,请检查配置");
+                    TaoLog.d(TAG, "setUrlRulesMap: 未能正确获取权限组:" + next + "的权限,请检查配置");
                 } else {
                     JSONObject jSONObject2 = new JSONObject(optString);
                     HashMap hashMap = new HashMap();
@@ -713,7 +699,7 @@ public class WVUrlMatchUtils {
                         String next2 = keys2.next();
                         String optString2 = jSONObject2.optString(next2);
                         if (TextUtils.isEmpty(optString2)) {
-                            TaoLog.m18d(TAG, "setUrlRulesMap: 未能正确获取权限:" + next2 + "的值,请检查配置");
+                            TaoLog.d(TAG, "setUrlRulesMap: 未能正确获取权限:" + next2 + "的值,请检查配置");
                         } else {
                             hashMap.put(next2, optString2);
                         }
@@ -722,7 +708,7 @@ public class WVUrlMatchUtils {
                 }
             }
         } catch (Exception e) {
-            TaoLog.m18d(TAG, "setUrlRulesMap: 配置发生异常!");
+            TaoLog.d(TAG, "setUrlRulesMap: 配置发生异常!");
             e.printStackTrace();
             AppMonitor.Alarm.commitFail("WindVane", "urlMatchFailed", (String) null, ExifInterface.GPS_MEASUREMENT_2D, "配置错误");
         }
@@ -730,7 +716,7 @@ public class WVUrlMatchUtils {
 
     public void urlMatcherConfig(String str, String str2, String str3, boolean z) {
         if (TextUtils.isEmpty(str) || TextUtils.isEmpty(str2) || TextUtils.isEmpty(str3)) {
-            TaoLog.m21e(TAG, "urlMatcherConfig: 输入参数为空!");
+            TaoLog.e(TAG, "urlMatcherConfig: 输入参数为空!");
             return;
         }
         if (z) {

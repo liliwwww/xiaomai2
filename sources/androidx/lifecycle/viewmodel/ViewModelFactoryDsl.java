@@ -7,6 +7,6 @@ import kotlin.DslMarker;
 /* compiled from: Taobao */
 @Retention(RetentionPolicy.RUNTIME)
 @DslMarker
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public @interface ViewModelFactoryDsl {
 }

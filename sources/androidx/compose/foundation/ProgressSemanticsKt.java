@@ -1,11 +1,11 @@
 package androidx.compose.foundation;
 
-import androidx.compose.p004ui.Modifier;
-import androidx.compose.p004ui.semantics.ProgressBarRangeInfo;
-import androidx.compose.p004ui.semantics.SemanticsModifierKt;
-import androidx.compose.p004ui.semantics.SemanticsPropertiesKt;
-import androidx.compose.p004ui.semantics.SemanticsPropertyReceiver;
 import androidx.compose.runtime.Stable;
+import androidx.compose.ui.Modifier;
+import androidx.compose.ui.semantics.ProgressBarRangeInfo;
+import androidx.compose.ui.semantics.SemanticsModifierKt;
+import androidx.compose.ui.semantics.SemanticsPropertiesKt;
+import androidx.compose.ui.semantics.SemanticsPropertyReceiver;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
@@ -14,7 +14,7 @@ import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class ProgressSemanticsKt {
     @Stable
     @NotNull

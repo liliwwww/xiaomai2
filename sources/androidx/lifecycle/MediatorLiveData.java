@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class MediatorLiveData<T> extends MutableLiveData<T> {
     private SafeIterableMap<LiveData<?>, Source<?>> mSources;
 
@@ -59,7 +59,6 @@ public class MediatorLiveData<T> extends MutableLiveData<T> {
         }
     }
 
-    @Override // androidx.lifecycle.LiveData
     @CallSuper
     protected void onActive() {
         Iterator<Map.Entry<LiveData<?>, Source<?>>> it = this.mSources.iterator();
@@ -68,7 +67,6 @@ public class MediatorLiveData<T> extends MutableLiveData<T> {
         }
     }
 
-    @Override // androidx.lifecycle.LiveData
     @CallSuper
     protected void onInactive() {
         Iterator<Map.Entry<LiveData<?>, Source<?>>> it = this.mSources.iterator();

@@ -2,14 +2,14 @@ package androidx.compose.foundation.lazy.staggeredgrid;
 
 import androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider;
 import androidx.compose.foundation.lazy.layout.LazyLayoutMeasureScope;
-import androidx.compose.p004ui.layout.Placeable;
+import androidx.compose.ui.layout.Placeable;
 import java.util.List;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class LazyStaggeredGridMeasureContext {
     private final int afterContentPadding;
     private final int beforeContentPadding;
@@ -52,12 +52,11 @@ final class LazyStaggeredGridMeasureContext {
         this.mainAxisSpacing = i4;
         this.crossAxisSpacing = i5;
         this.measuredItemProvider = new LazyStaggeredGridMeasureProvider(z, lazyLayoutItemProvider, lazyLayoutMeasureScope, iArr, new MeasuredItemFactory() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridMeasureContext$measuredItemProvider$1
-            @Override // androidx.compose.foundation.lazy.staggeredgrid.MeasuredItemFactory
             @NotNull
             public final LazyStaggeredGridMeasuredItem createItem(int i6, int i7, @NotNull Object obj, @NotNull List<? extends Placeable> list) {
                 Intrinsics.checkNotNullParameter(obj, "key");
                 Intrinsics.checkNotNullParameter(list, "placeables");
-                return new LazyStaggeredGridMeasuredItem(i6, obj, list, LazyStaggeredGridMeasureContext.this.isVertical(), LazyStaggeredGridMeasureContext.this.m1636getContentOffsetnOccac(), LazyStaggeredGridMeasureContext.this.getSpans().findNextItemIndex(i6, i7) >= LazyStaggeredGridMeasureContext.this.getItemProvider().getItemCount() ? 0 : LazyStaggeredGridMeasureContext.this.getMainAxisSpacing(), null);
+                return new LazyStaggeredGridMeasuredItem(i6, obj, list, LazyStaggeredGridMeasureContext.this.isVertical(), LazyStaggeredGridMeasureContext.this.m503getContentOffsetnOccac(), LazyStaggeredGridMeasureContext.this.getSpans().findNextItemIndex(i6, i7) >= LazyStaggeredGridMeasureContext.this.getItemProvider().getItemCount() ? 0 : LazyStaggeredGridMeasureContext.this.getMainAxisSpacing(), null);
             }
         });
         this.spans = lazyStaggeredGridState.getSpans$foundation_release();
@@ -76,12 +75,12 @@ final class LazyStaggeredGridMeasureContext {
     }
 
     /* renamed from: getConstraints-msEJaDk, reason: not valid java name */
-    public final long m1635getConstraintsmsEJaDk() {
+    public final long m502getConstraintsmsEJaDk() {
         return this.constraints;
     }
 
     /* renamed from: getContentOffset-nOcc-ac, reason: not valid java name */
-    public final long m1636getContentOffsetnOccac() {
+    public final long m503getContentOffsetnOccac() {
         return this.contentOffset;
     }
 

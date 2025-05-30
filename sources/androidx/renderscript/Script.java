@@ -5,71 +5,12 @@ import android.util.SparseArray;
 import java.io.UnsupportedEncodingException;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class Script extends BaseObj {
     private final SparseArray<FieldID> mFIDs;
     private final SparseArray<InvokeID> mIIDs;
     private final SparseArray<KernelID> mKIDs;
     private boolean mUseIncSupp;
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class Builder {
-        RenderScript mRS;
-
-        Builder(RenderScript renderScript) {
-            this.mRS = renderScript;
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static class FieldBase {
-        protected Allocation mAllocation;
-        protected Element mElement;
-
-        protected FieldBase() {
-        }
-
-        public Allocation getAllocation() {
-            return this.mAllocation;
-        }
-
-        public Element getElement() {
-            return this.mElement;
-        }
-
-        public Type getType() {
-            return this.mAllocation.getType();
-        }
-
-        protected void init(RenderScript renderScript, int i) {
-            this.mAllocation = Allocation.createSized(renderScript, this.mElement, i, 1);
-        }
-
-        public void updateAllocation() {
-        }
-
-        protected void init(RenderScript renderScript, int i, int i2) {
-            this.mAllocation = Allocation.createSized(renderScript, this.mElement, i, i2 | 1);
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class FieldID extends BaseObj {
-
-        /* renamed from: mN */
-        Script.FieldID f426mN;
-        Script mScript;
-        int mSlot;
-
-        FieldID(long j, RenderScript renderScript, Script script, int i) {
-            super(j, renderScript);
-            this.mScript = script;
-            this.mSlot = i;
-        }
-    }
 
     /* compiled from: Taobao */
     public static final class InvokeID extends BaseObj {
@@ -85,9 +26,7 @@ public class Script extends BaseObj {
 
     /* compiled from: Taobao */
     public static final class KernelID extends BaseObj {
-
-        /* renamed from: mN */
-        Script.KernelID f427mN;
+        Script.KernelID mN;
         Script mScript;
         int mSig;
         int mSlot;
@@ -171,12 +110,12 @@ public class Script extends BaseObj {
     }
 
     public void bindAllocation(Allocation allocation, int i) {
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         if (allocation != null) {
-            RenderScript renderScript = this.mRS;
-            renderScript.nScriptBindAllocation(getID(renderScript), allocation.getID(this.mRS), i, this.mUseIncSupp);
+            RenderScript renderScript = ((BaseObj) this).mRS;
+            renderScript.nScriptBindAllocation(getID(renderScript), allocation.getID(((BaseObj) this).mRS), i, this.mUseIncSupp);
         } else {
-            RenderScript renderScript2 = this.mRS;
+            RenderScript renderScript2 = ((BaseObj) this).mRS;
             renderScript2.nScriptBindAllocation(getID(renderScript2), 0L, i, this.mUseIncSupp);
         }
     }
@@ -186,12 +125,12 @@ public class Script extends BaseObj {
         if (fieldID != null) {
             return fieldID;
         }
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         long nScriptFieldIDCreate = renderScript.nScriptFieldIDCreate(getID(renderScript), i, this.mUseIncSupp);
         if (nScriptFieldIDCreate == 0) {
             throw new RSDriverException("Failed to create FieldID");
         }
-        FieldID fieldID2 = new FieldID(nScriptFieldIDCreate, this.mRS, this, i);
+        FieldID fieldID2 = new FieldID(nScriptFieldIDCreate, ((BaseObj) this).mRS, this, i);
         this.mFIDs.put(i, fieldID2);
         return fieldID2;
     }
@@ -201,12 +140,12 @@ public class Script extends BaseObj {
         if (invokeID != null) {
             return invokeID;
         }
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         long nScriptInvokeIDCreate = renderScript.nScriptInvokeIDCreate(getID(renderScript), i);
         if (nScriptInvokeIDCreate == 0) {
             throw new RSDriverException("Failed to create KernelID");
         }
-        InvokeID invokeID2 = new InvokeID(nScriptInvokeIDCreate, this.mRS, this, i);
+        InvokeID invokeID2 = new InvokeID(nScriptInvokeIDCreate, ((BaseObj) this).mRS, this, i);
         this.mIIDs.put(i, invokeID2);
         return invokeID2;
     }
@@ -216,12 +155,12 @@ public class Script extends BaseObj {
         if (kernelID != null) {
             return kernelID;
         }
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         long nScriptKernelIDCreate = renderScript.nScriptKernelIDCreate(getID(renderScript), i, i2, this.mUseIncSupp);
         if (nScriptKernelIDCreate == 0) {
             throw new RSDriverException("Failed to create KernelID");
         }
-        KernelID kernelID2 = new KernelID(nScriptKernelIDCreate, this.mRS, this, i, i2);
+        KernelID kernelID2 = new KernelID(nScriptKernelIDCreate, ((BaseObj) this).mRS, this, i, i2);
         this.mKIDs.put(i, kernelID2);
         return kernelID2;
     }
@@ -230,16 +169,16 @@ public class Script extends BaseObj {
         if (allocation == null && allocation2 == null) {
             throw new RSIllegalArgumentException("At least one of ain or aout is required to be non-null.");
         }
-        long id = allocation != null ? allocation.getID(this.mRS) : 0L;
-        long id2 = allocation2 != null ? allocation2.getID(this.mRS) : 0L;
+        long id = allocation != null ? allocation.getID(((BaseObj) this).mRS) : 0L;
+        long id2 = allocation2 != null ? allocation2.getID(((BaseObj) this).mRS) : 0L;
         byte[] data = fieldPacker != null ? fieldPacker.getData() : null;
         if (!this.mUseIncSupp) {
-            RenderScript renderScript = this.mRS;
+            RenderScript renderScript = ((BaseObj) this).mRS;
             renderScript.nScriptForEach(getID(renderScript), i, id, id2, data, this.mUseIncSupp);
         } else {
             long dummyAlloc = getDummyAlloc(allocation);
             long dummyAlloc2 = getDummyAlloc(allocation2);
-            RenderScript renderScript2 = this.mRS;
+            RenderScript renderScript2 = ((BaseObj) this).mRS;
             renderScript2.nScriptForEach(getID(renderScript2), i, dummyAlloc, dummyAlloc2, data, this.mUseIncSupp);
         }
     }
@@ -248,15 +187,15 @@ public class Script extends BaseObj {
         if (allocation == null) {
             return 0L;
         }
-        long dummyType = allocation.getType().getDummyType(this.mRS, allocation.getType().getElement().getDummyElement(this.mRS));
-        RenderScript renderScript = this.mRS;
+        long dummyType = allocation.getType().getDummyType(((BaseObj) this).mRS, allocation.getType().getElement().getDummyElement(((BaseObj) this).mRS));
+        RenderScript renderScript = ((BaseObj) this).mRS;
         long nIncAllocationCreateTyped = renderScript.nIncAllocationCreateTyped(allocation.getID(renderScript), dummyType);
         allocation.setIncAllocID(nIncAllocationCreateTyped);
         return nIncAllocationCreateTyped;
     }
 
     protected void invoke(int i) {
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         renderScript.nScriptInvoke(getID(renderScript), i, this.mUseIncSupp);
     }
 
@@ -269,9 +208,9 @@ public class Script extends BaseObj {
     }
 
     public void setTimeZone(String str) {
-        this.mRS.validate();
+        ((BaseObj) this).mRS.validate();
         try {
-            RenderScript renderScript = this.mRS;
+            RenderScript renderScript = ((BaseObj) this).mRS;
             renderScript.nScriptSetTimeZone(getID(renderScript), str.getBytes("UTF-8"), this.mUseIncSupp);
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
@@ -279,48 +218,48 @@ public class Script extends BaseObj {
     }
 
     public void setVar(int i, float f) {
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         renderScript.nScriptSetVarF(getID(renderScript), i, f, this.mUseIncSupp);
     }
 
     protected void invoke(int i, FieldPacker fieldPacker) {
         if (fieldPacker != null) {
-            RenderScript renderScript = this.mRS;
+            RenderScript renderScript = ((BaseObj) this).mRS;
             renderScript.nScriptInvokeV(getID(renderScript), i, fieldPacker.getData(), this.mUseIncSupp);
         } else {
-            RenderScript renderScript2 = this.mRS;
+            RenderScript renderScript2 = ((BaseObj) this).mRS;
             renderScript2.nScriptInvoke(getID(renderScript2), i, this.mUseIncSupp);
         }
     }
 
     public void setVar(int i, double d) {
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         renderScript.nScriptSetVarD(getID(renderScript), i, d, this.mUseIncSupp);
     }
 
     public void setVar(int i, int i2) {
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         renderScript.nScriptSetVarI(getID(renderScript), i, i2, this.mUseIncSupp);
     }
 
     public void setVar(int i, long j) {
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         renderScript.nScriptSetVarJ(getID(renderScript), i, j, this.mUseIncSupp);
     }
 
     public void setVar(int i, boolean z) {
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         renderScript.nScriptSetVarI(getID(renderScript), i, z ? 1 : 0, this.mUseIncSupp);
     }
 
     public void setVar(int i, BaseObj baseObj) {
         if (this.mUseIncSupp) {
             long dummyAlloc = getDummyAlloc((Allocation) baseObj);
-            RenderScript renderScript = this.mRS;
+            RenderScript renderScript = ((BaseObj) this).mRS;
             renderScript.nScriptSetVarObj(getID(renderScript), i, baseObj == null ? 0L : dummyAlloc, this.mUseIncSupp);
         } else {
-            RenderScript renderScript2 = this.mRS;
-            renderScript2.nScriptSetVarObj(getID(renderScript2), i, baseObj != null ? baseObj.getID(this.mRS) : 0L, this.mUseIncSupp);
+            RenderScript renderScript2 = ((BaseObj) this).mRS;
+            renderScript2.nScriptSetVarObj(getID(renderScript2), i, baseObj != null ? baseObj.getID(((BaseObj) this).mRS) : 0L, this.mUseIncSupp);
         }
     }
 
@@ -332,33 +271,33 @@ public class Script extends BaseObj {
             forEach(i, allocation, allocation2, fieldPacker);
             return;
         }
-        long id = allocation != null ? allocation.getID(this.mRS) : 0L;
-        long id2 = allocation2 != null ? allocation2.getID(this.mRS) : 0L;
+        long id = allocation != null ? allocation.getID(((BaseObj) this).mRS) : 0L;
+        long id2 = allocation2 != null ? allocation2.getID(((BaseObj) this).mRS) : 0L;
         byte[] data = fieldPacker != null ? fieldPacker.getData() : null;
         if (this.mUseIncSupp) {
             long dummyAlloc = getDummyAlloc(allocation);
             long dummyAlloc2 = getDummyAlloc(allocation2);
-            RenderScript renderScript = this.mRS;
+            RenderScript renderScript = ((BaseObj) this).mRS;
             renderScript.nScriptForEachClipped(getID(renderScript), i, dummyAlloc, dummyAlloc2, data, launchOptions.xstart, launchOptions.xend, launchOptions.ystart, launchOptions.yend, launchOptions.zstart, launchOptions.zend, this.mUseIncSupp);
             return;
         }
-        RenderScript renderScript2 = this.mRS;
+        RenderScript renderScript2 = ((BaseObj) this).mRS;
         renderScript2.nScriptForEachClipped(getID(renderScript2), i, id, id2, data, launchOptions.xstart, launchOptions.xend, launchOptions.ystart, launchOptions.yend, launchOptions.zstart, launchOptions.zend, this.mUseIncSupp);
     }
 
     public void setVar(int i, FieldPacker fieldPacker) {
-        RenderScript renderScript = this.mRS;
+        RenderScript renderScript = ((BaseObj) this).mRS;
         renderScript.nScriptSetVarV(getID(renderScript), i, fieldPacker.getData(), this.mUseIncSupp);
     }
 
     public void setVar(int i, FieldPacker fieldPacker, Element element, int[] iArr) {
         if (this.mUseIncSupp) {
-            long dummyElement = element.getDummyElement(this.mRS);
-            RenderScript renderScript = this.mRS;
+            long dummyElement = element.getDummyElement(((BaseObj) this).mRS);
+            RenderScript renderScript = ((BaseObj) this).mRS;
             renderScript.nScriptSetVarVE(getID(renderScript), i, fieldPacker.getData(), dummyElement, iArr, this.mUseIncSupp);
         } else {
-            RenderScript renderScript2 = this.mRS;
-            renderScript2.nScriptSetVarVE(getID(renderScript2), i, fieldPacker.getData(), element.getID(this.mRS), iArr, this.mUseIncSupp);
+            RenderScript renderScript2 = ((BaseObj) this).mRS;
+            renderScript2.nScriptSetVarVE(getID(renderScript2), i, fieldPacker.getData(), element.getID(((BaseObj) this).mRS), iArr, this.mUseIncSupp);
         }
     }
 }

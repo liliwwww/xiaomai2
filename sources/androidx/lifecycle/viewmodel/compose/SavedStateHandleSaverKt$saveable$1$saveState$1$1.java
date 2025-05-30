@@ -1,7 +1,7 @@
 package androidx.lifecycle.viewmodel.compose;
 
 import androidx.compose.runtime.saveable.SaverScope;
-import androidx.lifecycle.SavedStateHandle;
+import androidx.lifecycle.SavedStateHandle$Companion;
 import kotlin.Function;
 import kotlin.jvm.internal.FunctionAdapter;
 import kotlin.jvm.internal.FunctionReferenceImpl;
@@ -10,15 +10,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 /* synthetic */ class SavedStateHandleSaverKt$saveable$1$saveState$1$1 implements SaverScope, FunctionAdapter {
-    final /* synthetic */ SavedStateHandle.Companion $tmp0;
+    final /* synthetic */ SavedStateHandle$Companion $tmp0;
 
-    SavedStateHandleSaverKt$saveable$1$saveState$1$1(SavedStateHandle.Companion companion) {
-        this.$tmp0 = companion;
+    SavedStateHandleSaverKt$saveable$1$saveState$1$1(SavedStateHandle$Companion savedStateHandle$Companion) {
+        this.$tmp0 = savedStateHandle$Companion;
     }
 
-    @Override // androidx.compose.runtime.saveable.SaverScope
     public final boolean canBeSaved(@Nullable Object obj) {
         return this.$tmp0.validateValue(obj);
     }
@@ -32,7 +31,7 @@ import org.jetbrains.annotations.Nullable;
 
     @NotNull
     public final Function<?> getFunctionDelegate() {
-        return new FunctionReferenceImpl(1, this.$tmp0, SavedStateHandle.Companion.class, "validateValue", "validateValue(Ljava/lang/Object;)Z", 0);
+        return new FunctionReferenceImpl(1, this.$tmp0, SavedStateHandle$Companion.class, "validateValue", "validateValue(Ljava/lang/Object;)Z", 0);
     }
 
     public final int hashCode() {

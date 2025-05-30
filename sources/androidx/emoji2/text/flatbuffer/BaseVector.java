@@ -3,11 +3,9 @@ package androidx.emoji2.text.flatbuffer;
 import java.nio.ByteBuffer;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class BaseVector {
-
-    /* renamed from: bb */
-    protected ByteBuffer f359bb;
+    protected ByteBuffer bb;
     private int element_size;
     private int length;
     private int vector;
@@ -17,7 +15,7 @@ public class BaseVector {
     }
 
     protected void __reset(int i, int i2, ByteBuffer byteBuffer) {
-        this.f359bb = byteBuffer;
+        this.bb = byteBuffer;
         if (byteBuffer != null) {
             this.vector = i;
             this.length = byteBuffer.getInt(i - 4);

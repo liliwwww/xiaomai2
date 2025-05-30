@@ -4,12 +4,14 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import androidx.annotation.MainThread;
 import androidx.arch.core.internal.SafeIterableMap;
-import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.Lifecycle$Event;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.savedstate.Recreator;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Set;
 import kotlin.jvm.internal.DefaultConstructorMarker;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -18,7 +20,7 @@ import tb.si4;
 
 /* compiled from: Taobao */
 @SuppressLint({"RestrictedApi"})
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class SavedStateRegistry {
 
     @NotNull
@@ -35,7 +37,7 @@ public final class SavedStateRegistry {
     private boolean isRestored;
 
     @Nullable
-    private Recreator.SavedStateProvider recreatorProvider;
+    private Recreator$SavedStateProvider recreatorProvider;
 
     @Nullable
     private Bundle restoredState;
@@ -63,13 +65,13 @@ public final class SavedStateRegistry {
 
     /* JADX INFO: Access modifiers changed from: private */
     /* renamed from: performAttach$lambda-4, reason: not valid java name */
-    public static final void m5617performAttach$lambda4(SavedStateRegistry savedStateRegistry, LifecycleOwner lifecycleOwner, Lifecycle.Event event) {
+    public static final void m2814performAttach$lambda4(SavedStateRegistry savedStateRegistry, LifecycleOwner lifecycleOwner, Lifecycle$Event lifecycle$Event) {
         Intrinsics.checkNotNullParameter(savedStateRegistry, "this$0");
         Intrinsics.checkNotNullParameter(lifecycleOwner, "<anonymous parameter 0>");
-        Intrinsics.checkNotNullParameter(event, NotificationCompat.CATEGORY_EVENT);
-        if (event == Lifecycle.Event.ON_START) {
+        Intrinsics.checkNotNullParameter(lifecycle$Event, "event");
+        if (lifecycle$Event == Lifecycle$Event.ON_START) {
             savedStateRegistry.isAllowingSavingState = true;
-        } else if (event == Lifecycle.Event.ON_STOP) {
+        } else if (lifecycle$Event == Lifecycle$Event.ON_STOP) {
             savedStateRegistry.isAllowingSavingState = false;
         }
     }
@@ -156,11 +158,11 @@ public final class SavedStateRegistry {
         if (bundle3 != null) {
             bundle2.putAll(bundle3);
         }
-        SafeIterableMap<String, SavedStateProvider>.IteratorWithAdditions iteratorWithAdditions = this.components.iteratorWithAdditions();
+        SafeIterableMap.IteratorWithAdditions iteratorWithAdditions = this.components.iteratorWithAdditions();
         Intrinsics.checkNotNullExpressionValue(iteratorWithAdditions, "this.components.iteratorWithAdditions()");
         while (iteratorWithAdditions.hasNext()) {
-            Map.Entry next = iteratorWithAdditions.next();
-            bundle2.putBundle((String) next.getKey(), ((SavedStateProvider) next.getValue()).saveState());
+            Map.Entry entry = (Map.Entry) iteratorWithAdditions.next();
+            bundle2.putBundle((String) entry.getKey(), ((SavedStateProvider) entry.getValue()).saveState());
         }
         if (bundle2.isEmpty()) {
             return;
@@ -177,24 +179,50 @@ public final class SavedStateRegistry {
         }
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
+    /* JADX WARN: Type inference failed for: r0v10, types: [androidx.savedstate.Recreator$SavedStateProvider] */
     @MainThread
     public final void runOnNextRecreation(@NotNull Class<? extends AutoRecreated> cls) {
         Intrinsics.checkNotNullParameter(cls, "clazz");
         if (!this.isAllowingSavingState) {
             throw new IllegalStateException("Can not perform this action after onSaveInstanceState".toString());
         }
-        Recreator.SavedStateProvider savedStateProvider = this.recreatorProvider;
-        if (savedStateProvider == null) {
-            savedStateProvider = new Recreator.SavedStateProvider(this);
+        Recreator$SavedStateProvider recreator$SavedStateProvider = this.recreatorProvider;
+        Recreator$SavedStateProvider recreator$SavedStateProvider2 = recreator$SavedStateProvider;
+        if (recreator$SavedStateProvider == null) {
+            recreator$SavedStateProvider2 = new SavedStateProvider(this) { // from class: androidx.savedstate.Recreator$SavedStateProvider
+
+                @NotNull
+                private final Set<String> classes;
+
+                {
+                    Intrinsics.checkNotNullParameter(this, "registry");
+                    this.classes = new LinkedHashSet();
+                    this.registerSavedStateProvider("androidx.savedstate.Restarter", this);
+                }
+
+                public final void add(@NotNull String str) {
+                    Intrinsics.checkNotNullParameter(str, "className");
+                    this.classes.add(str);
+                }
+
+                @Override // androidx.savedstate.SavedStateRegistry.SavedStateProvider
+                @NotNull
+                public Bundle saveState() {
+                    Bundle bundle = new Bundle();
+                    bundle.putStringArrayList("classes_to_restore", new ArrayList<>(this.classes));
+                    return bundle;
+                }
+            };
         }
-        this.recreatorProvider = savedStateProvider;
+        this.recreatorProvider = recreator$SavedStateProvider2;
         try {
             cls.getDeclaredConstructor(new Class[0]);
-            Recreator.SavedStateProvider savedStateProvider2 = this.recreatorProvider;
-            if (savedStateProvider2 != null) {
+            Recreator$SavedStateProvider recreator$SavedStateProvider3 = this.recreatorProvider;
+            if (recreator$SavedStateProvider3 != null) {
                 String name = cls.getName();
                 Intrinsics.checkNotNullExpressionValue(name, "clazz.name");
-                savedStateProvider2.add(name);
+                recreator$SavedStateProvider3.add(name);
             }
         } catch (NoSuchMethodException e) {
             throw new IllegalArgumentException("Class " + cls.getSimpleName() + " must have default constructor in order to be automatically recreated", e);

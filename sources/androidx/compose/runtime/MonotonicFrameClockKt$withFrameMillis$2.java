@@ -6,7 +6,7 @@ import kotlin.jvm.internal.Lambda;
 
 /* JADX INFO: Add missing generic type declarations: [R] */
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class MonotonicFrameClockKt$withFrameMillis$2<R> extends Lambda implements Function1<Long, R> {
     final /* synthetic */ Function1<Long, R> $onFrame;
 

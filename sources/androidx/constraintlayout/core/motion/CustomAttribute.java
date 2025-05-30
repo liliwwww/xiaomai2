@@ -3,7 +3,7 @@ package androidx.constraintlayout.core.motion;
 import androidx.core.view.ViewCompat;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class CustomAttribute {
     private static final String TAG = "TransitionLayout";
     boolean mBooleanValue;
@@ -14,65 +14,6 @@ public class CustomAttribute {
     String mName;
     private String mStringValue;
     private AttributeType mType;
-
-    /* compiled from: Taobao */
-    /* renamed from: androidx.constraintlayout.core.motion.CustomAttribute$1 */
-    /* loaded from: classes.dex */
-    static /* synthetic */ class C08821 {
-
-        /* renamed from: $SwitchMap$androidx$constraintlayout$core$motion$CustomAttribute$AttributeType */
-        static final /* synthetic */ int[] f236xbc2a0812;
-
-        static {
-            int[] iArr = new int[AttributeType.values().length];
-            f236xbc2a0812 = iArr;
-            try {
-                iArr[AttributeType.REFERENCE_TYPE.ordinal()] = 1;
-            } catch (NoSuchFieldError unused) {
-            }
-            try {
-                f236xbc2a0812[AttributeType.BOOLEAN_TYPE.ordinal()] = 2;
-            } catch (NoSuchFieldError unused2) {
-            }
-            try {
-                f236xbc2a0812[AttributeType.STRING_TYPE.ordinal()] = 3;
-            } catch (NoSuchFieldError unused3) {
-            }
-            try {
-                f236xbc2a0812[AttributeType.COLOR_TYPE.ordinal()] = 4;
-            } catch (NoSuchFieldError unused4) {
-            }
-            try {
-                f236xbc2a0812[AttributeType.COLOR_DRAWABLE_TYPE.ordinal()] = 5;
-            } catch (NoSuchFieldError unused5) {
-            }
-            try {
-                f236xbc2a0812[AttributeType.INT_TYPE.ordinal()] = 6;
-            } catch (NoSuchFieldError unused6) {
-            }
-            try {
-                f236xbc2a0812[AttributeType.FLOAT_TYPE.ordinal()] = 7;
-            } catch (NoSuchFieldError unused7) {
-            }
-            try {
-                f236xbc2a0812[AttributeType.DIMENSION_TYPE.ordinal()] = 8;
-            } catch (NoSuchFieldError unused8) {
-            }
-        }
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public enum AttributeType {
-        INT_TYPE,
-        FLOAT_TYPE,
-        COLOR_TYPE,
-        COLOR_DRAWABLE_TYPE,
-        STRING_TYPE,
-        BOOLEAN_TYPE,
-        DIMENSION_TYPE,
-        REFERENCE_TYPE
-    }
 
     public CustomAttribute(String str, AttributeType attributeType) {
         this.mMethod = false;
@@ -120,7 +61,7 @@ public class CustomAttribute {
         if (customAttribute == null || (attributeType = this.mType) != customAttribute.mType) {
             return false;
         }
-        switch (C08821.f236xbc2a0812[attributeType.ordinal()]) {
+        switch (1.$SwitchMap$androidx$constraintlayout$core$motion$CustomAttribute$AttributeType[attributeType.ordinal()]) {
             case 1:
             case 6:
                 if (this.mIntegerValue == customAttribute.mIntegerValue) {
@@ -156,7 +97,7 @@ public class CustomAttribute {
     }
 
     public float getValueToInterpolate() {
-        switch (C08821.f236xbc2a0812[this.mType.ordinal()]) {
+        switch (1.$SwitchMap$androidx$constraintlayout$core$motion$CustomAttribute$AttributeType[this.mType.ordinal()]) {
             case 2:
                 return this.mBooleanValue ? 1.0f : 0.0f;
             case 3:
@@ -176,7 +117,7 @@ public class CustomAttribute {
     }
 
     public void getValuesToInterpolate(float[] fArr) {
-        switch (C08821.f236xbc2a0812[this.mType.ordinal()]) {
+        switch (1.$SwitchMap$androidx$constraintlayout$core$motion$CustomAttribute$AttributeType[this.mType.ordinal()]) {
             case 2:
                 fArr[0] = this.mBooleanValue ? 1.0f : 0.0f;
                 return;
@@ -208,12 +149,12 @@ public class CustomAttribute {
     }
 
     public boolean isContinuous() {
-        int i = C08821.f236xbc2a0812[this.mType.ordinal()];
+        int i = 1.$SwitchMap$androidx$constraintlayout$core$motion$CustomAttribute$AttributeType[this.mType.ordinal()];
         return (i == 1 || i == 2 || i == 3) ? false : true;
     }
 
     public int numberOfInterpolatedValues() {
-        int i = C08821.f236xbc2a0812[this.mType.ordinal()];
+        int i = 1.$SwitchMap$androidx$constraintlayout$core$motion$CustomAttribute$AttributeType[this.mType.ordinal()];
         return (i == 4 || i == 5) ? 4 : 1;
     }
 
@@ -234,7 +175,7 @@ public class CustomAttribute {
     }
 
     public void setValue(float[] fArr) {
-        switch (C08821.f236xbc2a0812[this.mType.ordinal()]) {
+        switch (1.$SwitchMap$androidx$constraintlayout$core$motion$CustomAttribute$AttributeType[this.mType.ordinal()]) {
             case 1:
             case 6:
                 this.mIntegerValue = (int) fArr[0];
@@ -270,7 +211,7 @@ public class CustomAttribute {
     }
 
     public void setValue(Object obj) {
-        switch (C08821.f236xbc2a0812[this.mType.ordinal()]) {
+        switch (1.$SwitchMap$androidx$constraintlayout$core$motion$CustomAttribute$AttributeType[this.mType.ordinal()]) {
             case 1:
             case 6:
                 this.mIntegerValue = ((Integer) obj).intValue();

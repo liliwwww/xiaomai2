@@ -1,7 +1,7 @@
 package androidx.constraintlayout.core.motion.utils;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class SpringStopEngine implements StopEngine {
     private static final double UNSET = Double.MAX_VALUE;
     private float mLastTime;
@@ -11,9 +11,7 @@ public class SpringStopEngine implements StopEngine {
     private double mStiffness;
     private float mStopThreshold;
     private double mTargetPos;
-
-    /* renamed from: mV */
-    private float f258mV;
+    private float mV;
     double mDamping = 0.5d;
     private boolean mInitialized = false;
     private int mBoundaryMode = 0;
@@ -27,7 +25,7 @@ public class SpringStopEngine implements StopEngine {
         while (i < sqrt) {
             float f = this.mPos;
             double d5 = this.mTargetPos;
-            float f2 = this.f258mV;
+            float f2 = this.mV;
             double d6 = d2;
             double d7 = ((-d2) * (f - d5)) - (f2 * d3);
             float f3 = this.mMass;
@@ -35,19 +33,19 @@ public class SpringStopEngine implements StopEngine {
             double d9 = f2 + (((d7 / f3) * d4) / 2.0d);
             double d10 = ((((-((f + ((d4 * d9) / 2.0d)) - d5)) * d6) - (d9 * d8)) / f3) * d4;
             float f4 = (float) (f2 + d10);
-            this.f258mV = f4;
+            this.mV = f4;
             float f5 = (float) (f + ((f2 + (d10 / 2.0d)) * d4));
             this.mPos = f5;
             int i2 = this.mBoundaryMode;
             if (i2 > 0) {
                 if (f5 < 0.0f && (i2 & 1) == 1) {
                     this.mPos = -f5;
-                    this.f258mV = -f4;
+                    this.mV = -f4;
                 }
                 float f6 = this.mPos;
                 if (f6 > 1.0f && (i2 & 2) == 2) {
                     this.mPos = 2.0f - f6;
-                    this.f258mV = -this.f258mV;
+                    this.mV = -this.mV;
                 }
             }
             i++;
@@ -56,37 +54,32 @@ public class SpringStopEngine implements StopEngine {
         }
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.StopEngine
     public String debug(String str, float f) {
         return null;
     }
 
     public float getAcceleration() {
-        return ((float) (((-this.mStiffness) * (this.mPos - this.mTargetPos)) - (this.mDamping * this.f258mV))) / this.mMass;
+        return ((float) (((-this.mStiffness) * (this.mPos - this.mTargetPos)) - (this.mDamping * this.mV))) / this.mMass;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.StopEngine
     public float getInterpolation(float f) {
         compute(f - this.mLastTime);
         this.mLastTime = f;
         return this.mPos;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.StopEngine
     public float getVelocity() {
         return 0.0f;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.StopEngine
     public float getVelocity(float f) {
-        return this.f258mV;
+        return this.mV;
     }
 
-    @Override // androidx.constraintlayout.core.motion.utils.StopEngine
     public boolean isStopped() {
         double d = this.mPos - this.mTargetPos;
         double d2 = this.mStiffness;
-        double d3 = this.f258mV;
+        double d3 = this.mV;
         return Math.sqrt((((d3 * d3) * ((double) this.mMass)) + ((d2 * d) * d)) / d2) <= ((double) this.mStopThreshold);
     }
 

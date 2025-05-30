@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class AlarmManagerCompat {
 
     /* compiled from: Taobao */
@@ -21,24 +21,6 @@ public final class AlarmManagerCompat {
         @DoNotInline
         static void setExact(AlarmManager alarmManager, int i, long j, PendingIntent pendingIntent) {
             alarmManager.setExact(i, j, pendingIntent);
-        }
-    }
-
-    /* compiled from: Taobao */
-    @RequiresApi(21)
-    /* loaded from: classes2.dex */
-    static class Api21Impl {
-        private Api21Impl() {
-        }
-
-        @DoNotInline
-        static AlarmManager.AlarmClockInfo createAlarmClockInfo(long j, PendingIntent pendingIntent) {
-            return new AlarmManager.AlarmClockInfo(j, pendingIntent);
-        }
-
-        @DoNotInline
-        static void setAlarmClock(AlarmManager alarmManager, Object obj, PendingIntent pendingIntent) {
-            alarmManager.setAlarmClock((AlarmManager.AlarmClockInfo) obj, pendingIntent);
         }
     }
 

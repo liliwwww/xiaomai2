@@ -8,9 +8,8 @@ import java.util.Iterator;
 import org.json.JSONObject;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public class WVPageTrackerAPI extends WVApiPlugin {
-    @Override // android.taobao.windvane.jsbridge.WVApiPlugin
     public boolean execute(String str, String str2, WVCallBackContext wVCallBackContext) {
         if (!str.equals("reportPerformanceInfo")) {
             return false;
@@ -21,7 +20,7 @@ public class WVPageTrackerAPI extends WVApiPlugin {
 
     public void reportPerformanceInfo(String str, WVCallBackContext wVCallBackContext) {
         WVResult wVResult = new WVResult();
-        if (this.performance == null) {
+        if (((WVApiPlugin) this).performance == null) {
             wVResult.setResult(WVResult.FAIL);
             wVResult.addData(NotificationCompat.CATEGORY_MESSAGE, "performance object does not exist");
             wVCallBackContext.error(wVResult);
@@ -29,13 +28,13 @@ public class WVPageTrackerAPI extends WVApiPlugin {
         }
         try {
             JSONObject jSONObject = new JSONObject(str);
-            this.performance.receiveJSMessageForCustomizedFSP(jSONObject.optLong("firstScreenPaint"));
+            ((WVApiPlugin) this).performance.receiveJSMessageForCustomizedFSP(jSONObject.optLong("firstScreenPaint"));
             JSONObject jSONObject2 = jSONObject.getJSONObject("otherPerformanceStage");
             if (jSONObject2 != null) {
                 Iterator<String> keys = jSONObject2.keys();
                 while (keys.hasNext()) {
                     String next = keys.next();
-                    this.performance.receiveJSMessageForCustomizedStage(jSONObject2.optLong(next), next);
+                    ((WVApiPlugin) this).performance.receiveJSMessageForCustomizedStage(jSONObject2.optLong(next), next);
                 }
             }
             wVCallBackContext.success();

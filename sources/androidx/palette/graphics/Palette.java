@@ -1,26 +1,21 @@
 package androidx.palette.graphics;
 
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.util.SparseBooleanArray;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.Px;
 import androidx.collection.ArrayMap;
-import androidx.core.graphics.ColorUtils;
-import androidx.core.view.ViewCompat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class Palette {
     static final int DEFAULT_CALCULATE_NUMBER_COLORS = 16;
     static final Filter DEFAULT_FILTER = new Filter() { // from class: androidx.palette.graphics.Palette.1
@@ -39,7 +34,6 @@ public final class Palette {
             return fArr[2] >= WHITE_MIN_LIGHTNESS;
         }
 
-        @Override // androidx.palette.graphics.Palette.Filter
         public boolean isAllowed(int i, float[] fArr) {
             return (isWhite(fArr) || isBlack(fArr) || isNearRedILine(fArr)) ? false : true;
         }
@@ -56,12 +50,6 @@ public final class Palette {
 
     @Nullable
     private final Swatch mDominantSwatch = findDominantSwatch();
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public interface Filter {
-        boolean isAllowed(@ColorInt int i, @NonNull float[] fArr);
-    }
 
     /* compiled from: Taobao */
     public interface PaletteAsyncListener {
@@ -256,117 +244,6 @@ public final class Palette {
             this.mSelectedSwatches.put(target, generateScoredTarget(target));
         }
         this.mUsedColors.clear();
-    }
-
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    public static final class Swatch {
-        private final int mBlue;
-        private int mBodyTextColor;
-        private boolean mGeneratedTextColors;
-        private final int mGreen;
-
-        @Nullable
-        private float[] mHsl;
-        private final int mPopulation;
-        private final int mRed;
-        private final int mRgb;
-        private int mTitleTextColor;
-
-        public Swatch(@ColorInt int i, int i2) {
-            this.mRed = Color.red(i);
-            this.mGreen = Color.green(i);
-            this.mBlue = Color.blue(i);
-            this.mRgb = i;
-            this.mPopulation = i2;
-        }
-
-        private void ensureTextColorsGenerated() {
-            if (this.mGeneratedTextColors) {
-                return;
-            }
-            int calculateMinimumAlpha = ColorUtils.calculateMinimumAlpha(-1, this.mRgb, Palette.MIN_CONTRAST_BODY_TEXT);
-            int calculateMinimumAlpha2 = ColorUtils.calculateMinimumAlpha(-1, this.mRgb, Palette.MIN_CONTRAST_TITLE_TEXT);
-            if (calculateMinimumAlpha != -1 && calculateMinimumAlpha2 != -1) {
-                this.mBodyTextColor = ColorUtils.setAlphaComponent(-1, calculateMinimumAlpha);
-                this.mTitleTextColor = ColorUtils.setAlphaComponent(-1, calculateMinimumAlpha2);
-                this.mGeneratedTextColors = true;
-                return;
-            }
-            int calculateMinimumAlpha3 = ColorUtils.calculateMinimumAlpha(ViewCompat.MEASURED_STATE_MASK, this.mRgb, Palette.MIN_CONTRAST_BODY_TEXT);
-            int calculateMinimumAlpha4 = ColorUtils.calculateMinimumAlpha(ViewCompat.MEASURED_STATE_MASK, this.mRgb, Palette.MIN_CONTRAST_TITLE_TEXT);
-            if (calculateMinimumAlpha3 == -1 || calculateMinimumAlpha4 == -1) {
-                this.mBodyTextColor = calculateMinimumAlpha != -1 ? ColorUtils.setAlphaComponent(-1, calculateMinimumAlpha) : ColorUtils.setAlphaComponent(ViewCompat.MEASURED_STATE_MASK, calculateMinimumAlpha3);
-                this.mTitleTextColor = calculateMinimumAlpha2 != -1 ? ColorUtils.setAlphaComponent(-1, calculateMinimumAlpha2) : ColorUtils.setAlphaComponent(ViewCompat.MEASURED_STATE_MASK, calculateMinimumAlpha4);
-                this.mGeneratedTextColors = true;
-            } else {
-                this.mBodyTextColor = ColorUtils.setAlphaComponent(ViewCompat.MEASURED_STATE_MASK, calculateMinimumAlpha3);
-                this.mTitleTextColor = ColorUtils.setAlphaComponent(ViewCompat.MEASURED_STATE_MASK, calculateMinimumAlpha4);
-                this.mGeneratedTextColors = true;
-            }
-        }
-
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (obj == null || Swatch.class != obj.getClass()) {
-                return false;
-            }
-            Swatch swatch = (Swatch) obj;
-            return this.mPopulation == swatch.mPopulation && this.mRgb == swatch.mRgb;
-        }
-
-        @ColorInt
-        public int getBodyTextColor() {
-            ensureTextColorsGenerated();
-            return this.mBodyTextColor;
-        }
-
-        @NonNull
-        public float[] getHsl() {
-            if (this.mHsl == null) {
-                this.mHsl = new float[3];
-            }
-            ColorUtils.RGBToHSL(this.mRed, this.mGreen, this.mBlue, this.mHsl);
-            return this.mHsl;
-        }
-
-        public int getPopulation() {
-            return this.mPopulation;
-        }
-
-        @ColorInt
-        public int getRgb() {
-            return this.mRgb;
-        }
-
-        @ColorInt
-        public int getTitleTextColor() {
-            ensureTextColorsGenerated();
-            return this.mTitleTextColor;
-        }
-
-        public int hashCode() {
-            return (this.mRgb * 31) + this.mPopulation;
-        }
-
-        public String toString() {
-            return Swatch.class.getSimpleName() + " [RGB: #" + Integer.toHexString(getRgb()) + "] [HSL: " + Arrays.toString(getHsl()) + "] [Population: " + this.mPopulation + "] [Title Text: #" + Integer.toHexString(getTitleTextColor()) + "] [Body Text: #" + Integer.toHexString(getBodyTextColor()) + ']';
-        }
-
-        Swatch(int i, int i2, int i3, int i4) {
-            this.mRed = i;
-            this.mGreen = i2;
-            this.mBlue = i3;
-            this.mRgb = Color.rgb(i, i2, i3);
-            this.mPopulation = i4;
-        }
-
-        Swatch(float[] fArr, int i) {
-            this(ColorUtils.HSLToColor(fArr), i);
-            this.mHsl = fArr;
-        }
     }
 
     /* compiled from: Taobao */
@@ -571,27 +448,9 @@ public final class Palette {
         }
 
         @NonNull
-        public AsyncTask<Bitmap, Void, Palette> generate(@NonNull final PaletteAsyncListener paletteAsyncListener) {
+        public AsyncTask<Bitmap, Void, Palette> generate(@NonNull PaletteAsyncListener paletteAsyncListener) {
             if (paletteAsyncListener != null) {
-                return new AsyncTask<Bitmap, Void, Palette>() { // from class: androidx.palette.graphics.Palette.Builder.1
-                    /* JADX INFO: Access modifiers changed from: protected */
-                    @Override // android.os.AsyncTask
-                    @Nullable
-                    public Palette doInBackground(Bitmap... bitmapArr) {
-                        try {
-                            return Builder.this.generate();
-                        } catch (Exception e) {
-                            Log.e(Palette.LOG_TAG, "Exception thrown during async generate", e);
-                            return null;
-                        }
-                    }
-
-                    /* JADX INFO: Access modifiers changed from: protected */
-                    @Override // android.os.AsyncTask
-                    public void onPostExecute(@Nullable Palette palette) {
-                        paletteAsyncListener.onGenerated(palette);
-                    }
-                }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, this.mBitmap);
+                return new 1(this, paletteAsyncListener).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, this.mBitmap);
             }
             throw new IllegalArgumentException("listener can not be null");
         }

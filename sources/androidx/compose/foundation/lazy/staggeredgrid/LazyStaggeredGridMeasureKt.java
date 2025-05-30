@@ -3,13 +3,13 @@ package androidx.compose.foundation.lazy.staggeredgrid;
 import androidx.compose.foundation.ExperimentalFoundationApi;
 import androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider;
 import androidx.compose.foundation.lazy.layout.LazyLayoutMeasureScope;
-import androidx.compose.p004ui.layout.MeasureScope;
-import androidx.compose.p004ui.layout.Placeable;
-import androidx.compose.p004ui.unit.Constraints;
-import androidx.compose.p004ui.unit.ConstraintsKt;
-import androidx.compose.p004ui.unit.IntSizeKt;
 import androidx.compose.runtime.collection.MutableVector;
 import androidx.compose.runtime.snapshots.Snapshot;
+import androidx.compose.ui.layout.MeasureScope$CC;
+import androidx.compose.ui.layout.Placeable$PlacementScope;
+import androidx.compose.ui.unit.Constraints;
+import androidx.compose.ui.unit.ConstraintsKt;
+import androidx.compose.ui.unit.IntSizeKt;
 import java.util.Arrays;
 import java.util.Collection;
 import kotlin.Unit;
@@ -25,7 +25,7 @@ import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyStaggeredGridMeasureKt {
     private static final void ensureIndicesInRange(LazyStaggeredGridMeasureContext lazyStaggeredGridMeasureContext, int[] iArr, int i) {
         int length = iArr.length - 1;
@@ -429,137 +429,128 @@ public final class LazyStaggeredGridMeasureKt {
                         }
                     }
                 }
-                int m5184getMaxWidthimpl = lazyStaggeredGridMeasureContext.isVertical() ? Constraints.m5184getMaxWidthimpl(lazyStaggeredGridMeasureContext.m1635getConstraintsmsEJaDk()) : ConstraintsKt.m5198constrainWidthK40F9xA(lazyStaggeredGridMeasureContext.m1635getConstraintsmsEJaDk(), ArraysKt.maxOrThrow(iArr7));
-                int m5197constrainHeightK40F9xA = lazyStaggeredGridMeasureContext.isVertical() ? ConstraintsKt.m5197constrainHeightK40F9xA(lazyStaggeredGridMeasureContext.m1635getConstraintsmsEJaDk(), ArraysKt.maxOrThrow(iArr7)) : Constraints.m5183getMaxHeightimpl(lazyStaggeredGridMeasureContext.m1635getConstraintsmsEJaDk());
-                int i46 = 0;
-                for (int i47 = 0; i47 < length; i47++) {
-                    i46 += arrayDequeArr[i47].size();
+                int i46 = lazyStaggeredGridMeasureContext.isVertical() ? Constraints.getMaxWidth-impl(lazyStaggeredGridMeasureContext.m502getConstraintsmsEJaDk()) : ConstraintsKt.constrainWidth-K40F9xA(lazyStaggeredGridMeasureContext.m502getConstraintsmsEJaDk(), ArraysKt.maxOrThrow(iArr7));
+                int i47 = lazyStaggeredGridMeasureContext.isVertical() ? ConstraintsKt.constrainHeight-K40F9xA(lazyStaggeredGridMeasureContext.m502getConstraintsmsEJaDk(), ArraysKt.maxOrThrow(iArr7)) : Constraints.getMaxHeight-impl(lazyStaggeredGridMeasureContext.m502getConstraintsmsEJaDk());
+                int i48 = 0;
+                for (int i49 = 0; i49 < length; i49++) {
+                    i48 += arrayDequeArr[i49].size();
                 }
-                final MutableVector mutableVector = new MutableVector(new LazyStaggeredGridPositionedItem[i46], 0);
+                final MutableVector mutableVector = new MutableVector(new LazyStaggeredGridPositionedItem[i48], 0);
                 while (true) {
-                    int i48 = 0;
+                    int i50 = 0;
                     while (true) {
-                        if (i48 >= length) {
+                        if (i50 >= length) {
                             z4 = false;
                             break;
                         }
-                        if (!arrayDequeArr[i48].isEmpty()) {
+                        if (!arrayDequeArr[i50].isEmpty()) {
                             z4 = true;
                             break;
                         }
-                        i48++;
+                        i50++;
                     }
                     if (!z4) {
                         break;
                     }
-                    int i49 = -1;
-                    int i50 = Integer.MAX_VALUE;
-                    for (int i51 = 0; i51 < length; i51++) {
-                        LazyStaggeredGridMeasuredItem lazyStaggeredGridMeasuredItem = (LazyStaggeredGridMeasuredItem) arrayDequeArr[i51].firstOrNull();
+                    int i51 = -1;
+                    int i52 = Integer.MAX_VALUE;
+                    for (int i53 = 0; i53 < length; i53++) {
+                        LazyStaggeredGridMeasuredItem lazyStaggeredGridMeasuredItem = (LazyStaggeredGridMeasuredItem) arrayDequeArr[i53].firstOrNull();
                         int index = lazyStaggeredGridMeasuredItem != null ? lazyStaggeredGridMeasuredItem.getIndex() : Integer.MAX_VALUE;
-                        if (i50 > index) {
-                            i50 = index;
-                            i49 = i51;
+                        if (i52 > index) {
+                            i52 = index;
+                            i51 = i53;
                         }
                     }
-                    LazyStaggeredGridMeasuredItem lazyStaggeredGridMeasuredItem2 = (LazyStaggeredGridMeasuredItem) arrayDequeArr[i49].removeFirst();
-                    mutableVector.add(lazyStaggeredGridMeasuredItem2.position(i49, copyOf4[i49], i49 == 0 ? 0 : lazyStaggeredGridMeasureContext.getResolvedSlotSums()[i49 - 1] + (lazyStaggeredGridMeasureContext.getCrossAxisSpacing() * i49)));
-                    copyOf4[i49] = copyOf4[i49] + lazyStaggeredGridMeasuredItem2.getSizeWithSpacings();
+                    LazyStaggeredGridMeasuredItem lazyStaggeredGridMeasuredItem2 = (LazyStaggeredGridMeasuredItem) arrayDequeArr[i51].removeFirst();
+                    mutableVector.add(lazyStaggeredGridMeasuredItem2.position(i51, copyOf4[i51], i51 == 0 ? 0 : lazyStaggeredGridMeasureContext.getResolvedSlotSums()[i51 - 1] + (lazyStaggeredGridMeasureContext.getCrossAxisSpacing() * i51)));
+                    copyOf4[i51] = copyOf4[i51] + lazyStaggeredGridMeasuredItem2.getSizeWithSpacings();
                 }
                 boolean z10 = iArr3[0] != 0 || iArr4[0] > 0;
-                int i52 = 0;
+                int i54 = 0;
                 while (true) {
-                    if (i52 >= length4) {
+                    if (i54 >= length4) {
                         z5 = false;
                         break;
                     }
-                    if (iArr7[i52] > lazyStaggeredGridMeasureContext.getMainAxisAvailableSize()) {
+                    if (iArr7[i54] > lazyStaggeredGridMeasureContext.getMainAxisAvailableSize()) {
                         z5 = true;
                         break;
                     }
-                    i52++;
+                    i54++;
                 }
                 if (!z5) {
                     int length11 = copyOf3.length;
-                    int i53 = 0;
+                    int i55 = 0;
                     while (true) {
-                        if (i53 >= length11) {
+                        if (i55 >= length11) {
                             z7 = true;
                             break;
                         }
-                        if (!(copyOf3[i53] < itemCount + (-1))) {
+                        if (!(copyOf3[i55] < itemCount + (-1))) {
                             z7 = false;
                             break;
                         }
-                        i53++;
+                        i55++;
                     }
                     if (!z7) {
                         z6 = false;
-                        return new LazyStaggeredGridMeasureResult(iArr3, iArr4, scrollToBeConsumed$foundation_release, MeasureScope.CC.m140p(measureScope, m5184getMaxWidthimpl, m5197constrainHeightK40F9xA, null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridMeasureKt$measure$1$13
+                        return new LazyStaggeredGridMeasureResult(iArr3, iArr4, scrollToBeConsumed$foundation_release, MeasureScope$CC.p(measureScope, i46, i47, null, new Function1<Placeable$PlacementScope, Unit>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridMeasureKt$measure$1$13
                             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
                             {
                                 super(1);
                             }
 
                             public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                                invoke((Placeable.PlacementScope) obj);
+                                invoke((Placeable$PlacementScope) obj);
                                 return Unit.INSTANCE;
                             }
 
-                            public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
-                                Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
+                            public final void invoke(@NotNull Placeable$PlacementScope placeable$PlacementScope) {
+                                Intrinsics.checkNotNullParameter(placeable$PlacementScope, "$this$layout");
                                 MutableVector<LazyStaggeredGridPositionedItem> mutableVector2 = mutableVector;
                                 int size2 = mutableVector2.getSize();
                                 if (size2 > 0) {
-                                    int i54 = 0;
+                                    int i56 = 0;
                                     LazyStaggeredGridPositionedItem[] content = mutableVector2.getContent();
                                     do {
-                                        content[i54].place(placementScope);
-                                        i54++;
-                                    } while (i54 < size2);
+                                        content[i56].place(placeable$PlacementScope);
+                                        i56++;
+                                    } while (i56 < size2);
                                 }
                             }
-                        }, 4, null), z6, z10, lazyStaggeredGridMeasureContext.isVertical(), itemCount, mutableVector.asMutableList(), IntSizeKt.IntSize(m5184getMaxWidthimpl, m5197constrainHeightK40F9xA), i20, i4, lazyStaggeredGridMeasureContext.getBeforeContentPadding(), lazyStaggeredGridMeasureContext.getAfterContentPadding(), null);
+                        }, 4, null), z6, z10, lazyStaggeredGridMeasureContext.isVertical(), itemCount, mutableVector.asMutableList(), IntSizeKt.IntSize(i46, i47), i20, i4, lazyStaggeredGridMeasureContext.getBeforeContentPadding(), lazyStaggeredGridMeasureContext.getAfterContentPadding(), null);
                     }
                 }
                 z6 = true;
-                return new LazyStaggeredGridMeasureResult(iArr3, iArr4, scrollToBeConsumed$foundation_release, MeasureScope.CC.m140p(measureScope, m5184getMaxWidthimpl, m5197constrainHeightK40F9xA, null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridMeasureKt$measure$1$13
+                return new LazyStaggeredGridMeasureResult(iArr3, iArr4, scrollToBeConsumed$foundation_release, MeasureScope$CC.p(measureScope, i46, i47, null, new Function1<Placeable$PlacementScope, Unit>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridMeasureKt$measure$1$13
                     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
                     {
                         super(1);
                     }
 
                     public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                        invoke((Placeable.PlacementScope) obj);
+                        invoke((Placeable$PlacementScope) obj);
                         return Unit.INSTANCE;
                     }
 
-                    public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
-                        Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
+                    public final void invoke(@NotNull Placeable$PlacementScope placeable$PlacementScope) {
+                        Intrinsics.checkNotNullParameter(placeable$PlacementScope, "$this$layout");
                         MutableVector<LazyStaggeredGridPositionedItem> mutableVector2 = mutableVector;
                         int size2 = mutableVector2.getSize();
                         if (size2 > 0) {
-                            int i54 = 0;
+                            int i56 = 0;
                             LazyStaggeredGridPositionedItem[] content = mutableVector2.getContent();
                             do {
-                                content[i54].place(placementScope);
-                                i54++;
-                            } while (i54 < size2);
+                                content[i56].place(placeable$PlacementScope);
+                                i56++;
+                            } while (i56 < size2);
                         }
                     }
-                }, 4, null), z6, z10, lazyStaggeredGridMeasureContext.isVertical(), itemCount, mutableVector.asMutableList(), IntSizeKt.IntSize(m5184getMaxWidthimpl, m5197constrainHeightK40F9xA), i20, i4, lazyStaggeredGridMeasureContext.getBeforeContentPadding(), lazyStaggeredGridMeasureContext.getAfterContentPadding(), null);
+                }, 4, null), z6, z10, lazyStaggeredGridMeasureContext.isVertical(), itemCount, mutableVector.asMutableList(), IntSizeKt.IntSize(i46, i47), i20, i4, lazyStaggeredGridMeasureContext.getBeforeContentPadding(), lazyStaggeredGridMeasureContext.getAfterContentPadding(), null);
             }
         }
-        return new LazyStaggeredGridMeasureResult(iArr, iArr2, 0.0f, MeasureScope.CC.m140p(measureScope, Constraints.m5186getMinWidthimpl(lazyStaggeredGridMeasureContext.m1635getConstraintsmsEJaDk()), Constraints.m5185getMinHeightimpl(lazyStaggeredGridMeasureContext.m1635getConstraintsmsEJaDk()), null, new Function1<Placeable.PlacementScope, Unit>() { // from class: androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridMeasureKt$measure$1$1
-            public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-                invoke((Placeable.PlacementScope) obj);
-                return Unit.INSTANCE;
-            }
-
-            public final void invoke(@NotNull Placeable.PlacementScope placementScope) {
-                Intrinsics.checkNotNullParameter(placementScope, "$this$layout");
-            }
-        }, 4, null), false, false, lazyStaggeredGridMeasureContext.isVertical(), itemCount, CollectionsKt.emptyList(), IntSizeKt.IntSize(Constraints.m5186getMinWidthimpl(lazyStaggeredGridMeasureContext.m1635getConstraintsmsEJaDk()), Constraints.m5185getMinHeightimpl(lazyStaggeredGridMeasureContext.m1635getConstraintsmsEJaDk())), -lazyStaggeredGridMeasureContext.getBeforeContentPadding(), lazyStaggeredGridMeasureContext.getMainAxisAvailableSize() + lazyStaggeredGridMeasureContext.getAfterContentPadding(), lazyStaggeredGridMeasureContext.getBeforeContentPadding(), lazyStaggeredGridMeasureContext.getAfterContentPadding(), null);
+        return new LazyStaggeredGridMeasureResult(iArr, iArr2, 0.0f, MeasureScope$CC.p(measureScope, Constraints.getMinWidth-impl(lazyStaggeredGridMeasureContext.m502getConstraintsmsEJaDk()), Constraints.getMinHeight-impl(lazyStaggeredGridMeasureContext.m502getConstraintsmsEJaDk()), null, measure.1.1.INSTANCE, 4, null), false, false, lazyStaggeredGridMeasureContext.isVertical(), itemCount, CollectionsKt.emptyList(), IntSizeKt.IntSize(Constraints.getMinWidth-impl(lazyStaggeredGridMeasureContext.m502getConstraintsmsEJaDk()), Constraints.getMinHeight-impl(lazyStaggeredGridMeasureContext.m502getConstraintsmsEJaDk())), -lazyStaggeredGridMeasureContext.getBeforeContentPadding(), lazyStaggeredGridMeasureContext.getMainAxisAvailableSize() + lazyStaggeredGridMeasureContext.getAfterContentPadding(), lazyStaggeredGridMeasureContext.getBeforeContentPadding(), lazyStaggeredGridMeasureContext.getAfterContentPadding(), null);
     }
 
     private static final boolean measure$lambda$18$hasSpaceBeforeFirst(int[] iArr, int[] iArr2, LazyStaggeredGridMeasureContext lazyStaggeredGridMeasureContext) {
@@ -606,7 +597,7 @@ public final class LazyStaggeredGridMeasureKt {
     @ExperimentalFoundationApi
     @NotNull
     /* renamed from: measureStaggeredGrid-yR9pz_M, reason: not valid java name */
-    public static final LazyStaggeredGridMeasureResult m1637measureStaggeredGridyR9pz_M(@NotNull LazyLayoutMeasureScope lazyLayoutMeasureScope, @NotNull LazyStaggeredGridState lazyStaggeredGridState, @NotNull LazyLayoutItemProvider lazyLayoutItemProvider, @NotNull int[] iArr, long j, boolean z, long j2, int i, int i2, int i3, int i4, int i5) {
+    public static final LazyStaggeredGridMeasureResult m504measureStaggeredGridyR9pz_M(@NotNull LazyLayoutMeasureScope lazyLayoutMeasureScope, @NotNull LazyStaggeredGridState lazyStaggeredGridState, @NotNull LazyLayoutItemProvider lazyLayoutItemProvider, @NotNull int[] iArr, long j, boolean z, long j2, int i, int i2, int i3, int i4, int i5) {
         LazyStaggeredGridMeasureContext lazyStaggeredGridMeasureContext;
         LazyStaggeredGridMeasureContext lazyStaggeredGridMeasureContext2;
         int findNextItemIndex;

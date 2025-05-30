@@ -4,9 +4,9 @@ import androidx.compose.foundation.ExperimentalFoundationApi;
 import androidx.compose.foundation.MutatePriority;
 import androidx.compose.foundation.gestures.ScrollScope;
 import androidx.compose.foundation.lazy.layout.LazyAnimateScrollScope;
-import androidx.compose.p004ui.unit.Density;
-import androidx.compose.p004ui.unit.IntOffset;
-import androidx.compose.p004ui.unit.IntSize;
+import androidx.compose.ui.unit.Density;
+import androidx.compose.ui.unit.IntOffset;
+import androidx.compose.ui.unit.IntSize;
 import java.util.List;
 import kotlin.Unit;
 import kotlin.collections.CollectionsKt;
@@ -20,7 +20,7 @@ import tb.eo4;
 
 /* compiled from: Taobao */
 @ExperimentalFoundationApi
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class LazyStaggeredGridAnimateScrollScope implements LazyAnimateScrollScope {
 
     @NotNull
@@ -38,7 +38,7 @@ public final class LazyStaggeredGridAnimateScrollScope implements LazyAnimateScr
         int i3 = 0;
         for (int i4 = 0; i4 < size; i4++) {
             LazyStaggeredGridItemInfo lazyStaggeredGridItemInfo = visibleItemsInfo.get(i4);
-            i3 += this.state.isVertical$foundation_release() ? IntSize.m5375getHeightimpl(lazyStaggeredGridItemInfo.mo1630getSizeYbymL2g()) : IntSize.m5376getWidthimpl(lazyStaggeredGridItemInfo.mo1630getSizeYbymL2g());
+            i3 += this.state.isVertical$foundation_release() ? IntSize.getHeight-impl(lazyStaggeredGridItemInfo.getSize-YbymL2g()) : IntSize.getWidth-impl(lazyStaggeredGridItemInfo.getSize-YbymL2g());
         }
         return (((i3 / (visibleItemsInfo.size() * this.state.getLaneCount$foundation_release())) * (i - getFirstVisibleItemIndex())) + i2) - getFirstVisibleItemScrollOffset();
     }
@@ -85,8 +85,8 @@ public final class LazyStaggeredGridAnimateScrollScope implements LazyAnimateScr
         if (findVisibleItem == null) {
             return null;
         }
-        long mo1629getOffsetnOccac = findVisibleItem.mo1629getOffsetnOccac();
-        return Integer.valueOf(this.state.isVertical$foundation_release() ? IntOffset.m5335getYimpl(mo1629getOffsetnOccac) : IntOffset.m5334getXimpl(mo1629getOffsetnOccac));
+        long j = findVisibleItem.getOffset-nOcc-ac();
+        return Integer.valueOf(this.state.isVertical$foundation_release() ? IntOffset.getY-impl(j) : IntOffset.getX-impl(j));
     }
 
     @Override // androidx.compose.foundation.lazy.layout.LazyAnimateScrollScope

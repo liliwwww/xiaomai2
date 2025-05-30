@@ -5,7 +5,6 @@ import android.taobao.windvane.config.GlobalConfig;
 import android.taobao.windvane.connect.api.ApiConstants;
 import android.taobao.windvane.util.WVConstants;
 import android.text.TextUtils;
-import androidx.exifinterface.media.ExifInterface;
 import com.taobao.securityjni.GlobalInit;
 import com.taobao.securityjni.SecretUtil;
 import com.taobao.securityjni.tools.DataContext;
@@ -16,7 +15,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class SecurityManager {
     public static final int TYPE_SIGN_MTOP = 0;
     public static final int TYPE_SIGN_TOP = 1;
@@ -53,17 +52,17 @@ public class SecurityManager {
         if (!TextUtils.isEmpty(hashMap.get(ApiConstants.ECODE))) {
             hashMap2.put("ECODE", hashMap.get(ApiConstants.ECODE));
         }
-        if (!TextUtils.isEmpty(hashMap.get("imei"))) {
-            hashMap2.put("IMEI", hashMap.get("imei"));
+        if (!TextUtils.isEmpty(hashMap.get(ApiConstants.IMEI))) {
+            hashMap2.put("IMEI", hashMap.get(ApiConstants.IMEI));
         }
-        if (!TextUtils.isEmpty(hashMap.get("imsi"))) {
-            hashMap2.put("IMSI", hashMap.get("imsi"));
+        if (!TextUtils.isEmpty(hashMap.get(ApiConstants.IMSI))) {
+            hashMap2.put("IMSI", hashMap.get(ApiConstants.IMSI));
         }
-        if (!TextUtils.isEmpty(hashMap.get(ApiConstants.f4T))) {
-            hashMap2.put("TIME", hashMap.get(ApiConstants.f4T));
+        if (!TextUtils.isEmpty(hashMap.get(ApiConstants.T))) {
+            hashMap2.put("TIME", hashMap.get(ApiConstants.T));
         }
-        if (!TextUtils.isEmpty(hashMap.get(ApiConstants.f5V))) {
-            hashMap2.put(ExifInterface.GPS_MEASUREMENT_INTERRUPTED, hashMap.get(ApiConstants.f5V));
+        if (!TextUtils.isEmpty(hashMap.get(ApiConstants.V))) {
+            hashMap2.put("V", hashMap.get(ApiConstants.V));
         }
         DataContext dataContext = new DataContext();
         dataContext.extData = str.getBytes();

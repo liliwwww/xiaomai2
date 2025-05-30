@@ -14,7 +14,7 @@ import java.util.HashSet;
 import java.util.Locale;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 final class LocaleListCompatWrapper implements LocaleListInterface {
     private final Locale[] mList;
 
@@ -79,7 +79,7 @@ final class LocaleListCompatWrapper implements LocaleListInterface {
      */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
     private int computeFirstMatchIndex(java.util.Collection<java.lang.String> r5, boolean r6) {
         /*
@@ -159,7 +159,7 @@ final class LocaleListCompatWrapper implements LocaleListInterface {
         return LOCALE_EN_XA.equals(locale) || LOCALE_AR_XB.equals(locale);
     }
 
-    @IntRange(from = 0, m43to = 1)
+    @IntRange(from = 0, to = 1)
     private static int matchScore(Locale locale, Locale locale2) {
         if (locale.equals(locale2)) {
             return 1;
@@ -210,7 +210,6 @@ final class LocaleListCompatWrapper implements LocaleListInterface {
         }
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     public Locale get(int i) {
         if (i >= 0) {
             Locale[] localeArr = this.mList;
@@ -221,12 +220,10 @@ final class LocaleListCompatWrapper implements LocaleListInterface {
         return null;
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     public Locale getFirstMatch(@NonNull String[] strArr) {
         return computeFirstMatch(Arrays.asList(strArr), false);
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     @Nullable
     public Object getLocaleList() {
         return null;
@@ -240,7 +237,6 @@ final class LocaleListCompatWrapper implements LocaleListInterface {
         return i;
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     public int indexOf(Locale locale) {
         int i = 0;
         while (true) {
@@ -255,17 +251,14 @@ final class LocaleListCompatWrapper implements LocaleListInterface {
         }
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     public boolean isEmpty() {
         return this.mList.length == 0;
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     public int size() {
         return this.mList.length;
     }
 
-    @Override // androidx.core.os.LocaleListInterface
     public String toLanguageTags() {
         return this.mStringRepresentation;
     }

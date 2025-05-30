@@ -11,8 +11,12 @@ import kotlin.jvm.functions.Function2;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class LazyListKt {
+    /* JADX WARN: Code restructure failed: missing block: B:78:0x0291, code lost:
+    
+        if (r5 == r3.getEmpty()) goto L172;
+     */
     /* JADX WARN: Removed duplicated region for block: B:105:0x0159  */
     /* JADX WARN: Removed duplicated region for block: B:113:0x013b  */
     /* JADX WARN: Removed duplicated region for block: B:120:0x011b  */
@@ -51,12 +55,12 @@ public final class LazyListKt {
     @androidx.compose.runtime.Composable
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    public static final void LazyList(@org.jetbrains.annotations.NotNull final androidx.compose.p004ui.Modifier r33, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.lazy.LazyListState r34, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.layout.PaddingValues r35, final boolean r36, final boolean r37, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.gestures.FlingBehavior r38, final boolean r39, int r40, @org.jetbrains.annotations.Nullable androidx.compose.ui.Alignment.Horizontal r41, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Vertical r42, @org.jetbrains.annotations.Nullable androidx.compose.ui.Alignment.Vertical r43, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement.Horizontal r44, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.LazyListScope, kotlin.Unit> r45, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r46, final int r47, final int r48, final int r49) {
+    public static final void LazyList(@org.jetbrains.annotations.NotNull final androidx.compose.ui.Modifier r33, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.lazy.LazyListState r34, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.layout.PaddingValues r35, final boolean r36, final boolean r37, @org.jetbrains.annotations.NotNull final androidx.compose.foundation.gestures.FlingBehavior r38, final boolean r39, int r40, @org.jetbrains.annotations.Nullable androidx.compose.ui.Alignment.Horizontal r41, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement$Vertical r42, @org.jetbrains.annotations.Nullable androidx.compose.ui.Alignment.Vertical r43, @org.jetbrains.annotations.Nullable androidx.compose.foundation.layout.Arrangement$Horizontal r44, @org.jetbrains.annotations.NotNull final kotlin.jvm.functions.Function1<? super androidx.compose.foundation.lazy.LazyListScope, kotlin.Unit> r45, @org.jetbrains.annotations.Nullable androidx.compose.runtime.Composer r46, final int r47, final int r48, final int r49) {
         /*
             Method dump skipped, instructions count: 962
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.LazyListKt.LazyList(androidx.compose.ui.Modifier, androidx.compose.foundation.lazy.LazyListState, androidx.compose.foundation.layout.PaddingValues, boolean, boolean, androidx.compose.foundation.gestures.FlingBehavior, boolean, int, androidx.compose.ui.Alignment$Horizontal, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.ui.Alignment$Vertical, androidx.compose.foundation.layout.Arrangement$Horizontal, kotlin.jvm.functions.Function1, androidx.compose.runtime.Composer, int, int, int):void");
     }
@@ -130,12 +134,12 @@ public final class LazyListKt {
     @androidx.compose.foundation.ExperimentalFoundationApi
     /*
         Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
+        To view partially-correct add '--show-bad-code' argument
     */
-    private static final kotlin.jvm.functions.Function2<androidx.compose.foundation.lazy.layout.LazyLayoutMeasureScope, androidx.compose.p004ui.unit.Constraints, androidx.compose.p004ui.layout.MeasureResult> rememberLazyListMeasurePolicy(final androidx.compose.foundation.lazy.LazyListItemProvider r20, final androidx.compose.foundation.lazy.LazyListState r21, final androidx.compose.foundation.lazy.LazyListBeyondBoundsInfo r22, final androidx.compose.foundation.layout.PaddingValues r23, final boolean r24, final boolean r25, final int r26, androidx.compose.ui.Alignment.Horizontal r27, androidx.compose.ui.Alignment.Vertical r28, androidx.compose.foundation.layout.Arrangement.Horizontal r29, androidx.compose.foundation.layout.Arrangement.Vertical r30, final androidx.compose.foundation.lazy.LazyListItemPlacementAnimator r31, androidx.compose.runtime.Composer r32, int r33, int r34, int r35) {
+    private static final kotlin.jvm.functions.Function2<androidx.compose.foundation.lazy.layout.LazyLayoutMeasureScope, androidx.compose.ui.unit.Constraints, androidx.compose.ui.layout.MeasureResult> rememberLazyListMeasurePolicy(androidx.compose.foundation.lazy.LazyListItemProvider r20, androidx.compose.foundation.lazy.LazyListState r21, androidx.compose.foundation.lazy.LazyListBeyondBoundsInfo r22, androidx.compose.foundation.layout.PaddingValues r23, boolean r24, boolean r25, int r26, androidx.compose.ui.Alignment.Horizontal r27, androidx.compose.ui.Alignment.Vertical r28, androidx.compose.foundation.layout.Arrangement$Horizontal r29, androidx.compose.foundation.layout.Arrangement$Vertical r30, androidx.compose.foundation.lazy.LazyListItemPlacementAnimator r31, androidx.compose.runtime.Composer r32, int r33, int r34, int r35) {
         /*
             Method dump skipped, instructions count: 344
-            To view this dump change 'Code comments level' option to 'DEBUG'
+            To view this dump add '--comments-level debug' option
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.compose.foundation.lazy.LazyListKt.rememberLazyListMeasurePolicy(androidx.compose.foundation.lazy.LazyListItemProvider, androidx.compose.foundation.lazy.LazyListState, androidx.compose.foundation.lazy.LazyListBeyondBoundsInfo, androidx.compose.foundation.layout.PaddingValues, boolean, boolean, int, androidx.compose.ui.Alignment$Horizontal, androidx.compose.ui.Alignment$Vertical, androidx.compose.foundation.layout.Arrangement$Horizontal, androidx.compose.foundation.layout.Arrangement$Vertical, androidx.compose.foundation.lazy.LazyListItemPlacementAnimator, androidx.compose.runtime.Composer, int, int, int):kotlin.jvm.functions.Function2");
     }

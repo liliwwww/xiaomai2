@@ -1,13 +1,13 @@
 package androidx.compose.foundation.lazy.staggeredgrid;
 
 import androidx.compose.foundation.gestures.Orientation;
-import androidx.compose.p004ui.unit.IntSize;
+import androidx.compose.ui.unit.IntSize;
 import java.util.List;
 import kotlin.collections.CollectionsKt;
 import org.jetbrains.annotations.NotNull;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public final class EmptyLazyStaggeredGridLayoutInfo implements LazyStaggeredGridLayoutInfo {
     private static final int afterContentPadding = 0;
     private static final int beforeContentPadding = 0;
@@ -20,7 +20,7 @@ public final class EmptyLazyStaggeredGridLayoutInfo implements LazyStaggeredGrid
 
     @NotNull
     private static final List<LazyStaggeredGridItemInfo> visibleItemsInfo = CollectionsKt.emptyList();
-    private static final long viewportSize = IntSize.Companion.m5381getZeroYbymL2g();
+    private static final long viewportSize = IntSize.Companion.getZero-YbymL2g();
 
     @NotNull
     private static final Orientation orientation = Orientation.Vertical;
@@ -56,7 +56,7 @@ public final class EmptyLazyStaggeredGridLayoutInfo implements LazyStaggeredGrid
 
     @Override // androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridLayoutInfo
     /* renamed from: getViewportSize-YbymL2g, reason: not valid java name */
-    public long mo1624getViewportSizeYbymL2g() {
+    public long mo325getViewportSizeYbymL2g() {
         return viewportSize;
     }
 

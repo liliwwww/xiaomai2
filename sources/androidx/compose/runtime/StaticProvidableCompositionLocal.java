@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class StaticProvidableCompositionLocal<T> extends ProvidableCompositionLocal<T> {
     /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
     public StaticProvidableCompositionLocal(@NotNull Function0<? extends T> function0) {
@@ -14,7 +14,6 @@ public final class StaticProvidableCompositionLocal<T> extends ProvidableComposi
         Intrinsics.checkNotNullParameter(function0, "defaultFactory");
     }
 
-    @Override // androidx.compose.runtime.CompositionLocal
     @Composable
     @NotNull
     public State<T> provided$runtime_release(T t, @Nullable Composer composer, int i) {

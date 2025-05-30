@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public final class ContextMenu_androidKt {
     @Composable
     @ComposableInferredTarget(scheme = "[0[0]]")
@@ -46,7 +46,6 @@ public final class ContextMenu_androidKt {
         }
         endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.text.ContextMenu_androidKt$ContextMenuArea$1
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
             {
                 super(2);
             }
@@ -57,7 +56,7 @@ public final class ContextMenu_androidKt {
             }
 
             public final void invoke(@Nullable Composer composer2, int i3) {
-                ContextMenu_androidKt.ContextMenuArea(TextFieldSelectionManager.this, function2, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
+                ContextMenu_androidKt.ContextMenuArea(textFieldSelectionManager, (Function2<? super Composer, ? super Integer, Unit>) function2, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
             }
         });
     }
@@ -91,7 +90,6 @@ public final class ContextMenu_androidKt {
         }
         endRestartGroup.updateScope(new Function2<Composer, Integer, Unit>() { // from class: androidx.compose.foundation.text.ContextMenu_androidKt$ContextMenuArea$2
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            /* JADX WARN: Multi-variable type inference failed */
             {
                 super(2);
             }
@@ -102,7 +100,7 @@ public final class ContextMenu_androidKt {
             }
 
             public final void invoke(@Nullable Composer composer2, int i3) {
-                ContextMenu_androidKt.ContextMenuArea(SelectionManager.this, function2, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
+                ContextMenu_androidKt.ContextMenuArea(SelectionManager.this, (Function2<? super Composer, ? super Integer, Unit>) function2, composer2, RecomposeScopeImplKt.updateChangedFlags(i | 1));
             }
         });
     }

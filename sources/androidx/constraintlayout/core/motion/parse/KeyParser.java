@@ -9,15 +9,8 @@ import androidx.constraintlayout.core.parser.CLParsingException;
 import tb.zp5;
 
 /* compiled from: Taobao */
-/* loaded from: classes2.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes2.dex */
 public class KeyParser {
-
-    /* JADX INFO: Access modifiers changed from: private */
-    /* compiled from: Taobao */
-    /* loaded from: classes.dex */
-    interface DataType {
-        int get(int i);
-    }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* compiled from: Taobao */
@@ -35,7 +28,7 @@ public class KeyParser {
             CLObject parse = CLParser.parse(str);
             int size = parse.size();
             for (int i = 0; i < size; i++) {
-                CLKey cLKey = (CLKey) parse.get(i);
+                CLKey cLKey = parse.get(i);
                 String content = cLKey.content();
                 CLElement value = cLKey.getValue();
                 int i2 = ids.get(content);
@@ -70,7 +63,6 @@ public class KeyParser {
                 return zp5.a(str2);
             }
         }, new DataType() { // from class: androidx.constraintlayout.core.motion.parse.a
-            @Override // androidx.constraintlayout.core.motion.parse.KeyParser.DataType
             public final int get(int i) {
                 return zp5.b(i);
             }

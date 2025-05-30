@@ -1,7 +1,7 @@
 package android.taobao.windvane.packageapp.zipapp.data;
 
 /* compiled from: Taobao */
-/* loaded from: classes.dex */
+/* loaded from: E:\ai\xiaomai1\gradle\app\src\main\classes.dex */
 public enum ZipUpdateTypeEnum {
     ZIP_UPDATE_TYPE_PASSIVE(0),
     ZIP_APP_TYPE_FORCE(256),
